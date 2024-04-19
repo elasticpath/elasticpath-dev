@@ -1,0 +1,324 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Settings
+  description: Store Settings
+  contact:
+    name: Elastic Path
+    url: 'https://www.elasticpath.com'
+    email: support@elasticpath.com
+  license:
+    url: 'https://elasticpath.dev'
+    name: MIT
+servers:
+  - url: 'https://useast.api.elasticpath.com'
+    description: US East
+  - url: 'https://euwest.api.elasticpath.com'
+    description: EU West
+paths:
+  /v2/settings:
+    get:
+      tags:
+        - Settings
+      summary: Get Project Settings
+      description: |-
+        You can get all of the project settings via one API call using a `client_credential` token. The response is in object format as shown in the following example.
+      operationId: get-v2-settings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsResponse'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Settings
+      summary: Update Project Settings
+      description: |-
+        You can use the Settings endpoint to update your project settings at any time. These global settings take immediate effect.
+      operationId: put-v2-settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settings'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsResponse'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    delete:
+      tags:
+        - Settings
+      summary: Delete Project Settings
+      description: |-
+        Deletes a store setting. Organization settings cannot be deleted.
+      operationId: delete-v2-settings
+      responses:
+        '204':
+          description: No Content
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/cart:
+    get:
+      tags:
+        - Settings
+      summary: Get Cart Settings
+      description: |-
+        Get Cart Settings
+      operationId: get-v2-settings-cart
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsCart'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Settings
+      summary: Update Cart Settings
+      description: |-
+        Update Cart Settigs
+      operationId: put-v2-settings-cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SettingsCart'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsCart'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/account-memberships:
+    get:
+      tags:
+        - Settings
+      summary: Get Account Membership Settings
+      description: |-
+        Get Account Membership Settings
+      operationId: get-v2-settings-account-membership
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsAccountMembership'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Settings
+      summary: Update Account Membership Settings
+      description: |-
+        Update Account Membership Settigs
+      operationId: put-v2-settings-account-membership
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SettingsAccountMembership'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsAccountMembership'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+tags:
+  - name: Settings
+    description: |
+      The Settings API allow you to configure global settings for your project. You can define:
+       - [page length when paginating results](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length)
+       - [the calculation method you want to use for cart and order totals](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method)
+       - [mandatory address fields](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#address-mandatory-fields)
+       - [readonly store settings for internal stores](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#readonly-settings)
+components:
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+  schemas:
+    Settings:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Describes the type of request payload you’re sending. Set this value to `settings`.
+          example: settings
+        page_length:
+          type: integer
+          description: " Indicates the number of results per page (max: `100`)."
+          example: 25
+        list_child_products:
+          type: boolean
+          description: Displays child products or not in product listings.
+          example: false
+        additional_languages:
+          description: Represents an array of alpha2 codes for supported languages.
+          type: array
+          items:
+            type: string
+          example: ["es", "fr", "de"]
+        calculation_method:
+          type: string
+          description: Displays the method used to calculate card and order totals.
+          example: line
+          enum:
+            - line
+            - simple
+        address_mandatory_fields:
+          type: array
+          description: Indicates an array of fields that are required for creating an [address](https://elasticpath.dev/docs/commerce-cloud/addresses/about-addresses-api#the-address-object).
+          items:
+            type: string
+            example: ["first_name", "last_name", "line_1", "city", "region", "postcode", "country", "instructions"]
+      required:
+        - type
+    SettingsData:
+      properties:
+        data:
+          allOf:
+            - $ref: '#/components/schemas/Settings'
+            - type: object
+              properties:
+                currency_limit:
+                  description: The currency limit.
+                  type: integer
+                  example: 10
+                field_limit:
+                  description: The field limit.
+                  type: integer
+                  example: 100
+                integration_limit:
+                  description: The integration limit.
+                  type: integer
+                  example: 100
+                event_limit:
+                  description: The event limit.
+                  type: integer
+                  example: 5
+                filter_limit:
+                  description: The filter limit.
+                  type: integer
+                  example: 10
+                tax_item_limit:
+                  description: The tax item limit.
+                  type: integer
+                  example: 5
+                promotions_limit:
+                  description: The promotions limit.
+                  type: integer
+                  example: 1000
+                promotion_codes_limit:
+                  description: The promotion codes limit.
+                  type: integer
+                  example: 1000
+                page_offset_limit:
+                  description: The page offset limit.
+                  type: integer
+                  example: 10000
+    SettingsResponse:
+      allOf:
+        - $ref: '#/components/schemas/SettingsData'
+        - type: object
+          properties:
+            meta:
+              type: object
+              properties:
+                owner:
+                  type: string
+                  example: store
+    SettingsCart:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Describes the type of request payload you’re sending. Set this value to `settings`.
+              example: settings
+            cart_expiry_days:
+              type: integer
+              description: Indicates the number of days before a cart expires.
+              example: 25
+            discounts:
+              type: object
+              properties:
+                custom_discounts_enabled:
+                  description: When `true`, custom discounts are enabled. Default is false. This setting only affects the new empty carts while the existing active carts will not be affected.
+                  type: boolean
+                  example: false
+          required:
+            - type
+    SettingsAccountMembership:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              description: This describes the type of request payload you’re sending. Set this value to `account_membership_setting`.
+              example: account_membership_setting
+            membership_limit:
+              type: integer
+              description: "Maximum number of memberships allowed on an account."
+              example: 10000
+          required:
+            - type
+security:
+  - BearerToken: []

@@ -1,0 +1,314 @@
+<script>
+  function showMenu(menu) {
+    document.body.classList.remove('composable', 'composer', 'payments', 'carts', 'subscriptions', 'selfmanaged', 'studio', 'plugin', 'pxm');
+    document.body.classList.add(menu);
+  }
+
+  window.showMenu = showMenu;
+</script>
+<div class="docs-dropdown flex max-w-lg flex-col rounded-2xl lg:min-w-[768px]">
+  <div class="flex flex-col bg-secondary-800 p-4 lg:min-h-[300px] lg:flex-row">
+    <div class="flex flex-1 flex-col gap-4 rounded-xl bg-secondary-1000 p-2">
+      <!-- Commerce -->
+      <a
+        data-dropdown-docs-menu="composable"
+        onfocus="document.body.setAttribute('docs-menu', 'composable')"
+        onmouseover="document.body.setAttribute('docs-menu', 'composable')"
+        class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+        href="/docs/commerce-cloud"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Composable Commerce</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>
+      <!-- PXM -->
+      <a
+              data-dropdown-docs-menu="pxm"
+              onfocus="document.body.setAttribute('docs-menu', 'pxm')"
+              onmouseover="document.body.setAttribute('docs-menu', 'pxm')"
+              class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/pxm"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Product Experience Manager</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>
+      <!-- Subscriptions -->
+      <a
+              data-dropdown-docs-menu="subscriptions"
+              onfocus="document.body.setAttribute('docs-menu', 'subscriptions')"
+              onmouseover="document.body.setAttribute('docs-menu', 'subscriptions')"
+              class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/subscriptions"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Subscriptions</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>
+      <!-- Composer
+      <a
+              data-dropdown-docs-menu="composer"
+              onfocus="document.body.setAttribute('docs-menu', 'composer')"
+              onmouseover="document.body.setAttribute('docs-menu', 'composer')"
+              class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/composer"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Composer</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>-->
+      <!-- Carts -->
+      <a
+              data-dropdown-docs-menu="carts"
+              onfocus="document.body.setAttribute('docs-menu', 'carts')"
+              onmouseover="document.body.setAttribute('docs-menu', 'carts')"
+              class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/commerce-cloud/carts"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Carts & Orders</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>
+      <!-- Payments -->
+      <a
+              data-dropdown-docs-menu="payments"
+              onfocus="document.body.setAttribute('docs-menu', 'payments')"
+              onmouseover="document.body.setAttribute('docs-menu', 'payments')"
+              class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/ep-payments"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Payments</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>
+      <!-- Studio -->
+      <a
+              data-dropdown-docs-menu="studio"
+              onfocus="document.body.setAttribute('docs-menu', 'studio')"
+              onmouseover="document.body.setAttribute('docs-menu', 'studio')"
+              class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/studio"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Studio</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference
+          </p>
+        </div>
+      </a>
+      <!--Self Managed-->
+      <a
+        data-dropdown-docs-menu="selfmanaged"
+        onfocus="document.body.setAttribute('docs-menu', 'selfmanaged')"
+        onmouseover="document.body.setAttribute('docs-menu', 'selfmanaged')"
+        class="flex cursor-pointer items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+        href="https://documentation.elasticpath.com"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1">
+          <div class="text-base font-semibold">Self Managed Commerce</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            Guides and API reference for Self Managed Commerce
+          </p>
+        </div>
+      </a>
+
+    </div>
+    <!--Composable Commerce-->
+    <div class="flex-1 p-6">
+      <div class="flex flex-col gap-2" data-dropdown-docs="composable">
+        <div class="flex flex-1 flex-col">
+          <h3 class="!mb-0.5">Composable Commerce Documentation</h3>
+          <span class="none hidden text-sm font-normal lg:block">
+            Explore our guides and product documentation</span
+          >
+          <ul class="docs-ul">
+            <li>
+              <a href="/docs/commerce-cloud" class="docs-link">
+                Commerce
+              </a>
+            </li>
+            <li>
+              <a href="/docs/commerce-cloud/api-overview" class="docs-link">
+                API Overview
+              </a>
+            </li>
+            <li>
+              <a href="/docs/composer" class="docs-link">
+                Composer
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-6 flex flex-1 flex-col">
+          <h3 class="!mb-0.5">Developer Tools</h3>
+          <span class="hidden text-sm font-normal lg:block"
+            >Composable CLI Frontend, SDKs and more</span
+          >
+          <ul class="docs-ul">
+            <li>
+              <a href="/docs/developer-tools" class="docs-link">
+                Developer Tools
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+<!--pxm-->
+      <div class="flex flex-col gap-2" data-dropdown-docs="pxm">
+              <div class="flex w-full gap-2">
+                <div class="flex-1">
+                  <h3>Product Experience Manager</h3>
+                  <ul class="list-none pl-0">
+                    <li>
+                      <a href="/docs/pxm/" class="docs-link">
+                        Overview
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/api/docs/pxm/pricebooks" class="docs-link">
+                        API Documentation
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      <!--subscriptions-->
+      <div class="flex flex-col gap-2" data-dropdown-docs="subscriptions">
+        <div class="flex w-full gap-2">
+          <div class="flex-1">
+            <h3>Subscriptions</h3>
+            <ul class="list-none pl-0">
+              <li>
+                <a href="/docs/subscriptions/" class="docs-link">
+                  Overview
+                </a>
+              </li>
+              <li>
+                <a href="/api/docs/subscriptions/subscriptions-overview" class="docs-link">
+                  API Documentation
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--carts-->
+      <div class="flex flex-col gap-2" data-dropdown-docs="carts">
+        <div class="flex w-full gap-2">
+          <div class="flex-1">
+            <h3>Carts, Checkout & Orders</h3>
+            <ul class="list-none pl-0">
+              <li>
+                <a href="/docs/commerce-cloud/carts" class="docs-link">
+                  Overview
+                </a>
+              </li>
+              <li>
+                <a href="/docs/api/carts/elastic-path-composable-commerce" class="docs-link">
+                  API Documentation
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--Studio-->
+      <div class="flex flex-col gap-2" data-dropdown-docs="studio">
+        <div class="flex w-full gap-2">
+          <div class="flex-1">
+            <h3>Studio</h3>
+            <ul class="list-none pl-0">
+              <li>
+                <a href="/docs/studio" class="docs-link">
+                  Overview
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="flex gap-2" data-dropdown-docs="plugin">
+        <div class="flex-1">
+          <h3>Core Docs</h3>
+
+          <ul class="list-none pl-0">
+            <li>
+              <a href="/plugin-docs" class="docs-link">
+                <img src="/static/landing-page/docs-icons/js.png" />
+                Javascript
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+
+      <!-- <div class="flex flex-col gap-2" data-dropdown-docs="selfmanaged">
+        <div class="flex w-full gap-2">
+          <div class="flex-1">
+            <h3>Links to services</h3>
+            <ul class="list-none pl-0">
+              <li>
+                <a href="https://documentation.elasticpath.com" class="docs-link">
+                  Link Name
+                </a>
+              </li>
+              <li>
+                <a href="https://documentation.elasticpath.com" class="docs-link">
+                  Link Name
+                </a>
+              </li>
+              <li>
+                <a href="https://documentation.elasticpath.com" class="docs-link">
+                  Link Name
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+
+
+

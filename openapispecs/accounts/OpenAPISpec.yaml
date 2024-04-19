@@ -1,0 +1,2115 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Accounts Introduction
+  description: In the Commerce store, sellers can create accounts and account members. Sellers can also assign the account members to accounts using account memberships. Associated account members can log in to the store and create orders for their accounts.
+  contact:
+    name: Elastic Path
+    url: 'https://www.elasticpath.com'
+    email: support@elasticpath.com
+  license:
+    url: 'https://elasticpath.dev'
+    name: MIT
+servers:
+  - url: 'https://useast.api.elasticpath.com'
+    description: US East
+  - url: 'https://euwest.api.elasticpath.com'
+    description: EU West
+paths:
+  /v2/accounts:
+    get:
+      tags:
+        - Account Management
+      summary: Get All Accounts
+      description: |-
+        Get all accounts
+
+        > You can use pagination with this resource. For more information, see [pagination](https://elasticpath.dev/docs/commerce-cloud/api-overview/pagination).
+      operationId: get-v2-accounts
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/page-limit'
+        - $ref: '#/components/parameters/page-offset'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: object
+                        properties:
+                          limit:
+                            type: integer
+                            example: 25
+                          offset:
+                            type: integer
+                            example: 0
+                          current:
+                            type: integer
+                            example: 1
+                          total:
+                            type: integer
+                            example: 1
+                      results:
+                        type: object
+                        properties:
+                          total:
+                            type: integer
+                            example: 1
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: deb6b25f-8451-4211-9a22-95610333df23
+                        type:
+                          type: string
+                          default: account
+                        name:
+                          type: string
+                          example: acc-name
+                        legal_name:
+                          type: string
+                          example: acc-legal-name
+                        registration_id:
+                          type: string
+                          example: 00000000-0000-1000-8000-000f00000300
+                        external_ref:
+                          type: string
+                          example: 16bedceb-8b2d-4f82-a973-b0a8d8432708
+                        meta:
+                          type: object
+                          properties:
+                            timestamps:
+                              type: object
+                              properties:
+                                created_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-02-23T09:40:33.882Z"
+                                updated_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-02-23T09:40:33.882Z"
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              format: uri
+                              example: "/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23"
+                  links:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      first:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      last:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      next:
+                        type: string
+                        example: null
+                      prev:
+                        type: string
+                        example: null
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    post:
+      tags:
+        - Account Management
+      summary: Create an account
+      description: 'With the account creation endpoint, you have the ability to create parent accounts and subaccounts. '
+      operationId: post-v2-accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: deb6b25f-8451-4211-9a22-95610333df23
+                    type:
+                      type: string
+                      description: Specifies the the type of object. Set this value to `account`.
+                      default: account
+                    name:
+                      type: string
+                      description: Specifies the name of the account.
+                    legal_name:
+                      type: string
+                      description: Specifies the legal name of the account.
+                    registration_id:
+                      type: string
+                      description: 'Specifies the registration ID. If specified, this field is checked for uniqueness.'
+                    parent_id:
+                      type: string
+                      description: Specifies the ID of the parent account to create a subaccount.
+                    external_ref:
+                      type: string
+                      description: The unique attribute associated with the account. For example, this could be an external reference from a separate company system. The maximum length is 2048 characters. Default is `null`.
+                  required:
+                    - type
+                    - name
+                    - legal_name
+              required:
+                - data
+            examples:
+              Create an account:
+                value:
+                  data:
+                    type: account
+                    name: acc-name
+                    legal_name: acc-legal-name
+                    registration_id: 00000000-0000-1000-8000-000f00000300
+                    external_ref: 16bedceb-8b2d-4f82-a973-b0a8d8432708
+              Create a subaccount:
+                value:
+                  data:
+                    type: account
+                    name: acc-sub-name
+                    legal_name: 'acc-legal-name, ltd'
+                    registration_id: 00000000-0000-1000-8000-000f00000300
+                    external_ref: 16bedceb-8b2d-4f82-a973-b0a8d8432708
+                    parent_id: 96b1f750-55d3-4768-a3f8-adffba694a2c
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: deb6b25f-8451-4211-9a22-95610333df23
+                      type:
+                        type: string
+                        default: account
+                      name:
+                        type: string
+                        example: acc-name
+                      legal_name:
+                        type: string
+                        example: acc-legal-name
+                      registration_id:
+                        type: string
+                        example: 00000000-0000-1000-8000-000f00000300
+                      external_ref:
+                        type: string
+                        example: 16bedceb-8b2d-4f82-a973-b0a8d8432708
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'Name' on the 'min' tag."
+                        status:
+                          type: string
+                          example: "400"
+                        title:
+                          type: string
+                          example: "Bad Request"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  '/v2/accounts/{accountID}':
+    get:
+      tags:
+        - Account Management
+      summary: Get an Account
+      description: View a specific account contained within your store
+      operationId: get-v2-accounts-accountID
+      parameters:
+        - name: accountID
+          in: path
+          description: The ID of the account you want to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: deb6b25f-8451-4211-9a22-95610333df23
+                      type:
+                        type: string
+                        default: account
+                      name:
+                        type: string
+                        example: acc-name
+                      legal_name:
+                        type: string
+                        example: acc-legal-name
+                      registration_id:
+                        type: string
+                        example: 00000000-0000-1000-8000-000f00000300
+                      external_ref:
+                        type: string
+                        example: 16bedceb-8b2d-4f82-a973-b0a8d8432708
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Account Management
+      summary: Update an Account
+      description: Update the information contained on an account
+      operationId: put-v2-accounts-accountID
+      parameters:
+        - name: accountID
+          in: path
+          description: The ID of the account you want to retrieve.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: Specifies the type of object. You must use `account`.
+                      default: account
+                    name:
+                      type: string
+                      description: Specifies the name of the account.
+                    legal_name:
+                      type: string
+                      description: Specifies the legal name of the account.
+                    registration_id:
+                      type: string
+                      description: Specifies the registration id of the account.
+                    external_ref:
+                      type: string
+                      description: The unique attribute associated with the account. For example, this could be an external reference from a separate company system. The maximum length is 2048 characters. Default is `null`.
+            examples:
+              Account Update:
+                value:
+                  data:
+                    type: account
+                    name: acc-name
+                    legal_name: acc-legal-name
+                    registration_id: 00000000-0000-1000-8000-000f00000300
+                    vertical: Industry
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: deb6b25f-8451-4211-9a22-95610333df23
+                      type:
+                        type: string
+                        default: account
+                      name:
+                        type: string
+                        example: acc-name
+                      legal_name:
+                        type: string
+                        example: acc-legal-name
+                      registration_id:
+                        type: string
+                        example: 00000000-0000-1000-8000-000f00000300
+                      external_ref:
+                        type: string
+                        example: 16bedceb-8b2d-4f82-a973-b0a8d8432708
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'Name' on the 'min' tag."
+                        status:
+                          type: string
+                          example: "400"
+                        title:
+                          type: string
+                          example: "Bad Request"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    delete:
+      tags:
+        - Account Management
+      summary: Delete an Account
+      description: Delete a specific account within a store
+      operationId: delete-v2-accounts-accountID
+      parameters:
+        - name: accountID
+          in: path
+          description: The ID of the account you want to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'Name' on the 'min' tag."
+                        status:
+                          type: string
+                          example: "400"
+                        title:
+                          type: string
+                          example: "Bad Request"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/account-members:
+    get:
+      tags:
+        - Account Members
+      summary: Get all Account Members
+      description: Get all account members contained within your store
+      operationId: get-v2-account-members
+      parameters:
+        - $ref: '#/components/parameters/page-limit'
+        - $ref: '#/components/parameters/page-offset'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: object
+                        properties:
+                          limit:
+                            type: integer
+                            example: 100
+                          offset:
+                            type: integer
+                            example: 0
+                          current:
+                            type: integer
+                            example: 1
+                          total:
+                            type: integer
+                            example: 1
+                      results:
+                        type: object
+                        properties:
+                          total:
+                            type: integer
+                            example: 1
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
+                        type:
+                          type: string
+                          default: account_member
+                        name:
+                          type: string
+                          example: Ron Swanson
+                        email:
+                          type: string
+                          example: ron@swanson.com
+                        meta:
+                          type: object
+                          properties:
+                            timestamps:
+                              type: object
+                              properties:
+                                created_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-02-23T09:40:33.882Z"
+                                updated_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-02-23T09:40:33.882Z"
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              format: uri
+                              example: "/v2/account-members/908f7849-60da-4e4a-a3b1-51d4cbe3b953"
+                  links:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      first:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      last:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      next:
+                        type: string
+                        example: null
+                      prev:
+                        type: string
+                        example: null
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  '/v2/account-members/{accountMemberID}':
+    get:
+      tags:
+        - Account Members
+      summary: Get an Account Member
+      description: Get an account member from your store
+      operationId: get-v2-account-members-accountMemberID
+      parameters:
+        - name: accountMemberID
+          in: path
+          description: The unique identifier of the account member that you want to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
+                      type:
+                        type: string
+                        default: account_member
+                      name:
+                        type: string
+                        example: Ron Swanson
+                      email:
+                        type: string
+                        example: ron@swanson.com
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/account-members/908f7849-60da-4e4a-a3b1-51d4cbe3b953"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  '/v2/account-members/{accountMemberId}/account-memberships':
+    get:
+      tags:
+        - Account Membership
+      summary: Get a List of Account Memberships of Account Member
+      description: '> You can also use `include=account` to retrieve details about the accounts associated with the account memberships. You can use pagination with this resource. For more information, see pagination.'
+      operationId: get-v2-account-members-accountMemberId-account-memberships
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - name: accountMemberId
+          in: path
+          description: The ID of the account member for which you want to list the memberships.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: object
+                        properties:
+                          limit:
+                            type: integer
+                            example: 100
+                          offset:
+                            type: integer
+                            example: 0
+                          current:
+                            type: integer
+                            example: 1
+                          total:
+                            type: integer
+                            example: 1
+                      results:
+                        type: object
+                        properties:
+                          total:
+                            type: integer
+                            example: 1
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: b295b270-b573-467e-93d9-7ae1fd596d49
+                        type:
+                          type: string
+                          default: account_membership
+                        account_member_id:
+                          type: string
+                          example: "{accountMemberId}"
+                        meta:
+                          type: object
+                          properties:
+                            timestamps:
+                              type: object
+                              properties:
+                                created_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2023-04-25T17:57:59.908Z"
+                                updated_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2023-04-25T17:57:59.908Z"
+                        relationships:
+                          type: object
+                          properties:
+                            account:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: "{accountId}"
+                                    type:
+                                      type: string
+                                      default: account
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              format: uri
+                              example: "/v2/accounts/{accountMemberID}/account-memberships/b295b270-b573-467e-93d9-7ae1fd596d49"
+                  links:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      first:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      last:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      next:
+                        type: string
+                        example: null
+                      prev:
+                        type: string
+                        example: null
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account member not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/accounts/account-memberships:
+    get:
+      tags:
+        - Account Membership
+      summary: Get all Account Memberships
+      description: |-
+        You can also use `include=account_member` to retrieve details about the account members associated with the account memberships.
+
+        With this option, you can get more information about the account members (i.e. name and email) in a single request.
+      operationId: get-v2-accounts-accountID-account-memberships
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page-limit'
+        - $ref: '#/components/parameters/page-offset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: object
+                        properties:
+                          limit:
+                            type: integer
+                            example: 100
+                          offset:
+                            type: integer
+                            example: 0
+                          current:
+                            type: integer
+                            example: 1
+                          total:
+                            type: integer
+                            example: 1
+                      results:
+                        type: object
+                        properties:
+                          total:
+                            type: integer
+                            example: 1
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 24e939f6-178f-497b-9d64-5bf2b5a70a2e
+                        type:
+                          type: string
+                          default: account_membership
+                        meta:
+                          type: object
+                          properties:
+                            timestamps:
+                              type: object
+                              properties:
+                                created_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-03-24T15:14:05.883Z"
+                                updated_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-03-24T15:14:05.883Z"
+                        relationships:
+                          type: object
+                          properties:
+                            account_member:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: f3563135-741d-4818-ae85-0f038f2b8ba1
+                                    type:
+                                      type: string
+                                      default: account_member
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              format: uri
+                              example: "/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships/24e939f6-178f-497b-9d64-5bf2b5a70a2e"
+                  links:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      first:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      last:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      next:
+                        type: string
+                        example: null
+                      prev:
+                        type: string
+                        example: null
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  '/v2/accounts/{accountID}/account-memberships/unassigned-account-members':
+    get:
+      tags:
+        - Account Membership
+      summary: Get a List of Unassigned Account Members
+      description: |-
+        Use this resource to get a list of all account members that are not assigned to an account.
+
+        ## Filtering
+        The following operators and attributes are available for filtering unassigned account members.
+
+        Operator | Description
+        ---------|------------
+        eq | Checks whether the values of two operands are equal. If the values are equal, the condition is true.
+        like | Checks if the operand contains the specified string. You can use wildcard characters in operand.
+      operationId: get-v2-accounts-accountID-account-memberships-unassigned-account-members
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - name: accountID
+          in: path
+          description: The ID of the account for which you want to get the list of unassigned account members.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: object
+                        properties:
+                          limit:
+                            type: integer
+                            example: 100
+                          offset:
+                            type: integer
+                            example: 0
+                          current:
+                            type: integer
+                            example: 1
+                          total:
+                            type: integer
+                            example: 1
+                      results:
+                        type: object
+                        properties:
+                          total:
+                            type: integer
+                            example: 1
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
+                        type:
+                          type: string
+                          default: account_member
+                        name:
+                          type: string
+                          example: Ron Swanson
+                        email:
+                          type: string
+                          example: ron@swanson.com
+                        meta:
+                          type: object
+                          properties:
+                            timestamps:
+                              type: object
+                              properties:
+                                created_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-02-23T09:40:33.882Z"
+                                updated_at:
+                                  type: string
+                                  format: date-time
+                                  example: "2021-02-23T09:40:33.882Z"
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              format: uri
+                              example: "/v2/account-members/908f7849-60da-4e4a-a3b1-51d4cbe3b953"
+                  links:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      first:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      last:
+                        type: string
+                        format: uri
+                        example: "/v2/accounts?page[offset]=0&page[limit]=25"
+                      next:
+                        type: string
+                        example: null
+                      prev:
+                        type: string
+                        example: null
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  '/v2/accounts/{accountID}/account-memberships':
+    post:
+      tags:
+        - Account Membership
+      summary: Create an Account Membership
+      description: '> You can only create up to 1000 account memberships in an account.'
+      operationId: post-v2-accounts-accountID-account-memberships
+      parameters:
+        - name: accountID
+          in: path
+          description: The unique identifier of the account that the account is associated with.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: Specifies the type of the object. Set this value to `account_membership`.
+                      default: account_membership
+                    account_member_id:
+                      type: string
+                      description: Specifies the ID of the account member that the membership is associated with.
+            examples:
+              Create account membership:
+                value:
+                  data:
+                    type: account_membership
+                    account_member_id: 486fa6f1-d85a-44a0-abdf-ff0076fffd6c
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: 4118c398-3348-4b44-81ff-66eb579e695c
+                      type:
+                        type: string
+                        default: account_membership
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      relationships:
+                        type: object
+                        properties:
+                          account_member:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: 486fa6f1-d85a-44a0-abdf-ff0076fffd6c
+                                  type:
+                                    type: string
+                                    default: account_member
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/accounts/{accountID}/account-memberships/4118c398-3348-4b44-81ff-66eb579e695c"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account membership with the given account id and account member id already exists"
+                        status:
+                          type: string
+                          example: "409"
+                        title:
+                          type: string
+                          example: "Conflict"
+        '422':
+          description: Unknown Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'Type' on the 'account-membership-type' tag."
+                        status:
+                          type: string
+                          example: "422"
+                        title:
+                          type: string
+                          example: "Unprocessable Entity"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  '/v2/accounts/{accountID}/account-memberships/{membershipID}':
+    get:
+      tags:
+        - Account Membership
+      summary: Get an Account Membership
+      description: Get an account membership from an account in your store
+      operationId: get-v2-accounts-accountID-account-memberships-membershipID
+      parameters:
+        - name: accountID
+          in: path
+          description: The unique identifier of the account that the account member is associated with.
+          required: true
+          schema:
+            type: string
+        - name: membershipID
+          in: path
+          description: The unique identifier of the account membership to update the details of the account member.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: 9e227208-b592-49c0-8c8f-043b66c634b0
+                      type:
+                        type: string
+                        default: account_membership
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      relationships:
+                        type: object
+                        properties:
+                          account_member:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: 486fa6f1-d85a-44a0-abdf-ff0076fffd6c
+                                  type:
+                                    type: string
+                                    default: account_member
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/accounts/{accountID}/account-memberships/9e227208-b592-49c0-8c8f-043b66c634b0"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Repository.GetAccountMembership failed: account membership not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Account Membership
+      summary: Update an Account Membership
+      description: 'You can update and extend an account member details using [core flows](https://elasticpath.dev/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview#extend-a-resource). However, you cannot update the `account_member_id` of an account member.'
+      operationId: put-v2-accounts-accountID-account-memberships-membershipID
+      parameters:
+        - name: accountID
+          in: path
+          description: The unique identifier of the account that the account member is associated with.
+          required: true
+          schema:
+            type: string
+        - name: membershipID
+          in: path
+          description: The unique identifier of the account membership to update the details of the account member.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: Specifies the type of the object. Set this value to `account_membership`.
+                      default: account_membership
+                    account_member_id:
+                      type: string
+                      description: Specifies the unique identifier of the account member that the membership is associated with.
+                  required:
+                    - type
+                    - account_member_id
+            examples:
+              Update account membership:
+                value:
+                  data:
+                    type: account_membership
+                    account_member_id: 486fa6f1-d85a-44a0-abdf-ff0076fffd6c
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: 9e227208-b592-49c0-8c8f-043b66c634b0
+                      type:
+                        type: string
+                        default: account_membership
+                      meta:
+                        type: object
+                        properties:
+                          timestamps:
+                            type: object
+                            properties:
+                              created_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                              updated_at:
+                                type: string
+                                format: date-time
+                                example: "2021-02-23T09:40:33.882Z"
+                      relationships:
+                        type: object
+                        properties:
+                          account_member:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: 486fa6f1-d85a-44a0-abdf-ff0076fffd6c
+                                  type:
+                                    type: string
+                                    default: account_member
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            format: uri
+                            example: "/v2/accounts/{accountID}/account-memberships/9e227208-b592-49c0-8c8f-043b66c634b0"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Repository.GetAccountMembership failed: account membership not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+        '422':
+          description: Unknown Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'Type' on the 'account-membership-type' tag."
+                        status:
+                          type: string
+                          example: "422"
+                        title:
+                          type: string
+                          example: "Unprocessable Entity"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    delete:
+      tags:
+        - Account Membership
+      summary: Delete an Account Membership
+      description: Delete a membership from an account
+      operationId: delete-v2-accounts-accountID-account-memberships-membershipID
+      parameters:
+        - name: accountID
+          in: path
+          description: The unique identifier of the account that the account member is associated with.
+          required: true
+          schema:
+            type: string
+        - name: membershipID
+          in: path
+          description: The unique identifier of the account membership to update the details of the account member.
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "account membership not found"
+                        status:
+                          type: string
+                          example: "404"
+                        title:
+                          type: string
+                          example: "Not Found"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/account-membership:
+    get:
+      tags:
+        - Account Membership Settings
+      summary: Account Membership Settings
+      description: |-
+        Account Membership Settings allow Account Members to be associated to, at most, N accounts at a time. You can set this value to any number up to 10,000. The default value is 10,000.
+
+        This setting is only applied to new account memberships. If an account member is added to 3 accounts, and the setting is reduced to 1, the account member remains in the 3 accounts and can no longer be added to more.
+      operationId: get-v2-settings-account-membership
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      type:
+                        type: string
+                        default: "account_membership_setting"
+                      membership_limit:
+                        type: integer
+                        example: 10
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Account Membership Settings
+      summary: Account Membership Settings
+      description: Update account membership settings
+      operationId: put-v2-settings-account-membership
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type must be `account_membership_setting`.
+                      default: account_membership_setting
+                    membership_limit:
+                      type: integer
+                      description: 'The number of accounts an account member can be associated with. You can set this value to any number up to 10,000.'
+            examples:
+              Update account membership limit:
+                value:
+                  data:
+                    type: account_membership_setting
+                    membership_limit: 13
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      type:
+                        type: string
+                        default: "account_membership_setting"
+                      membership_limit:
+                        type: integer
+                        example: 13
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'MembershipLimit' on the 'min' tag."
+                        status:
+                          type: string
+                          example: "400"
+                        title:
+                          type: string
+                          example: "Bad Request"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/account-authentication:
+    get:
+      tags:
+        - Account Authentication Settings
+      summary: Get Account Authentication Settings
+      description: View account authentication settings
+      operationId: get-v2-settings-account-authentication
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: "2c45e4ec-26e0-4043-86e4-c15b9cf985a2"
+                      type:
+                        type: string
+                        default: "account_authentication_settings"
+                      enable_self_signup:
+                        type: boolean
+                        example: true
+                      auto_create_account_for_account_members:
+                        type: boolean
+                        example: true
+                      account_member_self_management:
+                        type: string
+                        example: "disabled"
+                      relationships:
+                        type: object
+                        properties:
+                          authentication_realm:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: "3418c54e-d768-42c1-a9db-d7afd2a18452"
+                                  type:
+                                    type: string
+                                    default: "authentication_realm"
+                                  links:
+                                    type: object
+                                    properties:
+                                      self:
+                                        type: string
+                                        example: "/v2/authentication-realms/3418c54e-d768-42c1-a9db-d7afd2a18452"
+                        meta:
+                          type: object
+                          properties:
+                            client_id:
+                              type: string
+                              example: "accounts"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        format: uri
+                        example: "/v2/account-authentication-settings"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Account Authentication Settings
+      summary: Update Account Authentication Settings
+      description: Update account authentication settings
+      operationId: put-v2-settings-account-authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      default: "account_authentication_settings"
+                    enable_self_signup:
+                      type: boolean
+                      example: true
+                    auto_create_account_for_account_members:
+                      type: boolean
+                      example: true
+                    account_member_self_management:
+                      type: string
+                      example: "disabled"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    properties:
+                      id:
+                        type: string
+                        example: "2c45e4ec-26e0-4043-86e4-c15b9cf985a2"
+                      type:
+                        type: string
+                        example: "account_authentication_settings"
+                      enable_self_signup:
+                        type: boolean
+                        example: true
+                      auto_create_account_for_account_members:
+                        type: boolean
+                        example: true
+                      account_member_self_management:
+                        type: string
+                        example: "disabled"
+                      relationships:
+                        type: object
+                        properties:
+                          authentication_realm:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: "3418c54e-d768-42c1-a9db-d7afd2a18452"
+                                  type:
+                                    type: string
+                                    example: "authentication_realm"
+                                  links:
+                                    type: object
+                                    properties:
+                                      self:
+                                        type: string
+                                        example: "/v2/authentication-realms/3418c54e-d768-42c1-a9db-d7afd2a18452"
+                        meta:
+                          type: object
+                          properties:
+                            client_id:
+                              type: string
+                              example: "accounts"
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        format: uri
+                        example: "/v2/account-authentication-settings"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: "Validation failed: field 'Type' on the 'account-authentication-settings-type' tag."
+                        status:
+                          type: string
+                          example: "400"
+                        title:
+                          type: string
+                          example: "Bad Request"
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/account-members/tokens:
+    post:
+      tags:
+        - Account Management
+      summary: Generate an Account Management Authentication Token
+      description: |
+        Commerce provides authentication tokens for an account and an account member using OpenID Connect.
+      operationId: post-v2-account-members-tokens
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: |
+                        Specifies the type of the object. You must use `account_management_authentication_token`.
+                    authentication_mechanism:
+                      type: string
+                      description: |
+                        Specifies the authentication mechanism. For an OpenID Connect login, you must use `oidc`.
+                    oauth_authorization_code:
+                      type: string
+                      description: Specifies the code returned from the OpenID Connect Provider authentication.
+                    oauth_redirect_uri:
+                      type: string
+                      description: Specifies the URL of the front-end that handles the callback of the token.
+                    oauth_code_verifier:
+                      type: string
+                      description: 'Specifies the Proof Key for Code Exchange (PKCE) code verifier corresponding to the code challenge supplied to the authorization endpoint. For more information about code verifier and challenge, see [Generating a Code Verifier and Challenge](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters)'
+            examples:
+              OpenID Connect:
+                value:
+                  data:
+                    type: account_management_authentication_token
+                    authentication_mechanism: oidc
+                    oauth_authorization_code: c2490f06-6d8e-4927-99aa-4bf02b419e96
+                    oauth_redirect_uri: 'https://example-store.com/oauth2/callback'
+                    oauth_code_verifier: 0E934PurR8ExVg6Pj7T4kQewxKzWSfSFG5d15FGfww8
+              Username and Password:
+                value:
+                  data:
+                    type: account_management_authentication_token
+                    authentication_mechanism: password
+                    password_profile_id: "$passwordProfileId"
+                    username: john.doe
+                    password: password
+              One-time Password Token:
+                value:
+                  data:
+                    type: account_management_authentication_token
+                    authentication_mechanism: passwordless
+                    password_profile_id: "$passwordProfileId"
+                    username: john.doe
+                    one_time_password_token: abc123
+              Self Signup:
+                value:
+                  data:
+                    type: account_management_authentication_token
+                    authentication_mechanism: self_signup
+                    password_profile_id: "$passwordProfileId"
+                    username: john.doe@gmail.com
+                    password: password
+                    name: john
+                    email: john.doe@gmail.com
+              Switch account tokens:
+                value:
+                  data:
+                    type: account_management_authentication_token
+                    authentication_mechanism: account_management_authentication_token
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+tags:
+  - name: Account Authentication Settings
+    description: An `Account` resource represents a business account within a store.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/account-authentication-settings'
+  - name: Account Management
+    description: An `Account` resource represents a business account within a store.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-management-api/account-management-api-overview'
+  - name: Account Members
+    description: An `Account` resource represents a business account within a store.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-members-api/overview'
+  - name: Account Membership
+    description: An `Account` resource represents a business account within a store.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-membership-api/overview'
+  - name: Account Membership Settings
+    description: An `Account` resource represents a business account within a store.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/account-membership-settings'
+components:
+  parameters:
+    filter:
+      name: filter
+      in: query
+      description: 'Filter attributes. For more information, see the [Filtering account members](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering) section.'
+      required: false
+      schema:
+        type: string
+    page-limit:
+      name: 'page[limit]'
+      in: query
+      description: The number of records per page.
+      required: false
+      schema:
+        type: string
+    page-offset:
+      name: 'page[offset]'
+      in: query
+      description: The number of records to offset the results by.
+      required: false
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: 'Supported attributes are `created_at`, `email`, `id`, `name`, or `updated_at`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order. For more information, see Sorting.'
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+  responses:
+    '200':
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+    '204':
+      description: No Content
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+security:
+  - BearerToken: []

@@ -1,0 +1,807 @@
+openapi: 3.1.0
+info:
+  title: Elastic Path Composable Commerce
+  description: Elastic Path Composable Commerce Open API Specification
+  contact:
+    name: Elastic Path
+    url: https://elasticpath.com
+  version: 1.0.0
+servers:
+  - url: https://useast.api.elasticpath.com
+    description: US East Production Server
+    variables: {}
+  - url: https://euwest.api.elasticpath.com
+    description: EU West Production Server
+    variables: {}
+paths:
+  /v2/gateways:
+    get:
+      tags:
+        - Gateways
+      summary: Get all Gateways
+      description: Retrieves all gateways.
+      operationId: getAllGateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Response.Gateway'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/{gatewaySlug}:
+    get:
+      tags:
+        - Gateways
+      summary: Get a Gateway
+      description: Retrieves the specified gateway.
+      operationId: getAGateway
+      parameters:
+        - name: gatewaySlug
+          in: path
+          description: The slug of the gateway.
+          required: true
+          schema:
+            type: string
+            enum:
+              - manual
+              - braintree
+              - stripe
+              - stripe_payment_intents
+              - stripe_connect
+              - elastic_path_payments_stripe
+              - paypal_express_checkout
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/Response.Gateway'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/manual:
+    put:
+      tags:
+        - Gateways
+      summary: Update Manual Gateway
+      description: This endpoint allows you update the manual gateway.
+      operationId: updateManualGateway
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdateManualGateway'
+                - examples:
+                    - data:
+                        enabled: true
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          name:
+                            description: Specifies the nme of the gateway.
+                            example: Manual
+                            type: string
+                          slug:
+                            description: Specifies the slug of the gateway.
+                            example: manual
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/braintree:
+    put:
+      tags:
+        - Gateways
+      summary: Update Braintree Gateway
+      description: Use this endpoint to configure Braintree.
+      operationId: updateBraintreeGateway
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdateBraintreeGateway'
+                - examples:
+                    - data:
+                        enabled: true
+                        environment: sandbox
+                        merchant_id: '{{braintreeMerchantId}}'
+                        private_key: '{{braintreePrivateKey}}'
+                        public_key: '{{braintreePublicKey}}'
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+                    environment: sandbox
+                    merchant_id: '{{braintreeMerchantId}}'
+                    private_key: '{{braintreePrivateKey}}'
+                    public_key: '{{braintreePublicKey}}'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          name:
+                            description: Specifies the name of the gateway.
+                            example: Braintree
+                            type: string
+                          environment:
+                            description: Specifies production or sandbox environment.
+                            example: sandbox
+                            type: string
+                          merchant_id:
+                            description: Specifies Your Braintree merchant ID.
+                            example: '{{braintreeMerchantId}}'
+                            type: string
+                          private_key:
+                            description: Represents Your Braintree private key.
+                            example: '{{braintreePrivateKey}}'
+                            type: string
+                          public_key:
+                            description: Indicates Your Braintree public key.
+                            example: '{{braintreePublicKey}}'
+                            type: string
+                          slug:
+                            description: Represents the slug of the gateway.
+                            example: braintree
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/stripe:
+    put:
+      tags:
+        - Gateways
+      summary: Update Stripe Gateway
+      description: Use this endpoint to configure Stripe.
+      operationId: updateStripeGateway
+      parameters: [ ]
+      requestBody:
+        description:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdateStripeGateway'
+                - examples:
+                    - data:
+                        enabled: true
+                        login: '{{stripeToken}}'
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+                    login: '{{stripeToken}}'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          login:
+                            description: Represents Stripe test or live secret key.
+                            example: '{{stripeToken}}'
+                            type: string
+                          name:
+                            description: Specifies the name of the gateway.
+                            example: Stripe
+                            type: string
+                          slug:
+                            description: Represents the slug of the gateway.
+                            example: stripe
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/stripe_payment_intents:
+    put:
+      tags:
+        - Gateways
+      summary: Update Stripe Payment Intents Gateway
+      description: Use this endpoint to configure Stripe Payment Intents.
+      operationId: updateStripeIntentsGateway
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdateStripeGateway'
+                - examples:
+                    - data:
+                        enabled: true
+                        login: '{{stripeLoginToken}}'
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+                    login: '{{stripeLoginToken}}'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          login:
+                            description: Specifies the Stripe secret key for your account that is in live or test mode.
+                            example: '{{stripeLoginToken}}'
+                            type: string
+                          name:
+                            description: Specifies the name of the gateway.
+                            example: Stripe Payment Intents
+                            type: string
+                          slug:
+                            description: Represents the slug of the gateway.
+                            example: stripe_payment_intents
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/stripe_connect:
+    put:
+      tags:
+        - Gateways
+      summary: Update Stripe Connect Gateway
+      description: |
+        Use this endpoint to configure Stripe Connect in Commerce.
+        >**Note**:
+        >
+        >You can contact Elastic Path sales or [customer success team](mailto:customersuccess@elasticpath.com) to get more information about Stripe Connect and to check whether it will work for you.
+      operationId: updateStripeConnectGateway
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdateStripeConnectGateway'
+                - examples:
+                    - data:
+                        enabled: true
+                        stripe_account: '{{stripeConnectAccountId}}'
+                        test: true
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+                    stripe_account: '{{stripeConnectAccountId}}'
+                    test: true
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          stripe_account:
+                            description: Specifies the Stripe Connect account ID.
+                            example: '{{stripeConnectAccountId}}'
+                            type: string
+                          name:
+                            description: Specifies the name of the gateway.
+                            example: Stripe Connect
+                            type: string
+                          test:
+                            description: Specifies whether the test mode is enabled. Set `true` to enable test mode and `false` to disable the test mode. Default is `false`.
+                            example: true
+                            type: boolean
+                          slug:
+                            description: Represents the slug of the gateway.
+                            example: stripe_connect
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/elastic_path_payments_stripe:
+    put:
+      tags:
+        - Gateways
+      summary: Update Elastic Path Payments Powered by Stripe
+      description: |
+        Use this endpoint to configure Elastic Path Payments Powered by Stripe in Commerce. 
+        >**Note**:
+        >
+        >You can contact Elastic Path sales or [customer success team](mailto:customersuccess@elasticpath.com) to get more information about Elastic Path Payments Powered by Stripe and to check whether it will work for you.
+      operationId: updateEpPaymentsStripe
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdateElasticPathPaymentsStripeGateway'
+                - examples:
+                    - data:
+                        enabled: true
+                        stripe_account: '{{stripeConnectAccountId}}'
+                        test: true
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+                    stripe_account: '{{stripeConnectAccountId}}'
+                    test: true
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          stripe_account:
+                            description: Specifies the Stripe account ID.
+                            example: '{{stripeConnectAccountId}}'
+                            type: string
+                          name:
+                            description: Specifies the name of the gateway.
+                            example: Elastic Path Payments powered by Stripe
+                            type: string
+                          test:
+                            description: Specifies whether the test mode is enabled. Set `true` to enable test mode and `false` to disable the test mode. Default is `false`.
+                            example: true
+                            type: boolean
+                          slug:
+                            description: Represents the slug of the gateway.
+                            example: elastic_path_payments_stripe
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+  /v2/gateways/paypal_express_checkout:
+    put:
+      tags:
+        - Gateways
+      summary: Update PayPal Express Checkout
+      description: |
+        Use this endpoint to configure PayPal Express Checkout. 
+        >**Note**:
+        >
+        >To learn more about PayPal Express Checkout and check whether it will work for you, contact your sales or [customer success team](mailto:customersuccess@elasticpath.com).
+      operationId: updatePaypalExpressCheckoutGateway
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Request.UpdatePaypalExpressCheckoutGateway'
+                - examples:
+                    - data:
+                        enabled: true
+                        payer_id: '{{merchant account id}}'
+                        test: true
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    enabled: true
+                    payer_id: '{{merchant account id}}'
+                    test: true
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          enabled:
+                            description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+                            example: true
+                            type: boolean
+                          payer_id:
+                            description: Specifies the merchant account ID. The ID is displayed in the PayPal account details of the merchant.
+                            example: '{{merchant account id}}'
+                            type: string
+                          name:
+                            description: Specifies the name of the gateway.
+                            example: PayPal Express Checkout
+                            type: string
+                          test:
+                            description: Specifies whether the test mode is enabled. Set `true` to enable test mode and `false` to disable the test mode. Default is `false`.
+                            example: true
+                            type: boolean
+                          slug:
+                            description: Represents the slug of the gateway.
+                            example: paypal_express_checkout
+                            type: string
+                          type:
+                            description: Specifies the type of object being returned.
+                            example: gateway
+                            type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+components:
+  schemas:
+    Request.UpdateManualGateway:
+      title: Request.UpdateManualGateway
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data.UpdateManualGateway'
+    Data.UpdateManualGateway:
+      title: Data.UpdateManualGateway
+      type: object
+      properties:
+        enabled:
+          description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+          type: boolean
+          examples: true
+    Request.UpdateBraintreeGateway:
+      title: Request.UpdateBraintreeGateway
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data.UpdateBraintreeGateway'
+    Data.UpdateBraintreeGateway:
+      title: UpdateBraintreeGateway
+      type: object
+      required:
+        - merchant_id
+        - private_key
+        - public_key
+      properties:
+        enabled:
+          description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+          type: boolean
+          examples:
+            - true
+        environment:
+          description: Specifies production or sandbox environment.
+          type: string
+          examples:
+            - sandbox
+        merchant_id:
+          description: Specifies Your Braintree merchant ID.
+          type: string
+          examples:
+            - '{{braintreeMerchantId}}'
+        private_key:
+          description: Represents Your Braintree private key.
+          type: string
+          examples:
+            - '{{braintreePrivateKey}}'
+        public_key:
+          description: Indicates Your Braintree public key.
+          type: string
+          examples:
+            - '{{braintreePublicKey}}'
+    Request.UpdateStripeGateway:
+      title: Request.UpdateStripeGateway
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data.UpdateStripeGateway'
+    Data.UpdateStripeGateway:
+      title: Data.UpdateStripeGateway
+      type: object
+      required:
+        - login
+      properties:
+        enabled:
+          description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+          type: boolean
+          examples:
+            - true
+        login:
+          description: Represents Stripe `test` or `live` secret key.
+          type: string
+          examples:
+            - '{{stripeToken}}'
+    Request.UpdateStripeConnectGateway:
+      title: Request.UpdateStripeConnectGateway
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data.UpdateStripeConnectGateway'
+    Request.UpdateElasticPathPaymentsStripeGateway:
+      title: Request.UpdateElasticPathPaymentsStripeGateway
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data.UpdateStripeConnectGateway'
+    Data.UpdateStripeConnectGateway:
+      title: Data.UpdateStripeConnectGateway
+      type: object
+      required:
+        - stripe_account
+      properties:
+        enabled:
+          description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+          type: boolean
+          examples:
+            - true
+        stripe_account:
+          description: Specifies the Stripe Connect account ID.
+          type: string
+          examples:
+            - '{{stripeConnectAccountId}}'
+        test:
+          description: Specifies whether the test mode is enabled. Set `true` to enable test mode and `false` to disable the test mode. Default is `false`.
+          type: boolean
+          examples:
+            - true
+    Request.UpdatePaypalExpressCheckoutGateway:
+      title: Request.UpdatePaypalExpressCheckoutGateway
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data.UpdatePaypalExpressCheckoutGateway'
+    Data.UpdatePaypalExpressCheckoutGateway:
+      title: Data.UpdatePaypalExpressCheckoutGateway
+      type: object
+      required:
+        - payer_id
+      properties:
+        enabled:
+          description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+          type: boolean
+          examples:
+            - true
+        payer_id:
+          description: Specifies the merchant account ID. The ID is displayed in the PayPal account details of the merchant.
+          type: string
+          examples:
+            - '{{merchant account id}}'
+        test:
+          description: Specifies whether the test mode is enabled. Set `true` to enable test mode and `false` to disable the test mode. Default is `false`.
+          type: boolean
+          examples:
+            - true
+    Response.Gateway:
+      type: object
+      properties:
+        enabled:
+          description: Specifies whether the gateway is enabled or disabled. Set `true` to enable the gateway and `false` to disable the gateway. Default is `false`.
+          example: true
+          type: boolean
+        login:
+          description: Represents your login ID.
+          type: string
+        name:
+          description: Represents the name of the gateway.
+          example: {gateway name}
+          type: string
+        type:
+          description: Specifies the type of object being returned.
+          example: gateway
+          type: string
+        password:
+          description: Specifies your password.
+          type: string
+        signature:
+          type: string
+        slug:
+          description: Specifies the slug of the gateway.
+          example: {gateway slug}
+          type: string
+        test:
+          description: Specifies whether the test mode is enabled. Set `true` to enable test mode and `false` to disable the test mode. Default is `false`.
+          example: false
+          type: boolean
+    Response.Data:
+      type: object
+      properties:
+        data: { }
+    Response.Error:
+      type: array
+      properties:
+        detail:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+security: []
+tags:
+  - name: Gateways

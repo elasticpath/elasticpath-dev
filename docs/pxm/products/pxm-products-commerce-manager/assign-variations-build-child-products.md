@@ -1,0 +1,111 @@
+---
+title: Assigning Variations and Building Child Products
+nav_label: Assigning Variations and Building Child Products
+sidebar_position: 70
+---
+
+Product variations are the options available for a parent product that your shoppers can choose, such as different sizes, colors, materials, or any other specific features. You can create and manage up to 10,000 unique combinations of options for variations of a product. You can then use catalogs to build different catalogs for different users, giving you greater flexibility with your product data and making it easier for your shoppers to interact with your products.
+
+## Reusability
+
+Variations are reusable, and you can associate the same variation to any number of products. The following scenario provides an example:
+
+1. Create a variation `shoe size` and add five options in the variation.
+1. Create a product `shoe 1` and associate the variation `shoe size` to the product.
+1. Create second product, `shoe 2` and associate the variation `shoe size` to this product as well.
+1. Create a third product `shoe 3` and do not associate any variations to this product.
+
+`shoe 1` and `shoe 2` inherit the properties of the `shoe size` variation, and you can build the child products with the options. However, you cannot build child products for `shoe 3` unless you assign a variation with at least one option to the product.
+
+## Including/Excluding Variation Options When Building Child Products
+
+When building your child products, you can choose to exclude or include variation options. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy. See [Selection Varition Options](#selecting-variation-options).
+
+## Prerequisites
+
+Before assigning variations to your products: 
+
+- Ensure that one variation with at least one option is available.
+- Ensure that variation and option names:
+
+    - Contain only uppercase and lower case letters.
+    - Contain digits from 0 to 9, underscore (_), or hyphen (-).
+    - Do not contain any other special characters.
+
+    You can build the child products only if all variations and the options are named appropriately. See [Creating Variations and Options](/docs/pxm/products/pxm-product-variations/variations#creating-variations-and-options).
+
+- (Optional) In addition, for each option you can configure product and price modifiers. See [Creating Product Modifiers](/docs/pxm/products/pxm-product-variations/variations#adding-product-modifiers).
+
+## Assigning Variations
+
+To assign variations to a product:
+
+1. Go to **Product Experience Manager** > **Products**. You can assign variations and build child products when you are creating a new product or for an existing product. 
+1. Once you are viewing a product, select the **Variations** tab.
+1. Select **Associate Variation**.
+1. Expand **Add Variation** to display a list of available variations. You must associate variations one at a time.
+1. Select a variation. All options within the selected variation are displayed in the **Variation Options** field.
+1. Select **Associate to Product**.
+1. Repeat steps 2 - 6 to assign all required variations to the product.
+
+## Including/Excluding Variation Options
+
+When building your child products, you can choose to exclude or include variation options. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy.
+
+:::caution
+You cannot configure a combination of inclusions and exclusions. In other words, you cannot include all small, medium, red, and blue t-shirts, apart from small, red t-shirts. 
+:::
+
+Configure **Option Combination Rules** to specify variation options to include or exclude when building your child products. The following example builds all t-shirt variations apart from large, red, t-shirts.
+
+![exclusions](/assets/exclusions.png)
+
+To configure **Option Combination Rules**:
+
+1. Expand **Option Combination Rules**.
+1. Select:
+
+    - **Include** if you want to include specific variation options. For example, you may want none of your variation options to be built apart from medium, blue t-shirts.
+    - **Exclude** if you want to exclude specific variation options. For example, you may want all your t-shirt variation options to be built apart from large, red t-shirts.
+
+1. Select **Add Inclusion** or **Add Exclusion** depending on whether you selected **Include** or **Exclude**. The variations associated with this product are displayed.
+
+    ![option combination](/assets/option_combination.png)
+
+1. Select the variation you want. The options available for the variation are displayed.
+1. Select the option that you want. 
+1. Select **OK**.
+1. Repeat steps 2 - 6 to add more variation options.
+1.  Select **Build Child Products** to build your child products or save your inclusions/exclusions and build your child products later.
+
+## Building Child products
+
+Child products are generated by combining the variations and the options within each variation. For example, if you assign the following variations for the product, **T-Shirt**:
+
+| Variation | Option               |
+|:----------|:---------------------|
+| size      | small, medium, large |
+| color     | green, blue, red     |
+
+When you build the child products, products with the following SKU are created:
+
+![Child products](/assets/build-child-product.png)
+
+To build your child products:
+
+1. Select **Build Child Products** to build your child products. If you click **Build Child Products** without assigning a variation to the product, a message prompting you to select a variation is displayed. 
+1. Once your have built your child products, expand **Child Products** to see a list of your child products. The child products are indicated with the **Child** type.
+
+ After updating or deleting variations and options, you must rebuild the child products for the changes to take effect.
+
+- From **Option Combination Rules**, select **Build Child Products**.
+
+  :::note
+  If you have edited your inclusions/exclusions but not yet saved your changes, selecting this button saves your changes and then builds your child products.
+  :::
+
+- Expand **Child Products** and select **Rebuild Child Products**.
+
+## Demos
+
+{% youtube src="https://www.youtube.com/embed/a1mSUDAxx7k" label="Create Variations and Options" /%}

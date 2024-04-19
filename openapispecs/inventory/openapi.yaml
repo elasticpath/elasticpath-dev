@@ -1,0 +1,602 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Inventories
+  description: |
+    The Inventory API allows you to manage stock for products at both organization and store levels. 
+    
+    Inventory is the quantity of each product that you have in stock. The inventory service allows you and your business to keep track of inventory, including a transactional historic log. 
+
+    Inventory for each product is tracked using the following values:
+
+    - **Total**: The amount of product in stock. (Total = Available + Allocated)
+    - **Available**: The amount of product available in stock minus allocated products. (Available = Total - Allocated)
+    - **Allocated**: The amount of reserved product in stock.
+    
+    >**Note**:
+    >
+    >In Commerce Manager, you can manage the inventory while creating a new product in Product Experience Manager. Go to **Products** > **Inventory** and you can specify the inventory details (**allocate**, **deallocate**, **increment**, and **decrement**). 
+    
+    ### Order flow
+
+    There are three mandatory steps to complete an order in relation to inventory:
+
+    1. Added to a cart
+    2. Checked out
+    3. Paid
+    4. Shipped (optional)
+
+    #### Unpaid order flow
+
+    The following flowchart depicts the process of an unpaid order.
+
+    ![The order is created from the cart during the checkout process.](/assets/order-flow.png)
+
+    #### Payment flow
+
+    The following flowchart depicts the process of paying for an order.
+
+    ![The payment workflow.](/assets/payment-workflow-1.png)
+
+    ### How stock is managed
+    
+    Stock is managed as follows:
+
+    1. When a customer attempts to add products to a cart, the inventory service checks if there is enough available stock. If there is not enough stock available, you receive a 400 HTTP response with a warning. The response does not describe what products cannot be added, nor does it return how many products are in stock.
+    2. If a customer successfully adds products to a cart, the customer can checkout to create an unpaid order.
+    3. A final check on the available stock is performed. 
+    4. After creating the unpaid order, the payment for an order can be taken. When a customer attempts to pay for an order, the inventory service reserves the stock before the payment is processed internally. At any time before the point of payment, a customer might lose their order, if the customer is slower than everyone else.
+
+        If the payment fails, the temporary stock allocation is removed, and the stock becomes available again for anyone to buy. 
+    
+        If the payment succeeds, that stock is still allocated, and the items belong to the customer, unless for any reason they are reallocated before shipment. For example, if the customer cancels, or you realize the order is fraudulent, then you can reallocate the inventory. 
+    5. Finally, when the order is marked as shipped, that stock is fully decremented. This means the allocation number is reduced, and therefore the total, and the products are no longer in the warehouse.
+
+    During split payments, stocks are allocated only if the first transaction for an order is complete. If the transaction fails, the stocks are deallocated. Once the first transaction is complete, the stocks are not allocated for the subsequent transactions as they are already reserved for the order. The stocks are deallocated and return to available when the the order is canceled.
+
+    ### Implications of the inventories API
+
+    - It is possible for more products to be in carts than there are in stock if the `add to cart` request quantity is less than available stocks. For example, when available stocks are 100, a user can add 60 to cart 1 and then 50 to cart 1, or user A can add 80 to cart 1, while user B can add 30 to cart 2.
+    - It is possible for more products to be checked out than there are in stock if the `add to cart` request quantity is less than the available stocks.
+    - It is not possible for more stock to be paid for than is in stock.
+    - It is a race for your customers to pay for an order, and whoever does not pay fast enough, is left disappointed.
+security:
+  - bearerAuth: [ ]
+servers:
+  - url: https://euwest.api.elasticpath.com
+    description: US West Cluster
+  - url: https://useast.api.elasticpath.com
+    description: US East Cluster
+tags:
+  - name: Inventory
+    description: |
+      The Inventory API allows you to manage stock for products at both organization and store levels. Each product keeps a history of inventory transactions, enabling easier stock auditing.
+
+      You can specify an initial stock level when you create a product. The stock is set to `0` by default.
+      
+      >**Warning**:
+      >
+      >You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
+
+  - name: Transactions
+    description: Methods to allow you to modify and view a products stock via transactions.
+paths:
+  /inventories:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      summary: Get Stock for all Products
+      description: Returns all products and their associated stock.
+      tags:
+        - Inventory
+      operationId: GetStockForAllProducts
+      responses:
+        200:
+          description: Success. All products and their stock values are returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Inventory'
+                  links:
+                    $ref: '#/components/schemas/Links'
+                  meta:
+                    $ref: '#/components/schemas/StockMeta'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /inventories/multiple:
+    post:
+      summary: Get Stock for Multiple Products
+      description: Returns stock for all products matching the supplied unique identifiers.
+      tags:
+        - Inventory
+      operationId: GetStockForMultipleProducts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/MultipleProducts'
+            example:
+              data:
+                - id: ebc7652d-bb7d-4359-9a83-78f2998208d9
+                - id: 5334e697-a576-4ac5-8075-ab457dfcaddd
+      responses:
+        200:
+          description: Success. Multiple products and their stock values are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Inventory'
+              example:
+                data:
+                  - id: ebc7652d-bb7d-4359-9a83-78f2998208d9
+                    type: stock
+                    total: 100
+                    available: 75
+                    allocated: 25
+                  - id: 5334e697-a576-4ac5-8075-ab457dfcaddd
+                    type: stock
+                    total: 22
+                    available: 18
+                    allocated: 4
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /inventories/{product_uuid}:
+    parameters:
+      - $ref: "#/components/parameters/ProductUUID"
+    post:
+      summary: Create Stock for Product
+      description: Sets the inventory quantity for the specified product. When you take this action, you are choosing to manage the inventory for this product in Commerce.
+      tags:
+        - Inventory
+      operationId: CreateProductStock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/InventoryCreate'
+      responses:
+        201:
+          description: Success. Stock was successfully created for product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Inventory'
+        400:
+          $ref: '#/components/responses/ValidationError'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      summary: Get Stock for Product
+      description: Gets the stock for the product matching the specified unique identifier.
+      tags:
+        - Inventory
+      operationId: GetProductStock
+      responses:
+        200:
+          description: Success. Returns the stock for the given product UUID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Inventory'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete Stock for Product
+      description: Deletes the inventory for the specified product. The product inventory is null and is no longer managed by Commerce. If you want to keep managing inventory but have none of the product in stock, set the inventory to `0` instead of deleting the inventory.
+      tags:
+        - Inventory
+      operationId: DeleteStock
+      responses:
+        204:
+          description: Success. Removes the stock information about the product
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /inventories/{product_uuid}/transactions:
+    parameters:
+      - $ref: "#/components/parameters/ProductUUID"
+    get:
+      summary: Get Stock Transactions for Product
+      description: Returns the transactions recorded for the specified product.
+      tags:
+        - Transactions
+      operationId: GetStockTransactions
+      responses:
+        200:
+          description: Success. Returns the stock for the given product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Create Stock Transaction on Product
+      tags:
+        - Transactions
+      operationId: UpdateProductStock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/TransactionCreate'
+      responses:
+        200:
+          description: Success. Stock was successfully modified for product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Transaction'
+        422:
+          $ref: '#/components/responses/UnprocessableEntityError'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /inventories/{product_uuid}/transactions/{transaction_uuid}:
+    parameters:
+      - $ref: "#/components/parameters/ProductUUID"
+      - $ref: "#/components/parameters/TransactionUUID"
+    get:
+      summary: Get Single Stock Transaction for Product
+      description: Returns the specific transaction with transaction_uuid for product_uuid
+      tags:
+        - Transactions
+      operationId: GetSingleStockTransaction
+      responses:
+        200:
+          description: Success. Returns the stock transaction for the given product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Transaction'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  parameters:
+    ProductUUID:
+      name: product_uuid
+      in: path
+      description: The unique identifier of the product.
+      required: true
+      schema:
+        type: string
+    TransactionUUID:
+      name: transaction_uuid
+      in: path
+      description: The unique identifier of the transaction.
+      required: true
+      schema:
+        type: string
+    PageOffset:
+      name: page[offset]
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+        maximum: 10000
+        example: 10
+    PageLimit:
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      name: page[limit]
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+        example: 100
+  responses:
+    ValidationError:
+      description: Bad request. The request failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missing-name:
+              value:
+                errors:
+                  - title: Validation Error
+                    status: 400
+                    detail: 'Your request was invalid'
+    UnprocessableEntityError:
+      description: The request was understood, but could not be processed by the server
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missing-name:
+              value:
+                errors:
+                  - title: Cannot complete request
+                    status: 422
+                    detail: 'Your request could not be completed due to insufficient stock levels'
+    InternalServerError:
+      description: Internal server error. There was a system failure in the platform.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              value:
+                errors:
+                  - title: Internal Server Error
+                    status: 500
+    NotFoundError:
+      description: Not found. The requested entity does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            not-found:
+              value:
+                errors:
+                  - title: Not Found
+                    status: 404
+                    detail: The resource could not be found
+  schemas:
+    MultipleProducts:
+      type: object
+      properties:
+        id:
+          description: The unique identifier of the product.
+          type: string
+          example: "3c78777a-cf09-4b2d-be91-a73acbf9166f"
+    StockMeta:
+      type: object
+      properties:
+        results:
+          description: The results for this response for the entire collection.
+          type: object
+          properties:
+            total:
+              description: The total number of records for this response for the entire collection.
+              type: integer
+              example: 50
+        page:
+          type: object
+          properties:
+            limit:
+              description: The maximum number of records per page for this response.
+              type: integer
+              example: 100
+            offset:
+              description: The current offset by number of records per page for this response.
+              type: integer
+              example: 0
+            current:
+              description: The current number of records for this response per page.
+              type: integer
+              example: 1
+            total:
+              description: The total number of records for this response per page.
+              type: integer
+              example: 50
+    Links:
+      type: object
+      description: |
+        Links are used to allow you to move between requests. Single entities use a self parameter with a link to that specific resource. Sometimes, there aren’t enough entities for a project to fill multiple pages. In this situation, we return some defaults, instead of expecting you as a consumer to check for these special cases.
+
+
+        | Property | Description |
+        | --- | --- |
+        | `current` | Always the current page. |
+        | `first` | Always the first page. |
+        | `last` | `null` if there is only one page. |
+      properties:
+        current:
+          $ref: '#/components/schemas/LinkURI'
+        first:
+          $ref: '#/components/schemas/LinkURI'
+        last:
+          $ref: '#/components/schemas/LinkURI'
+    LinkURI:
+      type: string
+      format: uri
+      example: ?page[offset]=0&page[limit]=25
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorBody'
+    ErrorBody:
+      required:
+        - status
+        - title
+      properties:
+        status:
+          type: integer
+          format: int
+          description: The HTTP response code of the error.
+          example: 500
+        title:
+          type: string
+          description: A brief summary of the error.
+          example: Internal server error
+        detail:
+          type: string
+          description: Optional additional detail about the error.
+          example: An internal error has occurred.
+    Inventory:
+      required:
+        - type
+      properties:
+        id:
+          description: The unique identifier of the product.
+          type: string
+          example: f976dace-450f-4a5d-8877-d119c5a550a1
+        type:
+          description: The type represents the object being returned. Always `stock`.
+          type: string
+          example: stock
+          enum:
+            - stock
+          default: stock
+        total:
+          description: The total amount of stock we have.
+          type: integer
+          example: 100
+        available:
+          description: The amount of stock available for purchase.
+          type: integer
+          example: 75
+        allocated:
+          description: The amount of paid for stock, also known as **reserved**.
+          type: integer
+          example: 25
+    Transaction:
+      required:
+        - type
+      properties:
+        id:
+          description: The unique identifier for the stock transaction.
+          type: string
+          example: f976dace-450f-4a5d-8877-d119c5a550a1
+        type:
+          description: The type represents the object being returned. Always `stock-transaction`.
+          type: string
+          example: stock-transaction
+          enum:
+            - stock-transaction
+          default: stock-transaction
+        action:
+          description: |
+           The type of action performed by this transaction.
+            
+           - **increment** - use this when you want to make products available for purchase, for example, when you have received stock from a supplier.
+            
+           - **decrement** - Use this when you want to remove stock from product inventory.
+            
+           - **allocate** - Use this when you want to allocate stock, normally to a reseller who sells on the stock.
+            
+           - **deallocate** - Use this when you want to deallocate any previously allocated stock.
+
+          type: string
+          enum:
+            - increment
+            - decrement
+            - allocate
+            - deallocate
+          example: allocate
+        product_id:
+          description: The product identifier that this stock transaction is for.
+          type: string
+          example: 86b84d3e-0a86-43d6-a347-78ba4adacca2
+        quantity:
+          description: The amount of stock affected by the stock transaction.
+          type: integer
+          example: 5
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    InventoryCreate:
+      required:
+        - quantity
+      properties:
+        quantity:
+          description: The amount of inventory available.
+          type: integer
+          example: 5
+    TransactionCreate:
+      required:
+        - quantity
+        - action
+        - type
+      properties:
+        type:
+          description: The type of object being returned. Always `stock-transaction`.
+          type: string
+          enum:
+            - stock-transaction
+          default: stock-transaction
+          example: stock-transaction
+        action:
+          description: |
+           The type of action being performed by this transaction.
+            
+            - **increment** - use this when you want to make products available for purchase, for example, when you have received stock from a supplier.
+            
+            - **decrement** - Use this when you want to remove stock from product inventory.
+            
+            - **allocate** - Use this when you want to allocate stock, normally to a reseller who sells on the stock.
+            
+            - **deallocate** - Use this when you want to deallocate any previously allocated stock.
+
+          type: string
+          enum:
+            - increment
+            - decrement
+            - allocate
+            - deallocate
+          example: allocate
+        quantity:
+          description: The amount of stock affected by the stock transaction.
+          type: integer
+          example: 5
+    Timestamps:
+      description: The date and time a transaction is created.
+      required:
+        - created_at
+      properties:
+        created_at:
+          description: The date and time a transaction is created.
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'

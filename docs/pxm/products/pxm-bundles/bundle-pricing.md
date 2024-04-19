@@ -1,0 +1,58 @@
+---
+title: Bundle Pricing
+nav_label: Bundle Pricing
+sidebar_position: 20
+---
+
+Bundles can have:
+
+- Fixed pricing: enables you to assign a fixed price for all products in a bundle. 
+- Automatic/cumulative pricing: the price of a bundle is generated automatically based on the sum of the component products.
+
+The following table describes the capabilities and pricing that bundles can have.
+
+| Pricing                                                                                                                                                                                                                                                                                                            | Requires SKU? | Price Book Entry                  | Capabilities                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|:----------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Fixed** - enables you to assign a fixed price for all the products in a bundle. The bundle can contain items that are available for individual purchase, however, when purchased in a fixed-price bundle, are offered at a discounted price.                                                                     | Yes           | Mandatory                         | **[Sale Pricing](#sale-pricing)** - defines reduced pricing for the total price of the bundle. **[Volume Pricing](#volume-pricing)** - offers promotional prices for products bought in bulk. [**Bundle Inventory Management**](/docs/pxm/products/pxm-bundles/bundle-inventory) - bundle inventory can be tracked based on the availability of individual items in the bundle. In this case, the maximum number of bundles you can sell is equal to the number of the option that is least available. |
+| **Automatic/cumulative** - the price of a bundle can be generated automatically based on the sum of the component products. Ensure that you set a price for each product within the bundle. If a component product does not have a price, the bundle price cannot be set and customers cannot purchase the bundle. | Optional      | Not available when SKU is present | **[Sale Pricing](#sale-pricing)** - define reduced pricing for the total price of the bundle.                                                                                                                                                                                                                                                                                                                                                           |
+
+## Examples of Bundles
+
+The following table describes some examples of bundles.
+
+| Bundle Type               | Pricing                     | Description        |
+|:--------------------------|:----------------------------|:-------------------|
+| **Pure bundles**          | Fixed                       | Products are available only as a bundle. |
+| **Joint bundles**         | Fixed, Automatic/cumulative | A bundled price offered for two or more products. |
+| **Gift sets**             | Fixed, Automatic/cumulative | A bundle created from a set of predefined items. |
+| **Leader bundle**         | Automatic/cumulative        | A popular product is offered for a discount if you buy it with another less popular product. |
+| **Mix and Match bundles** | Automatic/cumulative        | Bundle products are selected from a predetermined list of items that you can bundle together. |
+| **Upsell bundles**        | Automatic/cumulative        | Discounted price for the current product when bought together with an accessory as a related item. |
+
+For example, *Playtend Games* has a bundle that consists of a game console, the Playtend Invaders Game, and the Invaders Controller, and the bundle is available for purchase at $500. The individual price of the products in the bundle are $500 for the game console, $50 for the Playtend Invaders Game, and $75 for the Invaders Controller. This makes the total of the products $625 when bought individually. The price of the bundle is defined in the price books associated with the bundle SKU and the sale price depends on the pricing configuration for the SKU.
+
+## Sale Pricing
+
+You can set a sale price for an item within a bundle so that the product is sold at the sale price when sold as a part of the bundle. For example, if you have a bundle consisting of four items, you can apply a discounted price to an item within the bundle to get a bundle sales price. Both list and sale price (or was/is prices) are available in the catalog response, enabling you to display slash pricing on your storefront, depending on your requirements.
+
+| Product   | Regular product price | Bundle sales price |
+|:----------|:----------------------|:-------------------|
+| Product A | $100                  | $80                |
+| Product B | $50                   | $50                |
+| Product C | $30                   | $30                |
+| Product D | $130                  | $130               |
+| **Total** | **$310**              | **$290**           |
+
+See [create bundle sale price example](/docs/pxm/pricebooks/pxm-pricebooks-prices/create-product-prices#create-bundle-sale-price-request-example).
+
+## Volume Pricing
+
+You can configure volume pricing for minimum quantities of products. When a customer adds sufficient quantity of an item and meets the minimum required quantity for different pricing, all products with that item SKU are discounted in the cart. You can define the price range for different quantities of different items, as explained in the following example.
+
+| Quantity | Price/Each |
+|:---------|:-----------|
+| 1-5      | $10.50     |
+| 6-10     | $10.00     |
+| 11-20    | $9.50      |
+| 21-50    | $8.50      |
+| 51+      | $7.90      |

@@ -1,0 +1,353 @@
+# GENERATED FILE - DO NOT EDIT 
+openapi: 3.1.0
+info:
+  description: |
+    Use the Exporter Service API to export orders to a Comma-Separated Values (CSV) file. When you run the `export order` endpoint, a job is created.
+  title: Exporter Service API
+  version: '1.0'
+servers:
+  - url: https://api.moltin.com
+    description: EU West Production Server
+  - url: https://useast.api.elasticpath.com
+    description: US East Production Server
+security:
+  - bearerAuth: []
+tags:
+  - name: Jobs
+    description: |
+
+      Jobs have the following characteristics:
+
+        - Jobs are asynchronous.
+        - This process is repeated until all jobs are processed.
+        - Jobs have a different status, depending on where a job is in its lifecycle.
+        - Jobs are processed one at a time. You can continue to send requests using endpoints that function as jobs, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date.
+        - Jobs include the data used when an endpoint is run.
+        - Jobs report messages and/or errors to help you understand the reasons for any failed jobs.
+          
+      ### Job Lifecycle
+          
+      A job can have the following status:
+
+      - PENDING - Commerce has received the request but is currently busy processing other requests.
+      - STARTED - Commerce has started processing the job.
+      - SUCCESS - The job has successfully completed.
+      - FAILED - The job has failed.
+paths:
+  /v2/jobs:
+    get:
+      tags:
+        - Jobs
+      summary: Get All Jobs
+      description: You can use this endpoint to display the status of your jobs.
+      operationId: getMultipleJobs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+              examples:
+                default:
+                  value:
+                    data:
+                      - id: 974c9db4-38da-4dbf-90c2-33eed5f3e77c
+                        type: job
+                        job_type: order_export
+                        status: failed
+                        error: No results matched the supplied filter
+                        link:
+                          href: ''
+                        links:
+                          self: https://useast.api.elasticpath.com/v2/jobs/974c9db4-38da-4dbf-90c2-33eed5f3e77c
+                        timestamps:
+                          created_at: '2018-10-04T11:08:49.156490335Z'
+                          updated_at: '2018-10-04T11:08:49.162867081Z'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags:
+        - Jobs
+      summary: Create Job
+      description: Create a Job to export orders to a CSV file. Jobs automatically expire one week after creation. You must fetch the exported data before the jobs expire.
+      operationId: createJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CreateJob'
+                - examples:
+                    - data:
+                        description: Extends the default product object
+                        enabled: true
+                        name: Products
+                        slug: products
+                        type: flow
+              contentMediaType: application/json
+            examples:
+              default:
+                value:
+                  data:
+                    filter: gt(created_at,2018-09-01):lt(created_at,2018-10-01):eq(payment,refunded)
+                    job_type: order_export
+                    type: job
+        required: true
+      responses:
+        '202':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+              examples:
+                default:
+                  value:
+                    data:
+                      - id: 974c9db4-38da-4dbf-90c2-33eed5f3e77c
+                        type: job
+                        job_type: order_export
+                        status: failed
+                        error: No results matched the supplied filter
+                        link:
+                          href: ''
+                        links:
+                          self: https://useast.api.elasticpath.com/v2/jobs/974c9db4-38da-4dbf-90c2-33eed5f3e77c
+                        timestamps:
+                          created_at: '2018-10-04T11:08:49.156490335Z'
+                          updated_at: '2018-10-04T11:08:49.162867081Z'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/jobs/{jobID}:
+    get:
+      tags:
+        - Jobs
+      summary: Get a Job
+      description: Retrieves the specified job.
+      operationId: getAJob
+      parameters:
+        - name: jobID
+          description: The unique identifier of the requested job.
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Job'
+              examples:
+                default:
+                  value:
+                    data:
+                      id: 974c9db4-38da-4dbf-90c2-33eed5f3e77c
+                      type: job
+                      job_type: order_export
+                      status: failed
+                      error: No results matched the supplied filter
+                      link:
+                        href: ''
+                      links:
+                        self: https://useast.api.elasticpath.com/v2/jobs/974c9db4-38da-4dbf-90c2-33eed5f3e77c
+                      timestamps:
+                        created_at: '2018-10-04T11:08:49.156490335Z'
+                        updated_at: '2018-10-04T11:08:49.162867081Z'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/jobs/{jobID}/file:
+    get:
+      tags:
+        - Jobs
+      summary: Get a Job File
+      description: Retrieves a link to the CSV file that contains your exported order.
+      operationId: getAJobFile
+      parameters:
+        - name: jobID
+          description: The unique identifier of the job whose CSC file you want to retrieve.
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FileLink'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Job:
+      properties:
+        id:
+          description: A unique ID generated when a job is created
+          $ref: '#/components/schemas/UUID'
+        type:
+          description: This represents the type of object being returned. Always `job`.
+          type: string
+          example: job
+        job_type:
+          description: This represents the type of job. For example, `order_export`.
+          type: string
+          example: order_export
+        status:
+          description: |-
+            The status of a job.
+            - PENDING - Commerce has received the request but is currently busy processing other requests.
+            - STARTED - Commerce has started processing the job.
+            - SUCCESS - The job has successfully completed.
+            - FAILED - The job has failed.
+          type: string
+          example: failed
+        error:
+          description: A message describing the error that caused a job to fail.
+          type: string
+          example: No results matched the supplied filter
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+        links:
+          $ref: '#/components/schemas/Links'
+        link:
+          $ref: '#/components/schemas/FileLink'
+    CreateJob:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            filter:
+              type: string
+              example: gt(created_at,2018-09-01):lt(created_at,2018-10-01):eq(payment,refunded)
+            job_type:
+              description: This represents the type of job. For example, `order_export`.
+              type: string
+              example: order_export
+            type:
+              description: This represents the type of object being returned. Always `job`.
+              type: string
+              example: job
+    Links:
+      type: object
+      description: Links are used to allow you to move between requests
+      properties:
+        self:
+          description: Single entities use a self parameter with a link to that specific resource.
+          type: string
+          example: https://useast.api.elasticpath.com/v2/jobs/974c9db4-38da-4dbf-90c2-33eed5f3e77c
+    FileLink:
+      type: object
+      description: A link to the exported data.
+      properties:
+        href:
+          description: The publicly available URL for this CSV file that contains the exported data.
+          type: string
+    Timestamps:
+      type: object
+      description: The date and time a job is created/updated.
+      properties:
+        created_at:
+          description: The date and time a job is created.
+          type: string
+          example: '2018-10-04T11:08:49.156490335Z'
+        updated_at:
+          description: The date and time a job is updated.
+          type: string
+          example: '2018-10-04T11:08:49.162867081Z'
+    UUID:
+      type: string
+      description: A unique ID generated when a job is created.
+      format: uuid
+      example: 00000000-0000-0000-0000-000000000000
+    Error:
+      required:
+        - status
+        - title
+      properties:
+        status:
+          type: integer
+          format: int
+          description: The HTTP response code of the error.
+          example: 500
+        title:
+          type: string
+          description: A brief summary of the error.
+          example: Internal server error
+        detail:
+          type: string
+          description: Optional additional detail about the error.
+          example: An internal error has occurred.
+        request_id:
+          type: string
+          description: Internal request ID.
+          example: 00000000-0000-0000-0000-000000000000
+        meta:
+          type: object
+          description: Additional supporting meta data for the error.
+          example:
+            missing_ids:
+              - e7d50bd5-1833-43c0-9848-f9d325b08be8
+  responses:
+    InternalServerError:
+      description: Internal server error. There was a system failure in the platform.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              value:
+                errors:
+                  - status: 500
+                    title: Internal Server Error
+                    detail: There was an internal server error, you can report with your request id.
+                    request_id: 635da56d-75a1-43cd-b696-7ab119756b3a
+    NotFoundError:
+      description: Forbidden. The operation is forbidden on this entity.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+            example:
+              title: Resource Not Found
+              status: 404
+              detail: The resource you are requesting does not exist

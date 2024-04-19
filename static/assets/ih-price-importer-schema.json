@@ -1,0 +1,389 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://elasticpath.com/product-price-schema.json",
+    "type": "object",
+    "title": "The canonical schema for Elastic Path Commerce Cloud product prices.",
+    "required": [
+        "sku",
+        "priceBookName",
+        "prices"
+    ],
+    "properties": {
+        "sku": {
+            "type": "string",
+            "title": "The sku of product this price applies to.",
+            "examples": [
+                "productSku"
+            ]
+        },
+        "priceBookName": {
+            "type": "string",
+            "pattern": "^\\S*$",
+            "title": "The name of the price book that this price lives in.",
+            "examples": [
+                "priceBookName"
+            ]
+        },
+        "prices": {
+            "type": "array",
+            "minItems": 1,
+            "title": "An array of prices for the product.  Prices can be specified in one to many currencies and tiers.",
+            "items": {
+                "type": "object",
+                "title": "A price object that specifies a set of related currency, amount and tiers for this price/product combination.",
+                "required": [
+                    "currency",
+                    "amount",
+                    "tax_inclusive"
+                ],
+                "properties": {
+                    "currency": {
+                        "type": "string",
+                        "title": "The ISO currency code for this price.",
+                        "examples": [
+                            "USD"
+                        ]
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "title": "The actual price, represented as whole number.",
+                        "default": 0,
+                        "minimum": 0,
+                        "maximum": 999999999999,
+                        "examples": [
+                            100000
+                        ]
+                    },
+                    "tax_inclusive": {
+                        "type": "boolean",
+                        "default": false,
+                        "title": "A boolean that specifies if tax is included in the amount.",
+                        "examples": [
+                            false,
+                            true
+                        ]
+                    },
+                    "tiers": {
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "An optional array of price tiers for this product/currency combination.",
+                        "items": {
+                            "type": "object",
+                            "title": "A tier object that specifies a single tier of pricing for this sku.",
+                            "required": [
+                                "name",
+                                "minimum_quantity",
+                                "amount"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "pattern": "^\\S*$",
+                                    "title": "The name of the tier.",
+                                    "examples": [
+                                        "bulk25"
+                                    ]
+                                },
+                                "minimum_quantity": {
+                                    "type": "integer",
+                                    "title": "The minimum quantity required to obtain this tier pricing.",
+                                    "default": 1,
+                                    "minimum": 1,
+                                    "maximum": 100000,
+                                    "examples": [
+                                        25
+                                    ]
+                                },
+                                "amount": {
+                                    "type": "integer",
+                                    "title": "The price per quantity that should be used when a customer obtains this tier.",
+                                    "default": 0,
+                                    "minimum": 0,
+                                    "maximum": 999999999999,
+                                    "examples": [
+                                        90000
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "name": "bulk25",
+                                "minimum_quantity": 25,
+                                "amount": 90000
+                            }]
+                        },
+                        "examples": [
+                            [{
+                                "name": "bulk25",
+                                "minimum_quantity": 25,
+                                "amount": 90000
+                            }]
+                        ]
+                    }
+                },
+                "examples": [{
+                    "currency": "USD",
+                    "amount": 100000,
+                    "tax_inclusive": false,
+                    "tiers": [{
+                        "name": "tierName",
+                        "minimum_quantity": 5,
+                        "amount": 90000
+                    }]
+                }]
+            },
+            "examples": [
+                [{
+                    "currency": "USD",
+                    "amount": 10000,
+                    "tax_inclusive": false,
+                    "tiers": [{
+                        "name": "tierName",
+                        "minimum_quantity": 5,
+                        "amount": 90000
+                    }]
+                }]
+            ]
+        },
+        "sales": {
+            "type": "array",
+            "minItems": 1,
+            "title": "An array of special sales for this sku.",
+            "items": {
+                "type": "object",
+                "title": "An object that represents a sale for this sku.",
+                "required": [
+                    "name",
+                    "salePrices"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "pattern": "^\\S*$",
+                        "title": "The name of the sale.",
+                        "examples": [
+                            "May_2022_Sale",
+                            "May2022Sale"
+                        ]
+                    },
+                    "schedule": {
+                        "type": "object",
+                        "title": "An optional schedule that contains the start and end date for this sale.",
+                        "required": [
+                            "valid_from",
+                            "valid_to"
+                        ],
+                        "properties": {
+                            "valid_from": {
+                                "type": "string",
+                                "format": "date-time",
+                                "title": "The date-time that this sale is valid from (i.e. starts)",
+                                "examples": [
+                                    "2022-05-03T20:47:54.068Z"
+                                ]
+                            },
+                            "valid_to": {
+                                "type": "string",
+                                "format": "date-time",
+                                "title": "The date-time that this sale ends.",
+                                "examples": [
+                                    "2022-05-28T20:47:57.068Z"
+                                ]
+                            }
+                        },
+                        "examples": [{
+                            "valid_from": "2022-05-03T20:47:54.068Z",
+                            "valid_to": "2022-05-28T20:47:57.068Z"
+                        }]
+                    },
+                    "salePrices": {
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "An array of sales prices for this sale and sku.",
+                        "items": {
+                            "type": "object",
+                            "title": "A sale price object.",
+                            "required": [
+                                "currency",
+                                "amount",
+                                "tax_inclusive"
+                            ],
+                            "properties": {
+                                "currency": {
+                                    "type": "string",
+                                    "title": "The ISO currency code of this sale price.",
+                                    "examples": [
+                                        "USD"
+                                    ]
+                                },
+                                "amount": {
+                                    "type": "integer",
+                                    "title": "The sale price during this sale, for this currency.",
+                                    "default": 0,
+                                    "minimum": 0,
+                                    "maximum": 999999999999,
+                                    "examples": [
+                                        80000
+                                    ]
+                                },
+                                "tax_inclusive": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "title": "A boolean that specifies if taxes are included in the amount.",
+                                    "examples": [
+                                        false
+                                    ]
+                                },
+                                "tiers": {
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "title": "An array of tier pricing for this sale.",
+                                    "items": {
+                                        "type": "object",
+                                        "title": "A tier price object for this sale.",
+                                        "required": [
+                                            "name",
+                                            "minimum_quantity",
+                                            "amount"
+                                        ],
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^\\S*$",
+                                                "title": "The name of this tier.",
+                                                "examples": [
+                                                    "min_5",
+                                                    "May_2022_Sale_min_5"
+                                                ]
+                                            },
+                                            "minimum_quantity": {
+                                                "type": "integer",
+                                                "title": "The minimum_quantity required to achieve this pricing tier.",
+                                                "default": 1,
+                                                "minimum": 1,
+                                                "maximum": 100000,
+                                                "examples": [
+                                                    25
+                                                ]
+                                            },
+                                            "amount": {
+                                                "type": "integer",
+                                                "title": "The sale price that will be used during this sale for the specified minimum quantity.",
+                                                "default": 0,
+                                                "minimum": 0,
+                                                "maximum": 999999999999,
+                                                "examples": [
+                                                    80000
+                                                ]
+                                            }
+                                        },
+                                        "examples": [{
+                                            "name": "May_2022_Sale_min_5",
+                                            "minimum_quantity": 25,
+                                            "amount": 80000
+                                        }]
+                                    },
+                                    "examples": [
+                                        [{
+                                            "name": "May_2022_Sale_min_5",
+                                            "minimum_quantity": 25,
+                                            "amount": 80000
+                                        }]
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "currency": "USD",
+                                "amount": 80000,
+                                "tax_inclusive": false,
+                                "tiers": [{
+                                    "name": "May_2022_Sale_min_5",
+                                    "minimum_quantity": 25,
+                                    "amount": 80000
+                                }]
+                            }]
+                        },
+                        "examples": [
+                            [{
+                                "currency": "USD",
+                                "amount": 80000,
+                                "tax_inclusive": false,
+                                "tiers": [{
+                                    "name": "May_2022_Sale_min_5",
+                                    "minimum_quantity": 25,
+                                    "amount": 80000
+                                }]
+                            }]
+                        ]
+                    }
+                },
+                "examples": [{
+                    "name": "May_2022_Sale",
+                    "schedule": {
+                        "valid_from": "2022-05-03T20:47:54.068Z",
+                        "valid_to": "2022-05-28T20:47:57.068Z"
+                    },
+                    "salePrices": [{
+                        "currency": "USD",
+                        "amount": 80000,
+                        "tax_inclusive": false,
+                        "tiers": [{
+                            "name": "May_2022_Sale_min_5",
+                            "minimum_quantity": 25,
+                            "amount": 80000
+                        }]
+                    }]
+                }]
+            },
+            "examples": [
+                [{
+                    "name": "May_2022_Sale",
+                    "schedule": {
+                        "valid_from": "2022-05-03T20:47:54.068Z",
+                        "valid_to": "2022-05-28T20:47:57.068Z"
+                    },
+                    "salePrices": [{
+                        "currency": "USD",
+                        "amount": 80000,
+                        "tax_inclusive": false,
+                        "tiers": [{
+                            "name": "May_2022_Sale_min_5",
+                            "minimum_quantity": 25,
+                            "amount": 80000
+                        }]
+                    }]
+                }]
+            ]
+        }
+    },
+    "examples": [{
+        "sku": "productSku",
+        "priceBookName": "priceBookName",
+        "prices": [{
+            "currency": "USD",
+            "amount": 10000,
+            "tax_inclusive": false,
+            "tiers": [{
+                "name": "min_5",
+                "minimum_quantity": 25,
+                "amount": 90000
+            }]
+        }],
+        "sales": [{
+            "name": "May_2022_Sale",
+            "schedule": {
+                "valid_from": "2022-05-03T20:47:54.068Z",
+                "valid_to": "2022-05-28T20:47:57.068Z"
+            },
+            "salePrices": [{
+                "currency": "USD",
+                "amount": 80000,
+                "tax_inclusive": false,
+                "tiers": [{
+                    "name": "May_2022_Sale_min_5",
+                    "minimum_quantity": 25,
+                    "amount": 80000
+                }]
+            }]
+        }]
+    }]
+}
