@@ -4,9 +4,9 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-In Commerce Manager, you can create the products and services that you want to offer in a subscription. See [Creating Repeat Products](/docs/subscriptions/products/creating-products).
+In Commerce Manager, you can create the products and services that you want to offer in a subscription. See [Creating Repeat Products](/docs/subscriptions/products/creating-products.md).
 
-For example, an online streaming service organization might have different services available for subscription, such as Standard Definition Streaming, High-Definition Streaming, and 4K Streaming; each service provides a specific level of video quality. Products can have additional attributes, such as price, and rich media assets, such as images or files containing additional product details. See [Product Media](/docs/subscriptions/subscription-products/overview#product-media).
+For example, an online streaming service organization might have different services available for subscription, such as Standard Definition Streaming, High-Definition Streaming, and 4K Streaming; each service provides a specific level of video quality. Products can have additional attributes, such as price, and rich media assets, such as images or files containing additional product details. See [Product Media](/docs/subscriptions/subscription/creating-products).
 
 In addition, you can build offerings with products created in Product Experience Manager. Product Experience Manager manages product information, hierarchies, and price books. Ideally, Product Experience Manager becomes the single source of truth for product data across your organization. See [Creating Subscription Products in Product Experience Manager](/docs/subscriptions/products/creating-pxm-products).
 
@@ -26,4 +26,4 @@ In addition, you can specify a unit price for a product. A unit price is the tim
 
 You can display prices to your customers in their local currency. You can configure up to 10 currencies per subscription. [Create](/docs/pxm/currencies/manage-currencies) currencies only for the locales in which you do business, and select one of the currencies to be the default currency. If a default currency is not selected, the store uses the United States Dollar (USD).
 
-In addition, when creating a plan, you can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling those products to be offered at a discounted price. The prices you specify for a plan override the individual product prices you specified when creating a product. See [Plan Pricing](/docs/subscriptions/managing-subscription-plans-cm).
+In addition, when creating a plan, you can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling those products to be offered at a discounted price. The prices you specify for a plan override the individual product prices you specified when creating a product. See [Plan Pricing](/docs/subscriptions/subscription-plans/managing-subscription-plans-cm).

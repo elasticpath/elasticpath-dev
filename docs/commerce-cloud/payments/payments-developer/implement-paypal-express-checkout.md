@@ -24,7 +24,7 @@ You can use any URL safe value you want for your cart IDs. If a cart does not al
 
 You can set up and confirm a purchase by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/commerce-cloud/checkout/checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/commerce-cloud/checkout).
 
     :::note
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
@@ -181,7 +181,7 @@ You can use any URL safe value you want for your cart IDs. If a cart doesn’t a
 
 You can set up the authorization and capture the payment by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/commerce-cloud/checkout/checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/commerce-cloud/checkout).
 
     :::note
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
@@ -321,5 +321,5 @@ To confirm multiple payments, follow the instructions to update multiple payment
 ## Related Resources
 
 - [PayPal Express Checkout Payments](/docs/commerce-cloud/payments/paying-for-an-order/paypal-express-checkout-payments)
-- [Checkout workflow](/docs/commerce-cloud/checkout/checkout)
+- [Checkout workflow](/docs/commerce-cloud/checkout)
 - [Carts API](/docs/commerce-cloud/carts/carts.md)

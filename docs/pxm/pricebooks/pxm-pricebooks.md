@@ -159,8 +159,8 @@ Deleting a price book deletes the product prices in the price book. However, it 
 ## Related Resources
 
 - [Products](/docs/pxm/products/pxm-products)
-- [Catalogs](/docs/pxm/catalogs/catalogs)
-- [Catalog Rules](/docs/pxm/catalogs/catalog-rules/catalog-rules)
+- [Catalogs](/docs/pxm/catalogs)
+- [Catalog Rules](/docs/pxm/catalogs/catalog-rules)
 - [Catalog Rules APIs](/docs/pxm/catalogs/catalog-rules/create-a-catalog-rule)
 
 ### Demos

@@ -55,7 +55,7 @@ Required. Specify whichever `attributes` you want to change. The values of the o
 | `attributes.upc_ean`        | Optional | `string` | The updated Universal Product Code or European Article Number.                                                                                                                                                                                                                                                                                                                                                   |
 | `attributes.tags`           | Optional | `array`  | Add new or update existing product tags. You can use product tags to store or assign a key word against a product. The product tag can then be used to describe or label that product. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on. A product can have up to 20 tags. A product tag can be up to 255 characters. Product tags must not contain any spaces or commas. See [Product tags](/docs/pxm/products/pxm-products#product-tags). |
 | `attributes.locales` | Optional | `object` | The product details localized in the supported languages. For example, product names or descriptions. For more information, see [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview#the-locales-object). |
-| `custom_inputs`             | Optional | `object` | The custom text that can be added to a product. See [Personalizd Products](/docs/pxm/products/ep-pxm-products-api/personalized-products-pxm).                                                                                                                                                                                                                                                                    |
+| `custom_inputs`             | Optional | `object` | The custom text that can be added to a product. See [Personalizd Products](/docs/pxm/products/personalized-products-pxm).                                                                                                                                                                                                                                                                    |
 
 
 ## Examples
@@ -528,6 +528,6 @@ url -X PUT https://useast.api.elasticpath.com/pcm/products/60afe403-a191-455e-b7
 
 - [Products](/docs/pxm/products/pxm-products-commerce-manager/create-products)
 - [Locales](/docs/pxm/products/locales/pxm-locales)
-- [Bundles](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles](/docs/pxm/products/pxm-bundles)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)

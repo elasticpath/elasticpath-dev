@@ -70,6 +70,6 @@ curl GET 'https://useast.api.elasticpath.com/pcm/products/00efcc23-9bab-4bc7-927
 
 ## Related Resources
 
-- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)

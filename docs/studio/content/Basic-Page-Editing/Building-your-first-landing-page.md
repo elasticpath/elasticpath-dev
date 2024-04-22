@@ -39,7 +39,7 @@ The below guide is intended to walk you through the basics of building landing p
    your [styles are set up properly](/docs/studio/design/Design-&-Styles/Using-your-Style-Guide) and then have a read
    through some of our other documentation to familiarize yourself with things like
    the [basics of page structure](/docs/studio/content/Basic-Page-Editing/Understanding-page-structure), [linking to pages/products](/docs/studio/content/Basic-Page-Editing/Smart-Links),
-   and [more](/docs/studio/content/advanced-page-editing/Advanced-Page-Editing).
+   and [more](/docs/studio/content/advanced-page-editing/).
 
 5. Advanced Customization
 

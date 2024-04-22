@@ -10,7 +10,7 @@ Use `flows` resource to extend an existing resource or to create a new resource.
 Custom names and values prefixed with `$` are not supported.
 :::
 
-For more information, see the [Custom data (Flows)](/docs/commerce-cloud/custom-data/custom-data-flows) section.
+For more information, see the [Custom data (Flows)](/docs/commerce-cloud/custom-data) section.
 
 ## Core and Non-core Flows
 

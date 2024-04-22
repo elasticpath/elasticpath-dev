@@ -105,7 +105,7 @@ Once you have configured your custom inputs on a product, you must configure the
 
 If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/commerce-cloud/checkout/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order).
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/commerce-cloud/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order).
 
 When you add products to a cart with `custom_inputs`, there are certain limitations on the usage of the `custom_inputs` with the following promotion types:
 
@@ -116,6 +116,6 @@ When you add products to a cart with `custom_inputs`, there are certain limitati
 ## Related Resources
 
 - [Locales](/docs/pxm/products/locales/pxm-locales)
-- [Catalogs](/docs/pxm/catalogs/catalogs)
+- [Catalogs](/docs/pxm/catalogs)
 - [Price Books](/docs/pxm/pricebooks/price-books)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)

@@ -93,7 +93,7 @@ When designing your storefront, you must only allow child bundles to be added to
 
 1. In the **Product Details** tab, enter the following details:
 
-    - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**](/docs/pxm/products/locales/locales) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales#how-you-can-configure-locales-in-commerce-manager).
+    - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/pxm/products/locales) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales#how-you-can-configure-locales-in-commerce-manager).
     - **Name**: Name for the bundle.
     - (Optional) **Description**: A description for the bundle.
     - (Optional) **SKU Number**: The SKU of the product.
@@ -178,7 +178,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
     1. Click **Add Volume Level**.
     1. In **Price Book**, select the price book you want from the drop-down list.
     1. In **Min Purchase Quantity**, type the minimum quantity of products a customer must select to receive the volume price.
-    1. Type a price for each of the available currencies. You can add currencies to a store under **System** in [Store Settings > Currencies](/docs/pxm/currencies/currencies).
+    1. Type a price for each of the available currencies. You can add currencies to a store under **System** in [Store Settings > Currencies](/docs/pxm/currencies).
     1. Click **Add Level**.
 
 1. To add a sale price to an option, click **+ Add Sale Price** and do the following:
@@ -189,7 +189,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
     1. Use the calendar to select a start date and time. 
     1. Click **OK**.
     1. Use the calendar to select an end date and time.
-    1. Type a price for each of the available currencies. You can add currencies under **System** in [Store Settings > Currencies](/docs/pxm/currencies/currencies).
+    1. Type a price for each of the available currencies. You can add currencies under **System** in [Store Settings > Currencies](/docs/pxm/currencies).
     1. Click **Add Sale**.
 
     :::tip
@@ -296,7 +296,7 @@ You can remove bundle products from a catalog, but still keep them in the databa
 - [Product Attributes](/docs/pxm/products/pxm-products#product-attributes)
 - [Product Hierarchies](/docs/pxm/hierarchies/hierarchies-api/hierarchies-api-overview)
 - [Price books](/docs/pxm/pricebooks/pxm-pricebooks/pxm-pricebooks-overview)
-- [Catalog](/docs/pxm/catalogs/catalogs)
+- [Catalog](/docs/pxm/catalogs)
 - [Catalog Releases](/docs/pxm/catalogs/catalog-latest-release/overview)
 - [Products](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 

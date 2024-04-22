@@ -70,7 +70,7 @@ For more information, see [Update a Catalog](/docs/pxm/catalogs/catalog-configur
 
 - [Products](/docs/pxm/products/pxm-products)
 - [Locales](/docs/pxm/products/locales/pxm-locales)
-- [Catalogs](/docs/pxm/catalogs/catalogs)
+- [Catalogs](/docs/pxm/catalogs)
 - [Assign Multiple Nodes](/docs/pxm/products/ep-pxm-products-api/assign-nodes#post-attach-multiple-nodes)
 
 ### Demos

@@ -42,4 +42,4 @@ You can create new resources to support product reviews, want lists, blog articl
 - [Products](/docs/pxm/products/pxm-products)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
 - [Orders](/docs/commerce-cloud/orders/orders.md)
-- [Integrations](/docs/commerce-cloud/integrations/integrations)
+- [Integrations](/docs/commerce-cloud/integrations)

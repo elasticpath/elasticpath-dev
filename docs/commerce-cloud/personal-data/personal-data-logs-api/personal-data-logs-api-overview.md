@@ -11,7 +11,7 @@ This API is read only, and you cannot add/update/delete logs using this API.
 The API only allows you to read all logs for a particular data entry (specified in the filter GET parameter).
 
 :::note
-Currently, personal data management is only enabled for a limited set of endpoints. See the [personal data concepts page](/docs/commerce-cloud/personal-data/personal-data) for the list of endpoints that support personal data management.
+Currently, personal data management is only enabled for a limited set of endpoints. See the [personal data concepts page](/docs/commerce-cloud/personal-data) for the list of endpoints that support personal data management.
 :::
 
 ## The Log Object

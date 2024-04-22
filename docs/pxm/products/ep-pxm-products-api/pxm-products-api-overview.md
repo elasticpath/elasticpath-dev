@@ -148,7 +148,7 @@ Name | Type | Description |
 ---
 * `owner`
 * `string`
-* The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview).
+* The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
 ---
 * `updated_at`
 * `string`
@@ -161,7 +161,7 @@ Name | Type | Description |
   * `standard` - A standard product is a standalone product. 
   * `parent` - A parent product is a product that has child products that have been built using the `Build Child Products` endpoint. See [Create child products using variations](/docs/pxm/products/pxm-product-variations/generate-pxm-variations).
   * `child` -  When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.
-  * `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles/pxm-bundles#bundle-components-and-options).
+  * `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
   {% /list %}
 ---
 * `tags`
@@ -211,5 +211,5 @@ If you specified `build_rules` for a product, the `variations` object lists the 
 - [Products](/docs/pxm/products/pxm-products)
 - [Locales](/docs/pxm/products/locales/pxm-locales)
 - [Product Variations](/docs/pxm/products/pxm-product-variations/pxm-variations)
-- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)

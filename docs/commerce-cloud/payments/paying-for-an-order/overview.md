@@ -4,7 +4,7 @@ nav_label: Paying for an order Overview
 sidebar_position: 1
 ---
 
-When you [checkout](/docs/commerce-cloud/checkout/checkout) a [cart](/docs/commerce-cloud/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders/orders.md) is returned. You can process the payment for the order though a payment gateway.
+When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/commerce-cloud/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders/orders.md) is returned. You can process the payment for the order though a payment gateway.
 
 :::caution
 
@@ -19,7 +19,7 @@ When you [checkout](/docs/commerce-cloud/checkout/checkout) a [cart](/docs/comme
 
 Depending on the chosen gateway, you may or may **not** have access to `capture` funds immediately or `authorize` for later payment. For more information, see [Transactions](/docs/commerce-cloud/payments/transactions/transactions-overview).
 
-To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the `amount` field within the request body. To learn about Split Payments, see the [Split Payments](/docs/commerce-cloud/payments/payments#split-payments) section.
+To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the `amount` field within the request body. To learn about Split Payments, see the [Split Payments](/docs/commerce-cloud/payments#split-payments) section.
 
 ### Purchase
 
@@ -237,7 +237,7 @@ The following response is returned when you [Get an order](/docs/commerce-cloud/
 }
 ```
 
-For more information about order and payment statuses for split payments, see [Split Payments](/docs/commerce-cloud/payments/payments#split-payments-beta-release).
+For more information about order and payment statuses for split payments, see [Split Payments](/docs/commerce-cloud/payments#split-payments-beta-release).
 
 ### Capture
 
@@ -346,7 +346,7 @@ After the payment is `partially_authorized`, you must `capture` the authorized t
 }
 ```
 
-For more information about order and payment statuses for split payments, see [Split Payments](/docs/commerce-cloud/payments/payments#split-payments-beta-release).
+For more information about order and payment statuses for split payments, see [Split Payments](/docs/commerce-cloud/payments#split-payments-beta-release).
 
 ### Refunds
 

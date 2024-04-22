@@ -42,5 +42,5 @@ Carts within a store have a default expiry threshold of seven days. The elapsed 
 
 ## Related Resources
 
-- [Checkout API](/docs/commerce-cloud/checkout/checkout)
+- [Checkout API](/docs/commerce-cloud/checkout)
 - [Implement Shopkit](https://www.moltin.com/commerce-solutions/shopkit) - an embeddable cart and checkout solution

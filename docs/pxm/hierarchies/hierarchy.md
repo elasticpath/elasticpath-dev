@@ -116,7 +116,7 @@ You must create a parent node first, then create your child nodes.
     * Optional
     * If you have activated any languages for your store:
       {% list type="checkmark" %}
-      1. From the **Locale** list, select the language you want to use to localize your node details. You can activate and deactivate languages in Commerce Manager. You can activate a maximum of five languages. See [Using Locales in Commerce Manager](/docs/pxm/products/locales/locales).
+      1. From the **Locale** list, select the language you want to use to localize your node details. You can activate and deactivate languages in Commerce Manager. You can activate a maximum of five languages. See [Using Locales in Commerce Manager]( /docs/pxm/products/locales).
       2. Add a localized node name and description.
       {% /list %}
     {% /table %}

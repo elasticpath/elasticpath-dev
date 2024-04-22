@@ -87,11 +87,11 @@ By default, page length is set to `25`. You can adjust this setting globally for
 In general, requests with a large `page[offset]` are less performant in the Commerce API, especially at scale (either with high
 frequency requests or with a high amount of data) and care should be taken when using them.
 
-A common use case for high `page[offset]` is the need to retrieve all the data from a specific endpoint. As an alternative to using high page offsets, many endpoints support the use of an alternative pattern that leverages [filtering](/docs/api-overview/filtering) and [sorting](/docs/api-overview/sorting). 
+A common use case for high `page[offset]` is the need to retrieve all the data from a specific endpoint. As an alternative to using high page offsets, many endpoints support the use of an alternative pattern that leverages [filtering](/docs/commerce-cloud/api-overview/filtering) and [sorting](/docs/commerce-cloud/api-overview/sorting). 
  
 To use the approach you first decide on which attribute to sort on, with `created_at`, `updated_at`, `id` being the most common. Next you request the first page using the `sort` attribute selected. To get the next page, supply a filter where the attribute has a value greater than or equal to the last value.
 
-For example, to retrieve all [orders](/docs/orders/orders-api/get-all-orders) in the system, pass the following queries (the dates come from the last result on the previous page):
+For example, to retrieve all [orders](/docs/commerce-cloud/orders/orders-api/get-all-orders) in the system, pass the following queries (the dates come from the last result on the previous page):
 
 1. `GET /v2/orders?sort=created_at`
 2. `GET /v2/orders?sort=created_at&filter=ge(created_at,2018-04-16T10:11:59.715Z)` 
@@ -101,13 +101,13 @@ To use this approach, the main requirement is that the endpoint needs to support
 
 The following are a few other implementation details to consider when using this approach:
 1. If using a timestamp value, the granularity of the time stamp on the endpoint might mean you still need to paginate to another page if lots of updates or creates happen at the same time, you can determine if this is necessary by checking if the first timestamp and last timestamp on a page are identical.
-2. Due to [eventual consistency](/docs/api-overview/eventual-consistency) timestamp values close to the present may not be complete, so you should consider using some buffer if trying to build a complete list.
+2. Due to [eventual consistency](/docs/commerce-cloud/api-overview/eventual-consistency) timestamp values close to the present may not be complete, so you should consider using some buffer if trying to build a complete list.
 3. When using `updated_at`, you may see values more than once if a record is updated while this is being processed.
 4. Using `updated_at` is a great way to keep another system in sync with delta's because it allows you to see changes in records (except deletes).
 
 ### Example: Exporting all accounts to CSV format
 
-The following bash script uses curl and [jq](https://jqlang.github.io/jq/) to build a CSV of all [Accounts](/docs/commerce-cloud/accounts/accounts) sorted by `id`.
+The following bash script uses curl and [jq](https://jqlang.github.io/jq/) to build a CSV of all [Accounts](/docs/commerce-cloud/accounts) sorted by `id`.
 
 ```bash
 #!/usr/bin/env bash

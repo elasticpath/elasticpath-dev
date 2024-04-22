@@ -4,7 +4,7 @@ nav_label: Orders API Overview
 sidebar_position: 1
 ---
 
-An Order is created through the [checkout](/docs/commerce-cloud/checkout/checkout) endpoint within the `Carts` API.
+An Order is created through the [checkout](/docs/commerce-cloud/checkout) endpoint within the `Carts` API.
 
 ## The Order Object
 

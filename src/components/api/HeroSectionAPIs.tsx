@@ -17,7 +17,7 @@ import clsx from 'clsx';
 const PRODUCTS = [
   {
     title: 'Product Experience Manager',
-    link: '/docs/api/pxm/pricebooks',
+    link: '/docs/api/pxm/pricebooks/price-book-introduction',
     icon: BookRegular,
     // lightImage: '/static/landing-page/hero/voice-graphic.png',
     // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
@@ -26,7 +26,7 @@ const PRODUCTS = [
   {
     title: 'Promotions',
     beta: false,
-    link: '/docs/api/promotions',
+    link: '/docs/api/promotions/promotions-standard',
     icon: AppsListRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -34,7 +34,7 @@ const PRODUCTS = [
   },
   {
     title: 'Subscriptions',
-    link: '/docs/api/subscriptions',
+    link: '/docs/api/subscriptions/subscriptions-overview',
     icon: ArrowSyncFilled,
     // lightImage: '/static/landing-page/hero/livestream-graphic.png',
     // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
@@ -42,7 +42,7 @@ const PRODUCTS = [
   },
   {
     title: 'Account Management',
-    link: '/docs/api/accounts',
+    link: '/docs/api/accounts/accounts-introduction',
     icon: PersonCircleRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
@@ -51,7 +51,7 @@ const PRODUCTS = [
   {
     title: 'Addresses',
     beta: false,
-    link: '/docs/api/addresses',
+    link: '/docs/api/addresses/addresses-introduction',
     icon: ContactCardGroupRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -60,7 +60,7 @@ const PRODUCTS = [
   {
     title: 'Carts, Checkout, Orders',
     beta: false,
-    link: '/docs/api/carts',
+    link: '/docs/api/carts/carts-checkout-orders-introduction',
     icon: ShoppingBagRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -69,7 +69,7 @@ const PRODUCTS = [
   {
     title: 'Payments',
     beta: false,
-    link: '/docs/api/payments',
+    link: '/docs/api/payments/payment-gateway-introduction',
     icon: WalletCreditCardRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -78,7 +78,7 @@ const PRODUCTS = [
   {
     title: 'Custom Data',
     beta: false,
-    link: '/docs/api/flows',
+    link: '/docs/api/flows/flows-service-api',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -87,17 +87,8 @@ const PRODUCTS = [
   {
     title: 'Integrations',
     beta: false,
-    link: '/docs/api/integrations',
+    link: '/docs/api/integrations/integrations-event-subscriptions-notifications',
     icon: ConnectedRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',
-  },
-  {
-    title: 'Exporter',
-    beta: false,
-    link: '/docs/api/exporter',
-    icon: ArrowExportLtrFilled,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
     text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',

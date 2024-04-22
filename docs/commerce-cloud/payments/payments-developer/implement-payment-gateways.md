@@ -230,4 +230,4 @@ curl -X POST https://useast.api.elasticpath.com/v2/orders/{ORDER_ID}/payments \
 
 - [Checkout workflow](/docs/commerce-cloud/checkout/checkout-workflow)
 - [Carts API](/docs/commerce-cloud/carts/carts.md)
-- [Gateways API](/docs/commerce-cloud/payments/payments.md)
+- [Gateways API](/docs/commerce-cloud/payments)

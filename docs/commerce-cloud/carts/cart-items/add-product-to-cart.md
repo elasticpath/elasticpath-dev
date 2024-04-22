@@ -8,7 +8,7 @@ Adding a Product to Cart is the most common Cart action. If you want to add any 
 
 ## Dynamic Bundles
 
-A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/pxm/products/pxm-bundles/pxm-bundles#dynamic-bundles).
+A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/pxm/products/pxm-bundles#dynamic-bundles).
 
 Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the [configure a shopper bundle](/docs/pxm/catalogs/shopper-catalog/configure-shopper-bundle) endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the `add product to cart` request.
 
@@ -91,7 +91,7 @@ When the product is added to the cart, those custom inputs are supplied.
 
 If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/commerce-cloud/checkout/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order).
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/commerce-cloud/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order).
 
 When you add products to a cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
 
@@ -102,7 +102,7 @@ When you add products to a cart with `custom_inputs`, there are certain limitati
 :::note
 
 - Any requests to add a product to cart returns the collection of [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).
-- [Tax items](/docs/commerce-cloud/carts/tax-items/tax-items#the-tax-item-object) may optionally be added with the product. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
+- [Tax items](/docs/commerce-cloud/carts/tax-items#the-tax-item-object) may optionally be added with the product. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
 - The cart currency is set when the first item is added to the cart.
 - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a `400` error if a price is not defined in the correct currency.
 

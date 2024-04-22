@@ -20,7 +20,7 @@ You can use [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-p
 
 - [Products](/docs/pxm/products/pxm-products)
 - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
-- [Catalogs](/docs/pxm/catalogs/catalogs)
+- [Catalogs](/docs/pxm/catalogs)
 - [Price Books](/docs/pxm/pricebooks/price-books)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Hierarchy in Commerce Manager](/docs/pxm/hierarchies/hierarchy)

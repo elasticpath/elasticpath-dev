@@ -6,7 +6,7 @@ sidebar_position: 3
 
 With flows, you can extend an existing resource or create a new resource for your store or organization. You can also use to create simple custom fields for existing resources or complex collections of fields and data. You can create useful resources for your customers, such as a want list, or blogs for your store or organization.
 
-For more information about using flows in Commerce, see [Custom Data (Flows)](/docs/commerce-cloud/custom-data/custom-data-flows).
+For more information about using flows in Commerce, see [Custom Data (Flows)](/docs/commerce-cloud/custom-data).
 
 :::caution
 Do not create flows in **SYSTEM** > **Flows**. Use [**Product Experience Manager > Configurations > Templates**](/docs/pxm/products/extending-pxm-products/templates) page to create a Product Experience Manager flow. However, all flows in the store are displayed in the **SYSTEM** > **Flows** page where the template flows are labelled with a prefix `PXM`. We recommend not to update template flows in this page.

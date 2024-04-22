@@ -40,7 +40,7 @@ The following diagram shows the price book object map.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview). |
+| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
 
 ## The `links` Object
 

@@ -31,7 +31,7 @@ The following image shows the workflow of the order status when you checkout a c
 
 ### Summary of the workflow
 
-1. [Checkout](/docs/commerce-cloud/checkout/checkout) a cart. When you checkout a cart, an unpaid order is returned.
+1. [Checkout](/docs/commerce-cloud/checkout) a cart. When you checkout a cart, an unpaid order is returned.
 1. [Paying for an order](/docs/commerce-cloud/payments/paying-for-an-order/overview). You can process the payment for an order through a payment gateway. You can pay for an order either using `purchase` payment method or `authorize` payment method.
 1. Confirm the order. Order confirmation might be required when you purchase or authorize a transaction. If you use a `purchase` method, the order is immediately confirmed. If you use `authorize` method, funds are captured later when an item is dispatched or restocked, and then the order is considered as complete. See [Capture a Transaction](/docs/commerce-cloud/payments/transactions/capture-a-transaction).
 1. [Fulfill](/docs/commerce-cloud/orders/orders-api/update-an-order#put-fulfill-an-order-by-id), [Refund](/docs/commerce-cloud/payments/transactions/refund-a-transaction) or [Cancel](/docs/commerce-cloud/orders/orders-api/update-an-order#put-cancel-an-order-by-id) the paid order. The order is considered as fulfilled when it is shipped. You can cancel the order after the checkout or if the order is not fulfilled. You can also choose to refund a partial payment or full payment.

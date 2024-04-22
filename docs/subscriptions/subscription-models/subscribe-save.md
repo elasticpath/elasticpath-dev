@@ -33,7 +33,7 @@ The following steps describe how to sell personal care items using a subscribe a
 
 2. Assign a price for each of these products.
 
-   See [Repeat Products](/docs/subscriptions/managing-products-cm).
+   See [Repeat Products](/docs/subscriptions/products/managing-products-cm).
 
 3. Create your plans, for example:
 
@@ -44,7 +44,7 @@ The following steps describe how to sell personal care items using a subscribe a
 
 4. Assign a discount for each plan.
 
-   See [Plans](/docs/subscriptions/managing-subscription-plans-cm).
+   See [Plans](/docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
 
 5. Create an offering that combines each product with the plans.
 
@@ -52,4 +52,4 @@ The following steps describe how to sell personal care items using a subscribe a
     - offering 2 - Desensitizing toothpaste with monthly, 3 monthly, 6 monthly, and yearly plans.
     - offering 3 - Whitening toothpaste with monthly, 3 monthly, 6 monthly, and yearly plans.
    
-    See [Offerings](/docs/subscriptions/managing-subscription-offerings).
+    See [Offerings](/docs/subscriptions/offerings/managing-subscription-offerings).

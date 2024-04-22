@@ -26,7 +26,7 @@ If your flow has more than one field related to it, you see multiple field slugs
 *
   `string`
 *
-  The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview).
+  The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
 
 ---
 *

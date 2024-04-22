@@ -53,7 +53,7 @@ A store admin can invite registered or unregistered users using their email addr
     The store **Home** page opens.
 1. Optionally, invite your colleagues to collaborate.
 
-    For more information, see [Team Management](/docs/commerce-cloud/team-management/team-management) section.
+    For more information, see [Team Management](/docs/commerce-cloud/team-management) section.
 
 :::caution
 If you are logged on to Commerce Manager using single sign-on, Your profile information is provided by the single sign-on provider. You cannot create new stores, invite users, or edit your profile information.

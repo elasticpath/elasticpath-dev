@@ -122,7 +122,7 @@ The cached entries disappear from the cached objects pool after 5 minutes.
 ---
 * `owner`
 * `string`
-* The catalog owner, either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview).
+* The catalog owner, either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
 ---
 * `percent_completed`
 * `integer`
@@ -155,7 +155,7 @@ The cached entries disappear from the cached objects pool after 5 minutes.
     * `standard` - A standard product is a standalone product.
     * `parent` - A parent product is a product that has child products that have been built using the `Build Child Products` endpoint. See [Create child products using variations](/docs/pxm/products/pxm-product-variations/generate-pxm-variations).
     * `child` - A child product is a product that is a variation of a parent product.
-    * `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles/pxm-bundles#bundle-components-and-options).
+    * `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
   {% /list %}
 {% /table %}
 

@@ -36,7 +36,7 @@ Do the following to apply a promotion at a cart level:
 
 1. [Add items to the cart](/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
 1. Apply promotion using code if the promotion is not automatically applied.
-1. [Checkout the cart](/docs/commerce-cloud/checkout/checkout) that is updated with the promotion.
+1. [Checkout the cart](/docs/commerce-cloud/checkout) that is updated with the promotion.
 
 The promotion codes work with the `cart` endpoint. When a customer enters a promotion code, you must call API to apply the promotion that the code is associated with.
 

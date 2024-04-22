@@ -85,7 +85,7 @@ As an API consumer, links allow you to move between requests.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview). |
+| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
 
 ## The `page` Object
 

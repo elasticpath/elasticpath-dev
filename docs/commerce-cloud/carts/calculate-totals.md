@@ -66,5 +66,5 @@ In summary, promotional discounts are applied before tax and rounding occurs for
 
 - [Orders](/docs/commerce-cloud/orders/orders.md)
 - [Taxes](/docs/commerce-cloud/carts/tax-items/taxes)
-- [Checkout API](/docs/commerce-cloud/checkout/checkout)
+- [Checkout API](/docs/commerce-cloud/checkout)
 - [Create custom carts](/docs/commerce-cloud/carts/create-custom-cart-items)

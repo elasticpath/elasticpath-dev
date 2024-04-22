@@ -72,7 +72,7 @@ Each sale can only have one sale within the same block.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview). |
+| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
 
 ## The `links` Object
 

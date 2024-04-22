@@ -153,5 +153,5 @@ The formatted price can be found outside the regular price object for a product,
 
 ## Related Resources
 
-- [Currencies](/docs/pxm/currencies/currencies)
+- [Currencies](/docs/pxm/currencies)
 - [Managing Currencies in Organizations](/docs/commerce-cloud/organizations/organizations-in-commerce-manager/manage-org-currencies)

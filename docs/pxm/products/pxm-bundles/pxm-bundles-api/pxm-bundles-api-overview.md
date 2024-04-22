@@ -152,5 +152,5 @@ Name | Type | Description |
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | `created_at` | `string` | The date and time a product is created. |
-| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview). |
+| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
 | `updated_at` | `integer` | The date and time a product is updated. |

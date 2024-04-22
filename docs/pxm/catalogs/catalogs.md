@@ -57,7 +57,7 @@ A price book contains the prices for each of the products in the catalog. You ca
 
 When you publish a catalog, the `live` products in the hierarchies appear in a catalog release. A catalog release provides a snapshot of product information taken at the time of publication. You can have one or more catalog releases available in your organization or in your store. If you publish a catalog for your organization, the catalog is available when the store is launched.
 
-If you have more than one catalog published for your store, use catalog rules to specify when to display each catalog. For example, you can use [catalog rules](/docs/pxm/catalogs/catalog-rules/catalog-rules) to schedule a catalog to appear during a particular date and time, such as a seasonal catalog. The catalog may have different pricing than the other catalogs. You can have multiple published catalogs.
+If you have more than one catalog published for your store, use catalog rules to specify when to display each catalog. For example, you can use [catalog rules](/docs/pxm/catalogs/catalog-rules) to schedule a catalog to appear during a particular date and time, such as a seasonal catalog. The catalog may have different pricing than the other catalogs. You can have multiple published catalogs.
 
 When a catalog is ready to be used in a store, you publish it. You can create and publish catalogs for different contexts and channels. You can see the differences between the last two consecutive catalog releases. See [Publish a catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog).
 
@@ -66,7 +66,7 @@ You retrieve catalogs for your shopper experience by using the [Catalog View API
 ## Related Resources
 
 - [Products](/docs/pxm/products/pxm-products)
-- [Hierarchies](/docs/pxm/hierarchies/hierarchies)
+- [Hierarchies](/docs/pxm/hierarchies)
 - [Price Books](/docs/pxm/pricebooks/price-books)
 
 ### Demos

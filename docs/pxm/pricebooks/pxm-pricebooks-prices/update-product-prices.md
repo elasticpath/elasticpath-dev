@@ -393,4 +393,4 @@ The `includes_tax` setting must be the same for all options in a bundle. If you 
 
 ## Related Resources
 
-- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)

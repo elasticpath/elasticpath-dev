@@ -14,7 +14,7 @@ Product data is stored in a database. After you add products, you can update pro
 
 While defining products, the products are in a draft state. Your organization can develop the criteria and business processes to help determine when a product is ready to go live and appear in a catalog.
 
-To appear in a [catalog](/docs/pxm/catalogs/catalogs), a product must meet the following criteria:
+To appear in a [catalog](/docs/pxm/catalogs), a product must meet the following criteria:
 
 - The product is live.
 - The product is associated with at least one hierarchy.
@@ -50,12 +50,12 @@ Products have one of the following types:
 
 * `parent` - A parent product is a product that has child products that have been built using the `Build Child Products` endpoint. See [Create child products using variations](/docs/pxm/products/pxm-product-variations/generate-pxm-variations).
 * `child` -  When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.
-* `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles/pxm-bundles#bundle-components-and-options).
+* `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
 
 ## Related Resources
 
 - [Locales](/docs/pxm/products/locales/pxm-locales)
-- [Catalogs](/docs/pxm/catalogs/catalogs)
+- [Catalogs](/docs/pxm/catalogs)
 - [Price Books](/docs/pxm/pricebooks/price-books)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Configurations](/docs/pxm/products/pxm-products-commerce-manager/configure-locales)

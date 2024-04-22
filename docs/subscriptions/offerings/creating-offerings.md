@@ -22,11 +22,11 @@ Select **Offering Preview** at any time to view a snapshot of your offering.
 
 5. (Required) In **Manage Products**, you can either:
 
-   - [create a new product](/docs/subscriptions/managing-products-cm).
+   - [create a new product](/docs/subscriptions/products/managing-products-cm).
    - attach an existing product. To attach an existing product, select **Attach Product** and select **+** next to the product that you want to attach.
 6. (Required) In **Manage Plans**, you can either:
 
-   - [create a new plan](/docs/subscriptions/managing-subscription-plans-cm)
+   - [create a new plan](/docs/subscriptions/subscription-plans/managing-subscription-plans-cm)
    - attach an existing plan. To attach an existing plan, select **Attach Plan** and select **+** next to the plan that you want to attach.
 
    :::tip

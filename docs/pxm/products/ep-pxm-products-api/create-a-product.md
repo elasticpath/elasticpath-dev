@@ -614,6 +614,6 @@ See [adding your products to carts](/docs/commerce-cloud/carts/cart-items/add-pr
 
 - [Products](/docs/pxm/products/pxm-products-commerce-manager/create-products)
 - [Locales](/docs/pxm/products/locales/pxm-locales)
-- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)

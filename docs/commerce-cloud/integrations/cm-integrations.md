@@ -6,7 +6,7 @@ sidebar_position: 110
 
 You can view your store’s integrations on the **SYSTEM > Store Settings > Webhooks** tab.
 
-For an overview of how integrations work in Commerce, see [Integrations](/docs/commerce-cloud/integrations/integrations).
+For an overview of how integrations work in Commerce, see [Integrations](/docs/commerce-cloud/integrations).
 
 ## Sorting and filtering integrations
 

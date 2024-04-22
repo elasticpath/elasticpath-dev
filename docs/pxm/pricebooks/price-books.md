@@ -106,5 +106,5 @@ See [Price Book Import/Bulk Update](/docs/pxm/pricebooks/price-import/overview).
 
 ## Related Resources
 
-- [Catalogs](/docs/pxm/catalogs/catalogs)
+- [Catalogs](/docs/pxm/catalogs)
 - [Product Experience Manager](/docs/pxm/products/pxm-products)

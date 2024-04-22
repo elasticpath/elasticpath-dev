@@ -200,6 +200,17 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/carts/sidebar.js")
     },
+    {
+      type: "category",
+      label: "Order Exporter",
+      link: {
+        type: "generated-index",
+        title: "Order Exporter API",
+        slug: "/docs/api/exporter/exporter-service-api"
+      },
+      // @ts-ignore
+      items: require("./docs/api/exporter/sidebar.js")
+    },
   ],
   exporter: [
     {

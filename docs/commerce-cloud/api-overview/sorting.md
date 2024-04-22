@@ -6,7 +6,7 @@ sidebar_position: 100
 
 Many Commerce endpoints support sorting.  The general syntax of sorting within the API is described below.
 
-Sorting is also supported within [JavaScript SDK](/docs/api-overview/sdk).
+Sorting is also supported within [JavaScript SDK](/docs/developer-tools#software-development-kits).
 
 ## Usage and Syntax
 

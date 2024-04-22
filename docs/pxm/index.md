@@ -25,8 +25,8 @@ Scenarios are created by defining the context within which a catalog is displays
 
 ## Related Resources
 
-- [Catalogs](/docs/pxm/catalogs/catalogs)
-- [Catalog Rules](/docs/pxm/catalogs/catalog-rules/catalog-rules)
+- [Catalogs](/docs/pxm/catalogs)
+- [Catalog Rules](/docs/pxm/catalogs/catalog-rules)
 - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
 - [Products](/docs/pxm/products/pxm-products)
 - [Price Books](/docs/pxm/pricebooks/price-books)

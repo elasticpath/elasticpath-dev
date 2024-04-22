@@ -235,7 +235,7 @@ Allows only a single relationships to be created on an entry.
 *
   `string`
 *
-  The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview).
+  The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
 
 ---
 *

@@ -19,7 +19,7 @@ Below are a number of guides intended to help you take your page-editing knowled
 * [Adding or Removing Animations to Components](/docs/studio/content/Basic-Page-Editing/Adding-or-Removing-Animations)
 * [How to adjust padding in Studio](/docs/studio/content/Basic-Page-Editing/Padding-Controls)
 * [Adding parallax to background media](/docs/studio/content/Media-Management/Adding-parallax-to-background-media)
-* [Reusing customized components on other pages](/docs/studio/developers/custom-themes#custom-components)
+* [Reusing customized components on other pages](/docs/studio/developers/custom-themes/custom-components)
 * [Configuring Components to Carousel](/docs/studio/content/Basic-Page-Editing/Creating-a-Section-Carousel)
 
 

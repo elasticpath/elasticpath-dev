@@ -10,7 +10,7 @@ The carts are distinct from one another. Shoppers can add different items to the
 
 After the shopper checks out the cart, the cart remains available to the shopper. The cart is persistent and stays with the shopper after it is used.
 
-You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Cart Settings](/docs/commerce-cloud/carts/cart-management/cart-settings).
+You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Cart Settings](docs/commerce-cloud/carts/cart-management/cart-settings/overview).
 
 ## `POST` Create a Custom Cart
 
@@ -36,7 +36,7 @@ Creates a custom cart. Call this endpoint each time a customer creates a cart.
 | `name`        | Required | `string` | The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.   |
 | `id`          | Optional | `string` | Custom identifier for the cart. Only `a-zA-Z0-9_-` symbols are allowed.                                                                                                                                                                                                        |
 | `description` | Optional | `string` | The cart description.                                                                                                                                                                                                                                                          |
-| `discount_settings.custom_discounts_enabled` | Optional | `boolean` | This parameter enables custom discounts for a cart. When set to `true`, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](/docs/commerce-cloud/carts/cart-management/cart-settings). |
+| `discount_settings.custom_discounts_enabled` | Optional | `boolean` | This parameter enables custom discounts for a cart. When set to `true`, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](docs/commerce-cloud/carts/cart-management/cart-settings/overview). |
 
 ### Request example
 
@@ -137,7 +137,7 @@ https://useast.api.elasticpath.com/v2/carts
 - Carts with `snapshot_date` are same as preview carts.
 - You cannot checkout a cart that includes a `snapshot_date`.
 - To delete a promotion preview cart, use [Delete a cart](/docs/commerce-cloud/carts/cart-management/delete-a-cart) endpoint.
-- The promotion preview cart has the same expiration time as a regular cart based on the store's [cart settings](docs/commerce-cloud/carts/cart-management/cart-settings#put-update-cart-settings).
+- The promotion preview cart has the same expiration time as a regular cart based on the store's [cart settings](docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings#put-update-cart-settings).
 - Preview cart interactions skip inventory checks and events, allowing users to preview future carts without impacting related external systems.
 :::
 

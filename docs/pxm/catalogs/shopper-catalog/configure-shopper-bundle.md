@@ -258,7 +258,7 @@ The following table describes the response codes that indicate the API request h
 
 ## Related Resources
 
-- [Bundles](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles](/docs/pxm/products/pxm-bundles)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)
 - [Multiple Carts API](/docs/commerce-cloud/carts/cart-management/create-multi-cart)
 - [Product Experience Manager](/docs/pxm/products/pxm-products)

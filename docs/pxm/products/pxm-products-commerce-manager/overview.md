@@ -29,7 +29,7 @@ Products have one of the following types:
 * `product` - A product is a standalone product.
 * `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).
 * `child` - A child product is a product that is a variation of a parent product.
-* `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles/pxm-bundles#bundle-components-and-options).
+* `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
 
 ![product types](/assets/product_types.png)
 
@@ -37,10 +37,10 @@ Products have one of the following types:
 
 - [Product Templates](/docs/pxm/products/pxm-products#product-templates)
 - [Product Attributes](/docs/pxm/products/pxm-products#product-attributes)
-- [Product Hierarchies](/docs/pxm/hierarchies/hierarchies)
+- [Product Hierarchies](/docs/pxm/hierarchies)
 - [Variations](/docs/pxm/products/pxm-product-variations/pxm-variations)
 - [Price books](/docs/pxm/pricebooks/price-books)
-- [Catalog](/docs/pxm/catalogs/catalogs)
+- [Catalog](/docs/pxm/catalogs)
 
 ### Demos
 

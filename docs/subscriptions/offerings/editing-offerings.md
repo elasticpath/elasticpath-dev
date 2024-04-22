@@ -14,12 +14,12 @@ When you are building an offering:
 
 Here's how you build an offering:  
 
-1. Attach your repeat product. An offering can have only one product. See [Repeat Products](/docs/subscriptions/managing-products-cm).
+1. Attach your repeat product. An offering can have only one product. See [Repeat Products](/docs/subscriptions/products/managing-products-cm).
 2. Attach your plans. 
     - Plans are the rules that govern your subscription, for example, any discount. 
     - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
-    - An offering must have at least one plan. See [Plans](/docs/subscriptions/managing-subscription-plans-cm).
-3. [Create your offerings](/docs/subscriptions/managing-subscription-offerings). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of products or plans, depending on the products and services you offer.
+    - An offering must have at least one plan. See [Plans](/docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
+3. [Create your offerings](/docs/subscriptions/offerings/managing-subscription-offerings). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of products or plans, depending on the products and services you offer.
     - When a [customer](/docs/subscriptions) chooses a plan, a subscription is created. See [Subscriptions](/docs/subscriptions). 
     - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [Invoicing and Billing](/docs/subscriptions).
 

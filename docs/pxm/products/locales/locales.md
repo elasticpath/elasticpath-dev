@@ -6,7 +6,7 @@ sidebar_position: 20
 
 You can localize product names and descriptions when creating your products.
 
-By default, there are a number of language codes available. You activate locales in Commerce Manager in [**SYSTEM** > **Store Settings** > **Locales**](/docs/pxm/products/locales/locales). You can activate a maximum of five languages.
+By default, there are a number of language codes available. You activate locales in Commerce Manager in [**SYSTEM** > **Store Settings** > **Locales**]( /docs/pxm/products/locales). You can activate a maximum of five languages.
 
 By default, there are a number of language codes available to activate. If you want to use a language code that is not available by default, then you can add a localized product name and description for this language using [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product) API request.
 

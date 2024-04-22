@@ -1604,6 +1604,6 @@ curl GET https://useast.api.elasticpath.com/catalogs/6dff977e-a8c4-4e32-8d2c-407
 
 ## Related Resources
 
-- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)

@@ -41,7 +41,7 @@ The maximum size for a flow entry of type `string` can be 16 megabytes.
 *
   `string`
 *
-  The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations/overview).
+  The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
 
 ---
 *

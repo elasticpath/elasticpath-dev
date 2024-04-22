@@ -151,5 +151,5 @@ When a catalog is published, the breadcrumb information for a child product incl
 ## Related Resources
 
 - [Products](/docs/pxm/products/pxm-products)
-- [Hierarchies](/docs/pxm/hierarchies/hierarchies)
+- [Hierarchies](/docs/pxm/hierarchies)
 - [Price Books](/docs/pxm/pricebooks/price-books)

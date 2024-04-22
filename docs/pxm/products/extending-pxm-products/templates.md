@@ -122,7 +122,7 @@ For the changes to appear in the storefront, you must republish the affected cat
 - [Product Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview)
 - [Product Attributes](/docs/pxm/products/pxm-products#product-attributes)
 - [Price books](/docs/pxm/pricebooks/price-books)
-- [Catalog](/docs/pxm/catalogs/catalogs)
+- [Catalog](/docs/pxm/catalogs)
 - [Create a template](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/create-a-template)
 - [Create an attribute](/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/create-attribute)
 

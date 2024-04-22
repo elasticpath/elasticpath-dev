@@ -31,43 +31,39 @@ export default function APIs() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
           <API
             name="Product Experience Manager"
-            to="/docs/pxm/products"
+            to="/docs/api/pxm/pricebooks/price-book-introduction"
           />
           <API
             name="Promotions"
-            to="/docs/api/promotions"
+            to="/docs/api/promotions/promotions-standard"
           />
           <API
             name="Subscriptions"
-            to="/docs/api/subscriptions"
+            to="/docs/api/subscriptions/subscriptions-overview"
           />
           <API
             name="Accounts"
-            to="/docs/api/accounts"
+            to="/docs/api/accounts/accounts-introduction"
           />
           <API
             name="Addresses"
-            to="/docs/api/addresses"
+            to="/docs/api/addresses/addresses-introduction"
           />
           <API
             name="Carts, Checkout, Orders"
-            to="/docs/api/carts"
+            to="/docs/api/carts/carts-checkout-orders-introduction"
           />
           <API
             name="Payments"
-            to="/docs/api/payments"
+            to="/docs/api/payments/payment-gateway-introduction"
           />
           <API
               name="Custom Data"
-              to="/docs/api/flows"
+              to="/docs/api/flows/flows-service-api"
           />
           <API
               name="Integrations"
-              to="/docs/api/integrations"
-          />
-          <API
-              name="Exporter"
-              to="/docs/api/exporter"
+              to="/docs/api/integrations/integrations-event-subscriptions-notifications"
           />
         </div>
       </div>

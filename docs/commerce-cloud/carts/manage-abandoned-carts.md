@@ -150,6 +150,6 @@ The script needs to perform the following actions:
 
 ## Related Resources
 
-- [Custom Data (Flows)](/docs/commerce-cloud/custom-data/custom-data-flows)
+- [Custom Data (Flows)](/docs/commerce-cloud/custom-data)
 - [Custom Data (Flows) API](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
 - [Extend a resource with custom data](/docs/commerce-cloud/custom-data/extend-any-resource)

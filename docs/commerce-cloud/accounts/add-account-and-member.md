@@ -58,7 +58,7 @@ After an account member is listed in an account membership, the user can shop on
 1. From the store, select products and add to the cart.
 1. Checkout the cart and make the payment on behalf of the account.
 
-    For more information, see the [Account Checkout](/docs/commerce-cloud/checkout/checkout) section.
+    For more information, see the [Account Checkout](/docs/commerce-cloud/checkout) section.
 
 :::note
 Sellers can use the buyer account ID and account member ID to search and filter the completed orders.

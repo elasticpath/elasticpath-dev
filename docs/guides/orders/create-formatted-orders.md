@@ -11,7 +11,7 @@ This walkthrough shows how you can generate a Comma-Separated Values (CSV) list 
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account with existing orders
-- An [access token](/docs/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
 
 ## Step-by-step walkthrough
 
@@ -107,4 +107,4 @@ To see the full code, visit GitHub.
 ## Related Resources
 
 - [Orders](/docs/commerce-cloud/orders/orders.md)
-- [Orders API](/docs/orders/orders-api/orders-api-overview)
+- [Orders API](/docs/commerce-cloud/orders/orders-api/orders-api-overview)

@@ -4,7 +4,7 @@ nav_label: Carts Management Overview
 sidebar_position: 1
 ---
 
-A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout](/docs/commerce-cloud/checkout/checkout) endpoint to convert the cart to an order.
+A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout](/docs/commerce-cloud/checkout) endpoint to convert the cart to an order.
 
 :::note
 Adding, modifying, or removing any cart items, custom items, or promotions always returns the cart meta, calculated using the [calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method). **This is useful to update the client with up-to-date totals.**

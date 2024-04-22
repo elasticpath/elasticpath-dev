@@ -35,7 +35,7 @@ export default function APIReferenceSection() {
           <ul className="mt-10 flex list-none flex-col gap-4 text-left lg:pl-0">
             <li className="flex flex-col gap-1">
               <Link
-                href="/docs/api/pxm/products/create-product"
+                href="/docs/api/pxm/pricebooks/create-pricebook"
                 className="group font-jakarta font-semibold text-current"
               >
                 Create a Product

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 You can view your store’s payment gateways on the **SYSTEM > Store Settings > Payment Gateways** tab.
 
-For an overview of how payments work in Commerce, see [Payments](/docs/commerce-cloud/payments/payments.md).
+For an overview of how payments work in Commerce, see [Payments](/docs/commerce-cloud/payments).
 
 :::caution
 If the order total is zero or the payment is processed through non-supported payment providers, you can configure [Manual Gateway](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments) to process your store payments.

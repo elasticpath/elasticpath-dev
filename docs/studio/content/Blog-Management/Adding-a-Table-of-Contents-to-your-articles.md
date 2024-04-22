@@ -9,7 +9,7 @@ sidebar_position: 10
 ## How does it work?
 
 Through Studio you can enable a "table of contents" within
-your [Blog Settings](/docs/studio/content/Blog-Management/Blog-Management#blog-settings) to provide readers with a short list of
+your [Blog Settings](/docs/studio/content/Blog-Management) to provide readers with a short list of
 navigation items to help them quickly navigate through your articles. Once enabled, you'll see your table of contents in
 your article as long as there are multiple text items is styled as **H2**'s in the article body.
 

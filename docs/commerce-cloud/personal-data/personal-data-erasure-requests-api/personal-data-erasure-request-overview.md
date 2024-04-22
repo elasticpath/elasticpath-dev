@@ -10,7 +10,7 @@ Erasure requests allow you to wipe out personal data from Commerce in an automat
 * All related resources (for example, addresses, customers, and so on.)
 * Personal Data Logs
 
-Erasure requests can be created for any data entry in the personal data set (see [Personal Data Concept](/docs/commerce-cloud/personal-data/personal-data) for details), and the result is the same.
+Erasure requests can be created for any data entry in the personal data set (see [Personal Data Concept](/docs/commerce-cloud/personal-data) for details), and the result is the same.
 
 :::note
 Currently, it does not include flows or data external to Commerce.
@@ -21,7 +21,7 @@ Erasure requests are processed asynchronously. The POST requests return immediat
 In the unlikely event an erasure request fails (if the status is not equal to `SUCCESS`), you are advised to retry by creating another erasure request. If the problem persists, contact Support.
 
 :::note
-Currently, personal data management is only enabled for a limited set of endpoints. See the [personal data concepts page](/docs/commerce-cloud/personal-data/personal-data) for the list of endpoints that support personal data management.
+Currently, personal data management is only enabled for a limited set of endpoints. See the [personal data concepts page](/docs/commerce-cloud/personal-data) for the list of endpoints that support personal data management.
 :::
 
 Seller Admin & IT users have full access to Erasure Requests, and Support users have read access.

@@ -51,7 +51,7 @@ If products are curated, they are displayed in `curated_products`.
 ## Related Resources
 
 - [Locales](/docs/pxm/products/locales/pxm-locales)
-- [Catalogs](/docs/pxm/catalogs/catalogs)
+- [Catalogs](/docs/pxm/catalogs)
 - [Price Books](/docs/pxm/pricebooks/price-books)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 - [Curating Products in Commerce Manager](/docs/pxm/products/pxm-products-commerce-manager/curating-products)

@@ -117,7 +117,7 @@ Best practices are:
 
 1. Using `eq` when possible instead of `like`.
 2. Adding another search operator to narrow down the request. For example, adding `eq(status,paid)`, or `gt(updated_at,<DATE>)` to `like(contact.name,<SEARCH>)` may have higher performance.
-3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/custom-data/custom-data-flows-api/custom-data-flows-api-overview) and querying the flow. The flow can be populated using a combination of batch processing or [Events](/docs/integrations/integrations).
+3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview) and querying the flow. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations).
 
 ### Supported Operators
 
@@ -245,4 +245,4 @@ Best practices are:
 
 1. Using `eq` when possible instead of `like`.
 2. Adding another search operator can often narrow down the request. For example, adding `eq(status,paid)`, or `gt(updated_at,<DATE>)` to `like(contact.name,<SEARCH>)` may have higher performance.
-3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview) and querying that. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations/integrations).
+3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/commerce-cloud/custom-data) and querying that. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations).

@@ -249,7 +249,7 @@ The following table describes the filter options available for each attribute.
       * `standard` - A standard product is a standalone product.
       * `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).
       * `child` -  When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.
-      * `bundle` - A bundle is a purchasable product, comprising one or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles/pxm-bundles#bundle-components-and-options).
+      * `bundle` - A bundle is a purchasable product, comprising one or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
     {% /list %}
   {% /list %}
 {% /table %}

@@ -637,4 +637,4 @@ curl -X POST https://useast.api.elasticpath.com/pcm/pricebooks/2cf0d38c-58aa-420
 
 ## Related Resources
 
-- [Bundles](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles](/docs/pxm/products/pxm-bundles)

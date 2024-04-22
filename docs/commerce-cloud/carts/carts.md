@@ -26,5 +26,5 @@ Each cart is discrete and separate. Any updates or changes to one cart has no ef
 
 ## Related Resources
 
-- [Taxes](/docs/commerce-cloud/carts/tax-items/tax-items)
+- [Taxes](/docs/commerce-cloud/carts/tax-items)
 - [Promotions](/docs/commerce-cloud/promotions/promotions-overview.md)

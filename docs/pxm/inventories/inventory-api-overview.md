@@ -17,7 +17,7 @@ However, you cannot create multiple inventories of the same organization-level p
 :::
 
 :::caution
-There are a number of actions that happen to your inventory when checking out and paying for an order. For more information about the inventory process, see [Inventory](/docs/pxm/inventories/inventory.mdxx).
+There are a number of actions that happen to your inventory when checking out and paying for an order. For more information about the inventory process, see [Inventory](/docs/pxm/inventories/inventory).
 :::
 
 ## The Stock object

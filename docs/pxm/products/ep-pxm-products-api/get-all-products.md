@@ -492,5 +492,5 @@ curl GET https://useast.api.elasticpath.com/pcm/products?include=component_produ
 
 ## Related Resources
 
-- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles/pxm-bundles)
+- [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)

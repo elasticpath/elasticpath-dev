@@ -36,7 +36,7 @@ You cannot create a catalog without a price book.
 
 ### Body
 
-A [`Catalog`](/docs/pxm/catalogs/catalogs) object with one or more hierarchies of products and a price book.
+A [`Catalog`](/docs/pxm/catalogs) object with one or more hierarchies of products and a price book.
 
 | Attribute | Required | Type | Description |
 | :--- | :--- | :--- | :--- |

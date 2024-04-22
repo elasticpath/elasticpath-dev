@@ -88,5 +88,5 @@ This example provides instructions to create short order IDs using webhooks.
 ## Related Resources
 
 - [Orders](/docs/commerce-cloud/orders/orders.md)
-- [Orders API](/docs/orders/orders-api/orders-api-overview)
-- [Integrations API](/docs/integrations/integrations)
+- [Orders API](/docs/commerce-cloud/orders/orders-api/orders-api-overview)
+- [Integrations API](/docs/commerce-cloud/integrations)

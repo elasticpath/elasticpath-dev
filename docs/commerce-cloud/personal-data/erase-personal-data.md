@@ -24,7 +24,7 @@ Only sellers with Seller Admins and IT roles have write access to the API. Suppo
     It could be any data item that belongs to the user of interest (for example, a customer or address.)
 
    :::note
-   Currently, personal data management is only enabled for a limited set of endpoints. Please see the [personal data concepts page](/docs/commerce-cloud/personal-data/personal-data) for the list of endpoints that support personal data management.
+   Currently, personal data management is only enabled for a limited set of endpoints. Please see the [personal data concepts page](/docs/commerce-cloud/personal-data) for the list of endpoints that support personal data management.
    :::
 
 2. Call the `erasure-requests` POST endpoint and specify the `id` and `type` in the filter.

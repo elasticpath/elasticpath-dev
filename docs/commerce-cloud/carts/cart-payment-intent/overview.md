@@ -17,7 +17,7 @@ The following steps outline the workflow associated with the Payment Intent:
 1. [Add items to cart](/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart).
 1. [Create a Payment Intent for the cart](/docs/commerce-cloud/carts/cart-payment-intent/create-payment-intent-against-cart). The Payment Intent is created in Stripe, reflecting the cart and transaction details, including currency, amounts, payment type, and any optional Stripe details. The Payment Intent ID is generated and linked to the cart.
 1. [Update a Payment Intent](/docs/commerce-cloud/carts/cart-payment-intent/update-cart-payment-intent). This step is optional but becomes necessary when there are changes in the cart details at the time of payment. It ensures the Payment Intent accurately reflects the current cart details when processing the payments on the front end.
-1. [Checkout the cart](/docs/commerce-cloud/checkout/checkout). An unpaid order is created, and the Payment Intent ID is linked to the order.
+1. [Checkout the cart](/docs/commerce-cloud/checkout). An unpaid order is created, and the Payment Intent ID is linked to the order.
 1. [Confirm the order](/docs/commerce-cloud/orders/orders-api/confirm-an-order). This is important because after checkout, it is essential to confirm the Payment Intent and synchronize it with Commerce. This results in a corresponding transaction and change in order statuses in Commerce. Additionally, the Payment Intent ID is removed from the order once it is linked via the transaction.
 
 ## Best Practices

@@ -9,7 +9,7 @@ When a [Cart](/docs/commerce-cloud/carts/carts.md) is ready for checkout, you ca
 After a successful checkout, a response that contains the order is returned.
 
 :::caution
-By default, carts are automatically deleted 7 days after the last update. You can change this setting by updating [cart settings](/docs/commerce-cloud/carts/cart-management/cart-settings).
+By default, carts are automatically deleted 7 days after the last update. You can change this setting by updating [cart settings](docs/commerce-cloud/carts/cart-management/cart-settings/overview).
 :::
 
 :::caution

@@ -18,7 +18,7 @@ If you have multiple catalogs, create catalog rule resources. With catalog rules
 
 :::
 
-For ideas about the kinds of business scenarios you can achieve with catalog rules, see [Catalog Rules](/docs/pxm/catalogs/catalog-rules/catalog-rules). To understand how catalogs are matched to shoppers by using rules, see [Resolving Catalog Rules](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#resolving-catalog-rules).
+For ideas about the kinds of business scenarios you can achieve with catalog rules, see [Catalog Rules](/docs/pxm/catalogs/catalog-rules). To understand how catalogs are matched to shoppers by using rules, see [Resolving Catalog Rules](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#resolving-catalog-rules).
 
 ## `POST` Create a Catalog Rule
 

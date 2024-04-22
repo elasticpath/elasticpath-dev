@@ -18,7 +18,7 @@ After successfully completing the checkout process, the response contains the or
 
 :::caution
 
-By default, carts are automatically deleted 7 days after the last update. You can change this setting by updating [cart settings](/docs/commerce-cloud/carts/cart-management/cart-settings).
+By default, carts are automatically deleted 7 days after the last update. You can change this setting by updating [cart settings](docs/commerce-cloud/carts/cart-management/cart-settings/overview).
 
 :::
 

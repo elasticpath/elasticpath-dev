@@ -32,7 +32,7 @@ Your bundle can consist of child bundles. This is useful if you have a base prod
 
 - You cannot have more than one level of child bundles. In other words, a child bundle cannot have a child bundle as a component.
 - A parent bundle can contain both bundle and product components.
-- Both parent and child bundles can be either [fixed](/docs/pxm/products/pxm-bundles/pxm-bundles) or [dynamic](/docs/pxm/products/pxm-bundles/dynamic-bundles) in a bundle of bundles.
+- Both parent and child bundles can be either [fixed](/docs/pxm/products/pxm-bundles) or [dynamic](/docs/pxm/products/pxm-bundles/dynamic-bundles) in a bundle of bundles.
 
 ## Bundle Configuration
 

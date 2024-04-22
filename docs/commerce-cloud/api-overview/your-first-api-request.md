@@ -160,7 +160,7 @@ Now we have items in the cart, in the next lesson, we convert the cart to an unp
 
 ## Lesson 3: Checkout
 
-A cart with the reference `abc` that includes our T-Shirt as a `custom_item` is created. You can now convert the cart to an order using the [Checkout API](/docs/commerce-cloud/checkout/checkout).‌
+A cart with the reference `abc` that includes our T-Shirt as a `custom_item` is created. You can now convert the cart to an order using the [Checkout API](/docs/commerce-cloud/checkout).‌
 
 ### Checkout a Cart
 

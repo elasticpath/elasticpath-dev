@@ -41,12 +41,12 @@ You can pass multiple observable keys to the `observes` field of the [integratio
 | `/orders/:id/payments`                                                                                                   | Authorized | `order.authorized` | Store |
 | `/orders/:id/transactions/:id/capture`                                                                                   | Paid/Captured | `order.paid`/ `order.updated`. The event `order.paid` is triggered when the order status is completed and captured, and the payment status is `paid`. The event `order.updated` is triggered when the order is captured, completed, refunded, anonymized, or updated. | Store |
 | `/orders/:id/transactions/:id/refund`                                                                                    | Refunded | `order.refunded` | Store |
-| [**Payment Gateway**](/docs/commerce-cloud/payments/payments.md)                           | Updated | `payment-gateway.updated` | Store |
+| [**Payment Gateway**](/docs/commerce-cloud/payments)                           | Updated | `payment-gateway.updated` | Store |
 | [**Catalog**](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview)                                   |
 | [**Catalog releases**](/docs/pxm/catalogs/catalog-latest-release/overview)                                               | Created | `catalog-release.created` | Store, Organization |
 |                                                                                                                          |  Updated | `catalog-release.updated` | Store, Organization |
 |                                                                                                                          | Deleted | `catalog-release.deleted` | Store, Organization |
-| [**Catalog rules**](/docs/pxm/catalogs/catalog-rules/catalog-rules)                                                      | Created | `catalog-rule.created` | Store |
+| [**Catalog rules**](/docs/pxm/catalogs/catalog-rules)                                                      | Created | `catalog-rule.created` | Store |
 |                                                                                                                          | Updated | `catalog-rule.updated` | Store |
 |                                                                                                                          | Deleted | `catalog-rule.deleted` | Store |
 | [**Settings**](/docs/commerce-cloud/global-project-settings/settings-overview)                                           | Created | `settings.created` | Store |
