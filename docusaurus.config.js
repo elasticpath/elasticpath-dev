@@ -514,16 +514,16 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
-          //catalog: {
-          //  specPath: "openapispecs/catalog/catalog_view.yaml",
-          //  outputDir: "docs/api/pxm/catalog",
-          //  downloadUrl:
-          //      "https://openapi-documentation.vercel.appopenapispecs/catalog_view.yaml",
-          //  sidebarOptions: {
-          //    groupPathsBy: "tag",
-          //    categoryLinkSource: "tag",
-          //  },
-          //},
+         // catalog: {
+         //   specPath: "openapispecs/catalog/catalog_view.yaml",
+         //   outputDir: "docs/api/pxm/catalog",
+         //   downloadUrl:
+         //       "https://openapi-documentation.vercel.appopenapispecs/catalog_view.yaml",
+         //   sidebarOptions: {
+         //     groupPathsBy: "tag",
+         //     categoryLinkSource: "tag",
+         //   },
+         // },
           cartsorders: {
             specPath: "openapispecs/cartsorders/OpenAPISpec.yaml",
             outputDir: "docs/api/carts",
@@ -546,7 +546,7 @@ const config = {
           },
           files: {
             specPath: "openapispecs/files/files.yaml",
-            outputDir: "docs/api/files",
+            outputDir: "docs/api/pxm/files",
             downloadUrl:
                 "https://openapi-documentation.vercel.app/openapispecs/files.yaml",
             sidebarOptions: {
@@ -594,16 +594,16 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
-         // pim: {
-         //   specPath: "openapispecs/pim/pim.yaml",
-         //   outputDir: "docs/api/pxm/products",
-         //   downloadUrl:
-         //       "https://openapi-documentation.vercel.appopenapispecs/pim.yaml",
-          //  sidebarOptions: {
-          //    groupPathsBy: "tag",
-          //    categoryLinkSource: "tag",
-          //  },
-          //},
+          pim: {
+            specPath: "openapispecs/pim/pim.yaml",
+            outputDir: "docs/api/pxm/products",
+            downloadUrl:
+                "https://openapi-documentation.vercel.appopenapispecs/pim.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
           pricebooks: {
             specPath: "openapispecs/pricebooks/pricebooks.yaml",
             outputDir: "docs/api/pxm/pricebooks",

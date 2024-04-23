@@ -278,17 +278,28 @@ const sidebarsDefault = {
     },
   ],
   pxm: [
-  //  {
-  //    type: "category",
-  //    label: "Product Information Manager",
-  //    link: {
-  //      type: "generated-index",
-  //      title: "Product Information Manager API",
-  //      slug: "/pxm/products"
-  //    },
-  //    // @ts-ignore
-  //    items: require("./docs/api/pxm/products/sidebar.js")
-  //  },
+    {
+      type: "category",
+      label: "Product Information Manager",
+      link: {
+        type: "generated-index",
+        title: "Product Information Manager API",
+        slug: "/api/pxm/products"
+      },
+      // @ts-ignore
+      items: require("./docs/api/pxm/products/sidebar.js")
+    },
+    {
+      type: "category",
+      label: "Files",
+      link: {
+        type: "generated-index",
+        title: "Files API",
+        slug: "/api/pxm/files"
+      },
+      // @ts-ignore
+      items: require("./docs/api/pxm/files/sidebar.js")
+    },
     //Price Books
     {
       type: "category",
@@ -302,17 +313,17 @@ const sidebarsDefault = {
       items: require("./docs/api/pxm/pricebooks/sidebar.js")
     },
     //Catalog
- //   {
- //     type: "category",
- //     label: "Catalog",
- //     link: {
- //       type: "generated-index",
- //       title: "Catalog API",
- //       slug: "/pxm/catalog"
- //     },
- //     // @ts-ignore
- //     items: require("./docs/api/pxm/catalog/sidebar.js")
- //   },
+    //{
+    //  type: "category",
+    //  label: "Catalog",
+    //  link: {
+    //    type: "generated-index",
+    //    title: "Catalog API",
+    //    slug: "/api/pxm/catalog"
+    //  },
+      // @ts-ignore
+    //  items: require("./docs/api/pxm/catalog/sidebar.js")
+    //},
     // Inventory
     {
       type: "category",
