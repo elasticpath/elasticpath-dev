@@ -4,9 +4,9 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-In Commerce Manager, you can create the products and services that you want to offer in a subscription. See [Creating Repeat Products](/docs/subscriptions/products/creating-products.md).
+In Commerce Manager, you can create the products and services that you want to offer in a subscription. See [Creating Repeat Products](/docs/subscriptions/products/creating-products).
 
-For example, an online streaming service organization might have different services available for subscription, such as Standard Definition Streaming, High-Definition Streaming, and 4K Streaming; each service provides a specific level of video quality. Products can have additional attributes, such as price, and rich media assets, such as images or files containing additional product details. See [Product Media](/docs/subscriptions/subscription/creating-products).
+For example, an online streaming service organization might have different services available for subscription, such as Standard Definition Streaming, High-Definition Streaming, and 4K Streaming; each service provides a specific level of video quality. Products can have additional attributes, such as price, and rich media assets, such as images or files containing additional product details. See [Product Media](/docs/subscriptions/products/creating-products).
 
 In addition, you can build offerings with products created in Product Experience Manager. Product Experience Manager manages product information, hierarchies, and price books. Ideally, Product Experience Manager becomes the single source of truth for product data across your organization. See [Creating Subscription Products in Product Experience Manager](/docs/subscriptions/products/creating-pxm-products).
 

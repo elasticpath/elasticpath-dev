@@ -17,7 +17,7 @@ import clsx from 'clsx';
 const PRODUCTS = [
   {
     title: 'Product Experience Manager',
-    link: '/docs/api/pxm/pricebooks/price-book-introduction',
+    link: '/docs/api/pxm/products/introduction',
     icon: BookRegular,
     // lightImage: '/static/landing-page/hero/voice-graphic.png',
     // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
@@ -38,7 +38,7 @@ const PRODUCTS = [
     icon: ArrowSyncFilled,
     // lightImage: '/static/landing-page/hero/livestream-graphic.png',
     // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
-    text: 'Easy deploy paid memberships, subscribe & save, and more to drive recurring revenue and improved average order value.',
+    text: 'Easily deploy paid memberships, subscribe & save, and more to drive recurring revenue and improved average order value.',
   },
   {
     title: 'Account Management',
@@ -64,7 +64,7 @@ const PRODUCTS = [
     icon: ShoppingBagRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',
+    text: 'Use carts, checkout and orders to get your products from the catalog into the cart, through checkout and into order completed state.',
   },
   {
     title: 'Payments',
@@ -73,7 +73,7 @@ const PRODUCTS = [
     icon: WalletCreditCardRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',
+    text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
   },
   {
     title: 'Custom Data',
@@ -82,7 +82,7 @@ const PRODUCTS = [
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',
+    text: 'You can define custom data fields for the resources that you use in your store or organization, such as adding more fields to the `account` resource. You can also create new resources.',
   },
   {
     title: 'Integrations',
@@ -91,7 +91,16 @@ const PRODUCTS = [
     icon: ConnectedRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',
+    text: 'You can integrate Commerce with your external systems like enterprise resource planning, order management, fulfilment, and other systems, ensuring that buying is quick and easy for your shoppers.',
+  },
+  {
+    title: 'Exporter',
+    beta: false,
+    link: '/docs/api/exporter',
+    icon: ArrowExportLtrFilled,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'Export your orders from Commerce',
   },
 ];
 
