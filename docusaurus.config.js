@@ -469,7 +469,7 @@ const config = {
         algolia: {
           appId: 'R6IQGTOQJY',
           apiKey: '337676fe582da532ec7bcbca3332f590',
-          indexName: 'docs',
+          indexName: 'dev',
           contextualSearch: true,
           searchParameters: {},
         },

@@ -1,7 +1,7 @@
 new Crawler({
   appId: 'R6IQGTOQJY',
   apiKey: '337676fe582da532ec7bcbca3332f590',
-  rateLimit: 8,
+  rateLimit: 9,
   maxDepth: 10,
   startUrls: ['https://elasticpath.dev'],
   sitemaps: ['https://elasticpath.dev/sitemap.xml'],
