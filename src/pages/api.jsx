@@ -11,7 +11,6 @@ export default function Homepage() {
             wrapperClassName="homepage flex flex-col"
             noFooter
         >
-
             <HeroSectionAPIs />
 
             <HomeFooter />
