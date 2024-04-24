@@ -8,7 +8,7 @@ sidebar_position: 20
 You must be either the ***Account Owner*** or an ***Administrator*** of an account to add a new user. Please refer to [User Role Definitions](/docs/studio/Settings/account-management/User-Role-Definitions) for more information.
 :::
 
-{% youtube src="https://www.youtube.com/embed/HCoomZUjPHU" label="Adding New User" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HCoomZUjPHU" title="Adding New User" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 1. Navigate to your settings tab found in the Studio main menu and click  **+ Add user**.
 

@@ -4,7 +4,7 @@ nav_label: Adding or Removing Animations
 sidebar_position: 10
 ---
 
-{% youtube src="https://www.youtube.com/embed/6yIPjQVnZ24" label="Adding or Removing Animations" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6yIPjQVnZ24" title="Adding or Removing Animations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## What can animations be added to?
 

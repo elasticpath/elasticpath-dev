@@ -8,7 +8,7 @@ const SectionsMenu = forwardRef(
     return (
       <Select.Root defaultValue={defaultValue} ref={ref} {...props}>
         <Select.Trigger
-          aria-label="Select Section"
+          aria-title="Select Section"
           className={clsx('sections-menu-trigger', className)}
         >
           <Select.Value />

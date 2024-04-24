@@ -41,4 +41,4 @@ Elastic Path Subscriptions enables you to manage the billing and recurring payme
 
 ## Demo
 
-{% vidyard src="//play.vidyard.com/7ydBC7uNBwmiAJyC6LUGiQ.html?" label="Getting Started with Elastic Path Subscriptions" /%}
+<iframe class="vidyard_iframe" title="Getting Started with Elastic Path Subscriptions" src="//play.vidyard.com/7ydBC7uNBwmiAJyC6LUGiQ.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>

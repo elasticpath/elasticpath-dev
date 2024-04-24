@@ -7,7 +7,7 @@ sidebar_position: 30
 If you are wanting to be notified in browser and by email every time you receive a new lead, please follow these steps
 below.
 
-     {% youtube src="https://www.youtube.com/embed/s6UikzB0GBY" label="Enabling Lead Notifications" /%}
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/s6UikzB0GBY" title="Enabling Lead Notifications" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 :::note
 Enabling these notifications is on a per user basis, this means that each user would need to activate it themselves when

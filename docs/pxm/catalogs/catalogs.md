@@ -71,5 +71,5 @@ You retrieve catalogs for your shopper experience by using the [Catalog View API
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/Oz3DHrcmKrQ" label="Understanding Catalogs in Product Experience Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Oz3DHrcmKrQ" title="Understanding Catalogs in Product Experience Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

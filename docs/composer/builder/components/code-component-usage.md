@@ -120,7 +120,7 @@ module.exports = async (context, stepResults) => {
 };
 ```
 
-{% callout  %} 
+:::note 
 
 Step results are often objects. Many components return objects that have multiple keys. So, you can reference `stepResults.myStepName.results.someKey`. It's rare for a component to return serialized JSON, so there's rarely need to `JSON.parse()` results from a previous step.
 :::

@@ -44,4 +44,4 @@ You can add one or more addresses to the customer details or modify their basic 
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/iE5VpO4GS1k" label="Extend a Customer Resource using Flows" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iE5VpO4GS1k" title="Extend a Customer Resource using Flows" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

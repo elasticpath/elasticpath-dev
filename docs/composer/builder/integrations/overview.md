@@ -186,7 +186,7 @@ You can view the YAML that defines your integration's flows, steps, inputs, conn
 
 If you are exporting the integration and importing it in a different region (US -> EU, for example), make sure you click a **latest component versions** button, as component versions may not match between regions.
 
-{% callout  %}
+:::note
 The YAML present in this drawer corresponds to the integration that is currently being displayed.
 You can view the YAML of a previous version of the integration by first opening the **VERSION HISTORY** drawer and selecting an older integration version.
 

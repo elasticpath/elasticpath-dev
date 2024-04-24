@@ -44,5 +44,5 @@ Products have one of the following types:
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/SdaSEgA5rTc" label="Understanding Products in Product Experience Manager" /%}
-{% youtube src="https://www.youtube.com/embed/_VoXvL9qKPo" label="Product and Hierarchy Management" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SdaSEgA5rTc" title="Understanding Products in Product Experience Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_VoXvL9qKPo" title="Product and Hierarchy Management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

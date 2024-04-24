@@ -16,4 +16,4 @@ Ensure that at least one template is available.
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/NY9D_aKfHGc" label="Configuring Templates and Attributes for Products" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NY9D_aKfHGc" title="Configuring Templates and Attributes for Products" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

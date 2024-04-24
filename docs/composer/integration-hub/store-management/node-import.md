@@ -20,7 +20,7 @@ An example of how node data is imported using a Node Import integration is descr
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/PlTT_uLuhak" label="Using the Node Import integration" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PlTT_uLuhak" title="Using the Node Import integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Node Import Integration File Format
 
@@ -136,4 +136,4 @@ Select **Retry** to initiate an execution again.
 
 ## Demo
 
-{% youtube src="https://www.youtube.com/embed/PlTT_uLuhak" label="Integrations Hub - Node Import" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PlTT_uLuhak" title="Integrations Hub - Node Import" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

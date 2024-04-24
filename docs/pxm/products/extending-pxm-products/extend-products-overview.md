@@ -28,4 +28,4 @@ For more information about adding attributes, see [Add custom data to products](
 
 ## Demos
 
-- {% youtube src="https://www.youtube.com/embed/D0a50Lrwg7g" label="Understanding Attributes" /%}
+- <iframe width="560" height="315" src="https://www.youtube.com/embed/D0a50Lrwg7g" title="Understanding Attributes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

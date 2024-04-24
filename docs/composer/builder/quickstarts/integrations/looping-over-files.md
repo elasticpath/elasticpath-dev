@@ -20,7 +20,7 @@ We'll configure our integration to run every five minutes, and our integration w
 
 Our integration will take advantage of the loop component to process files one by one.
 
-{% callout  %}
+:::note
 
 If you do not have a Google Cloud Platform (GCP) account, you can use Dropbox, Box, Amazon S3, Azure Blob Storage, etc., instead.
 They all have similar **list files**, **download file** and **move file** actions.

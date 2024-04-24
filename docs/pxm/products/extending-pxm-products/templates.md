@@ -128,4 +128,4 @@ For the changes to appear in the storefront, you must republish the affected cat
 
 ### Demos
 
-- [Understanding Attributes and Templates](https://share.vidyard.com/watch/gGq3m4uK7wqKcjrbyos5My?)
+<iframe class="vidyard_iframe" title="Prouct Templates" src="//play.vidyard.com/gGq3m4uK7wqKcjrbyos5My.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>

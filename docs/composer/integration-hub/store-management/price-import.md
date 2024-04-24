@@ -193,4 +193,4 @@ Select **Retry** to initiate an execution again.
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/_2e1Va_WAZI" label="Integrations Hub - Configuring Price Importer" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_2e1Va_WAZI" title="Integrations Hub - Configuring Price Importer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

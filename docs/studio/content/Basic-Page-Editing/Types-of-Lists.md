@@ -6,7 +6,7 @@ sidebar_position: 120
 
 ## Types of Lists
 
-{% youtube src="https://www.youtube.com/embed/Nm9nH3CyIpY" label="CX-Studio Lists" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Nm9nH3CyIpY" title="CX-Studio Lists" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 There are three different ways to list text-based content in Studio. Though before you can take advantage of this
 feature, you'll first need to enter the list of text items in a text block in the Studio editor.

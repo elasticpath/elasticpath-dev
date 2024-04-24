@@ -30,7 +30,7 @@ A Store Configuration Orchestrator Delete Action deletes [products](/docs/pxm/pr
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/faInZG1n8y4" label="Using the Store Configuration Orchestrator" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/faInZG1n8y4" title="Using the Store Configuration Orchestrator" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Understanding Environments in Store Configuration Orchestrator
 

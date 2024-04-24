@@ -14,7 +14,7 @@ When a catalog is published, the integration automatically sends the data from C
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/CbF9J7Gq6AI" label="Integrating with Advanced Commerce (GrapheneHC)" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CbF9J7Gq6AI" title="Integrating with Advanced Commerce (GrapheneHC)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Advanced Commerce (GrapheneHC) Integration Templates
 

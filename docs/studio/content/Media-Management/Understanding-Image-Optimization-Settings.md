@@ -11,7 +11,7 @@ However, when used with very detailed images, the optimization process can cause
 If this happens to you, we recommend that you set the images optimization setting to either **Resize Only** or **Do Not
 Resize/Optimize**. Keep in mind that doing so may slow down the page where the image is used.
 
-    {% youtube src="https://www.youtube.com/embed/lX5kFMQCwvQ" label="Image Optimization Settings" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lX5kFMQCwvQ" title="Image Optimization Settings" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## How to access your optimization settings:
 

@@ -4,7 +4,7 @@ nav_label: Embedding custom code in a Page
 sidebar_position: 105
 ---
 
-    {% youtube src="https://www.youtube.com/embed/-gJGPNOIsNk" label="Add Custom Code to Single Page" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/-gJGPNOIsNk" title="Add Custom Code to Single Page" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Following this guide will apply the code to **a single page** on your site. If you're looking to apply this code to all
 pages of your site, please

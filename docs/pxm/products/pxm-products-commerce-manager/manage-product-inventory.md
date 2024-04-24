@@ -27,4 +27,4 @@ Inventory is the quantity of each product that you have in stock.
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/HlQd5lvGqVU" label="Configuring Inventory" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HlQd5lvGqVU" title="Configuring Inventory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

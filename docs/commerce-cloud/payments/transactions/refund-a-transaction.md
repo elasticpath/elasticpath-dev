@@ -255,5 +255,5 @@ curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/68MaMVR--J4" label="Managing Refunds in Composable Commerce" /%}
-{% youtube src="https://www.youtube.com/embed/K5zOqDlZeZ8" label="Stripe Refund" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/68MaMVR--J4" title="Managing Refunds in Composable Commerce" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K5zOqDlZeZ8" title="Stripe Refund" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

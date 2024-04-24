@@ -22,7 +22,7 @@ For example, if you want just 10 posts, but you want to start at the 25th post, 
 
 In this exercise we're going to page through all 100 posts, 10 at a time, so we'll be making a request to `/posts?_limit=10&_start=0`, then `/posts?_limit=10&_start=10`, `/posts?_limit=10&_start=20`, etc. until there are no more posts left to process.
 
-{% callout  %}
+:::note
 
 With paginated APIs you often don't know how many total results exist. We happen to know that we're going to fetch 100 total "posts", but the looping strategy we cover here will accommodate any unknown number of posts. We'll simply loop until there are no more records left to loop over.
 {% /callout  %}

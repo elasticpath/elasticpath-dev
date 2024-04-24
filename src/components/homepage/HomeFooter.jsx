@@ -177,22 +177,22 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Link
               href="https://github.com/elasticpath"
-              aria-label="Elastic Path's GitHub Organization"
+              aria-title="Elastic Path's GitHub Organization"
             >
               <Github className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>
             <Link
               href="https://www.linkedin.com/company/elastic-path"
-              aria-label="LinkedIn"
+              aria-title="LinkedIn"
             >
               <Linkedin className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>
-            <Link href="https://twitter.com/elasticpath" aria-label="Elastic Path's Twitter">
+            <Link href="https://twitter.com/elasticpath" aria-title="Elastic Path's Twitter">
               <XIcon className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>
             <Link
               href="https://www.youtube.com/c/elasticpathsoftware"
-              aria-label="Elastic Path YouTube Channel"
+              aria-title="Elastic Path YouTube Channel"
             >
               <Youtube className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>

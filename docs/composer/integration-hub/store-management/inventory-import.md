@@ -127,4 +127,4 @@ Select **Retry** to initiate an execution again.
 
 ## Demo
 
-{% youtube src="https://www.youtube.com/embed/gVa6sOaoIi0" label="Integrations Hub - Inventory Import" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gVa6sOaoIi0" title="Integrations Hub - Inventory Import" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

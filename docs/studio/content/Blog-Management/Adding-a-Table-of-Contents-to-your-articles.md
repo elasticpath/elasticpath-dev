@@ -4,7 +4,7 @@ nav_label: Adding a Table of Contents to Articles
 sidebar_position: 10
 ---
 
-{% youtube src="https://www.youtube.com/embed/C2mBOaTb3x4" label="Adding Table of Contents" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/C2mBOaTb3x4" title="Adding Table of Contents" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## How does it work?
 

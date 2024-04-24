@@ -4,7 +4,7 @@ nav_label: Building Forms
 sidebar_position: 10
 ---
 
-    {% youtube src="https://www.youtube.com/embed/2ynLmi0CKJ8" label="Building Forms" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/2ynLmi0CKJ8" title="Building Forms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Building your form
 

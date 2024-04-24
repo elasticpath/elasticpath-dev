@@ -10,7 +10,7 @@ sidebar_position: 10
 Note that only the Account Owner and Administrator are able to make changes to team member roles.
 :::
 
-    {% youtube src="https://www.youtube.com/embed/WIRhSbWj55E" label="User Roles" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WIRhSbWj55E" title="User Roles" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 1. Navigate to **Settings** > **General**. 
 

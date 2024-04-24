@@ -9,7 +9,7 @@ export default function RunInPostmanButton() {
       href={postmanUrl}
       target="_blank"
       rel="noreferrer"
-      aria-label="Run in Postman"
+      aria-title="Run in Postman"
     >
       <img
         src="https://run.pstmn.io/button.svg"

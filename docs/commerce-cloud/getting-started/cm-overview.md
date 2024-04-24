@@ -67,4 +67,4 @@ For Commerce Manager course in the learning center, see [Commerce Administrator]
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/yz7uZ3GKjLc" label="Getting Started with the Commerce Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yz7uZ3GKjLc" title="Getting Started with the Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

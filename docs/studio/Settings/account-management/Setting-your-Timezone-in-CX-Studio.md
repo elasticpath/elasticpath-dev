@@ -4,7 +4,7 @@ nav_label: Setting Timezone in Studio
 sidebar_position: 70
 ---
 
-    {% youtube src="https://www.youtube.com/embed/N4V-K3OiwyI" label="Reset Timezone in Unstack" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/N4V-K3OiwyI" title="Reset Timezone in Unstack" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 :::note
 Every site has one timezone, so if you're working on a team distributed throughout multiple timezones, ensure they're aware of the time zone the site's scheduling is based on.

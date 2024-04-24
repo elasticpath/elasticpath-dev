@@ -8,7 +8,7 @@ Previewing pages in Studio allows you to preview the changes you've made to a pa
 version of that page. This allows you to keep those changes in a draft state so you can make any additional changes
 before you publish.
 
-{% youtube src="https://www.youtube.com/embed/SRV3TKnRcxc" label="Preview CX-Studio Pages" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SRV3TKnRcxc" title="Preview CX-Studio Pages" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Previewing a Page
 

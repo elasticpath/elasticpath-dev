@@ -19,7 +19,7 @@ Whenever you publish a catalog, the full catalog will be synced to Coveo. This i
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/pqtwtFSJ8jM" label="Integrating with Coveo" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pqtwtFSJ8jM" title="Integrating with Coveo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Collecting Your Setup Information
 

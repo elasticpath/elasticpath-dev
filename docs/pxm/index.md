@@ -28,10 +28,10 @@ Scenarios are created by defining the context within which a catalog is displays
 - [Catalogs](/docs/pxm/catalogs)
 - [Catalog Rules](/docs/pxm/catalogs/catalog-rules)
 - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
-- [Products](/docs/pxm/products/pxm-products)
+- [Products](/docs/pxm/products/pxm-products)d
 - [Price Books](/docs/pxm/pricebooks/price-books)
 - [Getting Started with Product Experience Manager](/docs/pxm/products/get-started-pxm)
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/SdaSEgA5rTc" label="Understanding Products in Product Experience Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SdaSEgA5rTc" title="Understanding Products in Product Experience Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
