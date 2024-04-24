@@ -23,7 +23,7 @@ export function CardSection({
   return (
     <div
       className={clsx(
-        'homepage-section',
+        'homepage-section test',
         hasSubSections && 'has-sub-sections',
         className
       )}
