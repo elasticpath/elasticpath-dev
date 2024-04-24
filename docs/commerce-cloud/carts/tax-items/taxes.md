@@ -15,4 +15,4 @@ For more information about calculation methods, see [Calculate cart and order to
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)

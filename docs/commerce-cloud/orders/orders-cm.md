@@ -167,7 +167,7 @@ Only seller administrators can export order details.
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Orders API](/docs/commerce-cloud/orders/orders-api/orders-api-overview.md)
 - [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview.md)
 
