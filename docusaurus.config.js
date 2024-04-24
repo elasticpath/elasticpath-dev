@@ -292,6 +292,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars-default.js"),
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
+          editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/"
         },
         blog: {
           showReadingTime: true,
