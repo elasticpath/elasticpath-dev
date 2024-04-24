@@ -18,7 +18,7 @@ After a customer selects a locale, the product prices in the catalog, carts, and
 
 - [Products](/docs/pxm/products/pxm-products)
 - [Carts](/docs/commerce-cloud/carts/carts.md)
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Taxes](/docs/commerce-cloud/carts/tax-items/taxes)
 
 

@@ -104,4 +104,4 @@ Use this procedure to create promotions such as, such as *2-for-1* sales. In thi
 
 - [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs/catalogs)
+- [Catalog](/docs/pxm/catalogs)

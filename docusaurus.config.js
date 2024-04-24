@@ -247,20 +247,7 @@ const docs = [
  * Create a section
  * @param {import('@docusaurus/plugin-content-docs').Options} options
  */
-function create_doc_plugin({
-                             sidebarPath = require.resolve('./sidebars-default.js'),
-                             ...options
-                           }) {
-  return [
-    '@docusaurus/plugin-content-docs',
-    /** @type {import('@docusaurus/plugin-content-docs').Options} */
-    ({
-      ...defaultSettings,
-      sidebarPath,
-      ...options,
-    }),
-  ];
-}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Elastic Path Documentation',
@@ -344,7 +331,7 @@ const config = {
           items: [
             {
               label: 'Guides',
-              to: 'docs/guides',
+              to: 'guides',
               className: 'guides-top-header',
             },
             {
@@ -656,6 +643,16 @@ const config = {
             },
           },
         },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'guides',
+        path: 'guides',
+        routeBasePath: 'guides',
+        sidebarPath: require.resolve('./sidebar-guides.js'),
+        // ... other options
       },
     ],
     [

@@ -4,7 +4,7 @@ nav_label: Add Items to Cart (Re-order)
 sidebar_position: 5
 ---
 
-From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see [Orders](/docs/commerce-cloud/orders/orders.md).
+From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see [Orders](/docs/commerce-cloud/orders).
 
 :::note
 - Any requests to add an item to cart return a collection of [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).

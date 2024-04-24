@@ -493,7 +493,7 @@ This scenario assumes you already have an order. The order created in this examp
 ## Related Resources
 
 - [Custom Data (Flows)](/docs/commerce-cloud/custom-data)
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Checkout workflow](/docs/commerce-cloud/checkout/checkout-workflow)
 - [Custom Data (Flows) API](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
 - [Extend a resource with custom data](/docs/commerce-cloud/custom-data/extend-any-resource)

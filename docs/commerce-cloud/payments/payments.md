@@ -78,5 +78,5 @@ The following table describes the payment and order statuses that you can see wh
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Calculate cart and order totals](/docs/commerce-cloud/carts/calculate-totals)

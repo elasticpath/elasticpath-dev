@@ -106,5 +106,5 @@ To see the full code, visit GitHub.
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Orders API](/docs/commerce-cloud/orders/orders-api/orders-api-overview)

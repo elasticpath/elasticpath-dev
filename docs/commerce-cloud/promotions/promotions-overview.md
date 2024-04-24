@@ -119,6 +119,6 @@ To learn how to create a bundle, see [Create a Bundle](/docs/pxm/products/pxm-bu
 ## Related Resources
 
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Carts](/docs/commerce-cloud/carts/carts)
+- [Carts](/docs/commerce-cloud/carts)
 - [Promotions](/docs/commerce-cloud/promotions/promotions-cm/overview)
 
