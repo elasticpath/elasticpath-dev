@@ -469,8 +469,8 @@ const config = {
         },
         algolia: {
           appId: 'BE47YC23U9',
-          apiKey: 'dda174fdac67c76b6c0ea6343aff2fbb',
-          indexName: 'BetaDocs',
+          apiKey: '77d1494d8923cc5ff24934e7ece7e46a',
+          indexName: 'elasticpath',
           contextualSearch: true,
           searchParameters: {},
         },
