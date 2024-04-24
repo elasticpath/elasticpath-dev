@@ -471,7 +471,7 @@ const config = {
           appId: 'BE47YC23U9',
           apiKey: '77d1494d8923cc5ff24934e7ece7e46a',
           indexName: 'elasticpath',
-          contextualSearch: true,
+          contextualSearch: false,
           searchParameters: {},
         },
       }),
