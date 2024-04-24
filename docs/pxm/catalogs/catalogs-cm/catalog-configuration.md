@@ -94,7 +94,7 @@ If you make changes to a catalog release, you must republish the catalog for the
 
 You can go back to an earlier release of a catalog by [deleting](#deleting-catalog-releases) the latest release. 
 
-{% callout%}
+:::note
 
 If you want to add/remove hierarchies and price books you must [edit a catalog](#editing-catalogs).
 
@@ -123,4 +123,4 @@ When you delete a catalog, the catalog configuration and all its releases are de
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/4FM4lvYtQSA" label="Configuring Catalogs & Catalog Rules in Commerce Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4FM4lvYtQSA" title="Configuring Catalogs & Catalog Rules in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

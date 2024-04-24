@@ -166,7 +166,7 @@ You can set up a sale price for a product in Commerce Manager. To do this, perfo
 
 Watch the following video to learn how to integrate Shopify with Commerce using the **Integrations Hub** in Commerce Manager:
 
-{% youtube src="https://www.youtube.com/embed/qu3qH8GBVGE" label="Integrating with Shopify" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qu3qH8GBVGE" title="Integrating with Shopify" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 

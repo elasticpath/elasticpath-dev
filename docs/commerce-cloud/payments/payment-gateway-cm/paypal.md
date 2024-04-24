@@ -13,7 +13,7 @@ If you have signed up to PayPal Express Checkout, you need to configure it with 
 
 Follow the instructions below or, alternatively, watch a video:
 
-{% youtube src="https://www.youtube.com/embed/07pKiaKc1ds" label="Configuring Paypal Express Checkout" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/07pKiaKc1ds" title="Configuring Paypal Express Checkout" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Testing PayPal Express Checkout in Commerce Manager
 
@@ -68,7 +68,7 @@ Follow the instructions below or, alternatively, watch a video:
 
 1. Click **Save**. From PayPal Express platform, you can verify that Elastic Path is onboarded to PayPal Express. Watch the following video:
         
-        {% youtube src="https://www.youtube.com/embed/M-ILzcZreM4" label="Verifying Elastic Path to Paypal Express Checkout" /%}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/M-ILzcZreM4" title="Verifying Elastic Path to Paypal Express Checkout" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 1. You can change your PayPal Account ID at any time by clicking **PayPal Onboarding** and re-running PayPal onboarding. Re-running PayPal onboarding overwrites the existing Account ID.
 1. You can disable PayPal Express Checkout at any time by deleting your PayPal Account ID from **Account ID** or by clearing the **Enabled** checkbox on the **Edit PayPal Express Checkout** page.

@@ -197,6 +197,6 @@ Ensure that you have [collected your setup Information](#collecting-your-setup-i
 
  Watch the following videos:
 
-{% youtube src="https://www.youtube.com/embed/uxM0bGrqnDQ" label="Salsify to Commerce Configuration" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uxM0bGrqnDQ" title="Salsify to Commerce Configuration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-{% youtube src="https://www.youtube.com/embed/Iv0eOuuzIpM" label="Commerce to Salsify Configuration" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Iv0eOuuzIpM" title="Commerce to Salsify Configuration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

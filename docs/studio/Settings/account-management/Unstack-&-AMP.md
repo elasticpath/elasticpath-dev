@@ -6,7 +6,7 @@ sidebar_position: 80
 
 With a **Full+** or **Enterprise** level subscription in Studio, AMP version of your articles are automatically created for your blog articles.
 
-    {% youtube src="https://www.youtube.com/embed/6YdcEq4ceaY" label="AMP Version of Unstack" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/6YdcEq4ceaY" title="AMP Version of Unstack" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 If you're on one of these plans, then you may notice the box is checked off and can't be unchecked. The reason for this is that at this time, *it's not currently possible to disable the creation of AMP versions of your articles.*
 

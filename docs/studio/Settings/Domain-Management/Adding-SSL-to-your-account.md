@@ -8,7 +8,7 @@ sidebar_position: 10
 
 In order to enable SSL, you must be on a paying plan.
 
-     {% youtube src="https://www.youtube.com/embed/QYHEDiy9ya4" label="Adding SSL to Account" /%}
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/QYHEDiy9ya4" title="Adding SSL to Account" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## First off - what is SSL?
 

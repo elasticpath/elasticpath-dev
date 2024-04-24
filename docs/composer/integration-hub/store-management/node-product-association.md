@@ -133,4 +133,4 @@ Select **Retry** to initiate an execution again.
 
 ## Demo
 
-{% youtube src="https://www.youtube.com/embed/uDMdkOg5Lxw" label="Integrations Hub - Node Product Association" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uDMdkOg5Lxw" title="Integrations Hub - Node Product Association" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

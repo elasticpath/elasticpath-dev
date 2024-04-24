@@ -4,7 +4,7 @@ nav_label: Reusing Customized Sections on Other Pages
 sidebar_position: 90
 ---
 
-{% youtube src="https://www.youtube.com/embed/DdQVTogJjK4" label="Creating Reusable Sections" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DdQVTogJjK4" title="Creating Reusable Sections" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Have you ever gotten a component to look perfect on one page, but didn't want to rebuild it on the other? If so, then
 you should save those perfected components as templates! It's incredibly simple to do and let's you save yourself the

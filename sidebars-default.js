@@ -336,11 +336,36 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/pxm/inventory/sidebar.js")
     },
+    // Currencies
+      {
+      type: "category",
+      label: "Currencies",
+      link: {
+        type: "generated-index",
+        title: "Currencies API",
+        slug: "/api/pxm/currencies"
+      },
+        // @ts-ignore
+        items: require("./docs/api/pxm/currencies/sidebar.js")
+    },
     //{
     //  type: 'category',
     //  label: 'Includes',
     //  items: ['pxm/includes'],
    // },
+  ],
+  settings: [
+    {
+      type: "category",
+      label: "Settings API",
+      link: {
+        type: "generated-index",
+        title: "Settings API",
+        slug: "/api/settings"
+      },
+      // @ts-ignore
+      items: require("./docs/api/settings/sidebar.js")
+    },
   ],
   subscriptions: [
     {

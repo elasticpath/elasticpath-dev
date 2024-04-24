@@ -4,12 +4,12 @@ nav_label: Bundle Discount Promotions
 sidebar_position: 3
 ---
 
-:::caution
+:::warning
 - We recommend not to set maximum discount value for this promotions. Setting maximum discount value for this promotion conflicts with the promotion settings.
 - Hierarchy-based promotions are not supported for fixed bundle discount promotion.
 :::
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click **Add Promotion**.
 1. In the **Name** field, enter a name for the promotion.
 1. In the **Description** field, enter a description for the promotion.
@@ -53,4 +53,4 @@ For a bundle promotion *(SKU1 or SKU2 ) + SKU3 for $20*, the promotion is applie
 
 - [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Catalog](/docs/pxm/catalogs/catalogs)

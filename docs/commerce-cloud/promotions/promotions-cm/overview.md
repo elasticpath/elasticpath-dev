@@ -4,17 +4,17 @@ nav_label: Promotions
 sidebar_position: 1
 ---
 
-You can manage promotions on the **STORE > Promotions** page.
+You can manage promotions on the **STORE > Promotions Standard** page.
 
 ## Creating Promotions
 
-:::caution
+:::warning
 - You cannot change the promotion type or schema after creating a promotion.
 - If you want to restrict the usage of a promotion, do not select the **Automatic** field in promotion setting and ensure that you create a code for the promotion.
 - You can use product ID instead of product SKU to specify products.
 :::
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click **Add promotion**.
 1. Enter the the required information to create the following promotions:
 
@@ -27,7 +27,7 @@ You can manage promotions on the **STORE > Promotions** page.
     - [Item percentage discount Promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/item-percentage-discount-promotions)
     - [Free gift promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/free-gift-promotions)
 
-:::caution
+:::warning
 - We recommend not to use the **Maximum discount value** setting for the following promotions:
 
     - [Cart-level fixed discount promotions](/docs/commerce-cloud/promotions/promotions-cm/cart-level-promotions/cart-level-fixed-discount)
@@ -45,7 +45,7 @@ You can manage promotions on the **STORE > Promotions** page.
 
 After creating a promotion, you can add codes for the promotion. Customers must enter this code to avail the promotion. For the code to work, ensure that the **Automatic** field in the promotion settings is not selected.
 
-1. Navigate to **STORE > Promotions**.
+1. Navigate to **STORE > Promotions Standard**.
 1. Select the promotion for which you want to create a code.
 1. Go to the **Promotion Codes** tab. 
 
@@ -72,7 +72,7 @@ After creating a promotion, you can add codes for the promotion. Customers must 
 
 To add a new promotion code, follow these steps:
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Select the promotion for which you want to create a code.
 1. Go to the **Promotion Codes** tab.
 1. On the right-hand side, click **Add a new promotion code**.
@@ -87,14 +87,14 @@ To add a new promotion code, follow these steps:
 
 ### Generating bulk codes
 
-:::caution
+:::warning
 - You can only generate a maximum of 1000 codes for a single promotion.
 - When generating more than 1000 codes, the promotion's duration must be limited to a maximum of 365 days from its start date. If you need to increase the number of promotion codes for a single promotion, reach out to our [customer success team](mailto:customersuccess@elasticpath.com).
 :::
 
 With bulk generating codes, you can generate large number of unique promotion codes. To do so, follow these steps:
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Select the promotion name for which you want to create codes.
 1. Go to the **Promotion Codes** tab.
 1. On the right-hand side, click **Add a new promotion code**.
@@ -112,7 +112,7 @@ With bulk generating codes, you can generate large number of unique promotion co
 
     The codes generated for a promotion are displayed on the details page of the promotion.
 
-    :::caution
+    :::warning
     Refresh your Commerce Manager to view the generated codes on the **Promotions Codes** tab.
     :::
 
@@ -120,7 +120,7 @@ With bulk generating codes, you can generate large number of unique promotion co
 
 You can find a promotion code within all promotions or within a specific promotion.
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. If you want to search within a specific promotion, click the promotion name and go to the **Promotion Codes** tab.
 1. In the **Search coupon code** field, enter the promotion code that you want to find.
     
@@ -131,7 +131,7 @@ You can find a promotion code within all promotions or within a specific promoti
 
 ## Deleting a Code
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click the promotion name for which you want to add a code.
 1. Go to the **Promotion Codes** tab.
 1. Select the **CodeID** that you want to delete.
@@ -141,7 +141,7 @@ You can find a promotion code within all promotions or within a specific promoti
 
 You can duplicate an existing promotion and use the details as required in another promotion. However, the **Date range** field is not duplicated.
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. To duplicate a promotion, do one of the following:
     - In the **Actions** column, under the list of **All Promotions**, click the ellipsis associated with **Name** of the promotion and select **Duplicate**.
     - Open the promotion that you want to duplicate and click **Action > Duplicate** at the end of the page.
@@ -157,12 +157,12 @@ You can duplicate an existing promotion and use the details as required in anoth
 
 ## Editing Promotions
 
-:::caution
+:::warning
 - You cannot change the promotion type or schema after creating a promotion.
 - Any changes made to the active and enabled promotion can impact an active promotion that has been already applied to a cart. For example, switching the promotion from automatic to manual, adjusting the discount amount, extending the promotion date, or modifying the schema.
 :::
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click the promotion name that you want to edit.
 1. Change the settings as required.
 1. Click **Save**.
@@ -171,7 +171,7 @@ You can duplicate an existing promotion and use the details as required in anoth
 
 The **History** tab provides version history of a promotion You can view the version details except changes in the promotion code and custom fields, of each version.
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. To view history of a promotion, click the promotion name.
 1. Click the **History** tab.
     A list of versions with the following information about each version is displayed:
@@ -186,7 +186,7 @@ The history table displays the latest edit first and earliest original last. For
 
 Using the **Manage Code Export** tab, you can export your promotion codes and download them in CSV format. To do so, follow these steps:
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Select the promotion name for which you want to export the codes.
 1. Go to the **Promotion Codes** tab.
 1. On the right side, click **Manage Code Export**.
@@ -196,16 +196,16 @@ Using the **Manage Code Export** tab, you can export your promotion codes and do
 
 ## Related Resources
 
-- [Promotions](/docs/commerce-cloud/promotions/promotions-cm/overview)
+- [Promotions Standard](/docs/commerce-cloud/promotions/promotions-cm/overview)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Catalog](/docs/pxm/catalogs/catalogs)
 - [Create a Job](/docs/commerce-cloud/promotions/promotion-codes/jobs-api/create-a-job)
 
 ### Demos
 
-- {% youtube src="https://www.youtube.com/embed/MQTrLZp3cjI" label="Configuring a Promotion" /%}
-- {% youtube src="https://www.youtube.com/embed/fyQV8YWj4os" label="Configuring a Hierarchy-Based Promotion" /%}
-- {% youtube src="https://www.youtube.com/embed/x7TP4dsjNYs" label="Configuring an AND/OR Promotion Conditions" /%}
+- <iframe width="560" height="315" src="https://www.youtube.com/embed/MQTrLZp3cjI" title="Configuring a Promotion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+- <iframe width="560" height="315" src="https://www.youtube.com/embed/fyQV8YWj4os" title="Configuring a Hierarchy-Based Promotion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+- <iframe width="560" height="315" src="https://www.youtube.com/embed/x7TP4dsjNYs" title="Configuring an AND/OR Promotion Conditions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 

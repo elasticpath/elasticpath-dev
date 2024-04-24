@@ -165,6 +165,6 @@ Deleting a price book deletes the product prices in the price book. However, it 
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/oqdkiiMTN4s" label="Understanding Price Books" /%}
-{% youtube src="https://www.youtube.com/embed/5FbnzyNR1-w" label="Configuring Price Books in Commerce Manager" /%}
-{% youtube src="https://www.youtube.com/embed/diC3CeCTChU" label="Configuring Price Modifiers in Commerce Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oqdkiiMTN4s" title="Understanding Price Books" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5FbnzyNR1-w" title="Configuring Price Books in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/diC3CeCTChU" title="Configuring Price Modifiers in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

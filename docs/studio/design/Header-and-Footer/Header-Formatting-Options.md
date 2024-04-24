@@ -4,7 +4,7 @@ nav_label: Formatting Header
 sidebar_position: 50
 ---
 
-    {% youtube src="https://www.youtube.com/embed/fjdG-JN7nG8" label="Formatting Header" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fjdG-JN7nG8" title="Formatting Header" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Out of the box there are several header formatting options available to you. To get started with these options, you'll
 first need to navigate to your Header & Footer settings in Studio.

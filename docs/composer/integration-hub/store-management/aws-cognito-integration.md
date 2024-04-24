@@ -19,7 +19,7 @@ Amazon Cognito provides the capability to federate identity from other providers
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/Y0mv--xczX8" label="Integrating with AWS Cognito" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y0mv--xczX8" title="Integrating with AWS Cognito" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Understanding Amazon Cognito Integration Request Templates
 

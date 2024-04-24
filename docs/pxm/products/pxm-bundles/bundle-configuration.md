@@ -302,4 +302,4 @@ You can remove bundle products from a catalog, but still keep them in the databa
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/Sds4sdDiECI" label="Bundles Configuration" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Sds4sdDiECI" title="Bundles Configuration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

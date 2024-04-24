@@ -75,4 +75,4 @@ For more information, see [Update a Catalog](/docs/pxm/catalogs/catalog-configur
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/4-ccMytvaNE" label="Understanding Hierarchies in Product Experience Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4-ccMytvaNE" title="Understanding Hierarchies in Product Experience Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

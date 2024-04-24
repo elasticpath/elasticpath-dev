@@ -108,4 +108,4 @@ To build your child products:
 
 ## Demos
 
-{% youtube src="https://www.youtube.com/embed/a1mSUDAxx7k" label="Create Variations and Options" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a1mSUDAxx7k" title="Create Variations and Options" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

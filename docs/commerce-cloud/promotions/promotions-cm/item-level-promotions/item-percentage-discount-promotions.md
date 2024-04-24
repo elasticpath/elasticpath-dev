@@ -4,11 +4,11 @@ nav_label: Item Percentage Discount Promotions
 sidebar_position: 5
 ---
 
-:::caution
+:::warning
 We recommend to use **Advanced (Conditions v2)** settings.
 :::
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click **Add Promotion**.
 1. In the **Name** field, enter a name for the promotion.
 1. In the **Description** field, enter a description for the promotion.
@@ -68,7 +68,7 @@ We recommend to use **Advanced (Conditions v2)** settings.
                 - You can include up to 10 **+OR** conditions.
                 :::
     1. In the **Promotion Exclusions** subsection:
-            :::caution
+            :::warning
              **Promotion Exclusions** subsection is enabled only when you update the **Simplified (Conditions v1)** or **Advanced (Conditions v2)** settings in the **Promotion Conditions** subsection.
             :::
         1. To exclude products from a promotion, do the following:
@@ -101,4 +101,4 @@ We recommend to use **Advanced (Conditions v2)** settings.
 
 - [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Catalog](/docs/pxm/catalogs/catalogs)

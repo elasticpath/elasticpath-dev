@@ -9,7 +9,7 @@ The Promotions Builder provides the flexibility to offer diverse discounts to sh
 Within the Promotions Builder, you can configure promotions using various conditions:
 
 - [Cart](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-condition): Define a minimum cart subtotal or quantity requirements.
-- [Cart Items](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition): Specify product ID, product SKUs, product categories, or products with attributes for eligibility.
+- [Cart Items](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition): Specify product SKUs, product categories, or products with attributes for eligibility.
 - [Custom Attributes](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#adding-cart-custom-attributes): Choose your own cart custom attributes.
 
 Promotions in the Promotions Builder support the following actions:
@@ -20,7 +20,9 @@ Promotions in the Promotions Builder support the following actions:
 - [Item Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion): An item discount applies to the eligible items specified in the conditions. It can be a fixed amount, percentage, fixed price, or other discount specified such as **BXGY**.
 - [BXGY](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion): Buy X and Get Y (BXGY) discounts apply to the items identified within the promotional actions. This means that when a Buy X Get Y promotion is triggered, the specified items receive the associated discounts outlined in the promotion's configuration.
 
-To understand the difference between legacy promotions and Promotions Builder, see [Feature Comparison](/docs/commerce-cloud/rule-promotions/overview#feature-comparison-legacy-promotions-vs-rule-promotions).
+To understand the difference between Promotions Standard and Promotions Builder, see [Feature Comparison](/docs/commerce-cloud/rule-promotions/overview#feature-comparison-promotions-standard-vs-rule-promotions).
+
+As a best practice, we recommend creating new promotions in the Promotions Builder and allowing Promotions Standard to expire. While Promotions Standard can currently run side by side with new ones, transitioning to the Promotions Builder ensures alignment with updated features and facilitates smoother management of promotions over time.
 
 ## Stacking Multiple Promotions
 
@@ -43,7 +45,7 @@ To set this up in the Promotions Builder:
 
 See the following image:
 
-![Cart Custom Attribute](/assets/custom-attributes.png)
+![Scenario 1](/assets/promotion-example-scenario-1.png)
 
 ### Scenario 2
 

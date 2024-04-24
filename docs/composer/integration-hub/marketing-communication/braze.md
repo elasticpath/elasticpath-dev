@@ -111,4 +111,4 @@ You can extend or modify your configuration once you have enabled the integratio
 
 Watch the following video to learn how to integrate Commerce with Braze using the **Integrations Hub** in Commerce Manager:
 
-{% youtube src="https://www.youtube.com/embed/l9Tg5izBrN4" label="Configuring Braze" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l9Tg5izBrN4" title="Configuring Braze" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

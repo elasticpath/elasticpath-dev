@@ -4,7 +4,7 @@ nav_label: HubSpot
 sidebar_position: 190
 ---
 
-    {% youtube src="https://www.youtube.com/embed/4oBqJcEkej0" label="Integrating HubSpot" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4oBqJcEkej0" title="Integrating HubSpot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Quick Notes
 

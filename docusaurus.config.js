@@ -11,7 +11,6 @@ const resourceDOCS = fs.readFileSync('./src/snippets/resourceDOCS.html', 'utf-8'
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
 const defaultSettings = {
   breadcrumbs: true,
-  editUrl: 'https://github.com/elasticpath/elasticpath-dev',
   showLastUpdateTime: true,
   sidebarCollapsible: true,
   sidebarPath: require.resolve('./sidebars-default.js'),
@@ -298,7 +297,7 @@ const config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/elasticpath/elasticpath-dev"
+          editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/blog/"
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -470,8 +469,8 @@ const config = {
         },
         algolia: {
           appId: 'BE47YC23U9',
-          apiKey: '77d1494d8923cc5ff24934e7ece7e46a',
-          indexName: 'elasticpath',
+          apiKey: 'dda174fdac67c76b6c0ea6343aff2fbb',
+          indexName: 'BetaDocs',
           contextualSearch: true,
           searchParameters: {},
         },
@@ -500,7 +499,7 @@ const config = {
             specPath: "openapispecs/accounts/OpenAPISpec.yaml",
             outputDir: "docs/api/accounts",
             downloadUrl:
-                "https://openapi-documentation.vercel.app//openapispecs/accounts/OpenAPISpec.yaml",
+                "https://beta.elasticpath.com/openapispecs/accounts/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -510,7 +509,7 @@ const config = {
             specPath: "openapispecs/addresses/OpenAPISpec.yaml",
             outputDir: "docs/api/addresses",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/addresses/OpenAPISpec.yaml",
+                "https://beta.elasticpath.com/openapispecs/addresses/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -520,7 +519,7 @@ const config = {
          //   specPath: "openapispecs/catalog/catalog_view.yaml",
          //   outputDir: "docs/api/pxm/catalog",
          //   downloadUrl:
-         //       "https://openapi-documentation.vercel.appopenapispecs/catalog_view.yaml",
+         //       "https://beta.elasticpath.comopenapispecs/catalog_view.yaml",
          //   sidebarOptions: {
          //     groupPathsBy: "tag",
          //     categoryLinkSource: "tag",
@@ -530,7 +529,17 @@ const config = {
             specPath: "openapispecs/cartsorders/OpenAPISpec.yaml",
             outputDir: "docs/api/carts",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/OpenAPISpec.yaml",
+                "https://beta.elasticpath.com/openapispecs/cartsorders/OpenAPISpec.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
+          currencies: {
+            specPath: "openapispecs/currencies/OpenAPISpec.yaml",
+            outputDir: "docs/api/pxm/currencies",
+            downloadUrl:
+                "https://beta.elasticpath.com/openapispecs/currencies/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -540,7 +549,7 @@ const config = {
             specPath: "openapispecs/exporter/exporter.yaml",
             outputDir: "docs/api/exporter",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/exporter.yaml",
+                "https://beta.elasticpath.com/openapispecs/exporter/exporter.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -550,7 +559,7 @@ const config = {
             specPath: "openapispecs/files/files.yaml",
             outputDir: "docs/api/pxm/files",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/files.yaml",
+                "https://beta.elasticpath.com/openapispecs/files/files.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -560,7 +569,7 @@ const config = {
             specPath: "openapispecs/flows/flows.yaml",
             outputDir: "docs/api/flows",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/flows/flows.yaml",
+                "https://beta.elasticpath.com/openapispecs/flows/flows.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -570,7 +579,7 @@ const config = {
             specPath: "openapispecs/integrations/openapi.yaml",
             outputDir: "docs/api/integrations",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/integrations.yaml",
+                "https://beta.elasticpath.com/openapispecs/integrations/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -580,7 +589,7 @@ const config = {
             specPath: "openapispecs/inventory/openapi.yaml",
             outputDir: "docs/api/pxm/inventory",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/inventory.yaml",
+                "https://beta.elasticpath.com/openapispecs/inventory/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -590,7 +599,7 @@ const config = {
             specPath: "openapispecs/payments/OpenAPISpec.yaml",
             outputDir: "docs/api/payments",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/payments.yaml",
+                "https://beta.elasticpath.com/openapispecs/payments/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -600,7 +609,7 @@ const config = {
             specPath: "openapispecs/pim/pim.yaml",
             outputDir: "docs/api/pxm/products",
             downloadUrl:
-                "https://openapi-documentation.vercel.appopenapispecs/pim.yaml",
+                "https://beta.elasticpath.com/openapispecs/pim/pim.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -610,7 +619,7 @@ const config = {
             specPath: "openapispecs/pricebooks/pricebooks.yaml",
             outputDir: "docs/api/pxm/pricebooks",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/pricebooks.yaml",
+                "https://beta.elasticpath.com/openapispecs/pricebooks.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -620,7 +629,17 @@ const config = {
             specPath: "openapispecs/promotions/OpenAPISpec.yml",
             outputDir: "docs/api/promotions",
             downloadUrl:
-                "https://openapi-documentation.vercel.app/openapispecs/promotions.yaml",
+                "https://beta.elasticpath.com/openapispecs/promotions.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
+          settings: {
+            specPath: "openapispecs/settings/OpenAPISpec.yaml",
+            outputDir: "docs/api/settings",
+            downloadUrl:
+                "https://beta.elasticpath.com/openapispecs/settings/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -630,7 +649,7 @@ const config = {
             specPath: "openapispecs/subscriptions/public_openapi.yaml",
             outputDir: "docs/api/subscriptions",
             downloadUrl:
-                "https://raw.githubusercontent.com/davidmoltin/subscriptions/main/subscriptions.yaml",
+                "https://beta.elasticpath.com/openapispec/subscriptions/public_openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

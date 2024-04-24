@@ -4,7 +4,7 @@ nav_label: Custom Integrations
 sidebar_position: 91
 ---
 
-    {% youtube src="https://www.youtube.com/embed/uOK1ab0wOtI" label="Add Custom Code to Website" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/uOK1ab0wOtI" title="Add Custom Code to Website" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Following this guide will apply the code to **every page and article** on your site. If you're looking to only apply it
 to one page, please

@@ -43,5 +43,5 @@ To resend or withdraw the invite, click the ellipsis associated with the **Email
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/kNNRGPrqHXg" label="Understanding Roles in Commerce Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kNNRGPrqHXg" title="Understanding Roles in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

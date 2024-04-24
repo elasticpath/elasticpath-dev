@@ -8,13 +8,13 @@ The Rule Promotions provide the flexibity to offer diverse discounts to shoppers
 
 You can create a rule promotion using the [Rule Promotions API](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview) or [Commerce Manager](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/overview). 
 
-To apply Rule Promotions API in carts and orders, ensure that you have enabled the `use_rule_promotions` field in [Cart Settings](/docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings). You can also update a specific cart to use Rule Promotions. See [Update a Cart](/docs/commerce-cloud/carts/cart-management/update-a-cart). This turns on the hybrid mode, which means you can simultaneously use both [legacy promotions](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview) and Rule Promotions. For example, let's consider the following scenario:
+To apply Rule Promotions API in carts and orders, ensure that you have enabled the `use_rule_promotions` field in [Cart Settings](/docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings). You can also update a specific cart to use Rule Promotions. See [Update a Cart](/docs/commerce-cloud/carts/cart-management/update-a-cart). This turns on the hybrid mode, which means you can simultaneously use both [Promotions Standard](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview) and Rule Promotions. For example, let's consider the following scenario:
 
 If the cart has:
-- A leagcy promotion offering a 10% discount on the shopping cart
+- A Promotion Standard offering a 10% discount on the shopping cart
 - A Rule Promotion offering 20% discount on the shopping cart
 
-    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the legacy promotion and a 20% discount from the Rule Promotion. The promotions are stacked based on their creation date. This means the oldest promotion is applied first, followed by stacking of the newest promotion upon the oldest promotion. 
+    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The promotions are stacked based on their creation date. This means the oldest promotion is applied first, followed by stacking of the newest promotion upon the oldest promotion. 
 
 ## Rule Set
 
@@ -105,36 +105,38 @@ To learn more about promotion codes, see [Promotion Codes](/docs/commerce-cloud/
 - Multiple promotions can have the same code name. This means that different promotions can be identified using the same code names, allowing shoppers to apply a single coupon code that triggers multiple promotions. For more information see [Duplicate Codes](/docs/commerce-cloud/rule-promotions/rule-promotion-codes/create-rule-promotion-codes#duplicate-codes).
 :::
 
-## Feature Comparison: Legacy Promotions vs. Rule Promotions
+## Feature Comparison: Promotions Standard vs. Rule Promotions
 
-| Features                           | Promotions (Legacy) | Rule Promotions  |
+| Features                           | Promotions Standard | Rule Promotions  |
 |:---------------------------------- | -----------------------| ----------------------|
-| Case sensitive coupon codes                               | ✅      | ⛔️  |
-| Duplicate coupon codes across active promotions           | ⛔️      | ✅  |
-| Multiple matching criteria in a single promotion          | ⛔️      | ✅  |
-| Multiple discount actions in a single promotion           | ⛔️      | ✅  |
-| Stacking by creation date                                 | ✅      | ✅  |
-| Cart custom attributes                                    | ⛔️      | ✅  |
-| Conditional operators (For example, greater than or equal to) | ⛔️  | ✅  |
-| Fixed price promotion (products, categories, attributes)   |  ✅ (for the same item only)  | ✅ |
-| Item quantity conditions (minimum number of items in cart) | ⛔️  | coming soon |
-| Cart item quantity conditions (line item quantity)  | ✅ (limited to bundle promotions) | coming soon |
-| Discounts targeting All, Cheapest or Most expensive eligible items | ⛔️   | ✅  |
+| Case sensitive coupon codes                                         | ✅      | ⛔️  |
+| Duplicate coupon codes across active promotions                     | ⛔️      | ✅  |
+| Multiple matching criteria in a single promotion                    | ⛔️      | ✅  |
+| Multiple discount actions in a single promotion                     | ⛔️      | ✅  |
+| Stacking by creation date                                           | ✅      | ✅  |
+| Cart custom attributes                                              | ⛔️      | ✅  |
+| Conditional operators (For example, greater than or equal to)       | ⛔️      | ✅  |
+| Fixed price promotion (products, categories, attributes)            |  ✅ (for the same item only)  | ✅ |
+| Discounts targeting All, Cheapest or Most expensive eligible items | ⛔️       | ✅  |
 | Discounts targeting a specific quantity of items                   | ✅ (limited to bundle promotions) | ✅ |
-| Stacking and ranking control                                       |  ⛔️ | coming soon |
-| Free gift with auto Add                                            |  ⛔️ | coming soon |
-| Free shipping promotions (for shipping groups)                     |  ⛔️ | coming soon |
 | Maximum discount                                                   | ✅  | ✅  |
 | Maximum quantity limit (of the same SKU)                           | ✅  | ✅  |
 | Buy X get Y                                                        | ⛔️  | ✅  |
-| Buy X for Y (buy in multiples of)                                  | ✅  | coming soon |
 | Conditions by item price (currently API only)                      | ⛔️  | ✅  |
-| Promotions by product SKU, product ID, category, product attribute | ✅  | ✅  |
+| Cart promotion preview                                             | ✅  | ✅ | 
+| Promotions by product SKU, category, product attribute             | ✅  | ✅  |
 | Bundle fixed discount                                              | ✅  | coming soon |
 | Promotion history                                                  | ✅  | coming soon |
 | Bulk code generation (over 1000)                                   | ✅  | coming soon |
 | Advanced search                                                    | ⛔️  | coming soon |
-| Cart promotion preview                                             | ✅  | coming soon |                                     
+| Buy X for Y (buy in multiples of)                                  | ✅  | coming soon |
+| Stacking and ranking control                                       | ⛔️  | coming soon |
+| Free gift with auto Add                                            | ✅  | coming soon |
+| Free shipping promotions (for shipping groups)                     | ⛔️  | coming soon |
+| Cart item quantity conditions (line item quantity)                 | ✅ (limited to bundle promotions) | coming soon |
+| Item quantity conditions (minimum number of items in cart)         | ⛔️  | coming soon |
+| Product ID (limited to Automatic/Cumulative Bundle)                | ⛔️  | coming soon |
+|  Promotions by product ID                                          | ✅  | coming soon |
 
 ## Related Resources
 

@@ -248,5 +248,5 @@ The updates do not appear in the storefront until you republish the affected cat
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/4-ccMytvaNE" label="Understanding Hierarchies in Product Experience Manager" /%}
-{% youtube src="https://www.youtube.com/embed/4FM4lvYtQSA" label="Configuring Hierarchies in Product Experience Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4-ccMytvaNE" title="Understanding Hierarchies in Product Experience Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4FM4lvYtQSA" title="Configuring Hierarchies in Product Experience Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -33,7 +33,7 @@ If you make changes to a catalog release, you must republish the catalog for the
 
 You can go back to an earlier release of a catalog by [deleting](#deleting-catalog-releases) the latest release. 
 
-{% callout%}
+:::note
 
 If you want to add/remove hierarchies and price books you must [edit a catalog](#editing-catalogs).
 

@@ -4,7 +4,7 @@ nav_label: Version Control
 sidebar_position: 130
 ---
 
-    {% youtube src="https://www.youtube.com/embed/tFKfxhn4jCw" label="Version Control in Unstack" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/tFKfxhn4jCw" title="Version Control in Unstack" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Before we begin
 

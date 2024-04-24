@@ -4,7 +4,7 @@ nav_label: Managing Social Links in Footer
 sidebar_position: 90
 ---
 
-    {% youtube src="https://www.youtube.com/embed/rd3wa3CBkf0" label="Managing Footer Social Links" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/rd3wa3CBkf0" title="Managing Footer Social Links" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Currently, Studio users have the option of managing social links in their Footer settings. Following these steps below
 you can toggle Facebook, Twitter, LinkedIn, Instagram and YouTube links.

@@ -4,7 +4,7 @@ nav_label: Adjusting Header & Footer Logo Size
 sidebar_position: 30
 ---
 
-    {% youtube src="https://www.youtube.com/embed/WSPdy7rCc5c" label="Adjusting Logo Size" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WSPdy7rCc5c" title="Adjusting Logo Size" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Your logo's height can be adjusted via the two settings shown below in your ***Header & Footer*** settings.
 

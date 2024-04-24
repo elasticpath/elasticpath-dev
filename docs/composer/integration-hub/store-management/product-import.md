@@ -19,7 +19,7 @@ You cannot import bundles using the Product Import integration.
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/q4lYomkDxD8" label="Using the Product Import integration" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q4lYomkDxD8" title="Using the Product Import integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 An example of how product data is imported using a Product Import integration is described below.
 

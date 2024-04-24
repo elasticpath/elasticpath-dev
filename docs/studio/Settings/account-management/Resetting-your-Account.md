@@ -4,7 +4,7 @@ nav_label: Resetting Studio Account
 sidebar_position: 60
 ---
 
-    {% youtube src="https://www.youtube.com/embed/ZsbqJxpZ7As" label="Reset Unstack Account" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZsbqJxpZ7As" title="Reset Unstack Account" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Policy notes
 
