@@ -11,6 +11,7 @@ const resourceDOCS = fs.readFileSync('./src/snippets/resourceDOCS.html', 'utf-8'
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
 const defaultSettings = {
   breadcrumbs: true,
+  editUrl: 'https://github.com/elasticpath/elasticpath-dev',
   showLastUpdateTime: true,
   sidebarCollapsible: true,
   sidebarPath: require.resolve('./sidebars-default.js'),
@@ -291,6 +292,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars-default.js"),
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
+          editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/"
         },
         blog: {
           showReadingTime: true,
@@ -467,9 +469,9 @@ const config = {
           ],
         },
         algolia: {
-          appId: 'R6IQGTOQJY',
-          apiKey: '337676fe582da532ec7bcbca3332f590',
-          indexName: 'dev',
+          appId: 'BE47YC23U9',
+          apiKey: '77d1494d8923cc5ff24934e7ece7e46a',
+          indexName: 'elasticpath',
           contextualSearch: true,
           searchParameters: {},
         },
