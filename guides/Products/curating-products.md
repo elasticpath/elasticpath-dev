@@ -1,7 +1,7 @@
 ---
 title: Curating Products
 nav_label: Curating Products
-sidebar_position: 23
+sidebar_position: 20
 ---
 
 :::caution

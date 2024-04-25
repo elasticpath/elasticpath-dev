@@ -1,7 +1,7 @@
 ---
 title: Create Child Products Using Variations and Modifiers
 nav_label: Create Child Products Using Variations
-sidebar_position: 110
+sidebar_position: 40
 ---
 
 :::caution

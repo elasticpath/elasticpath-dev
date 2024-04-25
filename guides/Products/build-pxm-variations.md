@@ -1,7 +1,7 @@
 ---
 title: Build Child Products Using Variations
 nav_label: Build Child Products Using Variations
-sidebar_position: 120
+sidebar_position: 50
 ---
 
 :::caution

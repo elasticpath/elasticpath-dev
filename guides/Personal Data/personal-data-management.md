@@ -1,7 +1,7 @@
 ---
 title: Managing Personal Data
 sidebar_label: Managing Personal Data
-sidebar_position: 60
+sidebar_position: 10
 ---
 
 

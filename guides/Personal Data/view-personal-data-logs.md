@@ -1,7 +1,7 @@
 ---
 title: View Personal Data Logs
 nav_label: View Personal Data Logs
-sidebar_position: 70
+sidebar_position: 20
 ---
 
 ## Before you begin

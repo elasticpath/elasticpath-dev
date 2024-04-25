@@ -1,7 +1,7 @@
 ---
 title: Create and apply promotions
 nav_label: Apply promotions
-sidebar_position: 7
+sidebar_position: 20
 ---
 
 With promotions, you can provide different types of discounts to all your customers or specific customers. You can apply promotions automatically to all purchases, or you can create promotion codes that customers must enter to receive a discount. Each promotion can have up to 1000 codes, which can be distributed to customers.

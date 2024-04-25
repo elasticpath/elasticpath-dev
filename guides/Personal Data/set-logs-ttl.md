@@ -1,7 +1,7 @@
 ---
 title: Set Logs Time-to-live (TTL)
 nav_label: Set Logs TTL
-sidebar_position: 100
+sidebar_position: 50
 ---
 
 In Commerce, logs are kept in the system for a limited time. You can configure the retention period using the respective API. The default retention period is 365 days for production store types and 7 days for other store types.

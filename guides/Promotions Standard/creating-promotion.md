@@ -1,7 +1,7 @@
 ---
 title: Create Customer-specific Promotions
 nav_label: Create customer-specific Promotions
-sidebar_position: 6
+sidebar_position: 10
 ---
 
 ## Prerequisites
