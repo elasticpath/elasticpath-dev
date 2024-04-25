@@ -1,7 +1,7 @@
 ---
 title: Add Custom Data to Extend Products
 nav_label: Add Custom Data to Extend Products
-sidebar_position: 50
+sidebar_position: 31
 ---
 
 With extension templates, you can attach a specific set of custom fields to your products in Product Experience Manage.

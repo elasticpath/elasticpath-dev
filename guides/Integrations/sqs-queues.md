@@ -1,7 +1,7 @@
 ---
 title: Configure Simple Queue Service (SQS) Events
 nav_label: Configure (SQS) Events
-sidebar_position: 110
+sidebar_position: 10
 ---
 
 You can manually set up an AWS SQS queue to receive integration messages using the AWS Console.

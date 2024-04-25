@@ -1,7 +1,7 @@
 ---
 title: Configure Simple Queue Service (SQS) Events with CloudFormation
 nav_label: Configure SQS Events with CloudFormation
-sidebar_position: 120
+sidebar_position: 20
 ---
 
 You can use CloudFormation to set up an Amazon Web Services (AWS) Simple Queue Service (SQS) to receive integration messages. A CloudFormation template is provided to avoid manually setting up and configuring infrastructure in the AWS console. The template creates the same resources that you create during manual configuration.

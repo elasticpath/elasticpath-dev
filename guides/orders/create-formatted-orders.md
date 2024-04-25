@@ -1,7 +1,7 @@
 ---
 title: Create formatted orders
 nav_label: Create formatted orders
-sidebar_position: 50
+sidebar_position: 10
 ---
 
 This walkthrough shows how you can generate a Comma-Separated Values (CSV) list of orders that include cart items.

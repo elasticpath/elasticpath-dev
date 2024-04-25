@@ -1,7 +1,7 @@
 ---
 title: Sending Order Confirmations with Zapier
 nav_label: Send order confirmations
-sidebar_position: 70
+sidebar_position: 30
 ---
 
 This example topic describes cloning a repository that handles the incoming webhook to send emails and messages through Zapier and configuring the repository to run it locally. In this example, we use Zapier to send our emails and to host the email template.
