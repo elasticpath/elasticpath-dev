@@ -24,25 +24,13 @@ Before you configure the integration in Commerce Manager, you need to collect th
 
 You can find this information on the Recharge Dashboard in **Apps** > **API tokens**.
 
-{% table %}
-* Option
-* Description
----
-* **API Key**
-* The Talon One API key you created for this integration.
----
-* **API Base URL**
-* Your Base URL for Talon One. For example, `https://yourbaseurl.talon.one/`.
----
-* **Talon One Admin User Email**
-* The email address you used for your Talon One Admin User.
----
-* **Talon One Admin User Password**
-* The password you used for your Talon One Admin User.
----
-* **Talon One Catalog ID**
-* The ID of the Talon One catalog that you want to synchronize your Commerce data with.
-{% /table %}
+| Option | Description |
+| --- | --- |
+| **API Key** | The Talon One API key you created for this integration. |
+| **API Base URL** | Your Base URL for Talon One. For example, `https://yourbaseurl.talon.one/`. |
+| **Talon One Admin User Email** | The email address you used for your Talon One Admin User. |
+| **Talon One Admin User Password** | The password you used for your Talon One Admin User. |
+| **Talon One Catalog ID** | The ID of the Talon One catalog that you want to synchronize your Commerce data with. |
 
 ### Collecting Commerce Manager Setup Information
 
@@ -75,25 +63,13 @@ When integrating with third-party providers, we recommend you use the closest re
 1. Click **Connect**. The authorization is successfully completed.
 1. Enter the following details for Talon One:
 
-   {% table %}
-    * Option
-    * Description
-    ---
-    * **API Key**
-    * The Talon One API key you created for this integration.
-    ---
-    * **API Base URL**
-    * Your Base URL for Talon One. For example, `https://yourbaseurl.talon.one/`.
-    ---
-    * **Talon One Admin User Email**
-    * The email address you used for your Talon One Admin User.
-    ---
-    * **Talon One Admin User Password**
-    * The password you used for your Talon One Admin User.
-    ---
-    * **Talon One Catalog ID**
-    * The ID of the Talon One catalog that you want to synchronize your Commerce data with.
-    {% /table %}
+   | Option | Description |
+   | --- | --- |
+   | **API Key** | The Talon One API key you created for this integration. |
+   | **API Base URL** | Your Base URL for Talon One. For example, `https://yourbaseurl.talon.one/`. |
+   | **Talon One Admin User Email** | The email address you used for your Talon One Admin User. |
+   | **Talon One Admin User Password** | The password you used for your Talon One Admin User. |
+   | **Talon One Catalog ID** | The ID of the Talon One catalog that you want to synchronize your Commerce data with. |
 
 1. Click **Next**. The **Configurations** pane is displayed.
 1. Click **Store Configuration Rules**. The **Store Configuration Rules** are automatically configured to allow the integration access to flows, so no further action is required.

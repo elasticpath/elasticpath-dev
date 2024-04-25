@@ -124,11 +124,11 @@ The following are special field names:
 
 ### Alternate Taxonomy Fields
 
-In addition to the `ep_categories` attribute, the `ep_slug_categories` attribute is created. This attribute contains the formatted hierarchy values, but uses the **category-node slug** rather than the **category-node name**.
+In addition to the `ep_categories` attribute, you can use the `ep_slug_categories` attribute. This attribute contains the formatted hierarchy values, but uses the **category-node slug** rather than the **category-node name**.
 
 For example, the `ep_categories` field appears as follows
 
-```
+```json
 {
    lvl0: "Animal & Pet Supplies"
    lvl1: "Animal & Pet Supplies > Dog"
@@ -139,7 +139,7 @@ For example, the `ep_categories` field appears as follows
 
 And the `ep_slug_categories` field appears as follows:
 
-```
+```json
 {
    lvl0: "animal-and-pet-supplies"
    lvl1: "animal-and-pet-supplies > dog"
@@ -148,18 +148,15 @@ And the `ep_slug_categories` field appears as follows:
 }
 ```
 
-Optionally, we can also generate a new field called `ep_name_plus_slug_categories` which is a formatted representation 
-or the **category-node name**, and **category-node slug** fields which is available for faceting.
+Optionally, you can also generate a new field called `ep_name_plus_slug_categories` which is a formatted representation or the **category-node name**, and **category-node slug** fields  available for faceting.
 
-Using the following configuration parameters we can enable the creation and maintenance of this field.
+Using **Create Category Name Slug Attribute**, you can enable the creation and maintenance of this field.
 
-| Configuration parameter                 | Value                                                                                        |
-|:----------------------------------------|:---------------------------------------------------------------------------------------------|
-| **Create Category Name Slug Attribute** | True if we want to create the `ep_name_plus_slug_categories` attribute field. Default: false |
+Set **Create Category Name Slug Attribute** to `true` if you want to create the `ep_name_plus_slug_categories` attribute field. 
 
-For example, when enabled; the `ep_name_plus_slug_categories` field appears as follows:
+For example, when enabled, the `ep_name_plus_slug_categories` field appears as follows:
 
-```
+```json
 {
   lvl0: "Animal & Pet Supplies#animal-and-pet-supplies"
   lvl1: "Animal & Pet Supplies#animal-and-pet-supplies > Dog#dog"
@@ -170,11 +167,10 @@ For example, when enabled; the `ep_name_plus_slug_categories` field appears as f
 
 where, for each value the Name and SLUG values are concatenated to permit them both to be available to the front-end.
 
-In all cases, when there are multiple product->node assignments, a comma is used to separate the data in the `ep_categories`, `ep_slug_categories`
-and the optional `ep_name_plus_slug_categories` fields.
+In all cases, when there are multiple product->node assignments, a comma is used to separate the data in the `ep_categories`, `ep_slug_categories` and the optional `ep_name_plus_slug_categories` fields.
 
 For example, 
-```
+```json
    lvl0: "Farm and Ranch,Power Tools and Acc,Fasteners"
 ```
 where the product is assigned to both `Farm and Ranch`, but also `Power Tools and Acc` as well as the `Fasteners` category nodes.
@@ -248,32 +244,12 @@ You can update a single Commerce product in Algolia without publishing a catalog
 6. In Postman, open `POST {{webhook-url}}` where `webhook-url` is the URL you just copied.
 7. The **Body** of the request can have the following parameters:
 
-   {% table %}
-    * Name
-    * Required
-    * String
-    * Description
-    ---
-    * `index_name`
-    * Required
-    * `string`
-    * The name of the Algolia index that you want to update.
-    ---
-    * `objectID`
-    * Required
-    * `string`
-    * The product ID of the Commerce product that you want to update.
-   ---
-    * `secret_key`
-    * Required
-    * `string`
-    * The Commerce Client Secret that you used when you configured the Algolia Integration.
-   ---
-    * `payload`
-    * Required
-    * `string`
-    * The payload contains the mapped fields for the Algolia object that you want to update. The schema must match the existing Algolia object.
-  {% /table %}
+    | Name | Required | String | Description |
+    | --- | --- | --- | --- | 
+    | `index_name` | Required | `string` | The name of the Algolia index that you want to update. |
+    | `objectID` | Required | `string` | The product ID of the Commerce product that you want to update. |
+    | `secret_key` | Required | `string` | The Commerce Client Secret that you used when you configured the Algolia Integration. |
+    | `payload` | Required | `string` | The payload contains the mapped fields for the Algolia object that you want to update. The schema must match the existing Algolia object. |
 
     An example request is shown below:
 
@@ -290,4 +266,4 @@ You can update a single Commerce product in Algolia without publishing a catalog
        }
      }
    }
-```
+   ```

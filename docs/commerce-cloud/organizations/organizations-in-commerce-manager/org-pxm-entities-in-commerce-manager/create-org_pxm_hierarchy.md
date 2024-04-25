@@ -35,23 +35,11 @@ Create a hierarchy and then create the parent/child nodes.
 1. Click **Add Hierarchy** or **Create new hierarchy**, depending on where you are in **Product Experience Manager**.
 1. Enter the following information for a hierarchy:
 
-   {% table %}
-    * Name
-    * Required
-    * Description
-    ---
-    * Name
-    * Required
-    * The name of the hierarchy.
-    ---
-    * Description
-    * Optional
-    * A description of the hierarchy.
-    ---
-    * Slug
-    * Optional
-    * A slug for the hierarchy.
-    {% /table %}
+    | Name | Required | Description |
+    |------| --- | --- |
+    | Name | Required | The name of the hierarchy. |
+    | Description | Optional | A description of the hierarchy. |
+    | Slug | Optional | A slug for the hierarchy. |
 
 1. Click **Save**.
 
@@ -74,41 +62,16 @@ You must create a parent node first, then create your child nodes.
 1. Click **Create new node** or **Create Child Node**, depending on where you are in **Product Experience Manager**.
 1. Enter the following details for a node:
 
-   {% table %}
-    * Name
-    * Required
-    * Description
-    ---
-    * Name
-    * Required
-    * The name of the node. Names must be unique among sibling nodes in the hierarchy. Otherwise, a name can be non-unique within the hierarchy and across multiple hierarchies.
-    ---
-    * Description
-    * Optional
-    * A description of the node.
-    ---
-    * Slug
-    * Optional
-    * A slug for the node. Slugs must be unique among sibling nodes in the hierarchy. Otherwise, a slug can be non-unique within the hierarchy and across multiple hierarchies.
-    ---
-    * Weight
-    * Optional
-    * Enter a value to determine the order that nodes are displayed in your storefront. The node with the highest value is displayed first. The weight value must be greater than or equal to one. For example, 1, 2, 3, or 100, 90, 80, and so on.
+    | Name        | Required  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+    |-------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Name        | Required  | The name of the node. Names must be unique among sibling nodes in the hierarchy. Otherwise, a name can be non-unique within the hierarchy and across multiple hierarchies.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | Description | Optional  | A description of the node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | Slug        | Optional  | A slug for the node. Slugs must be unique among sibling nodes in the hierarchy. Otherwise, a slug can be non-unique within the hierarchy and across multiple hierarchies.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | Weight      | Optional  | Enter a value to determine the order that nodes are displayed in your storefront. The node with the highest value is displayed first. The weight value must be greater than or equal to one. For example, 1, 2, 3, or 100, 90, 80, and so on. <ul><li>If you don’t provide a weight, child nodes are displayed in the order they were last updated, with the most recently updated child node displayed first.</li><li>If you set a weight for only a few child nodes, the child nodes with a weight appear first and then other child nodes appear in the order they were last updated.</li></ul> |
+    | Locales     | Optional  | If you have activated any languages for your store: <ol><li>From the **Locale** list, select the language you want to use to localize your node details. You can activate and deactivate languages in Commerce Manager. You can activate a maximum of five languages. See [Using Locales in Commerce Manager]( /docs/pxm/products/locales).</li><li>Add a localized node name and description.</li></ol>                                                                                                                                                                                           |
 
-      {% list type="checkmark" %}
-       * If you don’t provide a weight, child nodes are displayed in the order they were last updated, with the most recently updated child node displayed first.
-       * If you set a weight for only a few child nodes, the child nodes with a weight appear first and then other child nodes appear in the order they were last updated.
-      {% /list %}
-    ---
-    * Locales
-    * Optional
-    * If you have activated any languages for your store:
+    
 
-      {% list type="checkmark" %}
-       1. From the **Locale** list, select the language you want to use to localize your node details. You can activate and deactivate languages in Commerce Manager. You can activate a maximum of five languages. See [Using Locales in Commerce Manager]( /docs/pxm/products/locales).
-       2. Add a localized node name and description.
-      {% /list %}
-   {% /table %}
 
 1. Click **Create**.
 1. Click and drag your nodes to a different hierarchy at any time to reorder your nodes, depending on your requirements.
@@ -139,10 +102,11 @@ During the duplication process, the product associations are maintained in the d
 1. (Optional) Turn on the **Retain a products relationship** toggle to keep the products associated with the nodes in the existing hierarchy associated with the nodes in the duplicated hierarchy.
 1. Click **Confirm** to save your changes.
 
-      :::caution
-      You must ensure that hierarchies in organizations and stores have unique SKUs. If a store product is created with a SKU that is already in use by an organization product, an error message is displayed. This helps maintain accurate inventory management and avoid potential conflicts between organization and store products.
-      :::
-      {% /list %}
+    :::caution
+
+    You must ensure that hierarchies in organizations and stores have unique SKUs. If a store product is created with a SKU that is already in use by an organization product, an error message is displayed. This helps maintain accurate inventory management and avoid potential conflicts between organization and store products.
+
+    :::
 
 3. Organize your store products in the duplicated [hierarchy](/docs/pxm/hierarchies/node-relationships-api/create-node-product-relationships).
 4. Your duplicated hierarchy now belongs to the store.

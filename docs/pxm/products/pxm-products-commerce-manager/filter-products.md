@@ -71,188 +71,22 @@ date as an integer number of milliseconds since 1970-01-01 00:00:00. This is als
 
 The following table describes the filter options available for each attribute.
 
-{% table %}
-* Attribute
-* Filter
-* Description
----
-* ID
-* 
-  {% list type="checkmark" %}
-    * **is** 
-    * **list** 
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * For **is**, type the value you want. You can use [supported characters](#supported-characters).
-   * For **list**, specify a list of IDs. Only the products whose IDs you have specified are shown.
-  {% /list %}
----
-* Name
-* 
-  {% list type="checkmark" %}
-   * **starts with**
-   * **is**
-   * **is like**
-   * **ends with**
-   * **list** 
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).
-   * For **list**, specify a list of names. Only the products whose names you have specified are shown.
-  {% /list %}
----
-* SKU
-*   
-  {% list type="checkmark" %}
-   * **starts with**
-   * **is**
-   * **is like**
-   * **ends with**
-   * **list** 
-   {% /list %}
-*  
-   {% list type="checkmark" %}
-    * For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).
-    * For **list**, specify a list of SKUs. Only the products whose SKUs you have specified are shown.
-   {% /list %}
----
-* Description
-*
-  {% list type="checkmark" %}
-    * **starts with**
-    * **is**
-    * **is like**
-    * **ends with**
-  {% /list %}
-* Type the value that you want. You can use [supported characters](#supported-characters).
----
-* Slug
-*
-  {% list type="checkmark" %}
-   * **starts with**
-   * **is**
-   * **is like**
-   * **ends with**
-   * **list**
-  {% /list %}
-*
-  {% list type="checkmark" %}
-  * For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).
-  * For **list**, specify a list of slug. Only the products whose slugs you have specified are shown.
-  {% /list %}
----
-* Commodity Type
-*
-  {% list type="checkmark" %}
-     * **Physical**
-     * **Digital**
-  {% /list %} 
-* Select  **Physical** or **Digital** to display a list of physical or digital products.
----
-* UPC/EAN
-*
-   {% list type="checkmark" %}
-     * **starts with**
-     * **is**
-     * **is like**
-     * **ends with**
-     * **list** 
-   {% /list %}
-*
-   {% list type="checkmark" %}
-     * For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).
-     * For **list**, specify a list of UPC/EANs. Only the products whose UPC/EANs you have specified are shown.
-   {% /list %}
----
-* MPN
-*
-  {% list type="checkmark" %}
-   * **starts with**
-   * **is**
-   * **is like**
-   * **ends with**
-   * **list** 
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).
-   * For **list**, specify a list of MPNs. Only the products whose MPNs you have specified are shown.
-  {% /list %}
----
-* Status
-*
-  {% list type="checkmark" %}
-   * **Live**
-   * **Draft**
-  {% /list %}
-* Select **Live** or **Draft** to display a list of live or draft products.
----
-* Templates
-*
-  {% list type="checkmark" %}
-  * **is**
-  * **list**
-  {% /list %}
-* Use this filter to filter template attributes. 
-  {% list type="checkmark" %}
-  1. Select a template from the list.
-  2. In **Attributes**, select an attribute from the list. (Attributes with a `date` type are not displayed because Commerce Manager does not support filtering on template attributes with a `date` type.) The filter operators are displayed. 
-  3. Select **is** or **list**. The **list** filter option does not support `integer`, `float`, or `boolean` attributes, hence no filter operators are displayed for attributes of these types. 
-  4. Enter the values you want to search for.
-
-  You can chain filters to search for more than one template attribute at a time.
-  {% /list %}
----
-* Owner
-*
-  {% list type="checkmark" %}
-   * **Organization**
-   * **Store**
-  {% /list %}
-* Select **Organization** or **Store** to display a list of organization or store products.
----
-* Has Node Assignment
-* **False** 
-* Use this filter to find orphaned products. Products must be assigned to nodes to be included in a catalog.
-  {% callout   %}
-  You cannot use this filter to show products that *are* assigned to nodes.
-  :::
----
-* External Reference
-*
-  {% list type="checkmark" %}
-  * **starts with**
-  * **is**
-  * **is like**
-  * **ends with**
-  * **list**
-  {% /list %}
-*
-  {% list type="checkmark" %}
-  * For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).  External references have a maximum length of 2048 characters.
-  * For **list**, specify a list of external references. Only the products whose external references you have specified are displayed.
-  {% /list %}
----
-* Product Types
-*
-  {% list type="checkmark" %}
-  * **is**
-  * **list**
-  {% /list %}
-*
-  {% list type="checkmark" %}
-  * For **is**, enter the product type you want.
-  * For **list**, specify a list of product types. Only those product types are displayed.
-    {% list type="checkmark" %}
-      * `standard` - A standard product is a standalone product.
-      * `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).
-      * `child` -  When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.
-      * `bundle` - A bundle is a purchasable product, comprising one or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
-    {% /list %}
-  {% /list %}
-{% /table %}
+| Attribute           | Filter                                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|---------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ID                  | <ul><li>**is**</li><li>**list**</li></ul>                                                                   | <ul><li>For **is**, type the value you want. You can use [supported characters](#supported-characters).</li><li>For **list**, specify a list of IDs. Only the products whose IDs you have specified are shown.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Name                | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li><li>**list**</li></ul> | <ul><li>For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).</li><li>For **list**, specify a list of names. Only the products whose names you have specified are shown.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| SKU                 | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li><li>**list**</li></ul> | <ul><li>For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).</li><li>For **list**, specify a list of SKUs. Only the products whose SKUs you have specified are shown.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Description         | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li></ul>                  | Type the value that you want. You can use [supported characters](#supported-characters).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Slug                | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li><li>**list**</li></ul> | <ul><li>For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).</li><li>For **list**, specify a list of slug. Only the products whose slugs you have specified are shown.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Commodity Type      | <ul><li>**Physical**</li><li>**Digital**</li></ul>                                                          | Select  **Physical** or **Digital** to display a list of physical or digital products.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| UPC/EAN             | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li><li>**list**</li></ul> | <ul><li>For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).</li><li>For **list**, specify a list of UPC/EANs. Only the products whose UPC/EANs you have specified are shown.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| MPN                 | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li><li>**list**</li></ul> | <ul><li>For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).</li><li>For **list**, specify a list of MPNs. Only the products whose MPNs you have specified are shown.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Status              | <ul><li>**Live**</li><li>**Draft**</li></ul>                                                                | Select **Live** or **Draft** to display a list of live or draft products.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Templates           | <ul><li>**is**</li><li>**list**</li></ul>                                                                   | Use this filter to filter template attributes. <ol><li>Select a template from the list.</li><li>In **Attributes**, select an attribute from the list. (Attributes with a `date` type are not displayed because Commerce Manager does not support filtering on template attributes with a `date` type.) The filter operators are displayed.</li><li>Select **is** or **list**. The **list** filter option does not support `integer`, `float`, or `boolean` attributes, hence no filter operators are displayed for attributes of these types.</li><li>Enter the values you want to search for.</li></ol>You can chain filters to search for more than one template attribute at a time.                                                                                                                                                                                                                                                                           |
+| Owner               | <ul><li>**Organization**</li><li>**Store**</li></ul>                                                        | Select **Organization** or **Store** to display a list of organization or store products.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Has Node Assignment | **False**                                                                                                   | Use this filter to find orphaned products. Products must be assigned to nodes to be included in a catalog. **Note**: You cannot use this filter to show products that *are* assigned to nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| External Reference  | <ul><li>**starts with**</li><li>**is**</li><li>**is like**</li><li>**ends with**</li><li>**list**</li></ul> | <ul><li>For **starts with**, **is**, **is like**, and **ends with**, type the value you want. You can use [supported characters](#supported-characters).  External references have a maximum length of 2048 characters.</li><li>For **list**, specify a list of external references. Only the products whose external references you have specified are displayed.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 
+| Product Types       | <ul><li>**is**</li><li>**list**</li></ul>                                                                   | <ul><li>For **is**, enter the product type you want.</li><li>For **list**, specify a list of product types. Only those product types are displayed.</li><ul><li>`standard` - A standard product is a standalone product.</li><li>`parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).</li><li>`child` -  When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.</li><li>`bundle` - A bundle is a purchasable product, comprising one or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).</li></ul></ul> |
 
 ## Creating Filters
 

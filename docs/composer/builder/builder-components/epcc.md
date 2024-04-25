@@ -121,39 +121,15 @@ The component has the following actions.
 
 ### Create Account 
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input | Type |  Description |
+| --- | --- | --- | 
+| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
+| **Override Token** | `string` |  The output of Generate Override Token action to be used with Organizations. |
+| **Account Request** | `string` | The API request to create an account. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Account Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-
----
-
-*
-   **Account Request**
-*
-  `string`
-
-*
-  The API request to create an account. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "account",
     "name": "acc-name",
@@ -162,54 +138,20 @@ The component has the following actions.
     "external_ref": "16bedceb-8b2d-4f82-a973-b0a8d8432708",
     "parent_id": "96b1f750-55d3-4768-a3f8-adffba694a2c"
   }
-  ```
-{% /table %}
+```
 
 ### Create Account Address
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input | Type | Description |
+| --- | --- | --- |
+| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
+|  **Override Token** |  `string` |  The output of Generate Override Token action to be used with Organizations. |
+| **Account ID** | `string` | The unique identifier for an Account. |
+| **Account Address Request** |  `string` |  The API request to create an account address. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Account Address Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-
----
-
-*
-   **Account ID**
-*
-  `string`
-
-*
-  The unique identifier for an Account.
-
----
-
-*
-   **Account Address Request**
-*
-  `string`
-
-*
-  The API request to create an account address. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "address",
     "name": "Home",
@@ -226,44 +168,19 @@ The component has the following actions.
     "country": "GB",
     "instructions": "Leave in the shed"
   }
-  ```
-{% /table %}
+```
 
 ### Create Customer 
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input | Type | Description |
+| --- | --- | --- |
+| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
+| **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
+| **Customer Request** | `string` | The API request to create a customer. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Customer Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-
----
-
-*
-   **Customer Request**
-*
-  `string`
-
-*
-  The API request to create a customer. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "customer",
     "name": "Ron Swanson",
@@ -271,9 +188,7 @@ The component has the following actions.
     "external_ref": "16bedceb-8b2d-4f82-a973-b0a8d8432708",
     "password": "mysecretpassword"
   }
-  ```
-{% /table %}
-
+```
 
 ### Create Flow
 
@@ -747,57 +662,23 @@ Get a page of orders.
 
 ### Update Order
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input | Type | Description |
+| --- | --- | --- |
+| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
+| **Order Id** | `string` | The unique identifier of the order. |
+| **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
+| **Order Request** |  `string` |  The API request to update an order. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Order Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Order Request**
-*
-  `string`
-
-*
-  The API request to update an order. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "order",
     "shipping_address": {
       "first_name": "Ron"
     }
   }
-  ```
----
-
-*
-   **Order Id**
-*
-  `string`
-
-*
-  The unique identifier of the order.
-
----
-
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-{% /table %}
-
+```
 
 ### Get Product by ID (PXM)
 
@@ -916,119 +797,43 @@ Get a page of orders.
 
 ### Update Account
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input | Type | Description |
+| --- | --- | --- | 
+| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
+| **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. | 
+| **Account ID** |  `string` | The unique identifier for an account. |
+| **Account Request** |  `string` | The API request to update an account. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Account Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-
----
-
-*
-   **Account ID**
-*
-  `string`
-
-*
-  The unique identifier for an account.
-
----
-
-*
-   **Account Request**
-*
-  `string`
-
-*
-  The API request to update an account. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "account",
     "name": "acc-name",
     "legal_name": "acc-legal-name",
     "registration_id": "00000000-0000-1000-8000-000f00000300"
   }
-  ```
-{% /table %}
+```
 
 ### Update Account Address
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input | Type | Description |
+| --- | --- | --- |
+| **Connection** |  `connection` |  Elastic Path Commerce Cloud connection. |
+| **Override Token** |  `string` |  The output of Generate Override Token action to be used with Organizations. |
+| **Account ID** |  `string` |  The unique identifier for an Account. | 
+| **Account Address ID** |  `string` |  The unique identifier for an account address. |
+|  **Account Address Request** |  `string` |  The API request to update an account address. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Account Address Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-
----
-
-*
-   **Account ID**
-*
-  `string`
-
-*
-  The unique identifier for an Account.
-
----
-
-*
-   **Account Address ID**
-*
-  `string`
-
-*
-  The unique identifier for an account address.
-
----
-
-*
-   **Account Address Request**
-*
-  `string`
-
-*
-  The API request to update an account address. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "address",
     "first_name": "Ron"
   }
-  ```
-{% /table %}
+```
+
 
 ### Update Authentication Realm
 
@@ -1041,54 +846,21 @@ Get a page of orders.
 
 ### Update Customer 
 
-{% table %}
-* Input
-* Type
-* Description
----
+| Input                | Type | Description |
+|----------------------| --- | --- |
+| **Connection**       |  `connection` |  Elastic Path Commerce Cloud connection. |
+| **Override Token**   |  `string` |  The output of Generate Override Token action to be used with Organizations. |
+| **Customer ID**      |  `string` |  The unique identifier for a customer. |
+| **Customer Request** |  `string` |  The API request to update a customer. Avoid using `data` parameter in the request. |
 
-*
-   **Connection**
-*
-  `connection`
+For **Customer Request**, see the following snippet:
 
-*
-   Elastic Path Commerce Cloud connection.
-
----
-*
-   **Override Token**
-*
-  `string`
-
-*
-  The output of Generate Override Token action to be used with Organizations.
-
----
-
-*
-   **Customer ID**
-*
-  `string`
-
-*
-  The unique identifier for a customer.
-
----
-
-*
-   **Customer Request**
-*
-  `string`
-
-*
-  The API request to update a customer. Avoid using `data` parameter in the request. For example, see the following snippet:
-  ```
+```json
   {
     "type": "customer",
     "email": "ron@swanson.com"
   }
-  ```
+```
 
 ### Update Flow Entry
 
@@ -1180,12 +952,12 @@ Find a promotion with the given name.  The action uses an exact, case-sensitive 
 
 ### Get Account Address by ID
 
- Input | Type | Description |
-|:--- |:--- | :--- |
-| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
-| **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
-| **Account ID** | `string` | The unique identifier for an Account. |
-| **Account Address ID** | string` | The unique identifier for an account address. |
+| Input                  | Type         | Description                                                                 |
+|:-----------------------|:-------------|:----------------------------------------------------------------------------|
+| **Connection**         | `connection` | Elastic Path Commerce Cloud connection.                                     |
+| **Override Token**     | `string`     | The output of Generate Override Token action to be used with Organizations. |
+| **Account ID**         | `string`     | The unique identifier for an Account.                                       |
+| **Account Address ID** | string`      | The unique identifier for an account address.                               |
 
 ### Get Account Attributes
 
@@ -1196,15 +968,15 @@ Find a promotion with the given name.  The action uses an exact, case-sensitive 
 
 ### Get Paged Accounts
 
-| Input | Type | Description |
-|:--- |:--- | :--- |
-| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
-| **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
-| **Limit** | `string` |  The maximum number of records per page for this response. You can set this value up to 100. |
-| **offset** | `string` | The current offset by number of records, not pages. Offset is zero-based. |
-| **Filter Type** | `string` | The type of filter to apply to this query. All 3 filter fields must be provided or else the filter settings are ignored.
-| **Filter Field** | `string` | The field to specify in the filter. |
-| **Filter Field Value** |  `string` | The value to specify in the filter. |
+| Input                  | Type         | Description                                                                                                              |
+|:-----------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------|
+| **Connection**         | `connection` | Elastic Path Commerce Cloud connection.                                                                                  |
+| **Override Token**     | `string`     | The output of Generate Override Token action to be used with Organizations.                                              |
+| **Limit**              | `string`     | The maximum number of records per page for this response. You can set this value up to 100.                              |
+| **offset**             | `string`     | The current offset by number of records, not pages. Offset is zero-based.                                                |
+| **Filter Type**        | `string`     | The type of filter to apply to this query. All 3 filter fields must be provided or else the filter settings are ignored. |
+| **Filter Field**       | `string`     | The field to specify in the filter.                                                                                      |
+| **Filter Field Value** | `string`     | The value to specify in the filter.                                                                                      |
 
 ### Get Paged Account Addresses
 
@@ -1218,14 +990,14 @@ Find a promotion with the given name.  The action uses an exact, case-sensitive 
 
 ### Get Paged Customers
 
-| Input | Type | Description |
-|:--- |:--- | :--- |
-| **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
-| **Limit** | `string` |  The maximum number of records per page for this response. You can set this value up to 100. |
-| **offset** | `string` | The current offset by number of records, not pages. Offset is zero-based. |
-| **Filter Type** | `string` | The type of filter to apply to this query. All 3 filter fields must be provided or else the filter settings are ignored.
-| **Filter Field** | `string` | The field to specify in the filter. |
-| **Filter Field Value** |  `string` | The value to specify in the filter. |
+| Input                  | Type         | Description                                                                                                              |
+|:-----------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------|
+| **Connection**         | `connection` | Elastic Path Commerce Cloud connection.                                                                                  |
+| **Limit**              | `string`     | The maximum number of records per page for this response. You can set this value up to 100.                              |
+| **offset**             | `string`     | The current offset by number of records, not pages. Offset is zero-based.                                                |
+| **Filter Type**        | `string`     | The type of filter to apply to this query. All 3 filter fields must be provided or else the filter settings are ignored. |
+| **Filter Field**       | `string`     | The field to specify in the filter.                                                                                      |
+| **Filter Field Value** | `string`     | The value to specify in the filter.                                                                                      |
 
 ### Get Promotion Code Usages
 

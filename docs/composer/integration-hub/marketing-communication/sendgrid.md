@@ -96,24 +96,10 @@ The `dynamicFieldMapping` object uses [JSONata](http://docs.jsonata.org/overview
 
 The attributes and types for the `dynamicFieldMapping` object are defined in the following table.
 
-{% table %}
-* Attribute
-* Type
-* Description
----
-* *SendgridTemplateFieldnames*
-* string
-* The placeholder fields from your SendGrid dynamic templates. See [Creating Dynamic Templates in SendGrid](/docs/composer/integration-hub/marketing-communication/sendgrid#creating-dynamic-templates-in-send-grid).
----
-* *ElasticPathCommerceCloudPayload*
-* string
-* The payload delivered to your webhook from Commerce contains the information about the resources affected by the fired event. See [Integration Payload](/docs/commerce-cloud/integrations/integration-payload). The payload must include: 
-
-    * A `To` field that defines the email address that the email should be sent to. This can be defined as a single email address or a comma-separated list of email addresses.
-    * The data from Commerce that you want to include in a SendGrid email. The format of the data depends on whether you have a single item or an array of items. 
-        * A single item is in the format `$payload.data.EPCCresource`. For example, `$payload.data.billing.address.first_name`. 
-        * An array of items is in the format of `$payload.data.EPCCobjectname.{'EPPCresourcename': EPCCresourcevalue,'EPPCresourcename': EPCCresourcevalue}`. For example, `$.payload.included.items.{'name': name,'sku':sku, 'price': meta.display_price.with_tax.value.formatted}`.
-{% /table %}
+| Attribute | Type | Description |
+| --- | --- | --- |
+| *SendgridTemplateFieldnames* | string | The placeholder fields from your SendGrid dynamic templates. See [Creating Dynamic Templates in SendGrid](/docs/composer/integration-hub/marketing-communication/sendgrid#creating-dynamic-templates-in-send-grid). |
+| *ElasticPathCommerceCloudPayload* | string | The payload delivered to your webhook from Commerce contains the information about the resources affected by the fired event. See [Integration Payload](/docs/commerce-cloud/integrations/integration-payload). The payload must include:  <ul><li>A `To` field that defines the email address that the email should be sent to. This can be defined as a single email address or a comma-separated list of email addresses.</li><li>The data from Commerce that you want to include in a SendGrid email. The format of the data depends on whether you have a single item or an array of items. </li><ul><li>A single item is in the format `$payload.data.EPCCresource`. For example, `$payload.data.billing.address.first_name`. </li><li>An array of items is in the format of `$payload.data.EPCCobjectname.{'EPPCresourcename': EPCCresourcevalue,'EPPCresourcename': EPCCresourcevalue}`. For example, `$.payload.included.items.{'name': name,'sku':sku, 'price': meta.display_price.with_tax.value.formatted}`.</li></ul></ul> |
 
 Below is an example of a single `messagingProvider` object.
 

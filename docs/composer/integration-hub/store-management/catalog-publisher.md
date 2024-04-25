@@ -82,22 +82,17 @@ You can publish using Postman.
 1. Select **Copy to Clipboard** to copy the URLs.
 1. Go to Postman.
 1. Open `POST {{webhook-url}}` where *webhook-url* is the webhook you copied in step 5.
-1. The following table describes the parameters you can supply in **Body**, depending on the flow you are using. 
+1. You can supply the folllowing parameters in **Body**, depending on the flow you are using. 
 
-    {% table %}
-    * Flow
-    * Body
-    ---
-    * **Publish Catalog Flow**
-    *  An array of catalog IDs.
+    - **Publish Catalog Flow** - An array of catalog IDs.
+   
        ```
        {
         "catalogIds": ["4f37dd4e-75c6-4f43-8888-0ea8d4963480","0776c723-971a-444b-b0e0-4967e9b9164c"]
        }
        ```
-    ---
-    * **Check Publish Status Flow**
-    * An array of catalog IDs, the catalog release ID and the `statusCheckRetryCount` to specify the maximum number of times the integration checks the status and retries.
+
+    - **Check Publish Status Flow** - An array of catalog IDs, the catalog release ID and the `statusCheckRetryCount` to specify the maximum number of times the integration checks the status and retries.
       ```
        {
         "catalogIds": ["4f37dd4e-75c6-4f43-8888-0ea8d4963480","0776c723-971a-444b-b0e0-4967e9b9164c"],
@@ -106,19 +101,13 @@ You can publish using Postman.
        }
        ```
 
-    ---
-    * **Schedule Flow** 
-    * Leave empty to publish all catalogs.
-    ---
-    * **Publish Complete Flow**
-    * An array of catalog IDs.
+    - **Schedule Flow** - Leave empty to publish all catalogs.
+    - **Publish Complete Flow** - An array of catalog IDs.
       ```
        {
         "catalogIds": ["4f37dd4e-75c6-4f43-8888-0ea8d4963480","0776c723-971a-444b-b0e0-4967e9b9164c"]
        }
        ```
-    {% /table %}
-
 
 1. Run `POST {{webhook-url}}`.
 1. When the publish has finished, if you go to your store, you should see your published store catalogs.

@@ -14,24 +14,12 @@ The hierarchies determine which products appear in the catalog, that is, only th
 
 The breadcrumb information that you get in an endpoint response depends on whether the endpoint is retrieving product or node details. 
 
-### Product – breadcrumb metadata
+### Product breadcrumb metadata
 
-{% table %}
-* Breadcrumb Metadata
-* Description
----
-* 
-    `bread_crumbs`
-*
-    The tree of parent nodes associated with a product. The `bread_crumbs` metadata lists up to 10 levels of parent nodes that the product is associated with, depending on the number of levels of parent nodes you have.
----
-*
-    `bread_crumb_nodes`
-*
-    The relationship among the array of nodes associated with the product.
----
-
-{% /table %}
+| Breadcrumb Metadata | Description |
+| --- | --- |
+| `bread_crumbs` | The tree of parent nodes associated with a product. The `bread_crumbs` metadata lists up to 10 levels of parent nodes that the product is associated with, depending on the number of levels of parent nodes you have. |
+| `bread_crumb_nodes` | The relationship among the array of nodes associated with the product. |
 
 ### Understanding `bread_crumbs` metadata for products
 
@@ -102,19 +90,11 @@ If you subsequently add a product to a new node, then the `bread_crumb_nodes` me
 }
 ```
 
-### Node – breadcrumb metadata
+### Node breadcrumb metadata
 
-{% table %}      
-* Breadcrumb Metadata     
-* Description
----
-* 
-    `bread_crumb`
-*
-    The relationship among the array of nodes – demonstrating the linking of the children nodes with the parent nodes. The `bread_crumb` metadata lists up to 10 levels of parent nodes that the node is associated with, depending on the number of levels of nodes you have.
----
-
-{% /table %}
+| Breadcrumb Metadata | Description |
+| --- | --- |
+| `bread_crumb` | The relationship among the array of nodes – demonstrating the linking of the children nodes with the parent nodes. The `bread_crumb` metadata lists up to 10 levels of parent nodes that the node is associated with, depending on the number of levels of nodes you have. |
 
 ### Understanding `bread_crumb` metadata for nodes
 

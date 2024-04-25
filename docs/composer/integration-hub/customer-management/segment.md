@@ -22,31 +22,15 @@ The templates use [JSONata](http://docs.jsonata.org/overview.html).
 
 The following table describes the templates available.
 
-{% table %}
-* Template
-* Description
----
-* **Checkout Started Template**
-* If **Enable Checkout Started Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/I7eKN4Wjn).
----
-* **Order Completed Template**
-* If **Enable Order Completed Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/qKuCE2Tgr).
----
-* **Order Updated Template**
-* If **Enable Order Updated Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/qVyeWzjLd).
----
-* **Order Refunded Template**
-* If **Enable Order Updated Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/CkaB6SRcT).
----
-* **Order Cancelled Template**
-* If **Enable Order Cancelled Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/xJyM0nuPY).
----
-* **Customer Created Template**
-* If **Enable Customer Created Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/u_8GxyXVX).
----
-* **Customer Updated Template**
-* If **Enable Customer Updated Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/u_8GxyXVX).
-{% /table %}
+| Template | Description |
+| --- | --- |
+| **Checkout Started Template** | If **Enable Checkout Started Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/I7eKN4Wjn). |
+| **Order Completed Template** | If **Enable Order Completed Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/qKuCE2Tgr). |
+| **Order Updated Template** | If **Enable Order Updated Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/qVyeWzjLd). |
+| **Order Refunded Template** | If **Enable Order Updated Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/CkaB6SRcT). |
+| **Order Cancelled Template** | If **Enable Order Cancelled Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/xJyM0nuPY). |
+| **Customer Created Template** | If **Enable Customer Created Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/u_8GxyXVX). |
+| **Customer Updated Template** | If **Enable Customer Updated Tracking** is selected, you can use this template to define the information to send to Segment. A sample template is available [here](https://try.jsonata.org/u_8GxyXVX). |
 
 ## Collecting Your Integration Setup Information
 
@@ -56,19 +40,11 @@ Before you configure the integration in Commerce Manager, you need to collect th
 
 You can find this information in **Settings**.
 
-{% table %}
-* Option
-* Description
----
-* **Host**
-* Your Segment API host. Default is `https://api.segment.io`.
----
-* **Path**
-* Default is `/v1/batch`.
----
-* **Write Key**
-* A unique identifier for your Commerce source. See [Find your write key](https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key).
-{% /table %}
+| Option | Description |
+| --- | -- |
+| **Host** |  Your Segment API host. Default is `https://api.segment.io`. |
+| **Path** | Default is `/v1/batch`. |
+| **Write Key** | A unique identifier for your Commerce source. See [Find your write key](https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key). |
 
 ### Collecting Commerce Manager Setup Information
 
@@ -78,24 +54,11 @@ Collect the following Commerce API keys. When you log in to Commerce Manager as 
 When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
-{% table %}
-* Option
-* Description
----
-* **Client ID**
-* Your Commerce Client ID.
----
-* **Client Secret**
-* Your Commerce Client Secret.
-
----
-* **Token URL**
-* Your Commerce API Base URL.
-  {% list type="checkmark" %}
-  * EU - `https://euwest.api.elasticpath.com/`
-  * US - `https://useast.api.elasticpath.com/`
-  {% /list %}
-{% /table %}
+| Option            | Description                                                                                                                             |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| **Client ID**     | Your Commerce Client ID.                                                                                                                |
+| **Client Secret** | Your Commerce Client Secret.                                                                                                            |
+| **Token URL**     | Your Commerce API Base URL. <ul><li>EU - `https://euwest.api.elasticpath.com/`</li><li>US - `https://useast.api.elasticpath.com/`</li></ul> |
 
 ## Configuring Segment Integration
 
@@ -117,38 +80,20 @@ When integrating with third-party providers, we recommend you use the closest re
 
     For **Order Tracking Configuration** 
 
-   {% table %}
-    * Option
-    * Description
-    ---
-    * **Enable Checkout Started Tracking**
-    * By default, `order.created` events are tracked. Alternatively, you might want to select `order.authorized` events.
-    ---
-    * **Enable Order Completed Tracking**
-    * By default, `order.paid` events are tracked. Alternatively, you might want to select `order.fulfilled` events.
-    ---
-    * **Enable Order Updated Tracking**
-    * By default, `order.updated` events are tracked.
-    ---
-    * **Enable Order Refunded Tracking**
-    * By default, `order.refunded` events are tracked.
-    ---
-    * **Enable Order Cancelled Tracking**
-    * By default, `order.cancelled` events are tracked.
-    {% /table %}
+    | Option                               | Description                                                                                                        |
+    |--------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+    | **Enable Checkout Started Tracking** | By default, `order.created` events are tracked. Alternatively, you might want to select `order.authorized` events. |
+    | **Enable Order Completed Tracking**  | By default, `order.paid` events are tracked. Alternatively, you might want to select `order.fulfilled` events.     |
+     | **Enable Order Updated Tracking**    | By default, `order.updated` events are tracked.                                                                                                                |
+    | **Enable Order Refunded Tracking** | By default, `order.refunded` events are tracked. |
+    | **Enable Order Cancelled Tracking** | By default, `order.cancelled` events are tracked. |
 
    For **Customer Tracking Configuration**
 
-   {% table %}
-   * Option
-   * Description
-   ---
-   * **Enable Customer Created Tracking**
-   * By default, `customer.created` events are tracked. 
-   ---
-   * **Enable Customer Updated Tracking**
-   * By default, `customer.updated` events are tracked. Alternatively, you might want to select `customer.deleted` events.
-   {% /table %}
+    | Option | Description |
+    | --- | --- |
+    | **Enable Customer Created Tracking** | By default, `customer.created` events are tracked.  |
+    | **Enable Customer Updated Tracking** | By default, `customer.updated` events are tracked. Alternatively, you might want to select `customer.deleted` events. |
 
 10. Click **Next**. The **Templates** pane is displayed. See [Segment Integration Templates](#segment-integration-templates).
 11. Click **Finish**. Your integration is enabled.
