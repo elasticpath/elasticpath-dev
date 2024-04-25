@@ -41,6 +41,7 @@ Before you configure the integration in Commerce Manager, you need to collect th
 You can find this information in **Settings**.
 
 | Option | Description |
+| --- | -- |
 | **Host** |  Your Segment API host. Default is `https://api.segment.io`. |
 | **Path** | Default is `/v1/batch`. |
 | **Write Key** | A unique identifier for your Commerce source. See [Find your write key](https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key). |

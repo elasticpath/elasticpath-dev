@@ -102,10 +102,11 @@ During the duplication process, the product associations are maintained in the d
 1. (Optional) Turn on the **Retain a products relationship** toggle to keep the products associated with the nodes in the existing hierarchy associated with the nodes in the duplicated hierarchy.
 1. Click **Confirm** to save your changes.
 
-      :::caution
-      You must ensure that hierarchies in organizations and stores have unique SKUs. If a store product is created with a SKU that is already in use by an organization product, an error message is displayed. This helps maintain accurate inventory management and avoid potential conflicts between organization and store products.
-      :::
-      {% /list %}
+    :::caution
+
+    You must ensure that hierarchies in organizations and stores have unique SKUs. If a store product is created with a SKU that is already in use by an organization product, an error message is displayed. This helps maintain accurate inventory management and avoid potential conflicts between organization and store products.
+
+    :::
 
 3. Organize your store products in the duplicated [hierarchy](/docs/pxm/hierarchies/node-relationships-api/create-node-product-relationships).
 4. Your duplicated hierarchy now belongs to the store.

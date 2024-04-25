@@ -14,7 +14,7 @@ The hierarchies determine which products appear in the catalog, that is, only th
 
 The breadcrumb information that you get in an endpoint response depends on whether the endpoint is retrieving product or node details. 
 
-### Product – breadcrumb metadata
+### Product breadcrumb metadata
 
 | Breadcrumb Metadata | Description |
 | --- | --- |
@@ -90,7 +90,7 @@ If you subsequently add a product to a new node, then the `bread_crumb_nodes` me
 }
 ```
 
-### Node – breadcrumb metadata
+### Node breadcrumb metadata
 
 | Breadcrumb Metadata | Description |
 | --- | --- |

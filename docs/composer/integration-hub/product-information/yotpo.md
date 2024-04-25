@@ -95,18 +95,18 @@ Once you have completed the [Prerequisites](#prequisites), you are ready to conf
     | Configuration                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
     |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Enable Catalog Selection Criteria** | Select this checkbox to either include or exclude catalogs from being published to Yotpo. You can specify multiple catalogs that you want to include or exclude from sharing with Yotpo. <ol><li>Select the **Enable Catalog Selection Criteria** checkbox.</li><li>In the **Selection Rule** box, select `include` or `exclude`.</li><li>Click [Add Multiple Catalogs to Yotpo](/assets/add-catalogs-yotpo.png) to add the catalogs that you want to include or exclude from publication.  You can add multiple catalogs to include or exclude from publication. **Note**: If you do not select this checkbox and specify your selection, all product catalogs are shared with Yotpo.</li></ol> |
-    | 
     | **Enable Product Webhook**            | Select this checkbox to create webhook events for any product in Commerce. The product information is shared with Yotpo as part of this integration. By default, the checkbox is selected and `catalog-release.updated` event is created.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-    | **Enable Order Webhook** | Select this checkbox to create webhook events for orders in Commerce. The order details are shared with Yotpo as part of this integration. In the **Events** list, select the specific order event for which you want to create the webhook. For more information on order events, see [Observable Events](/docs/commerce-cloud/integrations/observable-events). By default, the checkbox is selected and the default event is `order.paid`. **Note**: In the **Events** list, we recommended that you select `order.fulfilled`. So, when a order is complete, a webhook event is generated in Commerce, and the order details are shared with Yotpo.                                                                                                                                                                                                                                          | 
-    | **Enable Customer Webhook** | Select this checkbox if you want to create webhook events for customer information in Commerce. The customer details are shared with Yotpo as part of this integration. Click [Add Customer Events](/assets/add-customer-events-yotpo.png) to add the events for which you want to create webhooks in Commerce by default, `customer.selected` and `customer.updated` are added. You can remove these default events too and add specific customer events as per your requirements. For example, select `customer.deleted` if you want to disable customer status in Yotpo when a customer account is deleted in Commerce. |
+    | **Enable Order Webhook** | Select this checkbox to create webhook events for orders in Commerce. The order details are shared with Yotpo as part of this integration. In the **Events** list, select the specific order event for which you want to create the webhook. For more information on order events, see [Observable Events](/docs/commerce-cloud/integrations/observable-events). By default, the checkbox is selected and the default event is `order.paid`. **Note**: In the **Events** list, we recommended that you select `order.fulfilled`. So, when a order is complete, a webhook event is generated in Commerce, and the order details are shared with Yotpo.                                            | 
+    | **Enable Customer Webhook** | Select this checkbox if you want to create webhook events for customer information in Commerce. The customer details are shared with Yotpo as part of this integration. Click [Add Customer Events](/assets/add-customer-events-yotpo.png) to add the events for which you want to create webhooks in Commerce by default, `customer.selected` and `customer.updated` are added. You can remove these default events too and add specific customer events as per your requirements. For example, select `customer.deleted` if you want to disable customer status in Yotpo when a customer account is deleted in Commerce.                                                                       |
 
 11. Click **Next**.
 12. In **Templates**, you can find the default request templates that contain the parameters for the integration to function correctly. Depending on your requirements, you can edit the templates, adding any data that Yotpo supports. See [Yotpo Product API Documentaion](https://core-api.yotpo.com/reference/products#product-properties).
 
-    | Template             | Description                                                                                                                  |
-    |----------------------|------------------------------------------------------------------------------------------------------------------------------|
-    | **Product Template** | This template is used to create and/or update product variants in Yotpo. Here is a snapshot of the default product template. |
-      ```json
+    - **Product Template**
+
+      This template is used to create and/or update product variants in Yotpo. Here is a snapshot of the default product template.
+        
+         ```json
         [
           $map(products, function($product) {
               {
@@ -127,32 +127,61 @@ Once you have completed the [Prerequisites](#prequisites), you are ready to conf
           })
         ]
       ```
-      **Note**: <ul><li>[JSONata](http://docs.jsonata.org/overview.html) is the query language used for the product template. JSONata provides JSON Path style queries and adds support for more advanced queries and even transformations.</li><li>Do not remove or modify the `parent_product_id`.</li></ul> | 
-    | **Order Template** | This template is is used to create and/or update order attributes in Yotpo. |
-    | **Customer Template** | This template is used to create and/or update customer information in Yotpo. You can add any of the supported customer attributes in the template. For example, you can include a customer contact number so when customer information is sent to Yotpo, it contains the contact number. Here is a snapshot of the default customer template.
-       ```json
-    {
-    "customer": {
-    "external_id": payload.data.id,
-    "email": payload.data.email,
-    "first_name": $split(payload.data.name, ' ')[0],
-    "last_name": $split(payload.data.name, ' ')[1],
-    "account_status": "enabled",
-    "account_created_at": payload.data.meta.timestamps.created_at
-    }
-    }
-      ```
-    | **Product Rating Extension** | The number of reviews and average ratings received for a product is saved in Commerce Manager. You must define a template to save the customer feedback. The templates follow a JSON structure, where you can mention the following information. You can use a predefined template (**Configurations** > **Templates**) or use the default one. <ul><li>`Name` - the name of the template.</li><li>`Description` - the template description.</li><li>`slug` - the slug to identify the template</li><li>`Enabled` - `true` if the template is enabled, `false` if not.</li></ul> Here is an example of the default template:
-         ```
+      :::note
+    
+        - [JSONata](http://docs.jsonata.org/overview.html) is the query language used for the product template. JSONata provides JSON Path style queries and adds support for more advanced queries and even transformations.
+        - Do not remove or modify the `parent_product_id`.
+
+      :::
+
+    - **Order Template**
+
+      This template is used to create and/or update order attributes in Yotpo.
+    
+    - **Customer Template**
+
+      This template is used to create and/or update customer information in Yotpo. You can add any of the supported customer attributes in the template. For example, you can include a customer contact number so when customer information is sent to Yotpo, it contains the contact number. Here is a snapshot of the default customer template.
+
+        ```json
          {
-         "name": "Ratings and Reviews",
-         "description": "Ratings and Reviews",
-         "slug": "products(ratings)",
-         "enabled": true
+           "customer": {
+                "external_id": payload.data.id,
+                "email": payload.data.email,
+                "first_name": $split(payload.data.name, ' ')[0],
+                "last_name": $split(payload.data.name, ' ')[1],
+                "account_status": "enabled",
+                "account_created_at": payload.data.meta.timestamps.created_at
+              }
+          }
+        ```
+
+    - **Product Rating Extension**
+
+      The number of reviews and average ratings received for a product is saved in Commerce Manager. You must define a template to save the customer feedback. The templates follow a JSON structure, where you can mention the following information. You can use a predefined template (**Configurations** > **Templates**) or use the default one. 
+        - `Name` - the name of the template.
+        - `Description` - the template description.
+        - `slug` - the slug to identify the template
+        - `Enabled` - `true` if the template is enabled, `false` if not.
+      
+      Here is an example of the default template:
+    
+        ```json
+         {
+            "name": "Ratings and Reviews",
+            "description": "Ratings and Reviews",
+            "slug": "products(ratings)",
+            "enabled": true
          }
         ```
-        The Yotpo integration creates the following attributes in the product templates: <ul><li>`review_count`</li><li>`average_rating`</li></ul>View the review count and average ratings received for a product in Commerce Manager.<ol><li>Go to **Product Experience Manager** > **Products**.</li><li>Click a specific product.</li><li>Select **Product Templates** > **Ratings and Reviews**.</li></ol> |
+      The Yotpo integration creates the following attributes in the product templates:
+        - `review_count`
+        - `average_rating` 
 
+      View the review count and average ratings received for a product in Commerce Manager.
+        
+      1. Go to **Product Experience Manager** > **Products**.
+      2. Click a specific product.
+      3. Select **Product Templates** > **Ratings and Reviews**.
 
 13. Click **Finish**. The integration is complete and webhooks are created for the events that you have specified.
 
