@@ -248,32 +248,12 @@ You can update a single Commerce product in Algolia without publishing a catalog
 6. In Postman, open `POST {{webhook-url}}` where `webhook-url` is the URL you just copied.
 7. The **Body** of the request can have the following parameters:
 
-   {% table %}
-    * Name
-    * Required
-    * String
-    * Description
-    ---
-    * `index_name`
-    * Required
-    * `string`
-    * The name of the Algolia index that you want to update.
-    ---
-    * `objectID`
-    * Required
-    * `string`
-    * The product ID of the Commerce product that you want to update.
-   ---
-    * `secret_key`
-    * Required
-    * `string`
-    * The Commerce Client Secret that you used when you configured the Algolia Integration.
-   ---
-    * `payload`
-    * Required
-    * `string`
-    * The payload contains the mapped fields for the Algolia object that you want to update. The schema must match the existing Algolia object.
-  {% /table %}
+    | Name | Required | String | Description |
+    | --- | --- | --- | --- | 
+    | `index_name` | Required | `string` | The name of the Algolia index that you want to update. |
+    | `objectID` | Required | `string` | The product ID of the Commerce product that you want to update. |
+    | `secret_key` | Required | `string` | The Commerce Client Secret that you used when you configured the Algolia Integration. |
+    | `payload` | Required | `string` | The payload contains the mapped fields for the Algolia object that you want to update. The schema must match the existing Algolia object. |
 
     An example request is shown below:
 

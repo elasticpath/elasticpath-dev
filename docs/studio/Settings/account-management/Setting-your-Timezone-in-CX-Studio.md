@@ -21,24 +21,11 @@ Every site has one timezone, so if you're working on a team distributed througho
 
 ## Troubleshooting
 
-{% table %}
-* Problem
-* Suggestion
----
-*
-  Which roles may adjust this setting?.
-*
-    * Admin or Account Owner
----
-*  
-  I cannot find the time zone setting, it's not appearing for me.
-* 
-  There are two possibilities:
-  
-    * You do not have the correct role and need to contact your account admin
-    * You need to hard refresh your browser: CTRL + SHIFT + R. Try hard-refreshing first, then contact your account's admin.
-  ---
-{% /table %}
+| Problem  | Suggestion |
+| --- | --- |
+| Which roles may adjust this setting? | Admin or Account Owner |
+| I cannot find the time zone setting, it's not appearing for me. | There are two possibilities: <ul><li>You do not have the correct role and need to contact your account admin</li><li>You need to hard refresh your browser: CTRL + SHIFT + R. Try hard-refreshing first, then contact your account's admin.</li></ul> |
+
 
 
 

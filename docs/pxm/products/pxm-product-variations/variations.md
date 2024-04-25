@@ -183,53 +183,15 @@ To add modifiers to an option:
 1. Click **...** next to the option that you want to add a modifier to and click **Edit Modifiers**.
 1. The values you can set depend on the modifier you want to use.
 
-    {% table %}
-    * Modifier
-    * Description
-    ---
-    * SKU
-    * 
-      {% list type="checkmark" %}
-       * Append - Adds the SKU you specified in **Value** to the end of the child product's SKU.
-       * Prepend - Adds the SKU you specified in **Value** to the beginning of the child product's SKU.
-       * Equals - Replaces the child product's SKU with the SKU you specified in **Value**.
-       * Builder - Replaces part of the child product's SKU. In **Seek**, specify the part of the child product's SKU you want to replace. In **Set**, enter the replacement SKU. 
-      {% /list %}
-    ---
-    * Slug
-    *
-      {% list type="checkmark" %}
-       * Append - Adds the slug you specified in **Value** to the end of the child product's slug.
-       * Prepend - Adds the slug you specified in **Value** to the beginning of the child product's slug.
-       * Equals - Replaces the child product's slug with the slug you specified in **Value**.
-       * Builder - Replaces part of the child product's slug. In **Seek**, specify the part of the child product's slug you want to replace. In **Set**, enter the replacement SKU.
-      {% /list %}
-    ---
-    * Description
-    * 
-      {% list type="checkmark" %}
-       * Append - Adds the description you specified in **Value** to the end of the child product's description.
-       * Prepend - Adds the description you specified in **Value** to the beginning of the child product's description.
-       * Equals - Replaces the child product's description with the slug you specified in **Value**.
-      {% /list %}
-    ---
-    * Name
-    *   
-       {% list type="checkmark" %}
-        * Append - Adds the name you specified in **Value** to the end of the child product's name.
-        * Prepend - Adds the name you specified in **Value** to the beginning of the child product's name.
-        * Equals - Replaces the child product's name with the name you specified in **Value**.
-       {% /list %}
-    ---
-    * commodity_type
-    * In **Value**, select either **physical** or **digital** to set the commodity type of the child product.
-    ---
-    * Status
-    * In **Value**, select either **live** or **draft** to set the status of the child product.
-    ---
-    * Price
-    * In **Price Modifier Name**, type or paste the name of your price modifier. Make sure the price modifier name exactly matches the price modifier name you specified when creating your price modifier. See [Price Modifiers](/docs/pxm/products/pxm-product-variations/pxm-variations#price-modifiers). 
-    {% /table %}
+    | Modifier | Description |
+    | --- | --- |
+    | SKU | <ul><li>Append - Adds the SKU you specified in **Value** to the end of the child product's SKU.</li><li>Prepend - Adds the SKU you specified in **Value** to the beginning of the child product's SKU.</li><li>Equals - Replaces the child product's SKU with the SKU you specified in **Value**.</li><li>Builder - Replaces part of the child product's SKU. In **Seek**, specify the part of the child product's SKU you want to replace. In **Set**, enter the replacement SKU.</li></ul> |
+    | Slug | <ul><li>Append - Adds the slug you specified in **Value** to the end of the child product's slug.</li><li>Prepend - Adds the slug you specified in **Value** to the beginning of the child product's slug.</li><li>Equals - Replaces the child product's slug with the slug you specified in **Value**.</li><li>Builder - Replaces part of the child product's slug. In **Seek**, specify the part of the child product's slug you want to replace. In **Set**, enter the replacement SKU.</li></ul> |
+    | Description | <ul><li>Append - Adds the description you specified in **Value** to the end of the child product's description.</li><li>Prepend - Adds the description you specified in **Value** to the beginning of the child product's description.</li><li>Equals - Replaces the child product's description with the slug you specified in **Value**.</li></ul> |
+    | Name | <ul><li>Append - Adds the name you specified in **Value** to the end of the child product's name.</li><li>Prepend - Adds the name you specified in **Value** to the beginning of the child product's name.</li><li>Equals - Replaces the child product's name with the name you specified in **Value**.</li></ul> | 
+    | commodity_type | In **Value**, select either **physical** or **digital** to set the commodity type of the child product. |
+    | Status |  In **Value**, select either **live** or **draft** to set the status of the child product. |
+    | Price | In **Price Modifier Name**, type or paste the name of your price modifier. Make sure the price modifier name exactly matches the price modifier name you specified when creating your price modifier. See [Price Modifiers](/docs/pxm/products/pxm-product-variations/pxm-variations#price-modifiers). |
 
 1. Click **Save**.
 1. Click **Add another modifier** or click **Cancel** to exit.
