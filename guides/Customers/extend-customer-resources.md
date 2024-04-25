@@ -1,7 +1,7 @@
 ---
 title: Extend customer resources
 nav_label: Extend a customer profile
-sidebar_position: 60
+sidebar_position: 20
 ---
 
 Extend a customer profile to add more customer-specific information that your business needs.

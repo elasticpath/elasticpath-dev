@@ -12,7 +12,7 @@ Ensure that the user is signed into the store with appropriate seller permission
 
 1. Get the authentication realm for accounts.
 
-    For more information, see the [Get Account Authentication Settings](/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token.md) section.
+    For more information, see the [Get Account Authentication Settings](/guides/Authentication/get-single-sign-on-customer-token.md) section.
 
 1. To specify the login process for users, add a profile to the account realm.
 

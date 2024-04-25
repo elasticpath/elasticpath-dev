@@ -1,7 +1,7 @@
 ---
 title: Single sign-on with OpenID Connect
 nav_label: Single sign-on with OpenID Connect
-sidebar_position: 120
+sidebar_position: 10
 ---
 
 The single sign-on APIs allow you to authenticate customers with a single sign-on flow that uses the OpenID Connect protocol.

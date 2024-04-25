@@ -1,7 +1,7 @@
 ---
 title: Managing Customers
 nav_label: Managing Customers
-sidebar_position: 50
+sidebar_position: 10
 ---
 
 Manage your customers through the API or Commerce Manager.

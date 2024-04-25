@@ -1,7 +1,7 @@
 ---
 title: Create short order IDs
 nav_label: Create short order IDs
-sidebar_position: 60
+sidebar_position: 20
 ---
 
 This example provides instructions to create short order IDs using webhooks.

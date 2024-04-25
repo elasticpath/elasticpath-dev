@@ -1,7 +1,7 @@
 ---
 title: Get Started with Product Experience Manager API
 nav_label: Get Started with Product Experience Manager API
-sidebar_position: 21
+sidebar_position: 10
 ---
 
 :::caution

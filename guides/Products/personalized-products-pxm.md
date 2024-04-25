@@ -1,7 +1,7 @@
 ---
 title: Personalized Products
 nav_label: Personalized Products
-sidebar_position: 24
+sidebar_position: 30
 ---
 
 :::caution
