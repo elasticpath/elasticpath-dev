@@ -14,7 +14,7 @@ The checkout workflow ties together many of the key concepts covered in this sec
 2. Manage the cart items. For example, you might add items, remove items, and change quantities.
 3. Check out the cart. An **incomplete order** is created.
 4. Pay for an order: provide billing and shipping details, if youʼre a new customer. The order is now in the **processing** status.
-5. If using a manual gateway, after you authorize and capture it, Composable Commerce considers the order **complete**. If you use a third-party integration supported by Composable Commerce (such as Stripe), after the third-party gateway authorizes and captures the payment, the order becomes **complete**. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
+5. If using a manual gateway, after you authorize and capture it, Composable Commerce considers the order **complete**. If you use a third-party integration supported by Composable Commerce (such as Stripe), after the third-party gateway authorizes and captures the payment, the order becomes **complete**. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](../docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
 6. After the order is shipped, you can manually flag it as **fulfilled**.
 
 ## Carts
@@ -23,7 +23,7 @@ When a product is added to a cart, a cart is generated together with its unique 
 
 ## Promotions and custom items
 
-Optionally, apply a promotion `code` on a cart, or add `custom_items` to modify the product price (typically to handle taxes, customs, or shipping). Custom cart items are only available through [implicit authentication](/docs/commerce-cloud/authentication/Tokens/implicit-token).
+Optionally, apply a promotion `code` on a cart, or add `custom_items` to modify the product price (typically to handle taxes, customs, or shipping). Custom cart items are only available through [implicit authentication](../docs/commerce-cloud/authentication/Tokens/implicit-token).
 
 ## Checkout
 
@@ -60,9 +60,9 @@ If enabled, you can manage your stock. As such, your stock is automatically upda
 
 ## Related Resources
 
-- [Carts](/docs/commerce-cloud/carts/carts.md)
-- [Promotions](/docs/commerce-cloud/promotions/promotions-overview.md)
-- [Orders](/docs/commerce-cloud/orders)
-- [Payments](/docs/commerce-cloud/payments)
-- [Inventory](/docs/pxm/inventories/inventory.mdx)
-- [API Reference](/docs/commerce-cloud/getting-started/api-reference.md)
+- [Carts](../docs/commerce-cloud/carts/carts)
+- [Promotions](../docs/commerce-cloud/promotions/promotions-overview)
+- [Orders](../docs/commerce-cloud/orders)
+- [Payments](../docs/commerce-cloud/payments)
+- [Inventory](../docs/pxm/inventories/inventory)
+- [API Reference](../docs/commerce-cloud/getting-started/api-reference)

@@ -42,7 +42,7 @@ Select **Product Preview** at any time to view a snapshot of your product or ser
 
 ![getting started with products](/assets/getting_started_sub_products.png)
 
-For more information about product media and pricing, see [Repeat Products](/docs/subscriptions/products/managing-products-cm).
+For more information about product media and pricing, see [Repeat Products](../docs/subscriptions/products/managing-products-cm).
 
 ## Creating Plans
 
@@ -90,7 +90,7 @@ The following steps describe how to create the **Standard** plan. This is the sa
 
 ![getting started with plans](/assets/getting_started_sub_plans.png).
 
-For more information about plan pricing and trial periods, see [Plans](/docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
+For more information about plan pricing and trial periods, see [Plans](../docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
 
 ## Creating an Offering
 

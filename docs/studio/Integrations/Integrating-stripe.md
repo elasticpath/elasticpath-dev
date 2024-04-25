@@ -8,14 +8,14 @@ You can quickly and easily integrate Studio with Stripe. Once configured, you ca
 
 ## Prerequisites
 
-1. Ensure that you are [onboarded](/docs/ep-payments/onboarding) to Elastic Path Payments Powered by Stripe. 
+1. Ensure that you are [onboarded](/docs/payments/onboarding) to Elastic Path Payments Powered by Stripe. 
 
     :::note
     Depending on the payment methods you want to support, you may need to configure them in Stripe.
     :::
 
 2. Log in to the [Stripe Dashboard](https://dashboard.stripe.com/login) to find your Stripe Account ID.
-3. Go to Commerce Manager to ensure the Elastic Path Payments powered by Stripe gateway is [enabled]( /docs/ep-payments/enable-elasticpath-payment-gateway).
+3. Go to Commerce Manager to ensure the Elastic Path Payments powered by Stripe gateway is [enabled]( /docs/payments/enable-elasticpath-payment-gateway).
 4. Ensure that you have configured your **Elastic Path** integration with Studio. See [Getting Started with Composable Commerce](/docs/studio/getting-started-with-epcc).
 
 ## Configure the Stripe Integration

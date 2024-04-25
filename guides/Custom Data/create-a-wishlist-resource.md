@@ -11,7 +11,7 @@ In your store or organization, you can provide customers with one or more wishli
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](../docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
 - Good understanding of object-oriented programming or JavaScript.
 
 ## Step-by-step walkthrough
