@@ -17,43 +17,12 @@ The Commerce Legacy to Product Experience Manager Catalog Migration is a utility
 
 ## How are Legacy Features Represented in Product Experience Manager?
 
-{% table %}
-* Legacy Features
-* Product Experience Manager
----
-*
-   Categories and subcategories
-*
-  * Hierarchies and nodes. 
-  * For more information, see [Hierarchies](/docs/pxm/hierarchies/hierarchy).
----
-*
-   Brands and collections
-*
-  * Products from a specific brand are grouped together and represented as a node in a hierarchy.
-  * Once the products and hierarchies are created in Product Experience Manager, the relationships between the nodes and products are migrated from Legacy catalogs.
----
-*
-  Product custom fields
-*
-  * Product templates.
-  * If there are more than 100 custom fields, multiple product templates are created.
-  * The templates are titled as `Products 1`, `Products 2`, and so on.
-  * The templates are assigned to the products.
-  * For more information, see [Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview).
----
-*
-  Variation, options, and option modifiers
-*
-  * Variations.
-  * All option modifiers are currently supported with the exception of `sku_builder` and `slug_builder` modifiers. Please contact your customer service representative, if you want to add any of the modifiers to the supported list.
-  * Price modifiers are supported and migrated to the price book, replicating the same impact on product catalogs.
-  * Price modifier reference is added to the variations.
-  * Variation option modifier provides the ability to differentiate between catalogs.
-  * For more information, see [Product Variations](/docs/pxm/products/pxm-product-variations/pxm-variations).
----
-
-{% /table %}
+| Legacy Features | Product Experience Manager |
+| --- | --- | 
+| Categories and subcategories | Hierarchies and nodes. For more information, see [Hierarchies](/docs/pxm/hierarchies/hierarchy). |
+| Brands and collections | <ol><li>Products from a specific brand are grouped together and represented as a node in a hierarchy.</li><li>Once the products and hierarchies are created in Product Experience Manager, the relationships between the nodes and products are migrated from Legacy catalogs.</li></ol> |
+| Product custom fields | Product templates. <ul><li>If there are more than 100 custom fields, multiple product templates are created.</li><li>The templates are titled as `Products 1`, `Products 2`, and so on.</li><li>The templates are assigned to the products.</li></ul>For more information, see [Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview). |
+| Variation, options, and option modifiers | Variations. <ul><li>All option modifiers are currently supported with the exception of `sku_builder` and `slug_builder` modifiers. Please contact your customer service representative, if you want to add any of the modifiers to the supported list.</li><li>Price modifiers are supported and migrated to the price book, replicating the same impact on product catalogs.</li><li>Price modifier reference is added to the variations.</li><li>Variation option modifier provides the ability to differentiate between catalogs.</li></ul>For more information, see [Product Variations](/docs/pxm/products/pxm-product-variations/pxm-variations). |
 
 ## Prerequisites
 
