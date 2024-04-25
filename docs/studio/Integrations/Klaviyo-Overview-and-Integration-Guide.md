@@ -10,7 +10,7 @@ With [Studio's Klaviyo integration](https://connect.klaviyo.com/integrations/uns
 data collected from your Studio forms directly to your Klaviyo lists or even embed a Klaviyo form in line on your
 Studio pages.
 
-    {% youtube src="https://www.youtube.com/embed/SJTdDYbiPkM" label="Integrating Klaviyo" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/SJTdDYbiPkM" title="Integrating Klaviyo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Connecting your Klaviyo Account
 

@@ -7,7 +7,7 @@ sidebar_position: 40
 The Styles Guide can be accessed through the Studio Admin and is a huge asset when trying to quickly spin up page with
 a consistent brand, design, and voice.
 
-    {% youtube src="https://www.youtube.com/embed/za7vIUrwhOk" label="Adjusting your Styles" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/za7vIUrwhOk" title="Adjusting your Styles" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Colors
 

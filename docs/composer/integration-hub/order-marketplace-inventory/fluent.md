@@ -186,8 +186,8 @@ When a customer places an order in the storefront and completes the payment, the
 
 - Watch the following video to learn how to integrate Commerce with Fluent Commerce using the **Integrations Hub** in Commerce Manager:
 
-    {% youtube src="https://www.youtube.com/embed/UFifBu3CxbM" label="Integrating with Fluent Commerce" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/UFifBu3CxbM" title="Integrating with Fluent Commerce" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 - Watch the following video to verify the Fluent Commerce integration with Commerce:
 
-    {% youtube src="https://www.youtube.com/embed/OR4XjL43MMM" label="Verifying Fluent Commerce Integration" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/OR4XjL43MMM" title="Verifying Fluent Commerce Integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -18,7 +18,7 @@ Whenever you publish a catalog, the full catalog is synced to Algolia using an i
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/dKq9isxFtUI" label="Configuring Algolia in Commerce Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dKq9isxFtUI" title="Configuring Algolia in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Collecting Your Setup Information
 

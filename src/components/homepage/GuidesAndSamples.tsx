@@ -23,19 +23,19 @@ const guides: Guide[] = [
     title: 'How to Create a Multi-Location Catalog',
     icon: RecordRegular,
     text: 'Multi-Location, Multi-Inventory, Multi-Locale',
-    link: '/docs/guides',
+    link: '/guides',
   },
   {
     title: 'How to Create Family Accounts',
     icon: VideoRegular,
     text: 'Create shared family accounts and sub-accounts.',
-    link: '/docs/guides',
+    link: '/guides',
   },
   {
     title: 'Understanding and Using Bundles of Bundles',
     icon: AppsAddInRegular,
     text: 'Bundles of bundles is a powerful feature when used properly.',
-    link: '/docs/guides',
+    link: '/guides',
   },
 ];
 

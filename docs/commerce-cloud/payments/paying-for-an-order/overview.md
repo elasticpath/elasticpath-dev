@@ -4,7 +4,7 @@ nav_label: Paying for an order Overview
 sidebar_position: 1
 ---
 
-When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/commerce-cloud/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders/orders.md) is returned. You can process the payment for the order though a payment gateway.
+When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/commerce-cloud/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders) is returned. You can process the payment for the order though a payment gateway.
 
 :::caution
 

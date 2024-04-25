@@ -98,4 +98,4 @@ The following scenario explains how to pay for an order in Elastic Path Composab
 
 To learn how to configure and use the Avalara Integration, watch the following video:
 
-{% youtube src="https://www.youtube.com/embed/IIp_bbQN5i8" label="Configuring Avalara" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IIp_bbQN5i8" title="Configuring Avalara" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

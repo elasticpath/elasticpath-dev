@@ -4,7 +4,7 @@ nav_label: Adding/Removing Header Dropdowns
 sidebar_position: 10
 ---
 
-     {% youtube src="https://www.youtube.com/embed/5ZBB404ZdfQ" label="Add/Remove Header Dropdpwns" /%}
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/5ZBB404ZdfQ" title="Add/Remove Header Dropdpwns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 1. Navigate to your Header & Footer tab located under the design section.
 

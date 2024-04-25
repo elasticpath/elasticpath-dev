@@ -36,5 +36,5 @@ the component to remove it.
 
 ## Watch a video tutorial
 
-    {% youtube src="https://www.youtube.com/embed/ay8HxFmyI_U" label="Building eCommerce with cx-studio" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ay8HxFmyI_U" title="Building eCommerce with cx-studio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

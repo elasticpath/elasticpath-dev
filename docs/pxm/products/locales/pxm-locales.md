@@ -27,4 +27,4 @@ You can use [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-p
 
 ### Demos
 
-- [products](https://share.vidyard.com/watch/1r1Fk76EU6dsCkMitNeM7r?)
+  <iframe class="vidyard_iframe" title="Product Locales" src="//play.vidyard.com/1r1Fk76EU6dsCkMitNeM7r.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>

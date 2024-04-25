@@ -51,7 +51,7 @@ Additionally, each shipping group shows:
 - **Tracking** information
 - **Delivery Instructions**
 
-{% callout  %}
+:::note
 - If there are any shipping groups associated with an order, the shipping details are displayed under the shipping groups. Otherwise, the shipping details are displayed at the top of the order items details.
 - For beta release, you cannot edit **Shipping Details** and **Delivery Instructions** for shipping groups associated with an order.
 :::
@@ -167,11 +167,11 @@ Only seller administrators can export order details.
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Orders API](/docs/commerce-cloud/orders/orders-api/orders-api-overview.md)
 - [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview.md)
 
 ### Demos
 
-- {% youtube src="https://www.youtube.com/embed/uEI1Cc5yJqI" label="Order Updates in Commerce Manager" /%}
-- {% youtube src="https://www.youtube.com/embed/gAk4ny0NZ1Q" label="Shipping Groups" /%}
+- <iframe width="560" height="315" src="https://www.youtube.com/embed/uEI1Cc5yJqI" title="Order Updates in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+- <iframe width="560" height="315" src="https://www.youtube.com/embed/gAk4ny0NZ1Q" title="Shipping Groups" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

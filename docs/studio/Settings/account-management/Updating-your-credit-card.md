@@ -4,7 +4,7 @@ nav_label: Updating your Credit Card
 sidebar_position: 100
 ---
 
-    {% youtube src="https://www.youtube.com/embed/YZTuB02y6UI" label="Updating Credit Card Information" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YZTuB02y6UI" title="Updating Credit Card Information" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 :::note
 The only role able to make changes to billing is the Account Owner unless you are a Shopify user, in which case you'll need to make changes to your card in Shopify.

@@ -18,10 +18,10 @@ After a customer selects a locale, the product prices in the catalog, carts, and
 
 - [Products](/docs/pxm/products/pxm-products)
 - [Carts](/docs/commerce-cloud/carts/carts.md)
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Taxes](/docs/commerce-cloud/carts/tax-items/taxes)
 
 
 ### Demos
 
-{% youtube src="https://www.youtube.com/embed/YyQly0t6VUA" label="Introduction to Currencies" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YyQly0t6VUA" title="Introduction to Currencies" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

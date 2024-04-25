@@ -4,7 +4,7 @@ nav_label: Jobs API Overview
 sidebar_position: 0.5
 ---
 
-:::caution
+:::warning
 The `jobs` endpoints work using `client_credentials` token.
 :::
 

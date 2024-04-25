@@ -4,12 +4,12 @@ nav_label: Free Gift Promotions
 sidebar_position: 6
 ---
 
-:::caution
+:::warning
 - We recommend not to set maximum discount value for this promotions. This setting doesn’t have any effect on the promotion.
 - Hierarchy-based promotions are not supported for fixed bundle discount promotion and free gift promotion.
 :::
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click **Add Promotion**.
 1. In the **Name** field, enter a name for the promotion.
 1. In the **Description** field, enter a description for the promotion.
@@ -38,7 +38,7 @@ sidebar_position: 6
     1. Click **Save**.
     1. (Optional) Enable the **Automatically add free gift items to the cart** toggle to add free gifts automatically to the shopping cart.
 
-        :::caution
+        :::warning
         The **Automatically add free gift items to the cart** toggle is enabled only when the **Automatic** toggle is turned on. If there is insufficient stock for all eligible free products, no free gifts are added to the cart.
         :::
         

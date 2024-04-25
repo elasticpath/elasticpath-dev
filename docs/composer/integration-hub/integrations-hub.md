@@ -13,4 +13,4 @@ When integrating with third-party providers, we recommend you use the closest re
 
 For more information, watch a video.
 
-{% youtube src="https://www.youtube.com/embed/cA5u83mlQmk" label="Integrations Hub - Build and Editing Deep Dive" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cA5u83mlQmk" title="Integrations Hub - Build and Editing Deep Dive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

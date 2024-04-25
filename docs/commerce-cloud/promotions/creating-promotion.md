@@ -17,7 +17,7 @@ The default setting for the `automatic` field is `false` and you must create the
 1. Create a promotion using one of the following:
 
     - [Commerce Manager](/docs/commerce-cloud/promotions/promotions-cm/overview#creating-promotions)
-    - [API](/docs/commerce-cloud/promotions/promotions-overview.md)
+    - [API](/docs/commerce-cloud/promotions/promotions-overview)
 
 1. [Create a promotion code](/docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes) for the customer using one of the following:
 

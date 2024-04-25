@@ -9,7 +9,7 @@ sidebar_position: 150
 If you're not on a paying plan you will not see the CNAME record for adding an SSL or the A record for redirecting the
 root domain. Due to this, you'll only see one DNS record.
 
-{% youtube src="https://www.youtube.com/embed/zPvurjMLqDI" label="Setting Up Custom Domain" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zPvurjMLqDI" title="Setting Up Custom Domain" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 To add a custom domain to your Studio account, the first thing you need to do is to **purchase the domain** that you
 want to use. There are plenty of marketplaces out there where you can do this; for

@@ -165,4 +165,4 @@ Once you have completed the [Prerequisites](#prequisites), you are ready to conf
 
 Watch the following video to learn how to integrate Commerce with Yotpo using the **Integrations Hub** in Commerce Manager:
 
-{% youtube src="https://www.youtube.com/embed/QGK5oF5Llv4" label="Integrating with Yotpo" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QGK5oF5Llv4" title="Integrating with Yotpo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

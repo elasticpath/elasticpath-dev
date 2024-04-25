@@ -23,7 +23,7 @@ To learn how promotions work with bundles, see [Understanding How Promotions wor
 Already existing promotions created before September 28, 2022 will not have `created_by` and `updated_by` attributes in their response body.
 :::
 
-:::caution
+:::warning
 
 - Item-level promotions are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.
 - The `max_discount_value` setting specifies the maximum possible discount for the cart. To avoid the conflict with the promotions and the promotion to work, we recommend not to use this setting for the following promotions:

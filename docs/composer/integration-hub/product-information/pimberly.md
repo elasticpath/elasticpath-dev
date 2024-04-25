@@ -145,4 +145,4 @@ As part of the Pimberly Integration, changes in catalog data in Pimberly automat
 
 Watch the following video to learn how to synchronize your catalog data from Pimberly to Commerce:
 
-{% youtube src="https://www.youtube.com/embed/H61cCbjWtiE" label="Configuring Pimberly" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H61cCbjWtiE" title="Configuring Pimberly" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

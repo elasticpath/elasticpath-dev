@@ -4,7 +4,7 @@ nav_label: Removing your Custom Domain
 sidebar_position: 140
 ---
 
-    {% youtube src="https://www.youtube.com/embed/mXoEoH9Q32g" label="Removing Custom Domain" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/mXoEoH9Q32g" title="Removing Custom Domain" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Go to your settings page, click general, scroll down to the domain section and click the horizontal three-dots to the
 right of your custom domain.

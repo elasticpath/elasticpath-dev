@@ -4,7 +4,7 @@ nav_label: Hyperlinking Text
 sidebar_position: 70
 ---
 
-{% youtube src="https://www.youtube.com/embed/U3LiOrr2DoQ" label="Hyperlinking Text" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/U3LiOrr2DoQ" title="Hyperlinking Text" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Adding a hyperlink
 

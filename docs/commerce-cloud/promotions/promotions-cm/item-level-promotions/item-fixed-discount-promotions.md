@@ -4,12 +4,12 @@ nav_label: Item Fixed Discount Promotions
 sidebar_position: 4
 ---
 
-:::caution
+:::warning
 - We recommend not to set maximum discount value for this promotions. Setting maximum discount value for this promotion conflicts with the promotion settings.
 - We recommend to use **Advanced (Conditions v2)** settings.
 :::
 
-1. Go to **STORE > Promotions**.
+1. Go to **STORE > Promotions Standard**.
 1. Click **Add Promotion**.
 1. In the **Name** field, enter a name for the promotion.
 1. In the **Description** field, enter a description for the promotion.
@@ -64,7 +64,7 @@ sidebar_position: 4
                 - You can include up to 10 **+OR** conditions.
                 :::
     1. In the **Promotion Exclusions** subsection:
-            :::caution
+            :::warning
              **Promotion Exclusions** subsection is enabled only when you update the **Simplified (Conditions v1)** or **Advanced (Conditions v2)** settings in the **Promotion Conditions** subsection.
             :::
         1. To exclude products from a promotion, do the following:

@@ -470,5 +470,5 @@ The following example illustrates a sample response that you will receive in `Ma
 
 Watch the following video to learn how to integrate Commerce with Postmark using the **Integrations Hub** in Commerce Manager:
 
-{% youtube src="https://www.youtube.com/embed/8s2H7B8rwYg" label="Integrating with Postmark" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8s2H7B8rwYg" title="Integrating with Postmark" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

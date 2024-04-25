@@ -158,5 +158,5 @@ In an Elastic Path Commerce Cloud store, sellers can create accounts using Comme
 
 ## Demo
 
-{% youtube src="https://www.youtube.com/embed/IqAiqg-d--Y" label="Account Management in Commerce Manager" /%}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IqAiqg-d--Y" title="Account Management in Commerce Manager" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

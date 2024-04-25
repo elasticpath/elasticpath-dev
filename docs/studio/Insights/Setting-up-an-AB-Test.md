@@ -4,7 +4,7 @@ nav_label: Setting up A/B Test
 sidebar_position: 30
 ---
 
-    {% youtube src="https://www.youtube.com/embed/Nggeia2YJp8" label="Setting up First A/B Test" /%}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Nggeia2YJp8" title="Setting up First A/B Test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Through Studio, you're able to run full A/B tests for the components that make up your webpages; in fact the process is
 very simple.

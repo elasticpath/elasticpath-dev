@@ -62,7 +62,7 @@ If enabled, you can manage your stock. As such, your stock is automatically upda
 
 - [Carts](/docs/commerce-cloud/carts/carts.md)
 - [Promotions](/docs/commerce-cloud/promotions/promotions-overview.md)
-- [Orders](/docs/commerce-cloud/orders/orders.md)
+- [Orders](/docs/commerce-cloud/orders)
 - [Payments](/docs/commerce-cloud/payments)
 - [Inventory](/docs/pxm/inventories/inventory.mdx)
 - [API Reference](/docs/commerce-cloud/getting-started/api-reference.md)
