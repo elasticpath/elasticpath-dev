@@ -61,7 +61,7 @@ The response contains the subscription product.
 }
 ```
 
-For more information about product media and pricing, see [Repeat Products](/docs/subscriptions/products/managing-products-cm).
+For more information about product media and pricing, see [Repeat Products](/docs/commerce-manager/subscriptions/products/managing-products-cm).
 
 ## Creating Plans
 
