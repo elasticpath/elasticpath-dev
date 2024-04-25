@@ -1,6 +1,6 @@
 ---
-title: Studio Overview
-nav_label: Overview
+title: Studio
+nav_label: Studio
 sidebar_position: 1
 ---
 

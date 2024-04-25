@@ -12,7 +12,7 @@ If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
 - Basic understanding of object-oriented programming or JavaScript
-- An [access token](/docs/commerce-cloud/api-overview/your-first-api-request)
+- An [access token](../docs/commerce-cloud/api-overview/your-first-api-request)
 
 ## Step-by-step walkthrough
 
@@ -131,7 +131,7 @@ curl -X PUT https://useast.api.elasticpath.com/v2/customers/:customer-id \
 
 ## Further reading
 
-- [Custom Data (Flows)](/docs/commerce-cloud/custom-data)
-- [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Custom Data (Flows) API](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
-- [Manage customers](/docs/commerce-cloud/customer-management/manage-customers)
+- [Custom Data (Flows)](../docs/commerce-cloud/custom-data)
+- [Customers](../docs/commerce-cloud/customer-management/customers)
+- [Custom Data (Flows) API](../docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
+- [Manage customers](../docs/commerce-cloud/customer-management/manage-customers)

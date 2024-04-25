@@ -18,7 +18,7 @@ Following on from that, if you add the same flow to both a parent and child prod
 
 When building your child products, you can:
 
-- Build all products related to a product. See [Create child products using variations](/docs/pxm/products/pxm-product-variations/generate-pxm-variations).
+- Build all products related to a product. See [Create child products using variations](../docs/pxm/products/pxm-product-variations/generate-pxm-variations).
 - Build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy.
 
 This topic describes building a combination of child products associated with product, based on build rules that you specify.
@@ -281,7 +281,7 @@ Ensure that you have the following:
 
 - A Composable Commerce account.
 - The [client ID and client secret](https://dashboard.elasticpath.com/app) of your store.
-- An [access token](/docs/commerce-cloud/api-overview/your-first-api-request).
+- An [access token](../docs/commerce-cloud/api-overview/your-first-api-request).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:
@@ -307,12 +307,12 @@ Re-building child products after adding or removing a new variation changes the 
 
 ### Procedure - API
 
-1. [Create the variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
-1. [Create your options](/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).
+1. [Create the variations](../docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
+1. [Create your options](../docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).
 1. The endpoint you use to build child products based on a combination of variations depends on your scenario.
 
-    - Scenario 1: You want to create a product, associate the product with variations and build a combination of child products in one request. You can use [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product).
-    - Scenario 2: You already have a product and/or associated variations and you want to build a combination of child products. You can use [update a product](/docs/pxm/products/ep-pxm-products-api/update-a-product).
+    - Scenario 1: You want to create a product, associate the product with variations and build a combination of child products in one request. You can use [create a product](../docs/pxm/products/ep-pxm-products-api/create-a-product).
+    - Scenario 2: You already have a product and/or associated variations and you want to build a combination of child products. You can use [update a product](../docs/pxm/products/ep-pxm-products-api/update-a-product).
 
 1. To create a base product called **Shirt**, associate the **Shirt Size**, **Shirt Color** and **Shirt Material** variations with the **Shirt** product, configure the build rules to build all child products except small, red T-Shirts, make the following request:
 
@@ -391,7 +391,7 @@ To view all child products associated with a base product, make the following re
          -H "Content-Type: application/json" \
 ```
 
- You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](/docs/commerce-cloud/api-overview/pagination) section.
+ You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](../docs/commerce-cloud/api-overview/pagination) section.
 
 ## Adding a Child Product to the Cart Using API
 
@@ -410,5 +410,5 @@ Whenever you update variations, options, or modifiers associated with a product,
 
 ## Related Resources
 
-- [Products](/docs/pxm/products/pxm-products)
-- [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
+- [Products](../docs/pxm/products/pxm-products)
+- [Products API](../docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)

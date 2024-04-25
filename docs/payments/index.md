@@ -1,6 +1,6 @@
 ---
 title: Elastic Path Payments Powered by Stripe
-slug: /ep-payments
+slug: /payments
 sidebar_position: 1
 ---
 
@@ -8,7 +8,7 @@ Elastic Path Payments Powered by Stripe gateway interacts with Stripe to allow y
 
 To use the Elastic Path Payments Powered by Stripe gateway, reach out to your Customer Success Manager or [Customer Success Team](mailto:customersuccess@elasticpath.com).
 
-Create your Stripe account in [Stripe Dashboard](https://dashboard.stripe.com/login) and complete an onboarding form to make payments using the gateway. For more information, see [Onboarding](/docs/ep-payments/onboarding).
+Create your Stripe account in [Stripe Dashboard](https://dashboard.stripe.com/login) and complete an onboarding form to make payments using the gateway. For more information, see [Onboarding](/docs/payments/onboarding).
 
 Once you have signed up for Elastic Path Payments Powered by Stripe, you must configure the payment gateway so that your shoppers can make payments.
 

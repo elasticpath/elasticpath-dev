@@ -18,8 +18,8 @@ This example only describes `flows` API calls and does not provide code that you
 
 Ensure that you have the following:
 
-- A Commerce account and the Client ID and Client Secret for your store, available from [Commerce Manager](/docs/commerce-cloud/getting-started/cm-overview).
-- An [access token](/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
+- A Commerce account and the Client ID and Client Secret for your store, available from [Commerce Manager](../docs/commerce-cloud/getting-started/cm-overview).
+- An [access token](../docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
 - Basic understanding of object-oriented programming or JavaScript.
 - A store set up with products and payment details.
 
@@ -492,8 +492,8 @@ This scenario assumes you already have an order. The order created in this examp
 
 ## Related Resources
 
-- [Custom Data (Flows)](/docs/commerce-cloud/custom-data)
-- [Orders](/docs/commerce-cloud/orders)
-- [Checkout workflow](/docs/commerce-cloud/checkout/checkout-workflow)
-- [Custom Data (Flows) API](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
-- [Extend a resource with custom data](/docs/commerce-cloud/custom-data/extend-any-resource)
+- [Custom Data (Flows)](../docs/commerce-cloud/custom-data)
+- [Orders](../docs/commerce-cloud/orders)
+- [Checkout workflow](../docs/commerce-cloud/checkout/checkout-workflow)
+- [Custom Data (Flows) API](../docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
+- [Extend a resource with custom data](../docs/commerce-cloud/custom-data/extend-any-resource)
