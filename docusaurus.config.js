@@ -332,7 +332,7 @@ const config = {
             {
               label: 'Guides',
               to: 'guides',
-              className: 'guides-top-header',
+              className: 'guide-button guide-button-link',
             },
             {
               label: 'Docs',
@@ -345,10 +345,6 @@ const config = {
                   className: 'nav-dropdown',
                 },
               ],
-            },
-            {
-              label: 'API Documentation',
-              to: '/api/',
             },
             {
               label: 'Resources',
