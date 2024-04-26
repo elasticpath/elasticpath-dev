@@ -18,12 +18,12 @@ sidebar_position: 1
 1. To enable the promotion, click the **Enabled** toggle.
 1. (Optional) To automatically apply the promotion, click the **Automatic** toggle.
     
-    If this field is not selected, the promotion requires the buyer to enter a code in the cart to get the discount. For more information, see the [Adding codes](/docs/commerce-cloud/promotions/promotions-cm/overview#adding-codes) section.
+    If this field is not selected, the promotion requires the buyer to enter a code in the cart to get the discount. For more information, see the [Adding codes](/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes) section.
 1. (Optional) In the **Minimum cart value** section, click **Add minimum cart value**.
    The **Set minimum cart value** window is displayed.
    1. In the **Amount** field, enter a minimum cart value before the promotion can be applied.
    1. In the **Select currency** field, select a currency.
-      You can add one or several value specifications in different currencies. For more information about currencies, see [Managing Currencies in Commerce Manager](/docs/pxm/currencies/manage-currencies).
+      You can add one or several value specifications in different currencies. For more information about currencies, see [Managing Currencies in Commerce Manager](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
     1. Click **Save**.
 1. In the **Promotion type** field, select **Cart fixed discount**.
 1. In the **Define schema** section, do the following:
@@ -32,7 +32,7 @@ sidebar_position: 1
             
             The **Add currency** window is displayed.
         1. In the **Amount** field, specify amount for the promotion.
-        1. In the **Select currency** field, select a currency from the list. For more information about currencies, see the [Managing Currencies in Commerce Manager](/docs/pxm/currencies/manage-currencies) section.
+        1. In the **Select currency** field, select a currency from the list. For more information about currencies, see the [Managing Currencies in Commerce Manager](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies) section.
         1. Click **Save**.
     1. In the **Catalogs** field, select the catalogs to be applied for this promotion from the list.
        

@@ -17,14 +17,14 @@ A cart can be created through either a back-end or front-end action:
 
 An implicit action is when the shopper initiates the cart with their first add-to-cart action. When a shopper adds the first product to a cart, a cart is created with a unique reference ID and the product is added as a cart item. You need the reference ID field for any action related to the cart, such as updating, deleting or checking out a cart.
 
-An explicit action is when a user calls the cart creation endpoint. For more information, see [Create a Custom Cart](../docs/commerce-cloud/carts/create-custom-cart-items).
+An explicit action is when a user calls the cart creation endpoint. For more information, see [Create a Custom Cart](https://beta.elasticpath.dev/docs/commerce-cloud/carts/create-custom-cart-items).
 
 
 ## Front-end actions
 
 When a shopper registers a profile, the registration process also creates a cart.
 
-When a shopper signs in (either as an account or customer), a cart association is created between the shopper and the cart. For this action, the front-end calls the cart association API. For more information, see [Customer Cart Associations](../docs/commerce-cloud/carts/customer-cart-associations/customer-cart-associations-overview) or [Account Cart Associations](../docs/commerce-cloud/carts/account-cart-associations/account-cart-associations-overview).
+When a shopper signs in (either as an account or customer), a cart association is created between the shopper and the cart. For this action, the front-end calls the cart association API. For more information, see [Customer Cart Associations](https://beta.elasticpath.dev/docs/commerce-cloud/carts/customer-cart-associations/customer-cart-associations-overview) or [Account Cart Associations](https://beta.elasticpath.dev/docs/commerce-cloud/carts/account-cart-associations/account-cart-associations-overview).
 
 ## Generating a cart reference ID
 
@@ -42,5 +42,5 @@ Carts within a store have a default expiry threshold of seven days. The elapsed 
 
 ## Related Resources
 
-- [Checkout API](../docs/commerce-cloud/checkout)
+- [Checkout API](https://beta.elasticpath.dev/docs/commerce-cloud/checkout)
 - [Implement Shopkit](https://www.moltin.com/commerce-solutions/shopkit) - an embeddable cart and checkout solution

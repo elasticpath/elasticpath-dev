@@ -612,7 +612,7 @@ See [adding your products to carts](/docs/commerce-cloud/carts/cart-items/add-pr
 
 ## Related Resources
 
-- [Products](/docs/pxm/products/pxm-products-commerce-manager/create-products)
+- [Products](/docs/commerce-manager/product-experience-manager/Products/create-products)
 - [Locales](/docs/pxm/products/locales/pxm-locales)
 - [Bundles - Product Experience Manager](/docs/pxm/products/pxm-bundles)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)

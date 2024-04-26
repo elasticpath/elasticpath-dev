@@ -36,7 +36,7 @@ The following image shows a cart before and after applying a *10% Off* promotion
 
 ![Each item in the cart shows a price that is 10% less than the catalog price.](/assets/promotions-cart-10-percent-off.png)
 
-All items in the cart are eligible for cart-level promotions, even if they already have item-level promotions applied. You can select a few products and [exclude](/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion) them from a cart-level promotion. However, the store that uses a [simple calculation method](/docs/commerce-cloud/carts/calculate-totals#simple-calculation-method) does not support promotions with the `exclude` setting.
+All items in the cart are eligible for cart-level promotions, even if they already have item-level promotions applied. You can select a few products and [exclude](/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion) them from a cart-level promotion. However, the store that uses a [simple calculation method](/guides/Carts/calculate-totals#simple-calculation-method) does not support promotions with the `exclude` setting.
 
 ## Item-level promotions
 
@@ -63,7 +63,7 @@ Item-level promotions include the following promotion types:
     - Free gift
 
 - The maximum application per cart setting, which specifies the maximum number of applications of a promotion per cart, is applicable to line-item promotions only. For example, in a store that offers *buy SKU1 get a free gift* promotion with maximum application per cart set to one, the buyer can only use the free gift promotion once per cart. If maximum application per cart is not set, the buyer can use the promotion multiple times. You can also set maximum application per cart to zero to remove any usage limit.
-- You can use the *exclude* setting to specify the products to be excluded from the cart-level promotions, such as *fixed discount* and *percentage discount*. However, the stores that use [simple calculation method](/docs/commerce-cloud/carts/calculate-totals#simple-calculation-method) do not support excluding products from promotions.
+- You can use the *exclude* setting to specify the products to be excluded from the cart-level promotions, such as *fixed discount* and *percentage discount*. However, the stores that use [simple calculation method](/guides/Carts/calculate-totals#simple-calculation-method) do not support excluding products from promotions.
 
 :::
 

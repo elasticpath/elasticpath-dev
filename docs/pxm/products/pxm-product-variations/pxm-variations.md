@@ -35,7 +35,7 @@ Alternatively, you can modify a child product independently, without impacting i
 
 Following on from that, if you add the same flow to both a parent and child product, the child flow values are not affected by changes to the parent flow values in a rebuild.
 
-In addition, when building your child products, you can choose to exclude or include certain combinations of variation options. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy. See [Assigning Variations and Building Child Products](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).
+In addition, when building your child products, you can choose to exclude or include certain combinations of variation options. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy. See [Assigning Variations and Building Child Products](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products).
 
 Re-building child products after adding or removing a new variation changes the total number of child products that you can generate from a base product. When you rebuild the child products after updating variations associated with the base product, all existing child products that belong to a base product are deleted. New child products are created with new product IDs. 
 

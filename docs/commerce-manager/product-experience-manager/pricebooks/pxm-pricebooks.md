@@ -6,7 +6,7 @@ sidebar_position: 10
 
 A price book contains the prices for the products in a catalog. Catalogs with the same hierarchies of products can be associated with different price books. 
 
-A price book contains a list of product SKUs and the prices you want to charge for those products. If your store supports multiple currencies, a price book can contain product prices in each of the supported currencies. See [Manage Currencies in Stores](/docs/pxm/currencies/manage-currencies#managing-currencies).
+A price book contains a list of product SKUs and the prices you want to charge for those products. If your store supports multiple currencies, a price book can contain product prices in each of the supported currencies. See [Manage Currencies in Stores](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).
 
 Each catalog must have at least one price book.  A price book can be associated with multiple catalogs. 
 
@@ -53,7 +53,7 @@ A file can include up to 50,000 objects. If you have more than 50,000 objects, t
 
 ## Creating Price Books
 
-Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **System** in [Store Settings > Currencies](/docs/pxm/currencies/manage-currencies#managing-currencies).
+Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).
 
 1. Go to **Product Experience Manager > Price Books**.
 1. Click **Add Price Book**.
@@ -76,7 +76,7 @@ To add products and prices to a price book:
     - Select a product from the list.
 
 1. Click **+** in the product listing for the products you want to add. The products are added.
-1. Enter the price for the product in the appropriate currency. You can add new currencies under **System** in [Store Settings > Currencies](/docs/pxm/currencies/manage-currencies).
+1. Enter the price for the product in the appropriate currency. You can add new currencies under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
 1. Click **Save**.
 
 ## Creating and Using Price Modifiers

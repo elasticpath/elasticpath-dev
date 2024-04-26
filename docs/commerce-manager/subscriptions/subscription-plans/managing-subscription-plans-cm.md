@@ -27,7 +27,7 @@ When a trial period ends, Subscriptions automatically generates an invoice.
 
 You can provide a price for the total cost of a plan, or, provide a discount on the total cost of any products within an offering. For example, you can configure a percentage discount on the total cost of any products within an offering.
 
-You can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling these products to be offered at a discounted price. You can enter a price for all the currencies you have configured for your store. See [Managing Currencies](/docs/pxm/currencies/manage-currencies).
+You can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling these products to be offered at a discounted price. You can enter a price for all the currencies you have configured for your store. See [Managing Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
 
 Alternatively, instead of configuring pricing on a plan, you can set individual prices for a product when creating your products. See [Repeat Products](/docs/commerce-manager/subscriptions/products/managing-products-cm).
 

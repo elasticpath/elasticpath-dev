@@ -10,7 +10,7 @@ Several tasks that you perform in Commerce Manager trigger a job.
 - product [export](/docs/pxm/products/exporting-products/export-products-cm).
 - price book [import](/docs/pxm/pricebooks/pxm-pricebooks#importing-price-books-and-prices).
 - [duplicating hierarchies](/docs/pxm/hierarchies/hierarchy#duplicating-hierarchies).
-- [building child products](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).
+- [building child products](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products).
 
 ## Job Lifecycle
 

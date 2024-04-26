@@ -42,7 +42,7 @@ As part of the Salsify Integration, changes in Catalog data in Salsify automatic
 ### Prerequisites
 
  - Ensure that you have [collected your setup Information](#collecting-your-setup-information).
- - Ensure that you have created a [price book](/docs/pxm/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), and [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates) in Commerce Manager.
+ - Ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), and [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates) in Commerce Manager.
 
  ### Procedure
 

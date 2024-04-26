@@ -93,7 +93,7 @@ When designing your storefront, you must only allow child bundles to be added to
 
 1. In the **Product Details** tab, enter the following details:
 
-    - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/pxm/products/locales) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales#how-you-can-configure-locales-in-commerce-manager).
+    - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/commerce-manager/product-experience-manager/locales/) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales#how-you-can-configure-locales-in-commerce-manager).
     - **Name**: Name for the bundle.
     - (Optional) **Description**: A description for the bundle.
     - (Optional) **SKU Number**: The SKU of the product.
@@ -170,7 +170,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
 
     1. To associate the bundle with a price book, from **Select Price Book** list, select a price book.
     1. Turn on the toggle for the currencies you want to use.
-    1. Enter a price for each of the currencies. You can add currencies to a store in [Settings > Currencies](/docs/pxm/currencies/manage-currencies#managing-currencies).
+    1. Enter a price for each of the currencies. You can add currencies to a store in [Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).
     1. In **Actions**, click **Save**.
 
 1. If you want to add volume and sale pricing for the products in your bundle, expand **Advanced Pricing**.
@@ -184,7 +184,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
 1. To add a sale price to an option, click **+ Add Sale Price** and do the following:
 
     1. To associate the option with a price book, from **Price Book** list, select a price book.
-    1. In **Sale Name**, type a name for your sale. For more information, see [Price books](/docs/pxm/pricebooks/pxm-pricebooks).
+    1. In **Sale Name**, type a name for your sale. For more information, see [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks).
     1. From **Start Date / Time - End Date / Time**, click **Start date** to display the calendar. 
     1. Use the calendar to select a start date and time. 
     1. Click **OK**.
@@ -214,13 +214,13 @@ You can configure sale pricing for a bundle that uses automatic/cumulative prici
 1. Click **Add Sale Price**.
 
     1. To associate the option with a price book, from **Price Book** list, select a price book.
-    1. In **Sale Name**, type a name for your sale. For more information, see [Price books](/docs/pxm/pricebooks/pxm-pricebooks).
+    1. In **Sale Name**, type a name for your sale. For more information, see [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks).
       1. From **Start Date / Time - End Date / Time**, click **Start date** to display the calendar. 
     1. Use the calendar to select a start date and time. 
     1. Click **OK**.
     1. Click **End date** to display the calendar. 
     1. Use the calendar to select an end date and time.
-    1. Type a price for each of the available currencies. You can add currencies in [Settings > Currencies](/docs/pxm/currencies/manage-currencies).
+    1. Type a price for each of the available currencies. You can add currencies in [Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
     1. Click **Add Sale**.
     1. Repeat these steps for each of the options you want to add a sale price for.
 1. Click **Next** or **Save & Exit**.

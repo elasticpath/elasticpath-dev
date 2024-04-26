@@ -31,7 +31,7 @@ The following steps describe how to create a repeat product for razors.
 
 2. Assign prices to these products.
 
-    See [Repeat Products](../docs/subscriptions/products/managing-products-cm).
+    See [Repeat Products](https://beta.elasticpath.dev/docs/subscriptions/products/managing-products-cm).
    
 3. Create a plan for each billing frequency, for example:
 
@@ -39,11 +39,11 @@ The following steps describe how to create a repeat product for razors.
     - 2 months
     - 6 months
 
-   See [Plans](../docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
+   See [Plans](https://beta.elasticpath.dev/docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
 
 4. Create an offering that combines each product with the plans. 
 
     - offering 1 - Razors for Men with all plans.
     - offering 2 - Razors for Women with all plans.
 
-   See [Offerings](../docs/subscriptions/offerings/managing-subscription-offerings).
+   See [Offerings](https://beta.elasticpath.dev/docs/subscriptions/offerings/managing-subscription-offerings).

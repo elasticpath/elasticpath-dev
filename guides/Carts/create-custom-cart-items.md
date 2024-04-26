@@ -18,7 +18,7 @@ We walk you through the three common ways custom carts are leveraged. There is a
 
 If you want to follow along, you need the following items:
 
-- An [access token](../docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
 
 - The [code](https://gist.github.com/gje4)
 

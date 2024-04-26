@@ -9,11 +9,11 @@ Commerce Manager is a web-based user interface that you can use to manage the st
 Once you have [signed up for Commerce Manager](https://www.elasticpath.com/get-in-touch), you can get started.
 
 1. Log into Commerce Manager.
-2. [Create a new store in your organization](../docs/commerce-cloud/organizations/organizations-in-commerce-manager/home-page#creating-a-new-store-within-an-organization).
+2. [Create a new store in your organization](https://beta.elasticpath.dev/docs/commerce-cloud/organizations/organizations-in-commerce-manager/home-page#creating-a-new-store-within-an-organization).
 
     :::note
     If you have any problems creating a store, contact [Elastic Path Support](https://support.elasticpath.com/hc/en-us). 
     :::
 
-3. [Invite your team members to work in your store](../docs/commerce-cloud/getting-started/cm-overview#inviting-team-members).
-4. Configure the currencies for the locales where you do business. You can configure up to 10 currencies per store. See [Managing Currencies](../docs/pxm/currencies/manage-currencies#managing-currencies).
+3. [Invite your team members to work in your store](https://beta.elasticpath.dev/docs/commerce-cloud/getting-started/cm-overview#inviting-team-members).
+4. Configure the currencies for the locales where you do business. You can configure up to 10 currencies per store. See [Managing Currencies](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).

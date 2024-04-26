@@ -17,12 +17,12 @@ We recommend to use **Advanced (Conditions v2)** settings.
 1. To enable the promotion, select the **Enabled** field.
 1. (Optional) To automatically apply the promotion, select the **Automatic** field.
     
-    If this field is not selected, the promotion requires the buyer to enter a code in the cart to get the discount. For more information, see the [Adding codes](/docs/commerce-cloud/promotions/promotions-cm/overview#adding-codes) section.
+    If this field is not selected, the promotion requires the buyer to enter a code in the cart to get the discount. For more information, see the [Adding codes](/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes) section.
 1. (Optional) In the **Minimum cart value** field, click **Specify values**.
    The **Set minimum cart value** window is displayed.
    1. In the **Amount** field, enter a minimum cart value before the promotion can be applied.
    1. In the **Select currency** field, select a currency.
-      You can add one or several value specifications in different currencies. For more information about currencies, see the [Managing Currencies in Commerce Manager](/docs/pxm/currencies/manage-currencies) section.
+      You can add one or several value specifications in different currencies. For more information about currencies, see the [Managing Currencies in Commerce Manager](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies) section.
     1. Click **Save**.
 1. (Optional) In the **Maximum discount value** field, enter the maximum possible discount amount and currency.
 1. In the **Promotion type** field, select **Item percent discount**.

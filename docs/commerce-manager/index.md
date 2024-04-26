@@ -1,7 +1,7 @@
 ---
 title: Commerce Manager Overview
 nav_label: Commerce Manager Overview
-sidebar_position: 30
+sidebar_position: 1
 ---
 
 Commerce Manager is a web-based user interface to manage your store. In Commerce Manager, a user depending on their role within the store can do some or all of the following:

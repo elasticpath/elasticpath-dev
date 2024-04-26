@@ -14,7 +14,7 @@ sidebar_position: 40
     ![Wysiwyg](/assets/wysiwyg5.gif)
  
 1. Turn the **Product Status** toggle on to make the product `live`. Only products with a `live` status are published in catalogs. 
-1. Turn the **Product Bundle** toggle on to make this product a bundle. See [Bundles in Commerce Manager](/docs/pxm/products/pxm-bundles/bundle-configuration).
+1. Turn the **Product Bundle** toggle on to make this product a bundle. See [Bundles in Commerce Manager](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
 1. **SKU Number**: The SKU number of the product.
 1. **Slug**: A label for the product that is used in the URL paths. A slug can contain any combination of letters, numbers, periods, hyphens, and underscores. No spaces or other characters are allowed. By default, the product name is used as the slug.
 1. **Commodity Type**: Whether the product is physical or digital.
