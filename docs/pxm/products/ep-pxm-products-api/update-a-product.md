@@ -526,7 +526,7 @@ url -X PUT https://useast.api.elasticpath.com/pcm/products/60afe403-a191-455e-b7
 
 ## Related Resources
 
-- [Products](/docs/pxm/products/pxm-products-commerce-manager/create-products)
+- [Products](/docs/commerce-manager/product-experience-manager/Products/create-products)
 - [Locales](/docs/pxm/products/locales/pxm-locales)
 - [Bundles](/docs/pxm/products/pxm-bundles)
 - [Products API](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)

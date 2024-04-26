@@ -69,7 +69,7 @@ For more information, see [Update a Catalog](/docs/pxm/catalogs/catalog-configur
 ## Related Resources
 
 - [Products](/docs/pxm/products/pxm-products)
-- [Locales](/docs/pxm/products/locales/pxm-locales)
+- [Locales](/docs/commerce-manager/product-experience-manager/locales//pxm-locales)
 - [Catalogs](/docs/pxm/catalogs)
 - [Assign Multiple Nodes](/docs/pxm/products/ep-pxm-products-api/assign-nodes#post-attach-multiple-nodes)
 

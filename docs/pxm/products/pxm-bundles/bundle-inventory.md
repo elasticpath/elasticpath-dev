@@ -15,4 +15,4 @@ Whether your bundle has a SKU or is SKU-less depends on your bundle's pricing. S
 For more information:
 
 - [Inventory Service API](/docs/pxm/inventories/inventory.mdx).
-- [Managing Product Inventory](/docs/pxm/products/pxm-bundles/bundle-configuration#managing-product-inventory)
+- [Managing Product Inventory](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration#managing-product-inventory)

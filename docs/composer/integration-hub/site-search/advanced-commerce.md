@@ -99,7 +99,7 @@ When integrating with third-party providers, we recommend you use the closest re
  - In Commerce Manager, ensure that you have created the data that you want to synchronize with Advanced Commerce (GrapheneHC).
      - [products](/docs/pxm/products/ep-pxm-products-api/create-a-product).
      - [images](/docs/pxm/products/product-assets/assets-overview).
-     - [price book](/docs/pxm/pricebooks/pxm-pricebooks#creating-price-books).
+     - [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books).
      - [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies).
      - [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates).
      - [variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).

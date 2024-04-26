@@ -6,7 +6,7 @@ sidebar_position: 20
 
 # Prerequisite
 
-- Ensure that you have [created at least one price book](/docs/pxm/pricebooks/pxm-pricebooks#creating-price-books).
+- Ensure that you have [created at least one price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books).
 
 ## Best practises
 
@@ -19,8 +19,8 @@ The following steps provide a high-level procedure to complete a product configu
 1. In the [**Product Details**](/docs/pxm/products/pxm-products-commerce-manager/add-product-details) tab, enter the product details.
 1. You can allow your shoppers to add custom text to a product if you have products, like T-shirts or greeting cards that can be printed with your shoppers [personalized messages](/docs/pxm/products/pxm-products-commerce-manager/personalizing-products). 
 1. In the **Product Templates** tab, add [templates](/docs/pxm/products/extending-pxm-products/templates) for the product.
-1. In the **Pricing** tab, configure the [pricing settings](/docs/pxm/pricebooks/pxm-pricebooks#creating-price-books) for the product.
-1. In the **Variations** tab, associate [variations](/docs/pxm/products/pxm-product-variations/variations) with the product and [build child products](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products) with the variations and options.
+1. In the **Pricing** tab, configure the [pricing settings](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books) for the product.
+1. In the **Variations** tab, associate [variations](/docs/pxm/products/pxm-product-variations/variations) with the product and [build child products](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products) with the variations and options.
 1. In the **Inventory** tab, [manage the product inventory](/docs/pxm/products/pxm-products-commerce-manager/manage-product-inventory).
 1. In the **Media Management** tab, upload the [product images](/docs/pxm/products/pxm-products-commerce-manager/manage-product-media).
 

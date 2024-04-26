@@ -78,4 +78,4 @@ For more information, see [Bundle Pricing](/docs/pxm/products/pxm-bundles/bundle
 You can create bundles using:
 
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle).
-- [Commerce Manager](/docs/pxm/products/pxm-bundles/bundle-configuration).
+- [Commerce Manager](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).

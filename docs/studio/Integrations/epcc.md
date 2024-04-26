@@ -10,7 +10,7 @@ sidebar_position: 111
 - Ensure that you have a paid plan in your [Studio](https://app.unstack.com/) account.
 - Ensure that you have created the following items in Commerce Manager for seamless integration into the Studio storefront:
     - [Products](/docs/pxm/products/pxm-products-commerce-manager/overview)
-    - [Price books](/docs/pxm/pricebooks/pxm-pricebooks)
+    - [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
     - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
     - [Catalog rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules)

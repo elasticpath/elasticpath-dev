@@ -15,7 +15,7 @@ You can sort the team member list by **Name**, **Email**, or **Role**.
 1. Select **+Invite user**.
 1. In the dialog box that opens, enter a name, email address, and choose a role.
 
-For more information, see [Inviting Team Members](/docs/commerce-manager/cm-overview.md#inviting-team-members) and [Roles](/docs/commerce-cloud/team-management/roles.md).
+For more information, see [Inviting Team Members](/docs/commerce-manager/index#inviting-team-members) and [Roles](/docs/commerce-cloud/team-management/roles.md).
 
 ## Deleting Team Members
 

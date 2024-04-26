@@ -8,7 +8,7 @@ The following steps describe how to create a repeat product or service in Commer
 
 ## Prerequisites
 
-You must create all of your currencies in your store. See [Manage Currencies](/docs/pxm/currencies/manage-currencies).
+You must create all of your currencies in your store. See [Manage Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
 
 ## Creating a Repeat Product
 
@@ -29,7 +29,7 @@ Select **Product Preview** at any time to view a snapshot of your product or ser
      | **Description**   | Optional | The product or service description to display to customers.                                                                                                                                                                                                                                        | 
      | **SKU**           | Required | The unique stock keeping unit of the product.                                                                                                                                                                                                                                                      |
      | **Product Image** | Optional | Products can also have rich media assets, such as images or files containing additional product details. You can either choose a file to upload or a URL that points to a file. An extensive range of [media and file extensions](/docs/pxm/products/product-assets/files-overview) are supported. |
-     | **Pricing**       | Required | Enter a base price of the product or service in the currency that you want to sell. This price does not include any taxes. You can configure up to ten currencies per store. See [Manage Currencies in Stores](/docs/pxm/currencies/manage-currencies).                                            |
+     | **Pricing**       | Required | Enter a base price of the product or service in the currency that you want to sell. This price does not include any taxes. You can configure up to ten currencies per store. See [Manage Currencies in Stores](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).                                            |
      | **Unit Price**    | Optional | The timeframe during which the product price is applicable, either days or months. For example, for a digital subscription, the price might be $12.99 per month.                                                                                                                                   | 
 
 5. Click **Save Product**. Your product appears in the **Subscription Products** page.

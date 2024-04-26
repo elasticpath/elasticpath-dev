@@ -19,13 +19,13 @@ Use this procedure to create promotions such as, such as *3-for-$20* sales. In t
 1. To enable the promotion, click the **Enabled** toggle.
 1. (Optional) To automatically apply the promotion, click the **Automatic** toggle.
     
-    If this field is not selected, the promotion requires the buyer to enter a code in the cart to get the discount. For more information, see the [Adding codes](/docs/commerce-cloud/promotions/promotions-cm/overview#adding-codes) section.
+    If this field is not selected, the promotion requires the buyer to enter a code in the cart to get the discount. For more information, see the [Adding codes](/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes) section.
 1. (Optional) In the **Minimum cart value** field, click **Specify values**.
     
     The **Set minimum cart value** window is displayed.
       1. In the **Amount** field, enter a minimum cart value before the promotion can be applied
       1. In the **Select currency** field, select a currency.
-      You can add one or several value specifications in different currencies. For more information about currencies, see the [Managing Currencies in Commerce Manager](/docs/pxm/currencies/manage-currencies) section.
+      You can add one or several value specifications in different currencies. For more information about currencies, see the [Managing Currencies in Commerce Manager](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies) section.
       1. Click **Save**.
 1. In the **Promotion type** field, select **X for amount**.
 1. (Optional) In the **Quantity limit per use** field, specify the maximum number of application of a promotion per cart for a single use of a promotion.

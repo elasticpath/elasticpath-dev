@@ -4,7 +4,7 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-Products contain details, such as, the name, description, and SKU. Products are listed in a catalog using hierarchies. These catalogs then display the products in the storefront, such as a website. In Commerce Manager, you can also associate attributes with products using templates. However, product information does not contain pricing details. Pricing details for the products are managed in price books. See [Pricebooks](/docs/pxm/pricebooks/pxm-pricebooks).
+Products contain details, such as, the name, description, and SKU. Products are listed in a catalog using hierarchies. These catalogs then display the products in the storefront, such as a website. In Commerce Manager, you can also associate attributes with products using templates. However, product information does not contain pricing details. Pricing details for the products are managed in price books. See [Pricebooks](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks).
 
 ## Products and Catalog Releases
 
@@ -27,7 +27,7 @@ Commerce Manager automatically assigns types to the products you create. This is
 Products have one of the following types:
 
 * `product` - A product is a standalone product.
-* `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/pxm/products/pxm-products-commerce-manager/assign-variations-build-child-products).
+* `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products).
 * `child` - A child product is a product that is a variation of a parent product.
 * `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
 

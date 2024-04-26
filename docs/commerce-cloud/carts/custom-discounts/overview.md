@@ -10,7 +10,7 @@ The custom discount limit applies separately at the cart level and the cart item
 
 :::caution
 - To increase the custom discount limit, contact [Elastic Path Support](https://support.elasticpath.com/hc/en-us) team. After updating the setting, you can verify its status by calling the Get all settings endpoint. The response should include the `custom_discount_limit` field indicating the applied value.
-- The stores that use [simple calculation method](/docs/commerce-cloud/carts/calculate-totals#simple-calculation-method) do not support custom discounts.
+- The stores that use [simple calculation method](/guides/Carts/calculate-totals#simple-calculation-method) do not support custom discounts.
 :::
 
 

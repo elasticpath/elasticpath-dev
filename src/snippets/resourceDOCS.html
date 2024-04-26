@@ -1,12 +1,12 @@
 <script>
   function showMenu(menu) {
-    document.body.classList.remove('composable', 'composer', 'payments', 'carts', 'subscriptions', 'selfmanaged', 'studio', 'plugin', 'pxm');
+    document.body.classList.remove('composable', 'composer', 'payments', 'api', 'cm', 'developer', 'selfmanaged', 'studio', 'plugin', 'pxm');
     document.body.classList.add(menu);
   }
 
   window.showMenu = showMenu;
 </script>
-<div class="docs-dropdown flex max-w-lg flex-col rounded-2xl lg:min-w-[768px]">
+<div class="docs-dropdown flex max-w-lg flex-col rounded-2xl lg:min-w-[580px]">
   <div class="flex flex-col bg-secondary-800 p-4 lg:min-h-[300px] lg:flex-row">
     <div class="flex flex-1 flex-col gap-4 rounded-xl bg-secondary-1000 p-2">
       <!-- Commerce -->
@@ -23,43 +23,43 @@
         <div class="flex flex-col items-start justify-start gap-1 ">
           <div class="text-base font-semibold">Composable Commerce</div>
           <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
+            Guides and API overview
           </p>
         </div>
       </a>
-      <!-- PXM -->
+      <!-- API -->
       <a
-              data-dropdown-docs-menu="pxm"
-              onfocus="document.body.setAttribute('docs-menu', 'pxm')"
-              onmouseover="document.body.setAttribute('docs-menu', 'pxm')"
+              data-dropdown-docs-menu="api"
+              onfocus="document.body.setAttribute('docs-menu', 'api')"
+              onmouseover="document.body.setAttribute('docs-menu', 'api')"
               class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/pxm"
+              href="/api"
       >
         <div class="flex-shrink-0">
 
         </div>
         <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Product Experience Manager</div>
+          <div class="text-base font-semibold">API Documentation</div>
           <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
+            API Reference and OpenAPI specifications for Elastic Path Services
           </p>
         </div>
       </a>
-      <!-- Subscriptions -->
+      <!-- CM Docs -->
       <a
-              data-dropdown-docs-menu="subscriptions"
-              onfocus="document.body.setAttribute('docs-menu', 'subscriptions')"
-              onmouseover="document.body.setAttribute('docs-menu', 'subscriptions')"
+              data-dropdown-docs-menu="cm"
+              onfocus="document.body.setAttribute('docs-menu', 'cm')"
+              onmouseover="document.body.setAttribute('docs-menu', 'cm')"
               class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/subscriptions"
+              href="/ui"
       >
         <div class="flex-shrink-0">
 
         </div>
         <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Subscriptions</div>
+          <div class="text-base font-semibold">Commerce Manager</div>
           <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
+            A web-based user interface to manage your Elastic Path services.
           </p>
         </div>
       </a>
@@ -81,24 +81,6 @@
           </p>
         </div>
       </a>-->
-      <!-- Carts -->
-      <a
-              data-dropdown-docs-menu="carts"
-              onfocus="document.body.setAttribute('docs-menu', 'carts')"
-              onmouseover="document.body.setAttribute('docs-menu', 'carts')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/commerce-cloud/carts"
-      >
-        <div class="flex-shrink-0">
-
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Carts & Orders</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
-          </p>
-        </div>
-      </a>
       <!-- Studio -->
       <a
               data-dropdown-docs-menu="studio"
@@ -113,7 +95,7 @@
         <div class="flex flex-col items-start justify-start gap-1 ">
           <div class="text-base font-semibold">Studio</div>
           <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
+            An e-commerce enabled content management system designed to empower your team to build exceptional experiences.
           </p>
         </div>
       </a>
@@ -131,7 +113,7 @@
         <div class="flex flex-col items-start justify-start gap-1 ">
           <div class="text-base font-semibold">Composer</div>
           <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
+            Composer is a vertical-specific commerce intelligence IPaaS.
           </p>
         </div>
       </a>
@@ -149,7 +131,25 @@
         <div class="flex flex-col items-start justify-start gap-1 ">
           <div class="text-base font-semibold">Payments</div>
           <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
+            Elastic Path Payments, Powered by Stripe
+          </p>
+        </div>
+      </a>
+      <!-- Developer Tools -->
+      <a
+              data-dropdown-docs-menu="developer"
+              onfocus="document.body.setAttribute('docs-menu', 'developer')"
+              onmouseover="document.body.setAttribute('docs-menu', 'developer')"
+              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
+              href="/docs/developer-tools"
+      >
+        <div class="flex-shrink-0">
+
+        </div>
+        <div class="flex flex-col items-start justify-start gap-1 ">
+          <div class="text-base font-semibold">Developer Tools</div>
+          <p class="mb-0 text-left text-sm text-text-400">
+            SDKs, Composable CLI Frontend, Postman Collections
           </p>
         </div>
       </a>
@@ -160,6 +160,7 @@
         onmouseover="document.body.setAttribute('docs-menu', 'selfmanaged')"
         class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
         href="https://documentation.elasticpath.com"
+        target="_blank"
       >
         <div class="flex-shrink-0">
 
@@ -173,7 +174,7 @@
       </a>
 
     </div>
-    <!--Composable Commerce-->
+    <!--Composable Commerce
     <div class="flex-1 p-6">
       <div class="flex flex-col gap-2" data-dropdown-docs="composable">
         <div class="flex flex-1 flex-col">
@@ -194,41 +195,8 @@
             </li>
           </ul>
         </div>
-        <div class="mt-6 flex flex-1 flex-col">
-          <h3 class="!mb-0.5">Developer Tools</h3>
-          <span class="hidden text-sm font-normal lg:block"
-            >Composable CLI Frontend, SDKs and more</span
-          >
-          <ul class="docs-ul">
-            <li>
-              <a href="/docs/developer-tools" class="docs-link">
-                Developer Tools
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-<!--pxm-->
-      <div class="flex flex-col gap-2" data-dropdown-docs="pxm">
-              <div class="flex w-full gap-2">
-                <div class="flex-1">
-                  <h3>Product Experience Manager</h3>
-                  <ul class="list-none pl-0">
-                    <li>
-                      <a href="/docs/pxm/" class="docs-link">
-                        Overview
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/api/docs/pxm/pricebooks" class="docs-link">
-                        API Documentation
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-      <!--subscriptions-->
+      </div>-->
+      <!--subscriptions
       <div class="flex flex-col gap-2" data-dropdown-docs="subscriptions">
         <div class="flex w-full gap-2">
           <div class="flex-1">
@@ -247,8 +215,8 @@
             </ul>
           </div>
         </div>
-      </div>
-      <!--carts-->
+      </div>-->
+      <!--carts
       <div class="flex flex-col gap-2" data-dropdown-docs="carts">
         <div class="flex w-full gap-2">
           <div class="flex-1">
@@ -267,8 +235,8 @@
             </ul>
           </div>
         </div>
-      </div>
-      <!--Studio-->
+      </div>-->
+      <!--Studio
       <div class="flex flex-col gap-2" data-dropdown-docs="studio">
         <div class="flex w-full gap-2">
           <div class="flex-1">
@@ -282,7 +250,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div>-->
       <!-- <div class="flex gap-2" data-dropdown-docs="plugin">
         <div class="flex-1">
           <h3>Core Docs</h3>
