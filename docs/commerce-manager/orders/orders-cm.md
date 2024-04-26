@@ -1,7 +1,7 @@
 ---
 title: Orders
-nav_label: Orders in Commerce Manager
-sidebar_position: 40
+nav_label: Orders
+sidebar_position: 10
 ---
 
 To view all the orders in the store, log into Commerce Manager and go to **STORE > Orders**. You can manage orders on the **All orders** page.

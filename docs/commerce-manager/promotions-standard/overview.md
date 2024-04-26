@@ -18,24 +18,24 @@ You can manage promotions on the **STORE > Promotions Standard** page.
 1. Click **Add promotion**.
 1. Enter the the required information to create the following promotions:
 
-    - [Cart-level fixed discount promotions](/docs/commerce-cloud/promotions/promotions-cm/cart-level-promotions/cart-level-fixed-discount)
-    - [Cart-level percentage discount promotions](/docs/commerce-cloud/promotions/promotions-cm/cart-level-promotions/cart-level-percentage-discount)
-    - [X for Y discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/x-for-y-discount-promotions)
-    - [X for amount discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/x-for-amount-discount-promotions)
-    - [Bundle discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/bundle-discount-promotions)
-    - [Item fixed discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/item-fixed-discount-promotions)
-    - [Item percentage discount Promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/item-percentage-discount-promotions)
-    - [Free gift promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/free-gift-promotions)
+    - [Cart-level fixed discount promotions](/docs/commerce-manager/promotions-standard/cart-level-promotions/cart-level-fixed-discount)
+    - [Cart-level percentage discount promotions](/docs/commerce-manager/promotions-standard/cart-level-promotions/cart-level-percentage-discount)
+    - [X for Y discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/x-for-y-discount-promotions)
+    - [X for amount discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/x-for-amount-discount-promotions)
+    - [Bundle discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions)
+    - [Item fixed discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/item-fixed-discount-promotions)
+    - [Item percentage discount Promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/item-percentage-discount-promotions)
+    - [Free gift promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions)
 
 :::warning
 - We recommend not to use the **Maximum discount value** setting for the following promotions:
 
-    - [Cart-level fixed discount promotions](/docs/commerce-cloud/promotions/promotions-cm/cart-level-promotions/cart-level-fixed-discount)
-    - [Item fixed discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/item-fixed-discount-promotions)
-    - [X for Y discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/x-for-y-discount-promotions)
-    - [X for amount discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/x-for-amount-discount-promotions)
-    - [Bundle discount promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/bundle-discount-promotions)
-    - [Free gift promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/free-gift-promotions)
+    - [Cart-level fixed discount promotions](/docs/commerce-manager/promotions-standard/cart-level-promotions/cart-level-fixed-discount)
+    - [Item fixed discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/item-fixed-discount-promotions)
+    - [X for Y discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/x-for-y-discount-promotions)
+    - [X for amount discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/x-for-amount-discount-promotions)
+    - [Bundle discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions)
+    - [Free gift promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions)
 
 - The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
 - Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.

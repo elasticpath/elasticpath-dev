@@ -1,6 +1,6 @@
 ---
-title: Configure PayPal Express Checkout in Commerce Manager
-nav_label: Configure PayPal Express Checkout in Commerce Manager
+title: Configure PayPal Express Checkout
+nav_label: Configure PayPal Express Checkout
 sidebar_position: 2
 ---
 

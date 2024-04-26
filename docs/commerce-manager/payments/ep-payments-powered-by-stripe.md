@@ -1,6 +1,6 @@
 ---
-title: Configure Elastic Path Payments Powered by Stripe in Commerce Manager
-nav_label: Configure Elastic Path Payments Powered by Stripe in Commerce Manager
+title: Configure Elastic Path Payments Powered by Stripe 
+nav_label: Configure Elastic Path Payments Powered by Stripe
 sidebar_position: 3
 ---
 

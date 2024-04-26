@@ -1,6 +1,6 @@
 ---
-title: Configure other Payment Gateways in Commerce Manager
-nav_label: Configure other Payment Gateways in Commerce Manager
+title: Configure other Payment Gateways
+nav_label: Configure other Payment Gateways
 sidebar_position: 4
 ---
 

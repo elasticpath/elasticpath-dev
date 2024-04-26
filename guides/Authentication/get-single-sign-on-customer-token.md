@@ -10,12 +10,12 @@ The single sign-on APIs allow you to authenticate customers with a single sign-o
 
 If you want to follow along, you need the following:
 
-- A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](/docs/commerce-cloud/getting-started/cm-overview).
-- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](/docs/commerce-cloud/authentication/Tokens/implicit-token).
+- A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](https://elasticpath.dev/docs/commerce-manager/cm-overview).
+- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](https://elasticpath.dev/docs/commerce-cloud/authentication/Tokens/implicit-token).
 - A basic understanding of object-oriented programming or JavaScript.
-- An [access token](/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
-- A [Redirect URL](/docs/commerce-cloud/authentication/single-sign-on/authentication#buyer-organization-adding-redirect-urls) that corresponds to the URL which your storefront is accessing Composable Commerce. This URL is used in the single sign-on flow.
-- An [authentication provider](/docs/commerce-cloud/authentication/single-sign-on/authentication#adding-a-new-provider) set up for your store that satisfies the requirements in the following section.
+- An [access token](https://elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
+- A [Redirect URL](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/authentication#buyer-organization-adding-redirect-urls) that corresponds to the URL which your storefront is accessing Composable Commerce. This URL is used in the single sign-on flow.
+- An [authentication provider](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/authentication#adding-a-new-provider) set up for your store that satisfies the requirements in the following section.
 
 ## Requirements for Authentication Providers
 
@@ -112,7 +112,7 @@ The Composable Commerce application should now redirect the user to the modified
 
 After the previous step, the user follows a series of redirects to authenticate. Eventually they are redirected back to this Composable Commerce application, with some additional parameters as described in [Successful Authentication Response](https://openid.net/specs/openid-connect-core-1_0.html#AuthResponse).
 
-After validating that the `state` parameter matches the value sent in the [Add parameters to the Authorization Endpoint URL](#add-parameters-to-the-authorization-endpoint-url) section, the Composable Commerce application can use the `code` parameter in the URL, and the `code_verifier` from the [Generate Proof Key for Code Exchange (PKCE) Parameters](#generate-proof-key-for-code-exchange-pkce-parameters) section to get a [customer token](/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens).
+After validating that the `state` parameter matches the value sent in the [Add parameters to the Authorization Endpoint URL](#add-parameters-to-the-authorization-endpoint-url) section, the Composable Commerce application can use the `code` parameter in the URL, and the `code_verifier` from the [Generate Proof Key for Code Exchange (PKCE) Parameters](#generate-proof-key-for-code-exchange-pkce-parameters) section to get a [customer token](https://elasticpath.dev/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens).
 
 Request a customer token using the `oidc` `authentication_mechanism`. Use `code` as the `oauth_authorization_code`, `code_verifier` as `oauth_code_verifier`, and provide the redirect URI of the store which handled the response.
 
@@ -133,8 +133,8 @@ curl -X POST https://useast.api.elasticpath.com/v2/customers/tokens \
 
 For more information, see [Authentication Response Validation](https://openid.net/specs/openid-connect-core-1_0.html#AuthResponseValidation) in the OpenID specification.
 
-The response is the same as a [customer token](/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens#the-customer-token-object) requested using `email` and `password`, and can be used in the same [requests](/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens#using-a-token)
+The response is the same as a [customer token](https://elasticpath.dev/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens#the-customer-token-object) requested using `email` and `password`, and can be used in the same [requests](https://elasticpath.dev/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens#using-a-token)
 
 ## Related Resources
 
-- [Customer Tokens API](/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens)
+- [Customer Tokens API](https://elasticpath.dev/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens)
