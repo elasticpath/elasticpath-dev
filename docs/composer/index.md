@@ -1,6 +1,7 @@
 ---
 title: Composer
 nav_label: Composer
+sidebar_position: 1
 ---
 
 Composer is a vertical-specific commerce intelligence IPaaS. 

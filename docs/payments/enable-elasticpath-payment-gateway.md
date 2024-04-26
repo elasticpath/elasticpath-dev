@@ -8,7 +8,7 @@ For Elastic Path Commerce Cloud, follow the steps below to enable the gateway. T
 
 ## Prerequisites
 
-- Ensure that you are [onboarded](/docs/ep-payments/onboarding) to Elastic Path Payments Powered by Stripe.
+- Ensure that you are [onboarded](/docs/payments/onboarding) to Elastic Path Payments Powered by Stripe.
 - Log in to [Stripe Dashboard](https://dashboard.stripe.com/login) and make a note of your stripe Account ID.
 
 ## Procedure

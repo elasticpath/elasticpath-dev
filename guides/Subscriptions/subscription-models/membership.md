@@ -33,14 +33,14 @@ The following steps describe how to create an online streaming service for diffe
    
     You do not need to assign any pricing to these products.
 
-   See [Repeat Products](/docs/commerce-manager/subscriptions/products/managing-products-cm).
+   See [Repeat Products](../docs/subscriptions/products/managing-products-cm).
 
 2. Create your plans, for example:
 
     - Standard with adverts
     - Standard
 
-    See [Plans](/docs/commerce-manager/subscriptions/subscription-plans/managing-subscription-plans-cm).
+    See [Plans](../docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
 
 3. Create an offering that combines each product with the plans.
 
@@ -48,4 +48,4 @@ The following steps describe how to create an online streaming service for diffe
     - offering 2 - high definition streaming with standard with adverts and standard plans.
     - offering 3 - 4k streaming with standard with adverts and standard plans.
 
-    See [Offerings](/docs/commerce-manager/subscriptions/offerings/managing-subscription-offerings).
+    See [Offerings](../docs/subscriptions/offerings/managing-subscription-offerings).

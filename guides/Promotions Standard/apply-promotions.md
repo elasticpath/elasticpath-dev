@@ -9,7 +9,7 @@ With promotions, you can provide different types of discounts to all your custom
 :::warning
 - When a promotion expires, the promotion codes attached to the promotion automatically become invalid. However, when you re-enable the expired promotion, the promotion codes attached to the promotion are deleted. 
 - When you checkout a cart with an expired promotion, the expired promotion will be automatically removed from a cart and the checkout process is initiated. As a best practice, we recommend to update your cart to remove the expired promotion before initiating the checkout process.
-- If a certain SKU or catalog is targeted in the [promotion schema](/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion#the-schema-object), a custom item will not be eligible for the promotion unless it is specifically included as a target.
+- If a certain SKU or catalog is targeted in the [promotion schema](../docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion#the-schema-object), a custom item will not be eligible for the promotion unless it is specifically included as a target.
 :::
 
 ## Applying Promotions
@@ -18,7 +18,7 @@ Promotions appear as cart items in the cart with negative values. The summation 
 
 ### Before you begin
 
-- Ensure that you have an [access token](/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
+- Ensure that you have an [access token](../docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
 
 ### Procedure
 
@@ -26,17 +26,17 @@ Do the following to apply a promotion at a cart level:
 
 1. Create a promotion using one of the following:
 
-    - [Commerce Manager](/docs/commerce-cloud/promotions/promotions-cm/overview)
-    - [API](/docs/commerce-cloud/promotions/promotions-overview)
+    - [Commerce Manager](../docs/commerce-cloud/promotions/promotions-cm/overview)
+    - [API](../docs/commerce-cloud/promotions/promotions-overview)
 
 1. If required, create a promotion code for the promotion using one of the following:
 
-    - [Commerce Manager](/docs/commerce-cloud/promotions/promotions-cm/overview#adding-single-code)
-    - [API](/docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes)
+    - [Commerce Manager](../docs/commerce-cloud/promotions/promotions-cm/overview#adding-single-code)
+    - [API](../docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes)
 
-1. [Add items to the cart](/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
+1. [Add items to the cart](../docs/commerce-cloud/carts/cart-items/add-product-to-cart).
 1. Apply promotion using code if the promotion is not automatically applied.
-1. [Checkout the cart](/docs/commerce-cloud/checkout) that is updated with the promotion.
+1. [Checkout the cart](../docs/commerce-cloud/checkout) that is updated with the promotion.
 
 The promotion codes work with the `cart` endpoint. When a customer enters a promotion code, you must call API to apply the promotion that the code is associated with.
 
@@ -167,5 +167,5 @@ Use unique codes when you want to control the number of products included in the
 
 ## Next steps
 
-- [Pay for the order](/docs/commerce-cloud/payments/paying-for-an-order/overview)
+- [Pay for the order](../docs/commerce-cloud/payments/paying-for-an-order/overview)
 
