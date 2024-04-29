@@ -44,10 +44,10 @@ const developers = [
 ];
 
 const company = [
-  { name: 'Pricing', href: 'https://www.elasticpath.com/pricing' },
+  { name: 'About Us', href: 'https://www.elasticpath.com/company/about-us' },
+  { name: 'Careers', href: 'https://www.elasticpath.com/company/careers' },
   { name: 'Contact Us', href: 'https://www.elasticpath.com/company/contact-us' },
-  { name: 'Free Trial', href: 'https://useast.cm.elasticpath.com/free-trial' },
-  { name: 'Blog', href: 'https://www.elasticpath.com/blog' },
+  { name: 'Pricing', href: 'https://www.elasticpath.com/pricing' },
 ];
 
 function Safety({ className }) {
@@ -125,7 +125,7 @@ function Links({ name, links }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#030d1c] my-10">
+    <footer className="bg-gray-950">
       <div className="mx-auto flex w-full max-w-7xl flex-col px-6 py-12">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <img src="/logo/dark.svg" alt="Dyte" className="h-9 w-fit lg:h-12" />

@@ -111,7 +111,7 @@ export default function ResourcesSection() {
   };
 
   return (
-    <section className="no-underline-links my-20 px-6">
+    <section className="no-underline-links my-20 px-6 bg-gradient-to-tr from-emerald-800  via-primary/30 to-purple-950">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-center justify-between">
           <div>

@@ -60,8 +60,8 @@ function HeroProduct({
         borderWidth: '1px',
       }}
       className={clsx(
-        'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent text-black transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline dark:text-white',
-        'border-secondary-700 bg-secondary-900 hover:!border-primary dark:border-secondary-800'
+        'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline text-white',
+        'border-secondary-800 hover:!border-primary bg-gray-950'
       )}
     >
       <div className="p-6 !pb-6">
@@ -69,10 +69,10 @@ function HeroProduct({
           <Icon className="h-7 w-7" />
           <div>
             {title}
-            {beta && <span className="font-normal text-text-400"> (Beta)</span>}
+            {beta && <span className="font-normal text-white/60"> (Beta)</span>}
           </div>
         </h3>
-        <p className="mb-0 text-sm text-text-400">{text}</p>
+        <p className="mb-0 text-sm text-white/60">{text}</p>
       </div>
     </Link>
   );
@@ -82,17 +82,17 @@ export default function HeroSection() {
   return (
     <>
       <section className="no-underline-links px-4 pt-16 lg:py-0">
-        <div className="flex flex-col items-center justify-between py-14">
+        <div className="flex flex-col items-center justify-between py-14 text-white">
           <h2 className="mb-4 font-jakarta text-3xl font-bold">
             Build your Composable Commerce vision with ease and speed
           </h2>
-          <p className="max-w-3xl text-center text-text-400">
+          <p className="max-w-3xl text-center">
             Elastic Path's Developer Center: Sign up for a free trial, use our interactive learning tutorials, and experience first hand why developers love our platform
           </p>
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 md:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-7xl grid-cols-1 grid-rows-2 gap-6 md:grid-cols-2">
         {PRODUCTS.map((product) => (
           <HeroProduct {...product} key={product.title} />
         ))}
