@@ -29,10 +29,10 @@ Only sellers with Seller Admins, Support and IT roles can access the API.
 
 1. Call the `related-data-entries` endpoint and specify the `id` and `type` in the filter.
 
-   See [Personal Data Related Data Entries](../docs/commerce-cloud/personal-data/personal-data-related-data-entries-api/get-personal-data-related-data-entries) for more information.
+   See [Personal Data Related Data Entries](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data/personal-data-related-data-entries-api/get-personal-data-related-data-entries) for more information.
 
-1. You can use pagination links inside the `meta` field to navigate. See [pagination](../docs/commerce-cloud/api-overview/pagination) for more information.
+1. You can use pagination links inside the `meta` field to navigate. See [pagination](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/pagination) for more information.
 1. You can view the logs for the original data item from Step 1 or any of the related data items found in Step 2.
 1. Call the `logs` endpoint and specify the `id` and `type` in the filter
 gg
-   See the [Personal Data Logs](../docs/commerce-cloud/personal-data/personal-data-logs-api/get-personal-data-logs) page for more information.
+   See the [Personal Data Logs](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data/personal-data-logs-api/get-personal-data-logs) page for more information.

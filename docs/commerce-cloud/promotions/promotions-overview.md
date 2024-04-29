@@ -12,7 +12,7 @@ For testing your promotions when scheduling a future date for your shopping cart
 
 The Free Gift Promotion allows you to automatically add free gifts in the shopping cart when a shopper purchases specific products. To enable this feature, set the `auto_add_free_gift` option to `true` while [Creating a Free Gift Promotion](/docs/commerce-cloud/promotions/promotion-management/create-free-gift-promotion). 
 
-When [Creating a Free Gift Promotion](/docs/commerce-cloud/promotions/promotion-management/create-free-gift-promotion), set the promotion to `automatic` and enable the `auto_add_free_gift` feature. This way, the shopper will see the free gift in their shopping cart when the target product is added to the cart, and the discount will be applied. This eliminates the need for an additional step to apply the code for the gift discount. However, if you desire more control over when or how the free gift is added, you can choose to use a promotion code and disable the **Automatically add free gift items to the cart** toggle in Commerce Manager. See [Creating Free Gift Promotions](/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/free-gift-promotions). For a seamless process, ensure that the currency of automatically added gift items matches with the currency of the the eligible items. Additionally, ensure that the free gift item is within the same catalog as the eligible items. See [Errors](/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart#errors) section.
+When [Creating a Free Gift Promotion](/docs/commerce-cloud/promotions/promotion-management/create-free-gift-promotion), set the promotion to `automatic` and enable the `auto_add_free_gift` feature. This way, the shopper will see the free gift in their shopping cart when the target product is added to the cart, and the discount will be applied. This eliminates the need for an additional step to apply the code for the gift discount. However, if you desire more control over when or how the free gift is added, you can choose to use a promotion code and disable the **Automatically add free gift items to the cart** toggle in Commerce Manager. See [Creating Free Gift Promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions). For a seamless process, ensure that the currency of automatically added gift items matches with the currency of the the eligible items. Additionally, ensure that the free gift item is within the same catalog as the eligible items. See [Errors](/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart#errors) section.
 
 For inventory-managed products, ensure that you have sufficient inventory available to run the promotion. If there is insufficient stock of free gift items for all eligible free products, the free gifts won't be added to the cart.
 
@@ -36,7 +36,7 @@ The following image shows a cart before and after applying a *10% Off* promotion
 
 ![Each item in the cart shows a price that is 10% less than the catalog price.](/assets/promotions-cart-10-percent-off.png)
 
-All items in the cart are eligible for cart-level promotions, even if they already have item-level promotions applied. You can select a few products and [exclude](/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion) them from a cart-level promotion. However, the store that uses a [simple calculation method](/docs/commerce-cloud/carts/calculate-totals#simple-calculation-method) does not support promotions with the `exclude` setting.
+All items in the cart are eligible for cart-level promotions, even if they already have item-level promotions applied. You can select a few products and [exclude](/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion) them from a cart-level promotion. However, the store that uses a [simple calculation method](/guides/Carts/calculate-totals#simple-calculation-method) does not support promotions with the `exclude` setting.
 
 ## Item-level promotions
 
@@ -63,7 +63,7 @@ Item-level promotions include the following promotion types:
     - Free gift
 
 - The maximum application per cart setting, which specifies the maximum number of applications of a promotion per cart, is applicable to line-item promotions only. For example, in a store that offers *buy SKU1 get a free gift* promotion with maximum application per cart set to one, the buyer can only use the free gift promotion once per cart. If maximum application per cart is not set, the buyer can use the promotion multiple times. You can also set maximum application per cart to zero to remove any usage limit.
-- You can use the *exclude* setting to specify the products to be excluded from the cart-level promotions, such as *fixed discount* and *percentage discount*. However, the stores that use [simple calculation method](/docs/commerce-cloud/carts/calculate-totals#simple-calculation-method) do not support excluding products from promotions.
+- You can use the *exclude* setting to specify the products to be excluded from the cart-level promotions, such as *fixed discount* and *percentage discount*. However, the stores that use [simple calculation method](/guides/Carts/calculate-totals#simple-calculation-method) do not support excluding products from promotions.
 
 :::
 

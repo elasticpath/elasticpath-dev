@@ -72,7 +72,7 @@ const SECTIONS: Section[] = [
   },
   {
     name: 'Carts',
-    docId: 'carts',
+    docId: 'cm',
     icon: null,
     section: 'commerce-cloud',
   },

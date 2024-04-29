@@ -14,7 +14,7 @@ All API requests must contain a generated access token for authentication purpos
 
 Once you have your client ID, you can use it to generate an access token. Requests to Subscriptions require an `Authorization` header containing your access token. 
 
-This guide uses the `implicit` grant type. This grant type can be thought of as read only and is most commonly used on the client side. See [Authentication](../docs/commerce-cloud/authentication/overview) for more information about tokens.
+This guide uses the `implicit` grant type. This grant type can be thought of as read only and is most commonly used on the client side. See [Authentication](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/overview) for more information about tokens.
 
 ## Best Practices
 
@@ -27,7 +27,7 @@ The following steps describe how to authenticate in Subscriptions.
 
 You must: 
 
-1. Get your [Application Keys](../docs/commerce-cloud/authentication/application-keys/application-keys-cm). 
+1. Get your [Application Keys](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/application-keys/application-keys-cm). 
 2. Make a copy of your `client_id`.
 
 ## Get an access token

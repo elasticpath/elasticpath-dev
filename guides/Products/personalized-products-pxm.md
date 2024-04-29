@@ -10,8 +10,8 @@ This endpoint is for Administrator use only. Do not use this endpoint on your cu
 
 You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized or you sell greetings cards that can be printed with your shoppers personalized messages. You can do this 
 
-- using the API by configure the the `custom_inputs` attribute when you [create a product](../docs/pxm/products/ep-pxm-products-api/create-a-product). See [Using the API](#using-the-api).
-- using Commerce Manager when you create/update a product. See [Personalizing Products](../docs/pxm/products/pxm-products-commerce-manager/personalizing-products).
+- using the API by configure the the `custom_inputs` attribute when you [create a product](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product). See [Using the API](#using-the-api).
+- using Commerce Manager when you create/update a product. See [Personalizing Products](https://beta.elasticpath.dev/docs/pxm/products/pxm-products-commerce-manager/personalizing-products).
 
 Below is an example of a create a product request with the `custom_inputs` attribute configured.
 
@@ -86,7 +86,7 @@ For example, you may sell T-shirts that can have personalized text on the front 
 }
 ```
 
-Once you have configured your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](../docs/commerce-cloud/carts/cart-items/add-product-to-cart). When the product is added to the cart, those custom inputs are supplied.
+Once you have configured your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](https://beta.elasticpath.dev/docs/commerce-cloud/carts/cart-items/add-product-to-cart). When the product is added to the cart, those custom inputs are supplied.
 
 ```json
 {
@@ -105,17 +105,17 @@ Once you have configured your custom inputs on a product, you must configure the
 
 If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](../docs/commerce-cloud/checkout), the `custom_inputs` attribute becomes part of the [order](../docs/commerce-cloud/orders/orders-api/get-an-order).
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](https://beta.elasticpath.dev/docs/commerce-cloud/checkout), the `custom_inputs` attribute becomes part of the [order](https://beta.elasticpath.dev/docs/commerce-cloud/orders/orders-api/get-an-order).
 
 When you add products to a cart with `custom_inputs`, there are certain limitations on the usage of the `custom_inputs` with the following promotion types:
 
-- For [Free Gift Promotions](../docs/commerce-cloud/promotions/promotion-management/create-free-gift-promotion), you can add `custom_inputs` to gift items.
-- For [Fixed Bundle Discount Promotions](../docs/commerce-cloud/promotions/promotion-management/create-fixed-bundle-discount-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different `custom_inputs`.
-- For [X for Y Discount Promotion](../docs/commerce-cloud/promotions/promotion-management/create-X-for-Y-discount-promotion) and [X for amount discount promotion](../docs/commerce-cloud/promotions/promotion-management/create-X-for-amount-discount-promotion), the promotion applies when there are two SKUs with the same `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
+- For [Free Gift Promotions](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-management/create-free-gift-promotion), you can add `custom_inputs` to gift items.
+- For [Fixed Bundle Discount Promotions](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-management/create-fixed-bundle-discount-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different `custom_inputs`.
+- For [X for Y Discount Promotion](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-management/create-X-for-Y-discount-promotion) and [X for amount discount promotion](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-management/create-X-for-amount-discount-promotion), the promotion applies when there are two SKUs with the same `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
 
 ## Related Resources
 
-- [Locales](../docs/pxm/products/locales/pxm-locales)
-- [Catalogs](../docs/pxm/catalogs)
-- [Price Books](../docs/pxm/pricebooks/price-books)
-- [Products API](../docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
+- [Locales](https://beta.elasticpath.dev/docs/pxm/products/locales/pxm-locales)
+- [Catalogs](https://beta.elasticpath.dev/docs/pxm/catalogs)
+- [Price Books](https://beta.elasticpath.dev/docs/pxm/pricebooks/price-books)
+- [Products API](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)

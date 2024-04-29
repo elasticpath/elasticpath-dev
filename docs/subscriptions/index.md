@@ -22,9 +22,9 @@ Elastic Path Subscriptions enables you to manage your subscriptions products and
 
 Here's how a typical subscription works:
 
-1. Create your repeat products. See [Repeat Products](/docs/subscriptions/products/managing-products-cm).
-2. Create your plans. Plans are the rules that govern your subscription, for example, delivery frequency, the quantity and any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. See [Plans](/docs/subscriptions/subscription-plans/managing-subscription-plans-cm).
-3. Create your offerings. Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of products or plans, depending on the products and services you offer. See [Offerings](/docs/subscriptions/offerings/managing-subscription-offerings).
+1. Create your repeat products. See [Repeat Products](/docs/commerce-manager/subscriptions/products/managing-products-cm).
+2. Create your plans. Plans are the rules that govern your subscription, for example, delivery frequency, the quantity and any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. See [Plans](/docs/commerce-manager/subscriptions/subscription-plans/managing-subscription-plans-cm).
+3. Create your offerings. Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of products or plans, depending on the products and services you offer. See [Offerings](/docs/commerce-manager/subscriptions/offerings/managing-subscription-offerings).
 
    ![subscription offering](/assets/subscription_management.png)
 

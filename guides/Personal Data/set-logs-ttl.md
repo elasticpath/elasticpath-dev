@@ -12,5 +12,5 @@ Ensure that you are signed into the store with appropriate permissions. Only sel
 
 ## Procedure
 
-1. Call the `logs-ttl` PUT endpoint and specify the `days` and `type` in the filter. See [Update Logs Time-to-Live (TTL) Settings](../docs/commerce-cloud/personal-data/logs-ttl-settings/update-logs-ttl-settings) for more information.
-1. Call the `logs-ttl` GET endpoint and make sure that the `days` field in the response is the same as the one you specified in the previous step. See [Get Logs Time-to-live (TTL)](../docs/commerce-cloud/personal-data/logs-ttl-settings/get-logs-ttl-settings) for more information.
+1. Call the `logs-ttl` PUT endpoint and specify the `days` and `type` in the filter. See [Update Logs Time-to-Live (TTL) Settings](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data/logs-ttl-settings/update-logs-ttl-settings) for more information.
+1. Call the `logs-ttl` GET endpoint and make sure that the `days` field in the response is the same as the one you specified in the previous step. See [Get Logs Time-to-live (TTL)](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data/logs-ttl-settings/get-logs-ttl-settings) for more information.

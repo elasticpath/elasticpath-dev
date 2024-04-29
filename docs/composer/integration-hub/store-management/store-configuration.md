@@ -14,7 +14,7 @@ Once you have configured the store configuration orchestrator integration, you c
 
 The following Commerce objects are included when importing/exporting store configurations.
 
-- [Currencies](/docs/pxm/currencies/manage-currencies).
+- [Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
 - [Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview).
 - [Variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
 - [Variation Options](/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).

@@ -8,7 +8,7 @@ Product Experience Manager supports localization of products and hierarchies. If
 
 ## Commerce Manager
 
-You can localize product names and descriptions when [creating products](/docs/pxm/products/pxm-products-commerce-manager/create-products). By default, there are a number of language codes available. You activate locales in Commerce Manager in **SYSTEM** > **Store Settings** > **Locales**. You can activate a maximum of 5 languages.
+You can localize product names and descriptions when [creating products](/docs/commerce-manager/product-experience-manager/Products/create-products). By default, there are a number of language codes available. You activate locales in Commerce Manager in **SYSTEM** > **Store Settings** > **Locales**. You can activate a maximum of 5 languages.
 
 ## Create a Product API Request
 

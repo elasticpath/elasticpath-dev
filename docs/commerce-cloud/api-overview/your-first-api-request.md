@@ -290,7 +290,7 @@ In the preceding Order object, we received a few values that make paying for an 
  | `status` | This is either **`complete`** or **`incomplete`**. Useless when grouping orders in your own UI to your customers when theyʼre logged in. |
  | `payment` | An order is immediately unpaid, but after you move onto paying for an order, this can be: **`authorized`**, **`paid`** or **`refunded`**. |
  | `shipping` | This is either **`fulfilled`** or **`unfulfilled`**. |
- | `meta` | This object contains useful metadata for your order including a formatted [order total](/docs/commerce-cloud/carts/calculate-totals) for your cart, along with when the cart was created. |
+ | `meta` | This object contains useful metadata for your order including a formatted [order total](/guides/Carts/calculate-totals) for your cart, along with when the cart was created. |
  | `relationships` | This object contains the IDs for related objects, including the [Order Items](/docs/commerce-cloud/orders/orders-api/order-items) and the [Customer](/docs/commerce-cloud/customer-management/customer-managment-api/customer-management-api-overview), if you provided one during Checkout. |
 
 ### Clean up the cart
