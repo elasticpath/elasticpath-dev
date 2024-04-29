@@ -19,7 +19,7 @@ export default function HelpSection({ className = '' }) {
         </div>
         <div className="max-w-4xl center lg:min-h-[200px]">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <div className="rounded-lg p-6 bg-gray-950 text-white">
+            <div className="rounded-lg p-6 bg-gray-950/50 text-white">
               <h3 className="my-3">Free Trial</h3>
               <p className="text-white">
                 Don't have a store yet? Would you like a free trial?
@@ -34,7 +34,7 @@ export default function HelpSection({ className = '' }) {
               </Link>
             </div>
 
-            <div className="rounded-lg bg-gray-950 p-6">
+            <div className="rounded-lg bg-gray-950/50 p-6">
               <h3 className="my-3 text-white">Support</h3>
               <p className="text-white">
                 Have an account? Our support team is here for you.
