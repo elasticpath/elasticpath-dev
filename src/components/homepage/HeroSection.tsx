@@ -60,7 +60,7 @@ function HeroProduct({
         borderWidth: '1px',
       }}
       className={clsx(
-        'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline text-white',
+        'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent transition-all hover:bg-gray-950/80 hover:text-primary hover:no-underline text-white',
         'border-secondary-800 hover:!border-primary bg-gray-950/50'
       )}
     >
