@@ -61,7 +61,7 @@ function HeroProduct({
       }}
       className={clsx(
         'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline text-white',
-        'border-secondary-800 hover:!border-primary bg-gray-950'
+        'border-secondary-800 hover:!border-primary bg-gray-950/50'
       )}
     >
       <div className="p-6 !pb-6">
