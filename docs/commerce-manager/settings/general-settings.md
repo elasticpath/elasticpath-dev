@@ -1,7 +1,7 @@
 ---
-title: General Settings in Commerce Manager
-nav_label: General Settings in Commerce Manager
-sidebar_position: 50
+title: General Settings
+nav_label: General Settings
+sidebar_position: 10
 ---
 
 ## Renaming a Store

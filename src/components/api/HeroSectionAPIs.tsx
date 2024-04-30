@@ -31,7 +31,7 @@ const PRODUCTS = [
   },
   {
     title: 'Subscriptions',
-    link: '/docs/api/subscriptions/subscriptions-overview',
+    link: '/docs/api/subscriptions/subscriptions-introduction',
     icon: ArrowSyncFilled,
     // lightImage: '/static/landing-page/hero/livestream-graphic.png',
     // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
@@ -39,7 +39,7 @@ const PRODUCTS = [
   },
   {
     title: 'Product Experience Manager',
-    link: '/docs/api/pxm/products/introduction',
+    link: '/docs/api/pxm/products/product-experience-manager-introduction',
     icon: BookRegular,
     // lightImage: '/static/landing-page/hero/voice-graphic.png',
     // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
@@ -101,7 +101,7 @@ const PRODUCTS = [
   {
     title: 'Custom Data',
     beta: false,
-    link: '/docs/api/flows/flows-service-api',
+    link: '/docs/api/flows/flows-service-introduction',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',

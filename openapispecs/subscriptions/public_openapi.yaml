@@ -418,6 +418,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -558,6 +559,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -701,6 +703,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -737,26 +740,26 @@ paths:
       summary: Build an offering
       description: |
         An offering includes a product and plans; a product is combined with one or more plans to form an offering. An offering can have only one product. An offering can include either:
+         
+        - a subscription product. See [**create a product**](/docs/api/subscriptions/create-product).
+        - a Product Experience Manager product. See [**create a product**](/docs/api/pxm/products/create-product).
+         
+        Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
 
-            - a subscription product. See [**create a product**](/docs/api/subscriptions/create-product).
-            - a Product Experience Manager product. See [**create a product**](/docs/api/pxm/products/create-product).
+        When you are building an offering:
 
-         Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
-
-         When you are building an offering:
-
-            - you can create new plans and products.
-            - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
-
-         Here's how you build an offering:
-
-            1. Specify the product to build with the offering. A product can be:
-
-                - a subscription product. Specify the subscription product attributes. 
-                - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
-
-            2. Specify the plans to build with the offering. Plans are the rules that govern your subscription, for example, any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.
-         An offering must have at least one plan. 
+        - you can create new plans and products.
+        - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
+         
+        Here's how you build an offering:
+         
+        1. Specify the product to build with the offering. A product can be:
+         
+             - a subscription product. Specify the subscription product attributes. 
+             - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
+         
+        2. Specify the plans to build with the offering. Plans are the rules that govern your subscription, for example, any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.
+          An offering must have at least one plan. 
       operationId: BuildOffering
       requestBody:
         content:
@@ -1252,6 +1255,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `account_id`, `name`, `email`, `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -1515,6 +1519,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -1799,6 +1804,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator |Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `subscriber_id`, `subscription_id`, `outstanding`, `tax_required` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -1930,7 +1936,8 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
-        | >Operator | Attribute | Description |
+
+        | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       parameters:
@@ -2079,6 +2086,7 @@ paths:
         This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
         The following attributes and operators are supported.
+
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `account_id`, `name`, `email`, `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
@@ -3389,13 +3397,9 @@ components:
       description: |
         The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product.
 
-        A subscription can have the following states:
+        A subscription can have the following states; `canceled`, `paused`, or `resumed`.
 
-        - canceled
-        - paused
-        - resumed
-
-        See [**Managing the subscription lifecycle**](#managing-the-subscription-lifecycle).
+        See [**Managing the subscription lifecycle**](/docs/api/subscriptions/subscriptions#managing-the-subscription-lifecycle).
       example: cancel
       enum:
         - cancel
@@ -3429,24 +3433,18 @@ components:
         meta:
           $ref: '#/components/schemas/StateMeta'
     PaymentAuthority:
-      discriminator:
-        propertyName: type
-        mapping:
-          elastic_path_payments_stripe: '#/components/schemas/PaymentAuthorityEpPayments'
-      oneOf:
-        - $ref: '#/components/schemas/PaymentAuthorityEpPayments'
-    PaymentAuthorityEpPayments:
       required:
         - type
         - customer_id
         - card_id
       properties:
         type:
-          description: The name of the payment gateway facilitating the secure transmission of payment data. Always `elastic_path_payments_stripe`.
+          description: The name of the payment gateway facilitating the secure transmission of payment data.
           type: string
           example: elastic_path_payments_stripe
           enum:
             - elastic_path_payments_stripe
+            - authorize_net
         customer_id:
           description: The unique identifier for a customer.
           type: string
