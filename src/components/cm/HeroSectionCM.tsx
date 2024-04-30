@@ -31,7 +31,7 @@ const PRODUCTS = [
   },
   {
     title: 'Commerce Extensions',
-    link: '/docs/commerce-manager/commerce-extensions',
+    link: '/docs/commerce-manager/commerce-extension/commerce-extension-in-cm',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
