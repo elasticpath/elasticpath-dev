@@ -6,7 +6,7 @@ sidebar_position: 60
 
 If your store has more than one catalog and you want to manage when certain catalogs are displayed, add catalog rules to control when a catalog is displayed. 
 
-:::warning
+:::caution
 You cannot create catalog rules for organization catalogs.
 :::
 

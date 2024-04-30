@@ -51,7 +51,7 @@ Item-level promotions include the following promotion types:
 - **Percentage item discount**: Reduces the product price for multiple items by a specific percentage, such as *10% off*. You can also count the number of usages of the promotion per SKU item and limit the usage of the promotion per item. For example, if the usage of the promotion is limited to ten and the shopper purchases two of the same item and three of the another item, five uses of the promotion is deducted from the total usage limit.
 - **Free Gift**: Offers a free item when a specific product or a group of products are purchased.
 
-:::warning
+:::caution
 
 - The maximum discount value setting specifies the maximum possible discount for the cart. To avoid the conflict with the promotions and the promotion to work, we recommend not to use this setting for the following promotions:
 
@@ -73,7 +73,7 @@ You can create codes for a promotion so that customers receive the discount only
 
 You can have multiple promotions for the same SKU. However, each instance of the SKU in the cart is eligible for only one item-level promotion.
 
-:::warning
+:::caution
 The promotions are applied in the order of date of creation of the promotions. The oldest promotion is applied first and the newest promotion is applied last. For each instance of a SKU that matches the criteria in the oldest promotion, the promotion is applied. For the remaining instances of the SKU, each instance is compared to the criteria for the next oldest promotion.
 :::
 

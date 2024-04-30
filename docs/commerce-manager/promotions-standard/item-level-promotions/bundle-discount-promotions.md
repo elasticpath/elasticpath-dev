@@ -4,7 +4,7 @@ nav_label: Bundle Discount Promotions
 sidebar_position: 3
 ---
 
-:::warning
+:::caution
 - We recommend not to set maximum discount value for this promotions. Setting maximum discount value for this promotion conflicts with the promotion settings.
 - Hierarchy-based promotions are not supported for fixed bundle discount promotion.
 :::

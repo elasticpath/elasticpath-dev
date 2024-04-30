@@ -4,7 +4,7 @@ nav_label: Cart-level Fixed Discount Promotions
 sidebar_position: 1
 ---
 
-:::warning
+:::caution
 - We recommend not to set maximum discount value for this promotion. Setting maximum discount value for this promotion conflicts with the cart fixed discount value. For example, if the maximum discount value is $10 and the cart fixed discount value is $20, the cart gets $10 discount only.
 - The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
 - We recommend to use **Advanced (Conditions v2)** settings.
