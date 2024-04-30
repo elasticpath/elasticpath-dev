@@ -109,11 +109,13 @@ To learn more about promotion codes, see [Promotion Codes](/docs/commerce-cloud/
 
 Discount apportioning involves distributing cart-level discounts among the individual items in the cart, ensuring transparency and clarity in how discounts are allocated and represented at both the cart and item levels. Each discount includes essential details such as IDs, codes, amounts, and indicates their source as `rule-promotion`. It is important to note that item-level apportioning for cart-level discounts specifically applies to Rule Promotions.
 
-Within Rule Promotions, cart-level promotion items are not considered in cart total calculations, preventing double-counting of discounts. Even if an apportioned amount amounts to zero, it is distributed among all items for consistency. Apportioned item-level discounts include a flag, such as `is_cart_discount`, to easily identify them as originating from cart-level promotions, aiding API consumers in reconciliation. This flag is used to check if the discount applied to cart item is from cart discount. This flag is not visible for item discount.
+Within Rule Promotions, cart-level promotion items are not considered in cart total calculations, preventing double-counting of discounts. Even if an apportioned amount amounts to zero, it is distributed among all items for consistency. Apportioned item-level discounts include a flag, such as `is_cart_discount`, to easily identify them as originating from cart-level promotions, aiding API consumers in reconciliation. This flag is used to check if the discount applied to cart item is from cart discount.
 
-While zero amount item-level discounts are included in the response, you may choose to hide them on your front-end interface for improved user experience.
+:::note
+The new discount apportioning algorithm ensures that the `item.discounts` and `item.meta.display_price.discounts` are accurate and consistent. However, the `item.meta.display_price.discount` fields might sometimes display slight inaccuracies due to rounding differences in response representations. It is important to consider the `item.discounts` and `item.meta.display_price.discounts` as the accurate representations of discount values.
+:::
 
-For example, consider the following scenario:
+Consider the following scenario:
 - Create a [cart fixed discount rule promotion](/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-fixed-discount-rule-promotion), with a cart discount of $10. When a cart with eligible items, SKU1 and SKU2, with a price of $100 each, applies this cart discount, the system accurately distributes the discount among the items based on their proportions to the overall cart total.
 - In this case, SKU1 and SKU2 with a price of $100 each, receive an apportioned discount of $5.00. Both items display the apportioned discount details in the `discounts` array in the response, along with the `is_cart_discount` flag indicating it's a cart-level discount. Upon checkout, the order items also reflect the apportioned discount details, ensuring transparency and accuracy in discount allocation.
 
