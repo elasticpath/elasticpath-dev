@@ -30,6 +30,14 @@ const PRODUCTS = [
     text: 'Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.',
   },
   {
+    title: 'Commerce Extensions',
+    link: '/docs/commerce-manager/commerce-extension/commerce-extension-in-cm',
+    icon: BookDatabaseRegular,
+    // lightImage: '/static/landing-page/hero/video-graphic.png',
+    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
+    text: 'Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options.',
+  },
+  {
     title: 'Subscriptions',
     link: '/docs/commerce-manager/subscriptions/overview',
     icon: ArrowSyncFilled,

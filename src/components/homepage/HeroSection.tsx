@@ -61,7 +61,7 @@ function HeroProduct({
       }}
       className={clsx(
         'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent transition-all hover:bg-gray-950/80 hover:text-primary hover:no-underline text-white',
-        'border-secondary-800 hover:!border-primary bg-gray-950/50'
+        'border-secondary-800 hover:!border-primary bg-gray-950/50 mx-auto flex w-full max-w-7xl'
       )}
     >
       <div className="p-6 !pb-6">
@@ -92,7 +92,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-7xl grid-cols-1 grid-rows-2 gap-6 md:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-7xl sm:px-6 xl:px-0 grid-cols-1 grid-rows-2 gap-6 md:grid-cols-2">
         {PRODUCTS.map((product) => (
           <HeroProduct {...product} key={product.title} />
         ))}
