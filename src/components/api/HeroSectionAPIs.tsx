@@ -143,7 +143,7 @@ const PRODUCTS = [
     text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   },
   {
-    title: 'Standard Promotions',
+    title: 'Promotions Standard',
     beta: false,
     link: '/docs/api/promotions/promotions-standard',
     icon: BuildingRetailRegular,
