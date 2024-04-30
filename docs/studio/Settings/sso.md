@@ -26,15 +26,15 @@ The following steps provide an overview of how to configure single sign-on for s
 5. In Studio, configure an **Elastic Path** integration, ensuring that **Enable OIDC connect** is checked.
 6. Once you have created the **Elastic Path** integration, when you go to your storefront page, for example, your checkout page, a new **Sign in** field is enabled.
 
-    ![sign in](/assets/studio/signin.png)
+![sign in](/assets/studio/signin.png)
 
 7. If you select **Sign in**, you are redirected to the Account page.
 
-    ![sso login](/assets/studio/sso-login.png)
+![sso login](/assets/studio/sso-login.png)
 
 8. Select the OpenID provider you want to use. You are redirected to the sign in pages for the OpenID provider you chose.
 
-    ![sso google](/assets/studio/sso-google.png)
+![sso google](/assets/studio/sso-google.png)
 
     
 

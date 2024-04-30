@@ -22,7 +22,7 @@ Full shadow customization is now available through the Style Guide!
 The product component will now display “Out of Stock” on the add-to-cart button in addition to disabling it when the
 number of available products is less than 0.
 
-    ![Out of Stock](/assets/studio/Screen_Shot_2022-07-25_at_2.58.15_PM.png)
+![Out of Stock](/assets/studio/Screen_Shot_2022-07-25_at_2.58.15_PM.png)
 
 **Smart Link Polish**
 

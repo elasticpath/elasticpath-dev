@@ -72,4 +72,4 @@ you to identify the custom field in Zapier.
 
 An important note, this *name* in Zapier will be prefaced by the word "Data" as shown below.
 
-    ![Data Prefix](/assets/studio/Unstack_to_Zap.png)
+![Data Prefix](/assets/studio/Unstack_to_Zap.png)

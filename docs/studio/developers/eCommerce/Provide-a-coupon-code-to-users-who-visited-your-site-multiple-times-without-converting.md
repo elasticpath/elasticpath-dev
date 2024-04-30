@@ -15,13 +15,13 @@ show a coupon code to users who have visited your site multiple times without co
 
     * **Option #1** - Give users the coupon code without any strings attached.
 
-      ![Coupon Code Provision Conditions](/assets/studio/screely-1656543688380.png)
+  ![Coupon Code Provision Conditions](/assets/studio/screely-1656543688380.png)
 
     * **Option #2** - Send users to a page with a dedicated form for collecting user information, and exchanging it for
       a coupon code. See [Offering users a coupon code after form submission](/docs/studio/developers/eCommerce/Offering-users-a-coupon-code-after-form-submission)
       for more details on how to set this up in your account.
 
-      ![Coupon Code Provision Post Form Submission ](/assets/studio/screely-1656543582229.png)
+  ![Coupon Code Provision Post Form Submission ](/assets/studio/screely-1656543582229.png)
 
 3. Now that you've made a decision about how you want to present the coupon code, it's time to use conditions to ensure
    that only non-converting users who have previously visited can use this coupon.
@@ -56,11 +56,11 @@ show a coupon code to users who have visited your site multiple times without co
 In any of the above examples, the "Purchased any product?" condition could be substituted with the "**Total value of all
 purchases**" condition configured two different ways:
 
-    ![Coupon Code Provision Conditions](/assets/studio/screely-1656547191437.png)
+![Coupon Code Provision Conditions](/assets/studio/screely-1656547191437.png)
 
     *not exists*
 
-    ![Coupon Code Provision Conditions](/assets/studio/screely-1656547175802.png)
+![Coupon Code Provision Conditions](/assets/studio/screely-1656547175802.png)
 
     > *0*
 

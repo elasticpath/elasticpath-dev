@@ -21,7 +21,7 @@ domains!
 When you set up your Studio custom domain, we'll ask you to set up a third NAME record that provides SSL for your
 website and allows you to get the secure, lock symbol when visitors come to your site.
 
-    ![SSL](/assets/studio/SSL.png)
+![SSL](/assets/studio/SSL.png)
 
 ## Enabling SSL
 
@@ -29,11 +29,11 @@ Head to the **Settings** > **General**. Navigate to **Domain** after you
 have [setup your custom domain](/docs/studio/Settings/Domain-Management/Setting-up-your-Custom-Domain). Click the "configure SSL"
 button to the right of your custom domain setup.
 
-    ![Configure SSL](/assets/studio/configure-ssl.png)
+![Configure SSL](/assets/studio/configure-ssl.png)
 
 Within the sidebar that opens, click "Add SSL".
 
-    ![Add SSL](/assets/studio/add-ssl.png)
+![Add SSL](/assets/studio/add-ssl.png)
 
 Now add the newly provided records to your DNS and wait up to 24-48 hours for the records to propagate.
 

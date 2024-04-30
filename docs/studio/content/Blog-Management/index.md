@@ -10,15 +10,15 @@ sidebar_position: 70
 
 Navigate to the Blog tab under the "Content" section of the main menu.
 
-    ![Blog Tab](/assets/studio/Building_your_blog_1.png)
+![Blog Tab](/assets/studio/Building_your_blog_1.png)
 
 ## Blog Settings
 
 Within ***Content*** > ***Blog*** you're able to adjust your settings by selecting "*Settings"* from the top left of
 your screen. This will open your blog settings.
 
-    ![Blog Settings](/assets/studio/Building_Your_Blog_2.png)
-    ![Configuring Blog Settings](/assets/studio/Building_Your_Blog_3.png)
+![Blog Settings](/assets/studio/Building_Your_Blog_2.png)
+![Configuring Blog Settings](/assets/studio/Building_Your_Blog_3.png)
 
 Upon clicking that option, a sidebar will open displaying all the available settings for your blog. Below are the
 definitions and options for each setting.
@@ -51,9 +51,9 @@ where you can either select the category you'd like to edit, or create a new cat
 If you select "Create New Category" you'll be brought to a separate screen (Image #3) with a variety of options that you
 need to set before you can create your category. You'll find definitions for all these options below:
 
-    ![Blog Categories](/assets/studio/Building_Your_Blog_4.png)
-    ![Category Settings](/assets/studio/Building_Your_Blog_5.png)
-    ![Create New Category](/assets/studio/Building_Your_Blog_6.png)
+![Blog Categories](/assets/studio/Building_Your_Blog_4.png)
+![Category Settings](/assets/studio/Building_Your_Blog_5.png)
+![Create New Category](/assets/studio/Building_Your_Blog_6.png)
 
 - **Name**: Define a name for this category which will be used to reference it internally.
 - **Title**: Define a title for this category which will be used to reference it externally.
@@ -76,8 +76,8 @@ clicking **Layout**.
 
 ### Adjusting Category Layout
 
-    ![Layout](/assets/studio/Building_Your_Blog_8.png)
-    ![Category Layout ](/assets/studio/Building_Your_Blog_9.png)
+![Layout](/assets/studio/Building_Your_Blog_8.png)
+![Category Layout ](/assets/studio/Building_Your_Blog_9.png)
 
 By default, clicking "Layout" will bring you to your Article layout settings. Click on "Category layout" tab to switch
 over to it's settings.
@@ -88,12 +88,12 @@ You have the option of switching between two settings for Category layout, **"Gr
 
 **List**: Feature's your most recent story on top and stacks all previous stories in rows of one on top of each other.
 
-    ![Grid](/assets/studio/Building_Your_Blog_10.png)
-    ![List](/assets/studio/Building_Your_Blog_11.png)
+![Grid](/assets/studio/Building_Your_Blog_10.png)
+![List](/assets/studio/Building_Your_Blog_11.png)
 
 You can adjust the amount of rows by clicking on the plus (+) & minus (-) buttons shown in the screenshot below.
 
-    ![Row Adjustment](/assets/studio/Building_Your_Blog_12.png)
+![Row Adjustment](/assets/studio/Building_Your_Blog_12.png)
 
 :::note
 Category layout settings can only be viewed on a Blog Category page (example.com/categorypagename)
@@ -113,9 +113,9 @@ Adding a button, text link, or form
 Clicking on the plus (+) symbol in the sidebar CTA will allow you to add a button, text link or form.
 See this in action in the screenshot:
 
-    ![Article Layout](/assets/studio/Building_Your_Blog_13.png)
-    ![Add Text to Article Layout](/assets/studio/Building_Your_Blog_14.png)
-    ![Add Action](/assets/studio/Building_Your_Blog_16.png)
+![Article Layout](/assets/studio/Building_Your_Blog_13.png)
+![Add Text to Article Layout](/assets/studio/Building_Your_Blog_14.png)
+![Add Action](/assets/studio/Building_Your_Blog_16.png)
 
 **Footer Sections**
 
@@ -124,7 +124,7 @@ comments, and other third-party blogging tools and CTA's.
 
 Click the "Add Section" button shown below to add any type of section you would like.
 
-    ![Add a Section](/assets/studio/Building_Your_Blog_17.png)
+![Add a Section](/assets/studio/Building_Your_Blog_17.png)
 
 {% expandable-info title="Important"%}
 
@@ -149,8 +149,8 @@ Click the gear icon to the far right of the article you are working on to access
 
 Within the settings, scroll down to access "Authored date" and "Publish time".
 
-    ![Gear Icon](/assets/studio/Building_Your_Blog_18.png)
-    ![Authoring Date and Publication Time](/assets/studio/Building_Your_Blog_19.png)
+![Gear Icon](/assets/studio/Building_Your_Blog_18.png)
+![Authoring Date and Publication Time](/assets/studio/Building_Your_Blog_19.png)
 
 Click on the blank space under "Authored date" to choose or type a future date.
 
@@ -159,9 +159,9 @@ Your date here" shown in the screenshot.
 
 Now, you'll be able to set your Publish time.
 
-    ![Authoring Date and Publication Time](/assets/studio/Building_Your_Blog_20.png)
-    ![Save and Schedule Publication](/assets/studio/Building_Your_Blog_21.png)
-    ![Publication Time](/assets/studio/Building_Your_Blog_22.png)
+![Authoring Date and Publication Time](/assets/studio/Building_Your_Blog_20.png)
+![Save and Schedule Publication](/assets/studio/Building_Your_Blog_21.png)
+![Publication Time](/assets/studio/Building_Your_Blog_22.png)
 
 Click "Save and schedule" button at the bottom of the settings to finalize your changes.
 
@@ -175,7 +175,7 @@ options are correct.
 To set a featured image, scroll to the bottom of the settings of the article you are editing until you see the "Featured
 image" section. Click on the media settings below it to change or upload a new image.
 
-    ![Featured Image](/assets/studio/Building_Your_Blog_23.png)
+![Featured Image](/assets/studio/Building_Your_Blog_23.png)
 
 ### Author Settings
 
@@ -184,8 +184,8 @@ Select the person you'd like to edit by clicking on the 3 horizontal dots.
 
 This opens their settings drawer where (if the profile is yours or you are an admin) you can adjust their profile information and **Generate an author page**.
 
-    ![Editing Author Details](/assets/studio/Building_Your_BLog_24.png)
-    ![Generating Author Details](/assets/studio/Building_Your_Blog_25.png)
+![Editing Author Details](/assets/studio/Building_Your_BLog_24.png)
+![Generating Author Details](/assets/studio/Building_Your_Blog_25.png)
 
 ## Adding Video, Image, Form, or Divider
 

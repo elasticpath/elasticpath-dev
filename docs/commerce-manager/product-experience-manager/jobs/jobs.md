@@ -29,7 +29,7 @@ To view jobs in Commerce Manager:
   
     When you expand an individual job, the information that is displayed depends on the activity you performed. 
 
-    ![product export job](/assets/product_export_job.png)
+![product export job](/assets/product_export_job.png)
 
     Each job has the following information:
 

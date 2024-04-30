@@ -21,7 +21,7 @@ animated element has been scrolled past.
 Animations can be set within an element's toolbar. Below is an example of the animation options available in the "Media"
 component.
 
-    ![Animation Options](/assets/studio/Animating_an_Element.gif)
+![Animation Options](/assets/studio/Animating_an_Element.gif)
 
 ## Removing an animation
 

@@ -9,7 +9,7 @@ they're from specific locations.
 
 ## Method #1 - contact.[data]
 
-     ![Contact Data Condition](/assets/studio/screely-1657319346416.png)
+ ![Contact Data Condition](/assets/studio/screely-1657319346416.png)
 
 The first way to use conditional content to show content to users from specific locations is by using the *
 *contact.[data]** condition. This allows you to conditionally hide or show content to users based off the information
@@ -27,7 +27,7 @@ Some of the standard contact properties that you would use to configure this are
 
 ## Method #2 - URL query params...
 
-    ![Custom URL Condition](/assets/studio/screely-1657579187325.png)
+![Custom URL Condition](/assets/studio/screely-1657579187325.png)
 
 Another way to leverage a user's location to show specific content to that user is to pass their location to the landing
 page URL via a custom URL query parameter.

@@ -15,7 +15,7 @@ a new form or edit an existing one.
 
 For this demo I'm going to select ***New Form*** in the top right.
 
-    ![New Form](/assets/studio/screely-1640974222831.png)
+![New Form](/assets/studio/screely-1640974222831.png)
 
 Clicking ***New Form*** in the top right takes you into the form editor.
 
@@ -29,14 +29,14 @@ Below you'll find a brief description on deleting, adding, and adjusting the fie
 
 To delete a field, click on the field, then select delete from the settings drawer that opens on the right.
 
-    ![Deleting Field](/assets/studio/Form_-_Deleting_Field.gif)
+![Deleting Field](/assets/studio/Form_-_Deleting_Field.gif)
 
 **Adding a Field**
 
 To add a field, it's as simple as selecting a field and dragging/dropping the field where you want it on the form. You
 can even drop fields next to each other if you want them to be in-line with one another.
 
-    ![Adding Field](/assets/studio/Form_-_Adding_a_Field.gif)
+![Adding Field](/assets/studio/Form_-_Adding_a_Field.gif)
 
 **Adjusting Field Settings**
 
@@ -46,7 +46,7 @@ you to edit the *Label*, *Placeholder text*, *Help text*, and whether or not the
 For custom fields you also have the ability to adjust the "name" of the field, which is an internal ID associated to
 values entered in that field. For the "Built-In Fields" you are not able to adjust this internal ID.
 
-    ![Adjusting Field Settings](/assets/studio/Form_-_Field_Settings.gif)
+![Adjusting Field Settings](/assets/studio/Form_-_Field_Settings.gif)
 
 Once satisfied with the fields included on your form, select **Settings** at the top of the editor. This is where you're
 able to define choose which of the following should happen when the form is submitted.
@@ -68,7 +68,7 @@ able to define choose which of the following should happen when the form is subm
 Once your form is ready for use, go back to the page where you'd like to add it, and click the **(+)** button. Select "
 Form", and then search for your form!
 
-    ![Add Form to Page](/assets/studio/Form_-_Add_to_Page.gif)
+![Add Form to Page](/assets/studio/Form_-_Add_to_Page.gif)
 
 ## Styling Your Form
 

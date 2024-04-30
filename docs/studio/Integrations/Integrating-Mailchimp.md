@@ -27,7 +27,7 @@ our [Zapier integration](/docs/studio/Integrations/Integrating-Zapier).
 Before you can take full advantage of the integration, you'll need to configure your forms to send collected user
 information over to Mailchimp. This is done by following the below steps.
 
-    ![Add to MailChimp List](/assets/studio/screely-1639495762991.png)
+![Add to MailChimp List](/assets/studio/screely-1639495762991.png)
 
 1. Identify the Studio form that you'll be using on your site.
 2. Open the settings for that form found through **Content > Forms > [Your Form] > Settings**

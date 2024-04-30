@@ -69,7 +69,7 @@ Follow these steps to create a search page that uses an **Algolia Collection** c
 4. Select **Algolia Collection**.
 5. Select the gear icon to display the page settings.
 
-    ![page settings icon](/assets/cxsgearicon.png)
+![page settings icon](/assets/cxsgearicon.png)
 
 6. Configure the following settings:
 
@@ -82,7 +82,7 @@ Follow these steps to create a search page that uses an **Algolia Collection** c
 7. Select **Save only** to close page settings.
 8. The **Algolia Collection** component allows you to specify which attributes you want to use for filtering and their order. Select the first item in the list. The item properties are displayed.
 
-    ![algolia collection properities](/assets/algolia-component.png)
+![algolia collection properities](/assets/algolia-component.png)
 
 9. Select **Item** and enter a label for your filter. For example, if you want to use **ep_categories.lvl1** to display your top-level nodes, you could label this **Collections**.
 10. In **Attribute**, enter the Algolia attribute you want to use. For example, **ep_categories.lvl1** to display your top-level nodes.

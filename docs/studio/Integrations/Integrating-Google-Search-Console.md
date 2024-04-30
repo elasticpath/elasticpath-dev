@@ -11,5 +11,5 @@ integration and follow the prompts in the window that opens.
 Once the prompts are completed, *Google Search Console* should now be integrated with your account meaning that you can
 now access your SEO data from the **SEO** option found under **Insights**.
 
-     ![SEO](/assets/studio/screely-1645215321930.png) 
+ ![SEO](/assets/studio/screely-1645215321930.png) 
 

@@ -73,7 +73,7 @@ function Accordion({ title, children, open, onOpen, onClose }) {
           <Minus
             className={clsx(
               'h-4 w-4 text-zinc-500 dark:text-zinc-300',
-              !open && 'hidden'
+          !open && 'hidden'
             )}
           />
           <Plus

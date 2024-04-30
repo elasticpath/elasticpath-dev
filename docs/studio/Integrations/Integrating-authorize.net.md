@@ -23,11 +23,11 @@ Follow these steps to configure the Authorize.net integration in Studio.
 
 1. In **API Public Client Key**, enter your client key generated from your Authorize.net account, as shown below.
 
-    ![API Public Client Key](/assets/authorize-net-client-api.png)
+![API Public Client Key](/assets/authorize-net-client-api.png)
 
 1. In **API Login ID**, enter your Authorize.net login ID.
 
-    ![Login ID](/assets/authorize-net-login.png)
+![Login ID](/assets/authorize-net-login.png)
 
 
 1. In the **Mode** field, select either **Test** to use the test payment method or **Live** to use the production environment.

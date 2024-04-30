@@ -19,7 +19,7 @@ now need to use the device toggle in the top of the editor.
 
 *Below is what this option used to look like. You'll no longer find this option in any toolbar.*
 
-    ![Previous Editing Options](/assets/studio/11568092306839.png)
+![Previous Editing Options](/assets/studio/11568092306839.png)
 
 **Stripe integration deprecation**
 

@@ -17,21 +17,21 @@ edit pages on mobile. We have more improvements in the works here, most notably 
 settings on mobile, but this first version is a huge step towards making our platform a serious contender for eCommerce.
 According to Gartner, mobile accounts for 65% of all traffic on eCommerce sites.
 
-     ![Mobile Editing](/assets/studio/11258761473687.png)
+ ![Mobile Editing](/assets/studio/11258761473687.png)
 
 **Custom fonts are now supported natively!**
 
 Previously, uploading a custom font involved our team writing some CSS to apply the custom font to your text elements.
 However, now custom fonts that our team has uploaded for you can be used directly in the style guide.
 
-    ![Customized Font](/assets/studio/11258820027031.png)
+![Customized Font](/assets/studio/11258820027031.png)
 
 **Better "Add Section" button**
 
 The new Add Section button finally made it into this release. The updated design and tooltip will hopefully make it much
 easier for first-time users to understand how to add additional sections to pages.
 
-    ![Add Section Button](/assets/studio/11258823664023.png)
+![Add Section Button](/assets/studio/11258823664023.png)
 
 ## Complete List of Resolved Items
 

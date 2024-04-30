@@ -38,7 +38,7 @@ If you only have one catalog for all customers and channels, you need not set a 
 3. Click **OK**.
 4. Click **Add Schedule**.
 
-    ![Add Schedule to Catalog Rules](/assets/catalogrulesschedule.gif)
+![Add Schedule to Catalog Rules](/assets/catalogrulesschedule.gif)
 
 :::note
 Commerce runs on Coordinated Universal Time (UTC) time and conforms to RFC 3339. 

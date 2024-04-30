@@ -14,7 +14,7 @@ A simple release. A handful of fixes, and a couple new features.
 
 More common with eCommerce customers Gorgias (pronounced Gorgeous) is a helpdesk solution for storefronts.
 
-    ![Helpdesk](/assets/studio/Screen_Shot_2021-12-13_at_2.19.41_PM.png)
+![Helpdesk](/assets/studio/Screen_Shot_2021-12-13_at_2.19.41_PM.png)
 
 **Icons & Images**
 
@@ -25,7 +25,7 @@ Images" to pick an icon instead.
 
 The same is true for media which defaults to the "Images" tab but allows you to select "Icons".
 
-    ![Icons](/assets/studio/Screen_Shot_2021-12-13_at_2.26.43_PM.png)
+![Icons](/assets/studio/Screen_Shot_2021-12-13_at_2.26.43_PM.png)
 
 ## Complete List of Resolved Items
 

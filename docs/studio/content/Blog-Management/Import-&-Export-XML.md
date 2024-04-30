@@ -12,7 +12,7 @@ If you're subscribed to either our *Full* or *Full+* plan, you're able to both i
 account. You'll find both of these options under ***Settings*** > ***General*** > ***Advance SEO Features***.
 :::
 
-    ![Importing/Exporting XML](/assets/studio/screely-1646770770242.png)
+![Importing/Exporting XML](/assets/studio/screely-1646770770242.png)
 
 - Export XML: Selecting ***Export XML*** will download a file to your computer named *content.xml* that contains the
   contents of all

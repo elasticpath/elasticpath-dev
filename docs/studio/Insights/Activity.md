@@ -12,5 +12,5 @@ This includes page views, unique views and even the average time spent on a page
 You can view these metrics for the last 90, 30 or 7 days for your site overall, or you can set views to see the metrics
 for Web, Landing, and blog pages.
 
-    ![Activity Metrics](/assets/studio/Activity_v3.png)
+![Activity Metrics](/assets/studio/Activity_v3.png)
 

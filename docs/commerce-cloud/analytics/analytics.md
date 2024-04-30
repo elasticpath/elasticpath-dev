@@ -17,7 +17,7 @@ This feature has been released early to get your input on future releases and re
 
 1. Click **Analytics**.
 1. From **Period**, click the start date to display the calendar. The first day of the current month is configured by default.
-    ![Calendar](/assets/analytics_calendar.png)
+![Calendar](/assets/analytics_calendar.png)
 
    The calendar shows the currently configured time period by default.
 

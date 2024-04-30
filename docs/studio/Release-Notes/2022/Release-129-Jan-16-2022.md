@@ -15,7 +15,7 @@ We had a monster release with a number of small, but significant features added 
 We just rolled out a new version of the product collection component. Not only does it look amazing compared to the old
 version it also allows you to automatically crop collection photos to a Portrait, Landscape, or Square aspect ratio.
 
-     ![Product Collection Component](/assets/studio/product-collection-cropping.gif)
+ ![Product Collection Component](/assets/studio/product-collection-cropping.gif)
 
 **Hello strike-through!**
 
@@ -23,7 +23,7 @@ A reoccurring feature request, we finally had a chance to add a strikethrough bu
 of eCommerce customers made this a low-effort high-reward feature addition. Now customers can use strike-through to show
 price comparisons.
 
-    ![Strikethrough](/assets/studio/Screen_Shot_2022-01-24_at_9.51.13_PM.png)
+![Strikethrough](/assets/studio/Screen_Shot_2022-01-24_at_9.51.13_PM.png)
 
 **Better organization of templates**
 
@@ -37,9 +37,9 @@ template that helps to demo our personalization features.
 
 *Much more to come on this front.*
 
-    ![Personalized Demo](/assets/studio/Personalization_Demo.png)
+![Personalized Demo](/assets/studio/Personalization_Demo.png)
 
-    ![Collection Page Templates](/assets/studio/Summer_Collection.png)
+![Collection Page Templates](/assets/studio/Summer_Collection.png)
 
 **Better sync for product changes from Shopify**
 

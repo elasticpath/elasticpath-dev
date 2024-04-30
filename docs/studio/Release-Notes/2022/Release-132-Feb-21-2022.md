@@ -16,14 +16,14 @@ new features and editor improvements that will both land in a future release.
 As part of our work to improve the onboarding experience, a popup intro video for the editor will appear the first five
 times you enter the editor. You can also dismiss the tip permanently if you choose to.
 
-    ![Introductory Video](/assets/studio/Screen_Shot_2022-02-24_at_11.10.37_AM.png)
+![Introductory Video](/assets/studio/Screen_Shot_2022-02-24_at_11.10.37_AM.png)
 
 **Product images for all media**
 
 There’s a new folder in the media manager for Products where images that are imported from Shopify products will appear.
 This will make it easier to use product images in any CX-Studio component.
 
-    ![Product Images](/assets/studio/Screen_Shot_2022-02-24_at_11.02.56_AM.png) 
+![Product Images](/assets/studio/Screen_Shot_2022-02-24_at_11.02.56_AM.png) 
 
 **Domain settings for Shopify**
 
@@ -32,7 +32,7 @@ their
 Shopify domain. When you’re using App Proxy it now shows “Point to Shopify” and you aren’t able to change it (*we will
 probably enable people to change this in the future*).
 
-    ![domain.png](/assets/studio/domain.png)
+![domain.png](/assets/studio/domain.png)
 
 **Form Width**
 
@@ -51,7 +51,7 @@ setting by default, but you can now set a custom width:
 You can now align text to the right! This is something we probably should have done a long time ago, but we’re only now
 getting to it along with a number of other editor improvements.
 
-    ![Rigt-alignment of Text](/assets/studio/Screen_Shot_2022-02-24_at_11.59.05_AM.png)
+![Rigt-alignment of Text](/assets/studio/Screen_Shot_2022-02-24_at_11.59.05_AM.png)
 
 ## Complete List of Resolved Items
 

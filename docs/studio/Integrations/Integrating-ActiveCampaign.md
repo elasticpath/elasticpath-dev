@@ -37,7 +37,7 @@ contact within the ActiveCampaign list your selected, and Studio does not alter/
 Pushing Studio form submissions to ActiveCampaign is done at the form level. Therefore, if you have multiple forms,
 you'll need to set this up once for each form via the dropdown pictured below.
 
-    ![Active Campaign Settings](/assets/studio/form_settings.png)
+![Active Campaign Settings](/assets/studio/form_settings.png)
 
 ## FAQs
 

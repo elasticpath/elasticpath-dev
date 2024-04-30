@@ -13,7 +13,7 @@ After the file is exported, you get a link to the location where the `.csv` file
 1. On the **Products** page, select the checkboxes next to the products that you want to modify. You may apply appropriate filters to select the products.
 2. Click the arrow next to the checkbox on the header row and then click **Export Products**.
 
-    ![Export Products in Commerce Manager](/assets/export-products-cm.png)
+![Export Products in Commerce Manager](/assets/export-products-cm.png)
     The **Export Confirmation** window appears.
 
 3. Click **Export**.

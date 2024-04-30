@@ -29,7 +29,7 @@ To publish a catalog:
 
     - From **All Catalogs**, select **...** beside the catalog you want to publish.
 
-      ![publish catalogs](/assets/full_publish.png)
+  ![publish catalogs](/assets/full_publish.png)
 
     - Select a catalog to open it in the **Edit Catalog** tab. 
    

@@ -6,7 +6,7 @@ sidebar_position: 50
 
 Within your account's ***Settings*** is the ability to enable ***GDPR Messaging***. Enabling this feature will display a message to your users that reads "By using our website you consent to the use of cookies". Following this message is a button that your users can click to consent to the use of cookies.
 
-    ![Cookie Usage Consent](/assets/studio/image__3.png) 
+![Cookie Usage Consent](/assets/studio/image__3.png) 
 
 ## When a user clicks the "Okay" button two things happen:
 

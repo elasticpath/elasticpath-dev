@@ -9,7 +9,7 @@ value, while others are optional. Below is a guide to understanding all of the s
 
 **What does the page settings drawer look like?**
 
-    ![Page Settings](/assets/studio/mceclip0.png)
+![Page Settings](/assets/studio/mceclip0.png)
 
 **How do you access the page settings drawer?**
 
@@ -94,7 +94,7 @@ the current page in the editor. Changes to the page created here will not affect
 
 Clicking this will prompt you to delete the page. You will be asked to confirm deletion. If you confirm deletion it is **not possible** to undo the deletion so tread carefully.
 
-    ![Publishing Page Settings](/assets/studio/mceclip1.png)
+![Publishing Page Settings](/assets/studio/mceclip1.png)
 
 
 

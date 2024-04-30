@@ -17,7 +17,7 @@ As of today, new accounts through Shopify will start on a free trial plan that w
 trial have access to all Unstack Landing page features. At the end of the trial, users are forced to choose a plan even
 if it means that they choose the Free plan in order to continue using Unstack.
 
-     ![Free Trial](/assets/studio/Screen_Shot_2022-08-23_at_1.38.53_PM.png)
+ ![Free Trial](/assets/studio/Screen_Shot_2022-08-23_at_1.38.53_PM.png)
 
 **New Editor Header & Publish Button**
 
@@ -25,7 +25,7 @@ With this release we also add a new header for our page editor. This includes ne
 header makes the publish button more prominent removing the need for a second publish button. The hope is that the
 prominence will help improve publish rates.
 
-    ![Preview Page Header](/assets/studio/Header.png)
+![Preview Page Header](/assets/studio/Header.png)
 
 **Unstack University Help Panel**
 
@@ -33,7 +33,7 @@ Along with the above-mentioned header changes we also shipped a new help panel f
 widget that connects users to our Support team and also contains many help videos for getting started with the tool.
 Expect some more updates on this panel in the coming weeks.
 
-    ![Help Panel](/assets/studio/Screen_Shot_2022-08-23_at_1.44.54_PM.png)
+![Help Panel](/assets/studio/Screen_Shot_2022-08-23_at_1.44.54_PM.png)
 
 ## Complete List of Resolved Items
 

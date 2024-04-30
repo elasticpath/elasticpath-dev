@@ -34,13 +34,13 @@ You can select up to 4 fonts to be used across your site.
 
 **How to change a font**
 
-    ![Changing a Font](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed94c362c7d3a10cba8666ffile-oSfPgSqzaM.gif)
+![Changing a Font](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed94c362c7d3a10cba8666ffile-oSfPgSqzaM.gif)
 
 Click the font you'd like to swap then select the new font you'd like to use from the modal.
 
 ## Typography
 
-    ![Header Styles](/assets/studio/header-style-typography.png)
+![Header Styles](/assets/studio/header-style-typography.png)
 
 * Font Family: the ability to select a font from your designated 4 fonts
 * Font Weight: how thick or thin the font will appear
@@ -52,7 +52,7 @@ When using the styling tools, it's important to use the toggle tool for light an
 
 ## Buttons
 
-    ![Buttons](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed959c22c7d3a10cba8675cfile-BWcMRg2bNY.png)
+![Buttons](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed959c22c7d3a10cba8675cfile-BWcMRg2bNY.png)
 
 Styling a button can be done within the style guide. You can control many different aspects through the four panels:
 text, shape, border, and hover.
@@ -68,7 +68,7 @@ text, shape, border, and hover.
 
 **Shape**: The way the button looks.
 
-    ![Button Shape](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95a4a2c7d3a10cba86765file-sQyphUcvDn.png)
+![Button Shape](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95a4a2c7d3a10cba86765file-sQyphUcvDn.png)
 
 * **Background color**: the overall background color of the button
 * **Height**: the size of the button
@@ -76,7 +76,7 @@ text, shape, border, and hover.
 
 **Border**: The look of the line bordering the button
 
-    ![Button Border](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95a9b04286306f804ae24file-QEQiADzQ3B.png)
+![Button Border](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95a9b04286306f804ae24file-QEQiADzQ3B.png)
 
 * **Border width**: the size of the border
 * **Border color**: the color of the border (if border-width = 0 this will not appear)
@@ -96,13 +96,13 @@ text, shape, border, and hover.
 
 ## Header
 
-    ![Formatting Header](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95bc004286306f804ae42file-a442WogaXh.png)
+![Formatting Header](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95bc004286306f804ae42file-a442WogaXh.png)
 
 Within the header you can adjust the look of links, action, and hover which have been covered previously.
 
 Main change here to call out, is how to adjust the look of the action link/button which may be done under action.
 
-    ![Formatting Elements in Header](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95c0104286306f804ae47file-rRiKpmmZV9.png)
+![Formatting Elements in Header](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5ed95c0104286306f804ae47file-rRiKpmmZV9.png)
 
 You can use that dropdown to toggle between primary, secondary, and action link.
 

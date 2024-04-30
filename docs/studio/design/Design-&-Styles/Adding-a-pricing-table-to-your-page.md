@@ -10,7 +10,7 @@ between products or plans.
 The standard option is our ***Pricing*** section which is designed to show multiple plans with different features.
 However, you'll find some additional options at the bottom of this article.
 
-    ![Pricing Plans](/assets/studio/screely-1651245892515.png)
+![Pricing Plans](/assets/studio/screely-1651245892515.png)
 
 - Pricing/Features
 

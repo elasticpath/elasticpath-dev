@@ -39,7 +39,7 @@ You can use the sale price feature and enable selling the product for a sale pri
 
     :::tip
     Both list and sale price (or was/is prices) are available in the catalog response, enabling you to display slash pricing on your storefront, depending on your requirements.
-    ![Custom](/assets/sale-price.png)
+![Custom](/assets/sale-price.png)
     :::
 
 1. Click **Next** or **Save & Exit**.
