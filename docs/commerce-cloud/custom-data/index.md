@@ -6,6 +6,10 @@ sidebar_position: 1
 
 You can define custom data fields for the resources that you use in your store or organization, such as adding more fields to the `customer` resource. You can also create new resources, such as a `wishlist` resource to support wishlists in your store. With Flows, you can apply Composable Commerce to almost any use case.
 
+:::note
+New Commerce Extensions is now available.
+:::
+
 :::caution
 In an organization, not all resources are available. See [Extend a resource](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview#extend-a-resource) for a list of organization resources that can be extended.
 :::
