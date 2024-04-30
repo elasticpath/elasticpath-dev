@@ -18,7 +18,7 @@ We spent some time reorganizing renaming components to make it easier to find wh
 selector. We also added thumbnails for some of the components that didn’t have them. There is more work to come on this
 to make it even better, but it’s already easier to find some things.
 
-     ![Reordering and Renaming Components](/assets/studio/reorder-rename.png)
+ ![Reordering and Renaming Components](/assets/studio/reorder-rename.png)
 
 **Template Updates**
 
@@ -27,7 +27,7 @@ This includes changes to way we generate screenshots of these templates as well 
 
 [View all of our templates!](https://www.unstack.com/templates)
 
-    ![Templates](/assets/studio/template-screenshots.png)
+![Templates](/assets/studio/template-screenshots.png)
 
 ## Complete List of Resolved Items
 

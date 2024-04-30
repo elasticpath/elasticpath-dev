@@ -55,7 +55,7 @@ Follow these steps to create a search page that uses an **Graphenehc Collection*
 4. Select **Graphenehc Collection**.
 5. Select the gear icon to display the page settings.
 
-    ![page settings icon](/assets/cxsgearicon.png)
+![page settings icon](/assets/cxsgearicon.png)
 
 6. Configure the following settings:
 
@@ -69,7 +69,7 @@ Follow these steps to create a search page that uses an **Graphenehc Collection*
 8. The **Graphenehc Collection** component allows you to specify which facets you want to use for filtering and their order. Select the **Graphenehc Collection** component to display the toolbar. 
 9. Select **Properties**.
 
-    ![graphenehc collection properties](/assets/studio/graphenehc-properties.png)
+![graphenehc collection properties](/assets/studio/graphenehc-properties.png)
 
 10. Configure the component as follows:
 
@@ -80,7 +80,7 @@ Follow these steps to create a search page that uses an **Graphenehc Collection*
     | **Gap** | Configures the gap between search items.                                                                                                                                                                                                                                                                                                   |
     | **Facets** | Specify a comma separated list of Advanced Commerce Graphene HC facet names that you want to display on your search results page. For example, **color, price, size**. Add the facets in the order that you want them displayed on your search results page. If **Facets** is blank, all facets are displayed on your search results page. |
 
-        ![graphenehc collection properties example](/assets/studio/graphenehc_properties_example.png)
+    ![graphenehc collection properties example](/assets/studio/graphenehc_properties_example.png)
 
 11. When you are happy with your page, select the gear icon to display the page settings.
 12. Select **Save and Publish**.

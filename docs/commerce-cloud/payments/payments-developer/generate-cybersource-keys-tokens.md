@@ -60,7 +60,7 @@ This walkthrough shows you how to generate CyberSource tokens from credit card n
 
     The **Profile ID** displayed in the **Profile List** is the token required to process the payment. Copy the token value and prefix it with six `(;)` semicolons. For example,  `;;;;;;11234FS5353FGFRSS2562`.
 
-    ![Token Management](/assets/token-management.png)
+![Token Management](/assets/token-management.png)
 
     CyberSource has sample credit card numbers for testing purposes. For more information, see the [CyberSource Testing Guide](https://developer.cybersource.com/hello-world/testing-guide.html).
 

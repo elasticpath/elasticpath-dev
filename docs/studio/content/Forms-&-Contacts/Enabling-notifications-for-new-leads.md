@@ -16,10 +16,10 @@ logged into their account.
 
 1. Navigate to the settings tab in your Studio main menu and scroll down to the section "Notifications".
 
-    ![Notifications](/assets/studio/Notifications_1.png)
+![Notifications](/assets/studio/Notifications_1.png)
 
 2. Check the box next to "Email me when a new contact is added" to receive emails, and to receive in-browser notifications
 click on thew purple "Enable notifications" button.
 
-    ![Enable Notifications](/assets/studio/Notifications_2.png)
+![Enable Notifications](/assets/studio/Notifications_2.png)
 

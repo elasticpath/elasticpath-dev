@@ -15,21 +15,21 @@ major improvements and a handful of bugs and tweaks.
 
 This feature allows users to customize their section padding, box padding, and max width on mobile.
 
-    ![Mobile Padding](/assets/studio/11075083034775.png)
+![Mobile Padding](/assets/studio/11075083034775.png)
 
 **Popover forms with Smart Links**
 
 A first step towards 1st party pop-up support; you can now link directly to forms via our smart-linking system. This
 allows users to create popup forms that appear when a button is clicked.
 
-    ![Popover forms with Smart Links](/assets/studio/11075222781591.png)
+![Popover forms with Smart Links](/assets/studio/11075222781591.png)
 
 **Improved Gallery Component**
 
 With this release we also shipped a new version of our "Gallery" component that include several improvements to both the
 mobile and desktop experience.
 
-    ![Gallery Component](/assets/studio/11075268663703.png)
+![Gallery Component](/assets/studio/11075268663703.png)
 
 **Improved Product Collection Component**
 
@@ -37,7 +37,7 @@ Following the changes we made to the gallery component, we realized that many of
 into our product collection component. Therefore we did just that. Now you're able to give a border radius to images and
 adjust the mobile experience.
 
-    ![Improved Product Collection Component](/assets/studio/11075385201047.png)
+![Improved Product Collection Component](/assets/studio/11075385201047.png)
 
 **Add-ons for product and media components**
 

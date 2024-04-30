@@ -19,6 +19,6 @@ When you need to delete your site whether it's for restarting on a new theme, re
 1. Navigate to your settings page within the Studio platform, Scroll to the bottom where you'll find the "Danger zone".
 2. Click the "Delete site" hyperlink.  
 
-    ![Delete Studio Account](/assets/studio/Danger_1.png)
+![Delete Studio Account](/assets/studio/Danger_1.png)
 
 3. Click "Okay" in the warning pop-up that appears after reading its prompt.

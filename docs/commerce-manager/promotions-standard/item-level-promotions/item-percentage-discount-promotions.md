@@ -4,7 +4,7 @@ nav_label: Item Percentage Discount Promotions
 sidebar_position: 5
 ---
 
-:::warning
+:::caution
 We recommend to use **Advanced (Conditions v2)** settings.
 :::
 
@@ -68,7 +68,7 @@ We recommend to use **Advanced (Conditions v2)** settings.
                 - You can include up to 10 **+OR** conditions.
                 :::
     1. In the **Promotion Exclusions** subsection:
-            :::warning
+            :::caution
              **Promotion Exclusions** subsection is enabled only when you update the **Simplified (Conditions v1)** or **Advanced (Conditions v2)** settings in the **Promotion Conditions** subsection.
             :::
         1. To exclude products from a promotion, do the following:

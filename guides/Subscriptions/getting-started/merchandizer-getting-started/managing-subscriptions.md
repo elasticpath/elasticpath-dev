@@ -107,7 +107,7 @@ The following steps describe how to create an offering that combines the **4k St
 4. In **Manage Products**, select **Attach Product**.
 5. Select **+** next to **4K Streaming**.
 
-    ![adding a product to an offering](/assets/offering_products.png)
+![adding a product to an offering](/assets/offering_products.png)
 
 6. In **Manage Plans**, select **Attach Plan**.
 7. Select **+** next to **Standard** and **Standard with Adverts**.

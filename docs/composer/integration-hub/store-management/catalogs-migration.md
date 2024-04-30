@@ -91,7 +91,7 @@ The migration process is completed in three phases:
 6. Copy the JSON object as you require this later.
 7. Click **Save & Run Test**.
 
-    ![Legacy Catalogs to Product Experience Manager Catalogs Migration](/assets/legacy-catalogs-pxm-catalogs-migration.png)
+![Legacy Catalogs to Product Experience Manager Catalogs Migration](/assets/legacy-catalogs-pxm-catalogs-migration.png)
 
     In the **Logs** tab, you can check the progress of this migration. When the **Message** column for this migration is updated to **Ending Instance Legacy to PxM Catalog Migration - Copy Categories to Product Experience Manager**, the taxonomy migration process is complete.
 

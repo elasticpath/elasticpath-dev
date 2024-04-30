@@ -16,7 +16,7 @@ Really long descriptions could even push the button below the fold.
 
 We also removed FAQs from product component and fixed the sticky details section for the vertical images layout.
 
-     ![Rearranging UI Attributes](/assets/studio/Screenshot-2021-10-20-at-8.08.16-PM.png)
+ ![Rearranging UI Attributes](/assets/studio/Screenshot-2021-10-20-at-8.08.16-PM.png)
 
 ## Complete List of Resolved Items
 

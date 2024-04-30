@@ -14,11 +14,11 @@ In addition, a product must belong to at least one hierarchy. When you publish a
 
 - See the nodes that products belong to.
     
-    ![product tabs](/assets/product-tabs-gifs.gif)
+![product tabs](/assets/product-tabs-gifs.gif)
 
 - Create nodes and assign products to nodes.
 
-    ![assign products](/assets/assign_node.gif)
+![assign products](/assets/assign_node.gif)
 
 ## Product Types
 

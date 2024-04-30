@@ -110,7 +110,7 @@ You can set up and confirm a purchase by doing the following:
 
     You can see line item details such as item name, SKU, price, quantity, and taxes, and also order-level details such taxes, order total, and discounts corresponding to your payment request. See the following image as an example:
 
-    ![PayPal example](/assets/SimplePayPalExample.png)
+![PayPal example](/assets/SimplePayPalExample.png)
 
     :::note
     The maximum length of `name` and `sku` for an item is `127`. If `name` and `SKU` exceed `127`, we truncate the exceeding strings while sending order-level items to the PayPal payment gateway.
@@ -266,7 +266,7 @@ You can set up the authorization and capture the payment by doing the following:
 
     You can see line item details such as item name, SKU, price, quantity, and taxes, and also order-level details such taxes, order total, and discounts corresponding to your payment request. See the following image:
 
-    ![PayPal example](/assets/SimplePayPalExample.png)
+![PayPal example](/assets/SimplePayPalExample.png)
 
     :::note
     The maximum length of `name` and `sku` for an item is `127`. If `name` and `SKU` exceed `127`, we truncate the exceeding strings while sending order-level items to the PayPal payment gateway.

@@ -14,4 +14,4 @@ You can curate your products in your nodes product lists. Product curation allow
 1. Navigate to the node whose products you want to curate.
 1. Select the pin against the product you want to curate. Each time you select a pin, the product whose pin you selected moves to the top of the list.  
 
-    ![curated products](/assets/curated_products.png)
+![curated products](/assets/curated_products.png)

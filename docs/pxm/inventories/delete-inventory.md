@@ -8,7 +8,7 @@ sidebar_position: 100
 This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
 :::
 
-:::warning Product Experience Manager Only
+:::caution Product Experience Manager Only
 This endpoint works only with products that are created with the Products API.
 :::
 

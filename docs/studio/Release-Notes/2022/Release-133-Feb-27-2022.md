@@ -18,7 +18,7 @@ landscape or square).
 We also improved the hover effects and made some other subtle style tweaks. This impacts the product selection drawers
 and the index pages for products and collections.
 
-    ![Product List Items](/assets/studio/Screen_Shot_2022-02-24_at_12.45.30_PM.png)
+![Product List Items](/assets/studio/Screen_Shot_2022-02-24_at_12.45.30_PM.png)
 
 **Dark and light text toggle on boxes**
 
@@ -28,7 +28,7 @@ the section. Now you can do it on individual boxes.
 Both sections and individual boxes have this setting. If it’s not set on a specific box, the box will inherit the
 setting from the section.
 
-    ![Darka and Light Text Toggle](/assets/studio/Screen_Shot_2022-02-24_at_12.58.27_PM.png) 
+![Darka and Light Text Toggle](/assets/studio/Screen_Shot_2022-02-24_at_12.58.27_PM.png) 
 
 ## Complete List of Resolved Items
 

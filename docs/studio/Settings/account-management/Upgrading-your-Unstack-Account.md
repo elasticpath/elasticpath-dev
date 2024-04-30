@@ -12,9 +12,9 @@ If you are on a free Studio plan, please follow the below steps to upgrade your 
 
 1. From the *Studio Admin*, open **Settings > General** and scroll to the very bottom. Here you'll find a purple button that reads **View Payment Plans**; click this button.
 
-     ![View Payment Plans](/assets/studio/screely-1652830776173.png)
+ ![View Payment Plans](/assets/studio/screely-1652830776173.png)
 
 2. Clicking this button slides in an "Upgrade" drawer. This is where you're able to select the plan and billing frequency you would like. Once you filled out your billing information, click **Upgrade and Pay** to confirm and finalize the change.
 
 
-     ![Upgrading Unstack Account Plan](/assets/studio/screely-1652831024084.png)
+ ![Upgrading Unstack Account Plan](/assets/studio/screely-1652831024084.png)

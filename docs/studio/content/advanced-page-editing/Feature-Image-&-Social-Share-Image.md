@@ -15,7 +15,7 @@ To set a featured image for a blog post, website page, or landing page open the 
 define an image for that page or post to use as it's ***Featured Image.*** The image defined here is what will show up
 when you share a link to this page on a social channel.
 
-    ![Featured Image](/assets/studio/screely-1643737796801.png)
+![Featured Image](/assets/studio/screely-1643737796801.png)
 
 Alternatively, you can set a featured for your entire site by adding an image to the "***Social Share Image***" field
 found under ***Design > Header & Footer***.
@@ -25,7 +25,7 @@ found under ***Design > Header & Footer***.
 If you set both a featured image for the site, and a featured image for an article or page, the image that is set at the
 article or page level will **always** override the featured image set at the site level.
 
-    ![Page Level Social Share Image](/assets/studio/screely-1643737505938.png)
+![Page Level Social Share Image](/assets/studio/screely-1643737505938.png)
 
 ## Not seeing your image show up?
 

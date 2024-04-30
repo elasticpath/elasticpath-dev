@@ -70,7 +70,7 @@ To configure **Option Combination Rules**:
 
 1. Select **Add Inclusion** or **Add Exclusion** depending on whether you selected **Include** or **Exclude**. The variations associated with this product are displayed.
 
-    ![option combination](/assets/option_combination.png)
+![option combination](/assets/option_combination.png)
 
 1. Select the variation you want. The options available for the variation are displayed.
 1. Select the option that you want. 

@@ -11,5 +11,5 @@ Your logo's height can be adjusted via the two settings shown below in your ***H
 The height of the logo in the header is controlled independently from the height of the logo in the footer which can
 both be adjusted via the up and down arrows in the toolbars shown below.
 
-    ![Logo Adjustment Attributes](/assets/studio/Header_and_footer_size.png)
+![Logo Adjustment Attributes](/assets/studio/Header_and_footer_size.png)
 

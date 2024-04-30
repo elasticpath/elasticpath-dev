@@ -7,9 +7,9 @@ sidebar_position: 50
 When you add a video to your page, you're given the option to adjust several different settings. Below are screenshots
 showing how you'd access these settings, and below those are the full list of settings you can adjust.
 
-    ![Settings](/assets/studio/screely-1642613947352.png)
+![Settings](/assets/studio/screely-1642613947352.png)
 
-    ![Video Settings](/assets/studio/screely-1642613956998.png)
+![Video Settings](/assets/studio/screely-1642613956998.png)
 
 - **Autoplay if allowed**: Enabling this auto-plays the video if the browser your users are using will allow it. For
   example, [here is a link to Google Chrome's policy.](https://developer.chrome.com/blog/autoplay/)

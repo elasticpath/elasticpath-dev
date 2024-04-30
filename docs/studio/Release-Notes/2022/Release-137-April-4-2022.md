@@ -25,7 +25,7 @@ Our hope is here that these changes should help our users make more progress on 
 As part of our ongoing efforts to understand the reasons our users sign up for Unstack in the first place, we have added
 a popup question that appears when you first install the Shopify app
 
-    ![Pop-up Question](/assets/studio/Screen_Shot_2022-04-05_at_12.19.02_PM.png)
+![Pop-up Question](/assets/studio/Screen_Shot_2022-04-05_at_12.19.02_PM.png)
 
 **Capitalization and letter-spacing**
 

@@ -31,7 +31,7 @@ With this release you're now able to add shadows to any box.
 When a page with a product component on it is viewed on mobile, an "Add to Cart" button will now follow the user as they
 scroll down the page.
 
-    ![Add to Buy Button](/assets/studio/mobile__3_.gif)
+![Add to Buy Button](/assets/studio/mobile__3_.gif)
 
 **Triple Whale Integration**
 
@@ -48,7 +48,7 @@ We've also launched an official PostScript integration!
 With Release 143, products in a collection are now drag-and-droppable! The hope here is to make it easier to rearrange
 items displayed in a collection.
 
-    ![Drag and Drop Product Collections](/assets/studio/reorder.gif)
+![Drag and Drop Product Collections](/assets/studio/reorder.gif)
 
 **Recently****Used Components**
 

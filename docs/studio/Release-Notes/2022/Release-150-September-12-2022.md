@@ -16,7 +16,7 @@ certain sections or elements on mobile! 🎉
 With this release we added the ability to control what devices you want to show sections or elements. You can now use
 these controls to show a section on all devices, mobile only, or desktop only.
 
-    ![Mobile Visibility](/assets/studio/mobile-visibility.png)
+![Mobile Visibility](/assets/studio/mobile-visibility.png)
 
 **Need help prompt**
 
@@ -26,13 +26,13 @@ that asks the user if they'd like to schedule a time with our Success team.
 This prompt is shown to all users on pages that haven't been published (after the first day). After dismissal, it will
 be shown periodically until the account has sufficient publish activity (10 clicks on the publish button).
 
-    ![Need Help Prompt Message](/assets/studio/Screen_Shot_2022-09-12_at_1.37.49_PM.png) 
+![Need Help Prompt Message](/assets/studio/Screen_Shot_2022-09-12_at_1.37.49_PM.png) 
 
 **Help panel polish**
 
 We've updated our help panel with better controls for the video and a smaller layout for smaller viewports.
 
-    ![Help Panel](/assets/studio/Screen_Shot_2022-09-12_at_1.43.40_PM.png)
+![Help Panel](/assets/studio/Screen_Shot_2022-09-12_at_1.43.40_PM.png)
 
 ## Complete List of Resolved Items
 

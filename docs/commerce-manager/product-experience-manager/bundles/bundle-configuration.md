@@ -194,7 +194,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
 
     :::tip
     When displaying your product in your storefront, you can choose to display both the list price and the sale price or the sale price only, depending on your requirements. 
-    ![Custom](/assets/sale-price.png)
+![Custom](/assets/sale-price.png)
     :::
 
 1. Click **Next** or **Save & Exit**.

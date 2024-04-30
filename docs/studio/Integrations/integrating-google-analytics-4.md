@@ -24,7 +24,7 @@ Follow these steps to configure the Google Analytics 4 integration in Studio.
 
 3. In **Measurement ID**, enter your Google Analytics **Measurement ID**. 
 
-    ![Google Analytics 4 Measurement ID](/assets/google_analtyics.png)
+![Google Analytics 4 Measurement ID](/assets/google_analtyics.png)
 
 4. Select **Save**.
 

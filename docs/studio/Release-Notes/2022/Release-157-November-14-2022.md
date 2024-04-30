@@ -17,14 +17,14 @@ With this release we shipped the first version of our new mobile editor. This ha
 and we wanted to get what we have merged even though it is not ready for prime time. For now, it is accessible to key
 customers so that we can continue to gather feedback before releasing this to everyone.
 
-     ![Mobile Editor](/assets/studio/11257907042967.png)
+ ![Mobile Editor](/assets/studio/11257907042967.png)
 
 **Better labels for colors**
 
 Previously, adding colors was something you could do, but you weren't able to give them custom labels. Now custom labels
 are fully supported.
 
-    ![Colour Pallete](/assets/studio/11257875530647.png)
+![Colour Pallete](/assets/studio/11257875530647.png)
 
 ## Complete List of Resolved Items
 

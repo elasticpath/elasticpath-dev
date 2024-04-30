@@ -18,8 +18,8 @@ Resize/Optimize**. Keep in mind that doing so may slow down the page where the i
 You'll need to select the optimization setting you want to use every time you upload a new image to Studio. To access
 this setting, insert any media component and insert a new image.
 
-    ![Optimize Image Settings](/assets/studio/img_opt.png)
-    ![Optimize Image Settings](/assets/studio/Media_options.PNG)
+![Optimize Image Settings](/assets/studio/img_opt.png)
+![Optimize Image Settings](/assets/studio/Media_options.PNG)
 
 | Image Setting                 | Descriptions                                                                                                                         |
 |-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|

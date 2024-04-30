@@ -14,5 +14,5 @@ category pages.
 Dynamic pages are index pages that update with posts that have that tag associated. These dynamic pages can be accessed
 through the tags on the live version of the article.
 
-    ![Dynamic Pages](/assets/studio/screely-1652825703519.png) 
+![Dynamic Pages](/assets/studio/screely-1652825703519.png) 
 
