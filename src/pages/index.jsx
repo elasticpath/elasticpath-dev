@@ -16,12 +16,8 @@ export default function Homepage() {
           <div className="bg-gradient-to-tr from-rose-500 via-purple-700 to-green-700 pb-12">
               <HeroSection/>
           </div>
-              <div className="pt-16">
                   <APIReferenceSection/>
-              </div>
-              <div className="pt-16">
                   <CommunitySection/>
-              </div>
               <div className="bg-gradient-to-tr from-rose-500 via-purple-700 to-green-700">
                   <HelpSection/>
               </div>
