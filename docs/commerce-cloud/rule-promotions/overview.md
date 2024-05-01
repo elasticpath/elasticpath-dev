@@ -105,6 +105,411 @@ To learn more about promotion codes, see [Promotion Codes](/docs/commerce-cloud/
 - Multiple promotions can have the same code name. This means that different promotions can be identified using the same code names, allowing shoppers to apply a single coupon code that triggers multiple promotions. For more information see [Duplicate Codes](/docs/commerce-cloud/rule-promotions/rule-promotion-codes/create-rule-promotion-codes#duplicate-codes).
 :::
 
+## Cart-level Discount Apportioning
+
+Discount apportioning involves distributing cart-level discounts among the individual items in the cart, ensuring transparency and clarity in how discounts are allocated and represented at both the cart and item levels. Each discount includes essential details such as IDs, codes, amounts, and indicates their source as `rule-promotion`. It is important to note that item-level apportioning for cart-level discounts specifically applies to Rule Promotions.
+
+Even if an apportioned amount amounts to zero, it is distributed among all items for consistency. Apportioned item-level discounts include a flag, such as `is_cart_discount`, to easily identify them as originating from cart-level promotions, aiding API consumers in reconciliation. This flag is used to check if the discount applied to cart item is from cart discount.
+
+:::note
+- The new discount apportioning algorithm ensures accuracy and consistency in the `item.discounts` and `item.meta.display_price.discounts` fields. However, slight differences may occur in the `item.meta.display_price.discount` fields due to intricacies in partial-amount rounding. It is important to consider the `item.discounts` and `item.meta.display_price.discounts` as the accurate representations of discount values.
+- Apportioning for uneven values may reflect differently between a cart’s items and its corresponding order items post-checkout. Although the distribution of discounts may vary slightly between the cart and the order, the fundamental calculations and total discount amounts remain the same.
+:::
+
+Consider the following scenario:
+- Create a [cart fixed discount rule promotion](/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-fixed-discount-rule-promotion), with a cart discount of $10. When a cart with eligible items, SKU1 and SKU2, with a price of $100 each, applies this cart discount, the system accurately distributes the discount among the items based on their proportions to the overall cart total.
+- In this case, SKU1 and SKU2 with a price of $100 each, receive an apportioned discount of $5.00. Both items display the apportioned discount details in the `discounts` array in the response, along with the `is_cart_discount` flag indicating it's a cart-level discount. Upon checkout, the order items also reflect the apportioned discount details, ensuring transparency and accuracy in discount allocation.
+
+See the following response example:
+
+```
+{
+    "data": [
+        {
+            "id": "832b6901-6943-43dd-b59d-273667500cad",
+            "type": "custom_item",
+            "name": "item",
+            "description": "custom item",
+            "sku": "SKU101",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "discounts": [
+                {
+                    "amount": {
+                        "amount": -500,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "auto_b0dbd44d-e361-4388-acaa-aec40990e86f",
+                    "id": "b0dbd44d-e361-4388-acaa-aec40990e86f",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true
+                }
+            ],
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        },
+                        "value": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        },
+                        "value": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": -500,
+                            "currency": "USD",
+                            "formatted": "-$5.00"
+                        },
+                        "value": {
+                            "amount": -500,
+                            "currency": "USD",
+                            "formatted": "-$5.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        },
+                        "value": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        }
+                    },
+                    "discounts": {
+                        "auto_b0dbd44d-e361-4388-acaa-aec40990e86f": {
+                            "amount": -500,
+                            "currency": "USD",
+                            "formatted": "-$5.00"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-04-30T19:12:04Z",
+                    "updated_at": "2024-04-30T19:12:04Z"
+                }
+            }
+        },
+        {
+            "id": "9bec80e8-6c48-4d5d-800d-8507ed68e5dc",
+            "type": "promotion_item",
+            "promotion_id": "b0dbd44d-e361-4388-acaa-aec40990e86f",
+            "name": "$10 off carts >= $100",
+            "description": "Promotion",
+            "sku": "auto_b0dbd44d-e361-4388-acaa-aec40990e86f",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": -1000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -1000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        },
+                        "value": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        },
+                        "value": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-04-30T19:12:04Z",
+                    "updated_at": "2024-04-30T19:12:09Z"
+                }
+            },
+            "promotion_source": "rule-promotion"
+        },
+        {
+            "id": "a4a27cb4-7eb4-4d10-ac0c-98416a0051ad",
+            "type": "custom_item",
+            "name": "item",
+            "description": "custom item",
+            "sku": "SKU100",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "discounts": [
+                {
+                    "amount": {
+                        "amount": -500,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "auto_b0dbd44d-e361-4388-acaa-aec40990e86f",
+                    "id": "b0dbd44d-e361-4388-acaa-aec40990e86f",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true
+                }
+            ],
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        },
+                        "value": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        },
+                        "value": {
+                            "amount": 9500,
+                            "currency": "USD",
+                            "formatted": "$95.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": -500,
+                            "currency": "USD",
+                            "formatted": "-$5.00"
+                        },
+                        "value": {
+                            "amount": -500,
+                            "currency": "USD",
+                            "formatted": "-$5.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        },
+                        "value": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        }
+                    },
+                    "discounts": {
+                        "auto_b0dbd44d-e361-4388-acaa-aec40990e86f": {
+                            "amount": -500,
+                            "currency": "USD",
+                            "formatted": "-$5.00"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-04-30T19:12:09Z",
+                    "updated_at": "2024-04-30T19:12:09Z"
+                }
+            }
+        }
+    ],
+    "meta": {
+        "display_price": {
+            "with_tax": {
+                "amount": 19000,
+                "currency": "USD",
+                "formatted": "$190.00"
+            },
+            "without_tax": {
+                "amount": 19000,
+                "currency": "USD",
+                "formatted": "$190.00"
+            },
+            "tax": {
+                "amount": 0,
+                "currency": "USD",
+                "formatted": "$0.00"
+            },
+            "discount": {
+                "amount": -1000,
+                "currency": "USD",
+                "formatted": "-$10.00"
+            },
+            "without_discount": {
+                "amount": 20000,
+                "currency": "USD",
+                "formatted": "$200.00"
+            },
+            "shipping": {
+                "amount": 0,
+                "currency": "USD",
+                "formatted": "$0.00"
+            }
+        },
+        "timestamps": {
+            "created_at": "2024-04-25T00:34:48Z",
+            "updated_at": "2024-04-30T19:12:09Z",
+            "expires_at": "2024-05-07T19:12:09Z"
+        },
+        "messages": [
+            {
+                "source": {
+                    "type": "custom_item",
+                    "id": "832b6901-6943-43dd-b59d-273667500cad"
+                },
+                "title": "Discount Updated",
+                "description": "Item discount has been updated."
+            },
+            {
+                "source": {
+                    "type": "custom_item",
+                    "id": "a4a27cb4-7eb4-4d10-ac0c-98416a0051ad"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            }
+        ]
+    }
+}
+```    
+
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
 | Features                           | Promotions Standard | Rule Promotions  |
