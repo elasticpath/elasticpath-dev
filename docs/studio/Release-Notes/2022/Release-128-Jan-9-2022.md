@@ -20,7 +20,7 @@ This work makes it possible to support a bunch of additional use cases that are 
 customers who want to build personalized content for users. For instance, it’s now possible to show different content on
 a page for repeat visitors.
 
-     ![Conditional Content](/assets/studio/Two_conditions.png)
+ ![Conditional Content](/assets/studio/Two_conditions.png)
 
 **Updates to product selection flow**
 
@@ -29,7 +29,7 @@ Previously, you would be dumped straight into the editor after selecting a produ
 select a product. As we continue to invest in improving our onboarding experience for Shopify customers you’ll see us
 ship more features like this.
 
-    ![Product Selection](/assets/studio/Choose_product.png)
+![Product Selection](/assets/studio/Choose_product.png)
 
 **So long, Semrush!**
 

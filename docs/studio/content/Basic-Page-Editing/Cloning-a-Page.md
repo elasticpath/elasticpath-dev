@@ -14,5 +14,5 @@ To clone a page, you first need to identify which page you'd like to clone. From
 scroll to the bottom, and select "Clone". This creates a new, duplicate version of the page (content and all) that
 should help to speed up your webpage development!
 
-    ![Cloning CX-Studio Page](/assets/studio/Cloning_a_page.gif)
+![Cloning CX-Studio Page](/assets/studio/Cloning_a_page.gif)
 

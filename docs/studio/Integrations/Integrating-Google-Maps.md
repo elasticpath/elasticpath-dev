@@ -27,4 +27,4 @@ With Studio's custom-code sections, embedding a Google Map is a breeze.
 3. Paste the embed script you copied from Google Maps into that custom code block and preview the page; you should now see
 the Google Maps embed appear on your page!
 
-    ![Embedded Google Maps](/assets/studio/screely-1645218656707.png)
+![Embedded Google Maps](/assets/studio/screely-1645218656707.png)

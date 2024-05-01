@@ -25,5 +25,5 @@ Once added to the text block, highlight your text and select one of the below th
 
 Want to adjust how these lists look? Head over to the Style Guide and scroll down to the "Lists" section.
 
-    ![Lists Section](/assets/studio/List_Styles.png)
+![Lists Section](/assets/studio/List_Styles.png)
 

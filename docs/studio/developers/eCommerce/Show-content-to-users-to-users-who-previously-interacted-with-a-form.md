@@ -16,7 +16,7 @@ As an example, you could use this condition to show a section that allows them t
 contains offers that normal users aren't able to see. Check out the below screenshot for a brief outline of how you
 could set this up.
 
-    ![Displaying Conditional Content](/assets/studio/screely-1657592483379.png)
+![Displaying Conditional Content](/assets/studio/screely-1657592483379.png)
 
 ## Method #2 | Submitted any form? = No
 
@@ -24,7 +24,7 @@ Another way that you can use this condition is to set it to "no" and target user
 of your forms by presenting them with a section that asks them to fill out a form. Below is an example of how you might
 configure this section.
 
-    ![Submitting Forms for Conditional Content](/assets/studio/screely-1657593469674.png)
+![Submitting Forms for Conditional Content](/assets/studio/screely-1657593469674.png)
 
 *You could also adjust the copy in the above image to offer users a coupon code in exchange for submitting a form. For
 more information on how to set this up, check out our other

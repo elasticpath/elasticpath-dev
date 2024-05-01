@@ -14,7 +14,7 @@ users based off of how much they've spent with your store.
 
 Purchased any product? Total Value of All Purchases
 
-    ![Product Purchased](/assets/studio/4167e24c-fe22-462c-b89f-8bb23603c03d.jpg)
+![Product Purchased](/assets/studio/4167e24c-fe22-462c-b89f-8bb23603c03d.jpg)
 
 This true or false condition can be used to show a section to users based on their purchase history. There are two
 options for this condition:
@@ -53,8 +53,8 @@ configurations result in the same thing: ***a returning customer is shown the di
 
 *Purchased any product? = yes*
 
-    ![Purchased Product](/assets/studio/screely-1648662131614.png)
+![Purchased Product](/assets/studio/screely-1648662131614.png)
 
 *Total value of all purchases > 0*
 
-    ![Total Purchase Value](/assets/studio/screely-1648661990970.png)
+![Total Purchase Value](/assets/studio/screely-1648661990970.png)

@@ -10,7 +10,7 @@ The Catalog API is for Administrator use only. Do not use this endpoint on your 
 
 If your store requires multiple catalogs, add catalog rules to control when a catalog is displayed. A catalog rule contains a catalog plus the criteria under which to display the catalog.
 
-:::warning
+:::caution
 You cannot create catalog rules for organization catalogs.
 :::
 

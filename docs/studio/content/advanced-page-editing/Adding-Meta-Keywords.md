@@ -13,7 +13,7 @@ When publishing a blog it's highly important to correctly input meta description
 1. Click into the blog post from the index page by clicking the name of the blog you'd like to adjust the keywords of.
 2. Once you have the blog open, click the gear icon in the top right corner of the editor to expand the setting drawer.
 
-        ![page settings icon](/assets/cxsgearicon.png)
+    ![page settings icon](/assets/cxsgearicon.png)
 
 3. Once the drawer is expanded you may begin typing in the keywords you'd like to use - the keywords should be separated by commas. (*Example: coffee, tea, coffee shop, coffee store)*
 4. Once you've added the keywords you'd like and are happy with them. Click *Save and Publish* to push the blog live or simply click *Save Only* to save your changes within publishing them to the world.

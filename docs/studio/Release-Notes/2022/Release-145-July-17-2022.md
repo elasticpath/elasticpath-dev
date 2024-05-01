@@ -41,7 +41,7 @@ Going forward any component that has been deprecated will have a "Deprecated" ba
 up as components that you can add to pages. This will ensure that sites continue to operate as expected, while also
 ensuring that new users aren’t overwhelmed by too many versions of the same component.
 
-    ![Deprecated Badge](/assets/studio/Screen_Shot_2022-07-06_at_12.46.53_PM.png)
+![Deprecated Badge](/assets/studio/Screen_Shot_2022-07-06_at_12.46.53_PM.png)
 
 **Better error handling for bad components**
 

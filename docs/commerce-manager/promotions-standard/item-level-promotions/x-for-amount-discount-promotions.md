@@ -6,7 +6,7 @@ sidebar_position: 2
 
 Use this procedure to create promotions such as, such as *3-for-$20* sales. In this promotion, 3 SKU1s are sold for $20.
 
-:::warning
+:::caution
 - We recommend not to set maximum discount value for this promotions. Setting maximum discount value for this promotion conflicts with the promotion settings.
 - We recommend to use **Advanced (Conditions v2)** settings.
 :::
@@ -73,7 +73,7 @@ Use this procedure to create promotions such as, such as *3-for-$20* sales. In t
                 - You can include up to 10 **+OR** conditions.
                 :::
     1. In the **Promotion Exclusions** subsection:
-            :::warning
+            :::caution
              **Promotion Exclusions** subsection is enabled only when you update the **Simplified (Conditions v1)** or **Advanced (Conditions v2)** settings in the **Promotion Conditions** subsection.
             :::
         1. To exclude products from a promotion, do the following:

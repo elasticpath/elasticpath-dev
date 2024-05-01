@@ -72,7 +72,7 @@ We'll add a **Download File** action from the GCP component.
 - Our **Connection** is already set up for us.
   For example, if there's a file named `unprocessed/20210322_163522.json` in our bucket, `loopOverEachFile.currentItem` would be equal to `"unprocessed/20210322_163522.json"`:
 
-     ![Download current file inputs](/assets/download-file-inputs.png)
+ ![Download current file inputs](/assets/download-file-inputs.png)
 
 Because we're downloading a JSON file, the JSON is automatically parsed for us.
 If we'd downloaded an XML file, CSV, file, etc, we could have leveraged a Change Data Format step to deserialize the file.

@@ -72,7 +72,7 @@ default option in the next test you set up.
 
 As an example, the below image shows the goal from a previous A/B Test is now an available option in **Goals** section.
 
-    ![A/b Goals](/assets/studio/8.png)
+![A/b Goals](/assets/studio/8.png)
 
 1. **Segmentation** allows you to define a balance between the ***Control*** and ***Variant***. If you want to weigh
    the ***Control*** more heavily, you can just set the percentage for ***Control*** higher than that of the

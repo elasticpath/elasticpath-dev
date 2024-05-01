@@ -41,7 +41,7 @@ we're telling the editor that we want to default "new" and "customers" into the 
 {{ first_name|new }} {{ last_name|customers }}
 ```
 
-    ![header_1.png](/assets/studio/header_1.png)
+![header_1.png](/assets/studio/header_1.png)
 
 See [Using Dynamic Text Content](/docs/studio/content/advanced-page-editing/Using-Dynamic-Text-Content) for more context about where this info comes from, limitations of the feature, and some examples of how to use it.
 

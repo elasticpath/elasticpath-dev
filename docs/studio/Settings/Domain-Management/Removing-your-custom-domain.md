@@ -9,12 +9,12 @@ sidebar_position: 140
 Go to your settings page, click general, scroll down to the domain section and click the horizontal three-dots to the
 right of your custom domain.
 
-    ![Custom Domain](/assets/studio/screely-1638297602901.png)
+![Custom Domain](/assets/studio/screely-1638297602901.png)
 
 Then, in the modal that appears to the right, click the "Remove Custom Domain" red button and verify this action by
 clicking "Ok" in the alert modal that pops up.
 
-    ![Remove Custom Domain](/assets/studio/Removing_custom_domain_2.png)
+![Remove Custom Domain](/assets/studio/Removing_custom_domain_2.png)
 
 ## What happens to my removed domain?
 

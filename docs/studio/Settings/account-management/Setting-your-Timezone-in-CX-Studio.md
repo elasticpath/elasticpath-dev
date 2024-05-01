@@ -16,8 +16,8 @@ Every site has one timezone, so if you're working on a team distributed througho
 2. Under "Account" a dropdown below the label "Timezone," click the dropdown to display our timezone options and select the correct timezone for your site.
 3. Click the Save button, which will appear when the current timezone setting has been altered.
 
-    ![Set Timezone](/assets/studio/Timezone_1.png)
-    ![Save Timezone Reset](/assets/studio/Timezone_2.png) 
+![Set Timezone](/assets/studio/Timezone_1.png)
+![Save Timezone Reset](/assets/studio/Timezone_2.png) 
 
 ## Troubleshooting
 

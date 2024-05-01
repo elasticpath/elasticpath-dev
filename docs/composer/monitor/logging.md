@@ -17,7 +17,7 @@ To see logs for all your instances:
 1. Go to **Composer** > **Monitor**.
 2. Select **Logs**. You see log messages, their timestamps in your local time, the name of the instance and the name of the integration the instance was created from.
 
-    ![monitor](/assets/monitor.png)
+![monitor](/assets/monitor.png)
 
 3. To see a log's details, select the log you want for the instance you are interested in.
 
@@ -29,7 +29,7 @@ To see logs for all your instances:
     - Release data.
     - Any files that caused errors.
 
-    ![monitor](/assets/monitor_3.png)
+![monitor](/assets/monitor_3.png)
 
 ## Searching and Filtering Logs
 

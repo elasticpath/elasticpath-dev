@@ -24,7 +24,7 @@ A reoccurring feature request, we implemented a basic banner component. That mig
 didn’t have a good way to build a component that had smaller buttons and padding. It’s now trivial to add a banner to
 any page.
 
-     ![Banner](/assets/studio/Screen_Shot_2022-02-16_at_9.55.00_AM.png) 
+ ![Banner](/assets/studio/Screen_Shot_2022-02-16_at_9.55.00_AM.png) 
 
 **JSX-Style Components**
 
@@ -32,14 +32,14 @@ We’ve reworked the syntax of NoML to align with React’s JSX syntax. This is 
 make it easier for us to iterate on components, allows us to render dynamic changes within the section editor, and is a
 syntax that is familiar to a lot of developers.
 
-     ![NoML Syntax](/assets/studio/Screen_Shot_2022-02-16_at_9.56.47_AM.png)
+ ![NoML Syntax](/assets/studio/Screen_Shot_2022-02-16_at_9.56.47_AM.png)
 
 **Custom Code with Text Component**
 
 This behaves a lot like the Media component, but instead of an image you can add custom code. This will make it much
 easier to add custom embeds (for example a map) with text on the left or right.
 
-    ![Custom Code with Text Component](/assets/studio/Screen_Shot_2022-02-16_at_9.58.03_AM.png)]
+![Custom Code with Text Component](/assets/studio/Screen_Shot_2022-02-16_at_9.58.03_AM.png)]
 
 ## Complete List of Resolved Items
 

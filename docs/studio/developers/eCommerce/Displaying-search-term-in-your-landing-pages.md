@@ -13,9 +13,9 @@ two examples of how you can set this up.
 One uses the "**Visited from...**" condition for both conditions, and the other uses the "**URL query params...**"
 condition. Feel free to mix and match here to achieve your desired result.
 
-     ![Searching for Terms](/assets/studio/screely-1657584623588.png)
+ ![Searching for Terms](/assets/studio/screely-1657584623588.png)
 
-     ![Searching for Terms](/assets/studio/screely-1657584919599.png)
+ ![Searching for Terms](/assets/studio/screely-1657584919599.png)
 
 Keep in mind that the way this section is configured, this will only work for Google Ads. That said, there are certainly
 other ways to go about setting this up for things like Facebook Ads, Instagram Ads, TikTok Ads, etc. Feel free to reach

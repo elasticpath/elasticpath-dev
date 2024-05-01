@@ -25,8 +25,6 @@ const PRODUCTS = [
     beta: false,
     link: '/docs/commerce-cloud/authentication/overview',
     icon: LockClosedKeyRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
     text: 'Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.',
   },
   {

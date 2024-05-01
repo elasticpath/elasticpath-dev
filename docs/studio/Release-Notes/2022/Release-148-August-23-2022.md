@@ -16,8 +16,8 @@ focused on a couple small changes, some internal tooling, and bug fixes.
 We updated our actions menu to simply the options and increase visibility on darker backgrounds. On the left is the new
 design; on the right is the previous design.
 
-    ![Actions Link](/assets/studio/actions.png)
-    ![Add Action](/assets/studio/screely-1663010689605.png)
+![Actions Link](/assets/studio/actions.png)
+![Add Action](/assets/studio/screely-1663010689605.png)
 
 **Updated Shopify APIs**
 

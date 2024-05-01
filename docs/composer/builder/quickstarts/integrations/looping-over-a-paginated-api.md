@@ -60,12 +60,12 @@ Next, we'll add two steps:
    That variable's value will be set by another step in the loop later.
    We'll provide a variable name, `Latest Post ID`, and default value `0` (since it's not been set yet):
 
-     ![Persist Data - Get Execution Value](/assets/get-execution-value.png)
+ ![Persist Data - Get Execution Value](/assets/get-execution-value.png)
 
 2. Next, we'll use the value from the previous step to make a call to JSON Placeholder.
    We'll add an HTTP - GET Request step and fetch `https://jsonplaceholder.typicode.com/posts?_limit=10&_start={{ THE VALUE WE GOT }}`:
 
-    ![HTTP Get Request](/assets/get-posts.png)
+![HTTP Get Request](/assets/get-posts.png)
 
 ### Are we done?
 
@@ -85,13 +85,13 @@ Assuming there are posts to process, we'll create an interior loop to loop over 
 
 1. Add a Loop Over Items action that takes the results from the "Get Posts" step in order to loop over the results:
 
-    ![Loop Over Items in integration designer](/assets/loop-over-posts.png)
+![Loop Over Items in integration designer](/assets/loop-over-posts.png)
 
 1. We'll "process" each post.
    For illustration purposes we'll just log out the post's **id** and **title**.
    We can access each post's title by referencing the interior loop's `currentItem` property:
 
-    ![Log Write Message](/assets/log-out-post.png)
+![Log Write Message](/assets/log-out-post.png)
 
 ### Store the last item's ID
 
@@ -99,13 +99,13 @@ Finally, we'll figure out the ID of the last post in the page we loaded, so we c
 
 1. We'll use a Branch on Expression action to determine if the `currentItem` has `isLast=true` (which indicates if we're looping over the last post):
 
-    ![Branch on Expression to check for last post](/assets/is-last-post.png)
+![Branch on Expression to check for last post](/assets/is-last-post.png)
 
 2. If we are on the last post, we'll use a Persist Data - Save Execution Value to save the ID of the last post.
    We'll use the same variable name - `Latest Post ID` - that we used before, and we'll save out the loop's `currentItem.id`.
    The "Get Execution Value" step we added at the beginning of the integration will pick up this value when the loop runs again:
 
-    ![Perist Data - Save Execution Value](/assets/save-execution-value.png)
+![Perist Data - Save Execution Value](/assets/save-execution-value.png)
 
 If we run our integration and look at logs, we can see that IDs and titles of the posts we loaded were logged out.
 After every 10 posts (after post ID 60, 70, etc.) we can also see that that our main loop ran again and an additional page of posts was loaded.

@@ -44,7 +44,7 @@ Once Klaviyo is connected to your Studio account you're able pass the data colle
 directly to specific lists in Klaviyo. This is done by opening the form settings in Studio, and defining a list from
 the drop down under Klaviyo.
 
-    ![Settings](/assets/studio/screely-1651597429041.png)
+![Settings](/assets/studio/screely-1651597429041.png)
 
 Now, whenever this form is submitted, the collected information will be passed to the selected Klaviyo list.
 
@@ -130,7 +130,7 @@ list. [Here's a link to Klaviyo's documentation on this if you'd like to learn m
 
 Make sure that you have *profile\_id* added to *Account > Settings > UTM Tracking* in Klaviyo.
 
-     ![UTM Tracking](/assets/studio/screely-1653590953111.png)
+ ![UTM Tracking](/assets/studio/screely-1653590953111.png)
 
 
 

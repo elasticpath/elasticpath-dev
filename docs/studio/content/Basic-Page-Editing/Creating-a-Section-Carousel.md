@@ -8,7 +8,7 @@ Through the below guide you'll learn how to configure a section to "carousel". O
 automatically scroll through multiple sections at a set interval allowing your site to show multiple versions of a
 section (or different sections all together).
 
-    ![Creating Section Carousel](/assets/studio/2021-12-15_15-48-30.gif)
+![Creating Section Carousel](/assets/studio/2021-12-15_15-48-30.gif)
 
 1. On a new or existing section click the carousel icon to enable it.
 

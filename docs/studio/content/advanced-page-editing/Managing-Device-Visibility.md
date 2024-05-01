@@ -12,8 +12,8 @@ Take a look at the below screenshots; you'll see I have a reviews component whic
 mobile but looks fine on desktop. Using the new mobile visibility options I can now hide certain elements (boxes or
 entire sections) by toggling on a new toolbar option.
 
-    ![Mobile Visibility Options](/assets/studio/screely-1663368234009.png)
-    ![Mobile Visibility Options](/assets/studio/blobid0.png)
+![Mobile Visibility Options](/assets/studio/screely-1663368234009.png)
+![Mobile Visibility Options](/assets/studio/blobid0.png)
 
 This option can be found on the toolbar of any *section* or *box* in our editor and can have one of three values:
 
@@ -26,5 +26,5 @@ This option can be found on the toolbar of any *section* or *box* in our editor 
 
 Therefore, if I were to set the below block to "Mobile Only" then it won't render on the desktop version of the site but will render on the mobile version and this is exactly what we see happening when looking at the rendered site!
 
-     ![Mobile Visibility](/assets/studio/screely-1663369669402.png)
-     ![Mobile Visibility](/assets/studio/blobid1.png)
+ ![Mobile Visibility](/assets/studio/screely-1663369669402.png)
+ ![Mobile Visibility](/assets/studio/blobid1.png)

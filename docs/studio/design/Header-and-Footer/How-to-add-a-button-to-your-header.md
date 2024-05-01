@@ -22,6 +22,6 @@ sidebar_position: 60
 
 Changes to the button style, color, and more can be changed in your styles tab under the "Buttons" category.
 
-    ![Button Styles](/assets/studio/button_section_edit.png) 
+![Button Styles](/assets/studio/button_section_edit.png) 
 
 

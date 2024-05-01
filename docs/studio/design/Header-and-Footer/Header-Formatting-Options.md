@@ -11,7 +11,7 @@ first need to navigate to your Header & Footer settings in Studio.
 
 ## Header Style
 
-    ![Header Style Opacity](/assets/studio/header_style_options.png)
+![Header Style Opacity](/assets/studio/header_style_options.png)
 
 The first option that we'll discuss is your ***Header Style*** which controls how your header should behave when a user
 is scrolling down the page. There are three options for you to choose from:
@@ -28,7 +28,7 @@ is scrolling down the page. There are three options for you to choose from:
 
 ## Header Alignment
 
-    ![](/assets/studio/header_-_align_options.png)
+![](/assets/studio/header_-_align_options.png)
 
 The other option we want to make sure to callout are your Header Alignment options. Just like the above, there are three
 options to choose from:

@@ -9,7 +9,7 @@ sidebar_position: 262
 If you've previously installed Studio and are installing it again, re-adding the Studio App to your Shopify store will
 not restore any previously configured pages if it's re-added more than **2 days** after the last uninstall.
 
-    ![Installed CX-Studio Application](/assets/studio/Unstack_Embedded_App.png)
+![Installed CX-Studio Application](/assets/studio/Unstack_Embedded_App.png)
 
 1. Create a Shopify Account and ensure you have at least one active product.
 2. Add the Studio App in Shopify, this creates an Studio sales channel which asks for several different *read-only*

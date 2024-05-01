@@ -4,7 +4,7 @@ nav_label: Changing Email Address in Studio Billing Invoices
 sidebar_position: 20
 ---
 
-:::warning Disclaimer
+:::caution Disclaimer
 Updates to the email will only be reflected on future invoices. We are not able to retroactively update the "bill-to"
 information for past invoices.
 :::

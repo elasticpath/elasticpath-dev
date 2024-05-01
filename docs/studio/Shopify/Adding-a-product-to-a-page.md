@@ -13,7 +13,7 @@ Studio and your [products have been synced](/docs/studio/Shopify/Syncing-your-Sh
 On the product page you'd like to create, add a **Product** component. These are components that are specifically designed
 to handle/display your Shopify products.
 
-    ![Product Component](/assets/studio/building_a_page_1.png)
+![Product Component](/assets/studio/building_a_page_1.png)
 
 ### Choose a product
 
@@ -29,7 +29,7 @@ have [created your products in Shopify](https://help.shopify.com/en/manual/produ
 issues? Make sure that Shopify and Studio
 are [synced properly](/docs/studio/Shopify/Syncing-your-Shopify-Products-Where-are-my-products).
 
-    ![Product Search](/assets/studio/building_a_page_2.png)
+![Product Search](/assets/studio/building_a_page_2.png)
 
 If you've chosen the wrong product, all you need to do is to click into the component again and select the **X** next to
 the component to remove it.

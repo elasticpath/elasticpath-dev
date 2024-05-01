@@ -13,5 +13,5 @@ The reason for this warning is that without an email, Studio isn't able to save 
 as the root of the contact). That said, we ***will*** still try to send lead data collected by this form to any
 integrations that you have configured.
 
-    ![Warning](/assets/studio/Warning_1.png)
+![Warning](/assets/studio/Warning_1.png)
 

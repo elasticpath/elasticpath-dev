@@ -20,6 +20,6 @@ You can allow your shoppers to add custom text to a product when adding product 
    | **Maximum length**   | Optional | You can add a maximum length. For example, the input field must be  50 characters in length. The limit is 255 characters.    |
    | **Required Input**   | Optional | Toggle **Required Input** on if a shopper must specify some personalization text.   |
 
-    ![personalization in CM](/assets/personalized-cm.png)
+![personalization in CM](/assets/personalized-cm.png)
 
 7. Select **Save & Exit** or **Next**, depending on your requirements.

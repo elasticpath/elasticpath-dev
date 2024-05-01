@@ -9,7 +9,7 @@ have completed a specific action? With Studio's Conditional Content you're able 
 
 To enable Conditional Content on your section, just select the **{...}** icon from the section toolbar.
 
-    ![Conditional Content Icon](/assets/studio/ConContent1.png)
+![Conditional Content Icon](/assets/studio/ConContent1.png)
 
 Now you need to decide on the conditions for this section to appear. Do you want it to show for all new users? Only
 users who have been to this page before? What about users from Google Ads, Klaviyo, or HubSpot?
@@ -19,7 +19,7 @@ conditions that you can use individually, or combine into **IF** statements or *
 
 ## URL Query Parameters
 
-    ![URL Query Parameters](/assets/studio/78cf4689-6faa-4c88-9a12-8894152c8b05.jpg)
+![URL Query Parameters](/assets/studio/78cf4689-6faa-4c88-9a12-8894152c8b05.jpg)
 
 This condition is used to show a section when a certain query parameter is true. You can use this condition to:
 
@@ -52,7 +52,7 @@ The following table describes the fields that make up a URL query parameter.
 
 ## Visited from
 
-    ![Visting Source](/assets/studio/02d8cd6d-90bc-4333-98aa-98717afa0abc.jpg)
+![Visting Source](/assets/studio/02d8cd6d-90bc-4333-98aa-98717afa0abc.jpg)
 
 This condition is used to show a section when a UTM parameter has a specific value. You can use this condition to [display a search term in your landing pages](/docs/studio/developers/eCommerce/Displaying-search-term-in-your-landing-pages).
 
@@ -76,7 +76,7 @@ The following table describes the fields that make up a **Visited from...** cond
 
 ## Visited a Page
 
-    ![Previously Visited Pages](/assets/studio/6fc0fc9f-60c5-4be0-a7e3-01548e97cc1b.jpg)
+![Previously Visited Pages](/assets/studio/6fc0fc9f-60c5-4be0-a7e3-01548e97cc1b.jpg)
 
 This condition is used to show a section to users who have previously visited another of your pages. The only field
 available here is to select from a list of your published pages. For the user to see this section, they will have
@@ -84,7 +84,7 @@ to have previously visited the selected page. You can use this condition for [co
 
 ## Visited Previously
 
-    ![Previously Visited Section](/assets/studio/a786469b-6a15-442a-bd58-ae8c0105c8c3.jpg)
+![Previously Visited Section](/assets/studio/a786469b-6a15-442a-bd58-ae8c0105c8c3.jpg)
 
 This true or false condition can be used to show a section to users based on their visit history. There are two options
 for this condition:
@@ -96,7 +96,7 @@ You can use this condition to [provide a coupon code to users who visited your s
 
 ## First Visit
 
-    ![First Visit](/assets/studio/a8e9b979-f6ee-4848-8b56-fb5effecd13d.jpg)
+![First Visit](/assets/studio/a8e9b979-f6ee-4848-8b56-fb5effecd13d.jpg)
 
 This true or false condition can be used to show a section to users based on their visit history. There are two options
 for this condition:
@@ -108,7 +108,7 @@ You can use this condition to [provide a coupon code to users who visited your s
 
 ## Total Visits
 
-    ![Total Number of Visits](/assets/studio/1d5b5504-f98c-452f-82bd-7cdaa58f4d36.jpg)
+![Total Number of Visits](/assets/studio/1d5b5504-f98c-452f-82bd-7cdaa58f4d36.jpg)
 
 This free text condition is used to show a section based on the total number of times that a user has been to a site. You can use this condition to [provide a coupon code to users who visited your site multiple times but haven't converted](/docs/studio/developers/eCommerce/Provide-a-coupon-code-to-users-who-visited-your-site-multiple-times-without-converting).
 
@@ -130,14 +130,14 @@ The following table describes the fields that make up the **Total Visits** condi
 
 ## Submitted a Form
 
-    ![Form Submission](/assets/studio/19118993-2a82-4034-8678-0bf619b52982.jpg)
+![Form Submission](/assets/studio/19118993-2a82-4034-8678-0bf619b52982.jpg)
 
 This condition is used to show a section to a user who has submitted a specific form. The options available through the
 drop down are any of the Studio forms you've created. You can use this condition to [remind users to use a coupon code](/docs/studio/developers/eCommerce/Reminding-users-to-use-a-coupon-code).
 
 ## Submitted any Form
 
-    ![Form Submission History](/assets/studio/1c9a4ad4-1e70-47ca-afab-3ede0412c5c8.jpg)
+![Form Submission History](/assets/studio/1c9a4ad4-1e70-47ca-afab-3ede0412c5c8.jpg)
 
 This true or false condition can be used to show a section to users based on their form submission history. You can use this condition to [show content to users to users who previously interacted with a form](/docs/studio/developers/eCommerce/Show-content-to-users-to-users-who-previously-interacted-with-a-form).
 
@@ -148,7 +148,7 @@ There are two options for this condition:
 
 ## Contact Exists
 
-    ![Contacts in Studio Accounts](/assets/studio/c09d6d4d-4411-4438-83c6-9fce3fcfb3d1.jpg)
+![Contacts in Studio Accounts](/assets/studio/c09d6d4d-4411-4438-83c6-9fce3fcfb3d1.jpg)
 
 This true or false condition is used to show a section to users who are, or are not already contacts in your Studio
 account. You can use this condition to:

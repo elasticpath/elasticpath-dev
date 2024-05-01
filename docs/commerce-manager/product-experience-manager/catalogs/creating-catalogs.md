@@ -24,6 +24,6 @@ Create the products, hierarchies and price books you want to use in the catalog.
 1. Select the additional price book you want your catalog to use. 
 1. Repeat steps 6-8 for each price book you want to add.
 
-    ![price book stacking](/assets/pb-stacking.png)
+![price book stacking](/assets/pb-stacking.png)
 
 1. Click **Save**.

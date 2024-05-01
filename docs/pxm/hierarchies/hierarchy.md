@@ -26,7 +26,7 @@ A catalog configuration includes one or more hierarchies of products. Any produc
 
 - See the nodes that products belong to.
 
-    ![product tabs](/assets/product-tabs-gifs.gif)
+![product tabs](/assets/product-tabs-gifs.gif)
 
 - Create nodes and assign products to nodes.
 
@@ -130,7 +130,7 @@ You can assign products to nodes in the following ways:
 1. On the **Products** page, select appropriate products or apply a filter to select appropriate products. See [Filtering](/docs/commerce-cloud/api-overview/filtering).
 2. Click the arrow next to the checkbox on the header row and then click **Assign to Nodes**.
 
-    ![Assigning Nodes](/assets/assigning-nodes.png)
+![Assigning Nodes](/assets/assigning-nodes.png)
 
     :::note
     The **Assign to Nodes** option is only available once you have selected the checkboxes next to the specific products or applied a filter.
@@ -140,7 +140,7 @@ You can assign products to nodes in the following ways:
 
 3. Click the arrow next to the hierarchy and the child nodes that you want to assign to your products.
 
-    ![Assign Products to Nodes](/assets/assign-products-to-nodes.png)
+![Assign Products to Nodes](/assets/assign-products-to-nodes.png)
 4. Select the checkboxes next to the nodes that you want to assign to the products.  
 5. Click **Next**.  
 6. Click **Confirm**.  
@@ -156,7 +156,7 @@ You can dissociate products from multiple hierarchies and their nodes.
 1. On the **Products** page, select appropriate products or apply a filter to select appropriate products. See [Filtering](/docs/commerce-cloud/api-overview/filtering).
 2. Click the arrow next to the checkbox on the header row and then click **Unassign from Node**.
 
-    ![Dissociating from multiple nodes](/assets/Dissociation-from-nodes.png)
+![Dissociating from multiple nodes](/assets/Dissociation-from-nodes.png)
 
     The **Confirm your Unassignment** window appears.  
 

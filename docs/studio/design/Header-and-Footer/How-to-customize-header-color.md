@@ -12,7 +12,7 @@ Adjusting your background color for the header is done in one of two ways.
 
 ## Setting the background color in the elements section
 
-    ![Background Color](/assets/studio/header-background-color.gif)
+![Background Color](/assets/studio/header-background-color.gif)
 
 Then, simply select "Publish" when it appears after the change.
 
@@ -20,5 +20,5 @@ Then, simply select "Publish" when it appears after the change.
 
 To keep things simple we have our headers auto-adjust to the hero section's background color.
 
-    ![Header Auto Adjustment](/assets/studio/header-auto-adjustment.gif)
+![Header Auto Adjustment](/assets/studio/header-auto-adjustment.gif)
 
