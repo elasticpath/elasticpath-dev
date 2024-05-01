@@ -13,9 +13,11 @@ info:
     - **Available**: The amount of product available in stock minus allocated products. (Available = Total - Allocated)
     - **Allocated**: The amount of reserved product in stock.
     
-    >**Note**:
-    >
-    >In Commerce Manager, you can manage the inventory while creating a new product in Product Experience Manager. Go to **Products** > **Inventory** and you can specify the inventory details (**allocate**, **deallocate**, **increment**, and **decrement**). 
+    :::note
+    
+    In Commerce Manager, you can manage the inventory while creating a new product in Product Experience Manager. Go to **Products** > **Inventory** and you can specify the inventory details (**allocate**, **deallocate**, **increment**, and **decrement**). 
+    
+    :::
     
     ### Order flow
 
@@ -74,9 +76,9 @@ tags:
 
       You can specify an initial stock level when you create a product. The stock is set to `0` by default.
       
-      >**Warning**:
-      >
-      >You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
+      :::caution
+      
+      You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
 
   - name: Transactions
     description: Methods to allow you to modify and view a products stock via transactions.
@@ -318,7 +320,7 @@ components:
         type: string
     PageOffset:
       name: page[offset]
-      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       in: query
       required: false
       schema:
@@ -328,7 +330,7 @@ components:
         maximum: 10000
         example: 10
     PageLimit:
-      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       name: page[limit]
       in: query
       required: false

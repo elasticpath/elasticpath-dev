@@ -110,7 +110,7 @@ const PRODUCTS = [
   {
     title: 'Integrations',
     beta: false,
-    link: '/docs/api/integrations/integrations-event-subscriptions-notifications',
+    link: '/docs/api/integrations/integrations-introduction',
     icon: ConnectedRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
