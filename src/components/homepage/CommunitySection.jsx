@@ -2,7 +2,6 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 
 import { Linkedin, Twitter } from 'react-feather';
-import { DiscordIcon } from '@site/src/icons';
 
 const githubUsernames = [
   'cheeryfella',
@@ -22,7 +21,7 @@ const githubUsernames = [
 
 export default function CommunitySection() {
   return (
-    <section className="no-underline-links pt-16">
+    <section className="no-underline-links">
       <div className="mx-auto flex w-full flex-col items-center justify-center bg-gray-900 px-4 py-16 text-white">
         <h2 className="text-3xl">
           Join the <span className="text-primary-100">Elastic Path</span> community

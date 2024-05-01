@@ -197,23 +197,24 @@ function HeroCM({
 
 export default function HeroSectionCM() {
   return (
-    <>
-      <section className="no-underline-links px-4 pt-16 lg:py-0">
-        <div className="flex flex-col items-center justify-between py-14">
-          <h2 className="mb-4 font-jakarta text-3xl font-bold">
-            Documentation for Commerce Manager
-          </h2>
-          <p className="max-w-3xl text-center text-text-400">
-            Commerce Manager is a web-based user interface to manage your Elastic Path services.
-          </p>
-        </div>
-      </section>
+      <>
+        <section className="no-underline-links px-4 pt-16 lg:py-0">
+          <div className="flex flex-col items-center justify-between py-14">
+            <h2 className="mb-4 font-jakarta text-3xl font-bold">
+              Documentation for Commerce Manager
+            </h2>
+            <p className="max-w-3xl text-center text-text-400">
+              Commerce Manager is a web-based user interface to manage your Elastic Path services.
+            </p>
+          </div>
+        </section>
 
-      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 md:grid-cols-2">
-        {PRODUCTS.map((product) => (
-          <HeroCM {...product} key={product.title} />
-        ))}
-      </section>
-    </>
+        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 md:grid-cols-2">
+          {PRODUCTS.map((product) => (
+              <HeroCM {...product} key={product.title}/>
+          ))}
+        </section>
+        <section className="pb-16"></section>
+      </>
   );
 }

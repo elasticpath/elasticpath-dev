@@ -198,13 +198,13 @@ function HeroAPI({
 export default function HeroSectionAPIs() {
   return (
     <>
-      <section className="no-underline-links px-4 pt-16 lg:py-0">
+      <section className="no-underline-links">
         <div className="flex flex-col items-center justify-between py-14">
           <h2 className="mb-4 font-jakarta text-3xl font-bold">
             Documentation for Elastic Path's APIs
           </h2>
           <p className="max-w-3xl text-center text-text-400">
-            Use our interactive documentation directly on our site or download the OpenAPI specification file for the services you are interested in.
+            Use our interactive documentation directly on our site or download the OpenAPI specification file for our services.
           </p>
         </div>
       </section>
@@ -214,6 +214,7 @@ export default function HeroSectionAPIs() {
           <HeroAPI {...product} key={product.title} />
         ))}
       </section>
+      <section className="pb-16"></section>
     </>
   );
 }
