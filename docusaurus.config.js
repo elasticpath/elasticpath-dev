@@ -359,6 +359,10 @@ const config = {
               ],
             },
             {
+              label: 'Changelog',
+              to: 'https://changelog.elasticpath.dev',
+            },
+            {
               label: 'Support',
               to: 'https://support.elasticpath.com',
             },
