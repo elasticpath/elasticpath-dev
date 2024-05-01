@@ -112,7 +112,8 @@ Discount apportioning involves distributing cart-level discounts among the indiv
 Within Rule Promotions, cart-level promotion items are not considered in cart total calculations, preventing double-counting of discounts. Even if an apportioned amount amounts to zero, it is distributed among all items for consistency. Apportioned item-level discounts include a flag, such as `is_cart_discount`, to easily identify them as originating from cart-level promotions, aiding API consumers in reconciliation. This flag is used to check if the discount applied to cart item is from cart discount.
 
 :::note
-The new discount apportioning algorithm ensures that the `item.discounts` and `item.meta.display_price.discounts` are accurate and consistent. However, the `item.meta.display_price.discount` fields might sometimes display slight inaccuracies due to rounding differences in response representations. It is important to consider the `item.discounts` and `item.meta.display_price.discounts` as the accurate representations of discount values.
+- The new discount apportioning algorithm ensures accuracy and consistency in the `item.discounts` and `item.meta.display_price.discounts` fields. However, slight differences may occur in the `item.meta.display_price.discount` fields due to intricacies in partial-amount rounding. It is important to consider the `item.discounts` and `item.meta.display_price.discounts` as the accurate representations of discount values.
+- Apportioning for uneven values may reflect differently between a cart’s items and its corresponding order items post-checkout. Although the distribution of discounts may vary slightly between the cart and the order, the fundamental calculations and total discount amounts remain the same.
 :::
 
 Consider the following scenario:
