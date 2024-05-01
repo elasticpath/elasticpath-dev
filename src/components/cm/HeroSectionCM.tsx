@@ -6,16 +6,11 @@ import {
   ArrowSyncFilled,
   PersonCircleRegular,
   WalletCreditCardRegular,
-  ContactCardGroupRegular,
   BookDatabaseRegular,
-  ConnectedRegular,
   LockClosedKeyRegular,
   BuildingRetailRegular,
   BuildingRetailMoneyRegular,
-  BoxMultipleRegular,
   PeopleTeamRegular,
-  DatabasePersonRegular,
-  SettingsRegular,
 } from '@fluentui/react-icons';
 import clsx from 'clsx';
 
