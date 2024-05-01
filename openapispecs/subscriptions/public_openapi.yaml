@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Subscriptions Overview
+  title: Subscriptions Introduction
   description: |
     Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts.
 
@@ -19,19 +19,19 @@ info:
 
     Here's how a typical subscription works:
 
-    1. Create your repeat products. See [**Repeat Products**](#tag/Products).   
-    2. Create your plans. Plans are the rules that govern your subscription, for example, delivery frequency, the quantity and any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. See [**Plans**](#tag/Plans).
-    3. Create your offerings. Offerings are the product and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer. See [**Offerings**](#tag/Offerings).
-    4. When a [**customer**](#tag/Subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](#tag/Subscriptions).
-    5. Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Payments**](#tag/Invoices).
+    1. Create your repeat products. See [**Repeat Products**](/docs/api/subscriptions/products).   
+    2. Create your plans. Plans are the rules that govern your subscription, for example, delivery frequency, the quantity and any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. See [**Plans**](/docs/api/subscriptions/plans).
+    3. Create your offerings. Offerings are the product and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer. See [**Offerings**](/docs/api/subscriptions/offerings).
+    4. When a [**customer**](/docs/api/subscriptions/subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](/docs/api/subscriptions/subscriptions).
+    5. Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Payments**](/docs/api/subscriptions/invoices).
 
     ### Subscriber Management
 
-    Elastic Path Subscriptions enables you to create customer accounts that you can use to manage their subscription details, including payment methods and billing information. See [**Subscribers**](#tag/Subscribers).
+    Elastic Path Subscriptions enables you to create customer accounts that you can use to manage their subscription details, including payment methods and billing information. See [**Subscribers**](/docs/api/subscriptions/subscribers).
 
     ### Invoicing & Payments
 
-    Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions. Elastic Path Subscriptions provides seamless integration with Elastic Path Payments powered by Stripe. See [**Invoicing and Payments**](#tag/Invoices).
+    Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions. Elastic Path Subscriptions provides seamless integration with Elastic Path Payments powered by Stripe. See [**Invoicing and Payments**](/docs/api/subscriptions/invoices).
 servers:
   - url: https://epcc-integration.global.ssl.fastly.net/v2
     description: Integration cluster
@@ -49,22 +49,22 @@ tags:
       Create the products and services that you want to offer in a subscription. For example, an online streaming service organization might have different services available for subscription, such as Standard Definition Streaming, High-Definition Streaming, and 4K Streaming; each service provides a specific level of video quality. 
       Products can have additional attributes, such as price, and rich media assets, such as images or files containing additional product details.
 
-       In addition, you can build offerings with products created in Product Experience Manager. Product Experience Manager manages product information, hierarchies, and price books. Ideally, Product Experience Manager becomes the single source of truth for product data across your organization. See [**Create a Product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product).
+       In addition, you can build offerings with products created in Product Experience Manager. Product Experience Manager manages product information, hierarchies, and price books. Ideally, Product Experience Manager becomes the single source of truth for product data across your organization. See [**Create a Product**](/docs/api/pxm/products/create-product).
 
-      You combine your products and plans into offerings. Offerings can contain any combination of products and plans. See [**Building an Offering**](#tag/Offerings/operation/BuildOffering).
+      You combine your products and plans into offerings. Offerings can contain any combination of products and plans. See [**Building an Offering**](/docs/api/subscriptions/build-offering).
 
       Product data is stored in a database. After you have added your products, you can update your product information at any time, and include those products in your subscription offerings.
 
       ### Product Media
-      Images and files are linked to repeat products using a hypertext reference (HREF). You can either upload your images to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](https://elasticpath.dev/docs/pxm/products/product-assets/create-a-file) to upload your file and return an HREF link in the response.
-      An extensive range of [**media and file extensions**](https://elasticpath.dev/docs/pxm/products/product-assets/files-overview) are supported.
+      Images and files are linked to repeat products using a hypertext reference (HREF). You can either upload your images to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](/docs/api/pxm/files/create-a-file) to upload your file and return an HREF link in the response.
+      An extensive range of [**media and file extensions**](/docs/api/pxm/files/files) are supported.
 
       ### Product Pricing
-      You can assign prices for your products and services. You can display prices to your customers in their local currency. You can configure up to 10 currencies per subscription. Use the Commerce Currencies API to [**create a currency**](https://elasticpath.dev/docs/pxm/currencies/currencies-api/create-a-currency). You must select one currency to be the default currency. If a default currency is not selected, the store uses the United States Dollar (USD). 
+      You can assign prices for your products and services. You can display prices to your customers in their local currency. You can configure up to 10 currencies per subscription. Use the Commerce Currencies API to [**create a currency**](/docs/api/pxm/currencies/create-a-currency). You must select one currency to be the default currency. If a default currency is not selected, the store uses the United States Dollar (USD). 
 
       In addition, you can specify a unit price for a product. A unit price is the timeframe during which the product price is applicable, either days or months. For example, for a streaming service, the price is $12.99 and the unit price is months. In other words, the streaming service is available for $12.99 a month. You may want to specify a unit price if you have many products that all have different prices. Rather than having to create separate plans for each product, you can specify the timeframe during which the product price is applicable and then create one plan that determines the billing frequency for those products.
 
-      Alternatively, when creating a plan, you can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling those products to be offered at a discounted price. The prices you specify for a plan override the individual product prices you specified when creating a product. See [**Plan Pricing**](#plan-pricing).
+      Alternatively, when creating a plan, you can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling those products to be offered at a discounted price. The prices you specify for a plan override the individual product prices you specified when creating a product. See [**Plan Pricing**](/docs/api/subscriptions/plans#plan-pricing).
   - name: Plans
     description: |
       You can use plans to model your subscription. Plans are a set of rules and conditions that manage the provision of repeat products in an offering. 
@@ -91,9 +91,9 @@ tags:
       ### Plan Pricing
       You can provide a price for the total cost of a plan, or, provide a discount on the total cost of all products within an offering. For example, you can configure a percentage discount on the total cost of any products within an offering.  
 
-      You can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling these products to be offered at a discounted price. You can enter a price for all the currencies you have configured for your store. See [**Create a Currency**](https://elasticpath.dev/docs/pxm/currencies).
+      You can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling these products to be offered at a discounted price. You can enter a price for all the currencies you have configured for your store. See [**Create a Currency**](/docs/api/pxm/currencies/create-a-currency).
 
-      Alternatively, when creating your products, you can configure individual prices for a product. The prices you specify for a plan override the individual product prices you specified when creating a product. See [**Repeat Products**](#product-pricing).
+      Alternatively, when creating your products, you can configure individual prices for a product. The prices you specify for a plan override the individual product prices you specified when creating a product. See [**Repeat Products**](/docs/api/subscriptions/products#product-pricing).
 
       ### Recurring Payments
       There are two types of recurring payments:
@@ -111,8 +111,8 @@ tags:
 
       An offering can have only one product. Offering products can be either:
 
-      - a subscription product, see [**Create a product**](#tag/Products/operation/CreateProduct).
-      - a Product Experience Manager product, see [**create a product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product)
+      - a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
+      - a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
 
       ### Offering Examples
 
@@ -121,7 +121,7 @@ tags:
        | Example | Product | Plans | Offering |
        | --- | --- | --- | --- |
        | <ul><li>Single product and plan</li></ul> | <ul><li>One product with a product price of $50</li></ul> | <ul><li>A monthly plan with a 5% discount</li></ul> | <ul><li>An offering with a monthly plan for $47.50 a month</li></ul> |
-       | <ul><li>Single product with multiple plans</li></ul> | <ul><li>One product with a product price of $50</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | <ul><li>An offering with two plans:</li><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
+       | <ul><li>Single product with multiple plans</li></ul> | <ul><li>One product with a product price of $50</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | <ul><li>An offering with two plans: </li><ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul></ul> |
 
       ### Building an Offering
 
@@ -136,26 +136,26 @@ tags:
 
       1. Create your repeat product. A product can either be a subscription product or Product Experience Manager product. An offering can have only one product. 
 
-          - to create a subscription product, see [**Create a product**](#tag/Products/operation/CreateProduct).
-          - to create a Product Experience Manager product, see [**create a product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product)
+          - to create a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
+          - to create a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
       2. Create your plans. 
           - Plans are the rules that govern your subscription, for example, any discount. 
           - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
-          - An offering must have at least one plan. See [**Create a plan**](#tag/Plans/operation/CreatePlan).
-      3. [**Build your offerings**](#tag/Offerings/operation/BuildOffering). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer.
+          - An offering must have at least one plan. See [**Create a plan**](/docs/api/subscriptions/create-product).
+      3. [**Build your offerings**](/docs/api/subscriptions/build-offering). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer.
 
-          - When a [**customer**](#tag/Subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](#tag/Subscriptions).
-          - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Billing**](#tag/Jobs).
+          - When a [**customer**](/docs/api/subscriptions/subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](/docs/api/subscriptions/subscriptions).
+          - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Billing**](/docs/api/subscriptions/jobs).
 
       ### Editing Offerings
 
       After saving an offering, you can, at any time:
 
-      - update an offering's details, for example, name or description. See [**Update an Offering**](#tag/Offerings/operation/UpdateOffering).
+      - update an offering's details, for example, name or description. See [**Update an Offering**](/docs/api/subscriptions/update-offering).
       - update the existing product and plans. 
-      - replace an existing product in an offering with a new one. See [**Replace a Product**](#tag/Offerings/operation/AttachOfferingProduct)
-      - attach a new plan to an offering. See [**Attach a Plan**](#tag/Offerings/operation/AttachOfferingPlan).
-      - remove plans. See [**Removing a plan from an offering**](#tag/Offerings/operation/DeleteOfferingPlan).
+      - replace an existing product in an offering with a new one. See [**Replace a Product**](/docs/api/subscriptions/replace-offering-product)
+      - attach a new plan to an offering. See [**Attach a Plan**](/docs/api/subscriptions/attach-offering-plan).
+      - remove plans. See [**Removing a plan from an offering**](/docs/api/subscriptions/delete-offering-plan).
 
       Any modifications that you make to offerings, and products or plans in an offering, does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
   - name: Subscriptions
@@ -191,19 +191,19 @@ tags:
       When a customer chooses a subscription, they need to add the subscription to a cart, checkout the cart and then pay for the order. 
 
       1. When a customer adds a subscription to cart, this is handled using the `Add subscription to cart` endpoint. 
-      2. Once a subscription has been added to a cart, the [**Checkout API**](https://elasticpath.dev/docs/commerce-cloud/checkout) converts the cart to an order. 
-      3. Once the order is created, payment needs to be taken. This is handled by Elastic Path Payments Powered by Stripe. See [**Payments**](#payments).
+      2. Once a subscription has been added to a cart, the [**Checkout API**](/docs/api/carts/checkout-with-account-management-authentication-token) converts the cart to an order. 
+      3. Once the order is created, payment needs to be taken. This is handled by Elastic Path Payments Powered by Stripe. See [**Payments**](/docs/api/subscriptions/invoices#payments).
   - name: Jobs
     description: |
       Jobs are an asynchronous process that can be triggered manually or scheduled. 
 
       There are three types of job:
 
-      - a billing run. Subscriptions generates an [**invoice**](#invoices) when a billing run occurs. Billing runs generate invoices for the remaining billing cycles for each subscription. The invoice dates come from your plans. Billing runs are independent of payment runs.
+      - a billing run. Subscriptions generates an [**invoice**](/docs/api/subscriptions/invoices) when a billing run occurs. Billing runs generate invoices for the remaining billing cycles for each subscription. The invoice dates come from your plans. Billing runs are independent of payment runs.
       - a tax run. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.
       - a payment run. The payment run identifies invoices that are outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
 
-      By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [**Schedules**](#tag/Schedules).
+      By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [**Schedules**](/docs/api/subscriptions/schedules).
 
       ### Characteristics of Billing & Payments Jobs
 
@@ -311,9 +311,9 @@ tags:
       The invoice lifecycle is described below.
 
       1. When a subscription is created, an invoice for the first billing period is created. When a subscription is created as part of an order, the payment for the order covers the first billing period.
-      2. Subscription invoices are created by [**billing runs**](#tag/Jobs). The billing run identifies subscriptions that require a new invoice for their next billing period and creates them. At this point, invoices are marked as outstanding.
+      2. Subscription invoices are created by [**billing runs**](/docs/api/subscriptions/jobs). The billing run identifies subscriptions that require a new invoice for their next billing period and creates them. At this point, invoices are marked as outstanding.
       3. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.  
-      3. The [**payment run**](#tag/Jobs) identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
+      3. The [**payment run**](/docs/api/subscriptions/jobs) identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
 
       ### Rounding
 
@@ -336,9 +336,9 @@ tags:
 
       To use Elastic Path Payments Powered by Stripe gateway, contact the [**Customer Success Team**](mailto:customersuccess@elasticpath.com). 
 
-      Create your Stripe account in [**Stripe Dashboard**](https://dashboard.stripe.com/login) and complete an onboarding form to make payments using the gateway. For more information, see [**Onboarding**](https://elasticpath.dev/docs/payments/onboarding).
+      Create your Stripe account in [**Stripe Dashboard**](https://dashboard.stripe.com/login) and complete an onboarding form to make payments using the gateway. For more information, see [**Onboarding**](/docs/payments/onboarding).
 
-      Once you have signed up for Elastic Path Payments Powered by Stripe, you must configure the payment gateway so that your shoppers can make payments. See [**Configure Elastic Path Payments Powered by Stripe**](https://elasticpath.dev/docs/commerce-cloud/payments/payment-gateway/configure-elastic-path-payments-powered-by-stripe).
+      Once you have signed up for Elastic Path Payments Powered by Stripe, you must configure the payment gateway so that your shoppers can make payments. See [**Configure Elastic Path Payments Powered by Stripe**](/docs/payments/onboarding).
 
       Subscriptions only supports the `purchase` payment mechanism. The gateway attempts to charge the customer immediately, and the result of the attempt is returned. If a payment fails, the invoice is kept as outstanding and the payment information, with the reason for the failure is attached to the invoice. A new payment run is required to attempt another payment. 
 
@@ -358,9 +358,9 @@ tags:
 
       Events are processed concurrently. This means that events may not be delivered in the order they are created. For example, if a subscription is updated multiple times, the events may not be delivered in the same sequence they were updated. Events operate on an "at least once" delivery policy. We aim to deliver messages within 30 minutes or less. Ensure that you design your receiving code accordingly.
 
-      For more information about integrating Subscriptions, see [**Integrations (Event Subscriptions/Notifications)**](https://elasticpath.dev/docs/commerce-cloud/integrations/integration-types).
+      For more information about integrating Subscriptions, see [**Integrations (Event Subscriptions/Notifications)**](/docs/api/integrations/integrations-event-subscriptions-notifications#integration-types).
 
-      | <div style="width:100px">Resource</div> | <div style="width: 100px">Action</div> | <div style="width:300px">Observable Key</div> | <div style="width: 80px">Availability</div> |
+      | Resource | Action | Observable Key | Availability |
       | --- | --- | --- | --- |
       | Product | <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-product.created`</li><li>`subscription-product.updated`</li><li>`subscription-product.deleted`</li></ul> | Store |
       | Plan |  <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-plan.created`</li><li>`subscription-plan.updated`</li><li>`subscription-plan.deleted`</li></ul> | Store |
@@ -410,6 +410,18 @@ paths:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
       summary: List products
+      description: |
+        Retrieves a list of all subscription products.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       operationId: ListProducts
       responses:
         '200':
@@ -539,6 +551,18 @@ paths:
       tags:
         - Plans
       summary: List plans
+      description: |
+        Retrieves a list of all subscription plans.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -671,6 +695,19 @@ paths:
       tags:
         - Offerings
       summary: List offerings
+      description: |
+        Retrieves a list of all subscription offerings.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
+        | `in` | `external_product_refs` | In. Checks if the values are included in the specified string. If they are, the condition is true. |
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -703,26 +740,26 @@ paths:
       summary: Build an offering
       description: |
         An offering includes a product and plans; a product is combined with one or more plans to form an offering. An offering can have only one product. An offering can include either:
+         
+        - a subscription product. See [**create a product**](/docs/api/subscriptions/create-product).
+        - a Product Experience Manager product. See [**create a product**](/docs/api/pxm/products/create-product).
+         
+        Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
 
-        - a subscription product. See [**create a product**](#tag/Products/operation/CreateProduct).
-        - a Product Experience Manager product. See [**create a product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product).
-
-         Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
-
-         When you are building an offering:
+        When you are building an offering:
 
         - you can create new plans and products.
         - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
-
-         Here's how you build an offering:
-
+         
+        Here's how you build an offering:
+         
         1. Specify the product to build with the offering. A product can be:
-
-            - a subscription product. Specify the subscription product attributes. 
-            - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
-
+         
+             - a subscription product. Specify the subscription product attributes. 
+             - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
+         
         2. Specify the plans to build with the offering. Plans are the rules that govern your subscription, for example, any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.
-         An offering must have at least one plan.
+          An offering must have at least one plan. 
       operationId: BuildOffering
       requestBody:
         content:
@@ -1208,7 +1245,20 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Include'
       operationId: ListSubscriptions
+      description: |
+        Retrieves a list of all subscriptions.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `account_id`, `name`, `email`, `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       responses:
         '200':
           description: Success. A list of subscriptions is returned.
@@ -1221,6 +1271,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Subscription'
+                  included:
+                    $ref: '#/components/schemas/SubscriptionIncludes'
                   links:
                     $ref: '#/components/schemas/Links'
         '400':
@@ -1236,6 +1288,8 @@ paths:
         schema:
           $ref: '#/components/schemas/UUID'
     get:
+      parameters:
+        - $ref: '#/components/parameters/Include'
       tags:
         - Subscriptions
       summary: Get subscription
@@ -1250,6 +1304,70 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/Subscription'
+                  included:
+                    $ref: '#/components/schemas/SubscriptionIncludes'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscriptions/{subscription_uuid}/products:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: List subscription products
+      operationId: ListSubscriptionProducts
+      responses:
+        '200':
+          description: Success. A list of subscription products is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingProduct'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscriptions/{subscription_uuid}/plans:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: List subscription plans
+      operationId: ListSubscriptionPlans
+      responses:
+        '200':
+          description: Success. A list of subscription plans is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingPlan'
         '400':
           $ref: '#/components/responses/ValidationError'
         '404':
@@ -1393,6 +1511,18 @@ paths:
       tags:
         - Jobs
       summary: List jobs
+      description: |
+        Retrieves a list of all jobs.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -1666,6 +1796,18 @@ paths:
       tags:
         - Invoices
       summary: List invoices
+      description: |
+        Retrieves a list of all invoices.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator |Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `subscriber_id`, `subscription_id`, `outstanding`, `tax_required` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/PageOffset'
@@ -1786,6 +1928,18 @@ paths:
       tags:
         - Schedules
       summary: List schedules
+      description: |
+        Retrieves a list of all schedules.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -1924,6 +2078,18 @@ paths:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
       operationId: ListSubscribers
+      description: |
+        Retrieves a list of all subscribers.
+
+        ### Filtering
+
+        This endpoint supports filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+
+        The following attributes and operators are supported.
+
+        | Operator | Attribute | Description |
+        | --- | --- | --- | 
+        | `eq` | `account_id`, `name`, `email`, `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
       responses:
         '200':
           description: Success. A list of subscribers is returned.
@@ -2059,7 +2225,7 @@ components:
       required: false
       schema:
         type: string
-        description: A comma-separated list of resources to include. See [Characteristics of Include Parameter](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes#characteristics-of-include-parameter).
+        description: A comma-separated list of resources to include. See [Characteristics of Include Parameter](/docs/commerce-cloud/api-overview/includes#characteristics-of-include-parameter).
         example: products,plans
     Filter:
       name: filter
@@ -2068,10 +2234,12 @@ components:
       schema:
         type: string
         format: string
+        description: |
+          Some Subscriptions API endpoints support filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering), but you must go to a specific endpoint to understand the attributes and operators an endpoint supports.
         example: eq(name,Alan Turing)
     PageOffset:
       name: page[offset]
-      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [page length](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [page length](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       in: query
       required: false
       schema:
@@ -2082,7 +2250,7 @@ components:
         example: 10
     PageLimit:
       name: page[limit]
-      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the [page length](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the [page length](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       in: query
       required: false
       schema:
@@ -2593,7 +2761,7 @@ components:
         main_image:
           type: string
           format: uri
-          description: A URL from which an image or file for the product can be fetched. You can either upload your images and files to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](https://elasticpath.dev/docs/pxm/products/product-assets/create-a-file) to upload your file and return an HREF link in the response. An extensive range of [**media and file extensions**](https://elasticpath.dev/docs/pxm/products/product-assets/files-overview) are supported.
+          description: A URL from which an image or file for the product can be fetched. You can either upload your images and files to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](/docs/api/pxm/files/create-a-file) to upload your file and return an HREF link in the response. An extensive range of [**media and file extensions**](/docs/api/pxm/files/files-service-api) are supported.
           maxLength: 1024
           example: https://magazine.com/cover.jpg
         price:
@@ -2625,7 +2793,7 @@ components:
         main_image:
           type: string
           format: uri
-          description: A URL from which an image or file for the product can be fetched. You can either upload your images and files to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](https://elasticpath.dev/docs/pxm/products/product-assets/create-a-file) to upload your file and return an HREF link in the response. An extensive range of [**media and file extensions**](https://elasticpath.dev/docs/pxm/products/product-assets/files-overview) are supported.
+          description: A URL from which an image or file for the product can be fetched. You can either upload your images and files to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](/docs/api/pxm/files/create-a-file) to upload your file and return an HREF link in the response. An extensive range of [**media and file extensions**](/docs/api/pxm/files/files-service-api) are supported.
           maxLength: 1024
           example: https://magazine.com/cover.jpg
           nullable: true
@@ -3000,7 +3168,7 @@ components:
         timestamps:
           $ref: '#/components/schemas/Timestamps'
     OfferingPlanAttach:
-      description: A list of plan IDs to attach to the offering. See [**List Plans**](#tag/Plans/operation/ListPlans).
+      description: A list of plan IDs to attach to the offering. See [**List Plans**](/docs/api/subscriptions/list-plans).
       required:
         - plans
       properties:
@@ -3010,7 +3178,7 @@ components:
           items:
             $ref: '#/components/schemas/UUID'
     OfferingProductAttach:
-      description: A list of product IDs to attach to the offering. See [**List Products**](#tag/Products/operation/ListProducts).
+      description: A list of product IDs to attach to the offering. See [**List Products**](/docs/api/subscriptions/list-products).
       required:
         - products
       properties:
@@ -3020,7 +3188,7 @@ components:
           items:
             $ref: '#/components/schemas/UUID'
     OfferingProductReplace:
-      description: A list of product IDs to replace on the offering. See [**List Products**](#tag/Products/operation/ListProducts).
+      description: A list of product IDs to replace on the offering. See [**List Products**](/docs/api/subscriptions/list-products).
       required:
         - products
       properties:
@@ -3128,6 +3296,17 @@ components:
           $ref: '#/components/schemas/Relationships'
         meta:
           $ref: '#/components/schemas/SubscriptionMeta'
+    SubscriptionIncludes:
+      readOnly: true
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferingProduct'
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferingPlan'
     SubscriptionMeta:
       readOnly: true
       required:
@@ -3218,13 +3397,9 @@ components:
       description: |
         The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product.
 
-        A subscription can have the following states:
+        A subscription can have the following states; `canceled`, `paused`, or `resumed`.
 
-        - canceled
-        - paused
-        - resumed
-
-        See [**Managing the subscription lifecycle**](#managing-the-subscription-lifecycle).
+        See [**Managing the subscription lifecycle**](/docs/api/subscriptions/subscriptions#managing-the-subscription-lifecycle).
       example: cancel
       enum:
         - cancel
@@ -3258,24 +3433,18 @@ components:
         meta:
           $ref: '#/components/schemas/StateMeta'
     PaymentAuthority:
-      discriminator:
-        propertyName: type
-        mapping:
-          elastic_path_payments_stripe: '#/components/schemas/PaymentAuthorityEpPayments'
-      oneOf:
-        - $ref: '#/components/schemas/PaymentAuthorityEpPayments'
-    PaymentAuthorityEpPayments:
       required:
         - type
         - customer_id
         - card_id
       properties:
         type:
-          description: The name of the payment gateway facilitating the secure transmission of payment data. Always `elastic_path_payments_stripe`.
+          description: The name of the payment gateway facilitating the secure transmission of payment data.
           type: string
           example: elastic_path_payments_stripe
           enum:
             - elastic_path_payments_stripe
+            - authorize_net
         customer_id:
           description: The unique identifier for a customer.
           type: string
@@ -3376,6 +3545,73 @@ components:
           $ref: '#/components/schemas/OwnerMeta'
         timestamps:
           $ref: '#/components/schemas/JobTimestamps'
+        report:
+          $ref: '#/components/schemas/JobReport'
+    JobReport:
+      description: A job report summarizes the work done by the job.
+      oneOf:
+        - $ref: '#/components/schemas/BillingRunReport'
+        - $ref: '#/components/schemas/TaxRunReport'
+        - $ref: '#/components/schemas/PaymentRunReport'
+    BillingRunReport:
+      required:
+        - invoices_ready_for_payment
+        - invoices_tax_required
+        - invoice_failures
+        - total_ready_for_payment
+        - total_tax_required
+      properties:
+        invoices_ready_for_payment:
+          description: The total number of invoices created that are ready for payment.
+          type: integer
+          example: 100
+        invoices_tax_required:
+          description: The total number of invoices created that need taxes to be applied before thay can be paid.
+          type: integer
+          example: 100
+        invoice_failures:
+          description: The total number of invoices that were scheduled but creation failed.
+          type: integer
+          example: 0
+        total_ready_for_payment:
+          allOf:
+            - description: The total amount ready for pauyment invoiced in the billing run, segmented by currency.
+            - $ref: '#/components/schemas/Price'
+        total_tax_required:
+          allOf:
+            - description: The total amount (minus tax) invoiced in the billing run but still requiring taxes, segmented by currency.
+            - $ref: '#/components/schemas/Price'
+    TaxRunReport:
+      required:
+        - invoices_updated
+        - invoice_failures
+      properties:
+        invoices_updated:
+          description: The total number of invoices to which tax was successfully added
+          type: integer
+          example: 100
+        invoice_failures:
+          description: The total number of invoices that tax could not be added to
+          type: integer
+          example: 0
+    PaymentRunReport:
+      required:
+        - total_payment_attempts
+        - failed_payments
+        - total_collected
+      properties:
+        total_payment_attempts:
+          description: The total number of invoices for which payment was attempted.
+          type: integer
+          example: 100
+        failed_payments:
+          description: The number of failed payment attempts.
+          type: integer
+          example: 0
+        total_collected:
+          allOf:
+            - description: The total amount collected by the payment run, segmented by currency.
+            - $ref: '#/components/schemas/Price'
     JobTimestamps:
       allOf:
         - $ref: '#/components/schemas/Timestamps'
@@ -3868,7 +4104,7 @@ components:
           example: Daily billing run.
         specification:
           type: string
-          description: A cron-style specification of when the jobs should be created. See [**Schedules**](#tag/Schedules).
+          description: A cron-style specification of when the jobs should be created. See [**Schedules**](/docs/api/subscriptions/schedules).
           maxLength: 1024
           example: 30 0 * * *
         location:

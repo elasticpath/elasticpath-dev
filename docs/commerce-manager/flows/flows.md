@@ -1,5 +1,5 @@
 ---
-title: Creating Flows in Commerce Manager
+title: Creating Flows
 nav_label: Creating Flows
 sidebar_position: 3
 ---

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Inventories
+  title: Inventories Introduction
   description: |
     The Inventory API allows you to manage stock for products at both organization and store levels. 
     
@@ -13,9 +13,11 @@ info:
     - **Available**: The amount of product available in stock minus allocated products. (Available = Total - Allocated)
     - **Allocated**: The amount of reserved product in stock.
     
-    >**Note**:
-    >
-    >In Commerce Manager, you can manage the inventory while creating a new product in Product Experience Manager. Go to **Products** > **Inventory** and you can specify the inventory details (**allocate**, **deallocate**, **increment**, and **decrement**). 
+    :::note
+    
+    In Commerce Manager, you can manage the inventory while creating a new product in Product Experience Manager. Go to **Products** > **Inventory** and you can specify the inventory details (**allocate**, **deallocate**, **increment**, and **decrement**). 
+    
+    :::
     
     ### Order flow
 
@@ -30,16 +32,16 @@ info:
 
     The following flowchart depicts the process of an unpaid order.
 
-        ![The order is created from the cart during the checkout process.](/assets/order-flow.png)
+    ![The order is created from the cart during the checkout process.](/assets/order-flow.png)
 
     #### Payment flow
 
     The following flowchart depicts the process of paying for an order.
 
-        ![The payment workflow.](/assets/payment-workflow-1.png)
+    ![The payment workflow.](/assets/payment-workflow-1.png)
 
     ### How stock is managed
-
+    
     Stock is managed as follows:
 
     1. When a customer attempts to add products to a cart, the inventory service checks if there is enough available stock. If there is not enough stock available, you receive a 400 HTTP response with a warning. The response does not describe what products cannot be added, nor does it return how many products are in stock.
@@ -74,9 +76,9 @@ tags:
 
       You can specify an initial stock level when you create a product. The stock is set to `0` by default.
       
-      >**Warning**:
-      >
-      >You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
+      ::: warning
+      
+      You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
 
   - name: Transactions
     description: Methods to allow you to modify and view a products stock via transactions.
