@@ -1,7 +1,7 @@
 ---
-title: Integrations (Event Subscriptions/Notifications) in Commerce Manager
-nav_label: Integrations (Event Subscriptions/Notifications) in Commerce Manager
-sidebar_position: 110
+title: Integrations
+nav_label: Integrations
+sidebar_position: 10
 ---
 
 You can view your store’s integrations on the **SYSTEM > Store Settings > Webhooks** tab.

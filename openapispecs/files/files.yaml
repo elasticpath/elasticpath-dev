@@ -4,11 +4,11 @@ info:
   description: |
     Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details. You can do this using the Files API.
 
-     Once you have created your files, you associate the files with your products using the Create Product-File Relationships API.
-  title: Files Service API
+     Once you have created your files, you associate the files with your products using the [Create Product-File Relationships API](/docs/api/pxm/products/create-product-file-relationships).
+  title: Files Introduction
   version: '1.0'
 servers:
-  - url: https://api.moltin.com
+  - url: https://https://euwest.api.elasticpath.com
     description: EU West Production Server
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
@@ -45,7 +45,21 @@ paths:
       tags:
         - Files
       summary: Get all Files
-      description: Get all Files
+      description: |
+        Retrieves all files. 
+
+        ### Filtering
+         
+        For general filtering syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+         
+        The following operators and attributes are available when filtering on this endpoint.
+         
+        | Attribute             | Type      | Operators           | Example |
+        |:----------------------|:----------|:--------------------------|:-------------|
+        | `file_name`           | `string`  | `eq` / `like`             | `eq(file_name, my_image.jpg)` |
+        | `width`               | `integer` | `gt` / `ge` / `lt` / `le` | `gt(width,200)` |
+        | `height`              | `integer` | `gt` / `ge` / `lt` / `le` | `lt(height,500)` |
+        | `file_size`           | `integer` | `gt` / `ge` / `lt` / `le` | `le(file_size,20953)` |
       operationId: getAllFiles
       parameters:
         - $ref: '#/components/parameters/filter'
@@ -245,14 +259,8 @@ components:
   parameters:
     filter:
       description: |
-        The following operators and attributes are available when filtering on this endpoint.
 
-        | Attribute             | Type      | Operators           | Example |
-        |:----------------------|:----------|:--------------------------|:-------------|
-        | `file_name`           | `string`  | `eq` / `like`             | `eq(file_name, my_image.jpg)` |
-        | `width`               | `integer` | `gt` / `ge` / `lt` / `le` | `gt(width,200)` |
-        | `height`              | `integer` | `gt` / `ge` / `lt` / `le` | `lt(height,500)` |
-        | `file_size`           | `integer` | `gt` / `ge` / `lt` / `le` | `le(file_size,20953)` |
+        Filtering is available for this endpoint. See [Filtering](/docs/api/pxm/files/get-all-files#filtering).
       name: filter
       in: query
       required: false
@@ -263,7 +271,7 @@ components:
     page-offset:
       name: page[offset]
       in: query
-      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       style: form
       explode: true
       schema:
@@ -274,7 +282,7 @@ components:
         examples:
           - '0'
     page-limit:
-      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       name: page[limit]
       in: query
       style: form
@@ -385,7 +393,7 @@ components:
         self:
           description: Single entities use a self parameter with a link to that specific resource.
           type: string
-          example: https://api.moltin.com/v2/files/ddc28c74-a7df-46be-b262-8fa69a6e7d52
+          example: https://https://euwest.api.elasticpath.com//v2/files/ddc28c74-a7df-46be-b262-8fa69a6e7d52
     ResultsLinks:
       type: object
       description: Links are used to allow you to move between requests.

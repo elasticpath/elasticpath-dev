@@ -1,6 +1,6 @@
 ---
-title: Creating an Application Key in Commerce Manager
-nav_label: Creating an Application Key in Commerce Manager
+title: Creating an Application Key 
+nav_label: Creating an Application Key
 sidebar_position: 60
 ---
 
