@@ -19,7 +19,7 @@ A typical use case for product tags is to categorize your products based on colo
    - enter a tag and press **Enter**. Repeat this step for each tag you want to use. 
    - select **View as a comma separated list** and enter a comma separated list of tags. 
 
-    ![product tags](/assets/product_tags.png)
+![product tags](/assets/product_tags.png)
 
 1. Depending on your requirements, select either **Save & Exit** or **Next**.
 

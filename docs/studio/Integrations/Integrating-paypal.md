@@ -22,7 +22,7 @@ Follow these steps to configure the PayPal integration in Studio.
     The **PayPal settings** page is displayed.
 4. In the **Client ID** field, enter Client ID of your Paypal developer account. To find your Client ID, login into your PayPal account, go to your profile, and select **Account** > **Apps & Credentials** tab.
 
-    ![paypal client id](/assets/paypal-client-id.png)
+![paypal client id](/assets/paypal-client-id.png)
 
 5. In the **Country Code of Account** field, enter the country code of your region.
 6. Select **Connect Account** to successfully integrate PayPal into Studio.

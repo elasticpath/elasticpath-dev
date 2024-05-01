@@ -27,7 +27,7 @@ When creating a product in Product Experience Manager for a subscription, you ca
 7. Follow the instructions described in [Creating Offerings](/docs/commerce-manager/subscriptions/offerings/creating-offerings) to create your offering.
 8. You must select **Save** for your changes to take effect. If you select **Save & Exit** before selecting **Save**, your changes are lost.
 
-        ![PXM Subscription product](/assets/subscription_pxm.png)
+    ![PXM Subscription product](/assets/subscription_pxm.png)
 
 9. Select **Save & Exit** or **Next** depending on your requirements. 
 10. You can edit a product or service at any time by selecting **...** > **Edit** on the product you want to edit.

@@ -13,8 +13,8 @@ your [Blog Settings](/docs/studio/content/Blog-Management) to provide readers wi
 navigation items to help them quickly navigate through your articles. Once enabled, you'll see your table of contents in
 your article as long as there are multiple text items is styled as **H2**'s in the article body.
 
-    ![Enabling Table of Contents](/assets/studio/screely-1653063694125.png)
-    ![Publishing Table of Contents ](/assets/studio/screely-1653063925349.png)
+![Enabling Table of Contents](/assets/studio/screely-1653063694125.png)
+![Publishing Table of Contents ](/assets/studio/screely-1653063925349.png)
 
 ## Side Note
 

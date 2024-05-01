@@ -17,7 +17,7 @@ which will show you how your pages are performing.
 
 The graph depicting site performance is broken down by three specific metrics: Page Views, Uniques, and Sessions.
 
-    ![Traffic Metrics](/assets/studio/Traffic_1.png)
+![Traffic Metrics](/assets/studio/Traffic_1.png)
 
 - **Page Views**: Times a page is viewed by a user.
 - **Uniques**: Number of unique users.
@@ -61,30 +61,30 @@ The graph depicting site performance is broken down by three specific metrics: P
 
 A representation of the path your visitors go on before converting.
 
-    ![Conversions](/assets/studio/Conversions_1.png)
+![Conversions](/assets/studio/Conversions_1.png)
 
 See screenshots below for examples:
 
-    ![Conversion Paths](/assets/studio/Getting_Started_Unstack_Insights__6_.png)
+![Conversion Paths](/assets/studio/Getting_Started_Unstack_Insights__6_.png)
 
 This is going over the source someone came from and the pages they viewed before converting via a form submission.
 
-    ![Source Path](/assets/studio/Getting_Started_Unstack_Insights__7_.png)
+![Source Path](/assets/studio/Getting_Started_Unstack_Insights__7_.png)
 
 Like engagement, you can toggle to sort visits and conversions numbers.
 
-    ![Getting_Started_Unstack_Insights__9_.gif](/assets/studio/Getting_Started_Unstack_Insights__9_.gif)
+![Getting_Started_Unstack_Insights__9_.gif](/assets/studio/Getting_Started_Unstack_Insights__9_.gif)
 
 New from conversion paths you can toggle between conversion paths for organic traffic and paid.
 
-    ![Unstack Insights](/assets/studio/Getting_Started_Unstack_Insights__10_.gif)
+![Unstack Insights](/assets/studio/Getting_Started_Unstack_Insights__10_.gif)
 
 ## Sources
 
 An overview of where your site traffic is coming from and the revenue/lead attribution as provided by Studio CRM and
 Stripe integration.
 
-    ![Source](/assets/studio/Source_1_v2.png)
+![Source](/assets/studio/Source_1_v2.png)
 
 This is the same for all other units (i.e., source and page)
 

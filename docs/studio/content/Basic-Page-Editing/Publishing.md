@@ -7,7 +7,7 @@ sidebar_position: 100
 The final step in the page creation process is to make your page accessible to external users. In Studio we refer to
 this process as "publishing" your page.
 
-    ![Publishing Page Settings](/assets/studio/mceclip1.png)
+![Publishing Page Settings](/assets/studio/mceclip1.png)
 
 **How to publish a page**
 

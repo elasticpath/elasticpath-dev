@@ -16,7 +16,7 @@ countdown component and a number of bug fixes.
 This component allows our users to add a countdown clock/timer to their pages. Crucial for Black Friday, it was a
 priority for us to get this out before November.
 
-    ![Add Countdown Clock](/assets/studio/11254816877463.png)
+![Add Countdown Clock](/assets/studio/11254816877463.png)
 
 ## Complete List of Resolved Items
 

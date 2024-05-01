@@ -10,14 +10,14 @@ sidebar_position: 70
 
 When adding links to text, you simply, highlight the text you would like to link and click the 🔗 icon in the toolbar.
 
-    ![Highlighting Text](/assets/studio/screely-1638303207965.png)
+![Highlighting Text](/assets/studio/screely-1638303207965.png)
 
 :::note
 You can either use full URLs for links or you can
 use [smart links](/docs/studio/content/Basic-Page-Editing/Smart-Links).
 :::
 
-    ![URL](/assets/studio/Hyperlinking_text_2.png)
+![URL](/assets/studio/Hyperlinking_text_2.png)
 
 :::note
 Make sure to click the checkmark symbol to bind the link to the text you highlighted!
@@ -27,11 +27,11 @@ Make sure to click the checkmark symbol to bind the link to the text you highlig
 
 To set a link to open in a new tab, click the new tab icon shown below. It'll highlight blue when enabled.
 
-    ![](/assets/studio/Hyperlinking_text_3.png)
+![](/assets/studio/Hyperlinking_text_3.png)
 
 ## Removing a hyperlink
 
 To remove the hyperlink, re-highlight the text you linked, click the link icon, and click the X button.
 
-    ![Removing Hyperlink](/assets/studio/Hyperlinking_text_4.png)
+![Removing Hyperlink](/assets/studio/Hyperlinking_text_4.png)
 

@@ -15,7 +15,7 @@ Lots of small fixes in this release and other useful changes.
 You'll notice that a snazzy new UX complete with animations. Content has also been slightly reorganized according to new
 information architecture.
 
-    ![New Navigation Structure](/assets/studio/navigation.gif)
+![New Navigation Structure](/assets/studio/navigation.gif)
 
 **Tracking form landing page to checkout**
 This is a critical part of our ability to deliver in-depth metrics to merchants and is our first step towards rolling

@@ -11,5 +11,5 @@ In the current build of Studio you are unable to separately customize the color 
 Instead, the Header and Footer settings that are used for regular Studio website pages share the same colors/styles
 with landing pages.
 
-    ![Header Color Adjustment Attributes](/assets/studio/Landing_page_header_1.png)
+![Header Color Adjustment Attributes](/assets/studio/Landing_page_header_1.png)
 

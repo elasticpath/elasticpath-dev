@@ -9,11 +9,11 @@ sidebar_position: 30
 Adjusting a section to compensate for a light or dark background can be done in the main toolbar. To do this, simply
 select the correct T icon.
 
-    ![T Icon](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5eb1c1262c7d3a5ea54a83d1file-NIlhLyt2wr.png)
+![T Icon](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5eb1c1262c7d3a5ea54a83d1file-NIlhLyt2wr.png)
 
 The white "T" with a black background is used to toggle lighter text/element colors when the background is darker.
 
-    ![Dark Background](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5eb1c155042863474d1a2f5afile-iK4vWcQBGr.png)
+![Dark Background](/assets/studio/d33v4339jhl8k0.cloudfront.netdocsassets5e4848762c7d3a7e9ae7ce2dimages5eb1c155042863474d1a2f5afile-iK4vWcQBGr.png)
 
 The black "T" with a white background is used to toggle darker text/element colors when the background is lighter.
 

@@ -38,7 +38,7 @@ If showing "Pending" within Studio, this could be due to leaving proxying on (in
 of the DNS record).  
 You can disable this by clicking "Edit >" then clicking "Proxied".
 
-    ![Click Proxied](/assets/studio/Screen_Recording_2021-02-01_at_02.56.53_PM.gif)
+![Click Proxied](/assets/studio/Screen_Recording_2021-02-01_at_02.56.53_PM.gif)
 
 Please
 reference [this document](https://support.cloudflare.com/hc/en-us/articles/360019093151-#h_60566325041543261564371) from

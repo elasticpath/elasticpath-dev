@@ -14,12 +14,12 @@ Note that only the Account Owner and Administrator are able to make changes to t
 
 1. Navigate to **Settings** > **General**. 
 
-     ![User Role Step 1](/assets/studio/User_roles_step_1.png)
+ ![User Role Step 1](/assets/studio/User_roles_step_1.png)
 
 2. Click on the symbol in the below screenshot to access team member details to change roles.
 
-     ![User Roles Step 2](/assets/studio/User_roles_step_2.png)
+ ![User Roles Step 2](/assets/studio/User_roles_step_2.png)
 
 3. Click on the "Role" dropdown and make whatever change you need to make. See [User Role Definitions](/docs/studio/Settings/account-management/User-Role-Definitions) for the various permissions that each role has.
 
-    ![User Roles Step 3](/assets/studio/User_roles_step_3.png)
+![User Roles Step 3](/assets/studio/User_roles_step_3.png)

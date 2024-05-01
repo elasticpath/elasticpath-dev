@@ -14,7 +14,7 @@ Similar to the product index page the collections index will help users see the 
 CX-Studio. This should help us debug sync issues and give users greater confidence in understanding what CX-Studio has
 pulled in from Shopify.
 
-    ![Collections Index](/assets/studio/Collections.png)
+![Collections Index](/assets/studio/Collections.png)
 
 ## Complete List of Resolved Items
 

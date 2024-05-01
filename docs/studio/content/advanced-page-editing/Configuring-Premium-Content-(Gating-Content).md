@@ -13,12 +13,12 @@ When a page is enabled as premium, users must register a free account to view th
 1. View any Studio page/article after upgrading to Full+ and access your settings using the gear icon in the top right-hand corner.
 2. In your settings, scroll down until you see the dropdown box with the titled "Designate this as premium content?" and select the option "Yes".
 
-     ![Example of Gated Content](/assets/studio/11151386722839.png)  
-     ![Designating Premium Content](/assets/studio/11151377832087.png)
+ ![Example of Gated Content](/assets/studio/11151386722839.png)  
+ ![Designating Premium Content](/assets/studio/11151377832087.png)
 
 Below is an example of what users see when they visit a page that has been gated.
 
-     ![Signing in for Viewing Gated Content](/assets/studio/screely-1644339081147.png)
+ ![Signing in for Viewing Gated Content](/assets/studio/screely-1644339081147.png)
 
 ## Create an account?
 

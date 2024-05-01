@@ -13,7 +13,7 @@ Filters in Commerce Manager have the following characteristics.
 - You can configure more than one filter at a time. For example, you may want to find all products whose name start with **T-Shirt** and whose SKU is like **287**. A chain of filters must not exceed 10 filters.
 - Filters  must not exceed 8KB.  This is equal to approximately, for example, 200 IDs when using a `list` filter.
 
-    ![filter restriction](/assets/filter_restriction.png)
+![filter restriction](/assets/filter_restriction.png)
 
 - Filtering in Commerce Manager is case-sensitive. However, filtering on SKU is not case-sensitive.
 - Filters do not work with attributes that contain commas. For example, filtering on this product name does not return any products: 
@@ -103,7 +103,7 @@ The following steps describe how to create a filter.
  
     Commerce Manager displays the number of products that match your filter.
 
-    ![Product Filtering](/assets/cm_filtering.gif)
+![Product Filtering](/assets/cm_filtering.gif)
 
 1. Your filters are retained even when you navigate away from the filter results. You can remove your filters at any time by, either, removing an individual filter or, clicking **Clear All**.
 

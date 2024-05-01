@@ -14,7 +14,7 @@ From within the page editor the padding of a page element can be adjusted for bo
 the padding in the corresponding device editor. Simply select the section or block you want to edit in the device
 editor, select "Size and Spacing" from the toolbar, and click into "Padding" to make the change.
 
-    ![Size and Spacing](/assets/studio/12420876921623.png)
+![Size and Spacing](/assets/studio/12420876921623.png)
 
 ## Account Defaults
 
@@ -25,5 +25,5 @@ or mobile devices.
 Default padding will only be applied when the "default padding" toggle is enabled on a section or block. If this is not
 toggled, then any changes to your default padding will not be applied to this section.
 
-    ![Style Guide](/assets/studio/9704513200151.png)
-    ![Default Padding Options](/assets/studio/9704513171735.png)
+![Style Guide](/assets/studio/9704513200151.png)
+![Default Padding Options](/assets/studio/9704513171735.png)

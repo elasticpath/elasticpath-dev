@@ -30,6 +30,14 @@ const PRODUCTS = [
     text: 'Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.',
   },
   {
+    title: 'Commerce Extensions',
+    link: '/docs/commerce-cloud/commerce-extensions/overview',
+    icon: BookDatabaseRegular,
+    // lightImage: '/static/landing-page/hero/video-graphic.png',
+    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
+    text: 'Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options.',
+  },
+  {
     title: 'Subscriptions',
     link: '/docs/api/subscriptions/subscriptions-introduction',
     icon: ArrowSyncFilled,
@@ -135,7 +143,7 @@ const PRODUCTS = [
     text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   },
   {
-    title: 'Standard Promotions',
+    title: 'Promotions Standard',
     beta: false,
     link: '/docs/api/promotions/promotions-standard',
     icon: BuildingRetailRegular,

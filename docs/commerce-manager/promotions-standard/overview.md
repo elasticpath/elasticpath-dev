@@ -8,7 +8,7 @@ You can manage promotions on the **STORE > Promotions Standard** page.
 
 ## Creating Promotions
 
-:::warning
+:::caution
 - You cannot change the promotion type or schema after creating a promotion.
 - If you want to restrict the usage of a promotion, do not select the **Automatic** field in promotion setting and ensure that you create a code for the promotion.
 - You can use product ID instead of product SKU to specify products.
@@ -27,7 +27,7 @@ You can manage promotions on the **STORE > Promotions Standard** page.
     - [Item percentage discount Promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/item-percentage-discount-promotions)
     - [Free gift promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions)
 
-:::warning
+:::caution
 - We recommend not to use the **Maximum discount value** setting for the following promotions:
 
     - [Cart-level fixed discount promotions](/docs/commerce-manager/promotions-standard/cart-level-promotions/cart-level-fixed-discount)
@@ -87,7 +87,7 @@ To add a new promotion code, follow these steps:
 
 ### Generating bulk codes
 
-:::warning
+:::caution
 - You can only generate a maximum of 1000 codes for a single promotion.
 - When generating more than 1000 codes, the promotion's duration must be limited to a maximum of 365 days from its start date. If you need to increase the number of promotion codes for a single promotion, reach out to our [customer success team](mailto:customersuccess@elasticpath.com).
 :::
@@ -112,7 +112,7 @@ With bulk generating codes, you can generate large number of unique promotion co
 
     The codes generated for a promotion are displayed on the details page of the promotion.
 
-    :::warning
+    :::caution
     Refresh your Commerce Manager to view the generated codes on the **Promotions Codes** tab.
     :::
 
@@ -157,7 +157,7 @@ You can duplicate an existing promotion and use the details as required in anoth
 
 ## Editing Promotions
 
-:::warning
+:::caution
 - You cannot change the promotion type or schema after creating a promotion.
 - Any changes made to the active and enabled promotion can impact an active promotion that has been already applied to a cart. For example, switching the promotion from automatic to manual, adjusting the discount amount, extending the promotion date, or modifying the schema.
 :::

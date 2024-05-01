@@ -52,7 +52,7 @@ you will no longer be able to add them to new pages.
 We've added a “Sign in here” button for Shopify merchants! Clicking this button will take our merchants to Shopify where
 they can sign in and access Unstack.
 
-    ![]Signing in(/assets/studio/Screen_Shot_2022-08-26_at_12.46.26_PM.png)
+![]Signing in(/assets/studio/Screen_Shot_2022-08-26_at_12.46.26_PM.png)
 
 ## Complete List of Resolved Items
 

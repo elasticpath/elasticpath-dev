@@ -216,7 +216,7 @@ You are ready to configure the SendGrid integration in **Integrations Hub**.
 1. In **Key** type the name of the Commerce event that, when triggered, causes an email to be sent from SendGrid. For example, `order.created` or `customer.created`.
 1. In **Value**, copy the `messagingProvider` object that you want to use when the Commerce event is triggered.
 
-    ![Sendgrid event mapping](/assets/sendgrideventmapping.PNG)
+![Sendgrid event mapping](/assets/sendgrideventmapping.PNG)
 
 1. Click **+ Add value** to add as many key + value pairs as you want.
 1. Click **Finish**. Your integration is enabled.

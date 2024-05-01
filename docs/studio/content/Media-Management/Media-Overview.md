@@ -24,7 +24,7 @@ There are a couple ways you can upload these files:
 
 Like images, PDFs can be uploaded direct to your Media folder by accessing the "Media" tab.
 
-    ![Upload PDF](/assets/studio/Uploading_2.png)
+![Upload PDF](/assets/studio/Uploading_2.png)
 
 ### Alt text
 
@@ -32,14 +32,14 @@ Alt text is a short text description that helps blind or visually-impaired visit
 
 Open the media window and add your alt text to the field shown below.
 
-    ![Alternative Text](/assets/studio/Uploading_4_V2.png)
+![Alternative Text](/assets/studio/Uploading_4_V2.png)
 
 ### Adding a hyperlink to my media
 
 To add a hyperlink your media, edit the photo or video by clicking it, and add the URL you'd like to link to in the
 field shown below:
 
-    ![Adding Hyperlink to Media](/assets/studio/Uploading_5.png)
+![Adding Hyperlink to Media](/assets/studio/Uploading_5.png)
 
 ## Error messages when uploading files
 

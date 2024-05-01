@@ -11,7 +11,7 @@ suggestions to make that page faster.
 
     [Go to PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) 
 
-    ![Example of a PageSpeed Insights report run on Studio.com](/assets/studio/screely-1635539877926.png)
+![Example of a PageSpeed Insights report run on Studio.com](/assets/studio/screely-1635539877926.png)
 
 ## Applying Recommendations
 

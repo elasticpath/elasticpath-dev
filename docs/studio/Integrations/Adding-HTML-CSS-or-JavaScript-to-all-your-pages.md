@@ -15,7 +15,7 @@ follow [this guide on adding code to a page](/docs/studio/content/Basic-Page-Edi
 First, you'll need to open the ***Integrations*** option within Studio. Once open, scroll all the way to the bottom
 where you'll see a button that reads "Add Integration".
 
-    ![Add Custom Integration](/assets/studio/integrations_1.png)
+![Add Custom Integration](/assets/studio/integrations_1.png)
 
 From here, there are three more settings to configure:
 

@@ -4,7 +4,7 @@ nav_label: Item Fixed Discount Promotions
 sidebar_position: 4
 ---
 
-:::warning
+:::caution
 - We recommend not to set maximum discount value for this promotions. Setting maximum discount value for this promotion conflicts with the promotion settings.
 - We recommend to use **Advanced (Conditions v2)** settings.
 :::
@@ -64,7 +64,7 @@ sidebar_position: 4
                 - You can include up to 10 **+OR** conditions.
                 :::
     1. In the **Promotion Exclusions** subsection:
-            :::warning
+            :::caution
              **Promotion Exclusions** subsection is enabled only when you update the **Simplified (Conditions v1)** or **Advanced (Conditions v2)** settings in the **Promotion Conditions** subsection.
             :::
         1. To exclude products from a promotion, do the following:

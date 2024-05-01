@@ -18,7 +18,7 @@ For one, if we have already recorded a user's "Company" name via a form, then we
 this value through the addition of `{{ contact.company }}`. It should be noted that if we have not yet recorded the
 user's company name, then this variable returns as blank and nothing is added to the CTA.
 
-     ![Contact Company in Header](/assets/studio/our_header.png) 
+ ![Contact Company in Header](/assets/studio/our_header.png) 
 
 Another example of how this feature can be utilized is showcased in the below landing page.
 
@@ -27,7 +27,7 @@ variable with a value that's defined in the page URL. In this case we need to re
 append that string to the end of our URL. If we don't, then the "headaches" portion of `{{ cms|headaches }}` will be
 added as the default value that should appear since a value for "cms" isn't defined.
 
-     ![Dymanic Content in Page Header](/assets/studio/newhomepage.png)
+ ![Dymanic Content in Page Header](/assets/studio/newhomepage.png)
 
 In this example, visiting `https://www.unstack.com/ex-dynamic-content?cms=WordPress`
 or  `https://www.unstack.com/ex-dynamic-content?cms=Wix` or `https://www.unstack.com/ex-dynamic-content`will show the
@@ -35,15 +35,15 @@ same page, but different text in the header. (See below)
 
 `https://www.unstack.com/ex-dynamic-content?cms=WordPress`
 
-    ![Dynamic Content in Page Header](/assets/studio/cms-wordpress.png)
+![Dynamic Content in Page Header](/assets/studio/cms-wordpress.png)
 
 `https://www.unstack.com/ex-dynamic-content?cms=Wix`
 
-    ![Dynamic Content in Page Header](/assets/studio/cms-wix.png)
+![Dynamic Content in Page Header](/assets/studio/cms-wix.png)
 
 `https://www.unstack.com/ex-dynamic-content`
 
-    ![Dynamic Content in Page Header](/assets/studio/cms-undefined.png)
+![Dynamic Content in Page Header](/assets/studio/cms-undefined.png)
 
 ##         
 
@@ -100,7 +100,7 @@ values of your custom fields.
 To pull in the data collected by any custom fields you'll need to assign that field a specific name within the field's
 settings.
 
-    ![Field Name Assignment](/assets/studio/field_name.png)
+![Field Name Assignment](/assets/studio/field_name.png)
 
 In the above example, you'd add the value of this field on a page by adding the parameter shown below to a page:
 

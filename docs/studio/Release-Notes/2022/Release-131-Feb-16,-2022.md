@@ -22,14 +22,14 @@ component that text spills down the page creating an odd unbalanced view.
 
 In this release, we rolled out a change that hides the text behind a “Read more” link if it is longer than 5 lines.
 
-    ![Read More LInk](/assets/studio/read-more.gif)
+![Read More LInk](/assets/studio/read-more.gif)
 
 **Resize-only for media**
 
 We’ve had a number of issues with image optimization being too aggressive so we’ve changed the default when adding media
 to Resize only.
 
-    ![Media Resizing](/assets/studio/Screen_Shot_2022-02-24_at_11.02.11_AM.png)
+![Media Resizing](/assets/studio/Screen_Shot_2022-02-24_at_11.02.11_AM.png)
 
 **Deleting users & accounts**
 

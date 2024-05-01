@@ -4,7 +4,7 @@ nav_label: Cart-level Percentage Discount Promotions
 sidebar_position: 2
 ---
 
-:::warning
+:::caution
 - The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
 - We recommend to use **Advanced (Conditions v2)** settings.
 

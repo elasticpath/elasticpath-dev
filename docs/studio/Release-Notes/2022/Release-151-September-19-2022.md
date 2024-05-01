@@ -15,7 +15,7 @@ This release was a move back to our weekly release cadence and included a some U
 Previously we didn't have an easy way for our users to easily get back to Shopify from Unstack. The addition of this
 button fixes this and provides an easy way for them to return to Shopify when they might need to.
 
-    ![Navigate Back to Shopify](/assets/studio/11074082508055.png)
+![Navigate Back to Shopify](/assets/studio/11074082508055.png)
 
 ## Complete List of Resolved Items
 

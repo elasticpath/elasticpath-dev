@@ -22,7 +22,7 @@ within Unstack.
 We're also detecting the kit ID from their company website or Shopify store and auto-enabling the integration during
 onboarding.
 
-    ![Typekit](/assets/studio/Screen_Shot_2021-11-30_at_4.00.27_PM.png)
+![Typekit](/assets/studio/Screen_Shot_2021-11-30_at_4.00.27_PM.png)
 
 **Better onboarding**
 

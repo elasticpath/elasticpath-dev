@@ -26,7 +26,7 @@ If you have configured the following for your products in Product Experience Man
 
 Finally, Product Experience Manager product types are now displayed in the product details and product collection pages in Studio.
 
-    ![EPCC sale pricing](/assets/studio/producttypes.png)
+![EPCC sale pricing](/assets/studio/producttypes.png)
 
 ### Products and Collections
 

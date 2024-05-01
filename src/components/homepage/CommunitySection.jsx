@@ -5,24 +5,25 @@ import { Linkedin, Twitter } from 'react-feather';
 import { DiscordIcon } from '@site/src/icons';
 
 const githubUsernames = [
-  'vaibhavshn',
-  'akigugale',
-  'roerohan',
-  'thebongy',
-  'alias-rahil',
-  'AshishKumar4',
-  'anunaym14',
-  'tarushnagpal',
-  'ishita1805',
+  'cheeryfella',
+  'steve-r-west',
+  'rostyk-kanafotskyy',
+  'jbrockmeyer',
+  'long-wan-ep',
+  'samblacklock',
+  'yasiloghmani',
+  'cjmarkham',
+  'mwan-ep',
+  'dazadep',
   'madhugb',
-  'mayur-tendulkar',
-  'milapsingh',
+  'gdenning',
+  'field123',
 ];
 
 export default function CommunitySection() {
   return (
-    <section className="no-underline-links">
-      <div className="mx-auto flex w-full flex-col items-center justify-center bg-gradient-to-b from-[#262626] to-black px-4 py-16 pt-64 text-white dark:from-zinc-200/90 dark:to-white dark:text-zinc-700">
+    <section className="no-underline-links pt-16">
+      <div className="mx-auto flex w-full flex-col items-center justify-center bg-gray-900 px-4 py-16 text-white">
         <h2 className="text-3xl">
           Join the <span className="text-primary-100">Elastic Path</span> community
         </h2>
@@ -44,19 +45,13 @@ export default function CommunitySection() {
         <div className="flex w-full flex-col items-center justify-center gap-2 text-sm font-semibold lg:flex-row lg:gap-8">
           <Link
             className="flex w-full items-center justify-center gap-2 rounded-sm border border-solid border-primary-100 bg-primary-100/10 px-2 py-2 text-primary-100 lg:w-auto"
-            href="https://elasticpath_dev"
-          >
-            <DiscordIcon className="h-6 w-6" /> Discord &rarr;
-          </Link>
-          <Link
-            className="flex w-full items-center justify-center gap-2 rounded-sm border border-solid border-primary-100 bg-primary-100/10 px-2 py-2 text-primary-100 lg:w-auto"
             href="https://twitter.com/elasticpath"
           >
             <Twitter className="h-5 w-5" /> Twitter &rarr;
           </Link>
           <Link
             className="flex w-full items-center justify-center gap-2 rounded-sm border border-solid border-primary-100 bg-primary-100/10 px-2 py-2 text-primary-100 lg:w-auto"
-            href="https://www.linkedin.com/company/elasticpathsoftware"
+            href="https://www.linkedin.com/company/elastic-path"
           >
             <Linkedin className="h-5 w-5" /> LinkedIn &rarr;
           </Link>
