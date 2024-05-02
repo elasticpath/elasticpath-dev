@@ -371,6 +371,11 @@ const config = {
               position: 'right',
             },
             {
+              type: 'custom-documate',
+              position: 'right',
+              endpoint: '',
+            },
+            {
               label: 'Get in Touch',
               href: 'https://www.elasticpath.com/get-in-touch',
               position: 'right',
