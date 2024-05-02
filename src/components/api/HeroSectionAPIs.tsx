@@ -105,9 +105,9 @@ const PRODUCTS = [
     text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
   },
   {
-    title: 'Custom Data',
+    title: 'Custom Data (Flows)',
     beta: false,
-    link: '/docs/api/flows/flows-service-introduction',
+    link: '/docs/api/flows/flows-service-api',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
