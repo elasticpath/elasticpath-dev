@@ -122,7 +122,7 @@ Consider the following scenario:
 
 See the following response example:
 
-```
+```json
 {
     "data": [
         {
@@ -508,7 +508,21 @@ See the following response example:
         ]
     }
 }
-```    
+``` 
+
+## Handling both Item SKU and Product ID together in Rule Promotion
+
+Nested conditions allow for more complex rule structures, where conditions are grouped together within other conditions. The use of nested conditions with an `and` strategy is not allowed. At this level of nesting, only an `or` strategy with either an `item_sku` or an `item_product_id` is valid. 
+
+This approach:
+
+- Supports only the `OR` within the `children` array
+- Allows the conditions to be based on either item SKUs or product IDs
+- Supports only the `in` operator for defining this conditions
+
+This method is applicable to both cart-level and item-level discount rule promotions. For an example, illustrating how to create a `or` condition for `item_sku` and `item_product_id` strategy, refer to [Create an Item Percent Discount with Item SKU Or Item Product ID](/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-item-percent-discount-with-item-sku-or-item-productid).
+
+You can include both SKUs and product IDs within the same rule promotion, providing flexibility in defining conditions and accommodating scenarios involving SKUless bundles or products without SKUs.
 
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
@@ -548,6 +562,3 @@ See the following response example:
 - [Promotions Builder in Commerce Manager](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder)
 - [Rule Promotions API](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
 - [Promotion Codes](/docs/commerce-cloud/promotions/promotions-overview#promotion-codes)
-
-
-
