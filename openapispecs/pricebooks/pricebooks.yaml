@@ -1,7 +1,7 @@
-# GENERATED FILE - DO NOT EDIT
+# GENERATED FILE - DO NOT EDIT 
 openapi: 3.0.0
 info:
-  title: Price Book Introduction
+  title: Price Books Introduction
   version: 1.0.0
   description: |
     You can use the price books service to configure your product pricing. Your price books are associated with your catalogs. Creating separate price books enables you to:
@@ -11,9 +11,8 @@ info:
     - Provide personalized pricing by creating personalized price books. For example, pricing for loyalty customers versus new customers.
     - Enable cross-selling and upselling by offering sales and volume pricing for your products.
     - Create price-books based on real-time adjustments such as inventory levels and market conditions.
-    import ProductSection from '/docs/partials/_product-section.mdx';
 servers:
-  - url: https://api.moltin.com
+  - url: https://euwest.api.elasticpath.com
     description: EU West Production Server
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
@@ -30,8 +29,11 @@ tags:
 
       A price book contains a list of product SKUs and the prices you want to charge for those products. If your store supports multiple locales, a price book can contain product prices in each of the supported currencies. In addition, you can configure sales and volume (tier) pricing.
 
-      > **Note**
-      > Price books work with products that are defined using the Product Experience Manager resource model. If your products are defined using an earlier Products resource model, you will need to migrate products to the `pcm/products` resource before you implement price books.
+      :::note
+
+      Price books work with products that are defined using the Product Experience Manager resource model. If your products are defined using an earlier Products resource model, you will need to migrate products to the `pcm/products` resource before you implement price books.
+
+      :::
 
       You can duplicate an existing price book and create a new price book. All products and prices associated with the price book are copied to the new price book. Based on the business requirements, you can use the same data or update the data.
   - name: Prices
@@ -94,7 +96,7 @@ tags:
 
       The following is an overview of the steps you need to follow to use price modifiers.
 
-      1. Create a price modifier. You must give the price modifier a unique name. For more information, see [Create a Price Modifier](/#tag/Price-Book-Modifiers/operation/createPriceModifier).
+      1. Create a price modifier. You must give the price modifier a unique name. For more information, see [Create a Price Modifier](/docs/api/pxm/pricebooks/create-price-modifier).
       1. Build your child products with the new product modifier.
   - name: Price Book Import
     description: |
@@ -123,7 +125,7 @@ tags:
 
       Price book imports are asynchronous. When you send a request to the price book import API, it triggers an asynchronous job to create/update the price books and product prices. You can see the status of a job using Get a job.
 
-      Jobs are processed one at a time. You can continue to send price book import requests, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed. See [Jobs](/docs/pxm/jobs-api/overview).
+      Jobs are processed one at a time. You can continue to send price book import requests, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed. See [Jobs](/docs/api/pxm/products/jobs).
 
       The API works on a "best endeavours" approach. In other words, the API does its best to create/update the price book objects based on the file that you provide. You can then use the results of the job to understand what objects the API created/updated and to troubleshoot any errors. See [Price Book Import API Results](#price-book-import-api-results).
 
@@ -158,7 +160,7 @@ tags:
        
        ### Price Book Import File
        
-       You can create/update price book objects using [Import a Price](#tag/Price-Book-Import/operation/importPricebook).
+       You can create/update price book objects using [Import a Price](/docs/api/pxm/pricebooks/import-pricebook).
        
        The API uses a [JSONL](https://jsonlines.org/) file. The JSONL file can be compressed to a GZIP file. Here is an [example of a JSONL file](/assets/example_file_all.jsonl).
        
@@ -168,7 +170,7 @@ tags:
 
        The following table describes the attributes for a price book object.
 
-       | <div style="width:100px">Attribute</div>| <div style="width:60px">Required</div> | <div style="width:60px">Type</div> | <div style="width:290px">Description</div> |
+       | Attribute | Required | Type | Description |
        | --- | --- | --- | --- |
        | `type` | Required | `string`| Always: `pricebook` |
        | `attributes` | Required | `object` | The attributes for a price book. <ul><li>(Required) `name`</li><ul><li>**Type**: `string`</li><li>**Description**: The name of the price book. Price books must have a unique name.</li></ul><li>(Optional) `id`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique identifier of a price book.</li></ul><li>(Optional) `external_ref`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique attribute associated with the price book. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.</li></ul><li>(Optional) `description`</li><ul><li>**Type**: `string`</li><li>**Description**: A description for the price book. For example, the purpose for the price book, such as flash sale pricing or preferred customer pricing.</li></ul></ul> |
@@ -177,7 +179,7 @@ tags:
        
        The following table describes the attributes for a price book object.
        
-       | <div style="width:100px">Attribute</div>| <div style="width:60px">Required</div> | <div style="width:60px">Type</div> | <div style="width:290px">Description</div> |
+       | Attribute | Required | Type | Description |
        | --- | --- | --- | --- |
        | `type` | Required | `string`| Always: `product-price` |
        | `attributes` | Required | `object` | The attributes for a product price. <ul><li>(Required) `sku`</li><ul><li>**Type**: `string`</li><li>**Description**: The product SKU that the price belongs to.</li></ul><li>(Optional) `id`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique identifier of a product price.</li></ul><li>(Optional) `external_ref`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique attribute associated with a price. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.</li></ul><li>(Optional) `pricebook_id`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique identifier of a price book.</li></ul><li>(Optional) `pricebook_external_ref`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique attribute associated with the price book. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.</li></ul><li>(Optional) `currencies`</li><ul><li>**Type**: `object`</li><li>**Description**: A collection of one or more currencies: <key> objects where key is the [**three-letter ISO code**](https://www.iso.org/iso-3166-country-codes.html) for the currency associated with this price. In addition, a `currencies` object can include a `tiers` object. A `tiers` object is the price tier  that an item is eligible for based on the quantity purchased. You cannot have conflicting tiers within the same currencies block. This is a product's price. See [**Add a product price to a price book**](#tag/Prices/operation/createProductPrice).</li></ul><li>(Optional) `sales`</li><ul><li>**Type**: `object`</li><li>**Description**: The sales price that an item is eligible for based on the price book. See See [**Add a product price to a price book**](#tag/Prices/operation/createProductPrice).</li></ul></ul> |
@@ -188,7 +190,7 @@ tags:
        
        If there are any errors, then the import is aborted and the job fails with an error. You can then use the job results to understand what objects the API created/updated until the import failed and to troubleshoot any errors. 
 
-       Once you have fixed any errors, you can then use the [**import a price**](#tag/Price-Book-Import/operation/importPricebook) endpoint to send the request again.
+       Once you have fixed any errors, you can then use the [**import a price**](/docs/api/pxm/pricebooks/import-pricebook) endpoint to send the request again.
 
        The following table describes the import messages reported by the API.
        
@@ -235,7 +237,18 @@ paths:
       tags:
         - Price Books
       summary: Get all Price Books
-      description: Retrieves a list of all price books.
+      description: |
+        Retrieves a list of all price books.
+         
+        ### Filtering
+
+        Filtering is supported on this endpoint. For the general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+         
+         You can filter on the following attributes and operators.
+         
+         | Operator | Attribute | Description | Example |
+         | --- | --- | --- | --- |
+         | `eq` | `external_ref` | Equals. Checks if the values you provide matches a price book. | `filter=eq(external_ref,some-external-ref)` |
       operationId: getPricebooks
       parameters:
         - $ref: '#/components/parameters/filter-pricebook'
@@ -335,13 +348,11 @@ paths:
   /pcm/pricebooks/import:
     post:
       tags:
-        - Price Books Import
+        - Import a Price Book and Prices
       summary: Import a Price
       description: |-
         You can create and update product price books and prices in bulk, at both organization and store level, using the Price Book Import API. This is useful, for example, if you have a promotion and want to update 50,000 product prices. Rather than having to go to each price book and manually edit 50,000 prices, you can use the Price Book Import API to bulk update all your product prices at the same time, including setting different prices for different currencies.
-
         The API uses a [JSONL](https://jsonlines.org/) file. The JSONL file can be compressed to a GZIP file. Here is an [example of a JSONL file](/assets/example_file_all.jsonl). See [Price Book Export JSONL File](#tag/Price-Book-Import).
-
         The API works on a "best endeavours" approach. In other words, the API does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted, and the job fails with an error. You can then use the job results to understand what objects the API created/updated until the import failed, and to troubleshoot any errors. See [Import Results](#tag/Price-Book-Import).
         Price book imports are processed sequentially in the order that you send your import API requests.
       operationId: importPricebook
@@ -636,7 +647,17 @@ paths:
       tags:
         - Prices
       summary: Gets all Prices by Price Book ID
-      description: Retrieves all the product prices in the specified price book.
+      description: |
+        Retrieves all the product prices in the specified price book.
+         
+        ### Filtering
+
+        This endpoint supports filtering. For general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+         
+        | Operator | Attribute | Description | Example |
+        | --- | --- | --- | --- |
+        | `eq` | `external_ref`, `sku` | Checks if the values you provide matches a price. | `filter=eq(sku,some-sku)` |
+        | `in` | `sku` | Checks if the values you provide are included in a product SKU. | `filter=in(sku,some-sku)' |
       operationId: getProductPrices
       parameters:
         - $ref: '#/components/parameters/filter-price'
@@ -767,7 +788,18 @@ paths:
       tags:
         - Price Book Modifiers
       summary: Gets a list of all modifiers
-      description: Retrieves a list of price modifiers for the specified price book.
+      description: |
+        Retrieves a list of price modifiers for the specified price book.
+         
+        ### Filtering
+         
+        Filtering is supported on this endpoint. For the general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+         
+        You can filter on the following attributes and operators.
+         
+        | Operator | Attribute | Description | Example |
+        | --- | --- | --- | --- |
+        | `eq` | `external_ref`, `name` | Checks if the values you provide matches a price modifier. | `filter=eq(name,largesupplement)` |
       operationId: getPriceModifiers
       parameters:
         - $ref: '#/components/parameters/filter-modifier'
@@ -865,13 +897,7 @@ components:
     filter-pricebook:
       in: query
       description: |
-        You can filter on the following attributes and operators:
-         
-         | Operator | Attribute | Description | Example |
-         | --- | --- | --- | --- |
-         | `eq` | `external_ref` | Equals. Checks if the values you provide matches a price book. | `filter=eq(external_ref,some-external-ref)` |
-         
-         For more information about filtering in Commerce, see [**Filtering**](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
+        You can filter on this endpoint. See [Filtering](#filtering).
       name: filter
       required: false
       schema:
@@ -879,14 +905,7 @@ components:
     filter-price:
       in: query
       description: |
-        You can filter on the following attributes and operators:
-                       
-        | Operator | Attribute | Description | Example |
-        | --- | --- | --- | --- |
-        | `eq` | `external_ref`, `sku` | Checks if the values you provide matches a price. | `filter=eq(sku,some-sku)` |
-        | `in` | `sku` | Checks if the values you provide are included in a product SKU. | `filter=in(sku,some-sku)' |
-                         
-        For more information about filtering in Commerce, see [**Filtering**](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
+        This endpoint supports filtering. See [Filtering]().
       name: filter
       required: false
       schema:
@@ -894,13 +913,7 @@ components:
     filter-modifier:
       in: query
       description: |
-        You can filter on the following attributes and operators:
-
-        | Operator | Attribute | Description | Example |
-        | --- | --- | --- | --- |
-        | `eq` | `external_ref`, `name` | Checks if the values you provide matches a price modifier. | `filter=eq(name,largesupplement)` |
-
-        For more information about filtering in Commerce, see [**Filtering**](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
+        This endpoint supports filtering. See [Filtering]().
       name: filter
       required: false
       schema:
@@ -908,7 +921,7 @@ components:
     limit:
       name: page[limit]
       in: query
-      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       required: false
       schema:
         type: integer
@@ -917,7 +930,7 @@ components:
     offset:
       name: page[offset]
       in: query
-      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page offset is set, the [**page length**](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page offset is set, the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
       required: false
       schema:
         type: integer
