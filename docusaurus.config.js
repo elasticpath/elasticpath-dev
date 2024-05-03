@@ -323,9 +323,7 @@ const config = {
             href: '/',
             src: '/logo/light.svg',
             srcDark: '/logo/dark.svg',
-            alt: 'Elastic Path Docs',
-            height: '60px',
-            width: '120px',
+            alt: 'Elastic Path Developer Site',
           },
           hideOnScroll: true,
           items: [
@@ -367,13 +365,13 @@ const config = {
               position: 'right',
             },
             {
-              label: 'Get in Touch',
+              label: 'Get in touch',
               href: 'https://www.elasticpath.com/get-in-touch',
               position: 'right',
               className: 'navbar-book-demo',
             },
             {
-              label: 'Free Trial',
+              label: 'Start Free Trial',
               href: 'https://useast.cm.elasticpath.com',
               position: 'right',
               className: 'dev-portal-signup dev-portal-link',

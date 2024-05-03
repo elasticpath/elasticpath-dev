@@ -16,7 +16,10 @@ module.exports = {
         mono: ['"Fira Code"', ...fontFamily.mono],
       },
       borderRadius: {
-        sm: '4px',
+        sm: '20px',
+      },
+      backgroundImage: {
+        'hero-pattern': "url('/static/backgrounds/hero-gradient.svg')",
       },
       screens: {
         sm: '0px',
