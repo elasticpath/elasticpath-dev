@@ -87,7 +87,7 @@ tags:
        
       You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity.
        
-      :::warning
+      :::caution
        
       You cannot have more than 1500 options in a bundle.
        
@@ -187,7 +187,7 @@ tags:
        
        You can do this by configuring minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can offer a promotion where you sell 4 books for a single price and your customers can select 4 books from a list of 10. When you create the bundle, add all ten products to the bundle and specify that the minimum selection required is 4, and the maximum selection allowed is 4.
        
-       :::warning
+       :::caution
        
        Your shoppers cannot change the quantities of a product. They must purchase the quantity of products that you have specified when you created your components and options.
        
@@ -332,7 +332,7 @@ tags:
 
       You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
 
-      :::warning
+      :::caution
 
       - Commerce does not sort variations and variation options. You must program your storefront to sort the variations and variation options in the order that you want.
       - You must rebuild your products for the sort order changes to take effect. See [**Build Child Products**](#build-child-products).
@@ -858,7 +858,7 @@ paths:
          | :--- |:------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
          | `eq` | `sku`, `slug`,`upc_ean`, `mpn`, `name`, `templates`, `commodity_type`, `owner`, `product_types`, `tags` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`                 | `filter=eq(name,some-name)`     |
          | `like` | `sku`, `slug`,`upc_ean`, `mpn`, `name`, `tags`                                                          | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                   | `filter=like(name,*some-name*)` |
-         | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `mpn`, `product_types`                                  | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
+         | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `mpn`, `product_types`, `tags`                                | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
       operationId: getAllProducts
       tags:
         - Products
@@ -959,8 +959,9 @@ paths:
 
         | Operator | Attribute                                              | Description                                                                                                                                                    | Example |
         | :--- |:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
-        | `eq` | `sku`, `slug`, `upc_ean`, `mpn`, `name`, `description` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. When filtering on tags, you can only specify one product tag.      | `filter=like(name,some-name)` |
+        | `eq` | `sku`, `slug`, `upc_ean`, `mpn`, `name`, `description`, `tags`  | Equals. Checks if the values of two operands are equal. If they are, the condition is true. When filtering on tags, you can only specify one product tag.      | `filter=eq(name,some-name)` |
         | `In` | `sku`, `tags`                                                | Checks if the values are included in the specified string. If they are, the condition is true. When filtering on tags, you can specify a list of product tags. | `filter=in(id,some-id)` |
+        | `like` | `sku`, `slug`, `upc_ean`, `mpn`, `name`, `description` | Like. Checks if the operand contains the specified string. Wildcards are supported.  | `filter=like(name,some-name)` |
       operationId: exportProducts
       tags:
         - Product Export
