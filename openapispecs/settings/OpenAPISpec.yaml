@@ -2,7 +2,93 @@ openapi: 3.1.0
 info:
   version: '1.0'
   title: Settings Introduction
-  description: Store Settings
+  description: |
+    The Settings API allow you to configure global settings for your project. You can define:
+    
+    - [page length when paginating results](/docs/api/settings/settings-introduction#page-length)
+    - [the calculation method you want to use for cart and order totals](/docs/api/settings/settings-introduction#calculation-method)
+    - [mandatory address fields](/docs/api/settings/settings-introduction#address-mandatory-fields)
+    - [readonly store settings for internal stores](/docs/api/settings/settings-introduction#readonly-settings)
+    
+    ### Page Length
+    
+    This defines the number of results per page when paginating results (max: 100).
+    
+    | Name          | Type      | Default | Max |
+    |--------------|-----------|--------- |-----|
+    | `page_length` | `integer` | 25       | 100 |
+    
+    For more information on pagination including a list of which resources support pagination, see [Pagination](/docs/commerce-cloud/api-overview/pagination).
+    
+    ### Calculation Method
+    
+    This option defines the method used to calculate cart and order totals. Currently there are two methods: `simple` and `line`.
+  
+    The `simple` method is our previous method for calculating cart and order totals which focuses on the total value of the cart. This should only be used in the case where Composable Commerce is not used for tax calculations. The `line` method treats each line item individually resulting in more accurate figures after taxes and promotions are applied.
+    
+    | Name         | Type      | Value |
+    |--------------|-----------|-------|
+    | `calculation_method` | `string` | `line`   |
+    | `calculation_method` | `string` | `simple` |
+    
+    :::note
+    
+    - For stores created since February 2020, `line` is the default calculation method. Stores created before February 2020 use `simple` as their calculation method.
+    - Line-item discount promotions, such as item percent discount and item fixed discount, are only supported by the line calculation method. For more information, see [Promotions](/docs/commerce-cloud/promotions/promotions-overview).
+    
+    :::
+    
+    ### Address Mandatory Fields
+    
+    You can create an address to associate with an account in your storefront. This defines the address fields that you can use when creating an address in Commerce Manager. For more information, see [Addresses](/docs/api/addresses).
+    
+    Address fields can be required or optional. You can choose which optional address fields to use in your address, depending on your requirements. To change which fields are mandatory for creating an address, see [Update Settings](/docs/api/settings/put-v-2-settings). Changing the mandatory fields does not impact the addresses of customers made before the change.
+    
+    The following table describes the address fields, their type and whether they are required by default.
+    
+    | Name | Type | Required |
+    | :--- | :--- |:---------|
+    | `type` |`string` | Default  |
+    | `first_name` |`string` | Default  |
+    | `last_name` |`string` | Default  |
+    | `name` |`string` | Optional |
+    | `phone_number` |`string` | Optional |
+    | `instructions` |`string` | Optional |
+    | `company_name` |`string` | Optional |
+    | `line_1` |`string` | Default  |
+    | `line_2` |`string` | Optional |
+    | `city` |`string` | Optional |
+    | `county` |`string` | Default  |
+    | `region` |`string` | Optional |
+    | `postcode` |`string` | Default  |
+    | `country` |`string` | Default  |
+    
+    ### Readonly Settings
+  
+    For internal store configurations, read-only settings are used and updating these settings fails without returning any error.
+  
+    :::note
+    
+    - Refer to the [Performance](/docs/commerce-cloud/api-overview/pagination#performance) section in the Pagination documentation, which outlines patterns for retrieving all documents without using a higher page offset limit.
+    - To change any predefined configuration, contact [Elastic Path support team](https://support.elasticpath.com/hc/en-us).
+    
+    :::
+
+
+    | Name                    | Type      | Default                                              |
+    |:------------------------|:----------|:-----------------------------------------------------|
+    | `currency_limit`        | `integer` | `10`                                                 |
+    | `field_limit`           | `integer` | `100`                                                |
+    | `integration_limit`     | `integer` | `100`                                                |
+    | `event_limit`           | `integer` | `5`                                                  |
+    | `filter_limit`          | `integer` | `10`                                                 |
+    | `tax_item_limit`        | `integer` | `5`                                                  |
+    | `promotions_limit`      | `integer` | `1000`                                               |
+    | `promotion_codes_limit` | `integer` | `1000`                                               |
+    | `page_offset_limit`     | `integer` | `10000` |
+    
+    
+
   contact:
     name: Elastic Path
     url: 'https://www.elasticpath.com'
@@ -23,6 +109,12 @@ paths:
       summary: Get Project Settings
       description: |-
         You can get all of the project settings via one API call using a `client_credential` token. The response is in object format as shown in the following example.
+        
+        :::note
+        
+        The default calculation_method is line.
+        
+        :::
       operationId: get-v2-settings
       responses:
         '200':
@@ -87,7 +179,7 @@ paths:
         - Settings
       summary: Get Cart Settings
       description: |-
-        Get Cart Settings
+        Retrieves cart settings
       operationId: get-v2-settings-cart
       responses:
         '200':
@@ -108,7 +200,12 @@ paths:
         - Settings
       summary: Update Cart Settings
       description: |-
-        Update Cart Settigs
+        You can modify the cart expiry settings to set it to any number of days up to 365. Any existing carts default to the expiry of 7 days. To update cart settings in Commerce Manager, see [Updating Cart setting](/docs/commerce-manager/settings/general-settings#updating-cart-settings).
+
+        With update cart settings endpoint, you can:
+
+        - Enable or disable custom discounts by setting the custom_discounts_enabled field to true. This allows you to activate your custom discounts from external services. 
+        - Enable or disable the use of rule promotions within the cart. You can apply this setting either at the store level using the update cart setting endpoint or individually to a specific cart using the [update a cart](/docs/api/carts/update-a-cart) endpoint.
       operationId: put-v2-settings-cart
       requestBody:
         content:
@@ -135,7 +232,9 @@ paths:
         - Settings
       summary: Get Account Membership Settings
       description: |-
-        Get Account Membership Settings
+        Account Membership Settings allow Account Members to be associated to, at most, N accounts at a time. You can set this value to any number up to 10,000. The default value is 10,000.
+        
+        This setting is only applied to new account memberships. If an account member is added to 3 accounts, and the setting is reduced to 1, the account member remains in the 3 accounts and can no longer be added to more.
       operationId: get-v2-settings-account-membership
       responses:
         '200':
@@ -156,7 +255,7 @@ paths:
         - Settings
       summary: Update Account Membership Settings
       description: |-
-        Update Account Membership Settigs
+        Use this endpoint to update Account Membership Settings.
       operationId: put-v2-settings-account-membership
       requestBody:
         content:
@@ -179,12 +278,6 @@ paths:
           description: EU West
 tags:
   - name: Settings
-    description: |
-      The Settings API allow you to configure global settings for your project. You can define:
-       - [page length when paginating results](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length)
-       - [the calculation method you want to use for cart and order totals](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method)
-       - [mandatory address fields](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#address-mandatory-fields)
-       - [readonly store settings for internal stores](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#readonly-settings)
 components:
   securitySchemes:
     BearerToken:
