@@ -675,6 +675,9 @@ const config = {
     ],
   ],
   themes: ['docusaurus-theme-openapi-docs','@docusaurus/theme-mermaid','@docusaurus/theme-live-codeblock'],
+  customFields:{
+    mendableAnonKey: "9e953e8d-07ea-4448-9a8c-101899213130",
+  },
 };
 
 module.exports = config;

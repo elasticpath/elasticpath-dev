@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { Linkedin, Youtube, Github } from '@styled-icons/boxicons-logos';
 import { XIcon } from '@site/src/icons';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import { MendableFloatingButton } from '@mendable/search'
 
 const customers = [
   {
@@ -106,7 +107,7 @@ function Status({ className }) {
 function Links({ name, links }) {
   return (
     <div>
-      <h3 className="font-jakarta text-base font-semibold uppercase text-gray-400">
+      <h3 className="text-base font-semibold uppercase text-gray-400">
         {name}
       </h3>
       <div className="flex flex-col gap-3">
