@@ -554,7 +554,6 @@ You can include both SKUs and product IDs within the same rule promotion, provid
 | Free shipping promotions (for shipping groups)                     | ⛔️  | coming soon |
 | Cart item quantity conditions (line item quantity)                 | ✅ (limited to bundle promotions) | coming soon |
 | Item quantity conditions (minimum number of items in cart)         | ⛔️  | coming soon |
-| Product ID (limited to Automatic/Cumulative Bundle)                | ⛔️  | coming soon |
 |  Promotions by product ID                                          | ✅  | ✅ |
 
 ## Related Resources
