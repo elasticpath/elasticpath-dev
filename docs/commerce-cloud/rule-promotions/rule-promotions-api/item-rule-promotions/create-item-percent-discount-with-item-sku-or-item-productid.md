@@ -61,7 +61,8 @@ curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions \
                                 "strategy": "item_product_id",
                                 "operator": "in",
                                 "args": [
-                                    "{{productId}}"
+                                    "product-id-1",
+                                    "product-id-2"
                                 ]
                             }
                         ]
