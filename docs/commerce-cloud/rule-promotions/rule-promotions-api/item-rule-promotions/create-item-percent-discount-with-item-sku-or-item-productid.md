@@ -36,8 +36,6 @@ curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions \
      -d $ {
       "data": {
         "type": "rule_promotion",
-        "id": "8102a685-81c7-41a4-bf97-9a8f40ca0634",
-        "store_id": "9cf58db9-f5bb-4507-b8f8-831c61e5de06",
         "name": "Buy at least 1 item sku OR skuless bundle get 50% discount",
         "description": "Buy at least 1 item sku OR skuless bundle get 50% discount",
         "enabled": true,
