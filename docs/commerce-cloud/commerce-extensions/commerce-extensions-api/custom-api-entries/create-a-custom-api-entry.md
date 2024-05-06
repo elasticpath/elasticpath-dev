@@ -1,7 +1,7 @@
 ---
 title: Create a Custom API Entry
 nav_label: Create a Custom API Entry
-sidebar_position: 3
+nav_position: 3
 ---
 
 ## `POST` Create a Custom API Entry
@@ -57,13 +57,15 @@ https://useast.api.elasticpath.com/v2/extensions/:customApiSlug
 ## Request Example
 
 ```bash
-curl -X POST https://useast.api.elasticpath.com/v2/extensions/:slug \
+curl -X POST https://useast.api.elasticpath.com/v2/extensions/:customApiSlug \
      -H "Authorization: Bearer XXXX" \
      -H "Content-Type: application/json" \
      -d $ {
        "data": {
          "type": "wishlist_ext",
-         "name": "my wishlist"
+         "name": "My Wishlist",
+         "items_count" 0,
+         "keep_purchased": false
        }
      }
 ```
@@ -86,7 +88,9 @@ curl -X POST https://useast.api.elasticpath.com/v2/extensions/:slug \
       }
     },
     "type": "wishlist_ext",
-    "name": "My Wishlist"
+    "name": "My Wishlist",
+    "items_count": 0,
+    "keep_purchased": false
   }
 }
 ```
