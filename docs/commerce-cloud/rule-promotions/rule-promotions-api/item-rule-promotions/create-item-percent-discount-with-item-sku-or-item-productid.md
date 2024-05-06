@@ -86,12 +86,6 @@ curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions \
         },
         "start": "2024-02-01T00:00:00Z",
         "end": "2050-01-01T00:00:00Z",
-        "meta": {
-            "timestamps": {
-                "created_at": "2024-05-02T15:43:48.084Z",
-                "updated_at": "2024-05-02T15:43:48.084Z"
-            }
-        }
     }
 }
 ```
