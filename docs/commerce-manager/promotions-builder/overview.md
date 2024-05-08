@@ -32,7 +32,7 @@ The promotions are applied sequentially based on their creation dates. The oldes
 
 ## Scenarios
 
-### Scenario 1
+### Scenario 1 - Creating a Custom Attribute Promotion
 
 Let's say you want to offer registered shoppers a 20% discount when they purchase products made of platinum metal.
 
@@ -47,7 +47,7 @@ See the following image:
 
 ![Scenario 1](/assets/promotion-example-scenario-1.png)
 
-### Scenario 2
+### Scenario 2 : Creating a Buy X Get Y (BXGY) Promotion
 
 Let's consider a scenario where you want to offer a discount on silver jewelery for shoppers who buy gift cards for the holidays.
 
@@ -58,7 +58,7 @@ To set this up in the Promotions Builder:
 
 ![Scenario 2](/assets/promotion-example-scenario-2.png)
 
-### Scenario 3
+### Scenario 3 - Creating a Promotion with Multiple Discount Actions
 
 Consider a scenario where you want to offer 20% off to all shoppers who spend $3000 or more on engagement rings. Additionally shoppers also receive a 10% discount on the cheapest item from the *Bangles* category.
 
@@ -71,7 +71,7 @@ To set this up in the Promotions Builder:
 
 ![Scenario 3](/assets/promotion-example-scenario-3.png)
 
-### Scenario 4
+### Scenario 4 - Creating a Tiered Promotions
 
 Consider a scenario where you want to provide shoppers with various cart subtotal tiers to receive different discounts. Shoppers need one coupon code to trigger the various tiers. For example, use the coupon code *summer2024*. 
 
@@ -97,7 +97,7 @@ The following image shows an example of the $100 tier promotion:
 The following image shows an example of the $100 to $500 tier promotion:
 ![Scenario 4](/assets/promotion-example-scenario-4-2.png)
 
-### Scenario 5
+### Scenario 5 - Creating a Promotion with the Maximum Item Quantity Limitation
 
 Suppose your shoppers purchase two of the same items by offering a 50% discount on one of them.
 
@@ -111,7 +111,7 @@ By implementing this promotion, shoppers could be encouraged to purchase two of 
 
 ![Scenario 5](/assets/promotion-example-scenario-5.png)
 
-### Scenario 6
+### Scenario 6 - Creating a Fixed Price Discount Promotion
 
 Suppose you want to offer a discounted price for a particular product using the promotion code, rather than discounting the price for all shoppers in Price Books.
 
