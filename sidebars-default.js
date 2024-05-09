@@ -125,19 +125,6 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/carts/sidebar.js")
     },
-    commerceextensions: [
-      {
-        type: "category",
-        label: "Commerce Extensions",
-        link: {
-          type: "generated-index",
-          title: "Commerce Extensions",
-          slug: "/api/commerce-extensions"
-        },
-        // @ts-ignore
-        items: require("./docs/api/commerce-extensions/sidebar.js")
-      },
-    ],
     {
       type: "category",
       label: "Order Exporter",
@@ -148,6 +135,19 @@ const sidebarsDefault = {
       },
       // @ts-ignore
       items: require("./docs/api/exporter/sidebar.js")
+    },
+  ],
+  commerceextensions: [
+    {
+      type: "category",
+      label: "Commerce Extensions",
+      link: {
+        type: "generated-index",
+        title: "Commerce Extensions",
+        slug: "/api/commerce-extensions"
+      },
+      // @ts-ignore
+      items: require("./docs/api/commerceextensions/sidebar.js")
     },
   ],
   exporter: [

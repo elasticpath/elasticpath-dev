@@ -546,7 +546,8 @@ paths:
       summary: Get all Custom Fields
       description: |
         ## Filtering
-        The following operators and attributes are available for filtering:
+          The following operators and attributes are available for filtering:
+        
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
           | `name`        | `eq`,`like`                   | `eq(name,"Last Name")`                        |
@@ -957,14 +958,15 @@ paths:
       summary: Get all Custom API Entries
       description: |
         ## Filtering
-        The following operators and attributes are available for filtering:
+          The following operators and attributes are available for filtering:
+        
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
           | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)` |
           | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
           | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
 
-        Custom API Entries can also be filtered by the slug for each [Custom Field](/docs/api/commerce-extensions/custom-fields/create-custom-field). For example, you can get all Custom API Entries with `name` containing string "wish" by setting filter query parameter `like(name,*wish*)`.  
+        Custom API Entries can also be filtered by the slug for each [Custom Field](/docs/api/commerceextensions/create-a-custom-field). For example, you can get all Custom API Entries with `name` containing string "wish" by setting filter query parameter `like(name,*wish*)`.  
 
         ## Sorting
         The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
