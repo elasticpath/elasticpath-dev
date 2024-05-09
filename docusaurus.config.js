@@ -252,7 +252,7 @@ const docs = [
 const config = {
   title: 'Elastic Path Documentation',
   tagline: 'API, Commerce Manager, Guides and Documentation 🚀',
-  url: 'https://elasticpath.dev',
+  url: 'https://beta.elasticpath.dev',
   baseUrl: '/',
   favicon: '/favicon.ico',
   i18n: {
@@ -527,6 +527,16 @@ const config = {
             outputDir: "docs/api/pxm/currencies",
             downloadUrl:
                 "https://beta.elasticpath.com/openapispecs/currencies/OpenAPISpec.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
+          commerceextensions: {
+            specPath: "openapispecs/commerceextensions/OpenAPISpec.yaml",
+            outputDir: "docs/api/commerceextensions/",
+            downloadUrl:
+                "https://beta.elasticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

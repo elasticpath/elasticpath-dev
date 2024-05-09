@@ -137,6 +137,19 @@ const sidebarsDefault = {
       items: require("./docs/api/exporter/sidebar.js")
     },
   ],
+  commerceextensions: [
+    {
+      type: "category",
+      label: "Commerce Extensions",
+      link: {
+        type: "generated-index",
+        title: "Commerce Extensions",
+        slug: "/api/commerce-extensions"
+      },
+      // @ts-ignore
+      items: require("./docs/api/commerceextensions/sidebar.js")
+    },
+  ],
   exporter: [
     {
       type: "category",

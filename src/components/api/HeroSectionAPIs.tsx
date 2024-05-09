@@ -29,7 +29,7 @@ const PRODUCTS = [
   },
   {
     title: 'Commerce Extensions',
-    link: '/docs/commerce-cloud/commerce-extensions/overview',
+    link: '/docs/api/commerceextensions/commerce-extensions-introduction',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
@@ -107,7 +107,7 @@ const PRODUCTS = [
   {
     title: 'Custom Data (Flows)',
     beta: false,
-    link: '/docs/api/flows/flows-service-api',
+    link: '/docs/api/flows/flows-service-introduction',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
