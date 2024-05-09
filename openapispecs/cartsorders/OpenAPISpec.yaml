@@ -6,7 +6,7 @@ info:
 
     A cart item identifies the product, the product price, the quantity selected, and the total price for the quantity selected. The cart displays a running total of the cost for the selected products plus the calculated tax.
 
-    You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](https://elasticpath.dev/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
+    You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](/docs/api/carts/cart-merge#add-product-to-cart).
 
     After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
 
@@ -101,7 +101,7 @@ paths:
 
         After the shopper checks out the cart, the cart remains available to the shopper. The cart is persistent and stays with the shopper after it is used.
 
-        You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Cart Settings](/docs/api/settings/put-v-2-settings-cart).
+        You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Update Cart Settings](/docs/api/settings/put-v-2-settings-cart).
 
       operationId: createACustomCart
       parameters:
@@ -353,8 +353,181 @@ paths:
     post:
       tags:
         - Cart Items
-      summary: Cart Merge
+      summary: Manage Carts
       description: |
+
+        ### Add Product to Cart
+
+        Adding a Product to Cart is the most common Cart action. If you want to add any custom products or promotions, you need to do that as a separate action.
+
+        #### Dynamic Bundles
+
+        A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called dynamic bundles.
+
+        Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the configure a shopper bundle endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the add product to cart request.
+
+        ```json
+          "bundle_configuration": {
+               "selected_options": {
+                   "games": {
+                       "d7b79eb8-19d8-45ea-86ed-2324a604dd9c": 1
+                   },
+                   "toys": {
+                       "0192ccdd-6d33-4898-87d7-c4d87f2bf8ea": 1,
+                       "1aea6f97-f0d9-452c-b3c1-7fb5629ead82": 1
+                   }
+               }
+        }
+        ```
+
+        When a cart is checked out, the options a shopper selected are added to the order. See order items.
+
+        #### Personalized Products
+
+        You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. You can do this using the custom_inputs attribute. The custom_inputs attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
+
+        First, you must configure a `custom_inputs` attribute when creating a new product or updating an existing product. Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders.
+
+        For example, you may sell T-shirts that can have personalized text on the front and back of the shirt.
+
+        ```json
+            {
+              "data": {
+                "type": "product",
+                  "attributes": {
+                  /*** other product attributes ommitted ***/
+                  "custom_inputs": {
+                    "front": {
+                    "name": "T-Shirt Front",
+                    "validation_rules": [
+                      {
+                        "type": "string",
+                        "options": {
+                        "max_length": 50
+                      }
+                    }
+                  ],
+                "required": false
+                },
+                "back": {
+                  "name": "T-Shirt Back",
+                  "validation_rules": [
+                    {
+                      "type": "string",
+                      "options": {
+                      "max_length": 50
+                    }
+                  }
+                ],
+                "required": false
+                }
+              }
+            }
+          }
+        }
+        ```
+
+        If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
+
+        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the custom_inputs attribute becomes part of the order.
+
+        When you add products to a cart with custom_inputs, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
+
+          - For [Free Gift Promotions](/docs/api/promotions/create-a-promotion), you can add `custom_inputs` to gift items.
+          - For [Fixed Bundle Discount Promotions](/docs/api/promotions/create-a-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different custom_inputs.
+          - For [X for Y Discount Promotion and X for amount discount promotion](/docs/api/promotions/create-a-promotion), the promotion applies when there are two SKUs with the same   `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
+
+        :::note
+
+        - Any requests to add a product to cart returns the collection of cart items.
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
+        - The cart currency is set when the first item is added to the cart.
+        - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
+        - A cart can contain a maximum of 100 unique items. Items include products and custom items.
+        - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) documentation.
+
+        :::
+
+        ### Add Custom Item to Cart
+
+        You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
+
+        ### Personalized Products
+
+        You can allow your shoppers to add custom text when adding custom items to their carts. This is useful, for example, if you have a custom item that can be personalized. You can do this using the custom_inputs attribute. The custom_inputs attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
+
+        Once you have defined your custom inputs on a custom item, you must configure the custom inputs in your orders.
+
+        For example, you may want to add a gift message to an order, so you have custom inputs for name and message.
+
+          ```json
+          {
+            "custom_inputs": {
+              "name": {
+                "name": "Name",
+                "validation_rules": {
+                  "type": "string"
+                },
+              "message": {
+                "name": "Message",
+                "validation_rules": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+        ```
+        When the custom item is added to the cart, those custom inputs are supplied.
+
+        ```json
+        {
+          "custom_inputs": {
+            "name": {
+              "name": "Fred",
+              "message": "Happy Birthday"
+            }
+          }
+        }
+        ```
+
+        If the same custom item has different `custom_inputs` attributes then, these are added as separate items in a cart.
+
+        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the custom_inputs attribute becomes part of the order items.
+
+        When you add custom items to a cart with `custom_inputs`, there are certain limitations on usage of the custom_inputs with the following promotion types:
+
+          - For Free Gift Promotions, you can add custom_inputs to gift items.
+          - For Fixed Bundle Discount Promotions, the promotion applies as long as the cart contains the bundle SKUs even when there are different custom_inputs.
+          - For X for Y Discount Promotion and X for amount discount promotion, the promotion applies when there are two SKUs with the same custom_inputs. The promotion does not apply when there are different custom_inputs and the SKUs are in different line items.
+
+        :::note
+
+        - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
+        - A cart can contain a maximum of 100 unique items. Items include products and custom items.
+        - Custom Cart Items are available through [implicit authentication](/docs/commerce-cloud/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
+
+        ### Add Promotion to Cart
+
+        You can use the promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of cart items. A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
+
+        To remove promotion from the cart via the promotion code, see [Delete Promotion Code from Cart](/docs/api/carts/delete-a-promotion-via-promotion-code).
+
+        ### Re-order
+
+        From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see Orders.
+
+        :::note
+          - Any requests to add an item to cart return a collection of [cart items](/docs/api/carts/cart-items).
+          - A cart can contain a maximum of 100 unique items. Items include products, custom items, and promotions.
+          - When a shopper creates a cart and re-orders items from an order with properties such as custom attributes, custom discounts, and payment intent ID, these properties will remain unchanged in the original cart.
+          - Custom items do not exist in catalogs, and therefore cannot be reordered.
+        :::
+
+
+        ### Merging Carts
+
         A shopper can have more than one cart and decide to merge the carts into one cart. If a shopper adds items to a cart anonymously and then signs into their account as a registered user, the system asks them which cart to use. For example, a shopper has an existing cart with items `A`, `B` and `C` in it. The shopper returns later and adds items `D` and `E` while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. After the carts merge, the cart contains items `A`, `B`, `C`, `D` and `E`.
 
         Any items that are duplicated from the anonymous cart to the registered cart are incremented by the quantity from the anonymous cart. For example, the shopper has an existing cart with items `A`, `B` and `C`, returns later and adds two more `A` items and one B item while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. The existing cart will contain three `A` items, two `B` items, and one `C` item.
@@ -875,7 +1048,7 @@ paths:
     delete:
       tags:
         - Tax Items
-      summary: Delete a TaxItem
+      summary: Delete a Tax Item
       description: Use this endpoint to delete a tax item.
       operationId: deleteATaxItem
       parameters:
@@ -2917,20 +3090,20 @@ components:
         - gateway
         - method
       properties:
-#        gateway:
-#          type: string
-#          enum:
-#            - adyen
-#            - authorize_net
-#            - braintree
-#            - card_connect
-#            - cyber_source
-#            - elastic_path_payments_stripe
-#            - manual
-#            - paypal_express_checkout
-#            - stripe
-#            - stripe_connect
-#            - stripe_payment_intents
+        gateway:
+          type: string
+          enum:
+            - adyen
+            - authorize_net
+            - braintree
+            - card_connect
+            - cyber_source
+            - elastic_path_payments_stripe
+            - manual
+            - paypal_express_checkout
+            - stripe
+            - stripe_connect
+            - stripe_payment_intents
         method:
           description: Specifies the transaction method, such as `purchase` or `authorize`.
           type: string
@@ -3969,7 +4142,7 @@ tags:
 
       Depending on the chosen gateway, you may or may not have access to capture funds immediately or authorize for later payment. For more information, see [Transactions](/docs/api/carts/transactions).
 
-      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateway-introduction) section.
+      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments) section.
 
       #### Purchase
 
@@ -3989,7 +4162,7 @@ tags:
 
       You can partially pay for an order using `authorize` payment method so that the order is `partially_authorized`. The transaction must be complete for the order status to be `partially_authorized`.
 
-      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateway-introduction).
+      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments).
 
       #### Capture
 
