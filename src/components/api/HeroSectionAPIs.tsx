@@ -29,7 +29,7 @@ const PRODUCTS = [
   },
   {
     title: 'Commerce Extensions',
-    link: '/docs/api/commerce-extensions/commerce-extensions-introduction',
+    link: '/docs/api/commerceextensions/commerce-extensions-introduction',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
