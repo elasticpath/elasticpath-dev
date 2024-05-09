@@ -32,7 +32,7 @@ The promotions are applied sequentially based on their creation dates. The oldes
 
 ## Scenarios
 
-### Scenario 1 - Creating a Custom Attribute Promotion
+### Scenario 1 - Creating a Promotion with Custom Attributes
 
 Let's say you want to offer registered shoppers a 20% discount when they purchase products made of platinum metal.
 
