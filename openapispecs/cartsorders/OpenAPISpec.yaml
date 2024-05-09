@@ -372,8 +372,12 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
+                oneOf::
                 - $ref: '#/components/schemas/Data.CartItemsObjectRequest'
+                - $ref: "#/components/schemas/Data.CartMergeObjectRequest"
+                - $ref: "#/components/schemas/Data.CustomItemObject"
+                - $ref: "#/components/schemas/Data.ReOrderObjectRequest"
+                - $ref: "#/components/schemas/Data.PromotionItemObject"
       responses:
         '200':
           description: ''
