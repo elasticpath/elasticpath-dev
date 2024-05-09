@@ -1,0 +1,1771 @@
+openapi: "3.1.0"
+info:
+  version: 1.0.0
+  title: Commerce Extensions Introduction
+  description: | 
+    Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options. The combination of Commerce Extensions with Composer, enables you to deploy custom behaviors and integrations to enable capabilities unique to your business without building that functionality from scratch and then hosting yourself.
+
+    Commerce Extensions is the next generation of Flows. Flows are not going anywhere, but going forward as we add new features, Commerce Extensions will eventually provide all the capabilities and more that Flows does. We recommend using Custom APIs for any of your new use cases.
+
+  contact:
+    name: Elastic Path
+    url: 'https://www.elasticpath.com'
+    email: support@elasticpath.com
+  license:
+    url: 'https://elasticpath.dev'
+    name: MIT
+servers:
+  - url: 'https://useast.api.elasticpath.com'
+    description: US East
+  - url: 'https://euwest.api.elasticpath.com'
+    description: EU West
+tags:
+  - name: Custom APIs
+    description: | 
+      
+      ## Custom APIs vs Non-Core Flows
+
+      Here is a comparison of current features of Non-Core Flows and Custom APIs. This will be updated as we release more capabilities.
+
+      | Feature        | Non-Core Flows | Commerce Extensions     |
+      |----------------|----------------|-------------------------|
+      | Build new APIs | ✅              | ✅                       |
+      | Access Level   | Implicit       | Client Credentials only |
+      | Filtering      | ⛔️               | ✅                       |
+      | Sorting        | ⛔️              | ✅ supported attributes: `created_at`, `updated_at`, `id`                       |
+      | Events         | ⛔️              | Coming Soon             |
+
+      The Custom Fields Overview page lists the comparison of different types and validation available in Custom APIs vs Non-Core Flows.
+  - name: Custom Fields
+    description: |
+      A Custom Field represents a single field of data (for example a Product Rating). A Custom API is composed of one or more Custom Fields.
+
+      Here is a comparison of different types and validation available in Custom APIs vs Non-Core Flows.
+
+      | Feature                         | Non-Core Flows | Commerce Extensions                      |
+      |---------------------------------|----------------|------------------------------------------|
+      | Data Type: String               | ✅              | ✅                                         |
+      | Data Type: Integer              | ✅              | ✅                                         |
+      | Data Type: Boolean              | ✅              | ✅                                         |
+      | Data Type: Date                 | ✅              | ✅ Regex possible now, full support planned |
+      | Data Type: One To Many          | ✅              | Planned                                   |
+      | Validation: Regular Expression  | ⛔️              | Planned                                   |
+      | Validation: Slug/Email          | ✅              | ✅ Replaced by Regex validation             |
+      | Validation: Min/Max Value       | ✅              | ✅                                         |
+      | Validation: Enum(String)        | ✅              | ✅ Replaced by Regex validation             |
+      | Validation: Enum(Float/Integer) | ✅              | ⛔️                                         |
+
+      ## Validation
+
+      `validation` can optionally be used to limit the values that can be stored in an object. Each validation attribute is optional, ie. you can set `min_value` but leave `max_value` as `null` to leave the maximum value unbounded.
+
+      ### Integer Validation
+      - `min_value`: Specifies the minimum whole number that can be stored. Must be less than `max_value` if set.
+      - `max_value`: Specifies the maximum whole number that can be stored.  Must be greater than `min_value` if set.
+
+      sample integer validation object:
+
+      ```
+      "validation": {
+        "integer: {
+            "min_value": 0,
+            "max_value": 32
+        }
+      }
+      ```
+      Even if no validation is set, field_type `integer` only supports values between -2^53+1 and 2^53+1.
+
+      ### String Validation
+      - `min_length`: Specifies the minimum number of characters that can be stored. This must be less than 0 and less than `max_length` if set.
+      - `max_length`: Specifies the maximum number of characters that can be stored.  This must be greater than 0 and `min_length` if set.
+      - `regex`: [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored. This must be less than 1024 characters.
+
+      sample string validation object:
+
+      ```
+      "validation": {
+        "string: {
+            "min_length": 0,
+            "max_length": 64
+            "regex": "^.+\.(jpg|jpeg|png|gif|pdf)$"
+        }
+      }
+      ```
+      Even if no validation is set, field_type `string` only supports values that are up to `65535` characters long.
+
+      ## Reserved Slugs
+
+      The following values cannot be used as a `slug` in a Custom Field.
+
+      - slug
+      - type
+      - id
+      - meta
+      - created_at
+      - updated_at
+      - links
+      - relationships
+      - attributes
+      - attribute
+      - dimension
+      - dimensions
+      - weight
+      - weights
+
+  - name: Custom API Entries
+    description: |
+      A **Custom API Entry** is a specific instance of a resource, such as a single product.
+paths:
+  /v2/settings/extensions/custom-apis:
+    post:
+      tags:
+        - Custom APIs
+      summary: Create a Custom API
+      # Note to self: Unique string used to identify the operation. The id MUST be unique among all operations described in the API. The operationId value is case-sensitive. Tools and libraries MAY use the operationId to uniquely identify an operation, therefore, it is RECOMMENDED to follow common programming naming conventions.
+      operationId: CreateACustomApi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - data
+              properties:
+                data:
+                  required:
+                    - name
+                    - type
+                    - slug
+                    - api_type
+                  $ref: "#/components/schemas/CustomApiAttributes"
+            examples:
+              create_custom_api:
+                summary: "Create a Custom API"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_api",
+                      "name": "Wishlists",
+                      "description": "Specifies the description for this Custom API.",
+                      "slug": "wishlists",
+                      "api_type": "wishlist_ext"
+                    }
+                  }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                      - name
+                      - type
+                      - slug
+                      - api_type
+                      - links
+                    $ref: "#/components/schemas/CustomApiAttributes"
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        'default':
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    get:
+      tags:
+        - Custom APIs
+      summary: Get all Custom APIs
+      description: |
+        ## Filtering
+        The following operators and attributes are available for filtering:
+
+          | Attribute     | Operators                     | Example                                       |
+          |---------------|-------------------------------|-----------------------------------------------|
+          | `name`        | `eq`,`like`                   | `eq(name,"Wishlist")`                         |
+          | `description` | `eq`,`like`                   | `	like(description,*list*)`                   |
+          | `slug`        | `eq`,`like`,`in`              | `like(slug,*lists)`                           |
+          | `api_type`    | `eq`,`like`,`in`              | `like(api_type,wishlist*)`                    |
+          | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,7e067539-6f6c-46e1-8c55-940031b36c6a)` |
+          | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
+          | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
+
+        ## Sorting
+        The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
+        - `api_type`
+        - `created_at`
+        - `description`
+        - `id`
+        - `name`
+        - `updated_at`
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+      operationId: GetAllCustomApis
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CustomApiAttributes"
+                  meta:
+                    items:
+                      $ref: "#/components/schemas/PaginationMeta"
+                  links:
+                    items:
+                      $ref: "#/components/schemas/PaginationLinks"
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/extensions/custom-apis/:customApiId:
+    parameters:
+      - $ref: "#/components/parameters/CustomApiId"
+    get:
+      tags:
+        - Custom APIs
+      summary: Get a Custom API
+      operationId: GetACustomApi
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    $ref: "#/components/schemas/CustomApiAttributes"
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Custom APIs
+      summary: Update a Custom API
+      operationId: UpdateACustomApi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  required:
+                    - type
+                  $ref: "#/components/schemas/CustomApiAttributes"
+            examples:
+              update_custom_api:
+                summary: "Update Custom API"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_api",
+                      "name": "Wishlists",
+                      "description": "Specifies the description for this Custom API.",
+                      "slug": "wishlists"
+                    }
+                  }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    $ref: "#/components/schemas/CustomApiAttributes"
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    delete:
+      tags:
+        - Custom APIs
+      summary: Delete a Custom API
+      operationId: DeleteACustomApi
+      responses:
+        '204':
+          description: No Content
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/extensions/custom-apis/:customApiId/fields:
+    parameters:
+      - $ref: "#/components/parameters/CustomApiId"
+    post:
+      tags:
+        - Custom Fields
+      summary: Create a Custom Field
+      operationId: CreateACustomField
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - data
+              properties:
+                data:
+                  required:
+                    - name
+                    - slug
+                    - field_type
+                  $ref: "#/components/schemas/CustomFieldAttributes"
+            examples:
+              string_field:
+                summary: "String field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Name",
+                      "description": "This field stores the name of the wishlist.",
+                      "slug": "name",
+                      "field_type": "string",
+                      "validation": {
+                        "string": {
+                          "min_length": 3,
+                          "max_length": 128,
+                          "regex": null
+                        }
+                      }
+                    }
+                  }
+              integer_field:
+                summary: "Integer field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Items Count",
+                      "description": "This field stores the total count of items in the wishlist.",
+                      "slug": "items_count",
+                      "field_type": "integer",
+                      "validation":  { 
+                        "integer": {
+                          "min_value": 0,
+                          "max_value": null
+                        }
+                      }
+                    }
+                  }
+              boolean_field:
+                summary: "Boolean field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Keep Purchased Items",
+                      "description": "This field stores whether or not to keep purchased items on the wishlist.",
+                      "slug": "keep_purchased",
+                      "field_type": "boolean"
+                    }
+                  }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    required:
+                      - id
+                      - type
+                      - name
+                      - description
+                      - slug
+                      - field_type
+                    $ref: "#/components/schemas/CustomFieldAttributes"
+              examples:
+                string_field:
+                  summary: "String field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Name",
+                        "description": "This field stores the name of the wishlist.",
+                        "slug": "name",
+                        "field_type": "string",
+                        "validation": {
+                          "string": {
+                            "min_length": 3,
+                            "max_length": 128,
+                            "regex": null
+                          }
+                        },
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                              "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+                integer_field:
+                  summary: "Integer field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Items Count",
+                        "description": "This field stores the total count of items in the wishlist.",
+                        "slug": "items_count",
+                        "field_type": "integer",
+                        "validation":  { 
+                          "integer": {
+                            "min_value": 0,
+                            "max_value": null
+                          }
+                        },
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+                boolean_field:
+                  summary: "Boolean field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Keep Purchased Items",
+                        "description": "This field stores whether or not to keep purchased items on the wishlist.",
+                        "slug": "keep_purchased",
+                        "field_type": "boolean",
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    get:
+      tags:
+        - Custom Fields
+      summary: Get all Custom Fields
+      description: |
+        ## Filtering
+        The following operators and attributes are available for filtering:
+          | Attribute     | Operators                     | Example                                       |
+          |---------------|-------------------------------|-----------------------------------------------|
+          | `name`        | `eq`,`like`                   | `eq(name,"Last Name")`                        |
+          | `description` | `eq`,`like`                   | `like(description,*confidential*)`            |
+          | `slug`        | `eq`,`like`,`in`              | `like(slug,*private*)`                        |
+          | `field_type`  | `eq`,`in`                     | `eq(field_type,string)`                       |
+          | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)` |
+          | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
+          | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
+
+        ## Sorting
+        The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
+        - `created_at`
+        - `description`
+        - `field_type`
+        - `id`
+        - `name`
+        - `updated_at`
+      operationId: GetAllCustomFields
+      parameters:
+          - $ref: '#/components/parameters/PageOffset'
+          - $ref: '#/components/parameters/PageLimit'
+          - $ref: '#/components/parameters/Filter'
+          - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CustomFieldAttributes"
+                  meta:
+                    items:
+                      $ref: "#/components/schemas/PaginationMeta"
+                  links:
+                    items:
+                      $ref: "#/components/schemas/PaginationLinks"
+              examples:
+                getFields:
+                  # language=JSON
+                  value: |
+                    {
+                      "data": [
+                        {
+                          "type": "custom_field",
+                          "name": "Name",
+                          "description": "This field stores the name of the wishlist.",
+                          "slug": "name",
+                          "field_type": "string",
+                          "validation": {
+                            "string": {
+                              "min_length": 3,
+                              "max_length": 128,
+                              "regex": null
+                            }
+                          }
+                        }
+                      ],
+                      "meta": {
+                        "page": {
+                            "limit": 100,
+                            "offset": 0,
+                            "current": 1,
+                            "total": 1
+                        },
+                        "results": {
+                            "total": 1
+                        }
+                      },
+                      "links": {
+                          "current": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
+                          "first": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
+                          "last": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
+                          "next": null,
+                          "prev": null
+                      }
+                    }
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/settings/extensions/custom-apis/:customApiId/fields/:customFieldId:
+    parameters:
+      - $ref: "#/components/parameters/CustomApiId"
+      - $ref: "#/components/parameters/CustomFieldId"
+    get:
+      tags:
+        - Custom Fields
+      summary: Get a Custom Field
+      operationId: GetACustomField
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomFieldAttributes"
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Custom Fields
+      summary: Update a Custom Field
+      operationId: UpdateACustomField
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - data
+              properties:
+                data:
+                  required:
+                    - name
+                    - slug
+                  $ref: "#/components/schemas/CustomFieldAttributes"
+            examples:
+              string_field:
+                summary: "String field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Name",
+                      "description": "This field stores the name of the wishlist.",
+                      "slug": "name",
+                      "validation": {
+                        "string": {
+                          "min_length": 3,
+                          "max_length": 128,
+                          "regex": null
+                        }
+                      }
+                    }
+                  }
+              integer_field:
+                summary: "Integer field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Items Count",
+                      "description": "This field stores the total count of items in the wishlist.",
+                      "slug": "items_count",
+                      "validation":  { 
+                        "integer": {
+                          "min_value": 0,
+                          "max_value": null
+                        }
+                      }
+                    }
+                  }
+              boolean_field:
+                summary: "Boolean field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Keep Purchased Items",
+                      "description": "This field stores whether or not to keep purchased items on the wishlist.",
+                      "slug": "keep_purchased"
+                    }
+                  }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    required:
+                      - id
+                      - type
+                      - name
+                      - description
+                      - slug
+                      - field_type
+                    $ref: "#/components/schemas/CustomFieldAttributes"
+              examples:
+                string_field:
+                  summary: "String field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Name",
+                        "description": "This field stores the name of the wishlist.",
+                        "slug": "name",
+                        "field_type": "string",
+                        "validation": {
+                          "string": {
+                            "min_length": 3,
+                            "max_length": 128,
+                            "regex": null
+                          }
+                        },
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                              "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+                integer_field:
+                  summary: "Integer field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Items Count",
+                        "description": "This field stores the total count of items in the wishlist.",
+                        "slug": "items_count",
+                        "field_type": "integer",
+                        "validation":  { 
+                          "integer": {
+                            "min_value": 0,
+                            "max_value": null
+                          }
+                        },
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+                boolean_field:
+                  summary: "Boolean field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Keep Purchased Items",
+                        "description": "This field stores whether or not to keep purchased items on the wishlist.",
+                        "slug": "keep_purchased",
+                        "field_type": "boolean",
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    delete:
+      tags:
+        - Custom Fields
+      summary: Delete a Custom Field
+      operationId: DeleteACustomField
+      responses:
+        '204':
+          description: No Content
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/extensions/:customApiSlug:
+    parameters:
+      - $ref: "#/components/parameters/CustomApiSlug"
+    post:
+      tags:
+        - Custom API Entries
+      summary: Create a Custom API Entry
+      operationId: CreateACustomEntry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - data
+              properties:
+                data:
+                  required:
+                    - name
+                    - values
+                  $ref: "#/components/schemas/CustomApiEntryAttributes"
+            examples:
+              valid_entry:
+                summary: "Default Wishlist"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "wishlist_ext",
+                      "name": "My Wishlist",
+                      "items_count": 0,
+                      "keep_purchased": false
+                    }
+                  }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          }, 
+                          "data_size": 6
+                        }
+                      }
+                    }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLargeError'
+          description: Payload Too Large. The total size of a Custom API Entry must not exceed 64KB.
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    get:
+      tags:
+        - Custom API Entries
+      summary: Get all Custom API Entries
+      description: |
+        ## Filtering
+        The following operators and attributes are available for filtering:
+          | Attribute     | Operators                     | Example                                       |
+          |---------------|-------------------------------|-----------------------------------------------|
+          | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)` |
+          | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
+          | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
+
+        Custom API Entries can also be filtered by the slug for each [Custom Field](/docs/api/commerce-extensions/custom-fields/create-custom-field). For example, you can get all Custom API Entries with `name` containing string "wish" by setting filter query parameter `like(name,*wish*)`.  
+
+        ## Sorting
+        The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
+        - `created_at`
+        - `id`
+        - `updated_at`
+      operationId: GetAllCustomEntries
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CustomApiEntryAttributes"
+                  meta:
+                    items:
+                      $ref: "#/components/schemas/PaginationMeta"
+                  links:
+                    items:
+                      $ref: "#/components/schemas/PaginationLinks"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": [
+                        {
+                          "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                          "type": "wishlist_ext",
+                          "name": "My Wishlist",
+                          "items_count": 0,
+                          "keep_purchased": false,
+                          "links": {
+                            "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                          },
+                          "meta": {
+                            "timestamps": {
+                              "updated_at": "2017-01-10T11:41:19.244Z",
+                              "created_at": "2017-01-10T11:41:19.244Z"
+                            }, 
+                            "data_size": 6
+                          }
+                        }
+                      ],
+                      "meta": {
+                        "page": {
+                            "limit": 100,
+                            "offset": 0,
+                            "current": 1,
+                            "total": 1
+                        },
+                        "results": {
+                            "total": 1
+                        }
+                      },
+                      "links": {
+                          "current": "/extensions/wishlists?page[limit]=100&page[offset]=0",
+                          "first": "/extensions/wishlists?page[limit]=100&page[offset]=0",
+                          "last": "/extensions/wishlists?page[limit]=100&page[offset]=0",
+                          "next": null,
+                          "prev": null
+                      }
+                    }
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+  /v2/extensions/:customApiSlug/:customApiEntryId:
+    parameters:
+      - $ref: "#/components/parameters/CustomApiSlug"
+      - $ref: "#/components/parameters/CustomEntryId"
+    get:
+      tags:
+        - Custom API Entries
+      summary: Get a Custom API Entry
+      operationId: GetACustomEntry
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          }, 
+                          "data_size": 6
+                        }
+                      }
+                    }
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    put:
+      tags:
+        - Custom API Entries
+      summary: Update a Custom API Entries
+      operationId: UpdateACustomEntry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - data
+              properties:
+                data:
+                  required:
+                    - name
+                    - values
+                  $ref: "#/components/schemas/CustomApiEntryAttributes"
+            examples:
+              valid_entry:
+                summary: "Default Wishlist"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "wishlist_ext",
+                      "name": "My Wishlist",
+                      "items_count": 1,
+                      "keep_purchased": false
+                    }
+                  }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          }, 
+                          "data_size": 6
+                        }
+                      }
+                    }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+    delete:
+      tags:
+        - Custom API Entries
+      summary: Delete a Custom API Entry
+      operationId: DeleteACustomEntry
+      responses:
+        '204':
+          description: No Content
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - BearerToken: []
+      servers:
+        - url: 'https://useast.api.elasticpath.com'
+          description: US East
+        - url: 'https://euwest.api.elasticpath.com'
+          description: EU West
+components:
+  parameters:
+    CustomApiId:
+      name: customApiId
+      in: path
+      required: true
+      description: The id of the Custom API.
+      schema:
+        type: string
+        format: uuid
+      example: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    CustomApiSlug:
+      name: customApiSlug
+      in: path
+      required: true
+      description: The slug of the Custom API.
+      schema:
+        type: string
+      example: "wishlists"
+    CustomFieldId:
+      name: customFieldId
+      in: path
+      required: true
+      description: The id of the Custom Field.
+      schema:
+        type: string
+        format: uuid
+      example: "859aeba1-03c2-4822-bd4c-89afce93d7eb"
+    CustomEntryId:
+      name: customApiEntryId
+      in: path
+      required: true
+      description: The id of the Custom Entry.
+      schema:
+        type: string
+        format: uuid
+      example: "7e067539-6f6c-46e1-8c55-940031b36c6a"
+    PageOffset:
+      name: page[offset]
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [page length](/docs/api/settings/settings-introduction#page-length) store setting is used.
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+        maximum: 10000
+        example: 0
+    PageLimit:
+      name: page[limit]
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the [page length](/docs/api/settings/settings-introduction#page-length) store setting is used.
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+        example: 100
+    Filter:
+      name: filter
+      in: query
+      required: false
+      description: Filter attributes. For more information, see the [Filtering](/docs/commerce-cloud/api-overview/filtering) section.
+      schema:
+        type: string
+        format: string
+        example: eq(name,"My Wishlist")
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: Sort attributes, For more information, see the [Sorting](/docs/commerce-cloud/api-overview/sorting) section.
+      schema:
+        type: string
+        format: string
+        example: name
+  responses:
+    ValidationError:
+      description: Bad request. The request failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missing-name:
+              summary: Required field missing
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Bad Request",
+                      "status": "400",
+                      "detail": "The field 'name' is required."
+                    }
+                  ]
+                }
+    ConflictError:
+      description: Unable to perform the operation at this time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            duplicate-custom-api:
+              summary: Duplicate Custom API
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Conflict",
+                      "status": "409",
+                      "detail": "custom_api with the given api_type already exists"
+                    }
+                  ]
+                }
+            duplicate-custom-field:
+              summary: Duplicate Custom Field
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Conflict",
+                      "status": "409",
+                      "detail": "custom_field with the given slug already exists"
+                    }
+                  ]
+                }
+    InternalServerError:
+      description: Internal server error. There was a system failure in the platform.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              # language=JSON
+              summary: Internal server error
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Internal Server Error",
+                      "status": "500",
+                      "detail": "there was a problem processing your request"
+                    }
+                  ]
+                }
+    NotFoundError:
+      description: Not found. The requested entity does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            not-found:
+              summary: Requested entity not found
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Not Found",
+                      "status": "404",
+                      "detail": "Not found"
+                    }
+                  ]
+                }
+    PayloadTooLargeError:
+      description: Payload Too Large.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            not-found:
+              summary: Requested entity too large
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Request Entity Too Large",
+                      "status": "413",
+                      "detail": "Maximum entry size reached."
+                    }
+                  ]
+                }
+  schemas:
+    CustomApiAttributes:
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the Custom API.
+          readOnly: true
+        type:
+          type: string
+          const: custom_api
+          description: Specifies the type of the resource object, use `custom_api` for Custom APIs.
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Specifies the name of this Custom API.
+          examples:
+            - "Wishlists"
+        description:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Specifies the description for this Custom API.
+          examples:
+            - "An API that represents a wishlist."
+        slug:
+          type: string
+          pattern: "^[a-z0-9_-]{1,63}$"
+          description:  Specifies a unique slug identifier for the Custom API. The API Entries for the created Custom API will be accessible at the location `/v2/extensions/<slug>`.
+          examples:
+            - "wishlists"
+        api_type:
+          type: string
+          pattern: "^[a-z0-9_]{1,59}_ext$"
+          description: Specifies a unique API type for this Custom API. Entries for this API will use this value for their `type` field. This field must be suffixed with `_ext` to distinguish it from built in APIs.
+          examples:
+            - "wishlist_ext"
+        links:
+          readOnly: true
+          $ref: '#/components/schemas/SelfLinkCustomApi'
+        meta:
+          readOnly: true
+          $ref: '#/components/schemas/Meta'
+    BaseCustomFieldAttributes:
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the Custom Field.
+          readOnly: true
+        type:
+          type: string
+          const: custom_field
+          description: Specifies the type of the resource object, use `custom_field` for Custom Field.
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Specifies the name of this Custom Field.
+          examples:
+            - "Wishlist Name"
+        description:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Specifies the description for this Custom API.
+          examples:
+            - "This field stores the name of the wishlist."
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 63
+          description: Specifies a slug that must be unique within the scope of the Custom API. This slug will be value as the key in the JSON Object in all entries.
+          examples:
+            - "name"
+        field_type:
+          type: string
+          enum:
+              - string
+              - integer
+              - boolean
+          description: Specifies the type of the field. This field cannot be updated.
+          examples:
+              - "string"
+              - "integer"
+              - "boolean"
+        links:
+          readOnly: true
+          $ref: '#/components/schemas/SelfLink'
+        meta:
+          readOnly: true
+          $ref: '#/components/schemas/Meta'
+    StringCustomFieldAttributes:
+      allOf:
+        - $ref: '#/components/schemas/BaseCustomFieldAttributes'
+        - type: object
+          additionalProperties: true
+          properties:
+            validation:
+              type: object
+              properties:
+                string:
+                  type: object
+                  properties:
+                    min_length:
+                      type: [integer, 'null']
+                      description: Specifies the minimum number of characters that can be stored. 
+                      minimum: 0
+                      maximum: 65535
+                      example: 1
+                    max_length:
+                      type: [integer, 'null']
+                      description: Specifies the minimum number of characters that can be stored.
+                      minimum: 0
+                      maximum: 65535
+                    regexp:
+                      type: [integer, 'null']
+                      description: | 
+                        [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored.
+                      minLength: 0
+                      maxLength: 1024
+                      example: 1
+    IntegerCustomFieldAttributes:
+      allOf:
+        - $ref: '#/components/schemas/BaseCustomFieldAttributes'
+        - type: object
+          properties:
+            validation:
+              type: object
+              properties:
+                integer:
+                  type: object
+                  properties:
+                    min_value:
+                      type: [integer, 'null']
+                      description: Specifies the minimum whole number that can be stored.
+                    max_value:
+                      type: [integer, 'null']
+                      description: Specifies the maximum whole number that can be stored.
+    BooleanCustomFieldAttributes:
+      allOf:
+        - $ref: '#/components/schemas/BaseCustomFieldAttributes'
+    CustomFieldAttributes:
+      anyOf:
+        - $ref: '#/components/schemas/BooleanCustomFieldAttributes'
+        - $ref: '#/components/schemas/StringCustomFieldAttributes'
+        - $ref: '#/components/schemas/IntegerCustomFieldAttributes'
+      discriminator:
+        propertyName: field_type
+        mapping:
+          boolean: '#/components/schemas/BooleanCustomFieldAttributes'
+          integer: '#/components/schemas/IntegerCustomFieldAttributes'
+          string: '#/components/schemas/StringCustomFieldAttributes'
+    CustomApiEntryAttributes:
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the Custom API Entry
+          readOnly: true
+          examples:
+            - 7e067539-6f6c-46e1-8c55-940031b36c6a
+        type:
+          type: string
+          description: Specifies the type of the resource object, use the `api_type` of the [Custom API](/docs/api/commerce-extensions/custom-apis/create-custom-api) for Custom API Entry.
+          examples:
+            - "wishlist_ext"
+        $customFieldSlug:
+          type: [string, integer, boolean]
+          description: Specifies the data for this Custom API Entry, each key must match a `slug` of a [Custom Field](/docs/api/commerce-extensions/custom-fields/create-custom-field). The corresponding value must conform to the defined `field_type` and meet the [validation](/docs/api/commerce-extensions/custom-fields/custom-fields#validation) defined for that field if set.
+          examples:
+            - "$value"
+        links:
+          readOnly: true
+          $ref: '#/components/schemas/SelfLinkCustomApiEntry'
+        meta:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Meta'
+            - type: integer
+              required:
+                - data_size
+              properties:
+                data_size:
+                  description: Specifies the sum of the size of each value stored for the Custom API Entry in bytes. The total size of a Custom API Entry must not exceed 64KB.
+                  readOnly: true
+                  example: 6
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      required:
+        - status
+        - title
+      properties:
+        title:
+          type: string
+          description: A brief summary of the error.
+          examples:
+            - "Bad Request"
+        status:
+          type: string
+          format: string
+          description: The HTTP response code of the error.
+          examples:
+            - "400"
+        detail:
+          type: string
+          description: Optional additional detail about the error.
+          examples:
+           - "The field 'name' is required"
+    SelfLink:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/LinkURI'
+      readOnly: true
+    SelfLinkCustomApi:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/LinkURI'
+          example: /settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6
+          description: Specifies the URI of the Custom API.
+      readOnly: true
+    SelfLinkCustomField:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/LinkURI'
+          example: /settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb
+          description: Specifies the URI of the Custom Field.
+      readOnly: true
+    SelfLinkCustomApiEntry:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/LinkURI'
+          example: /extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a
+          description: Specifies the URI of the Custom API Entry.
+      readOnly: true
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+      readOnly: true
+    Link:
+      anyOf:
+        - $ref: '#/components/schemas/LinkURI'
+        - $ref: '#/components/schemas/LinkObject'
+    LinkURI:
+      type: [integer, 'null']
+      format: uri
+      readOnly: true
+    LinkObject:
+      type: object
+      readOnly: true
+      properties:
+        href:
+          type: string
+          format: uri
+          example: http://example.com/articles/1/comments
+          readOnly: true
+        title:
+          type: string
+          example: Comments
+          readOnly: true
+        describedby:
+          type: string
+          format: uri
+          example: http://example.com/schemas/article-comments
+          readOnly: true
+    Timestamps:
+      additionalProperties: false
+      required:
+        - created_at
+        - updated_at
+      properties:
+        updated_at:
+          type: string
+          example: 2017-01-10T11:41:19.244Z
+          description: 	Specifies the date the entity is created.
+          readOnly: true
+        created_at:
+          type: string
+          example: 2017-01-10T11:41:19.244Z
+          description: 	Specifies the date the entity is last updated.
+          readOnly: true
+    Meta:
+      required:
+        - timestamps
+      properties:
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    PaginationMeta:
+      required:
+        - page
+        - results
+      properties:
+        results:
+          type: object
+          properties:
+            total:
+              description: Total number of results for the entire collection.
+              type: integer
+        page:
+          type: object
+          properties:
+            limit:
+              description: The maximum number of records for all pages.
+              type: integer
+              example: 100
+            offset:
+              description: The current offset by number of pages.
+              type: integer
+              example: 0
+            current:
+              description: The current number of pages.
+              type: integer
+              example: 1
+            total:
+              description: The total number of records for the entire collection.
+              type: integer
+              example: 1
+    PaginationLinks:
+      required:
+        - current
+        - first
+        - last
+        - next
+        - prev
+      type: object
+      properties:
+        timestamps:
+          type: object
+          properties:
+            current:
+              description: Always the current page.
+              type: string
+              format: uri
+              example: "/v2/custom-apis?page[offset]=0&page[limit]=100"
+            first:
+              description: Always the first page.
+              type: string
+              format: uri
+              example: "/v2/custom-apis?page[offset]=0&page[limit]=100"
+            last:
+              description: Always `null` if there is only one page.
+              type: string
+              format: uri
+              example: "/v2/custom-apis?page[offset]=0&page[limit]=100"
+            next:
+              description: Always `null` if there is only one page.
+              type: string
+              example: null
+            prev:
+              description: Always `null` if the user is on the first page.
+              type: string
+              example: null
