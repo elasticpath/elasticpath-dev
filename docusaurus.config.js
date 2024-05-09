@@ -532,6 +532,16 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
+          commerceextensions: {
+            specPath: "openapispecs/commerceextensions/OpenAPISpec.yaml",
+            outputDir: "docs/api/commerceextensions/",
+            downloadUrl:
+                "https://beta.elasticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
           exporter: {
             specPath: "openapispecs/exporter/exporter.yaml",
             outputDir: "docs/api/exporter",
