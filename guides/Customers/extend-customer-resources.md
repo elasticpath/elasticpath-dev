@@ -131,7 +131,6 @@ curl -X PUT https://useast.api.elasticpath.com/v2/customers/:customer-id \
 
 ## Further reading
 
-- [Custom Data (Flows)](https://beta.elasticpath.dev/docs/commerce-cloud/custom-data)
+- [Custom Data (Flows)](https://beta.elasticpath.dev/docs/api/flows/flows-service-introduction)
 - [Customers](https://beta.elasticpath.dev/docs/commerce-cloud/customer-management/customers)
-- [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
-- [Manage customers](https://beta.elasticpath.dev/docs/commerce-cloud/customer-management/manage-customers)
+- [Manage customers](/guides/Customers/manage-customers)

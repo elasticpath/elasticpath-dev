@@ -11,7 +11,7 @@ With extension templates, you can attach a specific set of custom fields to your
 Before you start, ensure that the following requirements are met:
 
 - An Commerce account and the Client ID and Client Secret for your
-  store, available from [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/getting-started/cm-overview).
+  store, available from [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/).
 - An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request).
 - The product to attach custom fields to must be created. See [The Stationary Store Example](#the-stationery-store-example).
 
@@ -95,7 +95,7 @@ In this section, define your custom data by adding fields to the templates.
 
 ### Book template custom fields
 
-For the book template that you created in the [Create the Templates](https://beta.elasticpath.dev/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/create-a-template) section, to capture the ISBN and author, you need to create fields for each of these custom fields. Each field gets a description. You can set validation rules, such as:
+For the book template that you created in the [Create the Templates](https://beta.elasticpath.dev/docs/api/flows/create-a-flow) section, to capture the ISBN and author, you need to create fields for each of these custom fields. Each field gets a description. You can set validation rules, such as:
 
 - The type of the field.
 - Whether the field is required.
