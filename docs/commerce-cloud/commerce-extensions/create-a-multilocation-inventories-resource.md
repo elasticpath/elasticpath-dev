@@ -1,7 +1,7 @@
 ---
 title: Create a Multi-location Inventories Resource
 nav_label: Create a Multi-location Inventories Resource
-sidebar_position: 3
+nav_position: 3
 ---
 
 Imagine managing inventory across multiple locations effortlessly. Commerce Extensions makes this possible with Custom APIs designed to handle specific data points like SKU, Collection Name, Location Name, and Inventory amount. This functionality allows businesses to quickly provide inventory information to customers, enhancing the shopping experience.

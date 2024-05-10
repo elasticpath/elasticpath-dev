@@ -1,7 +1,7 @@
 ---
 title: Overview
 nav_label: Overview
-sidebar_position: 1
+nav_position: 1
 ---
 
 A Custom Field represents a single field of data (for example a Product Rating). A Custom API is composed of one or more Custom Fields. 
@@ -32,8 +32,8 @@ Here is a comparison of different types and validation available in Custom APIs 
 | `slug`        | `string` | Specifies a unique slug identifier for this field. It is used when setting values for Custom API entries. The slug must be between 1 and 63 characters. Some values are [reserved](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/overview#reserved-slugs) and cannot be used as slugs. |
 | `field_type`  | `string` | Specifies the type of data you can store. Supported types are `string`, `integer`, `boolean`. This cannot be modified.                                                                                                                                                                                                  |
 | `validation`  | `object` | Specifies the limits that can be enforced on data for this field. For more information, see the [validation](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/overview#validation) section.                                                                                               |
-| `meta`        | `object` | Additional information for this Custom Field. For more information, see [The meta object](/docs/commerce-cloud/commerce-extensions/commece-extensions-api/custom-fields/overview#the-meta-object) section.                                                                                                              |
-| `links`       | `object` | The links for this resource. For more information, see [The links object](/docs/commerce-cloud/commerce-extensions/commece-extensions-api/custom-fields/overview#the-links-object) section.                                                                                                                             |
+| `meta`        | `object` | Additional information for this Custom Field. For more information, see [The meta object](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/overview#the-meta-object) section.                                                                                                              |
+| `links`       | `object` | The links for this resource. For more information, see [The links object](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/overview#the-links-object) section.                                                                                                                             |
 
 ## The `meta` Object
 
