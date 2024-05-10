@@ -12,7 +12,7 @@ You can do use this using both the API and Commerce Manager.
 
 ## Getting Data In: An Overview
 
-Below is an overview of the steps you can follow to get data into Product Experience Manager.
+Below is an overview of the steps you can follow to get data in to Product Experience Manager.
 
 1. Create a comma separated values file that contains the products to import.
 2. Import your products using Product Import API.
@@ -26,7 +26,12 @@ Below is an overview of the steps you can follow to get data into Product Experi
 
 ## Prerequisites
 
-To successfully finish this guide, you'll need an Elastic Path store.
+To successfully finish this guide, you'll need:
+
+1. An Elastic Path store.
+2. All API requests must contain a generated access token for authentication purposes. To generate an access token, you need your Application keys. Application keys are the client ID and client secret. See [Application Keys](https://beta.elasticpath.dev/docs/commerce-manager/application-keys/application-keys-cm). Once you have your client ID, you can use it to generate an access token. Requests to Product Experience Manager require an Authorization header containing your access token.
+
+    This guide uses the `implicit` grant type. This grant type can be thought of as read only and is most commonly used on the client side. See [Authentication](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/Tokens/implicit-token) for more information about tokens.
 
 ## Using APIs
 
@@ -144,14 +149,65 @@ curl -L -X POST 'https://euwest.api.elasticpath.com/v2/flows' \
 }'
 ```
 
+#### Response Example
+
+```json
+{
+  "data": {
+    "id": "844c6777-8e68-4e0f-949c-f7e3e3957c9d",
+    "type": "flow",
+    "name": "4K Streaming",
+    "slug": "4kg",
+    "description": "What is 4K Streaming? It is the highest resolution available, giving excellent picture quality and crisp, clear details. 4K Streaming elevates your viewing experience to the next level.",
+    "enabled": true,
+    "links": {
+      "self": "https://api.moltin.com/v2/flows/844c6777-8e68-4e0f-949c-f7e3e3957c9d"
+    },
+    "relationships": {},
+    "meta": {
+      "owner": "store",
+      "timestamps": {
+        "created_at": "2024-05-10T09:50:18.725Z",
+        "updated_at": "2024-05-10T09:50:18.725Z"
+      }
+    }
+  }
+}
+```
+
 ### Step 4 - Associate your product templates to a product
 
 Once you have created your templates, you must associate each template with one product. This means that when you export the products, an entry is created for your custom data template. You can then use this entry to update all your products with custom data, depending on your requirements.
 
 #### Request example
 
+```json
+curl -L -X POST 'https://euwest.api.elasticpath.com/pcm/products/d4d2df24-f210-467b-b66b-6a7cb56272ca/relationships/templates' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'Authorization: Bearer a430c90a48535b6f05a7f74f7f98ad0bd035bfbb' \
+--data-raw '{
+  "data": [
+    {
+      "id": "844c6777-8e68-4e0f-949c-f7e3e3957c9d",
+      "type": "template"
+    }
+  ]
+}'
+```
+
 #### Response example
 
+```json
+{
+  "data": [
+    {
+      "type": "template",
+      "id": "844c6777-8e68-4e0f-949c-f7e3e3957c9d"
+    }
+  ]
+}
+```
 
 
 ### Step 5 - Export your products
@@ -161,6 +217,30 @@ Once imported in Product Experience Manager, you can then bulk update your impor
 Use the Product Export API to export your comma separated values file.
 
 
+#### Request Example
 
 
 
+#### Response Example
+
+```json
+{
+  "data": {
+    "type": "pim-job",
+    "id": "31640a46-797c-4fdd-9ae4-62115f300325",
+    "attributes": {
+      "completed_at": null,
+      "created_at": "2024-05-10T09:58:22.91Z",
+      "started_at": null,
+      "status": "success",
+      "type": "product-export",
+      "updated_at": "2024-05-10T09:58:22.91Z"
+    },
+    "meta": {
+      "file_locations": null,
+      "filter": null,
+      "x_request_id": "577290f3-14cf-456e-8a99-3bd388e27dd3"
+    }
+  }
+}
+```
