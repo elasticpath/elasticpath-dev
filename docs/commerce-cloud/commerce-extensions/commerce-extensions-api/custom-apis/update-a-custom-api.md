@@ -1,7 +1,7 @@
 ---
 title: Update a Custom API
 nav_label: Update a Custom API
-sidebar_position: 5
+nav_position: 5
 ---
 
 ## `PUT` Update by ID

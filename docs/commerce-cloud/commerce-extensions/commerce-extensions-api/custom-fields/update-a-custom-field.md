@@ -1,7 +1,7 @@
 ---
 title: Update a Custom Field
 nav_label: Update a Custom Field
-sidebar_position: 4
+nav_position: 4
 ---
 
 ## `PUT` Update by ID
@@ -35,7 +35,7 @@ https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApi
 | `slug`        | Optional | `string` | Specifies a unique slug identifier for this field. This is used when setting values for you Custom API entries and must contain between 1 and 63 characters. Some values are [reserved](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/overview#reserved-slugs) and cannot be used as slugs. |
 | `name`        | Optional | `string` | Specifies the name of the field for the Custom API to be created. The name must contain between 1 and 255 characters.                                                                                                                                                                                                        |
 | `description` | Optional | `string` | Specifies the description of this field. The description must contain between 1 and 255 characters.                                                                                                                                                                                                                          |
-| `validation`* | Optional | `object` | Specifies the limits that can be enforced on data for this field. For more, see [validation](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/create-custom-fields#validation) section.                                                                                                        |
+| `validation`* | Optional | `object` | Specifies the limits that can be enforced on data for this field. For more, see [validation](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-fields/overview#validation) section.                                                                                                        |
 
 *Even if no validation is set for a field, there are limitations that must be satisfied. For instance, integers must be between -2^53+1 and 2^53-1, the total size of a Custom API Entry must not exceed 64KB.
 
@@ -48,12 +48,14 @@ curl -X PUT https://useast.api.elasticpath.com/v2/settings/extensions/custom-api
     -d $ {
       "data": {
         "name": "Name",
-        "description": "Name of wishlist.",
+        "description": "This field stores the name of the wishlist.",
         "slug": "name",
         "type": "custom_field",
         "validation": {
           "string": {
-            "max_length": 32
+            "min_length": 3,
+            "max_length": 128,
+            "regex": null
           }
         }
       }
@@ -79,12 +81,12 @@ curl -X PUT https://useast.api.elasticpath.com/v2/settings/extensions/custom-api
     },
     "type": "custom_field",
     "name": "Name",
-    "description": "Name of wishlist.",
+    "description": "This field stores the name of the wishlist.",
     "slug": "name",
     "validation": {
       "string": {
-        "min_length": 0,
-        "max_length": 32,
+        "min_length": 3,
+        "max_length": 128,
         "regex": null
       }
     }

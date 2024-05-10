@@ -1,7 +1,7 @@
 ---
 title: Create a Custom API
 nav_label: Create a Custom API
-sidebar_position: 4
+nav_position: 4
 ---
 
 ## `POST` Create a Custom API

@@ -1,7 +1,26 @@
 openapi: 3.1.0
 info:
   title: Carts, Checkout, Orders Introduction
-  description: Elastic Path Composable Commerce Open API Specification
+  description: |
+    A cart contains a list of the products that a shopper adds to the cart while browsing your catalog. In the context of a cart, a selected product is called a cart item.
+
+    A cart item identifies the product, the product price, the quantity selected, and the total price for the quantity selected. The cart displays a running total of the cost for the selected products plus the calculated tax.
+
+    You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](/docs/api/carts/cart-merge#add-product-to-cart).
+
+    After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
+
+    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/commerce-cloud/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
+
+    The following diagram shows a typical cart workflow:
+
+    ![Shows a cart workflow, starting from adding the first item to a cart, through cart creation and checkout](/assets/cart-workflow.png)
+
+    ### Multiple Carts
+
+    Buyers often make purchases based on jobs that they need to perform or outcomes they need to achieve and therefore require more than one shopping cart. For example, a corporate buyer places orders for multiple locations. Each location has a different frequency of ordering and require different products. The buyer can create one cart per location, fill the carts, and then check out the carts quickly. Similarly, shoppers can also create multiple carts for the ease of managing various shopping experiences, such as birthdays or holidays.
+
+    Each cart is discrete and separate. Any updates or changes to one cart has no effect on the other carts. A cart persists, that is, it stays with the buyer or shopper even after they use the cart in a checkout. Carts remain available after a checkout.
   contact:
     name: Elastic Path
     url: https://elasticpath.com
@@ -11,10 +30,10 @@ security:
 servers:
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
-    variables: {}
+    variables: { }
   - url: https://euwest.api.elasticpath.com
     description: EU West Production Server
-    variables: {}
+    variables: { }
 paths:
   /v2/carts:
     get:
@@ -24,7 +43,13 @@ paths:
       description: |
         You can retrieve the carts that are associated with a customer.
 
-        When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see Pagination.
+        When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/docs/commerce-cloud/api-overview/pagination).
+
+        :::note
+
+        Requires an `implicit` token with a [customer token](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens).
+
+        :::
       operationId: getCustomerCarts
       parameters:
         - name: x-moltin-customer-token
@@ -76,7 +101,7 @@ paths:
 
         After the shopper checks out the cart, the cart remains available to the shopper. The cart is persistent and stays with the shopper after it is used.
 
-        You can also create a cart to specify custom discounts. You can enable custom discounts when the discount_settings.custom_discounts_enabled field is set to true. Default is set from cart discount settings for the store. See Cart Settings.
+        You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Update Cart Settings](/docs/api/settings/put-v-2-settings-cart).
 
       operationId: createACustomCart
       parameters:
@@ -95,6 +120,29 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/CartsRequest'
+            examples:
+              Create Custom Cart:
+                value:
+                  data:
+                    name: "Bob’s cart"
+                    description: "For Holidays"
+                    discount_settings:
+                      custom_discounts_enabled: true
+              Create Preview Cart:
+                value:
+                  data:
+                    name: "promotion preview cart"
+                    description: "preview promotions"
+                    snapshot_date: "2026-09-10T00:12:00Z"
+              Create a Cart with Custom Attributes:
+                value:
+                  data:
+                    name: "cart with custom attributes"
+                    description: "cart description"
+                    custom_attributes:
+                      affiliate_link:
+                        type: "string"
+                        value: "https://site.com?tag=influencer04-20"
         required: false
       responses:
         '200':
@@ -126,11 +174,20 @@ paths:
         - Cart Management
       summary: Get a Cart
       description: |
-        Retrieves a cart.
+        Use this endpoint to retrieve a specific cart. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
 
-        >**Note**
-        >
-        >The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](https://elasticpath.dev/docs/commerce-cloud/api-overview/safe-characters) section.
+        :::note
+
+        The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.
+
+        :::
+
+        ### Query parameters
+
+
+        | Name      | Required | Type     | Description                                |
+        |:----------|:---------|:---------|:-------------------------------------------|
+        | `include` | Optional | `string` | Comma-delimited string of entities that can be included. The information included are `items`,`tax_items`, `custom_discounts`, or `promotions`. |
       operationId: getACart
       parameters:
         - name: cartID
@@ -169,7 +226,7 @@ paths:
       description: |
         Updates cart properties for the specified cartID.
 
-        You can also update a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `tru`e`. Default is set from cart discount settings for the store. See Cart Settings.
+        You can also update a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Cart Settings](/docs/api/settings/put-v-2-settings-cart).
       operationId: updateACart
       parameters:
         - name: cartID
@@ -186,6 +243,29 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/CartsRequest'
+            examples:
+              Update a Cart:
+                value:
+                  data:
+                    name: "my cart"
+                    description: "my first cart"
+                    discount_settings:
+                      custom_discounts_enabled: false
+                      use_rule_promotions: true
+                    snapshot_date: "2026-09-10T00:12:00Z"
+              Remove Payment Intent from a Cart:
+                value:
+                  data:
+                    payment_intent_id: ""
+              Update Cart with Custom Attributes:
+                value:
+                  data:
+                    name: "cart with custom attribute"
+                    description: "cart description"
+                    custom_attributes:
+                      affiliate_link:
+                        type: "string"
+                        value: "https://site.com?tag=influencer04-21"
         required: false
       responses:
         '200':
@@ -299,6 +379,18 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/BulkUpdateCartsItems'
+            examples:
+              Bulk Update Items in Cart:
+                value:
+                  data:
+                    - id: 8a4f1c77-4435-4b83-b0e4-020af02999c3
+                      quantity: 2
+                    - id: 14f1d7f8-43ed-4e7a-92ea-d73ea605c338
+                      quantity: 3
+                    - id: 9a47cf8b-41ff-499b-93dc-38b3564a4033
+                      shipping_group_id: 59aad410-218f-4683-896a-8919dfe224bf
+                  options:
+                    add_all_or_nothing: false
         required: false
       responses:
         '200':
@@ -319,11 +411,282 @@ paths:
     post:
       tags:
         - Cart Items
-      summary: Cart Merge
+      summary: Manage Carts
       description: |
+
+        ### Add Product to Cart
+
+        Adding a Product to Cart is the most common Cart action. If you want to add any custom products or promotions, you need to do that as a separate action.
+
+        #### Dynamic Bundles
+
+        A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/api/pxm/products/products#dynamic-bundles).
+
+        Your dynamic bundles are displayed in your published catalogs.
+
+        1. Use the configure a shopper endpoint to allow shoppers to make their selections from a bundle.
+        2. In the response of the configure a shopper, the `bundle_configuration` object contains the bundle selections a shopper has made.
+        3. In the add a product to cart request, use the `bundle_configuration` object to add the customers selections to a cart.
+
+        ```json
+          "bundle_configuration": {
+               "selected_options": {
+                   "games": {
+                       "d7b79eb8-19d8-45ea-86ed-2324a604dd9c": 1
+                   },
+                   "toys": {
+                       "0192ccdd-6d33-4898-87d7-c4d87f2bf8ea": 1,
+                       "1aea6f97-f0d9-452c-b3c1-7fb5629ead82": 1
+                   }
+               }
+        }
+        ```
+
+        When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/api/carts/get-order-items).
+
+        #### Personalized Products
+
+        You can allow shoppers to personalize their goods by adding custom text inputs to products directly. This feature is particularly useful for customizable items, such as personalized T-shirts or greeting cards. You can use this functionality by leveraging the `custom_inputs` attribute, and defining the details and validation rules for the custom text.
+
+        First, you must configure a `custom_inputs` attribute when creating a new product or updating an existing product. Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders.
+
+        For example, you may sell T-shirts that can have personalized text on the front and back of the shirt.
+
+        ```json
+            {
+              "data": {
+                "type": "product",
+                  "attributes": {
+                  /*** other product attributes ommitted ***/
+                  "custom_inputs": {
+                    "front": {
+                    "name": "T-Shirt Front",
+                    "validation_rules": [
+                      {
+                        "type": "string",
+                        "options": {
+                        "max_length": 50
+                      }
+                    }
+                  ],
+                "required": false
+                },
+                "back": {
+                  "name": "T-Shirt Back",
+                  "validation_rules": [
+                    {
+                      "type": "string",
+                      "options": {
+                      "max_length": 50
+                    }
+                  }
+                ],
+                "required": false
+                }
+              }
+            }
+          }
+        }
+        ```
+
+        If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
+
+        The `custom_inputs` attribute is stored in the cart item and the text for `custom_input` must not exceed 255 characters in length. When a cart is checked out, the `custom_inputs` attribute becomes part of the order.
+
+        #### Limitations on Usage of `custom_inputs` with Specific Promotion Types
+
+        When you add products to a cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
+
+          - For [Free Gift Promotions](/docs/api/promotions/create-a-promotion), you can add `custom_inputs` to gift items.
+          - For [Fixed Bundle Discount Promotions](/docs/api/promotions/create-a-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different `custom_inputs`.
+          - For [X for Y Discount Promotion and X for amount discount promotion](/docs/api/promotions/create-a-promotion), the promotion applies when there are two SKUs with the same `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
+
+        :::note
+
+        - Any requests to add a product to cart returns the collection of cart items.
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
+        - The cart currency is set when the first item is added to the cart.
+        - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
+        - A cart can contain a maximum of 100 unique items. Items include products and custom items.
+        - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) documentation.
+
+        :::
+
+        ### Add Custom Item to Cart
+
+        You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
+
+        For [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview), once you have created a [cart shipping group](/docs/commerce-cloud/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
+
+        #### Personalized Products
+
+        You can allow your shoppers to add custom text when adding custom items to their carts. This is useful, for example, if you have a custom item that can be personalized. You can do this using the `custom_inputs` attribute. The `custom_inputs` attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
+
+        You can allow shoppers to personalize their goods by adding custom text inputs directly to carts when adding custom items. This feature is particularly useful for customizable items, such as personalized T-shirts or greeting cards. You can use this functionality by leveraging the `custom_inputs` attribute, and defining the details and validation rules for the custom text.
+
+        Once you have defined your custom inputs on a custom item, you must configure the custom inputs in your orders.
+
+        When the custom item is added to the cart, those custom inputs are supplied.
+
+        ```json
+        {
+          "custom_inputs": {
+            "name": {
+              "name": "Fred",
+              "message": "Happy Birthday"
+            }
+          }
+        }
+        ```
+
+        If the same custom item has different `custom_inputs` attributes then, these are added as separate items in a cart.
+
+        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the `custom_inputs` attribute becomes part of the order items.  There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
+
+        :::note
+
+        - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
+        - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
+        - Custom Cart Items are available through [implicit authentication](/docs/commerce-cloud/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
+
+        :::
+
+        ### Add Promotion to Cart
+
+        You can use the Promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of cart items.
+
+         There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
+
+        To remove promotion from the cart via the promotion code, see [Delete Promotion Code from Cart](/docs/api/carts/delete-a-promotion-via-promotion-code).
+
+        ### Re-order
+
+        From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see [Orders](/docs/api/carts/orders).
+
+        :::note
+          - Any requests to add an item to cart return a collection of [cart items](/docs/api/carts/cart-items).
+          - A cart can contain a maximum of 100 unique items. Items include products, custom items, and promotions.
+          - When a shopper creates a cart and re-orders items from an order with properties such as custom attributes, custom discounts, and payment intent ID, these properties will remain unchanged in the original cart.
+          - Custom items do not exist in catalogs, and therefore cannot be reordered.
+        :::
+
+        ### Merging Carts
+
         A shopper can have more than one cart and decide to merge the carts into one cart. If a shopper adds items to a cart anonymously and then signs into their account as a registered user, the system asks them which cart to use. For example, a shopper has an existing cart with items `A`, `B` and `C` in it. The shopper returns later and adds items `D` and `E` while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. After the carts merge, the cart contains items `A`, `B`, `C`, `D` and `E`.
 
         Any items that are duplicated from the anonymous cart to the registered cart are incremented by the quantity from the anonymous cart. For example, the shopper has an existing cart with items `A`, `B` and `C`, returns later and adds two more `A` items and one B item while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. The existing cart will contain three `A` items, two `B` items, and one `C` item.
+
+        ### Best Practices
+
+        We recommend to include a unique `sku` code within the request body while adding custom items to carts. If the same `sku` is used for multiple products, they are merged into a single line item.
+
+        For example, if a cart consists of the following items:
+
+        - `product-1` with quantity 1 and sku code as `sku-1`
+        - `product-2` with quantity 1 and sku code as `sku-1`
+        - `product-3` with quantity 1 and sku code as `sku-2`.
+
+        The following response is returned where it combines all products with the same sku codes into a single line item, while products with a unique sku codes are represented as separate items:
+
+        ```json
+        {
+          "data": [
+              {
+              "id": "c58760f4-8889-4719-b34d-be1f1d11ae59",
+              "type": "custom_item",
+              "name": "product-1",
+              "description": "My first custom item!",
+              "sku": "sku-1",
+              "slug": "",
+              "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+              },
+              "quantity": 2,
+              "manage_stock": false,
+              "unit_price": {
+                "amount": 20000,
+                "currency": "USD",
+                "includes_tax": true
+              },
+              "value": {
+                "amount": 40000,
+                "currency": "USD",
+                "includes_tax": true
+                },
+              "links": {},
+              "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                          "amount": 20000,
+                          "currency": "USD",
+                          "formatted": "$200.00"
+                        },
+                        "value": {
+                          "amount": 40000,
+                          "currency": "USD",
+                          "formatted": "$400.00"
+                            }
+                        },
+                    "without_tax": {
+                        "unit": {
+                          "amount": 20000,
+                          "currency": "USD",
+                          "formatted": "$200.00"
+                            },
+                        "value": {
+                          "amount": 40000,
+                          "currency": "USD",
+                          "formatted": "$400.00"
+                            }
+                          },
+                        "tax": {
+                          "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                          },
+                          "value": {
+                              "amount": 0,
+                              "currency": "USD",
+                              "formatted": "$0.00"
+                            }
+                          },
+                          "discount": {
+                              "unit": {
+                                "amount": 0,
+                                "currency": "USD",
+                                "formatted": "$0.00"
+                            },
+                              "value": {
+                                "amount": 0,
+                                "currency": "USD",
+                                "formatted": "$0.00"
+                                }
+                            },
+                            "without_discount": {
+                                "unit": {
+                                   "amount": 20000,
+                                   "currency": "USD",
+                                   "formatted": "$200.00"
+                                  },
+                                  "value": {
+                                      "amount": 40000,
+                                      "currency": "USD",
+                                      "formatted": "$400.00"
+                                        }
+                                      }
+                                    },
+                "timestamps": {
+                  "created_at": "2023-05-02T16:28:11Z",
+                  "updated_at": "2023-05-02T16:28:18Z"
+                }
+            }
+          }
+          ```
       operationId: cartMerge
       parameters:
         - name: cartID
@@ -338,8 +701,96 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/Data.CartItemsObjectRequest'
+              oneOf:
+                - $ref: '#/components/schemas/CartItemsObjectRequest'
+                - $ref: "#/components/schemas/CartMergeObjectRequest"
+                - $ref: "#/components/schemas/CustomItemObject"
+                - $ref: "#/components/schemas/ReOrderObjectRequest"
+                - $ref: "#/components/schemas/PromotionItemObject"
+                - $ref: "#/components/schemas/BulkAddItemsRequest"
+            examples:
+              Add Cart Item:
+                value:
+                  data:
+                    type: cart_item
+                    id: df32387b-6ce6-4802-9b90-1126a5c5a54f
+                    quantity: 1
+                    custom_inputs:
+                      name:
+                        tshirt_front: Jane
+                        tshirt_back: Jane Doe's Dance Academy
+              Add Custom Item:
+                value:
+                  data:
+                    type: custom_item
+                    name: My Custom Item
+                    sku: my-custom-item
+                    description: My first custom item!
+                    quantity: 1
+                    price:
+                      amount: 10000
+              Add Promotion to Cart:
+                value:
+                  data:
+                    type: promotion_item
+                    code: PROMO_CODE
+              Reorder Items:
+                value:
+                  data:
+                    - type: order_items
+                      order_id: da0b0a12-8232-4be1-a354-a1a64b11de91
+                  options:
+                    add_all_or_nothing: false
+              Merge Carts:
+                value:
+                  data:
+                    - type: cart_items
+                      order_id: da0b0a12-8232-4be1-a354-a1a64b11de91
+                  options:
+                    add_all_or_nothing: false
+              Bulk Add Items to Cart:
+                value:
+                  data:
+                    - type: cart_item
+                      id: df32387b-6ce6-4802-9b90-1126a5c5a54f
+                      quantity: 1
+                    - type: custom_item
+                      name: My Custom Item
+                      sku: my-custom-item
+                      description: My first custom item!
+                      quantity: 1
+                      price:
+                        amount: 10000
+                    - type: promotion_item
+                      code: PROMO_CODE
+                  options:
+                    add_all_or_nothing: true
+              Add Bundle to Cart:
+                value:
+                  data:
+                    id: "5ab67bb3-b2c3-4348-af33-e370bd39b0c9"
+                    type: "cart_item"
+                    quantity: 1
+                    bundle_configuration:
+                      selected_options:
+                        tshirt:
+                          "23759a57-13c1-4887-9ec2-fb47444751bd": 1
+                        comics:
+                          "c7bcf7fd-1fab-4635-8ae0-7f187a9dbbce": 1
+                          "d9768b40-cf28-406e-bafc-a6d130627eca": 1
+              Add Item with Shipping Group ID:
+                value:
+                  data:
+                    type: "custom_item"
+                    name: "My Custom Item"
+                    sku: "my-custom-item"
+                    description: "My first custom item!"
+                    quantity: 1
+                    price:
+                      amount: 10000
+                      includes_tax: true
+                    shipping_group_id: "eb063818-939a-458f-97a4-2601c0c2b445"
+
       responses:
         '200':
           description: ''
@@ -483,13 +934,13 @@ paths:
     post:
       tags:
         - Customer Cart Associations
-      summary: Create Customer Cart Association
+      summary: Create a Customer Cart Association
       description: You can create associations between a customer and one or more carts. After cart associations exist for a customer, the customer can access those carts across any device.
       operationId: createCustomerCartAssociation
       parameters:
         - name: cartID
           in: path
-          description: The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](https://elasticpath.dev/docs/commerce-cloud/api-overview/safe-characters).
+          description: The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters).
           required: true
           style: simple
           schema:
@@ -623,9 +1074,14 @@ paths:
         - Tax Items
       summary: Add Tax Item to Cart
       description: |
-        >**Note**
-        >
-        >There is a soft limit of 5 unique tax items per cart item at any one time.
+
+        Use this endpoint to add a tax item to a cart.
+
+        :::note
+
+        There is a soft limit of 5 unique tax items per cart item at any one time.
+
+        :::
       operationId: addTaxItemToCart
       parameters:
         - name: cartID
@@ -693,9 +1149,11 @@ paths:
         - Tax Items
       summary: Bulk Add Tax Items to Cart
       description: |
-        >**Note**
-        >
-        >A cart item can only have a maximum of five tax items.
+        :::note
+
+        A cart item can only have a maximum of five tax items.
+
+        :::
       operationId: bulkAddTaxItemsToCart
       parameters:
         - name: cartID
@@ -830,7 +1288,7 @@ paths:
     delete:
       tags:
         - Tax Items
-      summary: Delete a TaxItem
+      summary: Delete a Tax Item
       description: Use this endpoint to delete a tax item.
       operationId: deleteATaxItem
       parameters:
@@ -877,7 +1335,12 @@ paths:
       tags:
         - Custom Discounts
       summary: Bulk Add Custom Discounts to Cart
-      description: You can apply up to five custom discounts to cart and cart item.
+      description: |
+        The default value for custom discounts on both the cart and cart items is set to 5 if this parameter is not configured in the store. To verify the custom discount limit value, call [Get all settings](/docs/api/settings/get-v-2-settings) endpoint.
+
+        To increase the custom discount value, contact [Elastic Path Support team](https://support.elasticpath.com/hc/en-us).
+
+
       operationId: bulkAddCustomDiscountsToCart
       parameters:
         - name: cartID
@@ -1157,7 +1620,7 @@ paths:
     delete:
       tags:
         - Custom Discounts
-      summary: Delete Custom Discount From CartItem
+      summary: Delete Custom Discount From Cart Item
       description: Use this endpoint to delete custom discount from cart item.
       operationId: deleteCustomDiscountFromCartItem
       parameters:
@@ -1205,7 +1668,19 @@ paths:
       tags:
         - Checkout
       summary: Checkout with Account Management Authentication Token
-      description: The shopper authenticates with the `Implicit Toke`n` and the `EP-Account-Management-Authentication-Token`.
+      description: |
+        When a Cart is ready for checkout, you can convert the cart to an order. The cart remains and can be modified and checked out again if required.
+
+        After a successful checkout, a response that contains the order is returned.
+
+        :::caution
+
+        - By default, carts are automatically deleted 7 days after the last update. You can change this setting by [updating cart settings](/docs/api/settings/put-v-2-settings-cart).
+        - Your inventory is modified during checkout and payment of an order. For more information about the changes in the inventory, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) section.
+
+        :::
+
+        The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
       operationId: checkoutWithAccountManagementAuthenticationToken
       parameters:
         - name: cartID
@@ -1258,8 +1733,45 @@ paths:
     get:
       tags:
         - Orders
-      summary: Get Customer Orders
-      description: Get customer orders
+      summary: Get All Orders
+      description: |
+        This endpoint returns all orders with custom flow fields. The pagination offset is set to fetch a maximum of 10,000 orders. If the store has 10,000 orders and you fetch the orders without using filters, an error is returned. Use a filter to view orders when the order is beyond the 10,000 mark.
+
+        :::note
+
+        - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens).
+        - Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/docs/api/accounts/post-v-2-account-members-tokens).
+        - You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+
+        :::
+
+        ### Filtering
+
+        The following operators and attributes are available for filtering orders.
+
+        | Attribute | Type | Operator | Example |
+        | :--- | :--- | :--- | :--- |
+        | `status` | `string` | `eq` | `eq(status,complete)` |
+        | `payment` | `string` | `eq` | `eq(payment,paid)` |
+        | `shipping` | `string` | `eq` | `eq(shipping,unfulfilled)` |
+        | `name` (`customer.name`) | `string` | `eq` / `like` | `like(name,Brad*)` |
+        | `email` (`customer.email`) | `string` | `eq` / `like` | `like(email,*@elasticpath.com)` |
+        | `customer_id` | `string` | `eq` / `like` | `eq(customer_id, e5a0d684-a4af-4919-a348-f66b0b4955e0)` |
+        | `account_id` | `string` | `eq` / `like` | `eq(account_id,3d7200c9-a9bc-4085-9822-63e80fd94a09)` |
+        | `account_member_id` | `string` | `eq` / `like` | `eq(account_member_id,2a8a3a92-2ccd-4b2b-a7af-52d3896eaecb)` |
+        | `contact.name` | `string` | `eq` / `like` | `eq(name,John Doe)` |
+        | `contact.email` | `string` | `eq` / `like` | `eq(email,John Doe)` |
+        | `shipping_postcode` | `string` | `eq` / `like` | `like(shipping_postcode,117*)` |
+        | `billing_postcode` | `string` | `eq` / `like` | `like(billing_postcode,117*)` |
+        | `with_tax` | `integer` | `gt`/`ge`/`lt`/`le` | `ge(with_tax,10000)` |
+        | `without_tax` | `integer` | `gt`/`ge`/`lt`/`le` | `ge(without_tax,10000)` |
+        | `currency` | `string` | `eq` | `eq(currency,USD)` |
+        | `product_id` | `string` | `eq` | `eq(product_id,6837058c-ae42-46db-b3c6-7f01e0c34b40)` |
+        | `product_sku` | `string` | `eq` | `eq(product_sku,deck-shoe-001)` |
+        | `created_at` | `date` | `eq` / `gt` / `ge`/ `le` / `lt` | `gt(created_at,YYYY-MM-DD)` |
+        | `updated_at` | `date` | `eq` / `gt` / `ge`/ `le`/ `lt` | `lt(updated_at,YYYY-MM-DD)` |
+        | `external_ref` | `string` | `eq` / `like` | `like(external_ref, 16be*)` |
+
       operationId: getCustomerOrders
       parameters:
         - name: x-moltin-customer-token
@@ -1343,14 +1855,19 @@ paths:
       summary: Update an Order
       description: |
         You can only update custom data, `shipping`, `shipping_address`, and status on orders. All other settings in the order object are immutable.
-        >**Warning**
-        >
-        >You can update `shipping`, `shipping_address`, and status of an order only if the order is not fulfilled. You can use the refund API to refund an order only if the payment status is `paid`. Canceling an order does not automatically refund a payment. You must refund the orders manually.
 
-        >**Note**
-        >
-        >- This request is only accessible to client_credentials token users with Seller Admin role.
-        >- Non client_credentials token users cannot access this endpoint. See Permissions.
+        :::caution
+
+        You can update `shipping`, `shipping_address`, and status of an order only if the order is not fulfilled. You can use the refund API to refund an order only if the payment status is `paid`. Canceling an order does not automatically refund a payment. You must refund the orders manually.
+
+        :::
+
+        :::note
+
+        - This request is only accessible to client credentials token users with Seller Admin role.
+        - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/commerce-cloud/authentication/Tokens/permissions).
+
+        :::
       operationId: updateAnOrder
       parameters:
         - name: orderID
@@ -1662,9 +2179,11 @@ paths:
         * Mark as Refunded: You can manually mark a transaction as refunded. Before you can mark the order as refunded, you need to handle the actual refund on your side with your payment provider. Mark as Refunded is a full refund made to the transaction.
         * Refund through Composable Commerce: You can process a full or partial refund to a supported payment provider directly from Commerce Manager or API by providing the refund amount. When you start the refund process, the request is directly sent to the payment gateway.
 
-        >**Warning**
-        >
-        >If you use manual gateway for partial or full refund, you need to handle the actual refund on your side with your payment provider.
+        :::caution
+
+        If you use manual gateway for partial or full refund, you need to handle the actual refund on your side with your payment provider.
+
+        :::
       operationId: refundATransaction
       parameters:
         - name: orderID
@@ -1808,9 +2327,11 @@ paths:
       description: |
         Use this endpoint to cancel or void a pending or authorized transaction. The transaction can be canceled or voided when it is in `pending` and `completed` statuses.
 
-        >**Warning**
-        >
-        >This endpoint works only for Stripe and PayPal and does not work for manual gateway.
+        :::caution
+
+        This endpoint works only for Stripe and PayPal and does not work for manual gateway.
+
+        :::
       operationId: cancelATransaction
       parameters:
         - name: orderID
@@ -1877,19 +2398,57 @@ components:
         discount_settings:
           $ref: '#/components/schemas/DiscountSettings'
         name:
-          description: The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the Safe Characters section.
+          description: The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.
           type: string
           examples:
             - my cart name
+        snapshot_date:
+          description: This optional parameter sets a reference date for the cart. If this parameter is set, it allows the cart to act as one that might occur on that specified date. For example, such future carts might acquire future-enabled discounts, allowing users to test and validate future interactions with carts. The snapshot_date must be in the format 2026-02-21T15:07:25Z. By default, this parameter is left empty.
+          type: string
+          examples:
+            - "2026-09-10T00:12:00Z"
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        payment_intent_id:
+          description: To remove the Stripe payment intent from a cart, pass the empty value in the `payment_intent_id` field.  You must use an empty value for this field. You cannot use this endpoint to directly update the cart to use an existing Payment Intent.
+          type: string
+          examples:
+            - ''
     DiscountSettings:
       title: DiscountSettings
       type: object
       properties:
-        Custom Discounts_enabled:
-          description: This parameter enables custom discounts for a cart. When set to true, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See Cart Settings.
+        custom_discounts_enabled:
+          description: This parameter enables custom discounts for a cart. When set to true, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](/docs/api/settings/put-v-2-settings-cart).
           type: boolean
           examples:
             - false
+        use_rule_promotions:
+          description: When set to true, this parameter allows the cart to use rule promotions.
+          type: boolean
+          examples:
+            - false
+    CustomAttributes:
+      title: CustomAttributes
+      type: object
+      properties:
+        custom_attributes:
+          description: Specifies the custom attributes for the cart object. The attribute can be any string, numerical, and underscore. A cart can have maximum of 20 custom attributes.
+          type: object
+          properties:
+            attribute:
+              description: Specifies the attribute `type` and `value`.
+              type: object
+              properties:
+                type:
+                  description: Specifies the type of the attribute such as string, integer, boolean, and float.
+                  type: string
+                value:
+                  description: Specifies the value of the attribute.
+                  oneOf:
+                    - type: string
+                    - type: number
+                    - type: boolean
     CartResponse:
       title: CartResponse
       type: object
@@ -1973,22 +2532,22 @@ components:
                       readOnly: true
                       examples:
                         - 1cf8b15b-4f12-43c5-837c-dbbc09aefa55
-    Data.CartItemsObjectRequest:
+    CartItemsObjectRequest:
       oneOf:
-        - $ref: "#/components/schemas/Data.CartItemObject"
-        - $ref: "#/components/schemas/Data.CartMergeObjectRequest"
-        - $ref: "#/components/schemas/Data.CustomItemObject"
-        - $ref: "#/components/schemas/Data.ReOrderObjectRequest"
-        - $ref: "#/components/schemas/Data.PromotionItemObject"
-    Data.CartItemObject:
+        - $ref: "#/components/schemas/CartItemObject"
+        - $ref: "#/components/schemas/CartMergeObjectRequest"
+        - $ref: "#/components/schemas/CustomItemObject"
+        - $ref: "#/components/schemas/ReOrderObjectRequest"
+        - $ref: "#/components/schemas/PromotionItemObject"
+    CartItemObject:
       title: Data.CartItemObject
       type: object
       properties:
         data:
           allOf:
-            - $ref: '#/components/schemas/CartItemObject'
+            - $ref: '#/components/schemas/CartItemObjectData'
             - $ref: '#/components/schemas/CartItemResponse'
-    CartItemObject:
+    CartItemObjectData:
       title: CartItemObject
       type: object
       required:
@@ -2019,8 +2578,18 @@ components:
         custom_inputs:
           description: The custom text to be added to a product.
           type: object
-    Data.CartMergeObjectRequest:
-      title: Data.CartMergeObjectRequest
+        bundle_configuration:
+          description: Object used to describe the bundle options selected.
+          type: object
+          properties:
+            selected_options:
+              description: Specifies selected options.
+              type: object
+        shipping_group_id:
+          description: Identifier for a created Cart Shipping Group
+          type: string
+    CartMergeObjectRequest:
+      title: CartMergeObjectRequest
       type: object
       properties:
         data:
@@ -2049,15 +2618,15 @@ components:
           format: uuid
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
-    Data.CustomItemObject:
+    CustomItemObject:
       title: Data.CustomItemObject
       type: object
       properties:
         data:
           allOf:
-            - $ref: '#/components/schemas/CustomItemObject'
+            - $ref: '#/components/schemas/CustomItemObjectData'
           description: ''
-    CustomItemObject:
+    CustomItemObjectData:
       title: CustomItemObject
       type: object
       required:
@@ -2093,7 +2662,7 @@ components:
           description: A description of the custom item.
           type: string
           examples:
-            - My first custom item    !
+            - My first custom item!
         sku:
           type: string
           description: The `SKU` code to use for the custom item. See [best practices](https://elasticpath.dev/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart#best-practices) to use the `SKU` code.
@@ -2104,8 +2673,14 @@ components:
           description: The name of the custom item.
           examples:
             - My Custom Item
-    Data.ReOrderObjectRequest:
-      title: Data.ReOrderObjectRequest
+        custom_inputs:
+          description: The custom text to be added to a product.
+          type: object
+        shipping_group_id:
+          description: Identifier for a created Cart Shipping Group
+          type: string
+    ReOrderObjectRequest:
+      title: ReOrderObjectRequest
       type: object
       properties:
         data:
@@ -2132,14 +2707,25 @@ components:
           format: uuid
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
-    Data.PromotionItemObject:
-      title: Data.PromotionItemObject
+    BulkAddItemsRequest:
+      title: BulkAddItemsRequest
+      type: object
+      properties:
+        data:
+          anyOf:
+            - $ref: '#/components/schemas/CartItemsObjectRequest'
+            - $ref: "#/components/schemas/CartMergeObjectRequest"
+            - $ref: "#/components/schemas/CustomItemObject"
+            - $ref: "#/components/schemas/ReOrderObjectRequest"
+            - $ref: "#/components/schemas/PromotionItemObject"
+    PromotionItemObject:
+      title: PromotionItemObject
       type: object
       properties:
         data:
           allOf:
-            - $ref: '#/components/schemas/PromotionItemObject'
-    PromotionItemObject:
+            - $ref: '#/components/schemas/PromotionItemObjectData'
+    PromotionItemObjectData:
       title: PromotionItemObject
       type: object
       required:
@@ -2147,10 +2733,12 @@ components:
         - code
       properties:
         type:
+          description: Specifies the type of resource, which is `promotion_item`.
           type: string
           enum:
             - promotion_item
         code:
+          description: Specifies the promotion code. For more information about codes[].user[], see the [Create Promotion codes](/docs/api/promotions/create-promotion-codes) section.
           type: string
           examples:
             - PROMO_CODE
@@ -2336,7 +2924,7 @@ components:
           items:
             type: object
             anyOf:
-              - $ref: '#/components/schemas/Data.CartItemObject'
+              - $ref: '#/components/schemas/CartItemObject'
         meta:
           type: object
           properties:
@@ -2807,20 +3395,20 @@ components:
         - gateway
         - method
       properties:
-#        gateway:
-#          type: string
-#          enum:
-#            - adyen
-#            - authorize_net
-#            - braintree
-#            - card_connect
-#            - cyber_source
-#            - elastic_path_payments_stripe
-#            - manual
-#            - paypal_express_checkout
-#            - stripe
-#            - stripe_connect
-#            - stripe_payment_intents
+        gateway:
+          type: string
+          enum:
+            - adyen
+            - authorize_net
+            - braintree
+            - card_connect
+            - cyber_source
+            - elastic_path_payments_stripe
+            - manual
+            - paypal_express_checkout
+            - stripe
+            - stripe_connect
+            - stripe_payment_intents
         method:
           description: Specifies the transaction method, such as `purchase` or `authorize`.
           type: string
@@ -3021,7 +3609,7 @@ components:
                       description: The shipping preference. Use SET_PROVIDED_ADDRESS value. This parameter does allow the user to change their address on PayPal site.
                       type: string
                     user_action:
-                      description:  If you set `useraction=commit` in the query string, the flow redirects the buyer to the PayPal payment page and displays a Pay Now button. When the shopper clicks **Pay Now**, call `DoExpressCheckoutPayment` to complete the payment without additional interaction from the shopper. Choose this flow when you know the final payment amount when you initiate the checkout flow.
+                      description: If you set `useraction=commit` in the query string, the flow redirects the buyer to the PayPal payment page and displays a Pay Now button. When the shopper clicks **Pay Now**, call `DoExpressCheckoutPayment` to complete the payment without additional interaction from the shopper. Choose this flow when you know the final payment amount when you initiate the checkout flow.
                       type: string
                     return_url:
                       description: The callback URL for PayPal to redirect the user in the case of approved payment.
@@ -3096,18 +3684,18 @@ components:
               description: Specifies the Stripe token or source.
               type: string
     Data.PaymentObject:
-          oneOf:
-            - $ref: "#/components/schemas/Data.AdyenPayment"
-            - $ref: "#/components/schemas/Data.AuthorizeNetPayment"
-            - $ref: "#/components/schemas/Data.BraintreePayment"
-            - $ref: "#/components/schemas/Data.CardConnectPayment"
-            - $ref: "#/components/schemas/Data.CyberSourcePayment"
-            - $ref: "#/components/schemas/Data.ElasticPathPaymentsPoweredByStripePayment"
-            - $ref: "#/components/schemas/Data.ManualPayment"
-            - $ref: "#/components/schemas/Data.PayPalExpressCheckoutPayment"
-            - $ref: "#/components/schemas/Data.StripePayment"
-            - $ref: "#/components/schemas/Data.StripeConnectPayment"
-            - $ref: "#/components/schemas/Data.StripePaymentIntentsPayment"
+      oneOf:
+        - $ref: "#/components/schemas/Data.AdyenPayment"
+        - $ref: "#/components/schemas/Data.AuthorizeNetPayment"
+        - $ref: "#/components/schemas/Data.BraintreePayment"
+        - $ref: "#/components/schemas/Data.CardConnectPayment"
+        - $ref: "#/components/schemas/Data.CyberSourcePayment"
+        - $ref: "#/components/schemas/Data.ElasticPathPaymentsPoweredByStripePayment"
+        - $ref: "#/components/schemas/Data.ManualPayment"
+        - $ref: "#/components/schemas/Data.PayPalExpressCheckoutPayment"
+        - $ref: "#/components/schemas/Data.StripePayment"
+        - $ref: "#/components/schemas/Data.StripeConnectPayment"
+        - $ref: "#/components/schemas/Data.StripePaymentIntentsPayment"
     TransactionResponse:
       title: TransactionResponse
       type: object
@@ -3729,13 +4317,15 @@ components:
 tags:
   - name: Cart Management
     description: |
-      A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](#tag/Checkout) to convert the cart to an order.
+      A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](/docs/api/carts/checkout-with-account-management-authentication-token) to convert the cart to an order.
 
-      >**Note**
-      >
-      >* Adding, modifying, or removing any cart items, custom items, or promotions always returns the cart meta, calculated using the calculation method. This is useful to update the client with up-to-date totals.
-      >* We will automatically delete carts 7 days after they were last updated.
-      >* If you do not pass a `X-MOLTIN-CURRENCY` header specifying what currency you would like the cart to use, the products in the cart are converted to your default currency.
+      :::note
+
+      - Adding, modifying, or removing any cart items, custom items, or promotions always returns the cart meta, calculated using the calculation method. This is useful to update the client with up-to-date totals.
+      - We will automatically delete carts 7 days after they were last updated.
+      - If you do not pass a `X-MOLTIN-CURRENCY` header specifying what currency you would like the cart to use, the products in the cart are converted to your default currency.
+
+      :::
   - name: Customer Cart Associations
     description: |
       You can create associations between a customer and one or more carts. After cart associations exist for a customer, those carts are accessible across any device. You can delete associations as required.
@@ -3744,19 +4334,21 @@ tags:
 
       ### With a `customer` token
 
-      These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](https://elasticpath.dev/docs/commerce-cloud/authentication/overview) documentation.
+      These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Customer Token](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens) documentation.
 
       #### Cart creation
 
       Shoppers create carts and can use any of the carts that they created to check out an order.
 
-      >**Note**
-      >
-      >You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](https://elasticpath.dev/docs/commerce-cloud/api-overview/safe-characters).
+      :::note
+
+      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters).
+
+      :::
 
       ### Without a `customer` token
 
-      These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the Authentication documentation.
+      These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/commerce-cloud/authentication/security) documentation.
 
       This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
 
@@ -3775,18 +4367,61 @@ tags:
     description: Products added to a cart are referred to as a `cart_item`.
   - name: Checkout
     description: |
-      When a Cart is ready for checkout, you can convert the cart to an order. The cart remains and can be modified and checked out again if required.
 
-      After a successful checkout, a response that contains the order is returned.
+      The checkout workflow ties together many of the key concepts covered in this section. When a customer initiates the checkout process, an order is created from the cart. The order is incomplete until after a successful payment is made. A complete order can be shipped and the product deducted from inventory counts.
 
-      >**Warning**
-      >
-      >By default, carts are automatically deleted 7 days after the last update. You can change this setting by updating cart settings.
-      >
-      >Your inventory is modified during checkout and payment of an order. For more information about the changes in the inventory, see the Inventory section.
+      ![Checkout workflow](/assets/checkout-flow.png)
+
+      ### Summary of the checkout workflow
+
+      1. Add a product to a cart. A cart and its reference number is generated.
+      2. Manage the cart items. For example, you might add items, remove items, and change quantities.
+      3. Check out the cart. An incomplete order is created.
+      4. Pay for an order: provide billing and shipping details, if you are a new customer. The order is now in the processing status.
+      5. If using a manual gateway, after you authorize and capture it, Composable Commerce considers the order complete. If you use a third-party integration supported by Composable Commerce (such as Stripe), after the third-party gateway authorizes and captures the payment, the order becomes complete. Usually capture does not occur at the same time as authorization. For more information, see the Capture section.
+      6. After the order is shipped, you can manually flag it as fulfilled.
+
+      ### Carts
+
+      When a product is added to a cart, a cart is generated together with its unique reference ID that on checkout becomes a part of the order ID. If you are using our JavaScript software development kit, generating a cart reference ID is done for you; otherwise, add a cart reference generator to your functionality.
+
+      ### Promotions and custom items
+
+      Optionally, apply a promotion code on a cart, or add custom_items to modify the product price (typically to handle taxes, customs, or shipping).
+
+      ### Checkout
+
+      You can checkout a cart with an associated customer name and email (customer object). Typically, this would be used for new customers or ones that prefer to shop as guests. Use the customer.id checkout option to checkout for an existing customer. After a successful checkout is completed, the response contains an order.
+
+      Email addresses that either begin or end with a period, or contain consecutive periods, are considered invalid, resulting in the following error:
+      ```json
+      "errors": [
+        {
+            "status": 400,
+            "source": "data.customer.email",
+            "title": "format",
+            "detail": "Does not match format 'email"
+        }
+      ]
+        ```
+
+      ### Payments
+
+      On checkout, an incomplete order is created. You can then use a third-party integration to handle your payment gateway. If the payment gateway is supported by Composable Commerce, such as Stripe, the payment is processed externally but handled internally. When a successful validation is returned, Composable Commerce flags the order as complete.
+
+      If you are using a payment method not officially supported by Composable Commerce, the gateway needs to be implemented and handled manually. After the payment has been authorized and captured either through Commerce Manager or API, the status of an order becomes complete.
+
+      ### Shipping
+
+      The status of an order and the status of shipping are handled separately, and so an order can be complete but not shipped. Orders that have not been shipped yet have a status of unfulfilled. This flag is generated automatically by Composable Commerce when an order is created. Currently, you can only update the shipping status manually, through the API. After the order is shipped, flag its shipping status as fulfilled.
+
+      ### Inventory
+
+      If enabled, you can manage your stock. As such, your stock is automatically updated as soon as a product is checked out.
+
   - name: Orders
     description: |
-      An Order is created through the [checkout](#tag/Checkout) endpoint within the Carts API.
+      An Order is created through the [checkout](/docs/api/carts/checkout) endpoint within the Carts API.
 
       An order is created after a customer checks out their cart. On creation, the order is marked unpaid. The customer is prompted for a shipping address, a billing address, and a payment method. After the order is successfully paid, you can trigger an inventory process and a shipping process.
 
@@ -3794,19 +4429,91 @@ tags:
 
       ### Reorder
 
-      A re-order is when a shopper copies items from a previous order from their order history into a cart of their choice. If a shopper re-orders to an empty cart, the same quantities as the past order are applied. If the shopper re-orders to an existing cart, and orders the same item, the quantity increases. If an item is out of stock, the item is not added to the cart, and the shopper sees an insufficient stock error. The tax for the items in a re-order is not applied. For more information, see Tax Items.
+      A re-order is when a shopper copies items from a previous order from their order history into a cart of their choice. If a shopper re-orders to an empty cart, the same quantities as the past order are applied. If the shopper re-orders to an existing cart, and orders the same item, the quantity increases. If an item is out of stock, the item is not added to the cart, and the shopper sees an insufficient stock error. The tax for the items in a re-order is not applied. For more information, see [Tax Items](/docs/api/carts/tax-items).
   - name: Payments
+    description: |
+      When you [checkout](/docs/api/carts/checkout) a [cart](/docs/api/carts/cart-management), an unpaid [order](/docs/api/carts/orders) is returned. You can process the payment for the order though a payment gateway.
+
+      :::note
+
+      - You need to configure and enable a payment gateway before you can accept payments for orders.
+      - Configure your store to use [Manual Gateway](/docs/api/payments/update-manual-gateway) to process payments if the order total is zero or the payment is through non-supported payment providers.
+      - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
+      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/docs/commerce-cloud/api-overview/api-contract#parallel-calls-to-api-objects).
+
+      :::
+
+      ### Payment Methods
+
+      Depending on the chosen gateway, you may or may not have access to capture funds immediately or authorize for later payment. For more information, see [Transactions](/docs/api/carts/transactions).
+
+      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments) section.
+
+      #### Purchase
+
+      The simplest method is purchase. The gateway attempts to charge the customer immediately, and the result of the attempt is returned.
+
+      You can partially pay funds using purchase method. The gateway attempts to charge the customer immediately, and the payment status for an order shows partially_paid.
+
+      When you Get an order, you can see the following fields in the meta object:
+
+      - `balance_owing`: Specifies the outstanding funds required to complete an order. It considers all complete or pending transactions, including authorized, paid, and captured transactions. (`balance_owing` = order total - `authorized` amount - `paid` amount).
+      - `paid`: Specifies the total amount of purchased or captured transactions.
+      - `authorized`: Specifies the total amount of completed or pending authorized transactions for an order.
+
+      #### Authorize
+
+      You can `authorize` a payment so funds can later be captured when an item is dispatched or restocked.
+
+      You can partially pay for an order using `authorize` payment method so that the order is `partially_authorized`. The transaction must be complete for the order status to be `partially_authorized`.
+
+      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments).
+
+      #### Capture
+
+      After authorizing a transaction, you have to capture the authorized funds.
+
+      :::note
+
+      We recommend capturing payments several hours to days after the authorization to mitigate risks of fraud and chargebacks. When you sell digital goods that are delivered immediately, we recommend using a single purchase call instead of separate authorize and capture calls.
+
+      :::
+
+      After the payment is `partially_authorized`, you must `capture` the authorized transaction later. Once you capture the authorized transactions, the order payment status will change to `partially_paid`.
+
+      #### Refunds
+
+      You can use either the Refund through Composable Commerce or use the Mark as Refunded capability, or a combination of both capabilities.
+
+      For more information about refund for split payments, see [Refund a Payment](/docs/api/carts/refund-a-transaction).
+
+      #### Refund through Composable Commerce
+
+      You can start a full or partial refund to a supported payment provider directly from Commerce Manager or the API. When you start the refund process, the refund request is sent to the payment gateway. You no longer have to log on to your payment gateway’s console to process the refund.
+
+      When you process a refund, use the refund endpoint to pass the refund amount. If you don’t pass an amount, the refund is processed as Mark as refunded. For more information, see the Mark as Refunded section.
+
+      Each time a partial refund is triggered, the transaction.updated event is generated and updated with refunded.amount. The `order.updated` event is also triggered. The `order.refunded` event generates when the full amount is refunded.
+
+
+      #### Mark as Refunded
+
+      You can use your payment gateway’s console to process a refund. Process the refund first in the payment gateway and then use the **Mark as Refunded** capability in Composable Commerce to complete the process.
+
+      When an order is **Marked as refunded**, the payment status `order.payment.status` is set to refunded. In this case, the `order.updated`, `transaction.updated` and `order.refunded` events are generated.
   - name: Transactions
   - name: Custom Discounts
     description: |
-      With custom discounts, you can allow your shoppers to apply discounts from external services to their purchases. To apply custom discounts to carts and cart items, you need to set `custom_discounts_enabled` field to `true` in your [Cart Settings](https://elasticpath.dev/docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings#put-update-cart-settings).
+      With custom discounts, you can allow your shoppers to apply discounts from external services to their purchases. To apply custom discounts to carts and cart items, you need to set `custom_discounts_enabled` field to `true` in your [Cart Settings](/docs/api/settings/put-v-2-settings-cart).
 
       You cannot add custom discounts to an empty cart.
 
-      >**Warning**
-      >
-      >* You can apply up to five custom discounts to cart and cart item.
-      >* The stores that use [simple calculation method](https://elasticpath.dev/guides/Carts/calculate-totals#simple-calculation-method) do not support custom discounts.
+      :::caution
+
+      - You can apply up to five custom discounts to cart and cart item.
+      - The stores that use [simple calculation method](https://beta.elasticpath.dev/guides/Carts/calculate-totals) do not support custom discounts.
+
+      :::
   - name: Tax Items
     description: |
       Taxes differ by country and can differ within the country by region, state, or province. Each jurisdiction has a unique tax code and rate. If your store serves many jurisdictions, integrate a third-party tax generator to manage taxes. If your store serves a few jurisdictions, you can use the API to define the tax codes and rates in Composable Commerce.
@@ -3815,5 +4522,5 @@ tags:
 
         - Simple calculation method: Taxes are calculated at the unit level and are rounded to the nearest penny for the unit.
         - Line calculation method: Default. Taxes are calculated at the line level and are rounded to the nearest penny for the line.
-          For more information about calculation methods, see [Calculate cart and order totals](https://elasticpath.dev/guides/Carts/calculate-totals).
+          For more information about calculation methods, see [Calculate cart and order totals](https://beta.elasticpath.dev/guides/Carts/calculate-totals).
 

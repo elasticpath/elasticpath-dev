@@ -1,7 +1,7 @@
 ---
 title: Get all Custom Fields
 nav_label: Get all Custom Fields
-sidebar_position: 2
+nav_position: 2
 ---
 
 ## `GET` Get a list of Custom Fields on Custom API
@@ -75,13 +75,13 @@ curl -X GET https://useast.api.elasticpath.com/v2/settings/extensions/custom-api
       },
       "type": "custom_field",
       "name": "Name",
-      "description": "Name of wishlist",
+      "description": "This field stores the name of the wishlist.",
       "slug": "name",
       "field_type": "string",
       "validation": {
         "string": {
-          "min_length": 0,
-          "max_length": 32,
+          "min_length": 3,
+          "max_length": 128,
           "regex": null
         }
       }

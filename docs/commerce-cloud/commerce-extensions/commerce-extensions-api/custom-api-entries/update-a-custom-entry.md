@@ -1,23 +1,23 @@
 ---
 title: Update a Custom API Entry
 nav_label: Update a Custom API Entry
-sidebar_position: 4
+nav_position: 4
 ---
 
 ## `PUT` Update by ID
 
 ```http
-https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customEntryId
+https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customApiEntryId
 ```
 
 ## Paramerers
 
 ### Path parameters
 
-| Name   | Required | Type     | Description                                               |
-|--------|----------|----------|-----------------------------------------------------------|
-| `customApiSlug` | Required | `string` | The unique identifier of the Custom API.                  |
-| `customEntryId`   | Required | `string` | The unique identifier for the custom entry to be updated. |
+| Name                 | Required | Type     | Description                                               |
+|----------------------|----------|----------|-----------------------------------------------------------|
+| `customApiSlug`      | Required | `string` | The unique identifier of the Custom API.                  |
+| `customApiEntryId`   | Required | `string` | The unique identifier for the custom entry to be updated. |
 
 
 ### Headers
@@ -59,13 +59,15 @@ https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customEntryId
 ## Request Example
 
 ```bash
-curl -X PUT https://useast.api.elasticpath.com/v2/extensions/:slug/:id \
+curl -X PUT https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customApiEntryId \
     -H "Authorization: Bearer XXXX" \
     -H "Content-Type: application/json" \
     -d $ {
       "data": {
         "type": "wishlist_ext",
-        "name": "My Tech Wishlist"
+        "name": "My Wishlist",
+        "items_count": 0,
+        "keep_purchased": false
       }
     }
 ```
@@ -88,7 +90,9 @@ curl -X PUT https://useast.api.elasticpath.com/v2/extensions/:slug/:id \
       }
     },
     "type": "wishlist_ext",
-    "name": "My Tech Wishlist"
+    "name": "My Wishlist",
+    "items_count": 0,
+    "keep_purchased": false
   }
 }
 ```

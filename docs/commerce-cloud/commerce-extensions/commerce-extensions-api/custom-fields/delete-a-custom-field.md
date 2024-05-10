@@ -1,7 +1,7 @@
 ---
 title: Delete a Custom Field
 nav_label: Delete a Custom Field
-sidebar_position: 5
+nav_position: 5
 ---
 
 ## `DELETE` Delete Custom Field by ID

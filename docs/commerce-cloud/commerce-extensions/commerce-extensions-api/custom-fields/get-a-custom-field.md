@@ -1,7 +1,7 @@
 ---
 title: Get a Custom Field
 nav_label: Get a Custom Field
-sidebar_position: 3
+nav_position: 3
 ---
 
 ## `GET` Get by ID
@@ -52,14 +52,14 @@ curl -X GET https://useast.api.elasticpath.com/v2/settings/extensions/custom-api
     },
     "type": "custom_field",
     "name": "Name",
-    "description": "Name of wishlist.",
+    "description": "This field stores the name of the wishlist.",
     "slug": "name",
     "field_type": "string",
     "validation": {
       "string": {
         "min_length": 0,
-        "max_length": 16,
-        "regex": 32
+        "max_length": 128,
+        "regex": null
       }
     }
   }

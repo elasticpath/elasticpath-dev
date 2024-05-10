@@ -1,7 +1,7 @@
 ---
 title: Get all Custom APIs
 nav_label: Get all Custom APIs
-sidebar_position: 2
+nav_position: 2
 ---
 
 ## `GET` Get a list of Custom APIs
