@@ -30,10 +30,10 @@ security:
 servers:
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
-    variables: {}
+    variables: { }
   - url: https://euwest.api.elasticpath.com
     description: EU West Production Server
-    variables: {}
+    variables: { }
 paths:
   /v2/carts:
     get:
@@ -120,6 +120,29 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/CartsRequest'
+            examples:
+              Create Custom Cart:
+                value:
+                  data:
+                    name: "Bob’s cart"
+                    description: "For Holidays"
+                    discount_settings:
+                      custom_discounts_enabled: true
+              Create Preview Cart:
+                value:
+                  data:
+                    name: "promotion preview cart"
+                    description: "preview promotions"
+                    snapshot_date: "2026-09-10T00:12:00Z"
+              Create a Cart with Custom Attributes:
+                value:
+                  data:
+                    name: "cart with custom attributes"
+                    description: "cart description"
+                    custom_attributes:
+                      affiliate_link:
+                        type: "string"
+                        value: "https://site.com?tag=influencer04-20"
         required: false
       responses:
         '200':
@@ -220,6 +243,29 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/CartsRequest'
+            examples:
+              Update a Cart:
+                value:
+                  data:
+                    name: "my cart"
+                    description: "my first cart"
+                    discount_settings:
+                      custom_discounts_enabled: false
+                      use_rule_promotions: true
+                    snapshot_date: "2026-09-10T00:12:00Z"
+              Remove Payment Intent from a Cart:
+                value:
+                  data:
+                    payment_intent_id: ""
+              Update Cart with Custom Attributes:
+                value:
+                  data:
+                    name: "cart with custom attribute"
+                    description: "cart description"
+                    custom_attributes:
+                      affiliate_link:
+                        type: "string"
+                        value: "https://site.com?tag=influencer04-21"
         required: false
       responses:
         '200':
@@ -333,6 +379,18 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/BulkUpdateCartsItems'
+            examples:
+              Bulk Update Items in Cart:
+                value:
+                  data:
+                    - id: 8a4f1c77-4435-4b83-b0e4-020af02999c3
+                      quantity: 2
+                    - id: 14f1d7f8-43ed-4e7a-92ea-d73ea605c338
+                      quantity: 3
+                    - id: 9a47cf8b-41ff-499b-93dc-38b3564a4033
+                      shipping_group_id: 59aad410-218f-4683-896a-8919dfe224bf
+                  options:
+                    add_all_or_nothing: false
         required: false
       responses:
         '200':
@@ -362,9 +420,13 @@ paths:
 
         #### Dynamic Bundles
 
-        A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called dynamic bundles.
+        A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/api/pxm/products/products#dynamic-bundles).
 
-        Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the configure a shopper bundle endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the add product to cart request.
+        Your dynamic bundles are displayed in your published catalogs.
+
+        1. Use the configure a shopper endpoint to allow shoppers to make their selections from a bundle.
+        2. In the response of the configure a shopper, the `bundle_configuration` object contains the bundle selections a shopper has made.
+        3. In the add a product to cart request, use the `bundle_configuration` object to add the customers selections to a cart.
 
         ```json
           "bundle_configuration": {
@@ -380,11 +442,11 @@ paths:
         }
         ```
 
-        When a cart is checked out, the options a shopper selected are added to the order. See order items.
+        When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/api/carts/get-order-items).
 
         #### Personalized Products
 
-        You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. You can do this using the custom_inputs attribute. The custom_inputs attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
+        You can allow shoppers to personalize their goods by adding custom text inputs to products directly. This feature is particularly useful for customizable items, such as personalized T-shirts or greeting cards. You can use this functionality by leveraging the `custom_inputs` attribute, and defining the details and validation rules for the custom text.
 
         First, you must configure a `custom_inputs` attribute when creating a new product or updating an existing product. Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders.
 
@@ -429,13 +491,15 @@ paths:
 
         If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the custom_inputs attribute becomes part of the order.
+        The `custom_inputs` attribute is stored in the cart item and the text for `custom_input` must not exceed 255 characters in length. When a cart is checked out, the `custom_inputs` attribute becomes part of the order.
 
-        When you add products to a cart with custom_inputs, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
+        #### Limitations on Usage of `custom_inputs` with Specific Promotion Types
+
+        When you add products to a cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
 
           - For [Free Gift Promotions](/docs/api/promotions/create-a-promotion), you can add `custom_inputs` to gift items.
-          - For [Fixed Bundle Discount Promotions](/docs/api/promotions/create-a-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different custom_inputs.
-          - For [X for Y Discount Promotion and X for amount discount promotion](/docs/api/promotions/create-a-promotion), the promotion applies when there are two SKUs with the same   `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
+          - For [Fixed Bundle Discount Promotions](/docs/api/promotions/create-a-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different `custom_inputs`.
+          - For [X for Y Discount Promotion and X for amount discount promotion](/docs/api/promotions/create-a-promotion), the promotion applies when there are two SKUs with the same `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
 
         :::note
 
@@ -452,32 +516,14 @@ paths:
 
         You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
 
-        ### Personalized Products
+        #### Personalized Products
 
-        You can allow your shoppers to add custom text when adding custom items to their carts. This is useful, for example, if you have a custom item that can be personalized. You can do this using the custom_inputs attribute. The custom_inputs attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
+        You can allow your shoppers to add custom text when adding custom items to their carts. This is useful, for example, if you have a custom item that can be personalized. You can do this using the `custom_inputs` attribute. The `custom_inputs` attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
+
+        You can allow shoppers to personalize their goods by adding custom text inputs directly to carts when adding custom items. This feature is particularly useful for customizable items, such as personalized T-shirts or greeting cards. You can use this functionality by leveraging the `custom_inputs` attribute, and defining the details and validation rules for the custom text.
 
         Once you have defined your custom inputs on a custom item, you must configure the custom inputs in your orders.
 
-        For example, you may want to add a gift message to an order, so you have custom inputs for name and message.
-
-          ```json
-          {
-            "custom_inputs": {
-              "name": {
-                "name": "Name",
-                "validation_rules": {
-                  "type": "string"
-                },
-              "message": {
-                "name": "Message",
-                "validation_rules": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-        ```
         When the custom item is added to the cart, those custom inputs are supplied.
 
         ```json
@@ -493,30 +539,28 @@ paths:
 
         If the same custom item has different `custom_inputs` attributes then, these are added as separate items in a cart.
 
-        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the custom_inputs attribute becomes part of the order items.
-
-        When you add custom items to a cart with `custom_inputs`, there are certain limitations on usage of the custom_inputs with the following promotion types:
-
-          - For Free Gift Promotions, you can add custom_inputs to gift items.
-          - For Fixed Bundle Discount Promotions, the promotion applies as long as the cart contains the bundle SKUs even when there are different custom_inputs.
-          - For X for Y Discount Promotion and X for amount discount promotion, the promotion applies when there are two SKUs with the same custom_inputs. The promotion does not apply when there are different custom_inputs and the SKUs are in different line items.
+        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the `custom_inputs` attribute becomes part of the order items.  There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
 
         :::note
 
         - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
         - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
-        - A cart can contain a maximum of 100 unique items. Items include products and custom items.
+        - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
         - Custom Cart Items are available through [implicit authentication](/docs/commerce-cloud/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
+
+        :::
 
         ### Add Promotion to Cart
 
-        You can use the promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of cart items. A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
+        You can use the Promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of cart items.
+
+         There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
 
         To remove promotion from the cart via the promotion code, see [Delete Promotion Code from Cart](/docs/api/carts/delete-a-promotion-via-promotion-code).
 
         ### Re-order
 
-        From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see Orders.
+        From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see [Orders](/docs/api/carts/orders).
 
         :::note
           - Any requests to add an item to cart return a collection of [cart items](/docs/api/carts/cart-items).
@@ -524,7 +568,6 @@ paths:
           - When a shopper creates a cart and re-orders items from an order with properties such as custom attributes, custom discounts, and payment intent ID, these properties will remain unchanged in the original cart.
           - Custom items do not exist in catalogs, and therefore cannot be reordered.
         :::
-
 
         ### Merging Carts
 
@@ -545,12 +588,96 @@ paths:
         content:
           application/json:
             schema:
-                oneOf:
-                - $ref: '#/components/schemas/Data.CartItemsObjectRequest'
-                - $ref: "#/components/schemas/Data.CartMergeObjectRequest"
-                - $ref: "#/components/schemas/Data.CustomItemObject"
-                - $ref: "#/components/schemas/Data.ReOrderObjectRequest"
-                - $ref: "#/components/schemas/Data.PromotionItemObject"
+              oneOf:
+                - $ref: '#/components/schemas/CartItemsObjectRequest'
+                - $ref: "#/components/schemas/CartMergeObjectRequest"
+                - $ref: "#/components/schemas/CustomItemObject"
+                - $ref: "#/components/schemas/ReOrderObjectRequest"
+                - $ref: "#/components/schemas/PromotionItemObject"
+                - $ref: "#/components/schemas/BulkAddItemsRequest"
+            examples:
+              Add Cart Item:
+                value:
+                  data:
+                    type: cart_item
+                    id: df32387b-6ce6-4802-9b90-1126a5c5a54f
+                    quantity: 1
+                    custom_inputs:
+                      name:
+                        tshirt_front: Jane
+                        tshirt_back: Jane Doe's Dance Academy
+              Add Custom Item:
+                value:
+                  data:
+                    type: custom_item
+                    name: My Custom Item
+                    sku: my-custom-item
+                    description: My first custom item!
+                    quantity: 1
+                    price:
+                      amount: 10000
+              Add Promotion to Cart:
+                value:
+                  data:
+                    type: promotion_item
+                    code: PROMO_CODE
+              Reorder Items:
+                value:
+                  data:
+                    - type: order_items
+                      order_id: da0b0a12-8232-4be1-a354-a1a64b11de91
+                  options:
+                    add_all_or_nothing: false
+              Merge Carts:
+                value:
+                  data:
+                    - type: cart_items
+                      order_id: da0b0a12-8232-4be1-a354-a1a64b11de91
+                  options:
+                    add_all_or_nothing: false
+              Bulk Add Items to Cart:
+                value:
+                  data:
+                    - type: cart_item
+                      id: df32387b-6ce6-4802-9b90-1126a5c5a54f
+                      quantity: 1
+                    - type: custom_item
+                      name: My Custom Item
+                      sku: my-custom-item
+                      description: My first custom item!
+                      quantity: 1
+                      price:
+                        amount: 10000
+                    - type: promotion_item
+                      code: PROMO_CODE
+                  options:
+                    add_all_or_nothing: true
+              Add Bundle to Cart:
+                value:
+                  data:
+                    id: "5ab67bb3-b2c3-4348-af33-e370bd39b0c9"
+                    type: "cart_item"
+                    quantity: 1
+                    bundle_configuration:
+                      selected_options:
+                        tshirt:
+                          "23759a57-13c1-4887-9ec2-fb47444751bd": 1
+                        comics:
+                          "c7bcf7fd-1fab-4635-8ae0-7f187a9dbbce": 1
+                          "d9768b40-cf28-406e-bafc-a6d130627eca": 1
+              Add Item with Shipping Group ID:
+                value:
+                  data:
+                    type: "custom_item"
+                    name: "My Custom Item"
+                    sku: "my-custom-item"
+                    description: "My first custom item!"
+                    quantity: 1
+                    price:
+                      amount: 10000
+                      includes_tax: true
+                    shipping_group_id: "eb063818-939a-458f-97a4-2601c0c2b445"
+
       responses:
         '200':
           description: ''
@@ -2162,15 +2289,53 @@ components:
           type: string
           examples:
             - my cart name
+        snapshot_date:
+          description: This optional parameter sets a reference date for the cart. If this parameter is set, it allows the cart to act as one that might occur on that specified date. For example, such future carts might acquire future-enabled discounts, allowing users to test and validate future interactions with carts. The snapshot_date must be in the format 2026-02-21T15:07:25Z. By default, this parameter is left empty.
+          type: string
+          examples:
+            - "2026-09-10T00:12:00Z"
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        payment_intent_id:
+          description: To remove the Stripe payment intent from a cart, pass the empty value in the `payment_intent_id` field.  You must use an empty value for this field. You cannot use this endpoint to directly update the cart to use an existing Payment Intent.
+          type: string
+          examples:
+            - ''
     DiscountSettings:
       title: DiscountSettings
       type: object
       properties:
-        Custom Discounts_enabled:
+        custom_discounts_enabled:
           description: This parameter enables custom discounts for a cart. When set to true, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](/docs/api/settings/put-v-2-settings-cart).
           type: boolean
           examples:
             - false
+        use_rule_promotions:
+          description: When set to true, this parameter allows the cart to use rule promotions.
+          type: boolean
+          examples:
+            - false
+    CustomAttributes:
+      title: CustomAttributes
+      type: object
+      properties:
+        custom_attributes:
+          description: Specifies the custom attributes for the cart object. The attribute can be any string, numerical, and underscore. A cart can have maximum of 20 custom attributes.
+          type: object
+          properties:
+            attribute:
+              description: Specifies the attribute `type` and `value`.
+              type: object
+              properties:
+                type:
+                  description: Specifies the type of the attribute such as string, integer, boolean, and float.
+                  type: string
+                value:
+                  description: Specifies the value of the attribute.
+                  oneOf:
+                    - type: string
+                    - type: number
+                    - type: boolean
     CartResponse:
       title: CartResponse
       type: object
@@ -2254,22 +2419,22 @@ components:
                       readOnly: true
                       examples:
                         - 1cf8b15b-4f12-43c5-837c-dbbc09aefa55
-    Data.CartItemsObjectRequest:
+    CartItemsObjectRequest:
       oneOf:
-        - $ref: "#/components/schemas/Data.CartItemObject"
-        - $ref: "#/components/schemas/Data.CartMergeObjectRequest"
-        - $ref: "#/components/schemas/Data.CustomItemObject"
-        - $ref: "#/components/schemas/Data.ReOrderObjectRequest"
-        - $ref: "#/components/schemas/Data.PromotionItemObject"
-    Data.CartItemObject:
+        - $ref: "#/components/schemas/CartItemObject"
+        - $ref: "#/components/schemas/CartMergeObjectRequest"
+        - $ref: "#/components/schemas/CustomItemObject"
+        - $ref: "#/components/schemas/ReOrderObjectRequest"
+        - $ref: "#/components/schemas/PromotionItemObject"
+    CartItemObject:
       title: Data.CartItemObject
       type: object
       properties:
         data:
           allOf:
-            - $ref: '#/components/schemas/CartItemObject'
+            - $ref: '#/components/schemas/CartItemObjectData'
             - $ref: '#/components/schemas/CartItemResponse'
-    CartItemObject:
+    CartItemObjectData:
       title: CartItemObject
       type: object
       required:
@@ -2300,8 +2465,18 @@ components:
         custom_inputs:
           description: The custom text to be added to a product.
           type: object
-    Data.CartMergeObjectRequest:
-      title: Data.CartMergeObjectRequest
+        bundle_configuration:
+          description: Object used to describe the bundle options selected.
+          type: object
+          properties:
+            selected_options:
+              description: Specifies selected options.
+              type: object
+        shipping_group_id:
+          description: Identifier for a created Cart Shipping Group
+          type: string
+    CartMergeObjectRequest:
+      title: CartMergeObjectRequest
       type: object
       properties:
         data:
@@ -2330,15 +2505,15 @@ components:
           format: uuid
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
-    Data.CustomItemObject:
+    CustomItemObject:
       title: Data.CustomItemObject
       type: object
       properties:
         data:
           allOf:
-            - $ref: '#/components/schemas/CustomItemObject'
+            - $ref: '#/components/schemas/CustomItemObjectData'
           description: ''
-    CustomItemObject:
+    CustomItemObjectData:
       title: CustomItemObject
       type: object
       required:
@@ -2385,8 +2560,14 @@ components:
           description: The name of the custom item.
           examples:
             - My Custom Item
-    Data.ReOrderObjectRequest:
-      title: Data.ReOrderObjectRequest
+        custom_inputs:
+          description: The custom text to be added to a product.
+          type: object
+        shipping_group_id:
+          description: Identifier for a created Cart Shipping Group
+          type: string
+    ReOrderObjectRequest:
+      title: ReOrderObjectRequest
       type: object
       properties:
         data:
@@ -2413,14 +2594,25 @@ components:
           format: uuid
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
-    Data.PromotionItemObject:
-      title: Data.PromotionItemObject
+    BulkAddItemsRequest:
+      title: BulkAddItemsRequest
+      type: object
+      properties:
+        data:
+          anyOf:
+            - $ref: '#/components/schemas/CartItemsObjectRequest'
+            - $ref: "#/components/schemas/CartMergeObjectRequest"
+            - $ref: "#/components/schemas/CustomItemObject"
+            - $ref: "#/components/schemas/ReOrderObjectRequest"
+            - $ref: "#/components/schemas/PromotionItemObject"
+    PromotionItemObject:
+      title: PromotionItemObject
       type: object
       properties:
         data:
           allOf:
-            - $ref: '#/components/schemas/PromotionItemObject'
-    PromotionItemObject:
+            - $ref: '#/components/schemas/PromotionItemObjectData'
+    PromotionItemObjectData:
       title: PromotionItemObject
       type: object
       required:
@@ -2619,7 +2811,7 @@ components:
           items:
             type: object
             anyOf:
-              - $ref: '#/components/schemas/Data.CartItemObject'
+              - $ref: '#/components/schemas/CartItemObject'
         meta:
           type: object
           properties:
@@ -3304,7 +3496,7 @@ components:
                       description: The shipping preference. Use SET_PROVIDED_ADDRESS value. This parameter does allow the user to change their address on PayPal site.
                       type: string
                     user_action:
-                      description:  If you set `useraction=commit` in the query string, the flow redirects the buyer to the PayPal payment page and displays a Pay Now button. When the shopper clicks **Pay Now**, call `DoExpressCheckoutPayment` to complete the payment without additional interaction from the shopper. Choose this flow when you know the final payment amount when you initiate the checkout flow.
+                      description: If you set `useraction=commit` in the query string, the flow redirects the buyer to the PayPal payment page and displays a Pay Now button. When the shopper clicks **Pay Now**, call `DoExpressCheckoutPayment` to complete the payment without additional interaction from the shopper. Choose this flow when you know the final payment amount when you initiate the checkout flow.
                       type: string
                     return_url:
                       description: The callback URL for PayPal to redirect the user in the case of approved payment.
@@ -3379,18 +3571,18 @@ components:
               description: Specifies the Stripe token or source.
               type: string
     Data.PaymentObject:
-          oneOf:
-            - $ref: "#/components/schemas/Data.AdyenPayment"
-            - $ref: "#/components/schemas/Data.AuthorizeNetPayment"
-            - $ref: "#/components/schemas/Data.BraintreePayment"
-            - $ref: "#/components/schemas/Data.CardConnectPayment"
-            - $ref: "#/components/schemas/Data.CyberSourcePayment"
-            - $ref: "#/components/schemas/Data.ElasticPathPaymentsPoweredByStripePayment"
-            - $ref: "#/components/schemas/Data.ManualPayment"
-            - $ref: "#/components/schemas/Data.PayPalExpressCheckoutPayment"
-            - $ref: "#/components/schemas/Data.StripePayment"
-            - $ref: "#/components/schemas/Data.StripeConnectPayment"
-            - $ref: "#/components/schemas/Data.StripePaymentIntentsPayment"
+      oneOf:
+        - $ref: "#/components/schemas/Data.AdyenPayment"
+        - $ref: "#/components/schemas/Data.AuthorizeNetPayment"
+        - $ref: "#/components/schemas/Data.BraintreePayment"
+        - $ref: "#/components/schemas/Data.CardConnectPayment"
+        - $ref: "#/components/schemas/Data.CyberSourcePayment"
+        - $ref: "#/components/schemas/Data.ElasticPathPaymentsPoweredByStripePayment"
+        - $ref: "#/components/schemas/Data.ManualPayment"
+        - $ref: "#/components/schemas/Data.PayPalExpressCheckoutPayment"
+        - $ref: "#/components/schemas/Data.StripePayment"
+        - $ref: "#/components/schemas/Data.StripeConnectPayment"
+        - $ref: "#/components/schemas/Data.StripePaymentIntentsPayment"
     TransactionResponse:
       title: TransactionResponse
       type: object
