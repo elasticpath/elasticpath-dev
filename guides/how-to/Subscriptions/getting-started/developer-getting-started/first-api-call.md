@@ -27,7 +27,7 @@ The following steps describe how to authenticate in Subscriptions.
 
 You must: 
 
-1. Get your [Application Keys](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/application-keys/application-keys-cm). 
+1. Get your [Application Keys](https://beta.elasticpath.dev/docs/commerce-manager/application-keys/application-keys-cm). 
 2. Make a copy of your `client_id`.
 
 ## Get an access token

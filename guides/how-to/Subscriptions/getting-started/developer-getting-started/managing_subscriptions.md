@@ -61,7 +61,7 @@ The response contains the subscription product.
 }
 ```
 
-For more information about product media and pricing, see [Repeat Products](https://beta.elasticpath.dev/docs/subscriptions/products/managing-products-cm).
+For more information about product media and pricing, see [Repeat Products](https://beta.elasticpath.dev/docs/api/subscriptions/products).
 
 ## Creating Plans
 
