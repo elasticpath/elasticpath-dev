@@ -67,4 +67,4 @@ In summary, promotional discounts are applied before tax and rounding occurs for
 - [Orders](https://beta.elasticpath.dev/docs/commerce-cloud/orders)
 - [Taxes](https://beta.elasticpath.dev/docs/commerce-cloud/carts/tax-items/taxes)
 - [Checkout API](https://beta.elasticpath.dev/docs/commerce-cloud/checkout)
-- [Create custom carts](https://beta.elasticpath.dev/docs/commerce-cloud/carts/create-custom-cart-items)
+- [Create custom carts](https://beta.elasticpath.dev/docs/api/carts/create-a-custom-cart)

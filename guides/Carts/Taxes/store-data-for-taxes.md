@@ -6,9 +6,11 @@ nav_position: 6
 
 After you integrate a tax calculation service with Composable Commerce, you can configure nexus locations. Nexus locations are added to carts to calculate the correct tax rate.
 
-{% callout %}
+:::note
+
 Tax categories are not covered in this guide.
-{% /callout %}
+
+:::
 
 ## Prerequisites
 
@@ -46,7 +48,7 @@ Weʼll start by creating a custom Flow that stores nexus locations.
 curl -X POST https://useast.api.elasticpath.com/v2/flows \
      -H "Authorization:XXXX" \
      -H "Content-Type:application/json" \
-     -d $'{
+     -d ${
         "data":{
           "type":"flow",
           "name":"Nexus",
@@ -54,7 +56,7 @@ curl -X POST https://useast.api.elasticpath.com/v2/flows \
           "description":"Creates a new object",
           "enabled":true
         }
-     }'
+     }
 ```
 
 ### Create Fields to store nexus location details
@@ -181,13 +183,13 @@ This scenario assumes that you have already set up at least one product that you
 curl -X POST https://useast.api.elasticpath.com/v2/carts/:cart-reference/items \
      -H "Authorization: Bearer XXXX" \
      -H "Content-Type: application/json" \
-     -d $'{
+     -d ${
       "data": {
           "id": "PRODUCT-ID",
           "type": "cart_item",
           "quantity": 1
         }
-      }'
+      }
 ```
 
 #### Add checkout logic to communicate with a tax calculator API
@@ -202,7 +204,7 @@ Apply the rate returned by the tax calculator API to your cart item.
 curl -X POST https://useast.api.elasticpath.com/v2/carts/:cart-reference/items/:item-id/taxes \
     -H "Content-Type: application/json" \
     -H "Authorization: XXXX" \
-    -d $'{
+    -d ${
         "data": {
             "type": "tax_item",
             "name": "TaxJar tax rate",
@@ -210,7 +212,7 @@ curl -X POST https://useast.api.elasticpath.com/v2/carts/:cart-reference/items/:
             "code": "MYTAX01",
             "rate": 0.2
         }
-    }'
+    }
 ```
 
 #### Update the cart with nexus location
@@ -221,12 +223,12 @@ Optionally, you can update your cart so that it displays which nexus location wa
 curl -X POST https://useast.api.elasticpath.com/v2/carts/:cart-reference/relationship/nexus \
     -H "Content-Type: application/json" \
     -H "Authorization: XXXX" \
-    -d $'{
+    -d ${
         "data": {
             "id": "NEXUS-ENTRY-ID",
             "type": "nexus"
         }
-    }'
+    }
 ```
 
 The response now includes the details of the nexus location applied to the cart.

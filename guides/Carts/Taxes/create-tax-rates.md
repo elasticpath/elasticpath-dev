@@ -62,7 +62,7 @@ The ability to create tax items is not available through Commerce Manager.
 curl -X POST https://useast.api.elasticpath.com/v2/carts/:cartID/items/:itemID/taxes \
 -H "Authorization: XXXX" \
 -H "Content-Type: application/json" \
--d $'{
+-d ${
     "data": {
       "type": "tax_item",
       "name": "Tax Name",
@@ -70,7 +70,7 @@ curl -X POST https://useast.api.elasticpath.com/v2/carts/:cartID/items/:itemID/t
       "code": "MYTAX01",
       "rate": 0.102
     }
-  }'
+  }
 ```
 
 ### Get taxed item
