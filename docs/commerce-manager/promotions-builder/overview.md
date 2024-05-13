@@ -8,17 +8,17 @@ The Promotions Builder provides the flexibility to offer diverse discounts to sh
 
 Within the Promotions Builder, you can configure promotions using various conditions:
 
-- [Cart](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-condition): Define a minimum cart subtotal or quantity requirements.
-- [Cart Items](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition): Specify product SKUs, product categories, or products with attributes for eligibility.
-- [Custom Attributes](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#adding-cart-custom-attributes): Choose your own cart custom attributes.
+- [Cart](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-condition): Define a minimum cart subtotal or quantity requirements.
+- [Cart Items](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition): Specify product SKUs, product categories, or products with attributes for eligibility.
+- [Custom Attributes](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#adding-cart-custom-attributes): Choose your own cart custom attributes.
 
 Promotions in the Promotions Builder support the following actions:
 
-- [Cart Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-discount-promotion): A cart discount applies to all items in the cart unless specific exclusions are specified. It can be either a fixed discount or a percentage discount.
+- [Cart Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-discount-promotion): A cart discount applies to all items in the cart unless specific exclusions are specified. It can be either a fixed discount or a percentage discount.
     - Fixed discount: This reduces the cart total by a fixed amount, such as $5.00 off.
     - Percentage discount: This reduces the cart total by a specific percentage, such as 10% off.
-- [Item Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion): An item discount applies to the eligible items specified in the conditions. It can be a fixed amount, percentage, fixed price, or other discount specified such as **BXGY**.
-- [BXGY](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion): Buy X and Get Y (BXGY) discounts apply to the items identified within the promotional actions. This means that when a Buy X Get Y promotion is triggered, the specified items receive the associated discounts outlined in the promotion's configuration.
+- [Item Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion): An item discount applies to the eligible items specified in the conditions. It can be a fixed amount, percentage, fixed price, or other discount specified such as **BXGY**.
+- [BXGY](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion): Buy X and Get Y (BXGY) discounts apply to the items identified within the promotional actions. This means that when a Buy X Get Y promotion is triggered, the specified items receive the associated discounts outlined in the promotion's configuration.
 
 To understand the difference between Promotions Standard and Promotions Builder, see [Feature Comparison](/docs/commerce-cloud/rule-promotions/overview#feature-comparison-promotions-standard-vs-rule-promotions).
 
@@ -39,9 +39,9 @@ Let's say you want to offer registered shoppers a 20% discount when they purchas
 The system checks if the shopper is registered and if the product they added is made of platinum.
 
 To set this up in the Promotions Builder:
-1. Create a [Cart Custom attribute](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#adding-cart-custom-attributes) that determines if your shoppers are registered when shopping. Set this value as **true** for anyone who has signed up for an account.
-2. Configure a [Cart Items condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) to check for the product attribute as metal type, and specify that the discount applies to product with the value as *platinum*.
-3. Set up an [Item Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion) in the **Actions** section as 20% off.
+1. Create a [Cart Custom attribute](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#adding-cart-custom-attributes) that determines if your shoppers are registered when shopping. Set this value as **true** for anyone who has signed up for an account.
+2. Configure a [Cart Items condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) to check for the product attribute as metal type, and specify that the discount applies to product with the value as *platinum*.
+3. Set up an [Item Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion) in the **Actions** section as 20% off.
 
 See the following image:
 
@@ -53,8 +53,8 @@ Let's consider a scenario where you want to offer a discount on silver jewelery 
 
 To set this up in the Promotions Builder:
 
-1. Configure a [Cart Items condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition), and select **Product** option and add the eligible gift card items.
-2. Create a [BXGY](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion) promotion in the **Actions** section. Configure an item discount for 70% off on all products with the *jewellery-metal-type* template, which contains *metal-type* with values as *silver*.
+1. Configure a [Cart Items condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition), and select **Product** option and add the eligible gift card items.
+2. Create a [BXGY](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion) promotion in the **Actions** section. Configure an item discount for 70% off on all products with the *jewellery-metal-type* template, which contains *metal-type* with values as *silver*.
 
 ![Scenario 2](/assets/promotion-example-scenario-2.png)
 
@@ -64,10 +64,10 @@ Consider a scenario where you want to offer 20% off to all shoppers who spend $3
 
 To set this up in the Promotions Builder:
 
-1. Configure a [Cart condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-condition) to check if the subtotal is equal to or greater than $3000.
-2. Add a [Cart Items condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) specifying the engagement rings category.
-3. Set up an [Cart Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-discount-promotion) in the **Actions** section for 20% off on engagement rings.
-4. Configure [BXGY](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion) and create another item discount to apply a 10% discount on the cheapest item from the *Bangles* category.
+1. Configure a [Cart condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-condition) to check if the subtotal is equal to or greater than $3000.
+2. Add a [Cart Items condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) specifying the engagement rings category.
+3. Set up an [Cart Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-discount-promotion) in the **Actions** section for 20% off on engagement rings.
+4. Configure [BXGY](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion) and create another item discount to apply a 10% discount on the cheapest item from the *Bangles* category.
 
 ![Scenario 3](/assets/promotion-example-scenario-3.png)
 
@@ -82,13 +82,13 @@ The shoppers need to:
 To set this up in the Promotions Builder:
 
 1. Configure the first promotion for the $100 tier:
-    1. Add a [Cart condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-condition) to check if the subtotal is less than $100.
-    1. Set up a [Cart Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) for 10% off the cart subtotal.
+    1. Add a [Cart condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-condition) to check if the subtotal is less than $100.
+    1. Set up a [Cart Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-discount-promotion) for 10% off the cart subtotal.
     1. Use the coupon code *summer2024* to trigger this promotion.
 
 1. Configure the second promotion for the $100 to $500 tier:
-    1. Add a [Cart condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-condition) to check if the subtotal is greater than $100 and less than or equal to $500.
-    1. Set up a [Cart Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) for 20% off the cart subtotal.
+    1. Add a [Cart condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-condition) to check if the subtotal is greater than $100 and less than or equal to $500.
+    1. Set up a [Cart Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-discount-promotion) for 20% off the cart subtotal.
     1. Again, use the coupon code *summer2024* to trigger this promotion.
 
 The following image shows an example of the $100 tier promotion:
@@ -103,9 +103,9 @@ Suppose your shoppers purchase two of the same items by offering a 50% discount 
 
 To set this up in the Promotions Builder:
 
-1. Specify the required quantity of SKUs that need to be purchased as part of the condition. This can be done by configuring the **items quantity** parameter in [Create Cart Condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-condition).
-2. Configure a [Cart Item condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) to target the desired item.
-3. Create a [BXGY discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion) in the **Actions** section for a 50% discount with a maximum quantity limit for the discount to apply to.
+1. Specify the required quantity of SKUs that need to be purchased as part of the condition. This can be done by configuring the **items quantity** parameter in [Create Cart Condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-condition).
+2. Configure a [Cart Item condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition) to target the desired item.
+3. Create a [BXGY discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion) in the **Actions** section for a 50% discount with a maximum quantity limit for the discount to apply to.
 
 By implementing this promotion, shoppers could be encouraged to purchase two of the same items, with one item being discounted by 50%.
 
@@ -117,8 +117,8 @@ Suppose you want to offer a discounted price for a particular product using the 
 
 To set this up in the Promotions Builder:
 
-1. Specify the cart item to target the specific product. To do this, see [Cart Item condition](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition).
-2. Create an [Item Discount](/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion) in the **Actions** section and choose **a fixed price**.
+1. Specify the cart item to target the specific product. To do this, see [Cart Item condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition).
+2. Create an [Item Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion) in the **Actions** section and choose **a fixed price**.
 3. Specify the quantity required to avail the discounted price for the item.
 
 By implementing this, shoppers can use a promotion code to purchase the product at a reduced price, offering targeted discounts without affecting all shoppers in Price Books.
