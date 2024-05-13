@@ -1,7 +1,7 @@
 ---
 title: Get a Custom API Entry
 nav_label: Get a Custom API Entry
-sidebar_position: 3
+nav_position: 3
 ---
 
 ## `GET` Get by ID
@@ -28,7 +28,7 @@ https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customEntryId
 ## Request Example
 
 ```bash
-curl -X GET https://useast.api.elasticpath.com/v2/extensions/:slug/:id \
+curl -X GET https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customEntryId \
      -H "Authorization: Bearer XXXX" \
      -H "Content-Type: application/json" \
 ```
@@ -52,7 +52,9 @@ curl -X GET https://useast.api.elasticpath.com/v2/extensions/:slug/:id \
       "data_size": 1
     },
     "type": "wishlist_ext",
-    "name": "My Wishlist"
+    "name": "My Wishlist",
+    "items_count": 0,
+    "keep_purchased": false
   }
 }
 ```

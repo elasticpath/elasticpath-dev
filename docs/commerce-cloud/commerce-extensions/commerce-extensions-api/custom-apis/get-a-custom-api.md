@@ -1,7 +1,7 @@
 ---
 title: Get a Custom API
 nav_label: Get a Custom API
-sidebar_position: 3
+nav_position: 3
 ---
 
 ## `GET` Get by ID

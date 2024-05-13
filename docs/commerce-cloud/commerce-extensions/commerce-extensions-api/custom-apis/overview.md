@@ -1,7 +1,7 @@
 ---
 title: Custom API Overview
 nav_label: Custom API Overview
-sidebar_position: 1
+nav_position: 1
 ---
 
 ## The Custom API Object
@@ -14,8 +14,8 @@ sidebar_position: 1
 | `description` | `string` | Specifies a description of the Custom API. The description must contain between 1 and 255 characters.                                                                                                  |
 | `slug`        | `string` | Represents a unique slug identifier for the Custom API. This is used to derive the location of your Custom API entries. It must contain between 1 and 63 characters and pluralized.                    |
 | `api_type`    | `string` | Specifies the `type` of any Custom API entries that are created and thus must be unique. It must end with `_ext` and have no more than 63 characters. It cannot contain `-` character or be modified.  |
-| `meta`        | `object` | Additional information for this Custom API. For more information, see [The meta object](/docs/commerce-cloud/commerce-extensions/commece-extensions-api/custom-apis/overview#the-meta-object) section. |
-| `links`       | `object` | The links for this resource. For more information, see [The links object](/docs/commerce-cloud/commerce-extensions/commece-extensions-api/custom-apis/overview#the-links-object) section.              |
+| `meta`        | `object` | Additional information for this Custom API. For more information, see [The meta object](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-apis/overview#the-meta-object) section. |
+| `links`       | `object` | The links for this resource. For more information, see [The links object](/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-apis/overview#the-links-object) section.              |
 
 ## The `meta` Object
 

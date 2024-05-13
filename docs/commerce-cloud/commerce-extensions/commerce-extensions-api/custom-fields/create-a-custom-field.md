@@ -1,7 +1,7 @@
 ---
 title: Create a Custom Field
 nav_label: Create a Custom Field
-sidebar_position: 3
+nav_position: 3
 ---
 
 ## `POST` Create a Custom Field
@@ -40,6 +40,8 @@ https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApi
 
 ## Request Example
 
+### String field example
+
 ```bash
 curl -X POST https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApiId/fields \
      -H "Authorization: Bearer XXXX" \
@@ -47,15 +49,57 @@ curl -X POST https://useast.api.elasticpath.com/v2/settings/extensions/custom-ap
      -d $ {
        "data": {
          "name": "Name",
-         "description": "Name of wishlist.",
+         "description": "This field stores the name of the wishlist.",
          "slug": "name",
          "type": "custom_field",
+         field_type: "string"
          "validation": {
            "string": {
-             "min_length": 0,
-             "max_length": 16
+             "min_length": 3,
+             "max_length": 128,
+             "regex": null
            }
          }
+       }
+     }
+```
+
+### Integer field example
+
+```bash
+curl -X POST https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApiId/fields \
+     -H "Authorization: Bearer XXXX" \
+     -H "Content-Type: application/json" \
+     -d $ {
+       "data": {
+         "name": "Items Count",
+         "description": "This field stores the total count of items in the wishlist.",
+         "slug": "items_count",
+         "type": "custom_field",
+         "field_type": "integer"
+         "validation": {
+           "string": {
+             "min_value": 0,
+             "max_value": null,
+           }
+         }
+       }
+     }
+```
+
+### Boolean field example
+
+```bash
+curl -X POST https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApiId/fields \
+     -H "Authorization: Bearer XXXX" \
+     -H "Content-Type: application/json" \
+     -d $ {
+       "data": {
+         "name": "Keep Purchased Items",
+         "description": "This field stores whether or not to keep purchased items on the wishlist.",
+         "slug": "keep_purchased",
+         "type": "custom_field",
+         "field_type": "boolean"
        }
      }
 ```
@@ -79,13 +123,13 @@ curl -X POST https://useast.api.elasticpath.com/v2/settings/extensions/custom-ap
     },
     "type": "custom_field",
     "name": "Name",
-    "description": "Name of wishlist.",
+    "description": "This field stores the name of the wishlist.",
     "slug": "name",
     "field_type": "string",
     "validation": {
       "string": {
-        "min_length": 0,
-        "max_length": 16,
+        "min_length": 3,
+        "max_length": 128,
         "regex": null
       }
     }

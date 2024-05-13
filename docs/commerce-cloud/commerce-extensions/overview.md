@@ -1,7 +1,7 @@
 ---
 title: Overview
 nav_label: Overview
-sidebar_position: 1
+nav_position: 1
 ---
 
 Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options. The combination of Commerce Extensions with Composer, enables you to deploy custom behaviors and integrations to enable capabilities unique to your business without building that functionality from scratch and then hosting yourself. 
