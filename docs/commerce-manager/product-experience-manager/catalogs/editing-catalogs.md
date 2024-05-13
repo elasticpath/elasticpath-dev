@@ -17,7 +17,7 @@ You can edit product and hierarchy details from the **Edit Catalog** tab. If you
 1. Edit the **Basic Information**, depending on your requirements.
 1. In **Hierarchy**, add or remove the hierarchies you want.
 1. In **Price Books**, add or remove the price books you want.
-1. Select **Products List** to see a list of products displayed in this catalog. You can [filter](/docs/pxm/products/pxm-products-commerce-manager/filter-products) the products. For example, if you are editing a product description, you can filter using the **Description** attribute.
+1. Select **Products List** to see a list of products displayed in this catalog. You can [filter](/docs/commerce-manager/product-experience-manager/Products/filter-products) the products. For example, if you are editing a product description, you can filter using the **Description** attribute.
 1. Select the product you want to edit. If you make changes to a product's details, you are updating the product for all subsequent catalogs. However, you can go back to a previous release of a catalog. See [Deleting Catalog Releases](#deleting-catalog-releases).
 1. Once you have finished editing your catalog, either click **Save** to save your changes or **Publish** to save and publish your catalog.
 

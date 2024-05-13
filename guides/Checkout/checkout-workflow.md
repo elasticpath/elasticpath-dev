@@ -14,7 +14,7 @@ The checkout workflow ties together many of the key concepts covered in this sec
 2. Manage the cart items. For example, you might add items, remove items, and change quantities.
 3. Check out the cart. An **incomplete order** is created.
 4. Pay for an order: provide billing and shipping details, if youʼre a new customer. The order is now in the **processing** status.
-5. If using a manual gateway, after you authorize and capture it, Composable Commerce considers the order **complete**. If you use a third-party integration supported by Composable Commerce (such as Stripe), after the third-party gateway authorizes and captures the payment, the order becomes **complete**. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](https://beta.elasticpath.dev/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
+5. If using a manual gateway, after you authorize and capture it, Composable Commerce considers the order **complete**. If you use a third-party integration supported by Composable Commerce (such as Stripe), after the third-party gateway authorizes and captures the payment, the order becomes **complete**. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](https://beta.elasticpath.dev/docs/api/payments/payment-gateway-introduction) section.
 6. After the order is shipped, you can manually flag it as **fulfilled**.
 
 ## Carts
@@ -61,8 +61,8 @@ If enabled, you can manage your stock. As such, your stock is automatically upda
 ## Related Resources
 
 - [Carts](https://beta.elasticpath.dev/docs/commerce-cloud/carts/carts)
-- [Promotions](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-overview)
-- [Orders](https://beta.elasticpath.dev/docs/commerce-cloud/orders)
-- [Payments](https://beta.elasticpath.dev/docs/commerce-cloud/payments)
-- [Inventory](https://beta.elasticpath.dev/docs/pxm/inventories/inventory)
+- [Promotions](https://beta.elasticpath.dev/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
+- [Orders](https://beta.elasticpath.dev/docs/api/carts/orders)
+- [Payments](https://beta.elasticpath.dev/docs/api/payments/payment-gateway-introduction)
+- [Inventory](https://beta.elasticpath.dev/docs/api/pxm/inventory/inventories-introduction)
 - [API Reference](https://beta.elasticpath.dev/docs/commerce-cloud/getting-started/api-reference)

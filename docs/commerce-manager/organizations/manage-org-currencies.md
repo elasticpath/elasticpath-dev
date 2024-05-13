@@ -10,7 +10,7 @@ You can set up any currency as your organization's default currency as long as t
 
 :::note
 - In Commerce Manager, when you create a new currency in your organization, a store belonging to that organization may not immediately inherit that currency. You might have to click the ellipsis associated with the currency **Code**, select **Edit**, and then click **Save** to see the new organization-level currency. See [Edit a Currency](#edit-a-currency).
-- In the API, when an organization creates a new currency or if there is a mismatch between the store currencies and organization currencies, pass an empty request body on a store-level currency using the [Update a Currency](/docs/pxm/currencies/currencies-api/update-a-currency) endpoint to invalidate the cache. This will ensure that the store currencies are updated with the new organization currency.
+- In the API, when an organization creates a new currency or if there is a mismatch between the store currencies and organization currencies, pass an empty request body on a store-level currency using the [Update a Currency](/docs/api/pxm/currencies/update-a-currency) endpoint to invalidate the cache. This will ensure that the store currencies are updated with the new organization currency.
 :::
 
 ## Create a Currency

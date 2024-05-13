@@ -46,7 +46,7 @@ Commerce runs on Coordinated Universal Time (UTC) time and conforms to RFC 3339.
 
 ### Next step
 
-Publish the catalog to apply the rule to the store. For more information, see [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/publishing-catalogs).
+Publish the catalog to apply the rule to the store. For more information, see [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs).
 
 ## Editing catalog rules
 
@@ -60,7 +60,7 @@ Publish the catalog to apply the rule to the store. For more information, see [P
 
 ### Next step
 
-Publish the catalog to apply the changes to the store. For more information, see [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration#publishing-catalogs).
+Publish the catalog to apply the changes to the store. For more information, see [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs).
 
 ## Deleting catalog rules
 
@@ -73,7 +73,7 @@ Publish the catalog to apply the changes to the store. For more information, see
 
 ### Next step
 
-Publish the catalog to apply the changes to the store. For more information, see [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration#publishing-catalogs).
+Publish the catalog to apply the changes to the store. For more information, see [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs).
 
 ## Related Resources
 

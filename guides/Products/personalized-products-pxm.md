@@ -10,8 +10,8 @@ This endpoint is for Administrator use only. Do not use this endpoint on your cu
 
 You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized or you sell greetings cards that can be printed with your shoppers personalized messages. You can do this 
 
-- using the API by configure the the `custom_inputs` attribute when you [create a product](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product). See [Using the API](#using-the-api).
-- using Commerce Manager when you create/update a product. See [Personalizing Products](https://beta.elasticpath.dev/docs/pxm/products/pxm-products-commerce-manager/personalizing-products).
+- using the API by configure the the `custom_inputs` attribute when you [create a product](https://beta.elasticpath.dev/docs/api/pxm/products/create-product).
+- using Commerce Manager when you create/update a product. See [Personalizing Products](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/Products/personalizing-products).
 
 Below is an example of a create a product request with the `custom_inputs` attribute configured.
 
@@ -105,7 +105,7 @@ Once you have configured your custom inputs on a product, you must configure the
 
 If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](https://beta.elasticpath.dev/docs/commerce-cloud/checkout), the `custom_inputs` attribute becomes part of the [order](https://beta.elasticpath.dev/docs/commerce-cloud/orders/orders-api/get-an-order).
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](https://beta.elasticpath.dev/docs/api/carts/checkout), the `custom_inputs` attribute becomes part of the [order](https://beta.elasticpath.dev/docs/api/carts/orders).
 
 When you add products to a cart with `custom_inputs`, there are certain limitations on the usage of the `custom_inputs` with the following promotion types:
 
@@ -115,7 +115,7 @@ When you add products to a cart with `custom_inputs`, there are certain limitati
 
 ## Related Resources
 
-- [Locales](https://beta.elasticpath.dev/docs/pxm/products/locales/pxm-locales)
+- [Locales](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/locales/)
 - [Catalogs](https://beta.elasticpath.dev/docs/pxm/catalogs)
-- [Price Books](https://beta.elasticpath.dev/docs/pxm/pricebooks/price-books)
-- [Products API](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
+- [Price Books](https://beta.elasticpath.dev/docs/api/pxm/pricebooks/price-books-introduction)
+- [Products API](https://beta.elasticpath.dev/docs/api/pxm/products/products)

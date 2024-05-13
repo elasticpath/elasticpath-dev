@@ -6,13 +6,13 @@ sidebar_position: 10
 
 A price book contains the prices for the products in a catalog. Catalogs with the same hierarchies of products can be associated with different price books. 
 
-A price book contains a list of product SKUs and the prices you want to charge for those products. If your store supports multiple currencies, a price book can contain product prices in each of the supported currencies. See [Manage Currencies in Stores](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).
+A price book contains a list of product SKUs and the prices you want to charge for those products. If your store supports multiple currencies, a price book can contain product prices in each of the supported currencies. See [Manage Currencies in Stores](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
 
 Each catalog must have at least one price book.  A price book can be associated with multiple catalogs. 
 
-You can configure your catalog to have up to 5 price books. Price book stacking allows you to create multiple price books for different scenarios, such as seasonal sales, business versus retail customer pricing, and reward programs. If you have multiple price books, when you create a catalog, you must configure a priority for your price books. Product prices are displayed in the catalog according to the priority of the price books. For example, you may have products that have different prices based on region. You can have a price book with the standard retail pricing and then have a second price book that has different pricing for a different region. See [Create a catalog](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
+You can configure your catalog to have up to 5 price books. Price book stacking allows you to create multiple price books for different scenarios, such as seasonal sales, business versus retail customer pricing, and reward programs. If you have multiple price books, when you create a catalog, you must configure a priority for your price books. Product prices are displayed in the catalog according to the priority of the price books. For example, you may have products that have different prices based on region. You can have a price book with the standard retail pricing and then have a second price book that has different pricing for a different region. See [Create a catalog](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs).
 
-With catalog rules, you can specify when to display these catalogs based on the shopper context. See [Configure Shopper Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration) and [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules).
+With catalog rules, you can specify when to display these catalogs based on the shopper context. See [Configure Shopper Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs) and [Configure Shopper Catalog Rules](/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules).
 
 You can use price modifiers to change the prices of your child products. By default, child products inherit the same price as their parent products. Using price modifiers, you can enable child products to inherit a different price. For example, this enables you to configure the price of child products to be lower than its parent product, without having to individually update the prices of your child products. There are two types of price modifier.
 
@@ -49,11 +49,11 @@ A file can include up to 50,000 objects. If you have more than 50,000 objects, t
 3. Browse to the location of your JSONL file.
 4. Select your file and click **Open**. A notification indicating whether the operation is successful is displayed. The imported price books and prices are displayed in the **All Price Books** tab. 
 5. Select a price book to display the imported/updated prices.
-6. The import works on a "best endeavours" approach. In other words, Commerce Manager does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted and the job fails with an error. You can then use the results of the job to understand what objects were created/updated up to the point the import failed and to troubleshoot any errors. See [Import Results](/docs/pxm/pricebooks/price-import/pricebook-import-results).
+6. The import works on a "best endeavours" approach. In other words, Commerce Manager does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted and the job fails with an error. You can then use the results of the job to understand what objects were created/updated up to the point the import failed and to troubleshoot any errors. See [Import Results](/docs/api/pxm/pricebooks/import-pricebook#tag/Price-Book-Import).
 
 ## Creating Price Books
 
-Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).
+Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
 
 1. Go to **Product Experience Manager > Price Books**.
 1. Click **Add Price Book**.
@@ -116,7 +116,7 @@ To apply a price modifier to a product option:
 1. From the menu, select **Edit Modifiers**.
 1. From the **Modifier** drop-down list, select **price**.
 1. In the **Price Modifier Name** field, type or paste the name of the price modifier you want to use. Make sure the price modifier name you use matches exactly the price modifier name you specified when creating your price modifier.
-1. Click **Save**. You can edit and delete a price modifier at anytime. See [Variations, Options, and Modifiers](/docs/pxm/products/pxm-product-variations/variations).
+1. Click **Save**. You can edit and delete a price modifier at anytime. See [Variations, Options, and Modifiers](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products).
 
 ## Updating price books and prices
 
@@ -158,10 +158,10 @@ Deleting a price book deletes the product prices in the price book. However, it 
 
 ## Related Resources
 
-- [Products](/docs/pxm/products/pxm-products)
-- [Catalogs](/docs/pxm/catalogs)
-- [Catalog Rules](/docs/pxm/catalogs/catalog-rules)
-- [Catalog Rules APIs](/docs/pxm/catalogs/catalog-rules/create-a-catalog-rule)
+- [Products](/docs/commerce-manager/product-experience-manager/Products/overview)
+- [Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs)
+- [Catalog Rules](/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules)
+
 
 ### Demos
 

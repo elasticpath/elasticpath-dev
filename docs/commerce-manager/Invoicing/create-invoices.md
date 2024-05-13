@@ -14,7 +14,7 @@ For **Elastic Path Payment Powered by Stripe** customers, refer to the [Stripe D
 
 ## Prerequisites
 
-- Ensure that you are [onboarded](https://documentation.elasticpath.com/elastic-path-payments/docs/onboarding.html) to Elastic Path Payments Powered by Stripe.
+- Ensure that you are [onboarded](/docs/payments/onboarding) to Elastic Path Payments Powered by Stripe.
 - Ensure that you have an account in [Stripe](https://dashboard.stripe.com/login).
 
 ## Procedure

@@ -492,7 +492,9 @@ This scenario assumes you already have an order. The order created in this examp
 
 ## Related Resources
 
-- [Orders](https://beta.elasticpath.dev/docs/api/carts/orders)
+- [Custom Data (Flows) Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/flows/)
+- [Orders Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/orders/orders-cm)
 - [Checkout workflow](https://beta.elasticpath.dev/docs/api/carts/checkout)
-- [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/api/flows/flows)
-- [Extend a resource with custom data](https://beta.elasticpath.dev/docs/commerce-cloud/custom-data/extend-any-resource)
+- [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/api/flows/flows-service-introduction)
+- [Orders API](https://beta.elasticpath.dev/docs/api/carts/orders)
+- [Extend a resource with custom data](/guides/Custom%20Data/extend-any-resource)

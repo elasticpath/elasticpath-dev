@@ -18,7 +18,7 @@ Following on from that, if you add the same flow to both a parent and child prod
 
 When building your child products, you can:
 
-- Build all products related to a product. See [Create child products using variations](https://beta.elasticpath.dev/docs/pxm/products/pxm-product-variations/generate-pxm-variations).
+- Build all products related to a product. See [Create child products using variations](/guides/Products/generate-pxm-variations).
 - Build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy.
 
 This topic describes building a combination of child products associated with product, based on build rules that you specify.
@@ -307,12 +307,12 @@ Re-building child products after adding or removing a new variation changes the 
 
 ### Procedure - API
 
-1. [Create the variations](https://beta.elasticpath.dev/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
-1. [Create your options](https://beta.elasticpath.dev/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).
+1. [Create the variations](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation).
+1. [Create your options](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation-option).
 1. The endpoint you use to build child products based on a combination of variations depends on your scenario.
 
-    - Scenario 1: You want to create a product, associate the product with variations and build a combination of child products in one request. You can use [create a product](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product).
-    - Scenario 2: You already have a product and/or associated variations and you want to build a combination of child products. You can use [update a product](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/update-a-product).
+    - Scenario 1: You want to create a product, associate the product with variations and build a combination of child products in one request. You can use [create a product](https://beta.elasticpath.dev/docs/api/pxm/products/create-product).
+    - Scenario 2: You already have a product and/or associated variations and you want to build a combination of child products. You can use [update a product](https://beta.elasticpath.dev/docs/api/pxm/products/update-product).
 
 1. To create a base product called **Shirt**, associate the **Shirt Size**, **Shirt Color** and **Shirt Material** variations with the **Shirt** product, configure the build rules to build all child products except small, red T-Shirts, make the following request:
 
@@ -410,5 +410,5 @@ Whenever you update variations, options, or modifiers associated with a product,
 
 ## Related Resources
 
-- [Products](https://beta.elasticpath.dev/docs/pxm/products/pxm-products)
-- [Products API](https://beta.elasticpath.dev/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
+- [Products](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/Products/overview)
+- [Products API](https://beta.elasticpath.dev/docs/api/pxm/products/products)
