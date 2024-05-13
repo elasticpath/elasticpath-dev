@@ -6,7 +6,7 @@ sidebar_position: 10
 
 Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts.
 
-You can create subscriptions using the [Elastic Path Subscriptions API](https://elasticpath.apidocumentation.com/) or Commerce Manager.
+You can create subscriptions using the [Elastic Path Subscriptions API](/docs/api/subscriptions/subscriptions-introduction) or Commerce Manager.
 
 
 Scenarios include:
