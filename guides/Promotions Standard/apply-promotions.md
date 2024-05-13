@@ -26,17 +26,17 @@ Do the following to apply a promotion at a cart level:
 
 1. Create a promotion using one of the following:
 
-    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-cm/overview)
-    - [API](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-overview)
+    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/)
+    - [API](https://beta.elasticpath.dev/api)
 
 1. If required, create a promotion code for the promotion using one of the following:
 
-    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-cm/overview#adding-single-code)
-    - [API](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes)
+    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes)
+    - [API](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes)
 
 1. [Add items to the cart](https://beta.elasticpath.dev/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
 1. Apply promotion using code if the promotion is not automatically applied.
-1. [Checkout the cart](https://beta.elasticpath.dev/docs/commerce-cloud/checkout) that is updated with the promotion.
+1. [Checkout the cart](https://beta.elasticpath.dev/docs/api/carts/checkout) that is updated with the promotion.
 
 The promotion codes work with the `cart` endpoint. When a customer enters a promotion code, you must call API to apply the promotion that the code is associated with.
 

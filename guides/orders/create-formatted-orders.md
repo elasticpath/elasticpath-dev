@@ -106,5 +106,5 @@ To see the full code, visit GitHub.
 
 ## Related Resources
 
-- [Orders](https://beta.elasticpath.dev/docs/commerce-cloud/orders)
-- [Orders API](https://beta.elasticpath.dev/docs/commerce-cloud/orders/orders-api/orders-api-overview)
+- [Orders](https://beta.elasticpath.dev/docs/commerce-manager/orders/orders-cm)
+- [Orders API](https://beta.elasticpath.dev/docs/api/carts/orders)

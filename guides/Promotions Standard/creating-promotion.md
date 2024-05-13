@@ -16,13 +16,13 @@ The default setting for the `automatic` field is `false` and you must create the
 
 1. Create a promotion using one of the following:
 
-    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-cm/overview#creating-promotions)
-    - [API](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-overview)
+    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/promotions-standard/overview)
+    - [API](https://beta.elasticpath.dev/docs/api/promotions/promotions-standard)
 
-1. [Create a promotion code](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes) for the customer using one of the following:
+1. [Create a promotion code](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes) for the customer using one of the following:
 
-    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotions-cm/overview#adding-single-code)
-    - [API](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes)
+    - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes)
+    - [API](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes)
 
 1. Apply the coupon code.
 
@@ -46,5 +46,5 @@ The following code shows an example:
 }
 ```
 
-Add the `X-Moltin-Customer-Token` header in the request, so the customer can authenticate to the site to use the promotion. For more information, see the [Create Promotion Codes](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-codes/create-promotion-codes) section.
+Add the `X-Moltin-Customer-Token` header in the request, so the customer can authenticate to the site to use the promotion. For more information, see the [Create Promotion Codes](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes) section.
 

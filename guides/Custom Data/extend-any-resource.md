@@ -11,9 +11,9 @@ additional data to function.
 This guide gives you a general idea and know-how around extending an existing resource with custom schema. For how-to
 guides about extending specific types of resources, see:
 
-- [Extend customer resources](https://beta.elasticpath.dev/docs/commerce-cloud/customer-management/extend-customer-resources)
-- [Extend product resources](https://beta.elasticpath.dev/docs/pxm/products/extending-pxm-products/add-custom-data-to-pxm-products)
-- [Extend cart and order resources](https://beta.elasticpath.dev/docs/commerce-cloud/carts/extend-cart-and-order-resources)
+- [Extend customer resources](/guides/Customers/extend-customer-resources)
+- [Extend product resources](https://beta.elasticpath.dev/guides/Products/add-custom-data-to-pxm-products)
+- [Extend cart and order resources](/guides/Carts/extend-cart-and-order-resources)
 
 ## Prerequisites
 
