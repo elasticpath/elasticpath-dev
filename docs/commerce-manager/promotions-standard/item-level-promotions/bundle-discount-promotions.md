@@ -51,6 +51,6 @@ For a bundle promotion *(SKU1 or SKU2 ) + SKU3 for $20*, the promotion is applie
 
 ## Related Resources
 
-- [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
+- [Promotion Management Overview](/docs/commerce-manager/promotions-standard/overview)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
