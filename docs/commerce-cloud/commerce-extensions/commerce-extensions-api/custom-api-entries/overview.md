@@ -1,7 +1,7 @@
 ---
 title: Overview
 nav_label: Overview
-sidebar_position: 1
+nav_position: 1
 ---
 
 A **Custom API Entry** is a specific instance of a resource, such as a single product.
