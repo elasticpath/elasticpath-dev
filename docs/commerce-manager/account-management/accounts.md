@@ -80,7 +80,7 @@ In an Elastic Path Commerce Cloud store, sellers can create accounts using Comme
     - **Shipping** : Specifies the status of the shipment of the purchase, such as **fulfilled** or **unfulfilled**.
     - **Status** : Specifies the status of the order, such as **incomplete** or **complete**.
 
-    When you click a listing in the purchase history, the **View order** page is displayed. You can manage the orders by updating details, such as, shipping address, shipping status, and payment status. See [Orders](/docs/commerce-cloud/orders/orders-cm).
+    When you click a listing in the purchase history, the **View order** page is displayed. You can manage the orders by updating details, such as, shipping address, shipping status, and payment status. See [Orders](/docs/commerce-manager/orders/orders-cm).
 
 ### Viewing addresses associated with an account
 
