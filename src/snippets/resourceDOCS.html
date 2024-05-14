@@ -1,331 +1,334 @@
-<script>
-  function showMenu(menu) {
-    document.body.classList.remove('composable', 'composer', 'payments', 'api', 'cm', 'developer', 'selfmanaged', 'studio', 'plugin', 'pxm');
-    document.body.classList.add(menu);
-  }
-
-  window.showMenu = showMenu;
-</script>
-<div class="docs-dropdown flex max-w-lg flex-col rounded-2xl lg:min-w-[580px]">
-  <div class="flex flex-col p-4 lg:min-h-[300px] lg:flex-row">
-    <div class="flex flex-1 flex-col gap-4">
-      <!-- Commerce -->
-      <a
-        data-dropdown-docs-menu="composable"
-        onfocus="document.body.setAttribute('docs-menu', 'composable')"
-        onmouseover="document.body.setAttribute('docs-menu', 'composable')"
-        class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-        href="/docs/commerce-cloud"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/commerce.svg"
-                  class="h-6 w-6"
-                  alt="Composable Commerce"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">
-            Composable Commerce
-          </div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            Guides and Overview
-          </p>
-        </div>
-      </a>
-      <!-- API -->
-      <a
-              data-dropdown-docs-menu="api"
-              onfocus="document.body.setAttribute('docs-menu', 'api')"
-              onmouseover="document.body.setAttribute('docs-menu', 'api')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/api"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/rest-api-icon.svg"
-                  class="h-6 w-6"
-                  alt="RestAPI Documentation"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">
-            API Documentation
-          </div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            API Reference and OpenAPI specifications for Elastic Path Services
-          </p>
-        </div>
-      </a>
-      <!-- CM Docs -->
-      <a
-              data-dropdown-docs-menu="cm"
-              onfocus="document.body.setAttribute('docs-menu', 'cm')"
-              onmouseover="document.body.setAttribute('docs-menu', 'cm')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/ui"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/cm.svg"
-                  class="h-6 w-6"
-                  alt="Commerce Manager"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Commerce Manager</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            A web-based user interface to manage your Elastic Path services.
-          </p>
-        </div>
-      </a>
-      <!-- Composer
-      <a
-              data-dropdown-docs-menu="composer"
-              onfocus="document.body.setAttribute('docs-menu', 'composer')"
-              onmouseover="document.body.setAttribute('docs-menu', 'composer')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/composer"
-      >
-        <div class="flex-shrink-0">
-
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Composer</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference
-          </p>
-        </div>
-      </a>-->
-      <!-- Studio -->
-      <a
-              data-dropdown-docs-menu="studio"
-              onfocus="document.body.setAttribute('docs-menu', 'studio')"
-              onmouseover="document.body.setAttribute('docs-menu', 'studio')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/studio"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/studio.svg"
-                  class="h-6 w-6"
-                  alt="Studio"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Studio</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            An e-commerce enabled content management system designed to empower your team to build exceptional experiences.
-          </p>
-        </div>
-      </a>
-      <!-- Composer -->
-      <a
-              data-dropdown-docs-menu="composer"
-              onfocus="document.body.setAttribute('docs-menu', 'composer')"
-              onmouseover="document.body.setAttribute('docs-menu', 'composer')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/composer"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/composer.svg"
-                  class="h-6 w-6"
-                  alt="Composer"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Composer</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            Composer is a vertical-specific commerce intelligence IPaaS.
-          </p>
-        </div>
-      </a>
-      <!-- Payments -->
-      <a
-              data-dropdown-docs-menu="payments"
-              onfocus="document.body.setAttribute('docs-menu', 'payments')"
-              onmouseover="document.body.setAttribute('docs-menu', 'payments')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/payments"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/payments.svg"
-                  class="h-6 w-6"
-                  alt="EP Payments"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Payments</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            Elastic Path Payments, Powered by Stripe
-          </p>
-        </div>
-      </a>
-      <!-- Developer Tools -->
-      <a
-              data-dropdown-docs-menu="developer"
-              onfocus="document.body.setAttribute('docs-menu', 'developer')"
-              onmouseover="document.body.setAttribute('docs-menu', 'developer')"
-              class="flex cursor-pointer !mt-2 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-              href="/docs/developer-tools"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/developer.svg"
-                  class="h-6 w-6"
-                  alt="Developer Tools"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1 ">
-          <div class="text-base font-semibold">Developer Tools</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            SDKs, Composable CLI Frontend, Postman Collections
-          </p>
-        </div>
-      </a>
-      <!--Self Managed-->
-      <a
-        data-dropdown-docs-menu="selfmanaged"
-        onfocus="document.body.setAttribute('docs-menu', 'selfmanaged')"
-        onmouseover="document.body.setAttribute('docs-menu', 'selfmanaged')"
-        class="flex cursor-pointer !mt-4 items-start justify-start gap-2 border-none bg-transparent text-black dark:text-white"
-        href="https://documentation.elasticpath.com"
-        target="_blank"
-      >
-        <div class="flex-shrink-0">
-          <img
-                  src="/icons/resourceDocs/selfmanaged.svg"
-                  class="h-6 w-6"
-                  alt="Self Managed Commerce"
-          />
-        </div>
-        <div class="flex flex-col items-start justify-start gap-1">
-          <div class="text-base font-semibold">Self Managed Commerce</div>
-          <p class="mb-0 text-left text-sm text-text-400">
-            Guides and API reference for Self Managed Commerce
-          </p>
-        </div>
-      </a>
-
+<div class="docs-dropdown rounded-lg shadow-[0px_15px_30px_0px_rgba(16,24,40,0.1)] z-10">
+    <div class="flex justify-between">
+      <div class="p-0 pr-4 flex justify-between">
+        <ul class="mt-2 min-w-96" aria-labelledby="dropdownLargeButton">
+          <li class="">
+            <a href="#" class="px-2 py-3 transition-all duration-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:rounded-xl flex">
+              <div class="rounded-lg w-49 h-49 flex justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M26 11C26 7.68629 28.6863 5 32 5H38C41.3137 5 44 7.68629 44 11V17C44 20.3137 41.3137 23 38 23H32C28.6863 23 26 20.3137 26 17V11Z" fill="#4CD081"/>
+                  <path d="M26 32C26 28.6863 28.6863 26 32 26H38C41.3137 26 44 28.6863 44 32V38C44 41.3137 41.3137 44 38 44H32C28.6863 44 26 41.3137 26 38V32Z" fill="#4CD081"/>
+                  <path d="M5 32C5 28.6863 7.68629 26 11 26H17C20.3137 26 23 28.6863 23 32V38C23 41.3137 20.3137 44 17 44H11C7.68629 44 5 41.3137 5 38V32Z" fill="#4CD081"/>
+                  <path d="M5 11C5 7.68629 7.68629 5 11 5H17C20.3137 5 23 7.68629 23 11V17C23 20.3137 20.3137 23 17 23H11C7.68629 23 5 20.3137 5 17V11Z" fill="#26946C"/>
+                </svg>
+              </div>
+              <div class="ml-2">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Products</h5>
+                <div class="text-xs font-medium text-gray-400">Manage your products & promotions</div>
+              </div>
+            </a>
+          </li>
+          <!--Payments-->
+          <li class="">
+            <a href="#" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class="rounded-lg w-49 h49 flex justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_10809_245)">
+                    <circle cx="26.75" cy="26.75" r="21.75" fill="#C5710F"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.75 45.5C35.7622 45.5 45.5 35.7622 45.5 23.75C45.5 11.7378 35.7622 2 23.75 2C11.7378 2 2 11.7378 2 23.75C2 35.7622 11.7378 45.5 23.75 45.5ZM25.329 9.51174C26.1511 9.61449 26.7342 10.3642 26.6314 11.1862L26.2982 13.8516L30.1505 14.3332C30.9725 14.4359 31.5556 15.1856 31.4528 16.0076C31.3501 16.8297 30.6004 17.4128 29.7784 17.31L25.9261 16.8285L25.2175 22.4975L26.6381 22.6647C29.8414 23.0415 32.1614 25.9016 31.8694 29.1137C31.5676 32.4332 28.5985 34.8576 25.2856 34.4895L23.74 34.3178L23.4171 36.9005C23.3144 37.7225 22.5647 38.3056 21.7427 38.2029C20.9206 38.1001 20.3375 37.3504 20.4403 36.5284L20.758 33.9865L15.3345 33.3838C14.5111 33.2924 13.9178 32.5507 14.0093 31.7274C14.1008 30.904 14.8424 30.3107 15.6658 30.4022L21.1302 31.0093L21.8658 25.1239L20.7927 24.9977C17.8358 24.6498 15.6073 22.1437 15.6073 19.1664C15.6073 15.6347 18.7026 12.9022 22.207 13.3402L23.3214 13.4795L23.6546 10.8141C23.7573 9.99208 24.507 9.40899 25.329 9.51174ZM21.8349 16.3171L22.9493 16.4564L22.238 22.147L21.1433 22.0182C19.6971 21.8481 18.6073 20.6225 18.6073 19.1664C18.6073 17.4392 20.1211 16.1028 21.8349 16.3171ZM24.1121 31.3407L24.8454 25.4744L26.2876 25.6441C27.876 25.831 29.0265 27.2493 28.8817 28.8421C28.732 30.4882 27.2597 31.6904 25.6169 31.5079L24.1121 31.3407Z" fill="#FFE769"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_245">
+                      <rect width="48" height="48" fill="white" transform="translate(0.5 0.5)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 text-base mb-1 dark:text-white font-semibold">Payments</h5>
+                <div class="text-xs font-medium text-gray-400">Best in class payment provider</div>
+              </div>
+            </a>
+          </li>
+          <!--Subscriptions-->
+          <li class="">
+            <a href="javascript:;" class="px-2 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:rounded-xl flex  transition-all duration-500">
+              <div class=" rounded-lg w-49 h49 flex  justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M46.3148 24.0853C46.3004 23.3115 45.6557 22.7139 44.8818 22.7036L39.1652 22.6278C38.2434 22.6156 37.5348 23.4321 37.545 24.3539C37.5836 27.8348 36.2507 31.3145 33.5667 33.9283C29.0797 38.2978 22.2724 38.8201 17.2308 35.5492L19.6408 33.2023C20.5981 32.27 19.9504 30.6455 18.6141 30.6278L7.19292 30.4764C6.36457 30.4654 5.68415 31.128 5.67317 31.9563L5.52172 43.3776C5.504 44.7138 7.1107 45.4044 8.06809 44.4721L10.8501 41.7629C19.3612 48.4533 31.7196 47.9734 39.6877 40.2138C44.211 35.8089 46.4236 29.9271 46.3148 24.0853Z" fill="#FD585B"/>
+                  <path d="M41.9425 18.5236C42.7709 18.5346 43.4513 17.872 43.4623 17.0436L43.6137 5.62242C43.6314 4.28618 42.0247 3.59556 41.0673 4.5279L38.2853 7.2371C29.7743 0.546649 17.4158 1.0266 9.44772 8.78617C4.92445 13.1911 2.71179 19.0729 2.82066 24.9147C2.83509 25.6885 3.47978 26.2861 4.25368 26.2964L9.97027 26.3722C10.892 26.3844 11.6006 25.5679 11.5904 24.6461C11.5518 21.1652 12.8848 17.6855 15.5687 15.0717C20.0558 10.7021 26.8631 10.1799 31.9046 13.4508L29.4947 15.7977C28.5373 16.73 29.1851 18.3544 30.5213 18.3722L41.9425 18.5236Z" fill="#B80914"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Subscriptions
+                </h5>
+                <div class="text-xs font-medium text-gray-400">Recurring billing for products & services</div>
+              </div>
+            </a>
+          </li>
+          <!--Carts/Orders-->
+          <li class="">
+            <a href="javascript:;" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class="rounded-lg w-49 h49 flex gap-1 justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_10809_256)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.49997 12.5C7.01469 12.5 4.99997 14.5147 4.99997 17V42.5C4.99997 44.9853 7.01469 47 9.49997 47L39.5 47C41.9853 47 44 44.9853 44 42.5L44 17C44 14.5147 41.9853 12.5 39.5 12.5H9.49997ZM11 17C10.1715 17 9.49997 17.6716 9.49997 18.5V23C9.49997 23.8284 10.1715 24.5 11 24.5H38C38.8284 24.5 39.5 23.8284 39.5 23V18.5C39.5 17.6716 38.8284 17 38 17H11Z" fill="#D8591B"/>
+                    <rect x="29" y="9.5" width="7.5" height="3" fill="#FF9650"/>
+                    <path d="M24.5 3.5C24.5 1.84315 25.8431 0.5 27.5 0.5H38C39.6569 0.5 41 1.84315 41 3.5V6.5C41 8.15685 39.6569 9.5 38 9.5H27.5C25.8431 9.5 24.5 8.15685 24.5 6.5V3.5Z" fill="#D8591B"/>
+                    <path d="M4.22079 29.3181C4.69353 28.2151 5.77814 27.4999 6.97823 27.4999H41.921C43.1716 27.4999 44.2909 28.2756 44.73 29.4465L46.5957 34.4217C47.8404 37.7409 48.1316 41.3422 47.4364 44.8182C47.1827 46.0868 46.0688 47 44.7751 47H4.54142C3.0749 47 1.82333 45.9397 1.58224 44.4932L1.51157 44.0692C0.851096 40.1063 1.34121 36.0372 2.92377 32.3445L4.22079 29.3181Z" fill="#FF9650"/>
+                    <path d="M7.65811 31.5257C7.86228 30.9131 8.43549 30.5 9.08114 30.5H39.9189C40.5645 30.5 41.1377 30.9131 41.3419 31.5257L43.3419 37.5257C43.6656 38.497 42.9427 39.5 41.9189 39.5H7.08114C6.0573 39.5 5.33435 38.497 5.65811 37.5257L7.65811 31.5257Z" fill="#D8591B"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_256">
+                      <rect width="48" height="48" fill="white" transform="translate(0.5 0.5)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 text-base mb-1 dark:text-white font-semibold">Carts / Orders</h5>
+                <div class="text-xs font-medium text-gray-400">Carts,orders, refunds & accounts</div>
+              </div>
+            </a>
+          </li>
+          <!--Commerce Manager-->
+          <li class="">
+            <a href="javascript:;" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class="rounded-lg w-49 h49 flex  justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_10809_256)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.49997 12.5C7.01469 12.5 4.99997 14.5147 4.99997 17V42.5C4.99997 44.9853 7.01469 47 9.49997 47L39.5 47C41.9853 47 44 44.9853 44 42.5L44 17C44 14.5147 41.9853 12.5 39.5 12.5H9.49997ZM11 17C10.1715 17 9.49997 17.6716 9.49997 18.5V23C9.49997 23.8284 10.1715 24.5 11 24.5H38C38.8284 24.5 39.5 23.8284 39.5 23V18.5C39.5 17.6716 38.8284 17 38 17H11Z" fill="#D8591B"/>
+                    <rect x="29" y="9.5" width="7.5" height="3" fill="#FF9650"/>
+                    <path d="M24.5 3.5C24.5 1.84315 25.8431 0.5 27.5 0.5H38C39.6569 0.5 41 1.84315 41 3.5V6.5C41 8.15685 39.6569 9.5 38 9.5H27.5C25.8431 9.5 24.5 8.15685 24.5 6.5V3.5Z" fill="#D8591B"/>
+                    <path d="M4.22079 29.3181C4.69353 28.2151 5.77814 27.4999 6.97823 27.4999H41.921C43.1716 27.4999 44.2909 28.2756 44.73 29.4465L46.5957 34.4217C47.8404 37.7409 48.1316 41.3422 47.4364 44.8182C47.1827 46.0868 46.0688 47 44.7751 47H4.54142C3.0749 47 1.82333 45.9397 1.58224 44.4932L1.51157 44.0692C0.851096 40.1063 1.34121 36.0372 2.92377 32.3445L4.22079 29.3181Z" fill="#FF9650"/>
+                    <path d="M7.65811 31.5257C7.86228 30.9131 8.43549 30.5 9.08114 30.5H39.9189C40.5645 30.5 41.1377 30.9131 41.3419 31.5257L43.3419 37.5257C43.6656 38.497 42.9427 39.5 41.9189 39.5H7.08114C6.0573 39.5 5.33435 38.497 5.65811 37.5257L7.65811 31.5257Z" fill="#D8591B"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_256">
+                      <rect width="48" height="48" fill="white" transform="translate(0.5 0.5)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 text-base mb-1 dark:text-white font-semibold">Commerce Manager</h5>
+                <div class="text-xs font-medium text-gray-400">Business user tooling for all our services</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!--Right Column-->
+        <ul class="mt-2 min-w-96" aria-labelledby="dropdownLargeButton">
+          <!--Studio-->
+          <li>
+            <a href="#" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class=" rounded-lg w-49 h49 flex  justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.63788 27.4933L1.60289 28.1176C0.342858 28.5042 0.0992266 30.2552 1.20192 30.9995L21.1628 44.472C23.1936 45.8427 25.8064 45.8427 27.8373 44.472L47.7981 30.9995C48.9008 30.2552 48.6571 28.5042 47.3971 28.1176L45.3623 27.4934L29.5382 34.0106C26.335 35.3298 22.6654 35.3298 19.4622 34.0106L3.63788 27.4933Z" fill="#AEAEF4"/>
+                  <path d="M21.6893 3.88529C23.5242 3.37157 25.4758 3.37157 27.3107 3.88529L47.3082 9.48389C48.8972 9.92876 48.8972 12.0712 47.3082 12.5161L27.3107 18.1147C25.4758 18.6284 23.5242 18.6284 21.6893 18.1147L1.69176 12.5161C0.102749 12.0712 0.102747 9.92876 1.69175 9.48389L21.6893 3.88529Z" fill="#4040D9"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.99139 18.1129L1.54184 19.1784C0.225587 19.585 0.133691 21.1834 1.39666 21.7036L21.1757 29.8496C23.2812 30.7168 25.7188 30.7168 27.8243 29.8496L47.6033 21.7036C48.8663 21.1834 48.7744 19.585 47.4582 19.1784L44.0086 18.1129L28.5239 22.4481C25.8954 23.184 23.1046 23.184 20.4761 22.4481L4.99139 18.1129Z" fill="#AEAEF4"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Studio</h5>
+                <div class="text-xs font-medium text-gray-400">Landing pages & headless storefronts</div>
+              </div>
+            </a>
+          </li>
+          <!--Composer-->
+          <li>
+            <a href="javascript:;" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class=" rounded-lg w-49 h49 flex  justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_10809_284)">
+                    <path d="M41.5787 42.2213L39.8213 43.9787C38.6497 45.1502 36.7502 45.1503 35.5787 43.9787L10.1 18.5L16.1 12.5L41.5787 37.9787C42.7502 39.1503 42.7502 41.0497 41.5787 42.2213Z" fill="#7BC4ED"/>
+                    <path d="M1.70001 35.3C8.10001 33.7 9.70001 32.1 11.3 25.7C12.9 32.1 14.5 33.7 20.9 35.3C14.5 36.9 12.9 38.5 11.3 44.9C9.70001 38.5 8.10001 36.9 1.70001 35.3Z" fill="#227FB4"/>
+                    <path d="M19.7 8.9C25.3 7.5 26.7 6.1 28.1 0.5C29.5 6.1 30.9 7.5 36.5 8.9C30.9 10.3 29.5 11.7 28.1 17.3C26.7 11.7 25.3 10.3 19.7 8.9Z" fill="#227FB4"/>
+                    <path d="M34.1 18.5C38.1 17.5 39.1 16.5 40.1 12.5C41.1 16.5 42.1 17.5 46.1 18.5C42.1 19.5 41.1 20.5 40.1 24.5C39.1 20.5 38.1 19.5 34.1 18.5Z" fill="#227FB4"/>
+                    <path d="M4.31424 9.88577L7.48581 6.7142C8.26686 5.93315 9.53319 5.93315 10.3142 6.7142L16.1 12.5L10.1 18.5L4.31424 12.7142C3.53319 11.9332 3.53319 10.6668 4.31424 9.88577Z" fill="#227FB4"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_284">
+                      <rect width="48" height="48" fill="white" transform="translate(0.5 0.5)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Composer</h5>
+                <div class="text-xs font-medium text-gray-400">Vertical-specific commerce intelligence IPaaS</div>
+              </div>
+            </a>
+          </li>
+          <!--Extensions-->
+          <li class="">
+            <a href="javascript:;" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class=" rounded-lg w-49 h49 flex  justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.5 32.9C35.1039 32.9 43.7 29.6764 43.7 25.7V40.1C43.7 44.0764 35.1039 47.3 24.5 47.3C13.8961 47.3 5.29999 44.0764 5.29999 40.1V25.7C5.29999 29.6764 13.8961 32.9 24.5 32.9Z" fill="#C0C7DA"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M43.0951 23.9C40.9637 27.0054 33.4464 29.3 24.5 29.3C15.5536 29.3 8.03628 27.0054 5.90487 23.9C5.51 24.4753 5.29999 25.0785 5.29999 25.7C5.29999 29.6765 13.8961 32.9 24.5 32.9C35.1039 32.9 43.7 29.6765 43.7 25.7C43.7 25.0785 43.49 24.4753 43.0951 23.9Z" fill="#566694"/>
+                  <ellipse cx="24.5" cy="10.1" rx="19.2" ry="7.2" fill="#566694"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.5 17.3C35.1039 17.3 43.7 14.0764 43.7 10.1V22.1C43.7 26.0764 35.1039 29.3 24.5 29.3C13.8961 29.3 5.29999 26.0764 5.29999 22.1V10.1C5.29999 14.0764 13.8961 17.3 24.5 17.3Z" fill="#C0C7DA"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Extensions</h5>
+                <div class="text-xs font-medium text-gray-400">Extend core objects & create your own</div>
+              </div>
+            </a>
+          </li>
+          <!--Composable Frontend-->
+          <li class="">
+            <a href="#" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class="rounded-lg w-49 h49 flex justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_10809_317)">
+                    <path d="M37.94 5.30005H6.26C4.73286 5.30154 3.26875 5.84385 2.18891 6.808C1.10906 7.77215 0.501668 9.07939 0.5 10.4429V36.1572C0.501668 37.5207 1.10906 38.8279 2.18891 39.7921C3.26875 40.7562 4.73286 41.2986 6.26 41.3001H37.94C39.4671 41.2986 40.9312 40.7562 42.0111 39.7921C43.0909 38.8279 43.6983 37.5207 43.7 36.1572V10.4429C43.6983 9.07939 43.0909 7.77215 42.0111 6.808C40.9312 5.84385 39.4671 5.30154 37.94 5.30005Z" fill="#27365D"/>
+                    <path d="M37.94 5.30005H6.26C4.73286 5.30154 3.26875 5.84385 2.18891 6.808C1.10906 7.77215 0.501668 9.07939 0.5 10.4429V36.1572C0.501668 37.5207 1.10906 38.8279 2.18891 39.7921C3.26875 40.7562 4.73286 41.2986 6.26 41.3001H37.94C39.4671 41.2986 40.9312 40.7562 42.0111 39.7921C43.0909 38.8279 43.6983 37.5207 43.7 36.1572V10.4429C43.6983 9.07939 43.0909 7.77215 42.0111 6.808C40.9312 5.84385 39.4671 5.30154 37.94 5.30005Z" fill="#27365D"/>
+                    <path d="M8.8005 24.5C8.57261 24.5 8.35035 24.4228 8.16443 24.279C7.9785 24.1353 7.8381 23.9321 7.76263 23.6975C7.68715 23.463 7.68033 23.2086 7.7431 22.9696C7.80587 22.7307 7.93514 22.5189 8.11303 22.3635L12.5397 18.5007L8.11303 14.6378C8.00018 14.5394 7.90622 14.4176 7.83651 14.2795C7.7668 14.1414 7.7227 13.9897 7.70674 13.833C7.69078 13.6763 7.70327 13.5178 7.74349 13.3663C7.78372 13.2149 7.85088 13.0736 7.94116 12.9505C8.03144 12.8274 8.14307 12.7249 8.26966 12.6489C8.39626 12.5729 8.53534 12.5248 8.67898 12.5073C8.82261 12.4899 8.96798 12.5036 9.10679 12.5474C9.2456 12.5913 9.37513 12.6646 9.48798 12.7631L14.9878 17.5625C15.1167 17.6749 15.2208 17.8175 15.2924 17.9798C15.3639 18.1421 15.4011 18.3199 15.4011 18.4999C15.4011 18.68 15.3639 18.8577 15.2924 19.02C15.2208 19.1823 15.1167 19.3249 14.9878 19.4373L9.48798 24.2368C9.29289 24.4072 9.05042 24.5 8.8005 24.5ZM19.8001 24.5H15.4002C15.1085 24.5 14.8287 24.3736 14.6225 24.1486C14.4162 23.9235 14.3003 23.6184 14.3003 23.3001C14.3003 22.9819 14.4162 22.6767 14.6225 22.4517C14.8287 22.2267 15.1085 22.1003 15.4002 22.1003H19.8001C20.0918 22.1003 20.3716 22.2267 20.5778 22.4517C20.7841 22.6767 20.9 22.9819 20.9 23.3001C20.9 23.6184 20.7841 23.9235 20.5778 24.1486C20.3716 24.3736 20.0918 24.5 19.8001 24.5Z" fill="white"/>
+                    <rect x="22.1" y="34.1" width="12" height="12" rx="2" fill="#8B97B8"/>
+                    <rect x="29.3" y="19.7" width="12" height="12" rx="2" fill="#8B97B8"/>
+                    <rect x="36.5" y="34.1" width="12" height="12" rx="2" fill="#8B97B8"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 10.4429V36.1571C0.501668 37.5207 1.10906 38.8279 2.18891 39.792C2.74007 40.2842 3.39134 40.6664 4.1 40.9229V5.67712C3.39134 5.93362 2.74007 6.31584 2.18891 6.80795C1.10906 7.7721 0.501668 9.07934 0.5 10.4429Z" fill="#27365D"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_317">
+                      <rect width="48" height="48" fill="white" transform="translate(0.5 0.5)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Composable Frontend</h5>
+                <div class="text-xs font-medium text-gray-400">Generate Next.js storefronts in minutes</div>
+              </div>
+            </a>
+          </li>
+          <!--Developer Tools-->
+          <li class="">
+            <a href="javascript:;" class="px-2 py-3 hover:bg-gray-100 hover:rounded-xl flex dark:hover:bg-gray-800 transition-all duration-500">
+              <div class=" rounded-lg w-49 h49 flex  justify-center">
+                <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_10809_317)">
+                    <path d="M37.94 5.30005H6.26C4.73286 5.30154 3.26875 5.84385 2.18891 6.808C1.10906 7.77215 0.501668 9.07939 0.5 10.4429V36.1572C0.501668 37.5207 1.10906 38.8279 2.18891 39.7921C3.26875 40.7562 4.73286 41.2986 6.26 41.3001H37.94C39.4671 41.2986 40.9312 40.7562 42.0111 39.7921C43.0909 38.8279 43.6983 37.5207 43.7 36.1572V10.4429C43.6983 9.07939 43.0909 7.77215 42.0111 6.808C40.9312 5.84385 39.4671 5.30154 37.94 5.30005Z" fill="#27365D"/>
+                    <path d="M37.94 5.30005H6.26C4.73286 5.30154 3.26875 5.84385 2.18891 6.808C1.10906 7.77215 0.501668 9.07939 0.5 10.4429V36.1572C0.501668 37.5207 1.10906 38.8279 2.18891 39.7921C3.26875 40.7562 4.73286 41.2986 6.26 41.3001H37.94C39.4671 41.2986 40.9312 40.7562 42.0111 39.7921C43.0909 38.8279 43.6983 37.5207 43.7 36.1572V10.4429C43.6983 9.07939 43.0909 7.77215 42.0111 6.808C40.9312 5.84385 39.4671 5.30154 37.94 5.30005Z" fill="#27365D"/>
+                    <path d="M8.8005 24.5C8.57261 24.5 8.35035 24.4228 8.16443 24.279C7.9785 24.1353 7.8381 23.9321 7.76263 23.6975C7.68715 23.463 7.68033 23.2086 7.7431 22.9696C7.80587 22.7307 7.93514 22.5189 8.11303 22.3635L12.5397 18.5007L8.11303 14.6378C8.00018 14.5394 7.90622 14.4176 7.83651 14.2795C7.7668 14.1414 7.7227 13.9897 7.70674 13.833C7.69078 13.6763 7.70327 13.5178 7.74349 13.3663C7.78372 13.2149 7.85088 13.0736 7.94116 12.9505C8.03144 12.8274 8.14307 12.7249 8.26966 12.6489C8.39626 12.5729 8.53534 12.5248 8.67898 12.5073C8.82261 12.4899 8.96798 12.5036 9.10679 12.5474C9.2456 12.5913 9.37513 12.6646 9.48798 12.7631L14.9878 17.5625C15.1167 17.6749 15.2208 17.8175 15.2924 17.9798C15.3639 18.1421 15.4011 18.3199 15.4011 18.4999C15.4011 18.68 15.3639 18.8577 15.2924 19.02C15.2208 19.1823 15.1167 19.3249 14.9878 19.4373L9.48798 24.2368C9.29289 24.4072 9.05042 24.5 8.8005 24.5ZM19.8001 24.5H15.4002C15.1085 24.5 14.8287 24.3736 14.6225 24.1486C14.4162 23.9235 14.3003 23.6184 14.3003 23.3001C14.3003 22.9819 14.4162 22.6767 14.6225 22.4517C14.8287 22.2267 15.1085 22.1003 15.4002 22.1003H19.8001C20.0918 22.1003 20.3716 22.2267 20.5778 22.4517C20.7841 22.6767 20.9 22.9819 20.9 23.3001C20.9 23.6184 20.7841 23.9235 20.5778 24.1486C20.3716 24.3736 20.0918 24.5 19.8001 24.5Z" fill="white"/>
+                    <rect x="22.1" y="34.1" width="12" height="12" rx="2" fill="#8B97B8"/>
+                    <rect x="29.3" y="19.7" width="12" height="12" rx="2" fill="#8B97B8"/>
+                    <rect x="36.5" y="34.1" width="12" height="12" rx="2" fill="#8B97B8"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 10.4429V36.1571C0.501668 37.5207 1.10906 38.8279 2.18891 39.792C2.74007 40.2842 3.39134 40.6664 4.1 40.9229V5.67712C3.39134 5.93362 2.74007 6.31584 2.18891 6.80795C1.10906 7.7721 0.501668 9.07934 0.5 10.4429Z" fill="#27365D"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_317">
+                      <rect width="48" height="48" fill="white" transform="translate(0.5 0.5)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h5 class="text-gray-900 dark:text-white text-base mb-1 font-semibold">Developer Tools</h5>
+                <div class="text-xs font-medium text-gray-400">SDKs, React Hooks, Getting Started</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!--solutions-->
+      <div class="bg-gray-50 min-w-52 border-l-1 flex justify-between border-gray-500">
+        <ul class="mt-6 min-w-52" aria-labelledby="dropdownLargeButton">
+          <li><h3 class="text-gray-500 mb-5">Solutions</h3></li>
+          <li>
+            <a href="#" class="px-2 py-3 transition-all duration-500 hover:bg-gray-100 flex">
+              <div class="relative text-sm font-medium text-gray-400">
+                <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="white"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="#EFF3FB"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" stroke="white"/>
+                  <path d="M21.75 24.75L11.5 14.5L14 12L24.25 22.25C24.9404 22.9404 24.9404 24.0596 24.25 24.75C23.5596 25.4404 22.4404 25.4404 21.75 24.75Z" fill="#647FB4" fill-opacity="0.55"/>
+                  <path d="M8 21.5C10.6667 20.8333 11.3333 20.1667 12 17.5C12.6667 20.1667 13.3333 20.8333 16 21.5C13.3333 22.1667 12.6667 22.8333 12 25.5C11.3333 22.8333 10.6667 22.1667 8 21.5Z" fill="#647FB4"/>
+                  <path d="M15.5 10.5C17.8333 9.91667 18.4167 9.33333 19 7C19.5833 9.33333 20.1667 9.91667 22.5 10.5C20.1667 11.0833 19.5833 11.6667 19 14C18.4167 11.6667 17.8333 11.0833 15.5 10.5Z" fill="#647FB4"/>
+                  <path d="M21.5 14.5C23.1667 14.0833 23.5833 13.6667 24 12C24.4167 13.6667 24.8333 14.0833 26.5 14.5C24.8333 14.9167 24.4167 15.3333 24 17C23.5833 15.3333 23.1667 14.9167 21.5 14.5Z" fill="#647FB4"/>
+                  <path d="M11.5 14.5L9.75 12.75C9.05964 12.0596 9.05964 10.9404 9.75 10.25C10.4404 9.55964 11.5596 9.55965 12.25 10.25L14 12L11.5 14.5Z" fill="#647FB4"/>
+                </svg>
+              </div>
+              <div class="ml-2 text-gray-900 dark:text-white text-base mb-1 font-semibold">Bundles</div>
+            </a>
+          </li>
+        <li>
+          <a href="#" class="flex transition-all duration-500">
+            <div class="relative text-sm font-medium text-gray-400">
+              <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="white"/>
+                <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="#EFF3FB"/>
+                <rect x="1" y="0.5" width="33" height="33" rx="5.5" stroke="white"/>
+                <path d="M15.5 15.9L11.8633 20.8095C10.8856 22.1295 11.8278 24 13.4704 24H21.5296C23.1722 24 24.1144 22.1295 23.1367 20.8095L19.5 15.9V15H15.5V15.9Z" fill="#647FB4" fill-opacity="0.55"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7499 9.25C14.3357 9.25 13.9999 9.58579 13.9999 10C13.9999 10.4142 14.3357 10.75 14.7499 10.75H14.9999V15.6042L11.1823 20.8898C9.86875 22.7085 11.1682 25.25 13.4116 25.25H21.5883C23.8317 25.25 25.1311 22.7085 23.8176 20.8898L19.9999 15.6042V10.75H20.2499C20.6642 10.75 20.9999 10.4142 20.9999 10C20.9999 9.58579 20.6642 9.25 20.2499 9.25H19.2499H15.7499H14.7499ZM16.4999 15.8468V10.75H18.4999V15.8468C18.4999 16.0044 18.5496 16.1581 18.642 16.2859L22.6016 21.7681C23.1987 22.5948 22.608 23.75 21.5883 23.75H13.4116C12.3919 23.75 11.8012 22.5948 12.3983 21.7681L16.3579 16.2859C16.4503 16.1581 16.4999 16.0044 16.4999 15.8468ZM16.4999 20C17.0522 20 17.4999 19.5523 17.4999 19C17.4999 18.4477 17.0522 18 16.4999 18C15.9477 18 15.4999 18.4477 15.4999 19C15.4999 19.5523 15.9477 20 16.4999 20ZM18.9999 22.75C19.6903 22.75 20.2499 22.1904 20.2499 21.5C20.2499 20.8096 19.6903 20.25 18.9999 20.25C18.3096 20.25 17.7499 20.8096 17.7499 21.5C17.7499 22.1904 18.3096 22.75 18.9999 22.75Z" fill="#647FB4"/>
+              </svg>
+            </div>
+          <div class="ml-2 text-gray-900 dark:text-white text-base mb-1 font-semibold">A/B testing</div>
+          </a>
+        </li>
+          <li>
+            <a href="#" class="flex transition-all duration-500">
+              <div class="relative text-sm font-medium text-gray-400">
+                <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="white"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="#EFF3FB"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" stroke="white"/>
+                  <path d="M9.5 9C9.5 8.44772 9.94772 8 10.5 8L24.5 8C25.0523 8 25.5 8.44772 25.5 9V20H20.5C19.9477 20 19.5 20.4477 19.5 21V26H10.5C9.94772 26 9.5 25.5523 9.5 25L9.5 9Z" fill="#647FB4" fill-opacity="0.55"/>
+                  <rect x="11.5" y="11" width="12" height="4" rx="1" fill="#647FB4"/>
+                  <rect x="11.5" y="17" width="7" height="2" rx="1" fill="#647FB4"/>
+                  <path d="M19.5 21V26L25.5 20H20.5C19.9477 20 19.5 20.4477 19.5 21Z" fill="#647FB4"/>
+                </svg>
+              </div>
+              <div class="ml-2 text-gray-900 dark:text-white text-base mb-1 font-semibold">Page Building</div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex transition-all duration-500">
+              <div class="relative text-sm font-medium text-gray-400">
+                <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="white"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="#EFF3FB"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" stroke="white"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 8C9.39543 8 8.5 8.89543 8.5 10V23C8.5 24.1046 9.39543 25 10.5 25H23.5C24.6046 25 25.5 24.1046 25.5 23V10C25.5 8.89543 24.6046 8 23.5 8H10.5ZM12.5 18H21.5C22.6046 18 23.5 18.8954 23.5 20V21C23.5 22.1046 22.6046 23 21.5 23H12.5C11.3954 23 10.5 22.1046 10.5 21V20C10.5 18.8954 11.3954 18 12.5 18ZM10.5 14C10.5 13.4477 10.9477 13 11.5 13H22.5C23.0523 13 23.5 13.4477 23.5 14V15C23.5 15.5523 23.0523 16 22.5 16H11.5C10.9477 16 10.5 15.5523 10.5 15V14ZM11.5 10H16.5C17.0523 10 17.5 10.4477 17.5 11C17.5 11.5523 17.0523 12 16.5 12H11.5C10.9477 12 10.5 11.5523 10.5 11C10.5 10.4477 10.9477 10 11.5 10Z" fill="#647FB4" fill-opacity="0.55"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 18H21.5C22.6046 18 23.5 18.8954 23.5 20V21C23.5 22.1046 22.6046 23 21.5 23H12.5C11.3954 23 10.5 22.1046 10.5 21V20C10.5 18.8954 11.3954 18 12.5 18ZM14 21.5C13.4477 21.5 13 21.0523 13 20.5C13 19.9477 13.4477 19.5 14 19.5C14.5523 19.5 15 19.9477 15 20.5C15 21.0523 14.5523 21.5 14 21.5ZM16 20.5C16 21.0523 16.4477 21.5 17 21.5C17.5523 21.5 18 21.0523 18 20.5C18 19.9477 17.5523 19.5 17 19.5C16.4477 19.5 16 19.9477 16 20.5ZM20 21.5C19.4477 21.5 19 21.0523 19 20.5C19 19.9477 19.4477 19.5 20 19.5C20.5523 19.5 21 19.9477 21 20.5C21 21.0523 20.5523 21.5 20 21.5Z" fill="#647FB4"/>
+                  <path d="M16.5 10H11.5C10.9477 10 10.5 10.4477 10.5 11C10.5 11.5523 10.9477 12 11.5 12H16.5C17.0523 12 17.5 11.5523 17.5 11C17.5 10.4477 17.0523 10 16.5 10Z" fill="#647FB4"/>
+                </svg>
+              </div>
+              <div class="ml-2 text-gray-900 dark:text-white text-base mb-1 font-semibold">Forms</div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex transition-all duration-500">
+              <div class="relative text-sm font-medium text-gray-400">
+                <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="white"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="#EFF3FB"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" stroke="white"/>
+                  <path d="M14.5 10H10.5V14C10.5 15.1046 11.3954 16 12.5 16H16.5V12C16.5 10.8954 15.6046 10 14.5 10Z" fill="#647FB4"/>
+                  <path d="M20.5 10C19.3954 10 18.5 10.8954 18.5 12V16H22.5C23.6046 16 24.5 15.1046 24.5 14V10H20.5Z" fill="#647FB4"/>
+                  <path d="M10.5 20C10.5 18.8954 11.3954 18 12.5 18H16.5V22C16.5 23.1046 15.6046 24 14.5 24H10.5V20Z" fill="#647FB4"/>
+                  <path d="M18.5 18H22.5C23.6046 18 24.5 18.8954 24.5 20V24H20.5C19.3954 24 18.5 23.1046 18.5 22V18Z" fill="#647FB4" fill-opacity="0.55"/>
+                </svg>
+              </div>
+            <div class="ml-2 text-gray-900 dark:text-white text-base mb-1 font-semibold">Components</div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex transition-all duration-500">
+              <div>
+                <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="white"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" fill="#EFF3FB"/>
+                  <rect x="1" y="0.5" width="33" height="33" rx="5.5" stroke="white"/>
+                  <g clip-path="url(#clip0_10809_347)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0098 10.4019C11.0565 10.1682 11.2617 10 11.5001 10H23.5001C23.7384 10 23.9436 10.1682 23.9904 10.4019L24.4904 12.9019C24.5395 13.1476 24.3993 13.3916 24.1623 13.4729C23.9255 13.5542 23.6651 13.4477 23.553 13.2238L23.5521 13.2222C23.3858 12.9019 23.1735 12.6004 22.9363 12.3293C22.5249 11.8591 22.0268 11.5 21.5001 11.5H19V22H20C20.2761 22 20.5 22.2239 20.5 22.5C20.5 22.7761 20.2761 23 20 23H19H16H15C14.7239 23 14.5 22.7761 14.5 22.5C14.5 22.2239 14.7239 22 15 22H16V11.5H13.5001C12.9733 11.5 12.4752 11.8591 12.0639 12.3293C11.8266 12.6004 11.6144 12.9019 11.448 13.2222L11.4472 13.2238C11.3351 13.4477 11.0746 13.5542 10.8378 13.4729C10.6009 13.3916 10.4606 13.1476 10.5098 12.9019L11.0098 10.4019Z" fill="#647FB4" fill-opacity="0.55"/>
+                    <path d="M19.5 15.5C21.1667 15.0833 21.5833 14.6667 22 13C22.4167 14.6667 22.8333 15.0833 24.5 15.5C22.8333 15.9167 22.4167 16.3333 22 18C21.5833 16.3333 21.1667 15.9167 19.5 15.5Z" fill="#647FB4"/>
+                    <path d="M22.5 19.5C24.1667 19.0833 24.5833 18.6667 25 17C25.4167 18.6667 25.8333 19.0833 27.5 19.5C25.8333 19.9167 25.4167 20.3333 25 22C24.5833 20.3333 24.1667 19.9167 22.5 19.5Z" fill="#647FB4"/>
+                    <path d="M8 18C10.6667 17.3333 11.3333 16.6667 12 14C12.6667 16.6667 13.3333 17.3333 16 18C13.3333 18.6667 12.6667 19.3333 12 22C11.3333 19.3333 10.6667 18.6667 8 18Z" fill="#647FB4"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_10809_347">
+                      <rect width="20" height="20" fill="white" transform="translate(7.5 7)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="ml-2 text-gray-900 dark:text-white text-base mb-1 font-semibold">Style Guides</div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <!--Composable Commerce
-    <div class="flex-1 p-6">
-      <div class="flex flex-col gap-2" data-dropdown-docs="composable">
-        <div class="flex flex-1 flex-col">
-          <h3 class="!mb-0.5">Composable Commerce Documentation</h3>
-          <span class="none hidden text-sm font-normal lg:block">
-            Explore our guides and product documentation</span
-          >
-          <ul class="docs-ul">
-            <li>
-              <a href="/docs/commerce-cloud" class="docs-link">
-                Commerce
-              </a>
-            </li>
-            <li>
-              <a href="/docs/commerce-cloud/api-overview" class="docs-link">
-                API Overview
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>-->
-      <!--subscriptions
-      <div class="flex flex-col gap-2" data-dropdown-docs="subscriptions">
-        <div class="flex w-full gap-2">
-          <div class="flex-1">
-            <h3>Subscriptions</h3>
-            <ul class="list-none pl-0">
-              <li>
-                <a href="/docs/subscriptions/" class="docs-link">
-                  Overview
-                </a>
-              </li>
-              <li>
-                <a href="/api/docs/subscriptions/subscriptions-overview" class="docs-link">
-                  API Documentation
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>-->
-      <!--carts
-      <div class="flex flex-col gap-2" data-dropdown-docs="carts">
-        <div class="flex w-full gap-2">
-          <div class="flex-1">
-            <h3>Carts, Checkout & Orders</h3>
-            <ul class="list-none pl-0">
-              <li>
-                <a href="/docs/commerce-cloud/carts" class="docs-link">
-                  Overview
-                </a>
-              </li>
-              <li>
-                <a href="/docs/api/carts/elastic-path-composable-commerce" class="docs-link">
-                  API Documentation
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>-->
-      <!--Studio
-      <div class="flex flex-col gap-2" data-dropdown-docs="studio">
-        <div class="flex w-full gap-2">
-          <div class="flex-1">
-            <h3>Studio</h3>
-            <ul class="list-none pl-0">
-              <li>
-                <a href="/docs/studio" class="docs-link">
-                  Overview
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>-->
-      <!-- <div class="flex gap-2" data-dropdown-docs="plugin">
-        <div class="flex-1">
-          <h3>Core Docs</h3>
-
-          <ul class="list-none pl-0">
-            <li>
-              <a href="/plugin-docs" class="docs-link">
-                <img src="/static/landing-page/docs-icons/js.png" />
-                Javascript
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> -->
-
-      <!-- <div class="flex flex-col gap-2" data-dropdown-docs="selfmanaged">
-        <div class="flex w-full gap-2">
-          <div class="flex-1">
-            <h3>Links to services</h3>
-            <ul class="list-none pl-0">
-              <li>
-                <a href="https://documentation.elasticpath.com" class="docs-link">
-                  Link Name
-                </a>
-              </li>
-              <li>
-                <a href="https://documentation.elasticpath.com" class="docs-link">
-                  Link Name
-                </a>
-              </li>
-              <li>
-                <a href="https://documentation.elasticpath.com" class="docs-link">
-                  Link Name
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
-
-
-
+</div>

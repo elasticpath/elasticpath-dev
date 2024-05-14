@@ -125,7 +125,7 @@ function Links({ name, links }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950">
+    <footer className="bg-gray-950/90">
       <div className="mx-auto flex w-full max-w-7xl flex-col px-6 py-12">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <img src="/logo/dark.svg" alt="Dyte" className="h-9 w-fit lg:h-12" />

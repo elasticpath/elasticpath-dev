@@ -6,19 +6,19 @@ import ThemedImage from '@theme/ThemedImage';
 
 export default function APIReferenceSection() {
   return (
-    <section className="no-underline-links relative px-6 pt-16">
+    <section className="no-underline-links relative px-6 pt-16 pb-16">
       <Head>
         <link rel="prefetch" href="/static/landing-page/api-ref-light.png" />
         <link rel="prefetch" href="/static/landing-page/api-ref-dark.png" />
       </Head>
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-10 rounded-2xl bg-gray-900 px-6 py-20 text-center text-white dark:bg-gray-900 dark:text-white lg:flex-row lg:p-20 lg:text-left">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-10 rounded-2xl bg-gray-900/90 px-6 py-20 text-center text-white dark:bg-gray-900/90 dark:text-white lg:flex-row lg:p-20 lg:text-left">
         <Link
           href="/api"
           aria-title="API Reference"
           target="_blank"
           className="absolute top-8 right-8 flex h-16 w-16 items-center justify-center rounded-full docs-color-background dark:bg-transparent"
         >
-          <ArrowUpRight className="h-6 w-6 text-zinc-400 dark:text-black" />
+          <ArrowUpRight className="h-6 w-6 text-gray-500 dark:accent-gray-500" />
         </Link>
         <div className="flex-1">
           <h2 className="text-4xl">REST API Reference</h2>
