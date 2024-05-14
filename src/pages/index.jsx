@@ -5,7 +5,6 @@ import APIReferenceSection from '../components/homepage/APIReferenceSection';
 import HomeFooter from '../components/homepage/HomeFooter';
 import CommunitySection from '../components/homepage/CommunitySection';
 import HelpSection from "../components/homepage/HelpSection";
-import CallToAction from "../components/homepage/CallToAction";
 
 export default function Homepage() {
   return (
@@ -18,11 +17,11 @@ export default function Homepage() {
           >
               <HeroSection/>
 
-              <APIReferenceSection/>
-              <CallToAction/>
+            <APIReferenceSection/>
+            <CommunitySection/>
               <HelpSection/>
               <HomeFooter/>
-          </Layout>
+      </Layout>
       </div>
-  );
+);
 }
