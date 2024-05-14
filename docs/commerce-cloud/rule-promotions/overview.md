@@ -33,7 +33,7 @@ You can create actions to specify:
 - Action conditions: Specifying which items should be included or excluded when applying the discounts. This can be based on factors such as item SKUs, product attributes, quantities, categories. For more information, see [Create a Condition Rule Promotion](/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-condition-rule-promotion).
 - Action limitations: Imposing restrictions or limitations on the number of products eligible for discounts, maximum discount amounts, and total applications for discounts. For more information, see [Action Limitations](/docs/commerce-cloud/rule-promotions/rule-promotions-api/action-limitations/action-limitations-overview).
 
-## Sub Conditions
+### Sub Conditions
 
 Sub conditions offer further refinement within rules and actions, specifying additional criteria that must be met for the promotion or discount to be applied. These can include conditions such as minimum quantities for specific item SKUs, exclusion of certain items, or additional constraints for eligibility. For more information, see [Create a Cart Percent Discount with Sub Conditions](/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-discount-with-subconditions) and [Create an Item Rule Promotion with Sub Conditions](/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-an-item-rule-promotion-with-sub-conditions).
 
