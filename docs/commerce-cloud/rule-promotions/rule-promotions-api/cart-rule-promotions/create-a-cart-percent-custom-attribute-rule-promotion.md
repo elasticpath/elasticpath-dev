@@ -20,7 +20,7 @@ https://useast.api.elasticpath.com/v2/rule-promotions
 
 ### Body
 
-For descriptions about the fields, refer to [Rules Promotion API overview](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview).
+For descriptions about the other fields, refer to [Rules Promotion API overview](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview).
 
 
 {% table %}
