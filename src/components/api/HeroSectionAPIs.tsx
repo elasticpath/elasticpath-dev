@@ -98,7 +98,7 @@ const PRODUCTS = [
   {
     title: 'Payments',
     beta: false,
-    link: '/docs/api/payments/payment-gateway-introduction',
+    link: '/docs/api/payments/payment-gateways-introduction',
     icon: WalletCreditCardRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
