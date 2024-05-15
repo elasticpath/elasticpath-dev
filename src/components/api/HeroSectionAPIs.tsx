@@ -62,7 +62,7 @@ const PRODUCTS = [
   },
   {
     title: 'Account Management',
-    link: '/docs/api/accounts/accounts-introduction',
+    link: '/docs/api/accounts/account-management-introduction',
     icon: PeopleTeamRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
