@@ -105,16 +105,18 @@ You can set up and confirm a purchase by doing the following:
     }
     ```
 
-1. Copy the `redirect_url` from the previous step and open in a browser. If you are not redirected to the personal account, sign in to the [developer.paypal.com](https://developer.paypal.com/) with your **Email ID** and **System Generated Password** or **Password** that you changed to. See [Accessing PayPal Developer Sandbox Accounts](#accessing-pay-pal-developer-sandbox-accounts).
+1. Copy the `redirect_url` from the previous step and open in a browser. If you are not redirected to the personal account, sign in to the [developer.paypal.com](https://developer.paypal.com/) with your **Email ID** and **System Generated Password** or **Password** that you changed to. See [Accessing PayPal Developer Sandbox Accounts](/guides/paymentgateways/implement-paypal-express-checkout#accessing-paypal-developer-sandbox-accounts).
 1. Click **Pay Now** to make the payment.
 
     You can see line item details such as item name, SKU, price, quantity, and taxes, and also order-level details such taxes, order total, and discounts corresponding to your payment request. See the following image as an example:
 
     ![PayPal example](/assets/SimplePayPalExample.png)
 
-    {% callout type="note" %}
+    :::note
+
     The maximum length of `name` and `sku` for an item is `127`. If `name` and `SKU` exceed `127`, we truncate the exceeding strings while sending order-level items to the PayPal payment gateway.
-    {% /callout %}
+    
+    :::
 
 1. In postman, use the following request example to confirm the purchase.
 
@@ -183,9 +185,11 @@ You can set up the authorization and capture the payment by doing the following:
 
 1. Checkout using a customer object. For more information, see [Checkout](/docs/commerce-cloud/checkout/checkout).
 
-    {% callout %}
+    :::note
+
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
-    {% /callout %}
+
+    :::
 
 1. Use the following request example to setup authorization from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/commerce-cloud/payments/paying-for-an-order/paypal-express-checkout-payments).
 
@@ -268,9 +272,11 @@ You can set up the authorization and capture the payment by doing the following:
 
     ![PayPal example](/assets/SimplePayPalExample.png)
 
-    {% callout type="note" %}
+    :::note
+
     The maximum length of `name` and `sku` for an item is `127`. If `name` and `SKU` exceed `127`, we truncate the exceeding strings while sending order-level items to the PayPal payment gateway.
-    {% /callout %}
+
+    :::
 
 1. In postman, use the following request example to confirm the payment.
 
@@ -284,15 +290,15 @@ You can set up the authorization and capture the payment by doing the following:
        }'
       ```
 
-    To confirm multiple payments in postman, update multiple payments settings in your PayPal account. See [Updating Multiple Payment Settings in PayPal](#updating-multiple-payment-settings-in-pay-pal-account).
+    To confirm multiple payments in postman, update multiple payments settings in your PayPal account. See [Updating Multiple Payment Settings in PayPal](/guides/paymentgateways/implement-paypal-express-checkout#updating-multiple-payment-settings-in-paypal-account).
 
-1. Capture the authorized funds. See [Capture a Transaction](/docs/commerce-cloud/payments/transactions/capture-a-transaction).
+1. Capture the authorized funds. See [Capture a Transaction](/docs/api/carts/capture-a-transaction).
 1. Go to Commerce Manager.
 1. Go to **Orders**, and find the order. The payment status shows `Paid`, and the **Transaction** status shows `Complete`.
 
 ### `Refund` workflow
 
-You can `refund` the `paid` order. See [Refund a Payment](/docs/commerce-cloud/payments/transactions/refund-a-transaction).
+You can `refund` the `paid` order. See [Refund a Payment](/docs/api/carts/refund-a-transaction).
 
 ## Accessing PayPal Developer Sandbox Accounts
 
@@ -321,5 +327,5 @@ To confirm multiple payments, follow the instructions to update multiple payment
 ## Related Resources
 
 - [PayPal Express Checkout Payments](/docs/commerce-cloud/payments/paying-for-an-order/paypal-express-checkout-payments)
-- [Checkout workflow](/docs/commerce-cloud/checkout/checkout)
-- [Carts API](/docs/commerce-cloud/carts/carts)
+- [Checkout workflow](/docs/api/carts/checkout)
+- [Carts API](/docs/api/carts/cart-management)

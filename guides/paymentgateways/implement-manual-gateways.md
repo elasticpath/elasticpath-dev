@@ -1,14 +1,14 @@
 ---
-title: Implement a manual gateway
-nav_label: Implement a manual gateway
+title: Implement a Manual Gateway
+nav_label: Implement a Manual Gateway
 nav_position: 2
 ---
 
 Payment gateways provide access to external payment provider services. Commerce natively supports a set of [popular payment gateways](/docs/commerce-cloud/payments/payments-developer/implement-payment-gateways#natively-supported-payment-gateways). If you already have a payment provider that you want to continue to use, you can add the payment gateway manually. Similarly, you can add custom payment options based on your business processes, such as cash on delivery. You can implement as many manual gateways as you want, but you can enable only one at a time.
 
-{% callout type="warning"  %}
-Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
-{% /callout %}
+:::caution
+Configure your store to use [Manual Gateway](/docs/api/carts/authorize-setup) to process payments if the order total is zero or the payment is through non-supported payment providers.
+:::
 
 The following image shows the workflow from unpaid order to paid order using a manual gateway.
 

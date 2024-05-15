@@ -16,17 +16,17 @@ This walkthrough shows you how to generate Adyen payment tokens.
 
 1. Generate a new API key for your Adyen web service user.
 
-    {% callout %}
+    :::note
     Ensure that you use the API key as a `X-Api-Key` HTTP header for all outgoing requests to Adyen API.
-    {% /callout %}
+    :::
 
 2. Use one of the Adyen UI widgets to encrypt card information and store it as a payment method.
 
     The goal is to produce a request to Adyen API similar to the following example:
 
-    {% callout type="warning"  %}
+    :::caution
     Always use zero amount at this point. You do not want to charge money before order processing starts.
-    {% /callout %}
+    :::
 
     ```text
     POST https://checkout-test.adyen.com/v52/payments
@@ -77,10 +77,10 @@ This walkthrough shows you how to generate Adyen payment tokens.
    }
     ```
 
-    {% callout %}
+    :::note
     When you enable [recurring details](https://docs.adyen.com/online-payments/tokenization/create-and-use-tokens#test-and-go-live), by default, the `recurringDetailReference` API response is only included during the first call to the payments endpoint, when the details get stored.
     Additionally, Adyen Support can enable a setting on your account to always retrieve the `recurringDetailReference` in the API response, for each call.
-    {% /callout %}
+    :::
 
 4. Copy the token value and prefix it with two `(#)` hashes. For example, `##8315932173953405`.
 

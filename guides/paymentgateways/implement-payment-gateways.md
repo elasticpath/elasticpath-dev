@@ -1,14 +1,14 @@
 ---
-title: Implement payment gateways
-nav_label: Implement payment gateways
+title: Implement Payment Gateways
+nav_label: Implement Payment Gateways
 nav_position: 1
 ---
 
 Payment gateways provide access to external payment provider services. Integrate a natively-supported third-party payment gateway with your store by using the `/gateways/[gateway]` endpoint.
 
-{% callout type="warning"  %}
-Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
-{% /callout %}
+:::caution
+Configure your store to use [Manual Gateway](/docs/api/carts/authorize-setup) to process payments if the order total is zero or the payment is through non-supported payment providers.
+:::
 
 ## Prerequisites
 
@@ -34,14 +34,14 @@ To enable a third party gateway programmatically or through Commerce Manager, se
 curl -X PUT https://useast.api.elasticpath.com/v2/gateways/stripe \
      -H "Authorization: Bearer XXX" \
      -H "Content-Type: application/json" \
-     -d $'{
+     -d ${
          "data": {
             "gateway": "stripe",
             "type": "gateway",
             "login": "sk_test_xxxx",
             "enabled": true
   }
-}'
+}
 ```
 
 #### Integrate with the checkout flow
@@ -63,13 +63,13 @@ You can use any URL safe value you want for your cart IDs. If a cart doesn’t a
 curl -X POST https://useast.api.elasticpath.com/v2/carts/:cartID/items \
      -H "Authorization: Bearer XXX" \
      -H "Content-Type: application/json" \
-     -d $'{
+     -d ${
          "data": {
             "type": "cart_item",
              "id": "5a13d787-9e81-4aea-91f6-d281a7aef8b7",
              "quantity": 1
   }
-}'
+}
 ```
 
 ##### Check out a cart
@@ -118,8 +118,8 @@ If the transaction is successful, a 200 OK response is returned. Use the respons
 
 If it makes sense for your store, use the third-party integrations that are natively supported with Composable Commerce:
 
-- [Stripe](#stripe)
-- [Braintree](#braintree)
+- [Stripe](/guides/paymentgateways/implement-payment-gateways#stripe)
+- [Braintree](/guides/paymentgateways/implement-payment-gateways#braintree)
 
 Alternatively, you can create a manual gateway to integrate other payment providers or permit other payment options.
 
@@ -228,6 +228,6 @@ curl -X POST https://useast.api.elasticpath.com/v2/orders/{ORDER_ID}/payments \
 
 ## Related Resources
 
-- [Checkout workflow](/docs/commerce-cloud/checkout/checkout-workflow)
-- [Carts API](/docs/commerce-cloud/carts/carts)
-- [Gateways API](/docs/commerce-cloud/payments/payments)
+- [Checkout workflow](/docs/api/carts/checkout)
+- [Carts API](/docs/api/carts/cart-management)
+- [Payment Gateways API](/docs/api/payments/payment-gateways-introduction)

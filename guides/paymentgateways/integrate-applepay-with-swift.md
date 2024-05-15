@@ -87,9 +87,11 @@ Now that your App ID and merchant ID are set up, head back to Xcode to get your 
 4. Push the **refresh** button below the merchant ID list. You should see the list populates with the merchant ID you added on the developer portal, if it wasn’t there already.
 5. Make sure that your **merchant ID** checkbox is selected.
 
-{% callout type="warning"  %}
+:::caution
+
 At this point, you should have checkmarks next to all sections that deal with setting up a project, displaying a product, and setting up Apple Pay credentials. If any of the sections is not marked as checked, retrace your steps and correct the details to make sure you’ve satisfied Apple’s requirements.
-{% /callout %}
+
+:::
 
 You now have Apple Pay enabled in your app.
 
