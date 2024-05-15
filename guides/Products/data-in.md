@@ -1,18 +1,18 @@
 ---
-title: Crafting Your Elastic Path Store with Products, Pricing, and Categories
-nav_label: Crafting Your Elastic Path Store with Products, Pricing, and Categories 
+title: Building out Your Elastic Path Store with Products, Pricing, and Categories
+nav_label: Building out Your Elastic Path Store with Products, Pricing, and Categories 
 sidebar_position: 1
 ---
 
-This guides helps you shape your store 
+This guides helps you shape your store by adding products, prices, and categories.
+
+There are a number of ways to get data in to your Elastic Path store.
+
+- product import
+- pre-defined integrations with third party platforms, pimberly, salsify and shopify
+- Elastic Path integrations commerce product import
 
 You can import products from your other company systems, or third-party platforms, to Product Experience Manager.
-
-no of ways to get data
-
-product import
-predefined integrations with third party platforms, pimberly, salsify and shopify
-elasticpath integrations commerce product import
 
 Once your products are imported, you can then bulk update your products with product images and any custom data you may have.
 
