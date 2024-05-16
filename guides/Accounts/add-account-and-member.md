@@ -12,7 +12,7 @@ Ensure that the user is signed into the store with appropriate seller permission
 
 1. Get the authentication realm for accounts.
 
-    For more information, see the [Get Account Authentication Settings](/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token) section.
+    For more information, see the [Get Account Authentication Settings](/docs/api/accounts/get-v-2-settings-account-authentication) section.
 
 1. To specify the login process for users, add a profile to the account realm.
 
@@ -20,7 +20,7 @@ Ensure that the user is signed into the store with appropriate seller permission
 
 1. Create one or more accounts.
 
-    For more information, see the [Create an Account](/docs/commerce-cloud/accounts/using-account-management-api/create-an-account) section.
+    For more information, see the [Create an Account](/docs/api/accounts/post-v-2-accounts) section.
 
 1. Register account members.
 
@@ -29,15 +29,17 @@ Ensure that the user is signed into the store with appropriate seller permission
     - [Create a User Authentication OpenID Connect Profile Info](/docs/commerce-cloud/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info)
     - [Create a User Authentication Password Profile](/docs/commerce-cloud/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile)
 
-    {% callout %}
-    After the registration, you can view the user as an account member through the account member APIs. For more information, see the [Account Members](/docs/commerce-cloud/accounts/using-account-members-api/overview) section.
-    {% /callout %}
+    :::note
 
-1. Get the ID of the account member to add to the account using the [Get All Account Members](/docs/commerce-cloud/accounts/using-account-members-api/get-all-account-members) API endpoint.
+    After the registration, you can view the user as an account member through the account member APIs. For more information, see the [Account Members](/docs/api/accounts/account-members) section.
+    
+    :::
+
+1. Get the ID of the account member to add to the account using the [Get All Account Members](/docs/api/accounts/get-v-2-account-members) API endpoint.
 
 1. Add the selected account member to the account membership.
 
-    For more information, see the [Create an Account Membership](/docs/commerce-cloud/accounts/using-account-membership-api/create-an-account-membership) section.
+    For more information, see the [Create an Account Membership](/docs/api/accounts/post-v-2-accounts-account-id-account-memberships) section.
 
 After an account member is listed in an account membership, the user can shop on behalf of the account.
 
@@ -47,8 +49,8 @@ After an account member is listed in an account membership, the user can shop on
 
     Authenticate an account member by following the instructions in one of the following sections:
 
-    - [Account member authentication API using OpenID Connect](/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/openid-connect-authentication) section for OpenID Connect Profiles.
-    - [Account member authentication API using username and password](/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/username-password-authentication) section for password profiles.
+    - [Account member authentication API using OpenID Connect](/docs/api/accounts/post-v-2-account-members-tokens) section for OpenID Connect Profiles.
+    - [Account member authentication API using username and password](/docs/api/accounts/post-v-2-account-members-tokens) section for password profiles.
 
 
 1. From the list of accounts, select an account to use.
@@ -58,8 +60,10 @@ After an account member is listed in an account membership, the user can shop on
 1. From the store, select products and add to the cart.
 1. Checkout the cart and make the payment on behalf of the account.
 
-    For more information, see the [Account Checkout](/docs/commerce-cloud/checkout/checkout) section.
+    For more information, see the [Account Checkout](/docs/api/carts/checkout) section.
 
-{% callout %}
+:::note
+
 Sellers can use the buyer account ID and account member ID to search and filter the completed orders.
-{% /callout %}
+
+:::
