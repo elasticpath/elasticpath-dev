@@ -151,7 +151,7 @@ body {
 
 /* EP Docs Tokens */
 :root {
-  --docs-color-primary: #2bca7d;
+  --docs-color-primary: #07AB59;
   /* --docs-color-primary-100: #1a90ff; */
   --docs-color-primary-tint: rgba(31 132 82/0.16);
   --docs-color-primary-tint-light: rgba(168 235 191);
@@ -165,7 +165,7 @@ body {
 
   /* Color from prism themes */
   --docs-color-code-background: #f6f8fa;
-  --docs-color-android: #44db85;
+  --docs-color-android: #07AB59;
   --docs-color-apple: var(--docs-color-text) !important;
 }
 
@@ -251,7 +251,7 @@ pre.prism-code {
 
 .navbar__item,
 .menu__link {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .menu__link {
@@ -375,10 +375,12 @@ nav.menu {
 }
 
 .dev-portal-link {
-  background-color: theme('colors.primary.200');
-  border-radius: 100px;
+  background-color: theme('colors.primary.100');
+  border-radius: 9999px;
+  color: #000000;
+  font-weight: 600;
   transition-property: all;
-  padding: 0.25rem 0.75rem !important;
+  padding: 0.7rem 1.2rem !important;
   margin: 0 0.5rem;
 }
 
@@ -387,7 +389,7 @@ nav.menu {
 }
 
 .dev-portal-link svg {
-  display: inline-block;
+  display: none;
   vertical-align: middle;
   margin-bottom: 0.2rem;
 }
@@ -395,7 +397,7 @@ nav.menu {
 .dev-portal-signup {
   --ifm-link-hover-color: #fff;
   --ifm-navbar-link-hover-color: #fff;
-  color: #fff;
+  color: #000;
 }
 
 .dev-portal-signup:hover {
@@ -1076,6 +1078,13 @@ details p {
 
 .navbar-book-demo svg {
   display: none;
+}
+
+.navbar-book-demo {
+  text-decoration-line: underline;
+  text-decoration-thickness: .15rem;
+  text-decoration-color: theme('colors.primary.100');
+  text-underline-offset: .4em;
 }
 
 .theme-doc-markdown.markdown {

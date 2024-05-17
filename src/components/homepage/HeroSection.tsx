@@ -5,7 +5,7 @@ import ThemedImage from '@theme/ThemedImage';
 export default function HeroSection() {
   return (
     <>
-      <section className="no-underline-links px-4 pt-16 lg:py-0">
+      <section className="no-underline-links">
         <div className="flex flex-col items-center justify-between py-14 text-white">
           <h2 className="mb-4 font-jakarta text-8xl text-white pt-40">
             Enterprise-ready commerce

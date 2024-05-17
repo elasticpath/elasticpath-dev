@@ -5,7 +5,7 @@ export default function CallToAction() {
     return (
         <section className="no-underline-links">
             <div className="mx-auto flex w-full flex-col items-center justify-center bg-gray-950/60 px-4 py-16">
-                <h1 className="text-4xl dark:text-white pb-6">
+                <h1 className="text-4xl text-white pb-6">
                     Get Started Today
                 </h1>
                 <Link
