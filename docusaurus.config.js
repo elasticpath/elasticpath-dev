@@ -646,6 +646,17 @@ const config = {
       },
     ],
     [
+      'docusaurus-plugin-papersaurus',
+      {
+        keepDebugHtmls: false,
+        sidebarNames: ['sidebars-default'],
+        addDownloadButton: true,
+        autoBuildPdfs: true,
+        ignoreDocs: ['blog'],
+        author: 'Elastic Path'
+      },
+    ],
+    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'guides',
