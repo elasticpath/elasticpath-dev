@@ -4,7 +4,7 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions.
+Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions. Billing runs generate [invoices](#invoices) for your customers. Payment runs automatically process payments against those invoices.
 
 ## Invoices
 
@@ -22,17 +22,16 @@ The invoice lifecycle is described below.
 
 1. When a subscription is created, an invoice for the first billing period is created. When a subscription is created as part of an order, the payment for the order covers the first billing period.
 1. Subscription invoices are created by billing runs. The billing run identifies subscriptions that require a new invoice for their next billing period and creates them. At this point, invoices are marked as `outstanding`.
-1. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.
 1. The payment run identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds then the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
 
-## Billing & Payment
+## Billing & Payments Jobs
 
 Billing and payment runs function as jobs. There are two types of job:
 
 - a billing run. Subscriptions generates an invoice when a billing run occurs. Billing runs generate invoices for the remaining billing cycles for each subscription. The invoice dates come from your plans. Billing runs are independent of payment runs.
 - a payment run. The payment run identifies invoices that are `outstanding` and attempts to take payment for them. If the payment succeeds then the invoice is no longer `outstanding`. If the payment fails for any reason, then the invoice remains `outstanding` and is picked up by the next payment run to retry the payment.
 
-Jobs can be scheduled. By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [Manage Schedules](/docs/subscriptions/billing-payments/manage-schedules).
+Jobs can be scheduled. By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [Schedules](/docs/commerce-manager/subscriptions/billings-payments/configuring-runs#schedules).
 
 ### Characteristics of Billing & Payments Jobs
 
