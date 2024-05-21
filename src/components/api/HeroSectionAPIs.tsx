@@ -143,7 +143,7 @@ const PRODUCTS = [
   {
     title: 'Promotions Standard',
     beta: false,
-    link: '/docs/api/promotions/promotions-standard',
+    link: '/docs/api/promotions/promotions-standard-introduction',
     icon: BuildingRetailRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
