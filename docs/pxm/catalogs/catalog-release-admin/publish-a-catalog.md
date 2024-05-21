@@ -148,7 +148,7 @@ If you are publishing a catalog in a store that contains resources from an organ
 3. Select **PXM** from the list.
 4. Select the **Include Organization Resources in Catalog Publishes** checkbox.
 
-See [Organization Catalogs](/docs/commerce-cloud/organizations/org-level-pxm-entities/pxm-org-entities-in-store-level-catalogs).
+See [Organization Catalogs](/docs/organizations/org-level-pxm-entities/pxm-org-entities-in-store-level-catalogs).
 
 ## Parameters
 

@@ -50,10 +50,10 @@ To collect the Organization ID:
     | **Client ID**                       | Your Commerce Client ID. |
     | **Client Secret**                   | Your Commerce Client Secret. | | Your Commerce Client Secret. |
 
-See [Creating an Application Key in Commerce Manager](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+See [Creating an Application Key in Commerce Manager](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Configuring the Integration
@@ -68,7 +68,7 @@ Now that you've collected the setup information, let's begin by configuring the 
 
 | Configuration parameter | Value |
 |:----|:---- |
-| **epcc_base_url** | Your Commerce API Token URL. For example, `useast.api.elasticpath.com/oauth/access_token` (EU) or `useast.api.elasticpath.com/oauth/access_token` (US). See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls). |
+| **epcc_base_url** | Your Commerce API Token URL. For example, `useast.api.elasticpath.com/oauth/access_token` (EU) or `useast.api.elasticpath.com/oauth/access_token` (US). See [Regions and URLs](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls). |
 | **epcc_client_id** | Your Commerce API Client ID. |
 | **epcc_client_secret** | Your Commerce Client Secret. |
 | **API Key** | Your OpenAI connection API key. |

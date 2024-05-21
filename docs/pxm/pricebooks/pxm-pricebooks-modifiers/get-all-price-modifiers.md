@@ -35,8 +35,8 @@ Retrieves a list of price modifiers for the specified price book.
 | Name           | Required | Type      | Description                                     |
 |:---------------|:---------|:----------|:------------------------------------------------|
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/docs/commerce-cloud/api-overview/pagination).                |
-| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
+| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                |
+| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
 
 ## Filtering
 
@@ -47,7 +47,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`| `filter=eq(name,largesupplement)` |
 | `eq` | `external_ref`  | Equals. Checks if the values of two operands are equal. If they are, the condition is true. | `filter=eq(external_ref,some-external-ref)` |
 
-For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
 
 ## Request Example
 

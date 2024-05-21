@@ -1,6 +1,6 @@
 ---
-title: Getting Started with Composable Commerce
-nav_label: Getting Started with Composable Commerce
+title: Getting-Started with Composable Commerce
+nav_label: Getting-Started with Composable Commerce
 sidebar_position: 5
 ---
 
@@ -21,7 +21,7 @@ sidebar_position: 5
 ## Procedure
 
 1. Log into Commerce Manager.
-1. Go to **SYSTEM** > **Application keys** to create your new API keys. See [Application keys](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+1. Go to **SYSTEM** > **Application keys** to create your new API keys. See [Application keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
 1. Log into Studio.
 1. Go to **Settings** > **Integrations**.
 1. Navigate to **Payment & Storefront**.

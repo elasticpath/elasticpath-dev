@@ -85,11 +85,11 @@ As an API consumer, links allow you to move between requests.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
+| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/organizations). |
 
 ## The `page` Object
 
-Many Elastic Path Commerce Cloud endpoints support [pagination](/docs/commerce-cloud/api-overview/pagination).
+Many Elastic Path Commerce Cloud endpoints support [pagination](/guides/Getting%20Started/api-overview/pagination).
 
 | Name      | Type | Description                                 |
 |:----------| :--- |:--------------------------------------------|

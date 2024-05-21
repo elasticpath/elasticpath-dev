@@ -9,12 +9,12 @@ You can quickly and easily integrate Commerce with Braze using the **Integration
 ![Braze Integration](/assets/Braze-integration.png)
 
 :::note
-When integrating with third party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Prerequisites
 
-- Ensure that you have collected your **Client-ID** and **Client-Secret** from Commerce Manager. See [Application Keys](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+- Ensure that you have collected your **Client-ID** and **Client-Secret** from Commerce Manager. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
 - Ensure that you have received a URI from Braze to interact with the Braze services once you have registered as a Braze customer.
 - Ensure that you have created your Braze API Key. The following procedure describes how to create your API key:
 
@@ -75,7 +75,7 @@ You can extend or modify your configuration once you have enabled the integratio
 
 1. Log into Commerce Manager. 
 1. Go to **CUSTOMERS and ACCOUNTS** > **Customers**.
-1. Create a new customer. See [Creating Customers](/docs/commerce-cloud/customer-management/cm-customers#creating-customers).
+1. Create a new customer. See [Creating Customers](/docs/customer-management/cm-customers#creating-customers).
 1. Go to **COMPOSER** > **Integrations Hub** > **Executions** to see that the new customer event has been initiated.
 1. Extend your customer profile to add more customer-specific information and create new flows and fields. See [creating Flows in Commerce Manger](/docs/commerce-cloud/custom-data/flows).
     

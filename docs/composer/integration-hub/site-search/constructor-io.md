@@ -52,10 +52,10 @@ In Commerce, create an application key for Constuctor.io.
     | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
-See [Creating an Application Key in Commerce Manager](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+See [Creating an Application Key in Commerce Manager](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
 
 ## Configuring the Integration
 

@@ -39,8 +39,8 @@ You can use this endpoint to retrieve a list of products for the specified node.
 
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
 
 ## Request Example
 

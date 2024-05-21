@@ -61,4 +61,4 @@ You can set up any currency as your organization's default currency as long as t
 ## Related Resources
 
 - [Managing Store Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies)
-- [Organization and Store Entities](/docs/commerce-cloud/organizations/org-level-entities)
+- [Organization and Store Entities](/docs/organizations/org-level-entities)

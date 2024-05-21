@@ -35,7 +35,7 @@ You configure the Catalog Publisher integration in **Integrations Hub**.
 1. Under **Store Management & Configuration**, click **Commerce Catalog Publisher**. The **Commerce Catalog Publisher** integration guides you through the steps you need to follow to complete the integration.
 1. Click **Configure**. The **Trigger details** are displayed.
 1. Click **Next**. The **Commerce Connection** page is displayed.
-1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-cloud/authentication/application-keys/application-keys-overview). The table below describes the options you can configure. 
+1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview). The table below describes the options you can configure. 
 
     | Option | Description |
     |:--- | :--- |
@@ -49,7 +49,7 @@ You configure the Catalog Publisher integration in **Integrations Hub**.
     | **Token URL** |Your Commerce API Token URL. For example, `api.motlin.com/oauth/<access_token>` (EU) or `useast.api.elasticpath.com/oauth/<access_token>` (US).|
 
     :::note
-    When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+    When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
     :::
 
 1. Click **Connect**.

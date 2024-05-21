@@ -81,16 +81,16 @@ Collect the following setup information from Advanced Commerce (GrapheneHC).
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/docs/commerce-cloud/authentication/application-keys/application-keys-cm), go to **SYSTEM** > **Application Keys**.
+To create a new [application key](/guides/Getting%20Started/authentication/application-keys/application-keys-cm), go to **SYSTEM** > **Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
-| **Token URL**                    | Your Commerce API Token URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).  |
+| **Token URL**                    | Your Commerce API Token URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).  |
 | **Client ID**                       | Your Commerce Client ID. |
 | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Prerequisites

@@ -122,7 +122,7 @@ You can use breadcrumb metadata to understand how products and nodes are associa
 ---
 * `owner`
 * `string`
-* The catalog owner, either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
+* The catalog owner, either `organization` or `store`. See [Organizations](/docs/organizations).
 ---
 * `percent_completed`
 * `integer`

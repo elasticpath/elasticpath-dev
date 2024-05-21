@@ -45,8 +45,8 @@ You can see the parent nodes a product is associated within the `breadcrumbs` me
 | Name           | Required | Type      | Description                                                                                                                                                                                                                                                                                                 |
 |:---------------|:---------|:----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/docs/commerce-cloud/api-overview/pagination).                                                                                                                                                                                                                                                                            |
-| `page[offset]` | Optionsal | `integer` | The number of records to offset the results by. See [Pagination](/docs/commerce-cloud/api-overview/pagination).                                                                                                                                                                                                                                                            |
+| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                                                                                                                                                                                                                                                                            |
+| `page[offset]` | Optionsal | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                                                                                                                                                                                                                                                            |
 | `include`      | Optional | `string`  | If set to  `component_products` returns top-level resources such as files or main image, and key attribute data, such as SKU or slug, to return for component products in a product bundle. For more information, see [Create a Bundle](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle). |
 
 ## Filtering
@@ -58,7 +58,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.                                    | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`      | `filter=eq(name,some-name)` |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`.             | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `sfilter=in(id,some-id)` |
 
-For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
 
 ### Building breadcrumbs in a storefront
 

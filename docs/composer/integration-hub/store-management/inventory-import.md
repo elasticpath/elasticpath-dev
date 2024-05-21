@@ -86,7 +86,7 @@ Once you have met the [Prerequistes](#prerequisites), you are ready to configure
         - **Client-ID**  - Your Commerce Client ID.
         - **Client-Secret** - Your Commerce Client Secret.
 
-            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-cloud/authentication/application-keys/application-keys-overview).
+            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
 
         - **Keep Alive Flag** - Turn on the **Keep Alive Flag** toggle if you want to specify keep alive intervals for this integration.
         - **Keep Alive Interval** - Specify keep alive interval for this integration. Default value is 10000.

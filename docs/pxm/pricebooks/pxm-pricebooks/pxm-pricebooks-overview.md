@@ -40,7 +40,7 @@ The following diagram shows the price book object map.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
+| `owner` | `string` | The product owner,  either `organization` or `store`. See [Organizations](/docs/organizations). |
 
 ## The `links` Object
 
@@ -54,7 +54,7 @@ As an API consumer, links are used to allow you to toggle between requests.
 
 ## The `page` object
 
-Many Commerce endpoints support [pagination](/docs/commerce-cloud/api-overview/pagination).
+Many Commerce endpoints support [pagination](/guides/Getting%20Started/api-overview/pagination).
 
 | Name      | Type | Description                                 |
 |:----------| :--- |:--------------------------------------------|

@@ -41,7 +41,7 @@ You can get the following API credentials in Commerce Manager from **SYSTEM** > 
    - US: `https://useast.api.elasticpath.com/oauth/access_token`
     
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. For more information, see [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. For more information, see [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
     
 - **Client ID**: Your Commerce Client ID.

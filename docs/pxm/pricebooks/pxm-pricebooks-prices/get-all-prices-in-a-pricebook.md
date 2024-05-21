@@ -35,8 +35,8 @@ Retrieves all the product prices in the specified price book.
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
 
 ## Filtering
 
@@ -45,7 +45,7 @@ Retrieves all the product prices in the specified price book.
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `sku`, `external_ref`  | `filter=eq(sku,some-sku)` |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `sku`                | `filter=in(sku,some-sku)` |
 
-For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
 
 ## Request Example
 

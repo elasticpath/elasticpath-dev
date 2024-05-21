@@ -15,7 +15,7 @@ https://useast.api.elasticpath.com/v2/inventories
 ```
 
 :::note
-You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting%20Started/api-overview/pagination).
 :::
 
 ## Parameters

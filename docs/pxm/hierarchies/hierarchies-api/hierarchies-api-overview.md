@@ -46,7 +46,7 @@ Name | Type | Description |
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | `created_at` | `string` | The date and time a hierarchy is created. |
-| `owner` | `string` | The hierarchy owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations). |
+| `owner` | `string` | The hierarchy owner,  either `organization` or `store`. See [Organizations](/docs/organizations). |
 | `sort_order` | `integer` | The sort order value. The node with the highest value of `sort_order` is displayed first. For example, a node with a `sort_order` value of 3 appears before a node with a `sort_order` value of 2. See [Sort Order](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node#sort-order). |
 | `updated_at` | `integer` | The date and time a hierarchy is updated. |
 

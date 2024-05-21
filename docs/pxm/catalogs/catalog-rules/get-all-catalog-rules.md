@@ -29,8 +29,8 @@ Retrieves a list of all the catalog rules that you are authorized to view.
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | Specifies the number of items to return per page. The minimum value is `1`. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | Specifies the number of items to offset the results by. The offset is zero-based. See [Pagination](/docs/commerce-cloud/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | Specifies the number of items to return per page. The minimum value is `1`. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
+| `page[offset]` | Optional | `integer` | Specifies the number of items to offset the results by. The offset is zero-based. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
 
 ## Filtering
 
@@ -40,7 +40,7 @@ The following operator and attribute are available when filtering on this endpoi
 |:--- |:--- |:--- |:--- |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
 
-For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
 
 ## Request Example
 

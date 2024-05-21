@@ -148,7 +148,7 @@ Name | Type | Description |
 ---
 * `owner`
 * `string`
-* The product owner,  either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
+* The product owner,  either `organization` or `store`. See [Organizations](/docs/organizations).
 ---
 * `updated_at`
 * `string`

@@ -22,7 +22,7 @@ Dissociates products from multiple hierarchies and their children nodes.
 
 | Name       | Required | Type     | Description                               |
 |:-----------|:---------|:---------|:------------------------------------------|
-| `filter`   | Required | `string` | Filters applied to search for appropriate products. For more details on filtering, see [Filtering](/docs/commerce-cloud/api-overview/filtering). |
+| `filter`   | Required | `string` | Filters applied to search for appropriate products. For more details on filtering, see [Filtering](/guides/Getting%20Started/api-overview/filtering). |
 | `node_ids` | Required | `string` | A list of node UUIDs that you want to dissociate from the products. |
 
 ### Headers

@@ -27,8 +27,8 @@ https://useast.api.elasticpath.com/v2/files
 | Name     | Required | Type     | Description                                 |
 |:---------|:---------|:---------|:--------------------------------------------|
 | `filter` | Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/docs/commerce-cloud/api-overview/pagination).                                                                                        |
-| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/docs/commerce-cloud/api-overview/pagination).                                                                        |
+| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                                                                                        |
+| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                                                                        |
 
 ## Filtering
 

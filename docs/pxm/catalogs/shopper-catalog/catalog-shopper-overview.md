@@ -122,7 +122,7 @@ The cached entries disappear from the cached objects pool after 5 minutes.
 ---
 * `owner`
 * `string`
-* The catalog owner, either `organization` or `store`. See [Organizations](/docs/commerce-cloud/organizations).
+* The catalog owner, either `organization` or `store`. See [Organizations](/docs/organizations).
 ---
 * `percent_completed`
 * `integer`
