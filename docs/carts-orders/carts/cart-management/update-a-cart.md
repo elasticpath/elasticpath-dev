@@ -40,7 +40,7 @@ Using this endpoint, you can:
 
 | Name   | Required | Type     | Description |
 |:--------------|:---------|:---------|:--------- |
-| `name`        | Optional | `string` | The cart name supplied by the shopper. A cart name must contain between 1 and 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see [Safe Characters](/guides/Getting%20Started/api-overview/safe-characters). |
+| `name`        | Optional | `string` | The cart name supplied by the shopper. A cart name must contain between 1 and 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see [Safe Characters](/guides/Getting-Started/api-overview/safe-characters). |
 | `description` | Optional | `string` | The cart description. |
 | `discount_settings.custom_discounts_enabled` | Optional | `boolean` | This parameter enables custom discounts for a cart. When set to `true`, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](/docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings). |
 | `discount_settings_use_rule_promotions` | Optional | `boolean` | When set to `true`, this parameter allows the cart to use rule promotions. | 

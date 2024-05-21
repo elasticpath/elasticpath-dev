@@ -6,7 +6,7 @@ sidebar_position: 30
 
 ## Authentication
 
-The [oauth](https://oauth.net/2/) endpoint for `implicit` and `client_credentials` [authentication](/guides/Getting%20Started/authentication/overview) requests must contain the header `Content-Type: application/x-www-form-urlencoded`.
+The [oauth](https://oauth.net/2/) endpoint for `implicit` and `client_credentials` [authentication](/guides/Getting-Started/authentication/overview) requests must contain the header `Content-Type: application/x-www-form-urlencoded`.
 
 ## Core resources
 

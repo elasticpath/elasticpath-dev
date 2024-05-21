@@ -21,7 +21,7 @@ If you want to follow along, you need the following items:
 - A Composable Commerce account.
 - The Client ID and Client Secret of your store.
 - A third-party payment provider integration.
-- An [access token](/guides/Getting%20Started/api-overview/your-first-api-request#get-an-access-token).
+- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token).
 
 ## Step-by-step walkthrough
 

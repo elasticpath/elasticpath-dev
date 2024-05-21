@@ -21,7 +21,7 @@ Once the products are available in Commerce, going forward, AllGoods can create 
 
 Once you have an organization, you can import products from other company systems into your organization.
 
-1. Generate a [client_credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 1. [Upload your image files](/docs/pxm/products/product-assets/create-a-file) to Commerce.
 1. Generate a [.csv](/docs/pxm/products/importing-products/product-importer-csv) file to import products, image files, and extension (flows) data using [product import](/docs/pxm/products/importing-products/product-importer-csv).
 
@@ -31,7 +31,7 @@ Your organization products are automatically available to all the stores that be
 
 Organization products are automatically available in all stores that belong to the organization.
 
-1. Generate a [client_credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 1. Create your organization products. See [Create a Product](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product).
 1. Upload your image [files](/docs/pxm/products/product-assets/create-a-file). 
 1. [Assign](/docs/pxm/products/product-asset-relationships/image-relationship/create-main-image-relationship) your images to your products.

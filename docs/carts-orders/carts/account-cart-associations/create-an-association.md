@@ -20,7 +20,7 @@ Creates an association between a cart (`:cart_id`) and an account.
 
 | Name     | Required | Type     | Description                                                                                                                                   |
 | -------- | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cartId` | Required | `string` | The ID for the cart created by the account. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting%20Started/api-overview/safe-characters). |
+| `cartId` | Required | `string` | The ID for the cart created by the account. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/api-overview/safe-characters). |
 
 ### Headers
 
@@ -40,7 +40,7 @@ Creates an association between a cart (`:cart_id`) and an account.
 
 ### With account token
 
-Requires an [`implicit` token](/guides/Getting%20Started/authentication/Tokens/implicit-token) with a [`account` token](/guides/Getting%20Started/authentication/Tokens/account-management-authentication-token).
+Requires an [`implicit` token](/guides/Getting-Started/authentication/Tokens/implicit-token) with a [`account` token](/guides/Getting-Started/authentication/Tokens/account-management-authentication-token).
 
 #### Curl
 
@@ -69,7 +69,7 @@ await EPCC.Carts.AddAccountAssociation(accountId, accountToken);
 
 ### Without account token
 
-Requires a [`client_credentials` token](/guides/Getting%20Started/authentication/Tokens/client-credential-token).
+Requires a [`client_credentials` token](/guides/Getting-Started/authentication/Tokens/client-credential-token).
 
 #### Curl
 

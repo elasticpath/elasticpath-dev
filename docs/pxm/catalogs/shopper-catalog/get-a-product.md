@@ -51,7 +51,7 @@ You can use the `include` parameter to include the following resources with this
 | `main_image`         | Optional | The main images associated with a product. See [Files](/docs/pxm/products/product-assets/assets-overview).                                                                                                                                                                                  |
 | `files`              | Optional | Any files associated with a product. See [Files](/docs/pxm/products/product-assets/assets-overview).                                                                                                                                                                                        |
 
-For more information, see [Including Resources](/guides/Getting%20Started/api-overview/includes).
+For more information, see [Including Resources](/guides/Getting-Started/api-overview/includes).
 
 
 ## Request Example

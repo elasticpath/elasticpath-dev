@@ -4,7 +4,7 @@ nav_label: Rate Limits
 sidebar_position: 139
 ---
 
-Commerce limits the number of requests it can accept from a web browser or client. The purpose of a rate limit is to ensure consistent performance and stability of the Commerce platform, and a quality experience for all customers. Each organization and store has its own rate limit. To learn about reserved rate limits, refer to [Application  Keys Overview](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+Commerce limits the number of requests it can accept from a web browser or client. The purpose of a rate limit is to ensure consistent performance and stability of the Commerce platform, and a quality experience for all customers. Each organization and store has its own rate limit. To learn about reserved rate limits, refer to [Application  Keys Overview](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 
 - Each store and organization has a rate limit based on its type and usage.
 - API requests made against a store and an organization are counted separately. 
@@ -30,7 +30,7 @@ The following scenarios describe how rate limits work for organization and their
 
 The rate limit for your organization or store depends on your current plan. Higher rate limits may apply depending on your current plan. In case of a sudden rise in the number of rate-limited requests or to request a change in the limit, contact [Elastic Path Support](https://support.elasticpath.com/hc/en-us). Elastic Path may reduce the limit to prevent abuse or increase the limit to enable high-traffic applications. To increase the limit, you must contact [Elastic Path Support](https://support.elasticpath.com/hc/en-us) a minimum of four weeks in advance before you need the changes to apply.
 
-Requests that are rate limited will get error responses with a status code `429`. For more information about error responses, see the [Errors](/guides/Getting%20Started/api-overview/errors) section. In addition, if you send multiple requests to multiple API endpoints simultaneously, it is easy to exceed API rate limits, which may cause unexpected results. You must ensure that the code invoking the endpoints complies with its rate limits. 
+Requests that are rate limited will get error responses with a status code `429`. For more information about error responses, see the [Errors](/guides/Getting-Started/api-overview/errors) section. In addition, if you send multiple requests to multiple API endpoints simultaneously, it is easy to exceed API rate limits, which may cause unexpected results. You must ensure that the code invoking the endpoints complies with its rate limits. 
 
 When an error response with a status code `429` is received, the web browser automatically retries the request after some time if you use JS-SDK. Although the JS-SDK automatically retries the requests, you must be careful not to send too many requests, to prevent the JS-SDK from being overwhelmed. You must ensure the code invoking the JS-SDK complies with its rate limits. If you do not use JS-SDK, you might have to manually retry the request.
 

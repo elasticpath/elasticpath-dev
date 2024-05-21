@@ -43,7 +43,7 @@ Collect the following Commerce API keys. When you log in to Commerce Manager as 
 | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Configuring Integration
@@ -58,7 +58,7 @@ When integrating with third-party providers, we recommend you use the closest re
     |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Client ID**     | Your Commerce Client ID.                                                                                                                                                                                                            |
     | **Client Secret** | Your Commerce Client Secret                                                                                                                                                                                                         |
-    | **Token URL**     | Your Commerce API Token URL. For example, `https://euwest.api.elasticpath.com` (EU) or `https://useast.api.elasticpath.com` (US). See [Regions and URLs](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls). |
+    | **Token URL**     | Your Commerce API Token URL. For example, `https://euwest.api.elasticpath.com` (EU) or `https://useast.api.elasticpath.com` (US). See [Regions and URLs](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls). |
 
 1. Click **Connect**. The authorization is successfully completed.
 1. Enter the following details for Talon One:

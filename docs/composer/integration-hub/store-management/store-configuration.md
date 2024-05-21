@@ -62,7 +62,7 @@ Once you have [installed Store Configuration Orchestrator](#installing-store-con
     :::
 
 1. Click **Next**. The **Commerce Connection** page is displayed.
-1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
+1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
 
     - **Client-ID**  - Your Commerce Client ID.
     - **Client-Secret** - Your Commerce Client Secret.

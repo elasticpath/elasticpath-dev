@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You can retrieve the carts that are associated with a customer.
 
-When a shopper retrieves their latest carts, the carts are sorted in descending order by the `updated_date`. For more information, see [Pagination](/guides/Getting%20Started/api-overview/pagination).
+When a shopper retrieves their latest carts, the carts are sorted in descending order by the `updated_date`. For more information, see [Pagination](/guides/Getting-Started/api-overview/pagination).
 
 ## `GET` Get a customerʼs carts with a `customer` token
 
@@ -17,7 +17,7 @@ https://useast.api.elasticpath.com/v2/carts
 Retrieve carts for the customer. The customer is specified by a `customer` token in the header.
 
 :::caution
-Requires an [`implicit` token](/guides/Getting%20Started/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-managment-api/customer-tokens).
+Requires an [`implicit` token](/guides/Getting-Started/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-managment-api/customer-tokens).
 :::
 
 ### Parameters

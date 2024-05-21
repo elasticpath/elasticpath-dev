@@ -9,7 +9,7 @@ Implement PayPal Express checkout to authorize, capture, purchase, and refund pa
 ## Prerequisites
 
 - Ensure that you have a Commerce account, and Client ID and Client Secret of your store available from [Commerce Manager](/docs/commerce-cloud/getting-started/cm-overview).
-- Get An [access token](/guides/Getting%20Started/api-overview/your-first-api-request#get-an-access-token).
+- Get An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token).
 - Create an account in [developer.paypal.com](https://developer.paypal.com/).
 - Configure products and gateway using Commerce Manager or API.
 - Onboard PayPal Express Checkout. See [Onboarding PayPal Express Checkout](/docs/commerce-cloud/payments/payment-gateway-cm/paypal).

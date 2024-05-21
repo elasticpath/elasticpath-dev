@@ -15,13 +15,13 @@ We start with authentication and then walk you through a basic checkout process:
 
 ## Lesson 1: Authenticate
 
-Requests to Composable Commerce require an `Authorization` header containing your `Bearer` token. There are two token types; `implicit` and `client_credentials`. See [Authentication](/guides/Getting%20Started/authentication/overview) for more details.
+Requests to Composable Commerce require an `Authorization` header containing your `Bearer` token. There are two token types; `implicit` and `client_credentials`. See [Authentication](/guides/Getting-Started/authentication/overview) for more details.
 
 This guide uses the implicit grant type. This grant type can be thought of as read only and most commonly used client side.
 
 ### Get your API keys
 
-To get your application keys, see [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm). Make a a copy of your `client_id`.
+To get your application keys, see [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm). Make a a copy of your `client_id`.
 
 ### Get an access token
 

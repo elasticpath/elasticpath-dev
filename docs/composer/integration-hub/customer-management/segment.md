@@ -51,7 +51,7 @@ You can find this information in **Settings**.
 Collect the following Commerce API keys. When you log in to Commerce Manager as a Seller Admin, you can find this information in **SYSTEM** > **Application Keys** in Commerce Manager.
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 | Option            | Description                                                                                                                             |

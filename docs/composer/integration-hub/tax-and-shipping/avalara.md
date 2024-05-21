@@ -17,7 +17,7 @@ Order changes in Commerce, like creating, fulfilling, and canceling, generate we
 ![Avalara Integration](/assets/avalara-integration.png)
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Prerequisites
@@ -45,7 +45,7 @@ You must have products in Commerce Manager.
     - EU - `https://useast.api.elasticpath.com/oauth/access_token`
     - US - `https://useast.api.elasticpath.com/oauth/access_token`
     
-    To collect your **Client-ID** and **Client-Secret**, log into Commerce Manager with Seller Admin privileges and go to **SYSTEM** > **Application Keys**. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
+    To collect your **Client-ID** and **Client-Secret**, log into Commerce Manager with Seller Admin privileges and go to **SYSTEM** > **Application Keys**. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
 
 1. Click **Connect**. The authorization is successfully completed.
 1. Click **Next**.

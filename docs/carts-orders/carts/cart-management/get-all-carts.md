@@ -18,7 +18,7 @@ The endpoint returns all carts in the store belonging to any customer or account
 
 | Name            | Required | Type     | Description                                                                                                                                                                                                                         |
 |:----------------|:---------|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Authorization` | Required | `string` | The Bearer token required to get access to the API. [`client_credentials` token](/guides/Getting%20Started/authentication/Tokens/client-credential-token) is required in order to access all carts belonging to any customer or account. |
+| `Authorization` | Required | `string` | The Bearer token required to get access to the API. [`client_credentials` token](/guides/Getting-Started/authentication/Tokens/client-credential-token) is required in order to access all carts belonging to any customer or account. |
 
 ### Query parameters
 

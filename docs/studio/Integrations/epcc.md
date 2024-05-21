@@ -22,7 +22,7 @@ sidebar_position: 111
 The following steps describe how to configure an integration between Studio and Elastic Path Composable Commerce.
 
 1. Log into Commerce Manager.
-1. Go to **SYSTEM** > **Application keys** to create your new API keys. Make a note of the API keys as you will need them to configure the **Elastic Path** integration in Studio. See [Application keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
+1. Go to **SYSTEM** > **Application keys** to create your new API keys. Make a note of the API keys as you will need them to configure the **Elastic Path** integration in Studio. See [Application keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
 1. Log into Studio.
 1. Go to **Settings** > **Integrations**.
 1. Navigate to **Payment & Storefront**.

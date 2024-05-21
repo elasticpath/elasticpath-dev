@@ -40,7 +40,7 @@ You can only have a maximum of 10 filters in a single request.
 | --- | --- | --- | --- |
 | Equality | `eq` | `(name, modifiername)` | The `modifiername` is the name of the modifier that you want to retrieve. For example, `?filter=eq(name, large_supplement)`  |
 
-See [Filtering](/guides/Getting%20Started/api-overview/filtering) for more information about filtering in Commerce.
+See [Filtering](/guides/Getting-Started/api-overview/filtering) for more information about filtering in Commerce.
 
 ## Request Example
 

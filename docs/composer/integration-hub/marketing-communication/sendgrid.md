@@ -39,7 +39,7 @@ Below is an overview of the steps you need to follow to integrate Commerce with 
 1. Create a SendGrid integration in **Commerce Manager** > **Integrations Hub**.  See [Configuring the SendGrid Integration](#configuring-the-send-grid-integration).
 
 :::note
-When integrating with third party providers, we recommend you use the closest region in the third party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third party providers, we recommend you use the closest region in the third party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting Your Setup Information

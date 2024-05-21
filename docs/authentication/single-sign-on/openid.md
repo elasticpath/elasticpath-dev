@@ -31,7 +31,7 @@ Composable Commerce comes with three per-store pre-set realms:
 
 ## Authentication Providers and Composable Commerce
 
-Commerce supports many OpenID Connect compatible authentication providers. For more information, see [Requirements for Authentication Providers](/guides/Getting%20Started/authentication/single-sign-on/get-single-sign-on-customer-token#requirements-for-authentication-providers).
+Commerce supports many OpenID Connect compatible authentication providers. For more information, see [Requirements for Authentication Providers](/guides/Getting-Started/authentication/single-sign-on/get-single-sign-on-customer-token#requirements-for-authentication-providers).
 
 ## External reference
 
@@ -40,4 +40,4 @@ Commerce supports many OpenID Connect compatible authentication providers. For m
 
 ## Related Resources
 
-- [Security](/guides/Getting%20Started/authentication/security)
+- [Security](/guides/Getting-Started/authentication/security)

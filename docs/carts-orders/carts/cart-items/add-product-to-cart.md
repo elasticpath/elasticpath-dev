@@ -102,7 +102,7 @@ When you add products to a cart with `custom_inputs`, there are certain limitati
 :::note
 
 - Any requests to add a product to cart returns the collection of [cart items](/docs/carts-orders/carts/cart-items/cart-items-overview).
-- [Tax items](/docs/carts-orders/cartsax-items#the-tax-item-object) may optionally be added with the product. Only administrators with [client credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
+- [Tax items](/docs/carts-orders/cartsax-items#the-tax-item-object) may optionally be added with the product. Only administrators with [client credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
 - The cart currency is set when the first item is added to the cart.
 - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a `400` error if a price is not defined in the correct currency.
 

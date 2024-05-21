@@ -51,7 +51,7 @@ You can use the `include` parameter to include the following resources with this
 | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle. See [Create a Bundle](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle). |
 | `main_image`         | Optional | The main images associated with a product. See [Files](/docs/pxm/products/product-assets/assets-overview).                                                                                                            |
 | `files`              | Optional | Any files associated with a product. See [Files](/docs/pxm/products/product-assets/assets-overview).                                                                                                                  |
-For more information, see [Including Resources](/guides/Getting%20Started/api-overview/includes).
+For more information, see [Including Resources](/guides/Getting-Started/api-overview/includes).
 
 ## Request Example
 

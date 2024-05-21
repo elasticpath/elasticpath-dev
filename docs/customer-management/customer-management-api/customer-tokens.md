@@ -103,7 +103,7 @@ Moltin.Customers.TokenViaPassword(email, password).then((data) => {
 
 ## Using OpenID Connect
 
-For more information on requesting a customer token with OpenID Connect, refer to the Developer How-To: [Single sign-on with OpenID Connect](/guides/Getting%20Started/authentication/single-sign-on/get-single-sign-on-customer-token).
+For more information on requesting a customer token with OpenID Connect, refer to the Developer How-To: [Single sign-on with OpenID Connect](/guides/Getting-Started/authentication/single-sign-on/get-single-sign-on-customer-token).
 
 ### Headers
 
@@ -119,7 +119,7 @@ For more information on requesting a customer token with OpenID Connect, refer t
 | `authentication_mechanism` | Required | `string` | For OpenID Connect login this value should be `oidc`. |
 | `oauth_authorization_code` | Required | `string` | The code returned from the OpenID Connect Provider authentication. |
 | `oauth_redirect_uri`       | Required | `string` | The url of the front-end that handles the callback of the token. |
-| `oauth_code_verifier`      | Required | `string` | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. See [Generating a Code Verifier and Challenge](/guides/Getting%20Started/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
+| `oauth_code_verifier`      | Required | `string` | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. See [Generating a Code Verifier and Challenge](/guides/Getting-Started/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
 
 ## Open ID Connect Request Example
 

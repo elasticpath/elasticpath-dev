@@ -9,12 +9,12 @@ You can quickly and easily integrate Commerce with Braze using the **Integration
 ![Braze Integration](/assets/Braze-integration.png)
 
 :::note
-When integrating with third party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Prerequisites
 
-- Ensure that you have collected your **Client-ID** and **Client-Secret** from Commerce Manager. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
+- Ensure that you have collected your **Client-ID** and **Client-Secret** from Commerce Manager. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
 - Ensure that you have received a URI from Braze to interact with the Braze services once you have registered as a Braze customer.
 - Ensure that you have created your Braze API Key. The following procedure describes how to create your API key:
 

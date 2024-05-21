@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 :::note
-Tax items can be added and removed using [client_credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) tokens. Only administrators with `client-credentials` are able to manage tax items.
+Tax items can be added and removed using [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) tokens. Only administrators with `client-credentials` are able to manage tax items.
 :::
 
 ## The Tax Item object

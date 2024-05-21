@@ -24,7 +24,7 @@ https://useast.api.elasticpath.com/v2/application-keys
 |:-------|:---------|:---------|:------------------------------------------------------------------------|
 | `type` | Required | `string` | Represents the type of object being returned. Always `application_key`. |
 | `name` | Required | `string` | Specifies the name of the application key to be created. |
-| `reserved_rate_limit` | Optional| `integer` | Indicates the reserved rate limit for an application key. For more information, see [Application Keys Overview](/guides/Getting%20Started/authentication/application-keys/application-keys-overview). |
+| `reserved_rate_limit` | Optional| `integer` | Indicates the reserved rate limit for an application key. For more information, see [Application Keys Overview](/guides/Getting-Started/authentication/application-keys/application-keys-overview). |
 
 ## Request Example - Curl
 

@@ -31,8 +31,8 @@ You can also use `include=component_products` to retrieve top-level resources, s
 | Name | Required | Optional | Description |
 | --- | --- | --- | --- |
 | `filter` | Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
 | `include=component_products` | Optional | `string` | The top-level resources, such as files or images, and key attribute data, such as SKU or slug, to return for component products in a product bundle. See [Create a Bundle](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle). |
 
 ## Filtering
@@ -45,7 +45,7 @@ The following attributes and operators are supported.
 | `like` | `sku`, `slug`,`upc_ean`, `mpn`, `name`                                                                 | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                            | `filter=like(name,*some-name*)` |
 | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `mpn`, `product_types`, `tags`                                 | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`.            | `filter=in(id,some-id)`         |
 
-For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
 
 ### Filtering on Template Attributes
 
@@ -62,7 +62,7 @@ Where:
 Filtering is not supported in template attributes with a `date` type.
 
 :::tip
-Other endpoints, such as `Get all accounts` and  `Get all customers` support filtering by date. For information on how to filter with a specific endpoint, go to the page of the endpoint. See [Filtering](/guides/Getting%20Started/api-overview/filtering) for a list of endpoints that support filtering.
+Other endpoints, such as `Get all accounts` and  `Get all customers` support filtering by date. For information on how to filter with a specific endpoint, go to the page of the endpoint. See [Filtering](/guides/Getting-Started/api-overview/filtering) for a list of endpoints that support filtering.
 :::
 
 In addition, when using the `in` filter, you cannot apply filters to template attributes with the following types:

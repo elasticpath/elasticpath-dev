@@ -25,7 +25,7 @@ Key points about taxes and how they work:
 
 If you want to follow along, you need the following item:
 
-- An [access token](/guides/Getting%20Started/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token)
 
 ## Step-by-step walkthrough
 

@@ -23,7 +23,7 @@ For example, AllGoods have a unique identifier for all their organization and st
 
 To create templates in organizations:
 
-1. Generate a [client_credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 1. [Create your template](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/create-a-template).
 1. [Create your attributes](/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/create-attribute).
 1. [Create your entries](/docs/pxm/products/extending-pxm-products/pxm-product-entries-api/create-an-entry).

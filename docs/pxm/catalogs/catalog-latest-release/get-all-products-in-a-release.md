@@ -40,8 +40,8 @@ The `variations` object lists the variation IDs and variation option IDs and the
 | Name | Required | Type | Description                                                                                                                                                                                                                                  |
 | --- | ---| --- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering).                                                                                                                                                                                |
-| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                                                                                                                                              |
-| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting%20Started/api-overview/pagination).                                                                                                                              |
+| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting-Started/api-overview/pagination).                                                                                                                                              |
+| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting-Started/api-overview/pagination).                                                                                                                              |
 | `include`      | Optional | `string`  | If set to  `component_products` returns top-level resources such as files or main image, and key attribute data, such as SKU or slug, to return for component products in a product bundle. See [Including Resources](#including-resources). |
 
 ## Filtering
@@ -53,7 +53,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tag`, you can only specify one. For example, `filter=eq(product_types,child)`.                                     | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`      | `filter=eq(name,some-name)` |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`.             | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=in(id,some-id)` |
 
-For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
 
 ### Building breadcrumbs in a storefront
 
@@ -75,7 +75,7 @@ You can use the `include` parameter to include the following resources with this
 | `main_image`         | Optional | The main images associated with a product. See [Files](/docs/pxm/products/product-assets/assets-overview).                                                                                                            |
 | `files`              | Optional | Any files associated with a product. See [Files](/docs/pxm/products/product-assets/assets-overview).                                                                                                                  |
 
-For more information, see [Including Resources](/guides/Getting%20Started/api-overview/includes).
+For more information, see [Including Resources](/guides/Getting-Started/api-overview/includes).
 
 ## Request Example
 

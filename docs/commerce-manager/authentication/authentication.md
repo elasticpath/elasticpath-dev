@@ -10,7 +10,7 @@ The Authentication Management tab is used to configure one or more single sign-o
 Changing these settings affects how customers authenticate with your store. Any misconfiguration might prevent users from authenticating.
 :::
 
-For more information, see [Single sign-on and authentication](/guides/Getting%20Started/authentication/single-sign-on/openid) and [Single sign-on with OpenID Connect](https://beta.elasticpath.dev/guides/Authentication/get-single-sign-on-customer-token).
+For more information, see [Single sign-on and authentication](/guides/Getting-Started/authentication/single-sign-on/openid) and [Single sign-on with OpenID Connect](https://beta.elasticpath.dev/guides/Authentication/get-single-sign-on-customer-token).
 
 :::caution
 To set up single sign-on for customers of your store, use the **Buyer Organization** realm. To set up single sign-on for store administrators and developers, use the **Merchant Organization** realm.

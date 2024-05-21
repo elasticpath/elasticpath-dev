@@ -6,9 +6,9 @@ sidebar_position: 1
 
 A `client_credentials` token is used when the credentials are not publicly exposed, usually a server-side language such as PHP or Node.js. This type of authentication enables `CRUD` access to all resources.
 
-`client_id` and `client_secret` are created and managed via [Application Keys](/guides/Getting%20Started/authentication/application-keys/create-an-application-key).
+`client_id` and `client_secret` are created and managed via [Application Keys](/guides/Getting-Started/authentication/application-keys/create-an-application-key).
 
-To see the access granted by a `client_credentials` token, refer to [Permissions](/guides/Getting%20Started/authentication/Tokens/permissions).
+To see the access granted by a `client_credentials` token, refer to [Permissions](/guides/Getting-Started/authentication/Tokens/permissions).
 
 ## `POST` Create a client credential token
 

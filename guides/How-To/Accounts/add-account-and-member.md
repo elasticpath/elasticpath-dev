@@ -16,7 +16,7 @@ Ensure that the user is signed into the store with appropriate seller permission
 
 1. To specify the login process for users, add a profile to the account realm.
 
-    You can choose to set up a [Password Profile](/guides/Getting%20Started/authentication/single-sign-on/password-profiles-api/overview) or an [OpenID Connect Profile](/guides/Getting%20Started/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview). However, you might have to modify other settings, such as redirect link settings, to use an OpenID Connect Profile. For more information, see the [Create an OpenID Connect Profile](/guides/Getting%20Started/authentication/single-sign-on/openid-connect-profiles-api/create-an-oidc-profile) section.
+    You can choose to set up a [Password Profile](/guides/Getting-Started/authentication/single-sign-on/password-profiles-api/overview) or an [OpenID Connect Profile](/guides/Getting-Started/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview). However, you might have to modify other settings, such as redirect link settings, to use an OpenID Connect Profile. For more information, see the [Create an OpenID Connect Profile](/guides/Getting-Started/authentication/single-sign-on/openid-connect-profiles-api/create-an-oidc-profile) section.
 
 1. Create one or more accounts.
 
@@ -24,10 +24,10 @@ Ensure that the user is signed into the store with appropriate seller permission
 
 1. Register account members.
 
-    Seller admin can register users to an the account realm by following the instructions in the [Creating a User Authentication Info](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-info-api/create-a-user-authentication-info) section. After creating the user authentication info, seller admin can associate the user to a login profile by following the instructions in one of the following sections:
+    Seller admin can register users to an the account realm by following the instructions in the [Creating a User Authentication Info](/guides/Getting-Started/authentication/single-sign-on/user-authentication-info-api/create-a-user-authentication-info) section. After creating the user authentication info, seller admin can associate the user to a login profile by following the instructions in one of the following sections:
 
-    - [Create a User Authentication OpenID Connect Profile Info](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info)
-    - [Create a User Authentication Password Profile](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile)
+    - [Create a User Authentication OpenID Connect Profile Info](/guides/Getting-Started/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info)
+    - [Create a User Authentication Password Profile](/guides/Getting-Started/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile)
 
     :::note
 

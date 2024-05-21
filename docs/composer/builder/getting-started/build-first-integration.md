@@ -18,7 +18,7 @@ The integration you build here retrieves an access token to grant you access to 
 
 ## Prerequisites
 
-You need to authenticate with your Commerce store using the Commerce API keys. See [Application Keys](/guides/Getting%20Started/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges.
+You need to authenticate with your Commerce store using the Commerce API keys. See [Application Keys](/guides/Getting-Started/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|

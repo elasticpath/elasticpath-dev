@@ -11,8 +11,8 @@ The One-Time Password Token request APIs can be utilized for both Passwordless A
 If you want to follow along, you need the following:
 
 - A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](/docs/commerce-cloud/getting-started/cm-overview).
-- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](/guides/Getting%20Started/authentication/Tokens/implicit-token).
-- An [access token](/guides/Getting%20Started/api-overview/your-first-api-request#get-an-access-token).
+- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](/guides/Getting-Started/authentication/Tokens/implicit-token).
+- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token).
 
 ## Step-by-step Walkthrough
 
@@ -31,17 +31,17 @@ The following steps are used to perform a Password Reset or Passwordless Authent
 
 ### Get the Account Authentication Settings
 
-Use the [Account Authentication Settings API](/guides/Getting%20Started/authentication/single-sign-on/account-authentication-settings/get-account-authentication-settings) to obtain the `authentication_realm`. 
+Use the [Account Authentication Settings API](/guides/Getting-Started/authentication/single-sign-on/account-authentication-settings/get-account-authentication-settings) to obtain the `authentication_realm`. 
 
-For the password reset scenario, [update](/guides/Getting%20Started/authentication/single-sign-on/account-authentication-settings/update-account-authentication-settings) the setting for `account_member_self_management` to `update_only` if not set already. This will allow the user to reset their password using the [Account Management Authentication Token](/guides/Getting%20Started/authentication/Tokens/account-management-authentication-token).
+For the password reset scenario, [update](/guides/Getting-Started/authentication/single-sign-on/account-authentication-settings/update-account-authentication-settings) the setting for `account_member_self_management` to `update_only` if not set already. This will allow the user to reset their password using the [Account Management Authentication Token](/guides/Getting-Started/authentication/Tokens/account-management-authentication-token).
 
 ### Create/Update the Password Profile
 
-Use the [Password Profiles API](/guides/Getting%20Started/authentication/single-sign-on/password-profiles-api/overview) to either [create](/guides/Getting%20Started/authentication/single-sign-on/password-profiles-api/create-a-password-profile) a new Password Profile, or [update](/guides/Getting%20Started/authentication/single-sign-on/password-profiles-api/update-a-password-profile) the existing Password Profile used for authentication. To enable the feature, set `enable_one_time_password_token` to `true`. Make note of the id for the next step.
+Use the [Password Profiles API](/guides/Getting-Started/authentication/single-sign-on/password-profiles-api/overview) to either [create](/guides/Getting-Started/authentication/single-sign-on/password-profiles-api/create-a-password-profile) a new Password Profile, or [update](/guides/Getting-Started/authentication/single-sign-on/password-profiles-api/update-a-password-profile) the existing Password Profile used for authentication. To enable the feature, set `enable_one_time_password_token` to `true`. Make note of the id for the next step.
 
 ### Create a User for testing
 
-First create a [User Authentication Info](/guides/Getting%20Started/authenticationation/single-sign-on/user-authentication-info-api/create-a-user-authentication-info.md) to represent a user, then associate them to the Password Profile from the previous step using the [User Authentication Password Profile Info](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile) API making note of the username.
+First create a [User Authentication Info](/guides/Getting-Started/authenticationation/single-sign-on/user-authentication-info-api/create-a-user-authentication-info.md) to represent a user, then associate them to the Password Profile from the previous step using the [User Authentication Password Profile Info](/guides/Getting-Started/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile) API making note of the username.
 
 ### Create a Webhook
 
@@ -92,7 +92,7 @@ Now that we have everything set up, the next steps will be to perform an One-Tim
 
 ## Create One Time Password Token Request
 
-Using the username and password profile ID above, create a [One Time Password Token Request](/guides/Getting%20Started/authentication/single-sign-on/password-profiles-api/create-one-time-password-token-request) with the `purpose` as `reset_password` or `passwordless_authenication` depending on a reset password or passwordless authentication scenario respectively. This API will send an event with the code and additional information to the Webhook we set up earlier. This code should be used upon initiating a Password Reset or Authenticating Passwordless. This code is valid for 10 minutes.
+Using the username and password profile ID above, create a [One Time Password Token Request](/guides/Getting-Started/authentication/single-sign-on/password-profiles-api/create-one-time-password-token-request) with the `purpose` as `reset_password` or `passwordless_authenication` depending on a reset password or passwordless authentication scenario respectively. This API will send an event with the code and additional information to the Webhook we set up earlier. This code should be used upon initiating a Password Reset or Authenticating Passwordless. This code is valid for 10 minutes.
 
 ## Webhook Used to Send Code to User
 
@@ -125,7 +125,7 @@ In your application, use the One Time Password Token from the previous step to g
 
 ### Password Reset Scenario
 
-The Account Management Authentication Token can be used to update the password using [Update User Authentication Password Profile Info](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-password-profiles-api/update-a-user-authentication-password-profile).
+The Account Management Authentication Token can be used to update the password using [Update User Authentication Password Profile Info](/guides/Getting-Started/authentication/single-sign-on/user-authentication-password-profiles-api/update-a-user-authentication-password-profile).
 
 ### Passwordless Authentication Scenario
 The Account Management Authentication Token can be used as the value to the `EP-Account-Management-Authentication-Token` header. API calls where we want to associate an account membership such as [Checkout](/docs/carts-orders/checkout/account-checkout) endpoint.

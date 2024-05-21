@@ -12,7 +12,7 @@ https://useast.api.elasticpath.com/v2/authentication-realms/:realm-id/user-authe
 ```
 
 :::note
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting%20Started/api-overview/pagination) section.
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination) section.
 :::
 
 ## Parameters
@@ -36,7 +36,7 @@ You can use pagination with this resource. For more information, see [pagination
 | `filter` | Optional | `string` | Specifies the filter attributes. For more information, see the [Filtering accounts](/docs/commerce-cloud/accounts/using-account-management-api/account-management-api-overview#filtering) section. |
 | `page[limit]`  | Optional | `integer` | The number of records per page.                                                                                         |
 | `page[offset]` | Optional | `integer` | The number of records to offset the results by.                                                                         |
-| `sort`   | Optional | `string` | Specifies the attribute to sort by. It can be `created_at`,`id`, or `updated_at`. By default, sorting is ascending. To sort in descending order, prefix the value with a `-` (for example, `-updated_at`). The default value is `-created_at`. See [Sorting](/guides/Getting%20Started/api-overview/sorting). |
+| `sort`   | Optional | `string` | Specifies the attribute to sort by. It can be `created_at`,`id`, or `updated_at`. By default, sorting is ascending. To sort in descending order, prefix the value with a `-` (for example, `-updated_at`). The default value is `-created_at`. See [Sorting](/guides/Getting-Started/api-overview/sorting). |
 
 ## Request Examples
 

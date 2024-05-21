@@ -103,7 +103,7 @@ In addition, you may optionally want to configure the following:
 
 ### Configuring Commerce Prerequisites
 
-If you want to use Amazon Cognito with an Commerce Merchant Organization realm, configure a Merchant Organization prefix. You can configure this in Commerce Manager in **SYSTEM** > **Store Settings** > **Authentication Management**. The prefix field is available from the **Enter your store's prefix** drop-down list during login to determine the Commerce Merchant realm that your business users log in to. See [Merchant Organization: URL prefix](/guides/Getting%20Started/authentication/single-sign-on/authentication#merchant-organization-url-prefix).
+If you want to use Amazon Cognito with an Commerce Merchant Organization realm, configure a Merchant Organization prefix. You can configure this in Commerce Manager in **SYSTEM** > **Store Settings** > **Authentication Management**. The prefix field is available from the **Enter your store's prefix** drop-down list during login to determine the Commerce Merchant realm that your business users log in to. See [Merchant Organization: URL prefix](/guides/Getting-Started/authentication/single-sign-on/authentication#merchant-organization-url-prefix).
 
 ## Collecting Your Setup Information
 
@@ -120,7 +120,7 @@ Collect the following Amazon credentials. See [Create an AWS access key](https:/
 
 ### Collecting Commerce Manager Setup Information
 
-Collect the following Commerce API keys. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+Collect the following Commerce API keys. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
@@ -129,7 +129,7 @@ Collect the following Commerce API keys. You can find this information in **SYST
 | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Configuring the Amazon Cognito Integration

@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You can retrieve the carts that are associated with an account.
 
-When a shopper retrieves their latest carts, the carts are sorted in descending order based on the `updated_date`. For more information, see [Pagination](/guides/Getting%20Started/api-overview/pagination).
+When a shopper retrieves their latest carts, the carts are sorted in descending order based on the `updated_date`. For more information, see [Pagination](/guides/Getting-Started/api-overview/pagination).
 
 ## `GET` Get Carts for an Account with an Account Management Authentication Token
 
@@ -17,7 +17,7 @@ https://useast.api.elasticpath.com/v2/carts
 Retrieves carts for the account. The account is specified by the [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview) in the header.
 
 :::caution
-Requires an [`implicit` token](/guides/Getting%20Started/authentication/Tokens/implicit-token) with an [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview).
+Requires an [`implicit` token](/guides/Getting-Started/authentication/Tokens/implicit-token) with an [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview).
 :::
 
 ### Parameters

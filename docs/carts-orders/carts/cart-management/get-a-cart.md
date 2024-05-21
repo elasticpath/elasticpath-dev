@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 :::note
-The default cart name is `Cart`. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting%20Started/api-overview/safe-characters) section.
+The default cart name is `Cart`. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/api-overview/safe-characters) section.
 :::
 
 ## `GET` Get a Cart by ID

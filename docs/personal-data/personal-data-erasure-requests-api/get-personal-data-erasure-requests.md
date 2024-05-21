@@ -17,7 +17,7 @@ https://useast.api.elasticpath.com/v2/personal-data/logs
 :::note
 
 * This request is only accessible to `client_credentials` token users with `Seller Admin`, `Support` and `IT` roles.
-* Non `client_credentials` token users cannot access this endpoint. See [Permissions](/guides/Getting%20Started/authentication/Tokens/permissions).
+* Non `client_credentials` token users cannot access this endpoint. See [Permissions](/guides/Getting-Started/authentication/Tokens/permissions).
 * This request requires a filter for `resource_type` and `resource_id`.
 
 :::
@@ -38,7 +38,7 @@ https://useast.api.elasticpath.com/v2/personal-data/logs
 
 :::note
 
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting%20Started/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
 
 :::
 

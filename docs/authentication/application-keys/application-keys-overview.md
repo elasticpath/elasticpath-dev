@@ -6,9 +6,9 @@ sidebar_position: 10
 
 Application keys are used to directly manage access to Organizations and stores. These keys are identified based on their names, and are not associated with a user.
 
-You can use application keys to generate `client_credentials` and `implicit tokens`. Unlike [User Credentials](/guides/Getting%20Started/authentication/security#user-credentials), Application keys are still valid even after a team member is removed from a store or organization.
+You can use application keys to generate `client_credentials` and `implicit tokens`. Unlike [User Credentials](/guides/Getting-Started/authentication/security#user-credentials), Application keys are still valid even after a team member is removed from a store or organization.
 
-Each organization and store has a specific [rate limit](/guides/Getting%20Started/api-overview/rate-limits). You can fine-tune the performance and availability of your applications that are integrated with our platform by reserving a rate limit for each Application Key. Reserved rate limits ensures that applications using a token generated from that key can make at least that many requests per second.
+Each organization and store has a specific [rate limit](/guides/Getting-Started/api-overview/rate-limits). You can fine-tune the performance and availability of your applications that are integrated with our platform by reserving a rate limit for each Application Key. Reserved rate limits ensures that applications using a token generated from that key can make at least that many requests per second.
 
 ## Scenarios
 
@@ -42,7 +42,7 @@ The following table describes the management of application keys for organizatio
 - Assign a reserved rate limit for your critical application keys.
 - Do not fully reserve the rate limit for your store or organizations across all keys. Instead, reserve rate limits thoughtfully to ensure that keys without a reserved rate limit can draw from a shared pool when needed.
 
-To create your application key, see [Creating an Application Key](/guides/Getting%20Started/authentication/application-keys/application-keys-cm).
+To create your application key, see [Creating an Application Key](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
 
 ## The Application Key Object
 

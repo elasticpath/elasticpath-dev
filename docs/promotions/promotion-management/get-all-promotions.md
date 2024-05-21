@@ -19,7 +19,7 @@ https://useast.api.elasticpath.com/v2/promotions
 | `Authorization` | Required | `string` | The Bearer token required to get access to the API. |
 
 :::note
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting%20Started/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
 :::
 
 ### Query parameters
@@ -32,7 +32,7 @@ You can use pagination with this resource. For more information, see [pagination
 
 ## Filtering
 
-The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](/guides/Getting%20Started/api-overview/filtering#supported-characters).
+The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](/guides/Getting-Started/api-overview/filtering#supported-characters).
 
 Use `code` filter to search codes within promotions.
 

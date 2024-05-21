@@ -11,7 +11,7 @@ https://useast.api.elasticpath.com/v2/authentication-realms/:realmId/oidc-profil
 ```
 
 :::note
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting%20Started/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
 :::
 
 ## Parameters

@@ -28,7 +28,7 @@ https://useast.api.elasticpath.com/v2/rule-promotions
 
 Promotion codes are case-insenstive. You can search for codes using only `numbers` or codes containing both `string` and `numbers`.
 
-The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](/guides/Getting%20Started/api-overview/filtering#supported-characters).
+The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](/guides/Getting-Started/api-overview/filtering#supported-characters).
 
 | Attribute | Type     | Operator    | Example        |
 |:--------- |:---------|:------------|:---------------|

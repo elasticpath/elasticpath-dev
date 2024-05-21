@@ -54,7 +54,7 @@ As an API consumer, links are used to allow you to toggle between requests.
 
 ## The `page` object
 
-Many Commerce endpoints support [pagination](/guides/Getting%20Started/api-overview/pagination).
+Many Commerce endpoints support [pagination](/guides/Getting-Started/api-overview/pagination).
 
 | Name      | Type | Description                                 |
 |:----------| :--- |:--------------------------------------------|

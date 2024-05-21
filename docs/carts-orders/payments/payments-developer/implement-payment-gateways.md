@@ -15,7 +15,7 @@ Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/payin
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](/guides/Getting%20Started/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token)
 - Configured products and gateway using Commerce Manager or API.
 - Third-party gateway account (typically to generate the API Keys)
 

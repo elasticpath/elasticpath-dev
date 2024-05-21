@@ -44,7 +44,7 @@ The following attributes and operators are supported.
 | `eq` | `sku`, `slug`, `upc_ean`, `mpn`, `name`, `description` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. When filtering on tags, you can only specify one product tag.      | `filter=like(name,some-name)` |
 | `In` | `sku`, `tags`                                                | Checks if the values are included in the specified string. If they are, the condition is true. When filtering on tags, you can specify a list of product tags. | `filter=in(id,some-id)` |
 
-For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
 
 ## Request Example
 

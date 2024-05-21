@@ -26,7 +26,7 @@ https://useast.api.elasticpath.com/v2/carts/:cartID/custom-discounts
 
 | Name                      | Required | Type     | Description                |
 |:--------------------------|:---------|:---------|:---------------------------|
-| `Authorization`           | Required | `string` | The Bearer token required to get access to the API. This endpoint requires the [client_credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) token for security reasons. This is different from other add to cart endpoints. |
+| `Authorization`           | Required | `string` | The Bearer token required to get access to the API. This endpoint requires the [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) token for security reasons. This is different from other add to cart endpoints. |
 
 ### Body
 

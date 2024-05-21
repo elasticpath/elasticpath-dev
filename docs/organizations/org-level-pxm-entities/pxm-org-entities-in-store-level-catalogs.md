@@ -31,7 +31,7 @@ You can choose to publish more than one catalog at a time. Commerce publishes up
 
 Any changes to organization-level catalogs are visible in your store when an organization catalog is republished.
 
-1. Generate a [client_credentials](/guides/Getting%20Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 1. Decide which hierarchies and price books you want to include in your catalog.
 1. [Create your catalog](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
 1. Publish your catalog. See [Publish a Catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog). Your organization catalog is automatically available to all your stores.

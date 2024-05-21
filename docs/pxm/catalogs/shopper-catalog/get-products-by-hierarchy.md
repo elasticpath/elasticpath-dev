@@ -40,8 +40,8 @@ You can see the parent nodes a product is associated with in the `bread_crumbs` 
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting%20Started/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
 
 ## Filtering
 
@@ -52,7 +52,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_tags` and `tags`, you can specify more than one. | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`      | `filter=eq(name,some-name)` |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one.                                                   | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=in(id,some-id)` |
 
-For more information, see [Filtering](/guides/Getting%20Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
 
 ### Building breadcrumbs in a storefront
 

@@ -7,7 +7,7 @@ sidebar_position: 1
 You can quickly and easily integrate Commerce with Salsify using the **Integrations Hub** in Commerce Manager. Integrating Salsify with Commerce means you can synchronize catalog data such as products, price, images, and categories between Commerce and Salsify.
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting your Setup Information
@@ -24,7 +24,7 @@ Collect the following setup information from Salsify.
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/guides/Getting%20Started/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
+To create a new [application key](/guides/Getting-Started/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|

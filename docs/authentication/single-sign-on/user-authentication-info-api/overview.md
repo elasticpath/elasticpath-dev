@@ -5,7 +5,7 @@ sidebar_position: 10
 ---
 
 `user-authentication-info` is the information object used for user authentication. This object contains information, such as the name and email address, and has sub-resources for each mechanism that the user can use to log in.
-For example, if an [OpenID Connect Profile](/guides/Getting%20Started/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview) profile is configured in the [Authentication Realm](/guides/Getting%20Started/authentication/single-sign-on/authentication-realm-api/authentication-realm-api-overview) and the user is configured to authenticate through that profile, then the `user-authentication-info` object is associated with a [User Authentication OpenID Connect Profile Info](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-openid-connect-profile-api/openid-connect-profile-overview) subresource.
+For example, if an [OpenID Connect Profile](/guides/Getting-Started/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview) profile is configured in the [Authentication Realm](/guides/Getting-Started/authentication/single-sign-on/authentication-realm-api/authentication-realm-api-overview) and the user is configured to authenticate through that profile, then the `user-authentication-info` object is associated with a [User Authentication OpenID Connect Profile Info](/guides/Getting-Started/authentication/single-sign-on/user-authentication-openid-connect-profile-api/openid-connect-profile-overview) subresource.
 
 ## The User Authentication Info Object
 
@@ -48,7 +48,7 @@ For example, if an [OpenID Connect Profile](/guides/Getting%20Started/authentica
 
 ## Filtering
 
-The following operators and attributes are available for [filtering](/guides/Getting%20Started/api-overview/filtering) user authentication infos:
+The following operators and attributes are available for [filtering](/guides/Getting-Started/api-overview/filtering) user authentication infos:
 
 | Operator | Description |
 | :--- | :--- |

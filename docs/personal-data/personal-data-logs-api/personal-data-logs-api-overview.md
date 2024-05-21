@@ -90,7 +90,7 @@ Currently, personal data management is only enabled for a limited set of endpoin
 
 ## Filtering
 
-The following operator and attributes are **required** for [filtering](/guides/Getting%20Started/api-overview/filtering) personal data logs.
+The following operator and attributes are **required** for [filtering](/guides/Getting-Started/api-overview/filtering) personal data logs.
 
 | Operator | Description                                                                                          |
 |:---------|:-----------------------------------------------------------------------------------------------------|

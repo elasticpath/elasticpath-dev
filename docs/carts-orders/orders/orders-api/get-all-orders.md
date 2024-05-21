@@ -30,11 +30,11 @@ The `Get all orders` request returns all orders with custom flow fields. The pag
 | `filter`  | Optional | `string` | Filter attributes. For more information, see [Filtering orders](#filtering).   |
 | `page[limit]`  | Optional | `integer` | The number of records per page. |
 | `page[offset]` | Optional | `integer` | The number of records to offset the results by. |
-| `sort`   | Optional | `string` | Supported attributes are `created_at`,`payment`,`shipping`, `status` or `with_tax`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `updated_at` in descending order. For more information, see [Sorting](/guides/Getting%20Started/api-overview/sorting). |
+| `sort`   | Optional | `string` | Supported attributes are `created_at`,`payment`,`shipping`, `status` or `with_tax`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `updated_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/api-overview/sorting). |
 
 ### Filtering 
 
-The following operators and attributes are available for [filtering](/guides/Getting%20Started/api-overview/filtering) orders.
+The following operators and attributes are available for [filtering](/guides/Getting-Started/api-overview/filtering) orders.
 
 | Attribute | Type | Operator | Example |
 | :--- | :--- | :--- | :--- |
@@ -64,8 +64,8 @@ The following operators and attributes are available for [filtering](/guides/Get
 :::note
 
 - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-managment-api/customer-tokens).
-- Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/guides/Getting%20Started/authentication/Tokens/account-management-authentication-token).
-- You can use pagination with this resource. For more information, see [pagination](/guides/Getting%20Started/api-overview/pagination).
+- Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/guides/Getting-Started/authentication/Tokens/account-management-authentication-token).
+- You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
 
 :::
 

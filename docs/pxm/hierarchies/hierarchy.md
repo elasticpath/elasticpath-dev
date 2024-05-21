@@ -127,7 +127,7 @@ You can assign products to nodes in the following ways:
 
 ### Assigning products to multiple nodes
 
-1. On the **Products** page, select appropriate products or apply a filter to select appropriate products. See [Filtering](/guides/Getting%20Started/api-overview/filtering).
+1. On the **Products** page, select appropriate products or apply a filter to select appropriate products. See [Filtering](/guides/Getting-Started/api-overview/filtering).
 2. Click the arrow next to the checkbox on the header row and then click **Assign to Nodes**.
 
 ![Assigning Nodes](/assets/assigning-nodes.png)
@@ -153,7 +153,7 @@ On the **Products** page, the hierarchies and their children nodes are displayed
 
 You can dissociate products from multiple hierarchies and their nodes.
 
-1. On the **Products** page, select appropriate products or apply a filter to select appropriate products. See [Filtering](/guides/Getting%20Started/api-overview/filtering).
+1. On the **Products** page, select appropriate products or apply a filter to select appropriate products. See [Filtering](/guides/Getting-Started/api-overview/filtering).
 2. Click the arrow next to the checkbox on the header row and then click **Unassign from Node**.
 
 ![Dissociating from multiple nodes](/assets/Dissociation-from-nodes.png)

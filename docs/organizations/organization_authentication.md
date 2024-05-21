@@ -15,7 +15,7 @@ Organizations introduces the Org Admin role, providing enhanced management capab
 
 Additionally, when selecting a store within an organization, Org Admins are automatically granted Seller Admin permissions for that store. This gives Org Admins comprehensive control and flexibility over an organization's stores and integrations.
 
-Application keys are directly used to manage access to Organizations. For more information, see [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview).
+Application keys are directly used to manage access to Organizations. For more information, see [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
 
 The following table shows the API endpoint actions that are available for an Org Admin:
 
@@ -47,6 +47,6 @@ The following table shows the access permissions for an Org Admin Role in Commer
 
 ## Related Resources
 
-- [Application Keys](/guides/Getting%20Started/authentication/application-keys/application-keys-overview)
-- [Create an Application Key](/guides/Getting%20Started/authentication/application-keys/create-an-application-key)
-- [Store Roles](/guides/Getting%20Started/team-management/roles)
+- [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview)
+- [Create an Application Key](/guides/Getting-Started/authentication/application-keys/create-an-application-key)
+- [Store Roles](/guides/Getting-Started/team-management/roles)

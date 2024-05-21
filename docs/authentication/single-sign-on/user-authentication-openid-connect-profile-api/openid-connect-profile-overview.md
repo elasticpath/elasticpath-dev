@@ -4,7 +4,7 @@ nav_label: User Authentication OpenID Connect Profile Info
 sidebar_position: 10
 ---
 
-`user-authentication-oidc-profile-info` is the information object about the relationship between a [User Authentication Info](/guides/Getting%20Started/authentication/single-sign-on/user-authentication-info-api/overview) and an [OpenID Connect Profile](/guides/Getting%20Started/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview).
+`user-authentication-oidc-profile-info` is the information object about the relationship between a [User Authentication Info](/guides/Getting-Started/authentication/single-sign-on/user-authentication-info-api/overview) and an [OpenID Connect Profile](/guides/Getting-Started/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview).
 
 ## The User Authentication OpenID Connect Profile Info Object
 

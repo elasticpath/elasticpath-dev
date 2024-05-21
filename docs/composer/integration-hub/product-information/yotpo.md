@@ -50,7 +50,7 @@ Collect the following Commerce API keys. When you log in to Commerce Manager as 
 | **Client Secret**                  | Your Commerce Client Secret.                   |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting%20Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ### Collecting Yotpo connection details

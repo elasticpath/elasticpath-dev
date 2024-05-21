@@ -72,7 +72,7 @@ Seller Admin & IT users have full access to Erasure Requests, and Support users 
 
 ## Filtering
 
-The following operator and attributes are **required** for [filtering](/guides/Getting%20Started/api-overview/filtering) erasure requests.
+The following operator and attributes are **required** for [filtering](/guides/Getting-Started/api-overview/filtering) erasure requests.
 
 | Operator | Description                                                                                          |
 |:---------|:-----------------------------------------------------------------------------------------------------|
