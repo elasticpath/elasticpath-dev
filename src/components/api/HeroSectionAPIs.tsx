@@ -151,7 +151,7 @@ const PRODUCTS = [
   },
   {
     title: 'Customers',
-    link: '/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens',
+    link: '/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens',
     icon: PersonCircleRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
