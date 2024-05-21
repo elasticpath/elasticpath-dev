@@ -8,14 +8,14 @@ info:
     
     For testing your promotions when scheduling a future date for your shopping cart, you can use the [Preview Cart API](https://elasticpath.dev/docs/commerce-cloud/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
     
-    When [Creating a Free Gift Promotion](/docs/api/promotions/create-a-promotion), set the promotion to automatic and enable the auto_add_free_gift feature. This way, the shopper will see the free gift in their shopping cart when the target product is added to the cart, and the discount will be applied. This eliminates the need for an additional step to apply the code for the gift discount. However, if you desire more control over when or how the free gift is added, you can choose to use a promotion code and disable the Automatically add free gift items to the cart toggle in Commerce Manager. See [Creating Free Gift Promotions](https://elasticpath.dev/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/free-gift-promotions). For a seamless process, ensure that the currency of automatically added gift items matches with the currency of the the eligible items. Additionally, ensure that the free gift item is within the same catalog as the eligible items. See Errors section.
+    When [Creating a Free Gift Promotion](/docs/api/promotions/create-a-promotion), set the promotion to automatic and enable the `auto_add_free_gift feature`. This way, the shopper will see the free gift in their shopping cart when the target product is added to the cart, and the discount will be applied. This eliminates the need for an additional step to apply the code for the gift discount. However, if you desire more control over when or how the free gift is added, you can choose to use a promotion code and disable the **Automatically add free gift items to the cart** toggle in Commerce Manager. See [Creating Free Gift Promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions). For a seamless process, ensure that the currency of automatically added gift items matches with the currency of the the eligible items. Additionally, ensure that the free gift item is within the same catalog as the eligible items. See Errors section.
     
     For inventory-managed products, ensure that you have sufficient inventory available to run the promotion. If there is insufficient stock of free gift items for all eligible free products, the free gifts won't be added to the cart.
     
     Promotions Standard can be:
 
-    - Cart-level promotions: The promotion applies to the entire cart.
-    - Item-level promotions: The promotion applies individual items in a cart.
+    - [Cart-level promotions](#cart-level-promotions): The promotion applies to the entire cart.
+    - [Item-level promotions](#item-level-promotions): The promotion applies individual items in a cart.
     
     :::note
     
@@ -32,9 +32,15 @@ info:
     - Fixed discount: Reduces the cart total by a fixed amount, such as $5.00 off.
     - Percentage discount: Reduces the cart total e by a specific percentage, such as 10% off.
     
+    The following image shows a cart before and after applying a 10% Off promotion. With the discount applied, the price for each item is reduced by 10% and the cart total reflects the reduction.
+    
+    ![Each item in the cart shows a price that is 10% less than the catalog price.](/assets/promotions-cart-10-percent-off.png)
+    
+    All items in the cart are eligible for cart-level promotions, even if they already have item-level promotions applied. You can select a few products and exclude them from a cart-level promotion. However, the store that uses a [simple calculation method](/guides/Carts/calculate-totals#simple-calculation-method) does not support promotions with the `exclude` setting.
+    
     ### Item-level Promotions
 
-    Item-level promotions are applied to each item that qualifies for the promotion. In a shopping cart, the price of each item reflects the discount applied to each item. With the max_applications_per_cart setting, you can limit the number of purchases of an item at the sale price in a cart. For more information, see the Promotions API section.
+    Item-level promotions are applied to each item that qualifies for the promotion. In a shopping cart, the price of each item reflects the discount applied to each item. With the `max_applications_per_cart` setting, you can limit the number of purchases of an item at the sale price in a cart. For more information, see the Promotions API section.
     
     Item-level promotions include the following promotion types:
     
@@ -44,6 +50,24 @@ info:
     - Item fixed discount: Reduces the price of multiple items by a fixed amount, such as $5.00 off.
     - Percentage item discount: Reduces the product price for multiple items by a specific percentage, such as 10% off. You can also count the number of usages of the promotion per SKU item and limit the usage of the promotion per item. For example, if the usage of the promotion is limited to ten and the shopper purchases two of the same item and three of the another item, five uses of the promotion is deducted from the total usage limit.
     - Free Gift: Offers a free item when a specific product or a group of products are purchased.
+    
+      :::caution
+      
+      - Item-level promotions are only supported by the line calculation method. For more information about this method, see the [Calculation Method](docs/api/settings/settings-introduction#calculation-method) section.
+      - The `max_discount_value` setting specifies the maximum possible discount for the cart. To avoid the conflict with the promotions and the promotion to work, we recommend not to use this setting for the following promotions:
+
+        - Cart-level fixed discount
+        - Item fixed discount
+        - X for Y discount
+        - X for amount discount
+        - Bundle
+        - Free gift
+
+      - The `max_applications_per_cart` setting, which specifies the maximum number of applications of a promotion per cart, is applicable to line-item promotions only. For example, in a store that offers *buy SKU1 get a free gift* promotion with maximum application per cart set to one, the buyer can only use the free gift promotion once per cart. If maximum application per cart is not set, the buyer can use the promotion multiple times. You can also set maximum application per cart to zero to remove any usage limit.
+      - The `exclude` array consists of productIDs or SKUs of products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use simple calculation method do not support excluding products from promotions.
+      - Already existing promotions created before September 28, 2022 will not have `created_by` and `updated_by` attributes in their response body.
+  
+      :::
     
     You can create codes for a promotion so that customers receive the discount only when the code is provided.
     
@@ -57,15 +81,15 @@ info:
     
     :::
     
-    For example, a cart consists of 1 BestEver Coffee Maker and 2 BestEver Coffee Grinders. The following promotions are available and applied automatically without a code:
+    For example, a cart consists of 1 *BestEver Coffee Maker* and 2 *BestEver Coffee Grinders*. The following promotions are available and applied automatically without a code:
     
-    - An existing BestEver Coffee Maker + Grinder bundle promotion for $200.00. The bundle discount is distributed among the items in the bundle depending on the price of each item.
-    - A newly added BestEver Coffee Grinders 10% Off percentage item discount promotion.
+    - An existing *BestEver Coffee Maker* + *Grinder* bundle promotion for $200.00. The bundle discount is distributed among the items in the bundle depending on the price of each item.
+    - A newly added *BestEver Coffee Grinders* 10% Off percentage item discount promotion.
     
-    In this example, BestEver Coffee Maker costs $150 and BestEver Coffee Grinder costs $100. The promotions works in the following order:
+    In this example, *BestEver Coffee Maker* costs $150 and *BestEver Coffee Grinder* costs $100. The promotions works in the following order:
     
-    1. The $50 bundle discount is distributed among the items depending on the cost. In this example, the cost proportion of products is 3:2 and the BestEver Coffee Maker gets $30 discount and BestEver Coffee Grinder gets $20 discount.
-    2. The second promotion is applied to the remaining BestEver Coffee Grinders item, and the price is reduced to $90.
+    1. The $50 bundle discount is distributed among the items depending on the cost. In this example, the cost proportion of products is 3:2 and the *BestEver Coffee Maker* gets $30 discount and *BestEver Coffee Grinder* gets $20 discount.
+    2. The second promotion is applied to the remaining *BestEver Coffee Grinders* item, and the price is reduced to $90.
     3. The cart total after both discounts is $290 instead of $350.
     
     ### Understanding how Promotions work with Bundles
@@ -83,24 +107,7 @@ info:
       - **Example 1**: Consider that Playtend Games offers a bundle that includes a game console, the Playtend Invaders Game, and the Invaders Controller. If there is an existing Item Percent Discount for the Playtend Invaders Game when sold separately, this discount will not apply when the game is part of the bundle. This ensures that the bundle pricing strategy is maintained.
       - **Example 2**: In the case of Attribute-based promotions, consider a bundle that consists of *Item A* with attribute *Brand A* and *Item B* with attribute *Brand B*. If *Item A* with attribute *Brand A* qualifies for Item Percent Discount promotion, this discount is not applied to the bundle since the *Item A* is a component item within the bundle.
     
-    To learn how to create a bundle, see [Create a Bundle](https://elasticpath.dev/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle).
-    
-    ### Promotion Codes
-    
-    You can create codes for a promotion so that customers receive the discount when the code is provided. You can enable this feature by setting the automatic attribute to false in the promotions schema when you create a promotion. For more information, see the Creating Promotion Codes section.
-  
-    You can generate and export codes for a promotion using the bulk code generation feature, which allows you to create a large number of unique codes and export them in CSV format. For details, refer to the Generating Bulk Codes and Managing Export Codes sections.
-  
-    You can generate a maximum of 1000 codes for a promotion. If you need to generate more than 1000 codes, limit the promotion's duration to a maximum of 365 days from its start date. The promotion expiry date is 365 days.
-  
-    With the consume unit feature, you can limit the number of usages of a code for a promotion. You must create a code for this promotion to track the usage of the promotion. The consume unit options are `per_cart` and `per_item`. For example, consider a store that offers 50% off on *SKU1*, but limits the promotion to a maximum of two usages. Under the `per_cart` setting, a shopper can buy *SKU1* twice in a separate transaction, each at a 50% discount. However, with the `per_item` setting, if a shopper buys two SKU1s in a single purchase, both items count toward the promotion's usage limit. Therefore, the shopper would use up both usages of the promotion in a single purchase.
-    
-    Promotion codes can be group codes or individual codes. For example, you can offer a seasonal discount to all customers, such as SUMMER-SALE, or you can offer preferred customers unique discount codes. Promotion codes expire automatically at the end of the promotion period and are removed from the promotion.
-  
-    When a promotion expires, the promotion codes attached to the promotion automatically become invalid. However, when you re-enable the expired promotion, the promotion codes attached to the promotion are deleted.
-  
-    When you checkout a cart with an expired promotion, the expired promotion will be automatically removed from a cart and the checkout process is initiated. As a best practice, we recommend to update your cart to remove the expired promotion before initiating the checkout process.
-
+    To learn how to create a bundle, see [Create a Bundle](/docs/api/pxm/products/create-product).
   contact:
     name: Elastic Path
     url: https://elasticpath.com
@@ -123,9 +130,15 @@ paths:
       description: | 
         Returns all promotions.
         
+        :::note
+        
+        You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+        
+        :::
+        
         ### Filtering
     
-        The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering#supported-characters).
+        The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](/docs/commerce-cloud/api-overview/filtering#supported-characters).
 
         Use `code` filter to search codes within promotions.
 
@@ -133,7 +146,7 @@ paths:
         |:-----|:---------|:---------|:----------------------------------------|
         | `code` |  `string`   | `eq` | `eq(code,some_code)`          | 
         
-        For filtering advanced promotion usages, pass the EP-Public-Search-Type=cm_search header. Advanced search filtering is only applicable when the promotion code is consumed and the promotion is not deleted.
+        For filtering advanced promotion usages, pass the `EP-Public-Search-Type=cm_search` header. Advanced search filtering is only applicable when the promotion code is consumed and the promotion is not deleted.
         
         | Attribute | Type | Operator     | Example                            |
         |:-----|:---------|:---------|:----------------------------------------|
@@ -206,7 +219,66 @@ paths:
       tags:
         - Promotions Standard
       summary: Create a Promotion
-      description: Create a promotion
+      description: | 
+        You can use this endpoint to create the following types of promotion:
+         - Cart Fixed Discount Promotion
+         - Cart Percent Discount Promotion
+         - X for Y Discount Promotion
+         - X for Amount Discount Promotion
+         - Fixed Bundle Discount Promotion
+         - Item Fixed Discount Promotion
+         - Item Percent Discount Promotion
+         - Free Gift Promotion
+        
+        ### The `schema` object
+        
+        Promotions are defined by schemas that are used internally to verify promotions and calculate discounts. You must define a schema when you create the promotion. For more information, see the schema.exclude criteria and the targeting fields criteria.
+        
+        #### The `schema.exclude` criteria
+        
+        When creating a promotion, you can specify when it **should not** be applied. The promotion will not be applied on any cart (or cart item, depending on the promotion type) that fulfills at least one of the `schema.exclude` criteria. The following criteria can be set to exclude items from a promotion:
+
+        - `schema.exclude.targets`
+        - `schema.exclude.nodes`
+        - `schema.exclude.attributes`
+        - `schema.exclude.conditions`
+
+        For example, if you want to create a promotion with value as *SKU1* in `schema.exclude.targets` and and color *yellow* and size *small* in `schema.exclude.attributes`, then any products with *SKU1* or the color *yellow* or the size *small* will be excluded from the promotion.
+
+        To exclude products from a promotion based on multiple conditions at the same time, use `schema.exclude.conditions`. For example, use `schema.exclude.conditions` to exclude items that are both *yellow* in color and *small* in size.
+
+        #### The targeting fields criteria
+
+        When creating a promotion, you can also specify when it **should** be applied. To define the targeted products, use the following fields:
+
+          - `schema.target_catalogs`
+          - `schema.targets`
+          - `schema.target_nodes`
+          - `schema.target_attributes`
+          - `schema.target_conditions`
+  
+        The cart item's catalog is verified if you define the `schema.target_catalogs` field. If the item is in any of the targeted catalogs specified in `schema.target_catalogs`, the promotion will be applied. If the item is not in any of the catalogs, the promotion will not be applied.
+  
+        Then, the cart item is verified to see if it fulfills at least one criteria of any of the four other targeting fields. In other words, the `schema` targeting fields such as `schema.targets`, `schema.target_nodes`, `schema.target_attributes` and `schema.target_conditions` create *OR* trageting conditions.
+  
+        For example, if you create a promotion with values as *SKU1* in `schema.targets` and color *yellow* and size *small* in `schema.target_attributes`, then it will be applied to any products with *SKU1* or the color *yellow* or the size *small*.
+  
+        To create a promotion that targets products based on multiple conditions at the same time, use `schema.target_conditions`. For example, use it to target items that are both *yellow* in color and *small* in size.
+        
+        :::note
+        
+        For Cart Fixed Discount Promotion and Cart Percent Discount Promotion, the cart item's catalog is verified if you define the `schema.target_catalogs` field. If the item is in any of the targeted catalogs specified in `schema.target_catalogs`, the promotion will be applied. If the item is not in any of the catalogs, the promotion will not be applied.
+        
+        :::
+        
+        :::caution
+        
+        - Line-item discounts are only supported by the line calculation method. For more information about this method, see the Calculation Method section.
+        - Hierarchy-based promotions are not supported for fixed bundle discount promotion and free gift promotion. To promote a bundle, create the bundle in Product Experience Manager, and then create a promotion for that bundle. For more information, see Bundles in Product Experience Manager.
+        - For Free Gift Promotion, we recommend using `auto_add_free_gift` feature with `automatic` setting enabled. When `automatic` is set to `true`, it indicates that promotions are added automatically, and discounts are applied accordingly. If you enable the `auto_add_free_gift`, but do not enable the `automatic` setting, gift items will be added without discounts. In this case, shoppers need to apply coupon codes twice, first to add the gift item and then to apply the discount.
+        
+        :::
+
       operationId: createAPromotion
       parameters: [ ]
       requestBody:
@@ -289,11 +361,28 @@ paths:
       description: | 
         Use this endpoint to update a specific promotion.
         
-          :::note
+        :::note
         
           You can re-enable an expired promotion by updating the end date to a future date. However, when you enable a promotion again, all codes previously attached to it are deleted to make sure that duplicate promotion codes do not exist on different promotions.
         
-          :::
+        :::
+        
+        ### Errors
+        
+        When extending the end date of an expired promotion with over 1000 codes, you will receive the following error response. In such cases, we recommend duplicating the promotion, allowing you to set the new end dates and create promotion codes as needed.
+        
+        ```json
+        {
+            "errors": [
+                {
+                    "status": 422,
+                    "source": "request",
+                    "title": "Unprocessable Entity",
+                    "detail": ""
+                }
+            ]
+        }
+        ```
       operationId: updateAPromotion
       parameters:
         - name: promotionID
@@ -464,7 +553,7 @@ paths:
         
         When a promotion expires, the promotion codes attached to the promotion automatically become invalid. However, when you re-enable the expired promotion, the promotion codes attached to the promotion are deleted.
         
-        :::note
+        :::
       operationId: createPromotionCodes
       parameters:
         - name: promotionID
@@ -1199,56 +1288,20 @@ components:
           type: string
 tags:
   - name: Promotions Standard
-    description: |
-      With Promotions Standard, you can provide different types of discounts to all your customers or specific customers. A promotion can be set to apply automatically or by entering a code. Automatic promotions are applied when the selected items meet the promotions criteria. Promotions with codes are applied when customers enter the promotion code to get to discount. Commerce offers the following types of promotions.
-      
-      ### Cart-level Promotions
-      
-      - **Cart Fixed Discount Promotion**: Adds a fixed amount discount to a cart.
-      - **Cart Percent Discount Promotion**: Adds a percentage discount to a cart based on the value of the `cart_items` and `custom_items` objects.
-      
-      ### Item-level Promotions
-
-      - **X for Y** Discount Promotion: Provides an option to sell more than one item of the same product for a specific price. For example, *2 for 1* or *3 for 2* promotions. If a cart contains more items that are eligible for *2 for 1* promotion, the promotion amount is multiplied by the number of eligible collection.
-      - **X for Amount Discount Promotion**: Provides an option to sell a specific number of items of the same product for a fixed amount. For example, buy two items for $10 or four items for $20.
-      - **Fixed Bundle Discount Promotions**: Provides a fixed price for a selection of products when you buy the selected products together. For example, buy products *x*, *y*, and *z* for $15 or buy two *x* and three *y* or *z* for $25.
-      - **Item Fixed Discount Promotion**: Reduces the product price for multiple items by a fixed amount, such as $5.00 off.
-      - **Item Percent Discount Promotion**: Reduces the product price for multiple items by a percentage, such as 10% off.
-      - **Free Gift Promotions**: Offers a free item when a specific product or a group of products are purchased.
-      
-      To learn how promotions work with bundles, see Understanding How Promotions work with Bundles.
-      
-      :::note
-      
-      Already existing promotions created before September 28, 2022 will not have `created_by` and `updated_by` attributes in their response body.
-      
-      :::
-      
-      :::warning
-      
-      - Item-level promotions are only supported by the line calculation method. For more information about this method, see the Calculation Method section.
-      - The `max_discount_value` setting specifies the maximum possible discount for the cart. To avoid the conflict with the promotions and the promotion to work, we recommend not to use this setting for the following promotions:
-          - Item Fixed Discount Promotion
-          - Cart Fixed Discount Promotion
-          - X for Y Discount Promotion
-          - Fixed Bundle Discount Promotions
-          - Bundle
-          - Free Gift Promotions
-      - The maximum application per cart setting, which specifies the maximum number of applications of a promotion per cart, is applicable to line-item promotions only. For example, in a store that offers buy *SKU1* get a free gift promotion with maximum application per cart set to one, the buyer can only use the free gift promotion once per cart. If `max_applications_per_cart` is not set, the buyer can use the promotion multiple times. You can also set `max_applications_per_cart` to zero to remove any usage limit.
-      - The `exclude` array consists of `productIDs` or `SKUs` of products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use simple calculation method do not support excluding products from promotions.
-      
-      :::
-      
-      ### The `schema` Object
-      
-      Promotions are defined by schemas that are used internally to verify promotions and calculate discounts. For each promotion, you must define a schema when you create the promotion. Each promotion type has its own required fields.
-
   - name: Promotion Codes
     description: |
-      You can apply promotions automatically to all customer carts, or you can create promotion codes that customers must enter to receive the discount. For more information, see the [Create Promotion Codes](#tag/Promotion-Codes/operation/createPromotionCodes) section.
-      
+      You can apply promotions automatically to all customer carts, or you can create promotion codes that customers must enter to receive the discount. You can enable this feature by setting the automatic attribute to `false` in the promotions schema when you create a promotion. For more information, see [Create Promotion Codes](/docs/api/promotions/create-promotion-codes).
+    
+      You can generate and export codes for a promotion using the bulk code generation feature, which allows you to create a large number of unique codes and export them in CSV format. For details, refer to the [Generating Bulk Codes](/docs/commerce-manager/promotions-standard/overview#generating-bulk-codes) and [Managing Export Codes](/docs/commerce-manager/promotions-standard/overview#managing-code-export) sections.
+    
+      You can generate a maximum of 1000 codes for a promotion. If you need to generate more than 1000 codes, limit the promotion's duration to a maximum of 365 days from its start date. The promotion expiry date is 365 days.
+    
+      With the consume unit feature, you can limit the number of usages of a code for a promotion. You must create a code for this promotion to track the usage of the promotion. The consume unit options are `per_cart` and `per_item`. For example, consider a store that offers 50% off on *SKU1*, but limits the promotion to a maximum of two usages. Under the `per_cart` setting, a shopper can buy *SKU1* twice in a separate transaction, each at a 50% discount. However, with the `per_item` setting, if a shopper buys two SKU1s in a single purchase, both items count toward the promotion's usage limit. Therefore, the shopper would use up both usages of the promotion in a single purchase.
+    
+      Promotion codes can be group codes or individual codes. For example, you can offer a seasonal discount to all customers, such as *SUMMER-SALE*, or you can offer preferred customers unique discount codes. Promotion codes expire automatically at the end of the promotion period and are removed from the promotion.
+    
       When a promotion expires, the promotion codes attached to the promotion automatically become invalid. However, when you re-enable the expired promotion, the promotion codes attached to the promotion are deleted.
-      
+
       When you checkout a cart with an expired promotion, the expired promotion will be automatically removed from a cart and the checkout process is initiated. As a best practice, we recommend to update your cart to remove the expired promotion before initiating the checkout process.
-      
-      When extending the end date of an expired promotion with over 1000 codes, you will receive an error response. In such cases, we recommend duplicating the promotion, allowing you to set the new end dates and create promotion codes as needed.
+    
+      When extending the end date of an expired promotion with over 1000 codes, you will receive an error response. See [Update a Promotion](/docs/api/promotions/update-a-promotion). In such cases, we recommend [duplicating the promotion](/docs/commerce-manager/promotions-standard/overview#duplicating-promotions), allowing you to set the new end dates and create promotion codes as needed.
