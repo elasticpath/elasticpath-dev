@@ -34,8 +34,8 @@ To match all values for a field, set the field to an asterisk (`*`). When a fiel
       
 Here are some examples.
 
-- `* 0 1 1 1`: the job runs every minute of the midnight hour on January 1st and Mondays.
-- `* * * * *`: the job runs every minute (of every hour, of every day of the month, of every month, every day of the week, because each of these is unrestricted).
+- `30 0 * * *`: the job runs every day at 12:30am.
+- `0 16 * * 1`: the job runs once a week at 4pm on a Monday.
 
 ### Matching a range
       
