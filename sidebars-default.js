@@ -226,7 +226,7 @@ const sidebarsDefault = {
   pxm: [
     {
       type: "category",
-      label: "Product Information Manager",
+      label: "Product Experience Manager",
       link: {
         type: "generated-index",
         title: "Product Information Manager API",
