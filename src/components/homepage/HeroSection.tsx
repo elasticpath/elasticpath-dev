@@ -1,35 +1,52 @@
-import React from 'react';
-import Link from '@docusaurus/Link';
-import ThemedImage from '@theme/ThemedImage';
-
+import React from "react";
+import {
+  CharlotteTilbury,
+  Pokemon,
+  Remarkable,
+  SerenaLily,
+  United,
+} from "./HeroBrandLogos";
 export default function HeroSection() {
   return (
-      <>
-        <section className="no-underline-links">
-          <div className="flex flex-col items-center justify-between py-14 sm:px-14 text-white">
-            <h2 className="mb-4 lg:text-8xl sm:text-7xl text-center text-white pt-40">
-              Enterprise-ready commerce
-            </h2>
-            <p className="max-w-6xl text-center text-2xl pt-8">
-              Launch faster, solve complex problems, and build world-class experiences with our suite of interconnected <b><a href="#" className="underline decoration-primary-100 decoration-4 font-extrabold underline-offset-8 text-white">e-Commerce
-              Apps</a></b>, <b><a href="/api" className="underline decoration-primary-100 decoration-4 font-extrabold underline-offset-8 text-white">
-                    APIs
-              </a></b> & <b>
-                <a href="/docs/developer-tools" className="underline decoration-primary-100 decoration-4 font-extrabold underline-offset-8 text-white">tools
-              for developers</a></b>.
-            </p>
-            <div className="pt-10">
-              <ThemedImage
-                  sources={{
-                    light: '/icons/homepage/downarrow.svg',
-                    dark: '/icons/homepage/downarrow.svg',
-                  }}
-                  alt="View More"
-                  loading="lazy"
-              />
-            </div>
-          </div>
-        </section>
-      </>
+    <section className="px-4 py-44 text-center leading-tight tracking-tight">
+      <div className="flex flex-col items-center justify-between dark:text-white/90">
+        <h1 className="mb-4 text-[6.5rem] font-bold">
+          Enterprise-ready commerce
+        </h1>
+        <p className="text-[1.75rem] font-light max-w-5xl text-center">
+          Launch faster, solve complex problems, and build world-class
+          experiences with our suite of interconnected{" "}
+          <a
+            href=""
+            className="dark:text-white/90 text-black font-bold decoration-2 underline decoration-green-500"
+          >
+            e-Commerce Apps
+          </a>
+          ,{" "}
+          <a
+            href=""
+            className="dark:text-white/90 text-black font-bold decoration-2 underline decoration-green-500"
+          >
+            APIs{" "}
+          </a>
+          , &{" "}
+          <a
+            href=""
+            className="dark:text-white/90 text-black font-bold decoration-2 underline decoration-green-500"
+          >
+            tools for developers
+          </a>
+          .
+        </p>
+        <p className="mt-8">Trusted by these leading brands...</p>
+        <div className="flex items-center justify-center gap-12">
+          <SerenaLily />
+          <United />
+          <Pokemon />
+          <Remarkable />
+          <CharlotteTilbury />
+        </div>
+      </div>
+    </section>
   );
 }
