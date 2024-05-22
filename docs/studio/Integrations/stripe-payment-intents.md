@@ -14,7 +14,7 @@ You can quickly and easily integrate Studio with Stripe. Once configured, you ca
 
 1. Depending on the payment methods you want to support, you may need to configure them in Stripe.
 2. Log in to the [Stripe Dashboard](https://dashboard.stripe.com/login) to find your Stripe Secret Key.
-3. Go to Commerce Manager to ensure the **Stripe Payment Intents** gateway is [enabled](/docs/commerce-cloud/payments/payment-gateway-cm/configure-other-payment-gateways#enabling-stripe-payment-intents).
+3. Go to Commerce Manager to ensure the **Stripe Payment Intents** gateway is [enabled](/docs/carts-orders/payments/payment-gateway-cm/configure-other-payment-gateways#enabling-stripe-payment-intents).
 
 ## Configure the Stripe Integration
 

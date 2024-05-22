@@ -35,7 +35,7 @@ The component has the following actions.
 
 | Input | Type | Description |
 |:--- |:--- | :--- |
-| **Event Type**  | `string` | The EPCC Event Type. See [Observable Events](/docs/commerce-cloud/integrations/observable-events). | 
+| **Event Type**  | `string` | The EPCC Event Type. See [Observable Events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events). | 
 | **Sendgrid Event-Mapping** | `string` | Mapping of information between Commerce Manager and Postmark is done through a combination of event names and JSON values. See [Configuring Event-Mapping Configurations](/docs/composer/integration-hub/marketing-communication/sendgrid#configuring-event-mapping). | 
 | **Event Map Results**  | `string` | The event map results | 
 | **Sendgrid API Key**  | `string` | The API Key for your SendGrid account. | 

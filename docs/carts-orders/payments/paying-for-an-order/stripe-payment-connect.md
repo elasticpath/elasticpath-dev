@@ -231,7 +231,7 @@ The `x` values in the `"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"` are replace
 https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/:transactionId/capture
 ```
 
-Use this endpoint to capture a transaction initiated by the shopper. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
+Use this endpoint to capture a transaction initiated by the shopper. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/carts-orders/payments/paying-for-an-order/overview#capture) section.
 
 ### Parameters
 

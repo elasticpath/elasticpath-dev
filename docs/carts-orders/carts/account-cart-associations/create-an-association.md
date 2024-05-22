@@ -20,7 +20,7 @@ Creates an association between a cart (`:cart_id`) and an account.
 
 | Name     | Required | Type     | Description                                                                                                                                   |
 | -------- | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cartId` | Required | `string` | The ID for the cart created by the account. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/api-overview/safe-characters). |
+| `cartId` | Required | `string` | The ID for the cart created by the account. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/safe-characters). |
 
 ### Headers
 

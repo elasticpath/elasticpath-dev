@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You can retrieve the carts that are associated with an account.
 
-When a shopper retrieves their latest carts, the carts are sorted in descending order based on the `updated_date`. For more information, see [Pagination](/guides/Getting-Started/api-overview/pagination).
+When a shopper retrieves their latest carts, the carts are sorted in descending order based on the `updated_date`. For more information, see [Pagination](/guides/Getting-Started/pagination).
 
 ## `GET` Get Carts for an Account with an Account Management Authentication Token
 

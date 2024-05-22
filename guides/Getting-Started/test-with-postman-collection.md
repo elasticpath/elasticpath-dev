@@ -38,7 +38,7 @@ Use the Postman collection to run and explore Commerce APIs. The collection incl
     - `client_id`
     - `client_secret`
 
-1. The Postman collection contains the following environment variables. Elastic Path supports multiple regions and each region has a unique hostname and base URL for API requests. Each Commerce store is assigned to a specific region, so all API requests related to the store must be made to the `API base URL` for its assigned region. You may need to change the Postman collection environment variables depending on your [regional URL](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls). 
+1. The Postman collection contains the following environment variables. Elastic Path supports multiple regions and each region has a unique hostname and base URL for API requests. Each Commerce store is assigned to a specific region, so all API requests related to the store must be made to the `API base URL` for its assigned region. You may need to change the Postman collection environment variables depending on your [regional URL](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls). 
 
     | Environment Variable | Description                                | Initial Value                           | Current Value                                                                                                                                                                              |
     | :--- |:-------------------------------------------|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

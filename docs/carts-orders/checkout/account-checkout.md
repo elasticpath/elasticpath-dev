@@ -4,7 +4,7 @@ nav_label: Account Checkout API
 sidebar_position: 30
 ---
 
-When a [Cart](/docs/carts-orders/carts/carts.md) is ready for checkout, you can convert the cart to an [order](/docs/commerce-cloud/orders/orders-api/orders-api-overview). The cart remains and can be modified and checked out again if required.
+When a [Cart](/docs/carts-orders/carts/carts.md) is ready for checkout, you can convert the cart to an [order](/docs/carts-orders/orders/orders-api/orders-api-overview). The cart remains and can be modified and checked out again if required.
 
 After a successful checkout, a response that contains the order is returned.
 

@@ -323,7 +323,7 @@ curl -X PUT https://useast.api.elasticpath.com/pcm/products/60afe403-a191-455e-b
 
 You can allow your shoppers to add custom text to a product when checking out their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. You can do this using the `custom_inputs` attribute when [creating your products](/docs/pxm/products/ep-pxm-products-api/create-a-product).
 
-Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
+Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](/docs/carts-orders/carts/cart-items/add-product-to-cart).
 
 For example, a birthday card may have custom inputs for name and message defined for a product.
 

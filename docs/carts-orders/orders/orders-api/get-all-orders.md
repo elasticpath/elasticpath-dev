@@ -10,7 +10,7 @@ sidebar_position: 2
 https://useast.api.elasticpath.com/v2/orders
 ```
 
-The `Get all orders` request returns all orders with custom flow fields. The pagination offset is set to fetch a maximum of 10,000 orders. If the store has 10,000 orders and you fetch the orders without using filters, an error is returned. Use a filter to view orders when the order is beyond the 10,000 mark. For more information on filtering, see [Filtering](/docs/commerce-cloud/orders/orders-api/orders-api-overview#filtering).
+The `Get all orders` request returns all orders with custom flow fields. The pagination offset is set to fetch a maximum of 10,000 orders. If the store has 10,000 orders and you fetch the orders without using filters, an error is returned. Use a filter to view orders when the order is beyond the 10,000 mark. For more information on filtering, see [Filtering](/docs/carts-orders/orders/orders-api/orders-api-overview#filtering).
 
 ## Parameters
 
@@ -34,7 +34,7 @@ The `Get all orders` request returns all orders with custom flow fields. The pag
 
 ### Filtering 
 
-The following operators and attributes are available for [filtering](/guides/Getting-Started/api-overview/filtering) orders.
+The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) orders.
 
 | Attribute | Type | Operator | Example |
 | :--- | :--- | :--- | :--- |
@@ -63,9 +63,9 @@ The following operators and attributes are available for [filtering](/guides/Get
 
 :::note
 
-- Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-managment-api/customer-tokens).
+- Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-management-api/customer-tokens).
 - Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/docs/authentication/Tokens/account-management-authentication-token).
-- You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
+- You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
 
 :::
 

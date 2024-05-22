@@ -28,12 +28,12 @@ https://useast.api.elasticpath.com/v2/customers
 | `sort`   | Optional | `string` | Specifies the attribute to sort by. Supported attributes are `created_at`,`email`,`id`,`name`,`updated_at`. By default, sort order is ascending. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default value is `created_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/api-overview/sorting). |
 
 :::note
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
 :::
 
 ## Filtering
 
-The following table describes the supported operator and attributes when [filtering](/guides/Getting-Started/api-overview/filtering) customers.
+The following table describes the supported operator and attributes when [filtering](/guides/Getting-Started/filtering) customers.
 
 {% table %}
 * Attribute

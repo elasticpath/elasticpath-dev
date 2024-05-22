@@ -29,7 +29,7 @@ export default function HelpSection({ className = '' }) {
                   className="text-primary dark:text-primary-100"
               >
                 <button
-                    className="bg-primary text-white border-0 font-semibold hover:text-black py-3 px-4 cursor-pointer rounded"> Get
+                    className="bg-primary text-white border-0 font-semibold hover:text-black py-3 px-4 cursor-pointer rounded-full"> Get
                   Started &rarr;</button>
               </Link>
             </div>
@@ -44,7 +44,7 @@ export default function HelpSection({ className = '' }) {
                   className="text-primary dark:text-primary-100"
               >
                 <button
-                    className="bg-primary text-white border-0 font-semibold hover:text-black py-3 px-4 cursor-pointer rounded">Contact
+                    className="bg-primary text-white border-0 font-semibold hover:text-black py-3 px-4 cursor-pointer rounded-full">Contact
                   Us &rarr;</button>
               </Link>
             </div>

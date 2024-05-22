@@ -34,8 +34,8 @@ You can see the parent nodes a product is associated within the `bread_crumbs` a
 | Name           | Required | Type      | Description                                                                                                                                                                                                                                  |
 |:---------------|:---------|:----------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `filter` | Optional | `string` | Specifies the filter attributes. For more information, see [Filtering](#filtering).                                                                                                                                                          |
-| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting-Started/api-overview/pagination).                                                                                                                                              |
-| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting-Started/api-overview/pagination).                                                                                                                              |
+| `page[limit]`  | Optional | `integer` | The number of records per page. See [Pagination](/guides/Getting-Started/pagination).                                                                                                                                              |
+| `page[offset]` | Optional | `integer` | The number of records to offset the results by. See [Pagination](/guides/Getting-Started/pagination).                                                                                                                              |
 | `include`      | Optional | `string`  | If set to  `component_products` returns top-level resources such as files or main image, and key attribute data, such as SKU or slug, to return for component products in a product bundle. See [Including resources](#including-resources). |
 
 ## Filtering
@@ -47,7 +47,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`      | `filter=eq(name,some-name)` |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one.                                               | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=in(id,some-id)` |
 
-For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/filtering).
 
 ### Building breadcrumbs in a storefront
 

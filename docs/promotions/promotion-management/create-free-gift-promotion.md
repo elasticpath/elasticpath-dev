@@ -11,7 +11,7 @@ https://useast.api.elasticpath.com/v2/promotions/
 ```
 
 :::note
-- Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.
+- Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/api/settings/settings-introduction#calculation-method) section.
 Hierarchy-based promotions are not supported for free gift promotion.
 - We recommend using `auto_add_free_gift` featrure with `automatic` setting enabled. When `automatic` is set to `true`, it indicates that promotions are added automatically, and discounts are applied accordingly. If you enable the `auto_add_free_gift`, but do not enable the `automatic` setting, gift items will be added without discounts. In this case, shoppers need to apply coupon codes twice, first to add the gift item and then to apply the discount.
 :::

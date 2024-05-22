@@ -14,8 +14,8 @@ Use this endpoint to create a cart shipping group. Once you have created a cart 
 
 Use any one of the following endpoints to associate the cart shipping group to the cart item:
 
-- [Add custom items to cart](/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart#request-example-add-item-with-shipping-group)
-- [Update cart item](/docs/commerce-cloud/carts/cart-items/update-cart-item#request-example-update-cart-item-with-shipping-group-id)
+- [Add custom items to cart](/docs/carts-orders/carts/cart-items/add-custom-item-to-cart#request-example-add-item-with-shipping-group)
+- [Update cart item](/docs/carts-orders/carts/cart-items/update-cart-item#request-example-update-cart-item-with-shipping-group-id)
 
 :::note
 - Ensure that the currency of the cart matches with the currency of the cart shipping group. For example, when creating the cart shipping group, the currency must be in USD if the cart currency is in USD.

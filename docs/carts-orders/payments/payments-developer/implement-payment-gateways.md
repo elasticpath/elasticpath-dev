@@ -7,7 +7,7 @@ sidebar_position: 1
 Payment gateways provide access to external payment provider services. Integrate a natively-supported third-party payment gateway with your store by using the `/gateways/[gateway]` endpoint.
 
 :::caution
-Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
+Configure your store to use [Manual Gateway](/docs/carts-orders/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
 :::
 
 ## Prerequisites
@@ -15,7 +15,7 @@ Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/payin
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token)
 - Configured products and gateway using Commerce Manager or API.
 - Third-party gateway account (typically to generate the API Keys)
 

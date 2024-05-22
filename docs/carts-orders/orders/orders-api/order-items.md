@@ -20,7 +20,7 @@ sidebar_position: 1.5
 | `links`                | [`object`](#the-links-object)                | A collection of URLs related to this resource. |
 | `components`           | [`object`](#the-components-object)           | The bundle name, id, type, and quantity. |
 | `bundle_configuration` | [`object`](#the-bundle_configuration-object) | The list of all the `selected_options`. |
-| `meta`                 | [`object`](#the-meta-object)                 | Additional information [calculated](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) for this order. |
+| `meta`                 | [`object`](#the-meta-object)                 | Additional information [calculated](/docs/api/settings/settings-introduction#calculation-method) for this order. |
 | `relationships`        | [`object`](#the-relationships-object)        | The relationships object. |
 | `catalog_source`       | `string`                                     | The catalog source. Always `pim` or `legacy`. |
 | `catalog_id`           | `string`                                     | The unique identifier of the catalog associated with the product is shown if `catalog_source=pim` is set. |

@@ -391,7 +391,7 @@ To view all child products associated with a base product, make the following re
          -H "Content-Type: application/json" \
 ```
 
- You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/pagination) section.
+ You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) section.
 
 ## Adding a Child Product to the Cart Using API
 

@@ -7,7 +7,7 @@ sidebar_position: 1
 A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout](/docs/carts-orders/checkout) endpoint to convert the cart to an order.
 
 :::note
-Adding, modifying, or removing any cart items, custom items, or promotions always returns the cart meta, calculated using the [calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method). **This is useful to update the client with up-to-date totals.**
+Adding, modifying, or removing any cart items, custom items, or promotions always returns the cart meta, calculated using the [calculation method](/docs/api/settings/settings-introduction#calculation-method). **This is useful to update the client with up-to-date totals.**
 :::
 
 :::caution
@@ -29,7 +29,7 @@ If you do not pass a `X-MOLTIN-CURRENCY` header specifying what currency you wou
 | `name` | `string` | The name of this item. |
 | `description` | `string` | A description of the cart item. |
 | `links` | [`object`](#the-cart-links-object) | The links object. |
-| `meta` | [`object`](#the-cart-meta-object) | Additional information [calculated](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) for this cart. |
+| `meta` | [`object`](#the-cart-meta-object) | Additional information [calculated](/docs/api/settings/settings-introduction#calculation-method) for this cart. |
 
 ### Sample Object
 
@@ -95,7 +95,7 @@ If you do not pass a `X-MOLTIN-CURRENCY` header specifying what currency you wou
 
 ## The Cart `meta` object
 
-The `meta` object includes the [calculated](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) card totals.
+The `meta` object includes the [calculated](/docs/api/settings/settings-introduction#calculation-method) card totals.
 
 | Attribute | Type | Description |
 | :--- | :--- | :--- |

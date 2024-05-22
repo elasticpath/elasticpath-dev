@@ -125,7 +125,7 @@ const PRODUCTS = [
   {
     title: 'Settings',
     beta: false,
-    link: '/docs/api/settings/settings',
+    link: '/docs/api/settings/settings-introduction',
     icon: SettingsRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',

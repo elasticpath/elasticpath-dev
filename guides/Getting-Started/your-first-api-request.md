@@ -15,13 +15,13 @@ We start with authentication and then walk you through a basic checkout process:
 
 ## Lesson 1: Authenticate
 
-Requests to Composable Commerce require an `Authorization` header containing your `Bearer` token. There are two token types; `implicit` and `client_credentials`. See [Authentication](/docs/authentication/overview) for more details.
+Requests to Composable Commerce require an `Authorization` header containing your `Bearer` token. There are two token types; `implicit` and `client_credentials`. See [Authentication](/docs/authentication) for more details.
 
 This guide uses the implicit grant type. This grant type can be thought of as read only and most commonly used client side.
 
 ### Get your API keys
 
-To get your application keys, see [Application Keys](/docs/authentication/application-keys/application-keys-cm). Make a a copy of your `client_id`.
+To get your application keys, see [Application Keys](/docs/commerce-manager/application-keys/application-keys-cm). Make a a copy of your `client_id`.
 
 ### Get an access token
 
@@ -290,7 +290,7 @@ In the preceding Order object, we received a few values that make paying for an 
  | `status` | This is either **`complete`** or **`incomplete`**. Useless when grouping orders in your own UI to your customers when theyʼre logged in. |
  | `payment` | An order is immediately unpaid, but after you move onto paying for an order, this can be: **`authorized`**, **`paid`** or **`refunded`**. |
  | `shipping` | This is either **`fulfilled`** or **`unfulfilled`**. |
- | `meta` | This object contains useful metadata for your order including a formatted [order total](/guides/How%20To/Carts/calculate-totals) for your cart, along with when the cart was created. |
+ | `meta` | This object contains useful metadata for your order including a formatted [order total](/guides/How-To/Carts/calculate-totals) for your cart, along with when the cart was created. |
  | `relationships` | This object contains the IDs for related objects, including the [Order Items](/docs/carts-orders/orders/orders-api/order-items) and the [Customer](/docs/customer-management/customer-managment-api/customer-management-api-overview), if you provided one during Checkout. |
 
 ### Clean up the cart

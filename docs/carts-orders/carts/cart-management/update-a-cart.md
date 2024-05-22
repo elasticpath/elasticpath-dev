@@ -14,7 +14,7 @@ Updates cart properties for the specified `cartID`.
 
 Using this endpoint, you can:
 
-- Specify custom discounts for the cart. To enable custom discounts, set the `discount_settings.custom_discounts_enabled` field to `true`. By default, this setting is determined by the [cart settings](/docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings) configured for the store. 
+- Specify custom discounts for the cart. To enable custom discounts, set the `discount_settings.custom_discounts_enabled` field to `true`. By default, this setting is determined by the [cart settings](/docs/carts-orders/carts/cart-management/cart-settings/update-cart-settings) configured for the store. 
 - Set the `discount_settings_use_rule_promotions` field to `true` to update a specific cart to use rule promotions.
 
 :::caution
@@ -40,9 +40,9 @@ Using this endpoint, you can:
 
 | Name   | Required | Type     | Description |
 |:--------------|:---------|:---------|:--------- |
-| `name`        | Optional | `string` | The cart name supplied by the shopper. A cart name must contain between 1 and 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see [Safe Characters](/guides/Getting-Started/api-overview/safe-characters). |
+| `name`        | Optional | `string` | The cart name supplied by the shopper. A cart name must contain between 1 and 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see [Safe Characters](/guides/Getting-Started/safe-characters). |
 | `description` | Optional | `string` | The cart description. |
-| `discount_settings.custom_discounts_enabled` | Optional | `boolean` | This parameter enables custom discounts for a cart. When set to `true`, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](/docs/commerce-cloud/carts/cart-management/cart-settings/update-cart-settings). |
+| `discount_settings.custom_discounts_enabled` | Optional | `boolean` | This parameter enables custom discounts for a cart. When set to `true`, Elastic Path promotions will not be applied to the new carts. Default is set from cart discount settings for the store. See [Cart Settings](/docs/carts-orders/carts/cart-management/cart-settings/update-cart-settings). |
 | `discount_settings_use_rule_promotions` | Optional | `boolean` | When set to `true`, this parameter allows the cart to use rule promotions. | 
 | `snapshot_date` | Optional | `string` | This optional parameter sets a reference date for the cart. If this parameter is set, it allows the cart to act as one that might occur on that specified date. For example, such future carts might acquire future-enabled discounts, allowing users to test and validate future interactions with carts. The `snapshot_date` must be in the format `2026-02-21T15:07:25Z`. By default, this parameter is left empty. |
 

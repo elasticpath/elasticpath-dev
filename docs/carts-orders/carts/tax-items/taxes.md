@@ -11,7 +11,7 @@ Taxes are calculated after all promotional discounts have been applied. When cal
 - **Simple calculation method**: Taxes are calculated at the unit level and are rounded to the nearest penny *for the unit*.
 - **Line calculation method**: Default. Taxes are calculated at the line level and are rounded to the nearest penny *for the line*.
 
-For more information about calculation methods, see [Calculate cart and order totals](/guides/How%20To/Carts/calculate-totals).
+For more information about calculation methods, see [Calculate cart and order totals](/guides/How-To/Carts/calculate-totals).
 
 ## Related Resources
 

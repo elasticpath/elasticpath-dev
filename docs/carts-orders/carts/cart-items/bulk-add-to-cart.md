@@ -32,9 +32,9 @@ An example for bulk add is:
 
 With the bulk add items to cart capability, you can use one or more of the following cart actions in a transaction:
 
-- [Add Product to Cart](/docs/commerce-cloud/carts/cart-items/add-product-to-cart)
-- [Add Custom Item to Cart](/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart)
-- [Add Promotion to Cart](/docs/commerce-cloud/carts/cart-items/add-promotion-to-cart)
+- [Add Product to Cart](/docs/carts-orders/carts/cart-items/add-product-to-cart)
+- [Add Custom Item to Cart](/docs/carts-orders/carts/cart-items/add-custom-item-to-cart)
+- [Add Promotion to Cart](/docs/carts-orders/carts/cart-items/add-promotion-to-cart)
 
 :::caution
 The request body depends on the type of items that you want to add, such as promotion, custom or product.
@@ -60,7 +60,7 @@ Your dynamic bundles are displayed in your published catalogs. Shoppers make the
          }
 ```
 
-When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/commerce-cloud/orders/orders-api/order-items).
+When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/carts-orders/orders/orders-api/order-items).
 
 ## Personalized Products
 

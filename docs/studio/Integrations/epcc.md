@@ -14,7 +14,7 @@ sidebar_position: 111
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
     - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
     - [Catalog rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules)
-- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/commerce-cloud/payments/payment-gateway-cm/payments-powered-by-stripe) in Commerce Manager.
+- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/carts-orders/payments/payment-gateway-cm/payments-powered-by-stripe) in Commerce Manager.
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) or Advanced Commerce (GrapheneHC) integration if you want to enable search indexing in your Studio storefront.
 
 ## Configuring **Elastic Path** Integration
@@ -22,7 +22,7 @@ sidebar_position: 111
 The following steps describe how to configure an integration between Studio and Elastic Path Composable Commerce.
 
 1. Log into Commerce Manager.
-1. Go to **SYSTEM** > **Application keys** to create your new API keys. Make a note of the API keys as you will need them to configure the **Elastic Path** integration in Studio. See [Application keys](/docs/authentication/application-keys/application-keys-cm).
+1. Go to **SYSTEM** > **Application keys** to create your new API keys. Make a note of the API keys as you will need them to configure the **Elastic Path** integration in Studio. See [Application keys](/docs/commerce-manager/application-keys/application-keys-cm).
 1. Log into Studio.
 1. Go to **Settings** > **Integrations**.
 1. Navigate to **Payment & Storefront**.

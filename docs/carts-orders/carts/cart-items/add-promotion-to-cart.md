@@ -4,7 +4,7 @@ nav_label: Add Promotion to Cart
 sidebar_position: 4
 ---
 
-You can use the promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview). A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
+You can use the promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of [cart items](/docs/carts-orders/carts/cart-items/cart-items-overview). A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
 
 When you add products to a cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
 
@@ -12,7 +12,7 @@ When you add products to a cart with `custom_inputs`, there are certain limitati
 - For [Fixed Bundle Discount Promotions](/docs/promotions/promotion-management/create-fixed-bundle-discount-promotion), the promotion applies as long as the cart contains the bundle SKUs even when there are different `custom_inputs`.
 - For [X for Y Discount Promotion](/docs/promotions/promotion-management/create-X-for-Y-discount-promotion) and [X for amount discount promotion](/docs/promotions/promotion-management/create-X-for-amount-discount-promotion), the promotion applies when there are two SKUs with the same `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
 
-To remove promotion from the cart via the promotion code, see [Remove Promotion Code from Cart](/docs/commerce-cloud/carts/cart-items/remove-promotion-code-from-cart).
+To remove promotion from the cart via the promotion code, see [Remove Promotion Code from Cart](/docs/carts-orders/carts/cart-items/remove-promotion-code-from-cart).
 
 ## `POST` Add Promotion to Cart
 

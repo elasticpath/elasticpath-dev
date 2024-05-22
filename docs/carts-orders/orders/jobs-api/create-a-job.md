@@ -4,7 +4,7 @@ nav_label: Create a Job
 nav-position: 40
 ---
 
-Currently, you can invoke the jobs service to [export orders](/docs/commerce-cloud/orders/orders-api/export-orders).
+Currently, you can invoke the jobs service to [export orders](/docs/carts-orders/orders/orders-api/export-orders).
 
 Jobs automatically expire one week after creation. You must fetch the exported data before the jobs expire.
 
@@ -32,7 +32,7 @@ https://useast.api.elasticpath.com/v2/jobs
 
 | Name       | Required | Type     | Description                               |
 |:-----------|:---------|:---------|:------------------------------------------|
-| `filter`   | Required | `string` | The same filter that you use when getting all orders. For more information, see the [Filtering orders](/docs/commerce-cloud/orders/orders-api/orders-api-overview#filtering) section. |
+| `filter`   | Required | `string` | The same filter that you use when getting all orders. For more information, see the [Filtering orders](/docs/carts-orders/orders/orders-api/orders-api-overview#filtering) section. |
 | `job_type` | Required | `string` | The type of task you want to run, e.g., `order_export`. |
 | `type`     | Optional | `string` | Must be set to `job`.                     |
 

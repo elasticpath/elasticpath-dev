@@ -235,7 +235,7 @@ curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/
 https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/:transactionId/capture
 ```
 
-Use this endpoint to capture a transaction initiated by the shopper. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
+Use this endpoint to capture a transaction initiated by the shopper. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/carts-orders/payments/paying-for-an-order/overview#capture) section.
 
 ### Path parameters
 
@@ -406,6 +406,6 @@ curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/
 
 ## Related Resources
 
-- [Implement PayPal Express Checkout](/docs/carts-orders/paymentsayments-developer/implement-paypal-express-checkout.md)
+- [Implement PayPal Express Checkout](/docs/carts-orders/payments/payments-developer/implement-paypal-express-checkout.md)
 - [Checkout workflow](/docs/carts-orders/checkout/checkout.md)
 - [Carts API](/docs/carts-orders/carts/carts.md)

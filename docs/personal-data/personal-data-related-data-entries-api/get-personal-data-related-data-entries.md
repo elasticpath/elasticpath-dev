@@ -35,7 +35,7 @@ https://useast.api.elasticpath.com/v2/personal-data/related-data-entries
 | `filter` | Required | `string` | Filter attributes. For more information, see the [Filtering](/docs/commerce-cloud/personal-data/personal-data-logs-api/personal-data-logs-api-overview#filtering) section. |
 
 :::note
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
 :::
 
 ## Request Examples

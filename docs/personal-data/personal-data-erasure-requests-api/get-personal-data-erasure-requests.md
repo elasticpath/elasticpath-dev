@@ -38,7 +38,7 @@ https://useast.api.elasticpath.com/v2/personal-data/logs
 
 :::note
 
-You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
+You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
 
 :::
 

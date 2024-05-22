@@ -8,11 +8,11 @@ A cart contains a list of the products that a shopper adds to the cart while bro
 
 A cart item identifies the product, the product price, the quantity selected, and the total price for the quantity selected. The cart displays a running total of the cost for the selected products plus the calculated tax.
 
-You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
+You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](/docs/carts-orders/carts/cart-items/add-product-to-cart).
 
 After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
 
-The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/commerce-cloud/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
+The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/carts-orders/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
 
 The following diagram shows a typical cart workflow:
 

@@ -22,7 +22,7 @@ Use attributes to define the characteristics of products in a store. For example
 
 You can allow your shoppers to add custom text to a product when checking out their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. You can do this using the `custom_inputs` attribute when [creating your products](/docs/pxm/products/ep-pxm-products-api/create-a-product).
 
-Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
+Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](/docs/carts-orders/carts/cart-items/add-product-to-cart).
 
 For more information about adding attributes, see [Add custom data to products](/docs/pxm/products/extending-pxm-products/add-custom-data-to-pxm-products).
 

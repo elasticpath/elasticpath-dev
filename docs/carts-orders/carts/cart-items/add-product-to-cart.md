@@ -4,7 +4,7 @@ nav_label: Add Product to Cart
 sidebar_position: 2
 ---
 
-Adding a Product to Cart is the most common Cart action. If you want to add any [custom products](/docs/commerce-cloud/carts/cart-items/add-custom-item-to-cart) or [promotions](/docs/commerce-cloud/carts/cart-items/add-promotion-to-cart), you need to do that as a separate action.
+Adding a Product to Cart is the most common Cart action. If you want to add any [custom products](/docs/carts-orders/carts/cart-items/add-custom-item-to-cart) or [promotions](/docs/carts-orders/carts/cart-items/add-promotion-to-cart), you need to do that as a separate action.
 
 ## Dynamic Bundles
 
@@ -26,7 +26,7 @@ Your dynamic bundles are displayed in your published catalogs. Shoppers make the
          }
 ```
 
-When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/commerce-cloud/orders/orders-api/order-items).
+When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/carts-orders/orders/orders-api/order-items).
 
 ## Personalized Products
 
@@ -91,7 +91,7 @@ When the product is added to the cart, those custom inputs are supplied.
 
 If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/carts-orders/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order).
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/carts-orders/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/carts-orders/orders/orders-api/get-an-order).
 
 When you add products to a cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
 

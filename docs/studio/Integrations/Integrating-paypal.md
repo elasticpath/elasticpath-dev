@@ -8,7 +8,7 @@ You can quickly and easily integrate Studio with PayPal. Once configured, you ha
 
 ## Prerequisites
 
-- Ensure that you have configured [Manual gateway](/docs/commerce-cloud/payments/payment-gateway-cm/configure-other-payment-gateways#enabling-manual-gateway) in Commerce Manager.
+- Ensure that you have configured [Manual gateway](/docs/carts-orders/payments/payment-gateway-cm/configure-other-payment-gateways#enabling-manual-gateway) in Commerce Manager.
 - Ensure that you have a [PayPal developer account](https://developer.paypal.com).
 
 ## Configure the PayPal Integration

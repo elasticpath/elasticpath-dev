@@ -47,8 +47,8 @@ The response lists the products associated with the nodes. If products are [cura
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/pagination). |
 
 ## Filtering
 
@@ -59,7 +59,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `tags`, you can specify more than one. | `name`, `slug`, `tags` | `filter=eq(name,some-name)` |
 | `in`      | Checks if the values are included in the specified string. If they are, the condition is true. For `tags`, you can specify more than one.                                                   | `Id`, `tags`          | `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
 
-For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/filtering).
 
 ### Building breadcrumbs in a storefront
 

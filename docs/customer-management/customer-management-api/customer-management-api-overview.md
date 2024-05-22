@@ -8,9 +8,9 @@ Use the Customer API to manage customer details, addresses, and other informatio
 
 The Customer API allows you to generate JSON Web Tokens inside your client-side applications to authenticate requests to get all customer orders.
 
-- [Customer tokens](/docs/customer-management/customer-managment-api/customer-tokens)
+- [Customer tokens](/docs/customer-management/customer-management-api/customer-tokens)
 
-You are able to use a [customer](/docs/customer-management/customer-managment-api/customer-tokens) token with an [implicit](/docs/authentication/Tokens/implicit-token#post-create-an-implicit-token) Bearer token.  This is recommended for client-side interactions. Alternatively, you can use a [client_credentials](/docs/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) Bearer token. This is recommended for back-end interactions.
+You are able to use a [customer](/docs/customer-management/customer-management-api/customer-tokens) token with an [implicit](/docs/authentication/Tokens/implicit-token#post-create-an-implicit-token) Bearer token.  This is recommended for client-side interactions. Alternatively, you can use a [client_credentials](/docs/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) Bearer token. This is recommended for back-end interactions.
 
 ## The `Customer` Object
 

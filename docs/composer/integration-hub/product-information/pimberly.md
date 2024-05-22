@@ -9,7 +9,7 @@ You can quickly and easily integrate Commerce with Pimberly using the **Integrat
 You can also migrate your catalog data related information to Commerce as this integration can load all the data from Pimberly.
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting your Setup Information
@@ -26,7 +26,7 @@ Collect the following setup information from Pimberly.
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/docs/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
+To create a new [application key](/docs/commerce-manager/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|

@@ -20,7 +20,7 @@ A payment transaction can also be refunded. You can select which way you want to
 - **Refund through Composable Commerce**: Start a full or partial refund to a supported payment provider directly from Commerce Manager or the API. You still have the ability to mark as refunded for a pre-integrated gateway, such as Stripe.
 
 :::caution
-Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
+Configure your store to use [Manual Gateway](/docs/carts-orders/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
 :::
 
 ## Order Status Workflow
@@ -32,11 +32,11 @@ The following image shows the workflow of the order status when you checkout a c
 ### Summary of the workflow
 
 1. [Checkout](/docs/commerce-cloud/checkout) a cart. When you checkout a cart, an unpaid order is returned.
-1. [Paying for an order](/docs/commerce-cloud/payments/paying-for-an-order/overview). You can process the payment for an order through a payment gateway. You can pay for an order either using `purchase` payment method or `authorize` payment method.
-1. Confirm the order. Order confirmation might be required when you purchase or authorize a transaction. If you use a `purchase` method, the order is immediately confirmed. If you use `authorize` method, funds are captured later when an item is dispatched or restocked, and then the order is considered as complete. See [Capture a Transaction](/docs/commerce-cloud/payments/transactions/capture-a-transaction).
-1. [Fulfill](/docs/commerce-cloud/orders/orders-api/update-an-order#put-fulfill-an-order-by-id), [Refund](/docs/commerce-cloud/payments/transactions/refund-a-transaction) or [Cancel](/docs/commerce-cloud/orders/orders-api/update-an-order#put-cancel-an-order-by-id) the paid order. The order is considered as fulfilled when it is shipped. You can cancel the order after the checkout or if the order is not fulfilled. You can also choose to refund a partial payment or full payment.
-1. (Optional) [Cancel a transaction](/docs/commerce-cloud/payments/transactions/cancel-a-transaction#post-cancel-a-transaction). You can cancel or void a `pending` or `authorized` transaction. The transaction can be canceled or voided when it is in `pending` and `completed` statuses. This works only for Stripe and PayPal and does not work for manual gateway.
-1. (Optional) [Anonymize an order](/docs/commerce-cloud/orders/orders-cm#anonymizing-orders). You can anonymize an order when it is fulfilled, canceled, or fully refunded.
+1. [Paying for an order](/docs/carts-orders/payments/paying-for-an-order/overview). You can process the payment for an order through a payment gateway. You can pay for an order either using `purchase` payment method or `authorize` payment method.
+1. Confirm the order. Order confirmation might be required when you purchase or authorize a transaction. If you use a `purchase` method, the order is immediately confirmed. If you use `authorize` method, funds are captured later when an item is dispatched or restocked, and then the order is considered as complete. See [Capture a Transaction](/docs/carts-orders/payments/transactions/capture-a-transaction).
+1. [Fulfill](/docs/carts-orders/orders/orders-api/update-an-order#put-fulfill-an-order-by-id), [Refund](/docs/carts-orders/payments/transactions/refund-a-transaction) or [Cancel](/docs/carts-orders/orders/orders-api/update-an-order#put-cancel-an-order-by-id) the paid order. The order is considered as fulfilled when it is shipped. You can cancel the order after the checkout or if the order is not fulfilled. You can also choose to refund a partial payment or full payment.
+1. (Optional) [Cancel a transaction](/docs/carts-orders/payments/transactions/cancel-a-transaction#post-cancel-a-transaction). You can cancel or void a `pending` or `authorized` transaction. The transaction can be canceled or voided when it is in `pending` and `completed` statuses. This works only for Stripe and PayPal and does not work for manual gateway.
+1. (Optional) [Anonymize an order](/docs/carts-orders/orders/orders-cm#anonymizing-orders). You can anonymize an order when it is fulfilled, canceled, or fully refunded.
 
 ## Split Payments
 
@@ -51,7 +51,7 @@ Transactions for split payments are processed similarly for all gateways:
 5. Another transaction for the remaining amount is forwarded to the payment gateway specified by the customer.
 6. The payment is processed, paid, and complete. The payment status must show **paid** after the order is completed.
 
-You can refund transactions for split payments. For more information about refund, see [Refund a Payment](/docs/commerce-cloud/payments/transactions/refund-a-transaction).
+You can refund transactions for split payments. For more information about refund, see [Refund a Payment](/docs/carts-orders/payments/transactions/refund-a-transaction).
 
 The following scenarios show how a shopper can use multiple sources for split payment:
 
@@ -79,4 +79,4 @@ The following table describes the payment and order statuses that you can see wh
 ## Related Resources
 
 - [Orders](/docs/carts-orders/orders)
-- [Calculate cart and order totals](/guides/How%20To/Carts/calculate-totals)
+- [Calculate cart and order totals](/guides/How-To/Carts/calculate-totals)

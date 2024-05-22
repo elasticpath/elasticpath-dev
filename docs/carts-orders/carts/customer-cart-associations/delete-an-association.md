@@ -40,10 +40,10 @@ Deletes an association between a cart (`:cartId`) and a customer.
 
 ### With customer token
 
-Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-managment-api/customer-tokens).
+Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-management-api/customer-tokens).
 
 :::note
-Pass the `X-Moltin-Customer-Token` header to limit carts to a specific customer. For more information, see [Using a token](/docs/customer-management/customer-managment-api/customer-tokens#using-a-token).
+Pass the `X-Moltin-Customer-Token` header to limit carts to a specific customer. For more information, see [Using a token](/docs/customer-management/customer-management-api/customer-tokens#using-a-token).
 :::
 
 ```bash

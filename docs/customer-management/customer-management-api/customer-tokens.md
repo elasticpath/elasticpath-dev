@@ -4,7 +4,7 @@ nav_label: Customer Tokens
 sidebar_position: 10
 ---
 
-Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-managment-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-managment-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/commerce-cloud/addresses/about-addresses-api) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
+Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-management-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-management-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/commerce-cloud/addresses/about-addresses-api) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
 
 ## The `customer token` Object
 
@@ -176,8 +176,8 @@ Moltin.Customers.TokenViaOIDC(code, redirectUri, codeVerifier).then((data) => {
 
 You can use a `X-Moltin-Customer-Token` header with the following endpoints. They’re available implicitly for you to read, create, and update various resources.
 
-- [Get a Customer](/docs/customer-management/customer-managment-api/get-a-customer)
-- [Update a Customer](/docs/customer-management/customer-managment-api/update-a-customer)
+- [Get a Customer](/docs/customer-management/customer-management-api/get-a-customer)
+- [Update a Customer](/docs/customer-management/customer-management-api/update-a-customer)
 - [Get Customer Addresses](/docs/commerce-cloud/addresses/get-all-addresses)
 - [Get an Address](/docs/commerce-cloud/addresses/get-an-address)
 - [Create an Address](/docs/commerce-cloud/addresses/create-an-address)

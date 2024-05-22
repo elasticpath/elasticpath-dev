@@ -4,7 +4,7 @@ nav_label: Update Cart Item
 sidebar_position: 10
 ---
 
-You can easily update a cart item. A successful update returns the [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).
+You can easily update a cart item. A successful update returns the [cart items](/docs/carts-orders/carts/cart-items/cart-items-overview).
 
 ## Dynamic Bundles
 
@@ -26,7 +26,7 @@ Your dynamic bundles are displayed in your published catalogs. Shoppers make the
          }
 ```
 
-When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/commerce-cloud/orders/orders-api/order-items).
+When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/carts-orders/orders/orders-api/order-items).
 
 ## Personalized Products
 
@@ -70,7 +70,7 @@ When the product is added to the cart, those custom inputs are supplied.
 
 The `custom_inputs` attribute must be an object. If the same product has different `custom_inputs` attributes, then these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/carts-orders/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order) items.
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/carts-orders/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/carts-orders/orders/orders-api/get-an-order) items.
 
 When you add products to cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
 

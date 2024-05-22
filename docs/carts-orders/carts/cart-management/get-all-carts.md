@@ -10,7 +10,7 @@ sidebar_position: 1.5
 https://useast.api.elasticpath.com/v2/carts
 ```
 
-The endpoint returns all carts in the store belonging to any customer or account. To learn how to access carts associated with a specific customer, see [Get a Customerʼs Carts](/docs/commerce-cloud/carts/customer-cart-associations/get-customer-carts), or account see [Get an Accountʼs Carts](/docs/commerce-cloud/carts/account-cart-associations/get-account-carts)
+The endpoint returns all carts in the store belonging to any customer or account. To learn how to access carts associated with a specific customer, see [Get a Customerʼs Carts](/docs/carts-orders/carts/customer-cart-associations/get-customer-carts), or account see [Get an Accountʼs Carts](/docs/carts-orders/carts/account-cart-associations/get-account-carts)
 
 ## Parameters
 

@@ -49,8 +49,8 @@ The `variations` object lists the variation IDs and variation option IDs and the
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/pagination). |
 
 ## Filtering
 
@@ -71,7 +71,7 @@ In a catalog, you can use a filter to return a list of nodes in a hierarchy stru
 - You can have as many node Ids as you want.
 - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
 
-For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/filtering).
 
 ## Request Example
 

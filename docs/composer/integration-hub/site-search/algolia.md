@@ -48,7 +48,7 @@ Collect the following Commerce API keys. You can find this information in **SYST
 | **Client Secret** | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Configuring the Integration
@@ -67,7 +67,7 @@ Now that you've collected the setup information, let's begin by configuring the 
 | **Algolia Configuration Data: algolia_admin_api_key**              | Your Admin API Key for your Algolia account.                                                                                                                                                                                                                               |
 | **Commerce Configuration Data: Client ID**                         | Your Commerce API Client ID.                                                                                                                                                                                                                                               |
 | **Commerce Configuration Data: Client Secret**                     | Your Commerce Client Secret.                                                                                                                                                                                                                                               |
-| **Commerce Configuration Data: Token URL**                         | Your Commerce API Token URL. For example, `https://euwest.api.elasticpath.com//oauth/access_token` (EU) or `https://useast.api.elasticpath.com/oauth/access_token` (US). See [Regions and URLs](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls). |
+| **Commerce Configuration Data: Token URL**                         | Your Commerce API Token URL. For example, `https://euwest.api.elasticpath.com//oauth/access_token` (EU) or `https://useast.api.elasticpath.com/oauth/access_token` (US). See [Regions and URLs](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls). |
 | **epcc_base_url**                                                  | Your Commerce API Base URL. For example, `https://euwest.api.elasticpath.com` (EU) or `https://useast.api.elasticpath.com` (US).                                                                                                                                           |
 | **webhook_key**                                                    | Send to create secret for EPCC Integration (Examples: Simple Phrase, UUID).                                                                                                                                                                                                |
 | **Post Processing Configuration Data (Optional): webhook_url**     | Optional post-processing URL that the release details are sent to upon completion of an integration attempt.                                                                                                                                                               |

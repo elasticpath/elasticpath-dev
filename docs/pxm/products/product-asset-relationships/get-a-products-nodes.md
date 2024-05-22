@@ -34,8 +34,8 @@ Retrieves the nodes that are associated with the specified product.
 
 | Name | Required | Optional | Description                                                                                                                               |
 | --- | --- | --- |-------------------------------------------------------------------------------------------------------------------------------------------|
-| `page[limit]` | Optional | `integer` | The number of items to return per page. You can set this value up to 100. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination).       |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. You can set this value up to 100. See [Pagination](/guides/Getting-Started/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/pagination).       |
 
 ## Request Example
 

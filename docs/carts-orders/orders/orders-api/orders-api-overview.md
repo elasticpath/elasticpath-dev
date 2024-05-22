@@ -48,7 +48,7 @@ The `Order` object is a representation of an order in Composable Commerce.
 | `billing_address.country` | `string` | Specifies the country in the billing address. |
 | `custom_inputs` | `object` | The custom text to be added to a product. |
 | `links` | `object` | Displays the URLs related to this resource. |
-| `meta` | `object` | Displays the additional information [calculated](/guides/How%20To/Carts/calculate-totals) for this order. |
+| `meta` | `object` | Displays the additional information [calculated](/guides/How-To/Carts/calculate-totals) for this order. |
 | `meta.display_price` | `object` | Displays the fields related to the totals and currency of this order. |
 | `meta.display_price.with_tax` | `object` | Displays the total amount including tax. |
 | `meta.display_price.with_tax.amount` | `integer` | Specifies the raw total of this order, including tax. |

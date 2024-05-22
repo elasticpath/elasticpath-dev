@@ -4,7 +4,7 @@ nav_label: Checkout API
 sidebar_position: 20
 ---
 
-After a [cart](/docs/commerce-cloud/carts/cart-management/cart-management-overview) is ready to checkout, you can easily convert your cart to an [order](/docs/commerce-cloud/orders/orders-api/orders-api-overview). The cart remains and can be modified and checked out again if required.
+After a [cart](/docs/carts-orders/carts/cart-management/cart-management-overview) is ready to checkout, you can easily convert your cart to an [order](/docs/carts-orders/orders/orders-api/orders-api-overview). The cart remains and can be modified and checked out again if required.
 
 After successfully completing the checkout process, the response contains the order. If the cart is linked to a shipping group, the shipping group is also associated with the order after checkout.
 

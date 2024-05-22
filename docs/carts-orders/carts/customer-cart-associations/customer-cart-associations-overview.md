@@ -10,19 +10,19 @@ There are two ways to access the cart: with a `customer` token and without one.
 
 ## With a `customer` token
 
-These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/overview) documentation.
+These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication) documentation.
 
 ### Cart creation
 
 Shoppers create carts and can use any of the carts that they created to check out an order.
 
 :::note
-You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/guides/Getting-Started/api-overview/safe-characters).
+You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/guides/Getting-Started/safe-characters).
 :::
 
 ## Without a `customer` token
 
-These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/overview) documentation.
+These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication) documentation.
 
 This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
 

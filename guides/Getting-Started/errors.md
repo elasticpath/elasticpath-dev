@@ -40,7 +40,7 @@ A `400: Bad Request` response is returned for all other errors, such as validati
 
 ### Unauthorized
 
-A `401: Unauthorized` response is returned when you provide an invalid [authentication](/docs/authentication/overview) token.
+A `401: Unauthorized` response is returned when you provide an invalid [authentication](/docs/authentication) token.
 
 ```json
 {
@@ -55,7 +55,7 @@ A `401: Unauthorized` response is returned when you provide an invalid [authenti
 
 ### Forbidden
 
-A `403: Forbidden` response is returned when you provide a valid [authentication](/docs/authentication/overview) token but lack the [permissions](/docs/authentication/Tokens/permissions) to access the resource.
+A `403: Forbidden` response is returned when you provide a valid [authentication](/docs/authentication) token but lack the [permissions](/docs/authentication/Tokens/permissions) to access the resource.
 
 ```json
 {

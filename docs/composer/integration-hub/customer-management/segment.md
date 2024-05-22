@@ -51,7 +51,7 @@ You can find this information in **Settings**.
 Collect the following Commerce API keys. When you log in to Commerce Manager as a Seller Admin, you can find this information in **SYSTEM** > **Application Keys** in Commerce Manager.
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 | Option            | Description                                                                                                                             |
@@ -76,7 +76,7 @@ When integrating with third-party providers, we recommend you use the closest re
     - **Path** - Default is `/v1/batch`.
     - **Write Key** - A unique identifier for your Commerce source. See [Find your write key](https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key).
 8. Click **Next**. The **Configurations** pane is displayed.
-9. Select the Commerce data you want collect in Segment. See [Observable Events](/docs/commerce-cloud/integrations/observable-events).
+9. Select the Commerce data you want collect in Segment. See [Observable Events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events).
 
     For **Order Tracking Configuration** 
 

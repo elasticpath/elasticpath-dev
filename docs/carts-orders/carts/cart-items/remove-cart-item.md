@@ -4,7 +4,7 @@ nav_label: Remove Cart Item
 sidebar_position: 11
 ---
 
-You can easily remove items from the Cart. A successful Cart item removal request returns the [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).
+You can easily remove items from the Cart. A successful Cart item removal request returns the [cart items](/docs/carts-orders/carts/cart-items/cart-items-overview).
 
 ## `DELETE` Remove Item from Cart
 

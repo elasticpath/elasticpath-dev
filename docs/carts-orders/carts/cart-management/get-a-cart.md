@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 :::note
-The default cart name is `Cart`. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/api-overview/safe-characters) section.
+The default cart name is `Cart`. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
 :::
 
 ## `GET` Get a Cart by ID
@@ -14,7 +14,7 @@ The default cart name is `Cart`. However, you can update the cart name as requir
 https://useast.api.elasticpath.com/v2/carts/:id
 ```
 
-Use this endpoint to retrieve a specific cart. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the `relationships` section. See [Response Example](/docs/commerce-cloud/carts/cart-management/get-a-cart#response-example-to-get-a-cart-with-a-shipping-group).
+Use this endpoint to retrieve a specific cart. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the `relationships` section. See [Response Example](/docs/carts-orders/carts/cart-management/get-a-cart#response-example-to-get-a-cart-with-a-shipping-group).
 
 
 ## Parameters
@@ -119,7 +119,7 @@ await EPCC.Cart(reference).Get();
 You can easily get a new or existing cart by providing the unique cart reference in the request.
 
 :::caution
-An empty cart is returned for any carts that don’t currently exist. For more information about the cart items object, see [Get Cart Items](/docs/commerce-cloud/carts/cart-items/get-cart-items#get-get-cart-items-by-cart-reference).
+An empty cart is returned for any carts that don’t currently exist. For more information about the cart items object, see [Get Cart Items](/docs/carts-orders/carts/cart-items/get-cart-items#get-get-cart-items-by-cart-reference).
 :::
 
 :::note

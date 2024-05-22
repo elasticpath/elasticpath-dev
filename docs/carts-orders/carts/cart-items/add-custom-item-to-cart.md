@@ -48,7 +48,7 @@ When the custom item is added to the cart, those custom inputs are supplied.
 
 If the same custom item has different `custom_inputs` attributes then, these are added as separate items in a cart.
 
-The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/carts-orders/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/commerce-cloud/orders/orders-api/get-an-order) items.
+The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is [checked out](/docs/carts-orders/checkout), the `custom_inputs` attribute becomes part of the [order](/docs/carts-orders/orders/orders-api/get-an-order) items.
 
 When you add custom items to a cart with `custom_inputs`, there are certain limitations on usage of the `custom_inputs` with the following promotion types:
 
@@ -57,7 +57,7 @@ When you add custom items to a cart with `custom_inputs`, there are certain limi
 - For [X for Y Discount Promotion](/docs/promotions/promotion-management/create-X-for-Y-discount-promotion) and [X for amount discount promotion](/docs/promotions/promotion-management/create-X-for-amount-discount-promotion), the promotion applies when there are two SKUs with the same `custom_inputs`. The promotion does not apply when there are different `custom_inputs` and the SKUs are in different line items.
 
 :::caution
-- Any requests to add a custom item to a cart returns a collection of [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).
+- Any requests to add a custom item to a cart returns a collection of [cart items](/docs/carts-orders/carts/cart-items/cart-items-overview).
 - [Tax items](/docs/carts-orders/carts/tax-items#the-tax-item-object) may optionally be added with the custom item. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
 - A cart can contain a maximum of 100 unique items. Items include products and custom items.
 - Custom Cart Items are available through [implicit authentication](/docs/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.

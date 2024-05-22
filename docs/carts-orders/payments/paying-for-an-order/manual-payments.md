@@ -9,7 +9,7 @@ By default, Commerce supports payment gateways using the Manual Payments integra
 - `authorize`
 - `capture`
 - `purchase`
-- [`refund`](/docs/commerce-cloud/payments/transactions/refund-a-transaction)
+- [`refund`](/docs/carts-orders/payments/transactions/refund-a-transaction)
 
 :::caution
 If the total amount to pay for an order is zero, third-party payment gateways, like Stripe, do not process the payment and return an error asking shoppers to increase the amount to a value greater than or equal to 1. You must use configure manual payment to process this transaction in your store.
@@ -140,7 +140,7 @@ Use the following endpoint to capture a transaction initiated by a shopper:
 https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/:transactionId/capture
 ```
 
-Usually, capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
+Usually, capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/carts-orders/payments/paying-for-an-order/overview#capture) section.
 
 :::caution
 The `capture` method requires [client_credentials](/docs/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) authentication.

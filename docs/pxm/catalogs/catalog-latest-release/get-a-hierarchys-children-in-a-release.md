@@ -49,8 +49,8 @@ Use `releaseId` to delete a specific release than the latest catalog.
 | Name           | Required | Type     | Description                                                         |
 | :------------- | :------- | :------- | :------------------------------------------------------------------ |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]`  | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/api-overview/pagination).      |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[limit]`  | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/pagination).      |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/pagination). |
 
 ## Filtering
 
@@ -61,7 +61,7 @@ The following operators and attributes are available when filtering on this endp
 | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
 | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
 
-For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/filtering).
 
 ### Building breadcrumbs in a storefront
 

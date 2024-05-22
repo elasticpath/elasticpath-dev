@@ -29,7 +29,7 @@ The `bundle_configuration` object was misspelled in the cart, cart items, and or
 | `links` | [`object`](#the-cart-item-links-object) | A collection of URLs related to this resource. |
 | `components` | [`object`](#the-cart-item-components-object) | The bundle name, id, type, and quantity. |
 | `bundle_configuration` | [`object`](#the-cart-item-bundle_configuration-object) | The list of all the `selected_options`. |
-| `meta` | [`object`](#the-cart-item-meta-object) | Additional information [calculated](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) for this cart. |
+| `meta` | [`object`](#the-cart-item-meta-object) | Additional information [calculated](/docs/api/settings/settings-introduction#calculation-method) for this cart. |
 | `catalog_source` | `string` | The catalog source. Always `pim` or `legacy`. |
 | `catalog_id` | `object` | The unique identifier of the catalog associated with the product is shown if `catalog_source=pim` is set. |
 

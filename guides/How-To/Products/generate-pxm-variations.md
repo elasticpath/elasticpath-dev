@@ -175,7 +175,7 @@ curl -X GET https://useast.api.elasticpath.com/pcm/products/:{{productID}}/child
     -H "Authorization: Bearer XXXX" \
 ```
 
-You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/pagination) section.
+You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) section.
 
 ## Adding a Child Product to the Cart Using API
 

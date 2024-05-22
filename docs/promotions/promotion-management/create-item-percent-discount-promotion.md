@@ -11,7 +11,7 @@ https://useast.api.elasticpath.com/v2/promotions/
 ```
 
 :::note
-Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.
+Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/api/settings/settings-introduction#calculation-method) section.
 :::
 
 ## Parameters

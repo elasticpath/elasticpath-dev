@@ -48,7 +48,7 @@ For example, if an [OpenID Connect Profile](/docs/authentication/single-sign-on/
 
 ## Filtering
 
-The following operators and attributes are available for [filtering](/guides/Getting-Started/api-overview/filtering) user authentication infos:
+The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) user authentication infos:
 
 | Operator | Description |
 | :--- | :--- |

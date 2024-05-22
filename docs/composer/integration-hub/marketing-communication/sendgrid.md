@@ -39,7 +39,7 @@ Below is an overview of the steps you need to follow to integrate Commerce with 
 1. Create a SendGrid integration in **Commerce Manager** > **Integrations Hub**.  See [Configuring the SendGrid Integration](#configuring-the-send-grid-integration).
 
 :::note
-When integrating with third party providers, we recommend you use the closest region in the third party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third party providers, we recommend you use the closest region in the third party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting Your Setup Information
@@ -75,7 +75,7 @@ Once you have created a dynamic template in SendGrid, you need to do the followi
 
 Each event mapping configuration is a set of parameters for a specific event type in Commerce. The event mapping configuration is stored as key + value pairs.
 
-- An event key is the name of the Commerce event that triggers the event mapping configuration. For example, `order.paid` or `order.created`. See [Observable events](/docs/commerce-cloud/integrations/observable-events) for a list of Commerce events.
+- An event key is the name of the Commerce event that triggers the event mapping configuration. For example, `order.paid` or `order.created`. See [Observable events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events) for a list of Commerce events.
 - An event value is a JSON object that must contain a `messagingProvider` element and a `dynamicFieldMapping` element. The event value object can be:
     - A single object (if you want to send one email when a Commerce event is triggered).
     - An array of event value objects (if you want to send more than one email from SendGrid when a Commerce event is triggered).

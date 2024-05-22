@@ -250,7 +250,7 @@ Collect the following Commerce API keys. You can find this information in **SYST
 | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Configuring the Onport Integration
@@ -332,7 +332,7 @@ If there is an update to the Commerce Onport integration, a message is displayed
 
 ## How To Get Fulfilment And Cancellation Data On Commerce Order API
 
-Use the [Get An Order](https://elasticpath.dev/docs/commerce-cloud/orders/orders-api/get-an-order) API with include as `include=fulfilments,items,cancellations` to retrieve fulfillment and cancellation data for Commerce orders.
+Use the [Get An Order](https://elasticpath.dev/docs/carts-orders/orders/orders-api/get-an-order) API with include as `include=fulfilments,items,cancellations` to retrieve fulfillment and cancellation data for Commerce orders.
 
 ## Troubleshooting the Onport Integration
 

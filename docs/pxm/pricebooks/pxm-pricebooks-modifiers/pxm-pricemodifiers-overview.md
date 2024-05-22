@@ -89,7 +89,7 @@ As an API consumer, links allow you to move between requests.
 
 ## The `page` Object
 
-Many Elastic Path Commerce Cloud endpoints support [pagination](/guides/Getting-Started/api-overview/pagination).
+Many Elastic Path Commerce Cloud endpoints support [pagination](/guides/Getting-Started/pagination).
 
 | Name      | Type | Description                                 |
 |:----------| :--- |:--------------------------------------------|

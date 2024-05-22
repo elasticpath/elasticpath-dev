@@ -7,7 +7,7 @@ sidebar_position: 5
 From a shopper’s order history, they can add the items from a previous order into their carts. Shoppers can add items regardless of past order status, such as incomplete or not paid. For more information, see [Orders](/docs/carts-orders/orders).
 
 :::note
-- Any requests to add an item to cart return a collection of [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).
+- Any requests to add an item to cart return a collection of [cart items](/docs/carts-orders/carts/cart-items/cart-items-overview).
 - A cart can contain a maximum of 100 unique items. Items include products, custom items, and promotions.
 - When a shopper creates a cart and re-orders items from an order with properties such as custom attributes, custom discounts, and payment intent ID, these properties will remain unchanged in the original cart.
 :::

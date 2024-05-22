@@ -4,12 +4,12 @@ nav_label: Paying for an order Overview
 sidebar_position: 1
 ---
 
-When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/commerce-cloud/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders) is returned. You can process the payment for the order though a payment gateway.
+When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/carts-orders/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders) is returned. You can process the payment for the order though a payment gateway.
 
 :::caution
 
 - You need to configure and enable a payment gateway before you can accept payments for orders.
-- Configure your store to use [Manual Gateway](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
+- Configure your store to use [Manual Gateway](/docs/carts-orders/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
 - There are a number of actions that happen to your [inventory](https://app.gitbook.com/@moltin/s/api/catalog/inventory.mdx) when checking out and paying for an order. For more information, see [Inventory](/docs/pxm/inventories/inventory.mdx).
 - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/guides/Getting-Started/api-overview/api-contract#parallel-calls-to-api-objects).
 ::: 
@@ -17,7 +17,7 @@ When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/commerce-cloud
 
 ## Payment Methods
 
-Depending on the chosen gateway, you may or may **not** have access to `capture` funds immediately or `authorize` for later payment. For more information, see [Transactions](/docs/commerce-cloud/payments/transactions/transactions-overview).
+Depending on the chosen gateway, you may or may **not** have access to `capture` funds immediately or `authorize` for later payment. For more information, see [Transactions](/docs/carts-orders/payments/transactions/transactions-overview).
 
 To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the `amount` field within the request body. To learn about Split Payments, see the [Split Payments](/docs/carts-orders/payments#split-payments) section.
 
@@ -27,13 +27,13 @@ The simplest method is `purchase`. The gateway attempts to charge the customer i
 
 You can partially pay funds using `purchase` method. The gateway attempts to charge the customer immediately, and the payment status for an order shows `partially_paid`.
 
-When you [Get an order](/docs/commerce-cloud/orders/orders-api/get-an-order), you can see the following fields in the `meta` object:
+When you [Get an order](/docs/carts-orders/orders/orders-api/get-an-order), you can see the following fields in the `meta` object:
 
 - `balance_owing`: Specifies the outstanding funds required to complete an order. It considers all complete or pending transactions, including authorized, paid, and captured transactions. (`balance_owing` = order total - `authorized` amount - `paid` amount).
 - `paid`: Specifies the total amount of purchased or captured transactions.
 - `authorized`: Specifies the total amount of completed or pending authorized transactions for an order.
 
-The following response is returned when you [Get an order](/docs/commerce-cloud/orders/orders-api/get-an-order):
+The following response is returned when you [Get an order](/docs/carts-orders/orders/orders-api/get-an-order):
 
 `200 OK`
 

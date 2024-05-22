@@ -26,8 +26,8 @@ https://useast.api.elasticpath.com/pcm/jobs
 
 | Name | Required | Optional | Description |
 | --- | --- | --- | --- |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. See [Pagination](/guides/Getting-Started/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/pagination). |
 
 
 ## Request Example

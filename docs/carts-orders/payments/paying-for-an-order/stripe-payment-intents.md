@@ -10,7 +10,7 @@ The Stripe payment intents integration supports the following payment methods:
 - `capture`
 - `confirm`
 - `purchase`
-- [`refund`](/docs/commerce-cloud/payments/transactions/refund-a-transaction)
+- [`refund`](/docs/carts-orders/payments/transactions/refund-a-transaction)
 ## Authorization or Purchase - `POST` Pay by token or source
 
 ```http
@@ -234,7 +234,7 @@ The `x` values in the `"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"` are replace
 https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/:transactionId/capture
 ```
 
-Use this endpoint to capture a transaction initiated by the shopper. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
+Use this endpoint to capture a transaction initiated by the shopper. Usually capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/carts-orders/payments/paying-for-an-order/overview#capture) section.
 
 ### Parameters
 

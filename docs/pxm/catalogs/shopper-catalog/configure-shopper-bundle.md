@@ -260,5 +260,5 @@ The following table describes the response codes that indicate the API request h
 
 - [Bundles](/docs/pxm/products/pxm-bundles)
 - [Bundles API](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle)
-- [Multiple Carts API](/docs/commerce-cloud/carts/cart-management/create-multi-cart)
+- [Multiple Carts API](/docs/carts-orders/carts/cart-management/create-multi-cart)
 - [Product Experience Manager](/docs/pxm/products/pxm-products)

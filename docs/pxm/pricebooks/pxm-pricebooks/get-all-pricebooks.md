@@ -27,8 +27,8 @@ Retrieves a list of all price books.
 | Name | Required | Type | Description |
 | :--- | :--- | :--- | :--- |
 | `filter`| Optional | `string` | Specifies the filter attributes. See [Filtering](#filtering). |
-| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
-| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/api-overview/pagination). |
+| `page[limit]` | Optional | `integer` | The number of items to return per page. Minimum value is `1`. See [Pagination](/guides/Getting-Started/pagination). |
+| `page[offset]` | Optional | `integer` | The number of items to offset the results by. Offset is zero-based. See [Pagination](/guides/Getting-Started/pagination). |
 
 ## Filtering
 
@@ -38,7 +38,7 @@ The following attributes and operators are supported.
 | :--- |:----------------| :--- |:--------------------------------------------|
 | `eq` | `external_ref`  | Equals. Checks if the values of two operands are equal. If they are, the condition is true. | `filter=eq(external_ref,some-external-ref)` |
 
-For more information, see [Filtering](/guides/Getting-Started/api-overview/filtering).
+For more information, see [Filtering](/guides/Getting-Started/filtering).
 
 ## Request Example
 

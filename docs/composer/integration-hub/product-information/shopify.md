@@ -31,7 +31,7 @@ The following table describes the templates available.
 
 ### Collecting Commerce Manager setup information
 
-Collect the following Commerce API keys. When you log in to Commerce Manager as a Seller Admin, you can find this information in **SYSTEM** > **Application Keys** in Commerce Manager. Also see how to create a [new application key](/docs/authentication/application-keys/application-keys-cm).
+Collect the following Commerce API keys. When you log in to Commerce Manager as a Seller Admin, you can find this information in **SYSTEM** > **Application Keys** in Commerce Manager. Also see how to create a [new application key](/docs/commerce-manager/application-keys/application-keys-cm).
 
 | Commerce API Key                   | Description                                    |
 |:-----------------------------------|:-----------------------------------------------|
@@ -40,7 +40,7 @@ Collect the following Commerce API keys. When you log in to Commerce Manager as 
 | **Token URL**                      | Your Commerce API token URL.                   |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ### Collecting Shopify connection details

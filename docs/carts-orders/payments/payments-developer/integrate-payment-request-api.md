@@ -12,7 +12,7 @@ If you want to follow along, you need the following items:
 
 - A Composable Commerce account
 - Configured products and gateway
-- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token)
 
 ## Limitations
 

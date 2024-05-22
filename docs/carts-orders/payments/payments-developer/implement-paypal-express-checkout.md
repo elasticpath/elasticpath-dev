@@ -9,10 +9,10 @@ Implement PayPal Express checkout to authorize, capture, purchase, and refund pa
 ## Prerequisites
 
 - Ensure that you have a Commerce account, and Client ID and Client Secret of your store available from [Commerce Manager](/ui).
-- Get An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token).
+- Get An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token).
 - Create an account in [developer.paypal.com](https://developer.paypal.com/).
 - Configure products and gateway using Commerce Manager or API.
-- Onboard PayPal Express Checkout. See [Onboarding PayPal Express Checkout](/docs/commerce-cloud/payments/payment-gateway-cm/paypal).
+- Onboard PayPal Express Checkout. See [Onboarding PayPal Express Checkout](/docs/carts-orders/payments/payment-gateway-cm/paypal).
 
 ## Procedure - Set up the Checkout Flow
 
@@ -30,7 +30,7 @@ You can set up and confirm a purchase by doing the following:
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
     :::
 
-1. Use the following request example to set up `purchase` from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/commerce-cloud/payments/paying-for-an-order/paypal-express-checkout-payments).
+1. Use the following request example to set up `purchase` from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/carts-orders/payments/paying-for-an-order/paypal-express-checkout-payments).
 
     ```bash
         curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/payments \
@@ -187,7 +187,7 @@ You can set up the authorization and capture the payment by doing the following:
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
     :::
 
-1. Use the following request example to setup authorization from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/commerce-cloud/payments/paying-for-an-order/paypal-express-checkout-payments).
+1. Use the following request example to setup authorization from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/carts-orders/payments/paying-for-an-order/paypal-express-checkout-payments).
 
     ```bash
        curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/payments \

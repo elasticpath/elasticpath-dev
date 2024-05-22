@@ -42,7 +42,7 @@ The following table describes the management of application keys for organizatio
 - Assign a reserved rate limit for your critical application keys.
 - Do not fully reserve the rate limit for your store or organizations across all keys. Instead, reserve rate limits thoughtfully to ensure that keys without a reserved rate limit can draw from a shared pool when needed.
 
-To create your application key, see [Creating an Application Key](/docs/authentication/application-keys/application-keys-cm).
+To create your application key, see [Creating an Application Key](/docs/commerce-manager/application-keys/application-keys-cm).
 
 ## The Application Key Object
 

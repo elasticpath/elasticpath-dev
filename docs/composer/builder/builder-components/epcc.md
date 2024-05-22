@@ -230,7 +230,7 @@ For **Customer Request**, see the following snippet:
 | **description** | `string` | 	Specifies a description for the integration. |
 | **integration_type** | `string` | Specifies how the integration is delivered, either `webhook`, `aws_sqs`, or `stomp`. |
 | **enabled** | `boolean` | Specifies whether the integration is enabled. |
-| **observes object** | `dynamicfieldselection` | Specifies an array of [observable events](/docs/commerce-cloud/integrations/observable-events). |
+| **observes object** | `dynamicfieldselection` | Specifies an array of [observable events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events). |
 | **configuration** | `string` | Specifies a [configuration](/docs/commerce-cloud/integrations/integrations-api/create-an-integration#configuration-object). |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
 

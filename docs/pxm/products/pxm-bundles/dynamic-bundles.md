@@ -25,5 +25,5 @@ The following steps are an overview of how to use dynamic bundles.
 1. Specify minimum and/or maximum values for the components in the bundle, depending on how many options you want your shoppers to be able to select.
 1. Dynamic bundles are displayed in your catalog using [publish a catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog).
 1. The product selections a shopper makes are stored in the [configure a shopper bundle](/docs/pxm/catalogs/shopper-catalog/configure-shopper-bundle).
-1. The shoppers product selections from the [configure a shopper bundle](/docs/pxm/catalogs/shopper-catalog/configure-shopper-bundle) endpoint are added to a cart, for example, using the [add a product to a cart](/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
-1. When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/commerce-cloud/orders/orders-api/order-items).
+1. The shoppers product selections from the [configure a shopper bundle](/docs/pxm/catalogs/shopper-catalog/configure-shopper-bundle) endpoint are added to a cart, for example, using the [add a product to a cart](/docs/carts-orders/carts/cart-items/add-product-to-cart).
+1. When a cart is checked out, the options a shopper selected are added to the order. See [order items](/docs/carts-orders/orders/orders-api/order-items).

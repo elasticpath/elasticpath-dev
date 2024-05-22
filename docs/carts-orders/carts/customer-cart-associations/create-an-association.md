@@ -20,7 +20,7 @@ Creates an association between a cart (`:cart_id`) and a customer.
 
 | Name     | Required | Type     | Description                                                                                                                                   |
 | -------- | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cartId` | Required | `string` | The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/api-overview/safe-characters). |
+| `cartId` | Required | `string` | The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/safe-characters). |
 
 ### Headers
 
@@ -40,7 +40,7 @@ Creates an association between a cart (`:cart_id`) and a customer.
 
 ### With customer token
 
-Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-managment-api/customer-tokens).
+Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-management-api/customer-tokens).
 
 #### Curl
 

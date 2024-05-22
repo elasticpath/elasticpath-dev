@@ -11,7 +11,7 @@ https://useast.api.elasticpath.com/v2/promotions/
 ```
 
 :::note
-Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.
+Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/api/settings/settings-introduction#calculation-method) section.
 Hierarchy-based promotions are not supported for fixed bundle discount promotions. To promote a bundle, create the bundle in Product Experience Manager, and then create a promotion for that bundle. For more informatiom, see [Bundles in Product Experience Manager](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
 :::
 

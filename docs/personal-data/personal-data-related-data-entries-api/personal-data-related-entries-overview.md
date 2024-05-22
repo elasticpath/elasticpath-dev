@@ -55,7 +55,7 @@ The API only allows you to list related data items for a particular data entry (
 
 ## Filtering
 
-The following operator and attributes are **required** for [filtering](/guides/Getting-Started/api-overview/filtering) related data entries.
+The following operator and attributes are **required** for [filtering](/guides/Getting-Started/filtering) related data entries.
 
 | Operator | Description                                                                                          |
 |:---------|:-----------------------------------------------------------------------------------------------------|

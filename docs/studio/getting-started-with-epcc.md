@@ -14,14 +14,14 @@ sidebar_position: 5
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
     - [Templates](/docs/pxm/products/extending-pxm-products/templates#templates)
     - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
-- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/commerce-cloud/payments/payment-gateway-cm/ep-payments-powered-by-stripe) in Commerce Manager.
+- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/carts-orders/payments/payment-gateway-cm/ep-payments-powered-by-stripe) in Commerce Manager.
 - Ensure that the Stripe gateway is enabled in Studio to sucessfully perform the checkout process. For more information, see [Stripe Integration](/docs/studio/Integrations/Integrating-stripe).
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) if you want to enable search indexing in your CX studio storefront.
 
 ## Procedure
 
 1. Log into Commerce Manager.
-1. Go to **SYSTEM** > **Application keys** to create your new API keys. See [Application keys](/docs/authentication/application-keys/application-keys-cm).
+1. Go to **SYSTEM** > **Application keys** to create your new API keys. See [Application keys](/docs/commerce-manager/application-keys/application-keys-cm).
 1. Log into Studio.
 1. Go to **Settings** > **Integrations**.
 1. Navigate to **Payment & Storefront**.

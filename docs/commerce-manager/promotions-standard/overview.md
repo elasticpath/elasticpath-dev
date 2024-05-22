@@ -37,8 +37,8 @@ You can manage promotions on the **STORE > Promotions Standard** page.
     - [Bundle discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions)
     - [Free gift promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions)
 
-- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
-- Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.
+- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/api/settings/settings-introduction#calculation-method) do not support excluding products from promotions.
+- Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/api/settings/settings-introduction#calculation-method) section.
 :::
 
 ## Creating Promotion Codes

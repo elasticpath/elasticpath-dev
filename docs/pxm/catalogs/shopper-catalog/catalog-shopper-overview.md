@@ -20,8 +20,8 @@ A catalog is a combination of one or more hierarchies and a price book. Use the 
 * When a catalog is ready to be used in a store, you publish it. For more information, see [Publish a Catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog).
 * You can create and publish catalogs for different contexts and channels. You can see the differences between the last 2 consecutive catalog releases. For more information, see [Publish a Catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog).
 * You retrieve catalogs for your shopper experience by using the Catalog View API. For more information on how you can retrieve a catalog as a shopper using the Catalog View API, see [Catalog by Shopper Context](/docs/pxm/catalogs/shopper-catalog/catalog-shopper-overview).
-* When a catalog is published for a store, the corresponding events contain `store_id` and `org_id`. For more information, see [Observable Events](/docs/commerce-cloud/integrations/observable-events).
-* When a catalog is published for an organization, the corresponding events contain `org_id`. For more information, see [Observable Events](/docs/commerce-cloud/integrations/observable-events).
+* When a catalog is published for a store, the corresponding events contain `store_id` and `org_id`. For more information, see [Observable Events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events).
+* When a catalog is published for an organization, the corresponding events contain `org_id`. For more information, see [Observable Events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events).
 * Use the `sort_order` value in the `variations` to program your storefront to display the variation options in the order that you want.
 
 
