@@ -317,6 +317,12 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/subscriptions/sidebar.js")
     },
+    //Link not in the API specyarn
+    {
+      type: 'link',
+      label: 'Observable Events',
+      href: '/docs/subscriptions/observable-events', // The internal path
+    },
   ],
   // But you can create a sidebar manually
   /*
