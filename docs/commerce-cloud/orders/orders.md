@@ -19,7 +19,7 @@ The tax for the items in a re-order is not applied. For more information, see [T
 - [Carts](/docs/commerce-cloud/carts/carts.md)
 - [Checkout workflow](/docs/commerce-cloud/checkout/checkout-workflow)
 - [Payments](/docs/commerce-cloud/payments)
-- [Inventory](/docs/pxm/inventories/inventory.mdx)
+- [Inventory](/docs/api/pxm/inventory/inventories-introduction)
 - [Payments API - Paying for an order](/docs/commerce-cloud/payments/paying-for-an-order/overview)
 - [Payments API - Refunds](/docs/commerce-cloud/payments/paying-for-an-order/overview#refunds)
 - [Re-order](/docs/commerce-cloud/carts/cart-items/re-order)

@@ -317,7 +317,7 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/subscriptions/sidebar.js")
     },
-    //Link not in the API spec
+    //Link not in the API specyarn
     {
       type: 'link',
       label: 'Observable Events',
