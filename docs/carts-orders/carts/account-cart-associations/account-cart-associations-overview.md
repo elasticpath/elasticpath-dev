@@ -10,7 +10,7 @@ There are two ways to access the cart: with an [Account Management Authenticatio
 
 ## With an Account Management Authentication token
 
-These endpoints are for users who authenticated implicitly and require an Account Management Authentication token in the header to access the account cart associations APIs. For more information, see the [Authentication](/guides/Getting-Started/authentication/overview) documentation.
+These endpoints are for users who authenticated implicitly and require an Account Management Authentication token in the header to access the account cart associations APIs. For more information, see the [Authentication](/docs/authentication/overview) documentation.
 
 ### Cart creation
 
@@ -22,7 +22,7 @@ You can create a cart ID, name, and description for the cart. A name is mandator
 
 ## Without an Account Management Authentication token
 
-These endpoints are for users who use the client credentials token and do not require an account management authentication token in the header to access the account cart associations APIs. For more information, see the [Authentication](/guides/Getting-Started/authentication/overview) documentation.
+These endpoints are for users who use the client credentials token and do not require an account management authentication token in the header to access the account cart associations APIs. For more information, see the [Authentication](/docs/authentication/overview) documentation.
 
 This user acts as a system administrator and can call any account cart association operations for any account and cart.
 

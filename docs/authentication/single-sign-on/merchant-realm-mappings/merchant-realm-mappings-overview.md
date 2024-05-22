@@ -4,7 +4,7 @@ nav_label: Merchant Realm Mappings
 sidebar_position: 10
 ---
 
-The Merchant Realm Mapping object is used to locate the [Authentication Realm](/guides/Getting-Started/authentication/single-sign-on/authentication-realm-api/authentication-realm-api-overview) which administrators use to sign in to a store via single sign-on. When supplied in the mapping, the prefix field is used during authentication to determine the appropriate authentication realm to sign in with.
+The Merchant Realm Mapping object is used to locate the [Authentication Realm](/docs/authentication/single-sign-on/authentication-realm-api/authentication-realm-api-overview) which administrators use to sign in to a store via single sign-on. When supplied in the mapping, the prefix field is used during authentication to determine the appropriate authentication realm to sign in with.
 
 ## Merchant Realm Mapping object
 

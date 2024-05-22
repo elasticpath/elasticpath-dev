@@ -19,9 +19,9 @@ Sorting is also supported within [JavaScript SDK](/docs/developer-tools#software
 
 ## Supported Endpoints
 
-* [Get All Accounts](/docs/commerce-cloud/accounts/using-account-management-api/get-all-accounts)
-* [Get All Account Members](/docs/commerce-cloud/accounts/using-account-members-api/get-all-account-members)
+* [Get All Accounts](/docs/api/accounts/get-v-2-accounts)
+* [Get All Account Members](/docs/api/accounts/get-v-2-account-members)
 * [Get All Account Memberships](/docs/commerce-cloud/accounts/using-account-membership-api/get-all-account-memberships)
-* [Get all User Authentication Info](/guides/Getting-Started/authenticationation/single-sign-on/user-authentication-info-api/get-all-user-authentication-info.md)
+* [Get all User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info)
 * [Get all Customers](/docs/customer-management/customer-managment-api/get-all-customers)
-* [Get all Orders](/docs/commerce-cloud/orders/orders-api/get-all-orders)
+* [Get all Orders](/docs/api/carts/get-customer-orders)

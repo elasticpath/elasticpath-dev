@@ -4,7 +4,7 @@ nav_label: Customer Tokens
 sidebar_position: 10
 ---
 
-Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-managment-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-managment-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/commerce-cloud/addresses/about-addresses-api) or [get orders](/docs/commerce-cloud/orders/orders-api/get-all-orders) by `customer`.
+Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-managment-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-managment-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/commerce-cloud/addresses/about-addresses-api) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
 
 ## The `customer token` Object
 
@@ -103,7 +103,7 @@ Moltin.Customers.TokenViaPassword(email, password).then((data) => {
 
 ## Using OpenID Connect
 
-For more information on requesting a customer token with OpenID Connect, refer to the Developer How-To: [Single sign-on with OpenID Connect](/guides/Getting-Started/authentication/single-sign-on/get-single-sign-on-customer-token).
+For more information on requesting a customer token with OpenID Connect, refer to the Developer How-To: [Single sign-on with OpenID Connect](/docs/authentication/single-sign-on/get-single-sign-on-customer-token).
 
 ### Headers
 
@@ -119,7 +119,7 @@ For more information on requesting a customer token with OpenID Connect, refer t
 | `authentication_mechanism` | Required | `string` | For OpenID Connect login this value should be `oidc`. |
 | `oauth_authorization_code` | Required | `string` | The code returned from the OpenID Connect Provider authentication. |
 | `oauth_redirect_uri`       | Required | `string` | The url of the front-end that handles the callback of the token. |
-| `oauth_code_verifier`      | Required | `string` | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. See [Generating a Code Verifier and Challenge](/guides/Getting-Started/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
+| `oauth_code_verifier`      | Required | `string` | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. See [Generating a Code Verifier and Challenge](/docs/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
 
 ## Open ID Connect Request Example
 
@@ -182,7 +182,7 @@ You can use a `X-Moltin-Customer-Token` header with the following endpoints. The
 - [Get an Address](/docs/commerce-cloud/addresses/get-an-address)
 - [Create an Address](/docs/commerce-cloud/addresses/create-an-address)
 - [Update an Address](/docs/commerce-cloud/addresses/update-an-address)
-- [Get all Orders](/docs/carts-orders/orders/orders-api/get-all-orders)
+- [Get all Orders](/docs/api/carts/get-customer-orders)
 - [Get an Order](/docs/carts-orders/orders/orders-api/get-an-order)
 - [Get Customer Carts](/docs/carts-orders/carts/customer-cart-associations/get-customer-carts)
 - [Create an Association between a Customer and a Cart](/docs/carts-orders/carts/customer-cart-associations/create-an-association)

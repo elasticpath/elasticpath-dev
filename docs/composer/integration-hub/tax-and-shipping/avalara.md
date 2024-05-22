@@ -45,7 +45,7 @@ You must have products in Commerce Manager.
     - EU - `https://useast.api.elasticpath.com/oauth/access_token`
     - US - `https://useast.api.elasticpath.com/oauth/access_token`
     
-    To collect your **Client-ID** and **Client-Secret**, log into Commerce Manager with Seller Admin privileges and go to **SYSTEM** > **Application Keys**. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
+    To collect your **Client-ID** and **Client-Secret**, log into Commerce Manager with Seller Admin privileges and go to **SYSTEM** > **Application Keys**. See [Application Keys](/docs/authentication/application-keys/application-keys-cm).
 
 1. Click **Connect**. The authorization is successfully completed.
 1. Click **Next**.

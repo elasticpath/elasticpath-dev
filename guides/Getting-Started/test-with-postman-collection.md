@@ -17,7 +17,7 @@ Use the Postman collection to run and explore Commerce APIs. The collection incl
 ## Procedure
 
 1. In Commerce Manager, go to **SYSTEM > Application Keys**.
-1. Click **Create New** to create a new application key. See [Creating an Application Key](/guides/Getting-Started/authentication/application-keys/create-an-application-key).
+1. Click **Create New** to create a new application key. See [Creating an Application Key](/docs/authentication/application-keys/create-an-application-key).
 
     Make a note of the following values:
 
@@ -49,4 +49,4 @@ Use the Postman collection to run and explore Commerce APIs. The collection incl
 1. In Postman, open the **authentication** folder and run the **Get client credentials token** or the **Get implicit token** request.
 1. Click **Send**.
 
-    Authentication for the current session is done, and an access token is returned. You can now test the rest of your API endpoints in your Postman collection. An access token is valid for an hour, you must authenticate the session and get new tokens every time the access token expires. For more information about authentication permissions, see [Client credential token](/guides/Getting-Started/authentication/Tokens/client-credential-token) and [Implicit token](/guides/Getting-Started/authentication/Tokens/implicit-token).
+    Authentication for the current session is done, and an access token is returned. You can now test the rest of your API endpoints in your Postman collection. An access token is valid for an hour, you must authenticate the session and get new tokens every time the access token expires. For more information about authentication permissions, see [Client credential token](/docs/authentication/Tokens/client-credential-token) and [Implicit token](/docs/authentication/Tokens/implicit-token).

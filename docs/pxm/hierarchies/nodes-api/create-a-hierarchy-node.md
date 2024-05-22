@@ -30,7 +30,7 @@ You can do this by adding a `meta` object to the body of your request and specif
 
 The node with the highest value of `sort_order` is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`.
 
-- If you don’t provide `sort_order` when creating nodes, all child nodes in the response for [Get a Node’s Children](/docs/pxm/hierarchies/node-relationships-api/get-node-children) request are ordered by the `updated_at` time in descending order, with the most recently updated child node first.
+- If you don’t provide `sort_order` when creating nodes, all child nodes in the response for [Get a Node’s Children](/docs/api/pxm/products/get-all-node-children) request are ordered by the `updated_at` time in descending order, with the most recently updated child node first.
 - If you set `sort_order` for only a few child nodes, the child nodes with a `sort_order` value appear first and then other child nodes appear in the order of `updated_at` time.
 
 You can also specify a `sort_order` when [creating a node relationship](/docs/pxm/hierarchies/node-relationships-api/create-node-child-relationships).
@@ -61,7 +61,7 @@ You can also specify a `sort_order` when [creating a node relationship](/docs/px
 | `attributes.description` | Optional | `string` | A description of the node.                                                                                                                                                                        |
 | `attributes.slug` | Optional | `string` | A slug for the node. Slugs must be unique among sibling nodes in the hierarchy, but otherwise a slug can be non-unique.                                                                           |
 | `attributes.locales` | Optional | `object` | The node details localized in the supported languages. For example, node names or descriptions.                                                                                                   |
-| `meta` | Optional | `object` | The `sort_order` for each node. This value determines the order of nodes in the response for the [Get a Node’s Children](/docs/pxm/hierarchies/node-relationships-api/get-node-children) request. |
+| `meta` | Optional | `object` | The `sort_order` for each node. This value determines the order of nodes in the response for the [Get a Node’s Children](/docs/api/pxm/products/get-all-node-children) request. |
 
 ## Request Example
 

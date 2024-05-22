@@ -38,10 +38,10 @@ Removing a team member removes the unique ClientID and Client Secret associated 
 
 ## Single Sign-on
 
-Single sign-on allows authentication with Commerce using an external authentication provider. Using an existing authentication provider allows for integration with company-specific or customizable authentication systems. In some cases, it can also simplify the log-in experience because they don’t need to remember another password. For more information, see [Single Sign-on](/guides/Getting-Started/authentication/single-sign-on/openid).
+Single sign-on allows authentication with Commerce using an external authentication provider. Using an existing authentication provider allows for integration with company-specific or customizable authentication systems. In some cases, it can also simplify the log-in experience because they don’t need to remember another password. For more information, see [Single Sign-on](/docs/authentication/single-sign-on/openid).
 
 ## Related Resources
 
 - [Your first API request](/guides/Getting-Started/api-overview/your-first-api-request)
-- [Authentication](/guides/Getting-Started/authentication/overview)
-- [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview)
+- [Authentication](/docs/authentication/overview)
+- [Application Keys](/docs/authentication/application-keys/application-keys-overview)

@@ -143,7 +143,7 @@ https://useast.api.elasticpath.com/v2/orders/:orderId/transactions/:transactionI
 Usually, capture does not occur at the same time as authorization. For more information, see the [Capture](/docs/commerce-cloud/payments/paying-for-an-order/overview#capture) section.
 
 :::caution
-The `capture` method requires [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) authentication.
+The `capture` method requires [client_credentials](/docs/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) authentication.
 :::
 
 ### Parameters

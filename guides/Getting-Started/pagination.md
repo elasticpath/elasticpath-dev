@@ -34,14 +34,14 @@ Even if the result is zero, pagination fields are always included in the respons
 
 ## Supported Endpoints
 
-* [Get All Accounts](/docs/commerce-cloud/accounts/using-account-management-api/get-all-accounts)
-* [Get All Account Members](/docs/commerce-cloud/accounts/using-account-members-api/get-all-account-members)
-* [Get all User Authentication Info](/guides/Getting-Started/authenticationation/single-sign-on/user-authentication-info-api/get-all-user-authentication-info.md)
-* [Get all Entries](/docs/commerce-cloud/custom-data/custom-data-flows-api/entries/get-all-entries)
+* [Get All Accounts](/docs/api/accounts/get-v-2-accounts)
+* [Get All Account Members](/docs/api/accounts/get-v-2-account-members)
+* [Get all User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info)
+* [Get all Entries](/docs/api/flows/get-all-entries)
 * [Get all Customers](/docs/customer-management/customer-managment-api/get-all-customers)
-* [Get Integration Logs](/docs/commerce-cloud/integrations/integrations-api/get-integration-logs)
-* [Get all Orders](/docs/commerce-cloud/orders/orders-api/get-all-orders)
-* [Get all Promotions](/docs/promotions/promotion-management/get-all-promotions)
+* [Get Integration Logs](/docs/api/integrations/list-integration-logs)
+* [Get all Orders](/docs/api/carts/get-customer-orders)
+* [Get all Promotions](/docs/api/promotions/get-all-promotions)
 * [Get all Catalogs](/docs/pxm/catalogs/catalog-configuration/get-all-catalogs)
 * [Get a Hierarchyʼs Child Nodes in the Latest Release](/docs/pxm/catalogs/catalog-latest-release/get-a-hierarchys-children-in-a-release)
 * [Get a Hierarchyʼs Nodes in the Latest Release](/docs/pxm/catalogs/catalog-latest-release/get-a-hierarchys-nodes-in-a-release)
@@ -62,14 +62,14 @@ Even if the result is zero, pagination fields are always included in the respons
 * [Get a Nodeʼs Children](/docs/pxm/catalogs/shopper-catalog/get-node-children)
 * [Get Products by Hierarchy](/docs/pxm/catalogs/shopper-catalog/get-products-by-hierarchy)
 * [Get Products by Node](/docs/pxm/catalogs/shopper-catalog/get-products-by-node)
-* [Get a Product's Nodes](/docs/pxm/products/product-asset-relationships/get-a-products-nodes)
-* [Get a Nodeʼs Children](/docs/pxm/hierarchies/node-relationships-api/get-node-children)
-* [Get a Nodeʼs Products](/docs/pxm/hierarchies/node-relationships-api/get-node-products)
-* [Get all Price Modifiers](/docs/pxm/pricebooks/pxm-pricebooks-modifiers/get-all-price-modifiers)
-* [Get All Prices in a Price Book](/docs/pxm/pricebooks/pxm-pricebooks-prices/get-all-prices-in-a-pricebook)
-* [Get all Inventory](/docs/pxm/inventories/get-all-inventory)
-* [Get all Files](/docs/pxm/products/product-assets/get-all-files)
-* [Get all Jobs](/docs/pxm/jobs-api/get-all-jobs)
+* [Get a Product's Nodes](/docs/api/pxm/products/get-products-nodes)
+* [Get a Nodeʼs Children](/docs/api/pxm/products/get-all-node-children)
+* [Get a Nodeʼs Products](/docs/api/pxm/products/get-node-products)
+* [Get all Price Modifiers](/docs/api/pxm/pricebooks/get-price-modifiers)
+* [Get All Prices in a Price Book](/docs/api/pxm/pricebooks/get-product-prices)
+* [Get all Inventory](/docs/api/pxm/inventory/get-stock-for-all-products)
+* [Get all Files](/docs/api/pxm/files/get-all-files)
+* [Get all Jobs](/docs/api/pxm/products/get-all-jobs)
 
 ## Limitations
 
@@ -91,7 +91,7 @@ A common use case for high `page[offset]` is the need to retrieve all the data f
  
 To use the approach you first decide on which attribute to sort on, with `created_at`, `updated_at`, `id` being the most common. Next you request the first page using the `sort` attribute selected. To get the next page, supply a filter where the attribute has a value greater than or equal to the last value.
 
-For example, to retrieve all [orders](/docs/carts-orders/orders/orders-api/get-all-orders) in the system, pass the following queries (the dates come from the last result on the previous page):
+For example, to retrieve all [orders](/docs/api/carts/get-customer-orders) in the system, pass the following queries (the dates come from the last result on the previous page):
 
 1. `GET /v2/orders?sort=created_at`
 2. `GET /v2/orders?sort=created_at&filter=ge(created_at,2018-04-16T10:11:59.715Z)` 
@@ -101,13 +101,13 @@ To use this approach, the main requirement is that the endpoint needs to support
 
 The following are a few other implementation details to consider when using this approach:
 1. If using a timestamp value, the granularity of the time stamp on the endpoint might mean you still need to paginate to another page if lots of updates or creates happen at the same time, you can determine if this is necessary by checking if the first timestamp and last timestamp on a page are identical.
-2. Due to [eventual consistency](/guides/Getting-Started/api-overview/eventual-consistency) timestamp values close to the present may not be complete, so you should consider using some buffer if trying to build a complete list.
+2. Due to [eventual consistency](/guides/Getting-Started/eventual-consistency) timestamp values close to the present may not be complete, so you should consider using some buffer if trying to build a complete list.
 3. When using `updated_at`, you may see values more than once if a record is updated while this is being processed.
 4. Using `updated_at` is a great way to keep another system in sync with delta's because it allows you to see changes in records (except deletes).
 
 ### Example: Exporting all accounts to CSV format
 
-The following bash script uses curl and [jq](https://jqlang.github.io/jq/) to build a CSV of all [Accounts](/docs/commerce-cloud/accounts) sorted by `id`.
+The following bash script uses curl and [jq](https://jqlang.github.io/jq/) to build a CSV of all [Accounts](/docs/api/accounts/account-management-introduction) sorted by `id`.
 
 ```bash
 #!/usr/bin/env bash

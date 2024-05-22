@@ -31,7 +31,7 @@ The following table describes the templates available.
 
 ### Collecting Commerce Manager setup information
 
-Collect the following Commerce API keys. When you log in to Commerce Manager as a Seller Admin, you can find this information in **SYSTEM** > **Application Keys** in Commerce Manager. Also see how to create a [new application key](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
+Collect the following Commerce API keys. When you log in to Commerce Manager as a Seller Admin, you can find this information in **SYSTEM** > **Application Keys** in Commerce Manager. Also see how to create a [new application key](/docs/authentication/application-keys/application-keys-cm).
 
 | Commerce API Key                   | Description                                    |
 |:-----------------------------------|:-----------------------------------------------|

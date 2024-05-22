@@ -1,7 +1,7 @@
 ---
-title: Store Roles
-nav_label: Store Roles
-sidebar_position: 10
+title: Team Management / Store Roles
+nav_label: Team Management
+sidebar_position: 40
 ---
 
 Companies typically have multiple personas who have different responsibilities. These personas, which are called roles, need different functional and feature access to Commerce depending on their responsibilities.

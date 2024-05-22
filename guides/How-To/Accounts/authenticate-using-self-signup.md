@@ -8,8 +8,8 @@ nav_position: 60
 
 If you want to follow along, you need the following:
 
-- A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](/docs/commerce-cloud/getting-started/cm-overview).
-- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](/guides/Getting-Started/authentication/Tokens/implicit-token).
+- A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](/ui).
+- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](/docs/authentication/Tokens/implicit-token).
 - A basic understanding of object-oriented programming or JavaScript.
 - An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token).
 
@@ -26,11 +26,11 @@ The following list outlines the steps of the single sign-on authentication flow 
 Send a POST request to create a password profile to use for self sign up. Make sure you set the `username_format` to `email`.
 Use the `id` from the returned response to authenticate using self sign up.
 
-You can find more detailed instructions on password profile creation [here](/guides/Getting-Started/authentication/single-sign-on/password-profiles-api/create-a-password-profile)
+You can find more detailed instructions on password profile creation [here](/docs/authentication/single-sign-on/password-profiles-api/create-a-password-profile)
 
 ### Update the account authentication settings
 
-Send a PUT request to update [Account Authentication Settings](/guides/Getting-Started/authentication/single-sign-on/account-authentication-settings) to set `enable_self_signup` to `true`. This enables self sign up for the account.
+Send a PUT request to update [Account Authentication Settings](/docs/authentication/single-sign-on/account-authentication-settings) to set `enable_self_signup` to `true`. This enables self sign up for the account.
 
 You can also set `auto_create_account_for_account_members` to `true`. This automatically creates an account for the account member and then creates a membership. 
 
@@ -41,8 +41,8 @@ You can find more detailed instructions on generating an authentication token us
 
 ### Login as an admin and add account member created to the account
 
-Log in as an Admin to [add a newly created account member to the account](/docs/commerce-cloud/accounts/using-account-membership-api/create-an-account-membership). Once this step is completed, a buyer can [log in as usual](/guides/Getting-Started/authentication/Tokens/account-management-authentication-token). 
+Log in as an Admin to [add a newly created account member to the account](/docs/commerce-cloud/accounts/using-account-membership-api/create-an-account-membership). Once this step is completed, a buyer can [log in as usual](/docs/authentication/Tokens/account-management-authentication-token). 
 
-If your `auto_create_account_for_account_members` setting in [account authentication settings](/guides/Getting-Started/authentication/single-sign-on/account-authentication-settings) is set to `false` then you need to manually create an account for the account member and afterwards [create account membership](/docs/api/accounts/post-v-2-accounts-account-id-account-memberships). 
+If your `auto_create_account_for_account_members` setting in [account authentication settings](/docs/authentication/single-sign-on/account-authentication-settings) is set to `false` then you need to manually create an account for the account member and afterwards [create account membership](/docs/api/accounts/post-v-2-accounts-account-id-account-memberships). 
 
 If the setting is set to `true`, you can log in as usual without any additional steps.

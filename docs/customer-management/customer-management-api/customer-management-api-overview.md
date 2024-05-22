@@ -10,7 +10,7 @@ The Customer API allows you to generate JSON Web Tokens inside your client-side 
 
 - [Customer tokens](/docs/customer-management/customer-managment-api/customer-tokens)
 
-You are able to use a [customer](/docs/customer-management/customer-managment-api/customer-tokens) token with an [implicit](/guides/Getting-Started/authentication/Tokens/implicit-token#post-create-an-implicit-token) Bearer token.  This is recommended for client-side interactions. Alternatively, you can use a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) Bearer token. This is recommended for back-end interactions.
+You are able to use a [customer](/docs/customer-management/customer-managment-api/customer-tokens) token with an [implicit](/docs/authentication/Tokens/implicit-token#post-create-an-implicit-token) Bearer token.  This is recommended for client-side interactions. Alternatively, you can use a [client_credentials](/docs/authentication/Tokens/client-credential-token#post-create-a-client-credential-token) Bearer token. This is recommended for back-end interactions.
 
 ## The `Customer` Object
 

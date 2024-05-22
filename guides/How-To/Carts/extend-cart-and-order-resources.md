@@ -18,7 +18,7 @@ This example only describes `flows` API calls and does not provide code that you
 
 Ensure that you have the following:
 
-- A Commerce account and the Client ID and Client Secret for your store, available from [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/getting-started/cm-overview).
+- A Commerce account and the Client ID and Client Secret for your store, available from [Commerce Manager](https://beta.elasticpath.dev/ui).
 - An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
 - Basic understanding of object-oriented programming or JavaScript.
 - A store set up with products and payment details.

@@ -24,7 +24,7 @@ Collect the following setup information from Salsify.
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/guides/Getting-Started/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
+To create a new [application key](/docs/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|

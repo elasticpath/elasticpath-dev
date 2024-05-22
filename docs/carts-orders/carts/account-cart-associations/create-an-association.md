@@ -40,7 +40,7 @@ Creates an association between a cart (`:cart_id`) and an account.
 
 ### With account token
 
-Requires an [`implicit` token](/guides/Getting-Started/authentication/Tokens/implicit-token) with a [`account` token](/guides/Getting-Started/authentication/Tokens/account-management-authentication-token).
+Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`account` token](/docs/authentication/Tokens/account-management-authentication-token).
 
 #### Curl
 
@@ -69,7 +69,7 @@ await EPCC.Carts.AddAccountAssociation(accountId, accountToken);
 
 ### Without account token
 
-Requires a [`client_credentials` token](/guides/Getting-Started/authentication/Tokens/client-credential-token).
+Requires a [`client_credentials` token](/docs/authentication/Tokens/client-credential-token).
 
 #### Curl
 

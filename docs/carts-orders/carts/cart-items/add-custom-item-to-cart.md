@@ -58,9 +58,9 @@ When you add custom items to a cart with `custom_inputs`, there are certain limi
 
 :::caution
 - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/commerce-cloud/carts/cart-items/cart-items-overview).
-- [Tax items](/docs/carts-orders/carts/tax-items#the-tax-item-object) may optionally be added with the custom item. Only administrators with [client credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
+- [Tax items](/docs/carts-orders/carts/tax-items#the-tax-item-object) may optionally be added with the custom item. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
 - A cart can contain a maximum of 100 unique items. Items include products and custom items.
-- Custom Cart Items are available through [implicit authentication](/guides/Getting-Started/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
+- Custom Cart Items are available through [implicit authentication](/docs/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
 :::
 
 ## `POST` Add Custom Item to Cart

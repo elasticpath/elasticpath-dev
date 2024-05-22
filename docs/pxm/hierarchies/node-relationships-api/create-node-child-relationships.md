@@ -28,7 +28,7 @@ You can also provide `sort_order` information when you create a relationship by 
 
 The node with the highest value of `sort_order` appears at the top of the response. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`.
 
-- If you don’t provide `sort_order` when creating relationships, all child nodes in the response for [Get a Node’s Children](/docs/pxm/hierarchies/node-relationships-api/get-node-children) request are ordered by the `updated_at` time in descending order. The most recently updated child node appears at the top of the response.
+- If you don’t provide `sort_order` when creating relationships, all child nodes in the response for [Get a Node’s Children](/docs/api/pxm/products/get-all-node-children) request are ordered by the `updated_at` time in descending order. The most recently updated child node appears at the top of the response.
 - If you set `sort_order` for only a few child nodes or not all, the child nodes with `sort_order` value appear first in the response and then other child nodes appear in the order of `updated_at` time.
 
 You can also specify a `sort_order` when [creating](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node) and [updating](/docs/pxm/hierarchies/nodes-api/update-a-hierarchy-node) a node.
@@ -57,7 +57,7 @@ You can also specify a `sort_order` when [creating](/docs/pxm/hierarchies/nodes-
 |:-------|:---------|:---------|:----------------------------------------------|
 | `type` | Required | `string` | The type of the resource object, you must use `node`. |
 | `id`   | Required | `string` | The unique identifier of a child node that has a relationship with the parent node in the same hierarchy. |
-| `meta` | Optional | `object` | The `sort_order` for each node. This value determines the order of nodes in the response for the [Get a Node’s Children](/docs/pxm/hierarchies/node-relationships-api/get-node-children) request. |
+| `meta` | Optional | `object` | The `sort_order` for each node. This value determines the order of nodes in the response for the [Get a Node’s Children](/docs/api/pxm/products/get-all-node-children) request. |
 
 ## Request Example
 

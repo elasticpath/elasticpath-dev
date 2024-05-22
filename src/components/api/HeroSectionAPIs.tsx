@@ -71,6 +71,15 @@ const PRODUCTS = [
     text: 'You can integrate Commerce with your external systems like enterprise resource planning, order management, fulfilment, and other systems, ensuring that buying is quick and easy for your shoppers.',
   },
   {
+    title: 'Organizations',
+    beta: false,
+    link: '/docs/organizations',
+    icon: BoxMultipleRegular,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'This unique capability enables our multi-store management solution which is used by franchises, distributor networks, multi-geo and multi-brand companies and more.',
+  },
+  {
     title: 'Payments',
     beta: false,
     link: '/docs/api/payments/payment-gateways-introduction',

@@ -14,7 +14,7 @@ When integrating with third party providers, we recommend you use the closest re
 
 ## Prerequisites
 
-- Ensure that you have collected your **Client-ID** and **Client-Secret** from Commerce Manager. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
+- Ensure that you have collected your **Client-ID** and **Client-Secret** from Commerce Manager. See [Application Keys](/docs/authentication/application-keys/application-keys-cm).
 - Ensure that you have received a URI from Braze to interact with the Braze services once you have registered as a Braze customer.
 - Ensure that you have created your Braze API Key. The following procedure describes how to create your API key:
 

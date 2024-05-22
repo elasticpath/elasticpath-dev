@@ -14,7 +14,7 @@ In a Commerce store, all organization and store admins can create, view, and man
     
     The **New Application Key** page is displayed.
 1. In the **Name** field, enter the name of the key that you want.
-1. (Optional) In the **Requests per second** field, enter the reserved rate limit for the key. Each organization and store has a specific rate limit. You can reserve a rate limit to the application key associated with that specific application. For more information, see [Application Keys Overview](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
+1. (Optional) In the **Requests per second** field, enter the reserved rate limit for the key. Each organization and store has a specific rate limit. You can reserve a rate limit to the application key associated with that specific application. For more information, see [Application Keys Overview](/docs/authentication/application-keys/application-keys-overview).
 1. Click **Create**. 
     
     Make sure to copy your **Client Secret** key and save it somewhere else because your **Client Secret** key will be not be displayed to you again. Alternatively, you can click **Download as CSV File** to save the information.

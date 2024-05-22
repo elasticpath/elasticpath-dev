@@ -17,7 +17,7 @@ https://useast.api.elasticpath.com/v2/carts
 Retrieves carts for the account. The account is specified by the [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview) in the header.
 
 :::caution
-Requires an [`implicit` token](/guides/Getting-Started/authentication/Tokens/implicit-token) with an [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview).
+Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with an [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview).
 :::
 
 ### Parameters

@@ -40,7 +40,7 @@ Creates an association between a cart (`:cart_id`) and a customer.
 
 ### With customer token
 
-Requires an [`implicit` token](/guides/Getting-Started/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-managment-api/customer-tokens).
+Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`customer` token](/docs/customer-management/customer-managment-api/customer-tokens).
 
 #### Curl
 
@@ -69,7 +69,7 @@ await EPCC.Carts.AddCustomerAssociation(customerId, customerToken);
 
 ### Without customer token
 
-Requires a [`client_credentials` token](/guides/Getting-Started/authentication/Tokens/client-credential-token).
+Requires a [`client_credentials` token](/docs/authentication/Tokens/client-credential-token).
 
 #### Curl
 

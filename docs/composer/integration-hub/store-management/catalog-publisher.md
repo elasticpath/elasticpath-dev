@@ -35,7 +35,7 @@ You configure the Catalog Publisher integration in **Integrations Hub**.
 1. Under **Store Management & Configuration**, click **Commerce Catalog Publisher**. The **Commerce Catalog Publisher** integration guides you through the steps you need to follow to complete the integration.
 1. Click **Configure**. The **Trigger details** are displayed.
 1. Click **Next**. The **Commerce Connection** page is displayed.
-1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview). The table below describes the options you can configure. 
+1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/authentication/application-keys/application-keys-overview). The table below describes the options you can configure. 
 
     | Option | Description |
     |:--- | :--- |

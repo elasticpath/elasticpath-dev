@@ -4,7 +4,7 @@ nav_label: Rate Limits
 sidebar_position: 139
 ---
 
-Commerce limits the number of requests it can accept from a web browser or client. The purpose of a rate limit is to ensure consistent performance and stability of the Commerce platform, and a quality experience for all customers. Each organization and store has its own rate limit. To learn about reserved rate limits, refer to [Application  Keys Overview](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
+Commerce limits the number of requests it can accept from a web browser or client. The purpose of a rate limit is to ensure consistent performance and stability of the Commerce platform, and a quality experience for all customers. Each organization and store has its own rate limit. To learn about reserved rate limits, refer to [Application  Keys Overview](/docs/authentication/application-keys/application-keys-overview).
 
 - Each store and organization has a rate limit based on its type and usage.
 - API requests made against a store and an organization are counted separately. 

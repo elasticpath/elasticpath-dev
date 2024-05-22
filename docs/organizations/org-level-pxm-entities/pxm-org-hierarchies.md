@@ -20,7 +20,7 @@ A product can belong to multiple nodes in multiple hierarchies.
 
 Organization hierarchies are automatically available in all stores that belong to the organization.
 
-1. Generate a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
 1. Create your product categories using [hierarchies](/docs/pxm/hierarchies/hierarchies-api/create-a-hierarchy).
 1. Create your product sub-categories using [nodes](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node).
 1. Organize your products into product [categories](/docs/pxm/hierarchies/node-relationships-api/create-node-product-relationships).
@@ -31,7 +31,7 @@ You can duplicate an existing hierarchy. This is useful because it enables you t
 
 During the duplication process, the product associations are maintained in the duplicated hierarchy. Once an organization hierarchy is duplicated, it belongs to the given store. A store Admin can then make changes to the duplicated hierarchy, as required. 
 
-1. Generate a [client_credentials](/guides/Getting-Started/authentication/Tokens/client-credential-token) access token to your store. 
+1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token to your store. 
 2. [Duplicate an organization hierarchy](/docs/pxm/hierarchies/hierarchies-api/duplicate-a-hierarchy).
 
    {% list type="checkmark" %}

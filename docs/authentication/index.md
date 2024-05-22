@@ -18,7 +18,7 @@ Read our [Quick Start guide](/guides/Getting-Started/api-overview/your-first-api
 
 Authentication tokens are generated via the `authentication` endpoint and expire within 1 hour. They need to be then regenerated. If you’re using our [JavaScript SDK](https://github.com/moltin/js-sdk), this is automatically handled for you.
 
-There are two main token types available for use within your store `client_credentials` and `implicit`. The [implicit token](/guides/Getting-Started/authentication/Tokens/implicit-token) is the more limited of the two, restricting access to mostly read-only, whereas [client credential token](/guides/Getting-Started/authentication/Tokens/client-credential-token) has full read and write access.
+There are two main token types available for use within your store `client_credentials` and `implicit`. The [implicit token](/docs/authentication/Tokens/implicit-token) is the more limited of the two, restricting access to mostly read-only, whereas [client credential token](/docs/authentication/Tokens/client-credential-token) has full read and write access.
 
 For more details on token formatting, see [Content Type](/guides/Getting-Started/api-overview/content-type).
 

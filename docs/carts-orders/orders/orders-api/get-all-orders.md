@@ -64,7 +64,7 @@ The following operators and attributes are available for [filtering](/guides/Get
 :::note
 
 - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-managment-api/customer-tokens).
-- Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/guides/Getting-Started/authentication/Tokens/account-management-authentication-token).
+- Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/docs/authentication/Tokens/account-management-authentication-token).
 - You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/api-overview/pagination).
 
 :::

@@ -55,7 +55,7 @@ In Commerce, create an application key for Constuctor.io.
 When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/api-overview/elastic-path-domains#regions-and-ur-ls).
 :::
 
-See [Creating an Application Key in Commerce Manager](/guides/Getting-Started/authentication/application-keys/application-keys-cm).
+See [Creating an Application Key in Commerce Manager](/docs/authentication/application-keys/application-keys-cm).
 
 ## Configuring the Integration
 

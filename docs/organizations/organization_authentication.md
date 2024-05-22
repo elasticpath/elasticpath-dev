@@ -11,11 +11,11 @@ Organizations introduces the Org Admin role, providing enhanced management capab
 - Add users to stores within your organization using an appropriate role.
 - Add users to your Organizations as an Org Admin.
 - Create and view only organization-level integrations.
-- Access and review organization-level integration logs for detailed analysis. For more information on integration logs, see [Get Integration Logs](/docs/commerce-cloud/integrations/integrations-api/get-integration-logs).
+- Access and review organization-level integration logs for detailed analysis. For more information on integration logs, see [Get Integration Logs](/docs/api/integrations/list-integration-logs).
 
 Additionally, when selecting a store within an organization, Org Admins are automatically granted Seller Admin permissions for that store. This gives Org Admins comprehensive control and flexibility over an organization's stores and integrations.
 
-Application keys are directly used to manage access to Organizations. For more information, see [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview).
+Application keys are directly used to manage access to Organizations. For more information, see [Application Keys](/docs/authentication/application-keys/application-keys-overview).
 
 The following table shows the API endpoint actions that are available for an Org Admin:
 
@@ -47,6 +47,6 @@ The following table shows the access permissions for an Org Admin Role in Commer
 
 ## Related Resources
 
-- [Application Keys](/guides/Getting-Started/authentication/application-keys/application-keys-overview)
-- [Create an Application Key](/guides/Getting-Started/authentication/application-keys/create-an-application-key)
+- [Application Keys](/docs/authentication/application-keys/application-keys-overview)
+- [Create an Application Key](/docs/authentication/application-keys/create-an-application-key)
 - [Store Roles](/guides/Getting-Started/team-management/roles)

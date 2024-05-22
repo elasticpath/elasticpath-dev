@@ -45,7 +45,7 @@ You can use the Customer Authentication Settings endpoint to retrieve settings c
 
 | Attribute | Type | Description |
 | :--- | :--- | :--- |
-| `meta.client_id` | `string` | The client id to be used in Single Sign On authentication flows for customers. For more information on where to use this client id, refer to the Developer How-To: [Single sign-on with OpenID Connect](/guides/Getting-Started/authentication/single-sign-on/get-single-sign-on-customer-token). |
+| `meta.client_id` | `string` | The client id to be used in Single Sign On authentication flows for customers. For more information on where to use this client id, refer to the Developer How-To: [Single sign-on with OpenID Connect](/docs/authentication/single-sign-on/get-single-sign-on-customer-token). |
 
 ## The `relationships` object
 

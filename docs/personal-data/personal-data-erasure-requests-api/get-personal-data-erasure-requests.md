@@ -17,7 +17,7 @@ https://useast.api.elasticpath.com/v2/personal-data/logs
 :::note
 
 * This request is only accessible to `client_credentials` token users with `Seller Admin`, `Support` and `IT` roles.
-* Non `client_credentials` token users cannot access this endpoint. See [Permissions](/guides/Getting-Started/authentication/Tokens/permissions).
+* Non `client_credentials` token users cannot access this endpoint. See [Permissions](/docs/authentication/Tokens/permissions).
 * This request requires a filter for `resource_type` and `resource_id`.
 
 :::

@@ -10,7 +10,7 @@ There are two ways to access the cart: with a `customer` token and without one.
 
 ## With a `customer` token
 
-These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/guides/Getting-Started/authentication/overview) documentation.
+These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/overview) documentation.
 
 ### Cart creation
 
@@ -22,7 +22,7 @@ You can create a cart id, name, and description for the cart. The cart requires 
 
 ## Without a `customer` token
 
-These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/guides/Getting-Started/authentication/overview) documentation.
+These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/overview) documentation.
 
 This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
 

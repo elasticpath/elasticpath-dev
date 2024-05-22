@@ -15,18 +15,18 @@ Elastic Path is constantly improving the filtering and search capabilities. The 
 
 Filtering is currently supported on the following endpoints:
 
-* [Get all accounts](/docs/commerce-cloud/accounts/using-account-management-api/get-all-accounts)
-* [Get all account members](/docs/commerce-cloud/accounts/using-account-members-api/get-all-account-members)
-* [Get all account memberships](/docs/commerce-cloud/accounts/using-account-membership-api/get-all-account-memberships)
-* [Get all account memberships on account member](/docs/commerce-cloud/accounts/using-account-membership-api/get-all-account-memberships-on-account-member)
-* [Get all unassigned account members](/docs/commerce-cloud/accounts/using-account-membership-api/get-all-unassigned-account-members)
-* [Get all user authentication info](/guides/Getting-Started/authenticationation/single-sign-on/user-authentication-info-api/get-all-user-authentication-info.md)
+* [Get all accounts](/docs/api/accounts/get-v-2-accounts)
+* [Get all account members](/docs/api/accounts/get-v-2-account-members)
+* [Get all account memberships](/docs/api/accounts/get-v-2-accounts-account-id-account-memberships)
+* [Get all account memberships on account member](/docs/api/accounts/get-v-2-account-members-account-member-id-account-memberships)
+* [Get all unassigned account members](/docs/api/accounts/get-v-2-accounts-account-id-account-memberships-unassigned-account-members)
+* [Get all user authentication info](/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info)
 * [Get all customers](/docs/customer-management/customer-managment-api/get-all-customers)
-* [Get all orders](/docs/commerce-cloud/orders/orders-api/get-all-orders)
+* [Get all orders](/docs/api/carts/get-customer-orders)
 * [Get personal data erasure requests](/docs/personal-data/personal-data-erasure-requests-api/get-personal-data-erasure-requests)
 * [Get personal data logs](/docs/personal-data/personal-data-logs-api/get-personal-data-logs)
 * [Get personal data related data entries](/docs/personal-data/personal-data-related-data-entries-api/get-personal-data-related-data-entries)
-* [Get all promotions](/docs/promotions/promotion-management/get-all-promotions)
+* [Get all promotions](/docs/api/promotions/get-all-promotions)
 * [Get a hierarchy's children in the latest release](/docs/pxm/catalogs/catalog-latest-release/get-a-hierarchys-children-in-a-release)
 * [Get a hierarchy's nodes in the latest release](/docs/pxm/catalogs/catalog-latest-release/get-all-nodes-in-a-release)
 * [Get a node in the latest release](/docs/pxm/catalogs/catalog-latest-release/get-a-node-in-a-release)
@@ -47,15 +47,15 @@ Filtering is currently supported on the following endpoints:
 * [Get all products in a hierarchy in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-products-by-hierarchy)
 * [Get all products in a node in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-products-by-node)
 * [Get all catalog rules](/docs/pxm/catalogs/catalog-rules/get-all-catalog-rules)
-* [Get a nodes children](/docs/pxm/hierarchies/node-relationships-api/get-node-children)
-* [Get a nodes products](/docs/pxm/hierarchies/node-relationships-api/get-node-products)
-* [Get all price books](/docs/pxm/pricebooks/pxm-pricebooks/get-all-pricebooks)
-* [Get all price modifiers](/docs/pxm/pricebooks/pxm-pricebooks-modifiers/get-all-price-modifiers)
-* [Get all prices in a price book](/docs/pxm/pricebooks/pxm-pricebooks-prices/get-all-prices-in-a-pricebook)
-* [Get all products](/docs/pxm/products/ep-pxm-products-api/get-all-products)
+* [Get a nodes children](/docs/api/pxm/products/get-all-node-children)
+* [Get a nodes products](/docs/api/pxm/products/get-node-products)
+* [Get all price books](/docs/api/pxm/pricebooks/get-pricebooks)
+* [Get all price modifiers](/docs/api/pxm/pricebooks/get-price-modifiers)
+* [Get all prices in a price book](/docs/api/pxm/pricebooks/get-product-prices)
+* [Get all products](/docs/api/pxm/products/get-all-products)
 * [Get all entries](/docs/pxm/products/extending-pxm-products/pxm-product-entries-api/get-all-entries)
-* [Get all files](/docs/pxm/products/product-assets/get-all-files)
-* [Get Jobs](/docs/pxm/jobs-api/get-all-jobs)
+* [Get all files](/docs/api/pxm/files/get-all-files)
+* [Get Jobs](/docs/api/pxm/products/get-all-jobs)
 
 ## Filtering Syntax
 
@@ -117,7 +117,7 @@ Best practices are:
 
 1. Using `eq` when possible instead of `like`.
 2. Adding another search operator to narrow down the request. For example, adding `eq(status,paid)`, or `gt(updated_at,<DATE>)` to `like(contact.name,<SEARCH>)` may have higher performance.
-3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview) and querying the flow. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations).
+3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/api/flows/flows-service-introduction) and querying the flow. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations).
 
 ### Supported Operators
 
@@ -181,15 +181,15 @@ The following characters can be used when constructing an operand:
 :::note
 As this feature is in beta, quoted operands are only working with the following endpoints: 
 
-- [Get all accounts](/docs/commerce-cloud/accounts/using-account-management-api/get-all-accounts)
-- [Get all account members](/docs/commerce-cloud/accounts/using-account-members-api/get-all-account-members)
-- [Get all unassigned account members](/docs/commerce-cloud/accounts/using-account-membership-api/get-all-unassigned-account-members)
-- [Get all user authentication info](/guides/Getting-Started/authenticationation/single-sign-on/user-authentication-info-api/get-all-user-authentication-info.md)
+- [Get all accounts](/docs/api/accounts/get-v-2-accounts)
+- [Get all account members](/docs/api/accounts/get-v-2-account-members)
+- [Get all unassigned account members](/docs/api/accounts/get-v-2-accounts-account-id-account-memberships-unassigned-account-members)
+- [Get all user authentication info](/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info)
 - [Get all customers](/docs/customer-management/customer-managment-api/get-all-customers)
-- [Get all orders](/docs/carts-orders/orders/orders-api/get-all-orders)
-- [Get all files](/docs/pxm/products/product-assets/get-all-files )
-- [Get all promotions](/docs/promotions/promotion-management/get-all-promotions)
-- [Get all products](/docs/pxm/products/ep-pxm-products-api/get-all-products)
+- [Get all orders](/docs/api/carts/get-customer-orders)
+- [Get all files](/docs/api/pxm/files/get-all-files)
+- [Get all promotions](/docs/api/promotions/get-all-promotions)
+- [Get all products](/docs/api/pxm/products/get-all-products)
 :::
 
 If you need to search for unsupported operands, or white space is significant (for example, a value starts with a
@@ -245,4 +245,4 @@ Best practices are:
 
 1. Using `eq` when possible instead of `like`.
 2. Adding another search operator can often narrow down the request. For example, adding `eq(status,paid)`, or `gt(updated_at,<DATE>)` to `like(contact.name,<SEARCH>)` may have higher performance.
-3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/commerce-cloud/custom-data) and querying that. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations).
+3. Storing a copy of the filtered results in a [Custom Data (Flows)](/docs/api/flows/flows-service-introduction) and querying that. The flow can be populated using a combination of batch processing or [Events](/docs/commerce-cloud/integrations).

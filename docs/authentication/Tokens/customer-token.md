@@ -12,7 +12,7 @@ A customer token provides access to the records of the customer. Use single sign
 - [Get an Address](/docs/commerce-cloud/addresses/get-an-address)
 - [Create an Address](/docs/commerce-cloud/addresses/create-an-address)
 - [Update an Address](/docs/commerce-cloud/addresses/update-an-address)
-- [Get all Orders](/docs/commerce-cloud/orders/orders-api/get-all-orders)
+- [Get all Orders](/docs/api/carts/get-customer-orders)
 - [Get an Order](/docs/commerce-cloud/orders/orders-api/get-an-order)
 - [Get Customer Carts](/docs/commerce-cloud/carts/customer-cart-associations/get-customer-carts)
 - [Create an Association between a Customer and a Cart](/docs/commerce-cloud/carts/customer-cart-associations/create-an-association)
