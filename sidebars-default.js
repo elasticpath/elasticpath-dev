@@ -317,6 +317,12 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/subscriptions/sidebar.js")
     },
+    //Link not in the API spec
+    {
+      type: 'link',
+      label: 'Observable Events',
+      href: '/docs/api/subscriptions/observable-events.md', // The internal path
+    },
   ],
   // But you can create a sidebar manually
   /*
