@@ -321,7 +321,7 @@ const sidebarsDefault = {
     {
       type: 'link',
       label: 'Observable Events',
-      href: '/docs/api/subscriptions/observable-events.md', // The internal path
+      href: '/docs/api/subscriptions/observable-events', // The internal path
     },
   ],
   // But you can create a sidebar manually
