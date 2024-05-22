@@ -72,6 +72,6 @@ Customer filtering is useful for customer management. Filtering can help you det
 
 ## Related Resources
 
-- [Customers](https://beta.elasticpath.dev/docs/commerce-cloud/customer-management/customers)
-- [Customer Tokens API](https://beta.elasticpath.dev/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens)
+- [Customers](/docs/commerce-cloud/customer-management/customers)
+- [Customer Tokens API](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens)
 - [Extend customer resources](/guides/Customers/extend-customer-resources)
