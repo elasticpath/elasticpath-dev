@@ -46,6 +46,7 @@ tags:
       |---------------------------------|----------------|------------------------------------------|
       | Data Type: String               | ✅              | ✅                                         |
       | Data Type: Integer              | ✅              | ✅                                         |
+      | Data Type: Float                | ✅              | ✅                                         |
       | Data Type: Boolean              | ✅              | ✅                                         |
       | Data Type: Date                 | ✅              | ✅ Regex possible now, full support planned |
       | Data Type: One To Many          | ✅              | Planned                                   |
@@ -60,31 +61,48 @@ tags:
       `validation` can optionally be used to limit the values that can be stored in an object. Each validation attribute is optional, ie. you can set `min_value` but leave `max_value` as `null` to leave the maximum value unbounded.
 
       ### Integer Validation
-      - `min_value`: Specifies the minimum whole number that can be stored. Must be less than `max_value` if set.
-      - `max_value`: Specifies the maximum whole number that can be stored.  Must be greater than `min_value` if set.
+      - `min_value`: Specifies the minimum whole number that can be stored. If set, it must be less than `max_value`.
+      - `max_value`: Specifies the maximum whole number that can be stored. If set, it must be greater than `min_value`.
 
       sample integer validation object:
 
       ```
       "validation": {
-        "integer: {
+        "integer": {
             "min_value": 0,
             "max_value": 32
         }
       }
       ```
       Even if no validation is set, field_type `integer` only supports values between -2^53+1 and 2^53+1.
+      
+      ### Float Validation
+      - `min_value`: Specifies the minimum number that can be stored. If set, it must be less than `max_value`.
+      - `max_value`: Specifies the maximum number that can be stored. If set, it must be greater than `min_value`.
+
+      sample float validation object:
+
+      ```
+      "validation": {
+        "float": {
+            "min_value": 0.01,
+            "max_value": 32.01
+        }
+      }
+      ```
+      
+      The `float` field_type cannot accurately represent some numbers and so using very small or large numbers might lose precision. We recommend that API clients use either the `integer` field_type if applicable , or the `string` data type if perfect precision or recall is required.
 
       ### String Validation
-      - `min_length`: Specifies the minimum number of characters that can be stored. This must be less than 0 and less than `max_length` if set.
-      - `max_length`: Specifies the maximum number of characters that can be stored.  This must be greater than 0 and `min_length` if set.
+      - `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be less than 0 and less than `max_length`.
+      - `max_length`: Specifies the maximum number of characters that can be stored. If set, it must be greater than 0 and `min_length`.
       - `regex`: [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored. This must be less than 1024 characters.
 
       sample string validation object:
 
       ```
       "validation": {
-        "string: {
+        "string": {
             "min_length": 0,
             "max_length": 64
             "regex": "^.+\.(jpg|jpeg|png|gif|pdf)$"
@@ -426,6 +444,25 @@ paths:
                       "field_type": "boolean"
                     }
                   }
+              float_field:
+                summary: "Float field example"
+                # language=JSON
+                value: |
+                  {
+                    "data": {
+                      "type": "custom_field",
+                      "name": "Items Weight",
+                      "description": "This field stores the total weight (in kilograms) of the items in the wishlist.",
+                      "slug": "items_weight",
+                      "field_type": "float",
+                      "validation":  { 
+                        "float": {
+                          "min_value": 0.0,
+                          "max_value": null
+                        }
+                      }
+                    }
+                  }
       responses:
         '201':
           description: Created
@@ -515,6 +552,35 @@ paths:
                         "description": "This field stores whether or not to keep purchased items on the wishlist.",
                         "slug": "keep_purchased",
                         "field_type": "boolean",
+                        "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                        "links": {
+                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "created_at": "2017-01-10T11:41:19.244Z",
+                            "updated_at": "2017-01-10T11:41:19.244Z"
+                          }
+                        }
+                      }
+                    }
+                float_field:
+                  summary: "Float field example"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "type": "custom_field",
+                        "name": "Items Weight",
+                        "description": "This field stores the total weight (in kilograms) of the items in the wishlist.",
+                        "slug": "items_weight",
+                        "field_type": "float",
+                        "validation":  { 
+                          "float": {
+                            "min_value": 0.0,
+                            "max_value": null
+                          }
+                        },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
                             "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
@@ -1487,11 +1553,13 @@ components:
               - string
               - integer
               - boolean
+              - float
           description: Specifies the type of the field. This field cannot be updated.
           examples:
               - "string"
               - "integer"
               - "boolean"
+              - "float"
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLink'
@@ -1548,15 +1616,34 @@ components:
     BooleanCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
+    FloatCustomFieldAttributes:
+      allOf:
+        - $ref: '#/components/schemas/BaseCustomFieldAttributes'
+        - type: object
+          properties:
+            validation:
+              type: object
+              properties:
+                float:
+                  type: object
+                  properties:
+                    min_value:
+                      type: [integer, 'null']
+                      description: Specifies the minimum whole number that can be stored.
+                    max_value:
+                      type: [integer, 'null']
+                      description: Specifies the maximum whole number that can be stored.
     CustomFieldAttributes:
       anyOf:
         - $ref: '#/components/schemas/BooleanCustomFieldAttributes'
         - $ref: '#/components/schemas/StringCustomFieldAttributes'
         - $ref: '#/components/schemas/IntegerCustomFieldAttributes'
+        - $ref: '#/components/schemas/FloatCustomFieldAttributes'
       discriminator:
         propertyName: field_type
         mapping:
           boolean: '#/components/schemas/BooleanCustomFieldAttributes'
+          float: '#/components/schemas/FloatCustomFieldAttributes'
           integer: '#/components/schemas/IntegerCustomFieldAttributes'
           string: '#/components/schemas/StringCustomFieldAttributes'
     CustomApiEntryAttributes:
