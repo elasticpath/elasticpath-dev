@@ -623,7 +623,7 @@ const config = {
             },
           },
           promotions: {
-            specPath: "openapispecs/promotions/OpenAPISpec.yml",
+            specPath: "openapispecs/promotions/OpenAPISpec.yaml",
             outputDir: "docs/api/promotions",
             downloadUrl:
                 "https://beta.elasticpath.com/openapispecs/promotions.yaml",
