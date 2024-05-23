@@ -23,7 +23,7 @@ By default, carts are automatically deleted 7 days after the last update. You ca
 :::
 
 :::caution
-There are a number of actions that happen to your [inventory](/docs/pxm/inventories/inventory-api-overview) when checking out and paying for an order. For more information please be sure to evaluate our [detailed article](/docs/pxm/inventories/inventory.mdx) explaining the processes.
+There are a number of actions that happen to your [inventory](/docs/api/pxm/inventory/inventories-introduction) when checking out and paying for an order. For more information please be sure to evaluate our [detailed article](/docs/api/pxm/inventory/inventories-introduction) explaining the processes.
 :::
 
 ## `POST` With Customer ID

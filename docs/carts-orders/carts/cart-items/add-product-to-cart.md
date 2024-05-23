@@ -8,9 +8,9 @@ Adding a Product to Cart is the most common Cart action. If you want to add any 
 
 ## Dynamic Bundles
 
-A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/pxm/products/pxm-bundles#dynamic-bundles).
+A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/api/pxm/products/products#dynamic-bundles).
 
-Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the [configure a shopper bundle](/docs/pxm/catalogs/shopper-catalog/configure-shopper-bundle) endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the `add product to cart` request.
+Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the [configure a shopper bundle](/docs/api/pxm/catalogs/shopper-catalog/configure-shopper-bundle) endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the `add product to cart` request.
 
  ```json
 "bundle_configuration": {
@@ -32,7 +32,7 @@ When a cart is checked out, the options a shopper selected are added to the orde
 
 You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. You can do this using the `custom_inputs` attribute. The `custom_inputs` attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
 
-First, you must configure a `custom_inputs` attribute when [creating a new product](/docs/pxm/products/ep-pxm-products-api/create-a-product) or [updating an existing product](/docs/pxm/products/ep-pxm-products-api/update-a-product). Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders.
+First, you must configure a `custom_inputs` attribute when [creating a new product](/docs/api/pxm/products/create-product) or [updating an existing product](/docs/api/pxm/products/update-product). Once you have defined your custom inputs on a product, you must configure the custom inputs in your orders.
 
 For example, you may sell T-shirts that can have personalized text on the front and back of the shirt.
 
@@ -113,7 +113,7 @@ A cart can contain a maximum of 100 unique items. Items include products and cus
 :::
 
 :::caution
-There are a number of actions that happen to your [inventory](/docs/pxm/inventories/inventory.mdx) when checking out and paying for an order. For more information, see the [Inventory](/docs/pxm/inventories/inventory.mdx) documentation.
+There are a number of actions that happen to your [inventory](/docs/api/pxm/inventory/inventories-introduction) when checking out and paying for an order. For more information, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) documentation.
 :::
 
 ## `POST` Add Product to Cart

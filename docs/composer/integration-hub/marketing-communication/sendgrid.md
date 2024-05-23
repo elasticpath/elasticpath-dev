@@ -84,11 +84,12 @@ Each event mapping configuration is a set of parameters for a specific event typ
 
 The attributes and types for the `messagingProvider` object are defined in the following table.
 
-| Attribute             | Type                                      | Description |
-|:----------------------|:------------------------------------------|:---------|
-| `templateId`          | string                                    | The `templateId` of your SendGrid Dynamic Email template. See [Creating Dynamic Templates in SendGrid](/docs/composer/integration-hub/marketing-communication/sendgrid#creating-dynamic-templates-in-send-grid). |
-| `from`                | string                                    | The email address to use in the `From` email field. This is the email address you verified in SendGrid. See [Prequisites](#prerequisites). |
-| `dynamicFieldMapping` | [object](#the-dynamic-field-mapping-object) | The key + value pairs that maps data from Commerce to the SendGrid dynamic template. |
+| Attribute             | Type                                      | Required | Description                                                                                                                                                                                                                                       |
+|:----------------------|:------------------------------------------|:---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `templateId`          | string                                    | Required | The `templateId` of your SendGrid Dynamic Email template. See [Creating Dynamic Templates in SendGrid](/docs/composer/integration-hub/marketing-communication/sendgrid#creating-dynamic-templates-in-send-grid).                                  |
+| `from`                | string                                    | Required | The email address to use in the `From` email field. This is the email address you verified in SendGrid. See [Prequisites](#prerequisites).                                                                                                        |
+| `name`                | string                                    | Optional | A free text name that allows you to replace your sender email address with a custom name, so the recipient sees the specified text instead of the actual email address. For example, **MyCompany Customer Service** or **No Reply at MyCompany**. |
+| `dynamicFieldMapping` | [object](#the-dynamic-field-mapping-object) | Required | The key + value pairs that maps data from Commerce to the SendGrid dynamic template.                                                                                                                                                              |
 
 #### The `dynamicFieldMapping` object
 
@@ -107,7 +108,8 @@ Below is an example of a single `messagingProvider` object.
 {
   "messagingProvider": {
     "templateId": "d-7fd1f0f905974f9abc9f8f44f883e0b5",
-    "from": "customer-service@foo.com"
+    "from": "customer-service@foo.com",
+    "name": "Foo Customer Service"
   },
   "dynamicFieldMapping": {
     "marketingImage": "http://example.com/static/value.png",
@@ -128,7 +130,8 @@ Below is an example of an array of `messagingProvider` objects.
   {
     "messagingProvider": {
       "templateId": "d-5377hisuhf477h2hhbahd563gag5h",
-      "from": "no-reply@foo.com"
+      "from": "no-reply@foo.com",
+      "name": "No Reply at Foo.com"
     },
     "dynamicFieldMapping": {
       "marketingImage": "http://example.com/static/order-notification.png",
