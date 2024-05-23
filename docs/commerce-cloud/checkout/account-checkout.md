@@ -13,7 +13,7 @@ By default, carts are automatically deleted 7 days after the last update. You ca
 :::
 
 :::caution
-Your inventory is modified during checkout and payment of an order. For more information about the changes in the inventory, see the [Inventory](/docs/pxm/inventories/inventory-api-overview) section.
+Your inventory is modified during checkout and payment of an order. For more information about the changes in the inventory, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) section.
 :::
 
 ## `POST` Create Checkout With Account

@@ -205,7 +205,7 @@ tags:
 
       By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [**Schedules**](/docs/api/subscriptions/schedules).
 
-      ### Characteristics of Billing & Payments Jobs
+      ### Characteristics of Billing, Tax & Payments Jobs
 
       Billing and payment jobs have the following characteristics.
 
@@ -214,7 +214,7 @@ tags:
       - Jobs report any errors to help you understand the reason for any failed jobs.
       - Only one billing run and payment run is allowed per store at a time. Although billing and payments are constantly generated, the jobs are queued. Subscriptions looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed.
 
-      ### Billing & Payments Jobs Lifecycle
+      ### Billing, Tax & Payments Jobs Lifecycle
 
       A job can have the following status types:
 
@@ -222,6 +222,16 @@ tags:
       - STARTED - Subscriptions has started processing the job.
       - SUCCESS - The job has successfully completed.
       - FAILED - The job has failed.
+
+      ### Billing, Tax & Payment Reports
+
+      You can track your Subscriptions billing, payment and tax operations using reports. There are three types of report:
+
+      - `BillingRunReport` - This report provides invoice summaries such as invoices ready for payment, invoices that require tax, and invoice failures.
+      - `TaxRunReport` - This report provides invoice summaries such as invoices to which tax was successfully or unsuccessfully added.
+      - `PaymentRunReport` - This report provides invoice summaries such as invoices for which payment was attempted, failed payment attempts and totals collected by a payment run. 
+
+      See [Get a job](/docs/api/subscriptions/get-job) and [List jobs](/docs/api/subscriptions/list-jobs).
   - name: Imports
     description: |
       Imports are an asynchronous process that are triggered manually to add data to Subscriptions.
@@ -740,24 +750,24 @@ paths:
       summary: Build an offering
       description: |
         An offering includes a product and plans; a product is combined with one or more plans to form an offering. An offering can have only one product. An offering can include either:
-         
+
         - a subscription product. See [**create a product**](/docs/api/subscriptions/create-product).
         - a Product Experience Manager product. See [**create a product**](/docs/api/pxm/products/create-product).
-         
+
         Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
 
         When you are building an offering:
 
         - you can create new plans and products.
         - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
-         
+
         Here's how you build an offering:
-         
+
         1. Specify the product to build with the offering. A product can be:
-         
+
              - a subscription product. Specify the subscription product attributes. 
              - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
-         
+
         2. Specify the plans to build with the offering. Plans are the rules that govern your subscription, for example, any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.
           An offering must have at least one plan. 
       operationId: BuildOffering
@@ -1306,6 +1316,37 @@ paths:
                     $ref: '#/components/schemas/Subscription'
                   included:
                     $ref: '#/components/schemas/SubscriptionIncludes'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Subscriptions
+      summary: Update a subscription
+      operationId: UpdateSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/SubscriptionUpdate'
+      responses:
+        '201':
+          description: Success. The subscription is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscription'
         '400':
           $ref: '#/components/responses/ValidationError'
         '404':
@@ -2213,6 +2254,93 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /subscriptions/proration-policies:
+    post:
+      tags:
+        - ProrationPolicies
+      summary: Create a Proration Policy
+      operationId: CreateProrationPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ProrationPolicyCreate'
+      responses:
+        '201':
+          description: Success. The proration policy is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProrationPolicy'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - ProrationPolicies
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      summary: List proration policies
+      description: |
+        Retrieves a list of all proration policies.
+      operationId: ListProrationPolicies
+      responses:
+        '200':
+          description: Success. A list of proration policies is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProrationPolicy'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/proration-policies/{proration_policy_uuid}:
+    parameters:
+      - name: proration_policy_uuid
+        in: path
+        description: The unique identifier of a proration policy.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - ProrationPolicies
+      summary: Get proration policy
+      operationId: GetProrationPolicy
+      responses:
+        '200':
+          description: Success. The proration policy details are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProrationPolicy'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   securitySchemes:
     BearerToken:
@@ -2321,6 +2449,10 @@ components:
               - title: Write Conflict
                 status: '409'
   schemas:
+    ActivePlan:
+      type: boolean
+      description: Whether a plan is active on the subscription using that offering or not.
+      example: true
     ExternalRef:
       description: A unique attribute that you could use to contain information from another company system, for example. The maximum length is 2048 characters.
       type: string
@@ -2337,63 +2469,58 @@ components:
       example: subscription
       enum:
         - subscription
-      default: subscription
     SubscriptionProductType:
       type: string
       example: subscription_product
       enum:
         - subscription_product
-      default: subscription_product
+    ProrationPolicyType:
+      type: string
+      example: proration_policy
+      enum:
+        - proration_policy
     SubscriptionPlanType:
       type: string
       example: subscription_plan
       enum:
         - subscription_plan
-      default: subscription_plan
     SubscriptionOfferingType:
       type: string
       example: subscription_offering
       enum:
         - subscription_offering
-      default: subscription_offering
     SubscriptionOfferingProductType:
       type: string
       example: subscription_offering_product
       enum:
         - subscription_offering_product
-      default: subscription_offering_product
     SubscriptionOfferingPlanType:
       type: string
       example: subscription_offering_plan
       enum:
         - subscription_offering_plan
-      default: subscription_offering_plan
     SubscriptionJobType:
       type: string
       example: subscription_job
       enum:
         - subscription_job
-      default: subscription_job
     SubscriptionImportType:
       type: string
       example: subscription_import
       enum:
         - subscription_import
-      default: subscription_import
     SubscriptionInvoiceType:
       description: This represents the type of resource object being returned. Always `subscription_invoice`.
       type: string
       example: subscription_invoice
       enum:
         - subscription_invoice
-      default: subscription_invoice
     SubscriptionInvoicePaymentType:
       type: string
       description: This represents the type of resource object being returned. Always `subscription_invoice_payment`.
       example: subscription_invoice_payment
       enum:
         - subscription_invoice_payment
-      default: subscription_invoice_payment
     Links:
       type: object
       additionalProperties:
@@ -2801,6 +2928,83 @@ components:
           $ref: '#/components/schemas/NullablePrice'
         price_units:
           $ref: '#/components/schemas/NullablePriceUnits'
+    ProrationPolicy:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/ProrationPolicyType'
+        attributes:
+          $ref: '#/components/schemas/ProrationPolicyResponseAttributes'
+        meta:
+          $ref: '#/components/schemas/ProrationPolicyMeta'
+    ProrationPolicyResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/ProrationPolicyAttributes'
+    ProrationPolicyCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/ProrationPolicyType'
+        attributes:
+          $ref: '#/components/schemas/ProrationPolicyAttributes'
+    ProrationPolicyAttributes:
+      required:
+        - rounding
+        - unit
+        - behaviour
+      properties:
+        rounding:
+          type: string
+          description: Whether to round up or down
+          enum:
+            - up
+            - down
+            - nearest
+          example: up
+          x-go-type: model.ProrationPolicyRounding
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        unit:
+          type: string
+          description: The unit to apportion over
+          enum:
+            - day
+            - month
+            - year
+          example: day
+          x-go-type: model.ProrationPolicyUnit
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        behaviour:
+          type: string
+          description: Behaviour for payment application
+          enum:
+            - immediately
+            - next_invoice
+          example: immediately
+          x-go-type: model.ProrationPolicyBehaviour
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+    ProrationPolicyMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
     Plan:
       required:
         - type
@@ -3163,6 +3367,8 @@ components:
           $ref: '#/components/schemas/Price'
         display_price:
           $ref: '#/components/schemas/DisplayPrice'
+        active_plan:
+          $ref: '#/components/schemas/ActivePlan'
         owner:
           $ref: '#/components/schemas/OwnerMeta'
         timestamps:
@@ -3296,6 +3502,26 @@ components:
           $ref: '#/components/schemas/Relationships'
         meta:
           $ref: '#/components/schemas/SubscriptionMeta'
+    SubscriptionUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionUpdateAttributes'
+    SubscriptionUpdateAttributes:
+      properties:
+        plan_id:
+          x-go-type: uuid.UUID
+          x-go-type-import:
+            name: uuid
+            path: github.com/google/uuid
+          example: 00000000-0000-0000-0000-000000000001
     SubscriptionIncludes:
       readOnly: true
       properties:
@@ -3354,8 +3580,8 @@ components:
     SubscriptionAttributes:
       required:
         - account_id
-        - offering
         - plan_id
+        - offering
         - currency
         - name
         - email
@@ -3391,7 +3617,6 @@ components:
       example: subscription_state
       enum:
         - subscription_state
-      default: subscription_state
     SubscriptionStateAction:
       type: string
       description: |
@@ -3405,7 +3630,7 @@ components:
         - cancel
         - pause
         - resume
-      x-go-type: model.SubscriptionActionType
+      x-go-type: model.SubscriptionAction
       x-go-type-import:
         name: model
         path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
@@ -3445,6 +3670,10 @@ components:
           enum:
             - elastic_path_payments_stripe
             - authorize_net
+          x-go-type: paymentgateways.GatewayName
+          x-go-type-import:
+            name: paymentgateways
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/paymentgateways
         customer_id:
           description: The unique identifier for a customer.
           type: string
@@ -3548,7 +3777,7 @@ components:
         report:
           $ref: '#/components/schemas/JobReport'
     JobReport:
-      description: A job report summarizes the work done by the job.
+      description: You can track your Subscriptions billing, tax, and payment operations using reports.
       oneOf:
         - $ref: '#/components/schemas/BillingRunReport'
         - $ref: '#/components/schemas/TaxRunReport'
@@ -3566,7 +3795,7 @@ components:
           type: integer
           example: 100
         invoices_tax_required:
-          description: The total number of invoices created that need taxes to be applied before thay can be paid.
+          description: The total number of invoices created that need taxes to be applied before payment can be made.
           type: integer
           example: 100
         invoice_failures:
@@ -3575,11 +3804,11 @@ components:
           example: 0
         total_ready_for_payment:
           allOf:
-            - description: The total amount ready for pauyment invoiced in the billing run, segmented by currency.
+            - description: The total amount ready for payment invoiced in the billing run, segmented by currency.
             - $ref: '#/components/schemas/Price'
         total_tax_required:
           allOf:
-            - description: The total amount (minus tax) invoiced in the billing run but still requiring taxes, segmented by currency.
+            - description: The total amount (excluding tax) invoiced in the billing run but still requiring taxes, segmented by currency.
             - $ref: '#/components/schemas/Price'
     TaxRunReport:
       required:
@@ -3587,11 +3816,11 @@ components:
         - invoice_failures
       properties:
         invoices_updated:
-          description: The total number of invoices to which tax was successfully added
+          description: The total number of invoices to which tax was successfully added.
           type: integer
           example: 100
         invoice_failures:
-          description: The total number of invoices that tax could not be added to
+          description: The total number of invoices to which tax could not be added.
           type: integer
           example: 0
     PaymentRunReport:
@@ -3617,9 +3846,11 @@ components:
         - $ref: '#/components/schemas/Timestamps'
         - properties:
             started_at:
+              description: The date and time a job is started.
               type: string
               example: '2017-01-10T11:41:19.244842Z'
             finished_at:
+              description: The date and time a job finished.
               type: string
               example: '2017-01-10T11:41:19.244842Z'
     JobCreate:
@@ -3813,6 +4044,7 @@ components:
         - invoice_items
         - outstanding
         - tax_required
+        - payment_retries_limit_reached
       properties:
         billing_period:
           $ref: '#/components/schemas/TimePeriod'
@@ -3836,6 +4068,10 @@ components:
           type: boolean
           description: Whether tax is required for this invoice.
           example: true
+        payment_retries_limit_reached:
+          type: boolean
+          description: Whether the limit of payment retries has been reached.
+          example: false
         updated_at:
           description: The date and time an invoice was updated.
           type: string
@@ -3971,7 +4207,6 @@ components:
       example: subscription_subscriber
       enum:
         - subscription_subscriber
-      default: subscription_subscriber
     SubscriberResponseAttributes:
       allOf:
         - $ref: '#/components/schemas/SubscriberAttributes'
@@ -4083,7 +4318,6 @@ components:
       example: subscription_schedule
       enum:
         - subscription_schedule
-      default: subscription_schedule
     ScheduleResponseAttributes:
       allOf:
         - $ref: '#/components/schemas/ScheduleAttributes'
