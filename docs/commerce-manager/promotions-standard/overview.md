@@ -196,7 +196,7 @@ Using the **Manage Code Export** tab, you can export your promotion codes and do
 
 ## Related Resources
 
-- [Promotions Standard](/docs/promotions/promotions-cm/overview)
+- [Promotions Standard](/docs/commerce-manager/promotions-standard/overview)
 - [Customers](/docs/customer-management/customers)
 - [Catalog](/docs/pxm/catalogs)
 - [Create a Job](/docs/promotions/promotion-codes/jobs-api/create-a-job)

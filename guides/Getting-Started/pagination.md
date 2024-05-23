@@ -87,7 +87,7 @@ By default, page length is set to `25`. You can adjust this setting globally for
 In general, requests with a large `page[offset]` are less performant in the Commerce API, especially at scale (either with high
 frequency requests or with a high amount of data) and care should be taken when using them.
 
-A common use case for high `page[offset]` is the need to retrieve all the data from a specific endpoint. As an alternative to using high page offsets, many endpoints support the use of an alternative pattern that leverages [filtering](/guides/Getting-Started/filtering) and [sorting](/guides/Getting-Started/api-overview/sorting). 
+A common use case for high `page[offset]` is the need to retrieve all the data from a specific endpoint. As an alternative to using high page offsets, many endpoints support the use of an alternative pattern that leverages [filtering](/guides/Getting-Started/filtering) and [sorting](/guides/Getting-Started/sorting). 
  
 To use the approach you first decide on which attribute to sort on, with `created_at`, `updated_at`, `id` being the most common. Next you request the first page using the `sort` attribute selected. To get the next page, supply a filter where the attribute has a value greater than or equal to the last value.
 

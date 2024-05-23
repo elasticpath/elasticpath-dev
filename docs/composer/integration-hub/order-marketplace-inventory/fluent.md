@@ -148,7 +148,7 @@ There are multiple ways to verify the success of this integration. Here are two 
 
 ### Option 1
 
-1. In Commerce Manager, publish a product catalog. For more information, see [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration#publishing-catalogs).
+1. In Commerce Manager, publish a product catalog. For more information, see [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration#publishing-catalogs).
 1. On the **Products** page, click any product to view the SKU.
 1. Copy the product SKU.
 1. Go to Fluent Commerce.

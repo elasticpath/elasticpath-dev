@@ -4,7 +4,7 @@ nav_label: Overview
 sidebar_position: 1
 ---
 
-You can modify the cart expiry settings to set it to any number of days up to 365. Any existing carts default to the expiry of 7 days. To update cart settings in Commerce Manager, see [Updating Cart setting](/docs/commerce-cloud/global-project-settings/general-settings#updating-cart-settings).
+You can modify the cart expiry settings to set it to any number of days up to 365. Any existing carts default to the expiry of 7 days. To update cart settings in Commerce Manager, see [Updating Cart setting](/docs/api/settings/put-v-2-settings-cart).
 
 With cart settings, you can: 
 - Enable or disable custom discounts by setting the `custom_discounts_enabled` field to `true`. This allows you to activate your custom discounts from external services. See [Update Cart Setting](/docs/carts-orders/carts/cart-management/cart-settings/update-cart-settings).

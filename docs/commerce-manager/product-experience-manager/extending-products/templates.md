@@ -122,7 +122,7 @@ For the changes to appear in the storefront, you must republish the affected cat
 - [Product Templates](/docs/api/flows/flows)
 - [Product Attributes](/docs/api/flows/fields)
 - [Price books](/docs/api/pxm/pricebooks)
-- [Catalog](/docs/api/pxm/catalogs)
+- [Catalog](/docs/api/pxm/catalog)
 - [Create a template](/docs/api/flows/create-a-flow)
 - [Create an attribute](/docs/api/flows/create-a-field)
 

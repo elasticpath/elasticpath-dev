@@ -101,7 +101,7 @@ When integrating with third-party providers, we recommend you use the closest re
      - [images](/docs/pxm/products/product-assets/assets-overview).
      - [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books).
      - [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies).
-     - [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates).
+     - [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates).
      - [variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
      - [catalogs](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
 

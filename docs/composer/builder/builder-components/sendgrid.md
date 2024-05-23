@@ -27,7 +27,7 @@ The component has the following actions.
 
 | Input | Type | Description |
 |:--- |:--- | :--- |
-| **Event JSON**  | `string` | The payload from the event. See [Integration Payload](/docs/commerce-cloud/integrations/integration-payload). | 
+| **Event JSON**  | `string` | The payload from the event. See [Integration Payload](/docs/integrations/integration-payload). | 
 | **Sendgrid Event-Mapping** | `string` | Mapping of information between Commerce Manager and Postmark is done through a combination of event names and JSON values. See [Configuring Event-Mapping Configurations](/docs/composer/integration-hub/marketing-communication/sendgrid#configuring-event-mapping). | 
 | **Log Level** | `string` | The level of logging. | 
 

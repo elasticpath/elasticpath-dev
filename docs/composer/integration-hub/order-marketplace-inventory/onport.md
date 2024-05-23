@@ -29,7 +29,7 @@ For more information, watch a video.
 
 As part of the Onport Integration, changes in product data in Onport automatically updates product data in Commerce. This is achieved using the Onport Integration Product Template. A Webhook in Onport is configured as part of this integration, so no manual intervention is required.
 
-1. In Commerce, create your [templates](/docs/pxm/products/extending-pxm-products/templates). Any Onport product attributes should have corresponding attributes in your Commerce templates.
+1. In Commerce, create your [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates). Any Onport product attributes should have corresponding attributes in your Commerce templates.
 1. When configuring the Onport Integration in **Integrations Hub**, from **Template** page, click **Edit** underneath **Product Template**.
 1. Update the **Product Template** to map the Commerce product attributes to the Onport product attributes. For example, suppose you want to save Onport variant id, vendor id and vendor name in Commerce, along with the product clothing material, if that exists.
 

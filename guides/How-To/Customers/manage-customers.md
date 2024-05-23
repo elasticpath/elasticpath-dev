@@ -26,7 +26,7 @@ If you have an existing customer who does not have a password, you can add the p
 
 ## Customer token
 
-You can generate a customer token for existing customers by using a combination of their email and password, or by using single sign-on with OpenID Connect. For more information, see [Single sign-on with OpenID Connect](/guides/How%20To/Authentication/get-single-sign-on-customer-token).
+You can generate a customer token for existing customers by using a combination of their email and password, or by using single sign-on with OpenID Connect. For more information, see [Single sign-on with OpenID Connect](/guides/How-To/Authentication/get-single-sign-on-customer-token).
 
 Use a customer token when you don’t have full read/write access to the API (i.e., you are using the implicit token type) and you want to authenticate your customers through email and password. Authenticated customers can access and manage their own details, such as address and orders.
 
@@ -74,4 +74,4 @@ Customer filtering is useful for customer management. Filtering can help you det
 
 - [Customers](/docs/customer-management/customers)
 - [Customer Tokens API](/docs/customer-management/customer-management-api/customer-tokens)
-- [Extend customer resources](/guides/How%20To/Customers/extend-customer-resources)
+- [Extend customer resources](/guides/How-To/Customers/extend-customer-resources)

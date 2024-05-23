@@ -92,7 +92,7 @@ In this example, *BestEver Coffee Maker* costs $150 and *BestEver Coffee Grinder
 
 You can create codes for a promotion so that customers receive the discount when the code is provided. You can enable this feature by setting the `automatic` attribute to `false` in the promotions schema when you create a promotion. For more information, see the [Creating Promotion Codes](/docs/promotions/promotion-codes/create-promotion-codes) section.
 
-You can generate and export codes for a promotion using the bulk code generation feature, which allows you to create a large number of unique codes and export them in CSV format. For details, refer to the [Generating Bulk Codes](/docs/promotions/promotions-cm/overview#generating-bulk-codes) and [Managing Export Codes](/docs/promotions/promotions-cm/overview#managing-code-export) sections. 
+You can generate and export codes for a promotion using the bulk code generation feature, which allows you to create a large number of unique codes and export them in CSV format. For details, refer to the [Generating Bulk Codes](/docs/commerce-manager/promotions-standard/overview#generating-bulk-codes) and [Managing Export Codes](/docs/commerce-manager/promotions-standard/overview#managing-code-export) sections. 
 
 You can generate a maximum of 1000 codes for a promotion. If you need to generate more than 1000 codes, limit the promotion's duration to a maximum of 365 days from its start date. The promotion expiry date is 365 days.
 
@@ -120,5 +120,5 @@ To learn how to create a bundle, see [Create a Bundle](/docs/pxm/products/pxm-bu
 
 - [Customers](/docs/customer-management/customers)
 - [Carts](/docs/carts-orders/carts)
-- [Promotions](/docs/promotions/promotions-cm/overview)
+- [Promotions](/docs/commerce-manager/promotions-standard/overview)
 

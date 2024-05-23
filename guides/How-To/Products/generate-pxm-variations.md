@@ -19,7 +19,7 @@ Following on from that, if you add the same flow to both a parent and child prod
 This topic describes:
 
 - Creating product variations and options.
-- Building all child products. You can also build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. See [Building Child Products Using Variations](/guides/How%20To/Products/build-pxm-variations).
+- Building all child products. You can also build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. See [Building Child Products Using Variations](/guides/How-To/Products/build-pxm-variations).
 - Checking the status of the request to create child products.
 
 ## Creating Child Products for a Product
@@ -38,7 +38,7 @@ Ensure that you have the following:
 
 - A Composable Commerce account.
 - The [client ID and client secret](https://beta.elasticpath.dev/docs/commerce-manager/application-keys/application-keys-cm) of your store.
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
+- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:
@@ -148,7 +148,7 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
 
     For `productId`, use the ID of the base product.
 
-    You can also build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. See [Building Child Products Using Variations](/guides/How%20To/Products/build-pxm-variations).
+    You can also build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. See [Building Child Products Using Variations](/guides/How-To/Products/build-pxm-variations).
 
 ### Procedure - Commerce Manager
 

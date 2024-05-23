@@ -10,7 +10,7 @@ With Organizations, businesses can seamlessly share data to stores, and manage u
 
 Conceptually, Organizations is a container that holds multiple stores, allowing businesses to manage and configure their commerce experiences at a higher level of abstraction. A store can represent a business unit, a geographic region, a brand, or any other grouping of stores that make sense for the business.
 
-With the introduction of Organizations, each organization and store has their own rate limit. For more information, see [Rate Limits](/guides/Getting-Started/api-overview/rate-limits).
+With the introduction of Organizations, each organization and store has their own rate limit. For more information, see [Rate Limits](/guides/Getting-Started/rate-limits).
 
 ![Organization concept](/assets/org-concept.png)
 

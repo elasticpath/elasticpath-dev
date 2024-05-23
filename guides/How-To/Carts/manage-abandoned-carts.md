@@ -23,7 +23,7 @@ If we can store that information somewhere, we can build an up-to-date list of c
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token)
 
 ## Summary of steps required
 
@@ -152,4 +152,4 @@ The script needs to perform the following actions:
 
 - [Custom Data (Flows)](https://beta.elasticpath.dev/docs/commerce-manager/flows)
 - [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/api/flows/flows-service-introduction)
-- [Extend a resource with custom data](/guides/Custom%20Data/extend-any-resource)
+- [Extend a resource with custom data](/docs/commerce-manager/flows/)

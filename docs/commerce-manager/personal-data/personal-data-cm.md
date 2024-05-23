@@ -4,7 +4,7 @@ nav_label: Personal Data in Commerce Manager
 sidebar_position: 50
 ---
 
-In Commerce, sellers have the ability to view and manage user's personal data. To update TTL setting, see [Viewing and Changing Time to Live Settings](/docs/commerce-cloud/global-project-settings/general-settings#viewing-and-changing-time-to-live-settings).
+In Commerce, sellers have the ability to view and manage user's personal data. To update TTL setting, see [Viewing and Changing Time to Live Settings](/docs/commerce-manager/settings/general-settings#viewing-and-changing-time-to-live-settings).
 
 ## Viewing Personal Data Sets
 

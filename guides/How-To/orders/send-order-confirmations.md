@@ -68,6 +68,5 @@ This example topic describes cloning a repository that handles the incoming webh
 
 ## Related Resources
 
-- [Creating new integrations in Elastic Path Commerce Manager](https://beta.elasticpath.dev/docs/commerce-cloud/integrations/cm-integrations#creating-a-new-integration)
-- [Orders](https://beta.elasticpath.dev/docs/commerce-cloud/orders)
-- [Orders API](https://beta.elasticpath.dev/docs/commerce-cloud/orders/orders-api/orders-api-overview)
+- [Creating new integrations in Elastic Path Commerce Manager](/docs/commerce-manager/integrations/cm-integrations#creating-a-new-integration)
+- [Orders](/docs/api/carts/orders)

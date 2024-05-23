@@ -52,7 +52,7 @@ When a promotion expires, the promotion codes attached to the promotion automati
 
 When you checkout a cart with an expired promotion, the expired promotion will be automatically removed from a cart and the checkout process is initiated. As a best practice, we recommend to update your cart to remove the expired promotion before initiating the checkout process.
 
-When extending the end date of an expired promotion with over 1000 codes, you will receive an error response. See [Updating a Promotion](/docs/promotions/promotion-management/update-promotions#errors). In such cases, we recommend [duplicating the promotion](/docs/promotions/promotions-cm/overview#duplicating-promotions), allowing you to set the new end dates and create promotion codes as needed.
+When extending the end date of an expired promotion with over 1000 codes, you will receive an error response. See [Updating a Promotion](/docs/promotions/promotion-management/update-promotions#errors). In such cases, we recommend [duplicating the promotion](/docs/commerce-manager/promotions-standard/overview#duplicating-promotions), allowing you to set the new end dates and create promotion codes as needed.
 
 
 

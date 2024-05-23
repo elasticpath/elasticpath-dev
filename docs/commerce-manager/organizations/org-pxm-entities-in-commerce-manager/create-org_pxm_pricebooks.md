@@ -56,7 +56,7 @@ A file can include up to 50,000 objects. If you have more than 50,000 objects, t
 
 ## Creating Organization Price Books
 
-Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **SYSTEM** in [Organization Settings > Currencies](/docs/organizations/organizations-in-commerce-manager/manage-org-currencies).
+Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **SYSTEM** in [Organization Settings > Currencies](/docs/commerce-manager/organizations/manage-org-currencies).
 
 1. Log into Commerce Manager as an Org Admin.
 1. Select **Organizations**.

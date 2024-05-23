@@ -24,7 +24,7 @@ You can use any URL safe value you want for your cart IDs. If a cart does not al
 
 You can set up and confirm a purchase by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/commerce-cloud/checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/api/carts/checkout).
 
     :::note
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.

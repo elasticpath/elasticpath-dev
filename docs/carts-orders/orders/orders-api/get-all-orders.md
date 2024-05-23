@@ -20,7 +20,7 @@ The `Get all orders` request returns all orders with custom flow fields. The pag
 |:---------------------------------------------|:---------|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Authorization`                              | Required | `string` | The Bearer token required to get access to the API.                                                                                                                                                                                                         |
 | `X-Moltin-Customer-Token`                    | Optional | `string` | A customer token to access a specific customer's orders.                                                                                                                                                                                                    |
-| `EP-Account-Management-Authentication-Token` | Optional | `string` | An account management authentication token to access specific account orders. For more details on how to get this token, visit [Account Member Authentication](/docs/commerce-cloud/accounts/using-account-management-api/account-management-api-overview). |
+| `EP-Account-Management-Authentication-Token` | Optional | `string` | An account management authentication token to access specific account orders. For more details on how to get this token, visit [Account Member Authentication](/docs/api/accounts/post-v-2-accounts). |
 
 ### Query parameters
 
@@ -30,7 +30,7 @@ The `Get all orders` request returns all orders with custom flow fields. The pag
 | `filter`  | Optional | `string` | Filter attributes. For more information, see [Filtering orders](#filtering).   |
 | `page[limit]`  | Optional | `integer` | The number of records per page. |
 | `page[offset]` | Optional | `integer` | The number of records to offset the results by. |
-| `sort`   | Optional | `string` | Supported attributes are `created_at`,`payment`,`shipping`, `status` or `with_tax`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `updated_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/api-overview/sorting). |
+| `sort`   | Optional | `string` | Supported attributes are `created_at`,`payment`,`shipping`, `status` or `with_tax`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `updated_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/sorting). |
 
 ### Filtering 
 

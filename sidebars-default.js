@@ -258,18 +258,18 @@ const sidebarsDefault = {
       // @ts-ignore
       items: require("./docs/api/pxm/pricebooks/sidebar.js")
     },
-    //Catalog
-    //{
-    //  type: "category",
-    //  label: "Catalog",
-    //  link: {
-    //    type: "generated-index",
-    //    title: "Catalog API",
-    //    slug: "/api/pxm/catalog"
-    //  },
+   // Catalog
+    {
+      type: "category",
+      label: "Catalog",
+      link: {
+        type: "generated-index",
+        title: "Catalog API",
+        slug: "/api/pxm/catalog"
+      },
       // @ts-ignore
-    //  items: require("./docs/api/pxm/catalog/sidebar.js")
-    //},
+      items: require("./docs/api/pxm/catalog/sidebar.js")
+    },
     // Inventory
     {
       type: "category",

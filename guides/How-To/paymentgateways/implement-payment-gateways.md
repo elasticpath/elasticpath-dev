@@ -15,7 +15,7 @@ Configure your store to use [Manual Gateway](/docs/api/carts/authorize-setup) to
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/your-first-api-request)
 - Configured products and gateway using Commerce Manager or API.
 - Third-party gateway account (typically to generate the API Keys)
 
@@ -118,8 +118,8 @@ If the transaction is successful, a 200 OK response is returned. Use the respons
 
 If it makes sense for your store, use the third-party integrations that are natively supported with Composable Commerce:
 
-- [Stripe](/guides/How%20To/paymentgateways/implement-payment-gateways#stripe)
-- [Braintree](/guides/How%20To/paymentgateways/implement-payment-gateways#braintree)
+- [Stripe](/guides/How-To/paymentgateways/implement-payment-gateways#stripe)
+- [Braintree](/guides/How-To/paymentgateways/implement-payment-gateways#braintree)
 
 Alternatively, you can create a manual gateway to integrate other payment providers or permit other payment options.
 

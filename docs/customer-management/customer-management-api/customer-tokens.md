@@ -4,7 +4,7 @@ nav_label: Customer Tokens
 sidebar_position: 10
 ---
 
-Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-management-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-management-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/commerce-cloud/addresses/about-addresses-api) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
+Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-management-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-management-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/api/addresses/addresses-introduction) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
 
 ## The `customer token` Object
 
@@ -178,10 +178,10 @@ You can use a `X-Moltin-Customer-Token` header with the following endpoints. The
 
 - [Get a Customer](/docs/customer-management/customer-management-api/get-a-customer)
 - [Update a Customer](/docs/customer-management/customer-management-api/update-a-customer)
-- [Get Customer Addresses](/docs/commerce-cloud/addresses/get-all-addresses)
-- [Get an Address](/docs/commerce-cloud/addresses/get-an-address)
-- [Create an Address](/docs/commerce-cloud/addresses/create-an-address)
-- [Update an Address](/docs/commerce-cloud/addresses/update-an-address)
+- [Get Customer Addresses](/docs/api/addresses/get-v-2-customer-addresses)
+- [Get an Address](/docs/api/addresses/get-v-2-customer-addressget-an-address)
+- [Create an Address](/docs/api/addresses/post-v-2-customer-addresscreate-an-address)
+- [Update an Address](/docs/api/addresses/put-v-2-customer-addressupdate-an-address)
 - [Get all Orders](/docs/api/carts/get-customer-orders)
 - [Get an Order](/docs/carts-orders/orders/orders-api/get-an-order)
 - [Get Customer Carts](/docs/carts-orders/carts/customer-cart-associations/get-customer-carts)

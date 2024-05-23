@@ -6,9 +6,9 @@ sidebar_position: 30
 
 When you publish a catalog, the products in the hierarchies appear in a catalog release. A catalog release provides a snapshot of product information taken at the time of publication.  Depending on how many times you have published the catalog, the latest release and the two releases prior to the latest release are available. This is useful if you want to go back to an earlier version of a catalog or see the changes that have been made between releases. You can:
 
-- use catalog rules to specify when to display your catalog releases. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules).
-- edit catalog releases. See [Editing catalog releases](/docs/pxm/catalogs/catalogs-cm/editing-catalogs#editing-catalog-releases).
-- go back to an earlier release of a catalog. See [Deleting Catalog Releases](/docs/pxm/catalogs/catalogs-cm/deleting-catalogs#deleting-catalog-releases).
+- use catalog rules to specify when to display your catalog releases. See [Configure Shopper Catalog Rules](/docs/api/pxm/catalog/rules).
+- edit catalog releases. See [Editing catalog releases](/docs/commerce-manager/product-experience-manager/catalogs/editing-catalogs#editing-catalog-releases).
+- go back to an earlier release of a catalog. See [Deleting Catalog Releases](/docs/commerce-manager/product-experience-manager/catalogs/deleting-catalogs#deleting-catalog-releases).
 
 ## Using Catalog Delta Files
 

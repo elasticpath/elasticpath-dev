@@ -49,4 +49,4 @@ The following table shows the access permissions for an Org Admin Role in Commer
 
 - [Application Keys](/docs/authentication/application-keys/application-keys-overview)
 - [Create an Application Key](/docs/authentication/application-keys/create-an-application-key)
-- [Store Roles](/guides/Getting-Started/team-management/roles)
+- [Store Roles](/guides/Getting-Started/team-management)

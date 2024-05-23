@@ -103,7 +103,7 @@ curl -X PUT https://useast.api.elasticpath.com/v2/promotions/:id \
 
 ## Errors
 
-When extending the end date of an expired promotion with over 1000 codes, you will receive the following error response. In such cases, we recommend [duplicating the promotion](/docs/promotions/promotions-cm/overview#duplicating-promotions), allowing you to set the new end dates and create promotion codes as needed.
+When extending the end date of an expired promotion with over 1000 codes, you will receive the following error response. In such cases, we recommend [duplicating the promotion](/docs/commerce-manager/promotions-standard/overview#duplicating-promotions), allowing you to set the new end dates and create promotion codes as needed.
 
 ```json
 {

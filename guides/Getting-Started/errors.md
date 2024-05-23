@@ -15,7 +15,7 @@ Commerce uses standard [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of
 | `4xx` | The request failed due to a problem with the request.  |
 | `5xx` | The request failed due to a problem with Commerce. |
 
-For more information, see the documentation for individual calls. Additionally, the `429` error code indicates that the request exceeds the allowed [rate limits](/guides/Getting-Started/api-overview/rate-limits) in Commerce.
+For more information, see the documentation for individual calls. Additionally, the `429` error code indicates that the request exceeds the allowed [rate limits](/guides/Getting-Started/rate-limits) in Commerce.
 
 ## Example errors
 

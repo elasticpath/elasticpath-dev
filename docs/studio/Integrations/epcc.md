@@ -13,7 +13,7 @@ sidebar_position: 111
     - [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
     - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
-    - [Catalog rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules)
+    - [Catalog rules](/docs/api/pxm/catalog/rules)
 - Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/carts-orders/payments/payment-gateway-cm/payments-powered-by-stripe) in Commerce Manager.
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) or Advanced Commerce (GrapheneHC) integration if you want to enable search indexing in your Studio storefront.
 
@@ -36,8 +36,8 @@ The following steps describe how to configure an integration between Studio and 
 
 1. The **Coupon Endpoint URL** is not currently in use. Please leave this blank.
 1. Leave **Password Profile** blank. Once you create the integration, **Password Profile** is auto-populated.
-1. (Optional) In **Catalog Rule Tag**, enter the tag you specified when you created your catalog rule in Product Experience Manager. Tags are user-defined criteria that you can use to define eligibility for a catalog. For example, you might use **Pro** or **Elite** to define a membership tier. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules). If you leave this blank, the default catalog is used.
-1. (Optional) In **Catalog Channel**, enter the channel you specified when you created your catalog rule in Product Experience Manager. Channels represent your ecommerce sales channel through which your shoppers may select and pay for your products, for example, **Mobile** for a mobile app or **Web** for website. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules). If you leave this blank, the default catalog is used.
+1. (Optional) In **Catalog Rule Tag**, enter the tag you specified when you created your catalog rule in Product Experience Manager. Tags are user-defined criteria that you can use to define eligibility for a catalog. For example, you might use **Pro** or **Elite** to define a membership tier. See [Configure Shopper Catalog Rules](/docs/api/pxm/catalog/rules). If you leave this blank, the default catalog is used.
+1. (Optional) In **Catalog Channel**, enter the channel you specified when you created your catalog rule in Product Experience Manager. Channels represent your ecommerce sales channel through which your shoppers may select and pay for your products, for example, **Mobile** for a mobile app or **Web** for website. See [Configure Shopper Catalog Rules](/docs/api/pxm/catalog/rules). If you leave this blank, the default catalog is used.
 1. (Optional) Configure the shipping options. If you have configured the **Shipping Service** in the [Integrations Hub](/docs/composer/integration-hub/integrations-hub), you can use the information from the integration to configure your shipping options in the **Elastic Path** integration. This enables you to use the shipping options available in your Elastic Path store in your Studio storefront.
 
 ![shipping service](/assets/studio/shippingoptions.png)

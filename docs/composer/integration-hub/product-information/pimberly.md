@@ -43,7 +43,7 @@ As part of the Pimberly Integration, changes in catalog data in Pimberly automat
 ### Prerequisites
 
  - Ensure that you have [collected your setup Information](#collecting-your-setup-information).
- - Ensure that you have created a template for [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates), and [Variations](/docs/pxm/products/pxm-product-variations/variations#creating-variations) in Commerce Manager.
+ - Ensure that you have created a template for [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates), and [Variations](/docs/commerce-manager/product-experience-manager/variations#creating-variations) in Commerce Manager.
 
  ### Procedure
 

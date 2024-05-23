@@ -233,5 +233,4 @@ The response now includes the details of the nexus location applied to the cart.
 
 ## Further reading
 
-- [Custom Data (Flows)](/docs/commerce-cloud/custom-data)
-- [Custom Data (Flows) API](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
+- [Custom Data (Flows)](/docs/api/flows/flows-service-introduction)

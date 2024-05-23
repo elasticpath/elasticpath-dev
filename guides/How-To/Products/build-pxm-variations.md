@@ -18,7 +18,7 @@ Following on from that, if you add the same flow to both a parent and child prod
 
 When building your child products, you can:
 
-- Build all products related to a product. See [Create child products using variations](/guides/How%20To/Products/generate-pxm-variations).
+- Build all products related to a product. See [Create child products using variations](/guides/How-To/Products/generate-pxm-variations).
 - Build a combination of child products associated with a product, based on build rules that you specify. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy.
 
 This topic describes building a combination of child products associated with product, based on build rules that you specify.
@@ -281,7 +281,7 @@ Ensure that you have the following:
 
 - A Composable Commerce account.
 - The [client ID and client secret](https://dashboard.elasticpath.com/app) of your store.
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request).
+- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:

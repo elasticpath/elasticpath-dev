@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## `POST` Bulk Add a Custom Discount to Cart
 
-The default value for custom discounts on both the cart and cart items is set to 5 if this parameter is not configured in the store. To verify the custom discount limit value, call [Get all settings](/docs/commerce-cloud/global-project-settings/get-all-settings) endpoint.
+The default value for custom discounts on both the cart and cart items is set to 5 if this parameter is not configured in the store. To verify the custom discount limit value, call [Get all settings](/docs/api/settings/get-v-2-settings) endpoint.
 
 To increase the custom discount value, contact [Elastic Path Support](https://support.elasticpath.com/hc/en-us) team.
 

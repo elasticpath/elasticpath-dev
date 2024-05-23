@@ -25,7 +25,7 @@ https://useast.api.elasticpath.com/v2/customers
 | `filter` | Optional | `string` | Filter the results. For more information, see [Filtering customers](#filtering). |
 | `page[limit]`  | Optional | `integer` | The number of records per page.                 |
 | `page[offset]` | Optional | `integer` | The number of records to offset the results by. |
-| `sort`   | Optional | `string` | Specifies the attribute to sort by. Supported attributes are `created_at`,`email`,`id`,`name`,`updated_at`. By default, sort order is ascending. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default value is `created_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/api-overview/sorting). |
+| `sort`   | Optional | `string` | Specifies the attribute to sort by. Supported attributes are `created_at`,`email`,`id`,`name`,`updated_at`. By default, sort order is ascending. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default value is `created_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/sorting). |
 
 :::note
 You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).

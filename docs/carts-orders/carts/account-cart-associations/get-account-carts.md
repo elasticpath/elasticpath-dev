@@ -14,10 +14,10 @@ When a shopper retrieves their latest carts, the carts are sorted in descending 
 https://useast.api.elasticpath.com/v2/carts
 ```
 
-Retrieves carts for the account. The account is specified by the [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview) in the header.
+Retrieves carts for the account. The account is specified by the [Account Management Authentication Token](/docs/api/accounts/post-v-2-account-members-tokens) in the header.
 
 :::caution
-Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with an [Account Management Authentication Token](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview).
+Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with an [Account Management Authentication Token](/docs/api/accounts/post-v-2-account-members-tokens).
 :::
 
 ### Parameters

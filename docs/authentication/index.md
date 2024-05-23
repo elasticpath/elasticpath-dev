@@ -13,14 +13,14 @@ Authorization: Bearer 212LJ3k0i2382364HIUEjfeJB98yvH
 Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.
 
 :::note
-Read our [Quick Start guide](/guides/Getting-Started/api-overview/your-first-api-request) on how to make your first API request.
+Read our [Quick Start guide](/guides/Getting-Started/your-first-api-request) on how to make your first API request.
 :::
 
 Authentication tokens are generated via the `authentication` endpoint and expire within 1 hour. They need to be then regenerated. If you’re using our [JavaScript SDK](https://github.com/moltin/js-sdk), this is automatically handled for you.
 
 There are two main token types available for use within your store `client_credentials` and `implicit`. The [implicit token](/docs/authentication/Tokens/implicit-token) is the more limited of the two, restricting access to mostly read-only, whereas [client credential token](/docs/authentication/Tokens/client-credential-token) has full read and write access.
 
-For more details on token formatting, see [Content Type](/guides/Getting-Started/api-overview/content-type).
+For more details on token formatting, see [Content Type](/guides/Getting-Started/content-type).
 
 :::caution
 Do not use or disclose your `client_secret` in public.

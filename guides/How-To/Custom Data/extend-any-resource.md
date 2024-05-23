@@ -11,16 +11,16 @@ additional data to function.
 This guide gives you a general idea and know-how around extending an existing resource with custom schema. For how-to
 guides about extending specific types of resources, see:
 
-- [Extend customer resources](/guides/How%20To/Customers/extend-customer-resources)
+- [Extend customer resources](/guides/How-To/Customers/extend-customer-resources)
 - [Extend product resources](https://beta.elasticpath.dev/guides/Products/add-custom-data-to-pxm-products)
-- [Extend cart and order resources](/guides/How%20To/Carts/extend-cart-and-order-resources)
+- [Extend cart and order resources](/guides/How-To/Carts/extend-cart-and-order-resources)
 
 ## Prerequisites
 
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token)
 - A basic understanding of object-oriented programming or JavaScript
 
 ## Step-by-step walkthrough

@@ -1,10 +1,10 @@
-# GENERATED FILE - DO NOT EDIT 
+# GENERATED FILE - DO NOT EDIT
 openapi: 3.0.0
 info:
-  title: Catalogs Introduction
+  title: Catalog-view Service API
   description: |
-    Use the catalog-view Service API to create your catalogs.
-                  
+    Use the catalog-view service API to create your catalogs.
+    
     You also have the flexibility to create catalogs for different scenarios by combining hierarchies of products with a price book. Scenarios might include:
 
     - Multiple geographical regions. Display different catalogs in different regions with suitable pricing or combine product hierarchies from two different regions to display in a third region.
@@ -13,88 +13,84 @@ info:
     - Preferred customers. Offer special pricing to preferred customers while displaying a standard price catalog to all other shoppers.
     - Reward programs. Enable reward programs where catalog prices drop after a certain spending level is reached.
     - Product sales. Offer sale items for a limited time.
-     
+    
     Scenarios are created by defining the context within which a catalog is displays. Contexts can be a customer ID, a channel, or any other user-defined tag that can be passed to the APIs from the front-end shopper experiences.
   version: 1.0.0
 servers:
-  - url: https://euwest.api.elasticpath.com
+  - url: https://api.moltin.com
     description: EU West Production Server
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
 tags:
-  - name: Catalogs
+  - name: Catalogs Introduction
     description: |
       A catalog contains the products available for sale either in your organization or store. A catalog also contains information about how to organize those products for navigation menus and search facets in a shopper experience.
 
       Before you create a catalog you must define the following resources:
 
-      - Hierarchies: hierarchies and nodes to categorize the products. See [**Hierarchies**](/docs/api/pxm/products/hierarchies).
-      - Products: product information, associated assets, and links to hierarchy nodes. See [**Products**](/docs/api/pxm/products/products).
-      - Price Books: prices for the products associated with the hierarchies. See [**Price Books**](/docs/api/pxm/pricebooks).
+      - Hierarchies: hierarchies and nodes to categorize the products. See [**Hierarchies**](#hierarchies).
+      - Products: product information, associated assets, and links to hierarchy nodes. See [**Product Types**](#product-types).
+      - Price Books: prices for the products associated with the hierarchies. See [**Price Books**](#price-books).
 
       A catalog is a combination of hierarchies and a price book.
-       
-      ### Products
-       
-      Commerce automatically assigns types to the products you create. Product types can be used in catalogs. For example, in your catalog, you can filter on `parent` so that only your parent products are displayed in your storefront.
-       
-      You can use product tags to store or assign a key word against a product or service that you sell in your store. The product tag can then be used to describe or label that product. Product tags represent similarities between products who do not share the same attributes. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on. Product tags can be used in catalogs. For example, you can categorize your products based on color. Your shoppers can then search your products by color, enabling shoppers to quickly find what they are looking for, increasing the likelihood of a purchase, and boosting conversion rates.
-       
-      ### Hierarchies
-       
-      The hierarchies determine which products appear in the catalog, that is, only the products that are associated with the selected hierarchies are included in the catalog. You can also specify the order you want your hierarchies to display in a published catalog. You can order your hierarchies on a catalog-by-catalog basis.
-       
-      ![Hierarchy_sorting](/assets/hierarchy_sorting.png)
-       
-      For more information, see [**create a Catalog**](/docs/api/pxm/catalog/create-catalog).
-       
-      #### Understanding How Products And Nodes Are Associated
-       
-      You can use `breadcrumb` metadata to understand how products and nodes are associated. it explains how products are associated with parent nodes and the relationship among the array of nodes. This is useful if you want to improve how your shoppers search within your store.
-       
-      The `breadcrumb` information that you get in an endpoint response depends on whether the endpoint is retrieving product or node details.
-       
-      |  Object |  Product/Node |  Description |
-      | --- | --- | --- |
-      | `breadcrumb` | Node | A list of nodes that a product is associated with. Up to 10 levels of nodes are displayed, depending on the number of levels of nodes you have. |
-      | `bread_crumbs` | Product | The relationship among the array of nodes a product is associated with, demonstrating the linking of the children nodes with the parent nodes. Up to 10 levels of nodes are displayed, depending on the number of levels of nodes you have. |
-      | `bread_crumb_nodes` | Product | An array of parent node IDs that a product is associated with. The `bread_crumb_node` metadata lists up to 10 levels of parent nodes, depending on the number of levels of parent nodes you have. |
-       
-      #### Understanding `bread_crumbs` Metadata
-       
-      The following diagram illustrates a parent and child nodes.
-       
-      ![Breadcrumbs](/assets/breadcrumbs.PNG)
-       
-      1. The product is in **Node 2**. The ID for **Node 2** is shown first in the first set of breadcrumbs.
-      1. **Node 2** is part of **Hierarchy 1**. The ID for **Hierarchy 1** is shown second.
-      1. **Node 1** is the parent node of **Node 2**. The ID for **Node 1** is shown last.
-      1. The product is also in **Node 3**. The ID for **Node 3** is shown first in the second set of breadcrumbs.
-      1. **Node 3** is in the root of **Hierarchy 1**. The ID for **Hierarchy 1** is shown last.
-       
-      In the `bread_crumb_nodes` metadata, you can see a list of parent nodes a product is associated with.
-       
-      If you subsequently add a product to a new node, then the `bread_crumb_nodes` metadata appends the new node to the top of the list. Using the example above, if we add the product to **Node 1**:
-       
-      1. The `bread_crumb_nodes` metadata is generated to show the new node appended to the top of the list.
-      1. The `bread_crumbs` metadata is updated with the new node.
-       
-      #### Understanding Breadcrumb Metadata for Child Products
-       
-      When a catalog is published, the breadcrumb information for a child product includes the metadata mentioned for the parent product, in addition to the information specific to the child product. For example, **Product A** is the parent product, associated with **Node 1** and **Node 2**. The metadata for child **Product B** includes **Node 1** and **Node 2**, in addition to its own metadata information.
-       
-      ### Nodes
-       
-      The nodes determine which products appear under this in the catalog, that is, only the products that are associated with the selected node are shown under this node.
-       
-      ### Price books
-
-      A price book contains the prices for each of the products in the catalog. You can create multiple price books for different scenarios, such as seasonal sales, business versus retail customer pricing, and reward programs. When creating a catalog, you can specify up to five price books. You must set a priority for your price books. Product prices are displayed in the catalog according to the priority of the price books. See [Create a catalog](/docs/api/pxm/catalog/create-catalog).
+      
+       ### Products
+      
+       Commerce automatically assigns types to the products you create. Product types can be used in catalogs. For example, in your catalog, you can filter on `parent` so that only your parent products are displayed in your storefront.
+      
+       You can use product tags to store or assign a key word against a product or service that you sell in your store. The product tag can then be used to describe or label that product. Product tags represent similarities between products who do not share the same attributes. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on. Product tags can be used in catalogs. For example, you can categorize your products based on color. Your shoppers can then search your products by color, enabling shoppers to quickly find what they are looking for, increasing the likelihood of a purchase, and boosting conversion rates.
+      
+       ### Hierarchies
+      
+       The hierarchies determine which products appear in the catalog, that is, only the products that are associated with the selected hierarchies are included in the catalog. You can also specify the order you want your hierarchies to display in a published catalog. You can order your hierarchies on a catalog-by-catalog basis.
+      
+        ![Hierarchy_sorting](/assets/hierarchy_sorting.png)
+      
+        For more information, see [**create a Catalog**](#tag/Catalogs/operation/createCatalog).
+      
+        #### Understanding How Products And Nodes Are Associated
+      
+        You can use `breadcrumb` metadata to understand how products and nodes are associated. it explains how products are associated with parent nodes and the relationship among the array of nodes. This is useful if you want to improve how your shoppers search within your store.
+      
+        The `breadcrumb` information that you get in an endpoint response depends on whether the endpoint is retrieving product or node details.
+      
+        |  <div style="width:100px">Object</div> |  <div style="width:60px">Product/Node</div> |  <div style="width:290px">Description</div> |
+        | --- | --- | --- |
+        | `breadcrumb` | Node | A list of nodes that a product is associated with. Up to 10 levels of nodes are displayed, depending on the number of levels of nodes you have. |
+        | `bread_crumbs` | Product | The relationship among the array of nodes a product is associated with, demonstrating the linking of the children nodes with the parent nodes. Up to 10 levels of nodes are displayed, depending on the number of levels of nodes you have. |
+        | `bread_crumb_nodes` | Product | An array of parent node IDs that a product is associated with. The `bread_crumb_node` metadata lists up to 10 levels of parent nodes, depending on the number of levels of parent nodes you have. |
+      
+        #### Understanding `bread_crumbs` Metadata
+      
+        The following diagram illustrates a parent and child nodes.
+      
+        ![Breadcrumbs](/assets/breadcrumbs.PNG)
+      
+        1. The product is in **Node 2**. The ID for **Node 2** is shown first in the first set of breadcrumbs.
+        1. **Node 2** is part of **Hierarchy 1**. The ID for **Hierarchy 1** is shown second.
+        1. **Node 1** is the parent node of **Node 2**. The ID for **Node 1** is shown last.
+        1. The product is also in **Node 3**. The ID for **Node 3** is shown first in the second set of breadcrumbs.
+        1. **Node 3** is in the root of **Hierarchy 1**. The ID for **Hierarchy 1** is shown last.
+      
+        In the `bread_crumb_nodes` metadata, you can see a list of parent nodes a product is associated with.
+      
+        If you subsequently add a product to a new node, then the `bread_crumb_nodes` metadata appends the new node to the top of the list. Using the example above, if we add the product to **Node 1**:
+      
+        1. The `bread_crumb_nodes` metadata is generated to show the new node appended to the top of the list.
+        1. The `bread_crumbs` metadata is updated with the new node.
+      
+        #### Understanding Breadcrumb Metadata for Child Products
+      
+        When a catalog is published, the breadcrumb information for a child product includes the metadata mentioned for the parent product, in addition to the information specific to the child product. For example, **Product A** is the parent product, associated with **Node 1** and **Node 2**. The metadata for child **Product B** includes **Node 1** and **Node 2**, in addition to its own metadata information.
+      
+       ### Nodes
+      
+       The nodes determine which products appear under this in the catalog, that is, only the products that are associated with the selected node are shown under this node.
   - name: Releases
     description: |
       When a catalog is published, a catalog release is created. A catalog release provides a snapshot of the product information taken at the time of publication. You can have one or more catalog releases available in your organization or in your store. If you publish a catalog for your organization, the catalog is available when the store is launched.
 
-      If you have more than one catalog published for your store, use catalog rules to specify when to display each catalog. For example, you can use [**catalog rules**](/docs/api/pxm/catalog/rules) to schedule a catalog to appear during a particular date and time, such as a seasonal catalog. The catalog may have different pricing than the other catalogs.
+      If you have more than one catalog published for your store, use catalog rules to specify when to display each catalog. For example, you can use [**catalog rules**](#tag/Rules) to schedule a catalog to appear during a particular date and time, such as a seasonal catalog. The catalog may have different pricing than the other catalogs.
 
       When a catalog is ready to be used in a store, you publish it. You can create and publish catalogs for different contexts and channels.
 
@@ -110,21 +106,11 @@ tags:
       Here is a diagram that describes a catalogs' lifecycle:
 
       ![Catalogs' Lifecycle](/assets/catalog-lifecycle.png)
-       
-      ### Publishing catalogs
-       
-      When you publish a catalog, the `live` products in the hierarchies appear in a catalog release. A catalog release provides a snapshot of product information taken at the time of publication. You can have one or more catalog releases available in your organization or in your store. If you publish a catalog for your organization, the catalog is available when the store is launched.
-       
-      If you have more than one catalog published for your store, use catalog rules to specify when to display each catalog. For example, you can use [catalog rules](/docs/api/pxm/catalog/rules) to schedule a catalog to appear during a particular date and time, such as a seasonal catalog. The catalog may have different pricing than the other catalogs. You can have multiple published catalogs.
-       
-      When a catalog is ready to be used in a store, you publish it. You can create and publish catalogs for different contexts and channels. You can see the differences between the last two consecutive catalog releases. See [Publish a catalog](/docs/api/pxm/catalog/publish-release).
-       
-      You retrieve catalogs for your shopper experience by using the [Catalog View API](/docs/api/pxm/catalog/releases).
   - name: Rules
     description: |
       If your store requires multiple catalogs, add catalog rules to control when a catalog is displayed. A catalog rule contains a catalog plus the criteria under which to display the catalog.
 
-      :::caution
+      :::warning
 
       You cannot create catalog rules for organization catalogs.
 
@@ -154,11 +140,11 @@ tags:
 
       ### Resolving catalog rules
 
-      When there is a request for a catalog, the store displays the catalog with the rule that matches the most attributes of the shoppers context.
+      When there is a request for a catalog, the store displays the catalog with the rule that matches the most attributes of the shopperʼs context.
 
       The request triggers the following steps:
 
-      1. Compares the shoppers context against the defined catalog rules.
+      1. Compares the shopperʼs context against the defined catalog rules.
       1. Determines the best match.
       1. Retrieves the catalog associated with the matching catalog rule.
 
@@ -166,7 +152,7 @@ tags:
 
       - A shopper matches one of the `customer_ids` in one catalog rule only. The catalog for that catalog rule is displayed.
       - A shopper matches one of the `customer_ids` in one catalog rule only, but doesnʼt match any of the `tags` specified in that catalog rule. Because there are no other catalog rules for this `customer_id`, the catalog for the catalog rule is displayed because it is the best match.
-      - A shopper is browsing a store using the stores mobile app, which matches `channel=mobile` in two catalog rules. The catalog displayed depends on matches with the `tags` or `customer_ids` attributes. If there is no other matching attribute, the first catalog rule found by the store is used. The best practice is to create catalog rules that cover all cases so that you avoid this situation.
+      - A shopper is browsing a store using the storeʼs mobile app, which matches `channel=mobile` in two catalog rules. The catalog displayed depends on matches with the `tags` or `customer_ids` attributes. If there is no other matching attribute, the first catalog rule found by the store is used. The best practice is to create catalog rules that cover all cases so that you avoid this situation.
       - An unknown shopper is browsing the only channel offered by the seller. The store displays the base catalog.
   - name: Administrator Latest Releases Catalog API
     description: |
@@ -193,10 +179,10 @@ tags:
 
       - Use catalog rules to schedule a catalog to appear during a particular date and time, such as a seasonal catalog. The catalog may have different pricing than the other catalogs. You can have multiple published catalogs.
       - If you have defined catalog rules and you want to retrieve a published catalog for a particular channel or a user-defined tag, you must set the appropriate headers in the request:
-        - `EP-Channel` - The channel, such as website or mobile app. See [**Create a Catalog Rule**](/docs/api/pxm/catalog/create-rule).
-        - `EP-Context-Tag` - A tag defined in the store, such as `clearance`. See [**Create a Catalog Rule**](/docs/api/pxm/catalog/create-rule).
-      * When a catalog is ready to be used in a store, you publish it. See [**Publish a Catalog**](/docs/api/pxm/catalog/publish-release).
-      * You can create and publish catalogs for different contexts and channels. You can see the differences between the last 2 consecutive catalog releases. See [**Publish a Catalog**](/docs/api/pxm/catalog/publish-release).
+        - `EP-Channel` - The channel, such as website or mobile app. See [**Create a Catalog Rule**](#tag/Rules/operation/createRule).
+        - `EP-Context-Tag` - A tag defined in the store, such as `clearance`. See [**Create a Catalog Rule**](#tag/Rules/operation/createRule).
+      * When a catalog is ready to be used in a store, you publish it. See [**Publish a Catalog**](#tag/Releases/operation/publishRelease).
+      * You can create and publish catalogs for different contexts and channels. You can see the differences between the last 2 consecutive catalog releases. See [**Publish a Catalog**](#tag/Releases/operation/publishRelease).
       * You retrieve catalogs for your shopper experience by using the Shopper Catalog View API. For more information on how you can retrieve a catalog as a shopper using the Catalog API.
       * When a catalog is published for a store, the corresponding events contain `store_id` and `org_id`. 
       * When a catalog is published for an organization, the corresponding events contain `org_id`. 
@@ -246,12 +232,7 @@ paths:
       tags:
         - Catalogs
       summary: Gets all authorized catalogs
-      description: |
-        Retrieves a list of all the catalogs that you are authorized to view. Currently, published catalogs are limited to the current release and two releases prior to the current release. You can see the differences between the last 2 consecutive catalog releases using the delta link returned in the response of a [publish a catalog](/docs/api/pxm/catalog/publish-release) endpoint.
-         
-        You can use the `is_full_delta` attribute returned from the `get a release of a catalog` endpoint to determine if you need to refresh the data in your company system before publishing a catalog release and injecting fresh data in a delta link. The `is_full_delta` attribute tells you if this is a full publish of a catalog release. Using a search service as an example, if the `is_full_delta` attribute is `true`, you should remove all data about that catalog from the search service before publishing a catalog release and injecting fresh data from the delta file. See [Publish a catalog](/docs/api/pxm/catalog/publish-release).
-
-        If the `is_full_publish` attribute returned in the response is `false`, data from the previous catalog release overlaid the existing data in the delta file. The `is_full_publish` attribute is always `true` the first time a catalog is published.
+      description: Retrieves a list of all the catalogs that you are authorized to view.
       operationId: getCatalogs
       responses:
         '200':
@@ -330,7 +311,7 @@ paths:
       tags:
         - Catalogs
       summary: Deletes a catalog
-      description: Deletes an unpublished catalog. Use [**Delete a Release**](/docs/api/pxm/catalog/delete-release-by-id) and [**Delete All Releases**](/docs/api/pxm/catalog/delete-releases) to delete releases of a catalog. If the catalog is associated with any catalog rules, you must first update the catalog rules to remove the catalog.
+      description: Deletes an unpublished catalog. Use [**Delete a Release**](#tag/Releases/operation/deleteReleaseByID) and [**Delete All Releases**](#tag/Releases/operation/deleteReleases) to delete releases of a catalog. If the catalog is associated with any catalog rules, you must first update the catalog rules to remove the catalog.
       operationId: deleteCatalogByID
       parameters:
         - description: The catalog ID.
@@ -356,45 +337,45 @@ paths:
       description: |
 
         Publishes a catalog. You must publish a catalog before you can retrieve that catalog in an organization or store. The hierarchies, live products, and prices associated with a published catalog are in read-only mode. If you make a change to these resources, for example, a change to your price book or hierarchies, you need to republish the catalog.
-         
-        You can get [a catalog release](/docs/api/pxm/catalog/get-release-by-id) to retrieve a published catalog. Currently, published catalogs are limited to the current release and two releases prior to the current release.
-         
+
+        You can get a catalog release to retrieve a published catalog. Currently, published catalogs are limited to the current release and two releases prior to the current release.
+
         You can see the differences between the last 2 consecutive catalog releases. This is useful if want to understand how your products have changed in your catalog, ensuring your site search integration is kept up-to-date.
-         
+
         Once a catalog release has completed publishing, the delta relationship links to the delta document.
 
         The `delta` links are signed and only valid for 1 hour. Re-reading a catalog release, for example, using [Getting a release of a catalog](/docs/pxm/catalogs/catalog-latest-release/get-a-release-of-a-catalog) returns a fresh a link.
-         
-        You can use the `is_full_delta` attribute returned from the `get a release of a catalog` endpoint to determine if you need to refresh the data in your company system before injecting fresh data in a `delta` link. The `is_full_delta` attribute tells you if this is a full publish of the catalog. Using a search service as an example, if the `is_full_delta` attribute is `true`, you should remove all data about that catalog from the search service before injecting fresh data from the `delta` file. If the `is_full_delta` attribute is `false`, then data from the previous catalog overlays the existing data in the `delta` file. To publish a catalog and inject fresh data in a `delta` link, set `export_full_delta` to `true`.
-         
-        If a previous catalog publish date is greater than 90 days, then a full catalog publish is automatically performed. If you publish your catalogs infrequently, Commerce may perform a full publish when you are expecting a delta publish.
-         
-        :::caution
 
-        Generating a full delta is resource intensive and slows down the publishing process and so should only be performed in certain circumstances, for example, when initializing an integration with a service like Algolia.
-         
+         You can use the `is_full_delta` attribute returned from the `get a release of a catalog` endpoint to determine if you need to refresh the data in your company system before injecting fresh data in a `delta` link. The `is_full_delta` attribute tells you if this is a full publish of the catalog. Using a search service as an example, if the `is_full_delta` attribute is `true`, you should remove all data about that catalog from the search service before injecting fresh data from the `delta` file. If the `is_full_delta` attribute is `false`, then data from the previous catalog overlays the existing data in the `delta` file. To publish a catalog and inject fresh data in a `delta` link, set `export_full_delta` to `true`.
+
+         If a previous catalog publish date is greater than 90 days, then a full catalog publish is automatically performed. If you publish your catalogs infrequently, Commerce may perform a full publish when you are expecting a delta publish.
+
+         :::warning
+
+         Generating a full delta is resource intensive and slows down the publishing process and so should only be performed in certain circumstances, for example, when initializing an integration with a service like Algolia.
+
         :::
-         
+
         The `is_full_delta` attribute is always `true` the first time a catalog is published. The information is stored in a collection of `json` documents in a compressed file. You can either manually check the file or, for example, use them to automatically update another company system you may have.
-         
+
         - Delta files are only available for 30 days.
         - Delta files are removed when a catalog release is deleted.
-         
+
         Each document has a `delta_type` with one of the following values, depending on whether a product has been deleted, updated or created in a catalog release.
-         
+
         - `delete` describes products deleted from this release of a catalog.
         - `createupdate` describes products updated in this release of a catalog.
-         
+
         ### Multi-Store Management Solutions
-         
-        In a multi-store management solution.
-         
-        - You can create organization catalogs. Your organization catalogs are available for your stores to use.
-        - Your stores can create their own catalogs.
-        - Your stores can create catalogs that have a combination of organization products and store products.
-         
+
+         In a multi-store management solution.
+
+         - You can create organization catalogs. Your organization catalogs are available for your stores to use.
+         - Your stores can create their own catalogs.
+         - Your stores can create catalogs that have a combination of organization products and store products.
+
         If you are publishing a catalog in a store that contains resources from an organization, in Commerce Manager, you must enable the **Include Organization Resources in Catalog Publishes** checkbox.
-         
+
         1. Go to **SYSTEM** > **Store Settings**.
         2. Click **General Settings**.
         3. Select **PXM** from the list.
@@ -571,18 +552,6 @@ paths:
       tags:
         - Rules
       summary: Creates a new catalog rule
-      description: |
-        If you have multiple catalogs, create catalog rule resources. With catalog rules, you can display different catalogs to different shoppers. For example, you can display a preferred pricing catalog to a few special customers. Or you can display one catalog to shoppers using your website and a different catalog to shoppers using your mobile app. Finally, you can define custom criteria by creating tags.
-
-        :::note
-
-        - If you have one catalog for all customers and channels, you can omit creating this resource.
-        - Due to the way catalogs are cached in Commerce, using catalog rules to display catalogs sometimes causes a 5-minute time delay before the catalogs are displayed.
-        - You cannot create catalog rules for organization catalogs.
-
-        :::
-
-        For ideas about the kinds of business scenarios you can achieve with catalog rules, see [Catalog Rules](/docs/api/pxm/catalog/rules). To understand how catalogs are matched to shoppers by using rules, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
       operationId: createRule
       requestBody:
         content:
@@ -608,16 +577,6 @@ paths:
       tags:
         - Rules
       summary: Gets all authorized catalog rules
-      description: |
-        Retrieves all authorized catalog rules.
-
-        ### Filtering
-
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](https://elasticpath.dev/guides/Getting-Started/filtering). The following operators and attributes are supported.
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
       operationId: getRules
       parameters:
         - $ref: '#/components/parameters/filter-rule'
@@ -721,33 +680,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get all Hierarchies
-      description: |
-        Returns the hierarchies from a published catalog.
-         
-        :::note
-         
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-         
-        :::
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general syntax, see [Filtering](https://beta.elasticpath.dev/guides/Getting-Started/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
-         
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getAllHierarchies
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -757,7 +689,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -784,14 +716,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get a Hierarchy
-      description: |
-        Returns the specified hierarchy from a published catalog.
-
-        :::note
-
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-
-        :::
       operationId: getHierarchy
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -801,7 +725,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -831,35 +755,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get a Hierarchy's Nodes
-      description: |
-        Returns all nodes for the specified hierarchy from a published catalog.
-
-        :::note
-
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-
-        :::
-
-        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see [Filtering](/guides/Getting-Started/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getHierarchyNodes
       parameters:
         - description: The catalog ID.
@@ -902,37 +797,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get a Hierarchy's Children
-      description: |
-        Returns the parent nodes for the specified hierarchy from a published catalog.
-
-        ![Parent Nodes](/assets/rootnodes.PNG)
-
-        :::note
-
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-
-        :::
-
-        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see [Filtering](/guides/Getting-Started/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getHierarchyChildNodes
       parameters:
         - description: The catalog ID.
@@ -941,7 +805,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -975,29 +839,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get all Hierarchies
-      description: |
-        Returns all hierarchies from a catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see [Filtering](/guides/Getting-Started/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getByContextAllHierarchies
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1024,10 +865,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get a Hierarchy
-      description: |
-        Returns a hierarchy from the catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog to retrieve. For information about how catalog rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules).
       operationId: getByContextHierarchy
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1057,31 +894,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get a Hierarchy's Nodes
-      description: |
-        Returns all the nodes for the specified hierarchy.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see [Filtering](/guides/Getting-Started/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
-         
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getByContextHierarchyNodes
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -1113,36 +925,7 @@ paths:
     get:
       tags:
         - Shopper Catalog API
-      summary: Get a Hierarchy's Children
-      description: |
-        Returns the parent nodes for the specified hierarchy.
-         
-        ![Parent Nodes](/assets/rootnodes.PNG)
-         
-        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-
-        The following operators and attributes are available when filtering on this endpoint.
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
-
-        For more information, see [Filtering](/guides/Getting-Started/filtering).
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      summary: Get a Hierarchies Children
       operationId: getByContextHierarchyChildNodes
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -1175,46 +958,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get all Nodes
-      description: |
-        Returns the child nodes from a published catalog.
-         
-        :::note
-         
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-         
-        :::
-         
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. See [Building breadcrumbs in a storefront](#building-breadcrumbs-in-a-storefront).
-
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-
-        - If you don't provide any `curated_products`, products are listed by their `updated_at` time in descending order, with the most recently updated product first.
-        - If you configure `curated_products` for only a few products, the curated products are displayed first and the other products are displayed in the order of `updated_at` time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
-        - A product that is curated has the `"curated_product": true` attribute displayed.
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general syntax, see (/guides/Getting-Started/filtering). The following operators and attributes are available.
-
-        | Operator  | Description | Attributes | Example |
-        | --- | --- | --- | --- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
-        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
-         
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getAllNodes
       parameters:
         - description: The catalog ID.
@@ -1223,7 +966,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1251,24 +994,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get a Node
-      description: |
-        Returns a node from a published catalog.
-         
-        :::note
-         
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-         
-        :::
-         
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-         
-        - If you don't provide any `curated_products`, products are listed by their `updated_at` time in descending order, with the most recently updated product first.
-        - If you configure `curated_products` for only a few products, the curated products are displayed first and the other products are displayed in the order of `updated_at` time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
-        - A product that is curated has the `"curated_product": true` attribute displayed.
       operationId: getNode
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1278,7 +1003,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1308,46 +1033,6 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get a Node's Children
-      description: |
-        Returns the child nodes for a node from a published catalog.
-
-        :::note
-
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-
-        :::
-
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. For more information, see [Building breadcrumbs in a storefront](#building-breadcrumbs-in-a-storefront).
-
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-
-        - If you don't provide any `curated_products`, products are listed by their `updated_at` time in descending order, with the most recently updated product first.
-        - If you configure `curated_products` for only a few products, the curated products are displayed first and the other products are displayed in the order of `updated_at` time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
-        - A product that is curated has the `"curated_product": true` attribute displayed.
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see (/guides/Getting-Started/filtering). The following operators and attributes are available.
-
-        | Operator  | Description | Attributes | Example |
-        | --- | --- | --- | --- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
-        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getChildNodes
       parameters:
         - description: The catalog ID.
@@ -1356,7 +1041,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1390,39 +1075,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get all Nodes
-      description: |
-        Returns all nodes in the catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. For more information, see [Building breadcrumbs in a storefront](#building-breadcrumbs-in-a-storefront).
-
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see (/guides/Getting-Started/filtering). The following operators and attributes are available.
-
-        | Operator  | Description | Attributes | Example |
-        | --- | --- | --- | --- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
-        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getByContextAllNodes
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -1449,20 +1101,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get a Node
-      description: |
-        Returns a node from the catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        The response lists the products associated with a node. If products are curated, they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your nodes, enabling you to create unique product collections in your storefront.
-
-        - If you don't provide any `curated_products`, products are listed by their `updated_at` time in descending order, with the most recently updated product first.
-        - If you configure `curated_products` for only a few products, the curated products are displayed first and the other products are displayed in the order of `updated_at` time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - A product that is curated has the `"curated_product": true` attribute displayed.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
       operationId: getByContextNode
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -1492,40 +1130,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get a Node's Children
-      description: |
-        Returns the child nodes for a node in the catalog.
-         
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        You can see which parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-         
-        - If you don't provide any curated_products, products are listed by their updated_at time in descending order, with the most recently updated product first.
-        - If you configure curated_products for only a few products, the curated products are displayed first and the other products are displayed in the order of updated_at time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - A product that is curated has the "curated_product": true attribute displayed.
-        - If a curated product is removed from a node, the product is also removed from the curated_products list.
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general syntax, see (/guides/Getting-Started/filtering). The following operators and attributes are available.
-         
-        | Operator  | Description | Attributes | Example |
-        | --- | --- | --- | --- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
-        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
-         
-        ### Building breadcrumbs in a storefront
-         
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-         
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-         
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getByContextChildNodes
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -1559,13 +1163,9 @@ paths:
         - Administrator Latest Releases Catalog API
       summary: Get all Products
       description: |
-        Returns the products from a published catalog. Only the products in a `live` status are retrieved. Currently, published catalogs are limited to the current release and two releases prior to the current release.
-
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variations` object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order` attribute to sort the order of your variation and variation options in `variations`. Once a parent product is published in a catalog, the [Get a List of products in a catalog release](/docs/api/pxm/catalog/get-all-products) response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
-
-        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+        Returns the products from a published catalog. Only the products in a `live` status are retrieved. 
+        
+         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
 
         | Parameter           | Required | Description                                                                                                                                                                                                           |
         |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1573,26 +1173,7 @@ paths:
         | `main_image`         | Optional | The main images associated with a product.                                                                                                           |
         | `files`              | Optional | Any files associated with a product. 
 
-        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-         
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-         
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+          See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getAllProducts
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1603,7 +1184,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1630,19 +1211,9 @@ paths:
         - Administrator Latest Releases Catalog API
       summary: Get a Product
       description: |
-        Returns a product from a published catalog. The product must be in `live` status. Currently, published catalogs are limited to the current release and two releases prior to the current release.
+        Returns a product from a published catalog.  Only the products in a `live` status are retrieved. 
 
-        ### Product and Node Associations in Breadcrumb Metadata
-
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        ### Product Variations
-
-        The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variations` object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order`attribute to sort the order of your variation and variation options in `variations`. Once a parent product is published in a catalog, the get a product in a catalog release response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
-
-        ### Including Resources
-
-        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
 
         | Parameter          | Required | Description                                                                                                                                                                                                           |
         |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1650,7 +1221,7 @@ paths:
         | `main_image`         | Optional | The main images associated with a product.                                                                                                           |
         | `files`              | Optional | Any files associated with a product. 
 
-        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
+          See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getProduct
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1660,7 +1231,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1691,7 +1262,7 @@ paths:
         - Administrator Latest Releases Catalog API
       summary: Get a Bundle's Component Products
       description: |
-        With Product Experience Manager, you can [create](/docs/api/pxm/products/create-product) and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. 
+        With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. 
 
         You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity.
 
@@ -1704,7 +1275,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1736,31 +1307,7 @@ paths:
       tags:
         - Administrator Latest Releases Catalog API
       summary: Get a Parent Product's Child Products
-      description: |
-        For a specified product and catalog release, retrieves a list of child products from a parent product. Any product other than a base product results in a `422 Unprocessable Entity` response. Only the products in a `live` status are retrieved.
-         
-         If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. If no catalog rules are configured, the first catalog found is returned. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-         
-         You can see the parent nodes a product is associated within the breadcrumbs metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-         ### Filtering
-         
-          This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-         
-          | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-          |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-          | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-          | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-         
-          ### Building breadcrumbs in a storefront
-         
-          In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-         
-          `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-         
-          - Specify the node Ids in the filter expression.
-          - You can have as many node Ids as you want.
-          - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      description: Get child products of a specific parent product from a catalog release
       operationId: getChildProducts
       parameters:
         - description: The catalog ID.
@@ -1769,7 +1316,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1804,32 +1351,11 @@ paths:
         - Administrator Latest Releases Catalog API
       summary: Get a Hierarchy's Products
       description: |
-        Returns the products associated with the specified hierarchy in the catalog. The products must be in the `live` status.
+        Returns the products associated with the specified hierarchy in the catalog. The products must be in the live status.
 
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved.
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The variations object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order` attribute to sort the order of your variation and variation options in variations. Once a parent product is published in a catalog, the [Get a List of products in a catalog](/docs/api/catalog/get-all-products) release response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
-
-        ### Filtering
-
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.          | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+        You can see the parent nodes a product is associated with in the bread_crumbs and bread_crumb_nodes metadata for each product. This is useful if you want to improve how your shoppers search your store, for example.
       operationId: getProductsForHierarchy
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1839,7 +1365,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1874,37 +1400,10 @@ paths:
       summary: Get a Node's Products
       description: |
         Returns the products associated with the specified hierarchy node in the catalog. The products must be in the `live` status. If the products have been curated, then the products are returned in the order specified in the `curated_products` attribute. A product that is curated has the `"curated_product": true` attribute displayed.
-         
-        :::note
-         
-        Currently, published catalogs are limited to the current release and two releases prior to the current release.
-         
-        :::
 
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. 
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variations` object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order` attribute to sort the order of your variation and variation options in `variations`. Once a parent product is published in a catalog, the [Get a List of products in a catalog release](/docs/api/pxm/catalog/get-all-products) response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
-
-        ### Filtering
-         
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-         
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.          | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-         
-        ### Building breadcrumbs in a storefront
-         
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-         
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-         
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example.
       operationId: getProductsForNode
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1915,7 +1414,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: The unique identifier of a published release of the catalog or `latest` for the most recently published version.
+        - description: The catalog release ID.
           name: release_id
           in: path
           required: true
@@ -1949,46 +1448,20 @@ paths:
       summary: Get all Products
       description: |
         Retrieves the list of products from the catalog. Only the products in a live status are retrieved.
+        
+         If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. If no catalog rules are configured, the first catalog found is returned. For information about how rules are matched, see Resolving Catalog Rules.
 
-        ### Catalog Rules
-         
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. If no catalog rules are configured, the first catalog found is returned. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+         You can see the parent nodes a product is associated within the bread_crumbs and bread_crumb_nodes metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. For more information, see Catalog Releases Overview.
 
-        ### Product and Node Associations
+         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
 
-         You can see the parent nodes a product is associated within the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+         | Parameter | Required | Description                                                                                                                                                                                                    |
+         |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+         | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+         | `main_image`         | Optional | The main images associated with a product. |
+         | `files`              | Optional | Any files associated with a product. |
 
-         
-        ### Including Resources
-
-        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
-
-        | Parameter | Required | Description                                                                                                                                                                                                    |
-        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
-        | `main_image`         | Optional | The main images associated with a product. |
-        | `files`              | Optional | Any files associated with a product. |
-
-        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-         
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-
-        ### Building breadcrumbs in a storefront
-         
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-         
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-         
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getByContextAllProducts
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -2016,11 +1489,11 @@ paths:
         - Shopper Catalog API
       summary: Get a Product
       description: |
-        Returns the specified product from the catalog. The product must be in the `live` status.
+        Returns the specified product from the catalog. The product must be in the live status.
 
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. For information about how rules are matched, see Resolving Catalog Rules.
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+        You can see the parent nodes a product is associated with in the bread_crumbs and bread_crumb_nodes metadata for each product. This is useful if you want to improve how your shoppers search your store, for example.
 
         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
 
@@ -2096,31 +1569,6 @@ paths:
       tags:
         - Shopper Catalog API
       summary: Get a Parent Product's Child Products
-      description: |
-        For a specified product and catalog release, retrieves a list of child products from a parent product. Any product other than a base product results in a `422 Unprocessable Entity` response. Only the products in a `live` status are retrieved.
-         
-        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. If no catalog rules are configured, the first catalog found is returned. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-         
-        You can see the parent nodes a product is associated within the `breadcrumbs` metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-         
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-         
-        ### Building breadcrumbs in a storefront
-         
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-         
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-         
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
       operationId: getByContextChildProducts
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -2158,26 +1606,7 @@ paths:
 
         If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. 
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+        You can see the parent nodes a product is associated with in the bread_crumbs and bread_crumb_nodes metadata for each product. This is useful if you want to improve how your shoppers search your store, for example.
       operationId: getByContextProductsForHierarchy
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -2213,28 +1642,9 @@ paths:
       description: |
         Returns the products associated with the specified hierarchy node in the catalog. The products must be in the `live` status. If the products have been curated then the products are returned in the order specified in the `curated_products` attribute. A product that is curated has the `"curated_product": true` attribute displayed.
 
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. 
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-
-        This endpoint supports filtering. For general filtering syntax, see [Filtering](/guides/Getting-Started/filtering). The following operators and attributes are available when filtering on this endpoint.
-
-        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
-        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example.
       operationId: getByContextProductsForNode
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -2273,7 +1683,7 @@ paths:
         - Products must be in a `live` status.
         - If you have not specified any minimum or maximum values for the product options in your components, your shoppers can select any combination of product options.
 
-        If you have configured minimum and maximum values using [Create a Bundle](/docs/api/pxm/products/create-product), this becomes part of the bundle_configuration. You can check how your bundle is configured using `Get a product in a catalog release` in `bundle_configuration` under `meta`. The `bundle_configuration` forms the body of the request.
+        If you have configured minimum and maximum values using Create a Bundle, this becomes part of the bundle_configuration. You can check how your bundle is configured using `Get a product in a catalog release` in `bundle_configuration` under `meta`. The `bundle_configuration` forms the body of the request.
 
         The response updates the bundle_configuration with the product options the shopper selects. The meta data is updated with the meta data of the selected product options. In your storefront, you could display this as a summary of the product options a shopper has selected.
       operationId: configureByContextProduct
@@ -2348,7 +1758,13 @@ components:
       name: filter
       in: query
       description: |
-        This endpoint supports filtering. See [Filtering](#filtering).
+        The following operator and attribute are available when filtering on this endpoint.
+
+        | Operator | Description | Supported Attributes | Example |
+        |:--- |:--- |:--- |:--- |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
+
+        For more information, see [Filtering](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
       required: false
       schema:
         type: string
@@ -2356,8 +1772,14 @@ components:
       name: filter
       in: query
       description: |
+        The following operators and attributes are available when filtering on this endpoint.
 
-        This endpoints supports filtering. See [Filtering](#filtering).
+        | Operator | Description | Supported Attributes | Example |
+        |:--- |:--- |:--- |:--- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` | 
+
+        For more information, see [Filtering](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
       required: false
       schema:
         type: string
@@ -2365,7 +1787,14 @@ components:
       name: filter
       in: query
       description: |
-        This endpoint supports filtering, see [Filtering](#filtering).
+        The following operators and attributes are available when filtering on this endpoint.
+
+        | Operator  | Description | Attributes | Example |
+        | --- | --- | --- | --- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
+        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.  | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` | 
+
+        For more information, see [Filtering](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
       required: false
       schema:
         type: string
@@ -2373,7 +1802,14 @@ components:
       name: filter
       in: query
       description: |
-        This endpoints support filtering. See [Filtering](#filtering).
+        The following operators and attributes are available when filtering on this endpoint.
+
+        | Operator | Description                                                                                     | Supported Attributes                                     | Example |
+        |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+
+         For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
       required: false
       schema:
         type: string
@@ -3942,7 +3378,7 @@ components:
               modifier_type:
                 description: |
                   There are three modifier types.
-                   
+                  
                    - The `price_increment` type increases the prices of a product.
                    - The `price_decrement` type decreases the price of a product.
                    - The `price_equals` type sets the price of a product to an amount you specify.
@@ -4027,15 +3463,15 @@ components:
         product_types:
           description: |
             Commerce automatically assigns types to the products you create. In Commerce Manager, you can see at a glance the product types in a list of a products. In addition, you can filter on product types in both the API and Commerce Manager.
-             
+            
              Product types can also be used in catalogs. For example, in your catalog, you can filter on parent so that only your parent products are displayed in your storefront.
-             
+            
              Products have one of the following types:
 
              - **standard** - Standard products are a standalone products.
              - **parent** - A parent product is a product that has child products that have been built using the `Build Child Products` endpoint.
               - **child** - When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.
-             - **bundle** - A bundle is a purchasable product, comprising two or more standalone products (in other words, components) to be sold together. 
+             - **bundle** - A bundle is a purchasable product, comprising two or more standalone products (in other words, components) to be sold together.
           type: array
           items:
             type: string
@@ -4785,6 +4221,6 @@ components:
               x-go-name: ExportFullDelta
             include_organization_resources:
               type: boolean
-              description: If you are publishing a catalog in a store that contains resources from an organization, you must set this to true and you must enable the **Include Organization Resources in Catalog Publishes** checkbox in Commerce Manager. See [**Multi-Store Management Solutions**](/docs/api/pxm/catalog/publish-release).
+              description: If you are publishing a catalog in a store that contains resources from an organization, you must set this to true and you must enable the **Include Organization Resources in Catalog Publishes** checkbox in Commerce Manager. See [**Multi-Store Management Solutions**](#tag/Releases/operation/publishRelease).
               x-go-name: IncludeOrganizationResources
               nullable: true

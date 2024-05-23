@@ -42,6 +42,6 @@ Single sign-on allows authentication with Commerce using an external authenticat
 
 ## Related Resources
 
-- [Your first API request](/guides/Getting-Started/api-overview/your-first-api-request)
+- [Your first API request](/guides/Getting-Started/your-first-api-request)
 - [Authentication](/docs/authentication)
 - [Application Keys](/docs/authentication/application-keys/application-keys-overview)

@@ -11,7 +11,7 @@ This walkthrough shows how you can generate a Comma-Separated Values (CSV) list 
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account with existing orders
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token)
 
 ## Step-by-step walkthrough
 

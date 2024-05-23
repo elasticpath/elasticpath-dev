@@ -75,9 +75,9 @@ You can extend or modify your configuration once you have enabled the integratio
 
 1. Log into Commerce Manager. 
 1. Go to **CUSTOMERS and ACCOUNTS** > **Customers**.
-1. Create a new customer. See [Creating Customers](/docs/customer-management/cm-customers#creating-customers).
+1. Create a new customer. See [Creating Customers](/docs/commerce-manager/customer-management/cm-customers).
 1. Go to **COMPOSER** > **Integrations Hub** > **Executions** to see that the new customer event has been initiated.
-1. Extend your customer profile to add more customer-specific information and create new flows and fields. See [creating Flows in Commerce Manger](/docs/commerce-cloud/custom-data/flows).
+1. Extend your customer profile to add more customer-specific information and create new flows and fields. See [creating Flows in Commerce Manger](/docs/commerce-manager/commerce-extension/commerce-extension-in-cm).
     
     For example, create a new field know as `demo_attribute`.
 

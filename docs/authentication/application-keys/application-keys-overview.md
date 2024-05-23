@@ -8,7 +8,7 @@ Application keys are used to directly manage access to Organizations and stores.
 
 You can use application keys to generate `client_credentials` and `implicit tokens`. Unlike [User Credentials](/docs/authentication/security#user-credentials), Application keys are still valid even after a team member is removed from a store or organization.
 
-Each organization and store has a specific [rate limit](/guides/Getting-Started/api-overview/rate-limits). You can fine-tune the performance and availability of your applications that are integrated with our platform by reserving a rate limit for each Application Key. Reserved rate limits ensures that applications using a token generated from that key can make at least that many requests per second.
+Each organization and store has a specific [rate limit](/guides/Getting-Started/rate-limits). You can fine-tune the performance and availability of your applications that are integrated with our platform by reserving a rate limit for each Application Key. Reserved rate limits ensures that applications using a token generated from that key can make at least that many requests per second.
 
 ## Scenarios
 

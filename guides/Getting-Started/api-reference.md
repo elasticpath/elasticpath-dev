@@ -27,9 +27,9 @@ In the documentation, we use the variable name `<your_elasticpath_api_base_url>`
 All requests must include an authentication token in the header. Generate the token by using your API keys.
 
 - To find your API keys, go to **System > Application Keys** section in **Commerce Manager**.
-- To use the API to generate a token from your API keys, see the [Authentication](/docs/authentication) or [Your first API request](/guides/Getting-Started/api-overview/your-first-api-request#lesson-1-authenticate) sections.
+- To use the API to generate a token from your API keys, see the [Authentication](/docs/authentication) or [Your first API request](/guides/Getting-Started/your-first-api-request#lesson-1-authenticate) sections.
 - To learn more about API keys, see the [Security](/docs/authentication/security#api-authentication-credentials) section.
 
 ## Postman
 
-If you are looking to test or develop with the Composable Commerce API, we recommend using the [Elastic Path Postman collection](/guides/Getting-Started/api-overview/test-with-postman-collection). The collection includes all endpoints.
+If you are looking to test or develop with the Composable Commerce API, we recommend using the [Elastic Path Postman collection](/guides/Getting-Started/test-with-postman-collection). The collection includes all endpoints.

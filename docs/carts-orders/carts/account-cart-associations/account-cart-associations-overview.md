@@ -6,7 +6,7 @@ sidebar_position: 1
 
 You can create associations between an account and one or more carts. Once cart associations are established for an account, those carts are accessible across any device. You can delete associations as required.
 
-There are two ways to access the cart: with an [Account Management Authentication Tokens](/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview) and without one.
+There are two ways to access the cart: with an [Account Management Authentication Tokens](/docs/api/accounts/post-v-2-account-members-tokens) and without one.
 
 ## With an Account Management Authentication token
 

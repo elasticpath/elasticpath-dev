@@ -274,16 +274,16 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
-         // catalog: {
-         //   specPath: "openapispecs/catalog/catalog_view.yaml",
-         //   outputDir: "docs/api/pxm/catalog",
-         //   downloadUrl:
-         //       "https://beta.elasticpath.comopenapispecs/catalog_view.yaml",
-         //   sidebarOptions: {
-         //     groupPathsBy: "tag",
-         //     categoryLinkSource: "tag",
-         //   },
-         // },
+          catalog: {
+            specPath: "openapispecs/catalog/catalog_view.yaml",
+            outputDir: "docs/api/pxm/catalog",
+            downloadUrl:
+                "https://beta.elasticpath.comopenapispecs/catalog_view.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
           cartsorders: {
             specPath: "openapispecs/cartsorders/OpenAPISpec.yaml",
             outputDir: "docs/api/carts",

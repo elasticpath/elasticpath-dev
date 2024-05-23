@@ -35,7 +35,7 @@ A store admin can also invite team members from the **System > Store Settings > 
 1. On the **Home** page, enter the email address of the team member you want to invite.
 1. Select a role for the team member.
 
-    For more information, see [Roles](/guides/Getting-Started/team-management/roles).
+    For more information, see [Roles](/guides/Getting-Started/team-management).
 
 As a store admin, you can revoke access of a team member at any time without changing the settings for other team members. For example, you can revoke access of an external developer working on the store when the contract ends without revoking access of other members in the team.
 

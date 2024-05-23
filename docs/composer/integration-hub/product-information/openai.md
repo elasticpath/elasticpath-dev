@@ -91,7 +91,7 @@ To rewrite a product description:
      }
     ```
     
-    You can get a product's ID from the [Products page](/docs/pxm/products/pxm-products-commerce-manager/view-product-details) in Commerce Manager or using the [Get all Products](/docs/pxm/products/ep-pxm-products-api/get-all-products) endpoint.
+    You can get a product's ID from the [Products page](/docs/commerce-manager/product-experience-manager/Products/view-product-details) in Commerce Manager or using the [Get all Products](/docs/pxm/products/ep-pxm-products-api/get-all-products) endpoint.
 
 1. Click **Save & Run Test**.
 1. When the test has finished, go to your store to see your extended product descriptions. 

@@ -18,7 +18,7 @@ Promotions appear as cart items in the cart with negative values. The summation 
 
 ### Before you begin
 
-- Ensure that you have an [access token](https://beta.elasticpath.dev/docs/commerce-cloud/api-overview/your-first-api-request#get-an-access-token).
+- Ensure that you have an [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token).
 
 ### Procedure
 
@@ -167,5 +167,5 @@ Use unique codes when you want to control the number of products included in the
 
 ## Next steps
 
-- [Pay for the order](https://beta.elasticpath.dev/docs/commerce-cloud/payments/paying-for-an-order/overview)
+- [Pay for the order](/docs/carts-orders/payments/paying-for-an-order/overview)
 

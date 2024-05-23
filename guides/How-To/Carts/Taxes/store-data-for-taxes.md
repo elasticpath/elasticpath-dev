@@ -20,7 +20,7 @@ If you want to follow along, you need the following items:
 - The Client ID and Client Secret of your store
 - At least one configured product
 - An integrated tax calculation service, such as TaxJar.
-- An [access token](/guides/Getting-Started/api-overview/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/your-first-api-request)
 
 
 ## Step-by-step walkthrough

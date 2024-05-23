@@ -4,14 +4,14 @@ nav_label: Paying for an order Overview
 sidebar_position: 1
 ---
 
-When you [checkout](/docs/commerce-cloud/checkout) a [cart](/docs/carts-orders/carts/carts.md), an unpaid [order](/docs/commerce-cloud/orders) is returned. You can process the payment for the order though a payment gateway.
+When you [checkout](/docs/api/carts/checkout) a [cart](/docs/carts-orders/carts/carts.md), an unpaid [order](/docs/carts-orders/orders) is returned. You can process the payment for the order though a payment gateway.
 
 :::caution
 
 - You need to configure and enable a payment gateway before you can accept payments for orders.
 - Configure your store to use [Manual Gateway](/docs/carts-orders/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
 - There are a number of actions that happen to your [inventory](https://app.gitbook.com/@moltin/s/api/catalog/inventory.mdx) when checking out and paying for an order. For more information, see [Inventory](/docs/pxm/inventories/inventory.mdx).
-- We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/guides/Getting-Started/api-overview/api-contract#parallel-calls-to-api-objects).
+- We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
 ::: 
 
 

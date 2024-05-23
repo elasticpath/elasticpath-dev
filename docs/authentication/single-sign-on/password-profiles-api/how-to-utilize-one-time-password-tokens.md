@@ -45,7 +45,7 @@ First create a [User Authentication Info](/docs/authentication/single-sign-on/us
 
 ### Create a Webhook
 
-Using the [Integrations API](/docs/commerce-cloud/integrations/integrations-api/create-an-integration), create an integration which observes the `one-time-password-token-request.created` event. This Integration should be used to send information from the event to the user. Most commonly this will be used to send an email template to the user, which would direct them to your page which handles password reset / passwordless authentication. For example, set `integration_type` to `webhook` and `configuration.url` to a url which can handle sending the email to the user like `https://yourwebsite.com/one-time-password-token-notification` which can handle the event and send an email.
+Using the [Integrations API](/docs/api/integrations/create-integration), create an integration which observes the `one-time-password-token-request.created` event. This Integration should be used to send information from the event to the user. Most commonly this will be used to send an email template to the user, which would direct them to your page which handles password reset / passwordless authentication. For example, set `integration_type` to `webhook` and `configuration.url` to a url which can handle sending the email to the user like `https://yourwebsite.com/one-time-password-token-notification` which can handle the event and send an email.
 
 Alternatively, you can set up [Sendgrid](/docs/composer/integration-hub/marketing-communication/sendgrid) or [Postmark](/docs/composer/integration-hub/marketing-communication/postmark) within Integrations Hub with an event mapping for `one-time-password-token-request.created` and configure your email template within the third-party system.
 
@@ -121,7 +121,7 @@ From the above, we can use the information provided in the event to direct the u
 
 ## Exchange Code for Account Management Authentication Token
 
-In your application, use the One Time Password Token from the previous step to generate an Account Management Authentication Token using [Account Member Authentication](/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/one-time-password-token). 
+In your application, use the One Time Password Token from the previous step to generate an Account Management Authentication Token using [Account Member Authentication](/docs/api/accounts/post-v-2-account-members-tokens). 
 
 ### Password Reset Scenario
 
