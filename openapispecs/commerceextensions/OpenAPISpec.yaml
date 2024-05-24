@@ -33,7 +33,7 @@ tags:
       | Access Level   | Implicit       | Client Credentials only |
       | Filtering      | ⛔️               | ✅                       |
       | Sorting        | ⛔️              | ✅ supported attributes: `created_at`, `updated_at`, `id`                       |
-      | Events         | ⛔️              | Coming Soon             |
+      | Events         | ⛔️              | ✅                     |
 
       The Custom Fields Overview page lists the comparison of different types and validation available in Custom APIs vs Non-Core Flows.
   - name: Custom Fields
@@ -133,6 +133,35 @@ tags:
   - name: Custom API Entries
     description: |
       A **Custom API Entry** is a specific instance of a resource, such as a single product.
+      
+      ## Events
+
+      You can integrate Commerce Extensions with your external systems by observing the appropriate events. For more information, see [Integrations](/docs/api/integrations/integrations-introduction).
+      
+      Given you have a Custom API with `api_type` of `wishlist_ext` and you want to perform additional processing when an action is taken, like when a wishlist is created:
+      
+      ```bash
+      curl -X POST https://useast.api.elasticpath.com/v2/extensions/wishlists \
+        -H "Authorization: Bearer XXXX" \
+        -H "Content-Type: application/json" \
+        -d $ {
+          "data": {
+            "type": "wishlist_ext",
+            "name": "My Wishlist",
+            "items_count" 0,
+            "keep_purchased": false
+          }
+        }
+      ```
+      
+      When you [create an integration](/docs/api/integrations/create-integration) with `wishlist_ext.created` in `observes` field.
+      Then the configured `webhook` or `aws_sqs` will receive the appropriate message.
+      
+      You can configure integrations to observe the following events for your Custom API Entries:
+      * Created
+      * Updated
+      * Deleted
+
 paths:
   /v2/settings/extensions/custom-apis:
     post:
