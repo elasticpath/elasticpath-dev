@@ -1,7 +1,7 @@
 ---
 title: Get all Custom API Entries
 nav_label: Get all Custom API Entries
-sidebar_position: 2
+nav_position: 2
 ---
 
 ## `GET` Get a list of Custom API Entries on Custom API
@@ -14,10 +14,9 @@ https://useast.api.elasticpath.com/v2/extensions/:customApiSlug
 
 ### Path parameters
 
-| Name   | Required | Type     | Description                              |
-|--------|----------|----------|------------------------------------------|
+| Name            | Required | Type     | Description                              |
+|-----------------|----------|----------|------------------------------------------|
 | `customApiSlug` | Required | `string` | The unique identifier of the Custom API. |
-| `customEntryId` | Required | `string` | The unique identifier of the custom entry. |
 
 ### Headers
 
@@ -50,7 +49,7 @@ Entries can also be filtered by the slug for each [Custom Field](/docs/commerce-
 ## Request Example
 
 ```bash
-curl -X GET https://useast.api.elasticpath.com/v2/extensions/:slug \
+curl -X GET https://useast.api.elasticpath.com/v2/extensions/:customApiSlug \
      -H "Authorization: Bearer XXXX" \
      -H "Content-Type: application/json" \
 ```
@@ -75,7 +74,9 @@ curl -X GET https://useast.api.elasticpath.com/v2/extensions/:slug \
         "data_size": 1
       },
       "type": "wishlist_ext",
-      "name": "My Wishlist"
+      "name": "My Wishlist",
+      "items_count": 0,
+      "keep_purchased": false
     }
   ],
   "meta": {

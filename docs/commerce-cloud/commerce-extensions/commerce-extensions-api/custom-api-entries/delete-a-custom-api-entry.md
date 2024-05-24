@@ -1,7 +1,7 @@
 ---
 title: Delete a Custom API Entry
 nav_label: Delete a Custom API Entry
-sidebar_position: 5
+nav_position: 5
 ---
 
 ## `DELETE` Delete by ID
@@ -14,10 +14,10 @@ https://useast.api.elasticpath.com/v2/extensions/:slug/:id
 
 ### Path parameters
 
-| Name   | Required | Type     | Description                                                  |
-|--------|----------|----------|--------------------------------------------------------------|
-| `slug` | Required | `string` | The unique identifier of the Custom API.                     |
-| `id`   | Required | `string` | The unique identifier of the Custom API Entry to be deleted. |
+| Name               | Required | Type     | Description                                                  |
+|--------------------|----------|----------|--------------------------------------------------------------|
+| `customApiSlug`    | Required | `string` | The unique identifier of the Custom API.                     |
+| `customApiEntryId` | Required | `string` | The unique identifier of the Custom API Entry to be deleted. |
 
 
 ### Headers
@@ -29,7 +29,7 @@ https://useast.api.elasticpath.com/v2/extensions/:slug/:id
 ## Request Example
 
 ```bash
-curl -X DELETE https://useast.api.elasticpath.com/v2/extensions/:slug/:id \
+curl -X DELETE https://useast.api.elasticpath.com/v2/extensions/:customApiSlug/:customApiEntryId \
      -H "Authorization: Bearer XXXX" \
      -H "Content-Type: application/json" \
 ```

@@ -69,6 +69,6 @@ sidebar_position: 2
 
 ## Related Resources
 
-- [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
+- [Promotion Management Overview](/docs/commerce-manager/promotions-standard/overview)
 - [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)

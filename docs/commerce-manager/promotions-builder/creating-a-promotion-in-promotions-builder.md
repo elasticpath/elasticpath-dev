@@ -56,7 +56,7 @@ In the **Promotions Engine** section, do the following:
 
 ### Adding Cart Custom Attributes
 
-Ensure that you have created a cart custom attribute in order for the discount to function properly. To create one, refer to [Create a Cart with Custom Attributes](/docs/commerce-cloud/carts/cart-management/create-multi-cart#create-a-cart-with-custom-attributes).
+Ensure that you have created a cart custom attribute in order for the discount to function properly. To create one, refer to [Create a Cart with Custom Attributes](/docs/api/carts/create-a-custom-cart).
 
 Let's say you want to add a special attribute for your customers, like their membership level.
 
@@ -154,4 +154,4 @@ To find specific products to include in your promotion, follow these steps in th
 
 ## Related Resources
 
-- [Rule Promotions API](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
+- [Rule Promotions API](/docs/commerce-manager/promotions-builder/overview)

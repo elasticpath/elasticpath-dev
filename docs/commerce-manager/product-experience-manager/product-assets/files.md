@@ -19,4 +19,4 @@ By default, the maximum file size is 8 Megabytes. If you need to support larger 
 
 Delete files by selecting the Trash can icon next to the listing.
 
-To change the file or files associated with a product, see [Create Product-File Relationships](/docs/pxm/products/product-asset-relationships/file-relationship/create-product-file-relationships).
+To change the file or files associated with a product, see [Create Product-File Relationships](/docs/api/pxm/products/create-product-file-relationships).

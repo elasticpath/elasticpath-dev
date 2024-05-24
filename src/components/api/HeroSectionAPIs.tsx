@@ -29,7 +29,7 @@ const PRODUCTS = [
   },
   {
     title: 'Commerce Extensions',
-    link: '/docs/commerce-cloud/commerce-extensions/overview',
+    link: '/docs/api/commerceextensions/commerce-extensions-introduction',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
@@ -62,7 +62,7 @@ const PRODUCTS = [
   },
   {
     title: 'Account Management',
-    link: '/docs/api/accounts/accounts-introduction',
+    link: '/docs/api/accounts/account-management-introduction',
     icon: PeopleTeamRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
@@ -98,7 +98,7 @@ const PRODUCTS = [
   {
     title: 'Payments',
     beta: false,
-    link: '/docs/api/payments/payment-gateway-introduction',
+    link: '/docs/api/payments/payment-gateways-introduction',
     icon: WalletCreditCardRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -143,7 +143,7 @@ const PRODUCTS = [
   {
     title: 'Promotions Standard',
     beta: false,
-    link: '/docs/api/promotions/promotions-standard',
+    link: '/docs/api/promotions/promotions-standard-introduction',
     icon: BuildingRetailRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -151,7 +151,7 @@ const PRODUCTS = [
   },
   {
     title: 'Customers',
-    link: '/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens',
+    link: '/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens',
     icon: PersonCircleRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',

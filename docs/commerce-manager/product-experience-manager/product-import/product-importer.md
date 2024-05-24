@@ -4,7 +4,7 @@ nav_label: Importing and Updating Products
 sidebar_position: 10
 ---
 
-Product import uses a [Comma Separated Values (CSV)](/docs/pxm/products/importing-products/product-importer-csv) file to import products, main image files and custom extension data.
+Product import uses a [Comma Separated Values (CSV)](/docs/api/pxm/products/product-import#product-importer-csv) file to import products, main image files and custom extension data.
 
 You can use product import to:
 
@@ -16,7 +16,7 @@ You cannot use product import to:
 - Delete existing products.
 - Import product bundles.
 
-Product Import uses a [Comma Separated Values (CSV)](/docs/pxm/products/importing-products/product-importer-csv) file to import/update products, main image files, and custom extension data. 
+Product Import uses a [Comma Separated Values (CSV)](/docs/api/pxm/products/product-import#product-importer-csv) file to import/update products, main image files, and custom extension data. 
 
 Each row in a `.csv` file represents a product you want to create/update. Each file can have 50,000 rows, including the header. If a CSV file exceeds 50,000 rows, an error is displayed, and the products are not imported. 
 
@@ -29,7 +29,7 @@ To import products:
 1. Go to **Product Experience Manager > Products**.
 1. Click **Product Imports** tab.
 1. In **Import File**, click **Choose File**.
-1. Browse to the location of your [Comma Separated Values (CSV)](/docs/pxm/products/importing-products/product-importer-csv) file.
+1. Browse to the location of your [Comma Separated Values (CSV)](/docs/api/pxm/products/product-import#product-importer-csv) file.
 1. Select your CSV file and click **Open**. A notification indicating whether the operation is successful is displayed. The imported product information is displayed in the **All Products** tab.
 
 ## Demo

@@ -150,6 +150,6 @@ The script needs to perform the following actions:
 
 ## Related Resources
 
-- [Custom Data (Flows)](https://beta.elasticpath.dev/docs/commerce-cloud/custom-data)
-- [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview)
-- [Extend a resource with custom data](https://beta.elasticpath.dev/docs/commerce-cloud/custom-data/extend-any-resource)
+- [Custom Data (Flows)](https://beta.elasticpath.dev/docs/commerce-manager/flows)
+- [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/api/flows/flows-service-introduction)
+- [Extend a resource with custom data](/guides/Custom%20Data/extend-any-resource)

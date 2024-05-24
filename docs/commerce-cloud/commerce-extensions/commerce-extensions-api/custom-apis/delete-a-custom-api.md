@@ -1,7 +1,7 @@
 ---
 title: Delete a Custom API
 nav_label: Delete a Custom API
-sidebar_position: 6
+nav_position: 6
 ---
 
 ## `DELETE` Delete by ID

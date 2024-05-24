@@ -137,6 +137,19 @@ const sidebarsDefault = {
       items: require("./docs/api/exporter/sidebar.js")
     },
   ],
+  commerceextensions: [
+    {
+      type: "category",
+      label: "Commerce Extensions",
+      link: {
+        type: "generated-index",
+        title: "Commerce Extensions",
+        slug: "/api/commerce-extensions"
+      },
+      // @ts-ignore
+      items: require("./docs/api/commerceextensions/sidebar.js")
+    },
+  ],
   exporter: [
     {
       type: "category",
@@ -303,6 +316,12 @@ const sidebarsDefault = {
       },
       // @ts-ignore
       items: require("./docs/api/subscriptions/sidebar.js")
+    },
+    //Link not in the API specyarn
+    {
+      type: 'link',
+      label: 'Observable Events',
+      href: '/docs/subscriptions/observable-events', // The internal path
     },
   ],
   // But you can create a sidebar manually

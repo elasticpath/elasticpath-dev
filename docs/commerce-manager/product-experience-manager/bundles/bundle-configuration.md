@@ -8,8 +8,8 @@ With Product Experience Manager, you can create and manage bundles. A bundle is 
 
 You can have:
 
-- Dynamic bundles: Dynamic bundles allow your shoppers to choose their own options in a bundle. See [Dynamic Bundles](/docs/pxm/products/pxm-bundles/dynamic-bundles).
-- Bundles of bundles: Your bundle consists of child bundles. See [Bundles of Bundles](/docs/pxm/products/pxm-bundles/bundles-of-bundles).
+- Dynamic bundles: Dynamic bundles allow your shoppers to choose their own options in a bundle. See [Dynamic Bundles](/docs/api/pxm/products/products#dynamic-bundles).
+- Bundles of bundles: Your bundle consists of child bundles. See [Bundles of Bundles](/docs/api/pxm/products/products#bundles-of-bundles).
 
 ## Bundle Components and Options
 
@@ -67,7 +67,7 @@ Bundles can have:
 - Fixed pricing - enables you to assign a fixed price for all products in a bundle. 
 - Automatic/cumulative pricing - the price of a bundle is generated automatically based on the sum of the component products.
 
-For more information, see [Bundle Pricing](/docs/pxm/products/pxm-bundles/bundle-pricing) 
+For more information, see [Bundle Pricing](/docs/api/pxm/products/products#bundle-pricing) 
 
 ## Adding Products From Bundles of Bundles to Carts
 
@@ -93,7 +93,7 @@ When designing your storefront, you must only allow child bundles to be added to
 
 1. In the **Product Details** tab, enter the following details:
 
-    - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/commerce-manager/product-experience-manager/locales/) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales#how-you-can-configure-locales-in-commerce-manager).
+    - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/commerce-manager/product-experience-manager/locales/) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/commerce-manager/product-experience-manager/Products/configure-locales).
     - **Name**: Name for the bundle.
     - (Optional) **Description**: A description for the bundle.
     - (Optional) **SKU Number**: The SKU of the product.
@@ -170,7 +170,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
 
     1. To associate the bundle with a price book, from **Select Price Book** list, select a price book.
     1. Turn on the toggle for the currencies you want to use.
-    1. Enter a price for each of the currencies. You can add currencies to a store in [Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies#managing-currencies).
+    1. Enter a price for each of the currencies. You can add currencies to a store in [Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
     1. In **Actions**, click **Save**.
 
 1. If you want to add volume and sale pricing for the products in your bundle, expand **Advanced Pricing**.
@@ -178,7 +178,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
     1. Click **Add Volume Level**.
     1. In **Price Book**, select the price book you want from the drop-down list.
     1. In **Min Purchase Quantity**, type the minimum quantity of products a customer must select to receive the volume price.
-    1. Type a price for each of the available currencies. You can add currencies to a store under **System** in [Store Settings > Currencies](/docs/pxm/currencies).
+    1. Type a price for each of the available currencies. You can add currencies to a store under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
     1. Click **Add Level**.
 
 1. To add a sale price to an option, click **+ Add Sale Price** and do the following:
@@ -189,7 +189,7 @@ If you want to assign a fixed price for all the products in a bundle, you must h
     1. Use the calendar to select a start date and time. 
     1. Click **OK**.
     1. Use the calendar to select an end date and time.
-    1. Type a price for each of the available currencies. You can add currencies under **System** in [Store Settings > Currencies](/docs/pxm/currencies).
+    1. Type a price for each of the available currencies. You can add currencies under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
     1. Click **Add Sale**.
 
     :::tip
@@ -287,18 +287,6 @@ You can remove bundle products from a catalog, but still keep them in the databa
 
 1. Set the product status to **Draft**.
 1. Remove the product from hierarchies and republish the affected catalog so that it does not appear in the storefront.
-
-:::
-
-## Related Resources
-
-- [Product Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview)
-- [Product Attributes](/docs/pxm/products/pxm-products#product-attributes)
-- [Product Hierarchies](/docs/pxm/hierarchies/hierarchies-api/hierarchies-api-overview)
-- [Price books](/docs/pxm/pricebooks/pxm-pricebooks/pxm-pricebooks-overview)
-- [Catalog](/docs/pxm/catalogs)
-- [Catalog Releases](/docs/pxm/catalogs/catalog-latest-release/overview)
-- [Products](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview)
 
 ### Demos
 
