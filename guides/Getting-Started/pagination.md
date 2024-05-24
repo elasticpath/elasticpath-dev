@@ -38,7 +38,7 @@ Even if the result is zero, pagination fields are always included in the respons
 * [Get All Account Members](/docs/api/accounts/get-v-2-account-members)
 * [Get all User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info)
 * [Get all Entries](/docs/api/flows/get-all-entries)
-* [Get all Customers](/docs/customer-management/customer-managment-api/get-all-customers)
+* [Get all Customers](/docs/customer-management/customer-management-api/get-all-customers)
 * [Get Integration Logs](/docs/api/integrations/list-integration-logs)
 * [Get all Orders](/docs/api/carts/get-customer-orders)
 * [Get all Promotions](/docs/api/promotions/get-all-promotions)

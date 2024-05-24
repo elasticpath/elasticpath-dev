@@ -9,12 +9,12 @@ sidebar_position: 111
 - Ensure that you have an account within Elastic Path Commerce Manager.
 - Ensure that you have a paid plan in your [Studio](https://app.unstack.com/) account.
 - Ensure that you have created the following items in Commerce Manager for seamless integration into the Studio storefront:
-    - [Products](/docs/pxm/products/pxm-products-commerce-manager/overview)
+    - [Products](/docs/commerce-manager/product-experience-manager/Products/overview)
     - [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
     - [Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
     - [Catalog rules](/docs/api/pxm/catalog/rules)
-- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/carts-orders/payments/payment-gateway-cm/payments-powered-by-stripe) in Commerce Manager.
+- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/commerce-manager/payments/ep-payments-powered-by-stripe) in Commerce Manager.
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) or Advanced Commerce (GrapheneHC) integration if you want to enable search indexing in your Studio storefront.
 
 ## Configuring **Elastic Path** Integration

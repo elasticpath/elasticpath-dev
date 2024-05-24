@@ -80,7 +80,7 @@ const config = {
         announcementBar: { //comment out when not needed, please do not remove
           id: 'support_us',
           content:
-              'We have rebuilt our documentation site and now include OpenAPI specifications for most endpoints.',
+              'The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.',
           backgroundColor: '#0E1521',
           textColor: '#FFFFFF',
           isCloseable: true,

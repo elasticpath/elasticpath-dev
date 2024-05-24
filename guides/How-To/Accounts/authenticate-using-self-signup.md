@@ -37,7 +37,7 @@ You can also set `auto_create_account_for_account_members` to `true`. This autom
 ### Generate a token using self sign up
 
 Send a POST request to generate a token using the self sign up authentication mechanism. This creates an account member that you can add to the account.
-You can find more detailed instructions on generating an authentication token using self sign up [here](/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/self-sign-up).
+You can find more detailed instructions on generating an authentication token using self sign up [here](/docs/api/accounts/post-v-2-account-members-tokens).
 
 ### Login as an admin and add account member created to the account
 

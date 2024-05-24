@@ -391,7 +391,7 @@ For **Customer Request**, see the following snippet:
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
 | **Code** | `string` | The code returned from the OpenID Connect Provider authentication. |
 | **Redirect Uri** | `string` | The url of the front-end that handles the callback of the token. |
-| **Code Verifier** | `string` | The customer password. | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. [Generating a Code Verifier and Challenge](/docs/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
+| **Code Verifier** | `string` | The customer password. | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. [Generating a Code Verifier and Challenge](/guides/How-To/Authentication/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
 | **Headers** | `string` | The Bearer token required to get access to the API. |
 
 
