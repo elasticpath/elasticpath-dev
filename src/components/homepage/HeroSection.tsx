@@ -9,7 +9,7 @@ import {
 export default function HeroSection() {
   return (
     <section className="px-4 py-44 text-center leading-tight tracking-tight">
-      <div className="flex flex-col items-center justify-between dark:text-white/90">
+      <div className="flex flex-col items-center justify-between dark:text-white">
         <h1 className="mb-4 text-[6.5rem] font-bold">
           Enterprise-ready commerce
         </h1>
@@ -18,21 +18,21 @@ export default function HeroSection() {
           experiences with our suite of interconnected{" "}
           <a
             href=""
-            className="dark:text-white/90 text-black font-bold decoration-2 underline decoration-green-500"
+            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
             e-Commerce Apps
           </a>
           ,{" "}
           <a
             href=""
-            className="dark:text-white/90 text-black font-bold decoration-2 underline decoration-green-500"
+            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
             APIs{" "}
           </a>
           , &{" "}
           <a
             href=""
-            className="dark:text-white/90 text-black font-bold decoration-2 underline decoration-green-500"
+            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
             tools for developers
           </a>
