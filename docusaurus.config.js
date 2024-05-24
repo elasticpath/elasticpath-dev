@@ -9,12 +9,12 @@ const resourcesHTML = fs.readFileSync('./src/snippets/resources.html', 'utf-8');
 const resourceDOCS = fs.readFileSync('./src/snippets/resourceDOCS.html', 'utf-8');
 
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
-const defaultSettings = {
-  breadcrumbs: true,
-  showLastUpdateTime: true,
-  sidebarCollapsible: true,
-  sidebarPath: require.resolve('./sidebars-default.js'),
-};
+//const defaultSettings = {
+//  breadcrumbs: true,
+//  showLastUpdateTime: true,
+//  sidebarCollapsible: true,
+//  sidebarPath: require.resolve('./sidebars-default.js'),
+//};
 /**
  * Create a section
  * @param {import('@docusaurus/plugin-content-docs').Options} options

@@ -29,7 +29,7 @@ export default function HelpSection({ className = '' }) {
                   className="text-primary dark:text-primary-100"
               >
                 <button
-                    className="bg-primary text-white border-0 font-semibold hover:text-black py-3 px-4 cursor-pointer rounded-full"> Get
+                    className="bg-primary-100 hover:bg-primary-200 text-black border-0 font-semibold hover:text-white py-3 px-4 cursor-pointer rounded-full"> Get
                   Started &rarr;</button>
               </Link>
             </div>
@@ -41,10 +41,10 @@ export default function HelpSection({ className = '' }) {
               </p>
               <Link
                   href="https://support.elasticpath.com"
-                  className="text-primary dark:text-primary-100"
+                  className="text-primary dark:text-primary-200"
               >
                 <button
-                    className="bg-primary text-white border-0 font-semibold hover:text-black py-3 px-4 cursor-pointer rounded-full">Contact
+                    className="bg-primary-100 hover:bg-primary-200 text-black border-0 font-semibold hover:text-white py-3 px-4 cursor-pointer rounded-full">Contact
                   Us &rarr;</button>
               </Link>
             </div>
