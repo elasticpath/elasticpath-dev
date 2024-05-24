@@ -23,7 +23,7 @@ When a product is added to a cart, a cart is generated together with its unique 
 
 ## Promotions and custom items
 
-Optionally, apply a promotion `code` on a cart, or add `custom_items` to modify the product price (typically to handle taxes, customs, or shipping). Custom cart items are only available through [implicit authentication](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/Tokens/implicit-token).
+Optionally, apply a promotion `code` on a cart, or add `custom_items` to modify the product price (typically to handle taxes, customs, or shipping). Custom cart items are only available through [implicit authentication](https://beta.elasticpath.dev/docs/authentication/Tokens/implicit-token).
 
 ## Checkout
 
@@ -60,7 +60,7 @@ If enabled, you can manage your stock. As such, your stock is automatically upda
 
 ## Related Resources
 
-- [Carts](https://beta.elasticpath.dev/docs/commerce-cloud/carts/carts)
+- [Carts](https://beta.elasticpath.dev/docs/carts-orders/carts/carts)
 - [Promotions](https://beta.elasticpath.dev/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
 - [Orders](https://beta.elasticpath.dev/docs/api/carts/orders)
 - [Payments](https://beta.elasticpath.dev/docs/api/payments/payment-gateway-introduction)

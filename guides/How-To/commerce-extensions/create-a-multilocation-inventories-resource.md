@@ -8,7 +8,7 @@ Imagine managing inventory across multiple locations effortlessly. Commerce Exte
 
 ## Prerequisites
 
-If you want to follow along, you need a [Client credential token](/docs/commerce-cloud/authentication/Tokens/client-credential-token).
+If you want to follow along, you need a [Client credential token](/docs/authentication/Tokens/client-credential-token).
 
 ## Step-by-step Walkthrough
 

@@ -72,7 +72,7 @@ Follow these steps to generate **Admin API Access Token**.
 
 ## Configuring Shopify Integration
 
-Before you begin ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books) and a [hierarchy](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), and created and configured a [Catalog](/docs/pxm/catalogs/catalogs-cm/creating-catalogs) with this price book and hierarchy in Commerce Manager to hold the Shopify catalog data. Once you have completed the [Prerequisites](/docs/composer/integration-hub/product-information/shopify#prerequisites), you are ready to configure the Shopify integration.
+Before you begin ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books) and a [hierarchy](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), and created and configured a [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs) with this price book and hierarchy in Commerce Manager to hold the Shopify catalog data. Once you have completed the [Prerequisites](/docs/composer/integration-hub/product-information/shopify#prerequisites), you are ready to configure the Shopify integration.
 
 1. In Commerce Manager, under **COMPOSER**, select **Integrations Hub**.
 1. Under **Product Information**, select **Shopify**.
@@ -130,7 +130,7 @@ Once the integration is enabled and your Shopify catalog data is synchronized wi
 1. Select the Shopify integration.
 1. Under **Trigger Details**, select **_Inbound product (Full Load)**. This option is visible only if you select the **Enable Full Sync(Shopify to Elastic Path)** checkbox.
 1. Copy the URL link and paste it in the browser. This triggers a full load of all products, categories, if **Enable Catagory Sync** is enabled, prices, templates, variations, and images from Shopify to Elastic Path.
-1. Go to **Catalogs** and publish your catalog so you can see all the information in your Elastic Path storefront. See [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/publishing-catalogs#publishing-catalogs). 
+1. Go to **Catalogs** and publish your catalog so you can see all the information in your Elastic Path storefront. See [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs#publishing-catalogs). 
      If you did not turn on **Enable Category Sync**, you need to create your own multi-tier taxonomy using hierarchies and nodes, and associate those hierarchies with your catalog before publishing.
 
 1. Once the catalog data is visible on your storefront, you can add products to your cart and checkout.
@@ -147,14 +147,14 @@ You can set up a sale price for a product in Commerce Manager. To do this, perfo
     1. (Optional) From **Start Date / Time - End Date / Time**, select a start date and time and an end date and time of the sale.
     1. Enter a price for each of the available currencies. You can add currencies under **SYSTEM** in **Store Settings > Currencies**.
     1. Select **Add Sale**.
-    1. Publish your catalog again. See [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/publishing-catalogs#publishing-catalogs).
+    1. Publish your catalog again. See [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs#publishing-catalogs).
     1. Go to your storefront to see the new sale price for that product.
 
 ### Use case scenario 2: creating a new bundle
    
 1. In Commerce Manager, under **Product Experience Manager**, select **Products**.
 1. Create a new bundle product. See [Bundles in Commerce Manager](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
-1. Publish your catolog. See [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/publishing-catalogs#publishing-catalogs). 
+1. Publish your catolog. See [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs#publishing-catalogs). 
     
     You can now see that the newly created bundle has been added to your Shopify store. Note that any changes made to the bundle in the Shopify store are not synchronized back to Elastic Path.
 1. Associate this product with the sales channel in your Shopify store. To do this: 

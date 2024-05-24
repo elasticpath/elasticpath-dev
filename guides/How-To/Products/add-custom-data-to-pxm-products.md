@@ -12,7 +12,7 @@ Before you start, ensure that the following requirements are met:
 
 - An Commerce account and the Client ID and Client Secret for your
   store, available from [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/).
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request).
+- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request).
 - The product to attach custom fields to must be created. See [The Stationary Store Example](#the-stationery-store-example).
 
 ## The Stationery Store Example

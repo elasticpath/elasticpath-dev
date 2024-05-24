@@ -11,10 +11,10 @@ The single sign-on APIs allow you to authenticate customers with a single sign-o
 If you want to follow along, you need the following:
 
 - A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/).
-- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/Tokens/implicit-token).
+- A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](https://beta.elasticpath.dev/docs/authentication/Tokens/implicit-token).
 - A basic understanding of object-oriented programming or JavaScript.
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token).
-- A [Redirect URL](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/authentication#buyer-organization-adding-redirect-urls) that corresponds to the URL which your storefront is accessing Composable Commerce. This URL is used in the single sign-on flow.
+- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request#get-an-access-token).
+- A [Redirect URL](https://beta.elasticpath.dev/docs/authentication/single-sign-on/authentication#buyer-organization-adding-redirect-urls) that corresponds to the URL which your storefront is accessing Composable Commerce. This URL is used in the single sign-on flow.
 - An [authentication provider](https://beta.elasticpath.dev/docs/commerce-manager/authentication/) set up for your store that satisfies the requirements in the following section.
 
 ## Requirements for Authentication Providers

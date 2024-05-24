@@ -18,7 +18,7 @@ Promotions appear as cart items in the cart with negative values. The summation 
 
 ### Before you begin
 
-- Ensure that you have an [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token).
+- Ensure that you have an [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request#get-an-access-token).
 
 ### Procedure
 
@@ -34,7 +34,7 @@ Do the following to apply a promotion at a cart level:
     - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes)
     - [API](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes)
 
-1. [Add items to the cart](https://beta.elasticpath.dev/docs/commerce-cloud/carts/cart-items/add-product-to-cart).
+1. [Add items to the cart](https://beta.elasticpath.dev/docs/carts-orders/carts/cart-items/add-product-to-cart).
 1. Apply promotion using code if the promotion is not automatically applied.
 1. [Checkout the cart](https://beta.elasticpath.dev/docs/api/carts/checkout) that is updated with the promotion.
 

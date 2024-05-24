@@ -14,7 +14,7 @@ All API requests must contain a generated access token for authentication purpos
 
 Once you have your client ID, you can use it to generate an access token. Requests to Subscriptions require an `Authorization` header containing your access token. 
 
-This guide uses the `implicit` grant type. This grant type can be thought of as read only and is most commonly used on the client side. See [Authentication](https://beta.elasticpath.dev/docs/commerce-cloud/authentication/overview) for more information about tokens.
+This guide uses the `implicit` grant type. This grant type can be thought of as read only and is most commonly used on the client side. See [Authentication](https://beta.elasticpath.dev/docs/authentication) for more information about tokens.
 
 ## Best Practices
 

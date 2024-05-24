@@ -281,7 +281,7 @@ Ensure that you have the following:
 
 - A Composable Commerce account.
 - The [client ID and client secret](https://dashboard.elasticpath.com/app) of your store.
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request).
+- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:

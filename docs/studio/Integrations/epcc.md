@@ -12,7 +12,7 @@ sidebar_position: 111
     - [Products](/docs/pxm/products/pxm-products-commerce-manager/overview)
     - [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
-    - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
+    - [Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
     - [Catalog rules](/docs/api/pxm/catalog/rules)
 - Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/carts-orders/payments/payment-gateway-cm/payments-powered-by-stripe) in Commerce Manager.
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) or Advanced Commerce (GrapheneHC) integration if you want to enable search indexing in your Studio storefront.

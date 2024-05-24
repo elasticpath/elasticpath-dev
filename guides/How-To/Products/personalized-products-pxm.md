@@ -86,7 +86,7 @@ For example, you may sell T-shirts that can have personalized text on the front 
 }
 ```
 
-Once you have configured your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](https://beta.elasticpath.dev/docs/commerce-cloud/carts/cart-items/add-product-to-cart). When the product is added to the cart, those custom inputs are supplied.
+Once you have configured your custom inputs on a product, you must configure the custom inputs in your orders. See [adding your products to carts](https://beta.elasticpath.dev/docs/carts-orders/carts/cart-items/add-product-to-cart). When the product is added to the cart, those custom inputs are supplied.
 
 ```json
 {

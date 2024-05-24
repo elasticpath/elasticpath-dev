@@ -4,7 +4,7 @@ nav_label: Personal Data Related Data Entries Overview
 sidebar_position: 10
 ---
 
-This is a supplementary endpoint for the [logs](/docs/commerce-cloud/personal-data/personal-data-logs-api/personal-data-logs-api-overview) endpoint. It allows you to view all data entries that are related to the
+This is a supplementary endpoint for the [logs](/docs/personal-data/personal-data-logs-api/personal-data-logs-api-overview) endpoint. It allows you to view all data entries that are related to the
 resource specified in the filter. For example, a user can get all data items that relate to a customer, such as addresses or user authentication info.
 
 This API is read only, and you cannot add/update/delete anything using this API.

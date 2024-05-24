@@ -12,7 +12,7 @@ If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
 - Basic understanding of object-oriented programming or JavaScript
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request)
+- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request)
 
 ## Step-by-step walkthrough
 

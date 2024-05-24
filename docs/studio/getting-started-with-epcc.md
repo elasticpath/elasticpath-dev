@@ -13,7 +13,7 @@ sidebar_position: 5
     - [Pricebooks](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
     - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
     - [Templates](/docs/commerce-manager/product-experience-manager/extending-products/templates)
-    - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
+    - [Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
 - Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/carts-orders/payments/payment-gateway-cm/ep-payments-powered-by-stripe) in Commerce Manager.
 - Ensure that the Stripe gateway is enabled in Studio to sucessfully perform the checkout process. For more information, see [Stripe Integration](/docs/studio/Integrations/Integrating-stripe).
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) if you want to enable search indexing in your CX studio storefront.

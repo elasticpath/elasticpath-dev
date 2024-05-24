@@ -24,15 +24,15 @@ Only sellers with Seller Admins and IT roles have write access to the API. Suppo
     It could be any data item that belongs to the user of interest (for example, a customer or address.)
 
    :::note
-   Currently, personal data management is only enabled for a limited set of endpoints. Please see the [personal data](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data) for the list of endpoints that support personal data management.
+   Currently, personal data management is only enabled for a limited set of endpoints. Please see the [personal data](https://beta.elasticpath.dev/docs/personal-data) for the list of endpoints that support personal data management.
    :::
 
 2. Call the `erasure-requests` POST endpoint and specify the `id` and `type` in the filter.
 
-   See [Create Personal Data Erasure Request](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/create-personal-data-erasure-request) for more information.
+   See [Create Personal Data Erasure Request](https://beta.elasticpath.dev/docs/personal-data/personal-data-erasure-requests-api/create-personal-data-erasure-request) for more information.
 
 3. Note the erasure request `id` in the response and periodically poll the `erasure-requests` GET endpoint.
 
-   See [Get Personal Data Erasure Request](https://beta.elasticpath.dev/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/get-personal-data-erasure-request-by-id).
+   See [Get Personal Data Erasure Request](https://beta.elasticpath.dev/docs/personal-data/personal-data-erasure-requests-api/get-personal-data-erasure-request-by-id).
 
 4. Finally, if the `status` field in the response is `SUCCESS`, it means that all personal data is removed. Otherwise, you are advised to retry creating an erasure request, and if the problem persists, contact Support.

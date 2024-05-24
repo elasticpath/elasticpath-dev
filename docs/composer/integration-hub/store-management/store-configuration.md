@@ -19,7 +19,7 @@ The following Commerce objects are included when importing/exporting store confi
 - [Variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
 - [Variation Options](/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).
 - [Flows](/docs/api/flows/flows-service-introduction).
-- [Integrations](/docs/commerce-cloud/integrations/integrations-api/overview).
+- [Integrations](/docs/api/integrations/integrations-introduction).
 - [Price Books](/docs/pxm/pricebooks/pxm-pricebooks/pxm-pricebooks-overview).
 - [Hierarchies](/docs/pxm/hierarchies/hierarchies-api/hierarchies-api-overview).
 - [Nodes](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node). Only parent-level nodes are imported or exported. You cannot import or export nested nodes.

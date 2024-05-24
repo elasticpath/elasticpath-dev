@@ -38,7 +38,7 @@ Ensure that you have the following:
 
 - A Composable Commerce account.
 - The [client ID and client secret](https://beta.elasticpath.dev/docs/commerce-manager/application-keys/application-keys-cm) of your store.
-- An [access token](https://beta.elasticpath.dev/docs/commerce-cloud/your-first-api-request#get-an-access-token).
+- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request#get-an-access-token).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:

@@ -75,7 +75,7 @@ Even if the result is zero, pagination fields are always included in the respons
 
 ### Page Length
 
-By default, page length is set to `25`. You can adjust this setting globally for your project using the [settings endpoint](/docs/commerce-cloud/global-project-settings/settings-overview) or override the setting in any single call. The maximum page length is set to `100` for any paginated call.
+By default, page length is set to `25`. You can adjust this setting globally for your project using the [settings endpoint](/docs/api/settings/settings-introduction) or override the setting in any single call. The maximum page length is set to `100` for any paginated call.
 
 
 ### Page Offset 

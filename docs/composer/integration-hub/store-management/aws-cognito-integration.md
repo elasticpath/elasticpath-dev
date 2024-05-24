@@ -103,7 +103,7 @@ In addition, you may optionally want to configure the following:
 
 ### Configuring Commerce Prerequisites
 
-If you want to use Amazon Cognito with an Commerce Merchant Organization realm, configure a Merchant Organization prefix. You can configure this in Commerce Manager in **SYSTEM** > **Store Settings** > **Authentication Management**. The prefix field is available from the **Enter your store's prefix** drop-down list during login to determine the Commerce Merchant realm that your business users log in to. See [Merchant Organization: URL prefix](/docs/authentication/single-sign-on/authentication#merchant-organization-url-prefix).
+If you want to use Amazon Cognito with an Commerce Merchant Organization realm, configure a Merchant Organization prefix. You can configure this in Commerce Manager in **SYSTEM** > **Store Settings** > **Authentication Management**. The prefix field is available from the **Enter your store's prefix** drop-down list during login to determine the Commerce Merchant realm that your business users log in to. See [Merchant Organization: URL prefix](/docs/authentication/single-sign-on/openid).
 
 ## Collecting Your Setup Information
 
