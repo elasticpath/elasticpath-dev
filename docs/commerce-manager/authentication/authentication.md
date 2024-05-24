@@ -10,7 +10,7 @@ The Authentication Management tab is used to configure one or more single sign-o
 Changing these settings affects how customers authenticate with your store. Any misconfiguration might prevent users from authenticating.
 :::
 
-For more information, see [Single sign-on and authentication](/docs/commerce-cloud/authentication/single-sign-on/openid) and [Single sign-on with OpenID Connect](https://beta.elasticpath.dev/guides/Authentication/get-single-sign-on-customer-token).
+For more information, see [Single sign-on and authentication](/docs/authentication/single-sign-on/openid) and [Single sign-on with OpenID Connect](https://beta.elasticpath.dev/guides/Authentication/get-single-sign-on-customer-token).
 
 :::caution
 To set up single sign-on for customers of your store, use the **Buyer Organization** realm. To set up single sign-on for store administrators and developers, use the **Merchant Organization** realm.
@@ -91,7 +91,7 @@ After you have properly configured one or more authentication providers, when cu
 
 ## Buyer Organization
 
-When the storefront begins the single sign-on flow for an end user or customer, it must tell Commerce which URI the user should be redirected to when the authentication completes. This is the `redirect_uri` parameter discussed in [Single sign-on with OpenID Connect](/docs/commerce-cloud/customer-management/customer-managment-api/customer-tokens). These URLs must be explicitly listed as *Redirect URIs* to prevent phishing and other security vulnerabilities.
+When the storefront begins the single sign-on flow for an end user or customer, it must tell Commerce which URI the user should be redirected to when the authentication completes. This is the `redirect_uri` parameter discussed in [Single sign-on with OpenID Connect](/docs/customer-management/customer-management-api/customer-tokens). These URLs must be explicitly listed as *Redirect URIs* to prevent phishing and other security vulnerabilities.
 
 1. On the **System** > **Store Settings** > **Authentication Management** tab, click **Buyer Organization** realm.
 

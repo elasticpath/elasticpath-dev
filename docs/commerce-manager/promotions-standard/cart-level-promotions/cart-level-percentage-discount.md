@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 :::caution
-- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
+- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/api/settings/settings-introduction#calculation-method) do not support excluding products from promotions.
 - We recommend to use **Advanced (Conditions v2)** settings.
 
 :::
@@ -70,5 +70,5 @@ sidebar_position: 2
 ## Related Resources
 
 - [Promotion Management Overview](/docs/commerce-manager/promotions-standard/overview)
-- [Customers](/docs/commerce-cloud/customer-management/customers)
+- [Customers](/docs/customer-management/customers)
 - [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)

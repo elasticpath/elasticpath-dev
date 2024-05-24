@@ -37,8 +37,8 @@ You can manage promotions on the **STORE > Promotions Standard** page.
     - [Bundle discount promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions)
     - [Free gift promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions)
 
-- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
-- Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) section.
+- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/api/settings/settings-introduction#calculation-method) do not support excluding products from promotions.
+- Line-item discounts are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/api/settings/settings-introduction#calculation-method) section.
 :::
 
 ## Creating Promotion Codes
@@ -106,7 +106,7 @@ With bulk generating codes, you can generate large number of unique promotion co
     - (Optional) **Usage Limit Type** : Indicate whether the usage limitation is at the item-level or cart-level. The options are **Per Cart** and **Per Line Item**.
     - (Optional) **Maximum uses** : Enter the maximum number of usages of a code for a promotion. If no value is set, customers can use the code unlimited number of times. We recommend you to set value greater than or equal to 1.
     - (Optional) **Prepend Value** : Add a prefix value to the generated codes. When codes are generated, the specified prepend value is added as a prefix to each code. For example, if you set *summer* as prepend value and *aa2b-3c4d* is generated, the promotion code is *summer-aa2b-3c4d*.
-    - (Optional) **Code Group Name** : Enter the name for the job invoked to generate the code. See [Create a Job](/docs/commerce-cloud/promotions/promotion-codes/jobs-api/create-a-job).
+    - (Optional) **Code Group Name** : Enter the name for the job invoked to generate the code. See [Create a Job](/docs/promotions/promotion-codes/jobs-api/create-a-job).
     
 1. Click **Save**.
 
@@ -196,10 +196,10 @@ Using the **Manage Code Export** tab, you can export your promotion codes and do
 
 ## Related Resources
 
-- [Promotions Standard](/docs/commerce-cloud/promotions/promotions-cm/overview)
-- [Customers](/docs/commerce-cloud/customer-management/customers)
+- [Promotions Standard](/docs/commerce-manager/promotions-standard/overview)
+- [Customers](/docs/customer-management/customers)
 - [Catalog](/docs/pxm/catalogs)
-- [Create a Job](/docs/commerce-cloud/promotions/promotion-codes/jobs-api/create-a-job)
+- [Create a Job](/docs/promotions/promotion-codes/jobs-api/create-a-job)
 
 ### Demos
 

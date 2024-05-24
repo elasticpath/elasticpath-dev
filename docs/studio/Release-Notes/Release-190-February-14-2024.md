@@ -22,7 +22,7 @@ With Elastic Path Composable Commerce, you can create and manage [bundles](/docs
 
 ### Promotion coupons
 
-With Elastic Path Composable Commerce, you can create [promotions](/docs/commerce-cloud/promotions/promotions-overview.md). You can now add your promotion coupons to a smart links menu. This enables you to create buttons that add your promotions to a cart and checkout.
+With Elastic Path Composable Commerce, you can create [promotions](/docs/promotions/promotions-overview.md). You can now add your promotion coupons to a smart links menu. This enables you to create buttons that add your promotions to a cart and checkout.
 
 ## Layout
 

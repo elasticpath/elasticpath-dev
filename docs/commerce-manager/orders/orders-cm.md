@@ -83,7 +83,7 @@ Do the following to anonymize an order:
 
 ## Refunding an Order
 
-You can refund an order directly through your payment gateway, or using Commerce API or Commerce Manager. See [Refunds](/docs/commerce-cloud/payments/paying-for-an-order/overview#refunds).
+You can refund an order directly through your payment gateway, or using Commerce API or Commerce Manager. See [Refunds](/docs/carts-orders/payments/paying-for-an-order/overview#refunds).
 
 On the **View order** tab, you can refund the order directly from Elastic Path Commerce Manager. You can refund partially or the full amount.
 
@@ -167,9 +167,9 @@ Only seller administrators can export order details.
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders)
+- [Orders](/docs/carts-orders/orders)
 - [Orders API](/docs/api/carts/orders)
-- [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview)
+- [Shipping Groups](/docs/ship-groups/shipping-groups/Overview)
 
 ### Demos
 

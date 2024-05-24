@@ -30,7 +30,7 @@ In Commerce Manager, an Org Admin can manage entities in both organization and s
 1. On the **Your organizations** page, select the organization you would like to manage from the list.
 1. You can select **Create Product** from **Task #1**, or go to **Product Experience Manager** > **Products**.
 1. Select **Create New**. 
-1. Add the [product Details](/docs/pxm/products/pxm-products-commerce-manager/add-product-details).
+1. Add the [product Details](/docs/commerce-manager/product-experience-manager/Products/add-product-details).
 1. You can either select **Save & Exit** or **Next** to create your [product categories](#creating-product-categories).
 
 ## Importing Products to Your Organization

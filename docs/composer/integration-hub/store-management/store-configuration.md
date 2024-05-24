@@ -18,8 +18,8 @@ The following Commerce objects are included when importing/exporting store confi
 - [Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview).
 - [Variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
 - [Variation Options](/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).
-- [Flows](/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview).
-- [Integrations](/docs/commerce-cloud/integrations/integrations-api/overview).
+- [Flows](/docs/api/flows/flows-service-introduction).
+- [Integrations](/docs/api/integrations/integrations-introduction).
 - [Price Books](/docs/pxm/pricebooks/pxm-pricebooks/pxm-pricebooks-overview).
 - [Hierarchies](/docs/pxm/hierarchies/hierarchies-api/hierarchies-api-overview).
 - [Nodes](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node). Only parent-level nodes are imported or exported. You cannot import or export nested nodes.
@@ -62,7 +62,7 @@ Once you have [installed Store Configuration Orchestrator](#installing-store-con
     :::
 
 1. Click **Next**. The **Commerce Connection** page is displayed.
-1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-manager/application-keys/application-keys-cm).
 
     - **Client-ID**  - Your Commerce Client ID.
     - **Client-Secret** - Your Commerce Client Secret.

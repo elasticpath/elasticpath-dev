@@ -155,7 +155,7 @@ Once you have met the [Prerequistes](#prequisites), you are ready to configure t
         - **Client-ID**  - Your Commerce Client ID.
         - **Client-Secret** - Your Commerce Client Secret.
 
-            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](docs/authentication/application-keys/application-keys-cm).
 
         -  **Token URL** - Your Commerce API Token URL. For example, `https://api.motlin.com/oauth/<access_token>` (EU) or `https://useast.api.elasticpath.com/oauth/<access_token>` (US).
         - **Keep Alive Flag** - Turn on the **Keep Alive Flag** toggle if you want to specify keep alive intervals for this integration.
