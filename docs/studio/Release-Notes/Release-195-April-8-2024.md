@@ -6,16 +6,19 @@ sidebar_position: 4
 
 ## Overview
 
-Mainly bug fixes in this release.
+Some minor improvements and bug fixes in this release.
 
 ## Complete List of Resolved Items
 
-### E-commerce
+### Style Guide
 
-* **Bug** - Fixed an issue where if you added a product to cart and the selected **+** multiple times, after a few clicks, the cart becomes empty and a **429** error is displayed.
-* **Bug** - Fixed an issue where cloning e-commerce templates to a site that does not support e-commerce components causes an error.
-* **Bug** - Fixed an API connection issue between Elastic Path and Studio.
+* **Bug** - Fixed an issue where color names could not be updated in the **Color palette**.
+
+### Thank you Page
+
+* **Bug** - Fixed an issue where **Address line 2** was not displaying in the shipping address.
 
 ### Shopify
 
-* **Bug** - Fixed an issue where the Studio app failed to load through Shopify.
+* **Bug** - Fixed an issue where some product IDs were wrongly generating an **invalid id** error message in the cart.
+
