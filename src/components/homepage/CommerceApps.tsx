@@ -6,7 +6,9 @@ export default function CommerceApps() {
   return (
     <section className="px-4 py-44 text-center leading-tight tracking-tight">
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h2 className="mb-4 text-[4rem] font-bold">Apps for commerce</h2>
+        <h2 className="mb-4 text-[4rem] font-semibold tracking-tight">
+          Apps for commerce
+        </h2>
         <Tabs defaultValue="Products">
           <TabsList className="flex items-center justify-center gap-4">
             <TabsTrigger

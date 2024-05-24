@@ -1,11 +1,13 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import HeroSection from "../components/homepage/HeroSection";
-import APIReferenceSection from "../components/homepage/APIReferenceSection";
 import HomeFooter from "../components/homepage/HomeFooter";
-import CommunitySection from "../components/homepage/CommunitySection";
-import HelpSection from "../components/homepage/HelpSection";
 import CommerceApps from "../components/homepage/CommerceApps";
+import ToolsForDevs from "../components/homepage/ToolsForDevs";
+import Composer from "../components/homepage/Composer";
+import CTA from "../components/homepage/CTA";
+import Success from "../components/homepage/Success";
+import Testimonials from "../components/homepage/Testimonials";
 
 export default function Homepage() {
   return (
@@ -19,14 +21,12 @@ export default function Homepage() {
       <div className="relative z-10">
         <HeroSection />
         <CommerceApps />
-        <div className="p-24 text-center bg-black/40 backdrop-blur">
-          <h2 className="font-manrope text-white tracking-tight text-[3rem]">
-            Get started now!
-          </h2>
-          <button className="!bg-[#1FEC90] shadow-[0px_0px_28px_0px_#1FEC90] py-2 px-4 text-black border-0 font-semibold bg-transparent !rounded-full transition-all duration-500">
-            Start Free Trial
-          </button>
-        </div>
+        <CTA />
+        <ToolsForDevs />
+        <Composer />
+        <CTA />
+        <Success />
+        <Testimonials />
         <HomeFooter />
       </div>
     </Layout>
