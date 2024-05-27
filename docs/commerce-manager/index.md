@@ -35,7 +35,7 @@ A store admin can also invite team members from the **System > Store Settings > 
 1. On the **Home** page, enter the email address of the team member you want to invite.
 1. Select a role for the team member.
 
-    For more information, see [Roles](/docs/commerce-cloud/team-management/roles).
+    For more information, see [Roles](/guides/Getting-Started/team-management).
 
 As a store admin, you can revoke access of a team member at any time without changing the settings for other team members. For example, you can revoke access of an external developer working on the store when the contract ends without revoking access of other members in the team.
 
@@ -53,7 +53,7 @@ A store admin can invite registered or unregistered users using their email addr
     The store **Home** page opens.
 1. Optionally, invite your colleagues to collaborate.
 
-    For more information, see [Team Management](/docs/commerce-cloud/team-management) section.
+    For more information, see [Team Management](/guides/Getting-Started/team-management) section.
 
 :::caution
 If you are logged on to Commerce Manager using single sign-on, Your profile information is provided by the single sign-on provider. You cannot create new stores, invite users, or edit your profile information.

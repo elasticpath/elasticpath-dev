@@ -98,7 +98,7 @@ tags:
 
       1. Create a price modifier. You must give the price modifier a unique name. For more information, see [Create a Price Modifier](/docs/api/pxm/pricebooks/create-price-modifier).
       1. Build your child products with the new product modifier.
-  - name: Price Book Import
+  - name: Import a Price Book and Prices
     description: |
       You can create and update product price books and prices in bulk, at both organization and store level, using the Price Book Import API. This is useful, for example, if you have a promotion and want to update 50,000 product prices. Rather than having to go to each price book and manually edit 50,000 prices, you can use the Price Book Import API to bulk update all your product prices at the same time, including setting different prices for different currencies.
 
@@ -147,7 +147,7 @@ tags:
       | Action | Unique Identifiers |
       | --- | --- |
       | Creating | <ul><li>Unique price book name.</li><li>`external_ref` for the price book.</li></ul> |
-      | Updating | <ul><li>`id` and/or `external_ref` for the price book</li></ul>. |
+      | Updating | <ul><li>`id` and/or `external_ref` for the price book.</li></ul> |
 
       ### Price Unique Identifiers
 
@@ -166,24 +166,12 @@ tags:
        
        A file can include up to 50,000 `pricebook` and/or `product-price` objects. If you have more than 50,000 objects, then you must create a separate file, and import each file, one at a time.
        
-       #### The `pricebook` Object
+       - The `pricebook` Object - The attributes you can specify for a `pricebook` object are the attributes you specify when [creating a pricebook](/docs/api/pxm/pricebooks/create-pricebook). 
+       
+       - The `product-price` Object - The attributes you can specify for a `product-price` object are the attributes you specify when [adding a price to a price book](/docs/api/pxm/pricebooks/create-product-price).
+       
+       Once your import file is created, use the [import a price book and prices API to import](/docs/api/pxm/pricebooks/import-pricebook) the file.
 
-       The following table describes the attributes for a price book object.
-
-       | Attribute | Required | Type | Description |
-       | --- | --- | --- | --- |
-       | `type` | Required | `string`| Always: `pricebook` |
-       | `attributes` | Required | `object` | The attributes for a price book. <ul><li>(Required) `name`</li><ul><li>**Type**: `string`</li><li>**Description**: The name of the price book. Price books must have a unique name.</li></ul><li>(Optional) `id`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique identifier of a price book.</li></ul><li>(Optional) `external_ref`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique attribute associated with the price book. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.</li></ul><li>(Optional) `description`</li><ul><li>**Type**: `string`</li><li>**Description**: A description for the price book. For example, the purpose for the price book, such as flash sale pricing or preferred customer pricing.</li></ul></ul> |
-       
-       #### The `product-price` Object
-       
-       The following table describes the attributes for a price book object.
-       
-       | Attribute | Required | Type | Description |
-       | --- | --- | --- | --- |
-       | `type` | Required | `string`| Always: `product-price` |
-       | `attributes` | Required | `object` | The attributes for a product price. <ul><li>(Required) `sku`</li><ul><li>**Type**: `string`</li><li>**Description**: The product SKU that the price belongs to.</li></ul><li>(Optional) `id`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique identifier of a product price.</li></ul><li>(Optional) `external_ref`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique attribute associated with a price. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.</li></ul><li>(Optional) `pricebook_id`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique identifier of a price book.</li></ul><li>(Optional) `pricebook_external_ref`</li><ul><li>**Type**: `string`</li><li>**Description**: The unique attribute associated with the price book. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.</li></ul><li>(Optional) `currencies`</li><ul><li>**Type**: `object`</li><li>**Description**: A collection of one or more currencies: <key> objects where key is the [**three-letter ISO code**](https://www.iso.org/iso-3166-country-codes.html) for the currency associated with this price. In addition, a `currencies` object can include a `tiers` object. A `tiers` object is the price tier  that an item is eligible for based on the quantity purchased. You cannot have conflicting tiers within the same currencies block. This is a product's price. See [**Add a product price to a price book**](#tag/Prices/operation/createProductPrice).</li></ul><li>(Optional) `sales`</li><ul><li>**Type**: `object`</li><li>**Description**: The sales price that an item is eligible for based on the price book. See See [**Add a product price to a price book**](#tag/Prices/operation/createProductPrice).</li></ul></ul> |
-       
        ### Price Book Import API Results
        
        The API works on a "best endeavours" approach. In other words, the API does its best to create/update the price book objects based on the file that you provide.
@@ -242,7 +230,7 @@ paths:
          
         ### Filtering
 
-        Filtering is supported on this endpoint. For the general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+        Filtering is supported on this endpoint. For the general syntax, see [Filtering](/guides/Getting-Started/filtering).
          
          You can filter on the following attributes and operators.
          
@@ -350,10 +338,13 @@ paths:
       tags:
         - Import a Price Book and Prices
       summary: Import a Price
-      description: |-
+      description: |
         You can create and update product price books and prices in bulk, at both organization and store level, using the Price Book Import API. This is useful, for example, if you have a promotion and want to update 50,000 product prices. Rather than having to go to each price book and manually edit 50,000 prices, you can use the Price Book Import API to bulk update all your product prices at the same time, including setting different prices for different currencies.
+         
         The API uses a [JSONL](https://jsonlines.org/) file. The JSONL file can be compressed to a GZIP file. Here is an [example of a JSONL file](/assets/example_file_all.jsonl). See [Price Book Export JSONL File](#tag/Price-Book-Import).
+         
         The API works on a "best endeavours" approach. In other words, the API does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted, and the job fails with an error. You can then use the job results to understand what objects the API created/updated until the import failed, and to troubleshoot any errors. See [Import Results](#tag/Price-Book-Import).
+
         Price book imports are processed sequentially in the order that you send your import API requests.
       operationId: importPricebook
       responses:
@@ -652,7 +643,7 @@ paths:
          
         ### Filtering
 
-        This endpoint supports filtering. For general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+        This endpoint supports filtering. For general syntax, see [Filtering](/guides/Getting-Started/filtering).
          
         | Operator | Attribute | Description | Example |
         | --- | --- | --- | --- |
@@ -793,7 +784,7 @@ paths:
          
         ### Filtering
          
-        Filtering is supported on this endpoint. For the general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+        Filtering is supported on this endpoint. For the general syntax, see [Filtering](/guides/Getting-Started/filtering).
          
         You can filter on the following attributes and operators.
          

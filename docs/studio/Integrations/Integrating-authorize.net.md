@@ -8,7 +8,7 @@ You can quickly and easily integrate Studio with Authorize.net. Once configured,
 
 ## Prerequisites
 
-- Ensure that you have configured [Authorize.net](/docs/commerce-cloud/payments/payment-gateway-cm/configure-other-payment-gateways#enabling-authorize-net) in Commerce Manager.
+- Ensure that you have configured [Authorize.net](/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-authorize-net) in Commerce Manager.
 - Ensure that you have an Authorize.net account.
 
 ## Configure the Authorize.net Integration

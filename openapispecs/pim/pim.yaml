@@ -1,4 +1,4 @@
-# GENERATED FILE - DO NOT EDIT 
+# GENERATED FILE - DO NOT EDIT
 openapi: 3.1.0
 info:
   title: Product Experience Manager Introduction
@@ -850,7 +850,7 @@ paths:
 
         #### Filtering
 
-         Many Commerce API endpoints support filtering. The general syntax is described in [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+         Many Commerce API endpoints support filtering. The general syntax is described in [**Filtering**](/guides/Getting-Started/filtering).
 
          The following attributes and operators are supported.
 
@@ -1113,7 +1113,7 @@ paths:
     post:
       summary: Attach multiple nodes
       description: |
-        Assigns products to multiple hierarchies and their children nodes. You can apply a filter to search for the appropriate products to attach to a node. For general filtering syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+        Assigns products to multiple hierarchies and their children nodes. You can apply a filter to search for the appropriate products to attach to a node. For general filtering syntax, see [**Filtering**](/guides/Getting-Started/filtering).
          
          The following attributes and operators are supported.
          
@@ -1122,7 +1122,7 @@ paths:
           | `eq` | `sku`, `slug`,`upc_ean`, `mpn`, `name`, `templates`, `commodity_type`, `owner`, `product_types` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`                 | `filter=eq(name,some-name)`     |
           | `like` | `sku`, `slug`,`upc_ean`, `mpn`, `name`                                                          | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                   | `filter=like(name,*some-name*)` |
           | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `mpn`, `product_types`                                  | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
-         
+
       operationId: attachNodes
       tags:
         - Products
@@ -1199,7 +1199,7 @@ paths:
     post:
       summary: Detach multiple nodes
       description: |
-        Dissociates products from multiple hierarchies and their children nodes. You can apply filters to search for the appropriate products to detach. For general filtering syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+        Dissociates products from multiple hierarchies and their children nodes. You can apply filters to search for the appropriate products to detach. For general filtering syntax, see [**Filtering**](/guides/Getting-Started/filtering).
          
         The following attributes and operators are supported.
          
@@ -2849,7 +2849,7 @@ paths:
          
          ### Filtering
          
-         Many Commerce API endpoints support filtering. The general syntax is described [**here**](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
+         Many Commerce API endpoints support filtering. The general syntax is described [**here**](https://elasticpath.dev/guides/Getting-Started/filtering).
          
            The following operators and attributes are available when filtering on this endpoint.
          
@@ -2929,7 +2929,7 @@ paths:
       summary: Get All Product Tags
       description: |
         Retrieves all product tags for a store. A store can view the tags associated with the organization to which the store belongs. However, an organization can only view the tags associated with the organization.
-         
+
       operationId: getAllProductTags
       tags:
         - Product Tags
@@ -7203,7 +7203,7 @@ components:
       name: filter
       in: query
       description: |
-        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/docs/commerce-cloud/api-overview/filtering).
+        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/guides/Getting-Started/filtering).
 
         For more information about the attributes and operators that are supported, see [Get all products](/docs/api/pxm/products/get-all-products).
       style: form
@@ -7243,7 +7243,7 @@ components:
       in: query
       description: |
 
-        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/docs/commerce-cloud/api-overview/filtering), but you must go to a specific endpoint to understand the attributes and operators an endpoint supports.
+        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/guides/Getting-Started/filtering), but you must go to a specific endpoint to understand the attributes and operators an endpoint supports.
 
         For more information about the attributes and operators that this endpoint supports, see [Export Products](/docs/api/pxm/products/export-products).
       style: form
@@ -7314,7 +7314,7 @@ components:
       name: filter
       in: query
       description: |
-        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/docs/commerce-cloud/api-overview/filtering).
+        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/guides/Getting-Started/filtering).
 
         For more information on the operators and attributes available when filtering on this endpoint, see [Get a node's products](/docs/api/pxm/products/get-node-products).
       style: form

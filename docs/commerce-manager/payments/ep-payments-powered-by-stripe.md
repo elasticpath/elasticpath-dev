@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Prerequisites
 
-- Ensure that you are [onboarded](https://documentation.elasticpath.com/elastic-path-payments/docs/onboarding.html) to Elastic Path Payments Powered by Stripe.
+- Ensure that you are [onboarded](/docs/payments/onboarding) to Elastic Path Payments Powered by Stripe.
 - Log in to [Stripe Dashboard](https://dashboard.stripe.com/login) and make a note of your Stripe Account ID.
 
 ## Enabling the Gateway in Commerce Manager

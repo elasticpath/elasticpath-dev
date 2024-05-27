@@ -104,6 +104,6 @@ Use this procedure to create promotions such as, such as *3-for-$20* sales. In t
 
 ## Related Resources
 
-- [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
-- [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Promotion Management Overview](/docs/commerce-manager/promotions-standard/overview)
+- [Customers](/docs/customer-management/customers)
+- [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)

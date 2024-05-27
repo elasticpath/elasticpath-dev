@@ -59,4 +59,4 @@ If you want a combination of organization and store products, hierarchies and pr
 
 If you want a store hierarchy to have a combination of organization and store products, then you must [duplicate the organization hierarchy](/docs/pxm/hierarchies/hierarchy#duplicating-hierarchies) and assign a combination of organization and store products to the duplicated hierarchy.
 
-If you are publishing a catalog in a store that contains resources from an organization, you must enable the **Include Organization Resources in Catalog Publishes** checkbox. See [General Settings in Commerce Manager](/docs/commerce-cloud/global-project-settings/general-settings#updating-pxm-settings-to-publish-store-catalogs-containing-organizational-resources).
+If you are publishing a catalog in a store that contains resources from an organization, you must enable the **Include Organization Resources in Catalog Publishes** checkbox. See [General Settings in Commerce Manager](/docs/commerce-manager/settings/general-settings#updating-pxm-settings-to-publish-store-catalogs-containing-organizational-resources).

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 :::caution
 - We recommend not to set maximum discount value for this promotion. Setting maximum discount value for this promotion conflicts with the cart fixed discount value. For example, if the maximum discount value is $10 and the cart fixed discount value is $20, the cart gets $10 discount only.
-- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/commerce-cloud/global-project-settings/settings-overview#calculation-method) do not support excluding products from promotions.
+- The **Promotion Exclusions** setting specifies the products to be excluded from the cart-level promotions, such as `fixed_discount` and `percent_discount`. However, the stores that use [simple calculation method](/docs/api/settings/settings-introduction#calculation-method) do not support excluding products from promotions.
 - We recommend to use **Advanced (Conditions v2)** settings.
 :::
 
@@ -67,6 +67,6 @@ sidebar_position: 1
 
 ## Related Resources
 
-- [Promotion Management Overview](/docs/commerce-cloud/promotions/promotion-management/promotion-management-overview)
-- [Customers](/docs/commerce-cloud/customer-management/customers)
-- [Catalog](/docs/pxm/catalogs)
+- [Promotion Management Overview](/docs/commerce-manager/promotions-standard/overview)
+- [Customers](/docs/customer-management/customers)
+- [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)

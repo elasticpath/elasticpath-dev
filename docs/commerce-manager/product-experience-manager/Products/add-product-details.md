@@ -4,7 +4,7 @@ nav_label: Adding Product Details
 sidebar_position: 40
 ---
 
-1. (Optional) In **Locale**, select a language to use to localize product names and descriptions when creating your products. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales).
+1. (Optional) In **Locale**, select a language to use to localize product names and descriptions when creating your products. See [Configuring Locales](/docs/commerce-manager/product-experience-manager/Products/configure-locales).
 1. In **Name**: Enter a name for the product.
 1. (Optional) **Description**: A description of the product. You can select:
 

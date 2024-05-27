@@ -22,25 +22,25 @@ In addition, a product must belong to at least one hierarchy. When you publish a
 
 ## Product Types
 
-Commerce Manager automatically assigns types to the products you create. This is useful, because you can see at a glance the product types in a list of a products. In addition, you can [filter on product types](/docs/pxm/products/pxm-products-commerce-manager/filter-products).
+Commerce Manager automatically assigns types to the products you create. This is useful, because you can see at a glance the product types in a list of a products. In addition, you can [filter on product types](/docs/commerce-manager/product-experience-manager/Products/filter-products).
 
 Products have one of the following types:
 
 * `product` - A product is a standalone product.
-* `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products).
+* `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products).
 * `child` - A child product is a product that is a variation of a parent product.
-* `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/pxm/products/pxm-bundles#bundle-components-and-options).
+* `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
 
 ![product types](/assets/product_types.png)
 
 ## Related Resources
 
-- [Product Templates](/docs/pxm/products/pxm-products#product-templates)
-- [Product Attributes](/docs/pxm/products/pxm-products#product-attributes)
-- [Product Hierarchies](/docs/pxm/hierarchies)
-- [Variations](/docs/pxm/products/pxm-product-variations/pxm-variations)
-- [Price books](/docs/pxm/pricebooks/price-books)
-- [Catalog](/docs/pxm/catalogs)
+- [Product Templates](/docs/commerce-manager/product-experience-manager/Products/add-product-templates)
+- [Product Attributes](/docs/commerce-manager/product-experience-manager/extending-products/templates)
+- [Product Hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/overview)
+- [Variations](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products)
+- [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
+- [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
 
 ### Demos
 

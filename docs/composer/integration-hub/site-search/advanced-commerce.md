@@ -81,16 +81,16 @@ Collect the following setup information from Advanced Commerce (GrapheneHC).
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/docs/commerce-cloud/authentication/application-keys/application-keys-cm), go to **SYSTEM** > **Application Keys**.
+To create a new [application key](/docs/commerce-manager/application-keys/application-keys-cm), go to **SYSTEM** > **Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
-| **Token URL**                    | Your Commerce API Token URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).  |
+| **Token URL**                    | Your Commerce API Token URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).  |
 | **Client ID**                       | Your Commerce Client ID. |
 | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Prerequisites
@@ -101,7 +101,7 @@ When integrating with third-party providers, we recommend you use the closest re
      - [images](/docs/pxm/products/product-assets/assets-overview).
      - [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books).
      - [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies).
-     - [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates).
+     - [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates).
      - [variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
      - [catalogs](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
 
