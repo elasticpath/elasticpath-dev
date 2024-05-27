@@ -15,6 +15,8 @@ For promotions applied at the cart level, strategies applied are:
 - `item_quantity`
 - `item_category`
 - `item_attribute`
+- `item_sku`
+- `item_product_id`
 
 When multiple sub conditions exist, they function as `and` conditions, requiring all sub conditions to be fulfilled for the promotion to be applied.
 
