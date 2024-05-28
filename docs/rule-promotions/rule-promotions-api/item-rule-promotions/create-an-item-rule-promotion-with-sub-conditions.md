@@ -33,7 +33,7 @@ https://useast.api.elasticpath.com/v2/rule-promotions
 
 For descriptions about the fields, refer to [Rules Promotion API overview](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview).
 
-The following request example outlines how a 50% discount applies to items that meet all the specified conditions. The maain rule is based on the cart's total value, while the sub conditions focus on item categories and attributes. 
+The following request example outlines how a 50% discount applies to items that meet all the specified conditions. The main rule is based on the cart's total value, while the sub conditions focus on item categories and attributes. 
 
 Rules (`rule_set.rules.children`): Here, the sub-conditions specify the additional criteria for the promotion to apply:
  - `item_category`: Only items within a specified category are eligible.
