@@ -14,19 +14,19 @@ Once you have configured the store configuration orchestrator integration, you c
 
 The following Commerce objects are included when importing/exporting store configurations.
 
-- [Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
-- [Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview).
-- [Variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
-- [Variation Options](/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/create-option).
+- [Currencies](/docs/api/pxm/currencies/currencies).
+- [Templates](/docs/api/flows/flows-service-introduction#templates-in-product-experience-manager).
+- [Variations](/docs/api/pxm/products/variations).
+- [Variation Options](/docs/api/pxm/products/create-variation-option).
 - [Flows](/docs/api/flows/flows-service-introduction).
 - [Integrations](/docs/api/integrations/integrations-introduction).
-- [Price Books](/docs/pxm/pricebooks/pxm-pricebooks/pxm-pricebooks-overview).
-- [Hierarchies](/docs/pxm/hierarchies/hierarchies-api/hierarchies-api-overview).
-- [Nodes](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node). Only parent-level nodes are imported or exported. You cannot import or export nested nodes.
-- [Catalogs](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview).
-- [Catalog Rules](/docs/pxm/catalogs/catalog-rules).
+- [Price Books](/docs/api/pxm/pricebooks/price-books-introduction).
+- [Hierarchies](/docs/api/pxm/products/hierarchies).
+- [Nodes](/docs/api/pxm/products/create-node). Only parent-level nodes are imported or exported. You cannot import or export nested nodes.
+- [Catalogs](/docs/api/pxm/catalog/create-catalog).
+- [Catalog Rules](/docs/api/pxm/catalog/rules).
 
-A Store Configuration Orchestrator Delete Action deletes [products](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview) from a store.
+A Store Configuration Orchestrator Delete Action deletes [products](/docs/api/pxm/products/products) from a store.
 
 For more information, watch a video.
 
@@ -66,7 +66,7 @@ Once you have [installed Store Configuration Orchestrator](#installing-store-con
 
     - **Client-ID**  - Your Commerce Client ID.
     - **Client-Secret** - Your Commerce Client Secret.
-    - **Token URL** - Your Commerce API Token URL. For example, `https://api.motlin.com/oauth/<access_token>` (EU) or `https://useast.api.elasticpath.com/oauth/<access_token>` (US).
+    - **Token URL** - Your Commerce API Token URL. For example, `https://euwest.cm.elasticpath.com/oauth/<access_token>` (EU) or `https://useast.api.elasticpath.com/oauth/<access_token>` (US).
 
 1. Click **Connect** to make sure that the authentication is completed successfully.
 1. Click **Next**. The **Store Orchestrator Configuration** page is displayed. The table below describes the options you can configure, depending on the Store Configuration Orchestrator action you are performing.
