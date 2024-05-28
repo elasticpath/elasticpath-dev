@@ -23,4 +23,4 @@ The tax for the items in a re-order is not applied. For more information, see [T
 - [Payments API - Paying for an order](/docs/carts-orders/payments/paying-for-an-order/overview/paying-for-an-order/overview)
 - [Payments API - Refunds](/docs/carts-orders/payments/paying-for-an-order/overview#refunds)
 - [Re-order](/docs/carts-orders/carts/cart-items/re-order)
-- [Calculate cart and order totals](/guides/Carts/calculate-totals)
+- [Calculate cart and order totals](/guides/How-To/Carts/calculate-totals)

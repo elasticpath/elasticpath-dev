@@ -14,7 +14,7 @@ The payload attributes and types are defined in the following table.
 | :------------- | :------------------------------- | :------------------------------------------------------------------------------------------------ |
 | `id`           | `string`                         | A unique ID for this event.                                                                       |
 | `integration`  | `object`                         | The events `integration_type` being fired.                                                        |
-| `triggered_by` | [`string`](/docs/integrations/observable-events) | The [observable event](/docs/integrations/observable-events) that triggered this event.                           |
+| `triggered_by` | [`string`](/docs/api/integrations/integrations-introduction#observable-events) | The [observable event](/docs/api/integrations/integrations-introduction#observable-events) that triggered this event.                           |
 | `attempt`      | `integer`                        | The number of attempts to deliver this event.                                                     |
 | `resources`    | `string`                         | The resources affected by this event. This field is now deprecated. Please use `payload` instead. |
 | `payload`      | `object`                         | The resources affected by this event.                                                             |
@@ -25,7 +25,7 @@ Store-level events contain `store_id` and `org_id` whereas, organization-level e
 
 ### Example: Typical payload
 
-The following example payload [observes](/docs/integrations/observable-events) the `order.paid` event. The configured URL receives the following payload.
+The following example payload [observes](/docs/api/integrations/integrations-introduction#observable-events) the `order.paid` event. The configured URL receives the following payload.
 
 ```javascript
 {
@@ -232,12 +232,12 @@ The following table defines the payload attributes and types:
 | :-------------- | :------------------------------- | :---------------------------------------------------------------------- |
 | `id`            | `string`                         | A unique ID for this event.                                             |
 | `integrationid` | `string`                         | The ID of the integration being fired.                                  |
-| `type`          | [`string`](/docs/integrations/observable-events) | The [observable event](/docs/integrations/observable-events) that triggered this event. |
+| `type`          | [`string`](/docs/api/integrations/integrations-introduction#observable-events) | The [observable event](/docs/api/integrations/integrations-introduction#observable-events) that triggered this event. |
 | `data`          | `object`                         | The resource affected by this event.                                    |
 
 ### Example: Typical payload
 
-The following example payload [observes](/docs/integrations/observable-events) the `cart.updated` event. The configured queue receives the following message payload:
+The following example payload [observes](/docs/api/integrations/integrations-introduction#observable-events) the `cart.updated` event. The configured queue receives the following message payload:
 
 ```javascript
 {

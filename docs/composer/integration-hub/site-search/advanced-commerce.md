@@ -103,7 +103,7 @@ When integrating with third-party providers, we recommend you use the closest re
      - [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies).
      - [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates).
      - [variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
-     - [catalogs](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
+     - [catalogs](/docs/api/pxm/catalog/create-catalog).
 
 - In Advanced Commerce (GrapheneHC), ensure that you have created the following:
     - The currencies available for the products in your Commerce store catalog. Create the currencies using your Commerce catalog ID. When the catalog ID is passed in the Product Template, Advanced Commerce (GrapheneHC) displays the prices in the currencies you have configured for your catalog.

@@ -169,7 +169,7 @@ Only seller administrators can export order details.
 
 - [Orders](/docs/carts-orders/orders)
 - [Orders API](/docs/api/carts/orders)
-- [Shipping Groups](/docs/ship-groups/shipping-groups/Overview)
+- [Shipping Groups](/docs/ship-groups/shipping-groups)
 
 ### Demos
 

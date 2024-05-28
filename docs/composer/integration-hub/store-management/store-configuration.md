@@ -24,7 +24,7 @@ The following Commerce objects are included when importing/exporting store confi
 - [Hierarchies](/docs/pxm/hierarchies/hierarchies-api/hierarchies-api-overview).
 - [Nodes](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node). Only parent-level nodes are imported or exported. You cannot import or export nested nodes.
 - [Catalogs](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview).
-- [Catalog Rules](/docs/pxm/catalogs/catalog-rules).
+- [Catalog Rules](/docs/api/pxm/catalog/rules).
 
 A Store Configuration Orchestrator Delete Action deletes [products](/docs/pxm/products/ep-pxm-products-api/pxm-products-api-overview) from a store.
 

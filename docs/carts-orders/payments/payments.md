@@ -36,7 +36,7 @@ The following image shows the workflow of the order status when you checkout a c
 1. Confirm the order. Order confirmation might be required when you purchase or authorize a transaction. If you use a `purchase` method, the order is immediately confirmed. If you use `authorize` method, funds are captured later when an item is dispatched or restocked, and then the order is considered as complete. See [Capture a Transaction](/docs/carts-orders/payments/transactions/capture-a-transaction).
 1. [Fulfill](/docs/carts-orders/orders/orders-api/update-an-order#put-fulfill-an-order-by-id), [Refund](/docs/carts-orders/payments/transactions/refund-a-transaction) or [Cancel](/docs/carts-orders/orders/orders-api/update-an-order#put-cancel-an-order-by-id) the paid order. The order is considered as fulfilled when it is shipped. You can cancel the order after the checkout or if the order is not fulfilled. You can also choose to refund a partial payment or full payment.
 1. (Optional) [Cancel a transaction](/docs/carts-orders/payments/transactions/cancel-a-transaction#post-cancel-a-transaction). You can cancel or void a `pending` or `authorized` transaction. The transaction can be canceled or voided when it is in `pending` and `completed` statuses. This works only for Stripe and PayPal and does not work for manual gateway.
-1. (Optional) [Anonymize an order](/docs/carts-orders/orders/orders-cm#anonymizing-orders). You can anonymize an order when it is fulfilled, canceled, or fully refunded.
+1. (Optional) [Anonymize an order](/orders/orders-cm#anonymizing-orders). You can anonymize an order when it is fulfilled, canceled, or fully refunded.
 
 ## Split Payments
 
