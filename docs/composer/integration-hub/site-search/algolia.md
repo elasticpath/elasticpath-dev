@@ -186,7 +186,7 @@ where the product is assigned to both `Farm and Ranch`, but also `Power Tools an
 
 The following mapping flags are available.
 
-- **includeHierarchy** - Use this flag if you want the name of the hierarchy to be included in the [`bread_crumbs`](/docs/pxm/catalogs/catalog-latest-release/overview#understanding-bread-crumbs-metadata-for-products).
+- **includeHierarchy** - Use this flag if you want the name of the hierarchy to be included in the [`bread_crumbs`](/docs/api/pxm/catalog/catalogs#understanding-how-products-and-nodes-are-associated).
 - **forceSaleFlag** - By default, if a price is on sale, an `on_sale` flag is set to `true` in the price book. 
 If you also want an `on_sale` flag at the root of the product, you can add this flag to the price mapping.
 - **forceJSON** - It is a `boolean` value used to determine whether the input value should be parsed as JSON. 
