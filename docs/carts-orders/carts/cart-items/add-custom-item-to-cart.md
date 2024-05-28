@@ -96,7 +96,7 @@ https://useast.api.elasticpath.com/v2/carts/:id/items
 | `quantity`           | Required | `integer` | The amount of custom items to add to cart. |
 | `price.amount`       | Required | `integer` | The unit price of the custom item. |
 | `price.includes_tax` | Optional | `boolean` | `true` if relevant taxes have been included in the price, `false` if not. Defaults to `true` |
-| `custom_inputs`      | Optional | `object`  | The custom text to be added to a product. See [custom_inputs](/docs/pxm/products/ep-pxm-products-api/update-a-product#using-custom-inputs-attribute). |
+| `custom_inputs`      | Optional | `object`  | The custom text to be added to a product. See [custom_inputs](/docs/api/pxm/products/create-product#personalizing-products). |
 | `shipping_group_id` | Optional | `string` | The unique identifier of the shipping group to be added to the cart. See [Get a Cart Shipping Group by ID](/docs/ship-groups/shipping-groups/shipping-groups-api/get-a-cart-shipping-group-by-id). |
 
 ## Request Examples - Add Custom Item to Cart
