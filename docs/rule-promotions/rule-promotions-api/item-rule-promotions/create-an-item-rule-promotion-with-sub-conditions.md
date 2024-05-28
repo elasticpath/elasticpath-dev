@@ -43,7 +43,7 @@ Actions (`rule_set.actions.condition`): Here, the sub conditions refines where t
  - `item_category`: The discount is applied only to items within a specified category.
  - `item_attribute`: Items with a specified attribute are excluded from the discount.
 
-This promotion setup a 50% discount applies only to items that meet all of the following conditions:
+This promotion sets up a 50% discount that applies only to items that meet all of the following conditions:
 
 - The total cart value is at least $100.
 - The items are part of a specified category.
