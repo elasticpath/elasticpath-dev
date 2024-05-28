@@ -10,7 +10,7 @@ sidebar_position: 2
 If you want to evaluate Elastic Path Composable Commerce, please [Sign Up for a Free Trial](https://useast.cm.elasticpath.com/free-trial).
 :::
 
-This API Reference Guide describes the resources, endpoints, methods, requests, and responses that are available to you in the Composable Commerce API. For an overview of the top-level endpoints, see the [API Overview](/guides/Getting-Started/api-overview) section.
+This API Reference Guide describes the resources, endpoints, methods, requests, and responses that are available to you in the Composable Commerce API. See [API Documentation](/api).
 
 ## Introduction to API
 

@@ -14,7 +14,7 @@ Requests made to the API must be encoded as **JSON** and contain the header `Con
 
 ## Files
 
-Requests to create a new [File](/docs/pxm/products/product-assets/files-overview) must contain the header `Content-Type: multipart/form-data`.
+Requests to create a new [File](/docs/api/pxm/files/files-introduction) must contain the header `Content-Type: multipart/form-data`.
 
 ## Response encoding
 
