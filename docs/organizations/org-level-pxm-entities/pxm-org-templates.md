@@ -24,8 +24,8 @@ For example, AllGoods have a unique identifier for all their organization and st
 To create templates in organizations:
 
 1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
-1. [Create your template](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/create-a-template).
-1. [Create your attributes](/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/create-attribute).
-1. [Create your entries](/docs/pxm/products/extending-pxm-products/pxm-product-entries-api/create-an-entry).
-1. [Relate](/docs/pxm/products/product-asset-relationships/template-relationships/create-product-template-relationships) the template to all your organization and store level products.
+1. [Create your template](/docs/api/flows/create-a-flow).
+1. [Create your attributes](/docs/api/flows/create-a-field).
+1. [Create your entries](/docs/api/flows/create-an-entry).
+1. [Relate](/docs/api/pxm/products/create-product-template-relationship) the template to all your organization and store level products.
 

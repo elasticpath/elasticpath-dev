@@ -33,7 +33,7 @@ The component has the following actions.
 |:--- |:--- | :--- | 
 | **Connection**  | `connection` | Commerce connection. | 
 | **Product ID** | `string` | The unique identifier of the product whose inventory you want to update. | 
-| **Inventory** | `string` | The [inventory](/docs/pxm/inventories/inventory-api-overview#the-stock-object). | 
+| **Inventory** | `string` | The [inventory](/docs/api/pxm/inventory/create-product-stock). | 
 
 ### Load Webhook Integration
 

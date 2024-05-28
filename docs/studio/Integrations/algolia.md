@@ -12,7 +12,7 @@ You can sync your Commerce catalogs with the Commerce Algolia integration so tha
 
 You must have the following before configuring the Algolia integration.
 
-1. A [published catalog](/docs/pxm/catalogs) in Product Experience Manager.
+1. A [published catalog](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs) in Product Experience Manager.
 2. A Studio storefront. 
 3. An Algolia account. 
 

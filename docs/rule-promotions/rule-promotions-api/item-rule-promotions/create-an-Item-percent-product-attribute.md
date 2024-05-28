@@ -9,7 +9,7 @@ sidebar_position: 4
 ```http
 https://useast.api.elasticpath.com/v2/rule-promotions
 ```
-To learn how to create product attributes, see [Product Attributes](/docs/pxm/products/pxm-products#product-attributes).
+To learn how to create product attributes, see [Product Attributes](/docs/api/flows/create-a-field).
 
 ## Parameters
 

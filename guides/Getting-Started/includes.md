@@ -14,10 +14,10 @@ The `include` query parameter you choose depends on the API endpoint you are usi
 
 The following endpoints support the `include` parameter:
 
-- [Get a product in the latest catalog release](/docs/pxm/catalogs/catalog-latest-release/get-a-product-in-a-release)
-- [Get all products in the latest release](/docs/pxm/catalogs/catalog-latest-release/get-all-products-in-a-release)
-- [Get all products in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-all-products)
-- [Get a product in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-a-product)
+- [Get a product in the latest catalog release](/docs/api/pxm/catalog/get-product)
+- [Get all products in the latest release](/docs/api/pxm/catalog/get-all-products)
+- [Get all products in a shopper catalog](/docs/api/pxm/catalog/get-by-context-all-products)
+- [Get a product in a shopper catalog](/docs/api/pxm/catalog/get-by-context-product)
 
 ## Characteristics of Include Parameter
 

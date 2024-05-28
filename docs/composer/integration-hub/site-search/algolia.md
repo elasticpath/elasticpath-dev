@@ -98,7 +98,7 @@ To sync the catalog to Algolia, you create a map of the data to pass from Commer
 - Destination field.
 - Any flags to trigger optional functions.
 
-The integration uses a flow to contain the fields that you want to use. The source of the Commerce data is the [catalog delta file](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog).
+The integration uses a flow to contain the fields that you want to use. The source of the Commerce data is the [catalog delta file](/docs/api/pxm/catalog/publish-release).
  Additionally, there are some special fields that perform additional transformation work. When the integration is initially configured, a default set of mapping fields are created. However, you can change these depending on your requirements.
 
 The following table describes some example fields in Commerce Manager and their corresponding fields in Algolia.
@@ -186,7 +186,7 @@ where the product is assigned to both `Farm and Ranch`, but also `Power Tools an
 
 The following mapping flags are available.
 
-- **includeHierarchy** - Use this flag if you want the name of the hierarchy to be included in the [`bread_crumbs`](/docs/pxm/catalogs/catalog-latest-release/overview#understanding-bread-crumbs-metadata-for-products).
+- **includeHierarchy** - Use this flag if you want the name of the hierarchy to be included in the [`bread_crumbs`](/docs/api/pxm/catalog/catalogs#understanding-how-products-and-nodes-are-associated).
 - **forceSaleFlag** - By default, if a price is on sale, an `on_sale` flag is set to `true` in the price book. 
 If you also want an `on_sale` flag at the root of the product, you can add this flag to the price mapping.
 - **forceJSON** - It is a `boolean` value used to determine whether the input value should be parsed as JSON. 
