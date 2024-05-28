@@ -20,59 +20,13 @@ https://useast.api.elasticpath.com/v2/rule-promotions
 
 ### Body
 
-For descriptions about the fields, refer to [Rules Promotion API overview](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview).
+For descriptions about the other fields, refer to [Rules Promotion API overview](/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview).
 
-
-{% table %}
-* Name
-* Type
-* Required
-* Description
-
----
-*
-   `rule_set.rules.strategy`
-*
-  `string`
-*
-  Required
-*
-  Specifies the strategy for the rule. The supported strategy is `cart_custom_attribute`.
-
----
-
-*
-  `rule_set.rules.operator`
-*
-  `string`
-*
-  Required
-*
-  Specifies the operators used for the rule strategy. The supported operators are `in` and `nin`.
-
----
-
-*
-  `rule_set.rules.args`
-*
-  `string`
-*
-  Required
-*
-  Represents the condition value associated with each rule within the rule set. It requires at least three arguments.
-
-    * The first argument is the custom attribute key, a string of alphanumeric characters, underscores, or hyphens with a length between 1 to 255 characters. For example, `member_status`. See [Request Example](/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-custom-attribute-rule-promotion#request-example).
-    * The second argument is the custom attribute type, with one of the following values:
-        * `string`
-        * `boolean`
-        * `integer`
-        * `float`
-    * The third argument is the values of the expected type based on the second argument. For example, based on the `member_status` and custom attribute type, the values could be `gold`, `silver`, and `platinum`.
-
-    Note that the maximum number of objects in the `args` array is 24.
-
-
-{% /table %}
+| Name            | Required | Type     | Description                          |
+|:----------------|:---------|:---------|:-------------------------------------|
+| `rule_set.rules.strategy` | Required | `string`| Specifies the strategy for the rule. The supported strategy is `cart_custom_attribute`. |
+| ``rule_set.rules.operator` |  Required | `string`| Specifies the operators used for the rule strategy. The supported operators are `in` and `nin`. |
+| `rule_set.rules.args` |  Required | `string`| Represents the condition value associated with each rule within the rule set. It requires at least three arguments.<ul><li>The first argument is the custom attribute key, a string of alphanumeric characters, underscores, or hyphens with a length between 1 to 255 characters. For example, `member_status`. See [Request Example](/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-custom-attribute-rule-promotion#request-example)</li><li>The second argument is the custom attribute type, with one of the following values:</li><ul><li>`string`</li><li>`boolean`</li><li>`integer`</li><li>`float`</li></ul><li>The third argument is the values of the expected type based on the second argument. For example, based on the `member_status` and custom attribute type, the values could be `gold`, `silver`, and `platinum`.</li></ul><p>Note that the maximum number of objects in the `args` array is 24.</p> |
 
 ## Request Example
 
