@@ -10,7 +10,7 @@ Improvements towards a seamless integration with Elastic Path Composable Commerc
 
 ### Catalog Rules
 
-It is now possible to have multiple Studio storefronts with one instance of Elastic Path Composable Commerce. You can use channels and tags in the Elastic Path Composable Commerce integration to match the right catalog and price book with the right Studio storefront. See [Catalog Rules](/docs/pxm/catalogs/catalog-rules).
+It is now possible to have multiple Studio storefronts with one instance of Elastic Path Composable Commerce. You can use channels and tags in the Elastic Path Composable Commerce integration to match the right catalog and price book with the right Studio storefront. See [Catalog Rules](/docs/api/pxm/catalog/rules).
 
 ![catalog rules in epcc integration](/assets/studio/epcc_integration_cr.png)
 

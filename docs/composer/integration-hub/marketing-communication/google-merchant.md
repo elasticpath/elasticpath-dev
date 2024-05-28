@@ -52,7 +52,7 @@ For more information, see [Merchant Center - Google for Retail](https://www.goog
 You need to perform the following steps in Commerce before configuring the integration.
 
 1. Products that you want to synchronize with the Google Content API for Shopping must have a `EAN/UPC` attribute configured. Although this is an optional attribute for products in Commerce, Google analyses your product data for quality and may downrank your products in search results if your products do not have the `EAN/UPC` attribute configured.
-1. You must have created your catalogs. See [create a catalog](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
+1. You must have created your catalogs. See [create a catalog](/docs/api/pxm/catalog/create-catalog).
 1. You must have collected the setup information from Commerce. You can find this information in Commerce Manager under **SYSTEM**, in **Application Keys**, when logged in as a user with Seller Admin privileges.
 
     | Option | Description                            |

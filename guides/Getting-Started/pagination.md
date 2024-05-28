@@ -52,7 +52,7 @@ Even if the result is zero, pagination fields are always included in the respons
 * [Get a Nodeʼs Children in the Latest Release](/docs/pxm/catalogs/catalog-latest-release/get-node-children-in-a-release)
 * [Get Products by Hierarchy in the Latest Release](/docs/pxm/catalogs/catalog-latest-release/get-products-by-hierarchy-in-a-release)
 * [Get Products by Node in the Latest Release](/docs/pxm/catalogs/catalog-latest-release/get-products-by-node-in-a-release)
-* [Get all Catalog Rules](/docs/pxm/catalogs/catalog-rules/get-all-catalog-rules)
+* [Get all Catalog Rules](/docs/api/pxm/catalog/get-rules)
 * [Get a Hierarchyʼs Child Nodes](/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-children)
 * [Get a Hierarchyʼs Nodes](/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes)
 * [Get a Product's Children](/docs/pxm/catalogs/shopper-catalog/get-all-child-products-shopper)

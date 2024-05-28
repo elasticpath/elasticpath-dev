@@ -43,7 +43,7 @@ Deletes an association between a cart (`:cartId`) and an account.
 Requires an [`implicit` token](/docs/authentication/Tokens/implicit-token) with a [`account` token](/docs/authentication/Tokens/account-management-authentication-token).
 
 :::note
-Pass the `EP-Account-Management-Authentication-Token` header to limit carts to a specific account. For more information, see [Using a token](/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/username-password-authentication).
+Pass the `EP-Account-Management-Authentication-Token` header to limit carts to a specific account. For more information, see [Using a token](/docs/api/accounts/post-v-2-account-members-tokens).
 :::
 
 ```bash

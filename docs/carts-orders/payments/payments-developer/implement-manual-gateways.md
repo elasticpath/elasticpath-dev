@@ -153,4 +153,4 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:orderId/transactions \
 
 ## Related Resources
 
-- [Inventory](/docs/pxm/inventories/inventory.mdx)
+- [Inventory](/docs/api/pxm/inventory/inventories-introduction)

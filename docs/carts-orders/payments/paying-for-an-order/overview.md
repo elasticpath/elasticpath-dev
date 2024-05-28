@@ -10,7 +10,7 @@ When you [checkout](/docs/api/carts/checkout) a [cart](/docs/carts-orders/carts/
 
 - You need to configure and enable a payment gateway before you can accept payments for orders.
 - Configure your store to use [Manual Gateway](/docs/carts-orders/payments/paying-for-an-order/manual-payments) to process payments if the order total is zero or the payment is through non-supported payment providers.
-- There are a number of actions that happen to your [inventory](https://app.gitbook.com/@moltin/s/api/catalog/inventory.mdx) when checking out and paying for an order. For more information, see [Inventory](/docs/pxm/inventories/inventory.mdx).
+- There are a number of actions that happen to your [inventory](https://app.gitbook.com/@moltin/s/api/catalog/inventory.mdx) when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
 - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
 ::: 
 
@@ -237,7 +237,7 @@ The following response is returned when you [Get an order](/docs/carts-orders/or
 }
 ```
 
-For more information about order and payment statuses for split payments, see [Split Payments](/docs/carts-orders/paymentsplit-payments-beta-release).
+For more information about order and payment statuses for split payments, see [Split Payments](/docs/carts-orders/payment/split-payments-beta-release).
 
 ### Capture
 
@@ -346,7 +346,7 @@ After the payment is `partially_authorized`, you must `capture` the authorized t
 }
 ```
 
-For more information about order and payment statuses for split payments, see [Split Payments](/docs/carts-orders/paymentsplit-payments-beta-release).
+For more information about order and payment statuses for split payments, see [Split Payments](/docs/carts-orders/payment/split-payments-beta-release).
 
 ### Refunds
 

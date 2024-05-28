@@ -46,7 +46,7 @@ Filtering is currently supported on the following endpoints:
 * [Get a nodeʼs Children in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-node-children)
 * [Get all products in a hierarchy in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-products-by-hierarchy)
 * [Get all products in a node in a shopper catalog](/docs/pxm/catalogs/shopper-catalog/get-products-by-node)
-* [Get all catalog rules](/docs/pxm/catalogs/catalog-rules/get-all-catalog-rules)
+* [Get all catalog rules](/docs/api/pxm/catalog/get-rules)
 * [Get a nodes children](/docs/api/pxm/products/get-all-node-children)
 * [Get a nodes products](/docs/api/pxm/products/get-node-products)
 * [Get all price books](/docs/api/pxm/pricebooks/get-pricebooks)
