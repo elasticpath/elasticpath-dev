@@ -98,7 +98,7 @@ To sync the catalog to Algolia, you create a map of the data to pass from Commer
 - Destination field.
 - Any flags to trigger optional functions.
 
-The integration uses a flow to contain the fields that you want to use. The source of the Commerce data is the [catalog delta file](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog).
+The integration uses a flow to contain the fields that you want to use. The source of the Commerce data is the [catalog delta file](/docs/api/pxm/catalog/publish-release).
  Additionally, there are some special fields that perform additional transformation work. When the integration is initially configured, a default set of mapping fields are created. However, you can change these depending on your requirements.
 
 The following table describes some example fields in Commerce Manager and their corresponding fields in Algolia.

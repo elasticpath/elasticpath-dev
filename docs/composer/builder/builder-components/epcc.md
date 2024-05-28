@@ -230,10 +230,10 @@ For **Customer Request**, see the following snippet:
 | **description** | `string` | 	Specifies a description for the integration. |
 | **integration_type** | `string` | Specifies how the integration is delivered, either `webhook`, `aws_sqs`, or `stomp`. |
 | **enabled** | `boolean` | Specifies whether the integration is enabled. |
-| **observes object** | `dynamicfieldselection` | Specifies an array of [observable events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events). |
+| **observes object** | `dynamicfieldselection` | Specifies an array of [observable events](/docs/api/integrations/integrations-introduction#observable-events). |
 | **configuration** | `string` | Specifies a [configuration](/docs/api/integrations/create-integration). |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
-
+yarn 
 ### Create Inventory
 
 | Input | Type | Description |
@@ -694,8 +694,8 @@ For **Order Request**, see the following snippet:
 |:--- |:--- | :--- | 
 | **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
 | **Product Id** | `string` | The unique identifier of the product. |
-| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
-| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
+| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
+| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
 | **X-MOLTIN-CURRENCY** | `string` | For projects that support multiple currencies, use `x-moltin-currency` that contains the formatting detail for all currencies available to the catalog. |
 | **Includes** | `array` | Any related types that must be included in the response. For example, files, main_image, and so on. |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
@@ -724,8 +724,8 @@ For **Order Request**, see the following snippet:
 |:--- |:--- | :--- | 
 | **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
 | **SKU** | `string` | The unique SKU of the product. |
-| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
-| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
+| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
+| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
 | **X-MOLTIN-CURRENCY** | `string` | For projects that support multiple currencies, use `x-moltin-currency` that contains the formatting detail for all currencies available to the catalog. |
 | **Includes** | `array` | Any related types that must be included in the response. For example, files, main_image, and so on. |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
