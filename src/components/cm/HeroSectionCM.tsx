@@ -69,7 +69,7 @@ const PRODUCTS = [
   {
     title: 'Rule Promotions',
     beta: false,
-    link: '/docs/commerce-manager/promotions-builder/overview',
+    link: '/docs/commerce-manager/promotions-builder',
     icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
