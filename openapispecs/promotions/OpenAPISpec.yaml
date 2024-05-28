@@ -693,6 +693,8 @@ paths:
       description: | 
         Retrieves the list of jobs for a specific promotion.
         
+        In the response example, you can see the `result.generated` field, which indicates the number of codes generated during the job processing. Additionally, you may also see the optional `result.deleted` field, indicating the number of codes deleted during the job cancellation. The parameters and result objects are shown only when `job_type` is `code_generate`.
+        
         ### Filtering
         
         The following operators and attributes are available when filtering on this endpoint.
@@ -701,6 +703,57 @@ paths:
         | ----------| ----- | -------- | ------ |
         | `job_type` | `string` | `eq` | `eq(job_type, code_export)` |
         | `status` | `string` | `eq` | `eq(status, complete)` |
+        
+        ### Errors
+        
+        If an error occurs during job processing, the response includes an optional error field. For example, when you `GET` promotion jobs, the following response shows the details within the error field if an error occurred during job processing.
+        
+          ```json
+        {
+            "data": [
+                {
+                    "type": "promotion_job",
+                    "id": "84d86114-a92d-4c34-92f1-3e36ef6cabeb",
+                    "promotion_id": "ad386702-e780-42c6-b190-0527ad768917",
+                    "job_type": "code_generate",
+                    "name": "job",
+                    "parameters": {
+                        "number_of_codes": 1000,
+                        "consume_unit": "per_cart",
+                        "max_uses_per_code": 1,
+                        "code_length": 8,
+                        "code_prefix": "promo-"
+                    },
+                    "status": "failed",
+                    "error": "codes limit exceeded",
+                    "meta": {
+                        "timestamps": {
+                            "created_at": "2023-12-06T13:52:29.587Z",
+                            "updated_at": "2023-12-06T13:54:49.133Z"
+                        }
+                    }
+                }
+            ],
+            "links": {
+                "current": "https://useast.api.elasticpath.com/v2/promotions/ad386702-e780-42c6-b190-0527ad768917/jobs?page[offset]=0&page[limit]=25",
+                "first": "https://useast.api.elasticpath.com/v2/promotions/ad386702-e780-42c6-b190-0527ad768917/jobs?page[offset]=0&page[limit]=25",
+                "last": "https://useast.api.elasticpath.com/v2/promotions/ad386702-e780-42c6-b190-0527ad768917/jobs?page[offset]=0&page[limit]=25",
+                "prev": "https://useast.api.elasticpath.com/v2/promotions/ad386702-e780-42c6-b190-0527ad768917/jobs?page[offset]=0&page[limit]=25",
+                "next": "https://useast.api.elasticpath.com/v2/promotions/ad386702-e780-42c6-b190-0527ad768917/jobs?page[offset]=0&page[limit]=25"
+            },
+            "meta": {
+                "page": {
+                    "limit": 25,
+                    "offset": 0,
+                    "current": 1,
+                    "total": 1
+                },
+                "results": {
+                    "total": 1
+                }
+            }
+        }
+        ```
       tags:
         - Promotion Jobs
       parameters:
@@ -1490,7 +1543,7 @@ components:
         parameters:
           type: object
         status:
-          description: The status of the job. See Overview.
+          description: The status of the job. See [Overview](/docs/api/promotions/promotion-jobs).
           type: string
         meta:
           type: object
@@ -1578,10 +1631,9 @@ tags:
       
       ![Promotion Job Statuses Workflow](/assets/job_status_workflow.png)
   
-  
       ### Characteristics of Jobs
 
       - You can only initiate one job at a time within a promotion. If you want to run another job for the same promotion, you must wait until the previous job is `completed` or `failed`. However, you can create new jobs for different promotions even if there are `pending` jobs in other promotions.
-      - If you intend to manage promotions with more than 10,000 codes per promotion, we recommend [exporting codes](/docs/commerce-cloud/promotions/promotion-codes/jobs-api/export-codes) for viewing purposes instead of attempting to view them within Commerce Manager. This recommendation is made due to our enforced maximum page offset limit of 10,000. Altering the page_offset_limit value poses potential performance risks to the platform.
-      - A `code_generate` job is initiated even if the maximum allowable number of codes for the promotion has been reached. However, when processed, this job will fail. To view the status of this failed job, you can only do so by passing [GET Jobs](/docs/commerce-cloud/promotions/promotion-codes/jobs-api/get-jobs) request.
+      - If you intend to manage promotions with more than 10,000 codes per promotion, we recommend [exporting codes](/docs/api/promotions/create-a-promotion-job) for viewing purposes instead of attempting to view them within Commerce Manager. This recommendation is made due to our enforced maximum page offset limit of 10,000. Altering the page_offset_limit value poses potential performance risks to the platform.
+      - A `code_generate` job is initiated even if the maximum allowable number of codes for the promotion has been reached. However, when processed, this job will fail. To view the status of this failed job, you can only do so by passing [GET Jobs](/docs/api/promotions/get-promotion-jobs) request.
       - A limited number of jobs can be processed at a time. Jobs are queued and processed sequentially, one after the other. You can expect a certain delay before job processing.
