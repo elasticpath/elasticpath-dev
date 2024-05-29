@@ -154,4 +154,4 @@ To find specific products to include in your promotion, follow these steps in th
 
 ## Related Resources
 
-- [Rule Promotions API](/docs/commerce-manager/promotions-builder/overview)
+- [Rule Promotions API](/docs/rule-promotions/overview)

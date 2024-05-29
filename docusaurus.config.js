@@ -247,6 +247,14 @@ const config = {
         },
       };
     },
+    [
+      "posthog-docusaurus",
+      {
+        apiKey: "phc_NsCAwFSbBegeJ8eRtU9T53pOVH8m7uoeMMwRXULdjVY",
+        //appUrl: "<ph_client_api_host>", // optional, defaults to "https://us.i.posthog.com"
+        enableInDevelopment: false, // optional
+      },
+    ],
       //define OpenAPI Specs to transform and include in documentation
     [
       "docusaurus-plugin-openapi-docs",

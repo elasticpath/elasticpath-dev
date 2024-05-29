@@ -191,7 +191,7 @@ To add modifiers to an option:
     | Name | <ul><li>Append - Adds the name you specified in **Value** to the end of the child product's name.</li><li>Prepend - Adds the name you specified in **Value** to the beginning of the child product's name.</li><li>Equals - Replaces the child product's name with the name you specified in **Value**.</li></ul> | 
     | commodity_type | In **Value**, select either **physical** or **digital** to set the commodity type of the child product. |
     | Status |  In **Value**, select either **live** or **draft** to set the status of the child product. |
-    | Price | In **Price Modifier Name**, type or paste the name of your price modifier. Make sure the price modifier name exactly matches the price modifier name you specified when creating your price modifier. See [Price Modifiers](/docs/pxm/products/pxm-product-variations/pxm-variations#price-modifiers). |
+    | Price | In **Price Modifier Name**, type or paste the name of your price modifier. Make sure the price modifier name exactly matches the price modifier name you specified when creating your price modifier. See [Price Modifiers](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-and-using-price-modifiers). |
 
 1. Click **Save**.
 1. Click **Add another modifier** or click **Cancel** to exit.

@@ -42,7 +42,7 @@ The JS-SDK handles retries for occasional failed requests. However, you must not
 
 ## Rate Limits for Jobs
 
-Several PXM endpoints function as [Jobs](/docs/pxm/jobs-api/overview). Jobs are processed one at a time. You can continue to send requests using endpoints that function as jobs, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed.
+Several PXM endpoints function as [Jobs](/docs/api/pxm/products/jobs). Jobs are processed one at a time. You can continue to send requests using endpoints that function as jobs, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed.
 
 If you have multiple stores under an organisation, the stores are linked to that organization. Stores can simultaneously submit requests through endpoints that operate as jobs. These jobs are then queued and processed one at a time, starting with the job that has the earliest created date. 
 
