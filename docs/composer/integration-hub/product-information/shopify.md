@@ -72,7 +72,7 @@ Follow these steps to generate **Admin API Access Token**.
 
 ## Configuring Shopify Integration
 
-Before you begin ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books) and a [hierarchy](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), and created and configured a [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs) with this price book and hierarchy in Commerce Manager to hold the Shopify catalog data. Once you have completed the [Prerequisites](/docs/composer/integration-hub/product-information/shopify#prerequisites), you are ready to configure the Shopify integration.
+Before you begin ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books) and a [hierarchy](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies), and created and configured a [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs) with this price book and hierarchy in Commerce Manager to hold the Shopify catalog data. Once you have completed the [Prerequisites](/docs/composer/integration-hub/product-information/shopify#prerequisites), you are ready to configure the Shopify integration.
 
 1. In Commerce Manager, under **COMPOSER**, select **Integrations Hub**.
 1. Under **Product Information**, select **Shopify**.

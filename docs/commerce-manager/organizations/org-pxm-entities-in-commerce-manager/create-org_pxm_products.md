@@ -59,9 +59,9 @@ You must create a parent node first, then create your child nodes. Each node can
     - Select **Create new Hierarchy** from the **Hierarchies** tab, if you are creating a product.
     - Go to **Product Experience Manager** > **Configurations** > **Hierarchies**.
    
-1. Create your [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies).
-1. Create your [parent/child nodes](/docs/pxm/hierarchies/hierarchy#creating-parent-child-nodes).
-1. [Assign](/docs/pxm/hierarchies/hierarchy#assigning-products-to-nodes) your products to your parent/child nodes.
+1. Create your [hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies).
+1. Create your [parent/child nodes](/docs/commerce-manager/product-experience-manager/hierarchies/creating_nodes).
+1. [Assign](/docs/commerce-manager/product-experience-manager/hierarchies/assigning-products) your products to your parent/child nodes.
 1. You can either select **Save & Exit** or **Next** to create your [product templates](/docs/commerce-manager/Organizations/org-pxm-entities-in-commerce-manager/create-org_pxm_templates).
 
 Your organization hierarchies are automatically available to all the stores within your organization.

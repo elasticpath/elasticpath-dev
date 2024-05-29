@@ -11,7 +11,7 @@ sidebar_position: 5
 - Ensure that you have created the following items in Commerce Manager for seamless integration into the Studio storefront:
     - [Products](/docs/commerce-manager/product-experience-manager/Products/overview)
     - [Pricebooks](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
-    - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
+    - [Hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies)
     - [Templates](/docs/commerce-manager/product-experience-manager/extending-products/templates)
     - [Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
 - Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/commerce-manager/payments/ep-payments-powered-by-stripe) in Commerce Manager.

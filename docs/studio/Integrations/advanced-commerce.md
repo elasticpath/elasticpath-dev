@@ -12,7 +12,7 @@ You can sync your Commerce catalogs with the Elastic Path Composable Commerce Ad
 
 You must have the following before configuring the Advanced Commerce GrapheneHC integration.
 
-1. A [published catalog](/docs/pxm/catalogs) in Product Experience Manager.
+1. A [published catalog](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs) in Product Experience Manager.
 2. A Studio storefront. 
 3. An Advanced Commerce GrapheneHC account. 
 

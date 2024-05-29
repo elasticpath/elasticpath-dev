@@ -20,9 +20,9 @@ A product can belong to multiple nodes in multiple hierarchies.
 
 Organization hierarchies are automatically available in all stores that belong to the organization.
 
-1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
-1. Create your product categories using [hierarchies](/docs/pxm/hierarchies/hierarchies-api/create-a-hierarchy).
-1. Create your product sub-categories using [nodes](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node).
+1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/commerce-manager/application-keys/application-keys-cm).
+1. Create your product categories using [hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies).
+1. Create your product sub-categories using [nodes](/docs/commerce-manager/product-experience-manager/hierarchies/creating_nodes).
 1. Organize your products into product [categories](/docs/pxm/hierarchies/node-relationships-api/create-node-product-relationships).
 
 ## Duplicating Organization Hierarchies in Stores

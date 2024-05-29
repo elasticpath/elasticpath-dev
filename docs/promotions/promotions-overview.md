@@ -114,7 +114,7 @@ Promotion does not apply to components within a bundle even if the individual it
 - If *Playtend Games* has a bundle that consists of a game console, the Playtend Invaders Game, and the Invaders Controller, and the Playtend Invaders Game qualifies for the Item Percent Discount promotion, then the Item Percent Discount will not be applied since the Playtend Invaders Game is a component item within the bundle and the discount only applies at the bundle level.
 - For Attribute-based promotions, if the bundle consists of Item A with attribute *Brand A* and Item B with attribute *Brand B*, and Item A with attribute *Brand A* qualifies for Item Percent Discount promotion, then the discount is not applied to the bundle since the item A is a component item within the bundle.
 
-To learn how to create a bundle, see [Create a Bundle](/docs/pxm/products/pxm-bundles/pxm-bundles-api/create-a-bundle).
+To learn how to create a bundle, see [Create a Bundle](/docs/api/pxm/products/create-product).
 
 ## Related Resources
 

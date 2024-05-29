@@ -42,9 +42,9 @@ The request body depends on the type of items that you want to add, such as prom
 
 ## Dynamic Bundles
 
-A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/pxm/products/pxm-bundles#dynamic-bundles).
+A bundle is a purchasable product that is composed of a combination of two or more products that you want to sell together. You can create multiple components within a bundle. Each component can have one or more options. Each option is a product and a quantity. You can configure minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can enable a shopper to select 1 or more product options from a list of 10. These are called [dynamic bundles](/docs/api/pxm/products/products#dynamic-bundles).
 
-Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the [configure a shopper bundle](/docs/pxm/catalogs/shopper-catalog/configure-shopper-bundle) endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the `add product to cart` request.
+Your dynamic bundles are displayed in your published catalogs. Shoppers make their selections. A shoppers selections are stored in the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint. The shoppers selections are stored in a `bundle_configuration` which is supplied in the `add product to cart` request.
 
  ```json
 "bundle_configuration": {
@@ -155,7 +155,7 @@ https://useast.api.elasticpath.com/v2/carts/:id/items
 | `price.includes_tax` | Optional | `boolean` | If true, the price includes tax. The default is true. |
 | `amount`             | Required | `integer` | Specifies the total cost of the items added to the cart. |
 | `tax`                | Optional | `array`   | Specifies a list of tax items to apply to the cart item. **Note**: Only administrators with client credentials can use this field. |
-| `custom_inputs`      | Optional | `object`  | The custom text to be added to a product. See [custom_inputs](/docs/pxm/products/ep-pxm-products-api/update-a-product#using-custom-inputs-attribute). |
+| `custom_inputs`      | Optional | `object`  | The custom text to be added to a product. See [custom_inputs](/docs/api/pxm/products/create-product#personalizing-products). |
 | `shipping_group_id` | Optional | `string` | The shipping group ID to be added. See [Get a Cart Shipping Group by ID](/docs/ship-groups/shipping-groups/shipping-groups-api/get-a-cart-shipping-group-by-id). |
 
 #### Cart item body
@@ -165,7 +165,7 @@ https://useast.api.elasticpath.com/v2/carts/:id/items
 | `type`          | Required | `string` | Specifies the type, such as `cart_item`. |
 | `id`            | Required | `string` | Specifies the ID of the item that you want to add to cart. **Note**: Ensure that you select only one of the two options, by SKU or by product id. |
 | `sku`           | Required | `string` | Specifies the item SKU that you want to add to cart. **Note**: Ensure that you select only one of the two options, by SKU or by product id. |
-| `custom_inputs` | Optional | `object` | The custom text to be added to a product. See [custom_inputs](/docs/pxm/products/ep-pxm-products-api/update-a-product#using-custom-inputs-attribute) |
+| `custom_inputs` | Optional | `object` | The custom text to be added to a product. See [custom_inputs](/docs/api/pxm/products/create-product#personalizing-products) |
 | `shipping_group_id` | Optional | `string` | The shipping group ID to be added. See [Get a Cart Shipping Group by ID](/docs/ship-groups/shipping-groups/shipping-groups-api/get-a-cart-shipping-group-by-id). |
 
 #### Promotion item body

@@ -33,8 +33,8 @@ Any changes to organization-level catalogs are visible in your store when an org
 
 1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
 1. Decide which hierarchies and price books you want to include in your catalog.
-1. [Create your catalog](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
-1. Publish your catalog. See [Publish a Catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog). Your organization catalog is automatically available to all your stores.
+1. [Create your catalog](/docs/api/pxm/catalog/create-catalog).
+1. Publish your catalog. See [Publish a Catalog](/docs/api/pxm/catalog/publish-release). Your organization catalog is automatically available to all your stores.
 
    If you are publishing a catalog in a store that contains resources from an organization, you must enable the **Include Organization Resources in Catalog Publishes** checkbox.
 
@@ -43,7 +43,7 @@ Any changes to organization-level catalogs are visible in your store when an org
     3. From the Select **PXM** from the list.
     4. Select the **Include Organization Resources in Catalog Publishes** checkbox.
 
-1. (Optional) [Create catalog rules](/docs/pxm/catalogs/catalog-rules/create-a-catalog-rule) to determine which organization catalogs are displayed in your store. 
+1. (Optional) [Create catalog rules](/docs/api/pxm/catalog/create-rule) to determine which organization catalogs are displayed in your store. 
 
 Any changes to organization-level catalogs are visible in your store when an organization catalog is republished.
 
@@ -54,19 +54,19 @@ If you want a combination of organization and store products, hierarchies and pr
 If you want a store hierarchy to have a combination of organization and store products, then you must duplicate the organization hierarchy and assign a combination of organization and store products to the duplicated hierarchy.
 
 1. Generate a `client_credentials` access token using your store's application keys.
-1. [Duplicate an organization-level hierarchy](/docs/pxm/hierarchies/hierarchies-api/duplicate-a-hierarchy). Once a hierarchy is duplicated, it belongs to a store. You can make changes to it, depending on your requirements.
+1. [Duplicate an organization-level hierarchy](/docs/api/pxm/products/duplicate-hierarchy). Once a hierarchy is duplicated, it belongs to a store. You can make changes to it, depending on your requirements.
    {% list type="checkmark" %}
    * (Default) Maintain the organization products associated with the duplicated hierarchy.
    * Choose not to maintain the products associated with the duplicated hierarchy and create new product associations with the products in your store.
-       * [Assign new products to multiple nodes](/docs/pxm/products/ep-pxm-products-api/assign-nodes).
-       * [Dissociate products from multiple nodes](/docs/pxm/products/ep-pxm-products-api/dissociate-multiple-products).
+       * [Assign new products to multiple nodes](/docs/api/pxm/products/create-node-product-relationship).
+       * [Dissociate products from multiple nodes](/docs/api/pxm/products/delete-node-product-relationships).
    {% /list %}
 
    :::caution
     You must ensure that hierarchies in organizations and stores have unique SKUs. If a store hierarchy is created with a SKU that is already in use by an organization hierarchy, an error message is displayed. 
     :::
-1. [Create your catalog](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
-1. [Publish your store catalog](/docs/pxm/catalogs/catalog-release-admin/publish-a-catalog). 
+1. [Create your catalog](/docs/api/pxm/catalog/create-catalog).
+1. [Publish your store catalog](/docs/api/pxm/catalog/publish-release). 
 
    If you are publishing a catalog in a store that contains resources from an organization, in Commerce Manager, you must enable the **Include Organization Resources in Catalog Publishes** checkbox.
 
@@ -75,4 +75,4 @@ If you want a store hierarchy to have a combination of organization and store pr
     3. Select **PXM** from the list.
     4. Select the **Include Organization Resources in Catalog Publishes** checkbox.
 
-1. (Optional) [Create catalog rules](/docs/pxm/catalogs/catalog-rules/create-a-catalog-rule) to determine which organization catalogs are displayed in your store. 
+1. (Optional) [Create catalog rules](/docs/api/pxm/catalog/create-rule) to determine which organization catalogs are displayed in your store. 
