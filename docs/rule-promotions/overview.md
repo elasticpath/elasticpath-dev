@@ -14,7 +14,13 @@ If the cart has:
 - A Promotion Standard offering a 10% discount on the shopping cart
 - A Rule Promotion offering 20% discount on the shopping cart
 
-    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The promotions are stacked based on their creation date. This means the oldest promotion is applied first, followed by stacking of the newest promotion upon the oldest promotion. 
+    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The promotions are stacked based on their creation date. This means the oldest promotion is applied first, followed by stacking of the newest promotion upon the oldest promotion.
+
+:::note
+
+Cart-level discounts that are checked out will appear on orders with the same type as they do in carts, labeled as `promotion_item`. For backward compatibility, this change is specific to Rule Promotions only.
+
+:::
 
 ## Rule Set
 
@@ -118,6 +124,7 @@ Even if an apportioned amount amounts to zero, it is distributed among all items
 :::note
 - The new discount apportioning algorithm ensures accuracy and consistency in the `item.discounts` and `item.meta.display_price.discounts` fields. However, slight differences may occur in the `item.meta.display_price.discount` fields due to intricacies in partial-amount rounding. It is important to consider the `item.discounts` and `item.meta.display_price.discounts` as the accurate representations of discount values.
 - Apportioning for uneven values may reflect differently between a cart’s items and its corresponding order items post-checkout. Although the distribution of discounts may vary slightly between the cart and the order, the fundamental calculations and total discount amounts remain the same.
+- The cart total will be calculated based on the discount values apportioned to individual items.
 :::
 
 Consider the following scenario:
