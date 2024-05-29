@@ -25,7 +25,7 @@ The following Commerce objects are included when importing/exporting store confi
 - [Nodes](/docs/api/pxm/products/create-node). Only parent-level nodes are imported or exported. You cannot import or export nested nodes.
 - [Catalogs](/docs/api/pxm/catalog/create-catalog)
 - [Catalog Rules](/docs/api/pxm/catalog/rules)
-- [Payment Gateway](/docs/commerce-cloud/payments/payment-gateway/get-all-gateways). The following fields are masked when exporting payment gateways: **password**, **username**, **login**, **merchant_account**, **signature**, **stripe_account**, **merchant_id**, **private_key**, **public_key**, **payer_id**. These fields must be replaced by real values before importing the configuration.
+- [Payment Gateway](/docs/api/payments/gateways). The following fields are masked when exporting payment gateways: **password**, **username**, **login**, **merchant_account**, **signature**, **stripe_account**, **merchant_id**, **private_key**, **public_key**, **payer_id**. These fields must be replaced by real values before importing the configuration.
 
 A Store Configuration Orchestrator Delete Action deletes [products](/docs/api/pxm/products/products) from a store.
 
