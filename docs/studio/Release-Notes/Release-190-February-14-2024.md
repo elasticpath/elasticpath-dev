@@ -18,11 +18,11 @@ The following new features have been introduced when integrating Elastic Path Co
 
 ### Product bundles
 
-With Elastic Path Composable Commerce, you can create and manage [bundles](/docs/pxm/products/pxm-bundles). A bundle is a purchasable product, comprising of one or more products that you want to sell together. Your product bundles are now available in your Studio storefronts. In other words, when you select a bundle product, all the products that make up that bundle are automatically displayed. Depending on how your bundle is configured, your shoppers can purchase the products in the bundle.
+With Elastic Path Composable Commerce, you can create and manage [bundles](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration). A bundle is a purchasable product, comprising of one or more products that you want to sell together. Your product bundles are now available in your Studio storefronts. In other words, when you select a bundle product, all the products that make up that bundle are automatically displayed. Depending on how your bundle is configured, your shoppers can purchase the products in the bundle.
 
 ### Promotion coupons
 
-With Elastic Path Composable Commerce, you can create [promotions](/docs/commerce-cloud/promotions/promotions-overview.md). You can now add your promotion coupons to a smart links menu. This enables you to create buttons that add your promotions to a cart and checkout.
+With Elastic Path Composable Commerce, you can create [promotions](/docs/commerce-manager/promotions-standard/overview). You can now add your promotion coupons to a smart links menu. This enables you to create buttons that add your promotions to a cart and checkout.
 
 ## Layout
 

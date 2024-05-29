@@ -2061,7 +2061,7 @@ paths:
         - Shopper Catalog API
       summary: Get a Bundle's Component Products
       description: |
-        With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. 
+        With Product Experience Manager, you can [create](/docs/api/pxm/products/create-product) and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. 
 
         You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity.
 
@@ -2156,7 +2156,7 @@ paths:
       description: |
         Returns the products associated with the specified hierarchy in the catalog. The products must be in the live status.
 
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. 
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
 
         You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
          
@@ -2273,9 +2273,9 @@ paths:
         - Products must be in a `live` status.
         - If you have not specified any minimum or maximum values for the product options in your components, your shoppers can select any combination of product options.
 
-        If you have configured minimum and maximum values using [Create a Bundle](/docs/api/pxm/products/create-product), this becomes part of the bundle_configuration. You can check how your bundle is configured using `Get a product in a catalog release` in `bundle_configuration` under `meta`. The `bundle_configuration` forms the body of the request.
+        If you have configured minimum and maximum values using [Create a Bundle](/docs/api/pxm/products/create-product), this becomes part of the `bundle_configuration`. You can check how your bundle is configured using [Get a product in a catalog release](/docs/api/pxm/catalog/get-product) in `bundle_configuration` under `meta`. The `bundle_configuration` forms the body of the request.
 
-        The response updates the bundle_configuration with the product options the shopper selects. The meta data is updated with the meta data of the selected product options. In your storefront, you could display this as a summary of the product options a shopper has selected.
+        The response updates the `bundle_configuration` with the product options the shopper selects. The `meta` data is updated with the `meta` data of the selected product options. In your storefront, you could display this as a summary of the product options a shopper has selected.
       operationId: configureByContextProduct
       parameters:
         - $ref: '#/components/parameters/accept-language'

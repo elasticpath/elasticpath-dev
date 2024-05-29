@@ -222,7 +222,7 @@ Once you have met the [Prerequistes](#prequisites), you are ready to configure t
    - **Page Product Loader** - The webhook that processes each page of products until all pages are processed.
 
 1. Click **Next**. The **Commerce Connection** page is displayed.
-1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+1. Complete the information in the **Commerce Connection** page. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-manager/application-keys/application-keys-cm).
 
     - **Client-ID**  - Your Commerce Client ID.
     - **Client-Secret** - Your Commerce Client Secret.

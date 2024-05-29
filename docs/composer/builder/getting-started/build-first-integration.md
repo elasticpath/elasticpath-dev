@@ -18,7 +18,7 @@ The integration you build here retrieves an access token to grant you access to 
 
 ## Prerequisites
 
-You need to authenticate with your Commerce store using the Commerce API keys. See [Application Keys](/docs/commerce-cloud/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges.
+You need to authenticate with your Commerce store using the Commerce API keys. See [Application Keys](/docs/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
@@ -41,7 +41,7 @@ You need to authenticate with your Commerce store using the Commerce API keys. S
     
 ## Configure the Integration Trigger
 
-Most integrations are either scheduled events or webhooks triggered by an Elastic Path [observable event](/docs/commerce-cloud/integrations/observable-events). For this tutorial, we are using the **Webhook Trigger**.
+Most integrations are either scheduled events or webhooks triggered by an Elastic Path [observable event](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events). For this tutorial, we are using the **Webhook Trigger**.
 
 1. Click **Webhook**. The step is added to the flow.
 1. Click the step to display the drawer details. By default the following settings are set. 

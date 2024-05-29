@@ -20,8 +20,8 @@ Here's how you build an offering:
     - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
     - An offering must have at least one plan. See [Plans](/docs/commerce-manager/subscriptions/subscription-plans/managing-subscription-plans-cm).
 3. [Create your offerings](/docs/commerce-manager/subscriptions/offerings/managing-subscription-offerings). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of products or plans, depending on the products and services you offer.
-    - When a [customer](/docs/subscriptions) chooses a plan, a subscription is created. See [Subscriptions](/docs/subscriptions). 
-    - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [Invoicing and Billing](/docs/subscriptions).
+    - When a [customer](/docs/commerce-manager/subscriptions/overview#subscriber-management) chooses a plan, a subscription is created.  
+    - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [Invoicing and Billing](/docs/commerce-manager/subscriptions/billings-payments/overview).
 
 
 

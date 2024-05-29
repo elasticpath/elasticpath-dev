@@ -6,7 +6,7 @@ sidebar_position: 10
 
 In Commerce Manager, go to **CUSTOMERS AND ACCOUNTS** > **Customer** to manage customers.
 
-For a conceptual overview of customers in Composable Commerce, see [Customers](/docs/commerce-cloud/customer-management/customers).
+For a conceptual overview of customers in Composable Commerce, see [Customers](/docs/customer-management/customers).
 
 ## Searching Customers
 
