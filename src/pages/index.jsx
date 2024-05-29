@@ -8,6 +8,7 @@ import Composer from "../components/homepage/Composer";
 import CTA from "../components/homepage/CTA";
 import Success from "../components/homepage/Success";
 import Testimonials from "../components/homepage/Testimonials";
+import APIs from "../components/homepage/APIs";
 
 export default function Homepage() {
   return (
@@ -21,6 +22,7 @@ export default function Homepage() {
       <div className="relative z-10">
         <HeroSection />
         <CommerceApps />
+        <APIs />
         <CTA />
         <ToolsForDevs />
         <Composer />
