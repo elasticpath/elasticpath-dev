@@ -139,6 +139,11 @@ const config = {
               to: 'https://support.elasticpath.com',
             },
             {
+              type: 'docsVersionDropdown',
+              docsPluginId: 'punchout',
+              position: 'right',
+            },
+            {
               type: 'search',
               position: 'right',
             },
@@ -313,7 +318,7 @@ const config = {
             },
           },
           commerceextensions: {
-            specPath: "https://beta.elsaticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
+            specPath: "openapispecs/commerceextensions/OpenAPISpec.yaml",
             outputDir: "docs/api/commerceextensions/",
             downloadUrl:
                 "https://beta.elasticpath.dev/openapispecs/commerceextensions/OpenAPISpec.yaml",
@@ -442,6 +447,16 @@ const config = {
         path: 'guides',
         routeBasePath: 'guides',
         sidebarPath: require.resolve('./sidebar-guides.js'),
+        // ... other options
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'punchout',
+        path: 'selfmanaged/punchout/docs',
+        routeBasePath: 'selfmanaged/punchout/docs',
+        sidebarPath: require.resolve('./sidebars-punchout.json'),
         // ... other options
       },
     ],
