@@ -20,15 +20,14 @@ export default function Homepage() {
     >
       {/*static fallback for bg blur using an image*/}
       {/*<div className="z-0 fixed w-[100vw] h-[100vh] top-0 dark:bg-[url('/assets/homepage/abstract-bg.webp')] bg-center bg-no-repeat bg-cover blur-lg opacity-95"></div>*/}
-
       <AbstractBG />
 
       <div className="relative z-10">
         <HeroSection />
         <CommerceApps />
-        {/*<APIs />*/}
+        <APIs />
         <CTA />
-        {/*<ToolsForDevs />*/}
+        <ToolsForDevs />
         <Composer />
         <CTA />
         <Success />
