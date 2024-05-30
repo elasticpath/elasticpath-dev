@@ -26,9 +26,9 @@ export default function Homepage() {
       <div className="relative z-10">
         <HeroSection />
         <CommerceApps />
-        <APIs />
+        {/*<APIs />*/}
         <CTA />
-        <ToolsForDevs />
+        {/*<ToolsForDevs />*/}
         <Composer />
         <CTA />
         <Success />

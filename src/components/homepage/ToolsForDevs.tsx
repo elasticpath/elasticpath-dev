@@ -19,6 +19,7 @@ export default function ToolsForDevs() {
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => {
+        const { create } = require("asciinema-player");
         return (
           <div className="p-24">
             <h2 className="mb-4 text-[4rem] text-center text-white font-semibold tracking-tight">
