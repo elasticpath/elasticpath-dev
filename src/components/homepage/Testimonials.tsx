@@ -139,7 +139,7 @@ const columnOffset = {
 
 export default function Example() {
   return (
-    <div className="relative -mb-12 pt-24 sm:pt-32 overflow-hidden">
+    <div className="relative pt-24 sm:pt-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div>
           <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-left text-white">
@@ -164,7 +164,7 @@ export default function Example() {
                         columnIdx === columnGroup.length - 1)
                       ? "xl:row-span-2"
                       : "xl:row-start-1",
-                    "space-y-8 flex flex-col justify-end relative",
+                    "space-y-8 flex flex-col justify-end relative overflow-hidden",
                     `${columnOffset[columnIdx]}`,
                   )}
                 >

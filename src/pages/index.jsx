@@ -29,6 +29,7 @@ export default function Homepage() {
         <CTA />
         <Success />
         <Testimonials />
+        <CTA />
         <HomeFooter />
       </div>
     </Layout>
