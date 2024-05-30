@@ -10,7 +10,7 @@ export default function HeroSection() {
   return (
     <section className="px-4 py-44 text-center leading-tight tracking-tight">
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h1 className="mb-4 text-[6.5rem] font-bold">
+        <h1 className="mb-4 text-[6.5rem] font-bold drop-shadow-lg">
           Enterprise-ready commerce
         </h1>
         <p className="text-[1.75rem] font-light max-w-5xl text-center">
