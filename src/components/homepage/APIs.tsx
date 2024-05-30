@@ -122,7 +122,6 @@ const codeSamples = {
 
 const TabbedCodeSample = ({ codeSamples }) => {
   const [activeTab, setActiveTab] = useState("React Hooks");
-  const [displayedCode, setDisplayedCode] = useState("");
 
   const tabs = ["React Hooks", "node.js", "Python", "go", "Java", "curl"];
 
