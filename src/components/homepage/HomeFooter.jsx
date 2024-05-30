@@ -7,7 +7,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 
 const customers = [
   {
-    name: 'Customer Success Team',
+    name: "Customer Success Team",
     href: 'https://www.elasticpath.com/customer-success/team',
   },
   {
