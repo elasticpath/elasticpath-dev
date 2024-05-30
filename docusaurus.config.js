@@ -313,7 +313,7 @@ const config = {
             },
           },
           commerceextensions: {
-            specPath: "openapispecs/commerceextensions/OpenAPISpec.yaml",
+            specPath: "https://beta.elsaticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
             outputDir: "docs/api/commerceextensions/",
             downloadUrl:
                 "https://beta.elasticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
