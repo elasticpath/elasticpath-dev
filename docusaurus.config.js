@@ -266,7 +266,7 @@ const config = {
             specPath: "openapispecs/accounts/OpenAPISpec.yaml",
             outputDir: "docs/api/accounts",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/accounts/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/accounts/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -276,7 +276,7 @@ const config = {
             specPath: "openapispecs/addresses/OpenAPISpec.yaml",
             outputDir: "docs/api/addresses",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/addresses/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/addresses/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -286,7 +286,7 @@ const config = {
             specPath: "openapispecs/catalog/catalog_view.yaml",
             outputDir: "docs/api/pxm/catalog",
             downloadUrl:
-                "https://beta.elasticpath.comopenapispecs/catalog_view.yaml",
+                "https://beta.elasticpath.dev/openapispecs/catalog_view.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -296,7 +296,7 @@ const config = {
             specPath: "openapispecs/cartsorders/OpenAPISpec.yaml",
             outputDir: "docs/api/carts",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/cartsorders/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/cartsorders/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -306,17 +306,17 @@ const config = {
             specPath: "openapispecs/currencies/OpenAPISpec.yaml",
             outputDir: "docs/api/pxm/currencies",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/currencies/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/currencies/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
           },
           commerceextensions: {
-            specPath: "https://beta.elsaticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
+            specPath: "openapispecs/commerceextensions/OpenAPISpec.yaml",
             outputDir: "docs/api/commerceextensions/",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/commerceextensions/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -326,7 +326,7 @@ const config = {
             specPath: "openapispecs/exporter/exporter.yaml",
             outputDir: "docs/api/exporter",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/exporter/exporter.yaml",
+                "https://beta.elasticpath.dev/openapispecs/exporter/exporter.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -336,7 +336,7 @@ const config = {
             specPath: "openapispecs/files/files.yaml",
             outputDir: "docs/api/pxm/files",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/files/files.yaml",
+                "https://beta.elasticpath.dev/openapispecs/files/files.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -346,7 +346,7 @@ const config = {
             specPath: "openapispecs/flows/flows.yaml",
             outputDir: "docs/api/flows",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/flows/flows.yaml",
+                "https://beta.elasticpath.dev/openapispecs/flows/flows.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -356,7 +356,7 @@ const config = {
             specPath: "openapispecs/integrations/openapi.yaml",
             outputDir: "docs/api/integrations",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/integrations/openapi.yaml",
+                "https://beta.elasticpath.dev/openapispecs/integrations/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -366,7 +366,7 @@ const config = {
             specPath: "openapispecs/inventory/openapi.yaml",
             outputDir: "docs/api/pxm/inventory",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/inventory/openapi.yaml",
+                "https://beta.elasticpath.dev/openapispecs/inventory/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -376,7 +376,7 @@ const config = {
             specPath: "openapispecs/payments/OpenAPISpec.yaml",
             outputDir: "docs/api/payments",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/payments/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/payments/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -386,7 +386,7 @@ const config = {
             specPath: "openapispecs/pim/pim.yaml",
             outputDir: "docs/api/pxm/products",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/pim/pim.yaml",
+                "https://beta.elasticpath.dev/openapispecs/pim/pim.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -396,7 +396,7 @@ const config = {
             specPath: "openapispecs/pricebooks/pricebooks.yaml",
             outputDir: "docs/api/pxm/pricebooks",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/pricebooks.yaml",
+                "https://beta.elasticpath.dev/openapispecs/pricebooks.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -406,7 +406,7 @@ const config = {
             specPath: "openapispecs/promotions/OpenAPISpec.yaml",
             outputDir: "docs/api/promotions",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/promotions.yaml",
+                "https://beta.elasticpath.dev/openapispecs/promotions.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -416,7 +416,7 @@ const config = {
             specPath: "openapispecs/settings/OpenAPISpec.yaml",
             outputDir: "docs/api/settings",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/settings/OpenAPISpec.yaml",
+                "https://beta.elasticpath.dev/openapispecs/settings/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -426,7 +426,7 @@ const config = {
             specPath: "openapispecs/subscriptions/public_openapi.yaml",
             outputDir: "docs/api/subscriptions",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispec/subscriptions/public_openapi.yaml",
+                "https://beta.elasticpath.dev/openapispec/subscriptions/public_openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
