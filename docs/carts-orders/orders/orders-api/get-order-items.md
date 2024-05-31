@@ -323,13 +323,226 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id/items?include=promo
 
 ## Response Example
 
+The following response example shows `included` object containing both order-level and item-level promotions.
+
 `200 OK`
 
 ```json
 {
     "data": [
         {
-            "id": "81468e17-dd9f-47d2-986e-febea23fa210",
+            "id": "874aa011-c160-4819-8a87-7b54be25481b",
+            "type": "order_item",
+            "custom_field_test": null,
+            "tracking_number": null,
+            "quantity": 1,
+            "product_id": "05b35539-7946-4145-a8ff-bfd3cefc7691",
+            "name": "v1cart10",
+            "sku": "sale2024",
+            "unit_price": {
+                "amount": -1000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -1000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        },
+                        "value": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        },
+                        "value": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        },
+                        "value": {
+                            "amount": -1000,
+                            "currency": "USD",
+                            "formatted": "-$10.00"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-05-31T16:43:31Z",
+                    "updated_at": "2024-05-31T16:43:31Z"
+                }
+            },
+            "relationships": {
+                "cart_item": {
+                    "data": {
+                        "type": "cart_item",
+                        "id": "6d55f4b1-2869-4b31-a214-0cbe11ac6722"
+                    }
+                },
+                "promotions": {
+                    "data": [
+                        {
+                            "type": "promotion",
+                            "id": "05b35539-7946-4145-a8ff-bfd3cefc7691"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "baf6e9f6-f248-477c-b508-3788957908cf",
+            "type": "promotion_item",
+            "custom_field_test": null,
+            "tracking_number": null,
+            "quantity": 1,
+            "product_id": "e4d929d5-f471-4317-9a86-a84a6c572b44",
+            "name": "cart20",
+            "sku": "sale2024",
+            "unit_price": {
+                "amount": -2000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -2000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-05-31T16:43:31Z",
+                    "updated_at": "2024-05-31T16:43:31Z"
+                }
+            },
+            "relationships": {
+                "cart_item": {
+                    "data": {
+                        "type": "cart_item",
+                        "id": "614d4801-5077-468d-9514-db81306d1560"
+                    }
+                },
+                "promotions": {
+                    "data": [
+                        {
+                            "type": "promotion",
+                            "id": "e4d929d5-f471-4317-9a86-a84a6c572b44"
+                        }
+                    ]
+                }
+            },
+            "promotion_source": "rule-promotion"
+        },
+        {
+            "id": "58e6c654-fe32-4bdf-ae88-958c988fb1b3",
             "type": "order_item",
             "custom_field_test": null,
             "tracking_number": null,
@@ -350,12 +563,24 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id/items?include=promo
             "discounts": [
                 {
                     "amount": {
-                        "amount": -112,
+                        "amount": -2000,
                         "currency": "USD",
                         "includes_tax": false
                     },
-                    "code": "sku1",
-                    "id": "a96d39d0-795e-4d7d-b555-b57816cf41c5"
+                    "code": "sale2024",
+                    "id": "e4d929d5-f471-4317-9a86-a84a6c572b44",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true
+                },
+                {
+                    "amount": {
+                        "amount": -1000,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "sale2024",
+                    "id": "de19a043-a6da-4bde-b896-d17e16b77e25",
+                    "promotion_source": "rule-promotion"
                 }
             ],
             "links": {},
@@ -363,26 +588,26 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id/items?include=promo
                 "display_price": {
                     "with_tax": {
                         "unit": {
-                            "amount": 9788,
+                            "amount": 6000,
                             "currency": "USD",
-                            "formatted": "$97.88"
+                            "formatted": "$60.00"
                         },
                         "value": {
-                            "amount": 9788,
+                            "amount": 6000,
                             "currency": "USD",
-                            "formatted": "$97.88"
+                            "formatted": "$60.00"
                         }
                     },
                     "without_tax": {
                         "unit": {
-                            "amount": 9788,
+                            "amount": 6000,
                             "currency": "USD",
-                            "formatted": "$97.88"
+                            "formatted": "$60.00"
                         },
                         "value": {
-                            "amount": 9788,
+                            "amount": 6000,
                             "currency": "USD",
-                            "formatted": "$97.88"
+                            "formatted": "$60.00"
                         }
                     },
                     "tax": {
@@ -399,14 +624,14 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id/items?include=promo
                     },
                     "discount": {
                         "unit": {
-                            "amount": -212,
+                            "amount": -4000,
                             "currency": "USD",
-                            "formatted": "-$2.12"
+                            "formatted": "-$40.00"
                         },
                         "value": {
-                            "amount": -212,
+                            "amount": -4000,
                             "currency": "USD",
-                            "formatted": "-$2.12"
+                            "formatted": "-$40.00"
                         }
                     },
                     "without_discount": {
@@ -422,164 +647,85 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id/items?include=promo
                         }
                     },
                     "discounts": {
-                        "sku1": {
-                            "amount": -112,
+                        "sale2024": {
+                            "amount": -3000,
                             "currency": "USD",
-                            "formatted": "-$1.12"
+                            "formatted": "-$30.00",
+                            "constituents": {
+                                "de19a043-a6da-4bde-b896-d17e16b77e25": {
+                                    "amount": -1000,
+                                    "currency": "USD",
+                                    "formatted": "-$10.00"
+                                },
+                                "e4d929d5-f471-4317-9a86-a84a6c572b44": {
+                                    "amount": -2000,
+                                    "currency": "USD",
+                                    "formatted": "-$20.00"
+                                }
+                            }
                         }
                     }
                 },
                 "timestamps": {
-                    "created_at": "2023-07-13T22:25:31Z",
-                    "updated_at": "2023-07-13T22:25:31Z"
+                    "created_at": "2024-05-31T16:43:31Z",
+                    "updated_at": "2024-05-31T16:43:31Z"
                 }
             },
             "relationships": {
                 "cart_item": {
                     "data": {
                         "type": "cart_item",
-                        "id": "ae79ff9a-bf16-4949-beb2-032c33c795cd"
+                        "id": "2745400a-39f5-4b7b-ae77-c84b2ca1a723"
                     }
                 },
                 "promotions": {
                     "data": [
                         {
                             "type": "promotion",
-                            "id": "a96d39d0-795e-4d7d-b555-b57816cf41c5"
+                            "id": "e4d929d5-f471-4317-9a86-a84a6c572b44"
+                        },
+                        {
+                            "type": "promotion",
+                            "id": "de19a043-a6da-4bde-b896-d17e16b77e25"
                         }
                     ]
                 }
             },
             "catalog_id": "09b9359f-897f-407f-89a2-702e167fe781",
             "catalog_source": "pim"
-        },
-        {
-            "id": "03ffe022-8deb-4849-a773-fabe4a2d4ef1",
-            "type": "order_item",
-            "custom_field_test": null,
-            "tracking_number": null,
-            "quantity": 1,
-            "product_id": "30253f07-c882-44dc-9f5a-5b8b6a464705",
-            "name": "cart fixed $1",
-            "sku": "cart1off",
-            "unit_price": {
-                "amount": -100,
-                "currency": "USD",
-                "includes_tax": false
-            },
-            "value": {
-                "amount": -100,
-                "currency": "USD",
-                "includes_tax": false
-            },
-            "links": {},
-            "meta": {
-                "display_price": {
-                    "with_tax": {
-                        "unit": {
-                            "amount": -100,
-                            "currency": "USD",
-                            "formatted": "-$1.00"
-                        },
-                        "value": {
-                            "amount": -100,
-                            "currency": "USD",
-                            "formatted": "-$1.00"
-                        }
-                    },
-                    "without_tax": {
-                        "unit": {
-                            "amount": -100,
-                            "currency": "USD",
-                            "formatted": "-$1.00"
-                        },
-                        "value": {
-                            "amount": -100,
-                            "currency": "USD",
-                            "formatted": "-$1.00"
-                        }
-                    },
-                    "tax": {
-                        "unit": {
-                            "amount": 0,
-                            "currency": "USD",
-                            "formatted": "$0.00"
-                        },
-                        "value": {
-                            "amount": 0,
-                            "currency": "USD",
-                            "formatted": "$0.00"
-                        }
-                    },
-                    "discount": {
-                        "unit": {
-                            "amount": 0,
-                            "currency": "USD",
-                            "formatted": "$0.00"
-                        },
-                        "value": {
-                            "amount": 0,
-                            "currency": "USD",
-                            "formatted": "$0.00"
-                        }
-                    },
-                    "without_discount": {
-                        "unit": {
-                            "amount": 0,
-                            "currency": "USD",
-                            "formatted": "$0.00"
-                        },
-                        "value": {
-                            "amount": 0,
-                            "currency": "USD",
-                            "formatted": "$0.00"
-                        }
-                    }
-                },
-                "timestamps": {
-                    "created_at": "2023-07-13T22:25:31Z",
-                    "updated_at": "2023-07-13T22:25:31Z"
-                }
-            },
-            "relationships": {
-                "cart_item": {
-                    "data": {
-                        "type": "cart_item",
-                        "id": "a1911ac4-95cf-49ae-8d25-3997cc14ceb6"
-                    }
-                },
-                "promotions": {
-                    "data": [
-                        {
-                            "type": "promotion",
-                            "id": "30253f07-c882-44dc-9f5a-5b8b6a464705"
-                        }
-                    ]
-                }
-            }
         }
     ],
     "included": {
         "promotions": [
             {
                 "type": "promotion",
-                "id": "30253f07-c882-44dc-9f5a-5b8b6a464705",
-                "name": "cart fixed $1",
-                "description": "cart fixed $1",
+                "id": "05b35539-7946-4145-a8ff-bfd3cefc7691",
+                "name": "v1cart10",
+                "description": "v1cart10",
                 "automatic": false,
                 "promotion_type": "fixed_discount",
-                "start": "2023-06-19T19:22:46Z",
-                "end": "2025-06-19T12:22:00Z"
+                "start": "2024-04-01T17:25:00Z",
+                "end": "2024-06-01T17:25:03Z"
             },
             {
                 "type": "promotion",
-                "id": "a96d39d0-795e-4d7d-b555-b57816cf41c5",
-                "name": "Item percent discount 6 decimals",
-                "description": "1.123456% off for SKU1",
+                "id": "e4d929d5-f471-4317-9a86-a84a6c572b44",
+                "name": "cart20",
+                "description": "cart20",
                 "automatic": false,
-                "promotion_type": "item_percent_discount",
-                "start": "2000-01-01T00:00:00Z",
-                "end": "2026-05-28T19:00:00Z"
+                "promotion_source": "rule-promotion",
+                "start": "2024-04-01T18:24:06Z",
+                "end": "2024-06-01T18:24:09Z"
+            },
+            {
+                "type": "promotion",
+                "id": "de19a043-a6da-4bde-b896-d17e16b77e25",
+                "name": "item10",
+                "description": "item10",
+                "automatic": false,
+                "promotion_source": "rule-promotion",
+                "start": "2024-05-02T04:28:24Z",
+                "end": "2024-06-02T04:28:28Z"
             }
         ]
     }
