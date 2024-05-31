@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import "asciinema-player/dist/bundle/asciinema-player.css";
-import { create } from "asciinema-player";
 import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
 
 const AsciinemaPlayer = ({ src, ...props }) => {
@@ -8,7 +7,7 @@ const AsciinemaPlayer = ({ src, ...props }) => {
 
   useEffect(() => {
     if (playerRef.current) {
-      create(src, playerRef.current, props);
+      props.create(src, playerRef.current, props);
     }
   }, [src, props]);
 
@@ -62,6 +61,7 @@ export default function ToolsForDevs() {
                 </div>
                 <AsciinemaPlayer
                   src="/assets/homepage/642538.cast"
+                  create={create}
                   autoPlay
                   loop
                 />

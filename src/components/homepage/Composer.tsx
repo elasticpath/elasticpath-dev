@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ToolsForDevs() {
+export default function Composer() {
   return (
     <div className="py-24 px-12 grid grid-cols-2">
       <div className="flex items-center justify-center">
