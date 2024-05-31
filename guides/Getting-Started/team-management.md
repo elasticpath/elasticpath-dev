@@ -17,20 +17,20 @@ Commerce supports the following roles and permissions:
 
 The following table shows the access permissions associated with each store role:
 
-| Area                   | Basic          | Seller Admin  | Marketing/Sales | Support       | IT/Developer  | Promotions Manager |
-|:-----------------------|:---------------|:--------------|:----------------|:--------------|:--------------|:-------------------|
-| Accounts               | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               |
-| Application Keys       | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               |
-| Billing                | ⛔️             | ✅            | ⛔️              | ⛔️            | ⛔️            | ⛔️               |
-| Composer               | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               |
-| Customers              | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               |
-| Files                  | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               |
-| Flows                  | ⛔️             | ✅            | ✅              | ⛔️            | ✅            | ⛔️               |
-| Orders                 | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               |
-| Personal Data Sets     | ⛔️             | ✅            | ⛔️              | ✅             | ✅           | ⛔️               |
-| PXM                    | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               |
-| Promotions             | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ✅               |
-| Store Settings         | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               |
+| Area                   | Basic          | Seller Admin  | Marketing/Sales | Support       | IT/Developer  | Promotions Manager |  eCommerce Admin |
+|:-----------------------|:---------------|:--------------|:----------------|:--------------|:--------------|:-------------------|:-----------------|
+| Accounts               | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               | ✅               |
+| Application Keys       | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
+| Billing                | ⛔️             | ✅            | ⛔️              | ⛔️            | ⛔️            | ⛔️               | ⛔️               |
+| Composer               | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
+| Customers              | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               | ✅               |
+| Files                  | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               | ✅               |
+| Flows                  | ⛔️             | ✅            | ✅              | ⛔️            | ✅            | ⛔️               | ✅               |
+| Orders                 | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               | ✅               |
+| Personal Data Sets     | ⛔️             | ✅            | ⛔️              | ✅             | ✅           | ⛔️               | ✅               |
+| PXM                    | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               | ✅               |
+| Promotions             | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ✅               | ✅               |
+| Store Settings         | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
 
 :::note
 A role assigned to a user in a store is restricted to that store. The same user can have different roles in different stores.
