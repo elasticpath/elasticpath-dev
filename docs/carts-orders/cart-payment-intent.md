@@ -1,7 +1,7 @@
 ---
 title: Cart Payment Intent
 nav_label: Cart Payment Intent
-sidebar_position: 1
+sidebar_position: 128
 ---
 
 The Cart Payment Intent feature enables the creation of a Stripe Payment Intent specifically tied to a shopping cart and its subsequent order. This allows Payment Intent users to track payment details from the cart stage and seamlessly maintain consistency in payment information throughout the order stage. Using these features, you can create Payment Intents for their carts, update Payment Intents with final cart details, and synchronize Payment Intents from Stripe to Commerce.

@@ -1,7 +1,7 @@
 ---
 title: Bulk Add Items to Cart
 nav_label: Bulk Add Items to Cart
-sidebar_position: 7
+sidebar_position: 130
 ---
 
 The bulk add feature allows shoppers to add an array of items to their cart in one action, rather than adding each item one at a time. Shoppers can choose to add items using either the SKU or product ID. Additionally, they can also include quantity and shipping group details in bulk requests. This minimizes the time for shoppers while adding items to their cart. Shoppers can even add multiple items with the same or different shipping groups to their cart.

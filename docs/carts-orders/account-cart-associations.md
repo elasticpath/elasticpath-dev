@@ -1,7 +1,7 @@
 ---
 title: Account Cart Associations
 nav_label: Account Cart Associations
-sidebar_position: 1
+sidebar_position: 100
 ---
 
 You can create associations between an account and one or more carts. Once cart associations are established for an account, those carts are accessible across any device. You can delete associations as required.

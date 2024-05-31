@@ -1,7 +1,7 @@
 ---
 title: Capture a Transaction
 nav_label: Capture a Transaction
-sidebar_position: 4
+sidebar_position: 150
 ---
 
 ## `POST` Capture a Transaction

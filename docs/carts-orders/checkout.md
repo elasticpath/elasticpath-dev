@@ -1,7 +1,7 @@
 ---
 title: Checkout API
 nav_label: Checkout API
-sidebar_position: 20
+sidebar_position: 140
 ---
 
 After a [cart](/docs/carts-orders/carts/cart-management/cart-management-overview) is ready to checkout, you can easily convert your cart to an [order](/docs/carts-orders/orders/orders-api/orders-api-overview). The cart remains and can be modified and checked out again if required.

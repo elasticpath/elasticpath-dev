@@ -1,7 +1,7 @@
 ---
 title: Refund a Payment
 nav_label: Refund a Payment
-sidebar_position: 5
+sidebar_position: 200
 ---
 
 There are two ways to refund; through your payment gateway and mark it refunded in Commerce Manager, or directly through Commerce Manager or API.

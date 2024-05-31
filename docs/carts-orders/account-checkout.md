@@ -1,7 +1,7 @@
 ---
 title: Account Checkout API
 nav_label: Account Checkout API
-sidebar_position: 30
+sidebar_position: 110
 ---
 
 When a [Cart](/docs/api/carts/carts-checkout-orders-introduction) is ready for checkout, you can convert the cart to an [order](/docs/api/carts/orders). The cart remains and can be modified and checked out again if required.

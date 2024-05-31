@@ -1,7 +1,7 @@
 ---
 title: Elastic Path Payments Powered by Stripe
 nav_label: Paying for an Order - Elastic Path Payments
-sidebar_position: 11
+sidebar_position: 170
 ---
 
 The Elastic Path Payments Powered by Stripe integration supports the following payment methods:

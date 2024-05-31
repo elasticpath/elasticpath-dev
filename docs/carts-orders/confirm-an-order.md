@@ -1,7 +1,7 @@
 ---
 title: Confirm an Order
 nav_label: Confirm an Order
-sidebar_position: 6.5
+sidebar_position: 160
 ---
 
 ## `POST` Confirm an Order

@@ -1,7 +1,7 @@
 ---
 title: Get an Order
 nav_label: Get an Order
-sidebar_position: 3
+sidebar_position: 180
 ---
 
 ## `GET` Get by ID

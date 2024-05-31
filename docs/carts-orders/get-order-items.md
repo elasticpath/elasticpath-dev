@@ -1,7 +1,7 @@
 ---
 title: Get Order Items
 nav_label: Get Order Items - Include Promotions
-sidebar_position: 4
+sidebar_position: 190
 ---
 
 ## `GET` Get Order Items
