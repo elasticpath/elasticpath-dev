@@ -2,7 +2,7 @@ import React from "react";
 
 export default function () {
   return (
-    <div className="z-0 fixed w-[100vw] h-[100vh] blur-[30rem]">
+    <div className="z-0 fixed w-[100vw] h-[100vh] blur-[10rem] opacity-95">
       {/*left orange blob*/}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +10,7 @@ export default function () {
         height="1108"
         fill="none"
         viewBox="0 0 922 1108"
-        className="absolute animate-[pulse_20s_ease_infinite] opacity-60 w-full -left-1/2 scale-85"
+        className="absolute z-10 animate-[pulse_20s_ease_infinite] opacity-60 w-full -left-1/2 scale-85"
       >
         <path
           fill="#E7B1C8"
@@ -24,7 +24,7 @@ export default function () {
         height="2709"
         fill="none"
         viewBox="0 0 1191 2709"
-        className="absolute animate-[spin_50s_reverse_linear_infinite] opacity-60 w-full left-1/3"
+        className="absolute z-10 animate-[spin_50s_reverse_linear_infinite] opacity-60 w-full left-1/3"
       >
         <g fill="#0085FF" opacity=".8">
           <path d="M-145.955 205.654C-80.129 1.122 553.258-80.515 650.966 103.278c3.841 7.226 3.433 16.044.067 23.929L331.264 876.324c-10.355 24.259-42.913 28.464-56.409 7.286l-417.438-655.067c-4.266-6.694-5.916-14.984-3.372-22.889ZM1146.26 789.52l44.41 1071.24c.88 21.26-18.87 38.64-39.52 34.78l-424.097-79.28c-14.801-2.77-24.962-15.8-24.26-31.12l42.1-918.194c.698-15.224 11.939-28.495 26.904-31.765l337.583-73.751c18.85-4.119 36.09 9.01 36.88 28.09ZM555.441 1978.13 282.42 2686.76c-11.587 30.08-54.094 29.2-60.861-1.25l-119.461-537.57c-1.971-8.87.007-18.39 5.428-26.14l373.522-533.66c17.742-25.35 56.06-16.17 57.628 13.8l18.959 362.6c.239 4.58-.509 9.21-2.194 13.59Z" />
@@ -37,7 +37,7 @@ export default function () {
         height="1620"
         fill="none"
         viewBox="0 0 1561 1620"
-        className="absolute animate-[spin_60s_linear_infinite] opacity-60 w-full"
+        className="absolute z-10 animate-[spin_60s_linear_infinite] opacity-60 w-full"
       >
         <path
           fill="#9800A7"
@@ -51,7 +51,7 @@ export default function () {
         height="605"
         fill="none"
         viewBox="0 0 572 605"
-        className="absolute animate-[bounce_10s_ease_infinite] opacity-60 w-full top-1/4"
+        className="absolute z-10 animate-[bounce_10s_ease_infinite] opacity-60 w-full top-1/4"
       >
         <path
           fill="#E7ADAD"

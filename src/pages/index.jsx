@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import HeroSection from "../components/homepage/HeroSection";
 import HomeFooter from "../components/homepage/HomeFooter";
-import CommerceApps from "../components/homepage/CommerceApps";
+import CommerceApps from "../components/homepage/CommerceApps/CommerceApps";
 import ToolsForDevs from "../components/homepage/ToolsForDevs";
 import Composer from "../components/homepage/Composer";
 import CTA from "../components/homepage/CTA";
