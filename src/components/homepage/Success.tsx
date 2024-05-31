@@ -2,18 +2,17 @@ import React from "react";
 
 export default function ToolsForDevs() {
   return (
-    <div className="p-24">
-      <h2 className="mb-4 text-[3rem] text-center text-white font-semibold tracking-tight">
+    <div className="py-36 px-10 flex flex-col gap-20">
+      <h2 className="text-[4rem] text-center text-white font-semibold tracking-tight drop-shadow-md">
         We’re fiercely committed <br /> to your success
       </h2>
-      <div className="grid grid-cols-3 gap-24 my-12">
+      <div className="grid grid-cols-3 gap-24 max-w-7xl mx-auto">
         <div className="flex flex-col justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="64"
-            height="64"
             fill="none"
             viewBox="0 0 64 64"
+            className="size-16"
           >
             <g
               stroke="#1FEC90"
@@ -65,25 +64,24 @@ export default function ToolsForDevs() {
               </filter>
             </defs>
           </svg>
-          <h3 className="my-2 text-[2rem] text-white font-semibold tracking-tight">
+          <h3 className="my-2 text-[2rem] text-white font-semibold tracking-tight drop-shadow-md">
             Customer success
           </h3>
-          <p className="text-sm my-4 p-0 text-left leading-loose">
+          <p className="text-lg my-4 p-0 text-left leading-loose">
             You’ve got big dreams. We’re here for it. Get strategic guidance
             from our customer success team — from pre-implementation to launch
             day and beyond.
           </p>
-          <a href="" className="text-sm text-white font-semibold mt-auto">
+          <a href="" className="text-lg text-white font-semibold mt-auto">
             Get in touch
           </a>
         </div>
         <div className="flex flex-col justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="64"
-            height="64"
             fill="none"
             viewBox="0 0 81 80"
+            className="size-16"
           >
             <g
               stroke="#1FEC90"
@@ -128,25 +126,24 @@ export default function ToolsForDevs() {
               </filter>
             </defs>
           </svg>
-          <h3 className="my-2 text-[2rem] text-white font-semibold tracking-tight">
+          <h3 className="my-2 text-[2rem] text-white font-semibold tracking-tight drop-shadow-md">
             Expert services
           </h3>
-          <p className="text-sm my-4 p-0 text-left leading-loose">
+          <p className="text-lg my-4 p-0 text-left leading-loose">
             Migration and implementation services with planning workshops,
             roadmap evaluations, and dedicated project managers to ensure your
             commerce vision is brought to life.
           </p>
-          <a href="" className="text-sm text-white font-semibold mt-auto">
+          <a href="" className="text-lg text-white font-semibold mt-auto">
             Learn more about global services
           </a>
         </div>
         <div className="flex flex-col justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="64"
-            height="64"
             fill="none"
             viewBox="0 0 75 69"
+            className="size-16"
           >
             <g
               stroke="#1FEC90"
@@ -198,15 +195,15 @@ export default function ToolsForDevs() {
               </filter>
             </defs>
           </svg>
-          <h3 className="my-2 text-[2rem] text-white font-semibold tracking-tight">
+          <h3 className="my-2 text-[2rem] text-white font-semibold tracking-tight drop-shadow-md">
             Vender & partner support
           </h3>
-          <p className="text-sm my-4 p-0 text-left leading-loose">
+          <p className="text-lg my-4 p-0 text-left leading-loose">
             A centralized service offering that reduces the risk of managing
             multi-vendor, composable solutions with proprietary monitoring &
             holistic issue resolution.
           </p>
-          <a href="" className="text-sm text-white font-semibold mt-auto">
+          <a href="" className="text-lg text-white font-semibold mt-auto">
             Learn more about our partner program
           </a>
         </div>

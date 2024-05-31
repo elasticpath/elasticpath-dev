@@ -4,7 +4,7 @@ import HeroSection from "../components/homepage/HeroSection";
 import HomeFooter from "../components/homepage/HomeFooter";
 import CommerceApps from "../components/homepage/CommerceApps/CommerceApps";
 import ToolsForDevs from "../components/homepage/ToolsForDevs";
-import Composer from "../components/homepage/Composer";
+import Composer from "../components/homepage/Composer/Composer";
 import CTA from "../components/homepage/CTA";
 import Success from "../components/homepage/Success";
 import Testimonials from "../components/homepage/Testimonials";
