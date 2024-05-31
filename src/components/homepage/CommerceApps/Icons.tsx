@@ -3,11 +3,11 @@ import React from "react";
 export function ProductsIcon() {
   return <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="#4CD081"
-    className="size-12 mr-2"
+    className="size-16 mr-2"
   >
     <rect
       width="8.4"
@@ -48,6 +48,7 @@ export function PaymentsIcon() {
     height="48"
     fill="none"
     viewBox="0 0 64 64"
+    className="size-16 mr-2"
   >
     <g clipPath="url(#clip0_11024_980)">
       <circle cx="34" cy="34" r="30" fill="#C5710F"/>
@@ -73,6 +74,7 @@ export function OrdersIcon() {
     height="48"
     fill="none"
     viewBox="0 0 64 64"
+    className="size-16 mr-2"
   >
     <path
       fill="#D8591B"
@@ -103,6 +105,7 @@ export function SubscriptionsIcon() {
     height="48"
     fill="none"
     viewBox="0 0 64 64"
+    className="size-16 mr-2"
   >
     <path
       fill="#FD585B"
@@ -122,6 +125,7 @@ export function StudioIcon() {
     height="48"
     fill="none"
     viewBox="0 0 64 64"
+    className="size-16 mr-2"
   >
     <path
       fill="#AEAEF4"
@@ -149,6 +153,7 @@ export function ComposerIcon() {
     height="48"
     fill="none"
     viewBox="0 0 64 64"
+    className="size-16 mr-2"
   >
     <path
       fill="#7BC4ED"
@@ -168,6 +173,7 @@ export function ExtensionsIcon() {
     viewBox="0 0 64 64"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="size-16 mr-2"
   >
     <path
       fillRule="evenodd"
