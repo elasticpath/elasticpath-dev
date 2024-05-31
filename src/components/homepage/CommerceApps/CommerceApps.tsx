@@ -63,13 +63,13 @@ function Tab({
         <div className="flex text-black justify-between mt-8">
           <a
             href={listItems[0]}
-            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold"
+            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
           >
             Watch Demo
           </a>
           <a
             href={linkItems[1]}
-            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold"
+            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
           >
             View Documentation
           </a>
@@ -82,6 +82,42 @@ function Tab({
 export default function CommerceApps() {
   return (
     <section className="px-10 py-24 text-center leading-tight tracking-tight">
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/products-screenshot.jpg"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/payments-screenshot.jpg"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/orders-screenshot.jpg"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/subs-screenshot.jpg"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/cx-screenshot.jpg"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/integrations-screenshot.jpg"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/homepage/extensions-screenshot.jpg"
+      />
+
       <div className="flex flex-col items-center justify-between dark:text-white">
         <h2 className="mb-14 text-[4rem] font-semibold tracking-tight drop-shadow-md">
           Apps for commerce

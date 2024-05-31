@@ -172,29 +172,35 @@ const TabbedCodeSample = ({ codeSamples }) => {
 
 export default function APIs() {
   return (
-    <div className="p-24">
-      <h2 className="mb-4 text-[4rem] text-center text-white font-semibold tracking-tight">
+    <div className="py-28 max-w-7xl mx-auto">
+      <h2 className="mb-20 text-[4rem] text-center text-white font-semibold tracking-tight">
         Modern commerce APIs
       </h2>
-      <div className="grid grid-cols-2 gap-8">
-        <div className="">
+      <div className="grid grid-cols-2 gap-10">
+        <div className="flex items-center justify-center">
           <TabbedCodeSample codeSamples={codeSamples} />
         </div>
-        <div className="flex flex-col">
-          <h2 className="text-[2rem] font-semibold leading-12 tracking-tight text-left text-white">
+        <div className="flex flex-col py-5 gap-7">
+          <h2 className="text-[2rem] font-semibold leading-12 tracking-tight text-left text-white drop-shadow-md">
             Elastic Path provides an elegant set of composable APIs for building
             eCommerce experiences.
           </h2>
-          <div className="flex text-black gap-8 mt-8">
-            <button className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 text-sm font-semibold">
+          <div className="flex text-black gap-5">
+            <a
+              href=""
+              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-white hover:text-white"
+            >
               Read the docs
-            </button>
-            <button className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 text-sm font-semibold">
+            </a>
+            <a
+              href=""
+              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-white hover:text-white"
+            >
               Get Postman collection
-            </button>
+            </a>
           </div>
-          <div className="flex flex-col py-8">
-            <div className="flex gap-4">
+          <div className="flex flex-col mt-5 gap-8">
+            <div className="flex gap-16">
               <div className="w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +223,7 @@ export default function APIs() {
                     d="M18 28h11"
                   ></path>
                 </svg>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-lg">
                   RESTful APIs, JSON responses, and normalized objects
                 </p>
               </div>
@@ -235,12 +241,12 @@ export default function APIs() {
                     d="M17 28c0 .552-.45 1.008-.999.951C13.731 28.72 12 26.627 12 24c0-2.212-.74-2.904-1.502-2.946C9.75 21 9 20.552 9 20s.75-1 1.498-1.054C11.26 18.904 12 18.212 12 16c0-2.626 1.73-4.72 4.001-4.951.55-.056.999.399.999.951 0 .553-.454.986-1.002 1.062-2.045.284-2.019 2.507-1.992 3.79.025 1.174-.45 2.398-2.006 2.998v.3c1.557.6 2.03 1.824 2.006 2.997-.027 1.283-.053 3.507 1.992 3.791.547.076 1.002.51 1.002 1.062zm6 0c0 .552.45 1.008.999.951C26.269 28.72 28 26.627 28 24c0-2.212.738-2.904 1.5-2.946C30.25 21 31 20.552 31 20s-.75-1-1.5-1.054c-.762-.042-1.5-.734-1.5-2.946 0-2.626-1.73-4.72-4.001-4.951-.55-.056-.999.399-.999.951 0 .553.454.986 1.002 1.062 2.045.284 2.019 2.507 1.992 3.79-.025 1.174.45 2.398 2.006 2.998v.3c-1.557.6-2.03 1.824-2.006 2.997.027 1.283.053 3.507-1.992 3.791-.547.076-1.002.51-1.002 1.062z"
                   ></path>
                 </svg>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-lg">
                   Modern, easy to use SDKs for JavaScript and React
                 </p>
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-16">
               <div className="w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -268,7 +274,7 @@ export default function APIs() {
                   ></path>
                 </svg>
 
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-lg">
                   Get updates on catalogs, orders, carts, accounts, users, and
                   more via webhooks
                 </p>
@@ -289,12 +295,12 @@ export default function APIs() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-lg">
                   Build or customize low- or no-code integrations
                 </p>
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-16">
               <div className="w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -322,7 +328,7 @@ export default function APIs() {
                     </clipPath>
                   </defs>
                 </svg>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-lg">
                   Multi-region hosting and full GDPR & CCPA compliance. Fully
                   SOC2 certified.
                 </p>
@@ -360,7 +366,7 @@ export default function APIs() {
                     d="M11 13l1.5 1.5L15 11m-4 8l1.5 1.5L15 17"
                   ></path>
                 </svg>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-lg">
                   Business user tooling seamlessly integrates Elastic Path into
                   your site
                 </p>
