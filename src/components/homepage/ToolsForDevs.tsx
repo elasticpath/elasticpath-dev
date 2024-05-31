@@ -20,34 +20,34 @@ export default function ToolsForDevs() {
       {() => {
         const { create } = require("asciinema-player");
         return (
-          <div className="p-24">
-            <h2 className="mb-4 text-[4rem] text-center text-white font-semibold tracking-tight">
+          <div className="flex flex-col py-28 px-40 gap-20">
+            <h2 className="mb-4 text-[4rem] text-center text-white font-semibold tracking-tight drop-shadow-md">
               Tools for developers
             </h2>
-            <div className="grid grid-cols-2">
-              <div className="flex flex-col max-w-xl">
-                <div className="inline-flex flex-col gap-3 p-8 rounded-2xl">
-                  <h3 className="font-manrope text-white leading-tight">
+            <div className="grid grid-cols-3 gap-20">
+              <div className="flex flex-col items-center justify-center col-span-1">
+                <div className="flex w-full flex-col gap-3 p-8 rounded-2xl">
+                  <h3 className="font-manrope text-white leading-tight text-2xl">
                     Composable Frontend
                   </h3>
-                  <p>
+                  <p className="text-base">
                     Quickly generate NextJS storefronts with our ElasticPath CLI
                   </p>
                 </div>
-                <div className="inline-flex flex-col gap-3 p-8 rounded-2xl">
-                  <h3 className="font-manrope text-white leading-tight">
+                <div className="flex w-full flex-col gap-3 p-8 rounded-2xl">
+                  <h3 className="font-manrope text-white leading-tight text-2xl">
                     React Hooks
                   </h3>
-                  <p>Friendly hooks for our APIs for React applications.</p>
+                  <p className="text-base">Friendly hooks for our APIs for React applications.</p>
                 </div>
-                <div className="inline-flex flex-col gap-3 p-8 rounded-2xl">
-                  <h3 className="font-manrope text-white leading-tight">
+                <div className="flex w-full flex-col gap-3 p-8 rounded-2xl">
+                  <h3 className="font-manrope text-white leading-tight text-2xl">
                     JavaScript SDK
                   </h3>
-                  <p>Access our APIs through our JavaScript SDKs</p>
+                  <p className="text-base">Access our APIs through our JavaScript SDKs</p>
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col col-span-2">
                 <div className="bg-black rounded-t p-4 flex items-center justify-between w-full">
                   <div className="flex gap-2 mr-auto flex-1">
                     <i className="size-4 rounded-full bg-red-500 hover:bg-red-600 block"></i>
