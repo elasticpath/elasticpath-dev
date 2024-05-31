@@ -27,7 +27,22 @@ paths:
       description: |-
         Use this endpoint to Get all accounts.
 
-        > You can use pagination with this resource. For more information, see [pagination](https://elasticpath.dev/guides/Getting-Started/pagination).
+        You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
+        
+        ### Filtering
+        
+        The following operators and attributes are available for filtering accounts:
+        
+        | Attribute       | Type     | Operators    | Example                                              |
+        |-----------------|----------|--------------| -----------------------------------------------------|
+        | `name` | `string` | <ul><li>`eq`</li><li>`like`</li></ul> | `like(name,*swan*)` |
+        | `legal_name` | `string` | <ul><li>`eq`</li><li>`like`</li></ul> | `like(legal_name,*swan*)` |
+        | `registration_id` | `string` | <ul><li>`eq`</li><li>`like`</li></ul> | `like(registration_id,00000000-0000-1000-8000-*)` |
+        | `external_ref` |  `string` | <ul><li>`eq`</li><li>`like`</li></ul> | `like(external_ref,16be*)` |
+        | `id` |  `string` | <ul><li>`eq`</li><li>`ge`</li><li>`gt`</li><li>`le`</li><li>`lt`</li><li>`in`</li></ul> | `in(id,"99248259-feea-40c6-b855-f719ee87a539", "363e4505-a2bb-4bc1-b667-2cc9a4de8668")` |
+        | `created_at` | `string` | <ul><li>`eq`</li><li>`ge`</li><li>`gt`</li><li>`le`</li><li>`lt`</li></ul> | `gt(created_at,"2021-06-02T18:44:07.617Z")` |
+        | `updated_at` | `string` | <ul><li>`eq`</li><li>`ge`</li><li>`gt`</li><li>`le`</li><li>`lt`</li></ul> | `ge(updated_at,"2021-06-07T18:24:48.149Z")` |
+
       operationId: get-v2-accounts
       parameters:
         - $ref: '#/components/parameters/filter'
@@ -343,7 +358,17 @@ paths:
       tags:
         - Account Members
       summary: Get all Account Members
-      description: Get all account members contained within your store.
+      description: | 
+        Get all account members contained within your store.
+        
+        ### Filtering
+        
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) account members.
+        
+        | Attribute | Type | Operator | Example |
+        | :--- | :--- | :--- | :--- |
+        | `email` | `string` | `eq` / `like` | `eq(email,ronswanson@example.com)` |
+        | `name` | `string` | `eq` / `like` | `like(name,*swan*)` |
       operationId: get-v2-account-members
       parameters:
         - $ref: '#/components/parameters/page-limit'
@@ -436,7 +461,20 @@ paths:
         - Account Membership
       summary: Get a List of Account Memberships of Account Member
       description: |
-        You can also use `include=account` to retrieve details about the accounts associated with the account memberships. You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
+        You can also use `include=account` to retrieve details about the accounts associated with the account memberships. You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+        
+        ### Filtering
+
+        The following operators and attributes are available for [filtering](guides/Getting-Started/filtering) account memberships.
+
+        | Operator | Description |
+        | :--- | :--- |
+        | `eq` | Checks whether the values of two operands are equal. If the values are equal, the condition is true. |
+        | `like` | Checks if the operand contains the specified string. You can use wildcard characters in operand. |
+
+        | Attribute | Type | Operator | Example |
+        | :--- | :--- | :--- | :--- |
+        | `account_member_id` | `string` | `eq` / `like` | `eq(account_member_id,00000000-0000-1000-8000-0000000)` |
       operationId: get-v2-account-members-accountMemberId-account-memberships
       parameters:
         - $ref: '#/components/parameters/filter'
@@ -503,9 +541,25 @@ paths:
       description: |-
         Use this resource to get a list of all account members that are not assigned to an account.
         
+        ### Filtering
+        
+        The following operators and attributes are available for filtering unassigned account members.
+        
+        | Operator | Description   |
+        | :------- | :--------------------------------------------------------------------------------------------------- |
+        | `eq`     | Checks whether the values of two operands are equal. If the values are equal, the condition is true. |
+        | `like`   | Checks if the operand contains the specified string. You can use wildcard characters in operand.     |
+        
+        The following attributes are available for filtering unassigned account members.
+        
+        | Attribute | Type     | Operator      | Example                            |
+        | :-------- | :------- | :------------ | :--------------------------------- |
+        | `email`   | `string` | `eq` / `like` | `eq(email,ronswanson@example.com)` |
+        | `name`    | `string` | `eq` / `like` | `like(name,*swan*)`                |
+        
         :::note
         
-        You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
+        You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
         
         :::
       operationId: get-v2-accounts-accountID-account-memberships-unassigned-account-members
@@ -728,7 +782,7 @@ paths:
       tags:
         - Account Membership
       summary: Update an Account Membership
-      description: 'You can update and extend an account member details using [core flows](https://elasticpath.dev/docs/commerce-cloud/custom-data/custom-data-flows-api/custom-data-flows-api-overview#extend-a-resource). However, you cannot update the `account_member_id` of an account member.'
+      description: You can update and extend an account member details using [core flows](/docs/api/flows/flows#extend-an-existing-resource). However, you cannot update the `account_member_id` of an account member.
       operationId: put-v2-accounts-accountID-account-memberships-membershipID
       parameters:
         - name: accountID
@@ -925,9 +979,9 @@ paths:
       description: |
         Commerce provides authentication tokens for anyone using the Account Management APIs, including accounts and account members.
 
-        For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/commerce-cloud/carts/account-cart-associations/account-cart-associations-overview], [orders](/docs/api/carts/orders), catalogs with associated rules, and [addresses](docs/api/addresses/addresses-introduction).
+        For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/carts-orders/carts/account-cart-associations/account-cart-associations-overview), [orders](/docs/api/carts/orders), [catalogs with associated rules](/docs/api/pxm/catalog/rules), and [addresses](/docs/api/addresses/addresses-introduction).
 
-        The set of permissions available to a shopper using an Account Management Authentication token is documented in [Permissions](/docs/commerce-cloud/authentication/Tokens/permissions)
+        The set of permissions available to a shopper using an Account Management Authentication token is documented in [Permissions](/docs/authentication/Tokens/permissions)
         
         Commerce provides authentication tokens for an account and an account member using:
         
@@ -1063,7 +1117,7 @@ tags:
     description: |
       An `Account Member` resource is a user that you can add to accounts using account memberships.
       
-      Account members API is read only, and you cannot add users using this API. You must use the `user_authentication_info` object to create users in the authentication realm of account authentication settings. For more information on adding account members, see the [Adding Accounts and Account Members](/guides/Accounts/add-account-and-member) section.
+      Account members API is read only, and you cannot add users using this API. You must use the `user_authentication_info` object to create users in the authentication realm of account authentication settings. For more information on adding account members, see the [Adding Accounts and Account Members](/guides/How-To/Accounts/add-account-and-member) section.
     externalDocs:
       url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-members-api/overview'
   - name: Account Membership
@@ -1082,7 +1136,7 @@ components:
     filter:
       name: filter
       in: query
-      description: Specifies the filter attributes. For more information, see the [Filtering account members](https://elasticpath.dev/guides/Getting-Started/filtering) section.'
+      description: Specifies the filter attributes.
       required: false
       schema:
         type: string
@@ -1112,7 +1166,7 @@ components:
     sort:
       name: sort
       in: query
-      description: Supported attributes are `created_at`, `email`, `id`, `name`, or `updated_at`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order. For more information, see [Sorting](https://elasticpath.dev/docs/commerce-cloud/api-overview/sorting).
+      description: Supported attributes are `created_at`, `email`, `id`, `name`, or `updated_at`. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order. For more information, see [Sorting](/guides/Getting-Started/sorting).
       required: false
       schema:
         type: string
