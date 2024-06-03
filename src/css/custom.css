@@ -375,10 +375,10 @@ nav.menu {
 }
 
 .dev-portal-link {
-  background-color: theme('colors.primary.200');
-  border-radius: 4px;
+  background-color: theme('colors.primary.100');
+  border-radius: 9999px;
   transition-property: all;
-  padding: 0.25rem 0.75rem !important;
+  padding: 0.50rem 1.25rem !important;
   margin: 0 0.5rem;
 }
 
@@ -387,19 +387,20 @@ nav.menu {
 }
 
 .dev-portal-link svg {
-  display: inline-block;
+  display: none;
   vertical-align: middle;
   margin-bottom: 0.2rem;
 }
 
 .dev-portal-signup {
-  --ifm-link-hover-color: #fff;
-  --ifm-navbar-link-hover-color: #fff;
-  color: #fff;
+  --ifm-link-hover-color: #0e1520;
+  --ifm-navbar-link-hover-color: #0e1520;
+  color: #0e1520;
 }
 
 .dev-portal-signup:hover {
-  background-color: var(--ifm-color-primary-darker);
+  background-color: theme('colors.primary.200');
+  color: #fff;
 }
 
 .dev-portal-login {
@@ -414,14 +415,14 @@ nav.menu {
 
 /* Custom design for guide button */
 .guide-button {
-  color: theme('colors.primary.200');
+  color: theme('colors.primary.100');
   border-color: #00a400;
   border-radius: 4px;
   border-width: 1px;
 }
 
 .guide-button-link {
-  border-color: theme('colors.primary.200');
+  border-color: theme('colors.primary.100');
   border-radius: 4px;
   border-width: 1px;
   transition-property: all;
@@ -748,7 +749,7 @@ html[data-theme='dark'] .dropdown > .navbar__link:after {
 }
 
 .dropdown:hover > .navbar__link:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.293 8.293a1 1 0 0 1 1.414 0L12 14.586l6.293-6.293a1 1 0 1 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414Z' fill='%231a90ff'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.293 8.293a1 1 0 0 1 1.414 0L12 14.586l6.293-6.293a1 1 0 1 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414Z' fill='%2344db85'/%3E%3C/svg%3E") !important;
 }
 
 .nav-dropdown + ul.dropdown__menu {
@@ -820,6 +821,18 @@ body[docs-menu='cm'] [data-dropdown-docs='cm'] {
   display: flex;
 }
 
+body[docs-menu='pxm'] [data-dropdown-docs='pxm'] {
+  display: flex;
+}
+
+body[docs-menu='carts'] [data-dropdown-docs='carts'] {
+  display: flex;
+}
+
+body[docs-menu='subs'] [data-dropdown-docs='subs'] {
+  display: flex;
+}
+
 body[docs-menu='composer'] [data-dropdown-docs='composer'] {
   display: flex;
 }
@@ -848,6 +861,9 @@ body[docs-menu='composable'] [data-dropdown-docs-menu='composable'],
 body[docs-menu='api'] [data-dropdown-docs-menu='api'],
 body[docs-menu='developer'] [data-dropdown-docs-menu='developer'],
 body[docs-menu='cm'] [data-dropdown-docs-menu='cm'],
+body[docs-menu='pxm'] [data-dropdown-docs-menu='pxm'],
+body[docs-menu='carts'] [data-dropdown-docs-menu='carts'],
+body[docs-menu='subs'] [data-dropdown-docs-menu='subs'],
 body[docs-menu='composer'] [data-dropdown-docs-menu='composer'],
 body[docs-menu='studio'] [data-dropdown-docs-menu='studio'],
 body[docs-menu='selfmanaged'] [data-dropdown-docs-menu='selfmanaged'],

@@ -373,14 +373,14 @@ tags:
     description: |
       Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details.
 
-      You can do this using [Files API](/docs/api/pxm/files/files-service-api).
+      You can do this using [Files API](/docs/api/pxm/files).
 
       Once you have created your files, you associate files with your products using the [Create Product-File Relationships API](/docs/api/pxm/products/create-product-file-relationships).
   - name: Product Image Relationships
     description: |
       Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details.
 
-      You can do this using [Files API](/docs/api/pxm/files/files-service-api).
+      You can do this using [Files API](/docs/api/pxm/files).
 
       Once you have created your files, you associate files with your products using the [Create Product Main Image Relationships API](/docs/api/pxm/products/create-product-main-image-relationships).
   - name: Product Import/Bulk Update
@@ -800,7 +800,7 @@ paths:
 
         With Product Experience Manager, you can use the products API to create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. 
 
-        See [**Bundles**](#bundles).
+        See [**Bundles**](/docs/api/pxm/products/products#bundles).
       operationId: createProduct
       tags:
         - Products
@@ -3224,6 +3224,8 @@ components:
                 sort_order:
                   type: integer
                   description: The sort order of the options. The `create a bundle` and `update a bundle` endpoints do not sort the options. You can use the `sort_order` attribute when programming your storefront to display the options in the order that you want.
+                default:
+                  type: boolean
           min:
             type: integer
             description: The minimum number of product options a shopper can select from this component.
@@ -5530,6 +5532,7 @@ components:
                   - id: 7c0aa6df-0bd3-4d1f-b6f9-fd9358868869
                     type: product
                     quantity: 1
+                    default: true
               posters:
                 name: Game 2
                 max: 1
@@ -5539,6 +5542,7 @@ components:
                   - id: f0ec8088-13e1-4a53-8b5d-3f4d973e05c9
                     type: product
                     quantity: 1
+                    default: false
     bundle_sku_less_request:
       value:
         data:
@@ -5557,6 +5561,7 @@ components:
                   - id: shampooProductID
                     type: product
                     quantity: 1
+                    default: true
               conditioner:
                 name: Conditioner
                 max: 1
@@ -5566,6 +5571,7 @@ components:
                   - id: conditionerProductID
                     type: product
                     quantity: 1
+                    default: false
     create_single_product_response:
       value:
         data:
@@ -5799,6 +5805,7 @@ components:
                     type: product
                     quantity: 2
                     sort_order: 15
+                    default: true
                 sort_order: 10
             name: DOOM Bundle
             status: draft
@@ -6121,6 +6128,7 @@ components:
                   - id: c7cf43f3-24c6-4523-8a24-3663b49b81aa
                     type: product
                     quantity: 1
+                    default: true
               List 2:
                 name: Controller
                 sort_order: 2
@@ -6128,6 +6136,7 @@ components:
                   - id: e59ca559-37c7-4dc9-8a91-df94cd5700d3
                     type: product
                     quantity: 1
+                    default: true
               List 3:
                 name: PS+
                 sort_order: 3
@@ -6135,6 +6144,7 @@ components:
                   - id: 8ae2a7ea-f767-4af0-8486-ae203947ecc4
                     type: product
                     quantity: 1
+                    default: true
               List 4:
                 min: 1
                 max: 1
@@ -6143,17 +6153,21 @@ components:
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: true
                     sort_order: 2
                   - id: 071e461c-22a2-42e0-9604-c345bbc9b85c
                     type: product
                     quantity: 1
+                    default: false
                     sort_order: 1
                   - id: 633b8172-8aa9-4dbd-aa07-0dcefca3de74
                     type: product
                     quantity: 1
+                    default: false
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: false
                     sort_order: 3
     update_single_product_response:
       value:
@@ -6392,6 +6406,7 @@ components:
                   - id: c7cf43f3-24c6-4523-8a24-3663b49b81aa
                     type: product
                     quantity: 1
+                    default: true
                 sort_order: 1
               List 2:
                 name: Controller
@@ -6399,6 +6414,7 @@ components:
                   - id: e59ca559-37c7-4dc9-8a91-df94cd5700d3
                     type: product
                     quantity: 1
+                    default: true
                 sort_order: 2
               List 3:
                 name: PS+
@@ -6406,21 +6422,26 @@ components:
                   - id: 8ae2a7ea-f767-4af0-8486-ae203947ecc4
                     type: product
                     quantity: 1
+                    default: true
                 sort_order: 3
               List 4:
                 options:
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: true
                   - id: 071e461c-22a2-42e0-9604-c345bbc9b85c
                     type: product
                     quantity: 1
+                    default: false
                   - id: 633b8172-8aa9-4dbd-aa07-0dcefca3de74
                     type: product
                     quantity: 1
+                    default: false
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: false
                 min: 1
                 max: 1
                 sort_order: 4
@@ -6430,6 +6451,7 @@ components:
                   - id: 8ae2a7ea-f767-4af0-8486-ae203947ecc4
                     type: product
                     quantity: 5
+                    default: true
             description: Favourite DOOM games in one bundle - Select one from four choices
             mpn: 1234-5678-ABCD00
             name: Favourite games bundle

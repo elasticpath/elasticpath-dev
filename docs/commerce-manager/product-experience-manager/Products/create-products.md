@@ -20,7 +20,7 @@ The following steps provide a high-level procedure to complete a product configu
 1. You can allow your shoppers to add custom text to a product if you have products, like T-shirts or greeting cards that can be printed with your shoppers [personalized messages](/docs/commerce-manager/product-experience-manager/Products/personalizing-products). 
 1. In the **Product Templates** tab, add [templates](/docs/commerce-manager/product-experience-manager/Products/add-product-templates) for the product.
 1. In the **Pricing** tab, configure the [pricing settings](/docs/commerce-manager/product-experience-manager/Products/configure-product-price) for the product.
-1. In the **Variations** tab, associate [variations](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products) with the product and [build child products](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products) with the variations and options.
+1. In the **Variations** tab, associate [variations](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products) with the product and [build child products](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products) with the variations and options.
 1. In the **Inventory** tab, [manage the product inventory](/docs/commerce-manager/product-experience-manager/Products/configure-product-price).
 1. In the **Media Management** tab, upload the [product images](/docs/commerce-manager/product-experience-manager/Products/manage-product-media).
 

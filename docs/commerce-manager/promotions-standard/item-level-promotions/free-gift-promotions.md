@@ -53,5 +53,5 @@ sidebar_position: 6
 
 - [Create a Free Gift Promotion](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions)
 - [Promotion Management Overview](/docs/commerce-manager/promotions-standard/overview)
-- [Customers](/docs/commerce-cloud/customer-management/customers)
+- [Customers](/docs/customer-management/customers)
 - [Catalog](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)

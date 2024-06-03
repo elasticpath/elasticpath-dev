@@ -9,240 +9,12 @@ const resourcesHTML = fs.readFileSync('./src/snippets/resources.html', 'utf-8');
 const resourceDOCS = fs.readFileSync('./src/snippets/resourceDOCS.html', 'utf-8');
 
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
-const defaultSettings = {
-  breadcrumbs: true,
-  showLastUpdateTime: true,
-  sidebarCollapsible: true,
-  sidebarPath: require.resolve('./sidebars-default.js'),
-};
-
-/** @type {import('@docusaurus/plugin-content-docs').Options[]} */
-const docs = [
-  // PXM
-  {
-    id: 'pxm',
-    path: 'docs/pxm',
-    routeBasePath: '/docs/pxm',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'subscriptions',
-    path: 'docs/subscriptions',
-    routeBasePath: '/docs/subscriptions',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'getting-started',
-    path: 'docs/getting-started',
-    routeBasePath: '/docs/getting-started',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'analytics',
-    path: 'docs/analytics',
-    routeBasePath: '/docs/commerce-cloud/analytics',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'accounts',
-    path: 'docs/accounts',
-    routeBasePath: '/docs/accounts',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'addresses',
-    path: 'docs/addresses',
-    routeBasePath: '/docs/commerce-cloud/addresses',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  // Commerce Cloud
-  {
-    id: 'authentication',
-    path: 'docs/authentication',
-    routeBasePath: '/docs/commerce-cloud/authentication',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'carts',
-    path: 'docs/carts',
-    routeBasePath: '/docs/commerce-cloud/carts',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'checkout',
-    path: 'docs/checkout',
-    routeBasePath: '/docs/commerce-cloud/checkout',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'custom-data',
-    path: 'docs/custom-data',
-    routeBasePath: '/docs/commerce-cloud/custom-data',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'customer-management',
-    path: 'docs/customer-management',
-    routeBasePath: '/docs/commerce-cloud/customer-management',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'global-project-settings',
-    path: 'docs/global-project-settings',
-    routeBasePath: '/docs/commerce-cloud/global-project-settings',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'integrations',
-    path: 'docs/integrations',
-    routeBasePath: '/docs/commerce-cloud/integrations',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'orders',
-    path: 'docs/orders',
-    routeBasePath: '/docs/commerce-cloud/orders',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'organizations',
-    path: 'docs/organizations',
-    routeBasePath: '/docs/commerce-cloud/organizations',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'payment',
-    path: 'docs/payment',
-    routeBasePath: '/docs/commerce-cloud/payments',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'personal-data',
-    path: 'docs/personal-data',
-    routeBasePath: '/docs/commerce-cloud/personal-data',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'promotions',
-    path: 'docs/promotions',
-    routeBasePath: '/docs/commerce-cloud/promotions',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'shipping-groups',
-    path: 'docs/shipping-groups',
-    routeBasePath: '/docs/commerce-cloud/shipping-groups',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  {
-    id: 'team-management',
-    path: 'docs/team-management',
-    routeBasePath: '/docs/commerce-cloud/team-management',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  // Composer
-  {
-    id: 'composer',
-    path: 'docs/composer',
-    routeBasePath: '/docs/composer',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-  // Developer Tools
-  {
-    id: 'developer',
-    path: 'docs/developer-tools',
-    routeBasePath: '/docs/commerce-cloud/developer-tools',
-    versions: {
-      current: {
-        label: 'v2',
-      },
-    },
-  },
-];
+//const defaultSettings = {
+//  breadcrumbs: true,
+//  showLastUpdateTime: true,
+//  sidebarCollapsible: true,
+//  sidebarPath: require.resolve('./sidebars-default.js'),
+//};
 /**
  * Create a section
  * @param {import('@docusaurus/plugin-content-docs').Options} options
@@ -308,7 +80,7 @@ const config = {
         announcementBar: { //comment out when not needed, please do not remove
           id: 'support_us',
           content:
-              'We have rebuilt our documentation site and now include OpenAPI specifications for most endpoints.',
+              'The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.',
           backgroundColor: '#0E1521',
           textColor: '#FFFFFF',
           isCloseable: true,
@@ -475,6 +247,14 @@ const config = {
         },
       };
     },
+    [
+      "posthog-docusaurus",
+      {
+        apiKey: "phc_NsCAwFSbBegeJ8eRtU9T53pOVH8m7uoeMMwRXULdjVY",
+        //appUrl: "<ph_client_api_host>", // optional, defaults to "https://us.i.posthog.com"
+        enableInDevelopment: false, // optional
+      },
+    ],
       //define OpenAPI Specs to transform and include in documentation
     [
       "docusaurus-plugin-openapi-docs",
@@ -486,7 +266,7 @@ const config = {
             specPath: "openapispecs/accounts/OpenAPISpec.yaml",
             outputDir: "docs/api/accounts",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/accounts/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/accounts/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -496,27 +276,27 @@ const config = {
             specPath: "openapispecs/addresses/OpenAPISpec.yaml",
             outputDir: "docs/api/addresses",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/addresses/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/addresses/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
           },
-         // catalog: {
-         //   specPath: "openapispecs/catalog/catalog_view.yaml",
-         //   outputDir: "docs/api/pxm/catalog",
-         //   downloadUrl:
-         //       "https://beta.elasticpath.comopenapispecs/catalog_view.yaml",
-         //   sidebarOptions: {
-         //     groupPathsBy: "tag",
-         //     categoryLinkSource: "tag",
-         //   },
-         // },
+          catalog: {
+            specPath: "openapispecs/catalog/catalog_view.yaml",
+            outputDir: "docs/api/pxm/catalog",
+            downloadUrl:
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/catalog_view.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
           cartsorders: {
             specPath: "openapispecs/cartsorders/OpenAPISpec.yaml",
             outputDir: "docs/api/carts",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/cartsorders/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/cartsorders/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -526,7 +306,7 @@ const config = {
             specPath: "openapispecs/currencies/OpenAPISpec.yaml",
             outputDir: "docs/api/pxm/currencies",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/currencies/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/currencies/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -536,7 +316,7 @@ const config = {
             specPath: "openapispecs/commerceextensions/OpenAPISpec.yaml",
             outputDir: "docs/api/commerceextensions/",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/commerceextensions/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/commerceextensions/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -546,7 +326,7 @@ const config = {
             specPath: "openapispecs/exporter/exporter.yaml",
             outputDir: "docs/api/exporter",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/exporter/exporter.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/exporter/exporter.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -556,7 +336,7 @@ const config = {
             specPath: "openapispecs/files/files.yaml",
             outputDir: "docs/api/pxm/files",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/files/files.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/files/files.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -566,7 +346,7 @@ const config = {
             specPath: "openapispecs/flows/flows.yaml",
             outputDir: "docs/api/flows",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/flows/flows.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/flows/flows.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -576,7 +356,7 @@ const config = {
             specPath: "openapispecs/integrations/openapi.yaml",
             outputDir: "docs/api/integrations",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/integrations/openapi.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/integrations/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -586,7 +366,7 @@ const config = {
             specPath: "openapispecs/inventory/openapi.yaml",
             outputDir: "docs/api/pxm/inventory",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/inventory/openapi.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -596,7 +376,7 @@ const config = {
             specPath: "openapispecs/payments/OpenAPISpec.yaml",
             outputDir: "docs/api/payments",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/payments/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/payments/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -606,7 +386,7 @@ const config = {
             specPath: "openapispecs/pim/pim.yaml",
             outputDir: "docs/api/pxm/products",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/pim/pim.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/pim/pim.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -616,7 +396,7 @@ const config = {
             specPath: "openapispecs/pricebooks/pricebooks.yaml",
             outputDir: "docs/api/pxm/pricebooks",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/pricebooks.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/pricebooks.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -626,7 +406,7 @@ const config = {
             specPath: "openapispecs/promotions/OpenAPISpec.yaml",
             outputDir: "docs/api/promotions",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/promotions.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/promotions.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -636,7 +416,7 @@ const config = {
             specPath: "openapispecs/settings/OpenAPISpec.yaml",
             outputDir: "docs/api/settings",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispecs/settings/OpenAPISpec.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/settings/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -646,7 +426,7 @@ const config = {
             specPath: "openapispecs/subscriptions/public_openapi.yaml",
             outputDir: "docs/api/subscriptions",
             downloadUrl:
-                "https://beta.elasticpath.com/openapispec/subscriptions/public_openapi.yaml",
+                "https://beta.elasticpath.dev/openapispec/subscriptions/public_openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

@@ -41,7 +41,7 @@ You can get the following API credentials in Commerce Manager from **SYSTEM** > 
    - US: `https://useast.api.elasticpath.com/oauth/access_token`
     
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. For more information, see [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. For more information, see [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
     
 - **Client ID**: Your Commerce Client ID.
@@ -148,7 +148,7 @@ There are multiple ways to verify the success of this integration. Here are two 
 
 ### Option 1
 
-1. In Commerce Manager, publish a product catalog. For more information, see [Publishing Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration#publishing-catalogs).
+1. In Commerce Manager, publish a product catalog. For more information, see [Publishing Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration#publishing-catalogs).
 1. On the **Products** page, click any product to view the SKU.
 1. Copy the product SKU.
 1. Go to Fluent Commerce.

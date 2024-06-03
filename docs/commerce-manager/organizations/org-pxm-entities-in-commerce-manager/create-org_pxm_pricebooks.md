@@ -52,11 +52,11 @@ A file can include up to 50,000 objects. If you have more than 50,000 objects, t
 6. Browse to the location of your JSONL file.
 7. Select your file and click **Open**. A notification indicating whether the operation is successful is displayed. The imported price books and prices are displayed in the **All Price Books** tab.
 8. Select a price book to display the imported/updated prices.
-9. The import works on a "best endeavours" approach. In other words, Commerce Manager does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted and the job fails with an error. You can then use the results of the job to understand what objects were created/updated up to the point the import failed and to troubleshoot any errors. See [Import Results](/docs/pxm/pricebooks/price-import/pricebook-import-results).
+9. The import works on a "best endeavours" approach. In other words, Commerce Manager does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted and the job fails with an error. You can then use the results of the job to understand what objects were created/updated up to the point the import failed and to troubleshoot any errors. See [Import Results](/docs/api/pxm/pricebooks/import-a-price-book-and-prices#price-book-import-api-results).
 
 ## Creating Organization Price Books
 
-Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **SYSTEM** in [Organization Settings > Currencies](/docs/commerce-cloud/organizations/organizations-in-commerce-manager/manage-org-currencies).
+Create a price book. Add a product by SKU and then add prices in each currency supported in the store. You can add new currencies under **SYSTEM** in [Organization Settings > Currencies](/docs/commerce-manager/organizations/manage-org-currencies).
 
 1. Log into Commerce Manager as an Org Admin.
 1. Select **Organizations**.

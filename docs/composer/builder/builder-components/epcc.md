@@ -230,10 +230,10 @@ For **Customer Request**, see the following snippet:
 | **description** | `string` | 	Specifies a description for the integration. |
 | **integration_type** | `string` | Specifies how the integration is delivered, either `webhook`, `aws_sqs`, or `stomp`. |
 | **enabled** | `boolean` | Specifies whether the integration is enabled. |
-| **observes object** | `dynamicfieldselection` | Specifies an array of [observable events](/docs/commerce-cloud/integrations/observable-events). |
-| **configuration** | `string` | Specifies a [configuration](/docs/commerce-cloud/integrations/integrations-api/create-an-integration#configuration-object). |
+| **observes object** | `dynamicfieldselection` | Specifies an array of [observable events](/docs/api/integrations/integrations-introduction#observable-events). |
+| **configuration** | `string` | Specifies a [configuration](/docs/api/integrations/create-integration). |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
-
+yarn 
 ### Create Inventory
 
 | Input | Type | Description |
@@ -391,7 +391,7 @@ For **Customer Request**, see the following snippet:
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
 | **Code** | `string` | The code returned from the OpenID Connect Provider authentication. |
 | **Redirect Uri** | `string` | The url of the front-end that handles the callback of the token. |
-| **Code Verifier** | `string` | The customer password. | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. [Generating a Code Verifier and Challenge](/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
+| **Code Verifier** | `string` | The customer password. | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. [Generating a Code Verifier and Challenge](/guides/How-To/Authentication/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
 | **Headers** | `string` | The Bearer token required to get access to the API. |
 
 
@@ -694,8 +694,8 @@ For **Order Request**, see the following snippet:
 |:--- |:--- | :--- | 
 | **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
 | **Product Id** | `string` | The unique identifier of the product. |
-| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
-| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
+| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
+| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
 | **X-MOLTIN-CURRENCY** | `string` | For projects that support multiple currencies, use `x-moltin-currency` that contains the formatting detail for all currencies available to the catalog. |
 | **Includes** | `array` | Any related types that must be included in the response. For example, files, main_image, and so on. |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
@@ -724,8 +724,8 @@ For **Order Request**, see the following snippet:
 |:--- |:--- | :--- | 
 | **Connection** | `connection` | Elastic Path Commerce Cloud connection. |
 | **SKU** | `string` | The unique SKU of the product. |
-| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
-| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview#the-rule-object). |
+| **EP-Channel** | `string` | The channel, such as website or mobile app. Corresponds to the channel attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
+| **EP-Context-Tag** | `string` | A tag defined in the store, such as clearance. Corresponds to the tag attribute in a [Rule](/docs/api/pxm/catalog/create-rule). |
 | **X-MOLTIN-CURRENCY** | `string` | For projects that support multiple currencies, use `x-moltin-currency` that contains the formatting detail for all currencies available to the catalog. |
 | **Includes** | `array` | Any related types that must be included in the response. For example, files, main_image, and so on. |
 | **Override Token** | `string` | The output of Generate Override Token action to be used with Organizations. |
