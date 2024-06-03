@@ -1,7 +1,7 @@
 ---
 title: Release 188 | January 17, 2024
 nav_label: Release 188 | January 17, 2024
-sidebar_position: 8
+sidebar_position: 11
 ---
 
 ## Overview
