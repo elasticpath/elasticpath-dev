@@ -1,7 +1,7 @@
 ---
 title: Get Cart Items
 nav_label: Get Cart Items
-sidebar_position: 9
+sidebar_position: 125.5
 ---
 
 :::note
