@@ -11,8 +11,8 @@ You can use the Customer Authentication Settings endpoint to retrieve settings c
 | Attribute | Type | Description |
 | :--- | :--- | :--- |
 | `id` | `string` | The unique identifier for these customer authentication settings. |
-| `meta` | [`object`](#the-meta-object) | Additional information for these customer authentication settings. Also see: **The meta object** below. |
-| `relationships` | [`object`](#the-relationships-object) | Related resources. Also see: **The relationships object** below. |
+| `meta` | `object` | Additional information for these customer authentication settings. Also see: [The meta object](#the-meta-object) below. |
+| `relationships` | `object` | Related resources. Also see: [The relationships object](#the-relationships-object) below. |
 | `type` | `string` | The type represents the object being returned. |
 
 ## Sample Object
