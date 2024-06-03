@@ -31,7 +31,7 @@ paths:
         
         ### Filtering
         
-        The following operators and attributes are available for filtering accounts:
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) accounts:
         
         | Attribute       | Type     | Operators    | Example                                              |
         |-----------------|----------|--------------| -----------------------------------------------------|
@@ -461,7 +461,7 @@ paths:
         - Account Membership
       summary: Get a List of Account Memberships of Account Member
       description: |
-        You can also use `include=account` to retrieve details about the accounts associated with the account memberships. You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+        You can also use `include=account` to retrieve details about the accounts associated with the account memberships. You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
         
         ### Filtering
 
@@ -543,14 +543,14 @@ paths:
         
         ### Filtering
         
-        The following operators and attributes are available for filtering unassigned account members.
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) unassigned account members.
         
         | Operator | Description   |
         | :------- | :--------------------------------------------------------------------------------------------------- |
         | `eq`     | Checks whether the values of two operands are equal. If the values are equal, the condition is true. |
         | `like`   | Checks if the operand contains the specified string. You can use wildcard characters in operand.     |
         
-        The following attributes are available for filtering unassigned account members.
+        The following attributes are available for [filtering](/guides/Getting-Started/filtering) unassigned account members.
         
         | Attribute | Type     | Operator      | Example                            |
         | :-------- | :------- | :------------ | :--------------------------------- |
@@ -559,7 +559,7 @@ paths:
         
         :::note
         
-        You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+        You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
         
         :::
       operationId: get-v2-accounts-accountID-account-memberships-unassigned-account-members
@@ -631,7 +631,21 @@ paths:
       description: |-
         You can also use `include=account_member` to retrieve details about the account members associated with the account memberships.
 
-        With this option, you can get more information about the account members (i.e. name and email) in a single request.
+        With this option, you can get more information about the account members such as name and email in a single request.
+        
+        ### Filtering
+        
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) account memberships.
+
+        | Operator | Description |
+        | :--- | :--- |
+        | `eq` | Checks whether the values of two operands are equal. If the values are equal, the condition is true. |
+        | `like` | Checks if the operand contains the specified string. You can use wildcard characters in operand. |
+
+        | Attribute | Type | Operator | Example |
+        | :--- | :--- | :--- | :--- |
+        | `account_member_id` | `string` | `eq` / `like` | `eq(account_member_id,00000000-0000-1000-8000-0000000)` |
+
       operationId: get-v2-accounts-accountID-account-memberships
       parameters:
         - $ref: '#/components/parameters/filter'
@@ -1296,7 +1310,7 @@ components:
           type: boolean
           example: true
         account_member_self_management:
-          description: Whether a user with [Account Management Authentication Token](https://elasticpath.dev/docs/commerce-cloud/authentication/tokens/account-management-authentication-token) can update their own account member details. By default, this is disabled. Set to `update_only` if you want the user to update their own account member details. The user can update their own account member details by updating [User Authentication Info](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/user-authentication-info-api/overview) and [User Authentication Password Profile Info](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview).
+          description: Whether a user with [Account Management Authentication Token](/docs/api/accounts/post-v-2-account-members-tokens) can update their own account member details. By default, this is disabled. Set to `update_only` if you want the user to update their own account member details. The user can update their own account member details by updating [User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/overview) and [User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview).
           type: string
           default: disabled
           enum:
