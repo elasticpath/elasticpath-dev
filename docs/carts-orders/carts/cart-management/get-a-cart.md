@@ -251,7 +251,7 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
 
 The following response example shows condensed promotions for cart discounts within the included object. 
 
-When you create a cart discount rule promotion, an item discount rule promotion and a standard cart discount promotion, aand apply these discounts to a cart with eligible items, then upon calling `GET {{baseUrl}}/carts/{{cartID}}?include=promotions` endpoint, the cart relationship object will have the promotion item. Aditionally, the `included` object will contain condensed promotions for the cart discounts.
+When you create a cart discount rule promotion, an item discount rule promotion and a standard cart discount promotion, and apply these discounts to a cart with eligible items, then upon calling `GET {{baseUrl}}/carts/{{cartID}}?include=promotions` endpoint, the cart relationship object will have the promotion item. Aditionally, the `included` object will contain condensed promotions for the cart discounts.
 
 `200 OK`
 
