@@ -1,7 +1,7 @@
 ---
 title: Release 195 | April 8, 2024
 nav_label: Release 195 | April 8, 2024
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 ## Overview
@@ -14,10 +14,11 @@ Some minor improvements and bug fixes in this release.
 
 * **Bug** - Fixed an issue where color names could not be updated in the **Color palette**.
 
-### Thank you Page 
+### Thank you Page
 
 * **Bug** - Fixed an issue where **Address line 2** was not displaying in the shipping address.
 
 ### Shopify
 
 * **Bug** - Fixed an issue where some product IDs were wrongly generating an **invalid id** error message in the cart.
+
