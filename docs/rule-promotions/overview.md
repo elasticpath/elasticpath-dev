@@ -516,7 +516,7 @@ See the following response example:
 
 ## Condensed Promotion
 
-Condensed Promotion generally refers to the process of simplifying or aggregating multiple promotional rules into a single, more manageable rule. A condensed promotion is essentially an object that contains specific meta information about a promotion applied to the cart or order. 
+A condensed promotion is essentially an object that contains specific meta information about a promotion applied to the cart or order. 
 
 Condensed Promotion can be retrived from the following endpoints:
 
