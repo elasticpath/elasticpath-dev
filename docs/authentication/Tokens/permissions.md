@@ -275,9 +275,9 @@ The following tables show a breakdown of the API endpoint actions that are avail
 
 | Endpoint                               | Read access | Write access |
 |----------------------------------------| --- | --- |
-| `/accounts`                            | ⛔️ | ⛔️ |
-| `/account-members`                     | ⛔️ | ⛔️ |
-| `/account-membership`                  | ⛔️ | ⛔️ |
+| `/accounts`                            | ✅️ | ✅️ |
+| `/account-members`                     | ✅️ | ✅️ |
+| `/account-membership`                  | ✅️ | ✅️ |
 | `/application-keys`                    | ⛔️ | ⛔️ |
 | `/authentication-realms`               | ⛔️ | ⛔️ |
 | `/brands`                              | ⛔️ | ⛔️ |
