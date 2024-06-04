@@ -492,8 +492,9 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
 ```json
 {
     "data": {
-        "id": "3249564f-7542-43dd-bdd9-4b41cd7eb8ec",
+        "id": "522dd525-38cb-4d25-9903-9d417b568096",
         "type": "order",
+        "web_order_id": null,
         "status": "incomplete",
         "payment": "unpaid",
         "shipping": "unfulfilled",
@@ -530,14 +531,14 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
         "meta": {
             "display_price": {
                 "with_tax": {
-                    "amount": 9788,
+                    "amount": 6000,
                     "currency": "USD",
-                    "formatted": "$97.88"
+                    "formatted": "$60.00"
                 },
                 "without_tax": {
-                    "amount": 9788,
+                    "amount": 6000,
                     "currency": "USD",
-                    "formatted": "$97.88"
+                    "formatted": "$60.00"
                 },
                 "tax": {
                     "amount": 0,
@@ -545,14 +546,14 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
                     "formatted": "$0.00"
                 },
                 "discount": {
-                    "amount": -212,
+                    "amount": -4000,
                     "currency": "USD",
-                    "formatted": "-$2.12"
+                    "formatted": "-$40.00"
                 },
                 "balance_owing": {
-                    "amount": 9788,
+                    "amount": 6000,
                     "currency": "USD",
-                    "formatted": "$97.88"
+                    "formatted": "$60.00"
                 },
                 "paid": {
                     "amount": 0,
@@ -572,12 +573,12 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
                 "shipping": {
                     "amount": 0,
                     "currency": "USD",
-                    "formatted": "0"
+                    "formatted": "$0.00"
                 }
             },
             "timestamps": {
-                "created_at": "2023-07-13T22:25:31Z",
-                "updated_at": "2023-07-13T22:25:31Z"
+                "created_at": "2024-05-31T16:43:31Z",
+                "updated_at": "2024-05-31T16:43:31Z"
             }
         },
         "relationships": {
@@ -585,11 +586,15 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
                 "data": [
                     {
                         "type": "item",
-                        "id": "81468e17-dd9f-47d2-986e-febea23fa210"
+                        "id": "874aa011-c160-4819-8a87-7b54be25481b"
                     },
                     {
                         "type": "item",
-                        "id": "03ffe022-8deb-4849-a773-fabe4a2d4ef1"
+                        "id": "baf6e9f6-f248-477c-b508-3788957908cf"
+                    },
+                    {
+                        "type": "item",
+                        "id": "58e6c654-fe32-4bdf-ae88-958c988fb1b3"
                     }
                 ]
             },
@@ -597,7 +602,11 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
                 "data": [
                     {
                         "type": "promotion",
-                        "id": "30253f07-c882-44dc-9f5a-5b8b6a464705"
+                        "id": "05b35539-7946-4145-a8ff-bfd3cefc7691"
+                    },
+                    {
+                        "type": "promotion",
+                        "id": "e4d929d5-f471-4317-9a86-a84a6c572b44"
                     }
                 ]
             }
@@ -607,13 +616,23 @@ curl -X GET https://useast.api.elasticpath.com/v2/orders/:id?include=promotions 
         "promotions": [
             {
                 "type": "promotion",
-                "id": "30253f07-c882-44dc-9f5a-5b8b6a464705",
-                "name": "cart fixed $1",
-                "description": "cart fixed $1",
+                "id": "05b35539-7946-4145-a8ff-bfd3cefc7691",
+                "name": "v1cart10",
+                "description": "v1cart10",
                 "automatic": false,
                 "promotion_type": "fixed_discount",
-                "start": "2023-06-19T19:22:46Z",
-                "end": "2025-06-19T12:22:00Z"
+                "start": "2024-04-01T17:25:00Z",
+                "end": "2024-06-01T17:25:03Z"
+            },
+            {
+                "type": "promotion",
+                "id": "e4d929d5-f471-4317-9a86-a84a6c572b44",
+                "name": "cart20",
+                "description": "cart20",
+                "automatic": false,
+                "promotion_source": "rule-promotion",
+                "start": "2024-04-01T18:24:06Z",
+                "end": "2024-06-01T18:24:09Z"
             }
         ]
     }

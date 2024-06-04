@@ -521,6 +521,19 @@ See the following response example:
 }
 ``` 
 
+## Condensed Promotion
+
+A condensed promotion is essentially an object that contains specific meta information about a promotion applied to the cart or order. 
+
+Condensed promotions can be retrived from the following endpoints:
+
+ - [Get a Cart](/docs/carts-orders/get-a-cart#get-include-promotions): This endpoint displays cart-level condensed promotions within the included object. If `?include=items` is specified, the included object also contains cart item-level promotions. The relationships field at the cart level has a promotions section only when `?include=promotions` is specified.
+ - [Get Cart Items](/docs/carts-orders/get-cart-items#get-include-promotions): This endpoint shows both cart-level and item-level discounts in a condensed format within the included object.
+ - [Get an Order][/docs/carts-orders/get-an-order#get-include-custom-discounts]: This endpoint displays order-level condensed promotions within the included object.
+ - [Get Order items](/docs/carts-orders/get-order-items#get-include-promotions): This endpoint displays both order-level and item-level promotions in the included object.
+
+This applies to both both Promotions Standard and Rule Promotions.
+
 ## Handling both Item SKU and Product ID together in Rule Promotion
 
 Nested conditions allow for more complex rule structures, where conditions are grouped together within other conditions. The use of nested conditions with an `and` strategy is not allowed. At this level of nesting, only an `or` strategy with either an `item_sku` or an `item_product_id` is valid. 
