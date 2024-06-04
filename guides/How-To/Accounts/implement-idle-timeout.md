@@ -1,5 +1,5 @@
 ---
-title: Implementing Idle Timeout using Configurable Account Management Authentication Token Timeouts
+title: Implementing Idle Timeout
 nav_label: Implementing Idle Timeout
 nav_position: 60
 ---
