@@ -527,7 +527,7 @@ A condensed promotion is essentially an object that contains specific meta infor
 
 Condensed promotions can be retrived from the following endpoints:
 
- - [Get a Cart](/docs/carts-orders/get-a-cart#get-include-promotions): This endpoint displays cart-level condensed promotions within the included object. If `?include=items` is specified, the included object will also contain cart item-level promotions. The relationships field at the cart level will have a promotions section only when `?include=promotions` is specified.
+ - [Get a Cart](/docs/carts-orders/get-a-cart#get-include-promotions): This endpoint displays cart-level condensed promotions within the included object. If `?include=items` is specified, the included object also contains cart item-level promotions. The relationships field at the cart level has a promotions section only when `?include=promotions` is specified.
  - [Get Cart Items](/docs/carts-orders/get-cart-items#get-include-promotions): This endpoint shows both cart-level and item-level discounts in a condensed format within the included object.
  - [Get an Order][/docs/carts-orders/get-an-order#get-include-custom-discounts]: This endpoint displays order-level condensed promotions within the included object.
  - [Get Order items](/docs/carts-orders/get-order-items#get-include-promotions): This endpoint displays both order-level and item-level promotions in the included object.
