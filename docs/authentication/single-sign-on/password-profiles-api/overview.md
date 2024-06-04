@@ -8,42 +8,14 @@ A `password_profile` resource represents a specific configuration that allows us
 
 ## The Password Profile object
 
-{% table %}
-* **Attribute**
-* **Type**
-* **Description**
----
-* `id`
-* `string`
-* The unique identifier for this password profile.
----
-* `meta`
-* [`object`](#the-meta-object)
-* Additional information for this password profile. For more information, see **The meta object**.
----
-* `username_format`
-* `string`
-* The `username_format` of the password profile. You can change the `username-format` setting. However, the changes apply only to the users created or updated after changing this setting. The new setting does not change the `username_format` for existing users.
-
-    The options are:
-
-    {% list type="checkmark" %}
-    * `any`
-    * `email`
-    {% /list %}
----
-* `name`
-* `string`
-* The name of the password profile.
----
-* `type`
-* `string`
-* The type of object returned. You must use `password_profile`.
----
-* `enable_one_time_password_token`
-* `boolean`
-* This enables one time password token requests and events for authentication. This feature is disabled by default.
-{% /table %}
+| Attribute | Type    | Description                |
+| ----------|---------|----------------------------|
+| `id`      | `string` |  The unique identifier for this password profile. |
+| `meta`    | `object` | Additional information for this password profile. For more information, see [The meta object](#the-meta-object). |
+| `username_format` | `string` | The `username_format` of the password profile. You can change the `username-format` setting. However, the changes apply only to the users created or updated after changing this setting. The new setting does not change the `username_format` for existing users. The options are: <ul><li>`any`</li><li>`email`</li></ul>|
+| `name` | `string` | The name of the password profile. |
+| `type` | `string` | The type of object returned. You must use `password_profile`. |
+| `enable_one_time_password_token` | `boolean` | This enables one time password token requests and events for authentication. This feature is disabled by default. |
 
 ## Sample Object
 

@@ -18,7 +18,7 @@ info:
     |--------------|-----------|--------- |-----|
     | `page_length` | `integer` | 25       | 100 |
     
-    For more information on pagination including a list of which resources support pagination, see [Pagination](/guides/Getting-Started/pagination).
+    For more information on pagination including a list of which resources support pagination, see [Pagination](/docs/commerce-cloud/api-overview/pagination).
     
     ### Calculation Method
     
@@ -34,13 +34,13 @@ info:
     :::note
     
     - For stores created since February 2020, `line` is the default calculation method. Stores created before February 2020 use `simple` as their calculation method.
-    - Line-item discount promotions, such as item percent discount and item fixed discount, are only supported by the line calculation method. For more information, see [Promotions](/docs/commerce-cloud/promotions/promotions-overview).
+    - Line-item discount promotions, such as item percent discount and item fixed discount, are only supported by the line calculation method. For more information, see [Promotions Standard](/docs/api/promotions/promotions-standard-introduction).
     
     :::
     
     ### Address Mandatory Fields
     
-    You can create an address to associate with an account in your storefront. This defines the address fields that you can use when creating an address in Commerce Manager. For more information, see [Addresses](/docs/api/addresses).
+    You can create an address to associate with an account in your storefront. This defines the address fields that you can use when creating an address in Commerce Manager. For more information, see [Addresses](/docs/api/addresses/addresses-introduction).
     
     Address fields can be required or optional. You can choose which optional address fields to use in your address, depending on your requirements. To change which fields are mandatory for creating an address, see [Update Settings](/docs/api/settings/put-v-2-settings). Changing the mandatory fields does not impact the addresses of customers made before the change.
     
@@ -69,7 +69,7 @@ info:
   
     :::note
     
-    - Refer to the [Performance](/guides/Getting-Started/pagination#performance) section in the Pagination documentation, which outlines patterns for retrieving all documents without using a higher page offset limit.
+    - Refer to the [Performance](https://beta.elasticpath.dev/guides/Getting-Started/pagination#performance) section in the Pagination documentation, which outlines patterns for retrieving all documents without using a higher page offset limit.
     - To change any predefined configuration, contact [Elastic Path support team](https://support.elasticpath.com/hc/en-us).
     
     :::
@@ -112,7 +112,7 @@ paths:
         
         :::note
         
-        The default calculation_method is line.
+        The default `calculation_method` is `line`.
         
         :::
       operationId: get-v2-settings
@@ -314,7 +314,7 @@ components:
             - simple
         address_mandatory_fields:
           type: array
-          description: Indicates an array of fields that are required for creating an [address](https://elasticpath.dev/docs/commerce-cloud/addresses/about-addresses-api#the-address-object).
+          description: Indicates an array of fields that are required for creating an [address](/docs/api/addresses/account-addresses).
           items:
             type: string
             example: ["first_name", "last_name", "line_1", "city", "region", "postcode", "country", "instructions"]

@@ -249,6 +249,10 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
 
 ## Response Example
 
+The following response example shows condensed promotions for cart discounts within the included object. 
+
+When you create a cart discount rule promotion, an item discount rule promotion and a standard cart discount promotion, and apply these discounts to a cart with eligible items, then upon calling `GET {{baseUrl}}/carts/{{cartID}}?include=promotions` endpoint, the cart relationship object has the promotion item. Aditionally, the `included` object contains condensed promotions for the cart discounts.
+
 `200 OK`
 
 ```json
@@ -256,10 +260,11 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
     "data": {
         "id": "1",
         "type": "cart",
-        "name": "Cart",
-        "description": "",
+        "name": "my cart name",
+        "description": "cart description",
         "discount_settings": {
-            "custom_discounts_enabled": false
+            "custom_discounts_enabled": false,
+            "use_rule_promotions": true
         },
         "links": {
             "self": "https://useast.api.elasticpath.com/v2/carts/1"
@@ -267,14 +272,14 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
         "meta": {
             "display_price": {
                 "with_tax": {
-                    "amount": 9788,
+                    "amount": 6000,
                     "currency": "USD",
-                    "formatted": "$97.88"
+                    "formatted": "$60.00"
                 },
                 "without_tax": {
-                    "amount": 9788,
+                    "amount": 6000,
                     "currency": "USD",
-                    "formatted": "$97.88"
+                    "formatted": "$60.00"
                 },
                 "tax": {
                     "amount": 0,
@@ -282,9 +287,9 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
                     "formatted": "$0.00"
                 },
                 "discount": {
-                    "amount": -212,
+                    "amount": -4000,
                     "currency": "USD",
-                    "formatted": "-$2.12"
+                    "formatted": "-$40.00"
                 },
                 "without_discount": {
                     "amount": 10000,
@@ -298,30 +303,39 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
                 }
             },
             "timestamps": {
-                "created_at": "2023-07-13T20:36:52Z",
-                "updated_at": "2023-07-13T20:37:47Z",
-                "expires_at": "2023-07-20T20:37:47Z"
+                "created_at": "2024-05-24T17:38:10Z",
+                "updated_at": "2024-05-31T16:26:07Z",
+                "expires_at": "2024-06-07T16:26:07Z"
             }
         },
         "relationships": {
             "items": {
                 "data": [
                     {
+                        "type": "promotion_item",
+                        "id": "0bf2c5d6-0930-48c3-86da-f0ae6fcb0ad7"
+                    },
+                    {
                         "type": "cart_item",
-                        "id": "ae79ff9a-bf16-4949-beb2-032c33c795cd"
+                        "id": "1a317de0-5375-4175-8a0d-7ecea776fb89"
                     },
                     {
                         "type": "promotion_item",
-                        "id": "a1911ac4-95cf-49ae-8d25-3997cc14ceb6"
+                        "id": "1fec2974-3578-4b7d-bd7e-2ed626cbec2c"
                     }
                 ]
             },
             "customers": {},
+            "accounts": {},
             "promotions": {
                 "data": [
                     {
                         "type": "promotion",
-                        "id": "30253f07-c882-44dc-9f5a-5b8b6a464705"
+                        "id": "e4d929d5-f471-4317-9a86-a84a6c572b44"
+                    },
+                    {
+                        "type": "promotion",
+                        "id": "05b35539-7946-4145-a8ff-bfd3cefc7691"
                     }
                 ]
             }
@@ -331,13 +345,23 @@ curl -X GET https://useast.api.elasticpath.com/v2/carts/:id?include=promotions \
         "promotions": [
             {
                 "type": "promotion",
-                "id": "30253f07-c882-44dc-9f5a-5b8b6a464705",
-                "name": "cart fixed $1",
-                "description": "cart fixed $1",
+                "id": "e4d929d5-f471-4317-9a86-a84a6c572b44",
+                "name": "cart20",
+                "description": "cart20",
+                "automatic": false,
+                "promotion_source": "rule-promotion",
+                "start": "2024-04-01T18:24:06Z",
+                "end": "2024-06-01T18:24:09Z"
+            },
+            {
+                "type": "promotion",
+                "id": "05b35539-7946-4145-a8ff-bfd3cefc7691",
+                "name": "v1cart10",
+                "description": "v1cart10",
                 "automatic": false,
                 "promotion_type": "fixed_discount",
-                "start": "2023-06-19T19:22:46Z",
-                "end": "2025-06-19T12:22:00Z"
+                "start": "2024-04-01T17:25:00Z",
+                "end": "2024-06-01T17:25:03Z"
             }
         ]
     }

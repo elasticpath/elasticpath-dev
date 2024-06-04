@@ -13,10 +13,10 @@ An OpenID Connect Profile resource represents a specific configuration of an Ope
 | `client_id` | `string` | The client id to be used with the external authentication provider |
 | `discovery_url` | `string` | The url of the OpenID Connect discovery document. |
 | `id` | `string` | The unique identifier for this OpenID Connect profile. |
-| `meta` | [`object`](#the-meta-object) | Additional information for this realm. Also see: **The meta object** below. |
+| `meta` | `object` | Additional information for this realm. For more information, see [The meta object](#the-meta-object) below. |
 | `name` | `string` | The `name` of the OpenID Connect profile. |
 | `type` | `string` | The type represents the object being returned. |
-| `links` | [`object`](#the-links-object) | Related links. Also see: **The links object** below. |
+| `links` | `object` | Related links. Also see: [The links object](#the-links-object) below. |
 
 ## Sample Object
 
