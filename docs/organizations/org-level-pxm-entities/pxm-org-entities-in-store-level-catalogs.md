@@ -55,14 +55,12 @@ If you want a store hierarchy to have a combination of organization and store pr
 
 1. Generate a `client_credentials` access token using your store's application keys.
 1. [Duplicate an organization-level hierarchy](/docs/api/pxm/products/duplicate-hierarchy). Once a hierarchy is duplicated, it belongs to a store. You can make changes to it, depending on your requirements.
-   {% list type="checkmark" %}
    * (Default) Maintain the organization products associated with the duplicated hierarchy.
    * Choose not to maintain the products associated with the duplicated hierarchy and create new product associations with the products in your store.
        * [Assign new products to multiple nodes](/docs/api/pxm/products/create-node-product-relationship).
        * [Dissociate products from multiple nodes](/docs/api/pxm/products/delete-node-product-relationships).
-   {% /list %}
 
-   :::caution
+    :::caution
     You must ensure that hierarchies in organizations and stores have unique SKUs. If a store hierarchy is created with a SKU that is already in use by an organization hierarchy, an error message is displayed. 
     :::
 1. [Create your catalog](/docs/api/pxm/catalog/create-catalog).

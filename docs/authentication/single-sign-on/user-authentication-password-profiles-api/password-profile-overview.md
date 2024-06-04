@@ -13,7 +13,7 @@ The `user-authentication-password-profile-info` object is the information object
 | `id`                  | `string` | The unique identifier for the `user-authentication-password-profile-info` object. |
 | `username`            | `string` | The username used to authenticate. |
 | `password`            | `string` | The password used to authenticate. You can only update the password. You cannot view the password. |
-| `meta`                | [`object`](#the-meta-object) | Additional information for the `user-authentication-password-profile-info` object. For more information, see **The meta object** section. |
+| `meta`                | `object` | Additional information for the `user-authentication-password-profile-info` object. For more information, see [The meta object](#the-meta-object) section. |
 | `type`                | `string` | The type of the object returned. |
 | `password_profile_id` | `string` | The identifier for the `password_profile` object that the `user-authentication-password-profile-info` object is linked to. |
 

@@ -10,7 +10,7 @@ info:
 
     After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
 
-    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/commerce-cloud/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
+    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/carts-orders/create-multi-cart#post-create-a-preview-cart).
 
     The following diagram shows a typical cart workflow:
 
@@ -43,11 +43,11 @@ paths:
       description: |
         You can retrieve the carts that are associated with a customer.
 
-        When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/guides/Getting-Started/pagination).
+        When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/docs/commerce-cloud/api-overview/pagination).
 
         :::note
 
-        Requires an `implicit` token with a [customer token](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens).
+        Requires an `implicit` token with a [customer token](/docs/customer-management/customer-management-api/customer-tokens).
 
         :::
       operationId: getCustomerCarts
@@ -178,7 +178,7 @@ paths:
 
         :::note
 
-        The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.
+        The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
 
         :::
 
@@ -504,7 +504,7 @@ paths:
         :::note
 
         - Any requests to add a product to cart returns the collection of cart items.
-        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
         - The cart currency is set when the first item is added to the cart.
         - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
         - A cart can contain a maximum of 100 unique items. Items include products and custom items.
@@ -516,7 +516,7 @@ paths:
 
         You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
 
-        For [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview), once you have created a [cart shipping group](/docs/commerce-cloud/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
+        For [Shipping Groups](/docs/ship-groups/shipping-groups), once you have created a [cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
 
         #### Personalized Products
 
@@ -940,7 +940,7 @@ paths:
       parameters:
         - name: cartID
           in: path
-          description: The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters).
+          description: The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/safe-characters).
           required: true
           style: simple
           schema:
@@ -1739,9 +1739,9 @@ paths:
 
         :::note
 
-        - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens).
+        - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-management-api/customer-tokens).
         - Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/docs/api/accounts/post-v-2-account-members-tokens).
-        - You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
+        - You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
 
         :::
 
@@ -1865,7 +1865,7 @@ paths:
         :::note
 
         - This request is only accessible to client credentials token users with Seller Admin role.
-        - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/commerce-cloud/authentication/Tokens/permissions).
+        - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/authentication/Tokens/permissions).
 
         :::
       operationId: updateAnOrder
@@ -2398,7 +2398,7 @@ components:
         discount_settings:
           $ref: '#/components/schemas/DiscountSettings'
         name:
-          description: The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.
+          description: The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
           type: string
           examples:
             - my cart name
@@ -4317,7 +4317,7 @@ components:
 tags:
   - name: Cart Management
     description: |
-      A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](/docs/api/carts/checkout-with-account-management-authentication-token) to convert the cart to an order.
+      A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](/docs/api/carts/checkout) to convert the cart to an order.
 
       :::note
 
@@ -4334,7 +4334,7 @@ tags:
 
       ### With a `customer` token
 
-      These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Customer Token](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens) documentation.
+      These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Customer Token](/docs/customer-management/customer-management-api/customer-tokens) documentation.
 
       #### Cart creation
 
@@ -4342,13 +4342,13 @@ tags:
 
       :::note
 
-      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters).
+      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/guides/Getting-Started/safe-characters).
 
       :::
 
       ### Without a `customer` token
 
-      These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/commerce-cloud/authentication/security) documentation.
+      These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
 
       This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
 
@@ -4447,13 +4447,13 @@ tags:
 
       Depending on the chosen gateway, you may or may not have access to capture funds immediately or authorize for later payment. For more information, see [Transactions](/docs/api/carts/transactions).
 
-      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments) section.
+      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateways-introduction#split-payments) section.
 
       #### Purchase
 
       The simplest method is purchase. The gateway attempts to charge the customer immediately, and the result of the attempt is returned.
 
-      You can partially pay funds using purchase method. The gateway attempts to charge the customer immediately, and the payment status for an order shows partially_paid.
+      You can partially pay funds using purchase method. The gateway attempts to charge the customer immediately, and the payment status for an order shows `partially_paid`.
 
       When you Get an order, you can see the following fields in the meta object:
 

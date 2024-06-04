@@ -33,7 +33,7 @@ You can use pagination with this resource. For more information, see [pagination
 
 | Name | Required | Type | Description |
 | --- | --- | --- | --- |
-| `filter` | Optional | `string` | Specifies the filter attributes. For more information, see the [Filtering accounts](/docs/api/accounts/post-v-2-accounts) section. |
+| `filter` | Optional | `string` | Specifies the filter attributes. For more information, see the [Filtering accounts](//docs/api/accounts/get-v-2-accounts) section. |
 | `page[limit]`  | Optional | `integer` | The number of records per page.                                                                                         |
 | `page[offset]` | Optional | `integer` | The number of records to offset the results by.                                                                         |
 | `sort`   | Optional | `string` | Specifies the attribute to sort by. It can be `created_at`,`id`, or `updated_at`. By default, sorting is ascending. To sort in descending order, prefix the value with a `-` (for example, `-updated_at`). The default value is `-created_at`. See [Sorting](/guides/Getting-Started/sorting). |
