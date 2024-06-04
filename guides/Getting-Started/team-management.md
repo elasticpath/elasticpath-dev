@@ -10,10 +10,11 @@ Commerce supports the following roles and permissions:
 
 - Basic: User does not have any permission assigned.
 - Seller admin: User has permissions to modify every aspect of the store.
-- Marketing/Sales: User has permissions to modify catalog and flows, but cannot change the store settings or customers.
-- Support: User has permission to modify customers and orders only.
-- IT Developer: User can only modify store settings.
+- Marketing/Sales: User has permissions to modify catalog and promotions, but cannot change the store settings or customers.
+- Support: User has permissions to modify orders, accounts and customers only.
+- IT Developer: User has permissions to modify store settings only.
 - Promotions Manager: User has permission to modify promotions only.
+- eCommerce Admin: User has permissions to modify catalog, promotions, orders, accounts and customers, but cannot change the store settings.
 
 The following table shows the access permissions associated with each store role:
 
