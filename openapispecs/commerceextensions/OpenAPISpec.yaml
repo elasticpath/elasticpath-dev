@@ -2,7 +2,7 @@ openapi: "3.1.0"
 info:
   version: 1.0.0
   title: Commerce Extensions Introduction
-  description: | 
+  description: |
     Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options. The combination of Commerce Extensions with Composer, enables you to deploy custom behaviors and integrations to enable capabilities unique to your business without building that functionality from scratch and then hosting yourself.
 
     Commerce Extensions is the next generation of Flows. Flows are not going anywhere, but going forward as we add new features, Commerce Extensions will eventually provide all the capabilities and more that Flows does. We recommend using Custom APIs for any of your new use cases.
@@ -21,7 +21,7 @@ servers:
     description: EU West
 tags:
   - name: Custom APIs
-    description: | 
+    description: |
       
       ## Custom APIs vs Non-Core Flows
 
@@ -240,7 +240,7 @@ paths:
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
           | `name`        | `eq`,`like`                   | `eq(name,"Wishlist")`                         |
-          | `description` | `eq`,`like`                   | `	like(description,*list*)`                   |
+          | `description` | `eq`,`like`                   | `like(description,*list*)`                   |
           | `slug`        | `eq`,`like`,`in`              | `like(slug,*lists)`                           |
           | `api_type`    | `eq`,`like`,`in`              | `like(api_type,wishlist*)`                    |
           | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,7e067539-6f6c-46e1-8c55-940031b36c6a)` |
@@ -452,7 +452,7 @@ paths:
                       "description": "This field stores the total count of items in the wishlist.",
                       "slug": "items_count",
                       "field_type": "integer",
-                      "validation":  { 
+                      "validation": {
                         "integer": {
                           "min_value": 0,
                           "max_value": null
@@ -484,7 +484,7 @@ paths:
                       "description": "This field stores the total weight (in kilograms) of the items in the wishlist.",
                       "slug": "items_weight",
                       "field_type": "float",
-                      "validation":  { 
+                      "validation": {
                         "float": {
                           "min_value": 0.0,
                           "max_value": null
@@ -531,7 +531,7 @@ paths:
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                              "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -552,7 +552,7 @@ paths:
                         "description": "This field stores the total count of items in the wishlist.",
                         "slug": "items_count",
                         "field_type": "integer",
-                        "validation":  { 
+                        "validation": {
                           "integer": {
                             "min_value": 0,
                             "max_value": null
@@ -560,7 +560,7 @@ paths:
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -583,7 +583,7 @@ paths:
                         "field_type": "boolean",
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -604,7 +604,7 @@ paths:
                         "description": "This field stores the total weight (in kilograms) of the items in the wishlist.",
                         "slug": "items_weight",
                         "field_type": "float",
-                        "validation":  { 
+                        "validation": {
                           "float": {
                             "min_value": 0.0,
                             "max_value": null
@@ -612,7 +612,7 @@ paths:
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -663,10 +663,10 @@ paths:
         - `updated_at`
       operationId: GetAllCustomFields
       parameters:
-          - $ref: '#/components/parameters/PageOffset'
-          - $ref: '#/components/parameters/PageLimit'
-          - $ref: '#/components/parameters/Filter'
-          - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
       responses:
         '200':
           description: OK
@@ -710,21 +710,21 @@ paths:
                       ],
                       "meta": {
                         "page": {
-                            "limit": 100,
-                            "offset": 0,
-                            "current": 1,
-                            "total": 1
+                          "limit": 100,
+                          "offset": 0,
+                          "current": 1,
+                          "total": 1
                         },
                         "results": {
-                            "total": 1
+                          "total": 1
                         }
                       },
                       "links": {
-                          "current": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
-                          "first": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
-                          "last": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
-                          "next": null,
-                          "prev": null
+                        "current": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
+                        "first": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
+                        "last": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
+                        "next": null,
+                        "prev": null
                       }
                     }
         default:
@@ -803,7 +803,7 @@ paths:
                       "name": "Items Count",
                       "description": "This field stores the total count of items in the wishlist.",
                       "slug": "items_count",
-                      "validation":  { 
+                      "validation": {
                         "integer": {
                           "min_value": 0,
                           "max_value": null
@@ -862,7 +862,7 @@ paths:
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                              "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -883,7 +883,7 @@ paths:
                         "description": "This field stores the total count of items in the wishlist.",
                         "slug": "items_count",
                         "field_type": "integer",
-                        "validation":  { 
+                        "validation": {
                           "integer": {
                             "min_value": 0,
                             "max_value": null
@@ -891,7 +891,7 @@ paths:
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -914,7 +914,7 @@ paths:
                         "field_type": "boolean",
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
                         "links": {
-                            "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
+                          "self": "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"
                         },
                         "meta": {
                           "timestamps": {
@@ -994,6 +994,11 @@ paths:
       responses:
         '201':
           description: Created
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              schema:
+                type: string
           content:
             application/json:
               schema:
@@ -1026,7 +1031,8 @@ paths:
                           "timestamps": {
                             "updated_at": "2017-01-10T11:41:19.244Z",
                             "created_at": "2017-01-10T11:41:19.244Z"
-                          }, 
+                          },
+                          "resource_version": 0,
                           "data_size": 6
                         }
                       }
@@ -1114,28 +1120,29 @@ paths:
                             "timestamps": {
                               "updated_at": "2017-01-10T11:41:19.244Z",
                               "created_at": "2017-01-10T11:41:19.244Z"
-                            }, 
-                            "data_size": 6
+                            },
+                            "data_size": 6,
+                            "resource_version": 0
                           }
                         }
                       ],
                       "meta": {
                         "page": {
-                            "limit": 100,
-                            "offset": 0,
-                            "current": 1,
-                            "total": 1
+                          "limit": 100,
+                          "offset": 0,
+                          "current": 1,
+                          "total": 1
                         },
                         "results": {
-                            "total": 1
+                          "total": 1
                         }
                       },
                       "links": {
-                          "current": "/extensions/wishlists?page[limit]=100&page[offset]=0",
-                          "first": "/extensions/wishlists?page[limit]=100&page[offset]=0",
-                          "last": "/extensions/wishlists?page[limit]=100&page[offset]=0",
-                          "next": null,
-                          "prev": null
+                        "current": "/extensions/wishlists?page[limit]=100&page[offset]=0",
+                        "first": "/extensions/wishlists?page[limit]=100&page[offset]=0",
+                        "last": "/extensions/wishlists?page[limit]=100&page[offset]=0",
+                        "next": null,
+                        "prev": null
                       }
                     }
         default:
@@ -1159,6 +1166,11 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              schema:
+                type: string
           content:
             application/json:
               schema:
@@ -1190,8 +1202,9 @@ paths:
                           "timestamps": {
                             "updated_at": "2017-01-10T11:41:19.244Z",
                             "created_at": "2017-01-10T11:41:19.244Z"
-                          }, 
-                          "data_size": 6
+                          },
+                          "data_size": 6,
+                          "resource_version": 0
                         }
                       }
                     }
@@ -1239,6 +1252,11 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              schema:
+                type: string
           content:
             application/json:
               schema:
@@ -1270,8 +1288,9 @@ paths:
                           "timestamps": {
                             "updated_at": "2017-01-10T11:41:19.244Z",
                             "created_at": "2017-01-10T11:41:19.244Z"
-                          }, 
-                          "data_size": 6
+                          },
+                          "data_size": 6,
+                          "resource_version": 1
                         }
                       }
                     }
@@ -1371,7 +1390,7 @@ components:
       name: filter
       in: query
       required: false
-      description: Filter attributes. For more information, see the [Filtering](/guides/Getting-Started/filtering) section.
+      description: Filter attributes. For more information, see the [Filtering](/docs/commerce-cloud/api-overview/filtering) section.
       schema:
         type: string
         format: string
@@ -1447,8 +1466,8 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           examples:
             internal-server-error:
-              # language=JSON
               summary: Internal server error
+              # language=JSON
               value: |
                 {
                   "errors": [
@@ -1529,7 +1548,7 @@ components:
         slug:
           type: string
           pattern: "^[a-z0-9_-]{1,63}$"
-          description:  Specifies a unique slug identifier for the Custom API. The API Entries for the created Custom API will be accessible at the location `/v2/extensions/<slug>`.
+          description: Specifies a unique slug identifier for the Custom API. The API Entries for the created Custom API will be accessible at the location `/v2/extensions/<slug>`.
           examples:
             - "wishlists"
         api_type:
@@ -1579,16 +1598,16 @@ components:
         field_type:
           type: string
           enum:
-              - string
-              - integer
-              - boolean
-              - float
+            - string
+            - integer
+            - boolean
+            - float
           description: Specifies the type of the field. This field cannot be updated.
           examples:
-              - "string"
-              - "integer"
-              - "boolean"
-              - "float"
+            - "string"
+            - "integer"
+            - "boolean"
+            - "float"
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLink'
@@ -1609,7 +1628,7 @@ components:
                   properties:
                     min_length:
                       type: [integer, 'null']
-                      description: Specifies the minimum number of characters that can be stored. 
+                      description: Specifies the minimum number of characters that can be stored.
                       minimum: 0
                       maximum: 65535
                       example: 1
@@ -1620,7 +1639,7 @@ components:
                       maximum: 65535
                     regexp:
                       type: [integer, 'null']
-                      description: | 
+                      description: |
                         [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored.
                       minLength: 0
                       maxLength: 1024
@@ -1738,7 +1757,7 @@ components:
           type: string
           description: Optional additional detail about the error.
           examples:
-           - "The field 'name' is required"
+            - "The field 'name' is required"
     SelfLink:
       type: object
       properties:
@@ -1809,12 +1828,12 @@ components:
         updated_at:
           type: string
           example: 2017-01-10T11:41:19.244Z
-          description: 	Specifies the date the entity is created.
+          description: Specifies the date the entity is created.
           readOnly: true
         created_at:
           type: string
           example: 2017-01-10T11:41:19.244Z
-          description: 	Specifies the date the entity is last updated.
+          description: Specifies the date the entity is last updated.
           readOnly: true
     Meta:
       required:

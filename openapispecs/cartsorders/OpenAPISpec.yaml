@@ -10,7 +10,7 @@ info:
 
     After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
 
-    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/commerce-cloud/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
+    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/carts-orders/create-multi-cart#post-create-a-preview-cart).
 
     The following diagram shows a typical cart workflow:
 
@@ -47,7 +47,7 @@ paths:
 
         :::note
 
-        Requires an `implicit` token with a [customer token](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens).
+        Requires an `implicit` token with a [customer token](/docs/customer-management/customer-management-api/customer-tokens).
 
         :::
       operationId: getCustomerCarts
@@ -178,7 +178,7 @@ paths:
 
         :::note
 
-        The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.
+        The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
 
         :::
 
@@ -504,7 +504,7 @@ paths:
         :::note
 
         - Any requests to add a product to cart returns the collection of cart items.
-        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
         - The cart currency is set when the first item is added to the cart.
         - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
         - A cart can contain a maximum of 100 unique items. Items include products and custom items.
@@ -516,7 +516,7 @@ paths:
 
         You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
 
-        For [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview), once you have created a [cart shipping group](/docs/commerce-cloud/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
+        For [Shipping Groups](/docs/ship-groups/shipping-groups), once you have created a [cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
 
         #### Personalized Products
 
@@ -546,9 +546,9 @@ paths:
         :::note
 
         - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
-        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
         - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
-        - Custom Cart Items are available through [implicit authentication](/docs/commerce-cloud/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
+        - Custom Cart Items are available through [implicit authentication](/docs/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
 
         :::
 
@@ -940,7 +940,7 @@ paths:
       parameters:
         - name: cartID
           in: path
-          description: The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters).
+          description: The ID for the cart created by the customer. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/safe-characters).
           required: true
           style: simple
           schema:
@@ -1154,6 +1154,62 @@ paths:
         A cart item can only have a maximum of five tax items.
 
         :::
+
+        ### Errors
+
+        `422 Unprocessable Entity`
+
+        In this example, when `options.add_all_or_nothing` is set to `true` and if one of cart items is not found or or has reached its maximum tax item limit, the following error response is returned:
+
+        ```json
+        {
+                    "status": 422,
+                    "title": "Add all or nothing.",
+                    "detail": "Add all or nothing set to (true). Could not bulk add tax items to cart."
+                }
+
+        ```
+
+        In this example, if you add more than five tax items to the same cart item, the following error response is returned:
+
+        ```json
+        {
+                    "status": 422,
+                    "title": "Tax item not added to cart item.",
+                    "detail": "Cannot exceed tax item limit of (5) on cart item.",
+                    "meta": {
+                        "id": "f88e6370-cb35-40b2-a998-c759f31dec0a"
+                    }
+                }
+        ```
+
+        `404`
+
+        In this example, if there is a mismatch between `cart_item`/`custom_item` and the `relationships.item.data.type` specified in the bulk add tax item, the following error response is returned:
+
+        ```json
+        {
+            "data": [],
+            "errors": [
+                {
+                    "status": 404,
+                    "title": "Tax item not added to cart item.",
+                    "detail": "Mismatch between bulk tax item type(cart_item) and cart item type(custom_item).",
+                    "meta": {
+                        "id": "56aab5d1-1dd4-45ed-88ed-4d0cc396b62d"
+                    }
+                },
+                {
+                    "status": 404,
+                    "title": "Tax item not added to cart item.",
+                    "detail": "Mismatch between bulk tax item type(cart_item) and cart item type(custom_item).",
+                    "meta": {
+                        "id": "56aab5d1-1dd4-45ed-88ed-4d0cc396b62d"
+                    }
+                }
+            ]
+        }
+        ```
       operationId: bulkAddTaxItemsToCart
       parameters:
         - name: cartID
@@ -1739,7 +1795,7 @@ paths:
 
         :::note
 
-        - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens).
+        - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-management-api/customer-tokens).
         - Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/docs/api/accounts/post-v-2-account-members-tokens).
         - You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
 
@@ -1865,7 +1921,7 @@ paths:
         :::note
 
         - This request is only accessible to client credentials token users with Seller Admin role.
-        - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/commerce-cloud/authentication/Tokens/permissions).
+        - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/authentication/Tokens/permissions).
 
         :::
       operationId: updateAnOrder
@@ -2398,7 +2454,7 @@ components:
         discount_settings:
           $ref: '#/components/schemas/DiscountSettings'
         name:
-          description: The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters) section.
+          description: The cart name provided by the shopper. A cart name must contain 1 to 255 characters. You cannot use whitespace characters, but special characters are permitted. For more information, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
           type: string
           examples:
             - my cart name
@@ -4317,7 +4373,7 @@ components:
 tags:
   - name: Cart Management
     description: |
-      A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](/docs/api/carts/checkout-with-account-management-authentication-token) to convert the cart to an order.
+      A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](/docs/api/carts/checkout) to convert the cart to an order.
 
       :::note
 
@@ -4334,7 +4390,7 @@ tags:
 
       ### With a `customer` token
 
-      These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Customer Token](/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens) documentation.
+      These endpoints are for users who authenticated implicitly and require a customer token in the header to access the customer cart associations APIs. For more information, see the [Customer Token](/docs/customer-management/customer-management-api/customer-tokens) documentation.
 
       #### Cart creation
 
@@ -4342,13 +4398,13 @@ tags:
 
       :::note
 
-      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/docs/commerce-cloud/api-overview/safe-characters).
+      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/guides/Getting-Started/safe-characters).
 
       :::
 
       ### Without a `customer` token
 
-      These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/commerce-cloud/authentication/security) documentation.
+      These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
 
       This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
 
@@ -4439,7 +4495,7 @@ tags:
       - You need to configure and enable a payment gateway before you can accept payments for orders.
       - Configure your store to use [Manual Gateway](/docs/api/payments/update-manual-gateway) to process payments if the order total is zero or the payment is through non-supported payment providers.
       - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
-      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/docs/commerce-cloud/api-overview/api-contract#parallel-calls-to-api-objects).
+      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](https://beta.elasticpath.dev/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
 
       :::
 
@@ -4447,13 +4503,13 @@ tags:
 
       Depending on the chosen gateway, you may or may not have access to capture funds immediately or authorize for later payment. For more information, see [Transactions](/docs/api/carts/transactions).
 
-      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments) section.
+      To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateways-introduction#split-payments) section.
 
       #### Purchase
 
       The simplest method is purchase. The gateway attempts to charge the customer immediately, and the result of the attempt is returned.
 
-      You can partially pay funds using purchase method. The gateway attempts to charge the customer immediately, and the payment status for an order shows partially_paid.
+      You can partially pay funds using purchase method. The gateway attempts to charge the customer immediately, and the payment status for an order shows `partially_paid`.
 
       When you Get an order, you can see the following fields in the meta object:
 
@@ -4467,7 +4523,7 @@ tags:
 
       You can partially pay for an order using `authorize` payment method so that the order is `partially_authorized`. The transaction must be complete for the order status to be `partially_authorized`.
 
-      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments).
+      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateways-introduction#split-payments).
 
       #### Capture
 
@@ -4522,5 +4578,9 @@ tags:
 
         - Simple calculation method: Taxes are calculated at the unit level and are rounded to the nearest penny for the unit.
         - Line calculation method: Default. Taxes are calculated at the line level and are rounded to the nearest penny for the line.
-          For more information about calculation methods, see [Calculate cart and order totals](https://beta.elasticpath.dev/guides/Carts/calculate-totals).
+          For more information about calculation methods, see [Calculate cart and order totals](/guides/How-To/Carts/calculate-totals).
+
+      :::note
+      Tax items can be added and removed using [client credentials tokens](/docs/authentication/Tokens/client-credential-token). Only administrators with `client-credentials` are able to manage tax items.
+      :::
 

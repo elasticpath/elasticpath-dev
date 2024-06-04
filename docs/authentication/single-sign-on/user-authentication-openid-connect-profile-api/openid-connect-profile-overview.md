@@ -13,7 +13,7 @@ sidebar_position: 10
 | `id`              | `string` | The unique identifier for the `user-authentication-oidc-profile-info` object. |
 | `subject`         | `string` | The identifier within the issuer for the `user-authentication-info` object. For more information, see the [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) section. |
 | `issuer`          | `string` | The identifier for the issuer of the ID Token. For more information, see the [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) section. |
-| `meta`            | [`object`](#the-meta-object) | Additional information for this `user-authentication-oidc-profile-info` object. For more information, see **The meta object** section. |
+| `meta`            | `object` | Additional information for this `user-authentication-oidc-profile-info` object. For more information, see [The meta object](#the-meta-object) section. |
 | `type`            | `string` | The type of the object returned. |
 | `oidc_profile_id` | `string` | The identifier for the OpenID Connect Profile that the `user-authentication-info` object is linked to. |
 
