@@ -14,7 +14,7 @@ Commerce supports the following roles and permissions:
 - Support: User has permissions to modify orders, accounts and customers only.
 - IT Developer: User has permissions to modify store settings only.
 - Promotions Manager: User has permission to modify promotions only.
-- eCommerce Admin: User has permissions to modify catalog, promotions, orders, accounts and customers, but cannot change the store settings.
+- eCommerce Admin: User has permissions to modify catalog, promotions, orders, accounts, and customers, but cannot change the store settings.
 
 The following table shows the access permissions associated with each store role:
 
