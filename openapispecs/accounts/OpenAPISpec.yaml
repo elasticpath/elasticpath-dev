@@ -1316,6 +1316,11 @@ components:
           enum:
             - disabled
             - update_only
+        account_management_authentication_token_timeout_secs:
+          description: The expiry time for Account Management Authentication Token in seconds. If you want to implement idle timout for you application, see [Implementing Idle Timeout](/guides/How-To/Accounts/implement-idle-timeout)
+          type: integer
+          default: 86400
+          example: 86400
     AccountAuthenticationSettingsResponse:
       allOf:
         - $ref: '#/components/schemas/AccountAuthenticationSettings'
@@ -1495,7 +1500,7 @@ components:
     AccountManagementAuthenticationToken:
       properties:
         type:
-          description: 	Specifices the type of the object. You must use `account_management_authentication_token`.
+          description: Specifices the type of the object. You must use `account_management_authentication_token`.
           type: string
           default: account_management_authentication_token
     OpenIDConnectRequest:
