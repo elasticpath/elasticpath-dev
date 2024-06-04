@@ -45,5 +45,5 @@ For a production or enterprise Commerce store, please ensure that more than one 
 
 ## Related Resources
 
-- [Permissions](/docs/authentication/Tokens/permissions)
+- [Permissions](/docs/authentication/Tokens/permissions#breakdown-of-access-for-sellers)
 - [Organization Roles](/docs/organizations/organization_authentication)
