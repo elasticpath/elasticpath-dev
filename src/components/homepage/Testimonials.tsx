@@ -142,10 +142,10 @@ export default function Example() {
     <div className="relative pt-24 sm:pt-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div>
-          <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-left text-white">
+          <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-left dark:text-white dark:drop-shadow-md">
             What our customers <br /> are saying...
           </h2>
-          <button className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 text-xs font-semibold">
+          <button className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 mt-8 font-semibold">
             View case studies
           </button>
         </div>
@@ -164,7 +164,7 @@ export default function Example() {
                         columnIdx === columnGroup.length - 1)
                       ? "xl:row-span-2"
                       : "xl:row-start-1",
-                    "space-y-8 flex flex-col justify-end relative overflow-hidden",
+                    "space-y-8 flex flex-col justify-end relative",
                     `${columnOffset[columnIdx]}`,
                   )}
                 >

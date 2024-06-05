@@ -11,24 +11,26 @@ export default function Composer() {
         <p className="font-mono text-sm m-0 mb-0.5 p-0 text-left">
           ELASTIC PATH COMPOSER
         </p>
-        <h2 className="mb-4 text-5xl text-white font-semibold tracking-tight leading-[3.6rem]">
-          Quickly connect <br /> commerce data to every <br /> tool in your arsenal
+        <h2 className="mb-4 text-5xl dark:text-white dark:drop-shadow-md font-semibold tracking-tight leading-[3.6rem]">
+          Quickly connect <br /> commerce data to every <br /> tool in your
+          arsenal
         </h2>
-        <p className="text-sm m-0 p-0 text-left leading-[1.7rem]">
+        <p className="text-base m-0 p-0 text-left leading-[1.7rem]">
           Composer comes preconfigured with dozens of instant-on integrations.
           <br />
-          Need more? Quickly customize how data flows between tools in your stack
+          Need more? Quickly customize how data flows between tools in your
+          stack
         </p>
         <div className="flex text-black gap-8 mt-8">
           <a
             href=""
-            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-white hover:text-white"
+            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
           >
             30+ Instant-on integrations
           </a>
           <a
             href=""
-            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-white hover:text-white"
+            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
           >
             Or build your own
           </a>

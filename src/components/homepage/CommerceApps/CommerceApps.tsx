@@ -1,4 +1,5 @@
 import React from "react";
+import Tilt from "react-parallax-tilt";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/Tabs";
 import {
   ComposerIcon,
@@ -14,7 +15,7 @@ const Trigger = ({ name }: { name: string }) => {
   return (
     <TabsTrigger
       value={name}
-      className="data-[state='active']:bg-[#1FEC90] data-[state='active']:shadow-[0px_0px_28px_0px_#1FEC90] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-[1.375rem] leading-[2.2rem] px-6"
+      className="data-[state='active']:bg-[#1FEC90] data-[state='active']:shadow-lg dark:data-[state='active']:shadow-[0px_0px_28px_0px_#1FEC90] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-[1.375rem] leading-[2.2rem] px-6"
     >
       {name}
     </TabsTrigger>
@@ -37,45 +38,46 @@ function Tab({
   linkItems: string[];
 }) {
   return (
-    <TabsContent className="relative" value={value}>
-      <img
-        alt="Elastic Path screenshot"
-        src={img}
-        className="rounded-2xl"
-        rel="preload"
-      />
-      <div className="bg-white p-8 absolute -right-16 bottom-8 w-[32rem] rounded-lg shadow-2xl ring-1 ring-gray-200">
-        <div className="text-black flex items-center text-left">
-          {icon}
-          <div className="flex flex-col">
-            <p className="font-mono p-0 m-0 text-sm">ELASTIC PATH</p>
-            <h3 className="p-0 m-0 text-[2rem]">{value}</h3>
+    <Tilt tiltMaxAngleX={0.5} tiltMaxAngleY={0.5} transitionSpeed={1000}>
+      <TabsContent className="relative" value={value}>
+        <img
+          alt="Elastic Path screenshot"
+          src={img}
+          className="rounded-2xl shadow-2xl"
+        />
+        <div className="bg-white p-8 absolute -right-16 bottom-8 w-[32rem] rounded-lg shadow-2xl ring-1 ring-gray-200">
+          <div className="text-black flex items-center text-left">
+            {icon}
+            <div className="flex flex-col">
+              <p className="font-mono p-0 m-0 text-sm">ELASTIC PATH</p>
+              <h3 className="p-0 m-0 text-[2rem]">{value}</h3>
+            </div>
+          </div>
+          <p className="text-left text-gray-500 text-base my-4 leading-loose">
+            {tagline}
+          </p>
+          <ul className="flex flex-col text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
+            {listItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <div className="flex text-black justify-between mt-8">
+            <a
+              href={listItems[0]}
+              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
+            >
+              Watch Demo
+            </a>
+            <a
+              href={linkItems[1]}
+              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
+            >
+              View Documentation
+            </a>
           </div>
         </div>
-        <p className="text-left text-gray-500 text-base my-4 leading-loose">
-          {tagline}
-        </p>
-        <ul className="flex flex-col text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
-          {listItems.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-        <div className="flex text-black justify-between mt-8">
-          <a
-            href={listItems[0]}
-            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
-          >
-            Watch Demo
-          </a>
-          <a
-            href={linkItems[1]}
-            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
-          >
-            View Documentation
-          </a>
-        </div>
-      </div>
-    </TabsContent>
+      </TabsContent>
+    </Tilt>
   );
 }
 
@@ -119,7 +121,7 @@ export default function CommerceApps() {
       />
 
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h2 className="mb-14 text-[4rem] font-semibold tracking-tight drop-shadow-md">
+        <h2 className="mb-14 text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
           Apps for commerce
         </h2>
         <Tabs defaultValue="Products">

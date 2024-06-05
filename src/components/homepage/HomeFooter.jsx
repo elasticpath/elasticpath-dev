@@ -95,14 +95,14 @@ function Status({ className }) {
     <Link
       href="https://status.elasticpath.com"
       className={clsx(
-        "flex items-center gap-2 rounded-lg border border-transparent text-white transition-colors font-normal hover:decoration-[#1FEC90]",
+        "flex items-center gap-2 rounded-lg border border-transparent dark:text-white text-black transition-colors font-normal hover:decoration-[#1FEC90]",
         className,
       )}
       target="_blank"
     >
       <div
         className={clsx(
-          "h-4 w-4 rounded-full dark:!bg-[#1FEC90] bg-black dark:shadow-[0px_0px_28px_0px_#1FEC90]",
+          "h-4 w-4 rounded-full !bg-[#1FEC90] dark:shadow-[0px_0px_28px_0px_#1FEC90]",
           status.indicator === "none" ? "bg-[#2DB002]" : "bg-yellow-500",
         )}
       ></div>
@@ -114,12 +114,12 @@ function Status({ className }) {
 function Links({ name, links }) {
   return (
     <div>
-      <h3 className="text-base font-medium text-white/80">{name}</h3>
+      <h3 className="text-base font-medium dark:text-white/80">{name}</h3>
       <div className="flex flex-col gap-3">
         {links.map(({ name, href }) => (
           <Link
             href={href}
-            className="text-base text-gray-100 hover:text-primary hover:no-underline"
+            className="text-base dark:text-gray-100 text-black hover:text-primary hover:no-underline"
           >
             {name}
           </Link>
@@ -160,7 +160,7 @@ export default function Footer() {
           </BrowserOnly>
           <Safety className="flex w-full max-w-full sm:hidden" />
 
-          <div className="flex flex-wrap gap-2 text-sm text-white">
+          <div className="flex flex-wrap gap-2 text-sm dark:text-white">
             <Link
               href="https://www.elasticpath.com/company/privacy-policy"
               className="text-inherit hover:text-black hover:underline"
