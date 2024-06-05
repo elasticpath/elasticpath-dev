@@ -54,9 +54,9 @@ curl -X POST https://useast.api.elasticpath.com/v2/carts/:reference/items \
 
 Create a tax item. To apply a tax item to a cart item, add a tax item to the cart.
 
-{% callout %}
+:::note
 The ability to create tax items is not available through Commerce Manager.
-{% /callout %}
+:::
 
 ```sh
 curl -X POST https://useast.api.elasticpath.com/v2/carts/:cartID/items/:itemID/taxes \

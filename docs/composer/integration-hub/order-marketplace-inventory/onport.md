@@ -35,9 +35,9 @@ As part of the Onport Integration, changes in product data in Onport automatical
 
     The example below shows how this should look in the **Product Template**.
 
-```json
-"attributes":[[
-  {
+    ```json
+    "attributes":[[
+    {
     "templateSlug":"products(extensions)",
     "templateAttributes": [
       [
@@ -60,11 +60,11 @@ As part of the Onport Integration, changes in product data in Onport automatical
         $v.value
       })
     ]
-  }
-]] ~> $filter(function($v, $i, $a) {
-  $count($v.templateAttributes) > 0
-})
-```
+    }
+    ]] ~> $filter(function($v, $i, $a) {
+    $count($v.templateAttributes) > 0
+    })
+    ```
 
 ### Pre and Post Processors - Product
 There is pre and post processor configuration for products. This is where you can configure external endpoints to do any pre or post processing. For example, if you have an external system which can manipulate images or update descriptions using Generative AI then add the endpoint as part post processor.
@@ -84,10 +84,9 @@ As part of the Onport Integration, changes in orders in Commerce automatically u
 1. You must exclude the shipping sku from the line item so that it does not appear as part of the product in Onport.
 1. When configuring the Onport Integration in **Integrations Hub**, from **Template** page, click **Edit** underneath **Product Template**. The example below shows how this should look in the **Product Template**.
 
-
-```json
-"lineItems": [
-  payload.included.items[sku!='STANDARD-DELIVERY' and meta.display_price.with_tax.unit.amount >= 0].{
+    ```json
+    "lineItems": [
+    payload.included.items[sku!='STANDARD-DELIVERY' and meta.display_price.with_tax.unit.amount >= 0].{
     "externalId": $$.payload.data.id & "_" & id,
     "name": name,
     "quantity": quantity,
@@ -97,29 +96,29 @@ As part of the Onport Integration, changes in orders in Commerce automatically u
         "sku": sku,
         "externalId": sku
     }
-  }
-]
-```
+    }
+    ]
+    ```
 
-:::note
-You must not change the `lineItems.*.externalId` value. This is because it is in the format of the Elastic Path Order ID concatenated with the Elastic Path Order Item ID separated with a hyphen. This value is required during the fulfillment and cancellation process.
-:::
+    :::note
+    You must not change the `lineItems.*.externalId` value. This is because it is in the format of the Elastic Path Order ID concatenated with the Elastic Path Order Item ID separated with a hyphen. This value is required during the fulfillment and cancellation process.
+    ::: 
 
 1. From **Template** page, click **Edit** underneath **Order Template**. The example below shows how this should look in the **Order Template**.
 
-```json
-"options": {
-  "findOrCreateChannelVariant": true
-},
-"shipping": [
-  payload.included.items[sku='STANDARD-DELIVERY' and meta.display_price.with_tax.unit.amount >= 0].{
+    ```json
+    "options": {
+    "findOrCreateChannelVariant": true
+    },
+    "shipping": [
+    payload.included.items[sku='STANDARD-DELIVERY' and meta.display_price.with_tax.unit.amount >= 0].{
     "code": "shipping-fee",
     "name": "Shipping Fee",
     "serviceLevel": "shpping-service-level",
     "price": meta.display_price.with_tax.unit.amount / 100
-  }
-]
-```
+    }
+    ]
+    ```
 
 ### Pre and Post Processors - Orders
 There are pre and post processor configuration for orders. This is where you can configure external endpoints to do any pre or post processing. For example, if you have an external system which can send email then add the endpoint as part post processor.
@@ -168,7 +167,7 @@ A Webhook in Onport needs to be set up manually.
 6. In **Resource**, select **Purchases**. 
 7. In **Instance Method**, select **Cancel**. 
 8. Select **Add Webhook**.
-{% /callout  %}
+:::
 
 The integration also creates custom flow with slug as `cancelled_items` and following fields are created in this flow:
 
@@ -272,13 +271,13 @@ You are ready to configure the Onport integration in **Integrations Hub**.
     - **Client-Secret** - Your Commerce Client Secret.
     - **Token URL** - Your Commerce API Token URL.
 
-    1. Click **Connect** to make sure that the authentication is completed successfully.
-    1. Complete the **Onport Connection** credentials.
+1. Click **Connect** to make sure that the authentication is completed successfully.
+1. Complete the **Onport Connection** credentials.
 
-        - **API Base URL**  - Your Onport API Base URL. Default value is `https://api.jetti.io/api`.
-        - **API Key** - Your Onport API Key.
+    - **API Base URL**  - Your Onport API Base URL. Default value is `https://api.jetti.io/api`.
+    - **API Key** - Your Onport API Key.
 
-    1. In **Onport Channel ID**, provide your Onport Channel ID. See [Create an Onport Channel ID](#create-an-onport-channel-id).
+1. In **Onport Channel ID**, provide your Onport Channel ID. See [Create an Onport Channel ID](#create-an-onport-channel-id).
 1. Click **Next**. The **Webhook Setup** page is displayed. From this page, decide which webhooks you want to set-up, depending on your requirements. The Onport Integration automatically creates the webhooks, once you have finished configuring the integration.
 
     :::caution
@@ -302,18 +301,18 @@ You are ready to configure the Onport integration in **Integrations Hub**.
     | **Enable Inventory Webhook** | Optional | Turn on the **Enable Inventory Webhook** toggle if you want inventory changes in Onport to increment or decrement inventory in Commerce.                  |
     | **Enable Price Webhook** | Optional | Turn on the **Enable Price Webhook** toggle if you want price changes in Onport to change price information in Commerce.                                  | 
 
-    1. *Applies to **Enable Order Webhook** only*. You must specify the order events that you want to generate webhook events for. 
-        1. In **Order Events**, select the events from the **Value** list. 
-        1. Select **+Add value** to add more events. You can select one or all of the following:
+1. *Applies to **Enable Order Webhook** only*. You must specify the order events that you want to generate webhook events for. 
+    1. In **Order Events**, select the events from the **Value** list. 
+    1. Select **+Add value** to add more events. You can select one or all of the following:
 
-           - `order.created`
-           - `order.updated`
-           - `order.fulfilled`
-           - `order.paid`
-           - `order.authorized`
+       - `order.created`
+       - `order.updated`
+       - `order.fulfilled`
+       - `order.paid`
+       - `order.authorized`
 
-    1. Add an **Onport Custom Channel ID**. See [Retrieve the Onport Custom Channel ID](#retrieve-the-onport-custom-channel-id)
-    1. Add a secure API key as part of **Elastic Path Webhook API Key**. This is the `secret_key` used when setting up the order webhook in Elastic Path.
+   1. Add an **Onport Custom Channel ID**. See [Retrieve the Onport Custom Channel ID](#retrieve-the-onport-custom-channel-id)
+   1. Add a secure API key as part of **Elastic Path Webhook API Key**. This is the `secret_key` used when setting up the order webhook in Elastic Path.
 
 1. Click **Next**. The **Templates** configuration page is displayed. 
 1. Click **Edit** for the request template you want to edit. See [Synchonizing Onport Product Data With Commerce Product Data](#synchonizing-onport-product-data-with-commerce-product-data), [Synchronizing Commerce Order Data With Onport Order Data](#synchronizing-commerce-order-data-with-onport-order-data) and [Synchronizing Onport Price Data With Commerce](#synchronizing-onport-price-data-with-commerce).

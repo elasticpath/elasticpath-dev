@@ -24,7 +24,8 @@ Our integration will take advantage of the loop component to process files one b
 
 If you do not have a Google Cloud Platform (GCP) account, you can use Dropbox, Box, Amazon S3, Azure Blob Storage, etc., instead.
 They all have similar **list files**, **download file** and **move file** actions.
-{% /callout  %}
+
+:::
 
 ## List files
 

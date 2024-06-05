@@ -64,9 +64,9 @@ curl -X PUT https://useast.api.elasticpath.com/v2/gateways/manual \
 
 In this section, you will check out the cart and pay for the order.
 
-{% callout type="note"  %}
+:::note
 Your stock will be managed for you when you authorize or capture the payment, but if you are managing your own stock you will need to do that when you see the appropriate event.
-{% /callout %}
+:::
 
 #### Cart checkout
 

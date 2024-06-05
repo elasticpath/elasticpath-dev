@@ -148,9 +148,9 @@ Give your forked integration a new name and description and then click **ADD**.
 
 ## Deleting an integration
 
-{% callout  type="warning"%}
+:::caution
 Use caution when deleting an integration. Deletion of an integration also deletes all deployed instances of that integration.
-{% /callout  %}
+:::
 
 From the integration designer, click the **Settings** icon on the bottom left of the page.
 Click the **Delete Integration** button on the bottom of the page and confirm by clicking **REMOVE INTEGRATION**.
@@ -192,7 +192,7 @@ You can view the YAML of a previous version of the integration by first opening 
 
 If you want to spot differences between an older version of your integration and the current version, you can compare the YAML definition of the older version with the YAML definition of the current version using your favorite diff tool (VSCode has a great built-in [diff tool](https://vscode.one/diff-vscode/)).
 
-{% /callout  %}
+:::
 
 ### Exporting an integration
 

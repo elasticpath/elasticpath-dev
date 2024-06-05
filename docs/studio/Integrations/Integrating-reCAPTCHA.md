@@ -25,7 +25,7 @@ test that a normal bot would have a hard time completing.
    into [Google's reCAPTCHA signup flow](https://www.google.com/recaptcha/admin/create) and input the information that
    they require.
 
-   {% expandable-info title="Important"%}
+   :::note
    Studio offers support for two versions; **V2** and **V3**. And while there
    are [many differences between them](https://developers.google.com/recaptcha/docs/versions), the main difference is
    that **V3** doesn't require the standard click on "I'm not a robot" that reCAPTCHA has become so well known for.
