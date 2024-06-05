@@ -1,7 +1,7 @@
 ---
 title: Managing Currencies
 nav_label: Managing Currencies
-nav_position : 30
+sidebar_position : 30
 ---
 
 In your organizations, you can manage currencies from **SYSTEM > Organization Settings > Currencies** tab. 
