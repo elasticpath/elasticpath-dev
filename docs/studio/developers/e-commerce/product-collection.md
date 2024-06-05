@@ -4,9 +4,11 @@ nav_label: Product Collection
 sidebar_position: 10
 ---
 
-{% hint style="info" %}
+:::note
+
 This generator is only available on **eCommerce** plans.
-{% endhint %}
+
+:::
 
 The Product Collection generator allows you to access elements of your product categories/hierarchies in your storefront. The Product Collection generator supports pagination.
 
@@ -33,27 +35,27 @@ The collection generator supports pagination. If your product collection contain
 
 - dots
 
-  ![dots pagination indicator](/assets/cx-studio/pagination-dots.png)
+  ![dots pagination indicator](/assets/studio/pagination-dots.png)
 
 - arrows
 
-  ![arrows pagination indicator](/assets/cx-studio/pagination-arrows.png)
+  ![arrows pagination indicator](/assets/studio/pagination-arrows.png)
 
 - page numbers
 
-  ![numbers pagination indicator](/assets/cx-studio/pagination-numbers.png)
+  ![numbers pagination indicator](/assets/studio/pagination-numbers.png)
 
 The following table describe the pagination attributes.
 
-| Attribute                     | Type    | Description                                                                                   |
-|-------------------------------|---------|-----------------------------------------------------------------------------------------------|
-| `enablePagination`            | boolean | Set to `true` to enable pagination.                                                           |
-| `defaultPaginationStyle`      | enum    | Depending on the indicator type you want, you can select either `dots`, `arrows` or `numbers`. |
-| `defaultPaginationTransition` | enum    | Depending on the transition type you want, you can select either `slide`, `appear`, or `none`. |
-| `defaultItemsPerPage`         | integer | Represents the default number of products per page for a category attached to a section.      |
-| `maxItems`                    | integer | Represents the maximum number of products per page that a user cannot go above.               |
-| `minItems`                    | integer | Represents the minimum number of products per page that a user cannot go below.               |
-| `defaultItems`                | integer | Represents the upper limit of the total number of products in all pages.                      | 
+| Attribute                     | Type    | Required | Description                                                                                    |
+|-------------------------------|---------|---------|------------------------------------------------------------------------------------------------|
+| `enablePagination`            | boolean | Required | Set to `true` to enable pagination.                                                            |
+| `defaultPaginationStyle`      | enum    | Required | Depending on the indicator type you want, you can select either `dots`, `arrows` or `numbers`. |
+| `defaultPaginationTransition` | enum    | Required        | Depending on the transition type you want, you can select either `slide`, `appear`, or `none`. |
+| `defaultItemsPerPage`         | integer | Required        | Represents the default number of products per page for a category attached to a section.       |
+| `maxItems`                    | integer | Required        | Represents the maximum number of products per page that a user cannot go above.                |
+| `minItems`                    | integer | Required        | Represents the minimum number of products per page that a user cannot go below.                |
+| `defaultItems`                | integer | Required        | Represents the upper limit of the total number of products in all pages.                       | 
 
 An example is shown below.
 
@@ -85,3 +87,7 @@ An example is shown below.
  )}
 />
 ```
+
+Once you have enabled pagination for your product collection component, you can configure how pagination displays when you add a collection component to page. See [Configuring Pagination for Product Collections](/docs/studio/developers/tags/collection#pagination).
+
+You can configure your pagi

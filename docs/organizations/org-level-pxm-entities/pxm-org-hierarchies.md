@@ -34,17 +34,14 @@ During the duplication process, the product associations are maintained in the d
 1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token to your store. 
 2. [Duplicate an organization hierarchy](/docs/pxm/hierarchies/hierarchies-api/duplicate-a-hierarchy).
 
-   {% list type="checkmark" %}
     * (Default) Maintain the organization products associated with the duplicated hierarchy.
     * Choose not to maintain the products associated with the duplicated hierarchy and create new product associations with the products in your store.
         * [Assign new products to multiple nodes](/docs/pxm/products/ep-pxm-products-api/assign-nodes).
         * [Dissociate products from multiple nodes](/docs/pxm/products/ep-pxm-products-api/dissociate-multiple-products).
-          {% /list %}
       
         :::caution
         You must ensure that hierarchies in organizations and stores have unique SKUs. If a store hierarchy is created with a SKU that is already in use by an organization hierarchy, an error message is displayed. 
         :::
-    {% /list %} 
 
 3. Organize your store products the duplicated [hierarchy](/docs/pxm/hierarchies/node-relationships-api/create-node-product-relationships).
 4. Your duplicated hierarchy now belongs to the store.

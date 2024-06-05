@@ -10,19 +10,21 @@ You can choose from the following indicator types:
 
 - dots
 
-  ![dots pagination indicator](/assets/cx-studio/pagination-dots.png)
+  ![dots pagination indicator](/assets/studio/pagination-dots.png)
 
 - arrows
 
-  ![arrows pagination indicator](/assets/cx-studio/pagination-arrows.png)
+  ![arrows pagination indicator](/assets/studio/pagination-arrows.png)
 
 - page numbers
 
-  ![numbers pagination indicator](/assets/cx-studio/pagination-numbers.png)
+  ![numbers pagination indicator](/assets/studio/pagination-numbers.png)
 
 ## Prerequisites
 
-You must enable pagination for the product collection component. See [Product Collection](/docs/cx-studio/developers/tags/collection#pagination).
+You must enable pagination for the product collection component. See [Product Collection](/docs/studio/developers/e-commerce/product-collection#pagination).
+
+You can configure the style of your pagination indicator types in [Style Guide](/docs/studio/design/Design-&-Styles/Using-your-Style-Guide). 
 
 ## Configuring Pagination for Product Collection Component
 
@@ -31,11 +33,12 @@ The following steps describe how to configure pagination for the **Product Colle
 1. Once you have added a **Product Collection** component to a page, select the component to display the pagination menu.
 2. Select **Edit products...** to display the product drawer.
 3. Select the products you want to display.
-4. In **Limit**, specify the upper limit for the total number of products on the page.
+4. In **Limit**, specify an upper limit for the total number of products on the page.
 
-   ![edit products](/assets/cx-studio/pagination_edit_product.png)
+   ![edit products](/assets/studio/pagination_edit_product.png)
 
-5. Complete the pagination settings as follows:
+5. Close the product drawer.
+6. Complete the pagination settings as follows:
 
    | Option         | Description                                                                  |
    |----------------|------------------------------------------------------------------------------|
