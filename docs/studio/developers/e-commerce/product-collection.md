@@ -89,5 +89,3 @@ An example is shown below.
 ```
 
 Once you have enabled pagination for your product collection component, you can configure how pagination displays when you add a collection component to page. See [Configuring Pagination for Product Collections](/docs/studio/developers/tags/collection#pagination).
-
-You can configure your pagi
