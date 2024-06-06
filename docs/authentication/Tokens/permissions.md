@@ -452,7 +452,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                            | ⛔ | ⛔ |
 | `/settings/account-authentication-settings`  | ✅ | ⛔️ |
 | `/settings/customer-authentication-settings` | ✅ | ⛔️ |
-| `/settings/exensions`                  | ⛔️ | ⛔️ |
+| `/settings/extensions`                  | ⛔️ | ⛔️ |
 | `/subscriptions     `                  | ⛔️ | ⛔️ |
 | `/user-roles`                          | ✅ | ⛔ |
 | `/variations`                          | ✅ | ✅ |
