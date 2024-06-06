@@ -58,6 +58,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
  | `/settings`                                  | ⛔️ | ⛔️ |
  | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
  | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
+ | `/settings/extensions`                       | ⛔️ | ⛔️ |
  | `/variations`                                | ⛔️ | ⛔️ |
 
 ### Implicit + Customer Token
@@ -97,6 +98,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
  | `/settings` | ⛔️ | ⛔️ |
  | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
  | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
+ | `/settings/extensions`                       | ⛔️ | ⛔️ |
  | `/variations` | ⛔️ | ⛔️ |
 
 ### Implicit + Account Management Authentication Token
@@ -136,6 +138,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings` | ⛔️ | ⛔️ |
 | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
 | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
+| `/settings/extensions`                       | ⛔️ | ⛔️ |
 | `/variations` | ⛔️ | ⛔️ |
 
 
@@ -182,8 +185,10 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/pcm/catalogs`                              | ✅           | ✅            |
 | `/promotions`                                | ✅           | ✅            |
 | `/settings`                                  | ✅           | ✅            |
-| `/settings/account-authentication-settings`  | ✅ ️         | ⛔           |
-| `/settings/customer-authentication-settings` | ✅           | ⛔           |
+| `/settings/account-authentication-settings`  | ✅ ️          | ⛔            |
+| `/settings/customer-authentication-settings` | ✅           | ⛔            |
+| `/settings/extensions`                       | ✅           | ✅            |
+| `/subscriptions      `                       | ✅           | ✅            |
 | `/user-roles`                                | ✅           | ✅            |
 | `/variations`                                | ✅           | ✅            |
 
@@ -209,8 +214,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ⛔️ | ⛔️ |
 | `/inventories`                         | ✅ | ⛔️ |
 | `/jobs`                                | ⛔️ | ⛔️ |
-| `/personal-data/logs`                  |⛔️ | ⛔️ |
-| `/personal-data/personal-data-entries` |⛔️ | ⛔️ |
+| `/personal-data/logs`                  | ⛔️ | ⛔️ |
+| `/personal-data/personal-data-entries` | ⛔️ | ⛔️ |
 | `/merchant-realm-mappings`             | ⛔️ | ⛔️ |
 | `/orders`                              | ⛔️ | ⛔️ |
 | `/orders/:id`                          | ⛔️ | ⛔️ |
@@ -226,6 +231,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                            | ⛔️ | ⛔️ |
 | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
 | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
+| `/settings/extensions`                 | ⛔️ | ⛔️ |
+| `/subscriptions      `                 | ⛔️ | ⛔️ |
 | `/user-roles`                          | ✅ | ⛔️ |
 | `/variations`                          | ⛔️ | ⛔️ |
 
@@ -251,8 +258,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ⛔ | ⛔ |
 | `/inventories`                         | ✅ | ✅ |
 | `/jobs`                                | ⛔ | ⛔ |
-| `/personal-data/logs`                  |⛔️ | ⛔️ |
-| `/personal-data/personal-data-entries` |⛔️ | ⛔️ |
+| `/personal-data/logs`                  | ⛔️ | ⛔️ |
+| `/personal-data/personal-data-entries` | ⛔️ | ⛔️ |
 | `/merchant-realm-mappings`             | ⛔ | ⛔ |
 | `/orders`                              | ⛔ | ⛔ |
 | `/orders/:id`                          | ⛔ | ⛔ |
@@ -268,6 +275,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                            | ⛔ | ⛔ |
 | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
 | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
+| `/settings/extensions`                 | ⛔️ | ⛔️ |
+| `/subscriptions`                       | ⛔️ | ⛔️ |
 | `/user-roles`                          | ✅ | ⛔ |
 | `/variations`                          | ✅ | ✅ |
 
@@ -310,6 +319,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                            | ⛔️ | ⛔️ |
 | `/settings/account-authentication-settings`  | ✅️ | ⛔️ |
 | `/settings/customer-authentication-settings` | ✅️ | ⛔️ |
+| `/settings/extensions`                 | ⛔️ | ⛔️ |
+| `/subscriptions`                       | ⛔️ | ⛔️ |
 | `/user-roles`                          | ✅ | ⛔️ |
 | `/variations`                          | ⛔️ | ⛔️ |
 
@@ -352,6 +363,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                            | ⛔️ | ⛔️ |
 | `/settings/account-authentication-settings`  | ✅️ | ⛔ |
 | `/settings/customer-authentication-settings` | ✅️ | ⛔ |
+| `/settings/extensions`                 | ✅ | ✅️ |
+| `/subscriptions`                       | ✅ | ✅️ |
 | `/user-roles`                          | ✅ | ✅️ |
 | `/variations`                          | ⛔️ | ⛔️ |
 
@@ -395,6 +408,8 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                                  | ⛔ | ⛔ |
 | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
 | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
+| `/settings/extensions`                       | ⛔️ | ⛔️ |
+| `/subscriptions`                             | ⛔️ | ⛔️ |
 | `/user-roles`                                | ✅ | ⛔ |
 | `/variations`                                | ⛔ | ⛔ |
 
@@ -437,5 +452,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings`                            | ⛔ | ⛔ |
 | `/settings/account-authentication-settings`  | ✅ | ⛔️ |
 | `/settings/customer-authentication-settings` | ✅ | ⛔️ |
+| `/settings/exensions`                  | ⛔️ | ⛔️ |
+| `/subscriptions     `                  | ⛔️ | ⛔️ |
 | `/user-roles`                          | ✅ | ⛔ |
 | `/variations`                          | ✅ | ✅ |
