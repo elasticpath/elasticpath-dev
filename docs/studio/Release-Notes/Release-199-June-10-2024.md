@@ -1,16 +1,20 @@
 ---
-title: Release 198 | May 29, 2024
-nav_label: Release 198 | May 29, 2024
-sidebar_position: 2
+title: Release 199 | June 10, 2024
+nav_label: Release 199 | June 10, 2024
+sidebar_position: 1
 ---
 
 ## Overview
 
-Some minor improvements and bug fixes in this release.
+Pagination is now supported in the product collection component and bug fixes in this release.
+
+### Product Collection Component
+
+
 
 ## Complete List of Resolved Items
 
-### Product Component
+### Product Collection Component
 
 * **Bug** - Fixed an issue where the first image was repeated in the Product Display Page rather than displaying all product images.
 * **Bug** - Fixed an issue where some products were displaying incorrect product descriptions.
