@@ -1,18 +1,19 @@
 import React from "react";
+import { ArrowRight, ChevronRight } from "react-feather";
 
 export default function ToolsForDevs() {
   return (
-    <div className="py-36 px-10 flex flex-col gap-20">
-      <h2 className="text-[4rem] text-center dark:text-white font-semibold tracking-tight dark:drop-shadow-md">
+    <div className="py-12 md:py-36 px-10 flex flex-col gap-20">
+      <h2 className="text-5xl md:text-[4rem] text-center dark:text-white font-semibold tracking-tight dark:drop-shadow-md">
         We’re fiercely committed <br /> to your success
       </h2>
-      <div className="grid grid-cols-3 gap-24 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-7xl mx-auto">
         <div className="flex flex-col justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 64 64"
-            className="size-16 dark:drop-shadow-[0px_0px_5px_#1FEC90]"
+            className="md:size-16 mx-auto md:mx-0 size-28 dark:drop-shadow-[0px_0px_5px_#1FEC90]"
           >
             <g stroke="#1FEC90" strokeLinejoin="round" strokeWidth="2">
               <path
@@ -29,16 +30,16 @@ export default function ToolsForDevs() {
           <h3 className="my-2 text-[2rem] dark:text-white font-semibold tracking-tight dark:drop-shadow-md">
             Customer success
           </h3>
-          <p className="text-lg my-4 p-0 text-left leading-loose">
+          <p className="text-base md:text-lg my-4 p-0 text-left leading-7 md:leading-loose">
             You’ve got big dreams. We’re here for it. Get strategic guidance
             from our customer success team — from pre-implementation to launch
             day and beyond.
           </p>
           <a
             href=""
-            className="text-lg dark:text-white text-black font-semibold mt-auto"
+            className="flex items-center text-lg dark:text-white text-black font-semibold mt-auto"
           >
-            Get in touch
+            Get in touch ›
           </a>
         </div>
         <div className="flex flex-col justify-center">
@@ -46,7 +47,7 @@ export default function ToolsForDevs() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 81 80"
-            className="size-16 dark:drop-shadow-[0px_0px_5px_#1FEC90]"
+            className="md:size-16 mx-auto md:mx-0 size-28 dark:drop-shadow-[0px_0px_5px_#1FEC90]"
           >
             <g stroke="#1FEC90" strokeWidth="2">
               <circle cx="40.667" cy="40" r="27" />
@@ -60,7 +61,7 @@ export default function ToolsForDevs() {
           <h3 className="my-2 text-[2rem] dark:text-white font-semibold tracking-tight dark:drop-shadow-md">
             Expert services
           </h3>
-          <p className="text-lg my-4 p-0 text-left leading-loose">
+          <p className="text-base md:text-lg my-4 p-0 text-left leading-7 md:leading-loose">
             Migration and implementation services with planning workshops,
             roadmap evaluations, and dedicated project managers to ensure your
             commerce vision is brought to life.
@@ -69,15 +70,15 @@ export default function ToolsForDevs() {
             href=""
             className="text-lg dark:text-white text-black font-semibold mt-auto"
           >
-            Learn more about global services
+            Learn more about global services ›
           </a>
         </div>
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center items-center md:items-start">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 75 69"
-            className="size-16 dark:drop-shadow-[0px_0px_5px_#1FEC90]"
+            className="md:size-16 mx-auto md:mx-0 size-28 dark:drop-shadow-[0px_0px_5px_#1FEC90]"
           >
             <g stroke="#1FEC90" strokeWidth="2">
               <path
@@ -98,7 +99,7 @@ export default function ToolsForDevs() {
           <h3 className="my-2 text-[2rem] dark:text-white font-semibold tracking-tight dark:drop-shadow-md">
             Vender & partner support
           </h3>
-          <p className="text-lg my-4 p-0 text-left leading-loose">
+          <p className="text-base md:text-lg my-4 p-0 text-left leading-7 md:leading-loose">
             A centralized service offering that reduces the risk of managing
             multi-vendor, composable solutions with proprietary monitoring &
             holistic issue resolution.
@@ -107,7 +108,7 @@ export default function ToolsForDevs() {
             href=""
             className="text-lg dark:text-white text-black font-semibold mt-auto"
           >
-            Learn more about our partner program
+            Learn more about our partner program ›
           </a>
         </div>
       </div>

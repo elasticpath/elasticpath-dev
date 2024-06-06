@@ -140,20 +140,23 @@ const columnOffset = {
 export default function Example() {
   return (
     <div className="relative pt-24 sm:pt-32 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div>
-          <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-left dark:text-white dark:drop-shadow-md">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 md:py-0">
+        <div className="flex flex-col items-center md:items-start">
+          <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-center md:text-left dark:text-white dark:drop-shadow-md">
             What our customers <br /> are saying...
           </h2>
           <button className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 mt-8 font-semibold">
             View case studies
           </button>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {testimonials.map((columnGroup, columnGroupIdx) => (
             <div
               key={columnGroupIdx}
-              className="space-y-8 xl:contents xl:space-y-0"
+              className={clsx(
+                `space-y-8 xl:contents xl:space-y-0`,
+                columnGroupIdx === 0 && "hidden md:block",
+              )}
             >
               {columnGroup.map((column, columnIdx) => (
                 <div
@@ -165,7 +168,7 @@ export default function Example() {
                       ? "xl:row-span-2"
                       : "xl:row-start-1",
                     "space-y-8 flex flex-col justify-end relative",
-                    `${columnOffset[columnIdx]}`,
+                    `md:${columnOffset[columnIdx]}`,
                   )}
                 >
                   {column.map((testimonial) => (

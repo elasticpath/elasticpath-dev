@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CTA() {
   return (
-    <div className="p-24 text-center dark:bg-black/40 bg-[#A6EBCA]/20 backdrop-blur">
+    <div className="p-12 md:p-24 text-center dark:bg-black/40 bg-[#A6EBCA]/20 backdrop-blur">
       <h2 className="font-manrope dark:text-white tracking-tight font-semibold text-[3rem]">
         Get started now!
       </h2>

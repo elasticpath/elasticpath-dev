@@ -30,8 +30,8 @@ export function Pokemon({ className }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       width="213"
       height="38"
-      className={className}
       viewBox="0 0 213 38"
+      className={className}
       fill="none"
     >
       <g clipPath="url(#pokemona)">

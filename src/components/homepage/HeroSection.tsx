@@ -8,12 +8,12 @@ import {
 } from "./HeroBrandLogos";
 export default function HeroSection() {
   return (
-    <section className="px-4 py-44 text-center leading-tight tracking-tight">
+    <section className="px-4 py-28 md:py-44 text-center leading-tight tracking-tight">
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h1 className="mb-4 text-[6.5rem] font-bold dark:drop-shadow-lg">
+        <h1 className="mb-4 text-6xl text-left md:text-center md:text-[6.5rem] font-bold dark:drop-shadow-lg">
           Enterprise-ready commerce
         </h1>
-        <p className="text-[1.75rem] font-light max-w-5xl text-center">
+        <p className="text-base text-justify md:text-center md:text-[1.75rem] font-light max-w-5xl">
           Launch faster, solve complex problems, and build world-class
           experiences with our suite of interconnected{" "}
           <a
@@ -39,12 +39,12 @@ export default function HeroSection() {
           .
         </p>
         <p className="mt-8">Trusted by these leading brands...</p>
-        <div className="flex items-center justify-center gap-12">
-          <SerenaLily className="invert dark:invert-0" />
-          <United className="invert dark:invert-0" />
-          <Pokemon />
-          <Remarkable className="invert dark:invert-0" />
-          <CharlotteTilbury className="invert dark:invert-0" />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12">
+          <SerenaLily className="max-w-full invert dark:invert-0" />
+          <United className="max-w-full invert dark:invert-0" />
+          <Pokemon className="max-w-full" />
+          <Remarkable className="max-w-full invert dark:invert-0" />
+          <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0" />
         </div>
       </div>
     </section>

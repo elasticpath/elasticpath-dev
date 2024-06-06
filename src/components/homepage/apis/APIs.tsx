@@ -77,12 +77,12 @@ const TabbedCodeSample = ({ codeSamples }) => {
 
 export default function APIs() {
   return (
-    <div className="py-28 max-w-7xl mx-auto">
-      <h2 className="mb-20 text-[4rem] text-center dark:text-white dark:drop-shadow-md font-semibold tracking-tight">
+    <div className="py-16 md:py-28 px-10 max-w-7xl mx-auto">
+      <h2 className="hidden md:block mb-20 text-[4rem] text-center dark:text-white dark:drop-shadow-md font-semibold tracking-tight">
         Modern commerce APIs
       </h2>
-      <div className="grid grid-cols-2 gap-10">
-        <div className="flex items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="hidden md:flex items-center justify-center">
           <TabbedCodeSample codeSamples={codeSamples} />
         </div>
         <div className="flex flex-col py-5 gap-7">
@@ -90,23 +90,23 @@ export default function APIs() {
             Elastic Path provides an elegant set of composable APIs for building
             eCommerce experiences.
           </h2>
-          <div className="flex text-black gap-5">
+          <div className="flex flex-col md:flex-row text-center items-center text-black gap-5">
             <a
               href=""
-              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
+              className="bg-transparent order-2 md:order-1 tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
             >
               Read the docs
             </a>
             <a
               href=""
-              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
+              className="bg-transparent order-1 md:order-2 tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
             >
               Get Postman collection
             </a>
           </div>
           <div className="flex flex-col mt-5 gap-8">
-            <div className="flex gap-16">
-              <div className="w-1/2">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+              <div className="md:w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -128,11 +128,11 @@ export default function APIs() {
                     d="M18 28h11"
                   ></path>
                 </svg>
-                <p className="font-semibold text-lg text-black dark:text-white">
+                <p className="font-semibold text-md md:text-lg text-black dark:text-white">
                   RESTful APIs, JSON responses, and normalized objects
                 </p>
               </div>
-              <div className="w-1/2">
+              <div className="md:w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -146,13 +146,13 @@ export default function APIs() {
                     d="M17 28c0 .552-.45 1.008-.999.951C13.731 28.72 12 26.627 12 24c0-2.212-.74-2.904-1.502-2.946C9.75 21 9 20.552 9 20s.75-1 1.498-1.054C11.26 18.904 12 18.212 12 16c0-2.626 1.73-4.72 4.001-4.951.55-.056.999.399.999.951 0 .553-.454.986-1.002 1.062-2.045.284-2.019 2.507-1.992 3.79.025 1.174-.45 2.398-2.006 2.998v.3c1.557.6 2.03 1.824 2.006 2.997-.027 1.283-.053 3.507 1.992 3.791.547.076 1.002.51 1.002 1.062zm6 0c0 .552.45 1.008.999.951C26.269 28.72 28 26.627 28 24c0-2.212.738-2.904 1.5-2.946C30.25 21 31 20.552 31 20s-.75-1-1.5-1.054c-.762-.042-1.5-.734-1.5-2.946 0-2.626-1.73-4.72-4.001-4.951-.55-.056-.999.399-.999.951 0 .553.454.986 1.002 1.062 2.045.284 2.019 2.507 1.992 3.79-.025 1.174.45 2.398 2.006 2.998v.3c-1.557.6-2.03 1.824-2.006 2.997.027 1.283.053 3.507-1.992 3.791-.547.076-1.002.51-1.002 1.062z"
                   ></path>
                 </svg>
-                <p className="font-semibold text-lg text-black dark:text-white">
+                <p className="font-semibold text-md md:text-lg text-black dark:text-white">
                   Modern, easy to use SDKs for JavaScript and React
                 </p>
               </div>
             </div>
-            <div className="flex gap-16">
-              <div className="w-1/2">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+              <div className="md:w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -179,12 +179,12 @@ export default function APIs() {
                   ></path>
                 </svg>
 
-                <p className="font-semibold text-lg text-black dark:text-white">
+                <p className="font-semibold text-md md:text-lg text-black dark:text-white">
                   Get updates on catalogs, orders, carts, accounts, users, and
                   more via webhooks
                 </p>
               </div>
-              <div className="w-1/2">
+              <div className="md:w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -200,13 +200,13 @@ export default function APIs() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <p className="font-semibold text-lg text-black dark:text-white">
+                <p className="font-semibold text-md md:text-lg text-black dark:text-white">
                   Build or customize low- or no-code integrations
                 </p>
               </div>
             </div>
-            <div className="flex gap-16">
-              <div className="w-1/2">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+              <div className="md:w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -233,12 +233,12 @@ export default function APIs() {
                     </clipPath>
                   </defs>
                 </svg>
-                <p className="font-semibold text-lg text-black dark:text-white">
+                <p className="font-semibold text-md md:text-lg text-black dark:text-white">
                   Multi-region hosting and full GDPR & CCPA compliance. Fully
                   SOC2 certified.
                 </p>
               </div>
-              <div className="w-1/2">
+              <div className="md:w-1/2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -271,7 +271,7 @@ export default function APIs() {
                     d="M11 13l1.5 1.5L15 11m-4 8l1.5 1.5L15 17"
                   ></path>
                 </svg>
-                <p className="font-semibold text-lg text-black dark:text-white">
+                <p className="font-semibold text-md md:text-lg text-black dark:text-white">
                   Business user tooling seamlessly integrates Elastic Path into
                   your site
                 </p>

@@ -43,7 +43,7 @@ function Tab({
         <img
           alt="Elastic Path screenshot"
           src={img}
-          className="rounded-2xl shadow-2xl"
+          className="hidden md:block rounded-2xl shadow-2xl"
         />
         <div className="bg-white p-8 absolute -right-16 bottom-8 w-[32rem] rounded-lg shadow-2xl ring-1 ring-gray-200">
           <div className="text-black flex items-center text-left">
@@ -83,7 +83,7 @@ function Tab({
 
 export default function CommerceApps() {
   return (
-    <section className="px-10 py-24 text-center leading-tight tracking-tight">
+    <section className="px-10 py-12 md:py-24 text-center leading-tight tracking-tight">
       <link
         rel="preload"
         as="image"
@@ -121,11 +121,11 @@ export default function CommerceApps() {
       />
 
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h2 className="mb-14 text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
+        <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
           Apps for commerce
         </h2>
         <Tabs defaultValue="Products">
-          <TabsList className="flex items-center justify-center gap-4">
+          <TabsList className="flex flex-col md:flex-row items-center justify-center gap-4">
             <Trigger name={"Products"} />
             <Trigger name={"Payments"} />
             <Trigger name={"Orders"} />

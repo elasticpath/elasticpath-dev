@@ -3,6 +3,7 @@ import Layout from "@theme/Layout";
 import HeroSection from "../components/homepage/HeroSection";
 import HomeFooter from "../components/homepage/HomeFooter";
 import CommerceApps from "../components/homepage/CommerceApps/CommerceApps";
+import CommerceAppsMobile from "../components/homepage/CommerceApps/CommerceAppsMobile";
 import ToolsForDevs from "../components/homepage/ToolsForDevs";
 import Composer from "../components/homepage/Composer/Composer";
 import CTA from "../components/homepage/CTA";
@@ -22,8 +23,15 @@ export default function Homepage() {
 
       <div className="relative z-10">
         <HeroSection />
-        <CommerceApps />
-        <APIs />
+        <div className="hidden md:block">
+          <CommerceApps />
+        </div>
+        <div className="md:hidden">
+          <CommerceAppsMobile />
+        </div>
+        <div className="md:hidden">
+          <APIs />
+        </div>
         <CTA />
         <ToolsForDevs />
         <Composer />
