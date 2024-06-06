@@ -426,7 +426,7 @@ const config = {
             specPath: "openapispecs/subscriptions/public_openapi.yaml",
             outputDir: "docs/api/subscriptions",
             downloadUrl:
-                "https://beta.elasticpath.dev/openapispec/subscriptions/public_openapi.yaml",
+                "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/subscriptions/public_openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

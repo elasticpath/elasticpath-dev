@@ -275,9 +275,9 @@ The following tables show a breakdown of the API endpoint actions that are avail
 
 | Endpoint                               | Read access | Write access |
 |----------------------------------------| --- | --- |
-| `/accounts`                            | ⛔️ | ⛔️ |
-| `/account-members`                     | ⛔️ | ⛔️ |
-| `/account-membership`                  | ⛔️ | ⛔️ |
+| `/accounts`                            | ✅️ | ✅️ |
+| `/account-members`                     | ✅️ | ✅️ |
+| `/account-membership`                  | ✅️ | ✅️ |
 | `/application-keys`                    | ⛔️ | ⛔️ |
 | `/authentication-realms`               | ⛔️ | ⛔️ |
 | `/brands`                              | ⛔️ | ⛔️ |
@@ -397,3 +397,45 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
 | `/user-roles`                                | ✅ | ⛔ |
 | `/variations`                                | ⛔ | ⛔ |
+
+### eCommerce Admin
+
+| Endpoint                               | Read access | Write access |
+|----------------------------------------| --- | --- |
+| `/accounts`                            | ✅ | ✅ |
+| `/account-members`                     | ✅ | ✅ |
+| `/account-membership`                  | ✅ | ✅ |
+| `/application-keys`                    | ⛔️ | ⛔️ |
+| `/authentication-realms`               | ⛔ | ⛔ |
+| `/brands`                              | ✅ | ✅ |
+| `/carts`                               | ⛔ | ⛔ |
+| `/categories`                          | ✅ | ✅ |
+| `/checkout`                            | ⛔ | ⛔ |
+| `/collections`                         | ✅ | ✅ |
+| `/currencies`                          | ✅ | ⛔ |
+| `/customers`                           | ✅ | ✅ |
+| `/files`                               | ✅ | ✅ |
+| `/flows`                               | ✅ | ✅ |
+| `/gateways`                            | ⛔️ | ⛔️ |
+| `/integrations`                        | ⛔ | ⛔ |
+| `/inventories`                         | ✅ | ✅ |
+| `/jobs`                                | ⛔ | ⛔ |
+| `/personal-data/logs`                  | ✅ | ✅ |
+| `/personal-data/personal-data-entries`  |✅ | ✅ |
+| `/merchant-realm-mappings`             | ⛔ | ⛔ |
+| `/orders`                              | ⛔ | ⛔ |
+| `/orders/:id`                          | ✅ | ✅ |
+| `/v2/products`                         | ✅ | ✅ |
+| `/catalog/products`                    | ✅ | ⛔️ |
+| `/catalog/hierarchies`                 | ✅ | ⛔️ |
+| `/catalog/nodes`                       | ✅ | ⛔️ |
+| `/pcm/products`                        | ✅ | ✅ |
+| `/pcm/hierarchies`                     | ✅ | ✅ |
+| `/pcm/pricebooks`                      | ✅ | ✅ |
+| `/pcm/catalogs`                        | ✅ | ✅ |
+| `/promotions`                          | ✅ | ✅ |
+| `/settings`                            | ⛔ | ⛔ |
+| `/settings/account-authentication-settings`  | ✅ | ⛔️ |
+| `/settings/customer-authentication-settings` | ✅ | ⛔️ |
+| `/user-roles`                          | ✅ | ⛔ |
+| `/variations`                          | ✅ | ✅ |

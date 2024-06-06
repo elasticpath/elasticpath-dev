@@ -43,7 +43,7 @@ paths:
       description: |
         You can retrieve the carts that are associated with a customer.
 
-        When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/docs/commerce-cloud/api-overview/pagination).
+        When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/guides/Getting-Started/pagination).
 
         :::note
 
@@ -546,9 +546,9 @@ paths:
         :::note
 
         - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
-        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/commerce-cloud/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
+        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
         - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
-        - Custom Cart Items are available through [implicit authentication](/docs/commerce-cloud/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
+        - Custom Cart Items are available through [implicit authentication](/docs/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
 
         :::
 
@@ -1154,6 +1154,62 @@ paths:
         A cart item can only have a maximum of five tax items.
 
         :::
+
+        ### Errors
+
+        `422 Unprocessable Entity`
+
+        In this example, when `options.add_all_or_nothing` is set to `true` and if one of cart items is not found or or has reached its maximum tax item limit, the following error response is returned:
+
+        ```json
+        {
+                    "status": 422,
+                    "title": "Add all or nothing.",
+                    "detail": "Add all or nothing set to (true). Could not bulk add tax items to cart."
+                }
+
+        ```
+
+        In this example, if you add more than five tax items to the same cart item, the following error response is returned:
+
+        ```json
+        {
+                    "status": 422,
+                    "title": "Tax item not added to cart item.",
+                    "detail": "Cannot exceed tax item limit of (5) on cart item.",
+                    "meta": {
+                        "id": "f88e6370-cb35-40b2-a998-c759f31dec0a"
+                    }
+                }
+        ```
+
+        `404`
+
+        In this example, if there is a mismatch between `cart_item`/`custom_item` and the `relationships.item.data.type` specified in the bulk add tax item, the following error response is returned:
+
+        ```json
+        {
+            "data": [],
+            "errors": [
+                {
+                    "status": 404,
+                    "title": "Tax item not added to cart item.",
+                    "detail": "Mismatch between bulk tax item type(cart_item) and cart item type(custom_item).",
+                    "meta": {
+                        "id": "56aab5d1-1dd4-45ed-88ed-4d0cc396b62d"
+                    }
+                },
+                {
+                    "status": 404,
+                    "title": "Tax item not added to cart item.",
+                    "detail": "Mismatch between bulk tax item type(cart_item) and cart item type(custom_item).",
+                    "meta": {
+                        "id": "56aab5d1-1dd4-45ed-88ed-4d0cc396b62d"
+                    }
+                }
+            ]
+        }
+        ```
       operationId: bulkAddTaxItemsToCart
       parameters:
         - name: cartID
@@ -1741,7 +1797,7 @@ paths:
 
         - Pass the `X-Moltin-Customer-Token` header to limit orders to a specific customer. See [Customer Tokens](/docs/customer-management/customer-management-api/customer-tokens).
         - Pass the `EP-Account-Management-Authentication-Token` header to limit orders to a specific account. See [Account Management Token](/docs/api/accounts/post-v-2-account-members-tokens).
-        - You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+        - You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
 
         :::
 
@@ -4439,7 +4495,7 @@ tags:
       - You need to configure and enable a payment gateway before you can accept payments for orders.
       - Configure your store to use [Manual Gateway](/docs/api/payments/update-manual-gateway) to process payments if the order total is zero or the payment is through non-supported payment providers.
       - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
-      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/docs/commerce-cloud/api-overview/api-contract#parallel-calls-to-api-objects).
+      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](https://beta.elasticpath.dev/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
 
       :::
 
@@ -4467,7 +4523,7 @@ tags:
 
       You can partially pay for an order using `authorize` payment method so that the order is `partially_authorized`. The transaction must be complete for the order status to be `partially_authorized`.
 
-      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateway-introduction-split-payments).
+      For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateways-introduction#split-payments).
 
       #### Capture
 
@@ -4522,5 +4578,9 @@ tags:
 
         - Simple calculation method: Taxes are calculated at the unit level and are rounded to the nearest penny for the unit.
         - Line calculation method: Default. Taxes are calculated at the line level and are rounded to the nearest penny for the line.
-          For more information about calculation methods, see [Calculate cart and order totals](https://beta.elasticpath.dev/guides/Carts/calculate-totals).
+          For more information about calculation methods, see [Calculate cart and order totals](/guides/How-To/Carts/calculate-totals).
+
+      :::note
+      Tax items can be added and removed using [client credentials tokens](/docs/authentication/Tokens/client-credential-token). Only administrators with `client-credentials` are able to manage tax items.
+      :::
 
