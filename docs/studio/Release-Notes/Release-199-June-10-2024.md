@@ -10,28 +10,27 @@ Pagination is now supported in the Product Collection component and bug fixes in
 
 ### Product Collection Component
 
-The Product Collection component now supports pagination. 
+The Product Collection component now supports pagination. For optimal performance, especially with large product collections, you should paginate your product collection component, rendering your products one page at a time instead of loading the entire product collection. Pagination makes it easier for your shoppers to browse through your product catalogs, allowing them to quickly find what they are looking for. In addition, you can choose from a selection of visually engaging indicator types and transitions. For example, if your indicator type is an arrow, then you might want to use a slide transition.
 
-For optimal performance, especially with large product collections, you should paginate your product collection component, rendering your products one page at a time instead of loading the entire product collection. Pagination makes it easier for your shoppers to browse through your product catalogs, allowing them to quickly find what they are looking for. In addition, you can choose from a selection of visually engaging indicator types and transitions. For example, if your indicator type is an arrow, then you might want to use a slide transition.
+Once you have enabled pagination for your product collection component, you can configure how pagination displays when you add a collection component to page. See [Configuring Pagination for Product Collections](/docs/studio/developers/tags/collection#pagination).
 
+For more information, see Product Collection.
 
 ## Complete List of Resolved Items
 
-### Product Collection Component
+### Search Engine Optimization
 
-* **Bug** - Fixed an issue where the first image was repeated in the Product Display Page rather than displaying all product images.
-* **Bug** - Fixed an issue where some products were displaying incorrect product descriptions.
-* **Bug** - Fixed an issue where the product collection rendered empty output.
+* Added meta descriptions and keywords to the product detail and product listing page template settings to improve search engine optimization.
 
-### Cart Drawer
+### Elastic Path Composable Commerce
 
-* **Bug** - Fixed an issue where the product links on the cart drawer and checkout page were missing the path prefix.
+* **Bug** - Fixed an issue where shoppers where a 500 response error was being returned when registering with an invalid email address.
+* **Bug** - Fixed an issue where a parent product with all variants out of stock could still be added to a cart.
 
-### Canonical URLs
+### Blogs
 
-* **Bug** - Fixed an issue where the canonical URLs were not getting the full hierarchy.
+* **Bug** - Fixed an issue where a customer could not open a form with an action link on the blog page.
+* **Bug** - Fixed an issue where blog/category publish returned a 500 error if there were no associated published articles.
 
-### Shopify
 
-* **Bug** - Fixed an issue where the variation matrix was not working in the Shopify Collection.
 
