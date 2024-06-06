@@ -14,6 +14,8 @@ The Product Collection component now supports pagination. For optimal performanc
 
 Once you have enabled pagination for your product collection component, you can configure how pagination displays when you add a collection component to page. See [Configuring Pagination for Product Collections](/docs/studio/developers/tags/collection#pagination).
 
+![pagination arrows](/assets/studio/pagination-numbers.png)
+
 For more information, see Product Collection.
 
 ## Complete List of Resolved Items
