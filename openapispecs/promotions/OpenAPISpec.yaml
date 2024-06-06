@@ -6,7 +6,7 @@ info:
     
     You can have multiple promotions active at the same time. Promotions are active in a fixed duration, with defined start and end dates. However, you can manually stop a promotion at any time.
     
-    For testing your promotions when scheduling a future date for your shopping cart, you can use the [Preview Cart API](https://elasticpath.dev/docs/commerce-cloud/carts/cart-management/create-multi-cart#post-create-a-preview-cart).
+    For testing your promotions when scheduling a future date for your shopping cart, you can use the [Preview Cart API](/docs/carts-orders/create-multi-cart#post-create-a-preview-cart).
     
     When [Creating a Free Gift Promotion](/docs/api/promotions/create-a-promotion), set the promotion to automatic and enable the `auto_add_free_gift` feature. This way, the shopper will see the free gift in their shopping cart when the target product is added to the cart, and the discount will be applied. This eliminates the need for an additional step to apply the code for the gift discount. However, if you desire more control over when or how the free gift is added, you can choose to use a promotion code and disable the **Automatically add free gift items to the cart** toggle in Commerce Manager. See [Creating Free Gift Promotions](/docs/commerce-manager/promotions-standard/item-level-promotions/free-gift-promotions). For a seamless process, ensure that the currencies of automatically added gift items match with those of the the items that initiate free gifts. Additionally, ensure that the free gift item is within the same catalog as the eligible items.
     
@@ -53,7 +53,7 @@ info:
     
       :::caution
     
-      - Item-level promotions are only supported by the line calculation method. For more information about this method, see the [Calculation Method](docs/api/settings/settings-introduction#calculation-method) section.
+      - Item-level promotions are only supported by the line calculation method. For more information about this method, see the [Calculation Method](/docs/api/settings/settings-introduction#calculation-method) section.
       - The `max_discount_value` setting specifies the maximum possible discount for the cart. To avoid the conflict with the promotions and the promotion to work, we recommend not to use this setting for the following promotions:
 
         - Cart-level fixed discount
@@ -132,13 +132,13 @@ paths:
         
         :::note
         
-        You can use pagination with this resource. For more information, see [pagination](/docs/commerce-cloud/api-overview/pagination).
+        You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
         
         :::
         
         ### Filtering
         
-        The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](/docs/commerce-cloud/api-overview/filtering#supported-characters).
+        The following operators and attributes are available when filtering on this endpoint. See [Supported Filtering Characters](https://beta.elasticpath.dev/guides/Getting-Started/filtering#supported-characters).
 
         Use `code` filter to search codes within promotions.
 
