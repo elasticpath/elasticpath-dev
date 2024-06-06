@@ -24,7 +24,7 @@ The following table shows the access permissions associated with each store role
 | Application Keys       | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
 | Billing                | ⛔️             | ✅            | ⛔️              | ⛔️            | ⛔️            | ⛔️               | ⛔️               |
 | Composer               | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
-| Commerce Exentsion     | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
+| Commerce Extensions     | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
 | Customers              | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               | ✅               |
 | Files                  | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               | ✅               |
 | Flows                  | ⛔️             | ✅            | ✅              | ⛔️            | ✅            | ⛔️               | ✅               |

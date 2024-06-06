@@ -24,7 +24,7 @@ An explicit action is when a user calls the cart creation endpoint. For more inf
 
 When a shopper registers a profile, the registration process also creates a cart.
 
-When a shopper signs in (either as an account or customer), a cart association is created between the shopper and the cart. For this action, the front-end calls the cart association API. For more information, see [Customer Cart Associations](https://beta.elasticpath.dev/docs/api/carts/customer-cart-associations) or [Account Cart Associations](https://beta.elasticpath.dev/docs/carts-orders/carts/account-cart-associations/account-cart-associations-overview).
+When a shopper signs in (either as an account or customer), a cart association is created between the shopper and the cart. For this action, the front-end calls the cart association API. For more information, see [Customer Cart Associations](https://beta.elasticpath.dev/docs/api/carts/customer-cart-associations) or [Account Cart Associations](https://beta.elasticpath.dev/docs/carts-orders/account-cart-associations).
 
 ## Generating a cart reference ID
 
