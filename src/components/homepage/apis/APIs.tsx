@@ -1,170 +1,75 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
-import Highlight from "react-highlight";
-import "highlight.js/styles/dracula.css";
-// import "../../css/highlight-js.css";
+import CodeBlock from "@theme/CodeBlock";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-const codeSamples = {
-  "React Hooks":
-    'import { useProduct } from "@elasticpath/react-shopper-hooks" \n\nexport default function Products() {\n   const { data: product, isLoading } = useProduct({\n     productId: "18ab29..."\n   })\n\n    return (\n     <div>\n       {isLoading && <span>Loading...</span>}\n       {product && <span>{product.attributes.name}</span>}\n     </div>\n   )\n}',
-  "node.js":
-    'fetch("https://useast.api.elasticpath.com/catalog/products/${productId}", {\n' +
-    "    headers: {\n" +
-    '    "Content-Type": "application/json",\n' +
-    '    Authorization: "Bearer XXXX"\n' +
-    "  }\n" +
-    "}).then(response => response.json())\n" +
-    "  .then(data => console.log(data));",
-  Python:
-    "import requests\n" +
-    "\n" +
-    'url = "https://useast.api.elasticpath.com/catalog/products/{}".format(productId)\n' +
-    "headers = {\n" +
-    '    "Content-Type": "application/json",\n' +
-    '    "Authorization": "Bearer XXXX"  # Replace XXXX with your actual token\n' +
-    "}\n" +
-    "\n" +
-    "response = requests.get(url, headers=headers)\n" +
-    "data = response.json()\n" +
-    "print(data)",
-  go:
-    "package main\n" +
-    "\n" +
-    "import (\n" +
-    '\t"fmt"\n' +
-    '\t"io/ioutil"\n' +
-    '\t"net/http"\n' +
-    ")\n" +
-    "\n" +
-    "func main() {\n" +
-    '\tproductID := "YOUR_PRODUCT_ID" // Replace with actual product ID\n' +
-    '\ttoken := "XXXX"                // Replace XXXX with your actual token\n' +
-    "\n" +
-    '\turl := fmt.Sprintf("https://useast.api.elasticpath.com/catalog/products/%s", productID)\n' +
-    "\n" +
-    '\treq, err := http.NewRequest("GET", url, nil)\n' +
-    "\tif err != nil {\n" +
-    '\t\tfmt.Println("Error creating request:", err)\n' +
-    "\t\treturn\n" +
-    "\t}\n" +
-    "\n" +
-    '\treq.Header.Set("Content-Type", "application/json")\n' +
-    '\treq.Header.Set("Authorization", "Bearer "+token)\n' +
-    "\n" +
-    "\tclient := &http.Client{}\n" +
-    "\tresp, err := client.Do(req)\n" +
-    "\tif err != nil {\n" +
-    '\t\tfmt.Println("Error making request:", err)\n' +
-    "\t\treturn\n" +
-    "\t}\n" +
-    "\tdefer resp.Body.Close()\n" +
-    "\n" +
-    "\tbody, err := ioutil.ReadAll(resp.Body)\n" +
-    "\tif err != nil {\n" +
-    '\t\tfmt.Println("Error reading response body:", err)\n' +
-    "\t\treturn\n" +
-    "\t}\n" +
-    "\n" +
-    "\tfmt.Println(string(body))\n" +
-    "}",
-  Java:
-    "import java.io.BufferedReader;\n" +
-    "import java.io.IOException;\n" +
-    "import java.io.InputStreamReader;\n" +
-    "import java.net.HttpURLConnection;\n" +
-    "import java.net.URL;\n" +
-    "\n" +
-    "public class Main {\n" +
-    "    public static void main(String[] args) {\n" +
-    '        String productId = "YOUR_PRODUCT_ID"; // Replace with actual product ID\n' +
-    '        String token = "XXXX"; // Replace XXXX with your actual token\n' +
-    "        \n" +
-    '        String url = "https://useast.api.elasticpath.com/catalog/products/" + productId;\n' +
-    "        \n" +
-    "        try {\n" +
-    "            URL obj = new URL(url);\n" +
-    "            HttpURLConnection con = (HttpURLConnection) obj.openConnection();\n" +
-    "            \n" +
-    "            // Set the request method\n" +
-    '            con.setRequestMethod("GET");\n' +
-    "            \n" +
-    "            // Set request headers\n" +
-    '            con.setRequestProperty("Content-Type", "application/json");\n' +
-    '            con.setRequestProperty("Authorization", "Bearer " + token);\n' +
-    "            \n" +
-    "            int responseCode = con.getResponseCode();\n" +
-    "            if (responseCode == HttpURLConnection.HTTP_OK) {\n" +
-    "                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));\n" +
-    "                String inputLine;\n" +
-    "                StringBuffer response = new StringBuffer();\n" +
-    "                \n" +
-    "                while ((inputLine = in.readLine()) != null) {\n" +
-    "                    response.append(inputLine);\n" +
-    "                }\n" +
-    "                in.close();\n" +
-    "                \n" +
-    "                // Print response\n" +
-    "                System.out.println(response.toString());\n" +
-    "            } else {\n" +
-    '                System.out.println("HTTP request failed with error code: " + responseCode);\n' +
-    "            }\n" +
-    "        } catch (IOException e) {\n" +
-    "            e.printStackTrace();\n" +
-    "        }\n" +
-    "    }\n" +
-    "}",
-  curl:
-    'curl -X GET "https://useast.api.elasticpath.com/catalog/products/${productId}" \\\n' +
-    '-H "Content-Type: application/json" \\\n' +
-    '-H "Authorization: Bearer XXXX"',
-};
+import codeSamples from "./code-samples";
 
 const TabbedCodeSample = ({ codeSamples }) => {
-  const [activeTab, setActiveTab] = useState("React Hooks");
-
-  const tabs = ["React Hooks", "node.js", "Python", "go", "Java", "curl"];
-
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="flex border-b border-gray-200 rounded-t-lg overflow-hidden">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            className={`py-3 px-6 border-0 focus:outline-none flex-1 text-nowrap bg-black text-white ${
-              activeTab === tab ? "border-b-2 border-[#2BCC7E]" : ""
-            }`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-      <div className="max-h-[20rem] overflow-scroll [&>*]:p-0 [&>*]:rounded-none [&>*]:rounded-b-lg [&>*]:h-full">
-        <Highlight
-          className={`${activeTab.replace(" ", "-").toLowerCase()} rounded-none p-8 h-full`}
-        >
-          {codeSamples[activeTab]}
-        </Highlight>
-      </div>
-      <div className="[&>*]:p-0 [&>*]:rounded-none [&>*]:rounded-b-lg [&>*]:h-full mt-8">
-        <div className="bg-black text-white !rounded-b-none !rounded-t-lg !p-2 text-center">
+    <div className="homepage-code-block w-full max-w-4xl mx-auto">
+      <Tabs className="">
+        <TabItem value="react" label="React Hooks">
+          <CodeBlock showLineNumbers language="js">
+            {codeSamples["React Hooks"]}
+          </CodeBlock>
+        </TabItem>
+        <TabItem value="node" label="node.js">
+          <CodeBlock showLineNumbers language="js">
+            {codeSamples["node.js"]}
+          </CodeBlock>
+        </TabItem>
+        <TabItem value="python" label="Python">
+          <CodeBlock showLineNumbers language="python">
+            {codeSamples["Python"]}
+          </CodeBlock>
+        </TabItem>
+        <TabItem value="go" label="go">
+          <CodeBlock showLineNumbers language="go">
+            {codeSamples["go"]}
+          </CodeBlock>
+        </TabItem>
+        <TabItem value="java" label="Java">
+          <CodeBlock showLineNumbers language="java">
+            {codeSamples["Java"]}
+          </CodeBlock>
+        </TabItem>
+        <TabItem value="curl" label="cUrl">
+          <CodeBlock showLineNumbers language="bash">
+            {codeSamples["curl"]}
+          </CodeBlock>
+        </TabItem>
+      </Tabs>
+
+      <div className="mt-8">
+        <div className="bg-[#1d262f] text-white !rounded-b-none !rounded-t-lg !p-2 text-center">
           <span className="font-mono text-xs">HTTP 200</span>
         </div>
-        <Highlight className="rounded-none p-8 h-full">
-          {`{
-  "data": {
-    "id": "00000000-0000-0000-0000-000000000000",
-    "type": "subscription-product",
-    "attributes": {
-      "external_ref": "abc123",
-      "name": "Magazine",
-      "description": "A lovely magazine that is published 
-          every month.",
-      "sku": "MAGAZINE1",
-      "main_image": "https://magazine.com/cover.jpg"
-}`}
-        </Highlight>
+        <CodeBlock
+          language="json"
+          className="!rounded-none h-full"
+          showLineNumbers
+        >
+          {JSON.stringify(
+            {
+              data: {
+                id: "00000000-0000-0000-0000-000000000000",
+                type: "subscription-product",
+                attributes: {
+                  external_ref: "abc123",
+                  name: "Magazine",
+                  description:
+                    "A lovely magazine that is published every month.",
+                  sku: "MAGAZINE1",
+                  main_image: "https://magazine.com/cover.jpg",
+                },
+              },
+            },
+            null,
+            "  ",
+          )}
+        </CodeBlock>
       </div>
     </div>
   );

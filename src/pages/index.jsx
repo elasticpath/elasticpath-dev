@@ -8,7 +8,7 @@ import Composer from "../components/homepage/Composer/Composer";
 import CTA from "../components/homepage/CTA";
 import Success from "../components/homepage/Success";
 import Testimonials from "../components/homepage/Testimonials";
-import APIs from "../components/homepage/APIs";
+import APIs from "../components/homepage/apis/APIs";
 import AbstractBG from "../components/homepage/ui/AbstractBG";
 
 export default function Homepage() {
@@ -18,7 +18,6 @@ export default function Homepage() {
       wrapperClassName="relative homepage flex flex-col relative dark:bg-homepage-gradient bg-white"
       noFooter
     >
-
       <AbstractBG />
 
       <div className="relative z-10">

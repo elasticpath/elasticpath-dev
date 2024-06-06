@@ -1,12 +1,130 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/vsLight");
-const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
+const elasticpath = {
+  plain: {
+    color: "#ebf4ff",
+    backgroundColor: "#1d262f",
+  },
+  styles: [
+    {
+      types: ["prolog", "comment", "doctype", "cdata"],
+      style: {
+        color: "#fff",
+      },
+    },
+    {
+      types: ["punctuation"],
+      style: {
+        color: "#7eb6f6",
+      },
+    },
+    {
+      types: ["namespace"],
+      style: {
+        opacity: 0.7,
+      },
+    },
+    {
+      types: ["tag", "operator", "number"],
+      style: {
+        color: "#0aa370",
+      },
+    },
+    {
+      types: ["property", "function"],
+      style: {
+        color: "#7eb6f6",
+      },
+    },
+    {
+      types: ["tag-id", "selector", "atrule-id"],
+      style: {
+        color: "#ebf4ff",
+      },
+    },
+    {
+      types: ["attr-name", "language-javascript"],
+      style: {
+        color: "#7eb6f6",
+      },
+    },
+    {
+      types: [
+        "boolean",
+        "string",
+        "entity",
+        "url",
+        "attr-value",
+        "keyword",
+        "control",
+        "directive",
+        "unit",
+        "statement",
+        "regex",
+        "atrule",
+        "language-css",
+        "language-scss",
+      ],
+      style: {
+        color: "#47ebb4",
+      },
+    },
+    {
+      types: ["placeholder", "variable"],
+      style: {
+        color: "#47ebb4",
+      },
+    },
+    {
+      types: ["deleted"],
+      style: {
+        textDecorationLine: "line-through",
+      },
+    },
+    {
+      types: ["inserted"],
+      style: {
+        borderBottom: "1px dotted #ebf4ff",
+        textDecorationLine: "none",
+      },
+    },
+    {
+      types: ["italic"],
+      style: {
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["important", "bold"],
+      style: {
+        fontWeight: "bold",
+      },
+    },
+    {
+      types: ["important"],
+      style: {
+        color: "#7eb6f6",
+      },
+    },
+    {
+      types: ["entity"],
+      style: {
+        cursor: "help",
+      },
+    },
+  ],
+};
 
-const fs = require('fs');
-const resourcesHTML = fs.readFileSync('./src/snippets/resources.html', 'utf-8');
-const resourceDOCS = fs.readFileSync('./src/snippets/resourceDOCS.html', 'utf-8');
+const lightCodeTheme = elasticpath;
+const darkCodeTheme = elasticpath;
+
+const fs = require("fs");
+const resourcesHTML = fs.readFileSync("./src/snippets/resources.html", "utf-8");
+const resourceDOCS = fs.readFileSync(
+  "./src/snippets/resourceDOCS.html",
+  "utf-8",
+);
 
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
 //const defaultSettings = {
@@ -22,14 +140,14 @@ const resourceDOCS = fs.readFileSync('./src/snippets/resourceDOCS.html', 'utf-8'
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Elastic Path Documentation',
-  tagline: 'API, Commerce Manager, Guides and Documentation 🚀',
-  url: 'https://beta.elasticpath.dev',
-  baseUrl: '/',
-  favicon: '/favicon.ico',
+  title: "Elastic Path Documentation",
+  tagline: "API, Commerce Manager, Guides and Documentation 🚀",
+  url: "https://beta.elasticpath.dev",
+  baseUrl: "/",
+  favicon: "/favicon.ico",
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -50,19 +168,20 @@ const config = {
           sidebarPath: require.resolve("./sidebars-default.js"),
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
-          editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/"
+          editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/blog/"
+          editUrl:
+            "https://github.com/elasticpath/elasticpath-dev/tree/main/blog/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
         sitemap: {
-          ignorePatterns: ['/tags/**'],
+          ignorePatterns: ["/tags/**"],
         },
       }),
     ],
@@ -436,35 +555,39 @@ const config = {
       },
     ],
     [
-      '@docusaurus/plugin-content-docs',
+      "@docusaurus/plugin-content-docs",
       {
-        id: 'guides',
-        path: 'guides',
-        routeBasePath: 'guides',
-        sidebarPath: require.resolve('./sidebar-guides.js'),
+        id: "guides",
+        path: "guides",
+        routeBasePath: "guides",
+        sidebarPath: require.resolve("./sidebar-guides.js"),
         // ... other options
       },
     ],
     [
-      '@docusaurus/plugin-content-blog',
+      "@docusaurus/plugin-content-blog",
       {
         /**
          * Required for any multi-instance plugin
          */
-        id: 'changelog-pxm',
+        id: "changelog-pxm",
         /**
          * URL route for the blog section of your site.
          * *DO NOT* include a trailing slash.
          */
-        routeBasePath: 'changelog/pxm',
+        routeBasePath: "changelog/pxm",
         /**
          * Path to data on filesystem relative to site dir.
          */
-        path: './changelog/pxm',
+        path: "./changelog/pxm",
       },
     ],
   ],
-  themes: ['docusaurus-theme-openapi-docs','@docusaurus/theme-mermaid','@docusaurus/theme-live-codeblock'],
+  themes: [
+    "docusaurus-theme-openapi-docs",
+    "@docusaurus/theme-mermaid",
+    "@docusaurus/theme-live-codeblock",
+  ],
 };
 
 module.exports = config;
