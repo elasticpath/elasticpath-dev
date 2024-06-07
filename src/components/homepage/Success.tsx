@@ -73,7 +73,7 @@ export default function ToolsForDevs() {
             Learn more about global services ›
           </a>
         </div>
-        <div className="flex flex-col justify-center items-center md:items-start">
+        <div className="flex flex-col justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -97,7 +97,7 @@ export default function ToolsForDevs() {
             </g>
           </svg>
           <h3 className="my-2 text-[2rem] dark:text-white font-semibold tracking-tight dark:drop-shadow-md">
-            Vender & partner support
+            Vendor & partner support
           </h3>
           <p className="text-base md:text-lg my-4 p-0 text-left leading-7 md:leading-loose">
             A centralized service offering that reduces the risk of managing

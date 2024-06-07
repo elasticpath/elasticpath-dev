@@ -1367,6 +1367,8 @@ html[data-theme="dark"] .header-github-link:before {
     no-repeat;
 }
 
+/* Homepage related styles */
+
 @layer utilities {
   .bg-homepage-gradient {
     position: relative;
@@ -1399,22 +1401,44 @@ html[data-theme="dark"] .header-github-link:before {
 @layer components {
   .homepage-code-block {
     .tabs {
-      @apply bg-[#1d262f] border-b-0 text-white rounded-t-md font-normal text-sm
+      @apply bg-[#1d262f] border-b-0 text-white rounded-t-md font-normal text-sm;
     }
 
     .prism-code {
-      @apply border-0 rounded-t-none rounded-b-md
+      @apply border-0 rounded-t-none rounded-b-md;
     }
 
     .margin-top--md {
-      @apply !mt-0
+      @apply !mt-0;
     }
 
-    .token.function, .token.keyword {
-      @apply dark:drop-shadow-[0_0px_3px_currentColor]
+    .token.function,
+    .token.keyword {
+      @apply dark:drop-shadow-[0_0px_3px_currentColor];
     }
   }
 
+  .dev-homepage {
+    .navbar {
+      @apply bg-transparent border-0
+    }
+
+    .guide-button-link {
+      @apply dark:text-white text-black
+    }
+
+    [class*='searchBox'] {
+      @apply hidden
+    }
+
+    .navbar__item:hover, .navbar__link:hover {
+      @apply text-[#1FEC90]
+    }
+
+    .dev-portal-signup {
+      @apply bg-black dark:bg-[#1FEC90] rounded-full text-white dark:text-black hover:bg-[#1FEC90]/80 hover:bg-[#1FEC90] hover:text-black
+    }
+  }
 }
 
 div.ap-wrapper div.ap-player {

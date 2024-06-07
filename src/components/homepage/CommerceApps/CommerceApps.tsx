@@ -15,7 +15,7 @@ const Trigger = ({ name }: { name: string }) => {
   return (
     <TabsTrigger
       value={name}
-      className="data-[state='active']:bg-[#1FEC90] data-[state='active']:shadow-lg dark:data-[state='active']:shadow-[0px_0px_28px_0px_#1FEC90] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-[1.375rem] leading-[2.2rem] px-6"
+      className="data-[state='active']:dark:bg-[#1FEC90] data-[state='active']:bg-[#61DEA6] data-[state='active']:shadow-lg dark:data-[state='active']:shadow-[0px_0px_28px_0px_#1FEC90] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-xl py-1 px-6"
     >
       {name}
     </TabsTrigger>
@@ -61,7 +61,7 @@ function Tab({
               <li>{item}</li>
             ))}
           </ul>
-          <div className="flex text-black justify-between mt-8">
+          <div className="flex text-black gap-8 mt-8">
             <a
               href={listItems[0]}
               className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
@@ -70,9 +70,9 @@ function Tab({
             </a>
             <a
               href={linkItems[1]}
-              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
+              className="flex-1 bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
             >
-              View Documentation
+              View Documentation ›
             </a>
           </div>
         </div>

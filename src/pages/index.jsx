@@ -14,33 +14,34 @@ import AbstractBG from "../components/homepage/ui/AbstractBG";
 
 export default function Homepage() {
   return (
-    <Layout
-      description="Elastic Path delivers the speed and flexibility commerce teams need to tackle today's toughest challenges."
-      wrapperClassName="relative homepage flex flex-col relative dark:bg-homepage-gradient bg-white"
-      noFooter
-    >
-      <AbstractBG />
+    <div className="dev-homepage dark:bg-homepage-gradient bg-white">
+      <Layout
+        description="Elastic Path delivers the speed and flexibility commerce teams need to tackle today's toughest challenges."
+        wrapperClassName="relative homepage flex flex-col relative"
+        noFooter
+        noNav
+      >
+        <AbstractBG />
 
-      <div className="relative z-10">
-        <HeroSection />
-        <div className="hidden md:block">
-          <CommerceApps />
-        </div>
-        <div className="md:hidden">
-          <CommerceAppsMobile />
-        </div>
-        <div className="md:hidden">
+        <div className="relative z-10">
+          <HeroSection />
+          <div className="hidden md:block">
+            <CommerceApps />
+          </div>
+          <div className="md:hidden">
+            <CommerceAppsMobile />
+          </div>
           <APIs />
+          <CTA />
+          <ToolsForDevs />
+          <Composer />
+          <CTA />
+          <Success />
+          <Testimonials />
+          <CTA />
+          <HomeFooter />
         </div>
-        <CTA />
-        <ToolsForDevs />
-        <Composer />
-        <CTA />
-        <Success />
-        <Testimonials />
-        <CTA />
-        <HomeFooter />
-      </div>
-    </Layout>
+      </Layout>
+    </div>
   );
 }

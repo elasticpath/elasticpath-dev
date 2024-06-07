@@ -139,7 +139,7 @@ const columnOffset = {
 
 export default function Example() {
   return (
-    <div className="relative pt-24 sm:pt-32 overflow-hidden">
+    <div className="relative pt-24 sm:pt-32 overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-56 after:bg-gradient-to-t after:from-white after:dark:from-black/40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 md:py-0">
         <div className="flex flex-col items-center md:items-start">
           <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-center md:text-left dark:text-white dark:drop-shadow-md">
