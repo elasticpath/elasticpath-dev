@@ -83,7 +83,7 @@ function Tab({
 
 export default function CommerceApps() {
   return (
-    <section className="px-10 py-12 md:py-24 text-center leading-tight tracking-tight">
+    <section className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight">
       <link
         rel="preload"
         as="image"

@@ -34,8 +34,11 @@ function Tab({
 
   return (
     <div className="relative w-full">
-      <div className="bg-white mx-auto p-6 my-2 rounded-lg shadow-lg hover:shadow-xl ring-1 ring-gray-200">
-        <div className="text-black flex items-center justify-between text-left">
+      <div className="dark:bg-white/20 bg-white mx-auto p-6 my-2 rounded-lg shadow-lg hover:shadow-xl dark:ring-0 ring-1 ring-gray-200">
+        <div
+          className="dark:text-white text-black flex items-center text-left"
+          onClick={toggleOpen}
+        >
           {icon}
           <div className="ml-2 flex flex-col">
             <p className="font-mono p-0 m-0 text-xs">ELASTIC PATH</p>
@@ -43,9 +46,8 @@ function Tab({
           </div>
 
           <button
-            onClick={toggleOpen}
             className={clsx(
-              "bg-transparent border-0 transition-all",
+              "bg-transparent border-0 transition-all ml-auto",
               open && "rotate-180",
             )}
           >
@@ -66,27 +68,27 @@ function Tab({
           >
             <p
               className={clsx(
-                "text-left text-gray-500 text-base delay-100 transition-all",
+                "text-left dark:text-white/90 text-gray-500 text-base delay-100 transition-all",
                 open && "my-4",
               )}
             >
               {tagline}
             </p>
-            <ul className="flex flex-col text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
+            <ul className="flex flex-col dark:text-white/90 text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
               {listItems.map((item) => (
                 <li>{item}</li>
               ))}
             </ul>
-            <div className="flex text-black justify-between gap-4 mt-8">
+            <div className="flex gap-4 mt-8 justify-center">
               <a
                 href={listItems[0]}
-                className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all text-black border-0 text-sm font-semibold hover:no-underline"
+                className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
               >
                 Watch a demo
               </a>
               <a
                 href={linkItems[1]}
-                className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all text-black border-0 text-sm font-semibold hover:no-underline"
+                className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
               >
                 Read the docs
               </a>
