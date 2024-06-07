@@ -63,8 +63,11 @@ const SVGs = () => (
 
 export default function () {
   return (
-    <div className="z-0 fixed w-[100vw] h-[100vh] top-0 dark:bg-[url('/assets/homepage/abstract-bg.webp')] bg-center bg-no-repeat bg-cover blur-lg opacity-95"></div>
-    // SVG based animated solution, removed for now for performance concerns
-    // <SVGs />
+    <div className="z-0 absolute w-[100vw] h-full">
+      <div className="w-full h-1/2 dark:bg-[url('/assets/homepage/abstract-bg.webp')] bg-center bg-no-repeat bg-cover blur-lg opacity-95"></div>
+      <div className="w-full h-1/2 dark:bg-[url('/assets/homepage/abstract-bg-2.webp')] bg-center bg-no-repeat bg-cover blur-lg opacity-95"></div>
+
+      {/*<SVGs />*/}
+    </div>
   );
 }
