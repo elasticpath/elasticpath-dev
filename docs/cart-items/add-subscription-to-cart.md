@@ -28,6 +28,7 @@ Elastic Path Subscriptions allows you to offer your customers subscriptions and 
 | `type`                       | Required | `string`  | Specifies the type of the resource, always `subscription_item`.                                                                                                              |
 | `subscription_configuration` | Required | `array`   | Specifies the unique identifier of the plan within the offering that you want to add to a cart. You can view an offering's plan using the `List an Offering's plans` endpoint. |
 | `quantity`                   | Required | `integer` | Specifies the number of subscriptions to add to the cart.                                                                                                                    |
+| `tax` | Optional | `array`   | Calculates the tax when a subscription is added to a cart, based on a given tax rate. <ul><li>`type` is always `tax_item`</li><li>`rate` is the rate to use to calculate the tax.</li></ul> |
 
 ## Request Example 
 
@@ -45,8 +46,18 @@ curl -X POST https://euwest.api.elasticpath.com/v2/carts/subscriptions/items \
                   "plan": "6bf86e7a-2548-485d-a595-1be022a1eb42"
               },
               "quantity": 1
-              }
-          }
+              },
+              "tax": [
+               { 
+                "type": "tax_item",
+                "jurisdiction": "US",
+                "code": "TAX1",
+                "name": "US TAX1",
+                "rate": "0.2"
+                 }
+               ]
+             }
+           }
 ```
 
 ## Response Example
