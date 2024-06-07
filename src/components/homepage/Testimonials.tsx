@@ -183,21 +183,11 @@ export default function Example() {
                       <blockquote className="text-gray-900 border-none p-0">
                         <p>{`“${testimonial.body}”`}</p>
                       </blockquote>
-                      <figcaption className="mt-6 flex items-center gap-x-4">
-                        {testimonial.author.imageUrl && (
-                          <img
-                            className="h-10 w-10 rounded-full bg-gray-50"
-                            src={testimonial.author.imageUrl}
-                            alt=""
-                          />
-                        )}
-
-                        <div>
-                          <div className="font-semibold">
-                            {testimonial.author.name}
-                          </div>
-                          <div className="text-gray-600">{`${testimonial.author.handle}`}</div>
+                      <figcaption className="mt-6 flex flex-col items-start gap-x-4">
+                        <div className="font-semibold">
+                          {testimonial.author.name}
                         </div>
+                        <div className="text-gray-600">{`${testimonial.author.handle}`}</div>
                       </figcaption>
                     </figure>
                   ))}
