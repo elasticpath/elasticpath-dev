@@ -323,7 +323,7 @@ tags:
 
       The `variation_matrix` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variation_matrix` can then be added to your catalogs.
 
-      By default, variations and variation options are sorted randomly. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
+      The order of the variations in the `variation_matrix` is the order of the variations in the array when the variations were linked to the product. For example, the first variation in the `variation_matrix` corresponds to the first variation in the array, and so on. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
 
       Add the `sort_order` attribute to the body of your request and specify a `sort_order` value. A `sort_order` value must be a number. You can specify any numbers that you want.
 
@@ -2489,6 +2489,32 @@ paths:
           $ref: '#/components/responses/unprocessable_entity'
         '500':
           $ref: '#/components/responses/internal'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/hierarchy_id'
+        - $ref: '#/components/parameters/page_offset'
+        - $ref: '#/components/parameters/page_limit'
+      summary: Get all nodes in a hierarchy
+      description: A fully paginated view of all nodes in a hierarchy regardless of depth.
+      operationId: getAllNodesInHierarchy
+      tags:
+        - Hierarchies
+      responses:
+        '200':
+          description: Successfully returns the node's children
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multi-2'
+              examples:
+                get-all-nodes:
+                  $ref: '#/components/examples/multi-2'
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '500':
+          $ref: '#/components/responses/internal'
   /pcm/hierarchies/{hierarchyID}/nodes/{nodeID}:
     get:
       parameters:
@@ -3361,7 +3387,7 @@ components:
                   - bundle
                   - standard
             variation_matrix:
-              description: The child products defined for a product. If no variations are defined for a product, the `variation_matrix` is empty.
+              description: The child products defined for a product. The order of the variations in the `variation_matrix` is the order of the variations in the array when the variations were linked to the product. For example, the first variation in the `variation_matrix` corresponds to the first variation in the array, and so on. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. See [Sorting the Order of Variations and Options](/docs/api/pxm/products/variations#sorting-the-order-of-variations-and-options) If no variations are defined for a product, the `variation_matrix` is empty.
               type: object
         relationships:
           description: Relationships are established between different product entities. For example, a `bundle` product and a `child` product are related to a `parent` product, as both are associated with it.
@@ -3607,6 +3633,24 @@ components:
                 related:
                   description: A link to a related resource.
                   type: string
+        parent:
+          description: The parent node related to the resource
+          type: object
+          properties:
+            data:
+              description: The parent node
+              type: object
+              properties:
+                type:
+                  description: This represents the type of resource object being returned. Always `node`.
+                  type: string
+                  enum:
+                    - node
+                id:
+                  description: The unique identifier of a node.
+                  type: string
+                  format: uuid
+                  required: true
         products:
           type: object
           description: The products related to the resource.
@@ -3657,6 +3701,9 @@ components:
                   description: The date and time a node was updated.
                   type: string
                   format: date-time
+                parent_name:
+                  description: The name of the parent of the node if one exists.
+                  type: string
                 owner:
                   description: The node owner, either `organization` or `store`.
                   type: string
@@ -6989,6 +7036,10 @@ components:
               data: []
               links:
                 related: /hierarchies/6183d10c-94b5-4caa-9f12-2f14cb738d41/nodes/9ea0de15-3347-43dd-8faa-cd32f44a04c7/children
+            parent:
+              data:
+                type: node
+                id: 14e8e15a-7214-435d-bccb-6ae9b570d683
             products:
               data: []
               links:
@@ -6996,6 +7047,7 @@ components:
           meta:
             created_at: '2024-01-11T19:19:50.087Z'
             owner: store
+            parent_name: Shoes
             sort_order: 2
             updated_at: '2024-01-11T19:19:50.087Z'
     update_node:
