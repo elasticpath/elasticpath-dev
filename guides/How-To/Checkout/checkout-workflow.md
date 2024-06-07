@@ -60,9 +60,9 @@ If enabled, you can manage your stock. As such, your stock is automatically upda
 
 ## Related Resources
 
-- [Carts](https://beta.elasticpath.dev/docs/carts-orders/carts/carts)
-- [Promotions](https://beta.elasticpath.dev/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
+- [Carts](https://beta.elasticpath.dev/docs/api/carts/cart-management)
+- [Promotions](https://beta.elasticpath.dev/docs/api/promotions/promotions-standard-introduction)
 - [Orders](https://beta.elasticpath.dev/docs/api/carts/orders)
-- [Payments](https://beta.elasticpath.dev/docs/api/payments/payment-gateway-introduction)
+- [Payments](https://beta.elasticpath.dev/docs/api/payments/payment-gateways-introduction)
 - [Inventory](https://beta.elasticpath.dev/docs/api/pxm/inventory/inventories-introduction)
-- [API Reference](https://beta.elasticpath.dev/docs/commerce-cloud/getting-started/api-reference)
+- [API Reference](/guides/Getting-Started/api-reference)
