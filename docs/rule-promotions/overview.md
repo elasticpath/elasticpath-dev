@@ -532,7 +532,7 @@ Condensed promotions can be retrieved from the following endpoints:
  - [Get an Order](/docs/carts-orders/get-an-order#get-include-custom-discounts): This endpoint displays order-level condensed promotions within the included object.
  - [Get Order items](/docs/carts-orders/get-order-items#get-include-promotions): This endpoint displays both order-level and item-level promotions in the included object.
 
-This applies to both both [Promotions Standard](/docs/api/promotions/promotions-standard-introduction) and Rule Promotions.
+This applies to both [Promotions Standard](/docs/api/promotions/promotions-standard-introduction) and Rule Promotions.
 
 ## Handling both Item SKU and Product ID together in Rule Promotion
 
