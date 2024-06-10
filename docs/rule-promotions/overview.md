@@ -4,7 +4,7 @@ nav_label: Overview
 sidebar_position: 1
 ---
 
-The Rule Promotions provide the flexibity to offer diverse discounts to shoppers. It supports discounts of varying complexities, from code-based customer discounts, to Buy X Get Y scenarios, fixed price promotions, and more based on your business needs.
+The Rule Promotions provide the flexibility to offer diverse discounts to shoppers. It supports discounts of varying complexities, from code-based customer discounts, to Buy X Get Y scenarios, fixed price promotions, and more based on your business needs.
 
 You can create a rule promotion using the [Rule Promotions API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview) or [Commerce Manager](/docs/commerce-manager/promotions-builder). 
 
