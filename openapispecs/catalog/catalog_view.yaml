@@ -2730,6 +2730,13 @@ components:
           example: 15
           x-go-name: Sort Order
           nullable: true
+        default:
+          description: The boolean indicates whether the current option is a default option for the component.
+          type: boolean
+          example: true
+          default: false
+          x-go-name: Default
+          nullable: true
     components:
       type: object
       title: Components
@@ -3707,6 +3714,11 @@ components:
           type: string
           example: live
           x-go-name: Status
+        external_ref:
+          description: The unique attribute associated with the product. This could be an external reference from a separate company system, for example.
+          type: string
+          x-go-name: ExternalRef
+          nullable: true
         updated_at:
           description: The date and time a product was updated.
           type: string
