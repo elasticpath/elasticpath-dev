@@ -996,7 +996,7 @@ paths:
           description: Created
           headers:
             ETag:
-              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change. The etag number will be the same value as resource_version, and is marked as a weak entity tag string. Example: etag: W/\"0\", resource_version: 0"
               schema:
                 type: string
           content:
@@ -1168,7 +1168,7 @@ paths:
           description: OK
           headers:
             ETag:
-              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change. The etag number will be the same value as resource_version, and is marked as a weak entity tag string. Example: etag: W/\"0\", resource_version: 0"
               schema:
                 type: string
           content:
@@ -1224,6 +1224,13 @@ paths:
         - Custom API Entries
       summary: Update a Custom API Entries
       operationId: UpdateACustomEntry
+      parameters:
+        - in: header
+          name: If-Match
+          description: When If-Match is set, the value must match the resource_vesrion of the resource. If the value of the header matches, the request completes. If not, HTTP 412 Precondition Failed is returned.
+          schema:
+            type: integer
+            format: number
       requestBody:
         content:
           application/json:
@@ -1300,6 +1307,8 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
+        '412':
+          $ref: '#/components/responses/PreConditionError'
         default:
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -1314,11 +1323,20 @@ paths:
         - Custom API Entries
       summary: Delete a Custom API Entry
       operationId: DeleteACustomEntry
+      parameters:
+        - in: header
+          name: If-Match
+          description: When If-Match is set, the value must match the resource_vesrion of the resource. If the value of the header matches, the request completes. If not, HTTP 412 Precondition Failed is returned.
+          schema:
+            type: integer
+            format: number
       responses:
         '204':
           description: No Content
         '404':
           $ref: '#/components/responses/NotFoundError'
+        '412':
+          $ref: '#/components/responses/PreConditionError'
         default:
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -1515,6 +1533,26 @@ components:
                       "title": "Request Entity Too Large",
                       "status": "413",
                       "detail": "Maximum entry size reached."
+                    }
+                  ]
+                }
+    PreConditionError:
+      description: Precondition Failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            pre-request-failed:
+              summary: Provided ETag does not match current resource verison
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Precondition Failed",
+                      "status": "412",
+                      "detail": "The provided ETag '2', does not match the current resource version '0'."
                     }
                   ]
                 }
@@ -1726,9 +1764,17 @@ components:
                 - data_size
               properties:
                 data_size:
+                  type: integer
                   description: Specifies the sum of the size of each value stored for the Custom API Entry in bytes. The total size of a Custom API Entry must not exceed 64KB.
                   readOnly: true
                   example: 6
+                  default: 0
+                resource_version:
+                  type: integer
+                  description: A unique identifier representing the current version of the resource. When the resource changes, the resource_version value will also change.
+                  readOnly: true
+                  example: 4
+                  default: 0
     ErrorResponse:
       required:
         - errors
