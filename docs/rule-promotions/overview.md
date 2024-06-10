@@ -14,7 +14,7 @@ If the cart has:
 - A Promotion Standard offering a 10% discount on the shopping cart
 - A Rule Promotion offering 20% discount on the shopping cart
 
-    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The newest promotion is applied first, followed by stacking of the oldest promotion upon the newest promotion. The Promotions standard discount is applied first, regardless of date, and then the Rule Promotionn discount is stacked based on its creation date.
+    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The Promotions Standard discount is always applied before the Rule Promotion discount, regardless of their creation dates. After applying the Promotions Standard discount, the Rule Promotion discount is then applied based on its creation date, with the newest promotion applied first and the oldest promotion stacked on top of the newest promotion.
 
 :::note
 
