@@ -1222,12 +1222,12 @@ paths:
     put:
       tags:
         - Custom API Entries
-      summary: Update a Custom API Entries
+      summary: Update a Custom API Entry
       operationId: UpdateACustomEntry
       parameters:
         - in: header
           name: If-Match
-          description: When If-Match is set, the value must match the resource_vesrion of the resource. If the value of the header matches, the request completes. If not, HTTP 412 Precondition Failed is returned.
+          description: When the `If-Match` header is set, its value must match the `resource_version` of the resource. If the value of the header matches, the request completes. If not, an HTTP 412 Precondition Failed status is returned.
           schema:
             type: integer
             format: number
