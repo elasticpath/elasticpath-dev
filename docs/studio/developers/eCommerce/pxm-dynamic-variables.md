@@ -74,13 +74,13 @@ Product Experience Manager allows your shoppers to add custom text to a product 
 
 Product Experience Manager allows you to create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity. For more information on Product Experience Manager bundle attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute | Studio Dynamic Variable                |
-|---------------|----------------------------------------| 
-| property name | {{custom.attributes.propertyname}}     | 
-| name          | {{custom.attributes.name}}             |
-| min           | {{custom.attributes.vallidationrules}} |
-| max           | {{custom.attributes.type}}             |
-| sort_order    | {{custom.attributes.options}}          |
+| PXM Attribute | Studio Dynamic Variable               |
+|---------------|---------------------------------------| 
+| property name | {{custom.attributes.propertyname}}    | 
+| name          | {{custom.attributes.name}}            |
+| min           | {{custom.attributes.validationrules}} |
+| max           | {{custom.attributes.type}}            |
+| sort_order    | {{custom.attributes.options}}         |
 
 #### Options
 
