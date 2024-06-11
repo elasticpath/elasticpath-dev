@@ -24,14 +24,16 @@ The following table shows the access permissions associated with each store role
 | Application Keys       | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
 | Billing                | ⛔️             | ✅            | ⛔️              | ⛔️            | ⛔️            | ⛔️               | ⛔️               |
 | Composer               | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
+| Commerce Extensions     | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
 | Customers              | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               | ✅               |
 | Files                  | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               | ✅               |
 | Flows                  | ⛔️             | ✅            | ✅              | ⛔️            | ✅            | ⛔️               | ✅               |
 | Orders                 | ⛔️             | ✅            | ⛔️              | ✅            | ⛔️            | ⛔️               | ✅               |
-| Personal Data Sets     | ⛔️             | ✅            | ⛔️              | ✅             | ✅           | ⛔️               | ✅               |
+| Personal Data Sets     | ⛔️             | ✅            | ⛔️              | ✅            | ✅            | ⛔️               | ✅               |
 | PXM                    | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ⛔️               | ✅               |
 | Promotions             | ⛔️             | ✅            | ✅              | ⛔️            | ⛔️            | ✅               | ✅               |
 | Store Settings         | ⛔️             | ✅            | ⛔️              | ⛔️            | ✅            | ⛔️               | ⛔️               |
+| Subscriptions          | ⛔️             | ✅            | ⛔️              | ⛔️            | ⛔️            | ⛔️               | ⛔️               |
 
 :::note
 A role assigned to a user in a store is restricted to that store. The same user can have different roles in different stores.

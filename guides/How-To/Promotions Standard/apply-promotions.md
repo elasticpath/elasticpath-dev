@@ -9,7 +9,7 @@ With promotions, you can provide different types of discounts to all your custom
 :::caution
 - When a promotion expires, the promotion codes attached to the promotion automatically become invalid. However, when you re-enable the expired promotion, the promotion codes attached to the promotion are deleted. 
 - When you checkout a cart with an expired promotion, the expired promotion will be automatically removed from a cart and the checkout process is initiated. As a best practice, we recommend to update your cart to remove the expired promotion before initiating the checkout process.
-- If a certain SKU or catalog is targeted in the [promotion schema](https://beta.elasticpath.dev/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion#the-schema-object), a custom item will not be eligible for the promotion unless it is specifically included as a target.
+- If a certain SKU or catalog is targeted in the [promotion schema](https://beta.elasticpath.dev/docs/api/promotions/create-a-promotion#the-schema-object), a custom item will not be eligible for the promotion unless it is specifically included as a target.
 :::
 
 ## Applying Promotions
@@ -34,7 +34,7 @@ Do the following to apply a promotion at a cart level:
     - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes)
     - [API](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes)
 
-1. [Add items to the cart](https://beta.elasticpath.dev/docs/carts-orders/carts/cart-items/add-product-to-cart).
+1. [Add items to the cart](https://beta.elasticpath.dev/docs/api/carts/cart-merge#add-product-to-cart).
 1. Apply promotion using code if the promotion is not automatically applied.
 1. [Checkout the cart](https://beta.elasticpath.dev/docs/api/carts/checkout) that is updated with the promotion.
 
@@ -167,5 +167,5 @@ Use unique codes when you want to control the number of products included in the
 
 ## Next steps
 
-- [Pay for the order](/docs/carts-orders/payments/paying-for-an-order/overview)
+- [Pay for the order](https://beta.elasticpath.dev/docs/api/carts/payments)
 
