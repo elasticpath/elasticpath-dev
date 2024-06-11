@@ -16,27 +16,27 @@ The following tables describe how the Product Experience Manager product attribu
 
 Product Experience Manager products have the following attributes. For more information on Product Experience Manager product attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute | Studio Dynamic Variable              |
-| --- |--------------------------------------| 
-| external_ref | {{product.attributes.externalref}}   | 
-| name | {{product.attributes.name}}          |
-| description | {{product.attributes.description}}   |
-| slug | {{product.attributes.slug}}          | 
-| sku | {{product.attributes.sku}}           |
-| status | {{product.attributes.status}}        |
-| commodity_type | {{product.attributes.commoditytype}} |
-| upc_ean | {{product.attributes.upcean}}        |
-| mpn | {{product.attributes.mpn}}           |
+| PXM Attribute | Studio Dynamic Variable               |
+| --- |---------------------------------------| 
+| external_ref | {{product.attributes.external_ref}}   | 
+| name | {{product.attributes.name}}           |
+| description | {{product.attributes.description}}    |
+| slug | {{product.attributes.slug}}           | 
+| sku | {{product.attributes.sku}}            |
+| status | {{product.attributes.status}}         |
+| commodity_type | {{product.attributes.commodity_type}} |
+| upc_ean | {{product.attributes.upc_ean}}        |
+| mpn | {{product.attributes.mpn}}            |
 
 ### Locales
 
 Product Experience Manager supports localization of products. For more information on Product Experience Manager localization attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute | Studio Dynamic Variable            |
-|---------------|------------------------------------| 
-| property name | {{locale.attributes.propertyname}} | 
-| name          | {{locale.attributes.name}}         |
-| description   | {{locale.attributes.description}}  |
+| PXM Attribute | Studio Dynamic Variable              |
+|---------------|--------------------------------------| 
+| property name | {{product.attributes.property_name}} | 
+| name          | {{product.attributes.name}}          |
+| description   | {{product.attributes.description}}    |
 
 ### Tags
 
@@ -44,7 +44,7 @@ You can use product tags to store or assign a key word against a product. The pr
 
 | PXM Attribute | Studio Dynamic Variable    |
 |---------------|----------------------------| 
-| tags          | {{locale.attributes.tags}} | 
+| tags          | {{product.attributes.tags}} | 
 
 ### Build Rules
 
@@ -52,23 +52,23 @@ Product Experience Manager allows you to build a combination of child products a
 
 | PXM Attribute | Studio Dynamic Variable      |
 |---------------|------------------------------| 
-| default       | {{build.attributes.default}} | 
-| include       | {{build.attributes.include}} |
-| exclude       | {{build.attributes.exclude}} |
+| default       | {{product.attributes.default}} | 
+| include       | {{product.attributes.include}} |
+| exclude       | {{product.attributes.exclude}} |
 
 ### Custom Inputs
 
 Product Experience Manager allows your shoppers to add custom text to a product when adding product items to a cart. For more information on Product Experience Manager custom attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute    | Studio Dynamic Variable                |
-|------------------|----------------------------------------| 
-| property name    | {{custom.attributes.propertyname}}     | 
-| name             | {{custom.attributes.name}}             |
-| validation_rules | {{custom.attributes.vallidationrules}} |
-| type | {{custom.attributes.type}}             |
-| options | {{custom.attributes.options}}          |
-| max_length | {{custom.attributes.maxlength}}        | 
-| required | {{custom.attributes.required}}         |
+| PXM Attribute    | Studio Dynamic Variable                  |
+|------------------|------------------------------------------| 
+| property name    | {{product.attributes.property_name}}     | 
+| name             | {{product.attributes.name}}              |
+| validation_rules | {{product.attributes.vallidation_rules}} |
+| type | {{product.attributes.type}}              |
+| options | {{product.attributes.options}}           |
+| max_length | {{product.attributes.max_length}}        | 
+| required | {{product.attributes.required}}          |
 
 ### Components
 
@@ -76,23 +76,23 @@ Product Experience Manager allows you to create and manage bundles. A bundle is 
 
 | PXM Attribute | Studio Dynamic Variable               |
 |---------------|---------------------------------------| 
-| property name | {{custom.attributes.propertyname}}    | 
-| name          | {{custom.attributes.name}}            |
-| min           | {{custom.attributes.validationrules}} |
-| max           | {{custom.attributes.type}}            |
-| sort_order    | {{custom.attributes.options}}         |
+| property name | {{product.attributes.property_name}}  | 
+| name          | {{product.attributes.name}}            |
+| min           | {{product.attributes.validationrules}} |
+| max           | {{product.attributes.type}}            |
+| sort_order    | {{product.attributes.options}}         |
 
 #### Options
 
 Each bundle component must have at least one or more options. Each option is a product and a quantity. For more information on Product Experience Manager bundle attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute | Studio Dynamic Variable         |
-|---------------|---------------------------------| 
-| id            | {{custom.attributes.id}}        | 
-| type          | {{custom.attributes.type}}      |
-| quantity      | {{custom.attributes.quantity}}  |
-| sort_order    | {{custom.attributes.sortorder}} |
-| default       | {{custom.attributes.default}}   |
+| PXM Attribute | Studio Dynamic Variable          |
+|---------------|----------------------------------| 
+| id            | {{product.attributes.id}}         | 
+| type          | {{product.attributes.type}}       |
+| quantity      | {{product.attributes.quantity}}   |
+| sort_order    | {{product.attributes.sort_order}} |
+| default       | {{product.attributes.default}}    |
 
 ## Product Experience Manager Hierarchies
 
@@ -112,20 +112,113 @@ Product Experience Manager hierarchies have the following attributes. For more i
 
 Product Experience Manager supports localization of hierarchies. For more information on Product Experience Manager hierarchy localization attributes, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
 
-| PXM Attribute | Studio Dynamic Variable            |
-|---------------|------------------------------------| 
-| property name | {{locale.attributes.propertyname}} | 
-| name          | {{locale.attributes.name}}         |
-| description   | {{locale.attributes.description}}  |
+| PXM Attribute | Studio Dynamic Variable              |
+|---------------|--------------------------------------| 
+| property name | {{category.attributes.property_name}} | 
+| name          | {{category.attributes.name}}           |
+| description   | {{category.attributes.description}}    |
 
 ### Relationships
 
-A hierarchy can have parent and child nodes. For more information on Product Experience Manager hierarchy parent/child attributes, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
+A hierarchy can have parent and child nodes. Relationships allow you to move between requests and includes links to the child nodes associated with a hierarchy or node. For more information on Product Experience Manager hierarchy relationship attributes, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
 
 
 | PXM Attribute | Studio Dynamic Variable                 |
 |---------------|-----------------------------------------| 
-| data          | {{relationship.attributes.data}}        | 
-| related       | {{relationship.attributes.related}}     |
+| data          | {{category.attributes.data}}        | 
+| related       | {{category.attributes.related}}     |
+
+### Meta
+
+A hierarchy can have meta data. For more information on Product Experience Manager hierarchy meta data, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
+
+
+| PXM Attribute | Studio Dynamic Variable            |
+|---------------|------------------------------------| 
+| created_at    | {{category.attributes.created_at}} | 
+| updated_at    | {{category.attributes.updated_at}} |
+| owner | {{category.attributes.owner}}      |
+
+### Nodes
+
+A hierarchy can have parent and child nodes. For more information on Product Experience Manager hierarchy parent/child nodes attributes, see [Create a node](/docs/api/pxm/products/create-node).
+
+| PXM Attribute  | Studio Dynamic Variable              |
+|----------------|--------------------------------------| 
+| name           | {{node.attributes.name}}             |
+| description    | {{node.attributes.description}}      |
+| slug           | {{node.attributes.slug}}             |
+| curated_products | {{node.attributes.curated_products}} | 
+
+#### Locales
+
+Product Experience Manager supports localization of nodes. For more information on Product Experience Manager node localization attributes, see [Create a node](/docs/api/pxm/products/create-node).
+
+| PXM Attribute | Studio Dynamic Variable           |
+|---------------|-----------------------------------| 
+| property name | {{node.attributes.property_name}} | 
+| name          | {{node.attributes.name}}          |
+| description   | {{node.attributes.description}}   |
+
+#### Relationships
+
+A hierarchy can have parent and child nodes. Relationships allow you to move between requests and includes links to the child/parent nodes and products associated with a node. For more information on Product Experience Manager node relationship attributes, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
+
+##### Children
+
+| PXM Attribute | Studio Dynamic Variable     |
+|---------------|-----------------------------| 
+| data          | {{node.attributes.data}}    | 
+| related       | {{node.attributes.related}} |
+
+##### Parent
+
+| PXM Attribute | Studio Dynamic Variable     |
+|---------------|-----------------------------| 
+| data          | {{node.attributes.data}}    | 
+| related       | {{node.attributes.related}} |
+
+##### Products
+
+| PXM Attribute | Studio Dynamic Variable     |
+|---------------|-----------------------------| 
+| data          | {{node.attributes.data}}    | 
+| related       | {{node.attributes.related}} |
+
+#### Meta
+
+A hierarchy can have meta data. For more information on Product Experience Manager hierarchy meta data, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
+
+| PXM Attribute | Studio Dynamic Variable         |
+|---------------|---------------------------------| 
+| created_at    | {{node.attributes.created_at}}  | 
+| updated_at    | {{node.attributes.updated_at}}  |
+| parent_name | {{node.attributes.parent_name}} | 
+| owner | {{node.attributes.owner}}       |
+
+## Contacts
+
+| PXM Attribute | Studio Dynamic Variable         |
+|---------------|---------------------------------| 
+| id            | {{node.attributes.created_at}}  | 
+| type          | {{node.attributes.updated_at}}  |
+| persona       | {{node.attributes.parent_name}} | 
+| first_name    | {{node.attributes.owner}}       |
+| last_name | |
+| title | |
+| email | |
+| phone | |
+| organization | |
+| website | |
+| address1 | |
+| address2 | |
+| city | |
+| state | |
+| zip | |
+| country | |
+| params | |
+
+
+
 
 
