@@ -14,7 +14,7 @@ import AbstractBG from "../components/homepage/ui/AbstractBG";
 
 export default function Homepage() {
   return (
-    <div className="dev-homepage dark:bg-homepage-gradient bg-white">
+    <div className="dev-homepage dark:bg-homepage-gradient bg-white scroll-smooth">
       <Layout
         description="Elastic Path delivers the speed and flexibility commerce teams need to tackle today's toughest challenges."
         wrapperClassName="relative homepage flex flex-col relative"

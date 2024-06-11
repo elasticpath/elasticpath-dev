@@ -72,7 +72,7 @@ function Tab({
               href={linkItems[1]}
               className="flex-1 bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
             >
-              View Documentation ›
+              View Documentation →
             </a>
           </div>
         </div>
@@ -83,7 +83,7 @@ function Tab({
 
 export default function CommerceApps() {
   return (
-    <section className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight">
+    <section id="CommerceApps" className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight">
       <link
         rel="preload"
         as="image"
@@ -145,7 +145,7 @@ export default function CommerceApps() {
                 "Bundles & promotions",
                 "Up to 10,000 product variations",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/api/pxm/products/products"]}
             />
 
             <Tab
@@ -160,7 +160,7 @@ export default function CommerceApps() {
                 "135+ supported currencies",
                 "Seamless checkout experiences",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/payments"]}
             />
 
             <Tab
@@ -173,7 +173,7 @@ export default function CommerceApps() {
                 "Monitor your customer and account relationships",
                 "Export your transactions",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/api/carts/carts-checkout-orders-introduction"]}
             />
 
             <Tab
@@ -186,7 +186,7 @@ export default function CommerceApps() {
                 "Elevate customer choice with varied billing and subscription discounts",
                 "Easily configure repeat purchases, memberships, subscribe & save, and more",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/api/subscriptions/subscriptions-introduction"]}
             />
 
             <Tab
@@ -199,7 +199,7 @@ export default function CommerceApps() {
                 "Launch sooner with pre-configured integrations",
                 "Showcase your brand with effortless customization",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/studio"]}
             />
 
             <Tab
@@ -212,7 +212,7 @@ export default function CommerceApps() {
                 "Create your own custom integrations and hook up to more than 3,000 available actions.",
                 "Monitor every component via a single pane of glass.",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/composer"]}
             />
 
             <Tab
@@ -225,7 +225,7 @@ export default function CommerceApps() {
                 "Deploy unique behaviors and integrations with ease using Commerce Extensions and Composer.",
                 "Eliminate the need to build and host custom functionality from scratch.",
               ]}
-              linkItems={["a", "b"]}
+              linkItems={["a", "/docs/extensions"]}
             />
           </div>
         </Tabs>

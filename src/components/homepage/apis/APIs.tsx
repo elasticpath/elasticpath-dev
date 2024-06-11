@@ -77,7 +77,7 @@ const TabbedCodeSample = ({ codeSamples }) => {
 
 export default function APIs() {
   return (
-    <div className="py-16 md:py-28 px-10 max-w-7xl mx-auto">
+    <section id="APIs" className="py-16 md:py-28 px-10 max-w-7xl mx-auto">
       <h2 className="hidden md:block mb-20 text-[4rem] text-center dark:text-white dark:drop-shadow-md font-semibold tracking-tight">
         Modern commerce APIs
       </h2>
@@ -92,13 +92,13 @@ export default function APIs() {
           </h2>
           <div className="flex flex-col md:flex-row text-center items-center text-black gap-5">
             <a
-              href=""
+              href="/docs"
               className="bg-transparent order-2 md:order-1 tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
             >
               Read the docs
             </a>
             <a
-              href=""
+              href="/guides/Getting-Started/test-with-postman-collection"
               className="bg-transparent order-1 md:order-2 tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
             >
               Get Postman collection
@@ -280,6 +280,6 @@ export default function APIs() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -36,10 +36,10 @@ export default function ToolsForDevs() {
             day and beyond.
           </p>
           <a
-            href=""
+            href="https://www.elasticpath.com/company/contact-us"
             className="flex items-center text-lg dark:text-white text-black font-semibold mt-auto"
           >
-            Get in touch ›
+            Get in touch →
           </a>
         </div>
         <div className="flex flex-col justify-center">
@@ -67,10 +67,10 @@ export default function ToolsForDevs() {
             commerce vision is brought to life.
           </p>
           <a
-            href=""
+            href="https://www.elasticpath.com/customer-success/global-services"
             className="text-lg dark:text-white text-black font-semibold mt-auto"
           >
-            Learn more about global services ›
+            Learn more about global services →
           </a>
         </div>
         <div className="flex flex-col justify-center">
@@ -105,10 +105,10 @@ export default function ToolsForDevs() {
             holistic issue resolution.
           </p>
           <a
-            href=""
+            href="https://www.elasticpath.com/partners"
             className="text-lg dark:text-white text-black font-semibold mt-auto"
           >
-            Learn more about our partner program ›
+            Learn more about our partner program →
           </a>
         </div>
       </div>

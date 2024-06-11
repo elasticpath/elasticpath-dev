@@ -17,21 +17,21 @@ export default function HeroSection() {
           Launch faster, solve complex problems, and build world-class
           experiences with our suite of interconnected{" "}
           <a
-            href=""
+            href="#CommerceApps"
             className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
             e-Commerce Apps
           </a>
           ,{" "}
           <a
-            href=""
+            href="#APIs"
             className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
             APIs{" "}
           </a>
           , &{" "}
           <a
-            href=""
+            href="#Tools"
             className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
             tools for developers

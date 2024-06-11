@@ -145,9 +145,9 @@ export default function Example() {
           <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-center md:text-left dark:text-white dark:drop-shadow-md">
             What our customers <br /> are saying...
           </h2>
-          <button className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 mt-8 font-semibold">
+          <a href="https://www.elasticpath.com/case-studies" className="text-black !no-underline bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 mt-8 font-semibold">
             View case studies
-          </button>
+          </a>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {testimonials.map((columnGroup, columnGroupIdx) => (
