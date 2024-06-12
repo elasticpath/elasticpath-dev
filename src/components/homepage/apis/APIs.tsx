@@ -92,7 +92,7 @@ export default function APIs() {
           </h2>
           <div className="flex flex-col md:flex-row text-center items-center text-black gap-5">
             <a
-              href="/docs"
+              href="/api"
               className="bg-transparent order-2 md:order-1 tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all border-0 text-base font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
             >
               Read the docs

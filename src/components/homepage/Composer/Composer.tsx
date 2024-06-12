@@ -21,7 +21,7 @@ export default function Composer() {
         </p>
         <div className="flex flex-col 2xl:flex-row items-center text-black gap-4 2xl:gap-8 mt-8">
           <a
-            href="/docs/composer/"
+            href="/docs/composer/integration-hub/integrations-hub"
             className="bg-transparent text-center tracking-tight rounded-full ring-2 ring-gray-300 lg:py-3 lg:px-8 py-1.5 px-4 hover:ring-green-500 transition-all border-0 lg:text-base text-sm font-semibold hover:no-underline text-black dark:text-white hover:text-black dark:hover:text-white"
           >
             30+ Instant-on integrations
