@@ -30,5 +30,5 @@ module.exports = {
 }
 ```
 
-
+For more information, see [rewrites](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites).
 
