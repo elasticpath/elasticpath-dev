@@ -1,6 +1,6 @@
 ---
-title: Setting up Custom Proxy Paths for BYLT Shopify App
-nav_label: Setting up Custom Proxy Paths BYLT Shopify App
+title: Setting up Custom Proxy Paths From Your Vercel Site
+nav_label: Setting up Custom Proxy Paths From Your Vercel Site
 sidebar_position: 65
 ---
 
