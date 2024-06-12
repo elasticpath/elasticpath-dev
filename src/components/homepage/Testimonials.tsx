@@ -145,7 +145,7 @@ export default function Example() {
           <h2 className="text-[3rem] font-semibold leading-12 tracking-tight text-center md:text-left dark:text-white dark:drop-shadow-md">
             What our customers <br /> are saying...
           </h2>
-          <a href="https://www.elasticpath.com/case-studies" className="text-black !no-underline bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 mt-8 font-semibold">
+          <a href="https://www.elasticpath.com/case-studies" className="text-black dark:text-white !no-underline bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-2 px-4 hover:ring-green-500 transition-all border-0 mt-8 font-semibold">
             View case studies
           </a>
         </div>

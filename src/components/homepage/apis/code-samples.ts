@@ -111,6 +111,16 @@ const codeSamples = {
     'curl -X GET "https://useast.api.elasticpath.com/catalog/products/${productId}" \\\n' +
     '-H "Content-Type: application/json" \\\n' +
     '-H "Authorization: Bearer XXXX"',
+  sdk: `import { gateway as EpGateway } from '@moltin/sdk';
+const ElasticPath = EpGateway({
+  client_id: "X",
+  client_secret: "X",
+});
+
+ElasticPath.Authenticate().then(response => {
+  console.log('authenticated', response)
+})
+`,
 };
 
 export default codeSamples;

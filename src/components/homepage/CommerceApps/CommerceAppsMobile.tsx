@@ -81,7 +81,7 @@ function Tab({
             </ul>
             <div className="flex gap-4 mt-8 justify-center">
               <a
-                href={listItems[0]}
+                href={linkItems[0]}
                 className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
               >
                 Watch a demo
@@ -118,7 +118,7 @@ export default function CommerceAppsMobile() {
               "Bundles & promotions",
               "Up to 10,000 product variations",
             ]}
-            linkItems={["a", "/docs/api/pxm/products/products"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/pxm/products/products"]}
           />
 
           <Tab
@@ -133,7 +133,7 @@ export default function CommerceAppsMobile() {
               "135+ supported currencies",
               "Seamless checkout experiences",
             ]}
-            linkItems={["a", "/docs/payments"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/payments"]}
           />
 
           <Tab
@@ -146,7 +146,7 @@ export default function CommerceAppsMobile() {
               "Monitor your customer and account relationships",
               "Export your transactions",
             ]}
-            linkItems={["a", "/docs/api/carts/carts-checkout-orders-introduction"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/carts/carts-checkout-orders-introduction"]}
           />
 
           <Tab
@@ -159,7 +159,7 @@ export default function CommerceAppsMobile() {
               "Elevate customer choice with varied billing and subscription discounts",
               "Easily configure repeat purchases, memberships, subscribe & save, and more",
             ]}
-            linkItems={["a", "/docs/api/subscriptions/subscriptions-introduction"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/subscriptions/subscriptions-introduction"]}
           />
 
           <Tab
@@ -172,7 +172,7 @@ export default function CommerceAppsMobile() {
               "Launch sooner with pre-configured integrations",
               "Showcase your brand with effortless customization",
             ]}
-            linkItems={["a", "/docs/studio"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/studio"]}
           />
 
           <Tab
@@ -185,7 +185,7 @@ export default function CommerceAppsMobile() {
               "Create your own custom integrations and hook up to more than 3,000 available actions.",
               "Monitor every component via a single pane of glass.",
             ]}
-            linkItems={["a", "/docs/composer"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/composer"]}
           />
 
           <Tab
@@ -198,7 +198,7 @@ export default function CommerceAppsMobile() {
               "Deploy unique behaviors and integrations with ease using Commerce Extensions and Composer.",
               "Eliminate the need to build and host custom functionality from scratch.",
             ]}
-            linkItems={["a", "/docs/extensions"]}
+            linkItems={["https://www.elasticpath.com/demo-library", "/docs/extensions"]}
           />
         </div>
       </div>
