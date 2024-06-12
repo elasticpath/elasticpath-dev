@@ -10,6 +10,7 @@ import {
 } from "./Icons";
 import { ChevronDown } from "react-feather";
 import clsx from "clsx";
+import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
 
 function Tab({
   img,
@@ -33,70 +34,74 @@ function Tab({
   }
 
   return (
-    <div className="relative w-full">
-      <div className="dark:bg-white/20 bg-white mx-auto p-6 my-2 rounded-lg shadow-lg hover:shadow-xl dark:ring-0 ring-1 ring-gray-200">
-        <div
-          className="dark:text-white text-black flex items-center text-left"
-          onClick={toggleOpen}
-        >
-          {icon}
-          <div className="ml-2 flex flex-col">
-            <p className="font-mono p-0 m-0 text-xs">ELASTIC PATH</p>
-            <h3 className="p-0 m-0 text-2xl">{value}</h3>
-          </div>
+    <BrowserOnly>
+      {() => (
+        <div className="relative w-full">
+          <div className="dark:bg-white/20 bg-white mx-auto p-6 my-2 rounded-lg shadow-lg hover:shadow-xl dark:ring-0 ring-1 ring-gray-200">
+            <div
+              className="dark:text-white text-black flex items-center text-left"
+              onClick={toggleOpen}
+            >
+              {icon}
+              <div className="ml-2 flex flex-col">
+                <p className="font-mono p-0 m-0 text-xs">ELASTIC PATH</p>
+                <h3 className="p-0 m-0 text-2xl">{value}</h3>
+              </div>
 
-          <button
-            className={clsx(
-              "bg-transparent border-0 transition-all ml-auto",
-              open && "rotate-180",
-            )}
-          >
-            <ChevronDown />
-          </button>
-        </div>
-        <div
-          className={clsx(
-            "transition-all",
-            open ? "h-auto max-h-80" : "h-0 max-h-0",
-          )}
-        >
-          <div
-            className={clsx(
-              "opacity-0 transition-all",
-              open && "opacity-100 delay-300",
-            )}
-          >
-            <p
+              <button
+                className={clsx(
+                  "bg-transparent border-0 transition-all ml-auto",
+                  open && "rotate-180",
+                )}
+              >
+                <ChevronDown />
+              </button>
+            </div>
+            <div
               className={clsx(
-                "text-left dark:text-white/90 text-gray-500 text-base delay-100 transition-all",
-                open && "my-4",
+                "transition-all",
+                open ? "h-auto max-h-80" : "h-0 max-h-0",
               )}
             >
-              {tagline}
-            </p>
-            <ul className="flex flex-col dark:text-white/90 text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
-              {listItems.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-            <div className="flex gap-4 mt-8 justify-center">
-              <a
-                href={linkItems[0]}
-                className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
+              <div
+                className={clsx(
+                  "opacity-0 transition-all",
+                  open && "opacity-100 delay-300",
+                )}
               >
-                Watch a demo
-              </a>
-              <a
-                href={linkItems[1]}
-                className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
-              >
-                Read the docs
-              </a>
+                <p
+                  className={clsx(
+                    "text-left dark:text-white/90 text-gray-500 text-base delay-100 transition-all",
+                    open && "my-4",
+                  )}
+                >
+                  {tagline}
+                </p>
+                <ul className="flex flex-col dark:text-white/90 text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
+                  {listItems.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                <div className="flex gap-4 mt-8 justify-center">
+                  <a
+                    href={linkItems[0]}
+                    className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
+                  >
+                    Watch a demo
+                  </a>
+                  <a
+                    href={linkItems[1]}
+                    className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
+                  >
+                    Read the docs
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </BrowserOnly>
   );
 }
 
@@ -118,7 +123,10 @@ export default function CommerceAppsMobile() {
               "Bundles & promotions",
               "Up to 10,000 product variations",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/pxm/products/products"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/api/pxm/products/products",
+            ]}
           />
 
           <Tab
@@ -133,7 +141,10 @@ export default function CommerceAppsMobile() {
               "135+ supported currencies",
               "Seamless checkout experiences",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/payments"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/payments",
+            ]}
           />
 
           <Tab
@@ -146,7 +157,10 @@ export default function CommerceAppsMobile() {
               "Monitor your customer and account relationships",
               "Export your transactions",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/carts/carts-checkout-orders-introduction"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/api/carts/carts-checkout-orders-introduction",
+            ]}
           />
 
           <Tab
@@ -159,7 +173,10 @@ export default function CommerceAppsMobile() {
               "Elevate customer choice with varied billing and subscription discounts",
               "Easily configure repeat purchases, memberships, subscribe & save, and more",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/subscriptions/subscriptions-introduction"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/api/subscriptions/subscriptions-introduction",
+            ]}
           />
 
           <Tab
@@ -172,7 +189,10 @@ export default function CommerceAppsMobile() {
               "Launch sooner with pre-configured integrations",
               "Showcase your brand with effortless customization",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/studio"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/studio",
+            ]}
           />
 
           <Tab
@@ -185,7 +205,10 @@ export default function CommerceAppsMobile() {
               "Create your own custom integrations and hook up to more than 3,000 available actions.",
               "Monitor every component via a single pane of glass.",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/composer"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/composer",
+            ]}
           />
 
           <Tab
@@ -198,7 +221,10 @@ export default function CommerceAppsMobile() {
               "Deploy unique behaviors and integrations with ease using Commerce Extensions and Composer.",
               "Eliminate the need to build and host custom functionality from scratch.",
             ]}
-            linkItems={["https://www.elasticpath.com/demo-library", "/docs/extensions"]}
+            linkItems={[
+              "https://www.elasticpath.com/demo-library",
+              "/docs/extensions",
+            ]}
           />
         </div>
       </div>
