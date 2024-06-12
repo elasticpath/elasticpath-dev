@@ -378,10 +378,10 @@ nav.menu {
 }
 
 .dev-portal-link {
-  background-color: theme('colors.primary.100');
+  background-color: theme("colors.primary.100");
   border-radius: 9999px;
   transition-property: all;
-  padding: 0.50rem 1.25rem !important;
+  padding: 0.5rem 1.25rem !important;
   margin: 0 0.5rem;
 }
 
@@ -402,7 +402,7 @@ nav.menu {
 }
 
 .dev-portal-signup:hover {
-  background-color: theme('colors.primary.200');
+  background-color: theme("colors.primary.200");
   color: #fff;
 }
 
@@ -418,14 +418,14 @@ nav.menu {
 
 /* Custom design for guide button */
 .guide-button {
-  color: theme('colors.primary.100');
+  color: theme("colors.primary.100");
   border-color: #00a400;
   border-radius: 4px;
   border-width: 1px;
 }
 
 .guide-button-link {
-  border-color: theme('colors.primary.100');
+  border-color: theme("colors.primary.100");
   border-radius: 4px;
   border-width: 1px;
   transition-property: all;
@@ -876,7 +876,7 @@ body[docs-menu="studio"] [data-dropdown-docs-menu="studio"],
 body[docs-menu="selfmanaged"] [data-dropdown-docs-menu="selfmanaged"],
 body[docs-menu="payments"] [data-dropdown-docs-menu="payments"],
 body[docs-menu="plugin"] [data-dropdown-docs-menu="plugin"] {
-    @apply border-l-primary;
+  @apply border-l-primary;
 }
 
 .resources-dropdown-menu a {
@@ -1402,49 +1402,46 @@ html[data-theme="dark"] .header-github-link:before {
 }
 
 @layer components {
-  .homepage-code-block {
-    .tabs {
-      @apply bg-[#1d262f] border-b-0 text-white rounded-t-md font-normal text-sm;
-    }
-
-    .prism-code {
-      @apply border-0 rounded-t-none rounded-b-md;
-    }
-
-    .margin-top--md {
-      @apply !mt-0;
-    }
-
-    .token.function,
-    .token.keyword {
-      @apply dark:drop-shadow-[0_0px_3px_currentColor];
-    }
+  .homepage-code-block .tabs {
+    @apply bg-[#1d262f] border-b-0 text-white rounded-t-md font-normal text-sm;
   }
 
-  .dev-homepage {
-    .navbar {
-      @apply dark:bg-transparent border-0 backdrop-blur-lg
-    }
+  .homepage-code-block .prism-code {
+    @apply border-0 rounded-t-none rounded-b-md;
+  }
 
-    .guide-button-link {
-      @apply dark:text-white text-black
-    }
+  .homepage-code-block .margin-top--md {
+    @apply !mt-0;
+  }
 
-    [class*='searchBox'] {
-      @apply hidden
-    }
+  .homepage-code-block .token.function,
+  .homepage-code-block .token.keyword {
+    @apply dark:drop-shadow-[0_0px_3px_currentColor];
+  }
 
-    .navbar__item:hover, .navbar__link:hover {
-      @apply text-[#1FEC90]
-    }
+  .dev-homepage .navbar {
+    @apply dark:bg-transparent border-0 backdrop-blur-lg;
+  }
 
-    .dev-portal-signup {
-      @apply bg-black dark:bg-[#1FEC90] rounded-full text-white dark:text-black hover:bg-[#1FEC90]/80 hover:bg-[#1FEC90] hover:text-black
-    }
+  .dev-homepage .guide-button-link {
+    @apply dark:text-white text-black;
+  }
 
-    .dev-portal-signup svg {
-      @apply hidden
-    }
+  .dev-homepage [class*="searchBox"] {
+    @apply hidden;
+  }
+
+  .dev-homepage .navbar__item:hover,
+  .dev-homepage .navbar__link:hover {
+    @apply text-[#1FEC90];
+  }
+
+  .dev-homepage .dev-portal-signup {
+    @apply bg-black dark:bg-[#1FEC90] rounded-full text-white dark:text-black hover:bg-[#1FEC90]/80 hover:bg-[#1FEC90] hover:text-black;
+  }
+
+  .dev-homepage .dev-portal-signup svg {
+    @apply hidden;
   }
 }
 

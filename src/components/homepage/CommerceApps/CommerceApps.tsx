@@ -56,9 +56,9 @@ function Tab({
           <p className="text-left text-gray-500 text-base my-4 leading-loose">
             {tagline}
           </p>
-          <ul className="flex flex-col text-black text-base font-semibold text-left list-image-[url('/assets/homepage/list-checkmark.svg')] gap-2 pl-6 my-7">
+          <ul className="flex flex-col text-black text-base font-semibold text-left marker:content-['✓'] marker:text-green-500 gap-2 pl-6 my-7">
             {listItems.map((item) => (
-              <li>{item}</li>
+              <li className="pl-4">{item}</li>
             ))}
           </ul>
           <div className="flex text-black gap-8 mt-8">
