@@ -66,7 +66,7 @@ function Tab({
               <div
                 className={clsx(
                   "opacity-0 transition-all",
-                  open && "opacity-100 delay-300",
+                  open && "!opacity-100 delay-300",
                 )}
               >
                 <p
