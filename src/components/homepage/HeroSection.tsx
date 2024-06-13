@@ -1,8 +1,8 @@
 import React from "react";
 import {
   CharlotteTilbury,
+  Norgren,
   Pokemon,
-  Remarkable,
   SerenaLily,
   United,
 } from "./HeroBrandLogos";
@@ -43,14 +43,26 @@ export default function HeroSection() {
           <SerenaLily className="max-w-full invert dark:invert-0" />
           <United className="max-w-full invert dark:invert-0" />
           <Pokemon className="max-w-full" />
-          <Remarkable className="max-w-full invert dark:invert-0" />
+          <Norgren className="max-w-full invert dark:invert-0" />
           <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0" />
         </div>
 
-        <svg width="31" height="108" viewBox="0 0 31 108" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden md:block animate-bounce mt-12">
-          <path d="M15.5 2V105.5M15.5 105.5L29 92M15.5 105.5L2 92" stroke="#1FEC90" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg
+          width="31"
+          height="108"
+          viewBox="0 0 31 108"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="hidden md:block animate-bounce mt-12"
+        >
+          <path
+            d="M15.5 2V105.5M15.5 105.5L29 92M15.5 105.5L2 92"
+            stroke="#1FEC90"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
-
       </div>
     </section>
   );
