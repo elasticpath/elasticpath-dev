@@ -18,7 +18,8 @@ If the cart has:
 
 :::note
 
-Cart-level discounts that are checked out will appear on orders with the same type as they do in carts, labeled as `promotion_item`. For backward compatibility, this change is specific to Rule Promotions only.
+- Cart-level discounts that are checked out will appear on orders with the same type as they do in carts, labeled as `promotion_item`. For backward compatibility, this change is specific to Rule Promotions only.
+- When managing promotions and discounts, multiple types of discounts use the same promotion code. The system breaks down these discounts in the cart item’s metadata. This breakdown is detailed in the `discounts.constituents` object, showing which part of the discount comes from which specific promotion, identified by their promotion ID. When you use the [Get Cart Items](/docs/api/carts/get-cart-items) endpoint, the response example shows the breakdown of the same promotion code used in both Promotions Standard and Rule Promotions.
 
 :::
 
