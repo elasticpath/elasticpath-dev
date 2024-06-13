@@ -1,6 +1,6 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps } from "react";
 
-export function DyteAISearchIcon(props: ComponentProps<'svg'>) {
+export function DyteAISearchIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ export function DyteAISearchIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function AngularIcon(props: ComponentProps<'svg'>) {
+export function AngularIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ export function AngularIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function AppleIcon(props: ComponentProps<'svg'>) {
+export function AppleIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -72,7 +72,7 @@ export function AppleIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function APIIcon(props: ComponentProps<'svg'>) {
+export function APIIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ export function APIIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function DiscordIcon(props: ComponentProps<'svg'>) {
+export function DiscordIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ export function DiscordIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function ElectronIcon(props: ComponentProps<'svg'>) {
+export function ElectronIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 28 28"
@@ -151,7 +151,7 @@ export function ElectronIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function FlutterIcon(props: ComponentProps<'svg'>) {
+export function FlutterIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 48 48"
@@ -200,7 +200,7 @@ export function FlutterIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function HTMLIcon(props: ComponentProps<'svg'>) {
+export function HTMLIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +239,7 @@ export function HTMLIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function JSIcon(props: ComponentProps<'svg'>) {
+export function JSIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -294,7 +294,7 @@ export function JSIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function KotlinIcon(props: ComponentProps<'svg'>) {
+export function KotlinIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 28 28"
@@ -339,7 +339,7 @@ export function KotlinIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function ReactIcon(props: ComponentProps<'svg'>) {
+export function ReactIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 48 48"
@@ -369,7 +369,7 @@ export function ReactIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function SwiftIcon(props: ComponentProps<'svg'>) {
+export function SwiftIcon(props: ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 28 28"
@@ -419,7 +419,7 @@ export function SwiftIcon(props: ComponentProps<'svg'>) {
   );
 }
 
-export function XIcon(props: ComponentProps<'svg'>) {
+export function XIcon(props: ComponentProps<"svg">) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <path
