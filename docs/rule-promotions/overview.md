@@ -4,21 +4,22 @@ nav_label: Overview
 sidebar_position: 1
 ---
 
-The Rule Promotions provide the flexibity to offer diverse discounts to shoppers. It supports discounts of varying complexities, from code-based customer discounts, to Buy X Get Y scenarios, fixed price promotions, and more based on your business needs.
+The Rule Promotions provide the flexibility to offer diverse discounts to shoppers. They support discounts of varying complexities, from code-based customer discounts, to Buy X Get Y scenarios, fixed price promotions, and more based on your business needs.
 
-You can create a rule promotion using the [Rule Promotions API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview) or [Commerce Manager](/docs/commerce-manager/promotions-builder). 
+You can create a Rule Promotion using the [Rule Promotions API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview) or [Commerce Manager](/docs/commerce-manager/promotions-builder). 
 
-To apply Rule Promotions API in carts and orders, ensure that you have enabled the `use_rule_promotions` field in [Cart Settings](/docs/carts-orders/carts/cart-management/cart-settings/update-cart-settings). You can also update a specific cart to use Rule Promotions. See [Update a Cart](/docs/carts-orders/carts/cart-management/update-a-cart). This turns on the hybrid mode, which means you can simultaneously use both [Promotions Standard](/docs/promotions/promotion-management/promotion-management-overview) and Rule Promotions. For example, let's consider the following scenario:
+To apply Rule Promotions API in carts and orders, ensure that you have enabled the `use_rule_promotions` field in [Cart Settings](/docs/carts-orders/carts/cart-management/cart-settings/update-cart-settings). You can also update a specific cart to use Rule Promotions. See [Update a Cart](/docs/carts-orders/carts/cart-management/update-a-cart). This turns on hybrid mode, which means you can simultaneously use both [Promotions Standard](/docs/promotions/promotion-management/promotion-management-overview) and Rule Promotions. For example, let's consider the following scenario:
 
 If the cart has:
 - A Promotion Standard offering a 10% discount on the shopping cart
-- A Rule Promotion offering 20% discount on the shopping cart
+- A Rule Promotion offering a 20% discount on the shopping cart
 
-    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The promotions are stacked based on their creation date. This means the oldest promotion is applied first, followed by stacking of the newest promotion upon the oldest promotion.
+    Shoppers qualify for both discounts, prompting the system to apply both types of discount to your shopping cart. This means you get a 10% discount from the Promotions Standard and a 20% discount from the Rule Promotion. The Promotions Standard discount is always applied before the Rule Promotion discount, regardless of their creation dates. After applying the Promotions Standard discount, the Rule Promotion discount is then applied based on its creation date, with the newest promotion applied first and the oldest promotion stacked on top of the newest promotion.
 
 :::note
 
-Cart-level discounts that are checked out will appear on orders with the same type as they do in carts, labeled as `promotion_item`. For backward compatibility, this change is specific to Rule Promotions only.
+- Cart-level discounts that are checked out will appear on orders with the same type as they do in carts, labeled as `promotion_item`. For backward compatibility, this change is specific to Rule Promotions only.
+- When managing promotions and discounts, multiple types of discounts use the same promotion code. The system breaks down these discounts in the cart item’s metadata. This breakdown is detailed in the `discounts.constituents` object, showing which part of the discount comes from which specific promotion, identified by their promotion ID. When you use the [Get Cart Items](/docs/api/carts/get-cart-items) endpoint, the response example shows the breakdown of the same promotion code used in both Promotions Standard and Rule Promotions.
 
 :::
 

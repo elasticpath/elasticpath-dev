@@ -67,9 +67,9 @@ const PRODUCTS = [
     text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.'
   },
   {
-    title: 'Rule Promotions',
+    title: 'Promotions Builder',
     beta: false,
-    link: '/docs/commerce-manager/promotions-builder/overview',
+    link: '/docs/commerce-manager/promotions-builder',
     icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
