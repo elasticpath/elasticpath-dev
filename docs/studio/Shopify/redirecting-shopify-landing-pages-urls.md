@@ -1,10 +1,12 @@
 ---
-title: Setting up Custom Proxy Paths From Your Vercel Site
-nav_label: Setting up Custom Proxy Paths From Your Vercel Site
+title: Setting up Custom Proxy Paths 
+nav_label: Setting up Custom Proxy Paths 
 sidebar_position: 65
 ---
 
-You can use Vercel's Rewrites feature in your Vercel project to redirect a Studio URL source to a specific URL path on your BYLT Shopify app, allowing you to redirect traffic from one URL to another seamlessly. You can do this by setting up URL redirection rules within your Vercel project.
+You can use Vercel's Rewrites feature in your Vercel project to redirect a Studio URL source to a specific URL. This enables you  to set up their site so that when a shopper visits their site, Vercel will fetch the content from another site (for example studio) and serve it using the customers URL even though the content is coming from Studio.allowing you to redirect traffic from one URL to another seamlessly. 
+
+You can do this by setting up URL redirection rules within your Vercel project.
 
 ## Prerequisites
 
