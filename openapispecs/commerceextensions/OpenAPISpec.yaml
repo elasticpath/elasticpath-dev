@@ -256,7 +256,7 @@ paths:
       summary: Get all Custom APIs
       description: |
         ## Filtering
-        The following operators and attributes are available for filtering:
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom APIs:
 
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
@@ -678,7 +678,7 @@ paths:
       summary: Get all Custom Fields
       description: |
         ## Filtering
-          The following operators and attributes are available for filtering:
+          The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom Fields:
         
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
@@ -1125,7 +1125,7 @@ paths:
       summary: Get all Custom API Entries
       description: |
         ## Filtering
-          The following operators and attributes are available for filtering:
+          The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) all Custom API Entries:
         
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
@@ -1133,7 +1133,20 @@ paths:
           | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
           | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
 
-        Custom API Entries can also be filtered by the slug for each [Custom Field](/docs/api/commerceextensions/create-a-custom-field). For example, you can get all Custom API Entries with `name` containing string "wish" by setting filter query parameter `like(name,*wish*)`.  
+        The following operators and attributes may be available for filtering Custom API Entries depending on how the [Custom Fields](/docs/api/commerceextensions/create-a-custom-field) for that Custom API are configured.
+
+          | Field type | Operators                            | 
+          |------------|--------------------------------------|
+          | `string`   | `lt`,`le`,`eq`,`gt`,`ge`,`in`,`like` |
+          | `integer`  | `lt`,`le`,`eq`,`gt`,`ge`,`in`        | 
+          | `float`    | `lt`,`le`,`gt`,`ge`,`in`             |  
+          | `boolean`  | `eq`                                 |
+
+          Given there is a Custom Field with `"slug": "name"` and `"field_type": "string"`.
+
+          When you get all Custom API Entries with query parameter: `?filter=like(name,*wish*)`.
+
+          Then you will get all Custom API Entries where `name` contains the string `wish`. 
 
         ## Sorting
         The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
