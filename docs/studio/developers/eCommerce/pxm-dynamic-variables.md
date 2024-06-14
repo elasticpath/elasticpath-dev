@@ -8,11 +8,11 @@ You can dynamically set up your product detail (PDP) and product listing pages (
 
 The following table describes how the attributes in Product Experience Manager map to the dynamic variables in Studio that you can use to populate your PDPs and PLPs.
 
-## Product Experience Manager Products
+# Product Experience Manager Products
 
 The following tables describe how the Product Experience Manager product attributes map to Studio dynamic variables. For more information on Product Experience Manager product attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-### Products
+## Products
 
 Product Experience Manager products have the following attributes. For more information on Product Experience Manager product attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
@@ -132,7 +132,6 @@ A hierarchy can have parent and child nodes. Relationships allow you to move bet
 
 A hierarchy can have meta data. For more information on Product Experience Manager hierarchy meta data, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
 
-
 | PXM Attribute | Studio Dynamic Variable            |
 |---------------|------------------------------------| 
 | created_at    | {{category.attributes.created_at}} | 
@@ -150,7 +149,7 @@ A hierarchy can have parent and child nodes. For more information on Product Exp
 | slug           | {{node.attributes.slug}}             |
 | curated_products | {{node.attributes.curated_products}} | 
 
-#### Locales
+### Locales
 
 Product Experience Manager supports localization of nodes. For more information on Product Experience Manager node localization attributes, see [Create a node](/docs/api/pxm/products/create-node).
 
@@ -160,32 +159,32 @@ Product Experience Manager supports localization of nodes. For more information 
 | name          | {{node.attributes.name}}          |
 | description   | {{node.attributes.description}}   |
 
-#### Relationships
+### Relationships
 
 A hierarchy can have parent and child nodes. Relationships allow you to move between requests and includes links to the child/parent nodes and products associated with a node. For more information on Product Experience Manager node relationship attributes, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
 
-##### Children
+#### Children
 
 | PXM Attribute | Studio Dynamic Variable     |
 |---------------|-----------------------------| 
 | data          | {{node.attributes.data}}    | 
 | related       | {{node.attributes.related}} |
 
-##### Parent
+#### Parent
 
 | PXM Attribute | Studio Dynamic Variable     |
 |---------------|-----------------------------| 
 | data          | {{node.attributes.data}}    | 
 | related       | {{node.attributes.related}} |
 
-##### Products
+#### Products
 
 | PXM Attribute | Studio Dynamic Variable     |
 |---------------|-----------------------------| 
 | data          | {{node.attributes.data}}    | 
 | related       | {{node.attributes.related}} |
 
-#### Meta
+### Meta
 
 A hierarchy can have meta data. For more information on Product Experience Manager hierarchy meta data, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
 
@@ -198,25 +197,25 @@ A hierarchy can have meta data. For more information on Product Experience Manag
 
 ## Contacts
 
-| PXM Attribute | Studio Dynamic Variable         |
-|---------------|---------------------------------| 
-| id            | {{node.attributes.created_at}}  | 
-| type          | {{node.attributes.updated_at}}  |
-| persona       | {{node.attributes.parent_name}} | 
-| first_name    | {{node.attributes.owner}}       |
-| last_name | |
-| title | |
-| email | |
-| phone | |
-| organization | |
-| website | |
-| address1 | |
-| address2 | |
-| city | |
-| state | |
-| zip | |
-| country | |
-| params | |
+| PXM Attribute | Studio Dynamic Variable  |
+|---------------|--------------------------| 
+| id            | {{contact.id}}           | 
+| type          | {{contact.type}}         |
+| persona       | {{contact.persona}}      | 
+| first_name    | {{contact.first_name}}   |
+| last_name | {{contact.last_name}}    |
+| title | {{contact.title}}        |
+| email | {{contact.email}}        |
+| phone | {{contact.phone}}        |
+| organization | {{contact.organization}} |
+| website | {{contact.website}}      |
+| address1 | {{contact.address1}}     |
+| address2 | {{contact.address2}}     |
+| city | {{contact.city}}         |
+| state | {{contact.state}}        |
+| zip | {{contact.zip}}          |
+| country | {{contact.country}}      |
+| params | {{contact.params}}       |
 
 
 
