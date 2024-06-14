@@ -21,7 +21,7 @@ times you enter the editor. You can also dismiss the tip permanently if you choo
 **Product images for all media**
 
 There’s a new folder in the media manager for Products where images that are imported from Shopify products will appear.
-This will make it easier to use product images in any CX-Studio component.
+This will make it easier to use product images in any Studio component.
 
 ![Product Images](/assets/studio/Screen_Shot_2022-02-24_at_11.02.56_AM.png) 
 
@@ -60,7 +60,7 @@ getting to it along with a number of other editor improvements.
   part of their account. For example, <https://app.CX-Studio.com/goto/landing-pages> will now take you to the landing
   pages section in *your* account.
 * Adjusted media policy to allow product images to be used any place where media can be used.
-* Updated the CX-Studio UI to account for Shopify plans which use the proxy by default.
+* Updated the Studio UI to account for Shopify plans which use the proxy by default.
 * Fixed a mobile-specific issue where text would overlap in the product component.
 * Pushed a change to allow users to be able to set a max-width for their forms.
 * Added support for text-align *right.*

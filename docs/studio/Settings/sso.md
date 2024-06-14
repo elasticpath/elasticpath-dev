@@ -8,9 +8,9 @@ Most shoppers have separate accounts on various websites and applications. For e
 
 Using single sign-on allows shoppers using Studio storefronts to access multiple applications and services with a single set of credentials, streamlining the login process and improving your shoppers experience of your online store. In addition, you can gather more comprehensive user data preferences, enabling you to deliver more personalized shopping experiences. 
 
-CX-Studio single sign-on uses OpenID Connect (OIDC). OpenID Connect provides a standardized and secure way for Studio storefronts to authenticate your shopper and obtain their basic profile information. 
+Studio single sign-on uses OpenID Connect (OIDC). OpenID Connect provides a standardized and secure way for Studio storefronts to authenticate your shopper and obtain their basic profile information. 
 
-CX-Studio single sign-on is available using the OIDC account settings configured in Elastic Path Composable Commerce. See [Authentication Management](/docs/commerce-manager/authentication#account-management-realm). 
+Studio single sign-on is available using the OIDC account settings configured in Elastic Path Composable Commerce. See [Authentication Management](/docs/commerce-manager/authentication#account-management-realm). 
 
 In Studio, the OIDC account setting is enabled as part of the **Elastic Path** integration. See Elastic Path Integration. Once the connection to Elastic Path Composable Commerce is created, the OIDC account and password profile settings configured in Elastic Path Composable Commerce are available in Studio.
 
