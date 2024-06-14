@@ -179,7 +179,7 @@ The following characters can be used when constructing an operand:
 ### Quoted Operands
 
 :::note
-As this feature is in beta, quoted operands are only working with the following endpoints: 
+As this feature is in beta, quoted operands are only working with the following endpoints:
 
 - [Get all accounts](/docs/api/accounts/get-v-2-accounts)
 - [Get all account members](/docs/api/accounts/get-v-2-account-members)
@@ -188,6 +188,9 @@ As this feature is in beta, quoted operands are only working with the following 
 - [Get all customers](/docs/customer-management/customer-management-api/get-all-customers)
 - [Get all orders](/docs/api/carts/get-customer-orders)
 - [Get all files](/docs/api/pxm/files/get-all-files)
+- [Get all price books](/docs/api/pxm/pricebooks/get-pricebooks)
+- [Get all prices in a price book](/docs/api/pxm/pricebooks/get-product-prices)
+- [Get all price modifiers](/docs/api/pxm/pricebooks/get-price-modifiers)
 - [Get all promotions](/docs/api/promotions/get-all-promotions)
 - [Get all products](/docs/api/pxm/products/get-all-products)
 :::
