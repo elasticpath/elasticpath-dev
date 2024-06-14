@@ -183,6 +183,10 @@ const config = {
         sitemap: {
           ignorePatterns: ["/tags/**"],
         },
+        gtag: {
+          trackingID: 'G-NZ3NL8DLLD',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
