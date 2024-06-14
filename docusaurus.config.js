@@ -563,6 +563,7 @@ const config = {
         path: "guides",
         routeBasePath: "guides",
         sidebarPath: require.resolve("./sidebar-guides.js"),
+        editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
         // ... other options
       },
     ],
