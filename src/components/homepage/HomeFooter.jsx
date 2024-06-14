@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
-import { Linkedin, Youtube, Github } from "@styled-icons/boxicons-logos";
-import { XIcon } from "@site/src/icons";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 
 const customers = [

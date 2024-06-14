@@ -11,7 +11,6 @@ export default function FooterWrapper(props) {
     <>
       <HomeFooter />
       {/* <Footer {...props} /> */}
-
     </>
   );
 }
