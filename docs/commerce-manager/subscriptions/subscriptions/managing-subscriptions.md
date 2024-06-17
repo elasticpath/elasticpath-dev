@@ -9,12 +9,12 @@ You can manage your subscribers subscriptions. You can pause, cancel and resume 
 Below is an example of what happens when pausing or canceling and resuming a subscription.
       
 1. The subscriber pauses or cancels the subscription.
-    - The subscription status is `active`.
+    - The subscription status is **Active**.
     - The subscription state is either `paused` or `canceled`, depending on the action you chose.
-2. When the next billing run is due, the billing run checks the subscription state. If the subscription state is `paused` or `canceled` then no invoice is created and the subscription status is updated to `inactive`.
-3. Subsequent billing runs skip that subscription completely as the subscription status is `inactive`.
+2. When the next billing run is due, the billing run checks the subscription state. If the subscription state is `paused` or `canceled` then no invoice is created and the subscription status is updated to `inactive`. The plan remains active until the next billing run, which is determined by your subscription cycle. For example, if your subscription cycle is 6 months and you pause the subscription after 3 months, the plan remains active until the next billing run, which will occur in 3 months.
+3. Subsequent billing runs skip that subscription completely as the subscription status is `inactive`. 
 4. If the subscriber resumes the subscription, when the next billing run is due, the billing run checks the subscription state. As the subscription state is no longer `paused` or `cancelled`, then the billing run creates an invoice.
-5. The payment run processes the invoice. Once the payment succeeds then the payment run updates the status of the subscription to `active`.
+5. The payment run processes the invoice. Once the payment succeeds then the payment run updates the status of the subscription to `active`. 
 
 You can either go to **Subscriptions** to pause, cancel or resume a subscription or to **Subscribers**, if you know the subscriber whose subscription you want to pause, cancel or resume. 
 
@@ -37,3 +37,4 @@ You can either go to **Subscriptions** to pause, cancel or resume a subscription
     - **Resume** to resume a paused or cancelled subscription.
 
     ![cancel,pause, resume buttons](/assets/subscriptions-pause.png)
+
