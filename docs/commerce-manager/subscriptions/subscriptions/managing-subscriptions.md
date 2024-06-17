@@ -36,5 +36,4 @@ You can either go to **Subscriptions** to pause, cancel or resume a subscription
     - **Cancel** to permanently terminate a subscription. A cancelled subscription can be resumed.
     - **Resume** to resume a paused or cancelled subscription.
 
-![cancel,pause, resume buttons](/assets/subscriptions-pause.png)
-
+    ![cancel,pause, resume buttons](/assets/subscriptions-pause.png)
