@@ -1,40 +1,27 @@
 ---
-title: Managing Subscriptions
-nav_label: Managing Subscriptions
-sidebar_position: 10
+title: Managing Active Subscriptions
+nav_label: Managing Active Subscriptions
+sidebar_position: 20
 ---
 
-You can manage your subscribers subscriptions. You can pause, cancel and resume subscriptions. For example, a customer might pause a meal delivery service during a vacation, or want to resume a gym membership without having to start over with a new gym membership. Having a simple, straightforward process for pausing, canceling and resuming subscriptions leads to customer trust and satisfaction, which in turn improves customer retention and recovery.
-      
-Below is an example of what happens when pausing or canceling and resuming a subscription.
-      
-1. The subscriber pauses or cancels the subscription.
-    - The subscription status is **Active**.
-    - The subscription state is either `paused` or `canceled`, depending on the action you chose.
-2. When the next billing run is due, the billing run checks the subscription state. If the subscription state is `paused` or `canceled` then no invoice is created and the subscription status is updated to `inactive`. The plan remains active until the next billing run, which is determined by your subscription cycle. For example, if your subscription cycle is 6 months and you pause the subscription after 3 months, the plan remains active until the next billing run, which will occur in 3 months.
-3. Subsequent billing runs skip that subscription completely as the subscription status is `inactive`. 
-4. If the subscriber resumes the subscription, when the next billing run is due, the billing run checks the subscription state. As the subscription state is no longer `paused` or `canceled`, then the billing run creates an invoice.
-5. The payment run processes the invoice. Once the payment succeeds then the payment run updates the status of the subscription to `active`. 
+You can view and update the active plans in subscriptions.
 
-You can either go to **Subscriptions** to pause, cancel or resume a subscription or to **Subscribers**, if you know the subscriber whose subscription you want to pause, cancel or resume. 
+- Viewing the active plans for a subscription enables you to see what products and services a subscriber is paying for. This makes it easier for you to understand any immediate changes a subscriber might want, such as increasing their data limit or accessing premium features.
+- Changing a subscriber's active plan means you can adapt a subscribers plan in real-time, ensuring subscriber needs are met and improving satisfaction.
+
+## Viewing Active Subscriptions
+
+To view all active subscriptions:
 
 1. Log in to Commerce Manager.
-2. Select either:
+2. Go to **Subscriptions** > **Subscribers**.
+3. Select the subscriber whose active plans you want to view. All their subscriptions, with their current status, are displayed.
 
-    - **Subscriptions** > **Subscribers**. A list of all subscribers is displayed.
-    - **Subscriptions** > **Subscriptions**. A list of all subscriptions is displayed.
-    - 
+## Changing an Active Plan
 
-3. Either:
+You can change the active plan on a subscription:
 
-    - Select the subscribers whose subscriptions you want to pause, cancel and/or resume. A list of the subscribers subscriptions are displayed.
-    - Select the subscriptions you want to pause, cancel and/or resume. A list of the subscriptions are displayed.
-
-4. Select the subscription you want to pause, cancel and/or resume.
-5. Select:
-    - **Pause** to temporarily halt a subscription.
-    - **Cancel** to permanently terminate a subscription. A cancelled subscription can be resumed.
-    - **Resume** to resume a paused or cancelled subscription.
-
-    ![cancel,pause, resume buttons](/assets/subscriptions-pause.png)
-
+1. Log in to Commerce Manager.
+2. Go to **Subscriptions** > **Subscriptions**.
+3. Select the subscription whose active plan you want to change.
+4. On the plan that you want to change to, select **Actions** > **Make Active**.
