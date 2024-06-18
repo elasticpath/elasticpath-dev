@@ -59,7 +59,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
  | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
  | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
  | `/settings/extensions`                       | ⛔️ | ⛔️ |
-| `subscriptions` | |
+| `/subscriptions` | ⛔️ | ⛔️ |
  | `/variations`                                | ⛔️ | ⛔️ |
 
 ### Implicit + Customer Token
