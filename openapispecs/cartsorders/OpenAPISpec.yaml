@@ -1051,6 +1051,34 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/UpdateCartsItems'
+            examples:
+              Update Cart Item:
+                value:
+                  data:
+                    type: cart_item
+                    id: 76746981-f63a-45f4-ba9e-59773d89dc2e
+                    custom_inputs:
+                      personalization: My personal message
+                    quantity: 2
+              Update a Bundle:
+                value:
+                  data:
+                    id: 5ab67bb3-b2c3-4348-af33-e370bd39b0c9
+                    type: cart_item
+                    quantity: 1
+                    bundle_configuration:
+                      selected_options:
+                        games:
+                          d7b79eb8-19d8-45ea-86ed-2324a604dd9c: 1
+                        toys:
+                          0192ccdd-6d33-4898-87d7-c4d87f2bf8ea: 1
+                          1aea6f97-f0d9-452c-b3c1-7fb5629ead82: 1
+              Add Item with Shipping Group ID:
+                value:
+                  data:
+                    type: cart_item
+                    id: 76746981-f63a-45f4-ba9e-59773d89dc2e
+                    shipping_group_id: eb063818-939a-458f-97a4-2601c0c2b445
         required: false
       responses:
         '200':
@@ -1898,15 +1926,88 @@ paths:
       deprecated: false
     parameters: [ ]
 
+  /v2/carts/{cartID}/payments:
+    post:
+      tags:
+        - Payments
+      summary: Create Stripe Payment Intent for a Cart
+      description: Creates a payment intent for a cart using Stripe as the gateway.
+      operationId: createCartPaymentIntent
+      parameters:
+        - name: cartID
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+          description: The universally unique identifier of the cart for which you want to create a payment intent.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ElasticPathPaymentsPoweredByStripePayment'
+            examples:
+              Create Stripe Payment Intent for a Cart:
+                value:
+                  data:
+                    gateway: elastic_path_payments_stripe
+                    method: purchase
+                    options:
+                      automatic_payment_methods:
+                        enabled: true
+                      receipt_email: john@example.com
+              Create Stripe Payment Intent for a Cart Using Specific Payment Methods:
+                value:
+                  data:
+                    gateway: elastic_path_payments_stripe
+                    method: purchase
+                    payment_method_types:
+                      - affirm
+                      - card
+                      - link
+                    options:
+                      description: Cart payment
+                      receipt_email: john@example.com
+      responses:
+        '201':
+          description: Payment Intent created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+    parameters: [ ]
+
   /v2/carts/{cartID}/checkout:
     post:
       tags:
         - Checkout
-      summary: Checkout with Account Management Authentication Token
+      summary: Checkout API
       description: |
         When a Cart is ready for checkout, you can convert the cart to an order. The cart remains and can be modified and checked out again if required.
 
-        After a successful checkout, a response that contains the order is returned.
+        A cart can be checked out with a customer ID, customer object, or with an account by authenticating with the `Client Credentials Token`.
+
+        After a successful checkout, a response that contains the order is returned. If the cart is linked to a shipping group, the shipping group is also associated with the order after checkout.
+
+        :::note
+
+        - The cart currency is set when the first item is added to the cart.
+        - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
+        - To ensure that a free gift is automatically applied to an order, set the promotion to automatic. The checkout process will not be successful if free gift items are out of stock. See Errors section.
+
+        :::
 
         :::caution
 
@@ -1938,8 +2039,105 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/OrderContactInfo'
+              oneOf:
+                - $ref: '#/components/schemas/CustomerCheckout'
+                - $ref: '#/components/schemas/AccountCheckout'
+            examples:
+              CheckoutWithCustomerID:
+                summary: Checkout with Customer ID
+                value:
+                  data:
+                    customer:
+                      id: c8c1c511-beef-4812-9b7a-9f92c587217c
+                    billing_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                    shipping_address:
+                      first_name: John
+                      last_name: Doe
+                      phone_number: "(555) 555-1234"
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                      instructions: "Leave in porch"
+              CheckoutWithCustomerObject:
+                summary: Guest Checkout (Checkout with Customer Object)
+                value:
+                  data:
+                    customer:
+                      email: john@moltin.com
+                      name: John Doe
+                    billing_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                    shipping_address:
+                      first_name: John
+                      last_name: Doe
+                      phone_number: "(555) 555-1234"
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                      instructions: "Leave in porch"
+              CreateCheckoutWithAccount:
+                summary: Create Checkout with Account
+                value:
+                  data:
+                    account:
+                      id: 8cee1b9e-3e39-4d5f-bd4a-86cdb985c6ee
+                      member_id: 338f84bf-e6c9-4704-9f33-2708addd462b
+                    contact:
+                      email: john@email.com
+                      name: John Doe
+                    billing_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: ElasticPath
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                    shipping_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: ElasticPath
+                      phone_number: "(555) 555-1234"
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                      instructions: "Leave in porch"
         required: false
       responses:
         '200':
@@ -2697,15 +2895,20 @@ components:
           examples:
             - cart
         name:
-          description: The name of this item.
+          description: The name of this cart.
           type: string
           examples:
-            - cart
+            - cart name
         description:
-          description: A description of the cart item.
+          description: A description of the cart.
           type: string
           examples:
             - cart description
+        discount_settings:
+          $ref: '#/components/schemas/DiscountSettings'
+        payment_intent_id:
+          description: Stripe-assigned unique identifier for the linked Payment Intent
+          type: string
         links:
           type: object
           properties:
@@ -2725,6 +2928,12 @@ components:
                 without_tax:
                   $ref: '#/components/schemas/FormattedPriceData'
                 tax:
+                  $ref: '#/components/schemas/FormattedPriceData'
+                discount:
+                  $ref: '#/components/schemas/FormattedPriceData'
+                without_discount:
+                  $ref: '#/components/schemas/FormattedPriceData'
+                shipping:
                   $ref: '#/components/schemas/FormattedPriceData'
             timestamps:
               $ref: '#/components/schemas/Timestamps'
@@ -2768,6 +2977,7 @@ components:
                       examples:
                         - 1cf8b15b-4f12-43c5-837c-dbbc09aefa55
     CartItemsObjectRequest:
+      title: Cart Items Object Request
       oneOf:
         - $ref: "#/components/schemas/CartItemObject"
         - $ref: "#/components/schemas/CartMergeObjectRequest"
@@ -2775,7 +2985,7 @@ components:
         - $ref: "#/components/schemas/ReOrderObjectRequest"
         - $ref: "#/components/schemas/PromotionItemObject"
     CartItemObject:
-      title: Data.CartItemObject
+      title: Cart Item Object
       type: object
       properties:
         data:
@@ -2783,7 +2993,7 @@ components:
             - $ref: '#/components/schemas/CartItemObjectData'
             - $ref: '#/components/schemas/CartItemResponse'
     CartItemObjectData:
-      title: CartItemObject
+      title: Cart Item Object Data
       type: object
       required:
         - type
@@ -2824,7 +3034,7 @@ components:
           description: Identifier for a created Cart Shipping Group
           type: string
     CartMergeObjectRequest:
-      title: CartMergeObjectRequest
+      title: Cart Merge Object Request
       type: object
       properties:
         data:
@@ -2836,7 +3046,7 @@ components:
         options:
           $ref: '#/components/schemas/AddAllOrNothingOptionsObject'
     CartMergeObject:
-      title: CartMergeObject
+      title: Cart Merge Object
       type: object
       required:
         - type
@@ -2854,7 +3064,7 @@ components:
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
     CustomItemObject:
-      title: Data.CustomItemObject
+      title: Custom Item Object
       type: object
       properties:
         data:
@@ -2862,7 +3072,7 @@ components:
             - $ref: '#/components/schemas/CustomItemObjectData'
           description: ''
     CustomItemObjectData:
-      title: CustomItemObject
+      title: Custom Item Object Data
       type: object
       required:
         - type
@@ -2915,7 +3125,7 @@ components:
           description: Identifier for a created Cart Shipping Group
           type: string
     ReOrderObjectRequest:
-      title: ReOrderObjectRequest
+      title: Re-Order Object Request
       type: object
       properties:
         data:
@@ -2925,7 +3135,7 @@ components:
           $ref: '#/components/schemas/AddAllOrNothingOptionsObject'
 
     ReOrderObject:
-      title: ReOrderObject
+      title: Re Order Object
       type: object
       required:
         - type
@@ -2943,7 +3153,7 @@ components:
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
     BulkAddItemsRequest:
-      title: BulkAddItemsRequest
+      title: Bulk Add Items Request
       type: object
       properties:
         data:
@@ -2954,14 +3164,14 @@ components:
             - $ref: "#/components/schemas/ReOrderObjectRequest"
             - $ref: "#/components/schemas/PromotionItemObject"
     PromotionItemObject:
-      title: PromotionItemObject
+      title: Promotion Item Object
       type: object
       properties:
         data:
           allOf:
             - $ref: '#/components/schemas/PromotionItemObjectData'
     PromotionItemObjectData:
-      title: PromotionItemObject
+      title: Promotion Item Object Data
       type: object
       required:
         - type
@@ -2978,7 +3188,7 @@ components:
           examples:
             - PROMO_CODE
     BulkUpdateCartsItems:
-      title: BulkUpdateCartsItems
+      title: Bulk Update Carts Items
       type: object
       required:
         - id
@@ -3005,7 +3215,7 @@ components:
         options:
           $ref: '#/components/schemas/UpdateAllOrNothingOptionsObject'
     UpdateCartsItems:
-      title: UpdateCartsItems
+      title: Update Carts Items
       type: object
       required:
         - quantity
@@ -3035,7 +3245,7 @@ components:
                 - 900ab9c1-4b39-43fe-b080-0dc2806065d9
 
     AddAllOrNothingOptionsObject:
-      title: AddAllOrNothingOptionsObject
+      title: Add All Or Nothing Options Object
       type: object
       properties:
         add_all_or_nothing:
@@ -3044,7 +3254,7 @@ components:
           examples:
             - false
     UpdateAllOrNothingOptionsObject:
-      title: UpdateAllOrNothingOptionsObject
+      title: Update All Or Nothing Options Object
       type: object
       properties:
         update_all_or_nothing:
@@ -3053,7 +3263,7 @@ components:
           examples:
             - false
     CartItemResponse:
-      title: CartItemRelationship
+      title: Cart Item Relationship
       type: object
       properties:
         product_id:
@@ -3151,7 +3361,7 @@ components:
             timestamps:
               $ref: '#/components/schemas/Timestamps'
     CartsResponse:
-      title: CartsResponse
+      title: Carts Response
       type: object
       properties:
         data:
@@ -3196,7 +3406,7 @@ components:
             timestamps:
               $ref: '#/components/schemas/CartTimestamps'
     ItemPriceData:
-      title: OrderPriceData
+      title: Order Price Data
       type: object
       properties:
         amount:
@@ -3218,7 +3428,7 @@ components:
           examples:
             - false
     CartsRelationshipsCustomersData:
-      title: CartsRelationshipsCustomersData
+      title: Carts Relationships Customers Data
       type: object
       properties:
         data:
@@ -3236,7 +3446,7 @@ components:
                 examples:
                   - customer
     CartsItemsTaxesObject:
-      title: CartsItemsTaxesObject
+      title: Carts Items Taxes Object
       type: object
       required:
         - type
@@ -3650,6 +3860,8 @@ components:
           enum:
             - authorize
             - purchase
+            - purchase_setup
+            - authorize_setup
         amount:
           description: The amount to be paid for the transaction.
           type: number
@@ -3755,8 +3967,8 @@ components:
             payment:
               description: The CyberSource token.
               type: string
-    Data.ElasticPathPaymentsPoweredByStripePayment:
-      title: Data.ElasticPathPaymentsPoweredByStripePayment
+    ElasticPathPaymentsPoweredByStripePayment:
+      title: Elastic Path Payments Powered By Stripe
       required:
         - gateway
       allOf:
@@ -3774,6 +3986,13 @@ components:
                 receipt_email:
                   description: Provides the email address to which you want to send the Stripe receipts for the transactions within the store. This feature is available only in the live mode.
                   type: string
+                automatic_payment_methods:
+                  type: object
+                  description: Parent object determining whether to use Stripe's `automatic_payment_methods` setting.
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: When set to true, it displays all enabled payment methods from the Stripe dashboard. When set to false, the Stripe default, which is card, is used.
             payment_method_types:
               type: array
               items:
@@ -3925,7 +4144,7 @@ components:
         - $ref: "#/components/schemas/Data.BraintreePayment"
         - $ref: "#/components/schemas/Data.CardConnectPayment"
         - $ref: "#/components/schemas/Data.CyberSourcePayment"
-        - $ref: "#/components/schemas/Data.ElasticPathPaymentsPoweredByStripePayment"
+        - $ref: "#/components/schemas/ElasticPathPaymentsPoweredByStripePayment"
         - $ref: "#/components/schemas/Data.ManualPayment"
         - $ref: "#/components/schemas/Data.PayPalExpressCheckoutPayment"
         - $ref: "#/components/schemas/Data.StripePayment"
@@ -4325,22 +4544,60 @@ components:
           $ref: '#/components/schemas/FormattedPriceData'
         without_discount:
           $ref: '#/components/schemas/FormattedPriceData'
-    OrderContactInfo:
-      title: OrderContactInfo
+    CustomerCheckout:
+      title: Customer Checkout
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/Data.OrderContactInfo'
-    Data.OrderContactInfo:
-      title: Data.OrderContactInfo
+          type: object
+          properties:
+            customer:
+              type: object
+              properties:
+                id:
+                  description: The ID of the customer.
+                  type: string
+                email:
+                  description: The customer email address.
+                  type: string
+                  format: email
+                name:
+                  description: The full name of the customer.
+                  type: string
+            billing_address:
+              $ref: '#/components/schemas/BillingAddress'
+            shipping_address:
+              $ref: '#/components/schemas/ShippingAddress'
+    AccountCheckout:
+      title: Account Checkout
       type: object
       properties:
-        billing_address:
-          $ref: '#/components/schemas/BillingAddress'
-        contact:
-          $ref: '#/components/schemas/Contact'
-        shipping_address:
-          $ref: '#/components/schemas/ShippingAddress'
+        data:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                id:
+                  description: The account ID.
+                  type: string
+                member_id:
+                  description: The account member ID.
+                  type: string
+            contact:
+              type: object
+              properties:
+                name:
+                  description: The name of the account member.
+                  type: string
+                email:
+                  description: The email address of the account member.
+                  type: string
+                  format: email
+            billing_address:
+              $ref: '#/components/schemas/BillingAddress'
+            shipping_address:
+              $ref: '#/components/schemas/ShippingAddress'
     BillingAddress:
       title: BillingAddress
       type: object
