@@ -589,6 +589,20 @@ const config = {
         path: "./changelog/pxm",
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/commerce-cloud')) {
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return [
+              existingPath.replace('/api', '/docs/commerce-cloud'),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
   ],
   themes: [
     "docusaurus-theme-openapi-docs",
