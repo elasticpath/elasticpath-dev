@@ -14,12 +14,15 @@ You can view and update the active plans in subscriptions.
 To view all active subscriptions:
 
 1. Log in to Commerce Manager.
-1. Go to **Subscriptions** > **Subscriptions**. All your subscriptions, with their current status, are displayed.
+2. Go to **Subscriptions** > **Subscribers**. 
+3. Select the subscriber whose active plans you want to view. All their subscriptions, with their current status, are displayed.
 
 ## Changing an Active Plan
 
 You can change the active plan on a subscription:
 
 1. Log in to Commerce Manager.
-1. Go to **Subscriptions** > **Subscriptions**.
+2. Go to **Subscriptions** > **Subscriptions**.
+3. Select the subscription whose active plan you want to change.
+4. On the plan that you want to change to, select **Actions** > **Make Active**.
 
