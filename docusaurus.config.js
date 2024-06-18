@@ -142,7 +142,7 @@ const resourceDOCS = fs.readFileSync(
 const config = {
   title: "Elastic Path Documentation",
   tagline: "API, Commerce Manager, Guides and Documentation 🚀",
-  url: "https://beta.elasticpath.dev",
+  url: "https://elasticpath.dev",
   baseUrl: "/",
   favicon: "/favicon.ico",
   i18n: {
@@ -182,6 +182,10 @@ const config = {
         },
         sitemap: {
           ignorePatterns: ["/tags/**"],
+        },
+        gtag: {
+          trackingID: 'G-NZ3NL8DLLD',
+          anonymizeIP: true,
         },
       }),
     ],

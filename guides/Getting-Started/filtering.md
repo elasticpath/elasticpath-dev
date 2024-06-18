@@ -47,8 +47,6 @@ Filtering is currently supported on the following endpoints:
 * [Get all products in a hierarchy in a shopper catalog](/docs/api/pxm/catalog/get-by-context-products-for-hierarchy)
 * [Get all products in a node in a shopper catalog](/docs/api/pxm/catalog/get-by-context-products-for-node)
 * [Get all catalog rules](/docs/api/pxm/catalog/get-rules)
-* [Get a nodes children](/docs/api/pxm/products/get-all-node-children)
-* [Get a nodes products](/docs/api/pxm/products/get-node-products)
 * [Get all price books](/docs/api/pxm/pricebooks/get-pricebooks)
 * [Get all price modifiers](/docs/api/pxm/pricebooks/get-price-modifiers)
 * [Get all prices in a price book](/docs/api/pxm/pricebooks/get-product-prices)
@@ -56,6 +54,9 @@ Filtering is currently supported on the following endpoints:
 * [Get all entries](/docs/api/flows/get-all-entries)
 * [Get all files](/docs/api/pxm/files/get-all-files)
 * [Get Jobs](/docs/api/pxm/products/get-all-jobs)
+* [Get all Custom APIs](/docs/api/commerceextensions/get-all-custom-apis)
+* [Get all Custom Fields](/docs/api/commerceextensions/get-all-custom-fields)
+* [Get all Custom API Entries](/docs/api/commerceextensions/get-all-custom-entries)
 
 ## Filtering Syntax
 
