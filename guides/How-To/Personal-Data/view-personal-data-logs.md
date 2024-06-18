@@ -1,6 +1,6 @@
 ---
-title: View Personal Data Logs
-nav_label: View Personal Data Logs
+title: View Personal-Data Logs
+nav_label: View Personal-Data Logs
 sidebar_position: 20
 ---
 
