@@ -291,7 +291,7 @@ In the preceding Order object, we received a few values that make paying for an 
  | `payment` | An order is immediately unpaid, but after you move onto paying for an order, this can be: **`authorized`**, **`paid`** or **`refunded`**. |
  | `shipping` | This is either **`fulfilled`** or **`unfulfilled`**. |
  | `meta` | This object contains useful metadata for your order including a formatted [order total](/guides/How-To/Carts/calculate-totals) for your cart, along with when the cart was created. |
- | `relationships` | This object contains the IDs for related objects, including the [Order Items](/docs/carts-orders/orders/orders-api/order-items) and the [Customer](/docs/customer-management/customer-management-api/customer-management-api-overview), if you provided one during Checkout. |
+ | `relationships` | This object contains the IDs for related objects, including the [Order Items](/docs/api/carts/get-order-items) and the [Customer](/docs/customer-management/customer-management-api/customer-management-api-overview), if you provided one during Checkout. |
 
 ### Clean up the cart
 
