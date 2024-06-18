@@ -170,13 +170,16 @@ const config = {
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
         },
-        blog: {
-          showReadingTime: true,
+        //blog: {
+        //  showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/elasticpath/elasticpath-dev/tree/main/blog/",
-        },
+        //  blogTitle: 'Elastic Path Commerce Cloud Changelog',
+        //  blogDescription: 'The changelog contains updates and modifications in Commerce, Composer, Product Experience Manager, Subscriptions and Payments products. The changelog does not include:\n Underlying security patches.\n Routine library updates.\n',
+        //  postsPerPage: 30,
+        //  blogSidebarTitle: 'All posts',
+        //  blogSidebarCount: 'ALL',
+        //},
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -574,19 +577,24 @@ const config = {
     [
       "@docusaurus/plugin-content-blog",
       {
+        blogTitle: 'Elastic Path Commerce Cloud Changelog',
+        blogDescription: 'The changelog contains updates and modifications in Commerce, Composer, Product Experience Manager, Subscriptions and Payments products. The changelog does not include:\n Underlying security patches.\n Routine library updates.\n',
+        postsPerPage: 30,
+        blogSidebarTitle: 'All posts',
+        blogSidebarCount: 'ALL',
         /**
          * Required for any multi-instance plugin
          */
-        id: "changelog-pxm",
+        id: "changelog",
         /**
          * URL route for the blog section of your site.
          * *DO NOT* include a trailing slash.
          */
-        routeBasePath: "changelog/pxm",
+        routeBasePath: "changelog",
         /**
          * Path to data on filesystem relative to site dir.
          */
-        path: "./changelog/pxm",
+        path: "./changelog",
       },
     ],
     [
@@ -598,7 +606,6 @@ const config = {
           { to: '/docs/studio/Insights/Setting-up-an-AB-Test', from: '/docs/cx-studio/Insights/Setting-up-an-AB-Test'},
           { to: '/docs/studio/Release-Notes/2022/Release-145-July-17-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-145-July-17-2022'},
           { to: '/docs/studio/content/advanced-page-editing/Adding-Meta-Keywords', from: '/docs/cx-studio/content/advanced-page-editing/Adding-Meta-Keywords'},
-          { to: '/docs/composer/integration-hub/store-management/node-product-association', from: '/docs/composer/integration-hub/store-management/node-product-association'},
           { to: '/docs/studio/Integrations/Integrating-Zapier', from: '/docs/cx-studio/Integrations/Integrating-Zapier'},
           { to: '/docs/studio/Release-Notes/2021/Release-120-Nov-2-2021', from: '/docs/cx-studio/Release-Notes/2021/Release-120-Nov-2-2021'},
           { to: '/docs/studio/Integrations/Integrating-Triple-Whale', from: '/docs/cx-studio/Integrations/Integrating-Triple-Whale'},
@@ -606,7 +613,6 @@ const config = {
           { to: '/docs/studio/Integrations/Integrating-Salesforce', from: '/docs/cx-studio/Integrations/Integrating-Salesforce'},
           { to: '/docs/studio/Integrations/Integrating-Privy', from: '/docs/cx-studio/Integrations/Integrating-Privy'},
           { to: '/docs/studio/Integrations/Integrating-ActiveCampaign', from: '/docs/cx-studio/Integrations/Integrating-ActiveCampaign'},
-          { to: '/docs/developer-tools/composable-starter/deploy/storefront-deploy', from: '/docs/developer-tools/composable-starter/deploy/storefront-deploy'},
           { to: '/docs/studio/content/advanced-page-editing/Using-Dynamic-Text-Content', from: '/docs/cx-studio/content/advanced-page-editing/Using-Dynamic-Text-Content'},
           { to: '/docs/studio/content/Basic-Page-Editing/Padding-Controls', from: '/docs/cx-studio/content/Basic-Page-Editing/Padding-Controls'},
           { to: '/docs/organizations/org-level-pxm-entities/pxm-org-pricebooks', from: '/docs/commerce-cloud/organizations/org-level-pxm-entities/pxm-org-pricebooks'},
@@ -669,7 +675,6 @@ const config = {
           { to: '/docs/studio/content/Forms-&-Contacts/Warning-when-using-email-less-form', from: '/docs/cx-studio/content/Forms-&-Contacts/Warning-when-using-email-less-form'},
           { to: '/docs/personal-data/personal-data-erasure-requests-api/create-personal-data-erasure-request', from: '/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/create-personal-data-erasure-request'},
           { to: '/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-custom-attribute-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-custom-attribute-rule-promotion'},
-          { to: '/docs/developer-tools/concepts/storefront-environment-variable', from: '/docs/developer-tools/concepts/storefront-environment-variable'},
           { to: '/docs/authentication/single-sign-on/merchant-realm-mappings/merchant-realm-mappings-overview', from: '/docs/commerce-cloud/authentication/single-sign-on/merchant-realm-mappings/merchant-realm-mappings-overview'},
           { to: '/docs/studio/Release-Notes/2021/Release-121-Nov-7-2021', from: '/docs/cx-studio/Release-Notes/2021/Release-121-Nov-7-2021'},
           { to: '/docs/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info'},
@@ -701,7 +706,6 @@ const config = {
           { to: '/docs/studio/content/Forms-&-Contacts/Customers', from: '/docs/cx-studio/content/Forms-&-Contacts/Customers'},
           { to: '/docs/personal-data/personal-data-erasure-requests-api/get-personal-data-erasure-request-by-id', from: '/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/get-personal-data-erasure-request-by-id'},
           { to: '/docs/organizations/org-level-pxm-entities/pxm-org-templates', from: '/docs/commerce-cloud/organizations/org-level-pxm-entities/pxm-org-templates'},
-          { to: '/docs/composer/integration-hub/marketing-communication/braze', from: '/docs/composer/integration-hub/marketing-communication/braze'},
           { to: '/docs/rule-promotions/rule-promotions-api/item-rule-promotions/create-condition-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-condition-rule-promotion'},
           { to: '/docs/studio/Release-Notes/2022/Release-137-April-4-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-137-April-4-2022'},
           { to: '/docs/studio/Integrations/Adding-HTML-CSS-or-JavaScript-to-all-your-pages', from: '/docs/cx-studio/Integrations/Adding-HTML-CSS-or-JavaScript-to-all-your-pages'},
@@ -709,7 +713,6 @@ const config = {
           { to: '/docs/studio/developers/components/header-and-footer', from: '/docs/cx-studio/developers/components/header-and-footer'},
           { to: '/docs/authentication/single-sign-on/user-authentication-password-profiles-api/update-a-user-authentication-password-profile', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-password-profiles-api/update-a-user-authentication-password-profile'},
           { to: '/docs/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile'},
-          { to: '/docs/composer/builder/components/code-component-usage', from: '/docs/composer/builder/components/code-component-usage'},
           { to: '/docs/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview'},
           { to: '/docs/studio/design/Design-&-Styles/Styling-for-light-and-dark-backgrounds', from: '/docs/cx-studio/design/Design-&-Styles/Styling-for-light-and-dark-backgrounds'},
           { to: '/docs/studio/policies/Downgrading-or-Cancelling-your-Unstack-Account', from: '/docs/cx-studio/policies/Downgrading-or-Cancelling-your-Unstack-Account'},
@@ -749,7 +752,6 @@ const config = {
           { to: '/docs/studio/developers/features/values', from: '/docs/cx-studio/developers/features/values'},
           { to: '/docs/studio/Settings/account-management/Adjusting-User-Roles', from: '/docs/cx-studio/Settings/account-management/Adjusting-User-Roles'},
           { to: '/docs/commerce-manager/product-experience-manager/currencies/manage-currencies', from: '/docs/pxm/currencies/manage-currencies'},
-          { to: '/docs/composer/integration-hub/tax-and-shipping/avalara', from: '/docs/composer/integration-hub/tax-and-shipping/avalara'},
           { to: '/docs/studio/content/advanced-page-editing/Version-Control', from: '/docs/cx-studio/content/advanced-page-editing/Version-Control'},
           { to: '/docs/commerce-manager/subscriptions/products/managing-products-cm', from: '/docs/subscriptions/products/managing-products-cm'},
           { to: '/docs/authentication/single-sign-on/openid-connect-profiles-api/create-an-oidc-profile', from: '/docs/commerce-cloud/authentication/single-sign-on/openid-connect-profiles-api/create-an-oidc-profile'},
@@ -793,7 +795,6 @@ const config = {
           { to: '/docs/authentication/single-sign-on/authentication-realm-api/get-all-authentication-realms', from: '/docs/commerce-cloud/authentication/single-sign-on/authentication-realm-api/get-all-authentication-realms'},
           { to: '/docs/authentication/single-sign-on/openid-connect-profiles-api/get-an-oidc-profile', from: '/docs/commerce-cloud/authentication/single-sign-on/openid-connect-profiles-api/get-an-oidc-profile'},
           { to: '/docs/studio/Integrations/Integrating-yotpo', from: '/docs/cx-studio/Integrations/Integrating-yotpo'},
-          { to: '/docs/developer-tools/composable-starter/configuration/storefront-payment-gateway', from: '/docs/developer-tools/composable-starter/configuration/storefront-payment-gateway'},
           { to: '/docs/studio/design/Header-and-Footer/How-to-make-my-header-transparent', from: '/docs/cx-studio/design/Header-and-Footer/How-to-make-my-header-transparent'},
           { to: '/guides/How-To/paymentgateways/integrate-applepay-with-swift', from: '/docs/commerce-cloud/payments/payments-developer/integrate-applepay-with-swift'},
           { to: '/docs/studio/content/Basic-Page-Editing/Deleting-a-Page', from: '/docs/cx-studio/content/Basic-Page-Editing/Deleting-a-Page'},
@@ -810,7 +811,6 @@ const config = {
           { to: '/docs/studio/content/Media-Management/Media-Overview', from: '/docs/cx-studio/content/Media-Management/Media-Overview'},
           { to: '/docs/personal-data/personal-data-logs-api/get-personal-data-logs', from: '/docs/commerce-cloud/personal-data/personal-data-logs-api/get-personal-data-logs'},
           { to: '/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info'},
-          { to: '/docs/composer/integration-hub/marketing-communication/sendgrid', from: '/docs/composer/integration-hub/marketing-communication/sendgrid'},
           { to: '/docs/studio/developers/eCommerce/Content-for-returning-customers', from: '/docs/cx-studio/developers/eCommerce/Content-for-returning-customers'},
           { to: '/docs/authentication/single-sign-on/password-profiles-api/get-all-password-profiles', from: '/docs/commerce-cloud/authentication/single-sign-on/password-profiles-api/get-all-password-profiles'},
           { to: '/guides/Getting-Started/rate-limits', from: '/docs/commerce-cloud/api-overview/rate-limits'},
@@ -830,7 +830,6 @@ const config = {
           { to: '/docs/personal-data/logs-ttl-settings/get-logs-ttl-settings', from: '/docs/commerce-cloud/personal-data/logs-ttl-settings/get-logs-ttl-settings'},
           { to: '/docs/personal-data/personal-data-erasure-requests-api/personal-data-erasure-request-overview', from: '/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/personal-data-erasure-request-overview'},
           { to: '/docs/personal-data/logs-ttl-settings/update-logs-ttl-settings', from: '/docs/commerce-cloud/personal-data/logs-ttl-settings/update-logs-ttl-settings'},
-          { to: '/docs/developer-tools/concepts/use-application-keys-storefront', from: '/docs/developer-tools/concepts/use-application-keys-storefront'},
           { to: '/docs/commerce-manager/subscriptions/subscription-plans/creating-plans', from: '/docs/subscriptions/subscription-plans/creating-plans'},
           { to: '/docs/studio/Integrations/Integrating-Profitwell-Retain', from: '/docs/cx-studio/Integrations/Integrating-Profitwell-Retain'},
           { to: '/guides/How-To/Custom-Data/extend-any-resource', from: '/docs/commerce-cloud/custom-data/extend-any-resource'},
@@ -850,7 +849,6 @@ const config = {
           { to: '/docs/commerce-manager/subscriptions/products/deleting-products', from: '/docs/subscriptions/products/deleting-products'},
           { to: '/guides/How-To/Carts/manage-carts', from: '/docs/commerce-cloud/carts/manage-carts'},
           { to: '/docs/carts-orders/cart-payment-intent', from: '/docs/commerce-cloud/carts/cart-payment-intent/overview'},
-          { to: '/docs/composer/builder/integrations/integration-runner-environment-limits', from: '/docs/composer/builder/integrations/integration-runner-environment-limits'},
           { to: '/docs/organizations/org-level-pxm-entities/', from: '/docs/commerce-cloud/organizations/org-level-pxm-entities/overview'},
           { to: '/docs/studio/Release-Notes/2022/Release-161-December-19-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-161-December-19-2022'},
           { to: '/guides/How-To/orders/create-formatted-orders', from: '/docs/commerce-cloud/orders/create-formatted-orders'},
@@ -907,10 +905,7 @@ const config = {
           { to: '/docs/commerce-manager/analytics/', from: '/docs/commerce-cloud/analytics/analytics'},
           { to: '/docs/studio/Settings/account-management/GDPR-Messaging-&-Cookie-Consent', from: '/docs/cx-studio/Settings/account-management/GDPR-Messaging-&-Cookie-Consent'},
           { to: '/guides/How-To/Customers/manage-customers', from: '/docs/commerce-cloud/customer-management/manage-customers'},
-          { to: '/docs/developer-tools/composable-starter/troubleshooting', from: '/docs/developer-tools/composable-starter/troubleshooting'},
-          { to: '/docs/composer/builder/builder-components/salsify', from: '/docs/composer/builder/builder-components/salsify'},
           { to: '/docs/studio/content/Blog-Management/Adding-a-dividing-line-to-a-blog-post', from: '/docs/cx-studio/content/Blog-Management/Adding-a-dividing-line-to-a-blog-post'},
-          { to: '/docs/composer/builder/builder-components/postmark', from: '/docs/composer/builder/builder-components/postmark'},
           { to: '/docs/studio/content/Dynamic-Pages-&-Databases/Data-Driven-Content', from: '/docs/cx-studio/content/Dynamic-Pages-&-Databases/Data-Driven-Content'},
           { to: '/docs/ship-groups/shipping-groups/shipping-groups-api/get-cart-shipping-groups', from: '/docs/commerce-cloud/shipping-groups/shipping-groups-api/get-cart-shipping-groups'},
           { to: '/docs/studio/developers/utility/jsonparser', from: '/docs/cx-studio/developers/utility/jsonparser'},
@@ -954,7 +949,6 @@ const config = {
           { to: '/docs/api/promotions/get-a-promotion-history', from: '/docs/commerce-cloud/promotions/promotion-management/get-promotion-history'},
           { to: '/guides/How-To/Subscriptions/getting-started/developer-getting-started/first-api-call', from: '/docs/subscriptions/getting-started/developer-getting-started/first-api-call'},
           { to: '/guides/Getting-Started/maintenance', from: '/docs/commerce-cloud/getting-started/maintenance'},
-          { to: '/docs/developer-tools/composable-starter/storefront-starter', from: '/docs/developer-tools/composable-starter/storefront-starter'},
           { to: '/docs/commerce-manager/payments/ep-payments-powered-by-stripe', from: '/docs/commerce-cloud/payments/payment-gateway/configure-elastic-path-payments-powered-by-stripe'},
           { to: '/docs/api/accounts/account-members', from: '/docs/commerce-cloud/accounts/using-account-members-api/get-all-account-members'},
           { to: '/guides/How-To/Personal-Data/view-personal-data-logs-all-related-items', from: '/docs/commerce-cloud/personal-data/view-personal-data-logs-all-related-items'},
@@ -1026,7 +1020,6 @@ const config = {
           { to: '/docs/api/carts/bulk-delete-tax-items-from-cart', from: '/docs/commerce-cloud/carts/tax-items/bulk-delete-tax-items'},
           { to: '/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group', from: '/docs/commerce-cloud/shipping-groups/shipping-groups-api/create-cart-shipping-group'},
           { to: '/docs/studio/Integrations/Integrating-HubSpot', from: '/docs/cx-studio/Integrations/Integrating-HubSpot'},
-          { to: '/docs/developer-tools/composable-cli/commands', from: '/docs/developer-tools/composable-cli/commands'},
           { to: '/docs/commerce-manager/organizations/org-pxm-entities-in-commerce-manager/create-org_pxm_products', from: '/docs/commerce-cloud/organizations/organizations-in-commerce-manager/org-pxm-entities-in-commerce-manager/create-org_pxm_products'},
           { to: '/docs/ship-groups/shipping-groups/shipping-groups-api/get-order-shipping-group-by-id', from: '/docs/commerce-cloud/shipping-groups/shipping-groups-api/get-order-shipping-group-by-id'},
           { to: '/docs/api/pxm/products/create-hierarchy', from: '/docs/pxm/hierarchies/hierarchies-api/create-a-hierarchy'},
@@ -1073,7 +1066,6 @@ const config = {
           { to: '/docs/api/pxm/catalog/delete-catalog-by-id', from: '/docs/pxm/catalogs/catalogs-cm/deleting-catalogs'},
           { to: '/docs/api/pxm/inventory/get-stock-for-multiple-products', from: '/docs/pxm/inventories/get-multiple-stocks'},
           { to: '/docs/studio/developers/tags/plaintext', from: '/docs/cx-studio/developers/tags/plaintext'},
-          { to: '/docs/developer-tools/composable-cli/installation', from: '/docs/developer-tools/composable-cli/installation'},
           { to: '/guides/How-To/paymentgateways/generate-cardconnect-token', from: '/docs/commerce-cloud/payments/payments-developer/generate-cardconnect-token'},
           { to: '/docs/studio/design/Header-and-Footer/Adding-links-to-your-Header-&-Footer-Navigation', from: '/docs/cx-studio/design/Header-and-Footer/Adding-links-to-your-Header-&-Footer-Navigation'},
           { to: '/guides/How-To/paymentgateways/generate-cybersource-keys-tokens', from: '/docs/commerce-cloud/payments/payments-developer/generate-cybersource-keys-tokens'},
@@ -1275,7 +1267,6 @@ const config = {
           { to: '/docs/studio/Settings/account-management/Creating-additional-CX-Studio-Accounts', from: '/docs/cx-studio/Settings/account-management/Creating-additional-CX-Studio-Accounts'},
           { to: '/docs/api/carts/transactions', from: '/docs/commerce-cloud/payments/transactions/get-a-transaction'},
           { to: '/docs/api/flows/delete-a-field', from: '/docs/commerce-cloud/custom-data/custom-data-flows-api/fields/delete-a-field'},
-          { to: '/docs/composer/builder/best-practices/retry-replay-save-time', from: '/docs/composer/builder/best-practices/retry-replay-save-time'},
           { to: '/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions', from: '/docs/commerce-cloud/promotions/promotions-cm/item-level-promotions/bundle-discount-promotions'},
           { to: '/docs/api/flows/entries', from: '/docs/commerce-cloud/custom-data/custom-data-flows-api/entries/create-an-entry'},
           { to: '/docs/api/promotions/create-a-promotion', from: '/docs/commerce-cloud/promotions/promotion-management/create-a-cart-percent-discount-promotion'},
@@ -1408,7 +1399,6 @@ const config = {
           { to: '/docs/organizations/org-level-pxm-entities/pxm-org-hierarchies', from: '/docs/commerce-cloud/organizations/org-level-pxm-entities/pxm-org-hierarchies'},
           { to: '/docs/api/carts/delete-customer-cart-association', from: '/docs/commerce-cloud/carts/account-cart-associations/delete-an-association'},
           { to: '/docs/commerce-manager/product-experience-manager/Products/manage-product-inventory', from: '/docs/pxm/products/pxm-products-commerce-manager/manage-product-inventory'},
-          { to: '/docs/composer/builder/builder-components/google-api-for-shopping', from: '/docs/composer/builder/builder-components/google-api-for-shopping'},
           { to: '/docs/api/pxm/products/extending-products-with-templates', from: '/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/get-a-template'},
           { to: '/docs/api/commerceextensions/create-a-custom-entry', from: '/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-api-entries/create-a-custom-api-entry'},
           { to: '/docs/api/pxm/products/create-product-template-relationship', from: '/docs/pxm/products/product-asset-relationships/template-relationships/create-product-template-relationships'},
@@ -1456,7 +1446,6 @@ const config = {
           { to: '/guides/How-To/paymentgateways/generate-cardconnect-token', from: '/docs/commerce-cloud/payments/payment-gateway/configure-cardconnect'},
           { to: '/docs/api/pxm/products/products', from: '/docs/pxm/products/pxm-bundles/pxm-bundles-api/pxm-bundles-api-overview'},
           { to: '/docs/studio/Integrations/Connecting-to-Shopify', from: '/docs/cx-studio/Integrations/Connecting-to-Shopify'},
-          { to: '/docs/payments/enable-elasticpath-payment-gateway', from: '/docs/payments/enable-elasticpath-payment-gateway'},
           { to: '/docs/commerce-manager/customer-management/cm-customers', from: '/docs/commerce-cloud/customer-management/cm-customers'},
           { to: '/docs/api/pxm/products/delete-modifier', from: '/docs/pxm/products/pxm-product-variations/pxm-variation-modifiers-api/create-a-modifier'},
           { to: '/docs/api/pxm/products/delete-modifier', from: '/docs/pxm/products/pxm-product-variations/pxm-variation-modifiers-api/update-a-modifier'},
@@ -1543,7 +1532,6 @@ const config = {
           { to: '/docs/api/pxm/catalog/administrator-latest-releases-catalog-api', from: '/docs/pxm/catalogs/catalog-latest-release/get-products-by-hierarchy-in-a-release'},
           { to: '/docs/api/accounts/account-management-authentication', from: '/docs/commerce-cloud/accounts/account-management-authentication/overview'},
           { to: '/docs/carts-orders/get-cart-items', from: '/docs/commerce-cloud/carts/cart-items/re-order'},
-          { to: '/docs/composer/builder/components/overview', from: '/docs/composer/builder/builder-components/epcc'},
           { to: '/docs/commerce-manager/product-experience-manager/Products/overview', from: '/docs/pxm/catalogs/catalog-latest-release/get-a-product-in-a-release'},
           { to: '/docs/api/pxm/catalog/get-by-context-release', from: '/docs/pxm/catalogs/catalog-latest-release/get-all-products-in-a-release'},
           { to: '/docs/api/pxm/products/get-all-products', from: '/docs/pxm/products/ep-pxm-products-api/get-all-products'},
@@ -1578,7 +1566,6 @@ const config = {
           { to: '/docs/commerce-manager/product-experience-manager/extending-products/templates', from: '/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/create-attribute'},
           { to: '/docs/customer-management/customer-management-api/update-a-customer', from: '/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/update-attribute'},
           { to: '/docs/commerce-manager/product-experience-manager/extending-products/templates', from: '/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/get-attribute'},
-          { to: '/docs/composer/monitor/overview', from: '/docs/pxm/products/product-assets/assets-overview'},
           { to: '/', from: '/learn/power-of-the-catalog/complete'},
           { to: '/', from: '/learn/creating-an-online-store/lets-get-some-sales'},
           { to: '/', from: '/learn/creating-an-online-store/store-preview'},
