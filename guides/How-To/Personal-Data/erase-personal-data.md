@@ -1,6 +1,6 @@
 ---
-title: Erase Personal Data
-nav_label: Erase Personal Data
+title: Erase Personal-Data
+nav_label: Erase Personal-Data
 sidebar_position: 40
 ---
 

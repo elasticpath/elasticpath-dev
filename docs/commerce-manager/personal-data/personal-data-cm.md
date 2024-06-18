@@ -1,6 +1,6 @@
 ---
-title: Personal Data in Commerce Manager
-nav_label: Personal Data in Commerce Manager
+title: Personal-Data in Commerce Manager
+nav_label: Personal-Data in Commerce Manager
 sidebar_position: 50
 ---
 

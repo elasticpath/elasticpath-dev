@@ -1,6 +1,6 @@
 ---
-title: View Personal Data Logs for All Related Items
-nav_label: View Personal Data Logs for All Related Items
+title: View Personal-Data Logs for All Related Items
+nav_label: View Personal-Data Logs for All Related Items
 sidebar_position: 30
 ---
 

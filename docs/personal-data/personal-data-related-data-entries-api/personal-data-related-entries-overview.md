@@ -1,6 +1,6 @@
 ---
-title: Personal Data Related Data Entries Overview
-nav_label: Personal Data Related Data Entries Overview
+title: Personal-Data Related Data Entries Overview
+nav_label: Personal-Data Related Data Entries Overview
 sidebar_position: 10
 ---
 

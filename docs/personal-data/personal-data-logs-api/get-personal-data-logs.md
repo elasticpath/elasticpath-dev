@@ -1,6 +1,6 @@
 ---
-title: Get Personal Data Logs API
-sidebar_label: Get Personal Data Logs  API
+title: Get Personal-Data Logs API
+sidebar_label: Get Personal-Data Logs  API
 sidebar_position: 20
 ---
 
