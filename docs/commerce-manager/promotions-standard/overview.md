@@ -106,7 +106,7 @@ With bulk generating codes, you can generate large number of unique promotion co
     - (Optional) **Usage Limit Type** : Indicate whether the usage limitation is at the item-level or cart-level. The options are **Per Cart** and **Per Line Item**.
     - (Optional) **Maximum uses** : Enter the maximum number of usages of a code for a promotion. If no value is set, customers can use the code unlimited number of times. We recommend you to set value greater than or equal to 1.
     - (Optional) **Prepend Value** : Add a prefix value to the generated codes. When codes are generated, the specified prepend value is added as a prefix to each code. For example, if you set *summer* as prepend value and *aa2b-3c4d* is generated, the promotion code is *summer-aa2b-3c4d*.
-    - (Optional) **Code Group Name** : Enter the name for the job invoked to generate the code. See [Create a Job](/docs/promotions/promotion-codes/jobs-api/create-a-job).
+    - (Optional) **Code Group Name** : Enter the name for the job invoked to generate the code. See [Create a Job](/docs/api/promotions/create-a-promotion-job).
     
 1. Click **Save**.
 
@@ -198,7 +198,7 @@ Using the **Manage Code Export** tab, you can export your promotion codes and do
 
 - [Promotions Standard](/docs/api/promotions/promotions-standard-introduction)
 - [Customers and Accounts](/docs/api/accounts/account-management-introduction)
-- [Catalog](/docs/api/pxm/catalog/catalog-view-service-api)
+- [Catalog](/docs/api/pxm/catalog)
 - [Create a Job](/docs/carts-orders/orders/jobs-api/create-a-job)
 
 ### Demos
