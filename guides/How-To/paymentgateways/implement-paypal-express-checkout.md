@@ -24,7 +24,7 @@ You can use any URL safe value you want for your cart IDs. If a cart does not al
 
 You can set up and confirm a purchase by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/checkout/account-checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/account-checkout).
 
     {% callout %}
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
@@ -183,7 +183,7 @@ You can use any URL safe value you want for your cart IDs. If a cart doesn’t a
 
 You can set up the authorization and capture the payment by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/checkout/checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/api/carts/checkout).
 
     :::note
 
@@ -312,7 +312,7 @@ Ensure that you create an account in [developer.paypal.com](https://developer.pa
 1. Go to your **Profile > My Account**.
 1. On the **Sandbox** sidebar, click **Accounts**. The **Sandbox test accounts** page is displayed with a list of all the sandbox accounts.
 1. In the **Manage accounts** column, click the three dots associated with the account and select **view/edit account**.
-1. Make a note of the **Email ID**, **System Generated Password**, and **Account ID** to set up your PayPal Express Checkout for commerce cloud. See [Configure PayPal Express Checkout](/docs/carts-orders/payments/payment-gateway/configure-paypal-express-checkout).
+1. Make a note of the **Email ID**, **System Generated Password**, and **Account ID** to set up your PayPal Express Checkout for commerce cloud. See [Configure PayPal Express Checkout](/docs/api/payments/update-paypal-express-checkout-gateway).
 
 ## Updating Multiple Payment Settings in PayPal Account
 

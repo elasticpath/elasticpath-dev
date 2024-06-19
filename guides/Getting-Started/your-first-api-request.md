@@ -316,18 +316,18 @@ Before we can use the Payments API, we must first configure a payment gateway.�
 
 ### Payment Gateways
 
-Right now Composable Commerce provides native payment functionality for the following providers:‌
+Right now Composable Commerce provides native payment functionality for the following providers
 
-* ​[Stripe](/docs/carts-orders/payments/paying-for-an-order/stripe-payments)​
-* ​[Braintree](/docs/carts-orders/payments/paying-for-an-order/braintree-payments)​
+* [Stripe](/docs/carts-orders/payments/paying-for-an-order/stripe-payments)
+* [Braintree](/docs/carts-orders/payments/paying-for-an-order/braintree-payments)
 
-If your gateway isnʼt listed, you can implement a [Manual Gateway](/docs/carts-orders/payments/payments-developer/implement-manual-gateways).‌
+If your gateway isnʼt listed, you can implement a [Manual Gateway](/docs/api/payments/update-manual-gateway).
 
 ### Configure your gateway
 
-In this example we are using Stripe. If you want to follow along, login or sign up to Stripe and head to [Developers &gt; API keys](https://dashboard.stripe.com/account/apikeys) and make a copy of your **secret key**.‌
+In this example we are using Stripe. If you want to follow along, login or sign up to Stripe and head to [Developers &gt; API keys](https://dashboard.stripe.com/account/apikeys) and make a copy of your **secret key**.
 
-Next, add the Stripe secret key in the commerce Cloud, but we will need a `client_credentials` token to do that.‌
+Next, add the Stripe secret key in the commerce Cloud, but we will need a `client_credentials` token to do that.
 
 You will need your `client_id` and `client_secret` from [Commerce Manager](https://dashboard.elasticpath.com/) to do this.
 
@@ -350,7 +350,7 @@ After completed you receive your `access_token`.
 }
 ```
 
-We can now configure the [Stripe gateway](/docs/carts-orders/payments/payment-gateway/configure-stripe) by using the API. _You can also configure payment gateways via Commerce Manager._
+We can now configure the [Stripe gateway](/docs/api/payments/update-stripe-gateway) by using the API. _You can also configure payment gateways via Commerce Manager._
 
 :::caution
 You need to replace `XXXX` with your `access_token` and Stripe secret key in the following example.
