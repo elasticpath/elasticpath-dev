@@ -31,9 +31,9 @@ The following steps are used to perform a Password Reset or Passwordless Authent
 
 ### Get the Account Authentication Settings
 
-Use the [Account Authentication Settings API](/docs/authentication/single-sign-on/account-authentication-settings/get-account-authentication-settings) to obtain the `authentication_realm`. 
+Use the [Account Authentication Settings API](/docs/api/accounts/get-v-2-settings-account-authentication) to obtain the `authentication_realm`. 
 
-For the password reset scenario, [update](/docs/authentication/single-sign-on/account-authentication-settings/update-account-authentication-settings) the setting for `account_member_self_management` to `update_only` if not set already. This will allow the user to reset their password using the [Account Management Authentication Token](/docs/authentication/Tokens/account-management-authentication-token).
+For the password reset scenario, [update](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/update-a-user-authentication-password-profile) the setting for `account_member_self_management` to `update_only` if not set already. This will allow the user to reset their password using the [Account Management Authentication Token](/docs/authentication/Tokens/account-management-authentication-token).
 
 ### Create/Update the Password Profile
 

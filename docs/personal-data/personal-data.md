@@ -1,6 +1,6 @@
 ---
-title: Personal Data Overview
-nav_label: Personal Data Overview
+title: Personal-Data Overview
+nav_label: Personal-Data Overview
 sidebar_position: 10
 ---
 
