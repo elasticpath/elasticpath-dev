@@ -2,9 +2,9 @@ import React from "react";
 import {
   CharlotteTilbury,
   Norgren,
+  Pella,
   Pokemon,
   SerenaLily,
-  United,
 } from "./HeroBrandLogos";
 export default function HeroSection() {
   return (
@@ -39,12 +39,12 @@ export default function HeroSection() {
           .
         </p>
         <p className="mt-8">Trusted by these leading brands...</p>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12">
-          <SerenaLily className="max-w-full invert dark:invert-0" />
-          <United className="max-w-full invert dark:invert-0" />
-          <Pokemon className="max-w-full" />
-          <Norgren className="max-w-full invert dark:invert-0" />
-          <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0" />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 items-center">
+          <SerenaLily className="max-w-full invert dark:invert-0 mx-auto" />
+          <Pokemon className="max-w-full mx-auto" />
+          <Pella className="max-w-full invert dark:invert-0 mx-auto" />
+          <Norgren className="max-w-full invert dark:invert-0 mx-auto" />
+          <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0 mx-auto" />
         </div>
 
         <svg
