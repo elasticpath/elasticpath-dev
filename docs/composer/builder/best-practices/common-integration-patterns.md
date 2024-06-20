@@ -35,8 +35,8 @@ While we commonly use the term webhook, some companies use different terms. For 
 
 The bottom line is that _something_ changes in the source system, which causes the source system to send data outside the system.
 
-{% callout title="Webhooks are defined by the *source* system" type="note" %} 
 
+:::note
 When the destination system creates an endpoint, it tells the source system, *when thing changes, let me know at this URL.*. That is, it is limited to defining where the payload is sent.
 :::
 

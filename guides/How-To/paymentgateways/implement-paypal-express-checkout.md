@@ -8,7 +8,7 @@ Implement PayPal Express checkout to authorize, capture, purchase, and refund pa
 
 ## Prerequisites
 
-- Ensure that you have a Commerce account, and Client ID and Client Secret of your store available from [Commerce Manager](/ui).
+- Ensure that you have a Commerce account, and Client ID and Client Secret of your store available from [Commerce Manager](https://elasticpath.dev/docs/commerce-manager/application-keys/application-keys-cm).
 - Get An [access token](/guides/Getting-Started/your-first-api-request).
 - Create an account in [developer.paypal.com](https://developer.paypal.com/).
 - Configure products and gateway using Commerce Manager or API.
@@ -24,13 +24,13 @@ You can use any URL safe value you want for your cart IDs. If a cart does not al
 
 You can set up and confirm a purchase by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/checkout/account-checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/account-checkout).
 
     {% callout %}
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
     {% /callout %}
 
-1. Use the following request example to set up `purchase` from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/carts-orders/payments/paying-for-an-order/paypal-express-checkout-payments).
+1. Use the following request example to set up `purchase` from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](https://elasticpath.dev/docs/api/carts/authorize-setup).
 
     ```bash
         curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/payments \
@@ -60,7 +60,7 @@ You can set up and confirm a purchase by doing the following:
 
     `200 OK`
 
-    ```json
+    ```
         "data": {
         "id": "4e772a38-7ca1-43a6-9c99-a136d2856bff",
         "type": "transaction",
@@ -183,7 +183,7 @@ You can use any URL safe value you want for your cart IDs. If a cart doesn’t a
 
 You can set up the authorization and capture the payment by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/checkout/checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/api/carts/checkout).
 
     :::note
 
@@ -191,7 +191,7 @@ You can set up the authorization and capture the payment by doing the following:
 
     :::
 
-1. Use the following request example to setup authorization from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](/docs/carts-orders/payments/paying-for-an-order/paypal-express-checkout-payments).
+1. Use the following request example to setup authorization from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](https://elasticpath.dev/docs/api/carts/authorize-setup).
 
     ```bash
        curl -X POST https://useast.api.elasticpath.com/v2/orders/:orderId/payments \
@@ -312,7 +312,7 @@ Ensure that you create an account in [developer.paypal.com](https://developer.pa
 1. Go to your **Profile > My Account**.
 1. On the **Sandbox** sidebar, click **Accounts**. The **Sandbox test accounts** page is displayed with a list of all the sandbox accounts.
 1. In the **Manage accounts** column, click the three dots associated with the account and select **view/edit account**.
-1. Make a note of the **Email ID**, **System Generated Password**, and **Account ID** to set up your PayPal Express Checkout for commerce cloud. See [Configure PayPal Express Checkout](/docs/carts-orders/payments/payment-gateway/configure-paypal-express-checkout).
+1. Make a note of the **Email ID**, **System Generated Password**, and **Account ID** to set up your PayPal Express Checkout for commerce cloud. See [Configure PayPal Express Checkout](https://elasticpath.dev/docs/api/carts/authorize-setup).
 
 ## Updating Multiple Payment Settings in PayPal Account
 
@@ -326,6 +326,6 @@ To confirm multiple payments, follow the instructions to update multiple payment
 
 ## Related Resources
 
-- [PayPal Express Checkout Payments](/docs/carts-orders/payments/paying-for-an-order/paypal-express-checkout-payments)
+- [PayPal Express Checkout Payments](https://elasticpath.dev/docs/api/carts/authorize-setup)
 - [Checkout workflow](/docs/carts-orders/checkout/)
 - [Carts API](/docs/api/carts/cart-management)

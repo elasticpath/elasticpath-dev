@@ -4,9 +4,9 @@ nav_label: Product
 sidebar_position: 10
 ---
 
-{% hint style="info" %}
+:::note
 This generator is only available on **eCommerce** plans.
-{% endhint %}
+:::
 
 The Product generator allows you to access elements of a product in your storefront. This allows you to display details on the products inventory, price range, variants, and media associated with the product.
 

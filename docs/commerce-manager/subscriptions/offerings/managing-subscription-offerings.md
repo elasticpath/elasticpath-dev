@@ -16,48 +16,10 @@ For example, your company provides online streaming of movies, web-series, and m
 
 Offerings can have any combination of a product and plans. The pricing of an offering is determined by the pricing you have configured for your products and plans.
 
-{% table %}
-* Example
-* Product
-* Plans
-* Offering
----
-*
-  {% list type="checkmark" %}
-   * Single product and plan
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * One product with a product price of $50
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * A monthly plan with a 5% discount
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * An offering with a monthly plan for $47.50 a month
-  {% /list %}
----
-*
-  {% list type="checkmark" %}
-   * Single product with multiple plans
-  {% /list %}
-*
-  {% list type="checkmark" %}
-   * One product with a product price of $50
-  {% /list %}
-*
-  {% list type="checkmark" %}
-    * A monthly plan with a 5% discount
-    * A yearly plan with a 10% discount
-  {% /list %}
-* An offering with two plans:
-  {% list type="checkmark" %}
-    * A monthly plan for $47.50 a month
-    * A yearly plan for $45 a month
-  {% /list %}
-{% /table %}
+| Example | Product | Plans | Offering |
+| --- | --- | --- | --- | 
+| Single product and plan | One product with a product price of $50 |  A monthly plan with a 5% discount | An offering with a monthly plan for $47.50 a month |
+| Single product with multiple plans | One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month<</li></ul> | 
 
 ## Building Offerings: An Overview
 

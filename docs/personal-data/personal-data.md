@@ -26,5 +26,5 @@ Currently, personal data management is only enabled for the following entities.
 | user-authentication-info | `v2/authentication-realms/{realmId}/user-authentication-info/{id}` |[User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/overview) |
 | user-authentication-oidc-profile-info | `v2/authentication-realms/{authenticationRealmId}/user-authentication-info/{userAuthenticationInfoId}/user-authentication-oidc-profile-info/{id}`|[User Authentication OIDC Profile Info](/docs/authentication/single-sign-on/user-authentication-openid-connect-profile-api/openid-connect-profile-overview) |
 | user-authentication-password-profile-info | `v2/authentication-realms/{authenticationRealmId}/user-authentication-info/{userAuthenticationInfoId}/user-authentication-password-profile-info/{id}`|[User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview) |
-| order | `v2/orders/{id}`|[Orders](/docs/carts-orders/orders/orders-api/orders-api-overview) |
+| order | `v2/orders/{id}`|[Orders](/docs/api/carts/orders) |
 
