@@ -199,7 +199,7 @@ Using the **Manage Code Export** tab, you can export your promotion codes and do
 - [Promotions Standard](/docs/api/promotions/promotions-standard-introduction)
 - [Customers and Accounts](/docs/api/accounts/account-management-introduction)
 - [Catalog](/docs/api/pxm/catalog)
-- [Create a Job](/docs/carts-orders/orders/jobs-api/create-a-job)
+- [Create a Job](/docs/api/exporter/create-job)
 
 ### Demos
 

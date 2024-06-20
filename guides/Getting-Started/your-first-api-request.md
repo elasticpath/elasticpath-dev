@@ -160,7 +160,7 @@ Now we have items in the cart, in the next lesson, we convert the cart to an unp
 
 ## Lesson 3: Checkout
 
-A cart with the reference `abc` that includes our T-Shirt as a `custom_item` is created. You can now convert the cart to an order using the [Checkout API](/docs/carts-orders/checkout).‌
+A cart with the reference `abc` that includes our T-Shirt as a `custom_item` is created. You can now convert the cart to an order using the [Checkout API](/docs/api/carts/checkout).‌
 
 ### Checkout a Cart
 
@@ -318,10 +318,10 @@ Before we can use the Payments API, we must first configure a payment gateway.�
 
 Right now Composable Commerce provides native payment functionality for the following providers
 
-* [Stripe](/docs/carts-orders/payments/paying-for-an-order/stripe-payments)
-* [Braintree](/docs/carts-orders/payments/paying-for-an-order/braintree-payments)
+* [Stripe](/docs/api/carts/authorize-setup)
+* [Braintree](/docs/api/carts/authorize-setup)
 
-If your gateway isnʼt listed, you can implement a [Manual Gateway](/docs/api/payments/update-manual-gateway).
+If your gateway isnʼt listed, you can implement a [Manual Gateway](https://elasticpath.dev/guides/How-To/paymentgateways/implement-manual-gateways).
 
 ### Configure your gateway
 
