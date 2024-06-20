@@ -2,4 +2,4 @@
 title: 'Changelog 2021-12-13'
 date: '2021-12-13'
 ---
-{% badge type="minor" /%}  You can now use [`includes`](/docs/commerce-cloud/api-overview/includes) to view main images and files of products in catalog view.
+**Minor**  You can now use [`includes`](/docs/commerce-cloud/api-overview/includes) to view main images and files of products in catalog view.
