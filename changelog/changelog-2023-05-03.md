@@ -1,10 +1,11 @@
 ---
-title: 'Catalog bug fixes'
+title: 'May 3, 2023'
 date: '2023-05-03'
-products: ['PXM']
+tags: ['PXM','May 2023']
+hide_blog_post_date: true
 ---
-{% badge type="minor" /%}
+**Minor**
 Bug fix for a bug that prevented some catalogs from publishing.
 
-{% badge type="minor" /%}
+**Minor**
 Bug fix: Fixed an issue that prevented stacked catalogs from functioning correctly.

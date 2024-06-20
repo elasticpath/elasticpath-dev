@@ -3,7 +3,7 @@ title: 'And - Or conditions available for Promotions'
 date: '2023-02-16'
 products: ['Promotions']
 ---
-{% badge type="major" /%}
+**Major**
 Added `and`/`or` conditions on nodes and attributes to be included and excluded from a promotion. For more information, see:
 
   - [Create Item Fixed Discount Promotion for items](/docs/commerce-cloud/promotions/promotion-management/create-item-fixed-discount-promotion)

@@ -116,8 +116,8 @@ const elasticpath = {
   ],
 };
 
-const lightCodeTheme = elasticpath;
-const darkCodeTheme = elasticpath;
+const lightCodeTheme = require("prism-react-renderer/themes/vsLight");
+const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
 
 const fs = require("fs");
 const resourcesHTML = fs.readFileSync("./src/snippets/resources.html", "utf-8");
@@ -578,23 +578,14 @@ const config = {
       "@docusaurus/plugin-content-blog",
       {
         blogTitle: 'Elastic Path Commerce Cloud Changelog',
-        blogDescription: 'The changelog contains updates and modifications in Commerce, Composer, Product Experience Manager, Subscriptions and Payments products. The changelog does not include:\n Underlying security patches.\n Routine library updates.\n',
+        blogDescription: 'The changelog contains updates and modifications in Commerce, Composer',
         postsPerPage: 30,
-        blogSidebarTitle: 'All posts',
-        blogSidebarCount: 'ALL',
-        /**
-         * Required for any multi-instance plugin
-         */
+        blogSidebarCount: 0,
+        blogSidebarTitle: 'Recent Changelogs',
         id: "changelog",
-        /**
-         * URL route for the blog section of your site.
-         * *DO NOT* include a trailing slash.
-         */
         routeBasePath: "changelog",
-        /**
-         * Path to data on filesystem relative to site dir.
-         */
         path: "./changelog",
+        showReadingTime: false,
       },
     ],
     [
