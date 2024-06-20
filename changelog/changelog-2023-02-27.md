@@ -3,10 +3,10 @@ title: 'Bulk assign products to nodes, PayPal Express Checkout'
 date: '2023-02-27'
 products: ['Commerce Manager','PXM','Payments']
 ---
-{% badge type="minor" /%}
+**Minor**
 In Elastic Path Commerce Manager, on the **Products** page, the **Assign to Nodes** option is available only when you select appropriate products. For more information, see [Assigning Products to Multiple Nodes](/docs/pxm/hierarchies/hierarchy#assigning-products-to-multiple-nodes).
 
-{% badge type="minor" /%}
+**Minor**
 For PayPal Express Checkout, you can now see:
 
   - Line item details such as item name, SKU, price, quantity, and taxes corresponding to your payment request.

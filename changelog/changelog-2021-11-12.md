@@ -2,7 +2,7 @@
 title: 'Changelog 2021-11-12'
 date: '2021-11-12'
 ---
-{% badge type="minor" /%} You can now extend the following entities with [core flows](/docs/commerce-cloud/custom-data/extend-any-resource).
+**Minor** You can now extend the following entities with [core flows](/docs/commerce-cloud/custom-data/extend-any-resource).
   - [`authentication-realms`](/docs/single-sign-on/authentication-realm-api/authentication-realm-api-overview)
   - [`oidc-profiles`](/docs/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview)
   - [`password-profiles`](/docs/single-sign-on/password-profiles-api/overview)

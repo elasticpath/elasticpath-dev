@@ -1,7 +1,8 @@
 ---
-title: 'Organization currency management'
+title: 'April 24, 2023'
 date: '2023-04-24'
-products: ['Commerce Manager','Currencies']
+tags: ['Commerce Manager','Currencies','April 2023']
+hide_blog_post_date: true
 ---
-{% badge type="major" /%}
+**Major**
 Commerce Manager: You can now create, edit, and delete currencies in your organizations from the SYSTEM > Organization Settings > Currencies tab. For more information, see Managing Currencies in Organizations.

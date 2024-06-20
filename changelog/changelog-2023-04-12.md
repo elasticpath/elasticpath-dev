@@ -1,10 +1,11 @@
 ---
-title: 'PXM bug fix'
+title: 'April 12, 2023'
 date: '2023-04-12'
-products: ['PXM']
+products: ['PXM','April 2023']
+hide_blog_post_date: true
 ---
-{% badge type="minor" /%}
+**Minor**
 Bug fix to avoid catalog publication failures related to deleting a bundle.
 
-{% badge type="minor" /%}
+**Minor**
 Bug fix to resolve an issue where updated flow field entries on parent products were not being propagated to child products on rebuild.
