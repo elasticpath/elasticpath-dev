@@ -35,75 +35,14 @@ You can use pagination with this resource. For more information, see [pagination
 
 The following table describes the supported operator and attributes when [filtering](/guides/Getting-Started/filtering) customers.
 
-{% table %}
-* Attribute
-* Type
-* Operators
-* Example
----
-* `email`
-* `string`
-* 
-   {% list type="checkmark" %}
-   * `eq`
-   * `like`
-   {% /list %}
-
-* `eq(email,ronswanson@example.com)`
----
-* `name`
-* `string`
-* 
-  {% list type="checkmark" %}
-   * `eq`
-   * `like`
-  {% /list %}
-* `like(name,*swan*)`
----
-* `id`
-* `string`
-* 
-  {% list type="checkmark" %}
-   * `eq`
-   * `ge`
-   * `gt`
-   * `le`
-   * `lt`
-  {% /list %}
-* `eq(id,787af9a4-83e1-4216-bc60-df076daef0c5)`
----
-* `created_at`
-* `string`
-* 
-  {% list type="checkmark" %}
-   * `eq`
-   * `ge`
-   * `gt`
-   * `le`
-   * `lt`
-  {% /list %}
-* `gt(created_at,"2021-06-02T18:44:07.617Z")`
----
-* `updated_at`
-* `string`
-* 
-  {% list type="checkmark" %}
-   * `eq`
-   * `ge`
-   * `gt`
-   * `le`
-   * `lt`
-  {% /list %}
-* `ge(updated_at,"2021-06-07T18:24:48.149Z")`
----
-* `external_ref`
-* `string`
-* 
-   {% list type="checkmark" %}
-   * `eq`
-   {% /list %}
-* `eq(external_ref,"16bedceb-8b2d-4f82-a973-b0a8d8432708")`
-{% /table %}
+| Attribute | Type | Operators | Example |
+| --- | --- | --- | --- |
+| `email` | `string` | <ul><li>`eq`</li><li>`like`</li></ul> | `eq(email,ronswanson@example.com)` |
+| `name` | `string` | <ul><li>`eq`</li><li>`like`</li></ul> | `like(name,*swan*)` |
+|  id` | `string` | <ul><li>`eq`</li><li>`ge`</li><li>`gt`</li><li>`le`</li><li>`lt`</li></ul> | `eq(id,787af9a4-83e1-4216-bc60-df076daef0c5)` | 
+|  `created_at` | `string` |  <ul><li>`eq`</li><li>`ge`</li><li>`gt`</li><li>`le`</li><li>`lt`</li></ul> | `gt(created_at,"2021-06-02T18:44:07.617Z")` |
+| `updated_at` | `string` |  <ul><li>`eq`</li><li>`ge`</li><li>`gt`</li><li>`le`</li><li>`lt`</li></ul> | `ge(updated_at,"2021-06-07T18:24:48.149Z")` |
+| `external_ref` | `string` |  `eq` | `eq(external_ref,"16bedceb-8b2d-4f82-a973-b0a8d8432708")` |
 
 ## Request Examples
 
