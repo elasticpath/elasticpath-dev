@@ -78,29 +78,34 @@ When designing your storefront, you must only allow child bundles to be added to
 ## Before you Begin
 
 - Ensure that you have created at least one price book.
-- Ensure that all products that you want to add in the bundle are created with the required details.
+- Ensure that all products that you want to add to the bundle are created with the required details.
 - Ensure any child bundles that you want to add to a parent bundle are created with the required details.
 
 :::note
  A bundle without a SKU must have a minimum quantity of components and options. Either:
 
  - a single option with a minimum quantity of 2.
- - 2 options each with a minimum quantity of 1.
+ - 2 options, each with a minimum quantity of 1.
 
 :::
 
 ### Procedure
 
-1. In the **Product Details** tab, enter the following details:
+1. Go to **Products** > **Bundles**. 
+2. Select **Create new bundle**.
+3. 
 
     - (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/commerce-manager/product-experience-manager/locales/) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/commerce-manager/product-experience-manager/Products/configure-locales).
     - **Name**: Name for the bundle.
     - (Optional) **Description**: A description for the bundle.
-    - (Optional) **SKU Number**: The SKU of the product.
-    - **Slug**: A label for the product that is used in the URL paths. A slug can contain any combination of letters, numbers, periods, hyphens, and underscores. No spaces or other characters are allowed. By default, the product name is used as the slug.
+    - (Optional) **SKU Number**: The SKU of the bundle.
+    - **Slug**: A label for the bundle that is used in the URL paths. A slug can contain any combination of letters, numbers, periods, hyphens, and underscores. No spaces or other characters are allowed. By default, the bundle name is used as the slug.
     -  **Commodity Type**: Select whether the product is physical or digital.
     - (Optional) **MPN**: Manufacture Part Number (MPN).
     - (Optional) **UPC/EAN**: Universal Product Code (UPC) or European Article Number (EAN) used to scan a product in a Point of Sale (POS) system.
+    - In [**Product Tags**](/docs/commerce-manager/product-experience-manager/Products/tagging-products), either:
+        - enter a tag and press **Enter**. Repeat this step for each tag you want to use.
+        - select **View as a comma separated list** and enter a comma separated list of tags.
     - (Optional) **External Reference**: A unique attribute associated with the product. This could be an external reference from a separate company system, for example. The maximum length is 2048 characters.
 
 1. To create a bundle, turn the **Product Bundle** toggle on. 
@@ -127,7 +132,7 @@ When designing your storefront, you must only allow child bundles to be added to
     - **Status**: Displays whether the option is **Live** or **Draft**.
 
 1. To add an option to the component, click **+** next to the option you want to add. You can add as many options you want. You can also filter the options products by **SKU**, **Product Name**, and **Product status**, or search for a specific product by SKU.
-1. (Optional) By default, the quanity you configured while creating the option is displayed in **Quantity**. You can enter a new quantity, depending on your requirements. 
+1. (Optional) By default, the quantity you configured while creating the option is displayed in **Quantity**. You can enter a new quantity, depending on your requirements. 
 1. (Optional) In **Sort Value**, enter a sort value for the option. A sort value must be a number. You can specify any numbers that you want. For example, 1, 2, 3, or 100, 90, 80, and so on. The sort value is visible when you add the products to your catalogs. You can then use the sort value to program your storefront to display the bundle component options in the order that you want.
 
     :::caution
@@ -271,8 +276,8 @@ After editing a bundle, ensure that you republish all catalogs that contain the 
     - Double click a product.
     - Click the **...** icon and click **Edit**.
 
-1. Update the details as required.
-    For the changes to appear in the store, republish the catalogs that contain hierarchies with this product.
+1. Update the details as required. 
+1. For the changes to appear in the store, republish the catalogs that contain hierarchies with this product.
 
 ## Deleting Bundles
 
@@ -280,10 +285,11 @@ Deleting a bundle removes bundle information and the associated media files from
 
 Even after deleting a bundle, an order history that has the bundle still keeps the product information of the deleted bundle, such as, the product SKU, product ID, and price. However, clicking the product does not take a shopper to product details.
 
-- In the **Product Experience Manager > Products** page, click the **...** icon and click **Delete**.
+In the **Product Experience Manager > Products** page, click the **...** icon and click **Delete**.
 
 :::tip
 You can remove bundle products from a catalog, but still keep them in the database for audit purposes.
+:::
 
 1. Set the product status to **Draft**.
 1. Remove the product from hierarchies and republish the affected catalog so that it does not appear in the storefront.
