@@ -1,7 +1,7 @@
 ---
 title: 'Commerce Extensions float field, events for Custom APIs, bundle defaults'
 date: '2024-05-23'
-tags: ['Commerce Extensions','PXM','May 2024']
+tags: ['Commerce Extensions','Product Experience Manager','May 2024']
 hide_blog_post_date: false
 ---
 **MINOR** We have introduced support for float field types in Commerce Extensions to support your business needs. For more information, see **[Custom Fields](https://beta.elasticpath.dev/docs/api/commerceextensions/custom-fields)**.

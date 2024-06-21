@@ -1,7 +1,7 @@
 ---
 title: 'Storage of null values added to Custom API entries'
 date: '2024-06-12'
-tags: ['Commerce Extensions','PXM','June 2024']
+tags: ['Commerce Extensions','Product Experience Manager','June 2024']
 hide_blog_post_date: false
 ---
 **MINOR** We have added the capability to configure the storage of null values in Custom API Entries. For more information, see **[Null Values](https://beta.elasticpath.dev/docs/api/commerceextensions/custom-fields#null-values)**.

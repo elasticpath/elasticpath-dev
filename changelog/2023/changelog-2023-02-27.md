@@ -1,7 +1,7 @@
 ---
 title: 'Bulk assign products to nodes, PayPal Express Checkout'
 date: '2023-02-27'
-tag: ['Commerce Manager','PXM','Payments']
+tag: ['Commerce Manager','Product Experience Manager','Payments']
 ---
 **Minor**
 In Elastic Path Commerce Manager, on the **Products** page, the **Assign to Nodes** option is available only when you select appropriate products. For more information, see [Assigning Products to Multiple Nodes](/docs/pxm/hierarchies/hierarchy#assigning-products-to-multiple-nodes).

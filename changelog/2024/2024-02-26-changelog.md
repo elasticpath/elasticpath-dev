@@ -1,7 +1,7 @@
 ---
 title: 'Variations with sort order now sorted in descending order in catalog, Elastic Path JSON Schema component added to Builder'
 date: '2024-02-26'
-tags: ['PXM','Builder','February 2024']
+tags: ['Product Experience Manager','Builder','February 2024']
 hide_blog_post_date: false
 ---
 **MINOR** In Product Experience Manager, now, when a parent product that has variations and/or variation options with a configured **sort\_order** is published in a catalog, the response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their **sort\_order** values. For more information, see **[Get all products in a catalog release](https://elasticpath.dev/docs/pxm/catalogs/catalog-latest-release/get-all-products-in-a-release)**, **[Get a product in a catalog release](https://elasticpath.dev/docs/pxm/catalogs/catalog-latest-release/get-a-product-in-a-release)**, **[Get all products in a hierarchy](https://elasticpath.dev/docs/pxm/catalogs/catalog-latest-release/get-products-by-hierarchy-in-a-release)**, and **[Get all products in a node](https://elasticpath.dev/docs/pxm/catalogs/catalog-latest-release/get-products-by-node-in-a-release)**.

@@ -1,7 +1,7 @@
 ---
 title: 'April 26, 2023'
 date: '2023-04-26'
-tags: ['Commerce Manager','PXM','Account Management','April 2023']
+tags: ['Commerce Manager','Product Experience Manager','Account Management','April 2023']
 hide_blog_post_date: false
 ---
 **Minor**

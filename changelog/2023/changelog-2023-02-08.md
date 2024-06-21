@@ -1,7 +1,7 @@
 ---
 title: 'Imports, Salsify, Pimberly, Curated Products'
 date: '2023-02-08'
-tag: ['Integations Hub','PXM']
+tag: ['Integations Hub','Product Experience Manager']
 ---
 **Major**
 You can now use the Elastic Path Commerce Cloud Store Node Import in the **Integrations Hub** in Commerce Manager to import node data from one Elastic Path Commerce Cloud store to another. See [Elastic Path Commerce Cloud Node Import](https://elasticpath.dev/docs/integration-hub/store-management/node-import).

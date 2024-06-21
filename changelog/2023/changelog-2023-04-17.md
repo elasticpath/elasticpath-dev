@@ -1,7 +1,7 @@
 ---
 title: 'April 17, 2023'
 date: '2023-04-17'
-tags: ['PXM','April 2023']
+tags: ['Product Experience Manager','April 2023']
 hide_blog_post_date: false
 ---
 **Minor**

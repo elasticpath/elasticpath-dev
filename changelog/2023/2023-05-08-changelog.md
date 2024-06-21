@@ -1,7 +1,7 @@
 ---
 title: 'Extend Catalogs with Custom Data'
 date: '2023-05-08'
-tags: ['PXM','Flows','May 2023']
+tags: ['Product Experience Manager','Flows','May 2023']
 hide_blog_post_date: false
 ---
 **Minor** 
