@@ -4,7 +4,7 @@ sidebar_label: Bundles
 sidebar_position: 10
 ---
 
-With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product comprising two or more products that you want to sell together. For example, a consumer electronics and video game company, *Playtend Games* can sell a *Playtend* video game console as a bundle that includes the console, controller, and game. The price of the bundle might be different from the total of the individual products. A bundle must contain at least two products, either the same items or different items. You must not assign a product to a bundle, if the product is in draft status as this invalidates the bundle.
+With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product comprising one or more products that you want to sell together. For example, a consumer electronics and video game company, *Playtend Games* can sell a *Playtend* video game console as a bundle that includes the console, controller, and game. The price of the bundle might be different from the total of the individual products. A bundle must contain at least two products, either the same items or different items. You must not assign a product to a bundle, if the product is in draft status as this invalidates the bundle.
 
 You can have:
 
