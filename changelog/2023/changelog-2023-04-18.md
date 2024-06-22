@@ -1,7 +1,7 @@
 ---
 title: 'April 18, 2023'
 date: '2023-04-18'
-tags: ['Commerce Manager','Promotions','Authentication','Orders','April 2023']
+tags: ['Commerce Manager','Promotions','Authentication','Orders']
 hide_blog_post_date: false
 ---
 **Major**

@@ -1,7 +1,7 @@
 ---
 title: 'April 27, 2023'
 date: '2023-04-27'
-tags: ['Integrations','Promotions','April 2023']
+tags: ['Integrations','Promotions']
 hide_blog_post_date: false
 ---
 **Major**

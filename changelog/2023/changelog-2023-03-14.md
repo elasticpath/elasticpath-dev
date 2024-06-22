@@ -1,7 +1,7 @@
 ---
 title: 'March 14, 2023'
 date: '2023-03-14'
-tag: ['Account Management','Integrations Hub','March 2023']
+tag: ['Account Management','Integrations Hub']
 hide_blog_post_date: false
 ---
 **Major** 

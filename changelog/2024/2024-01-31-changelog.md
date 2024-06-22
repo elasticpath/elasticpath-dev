@@ -1,7 +1,7 @@
 ---
 title: 'New integrations builder design, gift item currency matches eligible item currency'
 date: '2024-01-31'
-tags: ['Commerce Manager - Builder','Promotions','Carts','January 2024']
+tags: ['Commerce Manager','Builder','Promotions','Carts']
 hide_blog_post_date: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '**New Feature** Commerce Extensions Custom APIs released'
 date: '2024-04-29'
-tags: ['Commerce Extensions','April 2024']
+tags: ['Commerce Extensions']
 hide_blog_post_date: false
 ---
 **MAJOR** We have now introduced a new feature, called Commerce Extensions that supports the creation of Custom APIs according to your business needs. These Custom APIs support a variety of field types, including:

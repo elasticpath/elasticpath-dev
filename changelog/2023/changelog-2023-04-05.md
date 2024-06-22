@@ -1,7 +1,7 @@
 ---
 title: 'April 5, 2023'
 date: '2023-04-05'
-tag: ['Product Experience Manager','April 2023']
+tag: ['Product Experience Manager']
 hide_blog_post_date: false
 ---
 **Major**

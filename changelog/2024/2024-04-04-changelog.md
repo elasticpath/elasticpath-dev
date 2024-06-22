@@ -1,7 +1,7 @@
 ---
 title: 'Specialized promotions manager role, Shopify integration updated'
 date: '2024-04-04'
-tags: ['Promotions','Integrations Hub','April 2024']
+tags: ['Promotions','Integrations Hub']
 hide_blog_post_date: false
 ---
 **MINOR** Introduced a new specialized Promotions Manager role dedicated solely to promotions management within a store. For more information, see **[Permissions](https://elasticpath.dev/docs/commerce-cloud/authentication/tokens/permissions#promotions-manager)**.

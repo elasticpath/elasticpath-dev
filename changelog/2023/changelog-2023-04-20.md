@@ -1,7 +1,7 @@
 ---
 title: 'April 20, 2023'
 date: '2023-04-20'
-tags: ['Integrations Hub','Product Experience Manager','April 2023']
+tags: ['Integrations Hub','Product Experience Manager']
 hide_blog_post_date: false
 ---
 **Major**
