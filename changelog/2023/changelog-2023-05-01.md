@@ -1,7 +1,7 @@
 ---
 title: 'May 1, 2023'
 date: '2023-05-01'
-tags: ['Promotions','May 2023']
+tags: ['Promotions']
 hide_blog_post_date: false
 ---
 **Minor**

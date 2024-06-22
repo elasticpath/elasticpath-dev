@@ -1,7 +1,7 @@
 ---
 title: 'Promotion code filtering, API & Commerce Manager, node product association, import node product associations'
 date: '2024-01-24'
-tags: ['Integrations Hub','Builder','Promotions','Commerce Manager - Promotions','January 2024']
+tags: ['Integrations Hub','Builder','Promotions','Commerce Manager']
 hide_blog_post_date: false
 ---
 

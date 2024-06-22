@@ -1,7 +1,7 @@
 ---
 title: 'Configure shopper bundle, authentication token expiry time, eCommerce Admin role'
 date: '2024-06-04'
-tags: ['Product Experience Manager','Account Management','Roles','June 2024']
+tags: ['Product Experience Manager','Account Management','Roles']
 hide_blog_post_date: false
 ---
 **MINOR** The **Configure a Shopper Bundle** endpoint now supports using the **include** parameter to retrieve key attribute data for the products in a product bundle. This is useful because, when your shoppers select the products in the bundle that they want to purchase in your storefront, you can then display all the relevant product information to your shoppers. See **[Configure a Shopper Bundle](https://beta.elasticpath.dev/docs/api/pxm/catalog/configure-by-context-product)**.

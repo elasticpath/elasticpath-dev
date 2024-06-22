@@ -1,7 +1,7 @@
 ---
 title: 'April 6, 2023'
 date: '2023-04-06'
-tag: ['Settings','Account Management','April 2023']
+tag: ['Settings','Account Management']
 hide_blog_post_date: false
 ---
 **Major**

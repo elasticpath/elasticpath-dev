@@ -183,9 +183,9 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        sitemap: {
-          ignorePatterns: ["/tags/**"],
-        },
+        //sitemap: {
+        //  ignorePatterns: ["/tags/**"],
+        //},
         gtag: {
           trackingID: 'G-NZ3NL8DLLD',
           anonymizeIP: true,

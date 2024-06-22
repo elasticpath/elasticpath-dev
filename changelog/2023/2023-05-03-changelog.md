@@ -1,7 +1,7 @@
 ---
 title: 'Bug Fixes'
 date: '2023-05-03'
-tags: ['Product Experience Manager','May 2023']
+tags: ['Product Experience Manager']
 hide_blog_post_date: false
 ---
 **Minor**

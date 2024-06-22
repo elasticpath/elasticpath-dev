@@ -1,7 +1,7 @@
 ---
 title: 'Apply Custom Discounts, Get all Account Memberships'
 date: '2023-05-02'
-tags: ['Promotions','Account Management','Product Experience Manager','May 2023']
+tags: ['Promotions','Account Management','Product Experience Manager']
 hide_blog_post_date: false
 ---
 **Major**

@@ -1,7 +1,7 @@
 ---
 title: 'New Node view in Product Experience Manager'
 date: '2024-01-17'
-tags: ['Commerce Manager - PXM','Product Experience Manager','January 2024']
+tags: ['Commerce Manager','Product Experience Manager']
 hide_blog_post_date: false
 ---
 

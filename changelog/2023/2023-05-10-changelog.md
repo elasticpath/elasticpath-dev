@@ -1,7 +1,7 @@
 ---
 title: 'Organizations Released'
 date: '2023-05-10'
-tags: ['Organizations', 'May 2023']
+tags: ['Organizations']
 hide_blog_post_date: false
 ---
 **Major**

@@ -1,7 +1,7 @@
 ---
 title: 'April 19, 2023'
 date: '2023-04-19'
-tags: ['Integrations Hub','Authentication','April 2023']
+tags: ['Integrations Hub','Authentication']
 hide_blog_post_date: false
 ---
 **Major**

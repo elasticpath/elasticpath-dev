@@ -1,7 +1,7 @@
 ---
 title: 'Algolia integration update, product template import with slug'
 date: '2024-02-07'
-tags: ['Product Experience Manager','Integrations Hub','February 2024']
+tags: ['Product Experience Manager','Integrations Hub']
 hide_blog_post_date: false
 ---
 **INTEGRATION HUB**: Released **Algolia - Full / Delta / Large Catalog** V63 (US) and V48 (EU): The new version includes bug fixes that address potential occurrences of errors within the category search attributes when a product is assigned to multiple nodes. Additionally, a bug was fixed to ensure that the **ep\_name\_plus\_slug\_categories** option defaults to **false**.

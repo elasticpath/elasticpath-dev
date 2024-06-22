@@ -1,7 +1,7 @@
 ---
 title: 'March 22, 2023'
 date: '2023-03-22'
-tag: ['Commerce Manager','Product Experience Manager','Integrations Hub','March 2023']
+tag: ['Commerce Manager','Product Experience Manager','Integrations Hub']
 hide_blog_post_date: false
 ---
 **Minor** 
