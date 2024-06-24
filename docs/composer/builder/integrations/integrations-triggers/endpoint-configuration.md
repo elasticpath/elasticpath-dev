@@ -128,7 +128,7 @@ Within the **Logs** and **Step Outputs** tabs you will see logs and step results
 
 If an error is thrown (for example, the flow name that the preprocess flow generated was not found), that error will appear in the **Logs** tab.
 
-{% callout title="Invocations from the integration designer are always dispatched to a test instance." type="note" %} 
+:::note
 
 Builder is a sandbox. No test invocations will go to your existing instances.
 
