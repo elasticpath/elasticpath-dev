@@ -53,7 +53,7 @@ const PRODUCTS = [
     text: 'Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options.',
   },
   {
-    title: 'Custom Data (Flows)',
+    title: 'Custom-Data (Flows)',
     beta: false,
     link: '/docs/api/flows/flows-service-introduction',
     icon: BookDatabaseRegular,
@@ -89,7 +89,7 @@ const PRODUCTS = [
     text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
   },
   {
-    title: 'Personal Data Service',
+    title: 'Personal-Data Service',
     beta: false,
     link: '/docs/personal-data',
     icon: DatabasePersonRegular,
@@ -132,7 +132,7 @@ const PRODUCTS = [
     text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   },
   {
-    title: 'Promotions Standard',
+    title: 'Promotions-Standard',
     beta: false,
     link: '/docs/api/promotions/promotions-standard-introduction',
     icon: BuildingRetailRegular,

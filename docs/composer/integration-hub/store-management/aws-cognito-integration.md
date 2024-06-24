@@ -36,29 +36,22 @@ There are some parameters that you must not change.
 
 **Create User Pool Request Template**
 
-{% escape-code-block %}
-
 ```{% process=false %}
 { 
   "PoolName": "{{poolName}}"
 }
 ```
-{% /escape-code-block %}
 
 **Update User Pool Request Template**
-
-{% escape-code-block %}
 
 ```{% process=false %}
 {
   "UserPoolId": "{{userPoolId}}"
 }
 ```
-{% /escape-code-block %}
 
 **Create User Pool Client Request Template**
 
-{% escape-code-block %}
 
 ```{% process=false %}
 {
@@ -66,11 +59,11 @@ There are some parameters that you must not change.
           "ClientName": "{{poolName}}"
 }
 ```
-{% /escape-code-block %}
+
 
 **Update User Pool Client Request Template**
 
-{% escape-code-block %}
+
 
  ```{% process=false %}
 {
@@ -84,8 +77,6 @@ There are some parameters that you must not change.
   {% endfor %}
   ]`
  ```
-{% /escape-code-block %}
-
 
 ## Prerequisites
 
@@ -151,16 +142,15 @@ You are ready to configure the Amazon Cognito integration in **Integrations Hub*
     - **Client-Secret** - Your Commerce Client Secret.
     - **Token URL** - Your Commerce API Token URL.
 
-    1. Click **Connect** to make sure that the authentication is completed successfully.
-    1. Complete the Amazon Cognito credentials.
+1. Click **Connect** to make sure that the authentication is completed successfully.
+1. Complete the Amazon Cognito credentials.
 
-        - **Access Key ID**  - Your AWS Access Key ID.
-        - **Secret Access Key** - Your AWS Secret Access Key.
-    1. In **AWS Region**, provide your AWS region, for example, `us-east-1`.
-    1. In **User Pool Name**, type the name you want to use for your user pool. By default, this is **EPCC**.
-    1. In **User Pool Domain Name**, type the domain name you want to use for your user pool. It must be unique. We recommend that your domain name is alphanumeric and you only use the `-` special character. The domain is in the format of https://*<domain_prefix>*.auth.<*region*>.amazoncognito.com. For example, if your domain name is `elasticpath-commerce-cloud` and your AWS region is `us-east-1` then your login URL is `elastic-path-commerce-cloud.auth.us-east-1.amazoncognito.com`. The Amazon Cognito Integration creates a subdomain within an Amazon Cognito domain. If you want to use your business domain, then you must configure this directly in Amazon Cognito.
-    1. In **OIDC Profile Name**, provide the name of the Commerce OIDC profile.
-
+    - **Access Key ID**  - Your AWS Access Key ID.
+    - **Secret Access Key** - Your AWS Secret Access Key.
+1. In **AWS Region**, provide your AWS region, for example, `us-east-1`.
+1. In **User Pool Name**, type the name you want to use for your user pool. By default, this is **EPCC**.
+1. In **User Pool Domain Name**, type the domain name you want to use for your user pool. It must be unique. We recommend that your domain name is alphanumeric and you only use the `-` special character. The domain is in the format of https://*<domain_prefix>*.auth.<*region*>.amazoncognito.com. For example, if your domain name is `elasticpath-commerce-cloud` and your AWS region is `us-east-1` then your login URL is `elastic-path-commerce-cloud.auth.us-east-1.amazoncognito.com`. The Amazon Cognito Integration creates a subdomain within an Amazon Cognito domain. If you want to use your business domain, then you must configure this directly in Amazon Cognito.
+1. In **OIDC Profile Name**, provide the name of the Commerce OIDC profile.
 1. Click **Next**. The **Buyer Organization** configuration page is displayed.
 1. If you want to enable Amazon Cognito in your Buyer Organization, turn on the **Enable Buyer Organization** toggle.
 1. (Optional) In **SSO Callback URL (Storefront)** you can add additional storefront callback URLs. Once your customer has successfully logged in, you want Amazon Cognito to redirect them to your storefront. You may have a different storefront for different geographical regions, for example, US and UK, but you want to use the same Amazon Cognito User Pool. In this scenario, you can give a storefront callback URL for each region. Select **Add value** to add a maximum of 5 URLs.

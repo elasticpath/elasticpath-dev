@@ -1,7 +1,19 @@
 openapi: 3.1.0
 info:
-  title: Elastic Path Composable Commerce
-  description: Elastic Path Composable Commerce Open API Specification
+  title: Currencies Introduction
+  description: |
+    
+      :::caution
+
+       The Currency API is for Administrator use only. Do not use these endpoints on your customer-facing frontends.
+
+      :::
+
+       In your store, you can display prices to customers in their local currency. You can configure up to ten currencies per store.
+
+       Configure currencies only for the locales in which you do business, and select one of the currencies to be the default currency. If a default currency is not selected, the store uses the United States Dollar (USD).
+
+       After a customer selects a locale, the product prices in the catalog, carts, and orders are displayed in the currency for that locale. Order totals and taxes are calculated in the same currency. You cannot have a cart or order where product prices are in mixed currencies.
   contact:
     name: Elastic Path
     url: https://elasticpath.com
@@ -22,9 +34,11 @@ paths:
       - Currencies
       summary: Get all Currencies
       description: |
-        >**Note**
-        >
-        >This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        :::caution
+        
+        This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        
+        :::
       operationId: getAllCurrencies
       parameters:
       - name: page[offset]
@@ -74,9 +88,11 @@ paths:
       - Currencies
       summary: Create a Currency
       description: |
-        >**Warning**
-        >
-        >This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        :::caution
+        
+        This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        
+        :::
       operationId: createACurrency
       parameters: []
       requestBody:
@@ -169,9 +185,11 @@ paths:
       - Currencies
       summary: Get a Currency
       description: |
-        >**Warning**
-        >
-        >This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        :::caution
+        
+        This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        
+        :::
       operationId: getACurrency
       parameters:
       - name: currencyID
@@ -210,9 +228,11 @@ paths:
       - Currencies
       summary: Update a Currency
       description: |
-        >**Warning**
-        >
-        >This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        :::caution
+        
+        This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        
+        :::
       operationId: updateACurrency
       parameters:
       - name: currencyID
@@ -267,10 +287,12 @@ paths:
       - Currencies
       summary: Delete a Currency
       description: |
-        >**Warning**
-        >
-        >- This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
-        >- You can’t delete a default currency.
+        :::caution
+        
+        - This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+        - You can’t delete a default currency.
+        
+        :::
       operationId: deleteACurrency
       parameters:
       - name: currencyID
@@ -465,12 +487,9 @@ components:
 tags:
 - name: Currencies
   description: |
-    >**Warning**
-    >
-    >The Currency API is for Administrator use only. Do not use these endpoints on your customer-facing frontends.
-    
-    In your store, you can display prices to customers in their local currency. You can configure up to ten currencies per store.
-    
-    Configure currencies only for the locales in which you do business, and select one of the currencies to be the default currency. If a default currency is not selected, the store uses the United States Dollar (USD).
-    
-    After a customer selects a locale, the product prices in the catalog, carts, and orders are displayed in the currency for that locale. Order totals and taxes are calculated in the same currency. You cannot have a cart or order where product prices are in mixed currencies.
+    :::caution
+
+    - The Currency API is for Administrator use only. Do not use these endpoints on your customer-facing frontends.
+    - There is a hard limit of 10 currencies per store.
+
+    :::

@@ -168,7 +168,7 @@ A Webhook in Onport needs to be set up manually.
 6. In **Resource**, select **Purchases**. 
 7. In **Instance Method**, select **Cancel**. 
 8. Select **Add Webhook**.
-{% /callout  %}
+:::
 
 The integration also creates custom flow with slug as `cancelled_items` and following fields are created in this flow:
 
