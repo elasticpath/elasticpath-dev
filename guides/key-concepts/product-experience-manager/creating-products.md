@@ -4,6 +4,6 @@ nav_label: Products
 sidebar_position: 10
 ---
 
-import CreatingProducts from './partials/_creating-products.mdx';
+import CreatingProducts from "../../../docs/partials/_creating-products.mdx";
 
 <CreatingProducts></CreatingProducts>

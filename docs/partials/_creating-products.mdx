@@ -1,11 +1,3 @@
----
-title: Creating Products
-nav_label: Creating Products
-sidebar_position: 20
----
-
-## Products
-
 Products are the items or services that you might want to sell in your store. In Product Experience Manager, a product has a name, description, ID, and SKU. Products can also have additional attributes and associated rich media assets, such as product images or a file containing additional product details. If your store supports multiple languages, you can localize product names and descriptions.
 
 Product data is stored in a database. After you add products, you can update product information, add images and other assets, and associate products with one or more hierarchy nodes. You can export the updated product information back to other business systems so that your organization sees a consistent view of products.
@@ -18,31 +10,30 @@ To appear in a catalog, a product must meet the following criteria:
 - The product is associated with at least one hierarchy.
 - The catalog references a hierarchy that includes the product.
 
-## Product Types
+### Product Types
 
-Commerce automatically assigns types to the products you create. In Commerce Manager, you can see at a glance the product types in a list of a products. In addition, you can filter on product types in both the API and Commerce Manager. 
+Commerce automatically assigns types to the products you create. In Commerce Manager, you can see at a glance the product types in a list of a products. In addition, you can filter on product types in both the API and Commerce Manager.
 
-Product types can also be used in catalogs. For example, in your catalog, you can filter on `parent` so that only your parent products are displayed in your storefront. 
+Product types can also be used in catalogs. For example, in your catalog, you can filter on `parent` so that only your parent products are displayed in your storefront.
 
 Products have one of the following types:
 
-* `standard` - Standard products are a standalone products.  
-* `parent` - A parent product is a product that has child products that have been built using the [**Build Child Products**](/docs/api/pxm/products/build-child-products) endpoint. 
+* `standard` - Standard products are a standalone products.
+* `parent` - A parent product is a product that has child products that have been built using the [**Build Child Products**](/docs/api/pxm/products/build-child-products) endpoint.
 * `child` -  When you configure product variations and variation options for parent products, the child products derived from the parent products are automatically created in Commerce.
 * `bundle` - A bundle is a purchasable product, comprising one or more standalone products (in other words, `components`) to be sold together. See [**Bundle Components and Options**](#bundle-components-and-options).
-    
+
 :::note
 In Commerce Manager, `standard` products are called **Product**.
 :::
 
 ### Product Tags
-    
+
 You can use product tags to store or assign a key word against a product or service that you sell in your store. The product tag can then be used to describe or label that product. Product tags represent similarities between products who do not share the same attributes. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on.
 
-A typical use case for product tags is to categorize your products based on color. For example, you could tag the products that you sell in your storefront with a color. Your shoppers can then search your products by color, enabling shoppers to quickly find what they are looking for, increasing the likelihood of a purchase, and boosting conversion rates.
-    
 See [**Product Tags**](/docs/api/pxm/products/product-tags).
-      
+
 ### Personalizing Products
-      
+
 You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized or you sell greetings cards that can be printed with your shoppers personalized messages. You can do this by configuring the the `custom_inputs` attribute. See [**Create a product**](/docs/api/pxm/products/create-product).
+
