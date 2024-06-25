@@ -326,7 +326,186 @@ paths:
       tags:
         - Cart Items
       summary: Get Cart Items
-      description: Use this endpoint to retrieve cart items. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs.
+      description: |
+
+        Use this endpoint to retrieve cart items. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs.
+
+        You can use this endpoint to retrieve the breakdown of cart items by promotion ID. For example, if you have Promotions Standard item discount with code *sale2024*, Rule Promotions item discount with code *sale2024*, and Rule Promotions cart discount with code *sale2024*, the `discounts.constituents` field in the response example will show the breakdown of the same promotion code used in both Promotions Standard and Rule Promotions.
+
+        ```json
+        "data": [
+        {
+            "id": "98de010d-dd10-4fa5-a070-0b9bcdc72974",
+            "type": "cart_item",
+            "product_id": "5a4662d2-9a2b-4f6e-a215-2970db914b0c",
+            "name": "sku1",
+            "description": "sku1",
+            "sku": "sku1",
+            "slug": "sku1",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "discounts": [
+                {
+                    "amount": {
+                        "amount": -2000,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "sale2024",
+                    "id": "e4d929d5-f471-4317-9a86-a84a6c572b44",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true
+                },
+                {
+                    "amount": {
+                        "amount": -1000,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "sale2024",
+                    "id": "de19a043-a6da-4bde-b896-d17e16b77e25",
+                    "promotion_source": "rule-promotion"
+                },
+                {
+                    "amount": {
+                        "amount": -1000,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "sale2024",
+                    "id": "509295ee-2971-45b6-801e-95df09756989"
+                },
+                {
+                    "amount": {
+                        "amount": -1000,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "sale2024",
+                    "id": "ca79e606-7ecd-41ac-9478-af4c8c28c546",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true
+                }
+            ],
+            "links": {
+                "product": "https://useast.api.elasticpath.com/v2/products/5a4662d2-9a2b-4f6e-a215-2970db914b0c"
+            },
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": 5000,
+                            "currency": "USD",
+                            "formatted": "$50.00"
+                        },
+                        "value": {
+                            "amount": 5000,
+                            "currency": "USD",
+                            "formatted": "$50.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": 5000,
+                            "currency": "USD",
+                            "formatted": "$50.00"
+                        },
+                        "value": {
+                            "amount": 5000,
+                            "currency": "USD",
+                            "formatted": "$50.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": -5000,
+                            "currency": "USD",
+                            "formatted": "-$50.00"
+                        },
+                        "value": {
+                            "amount": -5000,
+                            "currency": "USD",
+                            "formatted": "-$50.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        },
+                        "value": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        }
+                    },
+                    "discounts": {
+                        "sale2024": {
+                            "amount": -5000,
+                            "currency": "USD",
+                            "formatted": "-$50.00",
+                            "constituents": {
+                                "509295ee-2971-45b6-801e-95df09756989": {
+                                    "amount": -1000,
+                                    "currency": "USD",
+                                    "formatted": "-$10.00"
+                                },
+                                "ca79e606-7ecd-41ac-9478-af4c8c28c546": {
+                                    "amount": -1000,
+                                    "currency": "USD",
+                                    "formatted": "-$10.00"
+                                },
+                                "de19a043-a6da-4bde-b896-d17e16b77e25": {
+                                    "amount": -1000,
+                                    "currency": "USD",
+                                    "formatted": "-$10.00"
+                                },
+                                "e4d929d5-f471-4317-9a86-a84a6c572b44": {
+                                    "amount": -2000,
+                                    "currency": "USD",
+                                    "formatted": "-$20.00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-05-24T18:00:58Z",
+                    "updated_at": "2024-05-24T18:00:58Z"
+                }
+            },
+            "catalog_id": "09b9359f-897f-407f-89a2-702e167fe781",
+            "catalog_source": "pim"
+        }
+        ```
       operationId: getCartItems
       parameters:
         - name: cartID
@@ -872,6 +1051,34 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/UpdateCartsItems'
+            examples:
+              Update Cart Item:
+                value:
+                  data:
+                    type: cart_item
+                    id: 76746981-f63a-45f4-ba9e-59773d89dc2e
+                    custom_inputs:
+                      personalization: My personal message
+                    quantity: 2
+              Update a Bundle:
+                value:
+                  data:
+                    id: 5ab67bb3-b2c3-4348-af33-e370bd39b0c9
+                    type: cart_item
+                    quantity: 1
+                    bundle_configuration:
+                      selected_options:
+                        games:
+                          d7b79eb8-19d8-45ea-86ed-2324a604dd9c: 1
+                        toys:
+                          0192ccdd-6d33-4898-87d7-c4d87f2bf8ea: 1
+                          1aea6f97-f0d9-452c-b3c1-7fb5629ead82: 1
+              Add Item with Shipping Group ID:
+                value:
+                  data:
+                    type: cart_item
+                    id: 76746981-f63a-45f4-ba9e-59773d89dc2e
+                    shipping_group_id: eb063818-939a-458f-97a4-2601c0c2b445
         required: false
       responses:
         '200':
@@ -1719,15 +1926,118 @@ paths:
       deprecated: false
     parameters: [ ]
 
+  /v2/carts/{cartID}/payments:
+    post:
+      tags:
+        - Payments
+      summary: Create Stripe Payment Intent for a Cart
+      description: |
+        The Cart Payment Intent feature enables the creation of a Stripe Payment Intent specifically tied to a shopping cart and its subsequent order. This allows Payment Intent users to track payment details from the cart stage and seamlessly maintain consistency in payment information throughout the order stage. Using these features, you can create Payment Intents for their carts, update Payment Intents with final cart details, and synchronize Payment Intents from Stripe to Commerce.
+
+        :::note
+
+        - Typically, in Commerce, inventory is allocated at the time of payment initiation after an order is created. However, in the case of Cart Payment Intent, information about the payment is received only upon synchronizing the order from Stripe to Commerce. This may happen after the payment is completed. Therefore, there might be a delay between the payment made and allocation, increasing the chance of paying for items that are not in stock.
+        - There are certain fields you can choose to set up when [creating a payment intent](https://stripe.com/docs/api/payment_intents/create). However, if you decide to update a payment intent, the available options may not be the same as those allowed while creating a payment intent. See [updating a payment intent](https://stripe.com/docs/api/payment_intents/update).
+
+        :::
+
+        The following steps outline the workflow associated with the Payment Intent:
+
+        1. [Add items to cart](/docs/api/carts/cart-merge#add-custom-item-to-cart).
+        1. [Create a Payment Intent for the cart](/docs/api/carts/create-cart-payment-intent). The Payment Intent is created in Stripe, reflecting the cart and transaction details, including currency, amounts, payment type, and any optional Stripe details. The Payment Intent ID is generated and linked to the cart.
+        1. [Update a Payment Intent](/docs/carts-orders/update-cart-payment-intent). This step is optional but becomes necessary when there are changes in the cart details at the time of payment. It ensures the Payment Intent accurately reflects the current cart details when processing the payments on the front end.
+        1. [Checkout the cart](/docs/api/carts/checkout). An unpaid order is created, and the Payment Intent ID is linked to the order.
+        1. [Confirm the order](/docs/carts-orders/confirm-an-order). This is important because after checkout, it is essential to confirm the Payment Intent and synchronize it with Commerce. This results in a corresponding transaction and change in order statuses in Commerce. Additionally, the Payment Intent ID is removed from the order once it is linked via the transaction.
+
+        ### Best Practices
+
+        We recommend you follow these practices to maintain consistency and accuracy when using Cart Payment Intent.
+
+        - After checkout, we recommend clearing the shopping cart. You can achieve this using a [Delete a cart](/docs/api/carts/delete-a-cart) endpoint or [Update a cart](/docs/api/carts/update-a-cart) to remove the Payment Intent ID. This helps to avoid potential issues where subsequent checkouts for the same cart might unintentionally use the previous Stripe Payment Intent ID.
+        - If it is not reasonable to clear the cart immediately after checkout due to several subsequent, duplicate checkouts to the same cart, ensure that you only synchronize the Payment Intent when finalizing the order. Each order confirmation is unaware of the others, and syncing Payment Intent IDs for each confirmation can lead to duplicate transactions in Commerce. In other words, if you synchronize Payment Intents for earlier versions of a repeated checkout, you'll end up with multiple orders from the same cart, each having transactions linked to the same Payment Intent.
+        - To pay the entire amount at once, use the [Update Cart Payment Intent](/docs/carts-orders/update-cart-payment-intent) endpoint to update the Stripe Payment Intent with the final cart details when preparing to take the payment. Doing so, ensures that the Payment Intent accurately reflects the current cart details when processing payments on the front end. We do not recommend calling the [Update Cart Payment Intent](/docs/carts-orders/update-cart-payment-intent) for each individual change in the cart, as this can lead to more requests and may slow down the front-end performance.
+      operationId: createCartPaymentIntent
+      parameters:
+        - name: cartID
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+          description: The universally unique identifier of the cart for which you want to create a payment intent.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ElasticPathPaymentsPoweredByStripePayment'
+            examples:
+              Create Stripe Payment Intent for a Cart:
+                value:
+                  data:
+                    gateway: elastic_path_payments_stripe
+                    method: purchase
+                    options:
+                      automatic_payment_methods:
+                        enabled: true
+                      receipt_email: john@example.com
+              Create Stripe Payment Intent for a Cart Using Specific Payment Methods:
+                value:
+                  data:
+                    gateway: elastic_path_payments_stripe
+                    method: purchase
+                    payment_method_types:
+                      - affirm
+                      - card
+                      - link
+                    options:
+                      description: Cart payment
+                      receipt_email: john@example.com
+      responses:
+        '201':
+          description: Payment Intent created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+    parameters: [ ]
+
   /v2/carts/{cartID}/checkout:
     post:
       tags:
         - Checkout
-      summary: Checkout with Account Management Authentication Token
+      summary: Checkout API
       description: |
         When a Cart is ready for checkout, you can convert the cart to an order. The cart remains and can be modified and checked out again if required.
 
-        After a successful checkout, a response that contains the order is returned.
+        A cart can be checked out with a customer ID, customer object, or with an account by authenticating with the `Client Credentials Token`.
+
+        After a successful checkout, a response that contains the order is returned. If the cart is linked to a shipping group, the shipping group is also associated with the order after checkout.
+
+        You can checkout using one of the following methods:
+        - Customer ID. You can checkout a cart with an existing customer ID.
+        - Guest Checkout (Checkout with Customer Object). You can checkout a cart with an associated customer name and email.
+        - Checkout with Account. The shopper authenticates with the `Client Credentials` Token.
+        - Checkout with Account Management Authentication Token. The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
+
+        :::note
+
+        - The cart currency is set when the first item is added to the cart.
+        - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
+        - To ensure that a free gift is automatically applied to an order, set the promotion to automatic. The checkout process will not be successful if free gift items are out of stock. See [Errors](#errors) section.
+
+        :::
 
         :::caution
 
@@ -1736,7 +2046,29 @@ paths:
 
         :::
 
-        The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
+        ### Next Steps
+
+        After a cart has been converted to an Order using either of the previous methods, you most likely want to capture payment for order. See [Paying for an Order](/docs/api/carts/payments).
+
+        ### Errors
+
+        The following error response is returned during checkout when an eligible item is added to the cart, and the free gift is out of stock.
+
+        ```json
+        {
+            "errors": [
+                {
+                    "status": 400,
+                    "title": "Insufficient stock",
+                    "detail": "There is not enough stock to add gift2 to your cart",
+                    "meta": {
+                        "id": "f2b68648-9621-45a3-aed6-1b526b0f5beb",
+                        "sku": "gift2"
+                    }
+                }
+            ]
+        }
+        ```
       operationId: checkoutWithAccountManagementAuthenticationToken
       parameters:
         - name: cartID
@@ -1759,8 +2091,105 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/OrderContactInfo'
+              oneOf:
+                - $ref: '#/components/schemas/CustomerCheckout'
+                - $ref: '#/components/schemas/AccountCheckout'
+            examples:
+              CheckoutWithCustomerID:
+                summary: Checkout with Customer ID
+                value:
+                  data:
+                    customer:
+                      id: c8c1c511-beef-4812-9b7a-9f92c587217c
+                    billing_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                    shipping_address:
+                      first_name: John
+                      last_name: Doe
+                      phone_number: "(555) 555-1234"
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                      instructions: "Leave in porch"
+              CheckoutWithCustomerObject:
+                summary: Guest Checkout (Checkout with Customer Object)
+                value:
+                  data:
+                    customer:
+                      email: john@moltin.com
+                      name: John Doe
+                    billing_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                    shipping_address:
+                      first_name: John
+                      last_name: Doe
+                      phone_number: "(555) 555-1234"
+                      company_name: Moltin
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                      instructions: "Leave in porch"
+              CreateCheckoutWithAccount:
+                summary: Create Checkout with Account
+                value:
+                  data:
+                    account:
+                      id: 8cee1b9e-3e39-4d5f-bd4a-86cdb985c6ee
+                      member_id: 338f84bf-e6c9-4704-9f33-2708addd462b
+                    contact:
+                      email: john@email.com
+                      name: John Doe
+                    billing_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: ElasticPath
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                    shipping_address:
+                      first_name: John
+                      last_name: Doe
+                      company_name: ElasticPath
+                      phone_number: "(555) 555-1234"
+                      line_1: 1234 Disney Drive
+                      line_2: Disney Resort
+                      city: Anaheim
+                      county: Orange
+                      region: CA
+                      postcode: 92802
+                      country: US
+                      instructions: "Leave in porch"
         required: false
       responses:
         '200':
@@ -2518,15 +2947,20 @@ components:
           examples:
             - cart
         name:
-          description: The name of this item.
+          description: The name of this cart.
           type: string
           examples:
-            - cart
+            - cart name
         description:
-          description: A description of the cart item.
+          description: A description of the cart.
           type: string
           examples:
             - cart description
+        discount_settings:
+          $ref: '#/components/schemas/DiscountSettings'
+        payment_intent_id:
+          description: Stripe-assigned unique identifier for the linked Payment Intent
+          type: string
         links:
           type: object
           properties:
@@ -2546,6 +2980,12 @@ components:
                 without_tax:
                   $ref: '#/components/schemas/FormattedPriceData'
                 tax:
+                  $ref: '#/components/schemas/FormattedPriceData'
+                discount:
+                  $ref: '#/components/schemas/FormattedPriceData'
+                without_discount:
+                  $ref: '#/components/schemas/FormattedPriceData'
+                shipping:
                   $ref: '#/components/schemas/FormattedPriceData'
             timestamps:
               $ref: '#/components/schemas/Timestamps'
@@ -2589,6 +3029,7 @@ components:
                       examples:
                         - 1cf8b15b-4f12-43c5-837c-dbbc09aefa55
     CartItemsObjectRequest:
+      title: Cart Items Object Request
       oneOf:
         - $ref: "#/components/schemas/CartItemObject"
         - $ref: "#/components/schemas/CartMergeObjectRequest"
@@ -2596,7 +3037,7 @@ components:
         - $ref: "#/components/schemas/ReOrderObjectRequest"
         - $ref: "#/components/schemas/PromotionItemObject"
     CartItemObject:
-      title: Data.CartItemObject
+      title: Cart Item Object
       type: object
       properties:
         data:
@@ -2604,7 +3045,7 @@ components:
             - $ref: '#/components/schemas/CartItemObjectData'
             - $ref: '#/components/schemas/CartItemResponse'
     CartItemObjectData:
-      title: CartItemObject
+      title: Cart Item Object Data
       type: object
       required:
         - type
@@ -2645,7 +3086,7 @@ components:
           description: Identifier for a created Cart Shipping Group
           type: string
     CartMergeObjectRequest:
-      title: CartMergeObjectRequest
+      title: Cart Merge Object Request
       type: object
       properties:
         data:
@@ -2657,7 +3098,7 @@ components:
         options:
           $ref: '#/components/schemas/AddAllOrNothingOptionsObject'
     CartMergeObject:
-      title: CartMergeObject
+      title: Cart Merge Object
       type: object
       required:
         - type
@@ -2675,7 +3116,7 @@ components:
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
     CustomItemObject:
-      title: Data.CustomItemObject
+      title: Custom Item Object
       type: object
       properties:
         data:
@@ -2683,7 +3124,7 @@ components:
             - $ref: '#/components/schemas/CustomItemObjectData'
           description: ''
     CustomItemObjectData:
-      title: CustomItemObject
+      title: Custom Item Object Data
       type: object
       required:
         - type
@@ -2736,7 +3177,7 @@ components:
           description: Identifier for a created Cart Shipping Group
           type: string
     ReOrderObjectRequest:
-      title: ReOrderObjectRequest
+      title: Re-Order Object Request
       type: object
       properties:
         data:
@@ -2746,7 +3187,7 @@ components:
           $ref: '#/components/schemas/AddAllOrNothingOptionsObject'
 
     ReOrderObject:
-      title: ReOrderObject
+      title: Re Order Object
       type: object
       required:
         - type
@@ -2764,7 +3205,7 @@ components:
           examples:
             - 78d7b5c2-c852-40ad-87bb-beb161f61f37
     BulkAddItemsRequest:
-      title: BulkAddItemsRequest
+      title: Bulk Add Items Request
       type: object
       properties:
         data:
@@ -2775,14 +3216,14 @@ components:
             - $ref: "#/components/schemas/ReOrderObjectRequest"
             - $ref: "#/components/schemas/PromotionItemObject"
     PromotionItemObject:
-      title: PromotionItemObject
+      title: Promotion Item Object
       type: object
       properties:
         data:
           allOf:
             - $ref: '#/components/schemas/PromotionItemObjectData'
     PromotionItemObjectData:
-      title: PromotionItemObject
+      title: Promotion Item Object Data
       type: object
       required:
         - type
@@ -2799,7 +3240,7 @@ components:
           examples:
             - PROMO_CODE
     BulkUpdateCartsItems:
-      title: BulkUpdateCartsItems
+      title: Bulk Update Carts Items
       type: object
       required:
         - id
@@ -2826,7 +3267,7 @@ components:
         options:
           $ref: '#/components/schemas/UpdateAllOrNothingOptionsObject'
     UpdateCartsItems:
-      title: UpdateCartsItems
+      title: Update Carts Items
       type: object
       required:
         - quantity
@@ -2856,7 +3297,7 @@ components:
                 - 900ab9c1-4b39-43fe-b080-0dc2806065d9
 
     AddAllOrNothingOptionsObject:
-      title: AddAllOrNothingOptionsObject
+      title: Add All Or Nothing Options Object
       type: object
       properties:
         add_all_or_nothing:
@@ -2865,7 +3306,7 @@ components:
           examples:
             - false
     UpdateAllOrNothingOptionsObject:
-      title: UpdateAllOrNothingOptionsObject
+      title: Update All Or Nothing Options Object
       type: object
       properties:
         update_all_or_nothing:
@@ -2874,7 +3315,7 @@ components:
           examples:
             - false
     CartItemResponse:
-      title: CartItemRelationship
+      title: Cart Item Relationship
       type: object
       properties:
         product_id:
@@ -2972,7 +3413,7 @@ components:
             timestamps:
               $ref: '#/components/schemas/Timestamps'
     CartsResponse:
-      title: CartsResponse
+      title: Carts Response
       type: object
       properties:
         data:
@@ -3017,7 +3458,7 @@ components:
             timestamps:
               $ref: '#/components/schemas/CartTimestamps'
     ItemPriceData:
-      title: OrderPriceData
+      title: Order Price Data
       type: object
       properties:
         amount:
@@ -3039,7 +3480,7 @@ components:
           examples:
             - false
     CartsRelationshipsCustomersData:
-      title: CartsRelationshipsCustomersData
+      title: Carts Relationships Customers Data
       type: object
       properties:
         data:
@@ -3057,7 +3498,7 @@ components:
                 examples:
                   - customer
     CartsItemsTaxesObject:
-      title: CartsItemsTaxesObject
+      title: Carts Items Taxes Object
       type: object
       required:
         - type
@@ -3471,6 +3912,8 @@ components:
           enum:
             - authorize
             - purchase
+            - purchase_setup
+            - authorize_setup
         amount:
           description: The amount to be paid for the transaction.
           type: number
@@ -3576,8 +4019,8 @@ components:
             payment:
               description: The CyberSource token.
               type: string
-    Data.ElasticPathPaymentsPoweredByStripePayment:
-      title: Data.ElasticPathPaymentsPoweredByStripePayment
+    ElasticPathPaymentsPoweredByStripePayment:
+      title: Elastic Path Payments Powered By Stripe
       required:
         - gateway
       allOf:
@@ -3595,6 +4038,13 @@ components:
                 receipt_email:
                   description: Provides the email address to which you want to send the Stripe receipts for the transactions within the store. This feature is available only in the live mode.
                   type: string
+                automatic_payment_methods:
+                  type: object
+                  description: Parent object determining whether to use Stripe's `automatic_payment_methods` setting.
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: When set to true, it displays all enabled payment methods from the Stripe dashboard. When set to false, the Stripe default, which is card, is used.
             payment_method_types:
               type: array
               items:
@@ -3746,7 +4196,7 @@ components:
         - $ref: "#/components/schemas/Data.BraintreePayment"
         - $ref: "#/components/schemas/Data.CardConnectPayment"
         - $ref: "#/components/schemas/Data.CyberSourcePayment"
-        - $ref: "#/components/schemas/Data.ElasticPathPaymentsPoweredByStripePayment"
+        - $ref: "#/components/schemas/ElasticPathPaymentsPoweredByStripePayment"
         - $ref: "#/components/schemas/Data.ManualPayment"
         - $ref: "#/components/schemas/Data.PayPalExpressCheckoutPayment"
         - $ref: "#/components/schemas/Data.StripePayment"
@@ -4146,22 +4596,60 @@ components:
           $ref: '#/components/schemas/FormattedPriceData'
         without_discount:
           $ref: '#/components/schemas/FormattedPriceData'
-    OrderContactInfo:
-      title: OrderContactInfo
+    CustomerCheckout:
+      title: Customer Checkout
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/Data.OrderContactInfo'
-    Data.OrderContactInfo:
-      title: Data.OrderContactInfo
+          type: object
+          properties:
+            customer:
+              type: object
+              properties:
+                id:
+                  description: The ID of the customer.
+                  type: string
+                email:
+                  description: The customer email address.
+                  type: string
+                  format: email
+                name:
+                  description: The full name of the customer.
+                  type: string
+            billing_address:
+              $ref: '#/components/schemas/BillingAddress'
+            shipping_address:
+              $ref: '#/components/schemas/ShippingAddress'
+    AccountCheckout:
+      title: Account Checkout
       type: object
       properties:
-        billing_address:
-          $ref: '#/components/schemas/BillingAddress'
-        contact:
-          $ref: '#/components/schemas/Contact'
-        shipping_address:
-          $ref: '#/components/schemas/ShippingAddress'
+        data:
+          type: object
+          properties:
+            account:
+              type: object
+              properties:
+                id:
+                  description: The account ID.
+                  type: string
+                member_id:
+                  description: The account member ID.
+                  type: string
+            contact:
+              type: object
+              properties:
+                name:
+                  description: The name of the account member.
+                  type: string
+                email:
+                  description: The email address of the account member.
+                  type: string
+                  format: email
+            billing_address:
+              $ref: '#/components/schemas/BillingAddress'
+            shipping_address:
+              $ref: '#/components/schemas/ShippingAddress'
     BillingAddress:
       title: BillingAddress
       type: object

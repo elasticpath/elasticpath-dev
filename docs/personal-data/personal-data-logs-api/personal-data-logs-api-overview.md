@@ -1,6 +1,6 @@
 ---
-title: Personal Data Logs API Overview
-nav_label: Personal Data Logs API Overview
+title: Personal-Data Logs API Overview
+nav_label: Personal-Data Logs API Overview
 sidebar_position: 10
 ---
 

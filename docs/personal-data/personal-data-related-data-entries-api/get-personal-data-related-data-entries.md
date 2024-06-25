@@ -1,6 +1,6 @@
 ---
-title: Get Personal Data Related Data Entries
-nav_label: Get Personal Data Related Data Entries
+title: Get Personal-Data Related Data Entries
+nav_label: Get Personal-Data Related Data Entries
 sidebar_position: 20
 ---
 

@@ -184,6 +184,6 @@ You can use a `X-Moltin-Customer-Token` header with the following endpoints. The
 - [Update an Address](/docs/api/addresses/put-v-2-customer-address)
 - [Get all Orders](/docs/api/carts/get-customer-orders)
 - [Get an Order](/docs/api/carts/get-an-order)
-- [Get Customer Carts](/docs/carts-orders/carts/customer-cart-associations/get-customer-carts)
+- [Get Customer Carts](/docs/api/carts/get-customer-carts)
 - [Create an Association between a Customer and a Cart](/docs/api/carts/create-customer-cart-association)
 - [Delete an Association Between a Customer and a Cart](/docs/api/carts/delete-customer-cart-association)

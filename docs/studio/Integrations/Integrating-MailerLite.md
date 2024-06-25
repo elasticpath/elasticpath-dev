@@ -4,7 +4,7 @@ nav_label: MailerLite
 sidebar_position: 203
 ---
 
-{% expandable-info title="Important"%}
+:::note
 Please take a look at our custom code help document
 found [here](/docs/studio/Integrations/Adding-HTML-CSS-or-JavaScript-to-all-your-pages),
 it will make understanding this Mailerlite guide much easier.

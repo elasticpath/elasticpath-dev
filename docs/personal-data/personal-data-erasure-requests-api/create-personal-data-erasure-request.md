@@ -1,6 +1,6 @@
 ---
-title: Create Personal Data Erasure Request
-nav_label: Create Personal Data Erasure Request
+title: Create Personal-Data Erasure Request
+nav_label: Create Personal-Data Erasure Request
 sidebar_position: 40
 ---
 
