@@ -479,7 +479,7 @@ tags:
 
       Using the Export API builds a `.csv` file containing the product entries. A `.csv` file can contain up to 10,000 product entries. If you have more than 10,000 product entries, then another `.csv` file is created and so on, until all your products are exported. 
 
-      You might have specified custom extension data in a `.csv` file when you imported the products. These modifications are all exported. So, when you send a request to the Export API, the `.csv` file, included in the Job endpoint response, reflects any changes that you have made. For more information, see [Exporting Custom Data (Flows)](#exporting-custom-data-flows).
+      You might have specified custom extension data in a `.csv` file when you imported the products. These modifications are all exported. So, when you send a request to the Export API, the `.csv` file, included in the Job endpoint response, reflects any changes that you have made. For more information, see [Importing Custom Data (Flows)](/docs/pxm/products/importing-products/product-importer-csv#importing-custom-data-flows).
 
       After the files are exported, you get a link to the location where the `.csv` files are stored. You can then make any changes to the product fields (modify product information, add main image files, and custom extension data) in your exported `.csv` files. See [**Product Export CSV File**](/docs/api/pxm/products/product-export#product-export-csv-file).
 
@@ -530,7 +530,7 @@ tags:
 
       ### Exporting Main Image Files
 
-      The main images that you have previously uploaded Commerce are exported. A `main_image_id` header is added to your `.csv` file. The ID in `main_image_id` is the ID of a file that has already been uploaded to Commerce using [create a file](/docs/api/pxm/files/create-a-file).
+      The main images that you have previously uploaded Commerce are exported. A `main_image_id` header is added to your `.csv` file. The ID in `main_image_id` is the ID of a file that has already been uploaded to Commerce using [create a file](/docs/pxm/products/product-assets/create-a-file).
 
       ### Exporting Custom Data (Flows)
 
@@ -863,7 +863,7 @@ paths:
 
         #### Filtering
 
-         Many Commerce API endpoints support filtering. The general syntax is described in [**Filtering**](/guides/Getting-Started/filtering).
+         Many Commerce API endpoints support filtering. The general syntax is described in [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
 
          The following attributes and operators are supported.
 
@@ -1126,7 +1126,7 @@ paths:
     post:
       summary: Attach multiple nodes
       description: |
-        Assigns products to multiple hierarchies and their children nodes. You can apply a filter to search for the appropriate products to attach to a node. For general filtering syntax, see [**Filtering**](/guides/Getting-Started/filtering).
+        Assigns products to multiple hierarchies and their children nodes. You can apply a filter to search for the appropriate products to attach to a node. For general filtering syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
          
          The following attributes and operators are supported.
          
@@ -1212,7 +1212,7 @@ paths:
     post:
       summary: Detach multiple nodes
       description: |
-        Dissociates products from multiple hierarchies and their children nodes. You can apply filters to search for the appropriate products to detach. For general filtering syntax, see [**Filtering**](/guides/Getting-Started/filtering).
+        Dissociates products from multiple hierarchies and their children nodes. You can apply filters to search for the appropriate products to detach. For general filtering syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
          
         The following attributes and operators are supported.
          
@@ -1463,7 +1463,7 @@ paths:
         - Extending Products with Templates
       responses:
         '200':
-          description: Returns all product template relationships.
+          description: Returns all product template relationships
           content:
             application/json:
               schema:
@@ -1522,7 +1522,7 @@ paths:
         - Bundle Component Products Relationships
       responses:
         '200':
-          description: Returns all Component Products relationships.
+          description: Returns all Component Products relationships
           content:
             application/json:
               schema:
@@ -1705,7 +1705,7 @@ paths:
         - $ref: '#/components/parameters/product_id'
       responses:
         '200':
-          description: Returns all product variation relationships.
+          description: Returns all product variation relationships
           content:
             application/json:
               schema:
@@ -2020,7 +2020,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     delete:
-      summary: Delete a variation and all it's associated options.
+      summary: Delete a variation and all it's associated options
       operationId: deleteVariation
       parameters:
         - $ref: '#/components/parameters/variation_id'
@@ -2053,7 +2053,7 @@ paths:
                 $ref: '#/components/examples/create_option'
       responses:
         '201':
-          description: Successfully returns the created variation option.
+          description: Successfully returns the created variation option
           content:
             application/json:
               schema:
@@ -2076,7 +2076,7 @@ paths:
         - Variations
       responses:
         '200':
-          description: Successfully returns all variation options.
+          description: Successfully returns all variation options
           content:
             application/json:
               schema:
@@ -2099,7 +2099,7 @@ paths:
         - Variations
       responses:
         '200':
-          description: Successfully returns the variation option.
+          description: Successfully returns the variation option
           content:
             application/json:
               schema:
@@ -2209,7 +2209,7 @@ paths:
         - $ref: '#/components/parameters/page_limit'
       responses:
         '200':
-          description: Successfully returns all variation modifiers.
+          description: Successfully returns all variation modifiers
           content:
             application/json:
               schema:
@@ -2267,7 +2267,7 @@ paths:
                 $ref: '#/components/examples/update_modifier'
       responses:
         '200':
-          description: Successfully returns the updated modifier.
+          description: Successfully returns the updated modifier
           content:
             application/json:
               schema:
@@ -2383,6 +2383,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     put:
+
       parameters:
         - $ref: '#/components/parameters/hierarchy_id'
       summary: Update a hierarchy
@@ -2562,21 +2563,21 @@ paths:
       summary: Update a node
       description: |
         Updates the specified node in a hierarchy. You can do a partial update, where you specify only the field value to change.
-         
+
         ### Sorting Nodes in a hierarchy
 
         You can sort the order of your nodes, regardless of where the nodes are in the hierarchy.
-         
+
         The node with the highest value of sort_order is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`.
-         
+
         - If you don’t provide `sort_order` when creating nodes, all child nodes in the response for Get a Node’s Children request are ordered by the `updated_at` time in descending order, with the most recently updated child node first.
         - If you set `sort_order` for only a few child nodes or not all, the child nodes with a `sort_order` value appear first and then other child nodes appear in the order of `updated_at` time.
-         
+
         You can also specify a sort_order when creating a node relationship.
 
         - If you update a node (**Node A**) with a `sort_order` and then you create a relationship for **Node A** with another node (**Node B**), the `sort_order` you specified when updating **Node A** is overwritten.
         - If you have updated **Node A** and then you create a relationship with **Node B** but do not configure a `sort_order`, the `sort_order` you specified when you updated **Node A** is not overwritten.
-         
+
         ### Curating Products in a node
 
         You can curate the products in a node. Product curation allows you to promote specific products within each node of your hierarchies, enabling you to create unique product collections in your storefront. For example, you may find you have an abundance of cotton T-Shirts and you want to promote these products to the top of the product list. When a shopper navigates to T-shirts, the cotton T-Shirts are displayed first.
@@ -2584,19 +2585,19 @@ paths:
         You can do this by adding a `curated_products` attribute to the body of your request and adding an array of product IDs to the attribute. You should add the products IDs in the order you want them to be displayed in your node. The first product ID is displayed first in the product list.
 
         You can only curate 20 products or less. You cannot have more than 20 curated products.
-         
+
         - The product IDs you provide must exist in the specified node.
         - If a curated product is removed from a node, the product is also removed from the curated_products list.
         - Once you have curated the products in a node, you can use the get node products endpoint to retrieve a list of curated products.
-         
+
         You can then display your curated products in your catalogs using the following catalog endpoints.
-         
-        - [Get a node in your latest catalog release](/docs/api/pxm/catalog/get-node)
-        - [Get a node in a catalog](/docs/api/pxm/catalog/get-by-context-node)
-        - [Get all nodes in your latest catalog release](/docs/api/pxm/catalog/get-all-nodes)
-        - [Get all nodes in a catalog](/docs/api/pxm/catalog/get-by-context-all-nodes)
-        - [Get node children in your latest catalog release](/docs/api/pxm/catalog/get-child-nodes)
-        - [Get node children in a catalog](/docs/api/pxm/catalog/get-by-context-child-nodes)
+
+        - Get a node in your latest catalog release.
+        - Get a node in a catalog.
+        - Get all nodes in your latest catalog release.
+        - Get all nodes in a catalog.
+        - Get node children in your latest catalog release.
+        - Get node children in a catalog.
       operationId: updateNode
       tags:
         - Hierarchies
@@ -2980,7 +2981,7 @@ paths:
           $ref: '#/components/responses/unprocessable_entity'
         '500':
           $ref: '#/components/responses/internal'
-  /pcm/tag/{tagID}:
+  /pcm/tags/{tagID}:
     get:
       summary: Get a Product Tag
       description: Retrieves a product tag for a store. A store can view the tags associated with the organization to which the store belongs. However, an organization can only view the tags associated with the organization.
@@ -3002,6 +3003,72 @@ paths:
                   $ref: '#/components/examples/resp_single_tag'
         '400':
           $ref: '#/components/responses/bad_request'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '422':
+          $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+  /pcm/custom_relationships:
+    post:
+      summary: Create a custom relationship
+      description: Create a custom relationship
+      operationId: createCustomRelationship
+      tags:
+        - Custom Relationships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_custom_relationship'
+            examples:
+              create-custom-relationship:
+                $ref: '#/components/examples/create_custom_relationship'
+        required: true
+      responses:
+        '201':
+          description: Returns a created custom relationship with the following attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/single_custom_relationship'
+              examples:
+                created-custom-relationship:
+                  $ref: '#/components/examples/custom_relationship_created'
+        '422':
+          $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+  /pcm/custom_relationships/{customRelationshipSlug}:
+    put:
+      operationId: updateCustomRelationship
+      parameters:
+        - $ref: '#/components/parameters/custom_relationship_slug'
+      summary: Update a custom relationship
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the custom relationship is not updated.
+      tags:
+        - Custom Relationships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_custom_relationship'
+            examples:
+              update-custom-relationship:
+                $ref: '#/components/examples/update_custom_relationship'
+        required: true
+      responses:
+        '200':
+          description: Successfully returns the updated custom relationship
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/single_custom_relationship'
+              examples:
+                updated-custom-relationship:
+                  $ref: '#/components/examples/custom_relationship_updated'
+        '403':
+          $ref: '#/components/responses/forbidden'
         '404':
           $ref: '#/components/responses/not_found'
         '422':
@@ -5335,6 +5402,110 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/tag'
+    req_attributes_custom_relationship:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the custom relationship, such as `Kitchen electrics`.
+          type: string
+        description:
+          description: A description of the custom relationship.
+          type: string
+        slug:
+          description: A unique slug for the custom relationship. Must match the slug specified in the request path.
+          type: string
+    create_custom_relationship:
+      type: object
+      properties:
+        data:
+          type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              description: This represents the type of resource object being returned. Always `custom-relationship`.
+              type: string
+              enum:
+                - custom-relationship
+            attributes:
+              $ref: '#/components/schemas/req_attributes_custom_relationship'
+    attributes_custom_relationship:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the custom relationship, such as `Kitchen electrics`.
+          type: string
+        description:
+          description: A description of the custom relationship.
+          type: string
+        slug:
+          description: A unique slug for the custom relationship.
+          type: string
+    custom_relationship:
+      type: object
+      properties:
+        id:
+          description: A unique identifier generated when a custom relationship is created.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `hierarchy`.
+          type: string
+          enum:
+            - custom-relationship
+        attributes:
+          $ref: '#/components/schemas/attributes_custom_relationship'
+        meta:
+          type: object
+          properties:
+            owner:
+              description: The owner of the resource.
+              type: string
+              example: store
+            timestamps:
+              type: object
+              properties:
+                created_at:
+                  description: The date and time the resource is created.
+                  type: string
+                  example: '2024-01-10T20:16:35.343Z'
+                  format: date-time
+                updated_at:
+                  description: The date and time the resource is updated.
+                  type: string
+                  example: '2024-01-10T20:16:35.343Z'
+                  format: date-time
+    single_custom_relationship:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/custom_relationship'
+    update_custom_relationship:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+            - type
+            - attributes
+          properties:
+            id:
+              type: string
+              description: The unique identifier of the custom relationship.
+              example: 00000000-0000-0000-0000-000000000000
+            type:
+              description: This represents the type of resource object being returned. Always `custom-relationship`.
+              type: string
+              enum:
+                - custom-relationship
+              example: custom-relationship
+            attributes:
+              $ref: '#/components/schemas/req_attributes_custom_relationship'
   examples:
     multi:
       value:
@@ -7214,6 +7385,51 @@ components:
             created_at: '2024-03-20T18:37:43.398Z'
             owner: organization
             updated_at: '2024-03-20T18:37:43.398Z'
+    create_custom_relationship:
+      value:
+        data:
+          type: custom-relationship
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices
+            slug: CRP_kitchen_individual_devices
+    custom_relationship_created:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices
+            slug: CRP_kitchen_individual_devices
+          meta:
+            owner: store
+            timestamps:
+              created_at: '2024-01-10T20:16:35.343Z'
+              updated_at: '2024-01-10T20:16:35.343Z'
+    update_custom_relationship:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices 2024
+            slug: CRP_kitchen_individual_devices
+    custom_relationship_updated:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices 2024
+            slug: CRP_kitchen_individual_devices
+          meta:
+            owner: store
+            timestamps:
+              created_at: '2024-01-10T20:16:35.343Z'
+              updated_at: '2024-01-10T20:16:35.343Z'
   responses:
     bad_request:
       description: Bad request. The request failed validation.
@@ -7437,3 +7653,11 @@ components:
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the tag.
+    custom_relationship_slug:
+      name: customRelationshipSlug
+      in: path
+      schema:
+        type: string
+        example: CRP_electric_devices_2024
+      required: true
+      description: A custom relationship slug.
