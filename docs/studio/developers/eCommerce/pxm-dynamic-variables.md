@@ -74,15 +74,15 @@ Product Experience Manager allows you to build a combination of child products a
 
 Product Experience Manager allows your shoppers to add custom text to a product when adding product items to a cart. For more information on Product Experience Manager custom attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute    | Studio Dynamic Variable                  |
-|------------------|------------------------------------------| 
-| property name    | {{product.attributes.property_name}}     | 
-| name             | {{product.attributes.name}}              |
-| validation_rules | {{product.attributes.vallidation_rules}} |
-| type | {{product.attributes.type}}              |
-| options | {{product.attributes.options}}           |
-| max_length | {{product.attributes.max_length}}        | 
-| required | {{product.attributes.required}}          |
+| PXM Attribute    | Studio Dynamic Variable                                                                                                                                                                                                                    |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| property name    | {{product.attributes.custom_inputs._<property_name>_}} where _<property_name>_ is the name for the custom text field that was specified when the product was [personalized](/docs/api/pxm/products/create-product#personalizing-products). | 
+| name             | {{product.attributes.<property_name>.name}}                                                                                                                                                                                                |
+| validation_rules | {{product.attributes.<property_name>.validation_rules.length}}                                                                                                                                                                             |
+| type | {{product.attributes.type}}                                                                                                                                                                                                                |
+| options | {{product.attributes.options}}                                                                                                                                                                                                             |
+| max_length | {{product.attributes.max_length}}                                                                                                                                                                                                          | 
+| required | {{product.attributes.required}}                                                                                                                                                                                                            |
 
 ### Components
 
@@ -171,6 +171,10 @@ A hierarchy can have parent and child nodes. For more information on Product Exp
 | slug           | {{node.attributes.slug}}             |
 | curated_products | {{node.attributes.curated_products}} | 
 
+<!---
+
+Not supported yet
+
 ### Locales
 
 Product Experience Manager supports localization of nodes. For more information on Product Experience Manager node localization attributes, see [Create a node](/docs/api/pxm/products/create-node).
@@ -180,6 +184,8 @@ Product Experience Manager supports localization of nodes. For more information 
 | property name | {{node.attributes.property_name}} | 
 | name          | {{node.attributes.name}}          |
 | description   | {{node.attributes.description}}   |
+
+--->
 
 ### Relationships
 
