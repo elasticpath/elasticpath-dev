@@ -16,17 +16,18 @@ The following tables describe how the Product Experience Manager product attribu
 
 Product Experience Manager products have the following attributes. For more information on Product Experience Manager product attributes, see [Create a Product](/docs/api/pxm/products/create-product).
 
-| PXM Attribute | Studio Dynamic Variable               |
-| --- |---------------------------------------| 
-| external_ref | {{product.attributes.external_ref}}   | 
-| name | {{product.attributes.name}}           |
-| description | {{product.attributes.description}}    |
-| slug | {{product.attributes.slug}}           | 
-| sku | {{product.attributes.sku}}            |
-| status | {{product.attributes.status}}         |
-| commodity_type | {{product.attributes.commodity_type}} |
-| upc_ean | {{product.attributes.upc_ean}}        |
-| mpn | {{product.attributes.mpn}}            |
+| PXM Attribute | Studio Dynamic Variable                      |
+| --- |----------------------------------------------| 
+| ID | {{product.id}}                               |
+| external_ref | {{product.attributes.external_ref}}          | 
+| name | {{product.attributes.name}}                  |
+| description | {{product.attributes.description}}           |
+| slug | {{product.attributes.slug}}                  | 
+| sku | {{product.attributes.sku}}                   |
+| status | {{product.attributes.status}}                |
+| commodity_type | {{product.attributes.commodity_type}}        |
+| upc_ean | {{product.attributes.upc_ean}}               |
+| mpn | {{product.attributes.manufacturer_part_num}} |
 
 ### Locales
 
@@ -38,6 +39,11 @@ Product Experience Manager supports localization of products. For more informati
 | name          | {{product.attributes.name}}          |
 | description   | {{product.attributes.description}}    |
 
+
+<!--- 
+
+Waiting for the bug to be fixed that means a value can not be a list or an array
+
 ### Tags
 
 You can use product tags to store or assign a key word against a product. The product tag can then be used to describe or label that product. For more information on Product Experience Manager tag attributes, see [Create a Product](/docs/api/pxm/products/create-product).
@@ -45,6 +51,8 @@ You can use product tags to store or assign a key word against a product. The pr
 | PXM Attribute | Studio Dynamic Variable    |
 |---------------|----------------------------| 
 | tags          | {{product.attributes.tags}} | 
+
+--->
 
 ### Build Rules
 
@@ -196,6 +204,8 @@ A hierarchy can have meta data. For more information on Product Experience Manag
 | owner | {{node.attributes.owner}}       |
 
 ## Contacts
+
+Studio identifies a person when a form is a submitted. If you configure a form in Studio that is then submitted by a shopper on your site, you can use the following dynamic variables to populate other pages on your site with the shoppers contact details. 
 
 | PXM Attribute | Studio Dynamic Variable  |
 |---------------|--------------------------| 
