@@ -29,6 +29,10 @@ Product Experience Manager products have the following attributes. For more info
 | upc_ean | {{product.attributes.upc_ean}}               |
 | mpn | {{product.attributes.manufacturer_part_num}} |
 
+<!--- 
+
+Not working right now
+
 ### Locales
 
 Product Experience Manager supports localization of products. For more information on Product Experience Manager localization attributes, see [Create a Product](/docs/api/pxm/products/create-product).
@@ -38,6 +42,8 @@ Product Experience Manager supports localization of products. For more informati
 | property name | {{product.attributes.property_name}} | 
 | name          | {{product.attributes.name}}          |
 | description   | {{product.attributes.description}}    |
+
+--->
 
 
 <!--- 
@@ -112,19 +118,26 @@ Product Experience Manager hierarchies have the following attributes. For more i
 
 | PXM Attribute  | Studio Dynamic Variable             |
 |----------------|-------------------------------------| 
+| ID | {{category.id}} |
 | name           | {{category.attributes.name}}        |
 | description    | {{category.attributes.description}} |
 | slug           | {{category.attributes.slug}}        |
+
+<!---
+
+Not working right now
 
 ### Locales
 
 Product Experience Manager supports localization of hierarchies. For more information on Product Experience Manager hierarchy localization attributes, see [Create a hierarchy](/docs/api/pxm/products/create-hierarchy).
 
-| PXM Attribute | Studio Dynamic Variable              |
-|---------------|--------------------------------------| 
+| PXM Attribute | Studio Dynamic Variable               |
+|---------------|---------------------------------------| 
 | property name | {{category.attributes.property_name}} | 
-| name          | {{category.attributes.name}}           |
-| description   | {{category.attributes.description}}    |
+| name          | {{category.attributes.name}}          |
+| description   | {{category.attributes.description}}   |
+
+--->
 
 ### Relationships
 
@@ -152,6 +165,7 @@ A hierarchy can have parent and child nodes. For more information on Product Exp
 
 | PXM Attribute  | Studio Dynamic Variable              |
 |----------------|--------------------------------------| 
+| id| {{node.id}} |
 | name           | {{node.attributes.name}}             |
 | description    | {{node.attributes.description}}      |
 | slug           | {{node.attributes.slug}}             |
