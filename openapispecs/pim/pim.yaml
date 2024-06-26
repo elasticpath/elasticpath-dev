@@ -1,5 +1,5 @@
 # GENERATED FILE - DO NOT EDIT 
-openapi: 3.1.0
+openapi: 3.0.3
 info:
   title: Product Experience Manager Introduction
   description: |
@@ -1306,10 +1306,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-product-nodes:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2326,7 +2326,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-3'
+                $ref: '#/components/schemas/single_hierarchy'
               examples:
                 created-hierarchy:
                   $ref: '#/components/examples/hierarchy_created'
@@ -2335,6 +2335,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     get:
+      operationId: getHierarchy
       parameters:
         - $ref: '#/components/parameters/page_offset'
         - $ref: '#/components/parameters/page_limit'
@@ -2348,10 +2349,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-3'
+                $ref: '#/components/schemas/multi_hierarchy'
               examples:
                 list-hierarchies:
-                  $ref: '#/components/examples/multi-3'
+                  $ref: '#/components/examples/resp_multi_hierarchy'
         '400':
           $ref: '#/components/responses/bad_request'
         '500':
@@ -2371,7 +2372,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-3'
+                $ref: '#/components/schemas/single_hierarchy'
               examples:
                 get-hierarchy:
                   $ref: '#/components/examples/hierarchy_created'
@@ -2382,6 +2383,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     put:
+
       parameters:
         - $ref: '#/components/parameters/hierarchy_id'
       summary: Update a hierarchy
@@ -2403,7 +2405,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-3'
+                $ref: '#/components/schemas/single_hierarchy'
               examples:
                 updated-hierarchy:
                   $ref: '#/components/examples/hierarchy_updated'
@@ -2490,7 +2492,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 created-node:
                   $ref: '#/components/examples/node_created'
@@ -2518,10 +2520,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-all-nodes:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2544,7 +2546,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 get-node:
                   $ref: '#/components/examples/node_created'
@@ -2613,7 +2615,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 updated-node:
                   $ref: '#/components/examples/node_updated'
@@ -2660,10 +2662,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-hierarchy-children:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2715,7 +2717,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 set-node-children:
                   $ref: '#/components/examples/node_updated'
@@ -2745,10 +2747,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-node-children:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2830,7 +2832,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 created-node-product-relationships:
                   $ref: '#/components/examples/node_updated'
@@ -2864,7 +2866,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 created-node-product-relationships:
                   $ref: '#/components/examples/node_updated'
@@ -2879,23 +2881,11 @@ paths:
       parameters:
         - $ref: '#/components/parameters/hierarchy_id'
         - $ref: '#/components/parameters/node_id'
-        - $ref: '#/components/parameters/filternodeproducts'
         - $ref: '#/components/parameters/page_offset'
         - $ref: '#/components/parameters/page_limit'
       summary: Get a node's products
       description: |
         Returns the products associated with the specified hierarchy node from a published catalog. Products must be in a live status. If the products have been curated using the update a hierarchy node endpoint, then the products are returned in the order specified in the `curated_products` attribute in the body of the update a hierarchy node request. A product that is curated has the "curated_product": true attribute displayed.
-         
-         ### Filtering
-         
-         Many Commerce API endpoints support filtering. The general syntax is described [**here**](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
-         
-           The following operators and attributes are available when filtering on this endpoint.
-         
-           | Operator | Description | Supported Attributes | Example |
-           |:--- |:--- |:--- |:--- |
-           | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-           | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
       operationId: getNodeProducts
       tags:
         - Hierarchies
@@ -2978,11 +2968,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-4'
+                $ref: '#/components/schemas/multi_tag'
               examples:
                 list-tags:
                   summary: Get all tags
-                  $ref: '#/components/examples/multi-4'
+                  $ref: '#/components/examples/resp_multi_tags'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2991,7 +2981,7 @@ paths:
           $ref: '#/components/responses/unprocessable_entity'
         '500':
           $ref: '#/components/responses/internal'
-  /pcm/tag/{tagID}:
+  /pcm/tags/{tagID}:
     get:
       summary: Get a Product Tag
       description: Retrieves a product tag for a store. A store can view the tags associated with the organization to which the store belongs. However, an organization can only view the tags associated with the organization.
@@ -3006,13 +2996,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-4'
+                $ref: '#/components/schemas/single_tag'
               examples:
                 get-tag:
                   summary: Get a tag
-                  $ref: '#/components/examples/single'
+                  $ref: '#/components/examples/resp_single_tag'
         '400':
           $ref: '#/components/responses/bad_request'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '422':
+          $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+  /pcm/custom_relationships:
+    post:
+      summary: Create a custom relationship
+      description: Create a custom relationship
+      operationId: createCustomRelationship
+      tags:
+        - Custom Relationships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_custom_relationship'
+            examples:
+              create-custom-relationship:
+                $ref: '#/components/examples/create_custom_relationship'
+        required: true
+      responses:
+        '201':
+          description: Returns a created custom relationship with the following attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/single_custom_relationship'
+              examples:
+                created-custom-relationship:
+                  $ref: '#/components/examples/custom_relationship_created'
+        '422':
+          $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+  /pcm/custom_relationships/{customRelationshipSlug}:
+    put:
+      operationId: updateCustomRelationship
+      parameters:
+        - $ref: '#/components/parameters/custom_relationship_slug'
+      summary: Update a custom relationship
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the custom relationship is not updated.
+      tags:
+        - Custom Relationships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_custom_relationship'
+            examples:
+              update-custom-relationship:
+                $ref: '#/components/examples/update_custom_relationship'
+        required: true
+      responses:
+        '200':
+          description: Successfully returns the updated custom relationship
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/single_custom_relationship'
+              examples:
+                updated-custom-relationship:
+                  $ref: '#/components/examples/custom_relationship_updated'
+        '403':
+          $ref: '#/components/responses/forbidden'
         '404':
           $ref: '#/components/responses/not_found'
         '422':
@@ -3031,7 +3087,6 @@ components:
         id:
           description: A unique identifier generated when a job is created.
           type: string
-          format: uuid
         type:
           description: This represents the type of resource object being returned. Always `pim-job`.
           type: string
@@ -3041,21 +3096,27 @@ components:
           type: object
           properties:
             started_at:
-              type:
-                - string
-                - 'null'
               description: The date and time a job is started.
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+              nullable: true
             completed_at:
-              type:
-                - string
-                - 'null'
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+              nullable: true
               description: The date and time a job is completed.
             created_at:
               type: string
               description: The date and time a job is created.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             updated_at:
               type: string
               description: The date and time a job is updated.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             type:
               type: string
               description: |
@@ -3092,9 +3153,8 @@ components:
               type: string
               description: Applies to `hierarchy-duplicate` job types. The duplicated hierarchy ID.
             file_locations:
-              type:
-                - array
-                - 'null'
+              type: array
+              nullable: true
               description: If the job type is `product_export`, a link to the file is created when running a job.
               items:
                 type: string
@@ -3176,7 +3236,6 @@ components:
               id:
                 description: A unique identifier for a job error generated when a job error is created.
                 type: string
-                format: uuid
               attributes:
                 type: object
                 properties:
@@ -3226,7 +3285,6 @@ components:
             type: array
             items:
               type: string
-              format: uuid
         exclude:
           description: An array of option IDs to exclude when child products are built. Each combination consists of a nested array of option IDs from one or more variations. Combinations of option IDs in the nested arrays must come from different variations.
           type: array
@@ -3234,7 +3292,6 @@ components:
             type: array
             items:
               type: string
-              format: uuid
     product_bundle_components:
       type: object
       description: With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity. See [Bundles](/docs/api/pxm/products/products#bundles).
@@ -3281,7 +3338,6 @@ components:
         id:
           description: A unique product ID that is generated when you create the product.
           type: string
-          format: uuid
         type:
           description: This represents the type of resource object being returned. Always `product`.
           type: string
@@ -3332,6 +3388,16 @@ components:
               type: array
               items:
                 type: string
+            extensions:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  oneOf:
+                    - type: string
+                      nullable: true
+                    - type: integer
+                    - type: boolean
             custom_inputs:
               $ref: '#/components/schemas/product_custom_inputs'
             build_rules:
@@ -3344,11 +3410,13 @@ components:
             created_at:
               description: The date and time a product is created.
               type: string
-              example: '2023-09-28T10:43:41.72Z'
+              example: '2020-09-22T09:00:00'
+              format: date-time
             updated_at:
               description: The date and time a product is updated.
               type: string
-              example: '2023-09-28T10:43:41.72Z'
+              example: '2020-09-22T09:00:00'
+              format: date-time
             owner:
               description: The resource owner, either `organization` or `store`.
               type: string
@@ -3363,7 +3431,6 @@ components:
                 properties:
                   id:
                     type: string
-                    format: uuid
                     description: A unique ID generated when a variation is created.
                   name:
                     type: string
@@ -3376,7 +3443,6 @@ components:
                       properties:
                         id:
                           type: string
-                          format: uuid
                           description: A unique ID that is generated an option is created.
                         name:
                           type: string
@@ -3410,28 +3476,26 @@ components:
             type: object
             properties:
               data:
-                type:
-                  - array
-                  - 'null'
-                  - object
-                properties:
-                  id:
-                    description: A unique identifier for a resource.
-                    type: string
-                    format: uuid
-                  type:
-                    description: This represents the type of resource object being returned.
-                    type: string
-                items:
-                  type: object
-                  properties:
-                    id:
-                      description: A unique identifier for a resource.
-                      type: string
-                      format: uuid
-                    type:
-                      description: This represents the type of resource object being returned.
-                      type: string
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          description: A unique identifier for a resource.
+                          type: string
+                        type:
+                          description: This represents the type of resource object being returned.
+                          type: string
+                  - type: object
+                    nullable: true
+                    properties:
+                      id:
+                        description: A unique identifier for a resource.
+                        type: string
+                      type:
+                        description: This represents the type of resource object being returned.
+                        type: string
               links:
                 description: |
                   Links are used to allow you to move between requests. Single entities use a `self` parameter with a link to that specific resource. Sometimes, there are not enough entities for a project to fill multiple pages. In this situation, we return some defaults.
@@ -3557,6 +3621,24 @@ components:
               example: product
             attributes:
               $ref: '#/components/schemas/product_attributes'
+            relationships:
+              description: Relationships are established between different product entities.
+              type: object
+              properties:
+                variations:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            description: A unique identifier for a resource.
+                            type: string
+                          type:
+                            description: This represents the type of resource object being returned.
+                            type: string
     single_product_response:
       type: object
       properties:
@@ -3613,7 +3695,6 @@ components:
           items:
             description: A list of product IDs whose products you want to curate.
             type: string
-            format: uuid
         locales:
           description: Product Experience Manager supports localization of hierarchies and nodes. If you store supports multiple languages, you can localize hierarchy and node names and descriptions.
           type: object
@@ -3654,6 +3735,9 @@ components:
             data:
               description: The parent node
               type: object
+              required:
+                - id
+                - type
               properties:
                 type:
                   description: This represents the type of resource object being returned. Always `node`.
@@ -3663,8 +3747,6 @@ components:
                 id:
                   description: The unique identifier of a node.
                   type: string
-                  format: uuid
-                  required: true
         products:
           type: object
           description: The products related to the resource.
@@ -3680,50 +3762,46 @@ components:
                 related:
                   description: A link to a related resource.
                   type: string
-    single-2:
+    node:
       type: object
       properties:
-        data:
+        id:
+          description: The unique identifier of a node.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `node`.
+          type: string
+          enum:
+            - node
+        attributes:
+          $ref: '#/components/schemas/attributes'
+        relationships:
+          $ref: '#/components/schemas/relationships'
+        meta:
           type: object
           properties:
-            id:
-              description: The unique identifier of a node.
+            sort_order:
+              description: The sort order value. The node with the highest value of `sort_order` is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`. See [Sorting Nodes in a hierarchy](/docs/api/pxm/products/create-node#sorting-nodes-in-a-hierarchy).
+              type: integer
+            created_at:
+              description: The date and time a node is created.
               type: string
-              format: uuid
-              required: true
-            type:
-              description: This represents the type of resource object being returned. Always `node`.
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            updated_at:
+              description: The date and time a node was updated.
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            parent_name:
+              description: The name of the parent of the node if one exists.
+              type: string
+            owner:
+              description: The node owner, either `organization` or `store`.
               type: string
               enum:
-                - node
-              required: true
-            attributes:
-              $ref: '#/components/schemas/attributes'
-            relationships:
-              $ref: '#/components/schemas/relationships'
-            meta:
-              type: object
-              properties:
-                sort_order:
-                  description: The sort order value. The node with the highest value of `sort_order` is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`. See [Sorting Nodes in a hierarchy](/docs/api/pxm/products/create-node#sorting-nodes-in-a-hierarchy).
-                  type: integer
-                created_at:
-                  description: The date and time a node is created.
-                  type: string
-                  format: date-time
-                updated_at:
-                  description: The date and time a node was updated.
-                  type: string
-                  format: date-time
-                parent_name:
-                  description: The name of the parent of the node if one exists.
-                  type: string
-                owner:
-                  description: The node owner, either `organization` or `store`.
-                  type: string
-                  enum:
-                    - store
-                    - organization
+                - store
+                - organization
     multi_meta:
       type: object
       properties:
@@ -3735,7 +3813,7 @@ components:
               description: Total number of results for the entire collection.
               type: integer
               example: 30
-              min: 0
+              minimum: 0
     multi_links:
       type: object
       description: Links are used to allow you to move between requests.
@@ -3756,25 +3834,15 @@ components:
           description: This is `null` if you on the first page.
           type: string
           example: /pcm/hierarchies?page[offset]=8&page[limit]=10
-    multi-2:
+    multi_nodes:
       type: object
       properties:
         data:
           description: An array of nodes.
           type: array
           items:
-            $ref: '#/components/schemas/single-2'
+            $ref: '#/components/schemas/node'
         meta:
-          type: object
-          properties:
-            results:
-              description: Contains the results for the entire collection.
-              type: object
-              properties:
-                total:
-                  description: Total number of results for the entire collection.
-                  type: integer
-                  example: 2
           $ref: '#/components/schemas/multi_meta'
         links:
           $ref: '#/components/schemas/multi_links'
@@ -3787,10 +3855,8 @@ components:
             type: object
             properties:
               id:
-                name: A unique identifier for a template generated when a template is created.
+                description: A unique identifier for a template generated when a template is created.
                 type: string
-                format: uuid
-                description: The unique identifier of a flow
               type:
                 description: This represents the type of resource object being returned. Always `template`.
                 type: string
@@ -3806,7 +3872,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The unique identifier of a template.
               type:
                 type: string
@@ -3823,7 +3888,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The unique identifier of a product component generated when a product is created.
               type:
                 type: string
@@ -3840,7 +3904,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The unique identifier of the new file.
               type:
                 type: string
@@ -3858,7 +3921,6 @@ components:
               id:
                 description: A unique identifier for a file generated when a file is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource being returned. Always `file`.
                 type: string
@@ -3884,7 +3946,6 @@ components:
               id:
                 description: A unique identifier generated when a variation is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation`.
                 type: string
@@ -3896,6 +3957,8 @@ components:
                   created_at:
                     description: The date and time a resource is created.
                     type: string
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
     product_variations_request:
       type: object
       properties:
@@ -3906,7 +3969,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The ID of the product variation.
               type:
                 type: string
@@ -3924,7 +3986,6 @@ components:
               id:
                 description: A unique identifier for the image file generated automatically when a file is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `file`.
                 type: string
@@ -3938,7 +3999,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The ID of the new image file.
                 example: 00000000-0000-0000-0000-000000000000
               type:
@@ -3953,7 +4013,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               description: The ID of the image file.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -3972,7 +4031,6 @@ components:
               id:
                 description: A unique identifier for a variation.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation`.
                 type: string
@@ -3999,7 +4057,6 @@ components:
                       properties:
                         id:
                           type: string
-                          format: uuid
                           description: A unique ID that is generated when an option is created.
                         name:
                           type: string
@@ -4010,9 +4067,16 @@ components:
                         created_at:
                           type: string
                           description: The date and time an option is created.
+                          example: '2020-09-22T09:00:00'
+                          format: date-time
                         updated_at:
                           type: string
                           description: The date and time an option is updated.
+                          example: '2020-09-22T09:00:00'
+                          format: date-time
+                        sort_order:
+                          description: The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variation options in the order that you want. The variation with the highest value of `sort_order` is displayed first. For example, a variation with a `sort_order` value of 3 appears before a variation with a `sort_order` value of 2. You can specify any numbers that you want. You can use 1, 2, 3, or 100, 90, 80, including, zero or negative numbers. You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
+                          type: integer
                   owner:
                     type: string
                     description: The owner of the resource, either `organization` or `store`.
@@ -4022,9 +4086,13 @@ components:
                   created_at:
                     type: string
                     description: The date and time a variation is created.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
                   updated_at:
                     type: string
                     description: The date and time a variation is updated.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
         meta:
           type: object
           properties:
@@ -4085,7 +4153,6 @@ components:
             id:
               description: A unique identifier generated when a variation is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation`.
               type: string
@@ -4113,9 +4180,13 @@ components:
                 created_at:
                   type: string
                   description: The date and time a variation is created.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
                 updated_at:
                   type: string
                   description: The date and time a variation is updated.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
     single_variation:
       type: object
       required:
@@ -4132,7 +4203,6 @@ components:
             id:
               description: A unique identifier for a variation.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation`.
               type: string
@@ -4160,7 +4230,6 @@ components:
                     properties:
                       id:
                         type: string
-                        format: uuid
                         description: A unique ID that is generated an option is created.
                       name:
                         type: string
@@ -4171,9 +4240,16 @@ components:
                       created_at:
                         type: string
                         description: The date and time an option is created.
+                        example: '2020-09-22T09:00:00'
+                        format: date-time
                       updated_at:
                         type: string
                         description: The date and time an option is updated.
+                        example: '2020-09-22T09:00:00'
+                        format: date-time
+                      sort_order:
+                        description: The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variation options in the order that you want. The variation with the highest value of `sort_order` is displayed first. For example, a variation with a `sort_order` value of 3 appears before a variation with a `sort_order` value of 2. You can specify any numbers that you want. You can use 1, 2, 3, or 100, 90, 80, including, zero or negative numbers. You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
+                        type: integer
                 owner:
                   description: The owner of the resource, either `organization` or `store`.
                   type: string
@@ -4235,7 +4311,6 @@ components:
               id:
                 description: A unique identifier generated when an option is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation-option`.
                 type: string
@@ -4266,9 +4341,13 @@ components:
                   created_at:
                     type: string
                     description: The date and time an option is created.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
                   updated_at:
                     type: string
                     description: The date and time an option is updated.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
         meta:
           type: object
           properties:
@@ -4321,7 +4400,7 @@ components:
     created_option:
       type: object
       required:
-        - dta
+        - data
       properties:
         data:
           type: object
@@ -4332,7 +4411,6 @@ components:
             id:
               description: A unique identifier that is generated when an option is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-option`.
               type: string
@@ -4363,9 +4441,13 @@ components:
                 created_at:
                   type: string
                   description: The date and time an option is created.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
                 updated_at:
                   type: string
                   description: The date and time an option is updated.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
     single_option:
       type: object
       required:
@@ -4382,7 +4464,6 @@ components:
             id:
               description: The unique identifier generated when an option is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-option`.
               type: string
@@ -4414,9 +4495,13 @@ components:
                 created_at:
                   type: string
                   description: The date and time an option is created.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
                 updated_at:
                   type: string
                   description: The date and time an option is updated.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
     update_option:
       type: object
       required:
@@ -4471,7 +4556,6 @@ components:
               id:
                 description: A unique identifier for a modifier that is generated automatically when a modifier is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation-modifier'.
                 type: string
@@ -4543,6 +4627,15 @@ components:
                   reference_name:
                     description: The name of the modifier.
                     type: string
+              meta:
+                type: object
+                properties:
+                  owner:
+                    description: The owner of a resource, either `organization` or `store`.
+                    type: string
+                    enum:
+                      - store
+                      - organization
         meta:
           type: object
           properties:
@@ -4648,7 +4741,6 @@ components:
             id:
               description: A unique identifier for a modifier that is generated automatically when a modifier is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-modifier'.
               type: string
@@ -4738,7 +4830,6 @@ components:
             id:
               description: A unique identifier for a modifier that is generated automatically when a modifier is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-modifier'.
               type: string
@@ -4908,7 +4999,7 @@ components:
               type: string
               description: The unique identifier of the modifier. Must match the modifier ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
-    attributes-2:
+    attributes_hierarchy:
       type: object
       properties:
         name:
@@ -4934,7 +5025,7 @@ components:
               description:
                 description: A localized hierarchy or node description.
                 type: string
-    relationships-2:
+    relationships_hierarchy:
       type: object
       properties:
         children:
@@ -4952,56 +5043,52 @@ components:
                 related:
                   description: A link to a related resource.
                   type: string
-    single-3:
+    hierarchy:
       type: object
       properties:
-        data:
+        id:
+          description: A unique identifier generated when a hierarchy is created.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `hierarchy`.
+          type: string
+          enum:
+            - hierarchy
+        attributes:
+          $ref: '#/components/schemas/attributes_hierarchy'
+        relationships:
+          $ref: '#/components/schemas/relationships_hierarchy'
+        meta:
           type: object
           properties:
-            id:
-              description: A unique identifier generated when a hierarchy is created.
+            created_at:
+              description: The date and time a hierarchy is created.
               type: string
-              format: uuid
-              required: true
-            type:
-              description: This represents the type of resource object being returned. Always `hierarchy`.
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            updated_at:
+              description: The date and time a hierarchy is updated.
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            owner:
+              description: The owner of a resource, either `organization` or `store`.
               type: string
               enum:
-                - hierarchy
-              required: true
-            attributes:
-              $ref: '#/components/schemas/attributes-2'
-            relationships:
-              $ref: '#/components/schemas/relationships-2'
-            meta:
-              type: object
-              properties:
-                created_at:
-                  description: The date and time a hierarchy is created.
-                  type: string
-                  format: date-time
-                updated_at:
-                  description: The date and time a hierarchy is updated.
-                  type: string
-                  format: date-time
-                owner:
-                  description: The owner of a resource, either `organization` or `store`.
-                  type: string
-                  enum:
-                    - store
-                    - organization
-    multi-3:
+                - store
+                - organization
+    multi_hierarchy:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/single-3'
+            $ref: '#/components/schemas/hierarchy'
         links:
           $ref: '#/components/schemas/multi_links'
         meta:
           $ref: '#/components/schemas/multi_meta'
-    attributes-3:
+    req_attributes_hierarchy:
       type: object
       additionalProperties: false
       properties:
@@ -5043,7 +5130,12 @@ components:
               enum:
                 - hierarchy
             attributes:
-              $ref: '#/components/schemas/attributes-3'
+              $ref: '#/components/schemas/req_attributes_hierarchy'
+    single_hierarchy:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/hierarchy'
     update_hierarchy:
       type: object
       required:
@@ -5058,7 +5150,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               description: The unique identifier of the hierarchy. Must match the hierarchy ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -5068,8 +5159,8 @@ components:
                 - hierarchy
               example: hierarchy
             attributes:
-              $ref: '#/components/schemas/attributes-3'
-    attributes-4:
+              $ref: '#/components/schemas/req_attributes_hierarchy'
+    attributes_nodes:
       type: object
       additionalProperties: false
       properties:
@@ -5088,7 +5179,6 @@ components:
           items:
             description: A list of product IDs for the products that you want to curate in a node.
             type: string
-            format: uuid
         locales:
           description: Product Experience Manager supports localization of products and hierarchies. If your store supports multiple languages, you can localize product names and descriptions. You can have as many locales as you want.
           type: object
@@ -5117,9 +5207,8 @@ components:
               type: string
               enum:
                 - node
-              required: true
             attributes:
-              $ref: '#/components/schemas/attributes-4'
+              $ref: '#/components/schemas/attributes_nodes'
             meta:
               type: object
               additionalProperties: false
@@ -5131,6 +5220,11 @@ components:
                     - If you don’t provide `sort_order` when creating nodes, all child nodes in the response for `Get a Node’s Children` request are ordered by the `updated_at` time in descending order, with the most recently updated child node first.
                     - If you set `sort_order` for only a few child nodes or not all, the child nodes with a `sort_order` value appear first and then other child nodes appear in the order of `updated_at` time. See [Sorting Nodes in a hierarchy]().
                   type: integer
+    single_node:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/node'
     update_node:
       type: object
       properties:
@@ -5143,7 +5237,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               description: The unique identifier of the node. Must match the node ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -5151,9 +5244,8 @@ components:
               type: string
               enum:
                 - node
-              required: true
             attributes:
-              $ref: '#/components/schemas/attributes-4'
+              $ref: '#/components/schemas/attributes_nodes'
             meta:
               type: object
               additionalProperties: false
@@ -5172,11 +5264,12 @@ components:
           type: array
           items:
             type: object
+            required:
+              - id
+              - type
             properties:
               id:
                 type: string
-                format: uuid
-                required: true
                 description: The unique identifier of the child node. Must not match the node ID specified in the request path.
                 example: 00000000-0000-0000-0000-000000000000
               type:
@@ -5184,17 +5277,17 @@ components:
                 type: string
                 enum:
                   - node
-                required: true
     node_parent:
       type: object
       properties:
         data:
           type: object
+          required:
+            - id
+            - type
           properties:
             id:
               type: string
-              format: uuid
-              required: true
               description: The unique identifier of the new parent node. Must not match the node ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -5202,7 +5295,6 @@ components:
               type: string
               enum:
                 - node
-              required: true
     node_products:
       type: object
       properties:
@@ -5210,11 +5302,12 @@ components:
           type: array
           items:
             type: object
+            required:
+              - id
+              - type
             properties:
               id:
                 type: string
-                format: uuid
-                required: true
                 description: The unique identifier of the product to be attached to the node.
                 example: 00000000-0000-0000-0000-000000000000
               type:
@@ -5222,7 +5315,6 @@ components:
                 type: string
                 enum:
                   - product
-                required: true
     duplicate_job:
       type: object
       properties:
@@ -5253,7 +5345,6 @@ components:
         id:
           description: A unique identifier generated when a tag is created.
           type: string
-          format: uuid
         type:
           description: This represents the type of resource object being returned. Always `tag`.
           type: string
@@ -5274,16 +5365,20 @@ components:
             created_at:
               type: string
               description: The date and time a tag is created.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             updated_at:
               type: string
               description: The date and time a tag is updated.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             owner:
               description: The owner of a resource, either `organization` or `store`.
               type: string
               enum:
                 - store
                 - organization
-    multi-4:
+    multi_tag:
       type: object
       properties:
         data:
@@ -5302,11 +5397,115 @@ components:
                   description: Total number of results for the entire collection.
                   type: integer
                   example: 2
-    single-4:
+    single_tag:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/tag'
+    req_attributes_custom_relationship:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the custom relationship, such as `Kitchen electrics`.
+          type: string
+        description:
+          description: A description of the custom relationship.
+          type: string
+        slug:
+          description: A unique slug for the custom relationship. Must match the slug specified in the request path.
+          type: string
+    create_custom_relationship:
+      type: object
+      properties:
+        data:
+          type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              description: This represents the type of resource object being returned. Always `custom-relationship`.
+              type: string
+              enum:
+                - custom-relationship
+            attributes:
+              $ref: '#/components/schemas/req_attributes_custom_relationship'
+    attributes_custom_relationship:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the custom relationship, such as `Kitchen electrics`.
+          type: string
+        description:
+          description: A description of the custom relationship.
+          type: string
+        slug:
+          description: A unique slug for the custom relationship.
+          type: string
+    custom_relationship:
+      type: object
+      properties:
+        id:
+          description: A unique identifier generated when a custom relationship is created.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `hierarchy`.
+          type: string
+          enum:
+            - custom-relationship
+        attributes:
+          $ref: '#/components/schemas/attributes_custom_relationship'
+        meta:
+          type: object
+          properties:
+            owner:
+              description: The owner of the resource.
+              type: string
+              example: store
+            timestamps:
+              type: object
+              properties:
+                created_at:
+                  description: The date and time the resource is created.
+                  type: string
+                  example: '2024-01-10T20:16:35.343Z'
+                  format: date-time
+                updated_at:
+                  description: The date and time the resource is updated.
+                  type: string
+                  example: '2024-01-10T20:16:35.343Z'
+                  format: date-time
+    single_custom_relationship:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/custom_relationship'
+    update_custom_relationship:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+            - type
+            - attributes
+          properties:
+            id:
+              type: string
+              description: The unique identifier of the custom relationship.
+              example: 00000000-0000-0000-0000-000000000000
+            type:
+              description: This represents the type of resource object being returned. Always `custom-relationship`.
+              type: string
+              enum:
+                - custom-relationship
+              example: custom-relationship
+            attributes:
+              $ref: '#/components/schemas/req_attributes_custom_relationship'
   examples:
     multi:
       value:
@@ -5474,6 +5673,12 @@ components:
               tags:
                 - tag1
                 - tag2
+              extensions:
+                products(size):
+                  widthMM: 600
+                  fuelType: electric
+                  hasUKPlug: true
+                  online: null
             relationships:
               children:
                 data: []
@@ -5835,6 +6040,12 @@ components:
             tags:
               - tag1
               - tag2
+            extensions:
+              products(size):
+                widthMM: 600
+                fuelType: electric
+                hasUKPlug: true
+                online: null
           relationships:
             files:
               data: []
@@ -6548,11 +6759,11 @@ components:
             owner: store
             updated_at: '2022-02-03T19:43:21.487Z'
             variation_matrix: {}
-    multi-2:
+    resp_multi_nodes:
       value:
         data:
-          - type: node
-            id: 9ea0de15-3347-43dd-8faa-cd32f44a04c7
+          - id: 9ea0de15-3347-43dd-8faa-cd32f44a04c7
+            type: node
             attributes:
               description: Latest Ballet Shoes
               locales:
@@ -6919,9 +7130,7 @@ components:
           attributes:
             type: sku_equals
             value: anotherSku
-          meta:
-            owner: store
-    multi-3:
+    resp_multi_hierarchy:
       value:
         data:
           - type: hierarchy
@@ -7143,7 +7352,7 @@ components:
             updated_at: '2024-01-11T22:49:10.338Z'
           meta:
             x_request_id: 40995a1d-c0c1-4d52-a178-bfb5399ab0ec
-    multi-4:
+    resp_multi_tags:
       value:
         data:
           - type: tag
@@ -7165,7 +7374,7 @@ components:
         meta:
           results:
             total: 2
-    single:
+    resp_single_tag:
       value:
         data:
           type: tag
@@ -7176,6 +7385,51 @@ components:
             created_at: '2024-03-20T18:37:43.398Z'
             owner: organization
             updated_at: '2024-03-20T18:37:43.398Z'
+    create_custom_relationship:
+      value:
+        data:
+          type: custom-relationship
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices
+            slug: CRP_kitchen_individual_devices
+    custom_relationship_created:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices
+            slug: CRP_kitchen_individual_devices
+          meta:
+            owner: store
+            timestamps:
+              created_at: '2024-01-10T20:16:35.343Z'
+              updated_at: '2024-01-10T20:16:35.343Z'
+    update_custom_relationship:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices 2024
+            slug: CRP_kitchen_individual_devices
+    custom_relationship_updated:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices 2024
+            slug: CRP_kitchen_individual_devices
+          meta:
+            owner: store
+            timestamps:
+              created_at: '2024-01-10T20:16:35.343Z'
+              updated_at: '2024-01-10T20:16:35.343Z'
   responses:
     bad_request:
       description: Bad request. The request failed validation.
@@ -7261,7 +7515,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the job.
@@ -7274,7 +7527,7 @@ components:
         minimum: 0
         maximum: 10000
         format: int64
-        examples:
+        example:
           - '0'
     page_limit:
       name: page[limit]
@@ -7285,7 +7538,7 @@ components:
         minimum: 0
         maximum: 10000
         format: int64
-        examples:
+        example:
           - '10'
     filterproduct:
       name: filter
@@ -7298,7 +7551,7 @@ components:
       explode: true
       schema:
         type: string
-        examples:
+        example:
           - eq(name,some-name)
           - like(name,*some-name*)
           - filter=in(id,some-id)
@@ -7315,7 +7568,7 @@ components:
       explode: true
       schema:
         type: string
-        examples:
+        example:
           - component_products
     useTemplateSlugs:
       name: useTemplateSlugs
@@ -7338,7 +7591,7 @@ components:
       explode: true
       schema:
         type: string
-        examples:
+        example:
           - eq(name,some-name)
           - like(name,*some-name*)
           - filter=in(id,some-id)
@@ -7347,7 +7600,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
         x-postman-example: '{{productID}}'
       required: true
@@ -7357,7 +7609,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
         x-postman-example: '{{variationID}}'
       required: true
@@ -7367,7 +7618,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the option.
@@ -7376,7 +7626,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the modifier.
@@ -7385,7 +7634,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the hierarchy.
@@ -7394,31 +7642,22 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the node.
-    filternodeproducts:
-      name: filter
-      in: query
-      description: |
-        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/docs/commerce-cloud/api-overview/filtering).
-
-        For more information on the operators and attributes available when filtering on this endpoint, see [Get a node's products](/docs/api/pxm/products/get-node-products).
-      style: form
-      explode: true
-      schema:
-        type: string
-        examples:
-          - eq(name,some-name)
-          - like(name,*some-name*)
-          - filter=in(id,some-id)
     tag_id:
       name: tagID
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the tag.
+    custom_relationship_slug:
+      name: customRelationshipSlug
+      in: path
+      schema:
+        type: string
+        example: CRP_electric_devices_2024
+      required: true
+      description: A custom relationship slug.

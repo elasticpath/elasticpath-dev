@@ -256,7 +256,7 @@ paths:
       summary: Get all Custom APIs
       description: |
         ## Filtering
-        The following operators and attributes are available for filtering:
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom APIs:
 
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
@@ -678,7 +678,7 @@ paths:
       summary: Get all Custom Fields
       description: |
         ## Filtering
-          The following operators and attributes are available for filtering:
+          The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom Fields:
         
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
@@ -1062,7 +1062,7 @@ paths:
           description: Created
           headers:
             ETag:
-              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change. The ETag hash will be the same value as `etag_id`, and is marked as a weak entity tag string. For example: etag: W/\"5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9\", etag_id: 5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
               schema:
                 type: string
           content:
@@ -1099,7 +1099,8 @@ paths:
                             "created_at": "2017-01-10T11:41:19.244Z"
                           },
                           "resource_version": 0,
-                          "data_size": 6
+                          "data_size": 6,
+                          "etag_id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
                         }
                       }
                     }
@@ -1125,7 +1126,7 @@ paths:
       summary: Get all Custom API Entries
       description: |
         ## Filtering
-          The following operators and attributes are available for filtering:
+          The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) all Custom API Entries:
         
           | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
@@ -1133,7 +1134,20 @@ paths:
           | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
           | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
 
-        Custom API Entries can also be filtered by the slug for each [Custom Field](/docs/api/commerceextensions/create-a-custom-field). For example, you can get all Custom API Entries with `name` containing string "wish" by setting filter query parameter `like(name,*wish*)`.  
+        The following operators and attributes may be available for filtering Custom API Entries depending on how the [Custom Fields](/docs/api/commerceextensions/create-a-custom-field) for that Custom API are configured.
+
+          | Field type | Operators                            | 
+          |------------|--------------------------------------|
+          | `string`   | `lt`,`le`,`eq`,`gt`,`ge`,`in`,`like` |
+          | `integer`  | `lt`,`le`,`eq`,`gt`,`ge`,`in`        | 
+          | `float`    | `lt`,`le`,`gt`,`ge`,`in`             |  
+          | `boolean`  | `eq`                                 |
+
+          Given there is a Custom Field with `"slug": "name"` and `"field_type": "string"`.
+
+          When you get all Custom API Entries with query parameter: `?filter=like(name,*wish*)`.
+
+          Then you will get all Custom API Entries where `name` contains the string `wish`. 
 
         ## Sorting
         The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
@@ -1188,7 +1202,8 @@ paths:
                               "created_at": "2017-01-10T11:41:19.244Z"
                             },
                             "data_size": 6,
-                            "resource_version": 0
+                            "resource_version": 0,
+                            "etag_id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
                           }
                         }
                       ],
@@ -1234,7 +1249,7 @@ paths:
           description: OK
           headers:
             ETag:
-              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change."
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change. The ETag hash will be the same value as `etag_id`, and is marked as a weak entity tag string. For example: etag: W/\"5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9\", etag_id: 5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
               schema:
                 type: string
           content:
@@ -1288,8 +1303,15 @@ paths:
     put:
       tags:
         - Custom API Entries
-      summary: Update a Custom API Entries
+      summary: Update a Custom API Entry
       operationId: UpdateACustomEntry
+      parameters:
+        - in: header
+          name: If-Match
+          description: When If-Match is set, the value must be W/"{etag_id}". If the value of the header matches, the request completes. If not, HTTP 412 Precondition Failed is returned.
+          schema:
+            type: string
+            format: string
       requestBody:
         content:
           application/json:
@@ -1356,7 +1378,8 @@ paths:
                             "created_at": "2017-01-10T11:41:19.244Z"
                           },
                           "data_size": 6,
-                          "resource_version": 1
+                          "resource_version": 1,
+                          "etag_id": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
                         }
                       }
                     }
@@ -1366,6 +1389,8 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
+        '412':
+          $ref: '#/components/responses/PreConditionError'
         default:
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -1380,11 +1405,20 @@ paths:
         - Custom API Entries
       summary: Delete a Custom API Entry
       operationId: DeleteACustomEntry
+      parameters:
+        - in: header
+          name: If-Match
+          description: When If-Match is set, the value must be W/"{etag_id}". If the value of the header matches, the request completes. If not, HTTP 412 Precondition Failed is returned.
+          schema:
+            type: string
+            format: string
       responses:
         '204':
           description: No Content
         '404':
           $ref: '#/components/responses/NotFoundError'
+        '412':
+          $ref: '#/components/responses/PreConditionError'
         default:
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -1581,6 +1615,26 @@ components:
                       "title": "Request Entity Too Large",
                       "status": "413",
                       "detail": "Maximum entry size reached."
+                    }
+                  ]
+                }
+    PreConditionError:
+      description: Precondition Failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            pre-request-failed:
+              summary: Provided ETag does not match the current ETag.
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Precondition Failed",
+                      "status": "412",
+                      "detail": "The provided ETag 'W/\"4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a\"', does not match the current ETag 'W/\"ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d\"'."
                     }
                   ]
                 }
@@ -1826,9 +1880,22 @@ components:
                 - data_size
               properties:
                 data_size:
+                  type: integer
                   description: Specifies the sum of the size of each value stored for the Custom API Entry in bytes. The total size of a Custom API Entry must not exceed 64KB.
                   readOnly: true
                   example: 6
+                  default: 0
+                resource_version:
+                  type: integer
+                  description: A unique identifier representing the current version of the resource. When the resource changes, the `resource_version` value will also change.
+                  readOnly: true
+                  example: 4
+                  default: 0
+                etag_id:
+                  type: string
+                  description: A unique identifier representing the current version of the resource that is a hashed string. When the resource changes, the `etag_id` will also change.
+                  readOnly: true
+                  example: "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
     ErrorResponse:
       required:
         - errors

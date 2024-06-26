@@ -52,7 +52,7 @@ The component has the following actions.
 
 | Input | Type | Description |
 |:--- |:--- | :--- | 
-| **Event Configuration Hydrated Array**  | `string`  | The payload from the event. See [Integration Payload](/docs/integrations/integration-payload). | 
+| **Event Configuration Hydrated Array**  | `string`  | The payload from the event. See [Integration Payload](/docs/api/integrations/integrations-introduction). | 
 | **Postmark API Key** | `string` | Your **Postmark-API-Key** which is the Postmark API Key generated in your Postmark account. | 
 | **Log Level** | `string` | The level of logging. | 
 

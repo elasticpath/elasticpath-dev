@@ -31,12 +31,12 @@ possible to build conditional content based on Klaviyo data which drastically ex
 * Fixed an issue where the images in "Logos" components were broken when using liquid header/footer
 * Added NoML support for *defaultBorderWidth*, *defaultBorderColor*, *defaultBorderRadius*, and *default BorderStyle.*
 * Fixed an issue where the editor would sometimes crash on older Shopify accounts.
-* Improved the way that CX-Studio handles product deletion. Now if a product is deleted from Shopify, all CX-Studio
+* Improved the way that Studio handles product deletion. Now if a product is deleted from Shopify, all CX-Studio
   pages
   with references to that product will be unpublished.
 * Fixed an issue where the price shown in the product component wouldn't appear properly on both light and dark
   backgrounds.
-* Implemented a way for CX-Studio to make a distinction on whether a variant is a specific color option.
+* Implemented a way for Studio to make a distinction on whether a variant is a specific color option.
 * Added support for arrow functions (ex: ***=>***) in the section editor.
 * Added support for linking directly to products via smart links.
 * Fixed an issue where text added to the "Box Callout (Split)" component would display outside of the box when rendered.
@@ -48,7 +48,7 @@ possible to build conditional content based on Klaviyo data which drastically ex
   component; instead of "Left/Right" it now says "Default/Reversed".
 * Changed the order of alignment properties on all components; instead of "Center, Left, Right" they know show as "Left,
   Center, Right".
-* Added support for matching CX-Studio users to
+* Added support for matching Studio users to
   a [Klaviyo Exchange ID](https://developers.klaviyo.com/en/reference/exchange) - if applicable.
 * Updated developer documentation with new screenshots, and added notes
   for [using ```<Generator>```](https://developer.CX-Studio.com/docs/generators/collection), [using ```<Product>``` generator](https://developer.CX-Studio.com/docs/generators/product),

@@ -241,7 +241,7 @@ Note that with the `lodash` import above, no file was specified.
 If no file is specified, the `main` file defined in the `npm` package's `package.json` is imported.
 An explicit path was called out for the `node-fetch` import because the `node-fetch` package defaults to importing a browser version of the package, and we want a compiled server version instead.
 
-{% callout title="CDN outages and downstream dependencies" type="warning" %}
+:::caution
 
 Dynamic imports may or may not work, depending on how the dependency maintainer compiled their package.
 If the package has its own dependencies that are not compiled in, you may see errors in your code.

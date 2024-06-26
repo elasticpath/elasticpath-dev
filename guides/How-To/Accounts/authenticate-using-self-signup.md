@@ -30,7 +30,7 @@ You can find more detailed instructions on password profile creation [here](/doc
 
 ### Update the account authentication settings
 
-Send a PUT request to update [Account Authentication Settings](/docs/authentication/single-sign-on/account-authentication-settings) to set `enable_self_signup` to `true`. This enables self sign up for the account.
+Send a PUT request to update [Account Authentication Settings](/docs/api/accounts/account-authentication-settings) to set `enable_self_signup` to `true`. This enables self sign up for the account.
 
 You can also set `auto_create_account_for_account_members` to `true`. This automatically creates an account for the account member and then creates a membership. 
 

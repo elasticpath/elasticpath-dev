@@ -114,7 +114,7 @@ When designing your storefront, you must only allow child bundles to be added to
 1. (Optional) In **Sort Value**, you can specify a sort value. A sort value must be a number. You can specify any numbers that you want. For example, 1, 2, 3, or 100, 90, 80, and so on. The sort value is visible when you add the products to your catalogs. You can then use the sort value to program your storefront to display the bundle components and component options in the order that you want.
 
     :::caution
-   Commerce Manager does not sort components and component options. You must program your storefront to sort the components and component options in the order you want.
+    Commerce Manager does not sort components and component options. You must program your storefront to sort the components and component options in the order you want.
     :::
   
 1. To add options to a component, from **Actions** next to the component you want to add options to, select **...**. 
@@ -192,10 +192,10 @@ If you want to assign a fixed price for all the products in a bundle, you must h
     1. Type a price for each of the available currencies. You can add currencies under **System** in [Store Settings > Currencies](/docs/commerce-manager/product-experience-manager/currencies/manage-currencies).
     1. Click **Add Sale**.
 
-    :::tip
-    When displaying your product in your storefront, you can choose to display both the list price and the sale price or the sale price only, depending on your requirements. 
-![Custom](/assets/sale-price.png)
-    :::
+   :::tip
+   When displaying your product in your storefront, you can choose to display both the list price and the sale price or the sale price only, depending on your requirements. 
+   ![Custom](/assets/sale-price.png)
+   :::
 
 1. Click **Next** or **Save & Exit**.
 
