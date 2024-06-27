@@ -166,7 +166,7 @@ curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventori
       }
     }
 ```
-When using Custom API Entries, if multiple independent clients update the same resource, you should have them use the `If-Match` header to ensure data consistency and prevent lost updates and inconsistencies in inventory amounts. For example, if two users perform the same operation simultaneously, the `If-Match` header ensures that only the latest version of the inventory is updated. This prevents scenarios where concurrent updates could lead to incorrect inventory counts. This header works by comparing the provided ETag value with the current ETag value of the resource. If the resource hasn't changed since you last read it, the ETag will not change, ensuring the update is safe.
+When using Custom API Entries, if multiple independent clients update the same resource, you should have them use the `If-Match` header to prevent lost updates and other data consistency issues in the inventory amounts. For example, if two users see an amount of 3 and allocate 1, then both would update the amount to 2. The `If-Match` header ensures that only one of these requests succeeds. This header works by comparing the provided ETag value with the current ETag value of the resource. If the resource hasn't changed since you last read it, the ETag will not change, ensuring the update is safe. 
 
 To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](https://elasticpath.dev/docs/api/commerceextensions/update-a-custom-entry). If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned.
 
