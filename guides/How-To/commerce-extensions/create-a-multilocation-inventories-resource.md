@@ -189,7 +189,7 @@ curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventori
 
 A customer is on a product page and lives near the Hamptons store and wants to know if this product in this color is available at their local store. Filtering on `slug` and `location-name` will retrieve the record for that location for that SKU.
 ```sh
-curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventories?filter=eq(slug,ABC123):eq(location-name,Hamptions)" \
+curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventories?filter=eq(slug,ABC123):eq(location-name,London)" \
      -H "Authorization: XXXX" \
 ```
 
