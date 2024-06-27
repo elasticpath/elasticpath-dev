@@ -183,9 +183,9 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        sitemap: {
-          ignorePatterns: ["/tags/**"],
-        },
+        //sitemap: {
+        //  ignorePatterns: ["/tags/**"],
+        //},
         gtag: {
           trackingID: 'G-NZ3NL8DLLD',
           anonymizeIP: true,
@@ -259,7 +259,7 @@ const config = {
           },
           {
             label: "Changelog",
-            to: "https://changelog.elasticpath.dev",
+            to: "/changelog",
           },
           {
             label: "Support",
@@ -578,14 +578,28 @@ const config = {
       "@docusaurus/plugin-content-blog",
       {
         blogTitle: 'Elastic Path Commerce Cloud Changelog',
-        blogDescription: 'The changelog contains updates and modifications in Commerce, Composer',
+        blogDescription: 'The changelog contains updates and modifications to all Elastic Path Cloud Services',
         postsPerPage: 30,
         blogSidebarCount: 0,
         blogSidebarTitle: 'Recent Changelogs',
         id: "changelog",
         routeBasePath: "changelog",
         path: "./changelog",
+        tagsBasePath: "product",
         showReadingTime: false,
+        feedOptions: {
+          type: 'all',
+          copyright: `Copyright © ${new Date().getFullYear()} Elastic Path`,
+          description: 'Elastic Path Cloud Services Changelog',
+          createFeedItems: async (params) => {
+            const { blogPosts, defaultCreateFeedItems, ...rest } = params;
+            return defaultCreateFeedItems({
+              // keep only the 10 most recent blog posts in the feed
+              blogPosts: blogPosts.filter((item, index) => index < 20),
+              ...rest,
+            });
+          },
+        },
       },
     ],
     [
@@ -1125,7 +1139,7 @@ const config = {
           { to: '/docs/api/pxm/pricebooks/import-pricebook', from: '/docs/pxm/pricebooks/price-import/import-prices'},
           { to: '/docs/api/pxm/pricebooks/get-price-modifiers', from: '/docs/pxm/pricebooks/pxm-pricebooks-modifiers/get-all-price-modifiers'},
           { to: '/docs/api/pxm/inventory/inventory', from: '/docs/pxm/inventories/get-all-inventory'},
-          { to: '/docs/api/pxm/products/delete-a-hierarchy', from: '/docs/pxm/hierarchies/hierarchies-api/delete-a-hierarchy'},
+          { to: '/docs/api/pxm/products/delete-hierarchy', from: '/docs/pxm/hierarchies/hierarchies-api/delete-hierarchy'},
           { to: '/docs/api/carts/custom-discounts', from: '/docs/commerce-cloud/carts/custom-discounts/add-custom-discount-to-cart'},
           { to: '/docs/api/pxm/pricebooks/price-book-modifiers', from: '/docs/pxm/pricebooks/pxm-pricebooks-modifiers/get-a-price-modifier'},
           { to: '/docs/api/pxm/products/get-job-errors', from: '/docs/pxm/jobs-api/get-a-job-error'},
@@ -1169,7 +1183,7 @@ const config = {
           { to: '/docs/commerce-manager/product-experience-manager/Products/delete-products', from: '/docs/pxm/products/pxm-products-commerce-manager/delete-products'},
           { to: '/docs/api/promotions/create-a-promotion', from: '/docs/commerce-cloud/promotions/promotion-management/create-a-cart-fixed-discount-promotion'},
           { to: '/docs/api/carts/bulk-add-tax-items-to-cart', from: '/docs/commerce-cloud/carts/tax-items/bulk-add-tax-items'},
-          { to: '/docs/api/pxm/products/update-a-hierarchy', from: '/docs/pxm/hierarchies/hierarchies-api/update-a-hierarchy'},
+          { to: '/docs/api/pxm/products/update-hierarchy', from: '/docs/pxm/hierarchies/hierarchies-api/update-hierarchy'},
           { to: '/docs/api/pxm/inventory/inventory', from: '/docs/pxm/inventories/create-inventory'},
           { to: '/docs/api/carts/update-custom-discount-for-cart-item', from: '/docs/commerce-cloud/carts/custom-discounts/update-custom-discount-for-cart-item'},
           { to: '/docs/commerce-manager/product-experience-manager/Products/add-product-templates', from: '/docs/pxm/products/pxm-products-commerce-manager/add-product-templates'},
