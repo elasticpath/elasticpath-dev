@@ -166,11 +166,9 @@ curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventori
       }
     }
 ```
-With Custom API Entries, you can set `If-Match` header to ensure data consistency when updating resources, such as inventory. This header works by comparing the provided ETag value with the current ETag value of the resource. This ETag is a unique identifier representing the current version of the resource.
+When using Custom API Entries, if multiple independent clients update the same resource, you should have them use the `If-Match` header to ensure data consistency and prevent lost updates and inconsistencies in inventory amounts. For example, if two users perform the same operation simultaneously, the `If-Match` header ensures that only the latest version of the inventory is updated. This prevents scenarios where concurrent updates could lead to incorrect inventory counts. This header works by comparing the provided ETag value with the current ETag value of the resource. If the resource hasn't changed since you last read it, the ETag will not change, ensuring the update is safe.
 
-When `If-Match` is set, the value must be W/"{etag_id}". If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned. To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](https://elasticpath.dev/docs/api/commerceextensions/update-a-custom-entry).
-
-The `If-Match` header should be included when updating inventories correctly. For example, if two users perform the same operation at the same time, the `If-Match` header ensures that only the latest version of the inventory is updated. This prevents scenarios where concurrent updates could lead to incorrect inventory counts.
+To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](https://elasticpath.dev/docs/api/commerceextensions/update-a-custom-entry). If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned.
 
 See the following example:
 
