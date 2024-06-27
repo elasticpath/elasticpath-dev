@@ -140,7 +140,7 @@ The `authorization-endpoint` link retrieved from [Get the list of configured sin
 
 The `client_id` should be the value retrieved from [Account Authentication Settings](#get-the-account-authentication-settings) which was found at `data.meta.client_id`. The `redirect_uri` is set up as part of the [Prerequisites](#prerequisites). The `state` parameter should be a hard to guess random value unique to each request.
 
-For more information on parameters `scope`, `response_type`, `client_id`, `redirect_uri`, and `state`, see the [OpenID Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). The `code_challenge` and `code_challenge_method` parameters should be set to the values in [the previous section](#generate-proof-key-for-code-exchange-pkce-parameters).
+For more information on parameters `scope`, `response_type`, `client_id`, `redirect_uri`, and `state`, see the [OpenID Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). The `code_challenge` and `code_challenge_method` parameters should be set to the values in [the previous section](#generate-proof-key-for-code-exchange-parameters).
 
 ### Additional parameters to the authorization endpoint URL
 
