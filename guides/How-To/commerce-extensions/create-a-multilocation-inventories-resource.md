@@ -170,7 +170,7 @@ When using Custom API Entries, if multiple independent clients update the same r
 
 To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](https://elasticpath.dev/docs/api/commerceextensions/update-a-custom-entry). If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned.
 
-See the following example:
+The following example shows how to update a custom API entry for location inventories:
 
 ```bash
 curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/:customApiEntryId" \
