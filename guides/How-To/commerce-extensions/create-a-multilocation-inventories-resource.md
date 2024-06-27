@@ -95,7 +95,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
         "field_type": "string",
         "validation": {
           "string": {
-            "regex": "^(Eiffel Tower|Graceland|Hamptons)$"
+            "regex": "^(Paris|London|New York)$"
           }
         }
         "type": "custom_field"
