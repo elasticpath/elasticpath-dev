@@ -108,7 +108,7 @@ curl -X GET https://useast.api.elasticpath.com/v2/authentication-realms/:realm-i
 
 ```
 
-Make note of the `authorization-endpoint` link.
+Make a note of the `authorization-endpoint` link.
 
 If this returns zero OIDC profiles, you will need to [create a OIDC Profile](https://elasticpath.dev/docs/authentication/single-sign-on/openid-connect-profiles-api/create-an-oidc-profile), as part of the pre-requisites. 
 
@@ -157,7 +157,7 @@ Commerce forwards these values to the configured Identity Provider, and you shou
 The Composable Commerce application should now redirect the user to the modified `authorization-endpoint` link, which begins the single sign-on flow for the user.
 
 ### Assign the Account Member to an Account
-If for setting up for the first time the user will end up as an unassigned member. If the account member is already assigned to the account skip over to [Use the authorization code to retrieve an Account Management Authentication Token](#use-the-authorization-code-to-retrieve-an-account-management-authentication-token).
+When setting up for the first time, if the user is not yet assigned, they will be  categorized as an unassigned member. If the account member is already assigned, skip over to [Use the authorization code to retrieve an Account Management Authentication Token](#use-the-authorization-code-to-retrieve-an-account-management-authentication-token).
 
 #### Request
 ```sh
@@ -180,7 +180,7 @@ curl -X GET https://useast.api.elasticpath.com/v2/accounts/:id/account-membershi
     // Other fields...
 }
 ```
-Make a note of the `data[x].id` which will be used as the `account_member_id` when creating an account membership.
+Make a note of the `data[x].id`,  which will be used as the `account_member_id` when creating an account membership.
 
 #### Request
 ```sh
@@ -219,11 +219,11 @@ The account member will now be associated to an account.
 
 ### Use the authorization code to retrieve an Account Management Authentication Token
 
-After the [Log in to the OpenID Connect provider](#log-in-to-the-openid-connect-provider) step, the user follows a series of redirects to authenticate. Eventually they are redirected back to this Composable Commerce application, with some additional parameters as described in [Successful Authentication Response](https://openid.net/specs/openid-connect-core-1_0.html#AuthResponse).
+After the [Log in to the OpenID Connect provider](#log-in-to-the-openid-connect-provider) step, the user follows a series of redirects to authenticate. Eventually, they are redirected back to this Composable Commerce application, with some additional parameters as described in [Successful Authentication Response](https://openid.net/specs/openid-connect-core-1_0.html#AuthResponse).
 
 After validating that the `state` parameter matches the value sent in the [Add parameters to the Authorization Endpoint URL](#add-parameters-to-the-authorization-endpoint-url) section, the Composable Commerce application can use the `code` parameter in the URL, and the `code_verifier` from the [Generate Proof Key for Code Exchange (PKCE) Parameters](#generate-proof-key-for-code-exchange-pkce-parameters) section to get an [Account Management Authentication Token](https://elasticpath.dev/docs/api/accounts/post-v-2-account-members-tokens).
 
-Request an Account Management Authentication Token using the `oidc` as the `authentication_mechanism`. Use `code` generated as the `oauth_authorization_code`, `code_verifier` as `oauth_code_verifier`, and provide the redirect URI of the store which handled the response.
+Request an Account Management Authentication Token using the `oidc` as the `authentication_mechanism`. Use `code` generated as the `oauth_authorization_code`, `code_verifier` as `oauth_code_verifier`, and provide the redirect URI of the store, which handled the response.
 
 #### Request
 
