@@ -95,7 +95,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
         "field_type": "string",
         "validation": {
           "string": {
-            "regex": "^(Eiffel Tower|Graceland|Hamptons)"
+            "regex": "^(Eiffel Tower|Graceland|Hamptons)$"
           }
         }
         "type": "custom_field"
@@ -172,11 +172,26 @@ When `If-Match` is set, the value must be W/"{etag_id}". If the value of the hea
 
 The `If-Match` header should be included when updating inventories correctly. For example, if two users perform the same operation at the same time, the `If-Match` header ensures that only the latest version of the inventory is updated. This prevents scenarios where concurrent updates could lead to incorrect inventory counts.
 
+See the following example:
+
+```bash
+curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/:customApiEntryId" \
+     -H "Authorization: XXXX" \
+     -H "Content-Type: application/json" \
+     -H "If-Match: W/\"{etag_id}\"" \
+     -d $ {
+      "data": {
+        "type": "location_inventory_ext",
+        "amount": 3
+      }
+    }
+```
+
 ## Example filters for Common Queries
 
 A customer is on a product page and lives near the Hamptons store and wants to know if this product in this color is available at their local store. Filtering on `slug` and `location-name` will retrieve the record for that location for that SKU.
 ```sh
-curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventories?filter=eq(SKU,ABC123):eq(location-name,Hamptions)" \
+curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventories?filter=eq(slug,ABC123):eq(location-name,Hamptions)" \
      -H "Authorization: XXXX" \
 ```
 
