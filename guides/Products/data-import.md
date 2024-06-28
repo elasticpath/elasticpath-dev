@@ -4,7 +4,8 @@ nav_label: Data Import Techniques
 sidebar_position: 1
 ---
 
-Importing your data into Product Experience Manager is a critical task for setting up your stores, and migrating data from your other company systems or third-party platforms.
+Effective data importation into Elastic Path's Product Experience Manager (PXM) is crucial for establishing your stores and migrating data from other internal systems or third-party platforms. This article delves into the technical aspects of importing various types of data into your Elastic Path store, encompassing products, price books, and integrations with third-party platforms.
+
 
 There are a number of ways to get data in to your Elastic Path store, depending on the type of data.
 
