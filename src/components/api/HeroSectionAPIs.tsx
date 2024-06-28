@@ -23,42 +23,9 @@ const PRODUCTS = [
   {
     title: 'Authentication',
     beta: false,
-    link: '/docs/commerce-cloud/authentication/overview',
+    link: '/docs/authentication',
     icon: LockClosedKeyRegular,
     text: 'Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.',
-  },
-  {
-    title: 'Commerce Extensions',
-    link: '/docs/api/commerceextensions/commerce-extensions-introduction',
-    icon: BookDatabaseRegular,
-    // lightImage: '/static/landing-page/hero/video-graphic.png',
-    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
-    text: 'Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options.',
-  },
-  {
-    title: 'Subscriptions',
-    link: '/docs/api/subscriptions/subscriptions-introduction',
-    icon: ArrowSyncFilled,
-    // lightImage: '/static/landing-page/hero/livestream-graphic.png',
-    // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
-    text: 'Easily deploy paid memberships, subscribe & save, and more to drive recurring revenue and improved average order value.',
-  },
-  {
-    title: 'Product Experience Manager',
-    link: '/docs/api/pxm/products/product-experience-manager-introduction',
-    icon: BookRegular,
-    // lightImage: '/static/landing-page/hero/voice-graphic.png',
-    // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.'
-  },
-  {
-    title: 'Rule Promotions',
-    beta: false,
-    link: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview',
-    icon: BuildingRetailMoneyRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Manage your promotions with industry leading capabilities by using our Rules Promotion Builder.',
   },
   {
     title: 'Account Management',
@@ -67,15 +34,6 @@ const PRODUCTS = [
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
     text: 'Create accounts and account members. Associated account members can log in to the store and create orders for their accounts.',
-  },
-  {
-    title: 'Addresses',
-    beta: false,
-    link: '/docs/api/addresses/addresses-introduction',
-    icon: ContactCardGroupRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Store customer addresses for billing and shipping.',
   },
   {
     title: 'Carts, Checkout, Orders',
@@ -87,25 +45,15 @@ const PRODUCTS = [
     text: 'Use carts, checkout and orders to get your products from the catalog into the cart, through checkout and into order completed state.',
   },
   {
-    title: 'Shipping Groups',
-    beta: false,
-    link: '/docs/commerce-cloud/shipping-groups/shipping-groups-api/get-cart-shipping-groups',
-    icon: BoxMultipleRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Use carts, checkout and orders to get your products from the catalog into the cart, through checkout and into order completed state.',
+    title: 'Custom APIs (Commerce Extensions)',
+    link: '/docs/api/commerceextensions/commerce-extensions-introduction',
+    icon: BookDatabaseRegular,
+    // lightImage: '/static/landing-page/hero/video-graphic.png',
+    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
+    text: 'Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options.',
   },
   {
-    title: 'Payments',
-    beta: false,
-    link: '/docs/api/payments/payment-gateways-introduction',
-    icon: WalletCreditCardRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
-  },
-  {
-    title: 'Custom Data (Flows)',
+    title: 'Custom-Data (Flows)',
     beta: false,
     link: '/docs/api/flows/flows-service-introduction',
     icon: BookDatabaseRegular,
@@ -123,25 +71,68 @@ const PRODUCTS = [
     text: 'You can integrate Commerce with your external systems like enterprise resource planning, order management, fulfilment, and other systems, ensuring that buying is quick and easy for your shoppers.',
   },
   {
-    title: 'Personal Data Service',
+    title: 'Organizations',
     beta: false,
-    link: '/docs/commerce-cloud/personal-data',
+    link: '/docs/organizations',
+    icon: BoxMultipleRegular,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'This unique capability enables our multi-store management solution which is used by franchises, distributor networks, multi-geo and multi-brand companies and more.',
+  },
+  {
+    title: 'Payments',
+    beta: false,
+    link: '/docs/api/payments/payment-gateways-introduction',
+    icon: WalletCreditCardRegular,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
+  },
+  {
+    title: 'Personal-Data Service',
+    beta: false,
+    link: '/docs/personal-data',
     icon: DatabasePersonRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
     text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   },
   {
+    title: 'Product Experience Manager',
+    link: '/docs/api/pxm/products/product-experience-manager-introduction',
+    icon: BookRegular,
+    // lightImage: '/static/landing-page/hero/voice-graphic.png',
+    // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
+    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.'
+  },
+  {
+    title: 'Promotions Builder',
+    beta: false,
+    link: '/docs/rule-promotions/overview',
+    icon: BuildingRetailMoneyRegular,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'Manage your promotions with industry leading capabilities by using our Rules Promotion Builder.',
+  },
+  {
+    title: 'Subscriptions',
+    link: '/docs/api/subscriptions/subscriptions-introduction',
+    icon: ArrowSyncFilled,
+    // lightImage: '/static/landing-page/hero/livestream-graphic.png',
+    // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
+    text: 'Easily deploy paid memberships, subscribe & save, and more to drive recurring revenue and improved average order value.',
+  },
+  {
     title: 'Settings',
     beta: false,
-    link: '/docs/api/settings/settings',
+    link: '/docs/api/settings/settings-introduction',
     icon: SettingsRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
     text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   },
   {
-    title: 'Promotions Standard',
+    title: 'Promotions-Standard',
     beta: false,
     link: '/docs/api/promotions/promotions-standard-introduction',
     icon: BuildingRetailRegular,
@@ -151,7 +142,7 @@ const PRODUCTS = [
   },
   {
     title: 'Customers',
-    link: '/docs/commerce-cloud/customer-management/customer-management-api/customer-tokens',
+    link: '/docs/customer-management/customers',
     icon: PersonCircleRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
@@ -207,7 +198,7 @@ export default function HeroSectionAPIs() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 md:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 pb-16 md:grid-cols-2">
         {PRODUCTS.map((product) => (
           <HeroAPI {...product} key={product.title} />
         ))}

@@ -81,29 +81,29 @@ Collect the following setup information from Advanced Commerce (GrapheneHC).
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/docs/commerce-cloud/authentication/application-keys/application-keys-cm), go to **SYSTEM** > **Application Keys**.
+To create a new [application key](/docs/commerce-manager/application-keys/application-keys-cm), go to **SYSTEM** > **Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
-| **Token URL**                    | Your Commerce API Token URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).  |
+| **Token URL**                    | Your Commerce API Token URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).  |
 | **Client ID**                       | Your Commerce Client ID. |
 | **Client Secret**                   | Your Commerce Client Secret. |
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Prerequisites
 
  - Ensure that you have [collected your setup Information](#collecting-your-setup-information).
  - In Commerce Manager, ensure that you have created the data that you want to synchronize with Advanced Commerce (GrapheneHC).
-     - [products](/docs/pxm/products/ep-pxm-products-api/create-a-product).
-     - [images](/docs/pxm/products/product-assets/assets-overview).
+     - [products](/docs/commerce-manager/product-experience-manager/Products/create-products).
+     - [images](/docs/commerce-manager/product-experience-manager/Products/manage-product-media).
      - [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books).
-     - [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies).
-     - [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates).
-     - [variations](/docs/pxm/products/pxm-product-variations/pxm-product-variations-api/create-variation).
-     - [catalogs](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
+     - [hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies).
+     - [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates).
+     - [variations](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products).
+     - [catalogs](/docs/commerce-manager/product-experience-manager/catalogs/creating-catalogs).
 
 - In Advanced Commerce (GrapheneHC), ensure that you have created the following:
     - The currencies available for the products in your Commerce store catalog. Create the currencies using your Commerce catalog ID. When the catalog ID is passed in the Product Template, Advanced Commerce (GrapheneHC) displays the prices in the currencies you have configured for your catalog.

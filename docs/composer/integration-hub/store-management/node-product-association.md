@@ -87,7 +87,7 @@ Once you have met the [Prerequistes](#prequisites), you are ready to configure t
         - **Client-ID**  - Your Commerce Client ID.
         - **Client-Secret** - Your Commerce Client Secret.
 
-            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-manager/application-keys/application-keys-cm).
 
         The table below describes the options you can configure. 
 

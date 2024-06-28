@@ -1,102 +1,81 @@
-import React from 'react';
-import Link from '@docusaurus/Link';
+import React from "react";
 import {
-  ShoppingBagRegular,
-  BoardRegular,
-  ServerRegular,
-  BroadActivityFeedRegular,
-} from '@fluentui/react-icons';
-import clsx from 'clsx';
-
-const PRODUCTS = [
-  {
-    title: 'Composable Commerce',
-    link: '/docs/commerce-cloud',
-    icon: BoardRegular,
-    // lightImage: '/static/landing-page/hero/voice-graphic.png',
-    // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
-    text: 'A family of composable products for businesses that need to quickly & easily create unique experiences and next-level customer engagements that drive revenue.',
-  },
-  {
-    title: 'Self Managed Commerce',
-    link: 'https://documentation.elasticpath.com/commerce/docs/getting-started/index.html',
-    icon: ServerRegular,
-    // lightImage: '/static/landing-page/hero/livestream-graphic.png',
-    // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
-    text: 'A headless commerce product for enterprises with sophisticated performance, data, or infrastructure needs. Delivers unparalleled customizability, control, and performance.',
-  },
-  {
-    title: 'Studio',
-    link: '/docs/studio',
-    icon: BroadActivityFeedRegular,
-    // lightImage: '/static/landing-page/hero/video-graphic.png',
-    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
-    text: 'An e-commerce enabled content management system designed to empower your team to build exceptional experiences.',
-  },
-  {
-    title: 'Product Experience Manager',
-    beta: false,
-    link: '/docs/pxm',
-    icon: ShoppingBagRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.',
-  },
-];
-
-function HeroProduct({
-  link,
-  title,
-  icon: Icon,
-  text,
- // lightImage,
- // darkImage,
-  beta,
-}: (typeof PRODUCTS)[0]) {
-  return (
-    <Link
-      to={link}
-      style={{
-        borderWidth: '1px',
-      }}
-      className={clsx(
-        'group relative cursor-pointer overflow-clip rounded-3xl from-primary/30 via-transparent to-transparent transition-all hover:bg-gray-950/80 hover:text-primary hover:no-underline text-white',
-        'border-secondary-800 hover:!border-primary bg-gray-950/50 mx-auto flex w-full max-w-7xl'
-      )}
-    >
-      <div className="p-6 !pb-6">
-        <h3 className="mb-1.5 flex items-center gap-3 font-jakarta group-hover:text-primary">
-          <Icon className="h-7 w-7" />
-          <div>
-            {title}
-            {beta && <span className="font-normal text-white/60"> (Beta)</span>}
-          </div>
-        </h3>
-        <p className="mb-0 text-sm text-white/60">{text}</p>
-      </div>
-    </Link>
-  );
-}
-
+  CharlotteTilbury,
+  Norgren,
+  Pella,
+  Pokemon,
+  SerenaLily,
+} from "./HeroBrandLogos";
 export default function HeroSection() {
   return (
-    <>
-      <section className="no-underline-links px-4 pt-16 lg:py-0">
-        <div className="flex flex-col items-center justify-between py-14 text-white">
-          <h2 className="mb-4 font-jakarta text-3xl font-bold">
-            Build your Composable Commerce vision with ease and speed
-          </h2>
-          <p className="max-w-3xl text-center">
-            Elastic Path's Developer Center: Sign up for a free trial, use our interactive learning tutorials, and experience first hand why developers love our platform
-          </p>
+    <section className="px-4 py-28 md:py-44 text-center leading-tight tracking-tight">
+      <div className="flex flex-col items-center justify-between dark:text-white">
+        <div className="px-3 py-1 text-sm ring-1 ring-gray-300 dark:ring-white/50 rounded-3xl shadow-sm dark:shadow-[0px_0px_28px_0px_#0b3168]">
+          <span className="mr-2">💡</span>
+          <span className="text-black dark:text-white font-semibold mr-4 hidden md:inline">
+            Note from our CTO:
+          </span>{" "}
+          <a
+            className="text-gray-600 hover:text-gray-600 dark:text-white dark:hover:text-white dark:hover:decoration-green-400 hover:decoration-green-600 hover:decoration-2 hover:decoration-dotted font-medium transition-all"
+            href="https://www.elasticpath.com/blog/modern-commerce-ipaas-dbaas"
+          >
+            Why an iPaaS brings world-class commerce to life →
+          </a>
         </div>
-      </section>
+        <h1 className="mb-4 text-center text-[4.5rem] md:text-[6.5rem] font-bold dark:drop-shadow-lg dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-[#394464] -from-3% via-[#1F8552] via-32% to-[#2BCC7E] to-64%">
+          Enterprise-ready commerce
+        </h1>
+        <p className="text-base text-center md:text-[1.75rem] leading-10 font-light max-w-5xl">
+          Launch faster, solve complex problems, and build world-class
+          experiences with our suite of interconnected{" "}
+          <a
+            href="#CommerceApps"
+            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
+          >
+            e-Commerce Apps
+          </a>
+          ,{" "}
+          <a
+            href="#APIs"
+            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
+          >
+            APIs{" "}
+          </a>
+          , &{" "}
+          <a
+            href="#Tools"
+            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
+          >
+            tools for developers
+          </a>
+          .
+        </p>
+        <p className="mt-8">Trusted by these leading brands...</p>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 items-center">
+          <SerenaLily className="max-w-full invert dark:invert-0 mx-auto" />
+          <Pokemon className="max-w-full mx-auto" />
+          <Pella className="max-w-full invert dark:invert-0 mx-auto" />
+          <Norgren className="max-w-full invert dark:invert-0 mx-auto" />
+          <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0 mx-auto" />
+        </div>
 
-      <section className="mx-auto grid w-full max-w-7xl sm:px-6 xl:px-0 grid-cols-1 grid-rows-2 gap-6 md:grid-cols-2">
-        {PRODUCTS.map((product) => (
-          <HeroProduct {...product} key={product.title} />
-        ))}
-      </section>
-    </>
+        <svg
+          width="31"
+          height="108"
+          viewBox="0 0 31 108"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="hidden md:block animate-bounce mt-12"
+        >
+          <path
+            d="M15.5 2V105.5M15.5 105.5L29 92M15.5 105.5L2 92"
+            stroke="#1FEC90"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    </section>
   );
 }

@@ -108,5 +108,5 @@ During the duplication process, the product associations are maintained in the d
 
     :::
 
-3. Organize your store products in the duplicated [hierarchy](/docs/pxm/hierarchies/node-relationships-api/create-node-product-relationships).
+3. Organize your store products in the duplicated [hierarchy](/docs/commerce-manager/product-experience-manager/hierarchies/assigning-products).
 4. Your duplicated hierarchy now belongs to the store.

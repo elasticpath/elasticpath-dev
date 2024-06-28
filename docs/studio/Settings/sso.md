@@ -8,9 +8,9 @@ Most shoppers have separate accounts on various websites and applications. For e
 
 Using single sign-on allows shoppers using Studio storefronts to access multiple applications and services with a single set of credentials, streamlining the login process and improving your shoppers experience of your online store. In addition, you can gather more comprehensive user data preferences, enabling you to deliver more personalized shopping experiences. 
 
-CX-Studio single sign-on uses OpenID Connect (OIDC). OpenID Connect provides a standardized and secure way for Studio storefronts to authenticate your shopper and obtain their basic profile information. 
+Studio single sign-on uses OpenID Connect (OIDC). OpenID Connect provides a standardized and secure way for Studio storefronts to authenticate your shopper and obtain their basic profile information. 
 
-CX-Studio single sign-on is available using the OIDC account settings configured in Elastic Path Composable Commerce. See [Authentication Management](/docs/commerce-cloud/authentication/single-sign-on/authentication#account-management-realm). 
+Studio single sign-on is available using the OIDC account settings configured in Elastic Path Composable Commerce. See [Authentication Management](/docs/commerce-manager/authentication#account-management-realm). 
 
 In Studio, the OIDC account setting is enabled as part of the **Elastic Path** integration. See Elastic Path Integration. Once the connection to Elastic Path Composable Commerce is created, the OIDC account and password profile settings configured in Elastic Path Composable Commerce are available in Studio.
 
@@ -21,7 +21,7 @@ The following steps provide an overview of how to configure single sign-on for s
 3. Optionally, you can provide a password profile for your Open ID providers. 
 4. In **Client Redirect URIs**, you need to provide the client redirect URI for all the pages in your Studio storefront where you provide your shoppers with the ability to sign in to one of your Open ID providers. For example, checkout, orders, account pages, and so on.
 
-    For more information, see [Account Management Realm](/docs/commerce-cloud/authentication/single-sign-on/authentication).
+    For more information, see [Account Management Realm](/docs/commerce-manager/authentication).
 
 5. In Studio, configure an **Elastic Path** integration, ensuring that **Enable OIDC connect** is checked.
 6. Once you have created the **Elastic Path** integration, when you go to your storefront page, for example, your checkout page, a new **Sign in** field is enabled.

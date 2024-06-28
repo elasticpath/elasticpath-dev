@@ -27,7 +27,7 @@ Commerce Manager automatically assigns types to the products you create. This is
 Products have one of the following types:
 
 * `product` - A product is a standalone product.
-* `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products).
+* `parent` - A parent product is a product that has child products that have been built in Commerce Manager. See [Assigning Variations and Building Child Product](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products).
 * `child` - A child product is a product that is a variation of a parent product.
 * `bundle` - A bundle is a purchasable product, comprising two or more standalone products (in other words, `components`) to be sold together. See [Bundle Components and Options](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
 

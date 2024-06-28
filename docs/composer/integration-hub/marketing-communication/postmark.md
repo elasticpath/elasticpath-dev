@@ -51,7 +51,7 @@ When you are configuring the Postmark integration in Commerce Manager, you can s
 
 ![Postmark Integration in Commerce Manager](/assets/postmark-integration-commerce-manager.png)
 
-- **Key**: This is the event name that triggers the webhook events, for example, `order.paid`, `order.created`. For more information on the complete list of Commerce events, see [Observable Events](/docs/commerce-cloud/integrations/observable-events). For custom events, the names must contain the `custom.` prefix, for example, `custom.contact.us`. To know more about custom events, see [Publishing Custom Events in External Sources](#publishing-custom-events-in-external-sources).
+- **Key**: This is the event name that triggers the webhook events, for example, `order.paid`, `order.created`. For more information on the complete list of Commerce events, see [Observable Events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events). For custom events, the names must contain the `custom.` prefix, for example, `custom.contact.us`. To know more about custom events, see [Publishing Custom Events in External Sources](#publishing-custom-events-in-external-sources).
 - **Value**: The values are JSON objects. They can either be a single JSON object or an array of JSON objects. Here is an example:
 
 ```json 

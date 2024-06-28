@@ -1,5 +1,5 @@
 # GENERATED FILE - DO NOT EDIT 
-openapi: 3.1.0
+openapi: 3.0.3
 info:
   title: Product Experience Manager Introduction
   description: |
@@ -58,7 +58,7 @@ tags:
       In Commerce Manager, `standard` products are called **Product**.
       :::
 
-      #### Product Tags
+      ### Product Tags
 
       You can use product tags to store or assign a key word against a product or service that you sell in your store. The product tag can then be used to describe or label that product. Product tags represent similarities between products who do not share the same attributes. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on.
 
@@ -128,126 +128,139 @@ tags:
           - Playtend Birthday Game ($40)
           - Invaders Controller ($75)
        
-       #### Bundle Pricing
+      #### Bundle Pricing
        
-       Bundles can have:
+      Bundles can have:
        
        - Fixed pricing - enables you to assign a fixed price for all products in a bundle.
        - Automatic/cumulative pricing - the price of a bundle is generated automatically based on the sum of the component products.
        
-       The following table describes the capabilities and pricing that bundles can have.
+      The following table describes the capabilities and pricing that bundles can have.
 
-       | Pricing  | Requires SKU? | Price Book Entry | Capabilities |
-       |:----|:----- |:---- |:------ |
-       | **Fixed** - enables you to assign a fixed price for all the products in a bundle. The bundle can contain items that are available for individual purchase, however, when purchased in a fixed-price bundle, are offered at a discounted price.                                                                     | Yes           | Mandatory                         | **[Sale Pricing](#sale-pricing)** - defines reduced pricing for the total price of the bundle. **[Volume Pricing](#volume-pricing)** - offers promotional prices for products bought in bulk. [**Bundle Inventory Management**](#bundle-inventory) - bundle inventory can be tracked based on the availability of individual items in the bundle. In this case, the maximum number of bundles you can sell is equal to the number of the option that is least available. |
-       | **Automatic/cumulative** - the price of a bundle can be generated automatically based on the sum of the component products. Ensure that you set a price for each product within the bundle. If a component product does not have a price, the bundle price cannot be set and customers cannot purchase the bundle. | Optional      | Not available when SKU is present | **[Sale Pricing](#sale-pricing)** - define reduced pricing for the total price of the bundle. |
+      | Pricing  | Requires SKU? | Price Book Entry | Capabilities |
+      |:----|:----- |:---- |:------ |
+      | **Fixed** - enables you to assign a fixed price for all the products in a bundle. The bundle can contain items that are available for individual purchase, however, when purchased in a fixed-price bundle, are offered at a discounted price.                                                                     | Yes           | Mandatory                         | **[Sale Pricing](#sale-pricing)** - defines reduced pricing for the total price of the bundle. **[Volume Pricing](#volume-pricing)** - offers promotional prices for products bought in bulk. [**Bundle Inventory Management**](#bundle-inventory) - bundle inventory can be tracked based on the availability of individual items in the bundle. In this case, the maximum number of bundles you can sell is equal to the number of the option that is least available. |
+      | **Automatic/cumulative** - the price of a bundle can be generated automatically based on the sum of the component products. Ensure that you set a price for each product within the bundle. If a component product does not have a price, the bundle price cannot be set and customers cannot purchase the bundle. | Optional      | Not available when SKU is present | **[Sale Pricing](#sale-pricing)** - define reduced pricing for the total price of the bundle. |
        
-       #### Examples of Bundles
+      #### Examples of Bundles
 
-       The following table describes some examples of bundles.
+      The following table describes some examples of bundles.
        
-       | Bundle Type               | Pricing                     | Description        |
-       |:--------------------------|:----------------------------|:-------------------|
-       | **Pure bundles**          | Fixed                       | Products are available only as a bundle. |
-       | **Joint bundles**         | Fixed, Automatic/cumulative | A bundled price offered for two or more products. |
-       | **Gift sets**             | Fixed, Automatic/cumulative | A bundle created from a set of predefined items. |
-       | **Leader bundle**         | Automatic/cumulative        | A popular product is offered for a discount if you buy it with another less popular product. |
-       | **Mix and Match bundles** | Automatic/cumulative        | Bundle products are selected from a predetermined list of items that you can bundle together. |
-       | **Upsell bundles**        | Automatic/cumulative        | Discounted price for the current product when bought together with an accessory as a related item. |
+      | Bundle Type               | Pricing                     | Description        |
+      |:--------------------------|:----------------------------|:-------------------|
+      | **Pure bundles**          | Fixed                       | Products are available only as a bundle. |
+      | **Joint bundles**         | Fixed, Automatic/cumulative | A bundled price offered for two or more products. |
+      | **Gift sets**             | Fixed, Automatic/cumulative | A bundle created from a set of predefined items. |
+      | **Leader bundle**         | Automatic/cumulative        | A popular product is offered for a discount if you buy it with another less popular product. |
+      | **Mix and Match bundles** | Automatic/cumulative        | Bundle products are selected from a predetermined list of items that you can bundle together. |
+      | **Upsell bundles**        | Automatic/cumulative        | Discounted price for the current product when bought together with an accessory as a related item. |
        
-       For example, *Playtend Games* has a bundle that consists of a game console, the Playtend Invaders Game, and the Invaders Controller, and the bundle is available for purchase at $500. The individual price of the products in the bundle are $500 for the game console, $50 for the Playtend Invaders Game, and $75 for the Invaders Controller. This makes the total of the products $625 when bought individually. The price of the bundle is defined in the price books associated with the bundle SKU and the sale price depends on the pricing configuration for the SKU.
+      For example, *Playtend Games* has a bundle that consists of a game console, the Playtend Invaders Game, and the Invaders Controller, and the bundle is available for purchase at $500. The individual price of the products in the bundle are $500 for the game console, $50 for the Playtend Invaders Game, and $75 for the Invaders Controller. This makes the total of the products $625 when bought individually. The price of the bundle is defined in the price books associated with the bundle SKU and the sale price depends on the pricing configuration for the SKU.
        
-       #### Sale Pricing
+      #### Sale Pricing
 
-       You can set a sale price for an item within a bundle so that the product is sold at the sale price when sold as a part of the bundle. For example, if you have a bundle consisting of four items, you can apply a discounted price to an item within the bundle to get a bundle sales price. Both list and sale price (or was/is prices) are available in the catalog response, enabling you to display slash pricing on your storefront, depending on your requirements.
+      You can set a sale price for an item within a bundle so that the product is sold at the sale price when sold as a part of the bundle. For example, if you have a bundle consisting of four items, you can apply a discounted price to an item within the bundle to get a bundle sales price. Both list and sale price (or was/is prices) are available in the catalog response, enabling you to display slash pricing on your storefront, depending on your requirements.
        
-       | Product   | Regular product price | Bundle sales price |
-       |:----------|:----------------------|:-------------------|
-       | Product A | $100                  | $80                |
-       | Product B | $50                   | $50                |
-       | Product C | $30                   | $30                |
-       | Product D | $130                  | $130               |
-       | **Total** | **$310**              | **$290**           |
+      | Product   | Regular product price | Bundle sales price |
+      |:----------|:----------------------|:-------------------|
+      | Product A | $100                  | $80                |
+      | Product B | $50                   | $50                |
+      | Product C | $30                   | $30                |
+      | Product D | $130                  | $130               |
+      | **Total** | **$310**              | **$290**           |
        
-       #### Volume Pricing
+      #### Volume Pricing
 
-       You can configure volume pricing for minimum quantities of products. When a customer adds sufficient quantity of an item and meets the minimum required quantity for different pricing, all products with that item SKU are discounted in the cart. You can define the price range for different quantities of different items, as explained in the following example.
+      You can configure volume pricing for minimum quantities of products. When a customer adds sufficient quantity of an item and meets the minimum required quantity for different pricing, all products with that item SKU are discounted in the cart. You can define the price range for different quantities of different items, as explained in the following example.
        
-       | Quantity | Price/Each |
-       |:---------|:-----------|
-       | 1-5      | $10.50     |
-       | 6-10     | $10.00     |
-       | 11-20    | $9.50      |
-       | 21-50    | $8.50      |
-       | 51+      | $7.90      |
+      | Quantity | Price/Each |
+      |:---------|:-----------|
+      | 1-5      | $10.50     |
+      | 6-10     | $10.00     |
+      | 11-20    | $9.50      |
+      | 21-50    | $8.50      |
+      | 51+      | $7.90      |
        
-       #### Dynamic Bundles
+      #### Dynamic Bundles
        
-       Dynamic bundles allow your shoppers to choose their own options in a bundle. For example, you can enable a shopper to select 0 or more product options from a list of 10, giving your shoppers greater flexibility when selecting products in your store front. When minimum is 0, it means that component product lists are optional for your shoppers. For example, when purchasing a monitor, you might want to offer additional optional items that a shopper can select like monitor lamps, extendable arms, or screen wipes.
+      A dynamic bundle allows you to create a bundle where shoppers can choose products from a list of options. For example, a shopper can select 0 or more products from a list of 10. You can also configure some products as default options. A shopper can either select the bundle with the default products or choose products from all the components. Shoppers must either select products for all components or use the default options for all components; they cannot choose products for only one component and leave the others with default options.
        
-       You can do this by configuring minimum and/or maximum values for the number of product options in a component that your shoppers can select. For example, you can offer a promotion where you sell 4 books for a single price and your customers can select 4 books from a list of 10. When you create the bundle, add all ten products to the bundle and specify that the minimum selection required is 4, and the maximum selection allowed is 4.
+      For example, a shopper can select 0 or more product options from a list of 10. When purchasing a monitor, you might want to offer additional optional items that a shopper can select like monitor lamps, extendable arms, or screen wipes.
        
-       :::caution
+      You can do this by configuring minimum and/or maximum values for the product options in a component. For example, to sell 4 books for a fixed price from a list of 10, set both minimum and maximum selections to 4.
        
-       Your shoppers cannot change the quantities of a product. They must purchase the quantity of products that you have specified when you created your components and options.
+       When minimum is 0, it means that component product lists are optional for your shoppers.
        
-       :::
+      If you do not specify any minimum or maximum values for the product options in your components, your shoppers can select any combination of product options.
        
-       If you do not specify any minimum or maximum values for the product options in your components, your shoppers can select any combination of product options.
+      To configure default product options, add `"default": true` to all the product options in the bundle that you want to be the defaults. Each component in the bundle must have a default product option. For example, you may have some products in a bundle that are performing better than others. For the products that are not performing as well, you can promote them above the rest by configuring a default product option. Moreover, you may have a default set of products that make sense for a given context. For example, when adding a new fragrance to a fragrance bundle, you may want the new addition to appear as the default option.
+
+      :::caution
        
-       Bundles have a `bundle_configuration` which describe the options selected. Once your bundles are published in a catalog, a shopper can select the products they want. You can use Get a product in a catalog release to check a `bundle_configuration`. You can use the configure a shopper bundle endpoint to store a shopper's selections. The response from the configure a shopper bundle endpoint updates the `bundle_configuration` with the product options a shopper selects. In your storefront, you can display this as a summary of the product options a shopper has selected.
+      Your shoppers cannot change the quantities of a product. They must purchase the quantity of products that you have specified when you created your components and options.
        
-       #### Creating Dynamic Bundles: An Overview
+      :::
        
-       The following steps are an overview of how to use dynamic bundles.
+      #### Bundle configuration
        
-       1. Create your products using [**create a product**](/docs/api/pxm/products/create-product).
-       1. Create a bundle using [**create a bundle**](/docs/api/pxm/products/create-product).
-       1. Specify minimum and/or maximum values for the components in the bundle, depending on how many options you want your shoppers to be able to select.
-       1. Dynamic bundles are displayed in your catalog using `publish a catalog`.
-       1. The product selections a shopper makes are stored in the `configure a shopper bundle`.
-       1. The shoppers product selections from the `configure a shopper bundle` endpoint are added to a cart, for example, using the `add a product to a cart` endpoint.
-       1. When a cart is checked out, the options a shopper selected are added to the order. 
+      Dynamic bundles have a `bundle_configuration` which describe the options selected. 
        
-       #### Bundles of Bundles
+      1. Once your bundles are [published in a catalog](/docs/api/pxm/catalog/publish-release), a shopper can select the products they want. 
+      1. Use [Get a product in a catalog release](/docs/api/pxm/catalog/get-by-context-all-products) to check a `bundle_configuration`. 
+      1. Use the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint to store a shopper's selections. The response from the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint updates the `bundle_configuration` with the product options a shopper selects. In your storefront, you can display this as a summary of the product options a shopper has selected.
        
-       Your bundle can consist of child bundles. This is useful if you have a base product that is made-up of child products and the pricing of the base product changes, depending on the child products a customer chooses. This can be represented by creating a parent bundle that is made-up of other child bundles.
+      #### Creating Dynamic Bundles: An Overview
        
-       ![Bundle of bundles](/assets/bundle-of-bundles.png)
+      The following steps are an overview of how to use dynamic bundles.
        
-       For example, you may sell sofas. For each sofa that you sell, your customers can choose a fabric, a sofa size, and a leg color. The sofas are the parent bundle. The sofa size, fabric, and leg color are the child bundles. If a customer chooses a large sofa, then the cost of the fabric increases.
+      1. Create your products using [**create a product**](/docs/api/pxm/products/create-product).
+      1. Create a bundle using [**create a bundle**](/docs/api/pxm/products/create-product).
+          1. Specify minimum and/or maximum values for the number of product options that can be selected within the bundle. For example, if you want the shopper to select exactly 4 out of 10 options, set both the minimum and maximum values to 4 for each of the 10 product options.
+          1. For each product option in the bundle, specify if it is a default option by adding `"default": true` to the product options that you want to be pre-selected for the shopper.
+      1. Publish the bundle to your catalog using the [Publish a catalog](/docs/api/pxm/catalog/publish-release) endpoint so you can display the products to your shoppers in your storefront.
+      1. When a shopper interacts with the bundle on your storefront, they can select the products they want from the list of options. Use the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint to capture the shoppers selections. This updates the `bundle_configuration` with the product options chosen by a shopper.
+      1. Once a shopper has configured their bundle, use the add a product to a cart endpoint to add the selected bundle to the shopper’s cart.
+      1. When the shopper proceeds to checkout, the selected product options from the bundle are included in the order.
        
-       ![sofa bundle](/assets/sofa-bundle.png)
+      #### Bundles of Bundles
        
-       You create a bundle of bundles by adding a child bundle as an option of a component of another bundle.
+      Your bundle can consist of child bundles. This is useful if you have a base product that is made-up of child products and the pricing of the base product changes, depending on the child products a customer chooses. This can be represented by creating a parent bundle that is made-up of other child bundles.
        
-       - You cannot have more than one level of child bundles. In other words, a child bundle cannot have a child bundle as a component.
-       - A parent bundle can contain both bundle and product components.
-       - Both parent and child bundles can be either [**fixed**](#bundles) or [**dynamic**](#dynamic-bundles) in a bundle of bundles.
+      ![Bundle of bundles](/assets/bundle-of-bundles.png)
        
-       #### Adding Products From Bundles of Bundles to Carts
+      For example, you may sell sofas. For each sofa that you sell, your customers can choose a fabric, a sofa size, and a leg color. The sofas are the parent bundle. The sofa size, fabric, and leg color are the child bundles. If a customer chooses a large sofa, then the cost of the fabric increases.
        
-       When using bundles of bundles, only products from child bundles should be added to a cart. This is because if you add a parent bundle to a cart and call the cart, the cart returns information about the parent bundle and the name of the child bundle, but no child bundle components are returned.
+      ![sofa bundle](/assets/sofa-bundle.png)
        
-       When designing your storefront, you must only allow child bundles to be added to carts.
+      You create a bundle of bundles by adding a child bundle as an option of a component of another bundle.
        
-       #### Creating bundles of bundles: an overview
+      - You cannot have more than one level of child bundles. In other words, a child bundle cannot have a child bundle as a component.
+      - A parent bundle can contain both bundle and product components.
+      - Both parent and child bundles can be either [**fixed**](#bundles) or [**dynamic**](#dynamic-bundles) in a bundle of bundles.
        
-       To create a bundle of bundles, simply add a bundle as a component to another bundle. 
+      #### Adding Products From Bundles of Bundles to Carts
        
-       1. Create your products using [**create a product**](/docs/api/pxm/products/create-product).
-       1. Create all your child bundles using [**create a bundle**](/docs/api/pxm/products/create-product).
-       1. [**Create a parent bundle**](/docs/api/pxm/products/create-product) and specify the product ID of your child bundle as an option of a component in your bundle. You cannot have more than 1500 options in a bundle.
+      When using bundles of bundles, only products from child bundles should be added to a cart. This is because if you add a parent bundle to a cart and call the cart, the cart returns information about the parent bundle and the name of the child bundle, but no child bundle components are returned.
        
-       #### Bundle inventory
+      When designing your storefront, you must only allow child bundles to be added to carts.
        
-       The Inventory service allows you and your business to keep track of inventory, including a transaction-historic log.
+      #### Creating bundles of bundles: an overview
        
-       You can track the number of bundles by SKU, if you set the number of bundles available in store. Bundle inventory can be tracked based on the availability of individual items in the bundle. In this case, the maximum number of bundles you can sell is equal to the number of the option that is least available.
+      To create a bundle of bundles, simply add a bundle as a component to another bundle. 
        
-       You cannot track the inventory of a bundle without a SKU. However, you can track the inventory based on the availability of individual items.
+      1. Create your products using [**create a product**](/docs/api/pxm/products/create-product).
+      1. Create all your child bundles using [**create a bundle**](/docs/api/pxm/products/create-product).
+      1. [**Create a parent bundle**](/docs/api/pxm/products/create-product) and specify the product ID of your child bundle as an option of a component in your bundle. You cannot have more than 1500 options in a bundle.
        
-       Whether your bundle has a SKU or is SKU-less depends on your bundle's pricing. See [**Bundle Pricing**](#bundle-pricing).
+      #### Bundle inventory
+       
+      The Inventory service allows you and your business to keep track of inventory, including a transaction-historic log.
+       
+      You can track the number of bundles by SKU, if you set the number of bundles available in store. Bundle inventory can be tracked based on the availability of individual items in the bundle. In this case, the maximum number of bundles you can sell is equal to the number of the option that is least available.
+       
+      You cannot track the inventory of a bundle without a SKU. However, you can track the inventory based on the availability of individual items.
+       
+      Whether your bundle has a SKU or is SKU-less depends on your bundle's pricing. See [**Bundle Pricing**](#bundle-pricing).
   - name: Product Tags
     description: |
       You can use product tags to store or assign a key word against a product or service that you sell in your store. The product tag can then be used to describe or label that product. Product tags represent similarities between products who do not share the same attributes. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on. For example, a 3rd party manufacturer may sell cases for Apple iPads whose products would not be returned when filtering on the **Apple** brand. However, merchandizers can tag the cases with **Apple** so that the cases are returned along with other **Apple** products.
@@ -323,7 +336,7 @@ tags:
 
       The `variation_matrix` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variation_matrix` can then be added to your catalogs.
 
-      By default, variations and variation options are sorted randomly. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
+      The order of the variations in the `variation_matrix` is the order of the variations in the array when the variations were linked to the product. For example, the first variation in the `variation_matrix` corresponds to the first variation in the array, and so on. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
 
       Add the `sort_order` attribute to the body of your request and specify a `sort_order` value. A `sort_order` value must be a number. You can specify any numbers that you want.
 
@@ -373,14 +386,14 @@ tags:
     description: |
       Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details.
 
-      You can do this using [Files API](/docs/api/pxm/files/files-service-api).
+      You can do this using [Files API](/docs/api/pxm/files).
 
       Once you have created your files, you associate files with your products using the [Create Product-File Relationships API](/docs/api/pxm/products/create-product-file-relationships).
   - name: Product Image Relationships
     description: |
       Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details.
 
-      You can do this using [Files API](/docs/api/pxm/files/files-service-api).
+      You can do this using [Files API](/docs/api/pxm/files).
 
       Once you have created your files, you associate files with your products using the [Create Product Main Image Relationships API](/docs/api/pxm/products/create-product-main-image-relationships).
   - name: Product Import/Bulk Update
@@ -800,7 +813,7 @@ paths:
 
         With Product Experience Manager, you can use the products API to create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. 
 
-        See [**Bundles**](#bundles).
+        See [**Bundles**](/docs/api/pxm/products/products#bundles).
       operationId: createProduct
       tags:
         - Products
@@ -1293,10 +1306,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-product-nodes:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2313,7 +2326,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-3'
+                $ref: '#/components/schemas/single_hierarchy'
               examples:
                 created-hierarchy:
                   $ref: '#/components/examples/hierarchy_created'
@@ -2322,6 +2335,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     get:
+      operationId: getHierarchy
       parameters:
         - $ref: '#/components/parameters/page_offset'
         - $ref: '#/components/parameters/page_limit'
@@ -2335,10 +2349,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-3'
+                $ref: '#/components/schemas/multi_hierarchy'
               examples:
                 list-hierarchies:
-                  $ref: '#/components/examples/multi-3'
+                  $ref: '#/components/examples/resp_multi_hierarchy'
         '400':
           $ref: '#/components/responses/bad_request'
         '500':
@@ -2358,7 +2372,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-3'
+                $ref: '#/components/schemas/single_hierarchy'
               examples:
                 get-hierarchy:
                   $ref: '#/components/examples/hierarchy_created'
@@ -2369,6 +2383,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     put:
+      operationId: updateHierarchy
       parameters:
         - $ref: '#/components/parameters/hierarchy_id'
       summary: Update a hierarchy
@@ -2390,7 +2405,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-3'
+                $ref: '#/components/schemas/single_hierarchy'
               examples:
                 updated-hierarchy:
                   $ref: '#/components/examples/hierarchy_updated'
@@ -2403,6 +2418,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     delete:
+      operationId: deleteHierarchy
       parameters:
         - $ref: '#/components/parameters/hierarchy_id'
       summary: Delete a hierarchy
@@ -2477,7 +2493,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 created-node:
                   $ref: '#/components/examples/node_created'
@@ -2487,6 +2503,32 @@ paths:
           $ref: '#/components/responses/not_found'
         '422':
           $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/hierarchy_id'
+        - $ref: '#/components/parameters/page_offset'
+        - $ref: '#/components/parameters/page_limit'
+      summary: Get all nodes in a hierarchy
+      description: A fully paginated view of all nodes in a hierarchy regardless of depth.
+      operationId: getAllNodesInHierarchy
+      tags:
+        - Hierarchies
+      responses:
+        '200':
+          description: Successfully returns the node's children
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multi_nodes'
+              examples:
+                get-all-nodes:
+                  $ref: '#/components/examples/resp_multi_nodes'
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '404':
+          $ref: '#/components/responses/not_found'
         '500':
           $ref: '#/components/responses/internal'
   /pcm/hierarchies/{hierarchyID}/nodes/{nodeID}:
@@ -2505,7 +2547,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 get-node:
                   $ref: '#/components/examples/node_created'
@@ -2574,7 +2616,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 updated-node:
                   $ref: '#/components/examples/node_updated'
@@ -2621,10 +2663,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-hierarchy-children:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2676,7 +2718,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 set-node-children:
                   $ref: '#/components/examples/node_updated'
@@ -2706,10 +2748,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-2'
+                $ref: '#/components/schemas/multi_nodes'
               examples:
                 get-node-children:
-                  $ref: '#/components/examples/multi-2'
+                  $ref: '#/components/examples/resp_multi_nodes'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2791,7 +2833,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 created-node-product-relationships:
                   $ref: '#/components/examples/node_updated'
@@ -2825,7 +2867,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-2'
+                $ref: '#/components/schemas/single_node'
               examples:
                 created-node-product-relationships:
                   $ref: '#/components/examples/node_updated'
@@ -2840,23 +2882,11 @@ paths:
       parameters:
         - $ref: '#/components/parameters/hierarchy_id'
         - $ref: '#/components/parameters/node_id'
-        - $ref: '#/components/parameters/filternodeproducts'
         - $ref: '#/components/parameters/page_offset'
         - $ref: '#/components/parameters/page_limit'
       summary: Get a node's products
       description: |
         Returns the products associated with the specified hierarchy node from a published catalog. Products must be in a live status. If the products have been curated using the update a hierarchy node endpoint, then the products are returned in the order specified in the `curated_products` attribute in the body of the update a hierarchy node request. A product that is curated has the "curated_product": true attribute displayed.
-         
-         ### Filtering
-         
-         Many Commerce API endpoints support filtering. The general syntax is described [**here**](https://elasticpath.dev/docs/commerce-cloud/api-overview/filtering).
-         
-           The following operators and attributes are available when filtering on this endpoint.
-         
-           | Operator | Description | Supported Attributes | Example |
-           |:--- |:--- |:--- |:--- |
-           | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-           | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
       operationId: getNodeProducts
       tags:
         - Hierarchies
@@ -2939,11 +2969,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/multi-4'
+                $ref: '#/components/schemas/multi_tag'
               examples:
                 list-tags:
                   summary: Get all tags
-                  $ref: '#/components/examples/multi-4'
+                  $ref: '#/components/examples/resp_multi_tags'
         '400':
           $ref: '#/components/responses/bad_request'
         '404':
@@ -2952,7 +2982,7 @@ paths:
           $ref: '#/components/responses/unprocessable_entity'
         '500':
           $ref: '#/components/responses/internal'
-  /pcm/tag/{tagID}:
+  /pcm/tags/{tagID}:
     get:
       summary: Get a Product Tag
       description: Retrieves a product tag for a store. A store can view the tags associated with the organization to which the store belongs. However, an organization can only view the tags associated with the organization.
@@ -2967,13 +2997,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/single-4'
+                $ref: '#/components/schemas/single_tag'
               examples:
                 get-tag:
                   summary: Get a tag
-                  $ref: '#/components/examples/single'
+                  $ref: '#/components/examples/resp_single_tag'
         '400':
           $ref: '#/components/responses/bad_request'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '422':
+          $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+  /pcm/custom_relationships:
+    post:
+      summary: Create a custom relationship
+      description: Create a custom relationship
+      operationId: createCustomRelationship
+      tags:
+        - Custom Relationships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_custom_relationship'
+            examples:
+              create-custom-relationship:
+                $ref: '#/components/examples/create_custom_relationship'
+        required: true
+      responses:
+        '201':
+          description: Returns a created custom relationship with the following attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/single_custom_relationship'
+              examples:
+                created-custom-relationship:
+                  $ref: '#/components/examples/custom_relationship_created'
+        '422':
+          $ref: '#/components/responses/unprocessable_entity'
+        '500':
+          $ref: '#/components/responses/internal'
+  /pcm/custom_relationships/{customRelationshipSlug}:
+    put:
+      operationId: updateCustomRelationship
+      parameters:
+        - $ref: '#/components/parameters/custom_relationship_slug'
+      summary: Update a custom relationship
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the custom relationship is not updated.
+      tags:
+        - Custom Relationships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_custom_relationship'
+            examples:
+              update-custom-relationship:
+                $ref: '#/components/examples/update_custom_relationship'
+        required: true
+      responses:
+        '200':
+          description: Successfully returns the updated custom relationship
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/single_custom_relationship'
+              examples:
+                updated-custom-relationship:
+                  $ref: '#/components/examples/custom_relationship_updated'
+        '403':
+          $ref: '#/components/responses/forbidden'
         '404':
           $ref: '#/components/responses/not_found'
         '422':
@@ -2992,7 +3088,6 @@ components:
         id:
           description: A unique identifier generated when a job is created.
           type: string
-          format: uuid
         type:
           description: This represents the type of resource object being returned. Always `pim-job`.
           type: string
@@ -3002,21 +3097,27 @@ components:
           type: object
           properties:
             started_at:
-              type:
-                - string
-                - 'null'
               description: The date and time a job is started.
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+              nullable: true
             completed_at:
-              type:
-                - string
-                - 'null'
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+              nullable: true
               description: The date and time a job is completed.
             created_at:
               type: string
               description: The date and time a job is created.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             updated_at:
               type: string
               description: The date and time a job is updated.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             type:
               type: string
               description: |
@@ -3053,9 +3154,8 @@ components:
               type: string
               description: Applies to `hierarchy-duplicate` job types. The duplicated hierarchy ID.
             file_locations:
-              type:
-                - array
-                - 'null'
+              type: array
+              nullable: true
               description: If the job type is `product_export`, a link to the file is created when running a job.
               items:
                 type: string
@@ -3137,7 +3237,6 @@ components:
               id:
                 description: A unique identifier for a job error generated when a job error is created.
                 type: string
-                format: uuid
               attributes:
                 type: object
                 properties:
@@ -3187,7 +3286,6 @@ components:
             type: array
             items:
               type: string
-              format: uuid
         exclude:
           description: An array of option IDs to exclude when child products are built. Each combination consists of a nested array of option IDs from one or more variations. Combinations of option IDs in the nested arrays must come from different variations.
           type: array
@@ -3195,7 +3293,6 @@ components:
             type: array
             items:
               type: string
-              format: uuid
     product_bundle_components:
       type: object
       description: With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together. You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity. See [Bundles](/docs/api/pxm/products/products#bundles).
@@ -3224,6 +3321,9 @@ components:
                 sort_order:
                   type: integer
                   description: The sort order of the options. The `create a bundle` and `update a bundle` endpoints do not sort the options. You can use the `sort_order` attribute when programming your storefront to display the options in the order that you want.
+                default:
+                  description: Whether the product option is a default option in a bundle. Shoppers can select a bundle that specifies a default list of product options. See [Dynamic Bundles](/docs/api/pxm/products/products#dynamic-bundles).
+                  type: boolean
           min:
             type: integer
             description: The minimum number of product options a shopper can select from this component.
@@ -3239,7 +3339,6 @@ components:
         id:
           description: A unique product ID that is generated when you create the product.
           type: string
-          format: uuid
         type:
           description: This represents the type of resource object being returned. Always `product`.
           type: string
@@ -3290,6 +3389,16 @@ components:
               type: array
               items:
                 type: string
+            extensions:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  oneOf:
+                    - type: string
+                      nullable: true
+                    - type: integer
+                    - type: boolean
             custom_inputs:
               $ref: '#/components/schemas/product_custom_inputs'
             build_rules:
@@ -3302,11 +3411,13 @@ components:
             created_at:
               description: The date and time a product is created.
               type: string
-              example: '2023-09-28T10:43:41.72Z'
+              example: '2020-09-22T09:00:00'
+              format: date-time
             updated_at:
               description: The date and time a product is updated.
               type: string
-              example: '2023-09-28T10:43:41.72Z'
+              example: '2020-09-22T09:00:00'
+              format: date-time
             owner:
               description: The resource owner, either `organization` or `store`.
               type: string
@@ -3321,7 +3432,6 @@ components:
                 properties:
                   id:
                     type: string
-                    format: uuid
                     description: A unique ID generated when a variation is created.
                   name:
                     type: string
@@ -3334,7 +3444,6 @@ components:
                       properties:
                         id:
                           type: string
-                          format: uuid
                           description: A unique ID that is generated an option is created.
                         name:
                           type: string
@@ -3359,7 +3468,7 @@ components:
                   - bundle
                   - standard
             variation_matrix:
-              description: The child products defined for a product. If no variations are defined for a product, the `variation_matrix` is empty.
+              description: The child products defined for a product. The order of the variations in the `variation_matrix` is the order of the variations in the array when the variations were linked to the product. For example, the first variation in the `variation_matrix` corresponds to the first variation in the array, and so on. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. See [Sorting the Order of Variations and Options](/docs/api/pxm/products/variations#sorting-the-order-of-variations-and-options) If no variations are defined for a product, the `variation_matrix` is empty.
               type: object
         relationships:
           description: Relationships are established between different product entities. For example, a `bundle` product and a `child` product are related to a `parent` product, as both are associated with it.
@@ -3368,28 +3477,26 @@ components:
             type: object
             properties:
               data:
-                type:
-                  - array
-                  - 'null'
-                  - object
-                properties:
-                  id:
-                    description: A unique identifier for a resource.
-                    type: string
-                    format: uuid
-                  type:
-                    description: This represents the type of resource object being returned.
-                    type: string
-                items:
-                  type: object
-                  properties:
-                    id:
-                      description: A unique identifier for a resource.
-                      type: string
-                      format: uuid
-                    type:
-                      description: This represents the type of resource object being returned.
-                      type: string
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          description: A unique identifier for a resource.
+                          type: string
+                        type:
+                          description: This represents the type of resource object being returned.
+                          type: string
+                  - type: object
+                    nullable: true
+                    properties:
+                      id:
+                        description: A unique identifier for a resource.
+                        type: string
+                      type:
+                        description: This represents the type of resource object being returned.
+                        type: string
               links:
                 description: |
                   Links are used to allow you to move between requests. Single entities use a `self` parameter with a link to that specific resource. Sometimes, there are not enough entities for a project to fill multiple pages. In this situation, we return some defaults.
@@ -3515,6 +3622,24 @@ components:
               example: product
             attributes:
               $ref: '#/components/schemas/product_attributes'
+            relationships:
+              description: Relationships are established between different product entities.
+              type: object
+              properties:
+                variations:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            description: A unique identifier for a resource.
+                            type: string
+                          type:
+                            description: This represents the type of resource object being returned.
+                            type: string
     single_product_response:
       type: object
       properties:
@@ -3571,7 +3696,6 @@ components:
           items:
             description: A list of product IDs whose products you want to curate.
             type: string
-            format: uuid
         locales:
           description: Product Experience Manager supports localization of hierarchies and nodes. If you store supports multiple languages, you can localize hierarchy and node names and descriptions.
           type: object
@@ -3605,6 +3729,25 @@ components:
                 related:
                   description: A link to a related resource.
                   type: string
+        parent:
+          description: The parent node related to the resource
+          type: object
+          properties:
+            data:
+              description: The parent node
+              type: object
+              required:
+                - id
+                - type
+              properties:
+                type:
+                  description: This represents the type of resource object being returned. Always `node`.
+                  type: string
+                  enum:
+                    - node
+                id:
+                  description: The unique identifier of a node.
+                  type: string
         products:
           type: object
           description: The products related to the resource.
@@ -3620,47 +3763,46 @@ components:
                 related:
                   description: A link to a related resource.
                   type: string
-    single-2:
+    node:
       type: object
       properties:
-        data:
+        id:
+          description: The unique identifier of a node.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `node`.
+          type: string
+          enum:
+            - node
+        attributes:
+          $ref: '#/components/schemas/attributes'
+        relationships:
+          $ref: '#/components/schemas/relationships'
+        meta:
           type: object
           properties:
-            id:
-              description: The unique identifier of a node.
+            sort_order:
+              description: The sort order value. The node with the highest value of `sort_order` is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`. See [Sorting Nodes in a hierarchy](/docs/api/pxm/products/create-node#sorting-nodes-in-a-hierarchy).
+              type: integer
+            created_at:
+              description: The date and time a node is created.
               type: string
-              format: uuid
-              required: true
-            type:
-              description: This represents the type of resource object being returned. Always `node`.
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            updated_at:
+              description: The date and time a node was updated.
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            parent_name:
+              description: The name of the parent of the node if one exists.
+              type: string
+            owner:
+              description: The node owner, either `organization` or `store`.
               type: string
               enum:
-                - node
-              required: true
-            attributes:
-              $ref: '#/components/schemas/attributes'
-            relationships:
-              $ref: '#/components/schemas/relationships'
-            meta:
-              type: object
-              properties:
-                sort_order:
-                  description: The sort order value. The node with the highest value of `sort_order` is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`. See [Sorting Nodes in a hierarchy](/docs/api/pxm/products/create-node#sorting-nodes-in-a-hierarchy).
-                  type: integer
-                created_at:
-                  description: The date and time a node is created.
-                  type: string
-                  format: date-time
-                updated_at:
-                  description: The date and time a node was updated.
-                  type: string
-                  format: date-time
-                owner:
-                  description: The node owner, either `organization` or `store`.
-                  type: string
-                  enum:
-                    - store
-                    - organization
+                - store
+                - organization
     multi_meta:
       type: object
       properties:
@@ -3672,7 +3814,7 @@ components:
               description: Total number of results for the entire collection.
               type: integer
               example: 30
-              min: 0
+              minimum: 0
     multi_links:
       type: object
       description: Links are used to allow you to move between requests.
@@ -3693,25 +3835,15 @@ components:
           description: This is `null` if you on the first page.
           type: string
           example: /pcm/hierarchies?page[offset]=8&page[limit]=10
-    multi-2:
+    multi_nodes:
       type: object
       properties:
         data:
           description: An array of nodes.
           type: array
           items:
-            $ref: '#/components/schemas/single-2'
+            $ref: '#/components/schemas/node'
         meta:
-          type: object
-          properties:
-            results:
-              description: Contains the results for the entire collection.
-              type: object
-              properties:
-                total:
-                  description: Total number of results for the entire collection.
-                  type: integer
-                  example: 2
           $ref: '#/components/schemas/multi_meta'
         links:
           $ref: '#/components/schemas/multi_links'
@@ -3724,10 +3856,8 @@ components:
             type: object
             properties:
               id:
-                name: A unique identifier for a template generated when a template is created.
+                description: A unique identifier for a template generated when a template is created.
                 type: string
-                format: uuid
-                description: The unique identifier of a flow
               type:
                 description: This represents the type of resource object being returned. Always `template`.
                 type: string
@@ -3743,7 +3873,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The unique identifier of a template.
               type:
                 type: string
@@ -3760,7 +3889,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The unique identifier of a product component generated when a product is created.
               type:
                 type: string
@@ -3777,7 +3905,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The unique identifier of the new file.
               type:
                 type: string
@@ -3795,7 +3922,6 @@ components:
               id:
                 description: A unique identifier for a file generated when a file is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource being returned. Always `file`.
                 type: string
@@ -3821,7 +3947,6 @@ components:
               id:
                 description: A unique identifier generated when a variation is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation`.
                 type: string
@@ -3833,6 +3958,8 @@ components:
                   created_at:
                     description: The date and time a resource is created.
                     type: string
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
     product_variations_request:
       type: object
       properties:
@@ -3843,7 +3970,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The ID of the product variation.
               type:
                 type: string
@@ -3861,7 +3987,6 @@ components:
               id:
                 description: A unique identifier for the image file generated automatically when a file is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `file`.
                 type: string
@@ -3875,7 +4000,6 @@ components:
             properties:
               id:
                 type: string
-                format: uuid
                 description: The ID of the new image file.
                 example: 00000000-0000-0000-0000-000000000000
               type:
@@ -3890,7 +4014,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               description: The ID of the image file.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -3909,7 +4032,6 @@ components:
               id:
                 description: A unique identifier for a variation.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation`.
                 type: string
@@ -3936,7 +4058,6 @@ components:
                       properties:
                         id:
                           type: string
-                          format: uuid
                           description: A unique ID that is generated when an option is created.
                         name:
                           type: string
@@ -3947,9 +4068,16 @@ components:
                         created_at:
                           type: string
                           description: The date and time an option is created.
+                          example: '2020-09-22T09:00:00'
+                          format: date-time
                         updated_at:
                           type: string
                           description: The date and time an option is updated.
+                          example: '2020-09-22T09:00:00'
+                          format: date-time
+                        sort_order:
+                          description: The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variation options in the order that you want. The variation with the highest value of `sort_order` is displayed first. For example, a variation with a `sort_order` value of 3 appears before a variation with a `sort_order` value of 2. You can specify any numbers that you want. You can use 1, 2, 3, or 100, 90, 80, including, zero or negative numbers. You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
+                          type: integer
                   owner:
                     type: string
                     description: The owner of the resource, either `organization` or `store`.
@@ -3959,9 +4087,13 @@ components:
                   created_at:
                     type: string
                     description: The date and time a variation is created.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
                   updated_at:
                     type: string
                     description: The date and time a variation is updated.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
         meta:
           type: object
           properties:
@@ -4022,7 +4154,6 @@ components:
             id:
               description: A unique identifier generated when a variation is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation`.
               type: string
@@ -4050,9 +4181,13 @@ components:
                 created_at:
                   type: string
                   description: The date and time a variation is created.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
                 updated_at:
                   type: string
                   description: The date and time a variation is updated.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
     single_variation:
       type: object
       required:
@@ -4069,7 +4204,6 @@ components:
             id:
               description: A unique identifier for a variation.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation`.
               type: string
@@ -4097,7 +4231,6 @@ components:
                     properties:
                       id:
                         type: string
-                        format: uuid
                         description: A unique ID that is generated an option is created.
                       name:
                         type: string
@@ -4108,9 +4241,16 @@ components:
                       created_at:
                         type: string
                         description: The date and time an option is created.
+                        example: '2020-09-22T09:00:00'
+                        format: date-time
                       updated_at:
                         type: string
                         description: The date and time an option is updated.
+                        example: '2020-09-22T09:00:00'
+                        format: date-time
+                      sort_order:
+                        description: The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variation options in the order that you want. The variation with the highest value of `sort_order` is displayed first. For example, a variation with a `sort_order` value of 3 appears before a variation with a `sort_order` value of 2. You can specify any numbers that you want. You can use 1, 2, 3, or 100, 90, 80, including, zero or negative numbers. You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
+                        type: integer
                 owner:
                   description: The owner of the resource, either `organization` or `store`.
                   type: string
@@ -4172,7 +4312,6 @@ components:
               id:
                 description: A unique identifier generated when an option is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation-option`.
                 type: string
@@ -4203,9 +4342,13 @@ components:
                   created_at:
                     type: string
                     description: The date and time an option is created.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
                   updated_at:
                     type: string
                     description: The date and time an option is updated.
+                    example: '2020-09-22T09:00:00'
+                    format: date-time
         meta:
           type: object
           properties:
@@ -4258,7 +4401,7 @@ components:
     created_option:
       type: object
       required:
-        - dta
+        - data
       properties:
         data:
           type: object
@@ -4269,7 +4412,6 @@ components:
             id:
               description: A unique identifier that is generated when an option is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-option`.
               type: string
@@ -4300,9 +4442,13 @@ components:
                 created_at:
                   type: string
                   description: The date and time an option is created.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
                 updated_at:
                   type: string
                   description: The date and time an option is updated.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
     single_option:
       type: object
       required:
@@ -4319,7 +4465,6 @@ components:
             id:
               description: The unique identifier generated when an option is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-option`.
               type: string
@@ -4351,9 +4496,13 @@ components:
                 created_at:
                   type: string
                   description: The date and time an option is created.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
                 updated_at:
                   type: string
                   description: The date and time an option is updated.
+                  example: '2020-09-22T09:00:00'
+                  format: date-time
     update_option:
       type: object
       required:
@@ -4408,7 +4557,6 @@ components:
               id:
                 description: A unique identifier for a modifier that is generated automatically when a modifier is created.
                 type: string
-                format: uuid
               type:
                 description: This represents the type of resource object being returned. Always `product-variation-modifier'.
                 type: string
@@ -4480,6 +4628,15 @@ components:
                   reference_name:
                     description: The name of the modifier.
                     type: string
+              meta:
+                type: object
+                properties:
+                  owner:
+                    description: The owner of a resource, either `organization` or `store`.
+                    type: string
+                    enum:
+                      - store
+                      - organization
         meta:
           type: object
           properties:
@@ -4585,7 +4742,6 @@ components:
             id:
               description: A unique identifier for a modifier that is generated automatically when a modifier is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-modifier'.
               type: string
@@ -4675,7 +4831,6 @@ components:
             id:
               description: A unique identifier for a modifier that is generated automatically when a modifier is created.
               type: string
-              format: uuid
             type:
               description: This represents the type of resource object being returned. Always `product-variation-modifier'.
               type: string
@@ -4845,7 +5000,7 @@ components:
               type: string
               description: The unique identifier of the modifier. Must match the modifier ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
-    attributes-2:
+    attributes_hierarchy:
       type: object
       properties:
         name:
@@ -4871,7 +5026,7 @@ components:
               description:
                 description: A localized hierarchy or node description.
                 type: string
-    relationships-2:
+    relationships_hierarchy:
       type: object
       properties:
         children:
@@ -4889,56 +5044,52 @@ components:
                 related:
                   description: A link to a related resource.
                   type: string
-    single-3:
+    hierarchy:
       type: object
       properties:
-        data:
+        id:
+          description: A unique identifier generated when a hierarchy is created.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `hierarchy`.
+          type: string
+          enum:
+            - hierarchy
+        attributes:
+          $ref: '#/components/schemas/attributes_hierarchy'
+        relationships:
+          $ref: '#/components/schemas/relationships_hierarchy'
+        meta:
           type: object
           properties:
-            id:
-              description: A unique identifier generated when a hierarchy is created.
+            created_at:
+              description: The date and time a hierarchy is created.
               type: string
-              format: uuid
-              required: true
-            type:
-              description: This represents the type of resource object being returned. Always `hierarchy`.
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            updated_at:
+              description: The date and time a hierarchy is updated.
+              type: string
+              example: '2020-09-22T09:00:00'
+              format: date-time
+            owner:
+              description: The owner of a resource, either `organization` or `store`.
               type: string
               enum:
-                - hierarchy
-              required: true
-            attributes:
-              $ref: '#/components/schemas/attributes-2'
-            relationships:
-              $ref: '#/components/schemas/relationships-2'
-            meta:
-              type: object
-              properties:
-                created_at:
-                  description: The date and time a hierarchy is created.
-                  type: string
-                  format: date-time
-                updated_at:
-                  description: The date and time a hierarchy is updated.
-                  type: string
-                  format: date-time
-                owner:
-                  description: The owner of a resource, either `organization` or `store`.
-                  type: string
-                  enum:
-                    - store
-                    - organization
-    multi-3:
+                - store
+                - organization
+    multi_hierarchy:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/single-3'
+            $ref: '#/components/schemas/hierarchy'
         links:
           $ref: '#/components/schemas/multi_links'
         meta:
           $ref: '#/components/schemas/multi_meta'
-    attributes-3:
+    req_attributes_hierarchy:
       type: object
       additionalProperties: false
       properties:
@@ -4980,7 +5131,12 @@ components:
               enum:
                 - hierarchy
             attributes:
-              $ref: '#/components/schemas/attributes-3'
+              $ref: '#/components/schemas/req_attributes_hierarchy'
+    single_hierarchy:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/hierarchy'
     update_hierarchy:
       type: object
       required:
@@ -4995,7 +5151,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               description: The unique identifier of the hierarchy. Must match the hierarchy ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -5005,8 +5160,8 @@ components:
                 - hierarchy
               example: hierarchy
             attributes:
-              $ref: '#/components/schemas/attributes-3'
-    attributes-4:
+              $ref: '#/components/schemas/req_attributes_hierarchy'
+    attributes_nodes:
       type: object
       additionalProperties: false
       properties:
@@ -5025,7 +5180,6 @@ components:
           items:
             description: A list of product IDs for the products that you want to curate in a node.
             type: string
-            format: uuid
         locales:
           description: Product Experience Manager supports localization of products and hierarchies. If your store supports multiple languages, you can localize product names and descriptions. You can have as many locales as you want.
           type: object
@@ -5054,9 +5208,8 @@ components:
               type: string
               enum:
                 - node
-              required: true
             attributes:
-              $ref: '#/components/schemas/attributes-4'
+              $ref: '#/components/schemas/attributes_nodes'
             meta:
               type: object
               additionalProperties: false
@@ -5068,6 +5221,11 @@ components:
                     - If you don’t provide `sort_order` when creating nodes, all child nodes in the response for `Get a Node’s Children` request are ordered by the `updated_at` time in descending order, with the most recently updated child node first.
                     - If you set `sort_order` for only a few child nodes or not all, the child nodes with a `sort_order` value appear first and then other child nodes appear in the order of `updated_at` time. See [Sorting Nodes in a hierarchy]().
                   type: integer
+    single_node:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/node'
     update_node:
       type: object
       properties:
@@ -5080,7 +5238,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               description: The unique identifier of the node. Must match the node ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -5088,9 +5245,8 @@ components:
               type: string
               enum:
                 - node
-              required: true
             attributes:
-              $ref: '#/components/schemas/attributes-4'
+              $ref: '#/components/schemas/attributes_nodes'
             meta:
               type: object
               additionalProperties: false
@@ -5109,11 +5265,12 @@ components:
           type: array
           items:
             type: object
+            required:
+              - id
+              - type
             properties:
               id:
                 type: string
-                format: uuid
-                required: true
                 description: The unique identifier of the child node. Must not match the node ID specified in the request path.
                 example: 00000000-0000-0000-0000-000000000000
               type:
@@ -5121,17 +5278,17 @@ components:
                 type: string
                 enum:
                   - node
-                required: true
     node_parent:
       type: object
       properties:
         data:
           type: object
+          required:
+            - id
+            - type
           properties:
             id:
               type: string
-              format: uuid
-              required: true
               description: The unique identifier of the new parent node. Must not match the node ID specified in the request path.
               example: 00000000-0000-0000-0000-000000000000
             type:
@@ -5139,7 +5296,6 @@ components:
               type: string
               enum:
                 - node
-              required: true
     node_products:
       type: object
       properties:
@@ -5147,11 +5303,12 @@ components:
           type: array
           items:
             type: object
+            required:
+              - id
+              - type
             properties:
               id:
                 type: string
-                format: uuid
-                required: true
                 description: The unique identifier of the product to be attached to the node.
                 example: 00000000-0000-0000-0000-000000000000
               type:
@@ -5159,7 +5316,6 @@ components:
                 type: string
                 enum:
                   - product
-                required: true
     duplicate_job:
       type: object
       properties:
@@ -5190,7 +5346,6 @@ components:
         id:
           description: A unique identifier generated when a tag is created.
           type: string
-          format: uuid
         type:
           description: This represents the type of resource object being returned. Always `tag`.
           type: string
@@ -5211,16 +5366,20 @@ components:
             created_at:
               type: string
               description: The date and time a tag is created.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             updated_at:
               type: string
               description: The date and time a tag is updated.
+              example: '2020-09-22T09:00:00'
+              format: date-time
             owner:
               description: The owner of a resource, either `organization` or `store`.
               type: string
               enum:
                 - store
                 - organization
-    multi-4:
+    multi_tag:
       type: object
       properties:
         data:
@@ -5239,11 +5398,115 @@ components:
                   description: Total number of results for the entire collection.
                   type: integer
                   example: 2
-    single-4:
+    single_tag:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/tag'
+    req_attributes_custom_relationship:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the custom relationship, such as `Kitchen electrics`.
+          type: string
+        description:
+          description: A description of the custom relationship.
+          type: string
+        slug:
+          description: A unique slug for the custom relationship. Must match the slug specified in the request path.
+          type: string
+    create_custom_relationship:
+      type: object
+      properties:
+        data:
+          type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              description: This represents the type of resource object being returned. Always `custom-relationship`.
+              type: string
+              enum:
+                - custom-relationship
+            attributes:
+              $ref: '#/components/schemas/req_attributes_custom_relationship'
+    attributes_custom_relationship:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the custom relationship, such as `Kitchen electrics`.
+          type: string
+        description:
+          description: A description of the custom relationship.
+          type: string
+        slug:
+          description: A unique slug for the custom relationship.
+          type: string
+    custom_relationship:
+      type: object
+      properties:
+        id:
+          description: A unique identifier generated when a custom relationship is created.
+          type: string
+        type:
+          description: This represents the type of resource object being returned. Always `hierarchy`.
+          type: string
+          enum:
+            - custom-relationship
+        attributes:
+          $ref: '#/components/schemas/attributes_custom_relationship'
+        meta:
+          type: object
+          properties:
+            owner:
+              description: The owner of the resource.
+              type: string
+              example: store
+            timestamps:
+              type: object
+              properties:
+                created_at:
+                  description: The date and time the resource is created.
+                  type: string
+                  example: '2024-01-10T20:16:35.343Z'
+                  format: date-time
+                updated_at:
+                  description: The date and time the resource is updated.
+                  type: string
+                  example: '2024-01-10T20:16:35.343Z'
+                  format: date-time
+    single_custom_relationship:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/custom_relationship'
+    update_custom_relationship:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+            - type
+            - attributes
+          properties:
+            id:
+              type: string
+              description: The unique identifier of the custom relationship.
+              example: 00000000-0000-0000-0000-000000000000
+            type:
+              description: This represents the type of resource object being returned. Always `custom-relationship`.
+              type: string
+              enum:
+                - custom-relationship
+              example: custom-relationship
+            attributes:
+              $ref: '#/components/schemas/req_attributes_custom_relationship'
   examples:
     multi:
       value:
@@ -5411,6 +5674,12 @@ components:
               tags:
                 - tag1
                 - tag2
+              extensions:
+                products(size):
+                  widthMM: 600
+                  fuelType: electric
+                  hasUKPlug: true
+                  online: null
             relationships:
               children:
                 data: []
@@ -5530,6 +5799,7 @@ components:
                   - id: 7c0aa6df-0bd3-4d1f-b6f9-fd9358868869
                     type: product
                     quantity: 1
+                    default: true
               posters:
                 name: Game 2
                 max: 1
@@ -5539,6 +5809,7 @@ components:
                   - id: f0ec8088-13e1-4a53-8b5d-3f4d973e05c9
                     type: product
                     quantity: 1
+                    default: false
     bundle_sku_less_request:
       value:
         data:
@@ -5557,6 +5828,7 @@ components:
                   - id: shampooProductID
                     type: product
                     quantity: 1
+                    default: true
               conditioner:
                 name: Conditioner
                 max: 1
@@ -5566,6 +5838,7 @@ components:
                   - id: conditionerProductID
                     type: product
                     quantity: 1
+                    default: false
     create_single_product_response:
       value:
         data:
@@ -5768,6 +6041,12 @@ components:
             tags:
               - tag1
               - tag2
+            extensions:
+              products(size):
+                widthMM: 600
+                fuelType: electric
+                hasUKPlug: true
+                online: null
           relationships:
             files:
               data: []
@@ -5799,6 +6078,7 @@ components:
                     type: product
                     quantity: 2
                     sort_order: 15
+                    default: true
                 sort_order: 10
             name: DOOM Bundle
             status: draft
@@ -6121,6 +6401,7 @@ components:
                   - id: c7cf43f3-24c6-4523-8a24-3663b49b81aa
                     type: product
                     quantity: 1
+                    default: true
               List 2:
                 name: Controller
                 sort_order: 2
@@ -6128,6 +6409,7 @@ components:
                   - id: e59ca559-37c7-4dc9-8a91-df94cd5700d3
                     type: product
                     quantity: 1
+                    default: true
               List 3:
                 name: PS+
                 sort_order: 3
@@ -6135,6 +6417,7 @@ components:
                   - id: 8ae2a7ea-f767-4af0-8486-ae203947ecc4
                     type: product
                     quantity: 1
+                    default: true
               List 4:
                 min: 1
                 max: 1
@@ -6143,17 +6426,21 @@ components:
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: true
                     sort_order: 2
                   - id: 071e461c-22a2-42e0-9604-c345bbc9b85c
                     type: product
                     quantity: 1
+                    default: false
                     sort_order: 1
                   - id: 633b8172-8aa9-4dbd-aa07-0dcefca3de74
                     type: product
                     quantity: 1
+                    default: false
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: false
                     sort_order: 3
     update_single_product_response:
       value:
@@ -6392,6 +6679,7 @@ components:
                   - id: c7cf43f3-24c6-4523-8a24-3663b49b81aa
                     type: product
                     quantity: 1
+                    default: true
                 sort_order: 1
               List 2:
                 name: Controller
@@ -6399,6 +6687,7 @@ components:
                   - id: e59ca559-37c7-4dc9-8a91-df94cd5700d3
                     type: product
                     quantity: 1
+                    default: true
                 sort_order: 2
               List 3:
                 name: PS+
@@ -6406,21 +6695,26 @@ components:
                   - id: 8ae2a7ea-f767-4af0-8486-ae203947ecc4
                     type: product
                     quantity: 1
+                    default: true
                 sort_order: 3
               List 4:
                 options:
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: true
                   - id: 071e461c-22a2-42e0-9604-c345bbc9b85c
                     type: product
                     quantity: 1
+                    default: false
                   - id: 633b8172-8aa9-4dbd-aa07-0dcefca3de74
                     type: product
                     quantity: 1
+                    default: false
                   - id: 549a291f-669c-47d0-bc04-60a3f18fc55c
                     type: product
                     quantity: 1
+                    default: false
                 min: 1
                 max: 1
                 sort_order: 4
@@ -6430,6 +6724,7 @@ components:
                   - id: 8ae2a7ea-f767-4af0-8486-ae203947ecc4
                     type: product
                     quantity: 5
+                    default: true
             description: Favourite DOOM games in one bundle - Select one from four choices
             mpn: 1234-5678-ABCD00
             name: Favourite games bundle
@@ -6465,11 +6760,11 @@ components:
             owner: store
             updated_at: '2022-02-03T19:43:21.487Z'
             variation_matrix: {}
-    multi-2:
+    resp_multi_nodes:
       value:
         data:
-          - type: node
-            id: 9ea0de15-3347-43dd-8faa-cd32f44a04c7
+          - id: 9ea0de15-3347-43dd-8faa-cd32f44a04c7
+            type: node
             attributes:
               description: Latest Ballet Shoes
               locales:
@@ -6836,9 +7131,7 @@ components:
           attributes:
             type: sku_equals
             value: anotherSku
-          meta:
-            owner: store
-    multi-3:
+    resp_multi_hierarchy:
       value:
         data:
           - type: hierarchy
@@ -6967,6 +7260,10 @@ components:
               data: []
               links:
                 related: /hierarchies/6183d10c-94b5-4caa-9f12-2f14cb738d41/nodes/9ea0de15-3347-43dd-8faa-cd32f44a04c7/children
+            parent:
+              data:
+                type: node
+                id: 14e8e15a-7214-435d-bccb-6ae9b570d683
             products:
               data: []
               links:
@@ -6974,6 +7271,7 @@ components:
           meta:
             created_at: '2024-01-11T19:19:50.087Z'
             owner: store
+            parent_name: Shoes
             sort_order: 2
             updated_at: '2024-01-11T19:19:50.087Z'
     update_node:
@@ -7055,7 +7353,7 @@ components:
             updated_at: '2024-01-11T22:49:10.338Z'
           meta:
             x_request_id: 40995a1d-c0c1-4d52-a178-bfb5399ab0ec
-    multi-4:
+    resp_multi_tags:
       value:
         data:
           - type: tag
@@ -7077,7 +7375,7 @@ components:
         meta:
           results:
             total: 2
-    single:
+    resp_single_tag:
       value:
         data:
           type: tag
@@ -7088,6 +7386,51 @@ components:
             created_at: '2024-03-20T18:37:43.398Z'
             owner: organization
             updated_at: '2024-03-20T18:37:43.398Z'
+    create_custom_relationship:
+      value:
+        data:
+          type: custom-relationship
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices
+            slug: CRP_kitchen_individual_devices
+    custom_relationship_created:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices
+            slug: CRP_kitchen_individual_devices
+          meta:
+            owner: store
+            timestamps:
+              created_at: '2024-01-10T20:16:35.343Z'
+              updated_at: '2024-01-10T20:16:35.343Z'
+    update_custom_relationship:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices 2024
+            slug: CRP_kitchen_individual_devices
+    custom_relationship_updated:
+      value:
+        data:
+          type: custom-relationship
+          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
+          attributes:
+            name: Kitchen electrics
+            description: Kitchen electric devices 2024
+            slug: CRP_kitchen_individual_devices
+          meta:
+            owner: store
+            timestamps:
+              created_at: '2024-01-10T20:16:35.343Z'
+              updated_at: '2024-01-10T20:16:35.343Z'
   responses:
     bad_request:
       description: Bad request. The request failed validation.
@@ -7173,7 +7516,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the job.
@@ -7186,7 +7528,7 @@ components:
         minimum: 0
         maximum: 10000
         format: int64
-        examples:
+        example:
           - '0'
     page_limit:
       name: page[limit]
@@ -7197,7 +7539,7 @@ components:
         minimum: 0
         maximum: 10000
         format: int64
-        examples:
+        example:
           - '10'
     filterproduct:
       name: filter
@@ -7210,7 +7552,7 @@ components:
       explode: true
       schema:
         type: string
-        examples:
+        example:
           - eq(name,some-name)
           - like(name,*some-name*)
           - filter=in(id,some-id)
@@ -7227,7 +7569,7 @@ components:
       explode: true
       schema:
         type: string
-        examples:
+        example:
           - component_products
     useTemplateSlugs:
       name: useTemplateSlugs
@@ -7250,7 +7592,7 @@ components:
       explode: true
       schema:
         type: string
-        examples:
+        example:
           - eq(name,some-name)
           - like(name,*some-name*)
           - filter=in(id,some-id)
@@ -7259,7 +7601,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
         x-postman-example: '{{productID}}'
       required: true
@@ -7269,7 +7610,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
         x-postman-example: '{{variationID}}'
       required: true
@@ -7279,7 +7619,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the option.
@@ -7288,7 +7627,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the modifier.
@@ -7297,7 +7635,6 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the hierarchy.
@@ -7306,31 +7643,22 @@ components:
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the node.
-    filternodeproducts:
-      name: filter
-      in: query
-      description: |
-        Many Commerce API endpoints support filtering. The general syntax is described [**here**](/docs/commerce-cloud/api-overview/filtering).
-
-        For more information on the operators and attributes available when filtering on this endpoint, see [Get a node's products](/docs/api/pxm/products/get-node-products).
-      style: form
-      explode: true
-      schema:
-        type: string
-        examples:
-          - eq(name,some-name)
-          - like(name,*some-name*)
-          - filter=in(id,some-id)
     tag_id:
       name: tagID
       in: path
       schema:
         type: string
-        format: uuid
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the tag.
+    custom_relationship_slug:
+      name: customRelationshipSlug
+      in: path
+      schema:
+        type: string
+        example: CRP_electric_devices_2024
+      required: true
+      description: A custom relationship slug.

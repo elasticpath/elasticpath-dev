@@ -39,7 +39,7 @@ Below is an overview of the steps you need to follow to integrate Commerce with 
 1. Create a SendGrid integration in **Commerce Manager** > **Integrations Hub**.  See [Configuring the SendGrid Integration](#configuring-the-send-grid-integration).
 
 :::note
-When integrating with third party providers, we recommend you use the closest region in the third party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third party providers, we recommend you use the closest region in the third party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting Your Setup Information
@@ -75,7 +75,7 @@ Once you have created a dynamic template in SendGrid, you need to do the followi
 
 Each event mapping configuration is a set of parameters for a specific event type in Commerce. The event mapping configuration is stored as key + value pairs.
 
-- An event key is the name of the Commerce event that triggers the event mapping configuration. For example, `order.paid` or `order.created`. See [Observable events](/docs/commerce-cloud/integrations/observable-events) for a list of Commerce events.
+- An event key is the name of the Commerce event that triggers the event mapping configuration. For example, `order.paid` or `order.created`. See [Observable events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events) for a list of Commerce events.
 - An event value is a JSON object that must contain a `messagingProvider` element and a `dynamicFieldMapping` element. The event value object can be:
     - A single object (if you want to send one email when a Commerce event is triggered).
     - An array of event value objects (if you want to send more than one email from SendGrid when a Commerce event is triggered).
@@ -100,7 +100,7 @@ The attributes and types for the `dynamicFieldMapping` object are defined in the
 | Attribute | Type | Description |
 | --- | --- | --- |
 | *SendgridTemplateFieldnames* | string | The placeholder fields from your SendGrid dynamic templates. See [Creating Dynamic Templates in SendGrid](/docs/composer/integration-hub/marketing-communication/sendgrid#creating-dynamic-templates-in-send-grid). |
-| *ElasticPathCommerceCloudPayload* | string | The payload delivered to your webhook from Commerce contains the information about the resources affected by the fired event. See [Integration Payload](/docs/commerce-cloud/integrations/integration-payload). The payload must include:  <ul><li>A `To` field that defines the email address that the email should be sent to. This can be defined as a single email address or a comma-separated list of email addresses.</li><li>The data from Commerce that you want to include in a SendGrid email. The format of the data depends on whether you have a single item or an array of items. </li><ul><li>A single item is in the format `$payload.data.EPCCresource`. For example, `$payload.data.billing.address.first_name`. </li><li>An array of items is in the format of `$payload.data.EPCCobjectname.{'EPPCresourcename': EPCCresourcevalue,'EPPCresourcename': EPCCresourcevalue}`. For example, `$.payload.included.items.{'name': name,'sku':sku, 'price': meta.display_price.with_tax.value.formatted}`.</li></ul></ul> |
+| *ElasticPathCommerceCloudPayload* | string | The payload delivered to your webhook from Commerce contains the information about the resources affected by the fired event. See [Integration Payload](/docs/api/integrations/integrations-introduction). The payload must include:  <ul><li>A `To` field that defines the email address that the email should be sent to. This can be defined as a single email address or a comma-separated list of email addresses.</li><li>The data from Commerce that you want to include in a SendGrid email. The format of the data depends on whether you have a single item or an array of items. </li><ul><li>A single item is in the format `$payload.data.EPCCresource`. For example, `$payload.data.billing.address.first_name`. </li><li>An array of items is in the format of `$payload.data.EPCCobjectname.{'EPPCresourcename': EPCCresourcevalue,'EPPCresourcename': EPCCresourcevalue}`. For example, `$.payload.included.items.{'name': name,'sku':sku, 'price': meta.display_price.with_tax.value.formatted}`.</li></ul></ul> |
 
 Below is an example of a single `messagingProvider` object.
 

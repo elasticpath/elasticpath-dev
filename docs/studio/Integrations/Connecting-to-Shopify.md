@@ -1,5 +1,5 @@
 ---
-title: Connecting CX-Studio to Shopify
+title: Connecting Studio to Shopify
 nav_label: Shopify
 sidebar_position: 262
 ---

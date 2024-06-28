@@ -15,7 +15,7 @@ You can quickly and easily integrate Studio with Stripe Connect. Once configured
 
 1. Depending on the payment methods you want to support, you may need to configure them in Stripe.
 2. Log in to the [Stripe Dashboard](https://dashboard.stripe.com/login) to find your Stripe Account ID.
-3. Go to Commerce Manager to ensure the **Stripe Connect** gateway is [enabled](/docs/commerce-cloud/payments/payment-gateway-cm/configure-other-payment-gateways#enabling-stripe-connect).
+3. Go to Commerce Manager to ensure the **Stripe Connect** gateway is [enabled](/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-stripe-connect).
 
 ## Configure the Stripe Integration
 
