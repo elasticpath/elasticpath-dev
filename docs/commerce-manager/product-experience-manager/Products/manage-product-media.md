@@ -14,3 +14,4 @@ Products can have rich media assets, such as product images or a file containing
 1. Click **Done**. You can add multiple media for a product. All media that you upload are listed in the **Media upload** table.
 1. To assign an image as the main image for a product, select the **Use as main image** field next to the image name.
 1. Click **Next** or **Save & Exit**.
+1. To delete media from Commerce, go to **Products** > **Media**. See **Files** in [Media](/docs/commerce-manager/product-experience-manager/product-assets/files).
