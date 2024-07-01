@@ -26,6 +26,8 @@ Commerce Manager does not sort components and component options. You must progra
 
 ### Procedure
 
+The steps below describe how to complete the basic information for a bundle and adding the components and product options that make up a bundle. 
+
 1. Go to **Products** > **Bundles**. 
 1. Select **Create new bundle**.
 1. (Optional) Expand **Locale** drop-down list. The languages you have configured in [**Store Settings** > **Locale**]( /docs/commerce-manager/product-experience-manager/locales/) are displayed first. Custom product locales are displayed underneath. See [Configuring Locales](/docs/commerce-manager/product-experience-manager/Products/configure-locales).
@@ -42,6 +44,11 @@ Commerce Manager does not sort components and component options. You must progra
     - (Optional) **External Reference**: A unique attribute associated with the product. This could be an external reference from a separate company system, for example. The maximum length is 2048 characters.
     - (Optional) **MPN**: Manufacture Part Number (MPN).
     - (Optional) **UPC/EAN**: Universal Product Code (UPC) or European Article Number (EAN) used to scan a product in a Point of Sale (POS) system.
+    - Bundle products can have rich media assets, such as product images or a file containing additional product details. To add media for the bundle, do one of the following:
+        - Drag and drop the file from your local directory.
+        - Click **Choose File** and browse and add the file.
+        - In the **add by URL** field, add the URL for the media.
+    To delete media from Commerce, go to **Products** > **Media**. See **Files** in [Media](/docs/commerce-manager/product-experience-manager/product-assets/files).
 1. In **Manage Bundle Components**, add the components and component products to include in your bundle. 
 1. Select **Add Component**.
 1. (Optional) You can specify a sort value. A sort value must be a number. You can specify any numbers that you want. For example, 1, 2, 3, or 100, 90, 80, and so on. The sort value is visible when you add the products to your catalogs. You can then use the sort value to program your storefront to display the bundle components in the order that you want.
