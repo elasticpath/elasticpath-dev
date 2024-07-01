@@ -91,7 +91,7 @@ Your published **Search Results** looks similar to this.
 
 Reporting user interaction with Klevu is crucial to allow the machine learning algorithms to accurately rank items. By reporting user interactions, such as clicks, searches, and purchases, Klevu's algorithms can better understand which products are most relevant to users. 
 
-The Klevu integration is using two Klevu events, searches and clicks. Anytime a shopper searches uses the Studio search page and clicks on a product, you can se
+The Klevu integration is using two Klevu events, searches and clicks. Anytime a shopper searches uses the Studio search page and clicks on a product, you can see this in the Klevu dashboard.
 
 
 
