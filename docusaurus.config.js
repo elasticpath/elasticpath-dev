@@ -360,6 +360,7 @@ const config = {
         indexName: "elasticpath",
         contextualSearch: false,
         searchParameters: {},
+        searchPagePath: 'search',
       },
     }),
 
