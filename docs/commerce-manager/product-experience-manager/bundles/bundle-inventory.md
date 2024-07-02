@@ -13,7 +13,7 @@ You cannot track the inventory of a bundle without a SKU. However, you can track
 Whether your bundle has a SKU or is SKU-less depends on your bundle's pricing. See [Bundle pricing](/docs/commerce-manager/product-experience-manager/bundles/bundle-pricing).
 
 1. Go to **Products**.
-1. In **All Products**, find the bundle to which you want to add a template.
+1. In **All Products**, select the bundle for which you want to configure inventory.
 1. Select **Actions** > **Edit** next to the bundle.
 1. In the **Inventory** tab, click **Manage inventory**. The following details are displayed:
 

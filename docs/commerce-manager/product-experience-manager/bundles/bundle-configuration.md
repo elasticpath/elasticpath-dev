@@ -44,7 +44,7 @@ The steps below describe how to complete the basic information for a bundle and 
     - (Optional) **External Reference**: A unique attribute associated with the product. This could be an external reference from a separate company system, for example. The maximum length is 2048 characters.
     - (Optional) **MPN**: Manufacture Part Number (MPN).
     - (Optional) **UPC/EAN**: Universal Product Code (UPC) or European Article Number (EAN) used to scan a product in a Point of Sale (POS) system.
-    - Bundle products can have rich media assets, such as product images or a file containing additional product details. To add media for the bundle, do one of the following:
+    - Bundle products can have rich media assets, such as product images or a file containing additional product details. Only the main image for a bundle is shown. You can only replace or delete an existing main_image. If there are other files associated with bundle, they are not shown here. You can go to [Media Management](/docs/commerce-manager/product-experience-manager/Products/manage-product-media) for a product to manage these files. To add media for the bundle, do one of the following:
         - Drag and drop the file from your local directory.
         - Click **Choose File** and browse and add the file.
         - In the **add by URL** field, add the URL for the media.

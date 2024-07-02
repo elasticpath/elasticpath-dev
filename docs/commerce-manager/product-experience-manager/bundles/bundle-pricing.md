@@ -19,8 +19,7 @@ Depending on the type of pricing you want to implement for your bundles, you mus
 If you want to assign a fixed price for all the products in a bundle, you must have already configured a price book that you want to use with your bundle. Your bundle must have a SKU.
 
 1. Go to **Products**.
-1. In **All Products**, find the bundle for which you want to configure pricing.
-1. Select **Actions** > **Edit** next to the bundle.
+1. In **All Products**, select the bundle to which you want to configure pricing.
 1. Select **Pricing**.
 1. Turn the **Price Bundle by SKU** toggle on. (Your must bundle must have a SKU).
 1. In the **Pricing** tab:

@@ -9,8 +9,7 @@ You can add templates to your bundles. Templates are a collection of attributes.
 Ensure that at least one template is available in the store.
 
 1. Go to **Products**. 
-1. In **All Products**, find the bundle to which you want to add a template.
-1. Select **Actions** > **Edit** next to the bundle.
+1. In **All Products**, select the bundle to which you want to add a template.
 1. In the **Product Templates** tab, select **Add Templates**.
 
     The templates available for the bundle are listed.
