@@ -12,14 +12,14 @@ Klevu recommendation queries are specific types of requests made to the Klevu AP
  
 For some of the queries, search parameters are required. For other queries, the search parameters are optional but you can override the parameters, depending on your requirements. 
 
-| Query                    | Required | Search params | Query Params
-|--------------------------|------------------------|
-| Similar products         | Required                       | | | 
-| Trending products        |  Required                      | | | 
-| Recently viewed products | Required                       | | |
-| New arrivals | Required                      | | |
-| Bought together | Required                       | | |
-| KMC recommendations | Optional                       | | |
+| Query                    | Required | Search params | Query Params |
+|--------------------------|----------|---------------|--------------| 
+| Similar products         | Required |               |              | 
+| Trending products        | Required |               |              | 
+| Recently viewed products | Required |               |              |
+| New arrivals             | Required |               |              |
+| Bought together          | Required |               |              |
+| KMC recommendations      | Optional |               |              |
 
 ## Creating a page using a Klevu recommendations Component
 
@@ -52,7 +52,7 @@ Follow these steps to create a page that uses a **Klevu recommendations** compon
     | Option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Features** | Configures whether you filter the product recommendations by: <ul><li>**Title** - this is useful for sorting or searching for products based on the text in their titles. For example, displaying products in alphabetical order or showing products that contain specific keywords in their titles.</li><li>**Price** - this useful for sorting or displaying products based on their price. For example, allowing users to set a minimum and maximum price range for the products they are interested in or enabling users to sort products from lowest to highest price or vice versa.</li></ul>. |
-    | Hover |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | **Hover** | Select either: <ul><li>**Highlight** if you want your image to stand out when hovered over.</li><li>**Alt Image** if you want to replace the original image with an alternative image that provides additional or alternative visual information when hovered over.</li></ul> |
     | **Columns**  | Configures how many search items are displayed in each row.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     | **Gap**      | Configures the gap between search items.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | **Query** | A list of queries from Klevu. Each query has different **Search params**. See [Klevu Recommendation Queries](#klevu-recommendation-queries).                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
