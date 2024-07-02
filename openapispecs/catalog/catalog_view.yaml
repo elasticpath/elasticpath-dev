@@ -21,6 +21,8 @@ servers:
     description: EU West Production Server
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
+security:
+  - bearerAuth: []
 tags:
   - name: Catalogs
     description: |
@@ -542,30 +544,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog:
-    get:
-      tags:
-        - Releases
-      summary: Get the catalog release as shoppers
-      description: Returns a list of all published releases of the specified catalog.
-      operationId: getByContextRelease
-      parameters:
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-      responses:
-        '200':
-          description: The catalog.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/release-data'
-        default:
-          description: The unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
   /pcm/catalogs/rules:
     post:
       tags:
@@ -970,206 +948,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/hierarchies:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get all Hierarchies
-      description: |
-        Returns all hierarchies from a catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
-      operationId: getByContextAllHierarchies
-      parameters:
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - $ref: '#/components/parameters/filter-hierarchy'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-      responses:
-        '200':
-          description: The hierarchies of the catalog.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/hierarchy-list-data'
-        default:
-          description: An unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-  /pcm/catalog/hierarchies/{hierarchy_id}:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get a Hierarchy
-      description: |
-        Returns a hierarchy from the catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog to retrieve. For information about how catalog rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules).
-      operationId: getByContextHierarchy
-      parameters:
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - description: The catalog hierarchy ID.
-          name: hierarchy_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The catalog hierarchy.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/hierarchy-data'
-        default:
-          description: The unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-  /pcm/catalog/hierarchies/{hierarchy_id}/nodes:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get a Hierarchy's Nodes
-      description: |
-        Returns all the nodes for the specified hierarchy.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
-         
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
-      operationId: getByContextHierarchyNodes
-      parameters:
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/filter-node'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - description: The catalog hierarchy ID.
-          name: hierarchy_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The child nodes of a catalog hierarchy.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/node-list-data'
-        default:
-          description: The unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-  /pcm/catalog/hierarchies/{hierarchy_id}/children:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get a Hierarchy's Children
-      description: |
-        Returns the parent nodes for the specified hierarchy.
-         
-        ![Parent Nodes](/assets/rootnodes.PNG)
-         
-        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-         
-        ### Filtering
-
-        The following operators and attributes are available when filtering on this endpoint.
-
-        | Operator | Description | Supported Attributes | Example |
-        |:--- |:--- |:--- |:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
-
-        For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
-      operationId: getByContextHierarchyChildNodes
-      parameters:
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/filter-node'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - description: The catalog hierarchy ID.
-          name: hierarchy_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The child nodes of a catalog hierarchy.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/node-list-data'
-        default:
-          description: The unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
   /pcm/catalogs/{catalog_id}/releases/{release_id}/nodes:
     get:
       tags:
@@ -1372,174 +1150,6 @@ paths:
         - $ref: '#/components/parameters/filter-node'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
-      responses:
-        '200':
-          description: The child nodes of a catalog node.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/node-list-data'
-        default:
-          description: The unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-  /pcm/catalog/nodes:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get all Nodes
-      description: |
-        Returns all nodes in the catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. For more information, see [Building breadcrumbs in a storefront](#building-breadcrumbs-in-a-storefront).
-
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
-
-        ### Filtering
-
-        This endpoint supports filtering. For general syntax, see (/docs/commerce-cloud/api-overview/filtering). The following operators and attributes are available.
-
-        | Operator  | Description | Attributes | Example |
-        | --- | --- | --- | --- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
-        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
-
-        ### Building breadcrumbs in a storefront
-
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
-      operationId: getByContextAllNodes
-      parameters:
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/filter-node'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-      responses:
-        '200':
-          description: The nodes of the catalog.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/node-list-data'
-        default:
-          description: An unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-  /pcm/catalog/nodes/{node_id}:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get a Node
-      description: |
-        Returns a node from the catalog.
-
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        The response lists the products associated with a node. If products are curated, they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your nodes, enabling you to create unique product collections in your storefront.
-
-        - If you don't provide any `curated_products`, products are listed by their `updated_at` time in descending order, with the most recently updated product first.
-        - If you configure `curated_products` for only a few products, the curated products are displayed first and the other products are displayed in the order of `updated_at` time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - A product that is curated has the `"curated_product": true` attribute displayed.
-        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
-      operationId: getByContextNode
-      parameters:
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - $ref: '#/components/parameters/accept-language'
-        - description: The catalog node ID.
-          name: node_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The catalog node.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/node-data'
-        default:
-          description: The unexpected error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error-response'
-  /pcm/catalog/nodes/{node_id}/relationships/children:
-    get:
-      tags:
-        - Shopper Catalog API
-      summary: Get a Node's Children
-      description: |
-        Returns the child nodes for a node in the catalog.
-         
-        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
-
-        You can see which parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
-
-        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
-         
-        - If you don't provide any curated_products, products are listed by their updated_at time in descending order, with the most recently updated product first.
-        - If you configure curated_products for only a few products, the curated products are displayed first and the other products are displayed in the order of updated_at time.
-        - You can only curate 20 products or less. You cannot have more than 20 curated products.
-        - A product that is curated has the "curated_product": true attribute displayed.
-        - If a curated product is removed from a node, the product is also removed from the curated_products list.
-         
-        ### Filtering
-         
-        This endpoint supports filtering. For general syntax, see (/docs/commerce-cloud/api-overview/filtering). The following operators and attributes are available.
-         
-        | Operator  | Description | Attributes | Example |
-        | --- | --- | --- | --- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
-        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
-        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
-         
-        ### Building breadcrumbs in a storefront
-         
-        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
-         
-        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
-         
-        - Specify the node Ids in the filter expression.
-        - You can have as many node Ids as you want.
-        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
-      operationId: getByContextChildNodes
-      parameters:
-        - $ref: '#/components/parameters/channel'
-        - $ref: '#/components/parameters/tag'
-        - $ref: '#/components/parameters/accept-language'
-        - $ref: '#/components/parameters/filter-node'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - description: The catalog node ID.
-          name: node_id
-          in: path
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: The child nodes of a catalog node.
@@ -1810,7 +1420,7 @@ paths:
 
         You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
 
-        The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The variations object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order` attribute to sort the order of your variation and variation options in variations. Once a parent product is published in a catalog, the [Get a List of products in a catalog](/docs/api/catalog/get-all-products) release response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
+        The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The variations object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order` attribute to sort the order of your variation and variation options in variations. Once a parent product is published in a catalog, the [Get a List of products in a catalog](/docs/api/pxm/catalog/get-all-products) release response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
 
         ### Filtering
 
@@ -1883,7 +1493,7 @@ paths:
 
         If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://elasticpath.dev/guides/Catalogs/breadcrumbs).
          
         The `variations` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variations` object can then be added to your catalogs. By default, variations and variation options are sorted randomly. You can use the `sort_order` attribute to sort the order of your variation and variation options in `variations`. Once a parent product is published in a catalog, the [Get a List of products in a catalog release](/docs/api/pxm/catalog/get-all-products) response displays the sorted variations and variation options. Variations and variation options are displayed in descending order according to their `sort_order` values.
 
@@ -1942,7 +1552,399 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/products:
+  /catalog:
+    get:
+      tags:
+        - Releases
+      summary: Get the catalog release as shoppers
+      description: Returns a list of all published releases of the specified catalog.
+      operationId: getByContextRelease
+      parameters:
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+      responses:
+        '200':
+          description: The catalog.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/release-data'
+        default:
+          description: The unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/hierarchies:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get all Hierarchies
+      description: |
+        Returns all hierarchies from a catalog.
+
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+
+        ### Filtering
+
+        This endpoint supports filtering. For general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+
+        | Operator | Description | Supported Attributes | Example |
+        |:--- |:--- |:--- |:--- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
+
+        ### Building breadcrumbs in a storefront
+
+        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
+
+        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
+
+        - Specify the node Ids in the filter expression.
+        - You can have as many node Ids as you want.
+        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      operationId: getByContextAllHierarchies
+      parameters:
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - $ref: '#/components/parameters/filter-hierarchy'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: The hierarchies of the catalog.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hierarchy-list-data'
+        default:
+          description: An unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/hierarchies/{hierarchy_id}:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get a Hierarchy
+      description: |
+        Returns a hierarchy from the catalog.
+
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog to retrieve. For information about how catalog rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules).
+      operationId: getByContextHierarchy
+      parameters:
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - description: The catalog hierarchy ID.
+          name: hierarchy_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The catalog hierarchy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hierarchy-data'
+        default:
+          description: The unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/hierarchies/{hierarchy_id}/nodes:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get a Hierarchy's Nodes
+      description: |
+        Returns all the nodes for the specified hierarchy.
+
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+
+        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+         
+        ### Filtering
+
+        This endpoint supports filtering. For general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+
+        | Operator | Description | Supported Attributes | Example |
+        |:--- |:--- |:--- |:--- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
+         
+        ### Building breadcrumbs in a storefront
+
+        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
+
+        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
+
+        - Specify the node Ids in the filter expression.
+        - You can have as many node Ids as you want.
+        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      operationId: getByContextHierarchyNodes
+      parameters:
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/filter-node'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - description: The catalog hierarchy ID.
+          name: hierarchy_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The child nodes of a catalog hierarchy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/node-list-data'
+        default:
+          description: The unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/hierarchies/{hierarchy_id}/children:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get a Hierarchy's Children
+      description: |
+        Returns the parent nodes for the specified hierarchy.
+         
+        ![Parent Nodes](/assets/rootnodes.PNG)
+         
+        If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+
+        In the `bread_crumb` metadata, you can identify the parent nodes that a node is associated with. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+         
+        ### Filtering
+
+        The following operators and attributes are available when filtering on this endpoint.
+
+        | Operator | Description | Supported Attributes | Example |
+        |:--- |:--- |:--- |:--- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug`| `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. | `id` | `filter=in(id,some-id)` |
+
+        For more information, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+
+        ### Building breadcrumbs in a storefront
+
+        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
+
+        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
+
+        - Specify the node Ids in the filter expression.
+        - You can have as many node Ids as you want.
+        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      operationId: getByContextHierarchyChildNodes
+      parameters:
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/filter-node'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - description: The catalog hierarchy ID.
+          name: hierarchy_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The child nodes of a catalog hierarchy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/node-list-data'
+        default:
+          description: The unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/nodes:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get all Nodes
+      description: |
+        Returns all nodes in the catalog.
+
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+
+        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+
+        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. For more information, see [Building breadcrumbs in a storefront](#building-breadcrumbs-in-a-storefront).
+
+        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
+
+        - You can only curate 20 products or less. You cannot have more than 20 curated products.
+        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
+
+        ### Filtering
+
+        This endpoint supports filtering. For general syntax, see (/docs/commerce-cloud/api-overview/filtering). The following operators and attributes are available.
+
+        | Operator  | Description | Attributes | Example |
+        | --- | --- | --- | --- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
+        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
+        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
+
+        ### Building breadcrumbs in a storefront
+
+        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
+
+        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
+
+        - Specify the node Ids in the filter expression.
+        - You can have as many node Ids as you want.
+        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      operationId: getByContextAllNodes
+      parameters:
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/filter-node'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: The nodes of the catalog.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/node-list-data'
+        default:
+          description: An unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/nodes/{node_id}:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get a Node
+      description: |
+        Returns a node from the catalog.
+
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+
+        You can see the parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+
+        The response lists the products associated with a node. If products are curated, they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your nodes, enabling you to create unique product collections in your storefront.
+
+        - If you don't provide any `curated_products`, products are listed by their `updated_at` time in descending order, with the most recently updated product first.
+        - If you configure `curated_products` for only a few products, the curated products are displayed first and the other products are displayed in the order of `updated_at` time.
+        - You can only curate 20 products or less. You cannot have more than 20 curated products.
+        - A product that is curated has the `"curated_product": true` attribute displayed.
+        - If a curated product is removed from a node, the product is also removed from the `curated_products` list.
+      operationId: getByContextNode
+      parameters:
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - $ref: '#/components/parameters/accept-language'
+        - description: The catalog node ID.
+          name: node_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The catalog node.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/node-data'
+        default:
+          description: The unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/nodes/{node_id}/relationships/children:
+    get:
+      tags:
+        - Shopper Catalog API
+      summary: Get a Node's Children
+      description: |
+        Returns the child nodes for a node in the catalog.
+         
+        If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
+
+        You can see which parent nodes a node is associated with in the `bread_crumb` metadata for each node. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+
+        The response lists the products associated with the nodes. If products are [curated](https://beta.elasticpath.dev/guides/Products/curating-products), they are displayed in `curated_products`. Product curation allows you to promote specific products within each of your hierarchies, enabling you to create unique product collections in your storefront.
+         
+        - If you don't provide any curated_products, products are listed by their updated_at time in descending order, with the most recently updated product first.
+        - If you configure curated_products for only a few products, the curated products are displayed first and the other products are displayed in the order of updated_at time.
+        - You can only curate 20 products or less. You cannot have more than 20 curated products.
+        - A product that is curated has the "curated_product": true attribute displayed.
+        - If a curated product is removed from a node, the product is also removed from the curated_products list.
+         
+        ### Filtering
+         
+        This endpoint supports filtering. For general syntax, see (/docs/commerce-cloud/api-overview/filtering). The following operators and attributes are available.
+         
+        | Operator  | Description | Attributes | Example |
+        | --- | --- | --- | --- |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. | `name`, `slug` | `filter=eq(name,some-name)` |
+        | `in`      | Checks if the values are included in the specified string. If they are, the condition is true.
+        | `Id` |  `filter=in(id,9214719b-17fe-4ea7-896c-d61e60fc0d05,e104d541-2c52-47fa-8a9a-c4382480d97c,65daaf68-ff2e-4632-8944-370de835967d)` |
+         
+        ### Building breadcrumbs in a storefront
+         
+        In a catalog, you can use a filter to return a list of nodes in a hierarchy structure that a product belongs to. You can use this to build breadcrumbs in your storefront. An example is shown below.
+         
+        `filter=in(id,c83bfe55-0d87-4302-a86d-ab19e7e323f1,6003d7ef-84f3-49bb-a8bd-4cbfa203dcbb)`
+         
+        - Specify the node Ids in the filter expression.
+        - You can have as many node Ids as you want.
+        - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+      operationId: getByContextChildNodes
+      parameters:
+        - $ref: '#/components/parameters/channel'
+        - $ref: '#/components/parameters/tag'
+        - $ref: '#/components/parameters/accept-language'
+        - $ref: '#/components/parameters/filter-node'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - description: The catalog node ID.
+          name: node_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The child nodes of a catalog node.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/node-list-data'
+        default:
+          description: The unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+  /catalog/products:
     get:
       tags:
         - Shopper Catalog API
@@ -1956,7 +1958,7 @@ paths:
 
         ### Product and Node Associations
 
-         You can see the parent nodes a product is associated within the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+         You can see the parent nodes a product is associated within the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://elasticpath.dev/guides/Catalogs/breadcrumbs).
 
          
         ### Including Resources
@@ -2010,7 +2012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/products/{product_id}:
+  /catalog/products/{product_id}:
     get:
       tags:
         - Shopper Catalog API
@@ -2020,7 +2022,7 @@ paths:
 
         If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://elasticpath.dev/guides/Catalogs/breadcrumbs).
 
         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
 
@@ -2055,7 +2057,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/products/{product_id}/relationships/component_products:
+  /catalog/products/{product_id}/relationships/component_products:
     get:
       tags:
         - Shopper Catalog API
@@ -2091,7 +2093,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/products/{product_id}/relationships/children:
+  /catalog/products/{product_id}/relationships/children:
     get:
       tags:
         - Shopper Catalog API
@@ -2101,7 +2103,7 @@ paths:
          
         If you have multiple catalog rules defined, the rule that best matches the shopperʼs context is used to determine which catalog is retrieved. If no catalog rules are configured, the first catalog found is returned. For information about how rules are matched, see [Resolving Catalog Rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
          
-        You can see the parent nodes a product is associated within the `breadcrumbs` metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+        You can see the parent nodes a product is associated within the `breadcrumbs` metadata for each product. For example, this is useful if you want to improve how your shoppers search your store. See [Product and Node Associations in Breadcrumb Metadata](https://elasticpath.dev/guides/Catalogs/breadcrumbs).
          
         ### Filtering
          
@@ -2148,7 +2150,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/hierarchies/{hierarchy_id}/products:
+  /catalog/hierarchies/{hierarchy_id}/products:
     get:
       tags:
         - Shopper Catalog API
@@ -2158,7 +2160,7 @@ paths:
 
         If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://elasticpath.dev/guides/Catalogs/breadcrumbs).
          
         ### Filtering
 
@@ -2205,7 +2207,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/nodes/{node_id}/relationships/products:
+  /catalog/nodes/{node_id}/relationships/products:
     get:
       tags:
         - Shopper Catalog API
@@ -2215,7 +2217,7 @@ paths:
 
         If you have multiple catalog rules defined, the rule that best matches the shoppers context is used to determine which catalog is retrieved. See [Resolving catalog rules](/docs/api/pxm/catalog/rules#resolving-catalog-rules).
 
-        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://beta.elasticpath.dev/guides/Catalogs/breadcrumbs).
+        You can see the parent nodes a product is associated with in the `bread_crumbs` and `bread_crumb_nodes` metadata for each product. This is useful if you want to improve how your shoppers search your store, for example. See [Product and Node Associations in Breadcrumb Metadata](https://elasticpath.dev/guides/Catalogs/breadcrumbs).
          
         ### Filtering
 
@@ -2262,7 +2264,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
-  /pcm/catalog/products/{product_id}/configure:
+  /catalog/products/{product_id}/configure:
     post:
       tags:
         - Shopper Catalog API
@@ -2374,6 +2376,14 @@ components:
       in: query
       description: |
         This endpoints support filtering. See [Filtering](#filtering).
+      required: false
+      schema:
+        type: string
+    include-component-products:
+      name: include
+      in: query
+      description: |
+        Using the `include=component_products` parameter, you can retrieve key attribute data for the bundle component products in the product bundle, such as SKU or slug .
       required: false
       schema:
         type: string
@@ -4172,6 +4182,16 @@ components:
           type: array
           items: {}
           x-go-name: Data
+        included:
+          type: object
+          x-go-name: Included
+          properties:
+            component_products:
+              type: array
+              items:
+                $ref: '#/components/schemas/product'
+              x-go-name: ComponentProducts
+          nullable: true
       required:
         - data
       x-go-name: ProductsForCart

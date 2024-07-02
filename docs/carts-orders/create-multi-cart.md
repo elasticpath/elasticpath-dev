@@ -136,7 +136,7 @@ https://useast.api.elasticpath.com/v2/carts
 - Once the cart is in preview mode, you cannot revert it to a regular cart.
 - Carts with `snapshot_date` are same as preview carts.
 - You cannot checkout a cart that includes a `snapshot_date`.
-- To delete a promotion preview cart, use [Delete a cart](/docs/carts-orders/carts/cart-management/delete-a-cart) endpoint.
+- To delete a promotion preview cart, use [Delete a cart](/docs/api/carts/delete-a-cart) endpoint.
 - The promotion preview cart has the same expiration time as a regular cart based on the store's [cart settings](/docs/api/settings/put-v-2-settings-cart).
 - Preview cart interactions skip inventory checks and events, allowing users to preview future carts without impacting related external systems.
 :::

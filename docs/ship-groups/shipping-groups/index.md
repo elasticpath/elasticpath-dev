@@ -11,7 +11,7 @@ For example, consider the following scenario:
 1. A shopper adds a gaming console, laptop, and headphones to the cart, and wants to deliver these items to different addresses.
 1. Generate shipping groups for a cart. See [Create a cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group).
 1. Associate the cart items with the corresponding shipping group IDs. This step is important because it is necessary to associate items with shipping groups to include shipping groups in the corresponding cart, order, and totals. 
-1. [Checkout](/docs/api/carts/checkout) a cart. An unpaid order is created, and the checked out cart shipping groups are linked to the corresponding order. When you [Get an Order](/docs/carts-orders/orders/orders-api/get-an-order), you can see that the shipping groups are linked to that order.
+1. [Checkout](/docs/api/carts/checkout) a cart. An unpaid order is created, and the checked out cart shipping groups are linked to the corresponding order. When you [Get an Order](/docs/api/carts/get-an-order), you can see that the shipping groups are linked to that order.
 
 :::note
 - You cannot split a bundle into multiple shipping groups. Therefore, if a bundle is included in an order, the entire bundle is associated to the same shipping group. 

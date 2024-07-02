@@ -41,9 +41,9 @@ export default function BlogPostItemHeaderInfo({className}) {
   const {metadata} = useBlogPost();
   const {date, formattedDate, readingTime} = metadata;
   return (
-    <div className={clsx(styles.container, 'margin-vert--md', className)}>
+    <div className={clsx(styles.container, className)}>
       {metadata.frontMatter.hide_blog_post_date ? (
-        <div style={{ color: 'red' }}></div>
+        <div></div>
       ) : (
         <Date date={date} formattedDate={formattedDate} />
       )}
