@@ -1,7 +1,7 @@
 ---
 title: 'Improved account search functionality'
 date: '2024-07-02'
-tags: ['Accounts']
+tags: ['Commerce Manager', 'Accounts']
 hide_blog_post_date: false
 ---
 
