@@ -10,11 +10,14 @@ Klevu Recommendations leverage advanced AI and machine learning to provide perso
 
 Klevu recommendation queries are specific types of requests made to the Klevu API to fetch personalized product recommendations for shoppers based on various parameters. 
 
-| Query       | Search params   |
-|-------------|-----------------|
-|        |  |
-|  |  |
-|    |  |
+| Query                    | Search params   |
+|--------------------------|-----------------|
+| Similar products         |  |
+| Trending products        |  |
+| Recently viewed products |  |
+| New arrivals | |
+| Bought together | |
+| KMC recommendations | |
 
 ## Creating a page using a Klevu recommendations Component
 
@@ -44,17 +47,16 @@ Follow these steps to create a page that uses a **Klevu recommendations** compon
 
 10. Configure the component as follows:
 
-    | Option       | Description                                                                                        |
-    |--------------|----------------------------------------------------------------------------------------------------|
-    | **Features** | Configures whether the refinement list is displayed on the left or right side of the search items. |
-    | Hover |                                                                                                    |
-    | **Columns**  | Configures how many search items are displayed in each row.                                        |
-    | **Gap**      | Configures the gap between search items.                                                           |
-    | **Query** | A list of queries from Klevu. Each query has different **Search params**.                              |
+    | Option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    |--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | **Features** | Configures whether you filter the product recommendations by: <ul><li>**Title** - this is useful for sorting or searching for products based on the text in their titles. For example, displaying products in alphabetical order based on their titles or showing products that contain specific keywords in their titles.</li><li>**Price** - this useful for sorting or displaying products based on their price. For example, allowing users to set a minimum and maximum price range for the products they are interested in or enabling users to sort products from lowest to highest price or vice versa..</li></ul>. |
+    | Hover |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Columns**  | Configures how many search items are displayed in each row.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Gap**      | Configures the gap between search items.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | **Query** | A list of queries from Klevu. Each query has different **Search params**. See [Klevu Recommendation Queries](#klevu-recommendation-queries).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
     ![graphenehc collection properties example](/assets/studio/graphenehc_properties_example.png)
 
-11.
 12. When you are happy with your page, select the gear icon to display the page settings.
 13. Select **Save and Publish**.
 
