@@ -888,7 +888,6 @@ const config = {
           { to: '/docs/studio/Release-Notes/Release-188-January-17-2024', from: '/docs/cx-studio/Release-Notes/Release-188-January-17-2024'},
           { to: '/docs/api/pxm/products/variations', from: '/docs/pxm/products/pxm-product-variations/pxm-variations'},
           { to: '/guides/How-To/Personal-Data/set-logs-ttl', from: '/docs/commerce-cloud/personal-data/set-logs-ttl'},
-          { to: '/guides/How-To/Authentication/get-single-sign-on-customer-token', from: '/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token'},
           { to: '/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder', from: '/docs/commerce-cloud/rule-promotions/promotions-in-commerce-manager/creating-a-promotion-in-promotions-builder'},
           { to: '/guides/How-To/orders/send-order-confirmations', from: '/docs/commerce-cloud/orders/send-order-confirmations'},
           { to: '/docs/studio/Release-Notes/2022/Release-150-September-12-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-150-September-12-2022'},
