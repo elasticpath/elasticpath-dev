@@ -21,6 +21,8 @@ servers:
     description: EU West Production Server
   - url: https://useast.api.elasticpath.com
     description: US East Production Server
+security:
+  - bearerAuth: []
 tags:
   - name: Catalogs
     description: |
@@ -2377,6 +2379,14 @@ components:
       required: false
       schema:
         type: string
+    include-component-products:
+      name: include
+      in: query
+      description: |
+        Using the `include=component_products` parameter, you can retrieve key attribute data for the bundle component products in the product bundle, such as SKU or slug .
+      required: false
+      schema:
+        type: string
   requestBodies:
     bundle-configuration-data:
       content:
@@ -4172,6 +4182,16 @@ components:
           type: array
           items: {}
           x-go-name: Data
+        included:
+          type: object
+          x-go-name: Included
+          properties:
+            component_products:
+              type: array
+              items:
+                $ref: '#/components/schemas/product'
+              x-go-name: ComponentProducts
+          nullable: true
       required:
         - data
       x-go-name: ProductsForCart
