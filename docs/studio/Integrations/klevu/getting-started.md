@@ -48,9 +48,9 @@ Follow these steps to configure the **Klevu** integration in Studio.
 3. Select **+** next to **Klevu**.
 4. Configure the settings. 
 
-    | Option         | Description                                                                                                                                                                                                                       |
-    |:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **API Key**    | Your Klevu API key. See [Prerequisites](#prerequisites).                                                                                                                                                                          |
-    | **Secret**     | Your Klevu Search URl in the format `https://_klevuseachURl_/cs/v2/search` where _klevusearchurl_ is the search URL you copied in [Prerequisites](#prerequisites). For example, **https://uscs33v2.ksearchnet.com/cs/v2/search**. |
+    | Option         | Description                                                                                                                                                                                                                  |
+    |:---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | **API Key**    | Your Klevu API key. See [Prerequisites](#prerequisites).                                                                                                                                                                     |
+    | **Secret**     | Your Klevu Search URl in the format `https://klevuseachURl/cs/v2/search` where _klevusearchurl_ is the search URL you copied in [Prerequisites](#prerequisites). For example, `https://uscs33v2.ksearchnet.com/cs/v2/search`. |
 5. Select **Connect Account**.
 
