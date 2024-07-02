@@ -6,6 +6,18 @@ sidebar_position: 30
 
 Klevu Recommendations leverage advanced AI and machine learning to provide personalized and relevant product suggestions, enhancing user engagement and driving higher conversion rates for your business. By integrating seamlessly into the shopping experience and offering detailed insights, Klevu helps you optimize your product discovery and recommendation strategies.
 
+## Klevu Recommendation Queries
+
+Klevu recommendation queries are specific types of requests made to the Klevu API to fetch personalized product recommendations for shoppers based on various parameters. 
+
+| Query       | Search params   |
+|-------------|-----------------|
+|        |  |
+|  |  |
+|    |  |
+
+## Creating a page using a Klevu recommendations Component
+
 Follow these steps to create a page that uses a **Klevu recommendations** component in Studio.
 
 1. Select **Content** > **Website**.
@@ -18,11 +30,11 @@ Follow these steps to create a page that uses a **Klevu recommendations** compon
 
 6. Configure the following settings:
 
-    | Setting | Description |
-    | --- | --- |
-    | Title | Search Results |
-    | Studio Name | Search results |
-    | Page path | search |
+    | Setting | Description     |
+    | --- |-----------------|
+    | Title | Recommendations |
+    | Studio Name | Recommendations |
+    | Page path | recommendations |
 
 7. Select **Save only** to close page settings.
 8. The **Klevu recommendations** component allows you to filter on your product attributes such as brand, color and,so on, and their order. Select the **Search** component to display the toolbar. 
@@ -32,16 +44,19 @@ Follow these steps to create a page that uses a **Klevu recommendations** compon
 
 10. Configure the component as follows:
 
-    | Option | Description                                                                                                                                                                                                                                                                                                                                |
-    | --- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **Filters** | Configures whether the refinement list is displayed on the left or right side of the search items.                                                                                                                                                                                                                                         |
-    | **Columns** | Configures how many search items are displayed in each row.                                                                                                                                                                                                                                                                                |
-    | **Gap** | Configures the gap between search items.                                                                                                                                                                                                                                                                                                   |
+    | Option       | Description                                                                                        |
+    |--------------|----------------------------------------------------------------------------------------------------|
+    | **Features** | Configures whether the refinement list is displayed on the left or right side of the search items. |
+    | Hover |                                                                                                    |
+    | **Columns**  | Configures how many search items are displayed in each row.                                        |
+    | **Gap**      | Configures the gap between search items.                                                           |
+    | **Query** | A list of queries from Klevu. Each query has different **Search params**.                              |
 
     ![graphenehc collection properties example](/assets/studio/graphenehc_properties_example.png)
 
-11. When you are happy with your page, select the gear icon to display the page settings.
-12. Select **Save and Publish**.
+11.
+12. When you are happy with your page, select the gear icon to display the page settings.
+13. Select **Save and Publish**.
 
 Your published **Search Results** looks similar to this.
 
