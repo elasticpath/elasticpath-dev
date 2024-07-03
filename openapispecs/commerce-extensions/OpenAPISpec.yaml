@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Commerce Extensions Introduction
   description: |
-    Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options. The combination of Commerce Extensions with Composer, enables you to deploy custom behaviors and integrations to enable capabilities unique to your business without building that functionality from scratch and then hosting yourself.
+    Commerce Extensions is a Database as a Service (DBaaS) that allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options. The combination of Commerce Extensions with Composer, enables you to deploy custom behaviors and integrations to enable capabilities unique to your business without building that functionality from scratch and then hosting yourself.
 
     Commerce Extensions is the next generation of Flows. Flows are not going anywhere, but going forward as we add new features, Commerce Extensions will eventually provide all the capabilities and more that Flows does. We recommend using Custom APIs for any of your new use cases.
 
@@ -58,7 +58,7 @@ tags:
 
       ## Validation
 
-      When [creating](/docs/api/commerceextensions/create-a-custom-field#request) or [updating](/docs/api/commerceextensions/create-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the coressponding Custom API Entry.
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the coressponding Custom API Entry.
 
       :::note
 
@@ -103,6 +103,7 @@ tags:
       - `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be less than 0 and less than `max_length`.
       - `max_length`: Specifies the maximum number of characters that can be stored. If set, it must be greater than 0 and `min_length`.
       - `regex`: [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored. This must be less than 1024 characters.
+      - `unique`: Specifies whether the field can have unique constraint or not. It must be `yes` or `no`.
 
       sample string validation object:
 
@@ -110,8 +111,9 @@ tags:
       "validation": {
         "string": {
             "min_length": 0,
-            "max_length": 64
-            "regex": "^.+\.(jpg|jpeg|png|gif|pdf)$"
+            "max_length": 64,
+            "regex": "^.+\.(jpg|jpeg|png|gif|pdf)$",
+            "unique": "yes"
         }
       }
       ```
@@ -458,7 +460,8 @@ paths:
                           "min_length": 3,
                           "max_length": 128,
                           "regex": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "unique": "no"
                         }
                       }
                     }
@@ -556,7 +559,8 @@ paths:
                             "min_length": 3,
                             "max_length": 128,
                             "regex": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "unique": "no"
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -741,7 +745,8 @@ paths:
                               "min_length": 3,
                               "max_length": 128,
                               "regex": null,
-                              "allow_null_values": true
+                              "allow_null_values": true,
+                              "unique": "no"
                             }
                           }
                         }
@@ -827,7 +832,8 @@ paths:
                           "min_length": 3,
                           "max_length": 128,
                           "regex": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "unique": "no"
                         }
                       }
                     }
@@ -917,7 +923,8 @@ paths:
                             "min_length": 3,
                             "max_length": 128,
                             "regex": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "unique": "no"
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1134,7 +1141,7 @@ paths:
           | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
           | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
 
-        The following operators and attributes may be available for filtering Custom API Entries depending on how the [Custom Fields](/docs/api/commerceextensions/create-a-custom-field) for that Custom API are configured.
+        The following operators and attributes may be available for filtering Custom API Entries depending on how the [Custom Fields](/docs/api/commerce-extensions/create-a-custom-field) for that Custom API are configured.
 
           | Field type | Operators                            | 
           |------------|--------------------------------------|
@@ -1860,12 +1867,12 @@ components:
             - 7e067539-6f6c-46e1-8c55-940031b36c6a
         type:
           type: string
-          description: Specifies the type of the resource object, use the `api_type` of the [Custom API](/docs/api/commerceextensions/create-a-custom-api) for Custom API Entry.
+          description: Specifies the type of the resource object, use the `api_type` of the [Custom API](/docs/api/commerce-extensions/create-a-custom-api) for Custom API Entry.
           examples:
             - "wishlist_ext"
         $customFieldSlug:
           type: [string, integer, boolean]
-          description: Specifies the data for this Custom API Entry, each key must match a `slug` of a [Custom Field](/docs/api/commerceextensions/create-a-custom-field). The corresponding value must conform to the defined `field_type` and meet the [validation](/docs/api/commerce-extensions/custom-fields/custom-fields#validation) defined for that field if set.
+          description: Specifies the data for this Custom API Entry, each key must match a `slug` of a [Custom Field](/docs/api/commerce-extensions/create-a-custom-field). The corresponding value must conform to the defined `field_type` and meet the [validation](/docs/api/commerce-extensions/custom-fields/custom-fields#validation) defined for that field if set.
           examples:
             - "$value"
         links:
