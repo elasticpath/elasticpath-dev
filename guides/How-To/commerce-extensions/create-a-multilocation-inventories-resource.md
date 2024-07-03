@@ -103,9 +103,9 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 Take note of `validation` in the step above, this field is restricted to only allow the following values:
-* Eiffel Tower
-* Graceland
-* Hamptons
+* Paris
+* London
+* New York
 
 For more information, see [string validation](https://beta.elasticpath.dev/docs/api/commerceextensions/custom-fields#string-validation).
 
@@ -140,7 +140,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/extensions/location-inventor
         "type": "location_inventory_ext",
         "slug": "LR-SFA-201",
         "amount": 4,
-        "location-name": "Hamptons"
+        "location-name": "Paris"
       }
     }
 ```
