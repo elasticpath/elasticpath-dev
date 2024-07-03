@@ -10,16 +10,7 @@ Klevu Recommendations leverage advanced AI and machine learning to provide perso
 
 Klevu recommendation queries are specific types of requests made to the Klevu API to fetch personalized product recommendations for shoppers based on various parameters. 
  
-For some of the queries, search parameters are required. For other queries, the search parameters are optional but you can override the parameters, depending on your requirements. 
-
-| Query                    | Required | Search params | Query Params |
-|--------------------------|----------|---------------|--------------| 
-| Similar products         | Required |               |              | 
-| Trending products        | Required |               |              | 
-| Recently viewed products | Required |               |              |
-| New arrivals             | Required |               |              |
-| Bought together          | Required |               |              |
-| KMC recommendations      | Optional |               |              |
+For some of the queries, search parameters are required. For other queries, the search parameters are optional but you can override the parameters, depending on your requirements.
 
 ## Creating a page using a Klevu recommendations Component
 
