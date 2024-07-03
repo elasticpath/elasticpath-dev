@@ -10,9 +10,9 @@ nav_position: 7
 
 - Enable CyberSource Token Management Service. Contact CyberSource support.
 
-  {% callout type="warning"  %}
+  :::caution
   If you have not enabled the Token Management Service, all payment transactions are blocked. For more information about the service not being enabled, see the [Visa Developer Community](https://community.developer.visa.com/t5/Sandbox-Test-Data/Recurring-Billing-or-Secure-Storage-service-is-not-enabled-for/m-p/6415).
-  {% /callout %}
+  :::
 
 ## Generating CyberSource Keys
 

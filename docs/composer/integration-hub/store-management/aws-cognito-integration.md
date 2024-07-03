@@ -36,7 +36,7 @@ There are some parameters that you must not change.
 
 **Create User Pool Request Template**
 
-```{% process=false %}
+```json
 { 
   "PoolName": "{{poolName}}"
 }
@@ -44,7 +44,7 @@ There are some parameters that you must not change.
 
 **Update User Pool Request Template**
 
-```{% process=false %}
+```json
 {
   "UserPoolId": "{{userPoolId}}"
 }
@@ -52,20 +52,16 @@ There are some parameters that you must not change.
 
 **Create User Pool Client Request Template**
 
-
-```{% process=false %}
+```json
 {
           "UserPoolId": "{{userPoolId}}",
           "ClientName": "{{poolName}}"
 }
 ```
 
-
 **Update User Pool Client Request Template**
 
-
-
- ```{% process=false %}
+ ```json
 {
   "UserPoolId": "{{userPoolId}}",
   "ClientName": "{{poolName}}"

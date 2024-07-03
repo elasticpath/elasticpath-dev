@@ -1,7 +1,7 @@
 ---
 title: Overview
 nav_label: Overview
-nav_position : 1
+sidebar_position : 10
 ---
 
 In Commerce Manager, an Org Admin can manage both organization and stores.

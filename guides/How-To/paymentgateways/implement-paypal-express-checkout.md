@@ -26,9 +26,9 @@ You can set up and confirm a purchase by doing the following:
 
 1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/account-checkout).
 
-    {% callout %}
+    :::caution
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
-    {% /callout %}
+    :::
 
 1. Use the following request example to set up `purchase` from PayPal Express Checkout gateway. For more information, see [PayPal Express Checkout Payments](https://elasticpath.dev/docs/api/carts/authorize-setup).
 
