@@ -35,11 +35,11 @@ function BlogListPageContent(props) {
         Subscriptions and Payments products. The changelog does not include:
         <p></p>
         <ul>
-          <li>Underlying security patches.</li>
-          <li>Routine library updates.</li>
+          <li>Underlying security patches</li>
+          <li>Routine library updates</li>
         </ul>
 
-        Find the latest release notes for Studio here.
+        <p>Find the latest release notes for <a href="https://elasticpath.dev/docs/studio">Studio here</a>.</p>
         Keep up with changes to Elastic Path services by subscribing to our <a
         href="https://elasticpath.dev/changelog/rss.xml">RSS Feed</a>, <a
         href="https://elasticpath.dev/changelog/atom.xml">Atom Feed</a>, or <a
