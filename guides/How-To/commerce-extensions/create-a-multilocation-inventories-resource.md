@@ -153,7 +153,7 @@ Finally, take note that the keys (`slug`, `amount` and `location-name`) of the a
 
 ## Update Custom API Entries
 
-With your Custom API Entry created, you can update it to modify inventory `amount`.
+With your Custom API Entry created, you can update it to modify inventory `amount`. 
 
 ```sh
 curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/:customApiEntryId" \
