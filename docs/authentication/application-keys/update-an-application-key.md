@@ -30,6 +30,7 @@ https://useast.api.elasticpath.com/v2/application-keys/:id
 |:-------|:---------|:---------|:------------------------------------------------------------------------|
 | `type` | Required | `string` | Represents the type of object being returned. Always `application_key`. |
 | `name` | Required | `string` | Specifies the new name of the application key to be updated.            |
+| `reserved_rate_limit` | Optional| `integer` | Indicates the reserved rate limit for an application key. For more information, see [Application Keys Overview](/docs/authentication/application-keys/application-keys-overview). |
 
 ## Request Example - Curl
 
@@ -41,7 +42,8 @@ curl -X PUT https://useast.api.elasticpath.com/v2/application-keys/:id \
        "data":
        {
         "type": "application_key",
-        "name": "New Key Name"
+        "name": "New Key Name",
+        "reserved_rate_limit": 15
       }
     }
 ```
@@ -57,7 +59,7 @@ curl -X PUT https://useast.api.elasticpath.com/v2/application-keys/:id \
         "name": "New Key Name",
         "type": "application_key",
         "client_id": "d41f447c7b87eb043ad55f641c7e5e3f176e5843c2",
-        "reserved_rate_limit": 0,
+        "reserved_rate_limit": 15,
         "meta": {
             "timestamps": {
                 "last_used_at": "2022-10-11T12:44:16.309Z",

@@ -16,7 +16,7 @@ info:
 
    :::note
     
-   For a list of all the events that can be used, see [Observable Events](#observable-events) in the API reference.
+   For a list of all the events that can be used, see [Observable Events](#observable-events).
     
    :::
 
@@ -80,7 +80,7 @@ info:
   
    An integration with an `integration_type` of [`aws_sqs`](/docs/api/integrations/create-integration) delivers its events directly into the configured AWS SQS queue. These messages can be processed by any appropriate means, such as a Lambda function.
   
-   For more information about creating Simple Queue Service (SQS) queues, see the [Simple Queue Service (SQS)](https://beta.elasticpath.dev/guides/Integrations/sqs-queues) and [SQS Events with CloudFormation](https://beta.elasticpath.dev/guides/Integrations/sqs-queues-cloudformation) sections.
+   For more information about creating Simple Queue Service (SQS) queues, see the [Simple Queue Service (SQS)](https://elasticpath.dev/guides/How-To/Integrations/sqs-queues) and [SQS Events with CloudFormation](https://elasticpath.dev/guides/How-To/Integrations/sqs-queues) sections.
     
    #### Simple Text Orientated Messaging Protocol (STOMP)
   
@@ -98,7 +98,7 @@ info:
    | :------------- | :------------------------------- | :------------------------------------------------------------------------------------------------ |
    | `id`           | `string`                         | A unique ID for this event.                                                                       |
    | `integration`  | `object`                         | The events `integration_type` being fired.                                                        |
-   | `triggered_by` | [`string`](/docs/commerce-cloud/integrations/observable-events) | The [observable event](/docs/commerce-cloud/integrations/observable-events) that triggered this event.                           |
+   | `triggered_by` | `string` | The [observable events](#observable-events) that triggered this event.                           |
    | `attempt`      | `integer`                        | The number of attempts to deliver this event.                                                     |
    | `resources`    | `string`                         | The resources affected by this event. This field is now deprecated. Please use `payload` instead. |
    | `payload`      | `object`                         | The resources affected by this event.                                                             |
@@ -110,7 +110,7 @@ info:
 
    ### Example: Typical payload
   
-   The following example payload [observes](/docs/commerce-cloud/integrations/observable-events) the `order.paid` event. The configured URL receives the following payload.
+   The following example payload [observes](#observable-events) the `order.paid` event. The configured URL receives the following payload.
     
    ```javascript
    {
@@ -280,7 +280,7 @@ info:
    ### Example: Deleted resources payload
    
   
-   When resources are deleted and you observe an event, you receive a payload which **only** \__contains the resource type and ID_.\_
+   When resources are deleted and you observe an event, you receive a payload which **only** contains the resource type and ID.
     
    ```javascript
    {
@@ -318,12 +318,12 @@ info:
    | :-------------- | :------------------------------- | :---------------------------------------------------------------------- |
    | `id`            | `string`                         | A unique ID for this event.                                             |
    | `integrationid` | `string`                         | The ID of the integration being fired.                                  |
-   | `type`          | [`string`](/docs/commerce-cloud/integrations/observable-events) | The [observable event](/docs/commerce-cloud/integrations/observable-events) that triggered this event. |
+   | `type`          | `string` | The [observable event](#observable-events) that triggered this event. |
    | `data`          | `object`                         | The resource affected by this event.                                    |
 
    #### Example: Typical payload
 
-   The following example payload [observes](/docs/commerce-cloud/integrations/observable-events) the `cart.updated` event. The configured queue receives the following message payload:
+   The following example payload [observes](#observable-events) the `cart.updated` event. The configured queue receives the following message payload:
     
    ```javascript
    {
@@ -415,7 +415,7 @@ info:
    | [**Address**](/docs/api/addresses/addresses-introduction)                                                        | Created | `address.created` | Store |
    |                                                                                                                          | Updated | `address.updated` | Store |
    |                                                                                                                          | Deleted | `address.deleted` | Store |
-   | [**Account**](/docs/api/accounts/accounts-introduction)                | Created | `account.created` | Store |
+   | [**Account**](/docs/api/accounts/account-management-introduction)                | Created | `account.created` | Store |
    |                                                                                                                          | Updated  | `account.updated` | Store |
    |                                                                                                                          | Deleted  | `account.deleted` | Store |
    | [**Account Member**](/docs/api/accounts/account-members)                                   | Created | `account-member.created` | Store |
@@ -429,15 +429,18 @@ info:
    | [**Currency**](/docs/api/pxm/currencies/currencies)                                   | Created | `currency.created` | Store |
    |                                                                                                                          | Updated | `currency.updated` | Store |
    |                                                                                                                          | Deleted | `currency.deleted` | Store |
-   | [**Customer**](/docs/commerce-cloud/customer-management/customer-managment-api/customer-management-api-overview)         | Created | `customer.created` | Store |
+   | [**Customer**](/docs/customer-management/customer-management-api/customer-management-api-overview)         | Created | `customer.created` | Store |
    |                                                                                                                          | Updated | `customer.updated` | Store |
    |                                                                                                                          | Deleted | `customer.deleted` | Store |
+   | [Custom API Entries](/docs/api/commerceextensions/custom-api-entries) | Created | `customAPIEntryType.created` | Store |
+   | | Updated | `customAPIEntryType.updated` | Store |
+   | | Deleted | `customAPIEntryType.deleted` | Store |
    | [**File**](/docs/api/pxm/files/files)                                                             | Created | `file.created` | Store |
    |                                                                                                                          | Deleted | `file.deleted` | Store |
    | [**Integration (events)**](/docs/api/integrations/create-integration)                                  | Created | `integration.created` | Store, Organization |
    |                                                                                                                          | Updated | `integration.updated` | Store, Organization |
    |                                                                                                                          | Deleted | `integration.deleted` | Store, Organization |
-   | [**One-Time Password Token Request**](/docs/commerce-cloud/authentication/single-sign-on/password-profiles-api/create-one-time-password-token-request) | Created | `one-time-password-token-request.created` | Store |
+   | [**One-Time Password Token Request**](/docs/authentication/single-sign-on/password-profiles-api/create-one-time-password-token-request) | Created | `one-time-password-token-request.created` | Store |
    | [**Order Events**](/docs/api/carts/orders)                                           |
    | `/checkout`                                                                                                              | Created | `order.created` | Store |
    | `/orders/:id/payments`                                                                                                   | Updated | `order.updated`/`order.paid`. The event `order.paid` is triggered when the payment status is `paid`. The event `order.updated` is triggered when the order is captured, completed, refunded, anonymized, or updated. | Store |
@@ -446,11 +449,10 @@ info:
    | `/orders/:id/transactions/:id/capture`                                                                                   | Paid/Captured | `order.paid`/ `order.updated`. The event `order.paid` is triggered when the order status is completed and captured, and the payment status is `paid`. The event `order.updated` is triggered when the order is captured, completed, refunded, anonymized, or updated. | Store |
    | `/orders/:id/transactions/:id/refund`                                                                                    | Refunded | `order.refunded` | Store |
    | [**Payment Gateway**](/docs/api/payments/gateways)                           | Updated | `payment-gateway.updated` | Store |
-   | [**Catalog**](/docs/pxm/catalogs/catalog-configuration/catalog-configuration-overview)                                   |
-   | [**Catalog releases**](/docs/api/catalogs/)                                               | Created | `catalog-release.created` | Store, Organization |
+   | [**Catalog releases**](/docs/api/pxm/catalog/releases)                                               | Created | `catalog-release.created` | Store, Organization |
    |                                                                                                                          |  Updated | `catalog-release.updated` | Store, Organization |
    |                                                                                                                          | Deleted | `catalog-release.deleted` | Store, Organization |
-   | [**Catalog rules**](/docs/api/catalogs/catalog-rules/catalog-rules)                                                      | Created | `catalog-rule.created` | Store |
+   | [**Catalog rules**](/docs/api/pxm/catalog/rules)                                                      | Created | `catalog-rule.created` | Store |
    |                                                                                                                          | Updated | `catalog-rule.updated` | Store |
    |                                                                                                                          | Deleted | `catalog-rule.deleted` | Store |
    | [**Settings**](/docs/api/settings/settings)                                           | Created | `settings.created` | Store |
@@ -459,7 +461,7 @@ info:
    | [**Transaction**](/docs/api/pxm/inventory/transactions)                                      | Created | `transaction.created` | Store |
    |                                                                                                                          | Updated | `transaction.updated` | Store |
    | [**Subscriptions**](/docs/subscriptions/observable-events) | <td colspan="3">You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. See [**Subscriptions**](/docs/subscriptions/observable-events).</td> |
-   | [**User Authentication Info**](/docs/commerce-cloud/authentication/overview) | Created | `user-authentication-info.created` | Store |
+   | [**User Authentication Info**](/docs/authentication/single-sign-on/user-authentication-info-api/overview) | Created | `user-authentication-info.created` | Store |
    |                                                                                                                          | Updated  | `user-authentication-info.updated` | Store |
    |                                                                                                                          | Deleted  | `user-authentication-info.deleted` | Store |
     

@@ -67,9 +67,9 @@ const PRODUCTS = [
     text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.'
   },
   {
-    title: 'Rule Promotions',
+    title: 'Promotions Builder',
     beta: false,
-    link: '/docs/commerce-manager/promotions-builder/overview',
+    link: '/docs/commerce-manager/promotions-builder',
     icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -102,7 +102,7 @@ const PRODUCTS = [
   //  text: 'Use carts, checkout and orders to get your products from the catalog into the cart, through checkout and into order completed state.',
   //},
  // {
- //   title: 'Custom Data',
+ //   title: 'Custom-Data',
  //   beta: false,
  //   link: '/docs/api/flows/flows-service-api',
  //   icon: BookDatabaseRegular,
@@ -120,7 +120,7 @@ const PRODUCTS = [
   //  text: 'You can integrate Commerce with your external systems like enterprise resource planning, order management, fulfilment, and other systems, ensuring that buying is quick and easy for your shoppers.',
   //},
   //{
-  //  title: 'Personal Data Service',
+  //  title: 'Personal-Data Service',
   //  beta: false,
   //  link: '/docs/commerce-cloud/personal-data',
   //  icon: DatabasePersonRegular,
@@ -138,7 +138,7 @@ const PRODUCTS = [
   //  text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   //},
   {
-    title: 'Promotions Standard',
+    title: 'Promotions-Standard',
     beta: false,
     link: '/docs/commerce-manager/promotions-standard/overview',
     icon: BuildingRetailRegular,

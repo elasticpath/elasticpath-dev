@@ -1,6 +1,6 @@
 ---
-title: Personal Data Erasure Requests Overview
-nav_label: Personal Data Erasure Requests Overview
+title: Personal-Data Erasure Requests Overview
+nav_label: Personal-Data Erasure Requests Overview
 sidebar_position: 10
 ---
 

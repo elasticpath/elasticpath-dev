@@ -5,9 +5,7 @@ sidebar_position: 10
 ---
 
 :::note
-
 This generator is only available on **eCommerce** plans.
-
 :::
 
 The Product generator allows you to access elements of a product in your storefront. This allows you to display details on the products inventory, price range, variants, and media associated with the product.
