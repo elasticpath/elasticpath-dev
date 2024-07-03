@@ -15,7 +15,7 @@ You can quickly and easily integrate Studio with Klevu. Klevu is an advanced AI-
 - build a search page in Studio, enabling you to leverage the Klevu search engine in your Studio storefronts.
 - build a page in Studio that uses a **Klevu recommendations** component to leverage Klevu Recommendations, designed to enhance your shoppers experience by providing personalized product suggestions.
 
-See Integrating with Klevu.
+See [Integrating with Klevu](/docs/studio/integrations/klevu/getting-started).
 
 ## Complete List of Resolved Items
 
