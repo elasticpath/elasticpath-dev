@@ -4,9 +4,9 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product and attach it to a new offering.
+Offerings represent a snapshot of their product and plans. If you make updates to products or plans within an offering, the original products and plans are not updated. Only the products and plans within the offering are updated. Alternatively, you can create a new product and attach it to a new offering.
 
-An offering includes a product and plans; a product is combined with one or more plans to form an offering. 
+An offering includes products and plans; products are combined with one or more plans to form an offering. 
 
 For example, your company provides online streaming of movies, web-series, and music. Your customers can purchase these services through either a weekly or monthly plan.  
 
@@ -25,7 +25,7 @@ Offerings can have any combination of a product and plans. The pricing of an off
 
 Here's how you build an offering:
 
-1. Attach your repeat product. An offering can have only one product. See [Repeat Products](/docs/commerce-manager/subscriptions/products/managing-products-cm).
+1. Attach your repeat products. See [Repeat Products](/docs/commerce-manager/subscriptions/products/managing-products-cm).
 2. Attach your plans.
     - Plans are the rules that govern your subscription, for example, any discount.
     - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.

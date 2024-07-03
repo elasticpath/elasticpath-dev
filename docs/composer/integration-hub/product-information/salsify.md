@@ -72,8 +72,8 @@ As part of the Salsify Integration, changes in Catalog data in Salsify automatic
 
     The following example shows how this should look in the Product Template.
 
-```Json
-"attributes":[
+    ```Json
+    "attributes":[
     [
         {
             "templateSlug":"products(extension)",
@@ -103,10 +103,11 @@ As part of the Salsify Integration, changes in Catalog data in Salsify automatic
             ]
         }
     ]
-] ~> $filter(function($v, $i, $a) {
+    ] ~> $filter(function($v, $i, $a) {
         $count($v.templateAttributes) > 0
-})
-```
+    })
+    ``` 
+
 
 1. Click **Edit** under **ElasticPath Price Template**. Update the price book name of Commerce in `priceBookName` field. For example, if the price book name is `UKandIEPricebook` in Commerce cloud, update the same in the **Price Template**.
     For example: 
