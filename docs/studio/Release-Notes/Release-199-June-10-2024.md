@@ -16,8 +16,6 @@ Once you have enabled pagination for your product collection component, you can 
 
 ![pagination arrows](/assets/studio/pagination-numbers.png)
 
-For more information, see Product Collection.
-
 ## Complete List of Resolved Items
 
 ### Search Engine Optimization
