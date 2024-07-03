@@ -1,7 +1,7 @@
 ---
 title: Release 199 | June 25, 2024
 nav_label: Release 199 | June 25, 2024
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 ## Overview
