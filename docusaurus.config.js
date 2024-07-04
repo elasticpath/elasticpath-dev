@@ -444,7 +444,7 @@ const config = {
             specPath: "openapispecs/commerce-extensions/OpenAPISpec.yaml",
             outputDir: "docs/api/commerce-extensions/",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/commerceextensions/OpenAPISpec.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/commerce-extensions/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
