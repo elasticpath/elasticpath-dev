@@ -15,6 +15,23 @@ In an Elastic Path Commerce Cloud store, sellers can create accounts using Comme
 1. (Optional) In the **Registration ID** field, enter a unique registration ID for the account.
 1. Click **Save**.
 
+## Searching Accounts
+
+1. Go to **CUSTOMERS AND ACCOUNTS > Accounts**.
+1. Go to the **Accounts** tab.
+1. Select one of the following options to search accounts using:
+    - **Name**
+    - **Legal Name**
+    - **Registration ID**
+    - **External Reference**
+1. Select one of the following search criteria options:
+    - **is**
+    - **is like**
+    - **ends with**
+    - **starts with**
+1. Enter the desired value in the **Find user** field.
+1. Select **Search**. 
+
 ## Searching Account Users
 
 1. Go to **CUSTOMERS AND ACCOUNTS > Accounts**.
