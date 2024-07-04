@@ -1,7 +1,7 @@
 ---
 title: Integrating MailerLite
 nav_label: MailerLite
-sidebar_position: 203
+sidebar_position: 204
 ---
 
 :::caution
