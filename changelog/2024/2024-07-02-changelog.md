@@ -7,4 +7,4 @@ hide_blog_post_date: false
 
 **MINOR** Commerce Manager: A new and improved Bundle Builder is available. The new bundle builder features an upgraded visual design, making it easier to use and more intuitive, with a smoother interface that simplifies the bundle creation process. For more information, see [Creating Bundles](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
 
-**MINOR** Commerce Manager: Improved account search functionality to enable more effective filtering by name, legal name, registration ID, and external reference. For more information, see [Searching Accounts](https://elasticpath.dev/docs/api/accounts/get-v-2-accounts#filtering).
+**MINOR** Commerce Manager: Improved account search functionality to enable more effective filtering by name, legal name, registration ID, and external reference. For more information, see [Searching Accounts](https://elasticpath.dev/docs/commerce-manager/account-management/accounts#searching-accounts).
