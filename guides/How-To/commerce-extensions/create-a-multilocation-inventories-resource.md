@@ -34,7 +34,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 
-Make sure to take note of the Custom API ID [returned](https://beta.elasticpath.dev/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID.
+Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID.
 
 ## Create Custom Fields
 
@@ -78,7 +78,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
       }
     }
 ```
-Take note of `validation` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](https://beta.elasticpath.dev/docs/api/commerce-extensions/custom-fields#integer-validation).
+Take note of `validation` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](/docs/api/commerce-extensions/custom-fields#integer-validation).
 
 ### Create Custom Field - location-name
 In this step, you will create a Custom Field `location-name`, this stores a string to represent where a SKU is stored. Additionally, you will restrict this value to specific options using regex.
@@ -107,7 +107,7 @@ Take note of `validation` in the step above, this field is restricted to only al
 * London
 * New York
 
-For more information, see [string validation](https://beta.elasticpath.dev/docs/api/commerce-extensions/custom-fields#string-validation).
+For more information, see [string validation](/docs/api/commerce-extensions/custom-fields#string-validation).
 
 ### Create Custom Field - collection-name
 In this step, you will create a Custom Field `collection-name`, this stores a string to represent the collection a SKU is associated with.
@@ -206,4 +206,4 @@ curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventori
      -H "Authorization: XXXX" \
 ```
 
-For more information, see [Filtering](https://beta.elasticpath.dev/docs/api/commerce-extensions/get-all-custom-entries#filtering).
+For more information, see [Filtering](/docs/api/commerce-extensions/get-all-custom-entries#filtering).
