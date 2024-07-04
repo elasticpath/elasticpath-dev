@@ -1,7 +1,7 @@
 ---
 title: Release 199 | June 25, 2024
 nav_label: Release 199 | June 25, 2024
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 ## Overview
@@ -15,8 +15,6 @@ The Product Collection component now supports pagination. For optimal performanc
 Once you have enabled pagination for your product collection component, you can configure how pagination displays when you add a product collection component to a page. See [Configuring Pagination for Product Collections](/docs/studio/developers/e-commerce/product-collection).
 
 ![pagination arrows](/assets/studio/pagination-numbers.png)
-
-For more information, see Product Collection.
 
 ## Complete List of Resolved Items
 
