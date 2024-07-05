@@ -8,7 +8,9 @@ A `password_profile` resource represents a specific configuration that allows us
 
 Password Profiles support One Time Password Tokens, that can be used to use passwordless login, or password reset.
 
-An authentication realm can have multiple Password Profiles. This allows shoppers to authenticate using the username and passwords in one profile, and then have admins know a different username and password for a user in a different profile, shown as the "Impersonation Profile" this can be automated with a Backend-For-Frontend (BFE) or using One Time Password Tokens. In the example shown below, both John and Joan can login themselves. In addition, an admin can login as Joan using the "Impersonation Profile".
+An authentication realm can have multiple Password Profiles. You can use this flexibility in many ways, for instance if you want to migrate an existing pool of users from another system with their own usernames and passwords, they can use one profile, and the rest of the users another. 
+
+Another use case is to allow admin impersonation, by allowing shoppers to authenticate using the username and passwords in one profile, and then have admins know a different username and password for a user in a different profile, shown as the "Impersonation Profile" this can be automated with a Backend-For-Frontend (BFE) or using One Time Password Tokens. In the example shown below, both John and Joan can login themselves. In addition, an admin can login as Joan using the "Impersonation Profile".
 
 ![password profiles](/assets/password-profiles.png)
 
