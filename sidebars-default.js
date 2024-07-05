@@ -116,7 +116,7 @@ const sidebarsDefault = {
     },
     {
       type: "category",
-      label: "Addresses",
+      label: "Account Addresses",
       link: {
         type: "generated-index",
         title: "Addresses API",

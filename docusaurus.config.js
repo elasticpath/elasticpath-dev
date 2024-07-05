@@ -401,10 +401,10 @@ const config = {
             },
           },
           addresses: {
-            specPath: "openapispecs/addresses/OpenAPISpec.yaml",
+            specPath: "openapispecs/addresses/AccountAddresses.yaml",
             outputDir: "docs/api/addresses",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/addresses/OpenAPISpec.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/addresses/AccountAddresses.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
