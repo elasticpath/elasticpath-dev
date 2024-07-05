@@ -10,7 +10,7 @@ Password Profiles support One Time Password Tokens, that can be used to use pass
 
 An authentication realm can have multiple Password Profiles. You can use this flexibility in many ways, for instance if you want to migrate an existing pool of users from another system with their own usernames and passwords, they can use one profile, and the rest of the users another. 
 
-Another use case is to allow admin impersonation, by allowing shoppers to authenticate using the username and passwords in one profile, and then have admins know a different username and password for a user in a different profile, shown as the "Impersonation Profile" this can be automated with a Backend-For-Frontend (BFE) or using One Time Password Tokens. In the example shown below, both John and Joan can login themselves. In addition, an admin can login as Joan using the "Impersonation Profile".
+Another use case is enabling admin impersonation, where shoppers can authenticate using their own username and password in one profile. Meanwhile, admins can have a different username and password for the same user in a separate profile, shown as the "Impersonation Profile." This process can be automated using a Backend-For-Frontend (BFE) or One-Time Password Tokens. In the example shown below, both John and Joan can log in with their credentials, and an admin can also log in as Joan using the "Impersonation Profile."
 
 ![password profiles](/assets/password-profiles.png)
 
