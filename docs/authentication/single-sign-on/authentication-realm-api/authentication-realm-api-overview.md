@@ -4,7 +4,7 @@ nav_label: Authentication Realms
 sidebar_position: 10
 ---
 
-This You can use the Authentication Realms endpoint to configure authentication options. Authentication Realm sub-resources can be used to configure single sign-on.
+You can use the Authentication Realms endpoint to configure authentication options. Authentication Realm sub-resources can be used to configure single sign-on.
 
 ## The Authentication Realm Object
 
