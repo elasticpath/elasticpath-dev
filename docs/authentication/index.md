@@ -13,7 +13,7 @@ Authorization: Bearer 212LJ3k0i2382364HIUEjfeJB98yvH
 Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.
 
 :::note
-Read our [Quick Start guide](/guides/Getting-Started/your-first-api-request) on how to make your first API request.
+Read our [Quick Start guide](/guides/Getting-Started/your-first-api-request) on how to make your first API request. 
 :::
 
 Authentication tokens are generated via the `authentication` endpoint and expire within 1 hour. They need to be then regenerated. If you’re using our [JavaScript SDK](https://github.com/moltin/js-sdk), this is automatically handled for you.
