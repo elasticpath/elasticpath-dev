@@ -172,14 +172,14 @@ tags:
     description: |
       A **Custom API Entry** is a specific instance of a resource, such as a single wishlist in a Custom API for wishlists.
       
-      Custom API Entries can be accessed in two different ways, via the **settings** endpoint, or via an **extension** endpoint:
+      Custom API Entries can be accessed in two different ways, via the **settings** endpoint, or the **extension** endpoint:
       
-      * **/v2/extensions/{custom_api_slug}** - This endpoint, the **extension** endpoint is the endpoint that was created. It is the endpoint that most clients should use, and obeys the semantics of the configuration.
-      * **/v2/settings/extensions/custom-apis/{custom_api_id}/entries/** - This endpoint is the **settings** endpoint and should only be used in cases where you want to interact with your Custom APIs in a generic way in an admin capacity. 
+      * Extension Endpoint: `/v2/extensions/{custom_api_slug}` - This is the primary endpoint created for use. Most clients should use this endpoint as it adheres to the semantics of the configuration. See [Commerce Extension Custom API](/docs/api/commerce-extensions/commerce-extension-custom-api)
+      * Settings Endpoint: `/v2/settings/extensions/custom-apis/{custom_api_id}/entries/` - This endpoint should only be used in cases where you want to interact with your Custom APIs in a generic way in an admin capacity. 
       
-      At the current time, the distinction between these endpoints is negligible. One uses a slug in the URL path, and the other uses the id. For most use cases where you want to work with the new Custom API, we recommend using the extension endpoint - `/v2/extensions/{custom_api_slug}`.
+      Currently, the distinction between these endpoints is minimal. The extension endpoint uses a slug in the URL path, and the settings endpoint uses an ID. For most use cases involving the new Custom API, we recommend using the extension endpoint.
       
-      Conceptually one can think of the settings endpoint - `/v2/settings/extensions/custom-apis/{custom_api_id}/entries/` - as being analogous to reflection in most programming languages. You use it when you want to operate in a generic way, we used the **settings** endpoint to build Commerce Manager. Another example would be if you need to import and export many different types of data from csv files, you can write 1 script that operates on the settings endpoint as opposed to multiple scripts that operate on the extensions endpoints.
+      Conceptually, the settings endpoint is analogous to reflection in most programming languages. You use it when you want to operate in a generic way. For example, we used the settings endpoint to build Commerce Manager. Another example is if you need to import and export various types of data from CSV files. Instead of writing multiple scripts for different extension endpoints, you can write one script that operates on the settings endpoint.
       
       ## Events
 
@@ -1055,7 +1055,7 @@ paths:
     post: &postCustomAPIEntry
       tags:
         - Custom API Entries
-      summary: Create a Custom API Entry
+      summary: Create a Custom API Entry using the settings endpoint
       operationId: CreateACustomEntry
       requestBody:
         content:
@@ -1258,7 +1258,7 @@ paths:
     get: &getCustomAPIEntry
       tags:
         - Custom API Entries
-      summary: Get a Custom API Entry
+      summary: Get a Custom API Entry using the settings endpoint
       operationId: GetACustomEntry
       responses:
         '200':
@@ -1315,7 +1315,7 @@ paths:
     put: &putCustomAPIEntry
       tags:
         - Custom API Entries
-      summary: Update a Custom API Entry
+      summary: Update a Custom API Entry using the settings endpoint
       operationId: UpdateACustomEntry
       parameters:
         - in: header
@@ -1438,11 +1438,13 @@ paths:
       - $ref: "#/components/parameters/CustomApiSlug"
     get:
       <<: *getCustomAPIEntries
+      summary: Get all Custom API Entries using the extensions endpoint
       operationId: GetCustomEntriesSettings
       tags:
         - Commerce Extension Custom API
     post:
       <<: *postCustomAPIEntry
+      summary: Create a Custom API Entry using the extensions endpoint
       operationId: CreateACustomEntrySettings
       tags:
         - Commerce Extension Custom API
@@ -1452,17 +1454,20 @@ paths:
       - $ref: "#/components/parameters/CustomEntryId"
     get:
       <<: *getCustomAPIEntry
+      summary: Get a Custom API Entry using the extensions endpoint
       operationId: GetACustomEntrySettings
       tags:
         - Commerce Extension Custom API
     put:
       <<: *putCustomAPIEntry
       operationId: PutACustomEntrySettings
+      summary: Update a Custom API Entry using the extensions endpoint
       tags:
         - Commerce Extension Custom API
     delete:
       <<: *deleteCustomAPIEntry
       operationId: DeleteACustomEntrySettings
+      summary: Delete a Custom API Entry using the extensions endpoint
       tags:
         - Commerce Extension Custom API
 components:

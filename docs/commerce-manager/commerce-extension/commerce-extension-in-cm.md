@@ -1,6 +1,6 @@
 ---
-title: Commerce Extensions in Commerce Manager
-nav_label: Commerce Extensions in Commerce Manager
+title: Commerce Extensions
+nav_label: Commerce Extensions
 sidebar_position: 4
 ---
 
