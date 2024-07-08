@@ -6,7 +6,7 @@ sidebar_position: 10
 
 A `password_profile` resource represents a specific configuration that allows users to authenticate through username and password.
 
-Password Profiles support One-Time Password Tokens, that can be used to use passwordless login or password reset.
+Password Profiles support One-Time Password Tokens, which can be used to use passwordless login or password reset.
 
 An authentication realm can have multiple Password Profiles. You can use this flexibility in many ways, for instance if you want to migrate an existing pool of users from another system with their own usernames and passwords, they can use one profile, and the rest of the users another. 
 
