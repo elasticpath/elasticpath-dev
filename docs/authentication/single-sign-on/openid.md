@@ -21,7 +21,7 @@ When users authenticate using an external authentication provider, authenticatio
 
 ## Authentication Realms
 
-An authentication realm is a container that consists of the following
+An authentication realm is a container that consists of the following:
 
 - Users -  Represented by [User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/overview) objects
 - Authentication profiles - Ways for the users to authenticate, i.e. one or more [OpenID Connect Profiles](/docs/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview) or [Password Profiles](/docs/authentication/single-sign-on/password-profiles-api/overview.md)
