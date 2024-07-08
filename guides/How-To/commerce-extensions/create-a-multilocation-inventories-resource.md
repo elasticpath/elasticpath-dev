@@ -103,6 +103,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 Take note of `validation` in the step above, this field is restricted to only allow the following values:
+
 * Paris
 * London
 * New York
@@ -110,6 +111,7 @@ Take note of `validation` in the step above, this field is restricted to only al
 For more information, see [string validation](https://beta.elasticpath.dev/docs/api/commerce-extensions/custom-fields#string-validation).
 
 ### Create Custom Field - collection-name
+
 In this step, you will create a Custom Field `collection-name`, this stores a string to represent the collection a SKU is associated with.
 
 ```sh
