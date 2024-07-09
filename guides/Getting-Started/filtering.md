@@ -54,9 +54,9 @@ Filtering is currently supported on the following endpoints:
 * [Get all entries](/docs/api/flows/get-all-entries)
 * [Get all files](/docs/api/pxm/files/get-all-files)
 * [Get Jobs](/docs/api/pxm/products/get-all-jobs)
-* [Get all Custom APIs](/docs/api/commerceextensions/get-all-custom-apis)
-* [Get all Custom Fields](/docs/api/commerceextensions/get-all-custom-fields)
-* [Get all Custom API Entries](/docs/api/commerceextensions/get-all-custom-entries)
+* [Get all Custom APIs](/docs/api/commerce-extensions/get-all-custom-apis)
+* [Get all Custom Fields](/docs/api/commerce-extensions/get-all-custom-fields)
+* [Get all Custom API Entries](/docs/api/commerce-extensions/get-all-custom-entries)
 
 ## Filtering Syntax
 
