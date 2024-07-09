@@ -1,9 +1,11 @@
 ---
-title: 'Improved account search functionality, Improved Bundle Builder' 
+title: 'Improved account search functionality, Improved Bundle Builder', 'Extending Product Prices'
 date: '2024-07-02'
 tags: ['Commerce Manager', 'Accounts']
 hide_blog_post_date: false
 ---
+
+**MINOR** 
 
 **MINOR** Commerce Manager: A new and improved Bundle Builder is available. The new bundle builder features an upgraded visual design, making it easier to use and more intuitive, with a smoother interface that simplifies the bundle creation process. For more information, see [Creating Bundles](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).
 
