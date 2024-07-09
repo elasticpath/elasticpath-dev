@@ -231,7 +231,6 @@ const config = {
           {
             label: "Guides",
             to: "guides",
-            className: "guide-button guide-button-link",
           },
           {
             label: "Docs",
@@ -1437,7 +1436,7 @@ const config = {
           { to: '/docs/api/flows/get-a-field', from: '/docs/commerce-cloud/custom-data/custom-data-flows-api/fields/get-all-fields'},
           { to: '/docs/customer-management/customer-management-api/get-a-customer', from: '/docs/commerce-cloud/customer-management/customer-managment-api/get-a-customer'},
           { to: '/docs/api/pxm/pricebooks/delete-product-price', from: '/docs/pxm/pricebooks/pxm-pricebooks-prices/pxm-prices-overview'},
-          { to: '/docs/api/addresses/get-v-2-customer-addresses', from: '/docs/commerce-cloud/addresses/get-an-address'},
+          { to: '/docs/api/customer-addresses/get-v-2-customer-addresses', from: '/docs/commerce-cloud/addresses/get-an-address'},
           { to: '/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions', from: '/docs/commerce-cloud/promotions/promotion-management/create-fixed-bundle-discount-promotion'},
           { to: '/guides/How-To/paymentgateways/generate-adyen-token', from: '/docs/commerce-cloud/payments/paying-for-an-order/adyen-payments'},
           { to: '/docs/carts-orders/account-cart-associations', from: '/docs/commerce-cloud/carts/account-cart-associations/create-an-association'},
