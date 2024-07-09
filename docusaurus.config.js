@@ -410,6 +410,16 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
+          customeraddresses: {
+            specPath: "openapispecs/customeraddresses/CustomerAddresses.yaml",
+            outputDir: "docs/api/customer-addresses",
+            downloadUrl:
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/customeraddresses/CustomerAddresses.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
           catalog: {
             specPath: "openapispecs/catalog/catalog_view.yaml",
             outputDir: "docs/api/pxm/catalog",
