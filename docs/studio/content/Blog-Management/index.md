@@ -126,7 +126,7 @@ Click the "Add Section" button shown below to add any type of section you would 
 
 ![Add a Section](/assets/studio/Building_Your_Blog_17.png)
 
-:::note
+:::caution
 
 - Make sure to click "Publish" in the top right corner of the page to publish and save any changes you've made to the
   settings.

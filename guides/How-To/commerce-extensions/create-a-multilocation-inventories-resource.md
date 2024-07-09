@@ -95,7 +95,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
         "field_type": "string",
         "validation": {
           "string": {
-            "regex": "^(Eiffel Tower|Graceland|Hamptons)"
+            "regex": "^(Paris|London|New York)$"
           }
         }
         "type": "custom_field"
@@ -103,9 +103,9 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 Take note of `validation` in the step above, this field is restricted to only allow the following values:
-* Eiffel Tower
-* Graceland
-* Hamptons
+* Paris
+* London
+* New York
 
 For more information, see [string validation](https://beta.elasticpath.dev/docs/api/commerceextensions/custom-fields#string-validation).
 
@@ -140,7 +140,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/extensions/location-inventor
         "type": "location_inventory_ext",
         "slug": "LR-SFA-201",
         "amount": 4,
-        "location-name": "Hamptons"
+        "location-name": "Paris"
       }
     }
 ```
@@ -166,12 +166,30 @@ curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventori
       }
     }
 ```
+When using Custom API Entries, if multiple independent clients update the same resource, you should have them use the `If-Match` header to prevent lost updates and other data consistency issues in the inventory amounts. For example, if two users simultaneously see an amount of 3 and each allocate 1, both would update the amount to 2. The `If-Match` header ensures that only one of these requests succeeds. It works by comparing the provided ETag value with the current ETag value of the resource. If the resource hasn't changed since you last read it, the ETag will not change, ensuring the update is safe. 
+
+To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](https://elasticpath.dev/docs/api/commerceextensions/update-a-custom-entry). If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned. If a client receives an `HTTP 412`, they should re-read the resource to get the latest version, ensure the update is safe, that is check that the amount is greater than zero, and try again.
+
+The following example shows how to update a custom API entry for location inventories:
+
+```bash
+curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/:customApiEntryId" \
+     -H "Authorization: XXXX" \
+     -H "Content-Type: application/json" \
+     -H "If-Match: W/\"{etag_id}\"" \
+     -d $ {
+      "data": {
+        "type": "location_inventory_ext",
+        "amount": 3
+      }
+    }
+```
 
 ## Example filters for Common Queries
 
 A customer is on a product page and lives near the Hamptons store and wants to know if this product in this color is available at their local store. Filtering on `slug` and `location-name` will retrieve the record for that location for that SKU.
 ```sh
-curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventories?filter=eq(SKU,ABC123):eq(location-name,Hamptions)" \
+curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventories?filter=eq(slug,ABC123):eq(location-name,London)" \
      -H "Authorization: XXXX" \
 ```
 
