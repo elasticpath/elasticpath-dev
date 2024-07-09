@@ -440,7 +440,7 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
-          commerce-extensions: {
+          commerceextensions: {
             specPath: "openapispecs/commerce-extensions/OpenAPISpec.yaml",
             outputDir: "docs/api/commerce-extensions/",
             downloadUrl:
