@@ -231,7 +231,6 @@ const config = {
           {
             label: "Guides",
             to: "guides",
-            className: "guide-button guide-button-link",
           },
           {
             label: "Docs",
