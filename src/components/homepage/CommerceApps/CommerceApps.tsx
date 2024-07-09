@@ -1,5 +1,4 @@
 import React from "react";
-import Tilt from "react-parallax-tilt";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/Tabs";
 import {
   ComposerIcon,
@@ -38,52 +37,53 @@ function Tab({
   linkItems: string[];
 }) {
   return (
-    <Tilt tiltMaxAngleX={0.5} tiltMaxAngleY={0.5} transitionSpeed={1000}>
-      <TabsContent className="relative" value={value}>
-        <img
-          alt="Elastic Path screenshot"
-          src={img}
-          className="hidden md:block rounded-2xl shadow-2xl"
-        />
-        <div className="bg-white p-8 absolute -right-16 bottom-8 w-[32rem] rounded-lg shadow-2xl ring-1 ring-gray-200">
-          <div className="text-black flex items-center text-left">
-            {icon}
-            <div className="flex flex-col">
-              <p className="font-mono p-0 m-0 text-sm">ELASTIC PATH</p>
-              <h3 className="p-0 m-0 text-[2rem]">{value}</h3>
-            </div>
-          </div>
-          <p className="text-left text-gray-500 text-base my-4 leading-loose">
-            {tagline}
-          </p>
-          <ul className="flex flex-col text-black text-base font-semibold text-left marker:content-['✓'] marker:text-green-500 gap-2 pl-6 my-7">
-            {listItems.map((item) => (
-              <li className="pl-4">{item}</li>
-            ))}
-          </ul>
-          <div className="flex text-black gap-8 mt-8">
-            <a
-              href={linkItems[0]}
-              className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
-            >
-              Watch Demo
-            </a>
-            <a
-              href={linkItems[1]}
-              className="flex-1 bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
-            >
-              View Documentation →
-            </a>
+    <TabsContent className="relative" value={value}>
+      <img
+        alt="Elastic Path screenshot"
+        src={img}
+        className="hidden md:block rounded-2xl shadow-2xl"
+      />
+      <div className="bg-white p-8 absolute -right-16 bottom-8 w-[32rem] rounded-lg shadow-2xl ring-1 ring-gray-200">
+        <div className="text-black flex items-center text-left">
+          {icon}
+          <div className="flex flex-col">
+            <p className="font-mono p-0 m-0 text-sm">ELASTIC PATH</p>
+            <h3 className="p-0 m-0 text-[2rem]">{value}</h3>
           </div>
         </div>
-      </TabsContent>
-    </Tilt>
+        <p className="text-left text-gray-500 text-base my-4 leading-loose">
+          {tagline}
+        </p>
+        <ul className="flex flex-col text-black text-base font-semibold text-left marker:content-['✓'] marker:text-green-500 gap-2 pl-6 my-7">
+          {listItems.map((item) => (
+            <li className="pl-4">{item}</li>
+          ))}
+        </ul>
+        <div className="flex text-black gap-8 mt-8">
+          <a
+            href={linkItems[0]}
+            className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
+          >
+            Watch Demo
+          </a>
+          <a
+            href={linkItems[1]}
+            className="flex-1 bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
+          >
+            View Documentation →
+          </a>
+        </div>
+      </div>
+    </TabsContent>
   );
 }
 
 export default function CommerceApps() {
   return (
-    <section id="CommerceApps" className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight">
+    <section
+      id="CommerceApps"
+      className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight"
+    >
       <link
         rel="preload"
         as="image"
@@ -145,7 +145,10 @@ export default function CommerceApps() {
                 "Bundles & promotions",
                 "Up to 10,000 product variations",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/pxm/products/products"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/api/pxm/products/products",
+              ]}
             />
 
             <Tab
@@ -160,7 +163,10 @@ export default function CommerceApps() {
                 "135+ supported currencies",
                 "Seamless checkout experiences",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/payments"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/payments",
+              ]}
             />
 
             <Tab
@@ -173,7 +179,10 @@ export default function CommerceApps() {
                 "Monitor your customer and account relationships",
                 "Export your transactions",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/carts/carts-checkout-orders-introduction"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/api/carts/carts-checkout-orders-introduction",
+              ]}
             />
 
             <Tab
@@ -186,7 +195,10 @@ export default function CommerceApps() {
                 "Elevate customer choice with varied billing and subscription discounts",
                 "Easily configure repeat purchases, memberships, subscribe & save, and more",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/api/subscriptions/subscriptions-introduction"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/api/subscriptions/subscriptions-introduction",
+              ]}
             />
 
             <Tab
@@ -199,7 +211,10 @@ export default function CommerceApps() {
                 "Launch sooner with pre-configured integrations",
                 "Showcase your brand with effortless customization",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/studio"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/studio",
+              ]}
             />
 
             <Tab
@@ -212,7 +227,10 @@ export default function CommerceApps() {
                 "Create your own custom integrations and hook up to more than 3,000 available actions.",
                 "Monitor every component via a single pane of glass.",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/composer"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/composer",
+              ]}
             />
 
             <Tab
@@ -225,7 +243,10 @@ export default function CommerceApps() {
                 "Deploy unique behaviors and integrations with ease using Commerce Extensions and Composer.",
                 "Eliminate the need to build and host custom functionality from scratch.",
               ]}
-              linkItems={["https://www.elasticpath.com/demo-library", "/docs/extensions"]}
+              linkItems={[
+                "https://www.elasticpath.com/demo-library",
+                "/docs/extensions",
+              ]}
             />
           </div>
         </Tabs>
