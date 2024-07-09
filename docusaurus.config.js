@@ -231,7 +231,6 @@ const config = {
           {
             label: "Guides",
             to: "guides",
-            className: "guide-button guide-button-link",
           },
           {
             label: "Docs",
@@ -401,10 +400,20 @@ const config = {
             },
           },
           addresses: {
-            specPath: "openapispecs/addresses/OpenAPISpec.yaml",
+            specPath: "openapispecs/addresses/AccountAddresses.yaml",
             outputDir: "docs/api/addresses",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/addresses/OpenAPISpec.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/addresses/AccountAddresses.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
+          customeraddresses: {
+            specPath: "openapispecs/customeraddresses/CustomerAddresses.yaml",
+            outputDir: "docs/api/customer-addresses",
+            downloadUrl:
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/customeraddresses/CustomerAddresses.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -1332,7 +1341,7 @@ const config = {
           { to: '/docs/api/pxm/catalog/shopper-catalog-api', from: '/docs/pxm/catalogs/shopper-catalog/catalog-shopper-overview'},
           { to: '/docs/api/payments/update-stripe-connect-gateway', from: '/docs/commerce-cloud/payments/payment-gateway/configure-stripe-connect'},
           { to: '/docs/api/pxm/products/update-product-main-image-relationships', from: '/docs/pxm/products/product-asset-relationships/image-relationship/replace-main-image-relationship'},
-          { to: '/docs/api/addresses/customer-addresses', from: '/docs/commerce-cloud/addresses/about-addresses-api'},
+          { to: '/docs/api/customer-addresses/customer-addresses', from: '/docs/commerce-cloud/addresses/about-addresses-api'},
           { to: '/docs/api/pxm/products/get-product-main-image-relationships', from: '/docs/pxm/products/product-asset-relationships/image-relationship/get-main-image-relationship'},
           { to: '/docs/api/pxm/inventory/inventory', from: '/docs/pxm/inventories/delete-inventory'},
           { to: '/guides/Getting-Started/api-contract', from: '/docs/commerce-cloud/api-overview/api-contract'},
@@ -1383,7 +1392,7 @@ const config = {
           { to: '/docs/studio/content/advanced-page-editing/Managing-Device-Visibility', from: '/docs/cx-studio/content/advanced-page-editing/Managing-Device-Visibility'},
           { to: '/docs/api/pxm/catalog/get-by-context-all-hierarchies', from: '/docs/pxm/catalogs/shopper-catalog/get-all-hierarchies'},
           { to: '/docs/api/pxm/products/delete-product-template-relationship', from: '/docs/pxm/products/product-asset-relationships/template-relationships/delete-product-template-relationships'},
-          { to: '/docs/api/addresses/put-v-2-customer-address', from: '/docs/commerce-cloud/addresses/update-an-address'},
+          { to: '/docs/api/customer-addresses/put-v-2-customer-address', from: '/docs/commerce-cloud/addresses/update-an-address'},
           { to: '/docs/rule-promotions/rule-promotions-api/item-rule-promotions/create-condition-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/overview'},
           { to: '/docs/commerce-manager/product-experience-manager/product-import/product-importer', from: '/docs/pxm/products/importing-products/product-importer'},
           { to: '/docs/studio/Release-Notes/2022/Release-133-Feb-27-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-131-Feb-16,-2022'},
@@ -1415,7 +1424,7 @@ const config = {
           { to: '/docs/api/pxm/catalog/get-products-for-node', from: '/docs/pxm/catalogs/catalog-latest-release/get-all-nodes-in-a-release'},
           { to: '/docs/api/pxm/products/extending-products-with-templates', from: '/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/update-a-template'},
           { to: '/docs/api/pxm/products/update-product', from: '/docs/pxm/products/ep-pxm-products-api/update-a-product'},
-          { to: '/docs/api/addresses/get-v-2-customer-addresses', from: '/docs/commerce-cloud/addresses/get-all-addresses'},
+          { to: '/docs/api/customer-addresses/get-v-2-customer-addresses', from: '/docs/commerce-cloud/addresses/get-all-addresses'},
           { to: '/docs/api/pxm/products/build-child-products', from: '/docs/pxm/products/pxm-product-variations/child-products-api/get-child-products'},
           { to: '/docs/api/pxm/products/get-product-template-relationships', from: '/docs/pxm/products/product-asset-relationships/template-relationships/get-product-template-relationships'},
           { to: '/docs/docs/api/exporter/exporter-service-api', from: '/docs/commerce-cloud/orders/orders-api/export-orders'},
@@ -1427,13 +1436,13 @@ const config = {
           { to: '/docs/api/flows/get-a-field', from: '/docs/commerce-cloud/custom-data/custom-data-flows-api/fields/get-all-fields'},
           { to: '/docs/customer-management/customer-management-api/get-a-customer', from: '/docs/commerce-cloud/customer-management/customer-managment-api/get-a-customer'},
           { to: '/docs/api/pxm/pricebooks/delete-product-price', from: '/docs/pxm/pricebooks/pxm-pricebooks-prices/pxm-prices-overview'},
-          { to: '/docs/api/addresses/get-v-2-customer-addresses', from: '/docs/commerce-cloud/addresses/get-an-address'},
+          { to: '/docs/api/customer-addresses/get-v-2-customer-addresses', from: '/docs/commerce-cloud/addresses/get-an-address'},
           { to: '/docs/commerce-manager/promotions-standard/item-level-promotions/bundle-discount-promotions', from: '/docs/commerce-cloud/promotions/promotion-management/create-fixed-bundle-discount-promotion'},
           { to: '/guides/How-To/paymentgateways/generate-adyen-token', from: '/docs/commerce-cloud/payments/paying-for-an-order/adyen-payments'},
           { to: '/docs/carts-orders/account-cart-associations', from: '/docs/commerce-cloud/carts/account-cart-associations/create-an-association'},
           { to: '/docs/api/flows/entries', from: '/docs/commerce-cloud/custom-data/custom-data-flows-api/entries'},
           { to: '/docs/api/promotions/promotion-jobs', from: '/docs/commerce-cloud/promotions/promotion-codes/jobs-api/create-a-job'},
-          { to: '/docs/api/addresses/delete-v-2-customer-address', from: '/docs/commerce-cloud/addresses/delete-an-address'},
+          { to: '/docs/api/customer-addresses/delete-v-2-customer-address', from: '/docs/commerce-cloud/addresses/delete-an-address'},
           { to: '/docs/api/pxm/products/get-all-variation-options', from: '/docs/pxm/products/pxm-product-variations/pxm-variation-options-api/get-all-options'},
           { to: '/docs/api/pxm/products/products', from: '/docs/pxm/products/pxm-bundles/pxm-bundles-api/update-a-bundle'},
           { to: '/docs/api/integrations/integrations-introduction', from: '/docs/commerce-cloud/integrations/integration-payload'},
