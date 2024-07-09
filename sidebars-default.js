@@ -179,7 +179,7 @@ const sidebarsDefault = {
         slug: "/api/commerce-extensions"
       },
       // @ts-ignore
-      items: require("./docs/api/commerceextensions/sidebar.js")
+      items: require("./docs/api/commerce-extensions/sidebar.js")
     },
   ],
   flows: [
