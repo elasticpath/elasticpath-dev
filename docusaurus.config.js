@@ -203,15 +203,15 @@ const config = {
           autoCollapseCategories: true,
         },
       },
-      announcementBar: {
+      //announcementBar: {
         //comment out when not needed, please do not remove
-        id: "support_us",
-        content:
-          "The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.",
-        backgroundColor: "#0E1521",
-        textColor: "#FFFFFF",
-        isCloseable: true,
-      },
+      //  id: "support_us",
+      //  content:
+      //    "The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.",
+      //  backgroundColor: "#0E1521",
+      //  textColor: "#FFFFFF",
+      //  isCloseable: true,
+      //},
       colorMode: {
         defaultMode: "light",
         disableSwitch: false,
