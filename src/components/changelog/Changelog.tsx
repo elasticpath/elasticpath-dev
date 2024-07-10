@@ -27,6 +27,12 @@ const PRODUCTS = [
     icon: ContactCardGroupRegular,
   },
   {
+    title: 'Studio',
+    beta: false,
+    link: '/docs/studio',
+    icon: ContactCardGroupRegular,
+  },
+  {
     title: 'Authentication',
     beta: false,
     link: '/changelog/product/authentication',
@@ -165,7 +171,7 @@ function ChangelogLanding({
         borderWidth: '1px',
       }}
       className={clsx(
-        'group relative cursor-pointer overflow-clip rounded-lg from-primary/30 to-transparent text-black transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline dark:text-white',
+        'group relative cursor-pointer overflow-clip rounded-lg from-primary/30 to-transparent text-primary transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline dark:text-white',
         'border-secondary-700 bg-secondary-900 hover:!border-primary dark:border-secondary-800'
       )}
     >
