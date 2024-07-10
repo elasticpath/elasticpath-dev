@@ -21,6 +21,12 @@ import clsx from 'clsx';
 
 const PRODUCTS = [
   {
+    title: 'Commerce Manager (Admin UI)',
+    beta: false,
+    link: '/changelog/product/commerce-manager',
+    icon: ContactCardGroupRegular,
+  },
+  {
     title: 'Authentication',
     beta: false,
     link: '/changelog/product/authentication',

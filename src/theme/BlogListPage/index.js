@@ -31,15 +31,6 @@ function BlogListPageContent(props) {
     <BlogLayout sidebar={sidebar}>
       <div className="pb-16">
         <h1>Elastic Path Changelog</h1>
-        The changelog contains updates and modifications in Commerce, Composer, Product Experience Manager,
-        Subscriptions and Payments products. The changelog does not include:
-        <p></p>
-        <ul>
-          <li>Underlying security patches</li>
-          <li>Routine library updates</li>
-        </ul>
-
-        <p>Find the latest release notes for <a href="https://elasticpath.dev/docs/studio">Studio here</a>.</p>
         Keep up with changes to Elastic Path services by subscribing to our <a
         href="https://elasticpath.dev/changelog/rss.xml">RSS Feed</a>, <a
         href="https://elasticpath.dev/changelog/atom.xml">Atom Feed</a>, or <a
