@@ -2,6 +2,7 @@ openapi: 3.1.0
 info:
   version: '1.0'
   title: Account Management Introduction
+  #language=markdown
   description: |
     An Account represents the entity that participates in a Commerce transaction. Accounts can have Carts, Orders, Subscriptions, and Addresses.
     
@@ -9,7 +10,26 @@ info:
 
     In a typical B2C scenario, an account usually has a single account member. However, this functionality can also be used to support use cases such as family accounts, allowing multiple family members to transact on behalf of their shared account. In a B2B scenario, an account will have multiple members from a business unit, all of whom can transact on behalf of their organization.
     
-  contact:
+     ## Accounts vs Customers
+
+      Accounts is the next generation of [Customers](/docs/customer-management/customers). Customers are not going anywhere, but accounts offers more capabilities. We recommend using Accounts for any of your new use cases.
+
+       | Feature                                                 | Customers        | Accounts         |
+       | ------------------------------------------------------- | ---------------- | ---------------- |
+       | B2C Accounts                                            | ✅                | ✅                |
+       | Family Accounts                                         | ⛔️               | ✅                |
+       | B2B Accounts                                            | ⛔️               | ✅                |
+       | Authentication: Shopper impersonation                   | ⛔️               | ✅                |
+       | Authentication: OpenID support                          | ✅                | ✅                |
+       | Authentication: One time passwords, and password reset  | ⛔️               | ✅                |
+       | Authentication: Configurable token expiry               | ⛔️               | ✅                |
+       | Cart association                                        | ✅                | ✅                |
+       | Shopper specific Promotions                             | ✅                | Planned          |
+       | Shopper specific Catalogs                               | ✅                | ✅                |
+       | Addresses                                               | ✅                | ✅                |
+       | Personal Data support                                   | ✅                | ✅                |
+
+contact:
     name: Elastic Path
     url: 'https://www.elasticpath.com'
     email: support@elasticpath.com
