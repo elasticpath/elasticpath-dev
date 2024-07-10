@@ -3,9 +3,7 @@ info:
   version: '1.0'
   title: Addresses Introduction
   description: |
-    The Addresses API allows you to organize customer and account addresses. Addresses are a sub-resource of a `customer` and `account   resources. A customer or account can have multiple addresses, such as home, work, and neighbour.
-    
-    You can use a customer address with an implicit Bearer token, which is recommended for client-side interactions. You can also use client_credentials Bearer token, which is recommended for back-end interactions.
+    The Addresses API allows you to organize account addresses. Addresses are a sub-resource of `account` resources, an account can have multiple addresses, such as home, work, and neighbour.
     
     You can use an account address with either [client credentials](/docs/authentication/Tokens/client-credential-token) bearer token or a combination of [implicit](/docs/authentication/Tokens/implicit-token) Bearer token and [Account Management authentication](/docs/api/accounts/post-v-2-account-members-tokens) token.
   contact:
@@ -51,11 +49,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   '/v2/accounts/{accountID}/addresses/{addressID}':
     get:
       tags:
@@ -91,11 +84,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     post:
       tags:
         - Account Addresses
@@ -180,11 +168,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     delete:
       tags:
         - Account Addresses
@@ -211,221 +194,8 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-  '/v2/customers/{customerID}/addresses':
-    get:
-      tags:
-        - Customer Addresses
-      summary: Get Customer Addresses
-      description: Get Customer Addresses
-      operationId: get-v2-customer-addresses
-      parameters:
-        - name: customerID
-          in: path
-          description: The ID of the customer you want to retrieve.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/CustomerAddressResponse'
-        '404':
-          $ref: '#/components/schemas/ErrorNotFound'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-  '/v2/customers/{customerID}/addresses/{addressID}':
-    get:
-      tags:
-        - Customer Addresses
-      summary: Get an Customer Address
-      description: Get an Customer Addresses
-      operationId: get-v2-customer-address
-      parameters:
-        - name: customerID
-          in: path
-          description: The ID of the customer you want to retrieve.
-          required: true
-          schema:
-            type: string
-        - name: addressID
-          in: path
-          description: The ID of the address you want to retrieve.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    $ref: '#/components/schemas/CustomerAddressResponse'
-        '404':
-          $ref: '#/components/schemas/ErrorNotFound'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-    post:
-      tags:
-        - Customer Addresses
-      summary: Create an Customer Address
-      description: Create an Customer Address
-      operationId: post-v2-customer-address
-      parameters:
-        - name: customerID
-          in: path
-          description: The ID of the customer you want to create an address for.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - data
-              properties:
-                data:
-                  $ref: '#/components/schemas/Address'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    $ref: '#/components/schemas/CustomerAddressResponse'
-        '400':
-          $ref: '#/components/schemas/ErrorBadRequest'
-        '404':
-          $ref: '#/components/schemas/ErrorNotFound'
-    put:
-      tags:
-        - Customer Addresses
-      summary: Update an Customer Address
-      description: Update an Customer Address
-      operationId: put-v2-customer-address
-      parameters:
-        - name: customerID
-          in: path
-          description: The ID of the customer you want to create an address for.
-          required: true
-          schema:
-            type: string
-        - name: addressID
-          in: path
-          description: The ID of the customer you want to update.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - data
-              properties:
-                data:
-                  $ref: '#/components/schemas/Address'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    $ref: '#/components/schemas/CustomerAddressResponse'
-        '400':
-          $ref: '#/components/schemas/ErrorBadRequest'
-        '404':
-          $ref: '#/components/schemas/ErrorNotFound'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-    delete:
-      tags:
-        - Customer Addresses
-      summary: Delete a Customer Address
-      description: Delete a Customer Address
-      operationId: delete-v2-customer-address
-      parameters:
-        - name: customerID
-          in: path
-          description: The ID of the customer that contains the address to delete.
-          required: true
-          schema:
-            type: string
-        - name: addressID
-          in: path
-          description: The ID of the address to delete.
-          required: true
-          schema:
-            type: string
-      responses:
-        '204':
-          description: No Content
-        '404':
-          $ref: '#/components/schemas/ErrorNotFound'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
 tags:
   - name: Account Addresses
-    description: |
-      The Addresses API allows you to organize `customer` and `account` addresses. Addresses are a sub-resource of a customer and account resources. A customer or account can have multiple addresses, such as home, work, and neighbour.
-      
-      You can use an account address with either client credentials Bearer token or a combination of implicit Bearer token and Account Management authentication token.
-    externalDocs:
-      url: 'https://elasticpath.dev/docs/commerce-cloud/addresses/about-addresses-api'
-  - name: Customer Addresses
-    description: |
-      The Addresses API allows you to organize `customer` and `account` addresses. Addresses are a sub-resource of a customer and account resources. A customer or account can have multiple addresses, such as home, work, and neighbour.
-
-      You can use a customer address with an implicit Bearer token, which is recommended for client-side interactions. You can also use client credentials Bearer token, which is recommended for back-end interactions.
-    externalDocs:
-      url: 'https://elasticpath.dev/docs/commerce-cloud/addresses/about-addresses-api'
 components:
   securitySchemes:
     BearerToken:
@@ -541,25 +311,6 @@ components:
                       description: The type of object being returned.
                       type: string
                       example: account
-    CustomerAddressResponse:
-      allOf:
-        - $ref: '#/components/schemas/AddressResponse'
-        - type: object
-          properties:
-            relationships:
-              type: object
-              properties:
-                customer:
-                  type: object
-                  properties:
-                    id:
-                      description: The ID of the customer.
-                      type: string
-                      example: 11afcf9b-971b-4fdb-8e10-f2ecf970718e
-                    type:
-                      description: The type of object being returned.
-                      type: string
-                      example: customer
     Error:
       properties:
         status:
