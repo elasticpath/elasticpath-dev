@@ -1,7 +1,7 @@
 ---
 title: 'And - Or conditions available for Promotions'
 date: '2023-02-16'
-tag: ['Promotions']
+tag: ['Promotions Standard']
 ---
 **Major**
 Added `and`/`or` conditions on nodes and attributes to be included and excluded from a promotion. For more information, see:

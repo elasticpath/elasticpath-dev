@@ -1,7 +1,7 @@
 ---
 title: 'March 29, 2023'
 date: '2023-03-29'
-tag: ['Payments','Promotions']
+tag: ['Payments','Promotions Standard']
 hide_blog_post_date: false
 ---
 **Minor**
