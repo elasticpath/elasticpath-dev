@@ -1,12 +1,19 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import {
+  ShoppingBagRegular,
+  BookRegular,
+  ArrowSyncFilled,
   PersonCircleRegular,
+  WalletCreditCardRegular,
+  ContactCardGroupRegular,
   BookDatabaseRegular,
   ConnectedRegular,
   LockClosedKeyRegular,
   BuildingRetailRegular,
+  BuildingRetailMoneyRegular,
   BoxMultipleRegular,
+  PeopleTeamRegular,
   DatabasePersonRegular,
   SettingsRegular,
 } from '@fluentui/react-icons';
@@ -26,7 +33,7 @@ const PRODUCTS = [
     title: 'Commerce Manager (Admin UI)',
     beta: false,
     link: '/changelog/product/commerce-manager',
-    icon: Commerce,
+    icon: BookRegular,
   },
   {
     title: 'Studio',
@@ -44,7 +51,7 @@ const PRODUCTS = [
     title: 'Account Management',
     beta: false,
     link: '/changelog/product/account-management',
-    icon: Accounts,
+    icon: PeopleTeamRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
     // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
   },
@@ -52,7 +59,7 @@ const PRODUCTS = [
     title: 'Carts, Checkout, Orders',
     beta: false,
     link: '/changelog/product/carts-orders',
-    icon: Cart,
+    icon: ShoppingBagRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
   },
@@ -100,7 +107,7 @@ const PRODUCTS = [
     title: 'Payments',
     beta: false,
     link: '#',
-    icon: Payments,
+    icon: WalletCreditCardRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
   },
@@ -116,7 +123,7 @@ const PRODUCTS = [
     title: 'Product Experience Manager',
     beta: false,
     link: '/docs/api/pxm/products/product-experience-manager-introduction',
-    icon: PXM,
+    icon: BookRegular,
     // lightImage: '/static/landing-page/hero/voice-graphic.png',
     // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
   },
@@ -124,7 +131,7 @@ const PRODUCTS = [
     title: 'Promotions Builder',
     beta: false,
     link: '/changelog/product/promotions-builder',
-    icon: Promotions,
+    icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
   },
@@ -132,7 +139,7 @@ const PRODUCTS = [
     title: 'Subscriptions',
     beta: false,
     link: '/changelog/product/subscriptions',
-    icon: Subscriptions,
+    icon: ArrowSyncFilled,
     // lightImage: '/static/landing-page/hero/livestream-graphic.png',
     // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
   },
@@ -178,16 +185,16 @@ function ChangelogLanding({
         borderWidth: '1px',
       }}
       className={clsx(
-        'group relative cursor-pointer overflow-clip rounded-lg from-primary/30 to-transparent text-#07AB59 transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline dark:text-white',
-        'border-secondary-700 bg-secondary-900 hover:!border-primary dark:border-secondary-800'
+        'group relative cursor-pointer overflow-clip rounded-lg from-primary/30 to-transparent text-07AB59 transition-all hover:bg-gradient-to-tr hover:text-primary hover:no-underline',
+        'border-secondary-700 bg-secondary-900 hover:!border-primary'
       )}
     >
       <div className="p-2 !pb-2">
-        <h5 className="mb-1 flex items-center gap-4 font-jakarta group-hover:text-primary">
-          <Icon className="h-5 w-5" />
+        <h5 className="mb-1 flex items-center gap-4 font-jakarta">
+            <Icon className="h-5 w-5" />
           <div>
             {title}
-            {beta && <span className="font-normal text-text-400"> (Beta)</span>}
+            {beta && <span className="font-normal text-400"> (Beta)</span>}
           </div>
         </h5>
       </div>
