@@ -1,7 +1,7 @@
 ---
 title: 'March 10, 2023'
 date: '2023-03-10'
-tag: ['Commerce Manager','Organizations','Integrations Hub']
+tag: ['Commerce Manager','Organizations','Composer']
 hide_blog_post_date: false
 ---
 **Major** 

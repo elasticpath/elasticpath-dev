@@ -170,22 +170,12 @@ const config = {
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
         },
-        //blog: {
-        //  showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-        //  blogTitle: 'Elastic Path Commerce Cloud Changelog',
-        //  blogDescription: 'The changelog contains updates and modifications in Commerce, Composer, Product Experience Manager, Subscriptions and Payments products. The changelog does not include:\n Underlying security patches.\n Routine library updates.\n',
-        //  postsPerPage: 30,
-        //  blogSidebarTitle: 'All posts',
-        //  blogSidebarCount: 'ALL',
-        //},
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        //sitemap: {
-        //  ignorePatterns: ["/tags/**"],
-        //},
+        sitemap: {
+          ignorePatterns: ["/tags/**"],
+        },
         gtag: {
           trackingID: 'G-NZ3NL8DLLD',
           anonymizeIP: true,
@@ -203,15 +193,15 @@ const config = {
           autoCollapseCategories: true,
         },
       },
-      announcementBar: {
+     // announcementBar: {
         //comment out when not needed, please do not remove
-        id: "support_us",
-        content:
-          "The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.",
-        backgroundColor: "#0E1521",
-        textColor: "#FFFFFF",
-        isCloseable: true,
-      },
+     //   id: "support_us",
+     //   content:
+     //     "The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.",
+     //   backgroundColor: "#0E1521",
+     //   textColor: "#FFFFFF",
+     //   isCloseable: true,
+     // },
       colorMode: {
         defaultMode: "light",
         disableSwitch: false,
@@ -258,7 +248,7 @@ const config = {
           },
           {
             label: "Changelog",
-            to: "/changelog",
+            to: "/changelog-landing",
           },
           {
             label: "Support",

@@ -1,7 +1,7 @@
 ---
 title: 'Account cart association, cart payment intents'
 date: '2024-01-23'
-tags: ['Accounts','Carts']
+tags: ['Account Management','Carts & Orders']
 hide_blog_post_date: false
 ---
 **MAJOR** You now have the ability to create an association between an account and one or more carts. For more information, see **[Account Cart Associations.](https://elasticpath.dev/docs/commerce-cloud/carts/account-cart-associations/account-cart-associations-overview)**
