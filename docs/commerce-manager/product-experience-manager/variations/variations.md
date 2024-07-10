@@ -80,7 +80,7 @@ The following is an overview of the steps you need to follow to use price modifi
 
 1. Create a price modifier. You must give the price modifier a unique name, for example, tax_modifier. For more information, see [Create a Price Modifier](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-modifiers)
 1. Create a product modifier that uses the same name as the price modifier. For more information, see [Create Modifiers](/docs/api/pxm/products/create-modifier).
-1. Build your child products with the new product modifier. For more information, see [Build Child Products](https://beta.elasticpath.dev/guides/Products/build-pxm-variations).
+1. Build your child products with the new product modifier. For more information, see [Build Child Products](/guides/Products/build-pxm-variations).
 
 ## Creating Variations, Options, & Modifiers: An Overview
 

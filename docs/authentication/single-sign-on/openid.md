@@ -21,13 +21,21 @@ When users authenticate using an external authentication provider, authenticatio
 
 ## Authentication Realms
 
-Authentication realms contain general options for configuration, sets of single sign-on profiles, and user mapping information between Commerce, and the external authentication provider.
+An authentication realm is a container that consists of the following:
+
+- Users -  Represented by [User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/overview) objects
+- Authentication profiles - Ways for the users to authenticate, such as one or more [OpenID Connect Profiles](/docs/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview) or [Password Profiles](/docs/authentication/single-sign-on/password-profiles-api/overview.md)
+- Mappings between users and authentication profiles - [User Authentication OpenID Connect Profile Info](/docs/authentication/single-sign-on/user-authentication-openid-connect-profile-api/openid-connect-profile-overview.md) or [User Authentication Password Profile Infos](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview.md)
+
+Here's a domain diagram showing these relationships
+![authentication realm](/assets/authentication-realm-domain.png)
+
 
 Composable Commerce comes with three per-store pre-set realms:
 
 - Buyer Organization. For customers: users who buy products from your store.
 - Merchant Organization. For administrators: users who log in to Commerce Manager to modify the store’s settings or catalog.
-- Account Management Realm. For account members: users who buy products from your store on behalf of accounts.
+- Account Management Realm. For account members: users who buy products from your store on behalf of accounts. Password profiles are only available for account management realm.
 
 ## Authentication Providers and Composable Commerce
 
