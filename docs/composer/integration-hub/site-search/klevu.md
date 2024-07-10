@@ -4,7 +4,7 @@ nav_label: Klevu Catalog Sync
 sidebar_position: 41
 ---
 
-You can integrate Commerce with Klevu quickly and easily in Commerce Manager. Klevu is an advanced AI-driven search and product discovery platform specifically designed for e-commerce websites. Once you have integrated Klevu, you can sunchronize catalog from Commerce Manager to Klevu.
+You can integrate Commerce with Klevu quickly and easily in Commerce Manager. Klevu is an advanced AI-driven search and product discovery platform specifically designed for e-commerce websites. Once you have integrated Klevu, you can synchronize catalog from Commerce Manager to Klevu.
 
 ## Collecting Commerce Manager Setup Information
 
