@@ -41,7 +41,7 @@ Use the [Password Profiles API](/docs/authentication/single-sign-on/password-pro
 
 ### Create a User for testing
 
-First create a [User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/create-a-user-authentication-info.md) to represent a user, then associate them to the Password Profile from the previous step using the [User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile) API making note of the username.
+First [create a User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/create-a-user-authentication-info) to represent a user, then associate them to the Password Profile from the previous step using the [User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile) API making note of the username.
 
 ### Create a Webhook
 
