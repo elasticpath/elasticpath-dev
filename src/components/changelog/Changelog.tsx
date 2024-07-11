@@ -236,7 +236,7 @@ export default function Changelog() {
           <div className="mx-auto w-full max-w-6xl px-2 py-2 pt-3 bg-primary hover:bg-black">
             <h5 className="mb-1 flex items-center font-jakarta">
               <div>
-                Changelog for All APIs and Commerce Manager
+                Changelog for All APIs, Studio and Commerce Manager
               </div>
             </h5>
           </div>
