@@ -1,6 +1,9 @@
 ---
 title: 'Changelog 2021-11-12'
 date: '2021-11-12'
+tags:
+  - Flows
+  - Authentication
 ---
 **Minor** You can now extend the following entities with [core flows](/docs/commerce-cloud/custom-data/extend-any-resource).
   - [`authentication-realms`](/docs/single-sign-on/authentication-realm-api/authentication-realm-api-overview)

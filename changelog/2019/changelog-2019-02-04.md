@@ -1,6 +1,8 @@
 ---
 title: 'Changelog 2019-02-04'
 date: '2019-02-04'
+tags:
+  - Carts & Orders
 ---
 **Major** The architecture now incorporates Kubernetes.
 - Successful request to orders/:ID/payments endpoint now returns information about the transaction which was created.
