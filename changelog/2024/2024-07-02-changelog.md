@@ -1,7 +1,7 @@
 ---
 title: 'Extend Product Prices with Custom Attributes, New Get all Prices Endpoint, Improved Bundle Builder, Improved Account Search'
 date: '2024-07-02'
-tags: ['Commerce Manager', 'Accounts', 'Price Books']
+tags: ['Commerce Manager', 'Account Management', 'Product Experience Manager']
 hide_blog_post_date: false
 ---
 

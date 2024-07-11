@@ -18,7 +18,7 @@ export default function BlogPostItemFooter() {
   return (
     <footer
       className={clsx(
-        'row docusaurus-mt-lg',
+        'row mt-lg',
         isBlogPostPage && styles.blogPostFooterDetailsFull,
       )}>
       {tagsExists && (

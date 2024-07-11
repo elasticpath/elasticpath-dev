@@ -1,7 +1,7 @@
 ---
 title: 'Product exports, coupon code search'
 date: '2024-02-05'
-tags: ['Product Experience Manager','Commerce Manager','Promotions']
+tags: ['Product Experience Manager','Commerce Manager','Promotions Standard']
 hide_blog_post_date: false
 ---
 **MINOR** When exporting products in Product Experience Manger, new fields in the exported CSV file capture the date and time a product and a template was created and/or updated. For more information, see **[Export Products](https://elasticpath.dev/docs/pxm/products/exporting-products/export-products)**.
