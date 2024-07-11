@@ -5,19 +5,19 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Some minor improvements and bug fixes in this release.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Product Component
+#### Product Component
 
 * **Bug** - Fixed an issue where the first image was repeated in the Product Display Page rather than displaying all product images.
 * **Bug** - Fixed an issue where some products were displaying incorrect product descriptions.
 * **Bug** - Fixed an issue where the product collection rendered empty output.
 
-### Cart Drawer
+#### Cart Drawer
 
 * **Bug** - Fixed an issue where the product links on the cart drawer and checkout page were missing the path prefix.
 
