@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A smaller release with a few bug fixes & tweaks.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * **Tweak** - Adjusted the link in the "Need Help?" widget
 * **Bug** - Fixed an issue where the "Media/Text + Callouts" section was misaligned when added to a page where liquid

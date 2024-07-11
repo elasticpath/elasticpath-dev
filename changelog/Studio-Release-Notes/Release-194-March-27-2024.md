@@ -5,25 +5,25 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Some minor improvements and bug fixes in this release.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Integrations
+#### Integrations
 
 * Improved redacted secrets in all integrations. For example, disabled secrets are now displayed as [*****]. 
 
-### Forms 
+#### Forms 
 
 * **Bug** - Fixed an issue where data was not displaying in pop-up forms in the customers section.
 
-### Boxes/Sections
+#### Boxes/Sections
 
 * **Bug** - Fixed an issue where styles were not displaying correctly for boxes and sections.
 
-### Collection Component
+#### Collection Component
 
 * **Bug** - Fixed an issue where there was unexpected behavior when adding products.
 

@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 This release was a move back to our weekly release cadence and included a some UI improvements and bug fixes.
 
-## Banner Features
+#### Banner Features
 
 **Back to Shopify Button**
 
@@ -18,7 +18,7 @@ button fixes this and provides an easy way for them to return to Shopify when th
 
 ![Navigate Back to Shopify](/assets/studio/11074082508055.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * **Feature** - Added "Back to Shopify" button
 * **Tweak** - Updated page title in editor to use "New Page" as a placeholder when there was no title defined.

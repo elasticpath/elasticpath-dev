@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 This release includes several bug fixes, improvements to the help panel, and most excitedly... the option to show/hide
 certain sections or elements on mobile! 🎉
 
-## Banner Features
+#### Banner Features
 
 **Mobile Visibility Options!**
 
@@ -35,7 +35,7 @@ We've updated our help panel with better controls for the video and a smaller la
 
 ![Help Panel](/assets/studio/Screen_Shot_2022-09-12_at_1.43.40_PM.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 Shopify
 

@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 This release included a variety of things from improvements to internal tooling, new integrations, bug fixes, and more.
 
-## Buy buttons moved above product description, & other small tweaks
+#### Buy buttons moved above product description, & other small tweaks
 
 A small update, but significant for our Shopify customers: We've moved the buy buttons above the description on the
 product component. This puts it in a more prominent place, and works better for products with really long descriptions.
@@ -19,7 +19,7 @@ We also removed FAQs from product component and fixed the sticky details section
 
  ![Rearranging UI Attributes](/assets/studio/Screenshot-2021-10-20-at-8.08.16-PM.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Buy buttons were moved above the description
 * FAQ section was removed from product component

@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 In release 139 we've added a number of new style guide settings and editor improvements!
 
-## Banner Features
+#### Banner Features
 
 **Box Border Styles**
 
@@ -27,7 +27,7 @@ H5, and H6.
 We added toggles for Title & Price to the product collection component. We also made it possible to adjust the gap
 between products.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Added support for border width, color, dash, and radius on box toolbars.
 * Added a tooltip under the page path field so that entering text into that field will now show what the final URL will

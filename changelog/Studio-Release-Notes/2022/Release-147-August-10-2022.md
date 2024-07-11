@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 With this release we added new trial functionality for Shopify users who add the app to their store. We also shipped a
 new editor header as well as an in-app help panel.
 
-## Banner Features
+#### Banner Features
 
 **Unlimited Free Trials**
 
@@ -36,9 +36,9 @@ Expect some more updates on this panel in the coming weeks.
 
 ![Help Panel](/assets/studio/Screen_Shot_2022-08-23_at_1.44.54_PM.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Shopify Onboarding
+#### Shopify Onboarding
 
 * **Feature** - Added unlimited free-trial functionality for all Shopify plans. Also migrated any account that was
   created before this release to the new trial plans.
@@ -47,26 +47,26 @@ Expect some more updates on this panel in the coming weeks.
     + **Feature** - New header for the page editor!
     + **Feature** - New help panel within the page editor!
 
-### Reviews Component
+#### Reviews Component
 
 * **Bug** - Fixed an issue where the color selector wasn't respecting the default value defined in the property.
     + **Bug** - Fixed an issue where the selection made in the color selector wasn't respected in the rendered page.
 
-### Product Collection Component
+#### Product Collection Component
 
 * **Bug** - Fixed an issue where products in the collection component would sometimes "blink".
     + **Bug** - Fixed an issue with the product collections component where the images would sometimes randomly
       change.
     + **Feature** - Added a "show alt image" hover state to the product collection component.
 
-### Smart Links
+#### Smart Links
 
 * **Tweak** - Added smart-link support for any PDFs that have been uploaded to Unstack. You can now search for these
   just as you would a page or product.
     + **Bug** - Fixed an issue where products linked in an account's header or footer wouldn't open product
       selection modal.
 
-### Other Components
+#### Other Components
 
 * **Bug** - Fixed an issue where the "Blog / Article Test + Images" component was using paragraph styles for the
   article titles.
@@ -78,7 +78,7 @@ Expect some more updates on this panel in the coming weeks.
     + **Tweak** - In the Section/Component Editor, we're now mandating that elements be included in a ```<section>``` tag.
       Now when you try to add an element outside of the ```<section>``` tag you'll be shown an error.
 
-### Other Changes
+#### Other Changes
 
 * **Bug** - Fixed an issue where "location" was missing from captured form values.
     + **Bug** - Fixed an issue where custom form fields were not being displayed in customer entry.

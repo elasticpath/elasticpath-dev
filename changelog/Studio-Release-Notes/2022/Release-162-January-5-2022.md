@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Following the end of the holiday season we shipped a number of quality of life improvements for components and a handful
 of other changes.
 
-## Banner Features
+#### Banner Features
 
 **Better reviews ⭐⭐⭐⭐⭐**
 
@@ -37,30 +37,30 @@ longer the case. While it can be important for SEO, people often bypass this req
 actually worse for SEO. And if you don’t need to worry about SEO for your use case it makes no sense to require it.
 Given this, we decided the best thing was just to make it an optional field.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Product Component
+#### Product Component
 
 * **Tweak** - Adjusted the "Product/Custom Text" section so that the images would be properly optimized.
 * **Tweak** - Adjusted the "Select a product" drawer so that the products would appear the same size regardless of how
   long the product name was.
 
-### Product Collections
+#### Product Collections
 
 * **Bug** - Fixed an issue where small alt images would overlay on the bigger primary images.
 
-### Other Components
+#### Other Components
 
 * **Feature** - Improved logos component
 * **Feature** - Improved reviews component
 
-### Editor Improvements
+#### Editor Improvements
 
 * **Tweak** - Updated the page editor to no longer require a meta description when publishing a page.
 * **Bug** - Fixed an issue where creating a new page from a template would sometimes lead to no header being set on the
   rendered page, regardless of what was defined in the page settings.
 
-### Official Integrations
+#### Official Integrations
 
 * **Tweak** - Stripe deprecation. Removed from list of integrations, removed option from gated content, settings, and "
   Payments" option removed from Unstack admin.

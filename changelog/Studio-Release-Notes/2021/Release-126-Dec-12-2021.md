@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A simple release. A handful of fixes, and a couple new features.
 
-## Banner Features
+#### Banner Features
 
 **Gorgias Chat Integration**
 
@@ -28,7 +28,7 @@ The same is true for media which defaults to the "Images" tab but allows you to 
 
 ![Icons](/assets/studio/Screen_Shot_2021-12-13_at_2.26.43_PM.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Added a native integration for **Gorgias Chat**
 * Adjusted media selection to allow images from any category to be used in any context.

@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 The big news in this release is that we shipped an early version of the mobile editor. We also made some changes to sync
 and made it possible to name colors.
 
-## Banner Features
+#### Banner Features
 
 **Mobile Editor MVP**
 
@@ -27,22 +27,22 @@ are fully supported.
 
 ![Colour Pallete](/assets/studio/11257875530647.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-#### Editor
+####  Editor
 
 * **Feature** - Shipped the MVP of our mobile editor to a group of key customers for feedback.
 
-#### Components
+####  Components
 
 * **Tweak** - Adjusted the level of image optimization that is used on galleries and collections.
 * **Bug** - Fixed a layout issue with the callouts component when enabling add ons.
 
-#### Mobile Size & Spacing
+####  Mobile Size & Spacing
 
 * **Bug** - Fixed a bug where padding was missing from the mobile version of some components.
 
-#### Other
+####  Other
 
 * **Tweak** - Removed initial Shopify product sync that takes place when a user first connects their account.
 * **Bug** - Fixed an issue where the CTA menu wasn't visible within FAQ components.

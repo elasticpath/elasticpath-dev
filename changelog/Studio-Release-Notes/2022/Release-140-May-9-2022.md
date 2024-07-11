@@ -5,14 +5,14 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Release 140 had a little bit of everything with improvements to
 our [Klaviyo integration](https://support.unstack.com/hc/en-us/articles/360060834214), margin controls, better CSS
 targeting, and app performance topping the list. We also managed to squash a bug where some users were getting multiple
 new lead email notifications.
 
-## Banner Features
+#### Banner Features
 
 **Margin Controls**
 
@@ -42,7 +42,7 @@ A welcome change for video and large images, we’ve changed the upload limits t
 
 We've added support for pushing events to Klaviyo for *Viewed Page*, *Viewed Product* and *Added Product to Cart.*
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Removed the hover effects on product component media when hovering in the editor.
 * Updated the add to cart button on live pages to appear as "disabled" until a variant has been selected.

@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Launch of Conditional Content! We updated the new page flow to better support product pages. We also shipped a ton of
 bug fixes in this release and disabled Semrush.
 
-## Banner Features
+#### Banner Features
 
 **Conditional Content for Personalization**
 
@@ -39,7 +39,7 @@ decided to disable the integration for now because it is not used that much in t
 
 We may re-enable this in the future if there is the right kind of demand, but for now, *so long, Semrush.*
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Pushed the final frontend changes for conditional content.
 * Adjusted the behavior of the app when adding a product to a landing page.

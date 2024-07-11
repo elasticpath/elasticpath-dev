@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A small release in terms of features shipped, but one that sets the stage for us to do some big things in the coming
 weeks/months!
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 *
     + **Feature** - Several UI & backend adjustments.

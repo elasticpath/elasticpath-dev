@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 For this release, we continued to work through changes to the component system which will allow us to further improve
 functionality. More on this soon! We also pushed a number of bug fixes.
 
-## Complete List of Released Items
+#### Complete List of Released Items
 
 * Fixed an issue where the *og:url* found on Unstack pages would show the wrong value if that page was hosted through
   Shopify's proxy.

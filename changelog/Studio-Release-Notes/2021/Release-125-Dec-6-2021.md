@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 We fixed a ton of bugs in this release, improved our Typekit integration, and added additional onboarding features that
 should make things easier for users to get started.
 
-## Banner Features
+#### Banner Features
 
 **Typekit**
 
@@ -35,7 +35,7 @@ We've improved two aspects of in-app onboarding in this release:
 
    ![Template Selection](/assets/studio/Choose_template.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Improvements to our Typekit integration.
 * Adjusted oAuth to Shopify process to use the Shopify store domain to scrape style data and pull it into Unstack.

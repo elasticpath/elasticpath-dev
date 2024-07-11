@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Lots of small fixes in this release and other useful changes.
 
-## Banner Features
+#### Banner Features
 
 **New Admin Navigation**
 
@@ -22,7 +22,7 @@ information architecture.
 This is a critical part of our ability to deliver in-depth metrics to merchants and is our first step towards rolling
 out detailed sales metrics and more at a later date.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Adjusted the "Reviews" component to support a two-column layout. This allows more revies to be shown in a side-by-side
   manner.

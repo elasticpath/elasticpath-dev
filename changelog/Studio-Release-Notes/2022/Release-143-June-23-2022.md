@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Release 143, was one of (***if not the***) biggest releases we've ever done. With this release a number of banner
 features went out as well as more than two-dozen bug fixes.
 
-## Banner Features
+#### Banner Features
 
 **Better Media Component**
 
@@ -63,16 +63,16 @@ time, the five most-recently-updated products will be synced from your account. 
 start building more quickly and to make it a more seamless experience the first time someone loads their Unstack
 account.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Better product component
+#### Better product component
 
 * **Feature** - Sticky buy button for mobile
 * **Bug** - Fixed an issue where product component images weren't loading properly on liquid header/footer sites.
 * **Bug** - Fixed an issue with gallery interactions when full-screened.
 * **Bug** - Fixed an issue where selecting one variant option would *activate* the add-to-cart button.
 
-### Better product collection components
+#### Better product collection components
 
 * **Feature** - When a header is added to the product collection component, the actions are now located to the right.
 * **Feature** - Drag and drop now supported for editing product order in collections
@@ -82,7 +82,7 @@ account.
   the page.
 * **Bug** - Fixed an issue where the header of a product collection component wasn't editable.
 
-### Product & Collection Smart Links
+#### Product & Collection Smart Links
 
 * **Tweak** - Removed backwards compatibility for link behavior key
 * **Bug** - Fixed an issue where multiple toolbars would appear when hovering over text in the box component.
@@ -90,14 +90,14 @@ account.
 * **Bug** - Fixed an issue where marking a product as a "draft" in Shopify would break any smart-linked buttons in the
   editor.
 
-### Editor Improvements
+#### Editor Improvements
 
 * **Feature** - Added support for shadow settings on the box toolbar
 * **Feature** - Added "Recently Used" component category as the default for component selection.
 * **Tweak** - Made a change to the clickable area for toolbar dropdowns to make it easier to interact with the options.
 * **Tweak** - Made a change to the paint can icon so that it now properly indicates when an option is selected.
 
-### Style Guide Improvements
+#### Style Guide Improvements
 
 * **Feature** - Added Style Guide support for width and padding defaults on both desktop & mobile.
 * **Tweak** - Made several improvements to the initial styles scrape that takes place when you first connect Unstack to
@@ -107,7 +107,7 @@ account.
 * **Bug** - Fixed an issue where the text "Light Background Color" was being cut off in the Style Guide.
 * **Bug** - Fixed and issue where the styles-scrape job would sometimes fail to grab a Brand Primary
 
-### Components
+#### Components
 
 * **Feature** - Added new version of the media/text component.
 * **Bug** - Fixed a bug where certain components were returning "Unable to load component" errors.
@@ -115,32 +115,32 @@ account.
 * **Bug** - Fixed an issue where rich text would run outside of "Box/Variable" component.
 * **Bug** - Fixed an issue where the hover effect of a button would appear incorrectly on dark-themed components.
 
-### Shopify Syncing
+#### Shopify Syncing
 
 * **Tweak** - Adjusted our initial product sync to first sync the five most recent products before continuing the job.
 * **Bug** - Fixed an issue where some products would pull in multiple versions of the same variant.
 * **Bug** - Fixed an issue where the initial sync would very rarely get stuck and would prevent future sync jobs from
   working properly.
 
-### Integrations
+#### Integrations
 
 * **Feature** - Added a PostScript integration.
 * **Tweak** - Adjusted our Triple Whale integration so that it fires add-to-cart events.
 
-### Templates
+#### Templates
 
 * **Bug** - Fixed an issue where some template thumbnails were not correctly generating due to animations on the pages.
 
-### Storefront
+#### Storefront
 
 * **Bug** - Fixed an issue where certain storefront collection templates were returning 500 errors.
 
-### Media
+#### Media
 
 * **Bug** - Fixed issue with system error messaging when trying to upload a file that is unsupported.
 * **Bug** - Fixed an issue where media height wasn't matching html ```<img>``` height attribute.
 
-### Other
+#### Other
 
 * **Bug** - Fixed a bug where the Unstack admin sometimes showed a card background behind the app pagination options.
 * **Bug** - Fixed a bug where changes to the article sidebar wouldn't always be reflected.

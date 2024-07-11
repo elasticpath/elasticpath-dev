@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Given the scope/size of [Release 148](https://support.unstack.com/hc/en-us/articles/8567253215127), this release was
 focused on a couple small changes, some internal tooling, and bug fixes.
 
-## Banner Features
+#### Banner Features
 
 **Updated Actions Menu**
 
@@ -25,9 +25,9 @@ design; on the right is the previous design.
 Shopify deprecated a number of older APIs that we depend on so we updated our code to use the new APIs before the older
 APIs reached their end-of-life.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Editor Improvements
+#### Editor Improvements
 
 * **Tweak** - Fixed an issue where action items were overlapping with one another.
   + **Bug** - Fixed an issue where the section and box toolbars would overlap with one another when selecting a
@@ -35,17 +35,17 @@ APIs reached their end-of-life.
   + **Bug** - Fixed an issue with the title position in the new editor header.
   + **Bug** - Fixed an issue where "dark background" button styles weren't inherited properly.
 
-### Smart Links
+#### Smart Links
 
 * **Bug** - Fixed an issue where the smart link search would persist when editing the URL of a social logo in the
   Footer.
   + **Bug** - Fixed an issue where the smart link search would persist after selecting a product to link.
 
-### Banner Component
+#### Banner Component
 
 * **Bug** - Fixed an issue where the button in the banner was being cut off on mobile.
 
-### Shopify
+#### Shopify
 
 * **Tweak** - Updated the Shopify APIs that we were using.
   + **Bug** - Fixed an issue where accounts with expired trials weren't being asked to choose a plan.
@@ -53,7 +53,7 @@ APIs reached their end-of-life.
   and in-stock.
   + **Bug** - Fixed an issue where some "Add to Cart" buttons weren't working properly on Firefox & Safari.
 
-### Misc. Improvements/Changes
+#### Misc. Improvements/Changes
 
 * **Feature** - Improved the NoML around pagination for sliders.
   + **Feature** - Created internal Zapier integration for our support, success, and marketing teams.

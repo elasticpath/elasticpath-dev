@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Several Shopify-specific improvements to the app as well as a number of bug fixes and tweaks.
 
-## Collections Admin Page
+#### Collections Admin Page
 
 Similar to the product index page the collections index will help users see the collections that have synced with
 Studio. This should help us debug sync issues and give users greater confidence in understanding what CX-Studio has
@@ -17,7 +17,7 @@ pulled in from Shopify.
 
 ![Collections Index](/assets/studio/Collections.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Disabled the use of ecommerce components with Carousels
 * Addressed an issue where the Shopify logo wouldn't appear on the "connecting" screen when initially connecting

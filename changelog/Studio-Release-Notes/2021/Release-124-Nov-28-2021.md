@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Several bug fixes went out this week. No banner releases.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Fixed an issue where adding a custom domain to an account created via the Shopify app would create malformed CNAME
   records.

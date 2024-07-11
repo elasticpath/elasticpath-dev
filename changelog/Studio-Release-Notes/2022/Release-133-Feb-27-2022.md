@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A tiny release with a few fixes and tweaks.
 
-## Banner Features
+#### Banner Features
 
 **Polish on product list items**
 
@@ -31,7 +31,7 @@ setting from the section.
 
 ![Darka and Light Text Toggle](/assets/studio/Screen_Shot_2022-02-24_at_12.58.27_PM.png) 
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Pushed a several QoL updates for the list of products shown when selecting a product.
 * Added dark/light text toggle to boxes.

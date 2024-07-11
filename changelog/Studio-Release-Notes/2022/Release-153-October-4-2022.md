@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Another small release with several bug fixes.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * **Feature** - Added support for style and other attributes to NoML tags
 * **Tweak** - Updated Media component with mobile-specific settings

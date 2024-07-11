@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 One of our larger releases. Lots of bug fixes and a handful of small tweaks.
 
-## Banner Features
+#### Banner Features
 
 **Mobile editing is now available!**
 
@@ -34,9 +34,9 @@ easier for first-time users to understand how to add additional sections to page
 
 ![Add Section Button](/assets/studio/11258823664023.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Shopify
+#### Shopify
 
 * **Tweak** - Adjusted the account creation process so that Shopify sites no longer have "hidden" articles or site pages
   created for them. This only affected internal reporting so no-one should see any changes on their side.
@@ -46,23 +46,23 @@ easier for first-time users to understand how to add additional sections to page
 * **Tweak** - Moved Product search to Shopify API
 * **Tweak** - Moved collection search to Shopify API
 
-### Page Editor
+#### Page Editor
 
 * **Bug** - Fixed a handful of minor mobile editor bugs
 * **Bug** - Fixed an issue where the background image button wasn't doing anything when clicked.
 * **Bug** - Fixed an issue where the product title in modals was appearing as huge text.
 * **Bug** - Fixed an issue where padding settings would overflow out of the media box toolbar.
 
-### Style Guide
+#### Style Guide
 
 * **Feature** - Custom fonts now appear in the style guide under a "custom" tab.
 * **Tweak** - On landing page headers, the logo now links to the storefront.
 * **Tweak** - Solid landing page headers now no longer inherit the background color of the first section on a page.
 
-### Forms
+#### Forms
 
 * **Bug** - Fixed an issue where side-by-side fields would wrap if the form width was less than 400.
 
-### Other
+#### Other
 
 * **Tweak** - Removed "Payments" tab from global navigation.

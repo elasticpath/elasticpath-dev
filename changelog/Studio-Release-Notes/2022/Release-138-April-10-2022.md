@@ -5,13 +5,13 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 An exciting release! For our Shopify users we have added support for using Shopify's "liquid" header and footer with the
 pages you create in Unstack. At the moment this isn't yet enabled for all stores, but will be in the coming weeks once
 we're able to test it with some of our partners.
 
-## Banner Features
+#### Banner Features
 
 **Shopify header, footer, and cart**
 
@@ -21,7 +21,7 @@ partners before we push it live for everyone.
 That said, once it's live you'll be able to use your existing header, footer, ***and*** your cart (including upsell
 options!) with the pages you create with Unstack.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Added support for liquid header.
 * Added support for liquid footer.

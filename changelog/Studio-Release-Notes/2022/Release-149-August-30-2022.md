@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A solid release with new expanded component development features, several bug fixes, and an easier way for Shopify users
 to log in.
 
-## Banner Features
+#### Banner Features
 
 **Element Properties**
 
@@ -55,9 +55,9 @@ they can sign in and access Unstack.
 
 ![]Signing in(/assets/studio/Screen_Shot_2022-08-26_at_12.46.26_PM.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Element Properties
+#### Element Properties
 
 * **Feature** - Added support for Element properties on boxes.
     + **Feature** - Added support for Element properties on other elements.
@@ -69,16 +69,16 @@ Shopify
     + **Bug** - Fixed an issue where accounts with expired trials were missing their products after the trial
       expired.
 
-### Editor
+#### Editor
 
 * **Bug** - Fixed an issue where the article editor was missing the (?) that opens the help panel.
     + **Bug** - Fixed an issue where max-width was showing differently in the editor and rendered page.
 
-### Smart Links
+#### Smart Links
 
 * **Bug** - Fixed an issue where the smart link field would persist after linking a product.
 
-### Misc. Changes/Fixes
+#### Misc. Changes/Fixes
 
 * **Tweak** - Updated the URL that the "Shopify + Unstack FAQ" link uses in the Quickstart.
     + **Bug** - Fixed an issue where product inventory in Unstack would show negative values.

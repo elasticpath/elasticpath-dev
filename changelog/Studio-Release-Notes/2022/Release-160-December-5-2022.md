@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 This was a smaller release. We shipped improvements for sync and mobile size & spacing polish, in addition to fixing a
 number of bugs.
 
-## Banner Features
+#### Banner Features
 
 **De-Sync**
 
@@ -24,9 +24,9 @@ possible and the information remains up to date.
 A number of improvements to the mobile size & spacing toolbar were shipped. This is a follow up release on some items
 that went out with [Release 154](https://support.unstack.com/hc/en-us/articles/11074862660119).
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Other
+#### Other
 
 * **Tweak** - Shipped a number of improvements to the mobile size & spacing toolbar.
 * **Bug** - Fixed an issue with the default padding toggle in the spacing dropdown.
@@ -34,11 +34,11 @@ that went out with [Release 154](https://support.unstack.com/hc/en-us/articles/1
 * **Bug** - Resolved a console error that would appear when opening a forms "submitted by" customer list.
 * **Bug** - Resolved an issue that arose when using the callouts add-on
 
-### Lambda
+#### Lambda
 
 * **Bug** - Several bugs related to the Lambda service were found and ultimately resolved with this release.
 
-### Sync
+#### Sync
 
 * **Feature** - Moved product search to query Shopify's API directly.
 * **Tweak** - Added back-end logging for our Shopify synchronizers

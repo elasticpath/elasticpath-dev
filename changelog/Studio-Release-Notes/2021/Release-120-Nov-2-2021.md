@@ -5,7 +5,7 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 The theme of this release was overwhelmingly ***Fix Shopify Bugs.***
 
@@ -15,7 +15,7 @@ bugs we discovered and hit the most important ones in a week focused on Bug Bash
 
 In total, we fixed **18 bugs** in this release and shipped **14 tweaks**.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Fixed a bug where adding a product to your cart would still show the "Your bag is currently empty" text.
 * Fixed a bug where Times New Roman was being used as the font in cart drawers.

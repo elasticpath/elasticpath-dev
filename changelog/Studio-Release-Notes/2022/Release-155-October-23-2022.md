@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A smaller release comprised of mostly bug fixes and a couple tweaks. This release also saw the addition of the "intro"
 modal to the editor.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * **Feature** - We added a new "intro" modal to the editor.
 * **Tweak** - The name of any section in the page editor now links to the section in the section editor, making it

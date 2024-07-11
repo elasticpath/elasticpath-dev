@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Another large release shipping a few key features and a ton of small fixes.
 
-## Banner Features
+#### Banner Features
 
 **Shopify Free Plan**
 
@@ -44,7 +44,7 @@ be more like JSX we added a translation layer to translate from the new syntax i
 avoid rewriting the rendering layer. In this release we rewrote the rendering layer so it’s no longer using the old
 syntax.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Launched the free plan for Shopify.
 * Fixed an issue where templates with product collection components (but no product components) were asking for a

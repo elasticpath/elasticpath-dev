@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 No definitive theme of this release, but many bug fixes and tweaks were released.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Fixed an issue where the publish and unpublish product links weren't working.
 * Fixed an issue where Variants were not showing properly in Unstack

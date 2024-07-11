@@ -5,21 +5,21 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Some minor improvements and bug fixes in this release.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Style Guide
+#### Style Guide
 
 * **Bug** - Fixed an issue where color names could not be updated in the **Color palette**.
 
-### Thank you Page
+#### Thank you Page
 
 * **Bug** - Fixed an issue where **Address line 2** was not displaying in the shipping address.
 
-### Shopify
+#### Shopify
 
 * **Bug** - Fixed an issue where some product IDs were wrongly generating an **invalid id** error message in the cart.
 

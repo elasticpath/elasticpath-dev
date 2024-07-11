@@ -5,7 +5,7 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 The banner feature for this release is conditional content for DDC. We built this feature to enable a beta user of ours
 to hide and show content for their pages based on content in their data tables. We're also working on conditional
@@ -14,7 +14,7 @@ content for all pages to support personalization, but this will come in a future
 We also fixed a ton of bugs in this release and rolled out better synchronization of properties across internal tools to
 make it easier for Marketing and Customer Success to build engage with users.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Released an update to allow our backend to properly handle conditional content with DDC pages.
 * Released an update to allow our frontend to properly handle conditional content with DDC pages.

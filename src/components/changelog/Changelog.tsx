@@ -38,8 +38,14 @@ const PRODUCTS = [
   {
     title: 'Studio',
     beta: false,
-    link: '/docs/studio',
+    link: '/changelog/product/studio',
     icon: Studio,
+  },
+  {
+    title: 'Composable CLI',
+    beta: false,
+    link: 'https://github.com/elasticpath/composable-frontend/releases',
+    icon: ContactCardGroupRegular,
   },
   {
     title: 'Authentication',
@@ -106,15 +112,15 @@ const PRODUCTS = [
   {
     title: 'Payments',
     beta: false,
-    link: '#',
+    link: '/changelog/product/payments',
     icon: WalletCreditCardRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
   },
   {
-    title: 'Personal-Data Service',
+    title: 'Personal Data Service',
     beta: false,
-    link: '#',
+    link: '/changelog/product/personal-data-service',
     icon: DatabasePersonRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -122,7 +128,7 @@ const PRODUCTS = [
   {
     title: 'Product Experience Manager',
     beta: false,
-    link: '/docs/api/pxm/products/product-experience-manager-introduction',
+    link: '/changelog/product/product-experience-manager',
     icon: BookRegular,
     // lightImage: '/static/landing-page/hero/voice-graphic.png',
     // darkImage: '/static/landing-page/hero/voice-graphic-dark.png',

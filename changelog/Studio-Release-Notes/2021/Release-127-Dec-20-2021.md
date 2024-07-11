@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 This was a smaller release with mostly bug fixes and some prep work on features that will be released in January.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Pushed a fix for an issue where a 400 error would sometimes occur when an additional Unstack site was being created.
 * Pushed an update to our backend that allows our product team more flexibility when creating page templates.

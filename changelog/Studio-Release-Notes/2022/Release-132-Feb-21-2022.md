@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A smaller release, but we shipped a few features and tweaks in addition to a number of bug fixes. Tons of work on some
 new features and editor improvements that will both land in a future release.
 
-## Banner Features
+#### Banner Features
 
 **Intro video for the page editor**
 
@@ -54,7 +54,7 @@ getting to it along with a number of other editor improvements.
 
 ![Rigt-alignment of Text](/assets/studio/Screen_Shot_2022-02-24_at_11.59.05_AM.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Added intro video for the editor.
 * Added deep-links. Among other things, this allows us to provide one URL that all users can use to access a specific

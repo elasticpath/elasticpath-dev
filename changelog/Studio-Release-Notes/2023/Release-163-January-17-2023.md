@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A small release of mostly bug fixes.
 
-## Banner Features
+#### Banner Features
 
 **Mobile editing updates**
 
@@ -28,9 +28,9 @@ With [Release 162](https://support.unstack.com/hc/en-us/articles/11409394257303)
 gating, and with this deprecation of our Stripe integrations is complete. You'll no longer find the Stripe integration
 in **Settings > Integrations**.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
-### Mobile Editing & Preview
+#### Mobile Editing & Preview
 
 * **Tweak** - Adjusted device-specific sections so they aren't visible in viewports other than the one that is defined.
 * **Tweak** - Remove device selector from "Size & spacing" setting
@@ -40,19 +40,19 @@ in **Settings > Integrations**.
 * **Bug** - Addressed an edge case where the toolbar of the first section could be inaccessible to users if their
   landing page had no header.
 
-### Product Collections
+#### Product Collections
 
 * **Bug** - Fixed an issue where "Add to Cart" text wrapped to two lines
 
-### Better Lighthouse Scores
+#### Better Lighthouse Scores
 
 * **Bug** - Fixed an issue where the font "Inter" was being loaded into all sites.
 
-### Integrations
+#### Integrations
 
 * **Tweak** - Removed Stripe integration from all accounts
 
-### Misc. Bugs
+#### Misc. Bugs
 
 * **Bug** - Fixed a slight alignment issue for left-aligned actions.
 * **Bug** - Fixed an article content alignment issue. Article contents are once-again centered on the page.

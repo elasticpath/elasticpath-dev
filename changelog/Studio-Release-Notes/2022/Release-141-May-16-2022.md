@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 With this release we shipped Smartlinks for products and a number of improvements to our Klaviyo integration.
 
-## Banner Features
+#### Banner Features
 
 **Smartlinks for Products**
 
@@ -24,7 +24,7 @@ With this release we rolled out a series of changes that unify Klaviyo's user ID
 it
 possible to build conditional content based on Klaviyo data which drastically expands our personalization capabilities.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Updated the intro video used in the page editor.
 * Resolved an issue where template options weren't sorting properly.

@@ -5,13 +5,13 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Another monster release for the engineering team packed with features, tweaks, and bug fixes! This work was delayed for
 a few weeks while we tested the new JSX syntax for NoML. As a consequence more issues were rolled into this release
 because it includes work from the past three weeks.
 
-## Banner Features
+#### Banner Features
 
 **Showing a variant featured image**
 
@@ -42,7 +42,7 @@ easier to add custom embeds (for example a map) with text on the left or right.
 
 ![Custom Code with Text Component](/assets/studio/Screen_Shot_2022-02-16_at_9.58.03_AM.png)]
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Pushed several polish-updates for Conditional Content.
 * Added support for variant-specific featured images. Now when a variant is specified, the images used in the product

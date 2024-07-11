@@ -5,13 +5,13 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A small release with a handful of bug fixes and tweaks. Several new features in the works including *Component
 Properties* which is a set of changes to the section/component experience which will help to reduce redundancies with
 our current component experience. More on this when it's released in the coming weeks.
 
-## Banner Features
+#### Banner Features
 
 **Recategorized Components**
 
@@ -30,7 +30,7 @@ This includes changes to way we generate screenshots of these templates as well 
 
 ![Templates](/assets/studio/template-screenshots.png)
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Rolled out a change to the way our components are categorized to make it easier to navigate.
 * Added support for keyboard handling to dropdowns when setting conditions.

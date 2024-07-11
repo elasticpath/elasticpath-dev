@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 Our last couple releases were smaller than normal and this release is why. 154 was a huge release with 2 new features, 4
 major improvements and a handful of bugs and tweaks.
 
-## Banner Features
+#### Banner Features
 
 **Mobile Padding**
 
@@ -45,7 +45,7 @@ adjust the mobile experience.
 We also shipped improvements for both our Product and Media components. These improvements allow you to add banners or
 FAQs right to the "Text" areas of both components.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 **Mobile Editing & Preview**
 

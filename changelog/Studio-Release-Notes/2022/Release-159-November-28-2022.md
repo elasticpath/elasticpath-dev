@@ -5,12 +5,12 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 A very small follow up release to
 both [Release 157](https://support.unstack.com/hc/en-us/articles/11255067462935) & [Release 158](https://support.unstack.com/hc/en-us/articles/11573826447639).
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * **Tweak** - Update in-app pricing plans to match the public website
 * **Bug** - Fixed an issue where the product collection component would sometimes not add to cart properly on desktop.

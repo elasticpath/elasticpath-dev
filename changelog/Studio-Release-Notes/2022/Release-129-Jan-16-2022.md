@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 We had a monster release with a number of small, but significant features added to the product and a ton of bug fixes.
 
-## Banner Features
+#### Banner Features
 
 **Better product collection component**
 
@@ -48,7 +48,7 @@ This won’t be fully realized until future releases, but we shipped the first w
 changes on the fly from Shopify. Sync will soon occur whenever a change is made to a product and you won’t need to start
 the sync job manually any more.
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Added support for strike-through through our rich text editor.
 * Added support for syncing product changes more frequently via webhooks.

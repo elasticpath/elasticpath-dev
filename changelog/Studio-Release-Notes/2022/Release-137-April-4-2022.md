@@ -5,11 +5,11 @@ tags:
   - Studio
 ---
 
-## Overview
+#### Overview
 
 This was our biggest release in several weeks with many things being shipped for the start of Q2!
 
-## Banner Features
+#### Banner Features
 
 **Improved Embedded app Start Screen**
 
@@ -47,7 +47,7 @@ the works for some time and is a huge milestone for this tool.
 
 *Look for more on DDC soon!*
 
-## Complete List of Resolved Items
+#### Complete List of Resolved Items
 
 * Pushed a number of improvements to the start screen of the embedded app.
 * Added text transform options to typography options in Style Guide.
