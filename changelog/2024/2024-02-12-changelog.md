@@ -1,7 +1,7 @@
 ---
 title: 'Algolia integration update, created at and updated at added to variations and variation options'
 date: '2024-02-12'
-tags: ['Product Experience Manager','Integrations Hub']
+tags: ['Product Experience Manager','Composer']
 hide_blog_post_date: false
 ---
 
