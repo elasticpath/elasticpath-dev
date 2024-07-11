@@ -16,9 +16,6 @@ Collect the following Commerce API keys. You can find this information in **Syst
 | **Client Secret**                   | Your Commerce Client Secret. |
 | **Token URL**                       | Your Commerce API token URL. <ul><li>US Region: https://useast.cm.elasticpath.com/oauth/access_token</li><li>EU Region: https://euwest.cm.elasticpath.com/oauth/access_token</li></ul> |
 
-:::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
-:::
 
 ## Configuring the Integration
 
@@ -32,9 +29,8 @@ Now that you've collected the setup information let's begin by configuring the i
 1. Click **Connect**. A new window is displayed to confirm the connection was successful. If successful, close this window and then click **Next**.
 1. By default, **Fetch Main Image URL** and **Fetch Inventory** toggles are enabled. You can modify the default configuration policy, batch size and concurrency settings if necessary. We recommend keeping these settings as default.
 1. Click **Next**.
-1. Provide the **Base Product URL** and **Base Catagory URL** relevant to your products and categories.
+1. Provide the **Base Product URL** and **Base Category URL** relevant to your products and categories.
 1. Click **Finish** to complete the configuration process.
-It creates a custom API called Klevu keys, a flow as Klevu Mapping, and Klevu catalog syncwebhook is created.
 
 ## Understanding Klevu Mappings
 
@@ -44,9 +40,9 @@ Once you have configured the integration, it creates:
 - A flow named **Klevu Mapping** under **SYSTEM > Flows** for mapping Klevu and custom field. 
 - A Webhook event named **Klevu Catalog Sync**.
 
-The following table describes fields of the product in Commerce Manager and their corresponding fields in Klevu.
+The following table describes fields of the Commerce Product Fields and their corresponding Klevu attributes:
 
-| Commerce Field                    | Maps to Klevu Field |
+| Commerce Product Fields                    | Maps to Klevu Attributes |
 |:----------------------------------|:-----------------------------------------|
 | **product.attributes.sku**           | Klevu sku |
 | **product.attributes.name**          | Klevu name |
@@ -60,14 +56,14 @@ The following table describes fields of the product in Commerce Manager and thei
 
 ## Creating New Entries and Publishing Catalogs
 
-To syncronize each catalog, you must create a separate Klevu store and collect API key and Klevu Rest Auth key. Klevu does not support for multiple indexes within a single Klevu store. 
+To synchronize each catalog, you must create a separate Klevu store and collect API key and Klevu Rest Auth key. Klevu does not support multiple indexes within a single Klevu store. 
 
 Follow these steps to input Klevu credentials into the custom API **Klevu Keys**:
 
 1. In Commerce Manager, navigate to **COMMERCE EXTENSIONS** > **Custom APIs**.
 1. Select **Klevu Keys** and click **All Entries**.
 1. Select **Create Entry**.
-1. Specify the name of the catalog you wish to syncronize.
+1. Specify the name of the catalog you wish to synchronize.
 1. Paste the API key that you copied from the Klevu store in the **Klevu API Key** field.
 1. Enter the Klevu API key for Indexing, which is `https://indexing.ksearchnet.com`.
 1. Paste the Klevu Rest Auth key that you copied from your Klevu store in the **Klevu REST AUTH Key** field.
