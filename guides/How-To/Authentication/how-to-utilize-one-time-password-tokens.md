@@ -10,7 +10,7 @@ The One-Time Password Token request APIs can be utilized for both Passwordless A
 
 If you want to follow along, you need the following:
 
-- A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](/ui).
+- A Commerce account and the Client ID and Client Secret of your store, available from your [Commerce Manager](/docs/commerce-manager/authentication/).
 - A front-end application or a custom application accessible to you in a web browser which accesses the Commerce API with the [implicit token](/docs/authentication/Tokens/implicit-token).
 - An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token).
 
@@ -41,7 +41,7 @@ Use the [Password Profiles API](/docs/authentication/single-sign-on/password-pro
 
 ### Create a User for testing
 
-First create a [User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/create-a-user-authentication-info.md) to represent a user, then associate them to the Password Profile from the previous step using the [User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile) API making note of the username.
+First create a [User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/create-a-user-authentication-info) to represent a user, then associate them to the Password Profile from the previous step using the [User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/create-a-user-authentication-password-profile) API making note of the username.
 
 ### Create a Webhook
 

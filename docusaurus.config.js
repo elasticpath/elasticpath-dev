@@ -1538,7 +1538,7 @@ const config = {
           { to: '/docs/commerce-manager/product-experience-manager/Products/overview', from: '/docs/pxm/catalogs/catalog-latest-release/get-a-product-in-a-release'},
           { to: '/docs/api/pxm/catalog/get-by-context-release', from: '/docs/pxm/catalogs/catalog-latest-release/get-all-products-in-a-release'},
           { to: '/docs/api/pxm/products/get-all-products', from: '/docs/pxm/products/ep-pxm-products-api/get-all-products'},
-          { to: '/docs/authentication/single-sign-on/password-profiles-api/how-to-utilize-one-time-password-tokens', from: '/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/username-password-authentication'},
+          { to: '/guides/How-To/Authentication/how-to-utilize-one-time-password-tokens', from: '/docs/commerce-cloud/accounts/account-management-authentication/account-management-authentication-api/username-password-authentication'},
           { to: '/docs/api/commerce-extensions/update-a-custom-api', from: '/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-apis/update-a-custom-api'},
           { to: '/docs/api/integrations/integrations', from: '/docs/commerce-cloud/integrations/integrations'},
           { to: '/docs/api/payments/payment-gateways-introduction', from: '/docs/commerce-cloud/payments/paying-for-an-order/stripe-payment-connect'},
