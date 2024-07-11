@@ -29,7 +29,7 @@ Now that you've collected the setup information let's begin by configuring the i
 1. Click **Connect**. A new window is displayed to confirm the connection was successful. If successful, close this window and then click **Next**.
 1. By default, **Fetch Main Image URL** and **Fetch Inventory** toggles are enabled. You can modify the default configuration policy, batch size and concurrency settings if necessary. We recommend keeping these settings as default.
 1. Click **Next**.
-1. Provide the **Base Product URL** and **Base Category URL** relevant to your products and categories.
+1. Provide the **Base Product URL** and **Base Category URL** relevant to your products and categories. For example, `https://www.example.com/products` and `https://www.example.com/category`.
 1. Click **Finish** to complete the configuration process.
 
 ## Understanding Klevu Mappings
