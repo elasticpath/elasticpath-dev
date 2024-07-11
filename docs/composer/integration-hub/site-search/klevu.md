@@ -40,7 +40,7 @@ Once you have configured the integration, it creates:
 - A flow named **Klevu Mapping** under **SYSTEM > Flows** for mapping Klevu and custom fields. 
 - A Webhook event named **Klevu Catalog Sync**.
 
-The following table describes fields of the Commerce Product Fields and their corresponding Klevu attributes:
+The following table describes the Commerce product fields and their corresponding Klevu attributes:
 
 | Commerce Product Fields                    | Maps to Klevu Attributes |
 |:----------------------------------|:-----------------------------------------|
