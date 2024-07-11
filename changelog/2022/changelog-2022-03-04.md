@@ -1,6 +1,9 @@
 ---
 title: 'Changelog 2022-03-04'
 date: '2022-03-04'
+tags:
+  - Product Experience Manager
+  - Files
 ---
 **Minor** 
 **Files Service Refactor**:
