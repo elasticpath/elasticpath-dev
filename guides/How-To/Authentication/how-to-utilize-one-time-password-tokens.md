@@ -1,7 +1,7 @@
 ---
 title: How to utilize One-Time Password Tokens in your Application
 nav_label: How to utilize One-Time Password Tokens in your Application
-sidebar_position: 80
+sidebar_position: 20
 ---
 
 The One-Time Password Token request APIs can be utilized for both Passwordless Authentication and Password Reset scenarios in your application
