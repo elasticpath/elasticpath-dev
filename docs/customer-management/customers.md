@@ -11,7 +11,7 @@ When a customer is ready to purchase for the first time, the customer creates a 
 As a customer uses your store, you can enhance the customer profile with relationships to other information, such as payment methods, promotions, and order history.
 
 :::note
-[Accounts](/docs/api/accounts/account-management-introduction#accounts-vs-customers) represent the next generation of Customers. While Customers are essential, Accounts offers enhanced capabilities. We recommend using Accounts for any of your new use cases.
+[Accounts](/docs/api/accounts/account-management-introduction#accounts-vs-customers) represent the next generation of Customers. While Customers are essential, Accounts offer enhanced capabilities. We recommend using Accounts for any of your new use cases.
 :::
 
 :::tip
