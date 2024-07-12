@@ -1,6 +1,8 @@
 ---
 title: 'Changelog 2021-11-01'
 date: '2021-11-01'
+tags:
+  - Product Experience Manager
 ---
 **Major** Product Variations and Child Product Builder feature is now available. Variations allow you to generate child products on a product with a number of options such as size, color and more. The features include:
 
