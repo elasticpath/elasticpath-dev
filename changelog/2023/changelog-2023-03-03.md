@@ -1,7 +1,7 @@
 ---
 title: 'March 3, 2023'
 date: '2023-03-03'
-tag: ['Integrations Hub']
+tag: ['Composer']
 hide_blog_post_date: false
 ---
 **Major**

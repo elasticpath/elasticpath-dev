@@ -1,7 +1,7 @@
 ---
 title: Customer Tokens
 nav_label: Customer Tokens
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-management-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-management-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/api/addresses/addresses-introduction) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.

@@ -51,12 +51,13 @@ Filtering is currently supported on the following endpoints:
 * [Get all price modifiers](/docs/api/pxm/pricebooks/get-price-modifiers)
 * [Get all prices in a price book](/docs/api/pxm/pricebooks/get-product-prices)
 * [Get all products](/docs/api/pxm/products/get-all-products)
+* [Get all product prices](/docs/api/pxm/pricebooks/get-prices)
 * [Get all entries](/docs/api/flows/get-all-entries)
 * [Get all files](/docs/api/pxm/files/get-all-files)
 * [Get Jobs](/docs/api/pxm/products/get-all-jobs)
-* [Get all Custom APIs](/docs/api/commerceextensions/get-all-custom-apis)
-* [Get all Custom Fields](/docs/api/commerceextensions/get-all-custom-fields)
-* [Get all Custom API Entries](/docs/api/commerceextensions/get-all-custom-entries)
+* [Get all Custom APIs](/docs/api/commerce-extensions/get-all-custom-apis)
+* [Get all Custom Fields](/docs/api/commerce-extensions/get-all-custom-fields)
+* [Get all Custom API Entries](/docs/api/commerce-extensions/get-all-custom-entries)
 
 ## Filtering Syntax
 
@@ -193,6 +194,7 @@ As this feature is in beta, quoted operands are only working with the following 
 - [Get all prices in a price book](/docs/api/pxm/pricebooks/get-product-prices)
 - [Get all price modifiers](/docs/api/pxm/pricebooks/get-price-modifiers)
 - [Get all promotions](/docs/api/promotions/get-all-promotions)
+- [Get all product prices](/docs/api/pxm/pricebooks/get-prices)
 - [Get all products](/docs/api/pxm/products/get-all-products)
 :::
 

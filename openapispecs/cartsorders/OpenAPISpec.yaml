@@ -636,31 +636,30 @@ paths:
               "data": {
                 "type": "product",
                   "attributes": {
-                  /*** other product attributes ommitted ***/
-                  "custom_inputs": {
-                    "front": {
-                    "name": "T-Shirt Front",
-                    "validation_rules": [
-                      {
-                        "type": "string",
-                        "options": {
-                        "max_length": 50
-                      }
-                    }
-                  ],
-                "required": false
+                      "custom_inputs": {
+                          "front": {
+                              "name": "T-Shirt Front",
+                              "validation_rules": [
+                              {
+                                  "type": "string",
+                                  "options": {
+                                  "max_length": 50
+                              }
+                          }
+                      ],
+                            "required": false
                 },
-                "back": {
-                  "name": "T-Shirt Back",
-                  "validation_rules": [
-                    {
-                      "type": "string",
-                      "options": {
-                      "max_length": 50
+                          "back": {
+                            "name": "T-Shirt Back",
+                            "validation_rules": [
+                        {
+                              "type": "string",
+                              "options": {
+                              "max_length": 50
                     }
                   }
                 ],
-                "required": false
+                           "required": false
                 }
               }
             }
@@ -686,7 +685,7 @@ paths:
         - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
         - The cart currency is set when the first item is added to the cart.
         - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
-        - A cart can contain a maximum of 100 unique items. Items include products and custom items.
+        - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
         - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) documentation.
 
         :::
@@ -697,36 +696,8 @@ paths:
 
         For [Shipping Groups](/docs/ship-groups/shipping-groups), once you have created a [cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
 
-        #### Personalized Products
-
-        You can allow your shoppers to add custom text when adding custom items to their carts. This is useful, for example, if you have a custom item that can be personalized. You can do this using the `custom_inputs` attribute. The `custom_inputs` attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
-
-        You can allow shoppers to personalize their goods by adding custom text inputs directly to carts when adding custom items. This feature is particularly useful for customizable items, such as personalized T-shirts or greeting cards. You can use this functionality by leveraging the `custom_inputs` attribute, and defining the details and validation rules for the custom text.
-
-        Once you have defined your custom inputs on a custom item, you must configure the custom inputs in your orders.
-
-        When the custom item is added to the cart, those custom inputs are supplied.
-
-        ```json
-        {
-          "custom_inputs": {
-            "name": {
-              "name": "Fred",
-              "message": "Happy Birthday"
-            }
-          }
-        }
-        ```
-
-        If the same custom item has different `custom_inputs` attributes then, these are added as separate items in a cart.
-
-        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the `custom_inputs` attribute becomes part of the order items.  There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
-
         :::note
 
-        - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
-        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
-        - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
         - Custom Cart Items are available through [implicit authentication](/docs/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
 
         :::
@@ -4608,13 +4579,6 @@ components:
               properties:
                 id:
                   description: The ID of the customer.
-                  type: string
-                email:
-                  description: The customer email address.
-                  type: string
-                  format: email
-                name:
-                  description: The full name of the customer.
                   type: string
             billing_address:
               $ref: '#/components/schemas/BillingAddress'

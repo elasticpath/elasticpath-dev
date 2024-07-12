@@ -1,6 +1,9 @@
 ---
 title: 'Changelog 2020-06-11'
 date: '2020-06-11'
+tags:
+  - Payments
+  - v2 Catalogue
 ---
 **Major** Added support for PayPal Express Checkout.
 **Major** Added support for PayPal Payflow Pro.
