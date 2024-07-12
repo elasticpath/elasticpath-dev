@@ -343,13 +343,6 @@ const config = {
           },
         ],
       },
-      algolia: {
-        appId: "BE47YC23U9",
-        apiKey: "77d1494d8923cc5ff24934e7ece7e46a",
-        indexName: "elasticpath",
-        contextualSearch: false,
-        searchParameters: {},
-      },
     }),
 
   plugins: [
@@ -1587,6 +1580,26 @@ const config = {
     "docusaurus-theme-openapi-docs",
     "@docusaurus/theme-mermaid",
     "@docusaurus/theme-live-codeblock",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        indexDocs: true,
+        indexBlog: true,
+        blogRouteBasePath: "changelog",
+        docsRouteBasePath: ["docs", "guides"],
+        highlightSearchTermsOnTargetPage: false,
+        searchContextByPaths: ["docs","guides","changelog"],
+        useAllContextsWithNoSearchContext: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+      }),
+    ],
   ],
 };
 
