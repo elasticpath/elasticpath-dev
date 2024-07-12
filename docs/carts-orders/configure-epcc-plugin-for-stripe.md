@@ -13,4 +13,4 @@ The Elastic Path Composable Commerce Stripe Plugin enables Commerce to securely 
 3. Install the Elastic Path Composable Commerce Stripe Plugin within the Stripe Dashboard.
 4. Once installed, navigate to the **View App Settings**, and then select **View API Keys**.
 5. Copy the **Publishable key** value. This key is used when configuring Payment Elements on your front-end.
-6. Copy the **Secret key** value. Paste this key in Commerce Manager or Payment gateway APIs for [Stripe](/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-stripe) and [Stripe Intent](/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-stripe-payment-intents) gateways to make the payments.
+6. Copy the **Secret key** value. Paste this key in Commerce Manager or Payment gateway APIs for [Stripe](https://elasticpath.dev/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-stripe) and [Stripe Intent](https://elasticpath.dev/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-stripe-payment-intents) gateways to make the payments.
