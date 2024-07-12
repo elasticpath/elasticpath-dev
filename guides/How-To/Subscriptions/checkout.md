@@ -13,6 +13,6 @@ All of this is automatic and does not require any input from your shoppers.
 As an implementor, you must:
 
 1. Create an account. See [Create an Account](/docs/api/accounts/post-v-2-accounts).
-1. Depending on the payment gateway you are using, create a customer for the gateway. For example, if you are using Elastic Path Payments, then you must create a customer in your Stripe connected account. See [Elastic Path Payments Powered by Stripe](/docs/payments).
+2. Depending on the payment gateway you are using, create a customer for the gateway. For example, if you are using Elastic Path Payments, then you must create a customer in your Stripe connected account. See [Elastic Path Payments Powered by Stripe](/docs/payments).
 1. The checkout journey then follows the [checkout workflow](/docs/api/carts/checkout). 
 1. When a shopper makes a payment, the payment request must specify the parameters described in [Payment Requests](/docs/api/subscriptions/invoices#payment-requests).
