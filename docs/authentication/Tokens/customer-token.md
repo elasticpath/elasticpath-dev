@@ -8,8 +8,8 @@ A customer token provides access to the records of the customer. Use single sign
 
 - [Get a Customer](/docs/customer-management/customer-management-api/get-a-customer)
 - [Update a Customer](/docs/customer-management/customer-management-api/update-a-customer)
-- [Get Customer Addresses](/docs/api/addresses/get-v-2-customer-addresses)
-- [Get an Address](/docs/api/addresses/get-v-2-customer-address)
+- [Get Customer Addresses](/docs/api/customer-addresses/get-v-2-customer-addresses)
+- [Get an Address](/docs/api/customer-addresses/get-v-2-customer-addresses)
 - [Create an Address](/docs/api/addresses/get-v-2-account-address)
 - [Update an Address](/docs/api/addresses/put-v-2-account-address)
 - [Get all Orders](/docs/api/carts/get-customer-orders)
