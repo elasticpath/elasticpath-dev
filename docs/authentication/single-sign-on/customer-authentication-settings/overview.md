@@ -45,7 +45,7 @@ You can use the Customer Authentication Settings endpoint to retrieve settings c
 
 | Attribute | Type | Description |
 | :--- | :--- | :--- |
-| `meta.client_id` | `string` | The client id to be used in Single Sign On authentication flows for customers. For more information on where to use this client id, refer to the Developer How-To: [Single sign-on with OpenID Connect](/guides/How-To/Authentication/get-single-sign-on-customer-token). |
+| `meta.client_id` | `string` | The client id to be used in Single Sign On authentication flows for customers. For more information on where to use this client id, refer to the Developer How-To: [Single sign-on with OpenID Connect](https://elasticpath.dev/guides/How-To/Authentication/get-single-sign-on-account-management-token). |
 
 ## The `relationships` object
 
