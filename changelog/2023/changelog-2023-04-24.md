@@ -1,7 +1,7 @@
 ---
 title: 'April 24, 2023'
 date: '2023-04-24'
-tags: ['Commerce Manager','Currencies']
+tags: ['Commerce Manager','Settings']
 hide_blog_post_date: false
 ---
 **Major**

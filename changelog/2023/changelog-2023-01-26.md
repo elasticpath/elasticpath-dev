@@ -1,7 +1,7 @@
 ---
 title: 'Integrations Hub: Amazon Cognito, Onport added'
 date: '2023-01-26'
-tag: ['Integrations Hub']
+tag: ['Composer']
 ---
 **Major**
 You can now integrate Elastic Path Commerce Cloud with Amazon Cognito using the **Integrations Hub** in Commerce Manager. This allows you to offer your customers or business users Single Sign-on (SSO) using Amazon Cognito credentials instead of Elastic Path Commerce Cloud credentials. See [Integrating with Amazon Cognito](/docs/composer/integration-hub/single-sign-on/aws-cognito-integration).
