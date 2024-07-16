@@ -3,6 +3,17 @@ info:
   title: Authentication
   version: '1.0'
   description: |
+    
+    ### Authenticating for Documentation
+    
+    Use the appropriate key(s) for the actions you wish to take on the documentation site. Once you have authenticated, copy the Bearer token contained within the response. Use this bearer token on your first request on any page within the endpoint documentation. Once you have entered your bearer token on one page, that token will be long lived across all other endpoints. Tokens expire after a period of one hour. You may navigate back to the authentication endpoint at any time to change credential types. Doing so will require the use of the new Bearer token generated when switching credentials.  
+
+    ```json
+    Authorization: Bearer 212LJ3k0i2382364HIUEjfeJB98yvH
+    ```
+    
+    ### Authentication for APIs
+    
     All requests to the API need to be accompanied by an authorization header with an authentication token:
 
     ```json
@@ -33,13 +44,6 @@ info:
 
     You can also generate [customer tokens](/docs/customer-management/customer-management-api/customer-tokens#post-generate-a-token) to authenticate the customers with single sign-on, or email address and password. You must use customer token with the implicit token to access orders or customer APIs. Using the tokens, you can create and filter orders and addresses.
 
-    ### Authenticating for Documentation
-    
-    Use the appropriate key(s) for the actions you wish to take on the documentation site. Once you have authenticated, copy the Bearer token contained within the response. Use this bearer token on your first request on any page within the endpoint documentation. Once you have entered your bearer token on one page, that token will be long lived across all other endpoints. Tokens expire after a period of one hour. You may navigate back to the authentication endpoint at any time to change credential types. Doing so will require the use of the new Bearer token generated when switching credentials.  
-
-    ```json
-    Authorization: Bearer 212LJ3k0i2382364HIUEjfeJB98yvH
-    ```
   contact:
     name: Support
     url: 'https://support.elasticpath.com'
