@@ -30,15 +30,16 @@ tags:
 
       Here is a comparison of current features of Non-Core Flows and Custom APIs. This will be updated as we release more capabilities.
 
-      | Feature        | Non-Core Flows | Commerce Extensions                                      |
-      |----------------|----------------|----------------------------------------------------------|
-      | Build new APIs | ✅              | ✅                                                        |
-      | Access Level   | Implicit       | Client Credentials only                                  |
-      | Filtering      | ⛔️             | ✅                                                        |
-      | Sorting        | ⛔️             | ✅ supported attributes: `created_at`, `updated_at`, `id` |
-      | Events         | ⛔️             | ✅                                                        |
-      
-      The [Custom Fields Overview](/docs/api/commerce-extensions/custom-fields) page lists the comparison of different types and validation available in Custom APIs vs Non-Core Flows.
+      | Feature                                                                                                                         | Non-Core Flows   | Commerce Extensions                                        |
+      | ----------------                                                                                                                | ---------------- | ---------------------------------------------------------- |
+      | Build new APIs                                                                                                                  | ✅                | ✅                                                          |
+      | Access Level                                                                                                                    | Implicit         | Client Credentials only                                    |
+      | [Filtering](/docs/api/commerceextensions/get-all-custom-entries#filtering)                                                             | ⛔️               | ✅                                                          |
+      | [Sorting](/docs/api/commerceextensions/get-all-custom-entries#sorting)                                                               | ⛔️               | ✅                                                          |
+      | [Events](/docs/api/commerceextensions/custom-api-entries#events)                                                                | ⛔️               | ✅                                                          |
+      | [Conditional Updates](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#update-custom-api-entries) | ⛔️               | ✅                                                          |
+            
+      The [Custom Fields Overview](/docs/api/commerceextensions/custom-fields) lists the comparison of different types and validation available in Custom APIs vs Non-Core Flows.
   - name: Custom Fields
     # language=Markdown
     description: |
@@ -46,19 +47,21 @@ tags:
 
       Here is a comparison of different types and validation available in Custom APIs vs Non-Core Flows.
 
-      | Feature                         | Non-Core Flows | Commerce Extensions                      |
-      |---------------------------------|----------------|------------------------------------------|
-      | Data Type: String               | ✅              | ✅                                         |
-      | Data Type: Integer              | ✅              | ✅                                         |
-      | Data Type: Float                | ✅              | ✅                                         |
-      | Data Type: Boolean              | ✅              | ✅                                         |
-      | Data Type: Date                 | ✅              | ✅ Regex possible now, full support planned |
-      | Data Type: One To Many          | ✅              | Planned                                   |
-      | Validation: Regular Expression  | ⛔️              | Planned                                   |
-      | Validation: Slug/Email          | ✅              | ✅ Replaced by Regex validation             |
-      | Validation: Min/Max Value       | ✅              | ✅                                         |
-      | Validation: Enum(String)        | ✅              | ✅ Replaced by Regex validation             |
-      | Validation: Enum(Float/Integer) | ✅              | ⛔️                                         |
+      | Feature                           | Non-Core Flows   | Commerce Extensions                        |
+      | --------------------------------- | ---------------- | ------------------------------------------ |
+      | Data Type: String                 | ✅                | ✅                                          |
+      | Data Type: Integer                | ✅                | ✅                                          |
+      | Data Type: Float                  | ✅                | ✅                                          |
+      | Data Type: Boolean                | ✅                | ✅                                          |
+      | Data Type: Date                   | ✅                | ✅ Regex possible now, full support planned |
+      | Data Type: One To Many            | ✅                | Planned                                    |
+      | Validation: Regular Expression    | ⛔️               | ✅                                          |
+      | Validation: Slug/Email            | ✅                | ✅ Replaced by Regex validation             |
+      | Validation: Min/Max Value         | ✅                | ✅                                          |
+      | Validation: Enum(String)          | ✅                | ✅ Replaced by Regex validation             |
+      | Validation: Enum(Float/Integer)   | ✅                | ⛔️                                         |
+      | Validation: Allow null values     | ⛔                | ✅                                          |
+      | Validation: Unique(String)        | ⛔                | ✅                                          |
 
       ## Validation
 
