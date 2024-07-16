@@ -183,12 +183,6 @@ const config = {
       }),
     ],
   ],
-  scripts: [
-    {
-      src:"https://play.vidyard.com/embed/v4.js",
-      async: true,
-    }
-  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

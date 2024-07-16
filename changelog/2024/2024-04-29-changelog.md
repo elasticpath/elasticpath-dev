@@ -14,10 +14,4 @@ Moreover, Commerce Extensions offers the ability to apply filters to all fields,
 
 You can also create new Custom APIs within Commerce Manager. For more information, see **[Commerce Extensions in Commerce Manager](https://elasticpath.dev/docs/commerce-cloud/commerce-extensions/commerce-extension-in-cm)**.
 
-<img
-className="vidyard-player-embed"
-src="https://play.vidyard.com/fJ7N8K1143sBN7UJ3qUJj3.jpg"
-data-uuid="fJ7N8K1143sBN7UJ3qUJj3"
-data-v="4"
-data-type="inline"
-/>
+<iframe class="vidyard-player-embed" title="Commerce Extensions Demo" src="//play.vidyard.com/fJ7N8K1143sBN7UJ3qUJj3.html?" width="100%" height="540" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer-when-downgrade"></iframe>
