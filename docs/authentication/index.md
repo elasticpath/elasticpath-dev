@@ -53,6 +53,9 @@ Do not use or disclose your `client_secret` in public.
 
 Typically, you would use the implicit authentication method for client-side browser based applications (i.e. frontend), and client credentials for all administrative tasks (`CRUD`) you need to perform at the backend.
 
+## Account Authentication
+You can also generate [account tokens](/docs/api/accounts/post-v-2-account-members-tokens) to authenticate account members (shoppers) with one of many available authentication methods. You must use account management authentication token with the implicit token to access orders or account APIs. Using the tokens, you can create and filter orders and addresses.
+
 ## Customer Authentication
 
 You can also generate [customer tokens](/docs/customer-management/customer-management-api/customer-tokens#post-generate-a-token) to authenticate the customers with single sign-on, or email address and password. You must use customer token with the implicit token to access orders or customer APIs. Using the tokens, you can create and filter orders and addresses.
