@@ -1,7 +1,7 @@
 ---
 title: Customer API Overview
 nav_label: Customer API Overview
-sidebar_position: 20
+sidebar_position: 10
 ---
 
 Use the Customer API to manage customer details, addresses, and other information.

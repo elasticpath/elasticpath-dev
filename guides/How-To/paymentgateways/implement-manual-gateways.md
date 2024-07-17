@@ -4,7 +4,7 @@ nav_label: Implement a Manual Gateway
 nav_position: 2
 ---
 
-Payment gateways provide access to external payment provider services. Commerce natively supports a set of [popular payment gateways](/docs/carts-orders/payments/payments-developer/implement-payment-gateways#natively-supported-payment-gateways). If you already have a payment provider that you want to continue to use, you can add the payment gateway manually. Similarly, you can add custom payment options based on your business processes, such as cash on delivery. You can implement as many manual gateways as you want, but you can enable only one at a time.
+Payment gateways provide access to external payment provider services. Commerce natively supports a set of [popular payment gateways](https://elasticpath.dev/guides/How-To/paymentgateways/implement-payment-gateways#natively-supported-payment-gateways). If you already have a payment provider that you want to continue to use, you can add the payment gateway manually. Similarly, you can add custom payment options based on your business processes, such as cash on delivery. You can implement as many manual gateways as you want, but you can enable only one at a time.
 
 :::caution
 Configure your store to use [Manual Gateway](/docs/api/carts/authorize-setup) to process payments if the order total is zero or the payment is through non-supported payment providers.
@@ -64,9 +64,9 @@ curl -X PUT https://useast.api.elasticpath.com/v2/gateways/manual \
 
 In this section, you will check out the cart and pay for the order.
 
-{% callout type="note"  %}
+:::note
 Your stock will be managed for you when you authorize or capture the payment, but if you are managing your own stock you will need to do that when you see the appropriate event.
-{% /callout %}
+:::
 
 #### Cart checkout
 

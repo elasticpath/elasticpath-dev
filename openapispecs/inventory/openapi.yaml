@@ -72,13 +72,15 @@ servers:
 tags:
   - name: Inventory
     description: |
-      The Inventory API allows you to manage stock for products at both organization and store levels. Each product keeps a history of inventory transactions, enabling easier stock auditing.
+     The Inventory API allows you to manage stock for products at both organization and store levels. Each product keeps a history of inventory transactions, enabling easier stock auditing.
 
-      You can specify an initial stock level when you create a product. The stock is set to `0` by default.
+     You can specify an initial stock level when you create a product. The stock is set to `0` by default.
       
-      ::: warning
+     :::caution 
       
-      You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
+     You cannot create multiple inventories of the same organization-level product in different stores because no unique stock ID, specific to each store, is currently generated. Hence, when you try to manage inventory of the same product for different stores, you get an invalid product identifier error. 
+      
+     :::
 
   - name: Transactions
     description: Methods to allow you to modify and view a products stock via transactions.
@@ -402,6 +404,8 @@ components:
     StockMeta:
       type: object
       properties:
+        timestamps:
+          $ref: '#/components/schemas/StockTimestamps'
         results:
           description: The results for this response for the entire collection.
           type: object
@@ -599,6 +603,22 @@ components:
       properties:
         created_at:
           description: The date and time a transaction is created.
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+    StockTimestamps:
+      description: The date and time a stock was created and last updated.
+      required:
+        - created_at
+        - updated_at
+      properties:
+        created_at:
+          description: The date and time the stock was created.
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        updated_at:
+          description: The date and time the stock was last updated.
           type: string
           format: date-time
           example: '2017-07-21T17:32:28Z'
