@@ -75,7 +75,7 @@ The GET verb was introduced because some applications send a GET request when a 
 ### Webhook trigger responses
 
 By default, webhook triggers provide an HTTP code 200 ("OK") response to callers of the webhook.
-The response body contains an execution ID, which can be used later to get logs and step results from the Prismatic API.
+The response body contains an execution ID, which can be used later to get logs and step results from the Composer API.
 The response looks like this:
 
 ```bash
@@ -299,7 +299,7 @@ The binary file can be accessed by subsequent steps by referencing `integrationT
 
 ### Posting multipart data with webhook triggers
 
-It's useful to be able to post a combination of binary and text data to a Prismatic webhook.
+It's useful to be able to post a combination of binary and text data to a Composer webhook.
 For example, you might want to post information about a person, as well as an avatar image of the person, to be processed by an integration.
 To do that, use a content type of `multipart/form-data` with your webhook invocation:
 
@@ -355,7 +355,7 @@ To generate a hash, you need three things:
 1. A request's **body** to hash.
    The body can be any format (JSON, XML, CSV, etc).
    For our example, let's say we have a JSON message that reads `{"item":"widget","quantity":5,"customer":"abc-123"}`.
-1. A **secret key** that only the third-party and Prismatic knows.
+1. A **secret key** that only the third-party and Composer knows.
    For our example, we'll generate a random UUID string - `"AC49CB66-511F-4085-9119-360B1B142F4B"`
 1. A **hash function** to use (like MD5, SHA1, etc.).
    The industry standard (which APIs like Dropbox, Shopify, Slack, etc. all use) is `SHA256` - we'll use that for our example, too.
