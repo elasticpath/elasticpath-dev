@@ -175,7 +175,7 @@ To reorder steps, click and drag a step up or down.
 
 ### Choosing component versions
 
-Components are [versioned](/docs/composer/builder/components/overview#component-versioning).
+Components are [versioned](/docs/composer/builder/builder-components/overview#component-versioning).
 You can choose a version of each component that works for your integration.
 "Pinning" component versions for your integration prevents accidental regressions if a new version of a component is published that contains breaking changes.
 
@@ -189,7 +189,7 @@ Components running the latest available version will be marked in grey, while co
 To change the version of a component your integration uses, click the **CHANGE VERSION** button to the right of the component you want to change, and select a version from the dropdown.
 
 **For More Information**:
-[Component Versioning](/docs/composer/builder/components/overview#component-versioning)
+[Component Versioning](/docs/composer/builder/builder-components/overview#component-versioning)
 
 ## Step error handling
 

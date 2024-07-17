@@ -81,7 +81,7 @@ GitHub will send our integration several types of webhook requests, including:
 - Comment added
 
 Our integration will need to handle each of these webhook events differently.
-The best way to do that is with [branching](/docs/composer/builder/components/branch.mdx) logic - we'll detect what type of request we received, and follow a series of steps to process the request accordingly.
+The best way to do that is with [branching](/docs/composer/builder/builder-components/branch.mdx) logic - we'll detect what type of request we received, and follow a series of steps to process the request accordingly.
 
 <Screenshot
   filename="getting-started/advanced-integration/github-zendesk-flow.png"
@@ -144,14 +144,14 @@ In this video, we'll automate the process of setting up webhooks in GitHub and Z
 
 <Vimeo video="923064368" />
 
-To run some "setup" logic when an instance of our integration is deployed, we'll use an [Instance Deploy](/docs/composer/builder/components/management-triggers.mdx#instance-deploy) trigger.
-You can similarly use an [Instance Remove](/docs/composer/builder/components/management-triggers.mdx#instance-remove) trigger to run "teardown" logic when an instance is removed.
+To run some "setup" logic when an instance of our integration is deployed, we'll use an [Instance Deploy](/docs/composer/builder/builder-components/management-triggers.mdx#instance-deploy) trigger.
+You can similarly use an [Instance Remove](/docs/composer/builder/builder-components/management-triggers.mdx#instance-remove) trigger to run "teardown" logic when an instance is removed.
 
 ### GitHub repos and data sources
 
 We need to know which GitHub repo to configure a webhook for.
 To know that, we'll need to present a list of the customer's GitHub repositories in a dropdown menu when they configure our integration.
-The GitHub component's [List Repos](/docs/composer/builder/components/github.mdx#list-repos) data source will allow us to create that dropdown menu.
+The GitHub component's [List Repos](/docs/composer/builder/builder-components/github.mdx#list-repos) data source will allow us to create that dropdown menu.
 
 <Screenshot
   filename="getting-started/advanced-integration/github-configure-dropdown.png"
@@ -170,7 +170,7 @@ The data source will use the end user's OAuth 2.0 credentials to fetch a list of
 ### Removing webhooks on instance removal
 
 We also want to remove webhooks that we've created if someone removes an instance of the integration.
-To do that, we'll begin another flow with an [Instance Remove](/docs/composer/builder/components/management-triggers.mdx#instance-remove) trigger, which executes when someone deletes an instance.
+To do that, we'll begin another flow with an [Instance Remove](/docs/composer/builder/builder-components/management-triggers.mdx#instance-remove) trigger, which executes when someone deletes an instance.
 
 We can leverage GitHub and Zendesk's respective **Delete Instance Webhooks** actions.
 These actions are aware of the current instance's webhook URLs, and remove only webhooks in GitHub and Zendesk that target those URLs.
@@ -220,6 +220,6 @@ Then, it will ask them to select a GitHub repository from a dropdown menu:
 ## Conclusion
 
 This example integration modeled what a bi-directional, event-driven integration could look like.
-We used Zendesk and GitHub for illustration purposes, but you can build similar integrations between your app and a [variety](/docs/composer/builder/components/component-catalog.mdx) of other third-party apps.
+We used Zendesk and GitHub for illustration purposes, but you can build similar integrations between your app and a [variety](/docs/composer/builder/builder-components/component-catalog.mdx) of other third-party apps.
 
 In the next guide, [Your First Custom Component](/docs/composer/builder/getting-started/first-custom-component/set-up-environment.mdx), you'll walk through how to use NodeJS to build a custom component for your app.
