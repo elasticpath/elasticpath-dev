@@ -9,13 +9,9 @@ Permissions are managed through tokens. There are two main token types available
 - [Client credential token](/docs/authentication/Tokens/client-credential-token)
 - [Implicit token](/docs/authentication/Tokens/implicit-token)
 
-Account Management Authentication Tokens with an Implicit Bearer token are used to manage user interfaces with sensitive data that users may need to access or modify associated with an Account. Sensitive data might include orders, addresses, and account details.
+[Account management authentication token](/docs/authentication/Tokens/account-management-authentication-token) with an Implicit Bearer token is used to manage user interfaces with sensitive data that users may need to access or modify associated with an Account. Sensitive data might include orders, addresses, and account details.
 
-- [Account management authentication token](/docs/authentication/Tokens/account-management-authentication-token)
-
-Customer tokens can be used with an Implicit Bearer token to manage user interfaces that involve sensitive data a user may need to access or modify. Sensitive data might include orders, addresses, and customer details.
-
-- [Customer tokens](/docs/authentication/Tokens/customer-token)
+[Customer token](/docs/authentication/Tokens/customer-token) can be used with an Implicit Bearer token to manage user interfaces that involve sensitive data a user may need to access or modify. Sensitive data might include orders, addresses, and customer details.
 
 ## Breakdown of Access (for shoppers)
 
@@ -146,7 +142,7 @@ Note that you can only fetch data with live status.
 
 ## Breakdown of Access (for sellers)
 
-The following tables show a breakdown of the API endpoint actions that are available to the client credentials token for each role.
+The following tables show a breakdown of the API endpoint actions that are available to the client credentials token for each role. Refer to the [Team Management](/guides/Getting-Started/team-management) page for a comparison of different roles.
 
 ### Seller admin
 
@@ -456,3 +452,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/subscriptions     `                  | ⛔️ | ⛔️ |
 | `/user-roles`                          | ✅ | ⛔ |
 | `/variations`                          | ✅ | ✅ |
+
+## Related Resources
+
+- [Team Management](/guides/Getting-Started/team-management)
