@@ -1,0 +1,2121 @@
+---
+id: writing-custom-components
+title: Writing Custom Components
+sidebar_position: 20
+description: Composer allows dev users to write custom API connectors and other components for their integrations. Learn more about creating custom components with Composer.
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+Composer is extensible and allows for developer users to develop their own custom components.
+Components that Composer users develop are proprietary to their [organization](/docs/composer/builder/organization.mdx), and are private.
+
+[Sample component code](https://github.com/prismatic-io/examples/tree/main/components) is referenced throughout this page.
+
+For a sample component that wraps an HTTP-based API, see our quickstart on [Wrapping an API in a Component](/docs/composer/builder/custom-components/quickstarts/wrapping-an-api-in-a-component.mdx).
+
+## Custom component library
+
+[![Spectral NPM version](https://badge.fury.io/js/@prismatic-io%2Fspectral.svg)](https://www.npmjs.com/package/@prismatic-io/spectral)
+
+Composer provides a NodeJS package, [@prismatic-io/spectral](https://www.npmjs.com/package/@prismatic-io/spectral), which provides TypeScript typing and some utility functions.
+Source code for Spectral is available on [github](https://github.com/prismatic-io/spectral).
+
+For information on Spectral's utility functions and types, see our [custom component library](/docs/composer/builder/spectral/custom-component-library.mdx) docs.
+
+**NodeJS Version Support**: While many versions of NodeJS may work for component development, we recommend using the latest LTS (long-term support) version of NodeJS.
+You can find the latest LTS version on the [NodeJS download page](https://nodejs.org/en/download/).
+
+## Initializing a new component
+
+To initialize a new project, run `prism components:init {{ COMPONENT NAME }}`.
+If you do not have Composer's CLI tool, `prism`, installed, please take a moment to look through the [Prism overview page](/docs/composer/builder/cli/cli-usage.mdx).
+
+```bash
+prism components:init format-name
+```
+
+Your component name must be comprised of alphanumeric characters, hyphens, and underscores, and start and end with alphanumeric characters.
+You will be prompted with a couple of questions - to give a description for your component and to determine what connection authorization type should be templated (you can edit those later).
+
+This will create a directory structure that looks like this:
+
+```
+format-name
+├── assets
+│   └── icon.png
+├── jest.config.js
+├── package.json
+├── src
+│   ├── actions.ts
+│   ├── client.ts
+│   ├── connections.ts
+│   ├── index.test.ts
+│   ├── index.ts
+│   └── triggers.ts
+├── tsconfig.json
+└── webpack.config.js
+```
+
+- `assets/icon.png` is the icon that will be displayed next to your component.
+  Square transparent PNGs at least 128 x 128 pixels in size look best, and will be scaled by the web app appropriately.
+- `jest.config.js` contains configuration for the [Jest](https://jestjs.io/) testing framework.
+- `package.json` is a standard node package definition file.
+- `src/actions.ts` contains your component's actions. This can be broken out in to distinct files as your code grows.
+- `src/client.ts` contains a shared "client". This is handy for actions that share a mechanism for connecting to an API. The "client" will probably be an authenticated HTTP client that's configured to make requests of a particular endpoint.
+- `src/connections.ts` contains the connections that your component uses to authenticate with third-party APIs.
+- `src/index.test.ts` contains tests for component's actions.
+  See [Unit Testing Custom Components](/docs/composer/builder/custom-components/quickstarts/unit-testing-custom-components.mdx).
+- `src/index.ts` contains your component definition.
+- `src/triggers.ts` contains custom triggers.
+- `tsconfig.json` contains configuration for [TypeScript](https://www.typescriptlang.org/).
+- `webpack.config.js` contains configuration for [Webpack](https://webpack.js.org/).
+
+### Custom components from WSDLs or OpenAPI specs
+
+Third-party apps and services often provide APIs with hundreds of RESTful endpoints.
+It would be tedious to manually write actions for each individual endpoint.
+Luckily, many companies also provide an API specification - commonly a [Web Service Definition Language (WSDL)](https://www.w3.org/TR/2001/NOTE-wsdl-20010315) file, or an [OpenAPI (Swagger)](https://swagger.io/specification/) specification.
+
+You can generate a custom component from a WSDL file with `prism` by passing the `--wsdl-path` flag to the `components:init` subcommand:
+
+```bash
+prism components:init myThirdPartyComponent --wsdl-path ./thirdPartySpec.wsdl
+```
+
+You can generate a custom component from an OpenAPI definition (you can use a YAML or JSON file - both work fine) with `prism` by passing the `--open-api-path` flag to the `components:init` subcommand:
+
+```bash
+prism components:init myThirdPartyComponent --open-api-path ./third-party-openapi-spec.json
+```
+
+The custom component code that is generated may require some tweaking - some APIs have undocumented required headers, or irregular authentication schemes (so you may need to touch up `src/client.ts` or `src/connection.ts`).
+But, this does give you a great jumping-off point when building a custom component for a third-party app.
+
+## Writing actions
+
+A component is comprised of zero, one or many [actions](/docs/composer/builder/components.mdx#component-actions).
+For example, the [HTTP component](/docs/composer/builder/builder-components/http.mdx) contains actions to [GET](/docs/composer/builder/builder-components/http.mdx#httpget) (`httpGet`), [POST](/docs/composer/builder/builder-components/http.mdx#post-request) (`httpPost`), etc.
+
+An `action` has three required properties and one optional one:
+
+1. Information on how the web app `display` the action
+1. A function to `perform`
+1. A series of `input` fields
+
+```typescript
+const myAction = action({
+  display: {
+    label: "Brief Description",
+    description: "Longer description to display in web app UI",
+  },
+  perform: async (context, params) => {},
+  inputs: { inputFieldOne, inputFieldTwo },
+});
+```
+
+### Adding inputs
+
+Components can take [`inputs`](/docs/composer/builder/components.mdx#inputs). Each `input` is comprised of a required `label`, and `type` and optional `placeholder`, `default`, `comments`, `required` and `model`.
+
+Consider this example input:
+
+```typescript
+const middleName = input({
+  label: "Middle Name",
+  placeholder: "Middle name of a person",
+  type: "string",
+  required: false,
+  default: "",
+  comments: "Leave blank if the user has no middle name",
+  clean: (value) => util.types.toString(value),
+});
+```
+
+This contributes to an input prompt that looks like this:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/inputs.png"
+  maxWidth="500px"
+  alt="Step Config - Properly Format Name in Composer app"
+/>
+
+Note where the `label` and `placeholder` text appeared in the web app, and note that First Name and Last Name are required - indicated with a `*`, but Middle Name is not.
+
+### Cleaning inputs
+
+An input of an action can be anything - a number, string, boolean, JavaScript Buffer, a complex object with lots of properties, etc.
+If you reuse an input for multiple actions, it's handy to do some preprocessing and type conversion on the input.
+That's where a `clean` function on an input comes in.
+
+For example, suppose you expect an input to be a number.
+But, inputs by default are presented to `perform` functions as strings.
+You can leverage the [`util.types.toNumber()`](/docs/composer/builder/spectral/modules/_util_.md/#const-tonumber) utility function and `clean` property to ensure that the input is presented to the `perform` function as a number:
+
+```typescript title="Ensure input is a number"
+const serverPortInput = input({
+  label: "Server Port",
+  placeholder: "The port of the API server",
+  comments: "Look for the number after the colon (my-server.com:3000)"
+  type: "string",
+  default: "3000",
+  required: true,
+  // highlight-next-line
+  clean: (value) => util.types.toNumber(value),
+});
+```
+
+You can also add validation to the input.
+For example, if you want to validate that the input is an IPv4 IP address, you can build a more complex `clean` function:
+
+```typescript {1-8,16} title="Validate that an input is an IP address"
+const validateIpAddress = (value: unknown) => {
+  const ipAddressRegex =
+    /^(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))$/;
+  const inputValue = util.types.toString(value);
+  if (!ipAddressRegex.test(inputValue)) {
+    throw new Error(`The value "${inputValue}" is not a valid IP address`);
+  }
+  return inputValue;
+};
+
+const ipAddressInput = input({
+  label: "IP Address",
+  placeholder: "Server IP Address",
+  type: "string",
+  default: "192.168.1.1",
+  required: true,
+  clean: validateIpAddress,
+});
+```
+
+### Action input types
+
+An input can take a number of types, which affects how the input renders in the Composer web app:
+
+- **string** will allow users to input or reference a string of characters.
+  <Screenshot
+    filename="custom-components/writing-custom-components/input-types/string.png"
+    maxWidth="500px"
+    alt="String input in Composer app"
+  />
+- **password** will allow users to input or reference a string of characters, and the string will be obfuscated in the UI.
+  <Screenshot
+    filename="custom-components/writing-custom-components/input-types/password.png"
+    maxWidth="500px"
+    alt="Password input in Composer app"
+  />
+- **boolean** allows users to enter one of two values: true or false.
+  <Screenshot
+    filename="custom-components/writing-custom-components/input-types/boolean.png"
+    maxWidth="500px"
+    alt="Boolean input in Composer app"
+  />
+- **code** opens a code editor so users can enter XML, HTML, JSON, etc.
+  Syntax highlighting can be added to a **code** input's definition and can reference any language supported by [PrismJS](https://prismjs.com/#supported-languages).
+  (e.g. `input({ label: "My Code", type: "code", language: "json" })`)
+  <Screenshot
+    filename="custom-components/writing-custom-components/input-types/code.png"
+    maxWidth="600px"
+    alt="Code editor in Composer app"
+  />
+- **conditional** allows users to enter a series of logical conditionals.
+  This is most notably used in the [branch](/docs/composer/builder/builder-components/branch.mdx) component.
+  <Screenshot
+    filename="custom-components/writing-custom-components/input-types/conditional.png"
+    maxWidth="500px"
+    alt="Conditional input in Composer app"
+  />
+
+You can also create **connection** inputs for actions.
+Read more about connections [below](#adding-connections).
+
+### Dropdown menu inputs
+
+Rather than allowing integration builders to enter values for an input, you might want to have users choose a value from a list of possible values.
+You can do that by making your input into a dropdown menu.
+
+<Screenshot
+  filename="custom-components/writing-custom-components/dropdown-input.png"
+  maxWidth="500px"
+  alt="Dropdown menu in Composer app"
+/>
+
+To create an input with a dropdown menu, add a `model` property to your input:
+
+```ts
+export const acmeEnvironment = input({
+  label: "Acme Inc Environment to Use",
+  placeholder: "ACME Environment",
+  type: "string",
+  required: true,
+  model: [
+    {
+      label: "Production",
+      value: "https://api.acme.com/",
+    },
+    {
+      label: "Staging",
+      value: "https://staging.acme.com/api",
+    },
+    {
+      label: "Sandbox",
+      value: "https://sandbox.acme.com/api",
+    },
+  ],
+});
+```
+
+The `model` property should be an array of objects, with each object containing a `label` and a `value`.
+The `label` is shown in the dropdown menu.
+The `value` is passed in as the input's value to the custom component.
+
+### Collection inputs
+
+Most inputs represent single strings.
+A **collection** input, on the other hand, represents an array of values or key-value pairs.
+Collections are handy when you don't know how many items a component user might need.
+
+#### Value list collection
+
+For example, your component might require an array of record to query, but you might not know how many record IDs a component user will enter.
+You can create a `valuelist` collection in code like this:
+
+```typescript {4} title="Value List Collection Example"
+const recordIdsInputField = input({
+  label: "Record ID",
+  type: "string",
+  collection: "valuelist",
+  required: true,
+});
+```
+
+The corresponding UI in the integration designer would then prompt a user for any number of record IDs that they would like to enter:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/input-types/value-list-collection.png"
+  maxWidth="500px"
+  alt="Value List collection in Composer app"
+/>
+
+When the input is received by an action's [perform function](#writing-perform-functions), the input is a `string[]`.
+
+#### Key value list collection
+
+If you would like users to enter a number of key-value pairs as an input, you can use a `keyvaluelist` collection.
+The _Header_ input on the [HTTP component](/docs/composer/builder/builder-components/http.mdx#get-request) actions is an example of a `keyvaluelist` collection, and is defined in code like this:
+
+```typescript {4} title="Key Value List Input"
+export const headersInputField = input({
+  label: "Header",
+  type: "string",
+  collection: "keyvaluelist",
+  required: false,
+  comments: "A list of headers to send with the request.",
+  example: "User-Agent: curl/7.64.1",
+});
+```
+
+The "Header" input, then, appears like this in the integration designer:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/input-types/key-value-list-collection.png"
+  maxWidth="500px"
+  alt="Key Value List Collection in Composer app"
+/>
+
+When the input is received by an action's [perform function](#writing-perform-functions), the input is an array of objects of the form:
+
+```typescript
+[
+  {
+    key: "foo",
+    value: "bar",
+  },
+  {
+    key: "baz",
+    value: 5,
+  },
+];
+```
+
+If you would like to convert the input to a key-value pair object, you can use the built-in Spectral function, [keyValPairListToObject](/docs/composer/builder/spectral/modules/_util_.md#const-keyvalpairlisttoobject):
+
+```typescript
+import { util } from "@prismatic-io/spectral";
+const myObject = util.types.keyValPairListToObject(myInput);
+// { foo: "bar", baz: 5 }
+```
+
+### Writing `perform` functions
+
+Each action contains one `perform` function, which is an async function with two parameters that may or may not have a return value.
+In this example `firstName`, `middleName`, and `lastName`, are input parameters for this `perform` function:
+
+```typescript {7-15}
+export const properFormatName = action({
+  display: {
+    label: "Properly Format Name",
+    description: "Properly format a person's name (Last, First M.)",
+  },
+  perform: async (context, params) => {
+    if (params.middleName) {
+      return {
+        data: `${params.lastName}, ${params.firstName} ${params.middleName[0]}.`,
+      };
+    } else {
+      return { data: `${params.lastName}, ${params.firstName}` };
+    }
+  },
+  inputs: { firstName, middleName, lastName },
+});
+```
+
+### `perform` Function Parameters
+
+The `perform` function takes two parameters, `context` and `params`, that can be destructured into their respective properties:
+
+```typescript
+perform: async (context, params) => {},
+// or
+perform: async (
+  { logger },
+  { paramName1, paramName2, ... }
+) => {},
+```
+
+### The `context` Parameter
+
+The `context` parameter is an object that contains the following attributes:
+
+- `logger` allows you to write out log lines.
+- `instanceState`, `crossFlowState`, `integrationState` and `executionState` gives you access to [persisted state](/docs/composer/builder/custom-components/writing-custom-components.mdx#execution-instance-and-cross-flow-state).
+- `stepId` is the ID of the current step being executed.
+- `executionId` is the ID of the current execution.
+- `webhookUrls` contains the URLs of the running instance's sibling flows.
+- `webhookApiKeys` contains the API keys of the running instance's sibling flows.
+- `invokeUrl` was the URL used to invoke the integration.
+- `customer` is an object containing an `id`, `name`, and `externalId` of the customer the instance is assigned to.
+- `user` is an object containing an `id`, `name`, `email` (their ID) and `externalId` of the customer user whose user-level config was used for this execution.
+  This only applies to instances with [User Level Configuration](/docs/composer/builder/user-level-configuration.mdx).
+- `integration` is an object containing an `id`, `name`, and `versionSequenceId` of the integration the instance was created from.
+- `instance` is an object containing an `id` and `name` of the running instance.
+- `flow` is an object containing the `id` and `name` of the running flow.
+
+#### Step ID
+
+`context.stepId` contains the unique identifier (UUID) of the step.
+It is used by the [Process Data - DeDuplicate](/docs/composer/builder/builder-components/process-data.mdx#deduplicate) action to track what items in a array have or have not been previously seen.
+You can use it similarly in a custom component to persist step-specific data.
+
+#### Webhook URLs
+
+You can reference an instance's webhook URLs through the `context.webhookUrls` object.
+This is useful when writing actions to configure and delete webhooks in a third-party app.
+
+```typescript
+perform: async (context, params) => {
+  const inventoryUrl = context.webhookUrls["My Inventory Flow"];
+};
+```
+
+You can reference `context.flow.name` to fetch the current flow's webhook URL:
+
+```typescript
+perform: async (context, params) => {
+  const myCurrentUrl = context.webhookUrls[context.flow.name];
+};
+```
+
+### Logger object
+
+`context.logger` is a logging object and can be helpful to debug components.
+
+```typescript
+perform: async ({ logger }, params) => {
+  logger.info("Things are going great");
+  logger.warn("Now less great...");
+};
+```
+
+Available log functions in increasing order of severity include `logger.debug`, `logger.info`, `logger.warn` and `logger.error`.
+
+You can also execute `logger.metric` on an object, which helps when [streaming logs and metrics](/docs/composer/builder/logging.mdx#external-log-streaming) to an external logging service.
+
+**Note**: Log lines are truncated after 4096 characters.
+If you need longer log lines, consider [streaming logs](/docs/composer/builder/logging.mdx#external-log-streaming) to an external log service.
+
+### Execution, instance, and cross-flow state
+
+`context.executionState`, `context.instanceState`, `context.integrationState` and `context.crossFlowState` are key/value stores that may be used to store small amounts of data for future use:
+
+- `context.executionState` stores state for the duration of the execution, and is often used as an accumulator for loops.
+- `context.instanceState` stores state that is persisted between executions. This state is scoped to a specific flow. The flow may persist data, and reference it in a subsequent execution.
+  :::note _Shouldn't `instanceState` be called `flowState` or something?_
+  Great question! We developed state storage prior to multi-flow, and the name `instanceState` was retained for historical reasons.
+  :::
+- `context.crossFlowState` also stores state that is persisted between executions. This state is scoped to the instance, and flows may reference one another's stored state.
+- `context.integrationState` stores state between flows in instances of the same integration. Customer A's flow 1 can share data with Customer B's flow 2.
+
+State is most notably used by the [Persist Data](/docs/composer/builder/builder-components/persist-data.mdx) and [Process Data](/docs/composer/builder/builder-components/process-data.mdx) components, but you can use it in your custom components, too.
+
+If, for example, a previous flow's run saved a state key of `sampleKey`, you can reference `context.instanceState['sampleKey']` to access that key's value.
+
+To do the reverse, and save data to a flow's state storage for subsequent runs, add an `instanceState` property to your perform function's return value:
+
+```typescript
+return {
+  data: "Some Data",
+  instanceState: { exampleKey: "example value", anotherKey: [1, 2, 3] },
+};
+```
+
+**Note**: To remove a key from persisted state, set it to `null`:
+
+```typescript title="Remove a key from crossFlowState"
+return {
+  data: "Some Data",
+  crossFlowState: { exampleKey: null },
+};
+```
+
+### Input parameters
+
+The `params` parameter is an object that has attributes for each input field the action supports.
+For example, for the perform action [defined above](#writing-perform-functions), `params` has `params.firstName`, `params.middleName`, and `params.lastName`.
+
+`firstName`, `middleName`, and `lastName` are based off of the input objects that are provided to the action as `inputs`.
+
+:::note Shorthand property names
+You can use [shorthand property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer) for inputs.
+If your input object variables have different names - say you have a `const myFirstNameInput = input ({...})`, you can structure your action's input property like this:
+
+```typescript
+inputs: {
+  firstName: myFirstNameInput,
+  middleName: myMiddleNameInput,
+  lastName: myLastNameInput,
+}
+```
+
+and the `params` object passed into `perform` will have keys `firstName`, `middleName`, and `lastName`.
+
+Using non-shorthand property names is preferable to some developers to avoid [variable shadowing](https://en.wikipedia.org/wiki/Variable_shadowing).
+:::
+
+The function is written with a destructured `params` parameter.
+It could be rewritten without being destructured.
+
+```typescript {1-3,6}
+perform: async (context, params) => {
+  if (params.middleName == "") {
+    return { data: `${params.lastName}, ${params.firstName}` };
+  } else {
+    return {
+      data: `${params.lastName}, ${params.firstName} ${params.middleName[0]}.`,
+    };
+  }
+},
+```
+
+### Coercing input types
+
+TypeScript-based Node libraries often have strict rules about the type of variables that are passed into their functions, but inputs to `perform` functions are of type `unknown` since it's not known ahead of time what types of values users of components are going to pass in.
+For example, you might expect one of your inputs to be a `number`, but a user might pass in a `string` instead.
+That's obviously a problem since `"2" + 3` is `"23"`, while `2 + 3` is `5` in JavaScript.
+
+The Spectral package includes several [utility functions](/docs/composer/builder/spectral/modules/_util_.md) for coercing input to be the type of variable that you need.
+Looking at the number/string example, suppose you have some input - `quantity` - that you need turned into a number (even if someone passes in `"123.45"` as a string), and you have another input - `itemName` - that you'd like to be a string.
+You can use `util.types.toNumber()` and `util.types.toString()` to ensure that the input has been converted to a number and string respectively:
+
+```typescript
+import { action, util } from "@prismatic-io/spectral";
+import { someThirdPartyApiCall } from "some-example-third-party-library";
+
+action({
+  /*...*/
+  perform: async (context, { quantity, itemName }) => {
+    const response = await someThirdPartyApiCall({
+      orderQuantity: util.types.toNumber(quantity), // Guaranteed to be a number
+      orderItemName: util.types.toString(itemName), // Guaranteed to be a string
+    });
+    return { data: response };
+  },
+});
+```
+
+If an input cannot be coerced into the type you've chosen - for example, suppose you pass `"Hello World"` into `util.toNumber()` - an error will be thrown indicating that `"Hello World"` cannot be coerced into a number.
+
+#### Writing your own type checking functions
+
+Composer provides a variety of type check and type coercion functions for common types (number, integer, string, boolean, etc).
+If you require a uniquely shaped object, you can create your own type check and coercion functions to ensure that inputs your custom component receives have the proper shape that the libraries you rely on expect.
+
+You can import an `interface` or `type` (or write one yourself) and write a function that converts inputs into an expected shape.
+For example, the SendGrid SDK expects an object that has this form:
+
+```javascript
+{
+  "to": [string],
+  "from": string,
+  "subject": string,
+  "text": string,
+  "html": string
+}
+```
+
+We can pull in that defined type, `MailDataRequired`, from the SendGrid SDK, and write a function that takes inputs and converts them to an object containing a series of strings:
+
+```typescript
+import { MailDataRequired } from "@sendgrid/mail";
+import { util } from "@prismatic-io/spectral";
+
+export const createEmailPayload = ({
+  to,
+  from,
+  subject,
+  text,
+  html,
+}): MailDataRequired => ({
+  to: util.types
+    .toString(to)
+    .split(",")
+    .map((recipient: string) => recipient.trim()),
+  from: util.types.toString(from),
+  subject: util.types.toString(from),
+  text: util.types.toString(text),
+  html: util.types.toString(html),
+});
+```
+
+### Action Results
+
+An action can return a variety of data types.
+To return a simple string, number, boolean, array, or object your return block can read:
+
+```typescript
+// return a string:
+return {
+  data: "some string",
+};
+// return a number:
+return {
+  data: 123.45,
+};
+// return a boolean:
+return {
+  data: true,
+};
+// return an array:
+return {
+  data: [1, 2, 3, 4, "a", "b"],
+};
+// return an object:
+return {
+  data: {
+    key1: "value1",
+    key2: ["value2", 123],
+  },
+};
+```
+
+Those values can be used as inputs in subsequent steps by referencing this step's `results`:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/step-results.png"
+  maxWidth="600px"
+  alt="Step results from an action in Composer app"
+/>
+
+### Setting synchronous HTTP status codes
+
+If you invoke your instances [synchronously](/docs/composer/builder/integration-triggers.mdx#http-status-codes-for-synchronous-integrations) and would like to return an HTTP status code other than `200 - OK`, you can configure the final step of your integration to be a custom component that returns any HTTP status code you want.
+
+To return an HTTP status code other than 200, return a `statusCode` attribute in the object you return from your custom component instead of a `data` attribute:
+
+```typescript
+return {
+  statusCode: 415,
+};
+```
+
+If this custom component is the last step of an integration, then the integration will return an HTTP status code of 415 if invoked synchronously.
+
+Note: When an integration is invoked synchronously, the integration redirects the caller to a URL containing the output results of the final step of the integration.
+If the final step of the integration is a [Stop Execution](/docs/composer/builder/builder-components/stop-execution.mdx) action, or any custom component action that returns a `statusCode`, the redirect does not occur and the caller receives a `null` response body instead.
+You should not return both `data` and `statusCode` attributes in a custom component.
+
+### Example action payloads
+
+As noted above, actions return results for subsequent steps to consume.
+It's often handy for an integration builder to have access to the shape of the results prior to a test being run.
+Your action can provide an `examplePayload` that can be referenced before test data is available:
+
+```typescript
+{
+  /* ... */
+  examplePayload: {
+    data: {
+      username: "john.doe",
+      name: {
+        first: "John",
+        last: "Doe",
+      },
+      age: 20,
+    },
+  },
+}
+```
+
+In the integration designer, this example payload can be referenced as an input.
+
+**Note:** your `examplePayload` must match the exact TypeScript type of the return value of your `perform` function.
+If your `perform` function's return value does not match the type of the example payload, TypeScript will generate a helpful error message:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/example-result-data-type-mismatch.png"
+  maxWidth="600px"
+  alt="Example Result Data Type Mismatch in Typescript"
+/>
+
+## Adding connections
+
+A **connection** is a special type of input for an action that contains information on how to connect to an external app or service.
+A connection can consist of one or many inputs that can represent things like API endpoints, keys, passwords, OAuth 2.0 fields, etc.
+The inputs contained within a connection use the same structure as other inputs, described [above](#adding-inputs).
+
+For example, suppose you're writing a component for an API that can take a username and password combination or an API key.
+You would write two connections - one for username/password authentication, and one for api key authentication.
+
+You also want your customers to be able to point to a sandbox or production environment - each connection should also include an input to represent the endpoint.
+Your connections could look like this:
+
+```typescript
+import { connection } from "@prismatic-io/spectral";
+
+// Declare this once, so we don't repeat ourselves for the two connections
+const acmeEnvironment = input({
+  label: "Acme Inc Environment to Use",
+  placeholder: "ACME Environment",
+  type: "string",
+  required: true,
+  model: [
+    {
+      label: "Production",
+      value: "https://api.acme.com/",
+    },
+    {
+      label: "Sandbox",
+      value: "https://sandbox.acme.com/api",
+    },
+  ],
+});
+
+const basicAuth = connection({
+  key: "basicAuth",
+  label: "Acme username and password",
+  inputs: {
+    username: {
+      label: "Acme Username",
+      placeholder: "Username",
+      type: "string",
+      required: true,
+    },
+    password: {
+      label: "Acme Password",
+      placeholder: "Password",
+      type: "string",
+      required: true,
+    },
+    acmeEnvironment,
+  },
+});
+
+const apiKey = connection({
+  key: "apiKey",
+  label: "Acme API Key",
+  inputs: {
+    username: {
+      label: "Acme API Key",
+      placeholder: "API Key",
+      type: "string",
+      required: true,
+    },
+    acmeEnvironment,
+  },
+});
+```
+
+Once connections have been defined, be sure to include them in your `component` definition.
+That will allow users to fill in connection information once, and that information can be fed into actions that require that connection.
+This also makes connections available to all inputs of type "connection" in your component:
+
+```typescript {15}
+import { component } from "@prismatic-io/spectral";
+
+// ...
+
+export default component({
+  key: "acme",
+  public: false,
+  display: {
+    label: "Acme Inc",
+    description: "Interact with Acme Inc's API",
+    iconPath: "icon.png",
+  },
+  actions: { myAction1, myAction2 },
+  triggers: { myTrigger1 },
+  connections: [basicAuth, apiKey],
+});
+```
+
+:::note Connection ordering
+The **first** connection listed in the `connections:` array will be the default connection.
+In the above example, `basicAuth` would be the default connection for this component.
+The default connection is the one that is recommended to users when they add an action from your component to their integration, but the other connection types can be selected as well.
+:::
+
+### Referencing connections as inputs in actions
+
+Actions can reference connections like they do any other input.
+
+To give users the ability to assign a connection to an action, create an `input` of type `connection` and add it as an input to your action:
+
+```typescript {3,10-11,14,16} title="Reference a connection input from an action"
+import { action, input } from "@prismatic-io/spectral";
+
+const connectionInput = input({ label: "Connection", type: "connection" });
+
+export const getAcmeData = action({
+  display: {
+    label: "Get Item",
+    description: "Get an Item from Acme",
+  },
+  inputs: { itemId: itemIdInput, myConnection: connectionInput },
+  perform: async (context, { itemId, myConnection }) => {
+    const response = axios({
+      method: "get",
+      url: `${myConnection.fields.acmeEnvironment}/item/${itemId}`,
+      headers: {
+        Authorization: `Bearer ${myConnection.fields.apiKey}`,
+      },
+    });
+    return { data: response.data };
+  },
+});
+```
+
+### Throwing connection errors
+
+It's valuable to know if a connection is valid or not, and to track errors if and when a connection fails to connect.
+Within your custom component you can throw a `ConnectionError` in order to signal to Composer that there is something wrong with the connection (unable to connect to endpoint, invalid credentials, etc).
+
+For example, if you know the API you integrate with returns a 401 "Unauthorized" when credentials are invalid, you could throw a `ConnectionError` if your HTTP client returns a status code 401:
+
+```typescript {1,13-18} title="Throw a connection error"
+import { action, ConnectionError, util } from "@prismatic-io/spectral";
+
+const getItem = action({
+  display: {
+    label: "Get Item",
+    description: "Get an item from Acme",
+  },
+  perform: async (context, { myConnection, itemId }) => {
+    const apiKey = util.types.toString(myConnection.fields.apiKey);
+    const response = await axios.get(`https://api.acme.com/items/${itemId}`, {
+      headers: { Authorization: apiKey },
+    });
+    if (response.status === 401) {
+      throw new ConnectionError(
+        myConnection,
+        "Invalid Acme credentials have been configured."
+      );
+    }
+    return {
+      data: response.data,
+    };
+  },
+  inputs: {
+    myConnection: input({ label: "Connection", type: "connection" }),
+    itemId: itemIdInput,
+  },
+});
+```
+
+The thrown error, then, will be indicated by a red mark to the right of customers' connections on an instance and messages will appear in logs.
+
+### Writing OAuth 2.0 connections
+
+An OAuth 2.0 authorization code connection follows the [OAuth 2.0](https://oauth.net/2/) protocol and consists of five required inputs:
+
+- `authorizeUrl` - The URL a user visits to authorize an OAuth 2.0 connection.
+- `tokenUrl` - The URL where an authorization code can be exchanged for an API key and optional refresh key, and where a refresh key can be used to refresh an API key.
+- `scopes` - A space-delimited list of scopes (permissions) that your application needs.
+- `clientId` - Your OAuth 2.0 application's client ID.
+- `clientSecret` - Your OAuth 2.0 application's client secret.
+
+The first three fields can generally be found in the documentation of the API that you're integrating with.
+Client ID and secret are created when you create an application in the third-party application.
+
+You can elect to give integration builders the ability to edit any of these fields.
+Or, you can mark the fields as `shown: false`, in which case the default value will always be used and integration developers will never see the value.
+
+For example, if you're writing a OAuth 2.0 connection to google drive, the `authorizeUrl` and `tokenUrl` never change.
+So, those can be given default values and can be marked as `shown: false`.
+Integration developers will want to be able to adjust scopes, client ID and client secret (though, you may already know what scopes you need), so we can write a connection like this:
+
+```typescript {8,16,18,25,27} title="Example OAuth 2.0 Connection with Google Drive"
+import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
+
+export const oauth2 = oauth2Connection({
+  key: "googleDriveOauth",
+  label: "OAuth2",
+  comments: "OAuth2 Connection",
+  required: true,
+  oauth2Type: OAuth2Type.AuthorizationCode,
+  iconPath: "oauth-icon.png",
+  inputs: {
+    authorizeUrl: {
+      label: "Authorize URL",
+      placeholder: "Authorization URL",
+      type: "string",
+      required: true,
+      shown: false,
+      comments: "The Authorization URL for Google Drive.",
+      default: "https://accounts.google.com/o/oauth2/v2/auth",
+    },
+    tokenUrl: {
+      label: "Token URL",
+      placeholder: "Token URL",
+      type: "string",
+      required: true,
+      shown: false,
+      comments: "The Token URL for Google Drive.",
+      default: "https://oauth2.googleapis.com/token",
+    },
+    scopes: {
+      label: "Scopes",
+      placeholder: "Scopes",
+      type: "string",
+      required: true,
+      comments:
+        "Space delimited listing of scopes. https://developers.google.com/identity/protocols/oauth2/scopes#drive",
+      default: "https://www.googleapis.com/auth/drive",
+    },
+    clientId: {
+      label: "Client ID",
+      placeholder: "Client Identifier",
+      type: "password",
+      required: true,
+      comments: "The Google Drive app's Client Identifier.",
+    },
+    clientSecret: {
+      label: "Client Secret",
+      placeholder: "Client Secret",
+      type: "password",
+      required: true,
+      comments: "The Google Drive app's Client Secret.",
+    },
+  },
+});
+```
+
+:::tip Use `oauth2Connection` for OAuth Connections
+Note that we used `oauth2Connection()` rather than `connection()` to define this OAuth connection.
+That's because the `oauth2Connection` helper function gives us additional TypeScript hinting about what fields are required.
+:::
+
+An `oauth2Connection` can be assigned to a component and referenced as an input just like a `connection`.
+The input that is received by a `perform` function will have the form:
+
+```json example contents of an oauth 2.0 connection input object
+{
+  "token": {
+    "access_token": "EXAMPLE-TOKEN",
+    "token_type": "bearer",
+    "expires_in": 14400,
+    "refresh_token": "EXAMPLE-REFRESH-TOKEN",
+    "scope": "account_info.read account_info.write file_requests.read file_requests.write files.content.read files.content.write files.metadata.read files.metadata.write",
+    "uid": "123456789",
+    "account_id": "dbid:EXAMPLEIRNhsZ3wECJZ3aXK3Gm47Di74",
+    "expires_at": "2021-12-07T01:54:38.096Z"
+  },
+  "context": {
+    "code": "EXAMPLEqMEAAAAAAAAON5iBXhk_yOxjkfDeWy_vSE0",
+    "state": "EXAMPLE2VDb25maWdWYXJpYWJsZTpmMDZlMDVkNy1kMjY0LTQ0YTgtYWI0Ni01MDhiOTNmZjU5ZjI="
+  },
+  "instanceConfigVarId": "EXAMPLE2VDb25maWdWYXJpYWJsZTpmMDZlMDVkNy1kMjY0LTQ0YTgtYWI0Ni01MDhiOTNmZjU5ZjI=",
+  "key": "oauth",
+  "fields": {
+    "scopes": "",
+    "clientId": "example-client-id",
+    "tokenUrl": "https://api.dropboxapi.com/oauth2/token",
+    "authorizeUrl": "https://www.dropbox.com/oauth2/authorize?token_access_type=offline",
+    "clientSecret": "example-client-secret"
+  }
+}
+```
+
+You will likely want to reference `myConnection.token.access_token`.
+
+:::tip Add a custom button to your OAuth 2.0 Connection
+You can specify what the OAuth 2.0 button looks like in the instance configuration page by specifying an optional `iconPath` (see the above example).
+An icon must be a PNG file, and we recommend that it be wider than it is tall with text indicating what it does:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/oauth-buttons.png"
+  maxWidth="200px"
+  alt="OAuth buttons including Dropbox, Facebook, GitHub, Google, Tumblr, and Twitter"
+/>
+
+Without an `iconPath`, a simple button that says **CONNECT** will be placed in the configuration page.
+:::
+
+### Supporting PKCE with OAuth 2.0
+
+If the application that you are integrating with supports [Proof Key for Code Exchange](https://oauth.net/2/pkce/) (PKCE), you can add PKCE to your OAuth 2.0 connection by adding a `oauth2PkceMethod` property.
+You can specify either the `plain` or `S256` method, or omit the property to specify "no PKCE".
+
+```ts title="Example PKCE declaration" {3}
+export const oauth = oauth2Connection({
+  oauth2Type: OAuth2Type.AuthorizationCode,
+  oauth2PkceMethod: OAuth2PkceMethod.S256,
+  key: "oauth",
+  label: "Airtable OAuth 2.0",
+  inputs: {
+    // ...
+  },
+});
+```
+
+### Overriding OAuth 2.0 token refresh endpoint URL
+
+The OAuth 2.0 standard specifies that the refresh endpoint URL is the same as the token endpoint URL.
+It is generally something like `https://example.com/oauth2/token`.
+
+However, some OAuth 2.0 providers use a different URL for refreshing tokens.
+For example, they may use `/oauth2/token` for the initial auth code exchange, but `/oauth2/refresh` for refreshing tokens.
+
+To override the refresh endpoint URL, add a `refreshUrl` property to your OAuth 2.0 connection:
+
+```ts title="Example refresh URL override"
+export const oauth = oauth2Connection({
+  oauth2Type: OAuth2Type.AuthorizationCode,
+  key: "oauth",
+  label: "Acme OAuth 2.0",
+  inputs: {
+    // ...
+    refreshUrl: {
+      label: "Refresh URL",
+      placeholder: "Refresh URL",
+      type: "string",
+      required: true,
+      shown: false,
+      comments: "The Refresh URL for Acme Inc.",
+      default: "https://example.com/oauth2/refresh",
+    },
+  },
+});
+```
+
+### Using connections with HTTP clients
+
+While the majority of APIs you'll interact with are HTTP based, and most present a RESTful interface, not all are the same.
+Some APIs (like Composer's!) use GraphQL.
+Others use remote procedure calls (RPCs), like gRPC, XML RPC, or SOAP.
+
+Luckily, there is an [NPM](https://www.npmjs.com/) package for almost any protocol.
+
+- If you are working with an HTTP-based **REST API**, we recommend using Spectral's built-in [createClient](/docs/composer/builder/spectral/modules/_clients_http_index_.md#const-createclient) function, which creates an [Axios](https://axios-http.com/docs/intro) HTTP client behind the scenes with some useful settings preconfigured (see [example](#using-the-built-in-createclient-http-client) below).
+  If your team is more comfortable with vanilla Axios or [node-fetch](https://www.npmjs.com/package/node-fetch), you can certainly use those, too.
+- For **GraphQL APIs**, we recommend using [graphql-request](https://www.npmjs.com/package/graphql-request).
+  You can use a generic HTTP client, but `graphql-request` provides a handy `gql` string literal tag.
+- For **XML RPC APIs**, you can import [xmlrpc](https://www.npmjs.com/package/xmlrpc) into your component project, or you can reach for [soap](https://www.npmjs.com/package/soap) if it's a **SOAP API**.
+- It's far less common for HTTP API integrations, but [@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js) can be used for **gRPC APIs**.
+
+Regardless of which client you use, you will likely need to set some HTTP headers for authentication, content type, etc.
+
+### Using the built-in createClient HTTP client
+
+Spectral comes with a built-in HTTP client for integrating with REST APIs.
+Behind the scenes, `createClient` creates an Axios-based HTTP client with some timeout, retry, and debug logic built on top of it.
+You can see the source code for `createClient` in Spectral's [GitHub repo](https://github.com/prismatic-io/spectral/blob/main/packages/spectral/src/clients/http/index.ts).
+
+To create an HTTP client, feed the client a base URL for your API along with the header information you need for authentication.
+You can fetch authentication values from a connection.
+It may look something like this:
+
+```typescript title="Example createClient usage"
+import { createClient } from "@prismatic-io/spectral/dist/clients/http";
+
+action({
+  perform: async (context, params) => {
+    // Create the authenticated HTTP client
+    const myClient = createClient({
+      baseUrl: "https://example.com/api",
+      debug: false,
+      headers: {
+        "X-API-Key": params.connection.fields.apiKey,
+        Accept: "application/json",
+      },
+      responseType: "json",
+    });
+
+    // Use the HTTP client to POST data to the API
+    const response = await myClient.post("/items", {
+      sku: "12345",
+      quantity: 3,
+      price: 20.25,
+    });
+
+    // Return the response as the action's result
+    return { data: response.data };
+  },
+});
+```
+
+:::tip Debugging an HTTP Connection
+If you would like to see the full contents of the HTTP request and response, set `debug: true`.
+You will see all endpoints, headers, response codes, etc. in the integration logs.
+
+Just remember to turn off debugging for production!
+:::
+
+## Global error handlers
+
+The actions in your component might all wrap API endpoints using an HTTP client, and that client might throw certain errors.
+You could handle those errors within each action, but you'd end up writing the same error handlers over and over.
+
+You can now specify an error handler function to run whenever any of your actions throws an error.
+To specify an error handler, add a `handlers` block to your `component({})` function definition:
+
+```typescript
+components({
+  // ...
+  hooks: {
+    error: (error) => doSomething(error),
+  },
+});
+```
+
+For example, the popular HTTP client [axios](https://www.npmjs.com/package/axios) throws an error whenever it receives a status code that's [_not_ between 200-299](https://github.com/axios/axios/blob/1f13dd7e26124a27c373c83eff0a8614acc1a04f/lib/defaults/index.js#L127-L129).
+If your HTTP client receives a status code in the 4xx or 5xx range, an error is thrown with a minimal message.
+If you would like additional information, like the status code or full response to the HTTP request, you can inspect the error being thrown and return a more detailed error message, as illustrated in Spectral [here](https://github.com/prismatic-io/spectral/blob/v6.5.0/packages/spectral/src/clients/http/index.ts#L53-L62).
+
+## Exporting a component
+
+Component code contains a default export of `component` type.
+A `component` contains a `key` that uniquely identifies it, whether or not it's `public`, some information about how the web app should `display` it, an object containing the `actions` that the component is comprised of, and if your custom component has its own [triggers](#writing-triggers), an object containing the `triggers` that the component contains.
+For the "proper and improper" names example component, the export can look like this:
+
+```typescript
+export default component({
+  key: "format-name",
+  public: false,
+  display: {
+    label: "Format Name",
+    description: "Format a person's name given a first, middle, and last name",
+    iconPath: "icon.png",
+  },
+  actions: {
+    improperFormatName,
+    properFormatName,
+  },
+  connections: [basicAuth, apiKey],
+});
+```
+
+## Unit tests for custom components
+
+It's important to have good unit tests for software - custom components are no exception.
+You want to catch errors or breaking changes before they wreak havoc on your customers' integrations.
+Composer's Spectral library provides some utility functions to make writing unit tests easier.
+
+In the examples below, we assume that you use the [Jest](https://jestjs.io/) testing framework which is installed by default when you run `prism components:init`.
+You can swap Jest out for another testing framework if you like.
+
+### Test file naming conventions
+
+To create a unit test file, create a new file alongside your code that has the extension `test.ts` (rather than `.ts`).
+For example, if your code lives in `index.ts`, create a file named `index.test.ts`.
+If you separate out your component actions into `actions.ts`, create a corresponding `actions.test.ts`.
+
+### Testing component actions
+
+As described [above](#perform-function-parameters) a component action's `perform` function takes two arguments:
+
+- `context` is an object that contains a `logger`, `executionId`, `instanceState`, and `stepId`.
+- `params` is an object that contains input parameters as key-value pairs.
+
+Test `context` parameters are described below.
+Let's ignore them for now and look at the `params` object.
+Consider the example "Format Proper Name" action described previously:
+
+```typescript
+export const properFormatName = action({
+  display: {
+    label: "Properly Format Name",
+    description: "Properly format a person's name (Last, First M.)",
+  },
+  perform: async (context, params) => {
+    if (params.middleName) {
+      return {
+        data: `${params.lastName}, ${params.firstName} ${params.middleName[0]}.`,
+      };
+    } else {
+      return { data: `${params.lastName}, ${params.firstName}` };
+    }
+  },
+  inputs: { firstName, middleName, lastName },
+});
+```
+
+You can use the [`ComponentTestHarness`](/docs/composer/builder/spectral/classes/_testing_.componenttestharness.md) class and [`createHarness`](/docs/composer/builder/spectral/modules/_testing_.md#const-createharness) helper function to test your actions.
+
+The test harness's `action` function takes two required and one optional parameters:
+
+- The action's key (i.e. `properFormatName`)
+- An object containing input parameters
+- An optional `context` object containing `logger`, `executionId`, `instanceState`, and `stepId`
+
+A Jest test file, then, could look like this:
+
+```typescript
+import component from ".";
+// highlight-next-line
+import { createHarness } from "@prismatic-io/spectral/dist/testing";
+
+// highlight-next-line
+const harness = createHarness(component);
+
+describe("Test the Proper Name formatter", () => {
+  test("Verify first, middle, and last name", async () => {
+    // highlight-next-line
+    const result = await harness.action("properFormatName", {
+      firstName: "John",
+      middleName: "James",
+      lastName: "Doe",
+    });
+    expect(result.data).toStrictEqual("Doe, John J.");
+  });
+  test("Verify first and last name without middle", async () => {
+    // highlight-next-line
+    const result = await harness.action("properFormatName", {
+      firstName: "John",
+      middleName: null,
+      lastName: "Doe",
+    });
+    expect(result.data).toStrictEqual("Doe, John");
+  });
+});
+```
+
+You can then run `yarn run jest`, and Jest will run each test, returning an error code if a test failed.
+
+### Verifying correct logging in action tests
+
+You may want to verify that your action generates some logs of particular severities in certain situations.
+In addition to step results, the test utility's [`invoke`](/docs/composer/builder/spectral/modules/_testing_.md#const-invoke) function returns an object, `loggerMock`, with information on what was logged during the action invocation.
+
+You can use Jest to verify that certain lines were logged like this:
+
+```typescript
+import { myExampleAction } from "./actions";
+import { invoke } from "@prismatic-io/spectral/dist/testing";
+
+test("Ensure that an error is logged", async () => {
+  const level = "error";
+  const message = "Error code 42 occurred.";
+  const { loggerMock } = await invoke(myExampleAction, {
+    exampleInput1: "exampleValue1",
+    exampleInput2: "exampleValue2",
+  });
+  expect(loggerMock[level]).toHaveBeenCalledWith(message);
+});
+```
+
+In the above example, the test would pass if an `error` log line of `Error code 42 occurred.` were generated, and would fail otherwise.
+
+### Providing test connection inputs to an action test
+
+Many actions require a connection to interact with third-party services.
+You can create a connection object the `createConnection` function from `@prismatic-io/spectral/dist/testing`:
+
+```typescript
+import {
+  createConnection,
+  createHarness,
+} from "@prismatic-io/spectral/dist/testing";
+import component from ".";
+import { myConnection } from "./connections";
+
+const harness = createHarness(component);
+
+const myBasicAuthTestConnection = createConnection(myConnection, {
+  username: "myUsername",
+  password: "myPassword",
+});
+
+describe("test my action", () => {
+  test("verify the return value of my action", async () => {
+    const result = await harness.action("myAction", {
+      someInput: "abc-123",
+      connection: myBasicAuthTestConnection,
+      someOtherInput: "def-456",
+    });
+  });
+});
+```
+
+It's not good practice to hard-code authorization secrets.
+Please use best practices, like setting environment variables to store secrets in your CI/CD environment:
+
+```typescript
+import { createConnection } from "@prismatic-io/spectral/dist/testing";
+import { myConnection } from "./connections";
+
+const myBasicAuthTestConnection = createConnection(myConnection, {
+  username: process.env.ACME_ERP_USERNAME,
+  password: process.env.ACME_ERP_PASSWORD,
+});
+```
+
+:::tip Use an Existing Integration's Connections for Testing
+If you would like to fetch an access key from an existing OAuth 2.0 connection in an integration (or username / password, API key, etc.), leverage the `prism components:dev:run` command to fetch the connection's fields and tokens.
+You can then reference the `PRISMATIC_CONNECTION_VALUE` environment variable in your Jest tests.
+
+More info is in our [prism docs](/docs/composer/builder/cli/prism.mdx#componentsdevrun).
+:::
+
+## Testing components from the CLI
+
+The [`prism` CLI tool](/docs/composer/builder/cli/cli-usage.mdx) provides two commands for testing custom components:
+
+- `prism components:dev:run` fetches an integration's active connection and saves the fields as an environment variable so you can run [unit tests](#unit-tests-for-custom-components) and other commands locally.
+  This is helpful, since many unit tests require an access token from a validated OAuth 2.0 connection - this provides a way of fetching the token from a connection you've already authenticated in the Composer integration designer.
+- `prism components:dev:test` publishes your component under a temporary name, and runs a single-action test integration for you that tests the action.
+  This is helpful for quickly testing an action in the real Composer integration runner environment.
+
+### Access connections for local testing
+
+The `prism components:dev:run` command fetches an active connection from the Composer integration designer, so you can use the connection's fields for unit testing.
+The connection's values are set to an environment variable named `PRISMATIC_CONNECTION_VALUE`, which can be used by a subsequent command.
+
+In this example, we use `printenv` to print the environment variable, and pipe the result into [jq](https://stedolan.github.io/jq/) for pretty printing:
+
+```bash
+prism components:dev:run \
+  --integrationId SW50ZEXAMPLE \
+  --connectionKey "Dropbox Connection" -- printenv PRISMATIC_CONNECTION_VALUE | jq
+
+{
+  "token": {
+    "access_token": "sl.EXAMPLE",
+    "token_type": "bearer",
+    "expires_in": 14400,
+    "expires_at": "2022-10-13T20:09:53.739Z",
+    "refresh_token": "EXAMPLE"
+  },
+  "context": {
+    "code": "sU4pEXAMPLE",
+    "state": "SW5zdEXAMPLE"
+  },
+  "fields": {
+    "clientId": "EXAMPLE",
+    "clientSecret": "EXAMPLE"
+  }
+}
+```
+
+Note that the command you want to run with the environment variable should follow a `--`.
+
+Within your unit test code, you can use `harness.connectionValue()`, which pulls in the `PRISMATIC_CONNECTION_VALUE` environment variable into a connection that you can use for tests:
+
+```typescript title="Use PRISMATIC_CONNECTION_VALUE for a Jest test"
+import { createHarness } from "@prismatic-io/spectral/dist/testing";
+import { oauthConnection } from "./connections";
+import component from ".";
+
+// Initialize a testing harness
+const harness = createHarness(component);
+
+// Parse the OAuth 2.0 connection from the PRISMATIC_CONNECTION_VALUE environment variable
+const parsedConnection = harness.connectionValue(oauthConnection);
+
+describe("listFolder", () => {
+  test("listRootFolder", async () => {
+    const result = await harness.action("listFolder", {
+      dropboxConnection: parsedConnection, // Pass in our connection
+      path: "/",
+    });
+    const files = result["data"]["result"]["entries"];
+    // Verify a folder named "Public" exists in the response
+    expect(files).toEqual(
+      expect.arrayContaining([expect.objectContaining({ name: "Public" })])
+    );
+  });
+});
+```
+
+From your component, you can then run:
+
+```bash
+prism components:dev:run \
+  --integrationId SW50ZEXAMPLE \
+  --connectionKey "Dropbox Connection" -- npm run jest
+```
+
+### Run a test of an action from the command line
+
+The `prism components:dev:test` command allows you to test an action quickly from the command line in the real integration runner environment.
+
+- Run `prism components:dev:test` from your component's root directory.
+- You will be prompted to select an action to test. Select one.
+- For each input of the action, supply a value
+- If your action requires a connection, you will be prompted for values for that connection (username, password, client_id, etc).
+  - If your action requires an OAuth 2.0 connection, a web browser will open to handle the OAuth flow.
+
+Once all inputs are entered, your action will run in the integration runner, and you will see logs from your action.
+
+#### Test run environment files
+
+You do not need to enter the same inputs each time you want to run a test of your action.
+To set some values for your test inputs, create a new file called `.env` in the same directory where you're invoking `prism` and enter your inputs and values as key/value pairs.
+For example, if you plan to leave `cursor` and `limit` inputs blank, set `path` to `/`, and you have an OAuth client ID and secret that you want to use each time, your `.env` file can look like this:
+
+```text tile="Example .env file for testing actions from the command line"
+CURSOR=
+LIMIT=
+PATH=/
+CLIENT_ID=xlexample
+CLIENT_SECRET=4yexample
+```
+
+## Writing triggers
+
+Integrations are usually triggered [on a schedule](/docs/composer/builder/integration-triggers.mdx#scheduled-triggers) (meaning instances of the integration run every X minutes, or at a particular time of day) or [via webhook](/docs/composer/builder/integration-triggers.mdx#webhook-triggers) (meaning some outside system sends JSON data to a unique URL and an instance processes the data that was sent).
+The vast majority of integrations built in Composer start with a schedule trigger or webhook trigger.
+There are situations, though, where neither the schedule nor the standard webhook trigger are suitable for one reason or another.
+That's where writing your own triggers come in handy.
+
+Triggers are custom bits of code that are similar to [actions](#writing-actions).
+They give you fine-grained control over how a webhook's payload is presented to the rest of the steps of an integration and what HTTP response is returned to whatever invoked the trigger's webhook URL.
+
+Similar to an action, a trigger is comprised of `display` information, a `perform` function and `inputs`.
+Additionally, you specify if your trigger can be invoked [synchronously](/docs/composer/builder/integration-triggers.mdx#synchronous-and-asynchronous-integrations) (`synchronousResponseSupport`) and if your trigger supports scheduling (`scheduleSupport`).
+
+Suppose, for example, a third-party app can be configured to send CSV data via webhook and requires that the webhook echo a header, `x-confirmation-code`, back in plaintext to confirm it got the payload.
+The default webhook trigger accepts JSON, and responds with an [execution ID](/docs/composer/builder/api/schema/object/InstanceExecutionResult.mdx#return-fields), so it's not suitable for integrating with this third-party app.
+
+This trigger will return an HTTP 200 and echo a particular header back to the system invoking the webhook, and then it'll parse the CSV payload into an object so that subsequent steps can reference through the trigger's `results.body.data`:
+
+```typescript
+import {
+  input,
+  trigger,
+  TriggerPayload,
+  HttpResponse,
+  util,
+} from "@prismatic-io/spectral";
+import papaparse from "papaparse"; // CSV Library
+
+export const csvTrigger = trigger({
+  display: {
+    label: "CSV Webhook",
+    description:
+      "Accepts and parses CSV data into a referenceable object and returns a plaintext ACK to the webhook caller.",
+  },
+  perform: async (context, payload, { hasHeader }) => {
+    // Create a custom HTTP response that echos a header,
+    // x-confirmation-code, that was received as part of
+    // the webhook invocation
+    const response: HttpResponse = {
+      statusCode: 200,
+      contentType: "text/plain; charset=utf-8",
+      body: payload.headers["x-confirmation-code"],
+    };
+
+    // Create a copy of the webhook payload, deserialize
+    // the CSV raw body, and add the deserialized object
+    // to the object to the trigger's outputs
+    const finalPayload: TriggerPayload = { ...payload };
+
+    const parseResult = papaparse.parse(
+      util.types.toString(payload.rawBody.data),
+      {
+        header: util.types.toBool(hasHeader),
+      }
+    );
+
+    finalPayload.body.data = parseResult.data;
+
+    // Return the modified trigger payload and custom HTTP response
+    return Promise.resolve({
+      payload: finalPayload,
+      response,
+    });
+  },
+  inputs: {
+    // Declare if the incoming CSV has header information
+    hasHeader: input({
+      label: "CSV Has Header",
+      type: "boolean",
+      default: "false",
+    }),
+  },
+  synchronousResponseSupport: "invalid", // Do not allow synchronous invocations
+  scheduleSupport: "invalid", // Do not allow scheduled invocations
+});
+
+export default { csvTrigger };
+```
+
+Notice a few things about this example:
+
+- The `trigger`'s form is very similar to that of an `action` definition.
+- The `response` contains an HTTP `statusCode`, `body`, and `contentType` to be returned to the webhook caller.
+- The second argument to the `perform` function - `payload` - contains the same information that a standard webhook trigger returns.
+  The `rawBody.data` presumably contains some CSV text - the `body.data` key of the payload is replaced by the deserialized version of the CSV data.
+- `inputs` work the same way that they work for actions - you define a series of `input`s, and they're passed in as the third parameter of the `perform` function.
+
+For another real-world example of writing a trigger, check out our tutorial on how we [wrote the Salesforce trigger](/docs/composer/builder/custom-components/quickstarts/writing-a-trigger.mdx).
+
+### Instance deploy and delete events for triggers
+
+Similar to a `perform` function, a trigger can also define `onInstanceDeploy` and `onInstanceDelete` functions.
+These functions are called when an instance is deployed or deleted, respectively.
+They are handy for creating or deleting resources in a third-party system that are associated with an instance (like file directories, webhooks, etc).
+
+This example trigger will create a webhook in a third-party app when an instance is deployed, storing the webhook ID in persistant data, and delete the webhook when the instance is deleted:
+
+```typescript
+const acmeWebhookTrigger = trigger({
+  display: {
+    label: "Acme Webhook Trigger",
+    description: "Acme will notify your app when certain events occur in Acme",
+  },
+  scheduleSupport: "invalid",
+  synchronousResponseSupport: "invalid",
+  inputs: {
+    connection: input({
+      label: "Acme Connection",
+      type: "connection",
+      required: true,
+    }),
+    events: input({
+      type: "string",
+      label: "Events",
+      comments:
+        "The events that would cause an Acme webhook request to be sent to this flow",
+      collection: "valuelist",
+      model: [
+        { label: "Lead Created", value: "lead_created" },
+        { label: "Lead Updated", value: "lead_updated" },
+        { label: "Lead Deleted", value: "lead_deleted" },
+      ],
+    }),
+  },
+
+  /** Run when a trigger is invoked. This function could contain additional logic for verifying HMAC signatures, etc. */
+  perform: async (_context, payload, _params) => {
+    return Promise.resolve({ payload });
+  },
+
+  /** Run when an instance with this trigger is deployed */
+  onInstanceDeploy: async (context, params) => {
+    // Get the current flow's webhook URL
+    const flowWebhookUrl = context.webhookUrls[context.flow.name];
+
+    // Create a webhook in Acme
+    const { data } = await axios.post(
+      "https://api.acme.com/webhooks",
+      {
+        endpoint: flowWebhookUrl,
+        events: params.events,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${params.connection.token?.access_token}`,
+        },
+      }
+    );
+
+    // Store the webhook ID in the instance state
+    return {
+      crossFlowState: { [`${context.flow.name}-webhook-id`]: data.id },
+    };
+  },
+
+  /** Run when an instance with this trigger is removed */
+  onInstanceDelete: async (context, params) => {
+    // Get the webhook ID from the instance state
+    const webhookId = context.crossFlowState[`${context.flow.name}-webhook-id`];
+
+    // Delete the webhook from Acme
+    await axios.delete(`https://api.acme.com/webhooks/${webhookId}`, {
+      headers: {
+        Authorization: `Bearer ${params.connection.token?.access_token}`,
+      },
+    });
+  },
+});
+```
+
+:::tip Ensure your onInstanceDeploy function is idempotent
+Either the external third-party API, or your trigger, should be designed to be idempotent - meaning that if the `onInstanceDeploy` is created twice, it won't cause any problems.
+:::
+
+To test your trigger's `onInstanceDeploy` and `onInstanceDelete` functions in the integration designer, open the **Test Runner** drawer and click **Test Deploy** or **Test Delete** within the **Trigger** tab.
+
+:::caution
+Note that `onInstanceDeploy` and `onInstanceDelete` functions do not have access to flow-specific peristed data.
+Both functions should read and write data at the `crossFlowState` level.
+You can store unique data for each flow using key names that include the flow name in order to generate unique persisted data keys, like `${context.flow.name}-webhook-id` in the example above.
+:::
+
+### Add a trigger to your component
+
+Once you've written a trigger, you can add it to an existing component the same way you add an action to your component, but using the `triggers` key:
+
+```typescript {1,15}
+import { csvTrigger } from "./csvTrigger";
+
+export default component({
+  key: "format-name",
+  public: false,
+  display: {
+    label: "Format Name",
+    description: "Format a person's name given a first, middle, and last name",
+    iconPath: "icon.png",
+  },
+  actions: {
+    improperFormatName,
+    properFormatName,
+  },
+  triggers: { csvTrigger },
+});
+```
+
+### Testing a trigger
+
+Testing a trigger is similar to [testing an action](#testing-component-actions), except you use the [harness.trigger](/docs/composer/builder/spectral/classes/_testing_.componenttestharness.md#trigger) function instead.
+For example, if you want to use Jest to test the `csvTrigger` outlined above, your test could look like this:
+
+```typescript
+import component from ".";
+import {
+  createHarness,
+  defaultTriggerPayload,
+} from "@prismatic-io/spectral/dist/testing";
+
+const harness = createHarness(component);
+
+describe("test csv webhook trigger", () => {
+  test("verify the return value of the csv webhook trigger", async () => {
+    const payload = defaultTriggerPayload(); // The payload you can expect a generic trigger to receive
+
+    payload.rawBody.data = "first,last,age\nJohn,Doe,30\nJane,Doe,31";
+    payload.headers.contentType = "text/csv";
+    payload.headers["x-confirmation-code"] = "some-confirmation-code-123";
+
+    const expectedData = [
+      { first: "John", last: "Doe", age: "30" },
+      { first: "Jane", last: "Doe", age: "31" },
+    ];
+
+    const expectedResponse = {
+      statusCode: 200,
+      contentType: "text/plain; charset=utf-8",
+      body: payload.headers["x-confirmation-code"],
+    };
+
+    const {
+      payload: {
+        body: { data },
+      },
+      response,
+    } = await harness.trigger("csvTrigger", null, payload, {
+      hasHeader: true,
+    });
+
+    expect(data).toStrictEqual(expectedData);
+    expect(response).toStrictEqual(expectedResponse);
+  });
+});
+```
+
+## Writing data sources
+
+A **Data Source** fetches data from a third-party API that will be used to dynamically generate a config variable.
+When your customer deploys an instance, they use a [connection](#adding-connections) to authenticate with a third-party API.
+
+A data source can generate a variety of [types of data](https://github.com/prismatic-io/spectral/blob/main/packages/spectral/src/types/DataSourceResult.ts) including a `string`, `date`, `picklist` (which is a `string[]`), complex `objectSelection` objects, and more.
+
+Here's a simple data source that fetches an array of customers, each with a `name` and `id`.
+It maps them to a `label`/`key` object so the customer's names show in a `picklist`, and the customer's `id` is :
+
+```typescript title="Fetch a string from an external API"
+import { dataSource, Element } from "@prismatic-io/spectral";
+
+interface Customer {
+  name: string;
+  id: string;
+}
+
+const companyName = dataSource({
+  display: {
+    label: "Fetch Customers",
+    description: "Fetch an array of customers' names",
+  },
+  inputs: {
+    connection: input({
+      label: "Connection",
+      type: "connection",
+      required: true,
+    }),
+  },
+  perform: async (context, params) => {
+    const client = createAcmeClient(params.connection);
+    const response = await client.get<{ customers: Customer[] }>("/customers");
+    const customers = response.data.customers?.map<Element>((customer) => ({
+      label: customer.name,
+      key: customer.id,
+    }));
+    return { result: customers };
+  },
+  dataSourceType: "picklist",
+  examplePayload: {
+    result: [
+      { label: "Smith Rocket Company", key: "abc-123" },
+      { label: "Mars Rocket Corp", key: "def-456" },
+    ],
+  },
+});
+```
+
+In this example, we fetch several items from an API, including metadata about each item, so that a user can select one or more of the items and get that metadata of each:
+
+```typescript title="Fetch a string from an external API"
+const companyName = dataSource({
+  display: {
+    label: "Fetch Items",
+    description: "Fetch all available items",
+  },
+  inputs: {
+    connection: input({
+      label: "Connection",
+      type: "connection",
+      required: true,
+    }),
+  },
+  perform: async (context, params) => {
+    const client = createAcmeClient(params.connection);
+    const response = await client.get("/items");
+    const objects: ObjectSelection = response.data.items.map((item) => ({
+      object: { key: object.id, label: object.name },
+      fields: [
+        { key: object.quantity, label: "Quantity" },
+        { key: object.sku, label: "SKU" },
+      ],
+    }));
+    return { result: response.data.name };
+  },
+  dataSourceType: "objectSelection",
+  examplePayload: {
+    result: [
+      {
+        object: { key: "abc-123", label: "widgets" },
+        fields: [
+          { key: "5", label: "Quantity" },
+          { key: "0000000000", label: "SKU" },
+        ],
+      },
+    ],
+  },
+});
+```
+
+An example of a data source that generates a picklist is available in the [Slack component](https://github.com/prismatic-io/examples/blob/main/components/slack/src/dataSources.ts).
+
+## JSON Forms Data Sources
+
+[JSON Forms](https://jsonforms.io/) is a form-generating framework that allows you to create forms through JSON schema that you generate.
+A JSON Form can contain any number of string, boolean, number, date, time, datetime or enum (dropdown menu) inputs, and you have some control over how the input elements are rendered (in tabs, grouped, vertical or horizontal layout, etc).
+
+Full documentation on JSON Forms is available on their [documentation page](https://jsonforms.io/examples), including several examples.
+Composer offers a <a href='/jsonforms/playground/'>JSON Forms playground</a> where you can create new forms and see how they would be rendered in Composer.
+
+A JSON Form config data source must return two properties (and one optional property):
+
+- `schema` defines the types of inputs your form contains (its `properties`), and some optional validators, like which properties are required.
+- `uiSchema` defines how those inputs should be rendered, like whether the inputs should be vertically or horizontally aligned.
+- `data` (optional) allows you to specify some default values for your form inputs.
+
+This simple example's `schema` declares two inputs - `name` (a string) and `age` (an integer between 0 and 150), and the `uiSchema` labels the first input "First Name" and places the input fields horizontally next to one another.
+
+```typescript title="A simple JSON Form"
+return {
+  result: {
+    schema: {
+      type: "object",
+      properties: {
+        name: {
+          type: "string",
+        },
+        age: {
+          type: "integer",
+          minimum: 0,
+          maximum: 150,
+        },
+      },
+    },
+    uiSchema: {
+      type: "HorizontalLayout",
+      elements: [
+        {
+          type: "Control",
+          scope: "#/properties/name",
+        },
+        {
+          type: "Control",
+          scope: "#/properties/age",
+        },
+      ],
+    },
+    data: { name: "Bob", age: 20 },
+  },
+};
+```
+
+The resulting JSON Form looks like this:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/json-forms/simple-example-result.png"
+  maxWidth="600px"
+  alt="Simple JSON form config variable"
+/>
+
+### Data Mapping with JSON Forms
+
+A common use-case for JSON Forms is presenting a data-mapping UI to a user.
+For the sake of illustration, we'll pull down [users](https://jsonplaceholder.typicode.com/users) and [to-do tasks](https://jsonplaceholder.typicode.com/todos?_limit=10) from [JSON Placeholder](https://jsonplaceholder.typicode.com/), and give our users the ability to map any number of users to tasks.
+
+In order to provide any number of mappings of user-to-task, our JSON schema will need to contain an [`array`](https://jsonforms.io/examples/array) of `object`.
+Each `object` will contain a `user` property and a `task` property.
+The `user` and `task` property will each have a [`oneOf`](https://jsonforms.io/docs/multiple-choice#one-of) property, which represents a dropdown menu.
+
+For the sake of illustration, we also provide a `data` value containing some defaults that our UI should show.
+This property can be omitted.
+
+```typescript title="Data mapping with JSON forms"
+import axios from "axios";
+import { dataSource, util } from "@prismatic-io/spectral";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Task {
+  id: number;
+  title: string;
+}
+
+const userTaskExample = dataSource({
+  dataSourceType: "jsonForm",
+  display: {
+    label: "User/Task Mapper",
+    description: "Map users to to-do tasks",
+  },
+  inputs: {},
+  perform: async (context, params) => {
+    const { data: users } = await axios.get<User[]>(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    const { data: tasks } = await axios.get<Task[]>(
+      "https://jsonplaceholder.typicode.com/todos?_limit=10"
+    );
+
+    const schema = {
+      type: "object",
+      properties: {
+        mymappings: {
+          // Arrays allow users to make one or more mappings
+          type: "array",
+          items: {
+            // Each object in the array should contain a user and task
+            type: "object",
+            properties: {
+              user: {
+                type: "string",
+                // Have users select "one of" a dropdown of items
+                oneOf: users.map((user) => ({
+                  // JSON Forms expects a string value:
+                  const: util.types.toString(user.id),
+                  title: user.name,
+                })),
+              },
+              task: {
+                type: "string",
+                oneOf: tasks.map((task) => ({
+                  const: util.types.toString(task.id),
+                  title: task.title,
+                })),
+              },
+            },
+          },
+        },
+      },
+    };
+
+    const uiSchema = {
+      type: "VerticalLayout",
+      elements: [
+        {
+          type: "Control",
+          scope: "#/properties/mymappings",
+          label: "User <> Task Mapper",
+        },
+      ],
+    };
+
+    // Provide a default value, mapping of the first user to the first task
+    const defaultValues = {
+      mymappings: [
+        {
+          user: util.types.toString(users[0].id),
+          task: util.types.toString(tasks[0].id),
+        },
+      ],
+    };
+
+    return {
+      result: { schema, uiSchema, data: defaultValues },
+    };
+  },
+});
+```
+
+The resulting JSON Form looks like this:
+
+<Screenshot
+  filename="custom-components/writing-custom-components/json-forms/data-mapping-json-form-result.png"
+  maxWidth="600px"
+  alt="Data mapping JSON form result"
+/>
+
+### Using existing component connections in data sources
+
+You may want to extend an existing component to populate a config variable.
+For example, you may want to fetch and filter specific information from a CRM or ERP and present the data to your user as a picklist menu.
+Your data source can reference any existing connection config variable - including those from built-in components.
+
+To use an existing component's connection, reference its connection's key names.
+The [AWS Glue component](/docs/composer/builder/builder-components/aws-glue.mdx) , for example, has an `accessKeyId` and `secretAccessKey`.
+Your data source can reference those with:
+
+```ts
+{
+  perform: async (context, params) => {
+    const { accessKeyId, secretAccessKey } = params.myConnection.fields;
+  };
+}
+```
+
+The field that you likely need to use for OAuth 2.0 connections is the connection's `access_token`, which is nested under `token` like this:
+
+```ts
+{
+  perform: async (context, params) => {
+    const myAccessToken = params.myConnection.token.access_token;
+  };
+}
+```
+
+An example of reusing existing connections is available in the [Building a Field Mapper Data Source](/docs/composer/builder/custom-components/quickstarts/field-mapping-json-forms-datasource.mdx) tutorial which covers pulling down custom fields from Salesforce.
+
+## Branching in custom actions and triggers
+
+Similar to the [branch](/docs/composer/builder/builder-components/branch.mdx) component, your custom actions and triggers can make use of logical branches.
+To support branches, give your `action()` or `trigger()` two additional properties, `allowsBranching: true` and `staticBranchNames: ["List", "Of", "Branches"]`, and ensure that the object that your `perform` function returns includes a `branch` property:
+
+```typescript {9,10,18} title="Example action with branching"
+export const branchExample = action({
+  display: {
+    label: "Branch Example",
+    description: "An example action that branches",
+  },
+  inputs: {
+    myValue: input({ label: "My Value", type: "string", required: true }),
+  },
+  allowsBranching: true,
+  staticBranchNames: ["First", "Second", "Other"],
+  perform: async (context, params) => {
+    let branchName = "Other";
+    if (params.myValue === "One") {
+      branchName = "First";
+    } else if (params.myValue === "Two") {
+      branchName = "Second";
+    }
+    return await Promise.resolve({ branch: branchName, data: null });
+  },
+});
+```
+
+Similar code can be used in a custom trigger.
+`allowsBranching: true` indicates to the integration designer that it should render branches beneath your action or trigger.
+`staticBranchNames` is an array of strings representing names of possible branches that can be followed.
+The branch name that matches the `branch` return value will be followed.
+
+<Screenshot
+  filename="custom-components/writing-custom-components/custom-branch-logs.png"
+  maxWidth="800px"
+  alt="Logs showing which branch was followed in a custom branch step"
+  caption="Execution logs will always indicate which branch of a branching step was followed."
+/>
+
+## Handling binary files in custom components
+
+Integrations in Composer generally process serialized JSON, XML or other simple strings and pass deserialized JavaScript objects between steps.
+But, there are situations when you may want to process and pass binary data between steps.
+By "binary data", we mean files that are not plain text - PDF files, images, MP3 audio, etc.
+
+Within an integration, a binary file is represented by its `contentType` (MIME type), and a `Buffer` that contains the file's data.
+See Mozilla's documentation for a list of common file [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
+
+```ts
+{ data: Buffer.from("..."), contentType: "application/pdf" };
+```
+
+### Processing binary data as an input
+
+Inputs for binary files are similar to any other input you might create, though you can use the `util.types.toData` function to ensure that the input has the form `{ data: Buffer, contentType: string }`:
+
+```ts
+{
+  inputs: {
+    myFile: input({
+      label: "My File",
+      type: "data",
+      required: true,
+      clean: util.types.toData,
+    });
+  }
+}
+```
+
+The `myFile` property that comes in to your `perform` function will have the form of a binary file, with `data` and `contentType` properties that you can reference.
+
+```ts
+{
+  perform: async (context, params) => {
+    const { data: fileData, contentType } = params.myFile;
+    // Send the data to an endpoint
+    axios.post("http://my-endpoint", fileData, {
+      headers: { "Content-Type": contentType },
+    });
+  };
+}
+```
+
+### Returning binary data from an action
+
+To return a binary file, from your action, ensure that the data you return is a `Buffer` and optionally include a `contentType` property alongside `data` that indicates its MIME type.
+For example, if your custom component returns a rendered PDF file and the PDF contents are saved in a `Buffer` variable named `pdfContents`, the return block might look like this:
+
+```typescript
+return {
+  data: pdfContents,
+  contentType: "application/pdf",
+};
+```
+
+You can return multiple files, or binary files in a nested object with a similar structure:
+
+```typescript
+return {
+  myKey: "myValue",
+  myPdf: {
+    data: pdfBuffer,
+    contentType: "application/pdf",
+  },
+  myPng: {
+    data: pngBuffer,
+    contentType: "image/png",
+  },
+};
+```
+
+### Fetching binary data with the Spectral HTTP client
+
+When fetching binary data from an API, you must configure your HTTP client to expect binary data and to write the data to a `Buffer`.
+For the HTTP client (which is Axios-based), use the `responseType: "arraybuffer"` configuration option to ensure the `data` property returned is a `Buffer`:
+
+```typescript
+{
+  perform: async (context, params) => {
+    const client = createBambooClient(params.connection);
+    const { data, headers } = await client.get(`/v1/files/${params.fileId}`, {
+      responseType: "arraybuffer",
+    });
+    return { data, contentType: headers["content-type"] };
+  };
+}
+```
+
+## Publishing a component
+
+Package a component with `webpack` by running `npm run build` or `yarn build`:
+
+```bash
+$ yarn build
+yarn run v1.22.10
+$ webpack
+asset icon.png 94.2 KiB [compared for emit] [from: assets/icon.png] [copied]
+asset index.js 92.2 KiB [emitted] (name: main)
+runtime modules 1.04 KiB 5 modules
+modules by path ./node_modules/@prismatic-io/spectral/ 49.6 KiB
+  modules by path ./node_modules/@prismatic-io/spectral/dist/types/*.js 3.92 KiB 12 modules
+  modules by path ./node_modules/@prismatic-io/spectral/dist/*.js 21.4 KiB
+    ./node_modules/@prismatic-io/spectral/dist/index.js 4.21 KiB [built] [code generated]
+    ./node_modules/@prismatic-io/spectral/dist/util.js 11.9 KiB [built] [code generated]
+    ./node_modules/@prismatic-io/spectral/dist/testing.js 5.29 KiB [built] [code generated]
+  ./node_modules/@prismatic-io/spectral/node_modules/jest-mock/build/index.js 24.2 KiB [built] [code generated]
+modules by path ./node_modules/date-fns/ 16 KiB
+  modules by path ./node_modules/date-fns/_lib/ 780 bytes
+    ./node_modules/date-fns/_lib/toInteger/index.js 426 bytes [built] [code generated]
+    ./node_modules/date-fns/_lib/requiredArgs/index.js 354 bytes [built] [code generated]
+  4 modules
+./src/index.ts 2.46 KiB [built] [code generated]
+./node_modules/valid-url/index.js 3.99 KiB [built] [code generated]
+webpack 5.41.1 compiled successfully in 1698 ms
+✨  Done in 2.86s.
+```
+
+This will create a `dist/` directory containing your compiled JavaScript and icon image.
+Now use `prism` to publish your component.
+If you do not have Composer's CLI tool, `prism`, installed, please take a moment to look through the [Prism overview page](/docs/composer/builder/cli/cli-usage.mdx).
+
+```bash
+$ prism components:publish
+
+Format Name - Format a person's name given a first, middle, and last name
+Would you like to publish Format Name? (y/N): y
+Successfully submitted Format Name (v6)! The publish should finish processing shortly.
+```
+
+## Upgrading spectral versions
+
+We release minor, non-breaking changes to Spectral often, and major changes periodically.
+Major changes come with major version bumps (1.x.x, 2.x.x, 3.x.x, etc).
+
+To upgrade a component from an older major version of spectral to a new one, see our upgrade guides:
+
+- [Spectral 2.x upgrade guide](/docs/composer/builder/spectral/spectral-2-upgrade-guide.mdx)
+- [Spectral 3.x upgrade guide](/docs/composer/builder/spectral/spectral-3-upgrade-guide.mdx)
+- [Spectral 4.x upgrade guide](/docs/composer/builder/spectral/spectral-4-upgrade-guide.mdx)
+- [Spectral 5.x upgrade guide](/docs/composer/builder/spectral/spectral-5-upgrade-guide.mdx)
+- [Spectral 6.x upgrade guide](/docs/composer/builder/spectral/spectral-6-upgrade-guide.mdx)
+
+If you are building a new component, we strongly encourage you to start with the latest version of Spectral.
