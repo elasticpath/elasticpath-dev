@@ -1,7 +1,7 @@
 ---
 title: Account Management Authentication Token
 nav_label: Account Management
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 Account Management authentication tokens are available for anyone using the [Account Management APIs](/docs/api/accounts/post-v-2-accounts).
