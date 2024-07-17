@@ -1,6 +1,6 @@
 ---
-title: Overview
-nav_label: Overview
+title: Builder Introduction
+nav_label: Builder
 sidebar_position: 10
 ---
 
