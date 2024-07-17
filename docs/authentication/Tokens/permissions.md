@@ -63,86 +63,86 @@ The following tables show a breakdown of the API endpoint actions that are avail
 
 ### Implicit + Account Management Authentication Token
 
-| Endpoint | Read access | Write access |
-| --- | -- | --- |
-| `/accounts` | ✅️ | ⛔️ |
-| `/account-members` | ✅️ | ⛔️ |
-| `/account-membership` | ✅ | ⛔️ |
-| `/application-keys`   | ⛔️ | ⛔️ |
-| `/authentication-realms` |  ✅ | ⛔️ |
-| `/brands` | ✅ | ⛔️ |
-| `/carts` | ✅ | ✅ |
-| `/categories` | ✅ | ⛔️ |
-| `/checkout` | ✅ | ✅ |
-| `/collections` | ✅ | ⛔️ |
-| `/currencies` | ✅ | ⛔️ |
-| `/customers` | ⛔ | ⛔ |
-| `/files` | ✅ | ⛔️ |
-| `/flows` | ✅ | ⛔️ |
-| `/gateways` | ⛔️ | ⛔️ |
-| `/integrations` | ⛔️ | ⛔️ |
-| `/inventories` | ✅ | ⛔️ |
-| `/jobs` | ⛔️ | ⛔️ |
-| `/merchant-realm-mappings` | ⛔️ | ⛔️ |
-| `/orders` | ✅ | ⛔️ |
-| `/orders/:id` | ✅ | ⛔️ |
-| `/v2/products` | ✅ | ⛔️ |
-| `/catalog/products` | ✅ | ⛔️ |
-| `/catalog/hierarchies` | ✅ | ⛔️ |
-| `/catalog/nodes` | ✅ | ⛔️ |
-| `/pcm/products` | ⛔️ | ⛔️ |
-| `/pcm/hierarchies` | ⛔️ | ⛔️ |
-| `/pcm/pricebooks` | ⛔️ | ⛔️ |
-| `/pcm/catalogs` | ⛔️ | ⛔️ |
-| `/promotions` | ⛔️ | ⛔️ |
-| `/settings` | ⛔️ | ⛔️ |
-| `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
-| `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
-| `/settings/extensions`                       | ⛔️ | ⛔️ |
-| `/variations` | ⛔️ | ⛔️ |
+| Endpoint                                     | Read access | Write access |
+|----------------------------------------------|-------------|--------------|
+| `/accounts`                                  | ✅️          | ⛔️           |
+| `/account-members`                           | ✅️          | ⛔️           |
+| `/account-membership`                        | ✅           | ⛔️           |
+| `/application-keys`                          | ⛔️          | ⛔️           |
+| `/authentication-realms`                     | ✅           | ⛔️           |
+| `/brands`                                    | ✅           | ⛔️           |
+| `/carts`                                     | ✅           | ✅            |
+| `/categories`                                | ✅           | ⛔️           |
+| `/checkout`                                  | ✅           | ✅            |
+| `/collections`                               | ✅           | ⛔️           |
+| `/currencies`                                | ✅           | ⛔️           |
+| `/customers`                                 | ⛔           | ⛔            |
+| `/files`                                     | ✅           | ⛔️           |
+| `/flows`                                     | ✅           | ⛔️           |
+| `/gateways`                                  | ⛔️          | ⛔️           |
+| `/integrations`                              | ⛔️          | ⛔️           |
+| `/inventories`                               | ✅           | ⛔️           |
+| `/jobs`                                      | ⛔️          | ⛔️           |
+| `/merchant-realm-mappings`                   | ⛔️          | ⛔️           |
+| `/orders`                                    | ✅           | ⛔️           |
+| `/orders/:id`                                | ✅           | ⛔️           |
+| `/v2/products`                               | ✅           | ⛔️           |
+| `/catalog/products`                          | ✅           | ⛔️           |
+| `/catalog/hierarchies`                       | ✅           | ⛔️           |
+| `/catalog/nodes`                             | ✅           | ⛔️           |
+| `/pcm/products`                              | ⛔️          | ⛔️           |
+| `/pcm/hierarchies`                           | ⛔️          | ⛔️           |
+| `/pcm/pricebooks`                            | ⛔️          | ⛔️           |
+| `/pcm/catalogs`                              | ⛔️          | ⛔️           |
+| `/promotions`                                | ⛔️          | ⛔️           |
+| `/settings`                                  | ⛔️          | ⛔️           |
+| `/settings/account-authentication-settings`  | ⛔️          | ⛔️           |
+| `/settings/customer-authentication-settings` | ⛔️          | ⛔️           |
+| `/settings/extensions`                       | ⛔️          | ⛔️           |
+| `/variations`                                | ⛔️          | ⛔️           |
 
 
 Note that you can only fetch data with live status.
 
 ### Implicit + Customer Token
 
- | Endpoint | Read access | Write access |
- | -- | --- | --- |
- | `/accounts` | ⛔️ | ⛔️ |
- | `/account-members` | ⛔️ | ⛔️ |
- | `/account-membership` | ⛔️ | ⛔️ |
- | `/application-keys`   | ⛔️ | ⛔️ |
- | `/authentication-realms` |  ✅ | ⛔️ |
- | `/brands` | ✅ | ⛔️ |
- | `/carts` | ✅ | ✅ |
- | `/categories` | ✅ | ⛔️ |
- | `/checkout` | ✅ | ✅ |
- | `/collections` | ✅ | ⛔️ |
- | `/currencies` | ✅ | ⛔️ |
- | `/customers` | ✅ | ✅ |
- | `/files` | ✅ | ⛔️ |
- | `/flows` | ✅ | ⛔️ |
- | `/gateways` | ⛔️ | ⛔️ |
- | `/integrations` | ⛔️ | ⛔️ |
- | `/inventories` | ✅ | ⛔️ |
- | `/jobs` | ⛔️ | ⛔️ |
- | `/merchant-realm-mappings` | ⛔️ | ⛔️ |
- | `/orders` | ✅ | ⛔️ |
- | `/orders/:id` | ✅ | ⛔️ |
- | `/v2/products` | ✅ | ⛔️ |
- | `/catalog/products` | ✅ | ⛔️ |
- | `/catalog/hierarchies` | ✅ | ⛔️ |
- | `/catalog/nodes` | ✅ | ⛔️ |
- | `/pcm/products` | ⛔️ | ⛔️ |
- | `/pcm/hierarchies` | ⛔️ | ⛔️ |
- | `/pcm/pricebooks` | ⛔️ | ⛔️ |
- | `/pcm/catalogs` | ⛔️ | ⛔️ |
- | `/promotions` | ⛔️ | ⛔️ |
- | `/settings` | ⛔️ | ⛔️ |
- | `/settings/account-authentication-settings`  | ⛔️ | ⛔️ |
- | `/settings/customer-authentication-settings` | ⛔️ | ⛔️ |
- | `/settings/extensions`                       | ⛔️ | ⛔️ |
- | `/variations` | ⛔️ | ⛔️ |
+| Endpoint                                     | Read access | Write access |
+ |----------------------------------------------|-------------|--------------|
+| `/accounts`                                  | ⛔️          | ⛔️           |
+| `/account-members`                           | ⛔️          | ⛔️           |
+| `/account-membership`                        | ⛔️          | ⛔️           |
+| `/application-keys`                          | ⛔️          | ⛔️           |
+| `/authentication-realms`                     | ✅           | ⛔️           |
+| `/brands`                                    | ✅           | ⛔️           |
+| `/carts`                                     | ✅           | ✅            |
+| `/categories`                                | ✅           | ⛔️           |
+| `/checkout`                                  | ✅           | ✅            |
+| `/collections`                               | ✅           | ⛔️           |
+| `/currencies`                                | ✅           | ⛔️           |
+| `/customers`                                 | ✅           | ✅            |
+| `/files`                                     | ✅           | ⛔️           |
+| `/flows`                                     | ✅           | ⛔️           |
+| `/gateways`                                  | ⛔️          | ⛔️           |
+| `/integrations`                              | ⛔️          | ⛔️           |
+| `/inventories`                               | ✅           | ⛔️           |
+| `/jobs`                                      | ⛔️          | ⛔️           |
+| `/merchant-realm-mappings`                   | ⛔️          | ⛔️           |
+| `/orders`                                    | ✅           | ⛔️           |
+| `/orders/:id`                                | ✅           | ⛔️           |
+| `/v2/products`                               | ✅           | ⛔️           |
+| `/catalog/products`                          | ✅           | ⛔️           |
+| `/catalog/hierarchies`                       | ✅           | ⛔️           |
+| `/catalog/nodes`                             | ✅           | ⛔️           |
+| `/pcm/products`                              | ⛔️          | ⛔️           |
+| `/pcm/hierarchies`                           | ⛔️          | ⛔️           |
+| `/pcm/pricebooks`                            | ⛔️          | ⛔️           |
+| `/pcm/catalogs`                              | ⛔️          | ⛔️           |
+| `/promotions`                                | ⛔️          | ⛔️           |
+| `/settings`                                  | ⛔️          | ⛔️           |
+| `/settings/account-authentication-settings`  | ⛔️          | ⛔️           |
+| `/settings/customer-authentication-settings` | ⛔️          | ⛔️           |
+| `/settings/extensions`                       | ⛔️          | ⛔️           |
+| `/variations`                                | ⛔️          | ⛔️           |
 
 ## Breakdown of Access (for sellers)
 
