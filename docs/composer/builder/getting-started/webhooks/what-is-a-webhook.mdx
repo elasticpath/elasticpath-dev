@@ -1,0 +1,50 @@
+---
+id: what-is-a-webhook
+title: What is a Webhook?
+description: Learn about webhooks and how to use them.
+---
+
+import Youtube from "@site/src/components/youtube";
+
+<Youtube id="CriaG014ocM" title="What are webhooks?" />
+
+A **webhook** is an automated message that is sent from one application to another application when certain events occur.
+Webhooks let applications notify one another in real-time when something has changed in one system and can be used to trigger an instance's flow so the change is reflected in the other system.
+
+A webhook consists of two main parts:
+
+- The **event** that causes the webhook to fire.
+  The event is usually a change to a record in an application.
+  For example, you may have a `contact.changed` or `report.created` event.
+- The **endpoint** where information about the event is sent.
+  The endpoint is a URL that you provide to the application that will receive the webhook.
+
+## Webhook request payloads
+
+When a webhook fires, the application where the event occured will send a POST request to the endpoint you provided.
+Most applications will send a JSON payload in the request body that contains information about the event that occurred (though some, notably Salesforce, send XML payloads).
+
+Some payloads contain the entire record that changed, while others contain only the record's ID and you are expected to fetch the record yourself.
+
+## Webhook security
+
+Webhooks are often secured using Hashed Message Authentication Codes (or HMAC) to ensure that the request is coming from the application that you expect.
+
+**For More Information**: [Secure Webhook Endpoints with HMAC](/docs/composer/builder/best-practices/secure-webhook-endpoints-hmac.mdx).
+
+## Responses to webhooks
+
+Some applications expect a paticular response to the webhook request to ensure that your application understood the request.
+Most application expect an HTTP 200 response with a special message in the response body that is usually derived from the webhook's payload or request header.
+Other apps simply expect an HTTP 200 response.
+
+## Webhooks in Builder
+
+In Builder, the **endpoint** of a webhook is generally an instance's flow's trigger URL.
+
+Your integration configures webhooks in the third-party app when the instance is deployed either using an [onInstanceDeploy](/docs/composer/builder/custom-components/writing-custom-components.mdx#instance-deploy-and-delete-events-for-triggers) function in a custom trigger, or by creating a "setup" flow that is [triggered on instance deploy](/docs/composer/builder/integration-triggers.mdx#instance-deploy-trigger).
+Some built-in components will subscribe to webhooks automatically when the instance is deployed.
+If you configure webhooks on instance deploy, you should also remove webhooks on instance delete using a similar process.
+
+If the third-party app expects a specific response to the webhook request, you can build a [custom trigger](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-triggers) that validates HMAC signatures and responds to the webhook request appropriately.
+Many build-in components already have triggers that handle this for you.

@@ -1,0 +1,27 @@
+---
+id: importIntegration
+title: importIntegration Mutation
+sidebar_label: importIntegration
+description: Learn how to use the importIntegration Mutation for Builder's API.
+---
+
+    Import an Integration.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_integrations]. 2. The signed-in User has any of the following permissions for any version of the object: [integration_edit]. 3. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations].
+
+## Input fields ([ImportIntegrationInput!](/docs/composer/builder/api/schema/input_object/ImportIntegrationInput.mdx))
+
+| Argument           | Type                                      | Description                                                                                                        |
+| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `customer`         | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)          | The Customer the Integration belongs to, if any. If this is NULL then the Integration belongs to the Organization. |
+| `definition`       | [`String!`](/docs/composer/builder/api/schema/scalar/String.mdx) | The YAML serialized definition of the Integration to import.                                                       |
+| `integrationId`    | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)          | The ID of the Integration being imported.                                                                          |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)  | A unique identifier for the client performing the mutation.                                                        |
+
+## Return fields ([ImportIntegrationPayload](/docs/composer/builder/api/schema/object/ImportIntegrationPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>integration</b> ([Integration](/docs/composer/builder/api/schema/object/Integration.mdx))

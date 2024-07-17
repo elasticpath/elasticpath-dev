@@ -1,0 +1,100 @@
+---
+id: IntegrationFlow
+title: IntegrationFlow Object
+sidebar_label: IntegrationFlow
+description: Learn how to use the IntegrationFlow Object for Builder's API.
+---
+
+Relates an Integration to a hierarchical structure of Component Actions
+that define the behavior of one of potentially several workflows that
+comprise the Integration.
+
+## Return fields
+
+###### <b>allowRemove</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the IntegrationFlow.
+
+###### <b>allowUpdate</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the IntegrationFlow.
+
+###### <b>description</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+Additional notes about the IntegrationFlow.
+
+###### <b>endpointSecurityType</b> ([IntegrationFlowEndpointSecurityType!](/docs/composer/builder/api/schema/enum/IntegrationFlowEndpointSecurityType.mdx))
+
+Specifies the security configuration to use for the endpoint of this IntegrationFlow.
+
+###### <b>id</b> ([ID!](/docs/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>isSynchronous</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether responses to Executions of this IntegrationFlow are synchronous. Responses are asynchronous by default.
+
+###### <b>lastExecutedAt</b> ([DateTime](/docs/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which this IntegrationFlow was most recently executed as part of an Instance.
+
+###### <b>name</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The displayed name of the IntegrationFlow.
+
+###### <b>organizationApiKeys</b> ([[String]](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The API key(s) to use for the endpoint of this IntegrationFlow when the endpoint security type is 'organization'.
+
+###### <b>retryDelayMinutes</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Specifies the delay in minutes between retry attempts of Executions of this IntegrationFlow.
+
+###### <b>retryMaxAttempts</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Specifies the maximum number of retry attempts that will be performed for Executions of this IntegrationFlow.
+
+###### <b>retryUniqueRequestIdField</b> ([Expression](/docs/composer/builder/api/schema/object/Expression.mdx))
+
+Specifies a reference to the data to use as a Unique Request ID for retry request cancellation.
+
+###### <b>retryUsesExponentialBackoff</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether to use exponential backoff in scheduling retries of Executions of this IntegrationFlow.
+
+###### <b>sortOrder</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+The order in which the IntegrationFlow will appear in the UI.
+
+###### <b>stableId</b> ([UUID](/docs/composer/builder/api/schema/scalar/UUID.mdx))
+
+Represents identity across different integration versions. Not intended to be used directly by end users, as the implementation may change at any time.
+
+###### <b>stableKey</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+A user-provided value that represents identity across multiple integration versions and across flow renames.
+
+###### <b>testContentType</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+Content type of the payload for testing this Integration Flow.
+
+###### <b>testExecutionResults</b> ([InstanceExecutionResultConnection!](/docs/composer/builder/api/schema/object/InstanceExecutionResultConnection.mdx))
+
+The Execution Results that were generated during testing.
+
+###### <b>testHeaders</b> ([JSONString](/docs/composer/builder/api/schema/scalar/JSONString.mdx))
+
+Headers of the request for testing this Integration Flow.
+
+###### <b>testPayload</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+Data payload for testing this Integration Flow.
+
+###### <b>testUrl</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The URL of the endpoint that triggers execution of the Integration Flow in the Test Runner.
+
+###### <b>trigger</b> ([IntegrationAction!](/docs/composer/builder/api/schema/object/IntegrationAction.mdx))
+
+The IntegrationAction that is the trigger for the Integration Flow.

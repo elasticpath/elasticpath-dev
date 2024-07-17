@@ -1,0 +1,21 @@
+---
+id: UpdateOAuth2ConnectionInput
+title: UpdateOAuth2ConnectionInput Input Object
+sidebar_label: UpdateOAuth2ConnectionInput
+description: Learn how to use the UpdateOAuth2ConnectionInput Input Object for Builder's API.
+---
+
+## Input fields
+
+| Argument                | Type                                         | Description                                                                                                  |
+| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `refreshAt`             | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx) | The timestamp at which the next refresh attempt will occur for the Connection.                               |
+| `accessToken`           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The OAuth2 access token to use for the Connection.                                                           |
+| `refreshToken`          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The OAuth2 refresh token to use for the Connection.                                                          |
+| `tokenType`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The type of OAuth2 token to use for the Connection.                                                          |
+| `expiresIn`             | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)           | The number of seconds until the token is expired and a refresh must occur for the Connection.                |
+| `context`               | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The context to use for the Connection. Completely replaces any existing value for context on the Connection. |
+| `status`                | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The status to use for the Connection.                                                                        |
+| `additionalTokenFields` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | Additional fields to store on the token.                                                                     |
+| `id`                    | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)             | The ID of the InstanceConfigVariable to mutate.                                                              |
+| `clientMutationId`      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | A unique identifier for the client performing the mutation.                                                  |

@@ -1,0 +1,42 @@
+---
+id: orgTotalUsageMetrics
+title: orgTotalUsageMetrics Query
+sidebar_label: orgTotalUsageMetrics
+description: Learn how to use the orgTotalUsageMetrics Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of OrgTotalUsageMetrics objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_view_utilization].
+
+## Input fields
+
+| Argument           | Type                                                                                   | Description                                                                                      |
+| ------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before`           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                               | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                               | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`            | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                                     | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`             | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                                     | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`           | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                                     |                                                                                                  |
+| `snapshotTime_Gte` | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                                           | Filter for objects where snapshotTime occurs on or after the specified value.                    |
+| `snapshotTime_Lte` | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                                           | Filter for objects where snapshotTime occurs on or before the specified value.                   |
+| `orderBy`          | [`OrgTotalUsageMetricsOrder`](/docs/composer/builder/api/schema/input_object/OrgTotalUsageMetricsOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`           | [`[OrgTotalUsageMetricsOrder]`](/docs/composer/builder/api/schema/input_object/OrgTotalUsageMetricsOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([OrgTotalUsageMetricsConnection!](/docs/composer/builder/api/schema/object/OrgTotalUsageMetricsConnection.mdx))
+
+###### <b>edges</b> ([[OrgTotalUsageMetricsEdge]!](/docs/composer/builder/api/schema/object/OrgTotalUsageMetricsEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[OrgTotalUsageMetrics]!](/docs/composer/builder/api/schema/object/OrgTotalUsageMetrics.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

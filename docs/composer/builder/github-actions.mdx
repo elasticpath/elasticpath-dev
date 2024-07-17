@@ -1,0 +1,306 @@
+---
+id: github-actions
+title: GitHub Actions
+description: Learn how to use GitHub Actions to publish custom components and integrations
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+If you've purchased multiple Builder tenants, you likely build your integrations and components in one tenant that you've designated for development, and then publish them to other tenants that you've designated for production.
+
+The Builder GitHub Actions allow you to automate the process of publishing your integrations and components that you've tested in your development tenant to your production tenant(s).
+
+<Vimeo video="962688223" />
+
+## Setting up authentication for GitHub Actions
+
+Builder's [integration-publisher](https://github.com/marketplace/actions/prismatic-integration-publisher) and [component-publisher](https://github.com/marketplace/actions/prismatic-component-publisher) GitHub Actions use the [prism](/docs/composer/builder/cli/cli-usage.mdx) CLI tool to publish integrations and components to Builder.
+To authenticate the GitHub Actions with your Builder tenant(s), you'll need to create a Builder refresh tokens for each tenant.
+
+To do that, install `prism` and log in, and then print your refresh token.
+This example shows how to create a refresh token for a tenant in the Australia region:
+
+```bash title="Create a Prism Refresh Token"
+$ export PRISMATIC_URL=https://app.ap-southeast-2.prismatic.io
+
+$ prism login
+Press any key to open prismatic.io in your default browser:
+Login complete!
+
+$ prism me:token --type refresh
+X-1111111111111111111111111111_00000000000000
+```
+
+### Set up GitHub secrets
+
+Take note of the URL of the region you're working with as well as your refresh token from above.
+Then, within your GitHub repo select **Settings** -> **Secrets and variables** -> **Actions**.
+Save a new secret with whatever name you'd like (if you have one region, maybe call it `PRISM_REFRESH_TOKEN`, or if you have multiple regions, you might call it `PRISM_REFRESH_TOKEN_AUSTRALIA`).
+
+<Screenshot
+  filename="github-actions/set-secrets.png"
+  alt="GitHub Actions secrets"
+/>
+
+The value of the secret should be the refresh token you generated above.
+
+It may be helpful to make the Builder URL a GitHub variable as well, especially if you have multiple regions.
+
+## Publishing components with GitHub Actions
+
+To publish a component automatically, use the [component-publisher](https://github.com/marketplace/actions/prismatic-component-publisher) GitHub Action.
+Your component should be checked out, dependencies installed, and built before running the action.
+
+In this example, we check out our repository, install NodeJS, install dependencies with `yarn` (though you may use `npm`, `pnpm`, `bun`, etc), and then we build the component (again with `yarn` in our case).
+This example also assumes that our component is located in the `components/acme-crm` directory - if your repository has the component at the root, you can remove the `working-directory` and `COMPONENT_PATH` lines:
+
+```yaml title=".github/workflows/publish-component.yml"
+name: Publish Acme Component
+
+# Only run when code lands on the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Build and publish Acme CRM component
+  acme_component:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4.0.2
+      - name: Install dependencies
+        run: yarn install
+      - name: Build Acme CRM Component
+        run: yarn build
+        working-directory: components/acme-crm
+      - name: Publish Acme CRM Component
+        uses: prismatic-io/component-publisher@v1.1
+        with:
+          COMPONENT_PATH: components/acme-crm
+          PRISMATIC_URL: ${{ vars.PRISMATIC_URL }}
+          PRISM_REFRESH_TOKEN: ${{ secrets.PRISM_REFRESH_TOKEN }}
+```
+
+In addition to the `COMPONENT_PATH`, `PRISMATIC_URL`, and `PRISM_REFRESH_TOKEN` variables, the `component-publisher` action also accepts:
+
+- **CUSTOMER_ID** (optional): The ID of the customer with which to associate the component. Use this if the component is for a specific customer..
+- **COMMENT** (optional): Any comments to associate with the component.
+- **SKIP_COMMIT_HASH_PUBLISH** (optional): Skip inclusion of commit hash in metadata. Default is `false`.
+- **SKIP_COMMIT_URL_PUBLISH** (optional): Skip inclusion of commit URL in metadata. Default is `false`.
+- **SKIP_REPO_URL_PUBLISH** (optional): Skip inclusion of repository URL in metadata. Default is `false`.
+- **SKIP_PULL_REQUEST_URL_PUBLISH** (optional): Skip inclusion of pull request URL in metadata. Default is `false`.
+
+When a `component-publisher` action completes, you will see a summary of the job in the **Actions** tab of your GitHub repository.
+
+<Screenshot
+  filename="github-actions/publish-component-action-results.png"
+  alt="GitHub Actions component publish results"
+  maxWidth="800px"
+/>
+
+:::note If no changes are detected, component publishing will be skipped
+Builder detects if the component has changed since the last publish.
+If no changes are detected, the component will not be published and instead of a summary screen you will see the message:
+
+```
+Component Not Published 🚫
+A component with this signature is already published.
+```
+
+:::
+
+### Linking components to pull requests
+
+When a component is published using the `component-publisher` action, the action will automatically include the commit hash, commit URL, repository URL, and pull request URL in the component metadata.
+When the component is displayed in the UI, these links will be available to integration builders.
+This is handy for tracking changes to your components.
+
+<Screenshot
+  filename="github-actions/components-github-link.png"
+  alt="Component github backlink"
+/>
+
+## Publishing integrations with GitHub actions
+
+To publish an integration automatically, use the [integration-publisher](https://github.com/marketplace/actions/prismatic-integration-publisher) GitHub Action.
+
+This action requires a couple of parameters in addition to `PRISMATIC_URL` and `PRISM_REFRESH_TOKEN`:
+
+- **PATH_TO_YML** (required): The path to the integration yml file that is to be published.
+  See our [docs](/docs/composer/builder/integrations.mdx#exporting-an-integration) for more information on how to export an integration.
+- **INTEGRATION_ID** (required): The ID of the integration to be published.
+  The integration must be [imported _manually_](/docs/composer/builder/integrations.mdx#importing-an-integration) once into the production tenant before it can be imported automatically with this action.
+  Take note of the ID of the integration when it is imported, which can be found in your browser's URL bar - the ID starts with `SW5`.
+- **SKIP_COMMIT_HASH_PUBLISH** (optional): Skip inclusion of commit hash in metadata. Default is `false`.
+- **SKIP_COMMIT_URL_PUBLISH** (optional): Skip inclusion of commit URL in metadata. Default is `false`.
+- **SKIP_REPO_URL_PUBLISH** (optional): Skip inclusion of repository URL in metadata. Default is `false`.
+- **SKIP_PULL_REQUEST_URL_PUBLISH** (optional): Skip inclusion of pull request URL in metadata. Default is `false`.
+
+:::tip Ensure you export your integration with "LATEST" component verisons
+If you've published a custom component 100 times in your dev tenant, and 2 times in your prod tenant, then `v100` in dev is equivalent to `v2` in prod.
+When you export your integration select "with LATEST".
+That will ensure that the integration importer will use the latest version of the component that is available in the tenant.
+:::
+
+```yaml title=".github/workflows/publish-integration.yml"
+name: Acme-Hooli Integration
+
+# Only run when code lands on the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Publish Acme-Hooli integration
+  acme_hooli_integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish Integration Component
+        uses: prismatic-io/integration-publisher@v1.1
+        with:
+          PATH_TO_YML: integrations/hooli-acme-integration.yml
+          PRISMATIC_URL: ${{ vars.PRISMATIC_URL }}
+          PRISM_REFRESH_TOKEN: ${{ secrets.PRISM_REFRESH_TOKEN }}
+          INTEGRATION_ID: ${{ vars.ACME_HOOLI_INTEGRATION_ID_US_PROD}}
+          MAKE_AVAILABLE_IN_MARKETPLACE: false
+```
+
+When a `integration-publisher` action completes, you will see a summary of the job in the **Actions** tab of your GitHub repository.
+
+<Screenshot
+  filename="github-actions/publish-integration-action-results.png"
+  alt="GitHub Actions integration publish results"
+/>
+
+### Linking integration versions to pull requests
+
+When an integration is published using the `integration-publisher` action, the action will automatically include the commit hash, commit URL, repository URL, and pull request URL in the integration metadata.
+When the integration version is displayed in the UI in the version history drawer, these links will be available to integration builders.
+
+<Screenshot
+  filename="github-actions/integrations-github-link.png"
+  alt="Integration github backlink"
+  maxWidth="800px"
+/>
+
+## Ensuring your components are published before your integrations
+
+If your integration depends on a custom component, you'll want to ensure that the component is published before the integration.
+You can do this by adding a `needs` key to your integration job that references the component job.
+
+In this example, we publish two components (`acme-crm` and `hooli-crm`) and one integration (`hooli-acme-integration`).
+We also leverage the [paths-filter](https://github.com/marketplace/actions/paths-changes-filter) action to only run publish steps when changes occurred in our component or integration.
+
+```yaml title=".github/workflows/acme-hooli-integration.yml" {76}
+name: Acme-Hooli Integration CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Build and publish Acme CRM component
+  acme_component:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: filter
+        uses: dorny/paths-filter@v3.0.2
+        with:
+          filters: |
+            acme_component:
+              - 'components/acme-crm/**'
+      - uses: actions/setup-node@v4.0.2
+        if: steps.filter.outputs.acme_component == 'true'
+      - name: Install dependencies
+        run: yarn install
+        if: steps.filter.outputs.acme_component == 'true'
+      - name: Build Acme CRM Component
+        run: yarn build
+        working-directory: components/acme-crm
+        if: steps.filter.outputs.acme_component == 'true'
+      - name: Publish Acme CRM Component
+        uses: prismatic-io/component-publisher@v1.1
+        with:
+          COMPONENT_PATH: components/acme-crm
+          PRISMATIC_URL: ${{ vars.PRISMATIC_URL }}
+          PRISM_REFRESH_TOKEN: ${{ secrets.PRISM_REFRESH_TOKEN }}
+        if: steps.filter.outputs.acme_component == 'true'
+      - name: Note that component didn't change
+        run: |
+          echo "No changes detected for Acme component" >> "$GITHUB_STEP_SUMMARY"
+        if: steps.filter.outputs.acme_component != 'true'
+
+  # Build and publish Hooli CRM component
+  hooli_component:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: filter
+        uses: dorny/paths-filter@v3.0.2
+        with:
+          filters: |
+            hooli_component:
+              - 'components/hooli-crm/**'
+      - uses: actions/setup-node@v4.0.2
+        if: steps.filter.outputs.hooli_component == 'true'
+      - name: Install dependencies
+        run: yarn install
+        if: steps.filter.outputs.hooli_component == 'true'
+      - name: Build Hooli CRM Component
+        run: yarn build
+        working-directory: components/hooli-crm
+        if: steps.filter.outputs.hooli_component == 'true'
+      - name: Publish Hooli CRM Component
+        uses: prismatic-io/component-publisher@v1.1
+        with:
+          COMPONENT_PATH: components/hooli-crm
+          PRISMATIC_URL: ${{ vars.PRISMATIC_URL }}
+          PRISM_REFRESH_TOKEN: ${{ secrets.PRISM_REFRESH_TOKEN }}
+        if: steps.filter.outputs.hooli_component == 'true'
+      - name: Note that component didn't change
+        run: |
+          echo "No changes detected for Hooli component" >> "$GITHUB_STEP_SUMMARY"
+        if: steps.filter.outputs.hooli_component != 'true'
+
+  # Publish Acme-Hooli integration after components are published
+  acme_hooli_integration:
+    runs-on: ubuntu-latest
+    needs: [acme_component, hooli_component]
+    steps:
+      - uses: actions/checkout@v4
+      - id: filter
+        uses: dorny/paths-filter@v3.0.2
+        with:
+          filters: |
+            integration_or_components:
+              - 'integrations/hooli-acme-integration.yml'
+              - 'components/**'
+      - name: Publish Integration Component
+        uses: prismatic-io/integration-publisher@v1.1
+        with:
+          PATH_TO_YML: integrations/hooli-acme-integration.yml
+          PRISMATIC_URL: ${{ vars.PRISMATIC_URL }}
+          PRISM_REFRESH_TOKEN: ${{ secrets.PRISM_REFRESH_TOKEN }}
+          INTEGRATION_ID: ${{ vars.ACME_HOOLI_INTEGRATION_ID_US_PROD}}
+          MAKE_AVAILABLE_IN_MARKETPLACE: false
+        if: steps.filter.outputs.integration_or_components == 'true'
+      - name: Note that integration didn't change
+        run: |
+          echo "No changes detected for integration or underlying components" >> "$GITHUB_STEP_SUMMARY"
+        if: steps.filter.outputs.integration_or_components != 'true'
+```
+
+GitHub Actions waits until the component jobs are complete before starting the integration job.
+
+<Screenshot
+  filename="github-actions/dependencies.png"
+  alt="GitHub Actions dependencies"
+  maxWidth="800px"
+/>

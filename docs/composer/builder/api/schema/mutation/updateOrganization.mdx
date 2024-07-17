@@ -1,0 +1,30 @@
+---
+id: updateOrganization
+title: updateOrganization Mutation
+sidebar_label: updateOrganization
+description: Learn how to use the updateOrganization Mutation for Builder's API.
+---
+
+    Updates the specified Organization object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the object: [org_admin_users].
+
+## Input fields ([UpdateOrganizationInput!](/docs/composer/builder/api/schema/input_object/UpdateOrganizationInput.mdx))
+
+| Argument           | Type                                       | Description                                                 |
+| ------------------ | ------------------------------------------ | ----------------------------------------------------------- |
+| `name`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)   | The unique name of the Organization.                        |
+| `marketplaceName`  | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)   | Display name of the Organization's Marketplace.             |
+| `featureFlags`     | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)   |                                                             |
+| `labels`           | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx) | The labels that are associated with the object.             |
+| `avatarUrl`        | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)   | The URL for the avatar image.                               |
+| `id`               | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)           | The ID of the Organization to mutate.                       |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)   | A unique identifier for the client performing the mutation. |
+
+## Return fields ([UpdateOrganizationPayload](/docs/composer/builder/api/schema/object/UpdateOrganizationPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>organization</b> ([Organization](/docs/composer/builder/api/schema/object/Organization.mdx))

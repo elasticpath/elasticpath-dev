@@ -1,0 +1,201 @@
+---
+id: external-log-streaming
+title: Stream Logs to an External Provider
+description: Learn how to stream your Builder logs to external log providers
+---
+
+import Vimeo from "@site/src/components/vimeo";
+
+<Vimeo video="894997344" title="Streaming Builder Logs to DataDog" />
+
+## External log streaming
+
+Organizations on an [enterprise plan](/docs/composer/builder/organization.mdx#managing-billing) can configure Builder logs to stream to an external logging service (like [DataDog](https://www.datadoghq.com/) or [New Relic](https://newrelic.com/)), or to your own proprietary logging system.
+Logging services generally have robust APIs that accept HTTP POST requests with JSON payloads containing log messages.
+All you need to configure in Builder is where to send the logs, what format the log data should take, and specify any headers that your logging service requires (like an authorization header or API key).
+
+To configure log streaming to an external service, open **Settings** on the left-hand sidebar, and then select the **Log Streams** tab.
+Create a new log stream by clicking **+ Log stream**.
+
+<Screenshot
+  filename="logging/add-log-stream.png"
+  maxWidth="800px"
+  alt="Add log stream in Builder app"
+/>
+
+Enter the URL the logs should be sent to, and add any headers that your logging service requires (many require an API key or authorization header).
+
+<Screenshot
+  filename="logging/url-and-headers.png"
+  maxWidth="700px"
+  alt="Configure log streaming to external service in Builder app"
+/>
+
+Next, create a log message template.
+This template defines the shape of the message that will be sent to your logging service.
+You can add placeholders for the log message, as well as information about the instance, customer, flow and step that generated the message.
+
+<Screenshot
+  filename="logging/sample-template.png"
+  maxWidth="700px"
+  alt="Create log message template in Builder app"
+/>
+
+Your template can include the following placeholders, which are substituted when a message is sent to the external logging system:
+
+| Placeholder                    | Description                                                                         | Example                                    |
+| ------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------ |
+| `{{ timestamp }}`              | Timestamp of the message in milliseconds since epoch                                | 1637087683123                              |
+| `{{ timestamp_s }}`            | Timestamp of the message in seconds since epoch                                     | 1637087683                                 |
+| `{{ timestamp_ns }}`           | Timestamp of the message in nanoseconds since epoch                                 | 1637087683123000000                        |
+| `{{ timestamp_iso }}`          | Timestamp of the message in ISO format                                              | "2021-11-16T18:34:43.123Z"                 |
+| `{{ message }}`                | The full message body                                                               | "This is a test"                           |
+| `{{ severity }}`               | Name of the log level (debug, info, warn, error, metric)                            | "warn"                                     |
+| `{{ severityNumber }}`         | The [Syslog severity level](https://en.wikipedia.org/wiki/Syslog#Severity_level)    | 4                                          |
+| `{{ instanceId }}`             | The global ID that corresponds to the instance of the integration                   | "SW5zdEXAMPLE"                             |
+| `{{ instanceName }}`           | Name of the instance being executed                                                 | "Update Inventory"                         |
+| `{{ flowConfigId }}`           | The global ID of the instance's configured flow                                     | "SW5zdEXAMPLE"                             |
+| `{{ integrationId }}`          | The global ID of the version of the integration that is deployed                    | "SW5zdEXAMPLE"                             |
+| `{{ integrationName }}`        | Name of the integration being executed                                              | "Update Inventory"                         |
+| `{{ flowId }}`                 | The global ID of the flow of the deployed integration                               | "SW5zdEXAMPLE"                             |
+| `{{ flowName }}`               | Name of the integration flow being executed                                         | "Remove inventory after order fulfillment" |
+| `{{ stepName }}`               | Name of the step being executed, if available                                       | "Loop over order items"                    |
+| `{{ isTestExecution }}`        | Is this log from a test in the integration designer?                                | true                                       |
+| `{{ executionId }}`            | The global id that corresponds to the execution                                     | "SW5zdEXAMPLE"                             |
+| `{{ customerExternalId }}`     | The [external ID](/docs/composer/builder/customers.mdx#customer-external-ids) assigned to a customer       | "abc-123"                                  |
+| `{{ customerName }}`           | The name of the customer associated with the instance                               | "Acme Corp"                                |
+| `{{ executionErrorStepName }}` | Name of the step that resulted in an execution error                                | "Loop over order items"                    |
+| `{{ durationMS }}`             | Duration in milliseconds of the associated step or overall execution                | "1000"                                     |
+| `{{ succeeded }}`              | Whether the associated step or execution succeeded                                  | "true"                                     |
+| `{{ errorMessage }}`           | Error message for the associated step or execution                                  | "This is an error"                         |
+| `{{ retryAttemptNumber }}`     | The number of retry attempts of the associated step or execution                    | "0"                                        |
+| `{{ retryForExecutionId }}`    | The global id associated with the original execution in the case of execution retry | "SW5zdEXAMPLE"                             |
+
+This template works well for many logging platforms, but may need to be modified to fit your needs:
+
+#### Default message template
+
+```js
+{
+  "message": {{ message }},
+  "timestamp": {{ timestamp }},
+  "severity": {{ severity }},
+  "service": "Builder",
+  "instance": {{ instanceName }},
+  "customer": {{ customerExternalId }},
+  "integration": {{ integrationName }},
+  "isTestExecution": {{ isTestExecution }},
+  "flow": {{ flowName }},
+  "step": {{ stepName }},
+  "executionid": {{ executionId }},
+  "instanceId": {{ instanceId }},
+  "flowConfigId": {{ flowConfigId }},
+  "integrationId": {{ integrationId }},
+  "flowId": {{ flowId }},
+  "executionErrorStepName": {{ executionErrorStepName }},
+  "duration": {{ durationMS }},
+  "succeeded": {{ succeeded }},
+  "errorMessage": {{ errorMessage }},
+  "retryAttempt": {{ retryAttemptNumber }},
+  "retryForExecutionId": {{ retryForExecutionId }}
+}
+```
+
+### Testing log streaming
+
+Once you have saved it, you can test your external logging configuration by clicking the **Test payload** button on the top right of a log stream screen.
+This will send a test log message to your external logging system, substituting test values like "Test message" and "Test integration" into your template.
+
+**Note**: If your external logging provider uses CORS to prohibit logs from being sent directly from a web browser, you may not be able to use the **Test payload** button.
+You may see a CORS error in your web browser's developer console.
+In that case, save your configuration and run a test of any integration - logs from your execution should flow to your external logging provider.
+
+### Streaming logs to DataDog
+
+[DataDog](https://www.datadoghq.com/) is an application monitoring platform that includes a logging service.
+To stream logs to DataDog, you will first need to [generate an API key](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token).
+Make sure you generate an API key (not an application key).
+
+Next, enter **https<nolink />://http-intake.logs.datadoghq.com/api/v2/logs** as your endpoint.
+Add a header with a name of `DD-API-KEY` and enter the API key that you generated.
+
+<Screenshot
+  filename="logging/datadog-filled-in.png"
+  maxWidth="700px"
+  alt="Configure DataDog log streaming in Builder app"
+/>
+
+The default message template ([above](#default-message-template)) works well for DataDog, but you can modify it to adjust attribute names, etc, as you see fit.
+
+Once configured, logs from all of your customers' enabled instances, and all of your test runs within the integration designer will be streamed to DataDog:
+
+<Screenshot filename="logging/datadog.png" alt="List of logs in DataDog app" />
+
+:::caution Testing Payloads with DataDog
+For security reasons, DataDog prohibits sending logs directly from your web browser when using an API key.
+Because of that, the **TEST PAYLOAD** button does not work with DataDog.
+Rest assured, you should start seeing instance logs in DataDog as long as your API key is valid.
+:::
+
+### Streaming logs to New Relic
+
+[New Relic](https://newrelic.com/) is an application monitoring platform that includes a logging service.
+To stream logs to New Relic, you will first need to [generate an API key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
+Make sure you create an **INGEST - LICENSE** key.
+
+Now, create a new external log stream.
+Enter **https<nolink />://log-api.newrelic.com/log/v1** for the endpoint if your New Relic data is hosted in the US, or **https<nolink />://log-api.eu.newrelic.com/log/v1** if it is hosted in the EU.
+Under headers, create a header named `X-License-Key` and enter the license key you generated above.
+**Note**: you're given the option to copy your "key" or "key ID" - you want to "Copy key".
+
+<Screenshot
+  filename="logging/new-relic-filled-in.png"
+  maxWidth="700px"
+  alt="Configure New Relic log streaming in Builder app"
+/>
+
+The default message template ([above](#default-message-template)) works well for New Relic, but you can modify it to adjust attribute names, etc, as you see fit.
+
+Once configured, logs from all of your customers' enabled instances, and all of your test runs within the integration designer will be streamed to New Relic:
+
+<Screenshot
+  filename="logging/newrelic.png"
+  alt="List of logs in New Relic app"
+/>
+
+### Logging metrics to an external service
+
+In addition to log lines, you can use [`context.logger`](/docs/composer/builder/custom-components/writing-custom-components.mdx#logger-object) to write out objects containing metrics that you wish to send to an external streaming service.
+
+For example, a code component can contain a line like this:
+
+```js
+logger.metric({
+  inventoryItem: {
+    id: "123",
+    price: 10.55,
+    quantity: 3,
+  },
+});
+```
+
+Your external streaming configuration can then extract attributes from the object passed to `metric()`.
+For example, your configuration could read:
+
+```js
+{
+  "message": {{ message }},
+  "timestamp": {{ timestamp }},
+  "severity": {{ severity }},
+  "itemId": {{ inventoryItem.id }},
+  "itemPrice": {{ inventoryItem.price }},
+  "itemQuantity": {{ inventoryItem.quantity }}
+}
+```
+
+Any time a metric line that contains `inventoryItem.id`, etc. is encountered, those additional attributes will be added to the payload that is sent to the logging system.
+Messages that don't contain `inventoryItem.id` simply won't pass an `itemId` to your logging service.
+
+:::info
+When `logger.metric()` is called, `{{ message }}` is the [stringified](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) JSON version of the object, and `{{ level }}` is set to `99`.
+:::

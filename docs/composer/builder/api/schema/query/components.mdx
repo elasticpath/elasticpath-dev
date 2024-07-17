@@ -1,0 +1,68 @@
+---
+id: components
+title: components Query
+sidebar_label: components
+description: Learn how to use the components Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of Component objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The object's 'public' attribute equals: True. 2. The signed-in User has any of the following permissions for the associated Organization: [org_admin_component_permissions, org_manage_components, org_view_components]. 3. The signed-in User has any of the following permissions for any version of the object: [component_view, component_edit, component_remove, component_admin_permissions, component_publish_new_version]. 4. The signed-in User has any of the following permissions for the associated Customer: [customer_view_org_components].
+
+## Input fields
+
+| Argument                                     | Type                                                             | Description                                                                                        |
+| -------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `allVersions`                                | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return all versions instead of only the latest                                                     |
+| `hasTriggers`                                | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return only Components that have Triggers                                                          |
+| `hasCommonTriggers`                          | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return only Components that have commonly-used Triggers                                            |
+| `hasActions`                                 | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return only Components that have Actions                                                           |
+| `hasConnections`                             | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return only Components that have Connections                                                       |
+| `hasConnectionTemplates`                     | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return only Components that have at least one Connection that's templated                          |
+| `hasDataSources`                             | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Return only Components that have Data Sources                                                      |
+| `hasDataSourcesOfType`                       | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Return only Components that have Data Sources of the specified type.                               |
+| `filterQuery`                                | [`JSONString`](/docs/composer/builder/api/schema/scalar/JSONString.mdx)                 | JSON structure defining a conditional logic expression tree to use for including specific Actions. |
+| `includeComponentsForCodeNativeIntegrations` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Include Components that are for Code Native Integrations in addition to normal Components.         |
+| `before`                                     | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Specifies a cursor for use in combination with `last` to implement backward pagination.            |
+| `after`                                      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Specifies a cursor for use in combination with `first` to implement forward pagination.            |
+| `first`                                      | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                               | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.    |
+| `last`                                       | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                               | A non-negative integer that specifies to return at most `last` edges before the `before` cursor.   |
+| `offset`                                     | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                               |                                                                                                    |
+| `label_Icontains`                            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where label contains the specified value (case insensitive).                    |
+| `description_Icontains`                      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where description contains the specified value (case insensitive).              |
+| `key`                                        | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where key matches the specified value.                                          |
+| `key_Icontains`                              | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where key contains the specified value (case insensitive).                      |
+| `key_In`                                     | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where key is contained in the list of specified values.                         |
+| `category`                                   | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where category matches the specified value.                                     |
+| `searchTerms_Icontains`                      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where searchTerms contains the specified value (case insensitive).              |
+| `searchTerms_Fulltext`                       | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where searchTerms.fulltext matches the specified value.                         |
+| `public`                                     | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Filter for objects where public matches the specified value.                                       |
+| `customer`                                   | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                 | Filter for objects where customer matches the specified ID.                                        |
+| `customer_Isnull`                            | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Filter for objects where customer is NULL.                                                         |
+| `versionCreatedAt_Gte`                       | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                     | Filter for objects where versionCreatedAt occurs on or after the specified value.                  |
+| `versionCreatedAt_Lte`                       | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                     | Filter for objects where versionCreatedAt occurs on or before the specified value.                 |
+| `versionSequenceId`                          | [`UUID`](/docs/composer/builder/api/schema/scalar/UUID.mdx)                             | Filter for objects where versionSequenceId matches the specified value.                            |
+| `versionNumber`                              | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                               | Filter for objects where versionNumber matches the specified value.                                |
+| `versionIsAvailable`                         | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                       | Filter for objects where versionIsAvailable matches the specified value.                           |
+| `labels_Icontains`                           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where labels contains the specified value (case insensitive).                   |
+| `labels_Contains`                            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                         | Filter for objects where labels contains the specified value (case sensitive).                     |
+| `orderBy`                                    | [`ComponentOrder`](/docs/composer/builder/api/schema/input_object/ComponentOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                     |
+| `sortBy`                                     | [`[ComponentOrder]`](/docs/composer/builder/api/schema/input_object/ComponentOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                               |
+
+## Return fields ([ComponentConnection!](/docs/composer/builder/api/schema/object/ComponentConnection.mdx))
+
+###### <b>edges</b> ([[ComponentEdge]!](/docs/composer/builder/api/schema/object/ComponentEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[Component]!](/docs/composer/builder/api/schema/object/Component.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

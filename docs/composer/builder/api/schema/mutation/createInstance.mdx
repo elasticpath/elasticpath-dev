@@ -1,0 +1,34 @@
+---
+id: createInstance
+title: createInstance Mutation
+sidebar_label: createInstance
+description: Learn how to use the createInstance Mutation for Builder's API.
+---
+
+    Creates a new Instance object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_instances]. 2. The signed-in User has any of the following permissions for the access function context object 'customer': [customer_admin_manage_instances, customer_manage_marketplace_integrations] when 'customer' is provided in the access function context.
+
+## Input fields ([CreateInstanceInput!](/docs/composer/builder/api/schema/input_object/CreateInstanceInput.mdx))
+
+| Argument              | Type                                                                                       | Description                                                                          |
+| --------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `description`         | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | Additional notes about the Instance.                                                 |
+| `customer`            | [`ID!`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                          | The Customer for which the Instance is deployed.                                     |
+| `integration`         | [`ID!`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                          | The Integration that has been deployed for the Instance.                             |
+| `name`                | [`String!`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                  | The name of the Instance.                                                            |
+| `logsDisabled`        | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Specifies whether to disable the creation of logs during Instance execution.         |
+| `stepResultsDisabled` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Specifies whether to disable the creation of step results during Instance execution. |
+| `labels`              | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                 | The labels that are associated with the object.                                      |
+| `configVariables`     | [`[InputInstanceConfigVariable]`](/docs/composer/builder/api/schema/input_object/InputInstanceConfigVariable.mdx) | Config variable values that are associated with the Instance.                        |
+| `flowConfigs`         | [`[InputInstanceFlowConfig]`](/docs/composer/builder/api/schema/input_object/InputInstanceFlowConfig.mdx)         | Configuration data for each IntegrationFlow that is associated with the Instance.    |
+| `configMode`          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | Desired configuration mode.                                                          |
+| `clientMutationId`    | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | A unique identifier for the client performing the mutation.                          |
+
+## Return fields ([CreateInstancePayload](/docs/composer/builder/api/schema/object/CreateInstancePayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>instance</b> ([Instance](/docs/composer/builder/api/schema/object/Instance.mdx))

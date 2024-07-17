@@ -189,7 +189,7 @@ The output can be used as input for the next step by referencing `codeComponentS
 
 ![Use output for prior step for input to new step](/assets/return-values.png)
 
-To see an example of returning more complex data structures, and a good example use case for a code component, see the [Using a Code Component to Transform Data](/docs/composer/builder/quickstarts/code-component/code-component-to-transform-data) quickstart.
+To see an example of returning more complex data structures, and a good example use case for a code component, see the [Using a Code Component to Transform Data](/docs/composer/builder/docs/composer/builder/quickstarts/code-component/code-component-to-transform-data) quickstart.
 
 ### Returning binary data from a code component
 

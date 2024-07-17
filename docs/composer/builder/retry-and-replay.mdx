@@ -1,0 +1,90 @@
+---
+id: retry-and-replay
+title: Execution Retry & Replay
+description: Retry failed executions automatically and replay them manually
+---
+
+import GraphqlExample from "@site/src/components/graphql-example";
+
+Not all systems are accessible all the time. So, when it makes sense, you should [build a retry function](/docs/composer/builder/building-integrations.mdx#integration-retry-configuration) into an integration. Retry allows the system to automatically resend the payload to the destination system every few minutes or even according to a geometric progression (retry in 2 minutes, 4 minutes after that, 8 minutes after that, etc.) Setting the retry in the integration ensures that your integration is still likely to run successfully if the destination system or something in the integration suffers a temporary outage.
+
+Using the retry function also ensures that you are not getting your devs involved with solving an integration issue until you have determined that the problem is more severe than a brief system outage. Including the retry function in integrations prevents many transient issues from being brought to support.
+
+If, however, the error persists (for example, the destination system appears to be up, but the integration keeps throwing some type of internal server error message), you may need to move up [from the retry function to the replay function](/docs/composer/builder/managing-instances.mdx#instance-execution-retry-and-replay).
+
+Unlike retry, replay is not something that can be done automatically within an integration. Instead, it is a function you manually invoke by clicking the replay button in the UI for that instance. Doing this runs the full integration with the same payload as before while allowing you to debug by viewing all the steps in the integration as they execute to determine precisely what is working and where things error out.
+
+## Replaying failed executions programmatically
+
+Errors are almost inevitable in software integrations.
+
+- A third-party API might be unavailable when your instance tries to access it.
+  That might be remedied through instance [retry](/docs/composer/builder/managing-instances.mdx#instance-execution-retry-and-replay), but retry doesn't handle the scenario that the API is down for hours or days at a time.
+- A third-party might start sending you data in a new format that you didn't expect.
+- Your instance may encounter some other edge-case that it doesn't handle gracefully.
+
+Whatever the reason for the error, it's handy to be able to re-run your instance with the exact same incoming data when the third-party API is back up and running, or after you've fixed your integration to better handle the data coming in.
+
+[Replay](/docs/composer/builder/managing-instances.mdx#instance-execution-retry-and-replay) allows you to run a previous execution's data through your instance again, and it's easy to do through [Builder's GraphQL API](/docs/composer/builder/api/api-overview.mdx).
+
+### Querying for failed executions
+
+First, let's query an instance for failed executions.
+You can find an instance's ID in your browser's URL bar when you view the instance, or you can query for it via the API.
+
+We'll search only for executions that have `error_Isnull: false` (in other words, it had an error).
+We also only want _original_ executions (and not replays), so we'll include `replayForExecution_Isnull: true`.
+Finally, let's fetch `replays` for those original executions that have since succeeded with `replays(error_Isnull: true)`:
+
+<GraphqlExample example="findFailedExecutions" />
+
+If we have multiple pages of executions (more than 100), we can use the `endCursor` we get back as the `startCursor` to get the next page of results.
+
+The GraphQL API will respond with any failed executions for that instance along with any replays that have succeeded since the original execution failed:
+
+```json
+{
+  "data": {
+    "instance": {
+      "executionResults": {
+        "nodes": [
+          {
+            "id": "SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6NjBkZDliOWMtOGIyOS00NDQyLWFkNDctMjZkZTg5Y2NlNWM5",
+            "startedAt": "2023-07-26T17:18:15.886806+00:00",
+            "replays": {
+              "nodes": []
+            },
+            "error": "Unable to connect to API"
+          },
+          {
+            "id": "SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6MmYxNTcxZTktNDVmOS00Mzc2LTg2OGUtMTJkNjZkNDhiNzRl",
+            "startedAt": "2023-07-26T17:18:13.800335+00:00",
+            "replays": {
+              "nodes": [
+                {
+                  "id": "SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6N2U1MDBkZTgtY2ZmYS00NWY5LWI0OGYtNGU1YjU2YWMzMzFh",
+                  "startedAt": "2023-07-26T17:28:10.003443+00:00"
+                }
+              ]
+            },
+            "error": "Unable to connect to API"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### Replaying failed executions programmatically
+
+Now, with the IDs of the executions that failed in hand, we can issue a [replayExecution](/docs/composer/builder/api/schema/mutation/replayExecution.mdx) mutation for each one that does not have a replay that succeeded:
+
+<GraphqlExample example="replayFailedExecution" />
+
+That mutation will return the ID of the new execution that occurs.
+You can the query the API with that new execution to verify that it runs successfully, or do further debugging if it does not.
+
+For an example script that wraps the above GraphQL calls, see our [examples GitHub repo](https://github.com/prismatic-io/examples/blob/main/api/replay-failed-executions/queries.ts).
+
+For more information on the Builder API, see the [API docs](/docs/composer/builder/api/api-overview.mdx).

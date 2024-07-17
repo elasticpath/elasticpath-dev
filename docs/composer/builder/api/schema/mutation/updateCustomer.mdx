@@ -1,0 +1,35 @@
+---
+id: updateCustomer
+title: updateCustomer Mutation
+sidebar_label: updateCustomer
+description: Learn how to use the updateCustomer Mutation for Builder's API.
+---
+
+    Updates the specified Customer object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_customers, org_crud_customers]. 2. The signed-in User has any of the following permissions for the object: [customer_edit].
+
+## Input fields ([UpdateCustomerInput!](/docs/composer/builder/api/schema/input_object/UpdateCustomerInput.mdx))
+
+| Argument                | Type                                                                         | Description                                                                          |
+| ----------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `name`                  | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                     | The name of the Customer, which must be unique within the scope of its Organization. |
+| `description`           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                     | Additional notes about the Customer.                                                 |
+| `allowEmbeddedDesigner` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                   | Specifies whether this Customer can use the Embedded Designer.                       |
+| `labels`                | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx)                                   | The labels that are associated with the object.                                      |
+| `avatarUrl`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                     | The URL for the avatar image.                                                        |
+| `externalId`            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                     | Allows for mapping an external entity to a Builder record.                         |
+| `starred`               | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                   | Indicates whether the record is starred by the signed-in User.                       |
+| `addAttachment`         | [`AttachmentInput`](/docs/composer/builder/api/schema/input_object/AttachmentInput.mdx)             | Adds the specified Attachment to the object.                                         |
+| `renameAttachment`      | [`AttachmentRenameInput`](/docs/composer/builder/api/schema/input_object/AttachmentRenameInput.mdx) | Removes the specified Attachment from the object.                                    |
+| `removeAttachment`      | [`AttachmentInput`](/docs/composer/builder/api/schema/input_object/AttachmentInput.mdx)             | Renames the specified Attachment on the object.                                      |
+| `id`                    | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                             | The ID of the Customer to mutate.                                                    |
+| `clientMutationId`      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                     | A unique identifier for the client performing the mutation.                          |
+
+## Return fields ([UpdateCustomerPayload](/docs/composer/builder/api/schema/object/UpdateCustomerPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>customer</b> ([Customer](/docs/composer/builder/api/schema/object/Customer.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))

@@ -1,0 +1,30 @@
+---
+id: uploadMedia
+title: uploadMedia Query
+sidebar_label: uploadMedia
+description: Learn how to use the uploadMedia Query for Builder's API.
+---
+
+Returns a pre-signed URL for uploading the specified media file.
+
+## Input fields
+
+| Argument    | Type                                          | Description                                                  |
+| ----------- | --------------------------------------------- | ------------------------------------------------------------ |
+| `objectId`  | [`ID!`](/docs/composer/builder/api/schema/scalar/ID.mdx)             | The ID of the object with which to associate the media file. |
+| `fileName`  | [`String!`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The name of the media file.                                  |
+| `mediaType` | [`MediaType!`](/docs/composer/builder/api/schema/enum/MediaType.mdx) | The relationship of the media file to the object.            |
+
+## Return fields ([UploadMedia!](/docs/composer/builder/api/schema/object/UploadMedia.mdx))
+
+###### <b>error</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+Contains any error message that occurred as part of generating the pre-signed URL.
+
+###### <b>objectUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The URL where the file is located after being uploaded.
+
+###### <b>uploadUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The pre-signed URL to which the file should be uploaded.

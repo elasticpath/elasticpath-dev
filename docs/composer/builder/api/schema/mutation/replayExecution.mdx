@@ -1,0 +1,25 @@
+---
+id: replayExecution
+title: replayExecution Mutation
+sidebar_label: replayExecution
+description: Learn how to use the replayExecution Mutation for Builder's API.
+---
+
+    Replays an existing instance execution.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_edit]. 3. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_manage_instances, customer_manage_marketplace_integrations]. 4. The signed-in User has any of the following permissions for any version of the related integration where the object is related to a 'system' instance: [integration_edit, integration_admin_permissions]. 5. The signed-in User has any of the following permissions for the object's 'instance_Integration_Customer' attribute: [customer_admin_manage_instances, customer_admin_integration_permissions, customer_manage_integrations].
+
+## Input fields ([ReplayExecutionInput!](/docs/composer/builder/api/schema/input_object/ReplayExecutionInput.mdx))
+
+| Argument           | Type                                     | Description                                                 |
+| ------------------ | ---------------------------------------- | ----------------------------------------------------------- |
+| `id`               | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the InstanceExecutionResult to mutate.            |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation. |
+
+## Return fields ([ReplayExecutionPayload](/docs/composer/builder/api/schema/object/ReplayExecutionPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>instanceExecutionResult</b> ([InstanceExecutionResult](/docs/composer/builder/api/schema/object/InstanceExecutionResult.mdx))

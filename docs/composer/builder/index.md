@@ -30,7 +30,7 @@ You can build the following types of integrations with Builder.
 
 You can assemble an integration by tying together multiple components' actions. That integration can be tested. Once you are satisfied with your integration, it can be published, and instances of the integration can be configured and deployed to Integrations Hub where it can be activated.
 
-Instances are deployed using your specific config variables.
+Instances are deployed using your specific config variables.sd
 
 ## Logging, Monitoring, and Alerting
 

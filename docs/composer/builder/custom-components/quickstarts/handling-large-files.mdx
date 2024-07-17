@@ -1,0 +1,154 @@
+---
+id: handling-large-files
+title: Handling Large Files
+description: Learn how to handle moving large files between systems using Composer
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import GraphqlExample from "@site/src/components/graphql-example";
+
+If your integration moves large files between your app and a partner app, you may run into a few runner limitations:
+
+- The payload you can send to a webhook URL is limited to about 6MB
+- Your webhook request must complete within 30 seconds
+- Your flow can run for a maximum of 15 minutes
+- The runner is allocated 1GB of RAM
+
+A full list of runner limits can be found [here](/docs/composer/builder/integration-runner-environment-limits.mdx).
+When sending large files through a flow, those files may exceed upload size and time limits, or may require more memory that is available (resulting in an out-of-memory error).
+
+There are a few strategies you can use to handle large files in your Composer integration.
+
+## Upload files directly to a file storage system
+
+If you and your partner app both use a file storage system like Amazon S3 or Dropbox, you can upload files directly to that system.
+This can be done using the file storage system's API, where you can request a temporary or presigned URL that allows you to upload a file directly from your app to the file storage system.
+
+### Upload files directly to Amazon S3
+
+To upload a file directly to your customer's Amazon S3 bucket, you can use the [Generate Presigned URL](/docs/composer/builder/builder-components/aws-s3.mdx#generate-presigned-url) action from the Amazon S3 component.
+
+<Screenshot
+  filename="quickstarts/handling-large-files/generate-presigned-url-s3.png"
+  alt="Screenshot of generating a presigned URL from S3"
+  maxWidth="800px"
+/>
+
+If you'd like your flow to return a presigned upload URL whenever it is invoked:
+
+1. Ensure that the trigger has a **Response Type** of **Synchronous**
+1. Ensure that the **Generate Presigned URL** action is the last action of your flow.
+
+If those things are true, when your app calls an instance's flow's webhook URL, it will receive a response with the results of the **Generate Presigned URL** action (the presigned URL as a string) as the body of the response.
+You can use the returned presigned URL to upload a file directly to Amazon S3 through an HTTP PUT request:
+
+```bash
+# Fetch the presigned URL from the webhook response and remove double-quotes
+$ curl 'https://hooks.dev.prismatic-dev.io/trigger/SW5zdEXAMPLE==' --location | tr -d '"'
+
+https://example-bucket.s3.us-west-2.amazonaws.com/my-file.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAIOSFODNN7EXAMPLE%2F20240221%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240221T191715Z&X-Amz-Expires=3600&X-Amz-Signature=82a604673c3fffc2671b2dd7c7a86036af67693509ba0d01f172ef0b1f84fb20&X-Amz-SignedHeaders=host&x-id=PutObject
+
+# Use the presigned URL to upload a file directly to Amazon S3
+$ curl --request PUT \
+    --upload-file ./my-example-file.png \
+    https://example-bucket.s3.us-west-2.amazonaws.com/my-file.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAIOSFODNN7EXAMPLE%2F20240221%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240221T191715Z&X-Amz-Expires=3600&X-Amz-Signature=82a604673c3fffc2671b2dd7c7a86036af67693509ba0d01f172ef0b1f84fb20&X-Amz-SignedHeaders=host&x-id=PutObject
+```
+
+### Upload files directly to Dropbox
+
+Similar to presigned URLs for Amazon S3, you can use the [Generate Temporary Upload Link](/docs/composer/builder/builder-components/dropbox.mdx#generate-temporary-upload-link) action from the Dropbox component to upload a file directly to Dropbox.
+
+<Screenshot
+  filename="quickstarts/handling-large-files/generate-temporary-upload-link-dropbox.png"
+  alt="Screenshot of generating a presigned URL from Dropbox"
+/>
+
+Provided that you have a synchronous trigger and the **Generate Temporary Upload Link** action is the last action in your flow, the presigned URL will be returned to the caller of your webhook.
+
+```bash
+# Invoke a flow that generates a presigned URL, and parse the URL from the JSON response
+$ curl 'https://hooks.dev.prismatic-dev.io/trigger/SW5zdEXAMPLE==' --location | jq -r .result.link
+
+https://content.dropboxapi.com/apitul/1/ExAmPlE
+
+# Use the presigned URL to upload a file directly to Dropbox
+$ curl --request POST \
+    --upload-file ./my-example-file.png \
+    --headers "content-type: application/octet-stream" \
+     https://content.dropboxapi.com/apitul/1/ExAmPlE
+```
+
+Note that Dropbox expects a `POST` request (unlike Amazon S3, which expects a `PUT` request) and requires a `content-type` header with a value of `application/octet-stream`.
+
+### Query an instance's connection config variable and upload a file directly to a third-party
+
+If you need to upload a file to a third-party service that does not support presigned upload URLs, but your customer provided connection information for the third-party service when they configured an instance of your integration, you can query the Composer API for the instance's connection config variables and use those credentials to upload the file directly to the third-party service.
+
+To query an instance's config variables, you can query for an `instance` object's `configVariables` property - particularly their `inputs.nodes.value` fields:
+
+<GraphqlExample example="largeFilesQueryInstanceConfigVariables" />
+
+This query will return a result like this:
+
+```json
+{
+  "data": {
+    "instance": {
+      "configVariables": {
+        "nodes": [
+          {
+            "id": "SW5zdGFuY2VDb25maWdWYXJpYWJsZTo3MzkzYjU0YS1kNWMxLTQzYjEtOTM3ZS1iNTM0ZDhiYTA1NzA=",
+            "requiredConfigVariable": {
+              "key": "My String Config Variable"
+            },
+            "meta": null,
+            "inputs": {
+              "nodes": []
+            }
+          },
+          {
+            "id": "SW5zdGFuY2VDb25maWdWYXJpYWJsZTo1OTY1ZjEwMy0xNGIyLTRmZWItYmI4My1hZWI4NmViNmRhYmI=",
+            "requiredConfigVariable": {
+              "key": "Acme Inc Connection"
+            },
+            "meta": null,
+            "inputs": {
+              "nodes": [
+                {
+                  "name": "password",
+                  "value": "my-pass"
+                },
+                {
+                  "name": "username",
+                  "value": "my-user"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+From the result you can extract connection information (like a username and password or API key) and use those credentials to make an API request directly to the file storage system.
+If the file storage system uses OAuth 2.0, your customer's API key will be present in the config variable's `meta` property.
+
+For more information on query the Composer API, see the [Composer API documentation](/docs/composer/builder/api/api-overview.mdx).
+
+## Instruct Dropbox to download a file from a URL
+
+If you have a file that is publically available at a certain URL, you can use the [Save from URL](/docs/composer/builder/builder-components/dropbox.mdx#save-from-url) action from the Dropbox component to instruct Dropbox to download the file from the internet.
+Provide the URL where the file is located, and Dropbox will download the file and save it to your specified path in the user's Dropbox account.
+
+<Screenshot
+  filename="quickstarts/handling-large-files/save-from-url-dropbox.png"
+  alt="Screenshot of saving a file from a URL to Dropbox"
+/>
+
+## Pass a reference to a file via webhook
+
+If you have a file that is too large to upload directly via webhook, but is small enough that the 1GB of memory available to the runner can handle it, you can pass a reference to the file to the runner via a webhook request.
+This reference could be a URL where the file is located, or a unique identifier that the runner can use to download the file from a file storage system.
+Your flow can use the [HTTP - GET](/docs/composer/builder/builder-components/http.mdx#get) action or a comperable FTP or SFTP action to download the file from the URL, or use the file storage system's API to download the file using the unique identifier, and can then process the file as if it were uploaded directly to the flow via webhook request.

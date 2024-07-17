@@ -1,0 +1,29 @@
+---
+id: updateAlertWebhook
+title: updateAlertWebhook Mutation
+sidebar_label: updateAlertWebhook
+description: Learn how to use the updateAlertWebhook Mutation for Builder's API.
+---
+
+    Updates the specified AlertWebhook object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_instances].
+
+## Input fields ([UpdateAlertWebhookInput!](/docs/composer/builder/api/schema/input_object/UpdateAlertWebhookInput.mdx))
+
+| Argument           | Type                                     | Description                                                                           |
+| ------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| `name`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | The name of the AlertWebhook.                                                         |
+| `url`              | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | The URL of the AlertWebhook.                                                          |
+| `payloadTemplate`  | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | The template that is hydrated and then used as the body of the AlertWebhook request.  |
+| `headers`          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | A JSON string of key/value pairs that will be sent as headers in the Webhook request. |
+| `id`               | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the AlertWebhook to mutate.                                                 |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation.                           |
+
+## Return fields ([UpdateAlertWebhookPayload](/docs/composer/builder/api/schema/object/UpdateAlertWebhookPayload.mdx))
+
+###### <b>alertWebhook</b> ([AlertWebhook](/docs/composer/builder/api/schema/object/AlertWebhook.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))

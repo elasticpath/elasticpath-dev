@@ -8,7 +8,7 @@ import Screenshot from "@site/src/components/screenshot";
 
 In this tutorial we'll walk through how we wrote a trigger for our [Salesforce component](/docs/composer/builder/builder-components/salesforce.mdx) to serve as an example for how you'd go about writing triggers for your own custom components.
 Salesforce [outbound messages](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_understanding.htm) allow you to send updates about Salesforce accounts, opportunities, and more to webhooks of your choosing.
-However, integrations with Salesforce do not work well with the [standard webhook trigger](integration-triggers.mdx#webhook-triggers) for two reasons:
+However, integrations with Salesforce do not work well with the [standard webhook trigger](/docs/composer/builder/integration-triggers.mdx#webhook-triggers) for two reasons:
 
 1. Salesforce outbound messages send XML payloads rather than JSON.
    This isn't a deal-breaker, but all integrations with Salesforce would then need to start with an extra [Deserialize XML](/docs/composer/builder/builder-components/change-data-format.mdx#deserialize-xml) step.
@@ -74,14 +74,14 @@ export default { salesforceTrigger };
 
 Let's concentrate on a few portions of this code:
 
-Similar to an [action](custom-components/writing-custom-components.mdx#writing-actions), a trigger's `perform` function takes [context](custom-components/writing-custom-components.mdx#the-context-parameter) and `params` (inputs) parameters (though this trigger doesn't happen to take inputs).
+Similar to an [action](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-actions), a trigger's `perform` function takes [context](/docs/composer/builder/custom-components/writing-custom-components.mdx#the-context-parameter) and `params` (inputs) parameters (though this trigger doesn't happen to take inputs).
 Additionally, it takes a `payload` parameter, which contains the payload (headers and body) of the webhook invocation:
 
 ```typescript
 perform: async (context, payload, params) => {};
 ```
 
-We can reference the raw body of the webhook payload, and ensure that it is cast to a string using the Spectral [toString](spectral/modules/_util_.md#const-tostring) function.
+We can reference the raw body of the webhook payload, and ensure that it is cast to a string using the Spectral [toString](/docs/composer/builder/spectral/modules/_util_.md#const-tostring) function.
 Then, we can parse the XML into a JavaScript object so it's easier to reference.
 Since we're returning a deserialized object, and not serialized XML, we can delete `contentType` from the payload body:
 
@@ -211,4 +211,4 @@ In this tutorial we covered processing the webhook payload within a trigger and 
 The example used was for Salesforce, but could be adapted for many other third-party systems.
 Some third-party systems, for example, require you to echo back part of the webhook payload in the response to ensure it was received correctly - that could easily be done by capturing a key or header of the webhook payload, and creating an `HttpResponse` object containing that information
 
-To read more about authoring triggers, check out our [Writing Custom Components](custom-components/writing-custom-components.mdx#writing-triggers) article.
+To read more about authoring triggers, check out our [Writing Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-triggers) article.

@@ -1,0 +1,30 @@
+---
+id: createCustomerUser
+title: createCustomerUser Mutation
+sidebar_label: createCustomerUser
+description: Learn how to use the createCustomerUser Mutation for Builder's API.
+---
+
+    Creates a User for the specified Customer.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_users] when 'customer' is not provided in the access function context. 2. The signed-in User has any of the following permissions for the access function context object 'customer': [customer_admin_users] when 'customer' is provided in the access function context. 3. The signed-in User has any of the following permissions for the associated Organization: [org_admin_customer_permissions, org_manage_customers] when 'customer' is provided in the access function context.
+
+## Input fields ([CreateCustomerUserInput!](/docs/composer/builder/api/schema/input_object/CreateCustomerUserInput.mdx))
+
+| Argument           | Type                                      | Description                                                                                    |
+| ------------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `email`            | [`String!`](/docs/composer/builder/api/schema/scalar/String.mdx) | The email address associated with the User.                                                    |
+| `name`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)  | The user's preferred name.                                                                     |
+| `customer`         | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)          | The Customer the user belongs to, if any. If this is NULL then Organization will be specified. |
+| `role`             | [`ID!`](/docs/composer/builder/api/schema/scalar/ID.mdx)         |                                                                                                |
+| `phone`            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)  | The preferred contact phone number for the User.                                               |
+| `externalId`       | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)  | Allows for mapping an external entity to a Builder record.                                   |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)  | A unique identifier for the client performing the mutation.                                    |
+
+## Return fields ([CreateCustomerUserPayload](/docs/composer/builder/api/schema/object/CreateCustomerUserPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>user</b> ([User](/docs/composer/builder/api/schema/object/User.mdx))

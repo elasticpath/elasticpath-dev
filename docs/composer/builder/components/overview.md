@@ -40,7 +40,7 @@ For example, a connection for one component might require a tenant ID and API ke
 The single config variable representing that connection would be made up of two fields: one for tenant ID and one for API key.
 
 **For More Information**:
-[Configuration-Driven Integration Quickstart](/docs/composer/builder/quickstarts/integrations/configuration-driven-integration)
+[Configuration-Driven Integration Quickstart](/docs/composer/builder/custom-components/quickstarts/integrations/configuration-driven-integration)
 
 ## Component versioning
 

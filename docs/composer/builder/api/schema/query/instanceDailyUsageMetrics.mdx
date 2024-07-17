@@ -1,0 +1,44 @@
+---
+id: instanceDailyUsageMetrics
+title: instanceDailyUsageMetrics Query
+sidebar_label: instanceDailyUsageMetrics
+description: Learn how to use the instanceDailyUsageMetrics Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of InstanceDailyUsageMetrics objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_instance_permissions, customer_view_instances]. 3. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_admin_permissions, instance_view, instance_edit, instance_remove].
+
+## Input fields
+
+| Argument           | Type                                                                                             | Description                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `before`           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                         | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                         | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`            | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                                               | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`             | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                                               | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`           | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                                               |                                                                                                  |
+| `instance`         | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                                 | Filter for objects where instance matches the specified ID.                                      |
+| `snapshotDate_Gte` | [`Date`](/docs/composer/builder/api/schema/scalar/Date.mdx)                                                             | Filter for objects where snapshotDate occurs on or after the specified value.                    |
+| `snapshotDate_Lte` | [`Date`](/docs/composer/builder/api/schema/scalar/Date.mdx)                                                             | Filter for objects where snapshotDate occurs on or before the specified value.                   |
+| `snapshotDate`     | [`Date`](/docs/composer/builder/api/schema/scalar/Date.mdx)                                                             | Filter for objects where snapshotDate matches the specified value.                               |
+| `orderBy`          | [`InstanceDailyUsageMetricsOrder`](/docs/composer/builder/api/schema/input_object/InstanceDailyUsageMetricsOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`           | [`[InstanceDailyUsageMetricsOrder]`](/docs/composer/builder/api/schema/input_object/InstanceDailyUsageMetricsOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([InstanceDailyUsageMetricsConnection!](/docs/composer/builder/api/schema/object/InstanceDailyUsageMetricsConnection.mdx))
+
+###### <b>edges</b> ([[InstanceDailyUsageMetricsEdge]!](/docs/composer/builder/api/schema/object/InstanceDailyUsageMetricsEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[InstanceDailyUsageMetrics]!](/docs/composer/builder/api/schema/object/InstanceDailyUsageMetrics.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

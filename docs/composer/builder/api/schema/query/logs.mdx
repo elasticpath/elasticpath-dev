@@ -1,0 +1,60 @@
+---
+id: logs
+title: logs Query
+sidebar_label: logs
+description: Learn how to use the logs Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of Log objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_instance_permissions, customer_view_instances, customer_manage_marketplace_integrations]. 3. The signed-in User has any of the following permissions for the object's 'integration_Customer' attribute: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations]. 4. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_admin_permissions, instance_view, instance_edit, instance_remove]. 5. The signed-in User has any of the following permissions for any version of the related integration where the object is related to a 'system' instance: [integration_admin_permissions, integration_view, integration_edit, integration_remove].
+
+## Input fields
+
+| Argument                          | Type                                                 | Description                                                                                      |
+| --------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `executionResult_IsTestExecution` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)           | Filter for objects where executionResult.isTestExecution matches the specified value.            |
+| `before`                          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)             | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`                           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)             | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`                           | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                   | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`                            | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                   | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`                          | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                   |                                                                                                  |
+| `message_Icontains`               | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)             | Filter for objects where message contains the specified value (case insensitive).                |
+| `timestamp_Gte`                   | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)         | Filter for objects where timestamp occurs on or after the specified value.                       |
+| `timestamp_Lte`                   | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)         | Filter for objects where timestamp occurs on or before the specified value.                      |
+| `severity`                        | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                   | Filter for objects where severity matches the specified value.                                   |
+| `executionResult`                 | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where executionResult matches the specified ID.                               |
+| `isTestExecution`                 | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)           | Filter for objects where isTestExecution matches the specified value.                            |
+| `instance_Customer`               | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where instance.customer matches the specified ID.                             |
+| `customer`                        | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where customer matches the specified ID.                                      |
+| `instance_Integration`            | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where instance.integration matches the specified ID.                          |
+| `instance`                        | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where instance matches the specified ID.                                      |
+| `instance_IsSystem`               | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)           | Filter for objects where instance.isSystem matches the specified value.                          |
+| `flowConfig`                      | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where flowConfig matches the specified ID.                                    |
+| `flowConfig_Flow`                 | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where flowConfig.flow matches the specified ID.                               |
+| `configVariable_Isnull`           | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)           | Filter for objects where configVariable is NULL.                                                 |
+| `userLevelConfigVariable_Isnull`  | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)           | Filter for objects where userLevelConfigVariable is NULL.                                        |
+| `integration`                     | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where integration matches the specified ID.                                   |
+| `integration_VersionSequenceId`   | [`UUID`](/docs/composer/builder/api/schema/scalar/UUID.mdx)                 | Filter for objects where integration.versionSequenceId matches the specified value.              |
+| `integrationVersionSequenceId`    | [`UUID`](/docs/composer/builder/api/schema/scalar/UUID.mdx)                 | Filter for objects where integrationVersionSequenceId matches the specified value.               |
+| `flow`                            | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                     | Filter for objects where flow matches the specified ID.                                          |
+| `orderBy`                         | [`LogOrder`](/docs/composer/builder/api/schema/input_object/LogOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`                          | [`[LogOrder]`](/docs/composer/builder/api/schema/input_object/LogOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([LogConnection!](/docs/composer/builder/api/schema/object/LogConnection.mdx))
+
+###### <b>edges</b> ([[LogEdge]!](/docs/composer/builder/api/schema/object/LogEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[Log]!](/docs/composer/builder/api/schema/object/Log.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

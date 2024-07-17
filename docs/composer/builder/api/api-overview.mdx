@@ -1,0 +1,312 @@
+---
+id: api-overview
+title: Intro to Builder's GraphQL API
+description: Builder's API allows users to build, deploy and support integrations programmatically. Learn how to get started with our GraphQL API.
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Screenshot from "@site/src/components/screenshot";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+Builder provides a [GraphQL](https://graphql.org/)-based API for you to build, deploy, and support your integrations programmatically.
+While we recommend that new users use the web app or [Builder CLI tool](/docs/composer/builder/cli/cli-usage.mdx) to manage Builder resources, developer users will likely want to use the API to script out integration management.
+
+If you're currently logged in, you can [explore](/explorer) the Builder API with the GraphiQL explorer.
+
+## What is GraphQL?
+
+GraphQL is a data query language for APIs - it's like a hybrid of the best parts of REST and SQL.
+GraphQL allows you to:
+
+- Request **exactly what you need, and nothing more**.
+  You can request specific information about resources, and get back exactly what you request without extraneous information.
+- Query for **multiple resources with a single request**.
+  In a traditional REST API, you might make dozens of requests to various endpoints to gather the information you need.
+  With GraphQL, you can query for multiple resources, including nested related resources, and get back all the results you need through a single query.
+- **Pull down anything** that you can view in the web app or CLI tool.
+  Both the web app and CLI tool use GraphQL queries to populate their UIs.
+  Anything that you can do in the web app can be done through the API.
+- **Reference an API specification** to sculpt your queries.
+  GraphQL APIs offer a [schema](#prismatics-graphql-schema), so you know what fields are available for what resources, and how the resources are interrelated.
+
+## Why Builder Chose GraphQL
+
+Builder chose to use GraphQL because of its power and flexibility.
+You can query the API however you like, and define exactly what data you want with a single query.
+GraphQL is language-agnostic, so if you're a Python-based platform, you can use Python.
+If you're more familiar with Go, NodeJS, .NET, etc., you can use any language you choose - most modern languages have a [GraphQL client library](https://graphql.org/code/#graphql-clients).
+
+GraphQL allows Builder backend developers and API consumers to work independently of one another.
+If you need a new field, simply add the field to your query - there's no waiting for backend developers to modify REST endpoints.
+
+## Querying Builder's API with the GraphiQL Explorer
+
+Builder's <a href={useBaseUrl('explorer')}>GraphiQL explorer</a> lets you test queries against the Builder API.
+If you are logged in to the web app, you can perform authenticated queries against Builder's GraphQL API using the GraphiQL explorer.
+
+<Screenshot
+  filename="reference/prismatic-api/graphql-explorer.png"
+  alt="Screenshot of the Builder GraphiQL Explorer Tool"
+/>
+
+## Builder's GraphQL Schema
+
+The left-hand sidebar of this page contains information about Builder's GraphQL schema, its operations, and schema-defined types.
+
+GraphQL operations - **queries** (pulling data) and **mutations** (creating, modifying or deleting data) - describe the various CRUD operations you can complete through the API.
+Schema-defined types - **scalars**, **objects**, **enums**, **interfaces**, **unions**, and **input objects** - describe data types that you will encounter as you query the API.
+
+You can access this same information in the <a href={useBaseUrl('explorer')}>GraphiQL explorer</a>, as well, by clicking the **Docs** link on the top right of the GraphiQL page.
+
+<Screenshot
+  filename="reference/prismatic-api/graphql-docs.png"
+  alt="Screenshot of the Builder GraphiQL Schema Tool"
+/>
+
+Additionally, GraphQL is **introspective**, meaning you can query the API for details about itself.
+
+For example, you can query `__schema` for a list of all types defined in the schema and get details about each type:
+
+```graphql
+query {
+  __schema {
+    types {
+      name
+      kind
+      description
+      fields {
+        name
+      }
+    }
+  }
+}
+```
+
+You can then get information about a specific type by querying `__type`:
+
+```graphql
+query {
+  __type(name: "User") {
+    name
+    kind
+    description
+    fields {
+      name
+    }
+  }
+}
+```
+
+## How Do I Get an API Authorization Token?
+
+You will probably want to query the Builder API with tools outside of the GraphiQL explorer.
+To do that, you'll need an API token.
+When you authenticate against Builder through the web app or Builder CLI tool, your web browser or CLI tool receives a [JWT](https://jwt.io/) that can be used to query the API.
+
+To view your token in the web browser, visit [https://app.prismatic.io/get_auth_token/](https://app.prismatic.io/get_auth_token/) while logged in.
+
+If you are using the Builder CLI tool, you can use the subcommand `me:token`.
+
+```bash
+prism me:token
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwczovL3ByaXNtYXRpYy5pby9lbWFpbCI6IndlLmxvdmVAand0LmNvbSIsImh0dHBzOi8vcHJpc21hdGljLmlvL2VtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9wcmlzbWF0aWMtaW8uYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6WyJodHRwczovL3ByaXNtYXRpYy5pby9hcGkiLCJodHRwczovL3ByaXNtYXRpYy1pby5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTg3NDg4MjU4LCJleHAiOjE1ODc1NzQ2NTgsImF6cCI6ImFiYzEyMyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwifQ.m6T8TATtckZcZ8xvbhlrN4tgmhrUqUQ_MGNmCLV8g7s
+```
+
+Use that token as part of your HTTP authorization header to authenticate your queries against the API.
+
+## Querying Builder's API with Another GraphQL Client
+
+GraphQL Clients like the [Google Chrome plugin from Altair](https://chrome.google.com/webstore/detail/altair-graphql-client/flnheeellpciglgpaodhkhmapeljopja) or the [Apollo Client Developer Tools Plugin](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm/) can be used to query the API.
+
+Take note of the [token](#how-do-i-get-an-api-authorization-token) that you generated, and pass in an HTTP Authorization header
+
+```json
+{ "Authorization": "Bearer {{TOKEN}}" }
+```
+
+For API endpoint, enter `https://app.prismatic.io/api`.
+
+## Querying Builder's API Programmatically
+
+Most modern programming languages implement [GraphQL client libraries](https://graphql.org/code/#graphql-clients).
+You can also `curl -X POST` queries against the GraphQL API.
+
+In the example below we query the API for all Builder [components](/docs/composer/builder/components.mdx) and their labels, descriptions, keys, and whether authorization is required.
+
+<Tabs
+  defaultValue='curl'
+  values={[
+    { label: 'Curl', value: 'curl', },
+    { label: 'Python', value: 'python', },
+    { label: 'Javascript', value: 'javascript', },
+  ]
+}>
+<TabItem value='curl'>
+
+Using `curl` you can pass in a GraphQL query and authorization header.
+
+```bash
+
+API_KEY=$(prism me:token)
+API_ENDPOINT='https://app.prismatic.io/api/'
+
+QUERY='{
+  "query":
+    "query { components { nodes { label description key } } }"
+}'
+
+curl ${API_ENDPOINT} -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: bearer ${API_KEY}" \
+    --data "$(echo $QUERY)"
+```
+
+</TabItem>
+<TabItem value='python'>
+
+Install a Python GraphQL client with
+
+```bash
+pip install gql
+```
+
+Replace `YOUR_TOKEN` with the authorization token you noted previously
+
+```python
+from gql import gql, Client
+from gql.transport.requests import RequestsHTTPTransport
+
+token = 'YOUR_TOKEN'
+api_endpoint = 'https://app.prismatic.io/api/'
+
+transport = RequestsHTTPTransport(
+  url=api_endpoint,
+  headers={'Authorization': f'Bearer {token}'}
+)
+
+client = Client(transport=transport)
+
+query = gql('''
+  query {
+    components {
+      nodes {
+        label
+        description
+        key
+      }
+    }
+  }
+''')
+
+result = client.execute(query)
+
+print(result)
+```
+
+</TabItem>
+<TabItem value='javascript'>
+
+Replace `YOUR_TOKEN` with the authorization token you noted previously
+
+```javascript
+const fetch = require("node-fetch");
+
+const token = "YOUR_TOKEN";
+const apiEndpoint = "https://app.prismatic.io/api/";
+
+const query = `
+  query {
+    components {
+      nodes {
+        label
+        description
+        key
+      }
+    }
+  }
+`;
+
+fetch(apiEndpoint, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify({ query: query }),
+})
+  .then((r) => r.json())
+  .then((data) => console.log("data returned:", data));
+```
+
+</TabItem>
+</Tabs>
+
+### Refreshing an Authorization Token on a Headless System
+
+If you would like to set up a CI/CD pipeline or any other headless system to periodically query the Builder API, you will need to provide that system with a **refresh token**.
+Your system will then exchange the **refresh token** for an **access token** that it can use to query the Builder API.
+
+To get a refresh token initially, use `prism`.
+You'll just need to do this once:
+
+```bash
+$ prism me:token --type refresh
+2uSiGgplFXAN_igEtOGPIpj3UcGuG0FADIljgJEXAMPLE
+```
+
+In this example, assume that we've created an environment variable, `PRISMATIC_REFRESH_TOKEN` with the value we found on our CI/CD server:
+
+```bash
+PRISMATIC_REFRESH_TOKEN="2uSiGgplFXAN_igEtOGPIpj3UcGuG0FADIljgJEXAMPLE"
+```
+
+We can now configure our CI/CD server to exchange that refresh token for an access token.
+This example uses [jq](https://stedolan.github.io/jq/) to parse JSON responses:
+
+```bash
+RESPONSE=$(curl "https://app.prismatic.io/auth/refresh" \
+            --request POST \
+            --data '{"refresh_token":"'${PRISMATIC_REFRESH_TOKEN}'"}' \
+            -H "Content-Type: application/json")
+
+PRISMATIC_ACCESS_TOKEN=$(echo ${RESPONSE} | jq -r .access_token)
+```
+
+That `PRISMATIC_ACCESS_TOKEN` can now be used in place of the `API_KEY` in the [example above](#querying-prismatics-api-programmatically).
+That token can be used for 7 days before needing to refresh again.
+
+### Revoking a Refresh Token
+
+If you believe your refresh token has been compromised, or otherwise would like to revoke a refresh token, the process is very similar to refreshing an auth token.
+Identify the refresh token that you would like to revoke, then issue an HTTP request to the `/auth/revoke` endpoint:
+
+```bash
+PRISMATIC_REFRESH_TOKEN="2uSiGgplFXAN_igEtOGPIpj3UcGuG0FADIljgJEXAMPLE"
+
+curl "https://app.prismatic.io/auth/revoke" \
+    --request POST \
+    --data '{"refresh_token":"'${PRISMATIC_REFRESH_TOKEN}'"}' \
+    -H "Content-Type: application/json"
+```
+
+You can also use `prism` to issue the same revocation if you are currently logged in:
+
+```bash
+$ prism me:token:revoke
+```
+
+:::caution All refresh tokens are revoked
+When issuing a refresh token request, _ALL_ of your user's refresh tokens are revoked.
+If you have any scripts that use a refresh token that is tied to your user (for a CI/CD pipeline, etc.), you will need to replace that refresh token with a new one.
+:::
+
+If you believe your team members' refresh token has been compromised, please have them log in and revoke their refresh token, or have an organization administrator remove their account if they are unavailable (their account can be re-added later).
+
+## Builder API rate limit
+
+You can query the Builder API **20 times per second**.
+After 20 requests within a second, you will receive a `429` response code.
+Just wait a moment, and try again.
+Most HTTP clients can be configured to automatically wait and retry on a `429` response code.

@@ -1,0 +1,39 @@
+---
+id: single-endpoint-webhook-integrations
+title: Single-Endpoint Webhook Integrations
+description: Some apps, like Slack, Dropbox or Hubspot, require a single endpoint to be configured for all events. This guide explains how to route events to the correct instance in such cases.
+---
+
+import ExampleIntegrationLink from "@site/src/components/example-integration-link";
+import Vimeo from "@site/src/components/vimeo";
+
+Some apps, noteably Slack, Dropbox and Hubspot, do not have customer-specific webhooks.
+Instead, all events are sent to a single endpoint, and these apps expect the receiving server to route the events to the correct customer.
+
+If you would like to build an event-driven integration with Slack, Dropbox, Hubspot, or another app that offers single-endpoint webhooks, you can do so by building out a "router" integration that will receive all events and route them to the correct customer's instance.
+
+This video explains the concept:
+
+<Vimeo video="927374361" />
+
+## Example Dropbox router integration
+
+The router integration and Dropbox integration demonstrated in the video above is available in our GitHub examples repo.
+You can [import](/docs/composer/builder/integrations.mdx#importing-an-integration) the integrations for yourself and extend them however you see fit.
+
+<ExampleIntegrationLink
+  href="https://github.com/prismatic-io/examples/blob/main/integrations/dropbox/example-dropbox-router.yml"
+  title="Router Integration"
+/>
+<br />
+<ExampleIntegrationLink
+  href="https://github.com/prismatic-io/examples/blob/main/integrations/dropbox/example-dropbox-integration.yml"
+  title="Example Dropbox Integration"
+/>
+
+### How the Dropbox router integration works
+
+When an instance of the Dropbox integration is deployed, its `Register Instance` flow looks up the authenticated Dropbox connection's Dropbox account ID, and sends that account ID along with the webhook URL for the `Handle Change Notifications` flow to the router integration.
+The router integration stores the Dropbox account ID and webhook URL in a map.
+
+When the router integration receives a webhook event from Dropbox, it looks up the Dropbox account ID associated with the event and sends the event to the correct instance of the Dropbox integration using the corresponding webhook URL.

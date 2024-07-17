@@ -1,0 +1,424 @@
+---
+id: wrapping-an-api-in-a-component
+title: Wrap an API in a Component
+description: Learn how to write a custom component that wraps an HTTP-base third-party API
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+Component authors are frequently asked to develop a component that implements a series of API calls for some third-party service (or possibly your own company's API).
+If the API you're creating a component for has an OpenAPI or WSDL spec, you can have `prism` [generate a component](/docs/composer/builder/custom-components/writing-custom-components.mdx#custom-components-from-wsdls-or-openapi-specs) based off of your YAML, JSON, or XML spec file.
+
+If, however, your API does not have an OpenAPI or WSDL spec, or if you're just looking to implement actions for a small handful of endpoints, we have some "best practices" you can follow for developing a custom component that implements those endpoints.
+The code for our custom component is available on [GitHub](https://github.com/prismatic-io/examples/tree/main/components/acmeerp).
+Let's dive into the code here.
+
+<Vimeo
+  video="894996672"
+  title="How to Wrap a RESTful API in a Custom Component"
+/>
+
+## Our component's spec
+
+For today's tutorial, suppose we're writing a component for "Acme ERP" - a made-up ERP system, and we would like to implement actions for a subset of endpoints that the Acme ERP API offers.
+We're handed a few specs for our component:
+
+- Customers each have distinct instances of Acme ERP, so the API endpoint is different for each customer.
+- Customers authenticate by entering an API key that they generate.
+- For our first integration, there are four endpoints that we want actions for:
+  - **List All Items**: This is a GET call to the API's `/items/` endpoint which returns an array of items in our inventory.
+  - **Get Item**: This is a GET call to `/items/{ ITEM_ID }` and fetches a single item from our inventory by ID.
+  - **Add Item**: This is a POST call to `/items/` to add an item to our inventory.
+  - **Delete Item**: This is a DELETE call to `/items/{ ITEM_ID }` to delete an item from inventory.
+
+## Initializing the component
+
+Like any new custom component, we can create our new component using a subcommand of [prism](/docs/composer/builder/cli/cli-usage.mdx):
+
+```bash title="Initialize our component"
+$ prism components:init acmeerp
+Creating component directory for "acmeerp"...
+
+"acmeerp" is ready for development.
+To install dependencies, run either "npm install" or "yarn install"
+To test the component, run "npm run test" or "yarn test"
+To build the component, run "npm run build" or "yarn build"
+To publish the component, run "prism components:publish"
+
+For documentation on writing custom components, visit https://prismatic.io/docs/custom-components/writing-custom-components/
+```
+
+Give your component whatever description you'd like, and select **Basic Connection** for connection type for now - we'll change this later.
+
+This will generate a boilerplate custom component.
+Remove all files in the `src/` directory and replace `index.ts` with an empty component definition:
+
+```typescript title="index.ts"
+import { component } from "@prismatic-io/spectral";
+
+export default component({
+  key: "acmeerp",
+  public: false,
+  display: {
+    label: "acmeerp",
+    description: "Acme ERP",
+    iconPath: "icon.png",
+  },
+  actions: {},
+});
+```
+
+## Creating a shared HTTP client
+
+Our component needs to reach out to an endpoint that is unique for each customer, and needs to use API Key authentication.
+So, our connections will need to contain both endpoint and credential information.
+
+To handle those things, let's create a function that takes a connection, and returns an HTTP client pointed at that endpoint.
+The custom component SDK provides an HTTP client that we can use.
+
+Let's first create a `connection`, which will contain the information needed to connect to Acme ERP: the customer's unique endpoint URL and the customer's API key.
+
+```typescript title="src/connections.ts"
+import { connection } from "@prismatic-io/spectral";
+
+// Create a connection that contains an API endpoint URL
+// and an API key.
+export const apiKeyConnection = connection({
+  key: "apiKey",
+  label: "Acme Connection",
+  comments: "Acme Connection",
+  inputs: {
+    endpoint: {
+      label: "Acme Endpoint URL",
+      placeholder: "Acme Endpoint URL",
+      type: "string",
+      required: true,
+      comments: "Acme API Endpoint URL",
+      default:
+        "https://my-json-server.typicode.com/prismatic-io/placeholder-data",
+      example: "https://my-company.api.acme.com/",
+    },
+    apiKey: {
+      label: "Acme API Key",
+      placeholder: "Acme API Key",
+      type: "password",
+      required: true,
+      comments: "Generate at https://app.acme.com/settings/api-keys",
+    },
+  },
+});
+
+export default [apiKeyConnection];
+```
+
+To add this connection to our component, we'll need to import the connection into `index.ts` and add it to our component definition:
+
+```typescript {2,13} title="Add connection to index.ts"
+import { component } from "@prismatic-io/spectral";
+import connections from "./connections";
+
+export default component({
+  key: "acmeerp",
+  public: false,
+  display: {
+    label: "acmeerp",
+    description: "Acme ERP",
+    iconPath: "icon.png",
+  },
+  actions: {},
+  connections,
+});
+```
+
+Next, we'll create a helper function, `getAcmeErpClient`, which will take a connection input and create an HTTP client pointed at the connection's endpoint URL and authenticated with the connection's API key.
+Let's place this code in a new file called `client.ts`:
+
+```typescript title="src/client.ts"
+import { createClient } from "@prismatic-io/spectral/dist/clients/http";
+import { Connection, util } from "@prismatic-io/spectral";
+
+export function getAcmeErpClient(acmeConnection: Connection) {
+  const { apiKey, endpoint } = acmeConnection.fields;
+
+  // Return an HTTP client that has been configured to point
+  // towards endpoint URL, and passes an API key as a header
+  return createClient({
+    baseUrl: util.types.toString(endpoint),
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+  });
+}
+```
+
+Now, each of our actions simply need to pass in a connection to the `getAcmeErpClient` function, and they'll be able to make HTTP calls to the Acme ERP API.
+
+## Write some actions
+
+Now it's time to implement our actions.
+Remember, we want to create four actions that list all items in our inventory, list a specific item, delete a specific item, and add an item to our inventory.
+
+### List all items action
+
+Let's start with the "list all items" action.
+This action will take a single input - the connection we just defined.
+
+Let's keep our inputs organized, so we'll create a new file, `src/actions.ts`, with that single action.
+At the top of the file, we'll import the `action` and `input` functions from our [custom component SDK](/docs/composer/builder/spectral/custom-component-library.mdx) library, and the `getAcmeErpClient` function we defined in `client.ts`:
+
+```typescript title="src/inputs.ts - Connection Input"
+import { action, input } from "@prismatic-io/spectral";
+import { getAcmeErpClient } from "./client";
+
+const listAllItems = action({
+  display: {
+    label: "List All Items",
+    description: "List all items in our inventory",
+  },
+  inputs: {
+    // Declare an input for this action
+    acmeConnection: input({
+      label: "Acme ERP",
+      required: true,
+      type: "connection",
+    }),
+  },
+  perform: async (context, { acmeConnection }) => {
+    // Initialize our HTTP client
+    const acmeErpClient = getAcmeErpClient(acmeConnection);
+
+    // Make a synchronous GET call to "{ endpoint }/items":
+    const response = await acmeErpClient.get("/items/");
+
+    // Return the data that we got back
+    return { data: response.data };
+  },
+  // Show an example payload in the Composer UI:
+  examplePayload: {
+    data: [
+      {
+        id: 1,
+        name: "Widgets",
+        quantity: 20,
+      },
+      {
+        id: 2,
+        name: "Whatsits",
+        quantity: 100,
+      },
+    ],
+  },
+});
+
+export default { listAllItems };
+```
+
+Next, import actions from `actions.ts` into `index.ts` and update our component definition:
+
+```ts {3,13} title="index.ts"
+import { component } from "@prismatic-io/spectral";
+import connections from "./connections";
+import actions from "./actions";
+
+export default component({
+  key: "acmeerp",
+  public: false,
+  display: {
+    label: "acmeerp",
+    description: "Acme ERP",
+    iconPath: "icon.png",
+  },
+  actions,
+  connections,
+});
+```
+
+At this point we can run `npm run build` and `prism components:publish` to publish our single-action component to Composer.
+If we add our action to an integration, we can see that the step takes the connection input we specified:
+
+<Screenshot
+  filename="quickstarts/wrapping-an-api-in-a-component/first-action-inputs.png"
+  alt="Acme ERP - List all Items in Composer integration designer"
+  maxWidth="650px"
+/>
+
+If we open the test instance configuration, we're prompted for the connection information that we specified previously.
+
+<Screenshot
+  filename="quickstarts/wrapping-an-api-in-a-component/config-wizard.png"
+  alt="Acme ERP - config wizard in Composer integration designer"
+  maxWidth="850px"
+/>
+
+If we want to test our action, we can use the **Run** button in the Composer UI to run our step and see the results:
+
+<Screenshot
+  filename="quickstarts/wrapping-an-api-in-a-component/first-action-results.png"
+  alt="Acme ERP - List all Items results in Composer integration designer"
+/>
+
+### Get item action
+
+Next, let's build another action that fetches a specific item from our API's inventory.
+The "get item" action will be very similar to the previous action - it'll initialize an HTTP client and return some data.
+The `display`, `inputs`, `perform` logic, and `examplePayload` will differ slightly, but the bulk of the action will be the same as before:
+
+```typescript title="src/actions.ts - Get Item Action"
+// ...
+
+const getItem = action({
+  display: {
+    label: "Get Item",
+    description: "Get an Item by ID",
+  },
+  inputs: {
+    acmeConnection: input({
+      label: "Acme ERP",
+      required: true,
+      type: "connection",
+    }),
+    itemId: input({
+      label: "Item ID",
+      required: true,
+      type: "string",
+    }),
+  },
+  perform: async (context, { acmeConnection, itemId }) => {
+    const acmeErpClient = getAcmeErpClient(acmeConnection);
+    const response = await acmeErpClient.get(`/items/${itemId}`);
+    return { data: response.data };
+  },
+  examplePayload: {
+    data: {
+      id: 1,
+      name: "Widgets",
+      quantity: 20,
+    },
+  },
+});
+
+export default { getItem, listAllItems };
+```
+
+### Delete item action
+
+At this point, we "rinse and repeat" - the "delete an item" action will get an HTTP client, send a DELETE HTTP request to an endpoint, and this time return nothing (since a DELETE of an item on our API returns nothing).
+Our "delete an item" action will take an endpoint URL and item ID, like the "get an item" action:
+
+```typescript title="src/actions.ts - Delete an Item Action"
+// ...
+
+const deleteItem = action({
+  display: {
+    label: "Delete Item",
+    description: "Delete an Item by ID",
+  },
+  inputs: {
+    acmeConnection: input({
+      label: "Acme ERP",
+      required: true,
+      type: "connection",
+    }),
+    itemId: input({
+      label: "Item ID",
+      required: true,
+      type: "string",
+    }),
+  },
+  perform: async (context, { acmeConnection, itemId }) => {
+    const acmeErpClient = getAcmeErpClient(acmeConnection);
+    await acmeErpClient.delete(`/items/${itemId}`);
+    return { data: null };
+  },
+});
+
+export default { deleteItem, getItem, listAllItems };
+```
+
+### Add an item action
+
+The "add an item" action has a couple subtle differences from the other three actions:
+
+- It takes additional inputs (`name` and `quanity`).
+  These inputs are not shared by other actions, so we can define them in-line.
+- The HTTP call we use is a POST call, and we pass our `name` and `quantity` inputs to the API as POST parameters.
+
+The reset of the action is very similar to the previous actions:
+
+```typescript title="src/actions.ts - Add Item Action"
+// ...
+
+const addItem = action({
+  display: {
+    label: "Add Item",
+    description: "Add an Item to Inventory",
+  },
+  // We can define some inputs inline if they're not reused:
+  inputs: {
+    acmeConnection: input({
+      label: "Acme ERP",
+      required: true,
+      type: "connection",
+    }),
+    name: input({ label: "Item Name", type: "string" }),
+    quantity: input({ label: "Item Quantity", type: "string" }),
+  },
+  perform: async (context, { acmeConnection, name, quantity }) => {
+    const acmeErpClient = getAcmeErpClient(acmeConnection);
+    const response = await acmeErpClient.post("/items/", {
+      name,
+      quantity,
+    });
+    return { data: response.data };
+  },
+  // This API call returns the item object that was created:
+  examplePayload: {
+    data: {
+      id: 1,
+      name: "Widgets",
+      quantity: 20,
+    },
+  },
+});
+
+export default { addItem, deleteItem, getItem, listAllItems };
+```
+
+## Unit testing our component
+
+Now that we've implemented our four actions for our component, let's add some [unit tests](/docs/composer/builder/custom-components/writing-custom-components.mdx#unit-tests-for-custom-components) to verify that our actions return what we'd expect them to return.
+To do that, we'll create a new file, `src/actions.test.ts`.
+
+We can import a helper function from Composer's SDK - `createHarness`, which will create a testing harness for our tests.
+Then, we can import the actions that we want to test (we'll test "add an item" here) and we can invoke the action and verify that the `result` we receive is what we expect:
+
+```typescript title="src/actions.test.ts - Unit Test the Add Item Action"
+import {
+  createConnection,
+  createHarness,
+} from "@prismatic-io/spectral/dist/testing";
+import { apiKeyConnection } from "./connections";
+import myComponent from ".";
+
+const harness = createHarness(myComponent);
+
+const acmeConnection = createConnection(apiKeyConnection, {
+  endpoint: "https://my-json-server.typicode.com/prismatic-io/placeholder-data",
+  apiKey: process.env.ACME_ERP_API_KEY, // Get API key from an environment variable
+});
+
+describe("test the add item action", () => {
+  test("test that we get back what we sent", async () => {
+    const name = "widgets";
+    const quantity = 123;
+    const result = await harness.action(
+      "addItem", // Invoke the "addItem" action
+      { acmeConnection, name, quantity } // Pass in some inputs that we declared
+    );
+    const data = result?.data as Record<string, unknown>;
+    expect(data?.name).toEqual(name); // Verify that the response had the same item name
+    expect(data?.quantity).toEqual(quantity); // Verify that the response had the same item quantity
+  });
+});
+```

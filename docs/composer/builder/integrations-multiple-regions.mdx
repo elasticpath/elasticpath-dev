@@ -1,0 +1,166 @@
+---
+id: integrations-multiple-regions
+title: Hosting Options
+description: You may host Builder integrations in multiple regions or in your private cloud. Here's how you manage integrations across multiple regions.
+---
+
+## Why use multiple regions?
+
+There are many reasons that a company might choose to host Builder integrations in multiple regions:
+
+- They need to adhere to GDPR, keeping EU-based customers' data in the EU, and US-based customers' data in the US
+- They have CJIS or ITAR requirements and need to keep customer data in GovCloud, but would like to test integrations in commercial
+- They need low latency between their app and Builder, so host certain integrations in Australia or the EU
+- They might host Builder in a private cloud to fulfil customer requirements
+
+Whatever the reason, if you host integrations in multiple Builder stacks you need to keep your components and integrations in sync between regions.
+
+## Logging in to additional regions
+
+Builder's public regions are accessible through the following URLs:
+
+| Stack                | App URL                                 |
+| -------------------- | --------------------------------------- |
+| US Commercial (Ohio) | https://app.prismatic.io                |
+| US GovCloud          | https://app.us-gov-west-1.prismatic.io  |
+| Europe (Ireland)     | https://app.eu-west-1.prismatic.io      |
+| Europe (London)      | https://app.eu-west-2.prismatic.io      |
+| Canada (Central)     | https://app.ca-central-1.prismatic.io   |
+| Australia (Sydney)   | https://app.ap-southeast-2.prismatic.io |
+
+If your enterprise contract includes a private cloud deployment, see Builder [support](mailto:support@prismatic.io) for your endpoint URL.
+
+### Access to additional regions
+
+By default, new Builder accounts are added to the US Commercial (Ohio) region, [app.prismatic.io](https://app.prismatic.io).
+Access to additional regions can be enabled by Builder for enterprise customers whose contracts include additional regions.
+
+:::note Users need to be added to each region
+User authentication spans across all regions, so you can use the same email and password to log in to each region.
+However, user data is not shared across regions.
+Once your organization has been enabled by Builder support in an additional region, you will need to invite your team members to the new region in order for them to log in to your tenant.
+:::
+
+### Logging in to additional regions with Prism
+
+The [prism](/docs/composer/builder/cli/prism.mdx) CLI tool interacts with the US Commercial region by default.
+In order to interact with an additional region, set a `PRISMATIC_URL` environment variable with the endpoint of the region you want:
+
+```bash title="Log in to US and then EU stacks from a Unix-based terminal"
+$ prism login
+Press any key to open prismatic.io in your default browser:
+Login complete!
+
+$ prism me
+Name: John Doe
+Email: john.doe@example.com
+Organization: Example Corp - US Region
+Endpoint URL: https://app.prismatic.io
+
+$ export PRISMATIC_URL=https://app.eu-west-1.prismatic.io
+$ prism login
+Press any key to open prismatic.io in your default browser:
+Login complete!
+
+$ prism me
+Name: John Doe
+Email: john.doe@example.com
+Organization: Example Corp - EU Region
+Endpoint URL: https://app.eu-west-1.prismatic.io
+```
+
+**Note**: If you are using PowerShell on a Windows machine, you can set an environment variable with this syntax:
+
+```powershell
+$ENV:PRISMATIC_URL=https://app.eu-west-1.prismatic.io
+```
+
+If you use `prism` on a headless system (like a CI/CD pipeline or when running automated scripts), you will need to generate a refresh token.
+See docs on [Headless prism Usage](/docs/composer/builder/cli/cli-usage.mdx#headless-prism-usage-for-cicd-pipelines).
+
+## Syncing integrations between regions
+
+Behind the scenes, an integration is saved as a YAML definition that outlines the flows, steps, configuration and config variables that make up the integration.
+Integrations can be copied between regions by downloading an integration's YAML definition from one region, and importing the YAML file into another region.
+
+### Exporting an integration's YAML definition
+
+To access an integration's YAML definition from the integration builder, click **Integration Details** gear icon on the left side of the integration designer and then select **Save to file**.
+
+To access an integration's YAML definition using `prism`, identify the integration's ID by running `prism integrations:list --extended`, or by copying the `SW5.....` portion of your integration's URL when you have it open.
+Then, run `prism integrations:export`:
+
+```bash title="Save an integration's YAML definition to my-file.yaml"
+prism integrations:export SW50ZWdyYXRpb246YmE0NGU5NmQtYWMzOS00MDMxLTg4MmUtMWQyNzA5ZjY5MDg0 > my-file.yaml
+```
+
+:::caution Component Versions Across Regions
+Component versions may not be consistent between regions.
+For example, you might publish an "Acme Inc" component 50 times during testing on the US Commercial stack, and only twice on your Europe tenant.
+In that case, "v50" in the US stack would correspond to "v2" in the Europe stack.
+A YAML file that specifies "Acme Inc v50" would mean nothing to the Europe stack.
+
+To avoid version mismatches, export your YAML definition using the **Save to file with latest component versions** button in the UI, or by adding the `--latest-components` flag to your `prism` command:
+
+```
+prism integrations:export --latest-components SW50Z...
+```
+
+When you import your integration in another region, the latest versions of each component will be used.
+:::
+
+### Loading an integration's YAML definition
+
+Once you have the YAML definition of your integration, you can import the integration through the UI or using `prism`.
+In the integration designer, you can open up the **Integration details** modal once again, and then time select **Import**.
+Using prism, run `prism integrations:import --path ./my-file.yaml` to import your YAML file.
+
+**Troubleshooting**: If you get any errors, ensure that the custom components that you used in your source stack are also deployed to your destination stack.
+You may have an older version of your custom component that is missing some actions, inputs, etc.
+
+:::caution Use caution when importing integrations where config variable or flow names have changed
+If you have renamed a config variable or flow, be sure that your YAML definition contains a `renameAttributes` section that maps the old name to the new name.
+See full documentation [here](/docs/composer/builder/integrations.mdx/#renaming-flows-and-config-variables-in-yaml-definitions).
+:::
+
+## Syncing components between regions
+
+When you publish a component, the component is published to a single region.
+If you would like to publish a built component to multiple regions, you will need to log in to each region and run `prism components:publish`.
+
+Alternatively, you can store a [refresh token](/docs/composer/builder/cli/cli-usage.mdx#headless-prism-usage-for-cicd-pipelines) for each region.
+Then, you can push the component to whichever region you like:
+
+```bash title="Publish a component to multiple regions"
+# Publish to default US commercial region
+prism components:publish
+
+# Publish to EU with inline environment variables
+PRISM_REFRESH_TOKEN=your-eu-refresh-token PRISMATIC_URL=https://app.eu-west-1.prismatic.io prism components:publish
+
+# Publish to GovCloud by exporting environment variables
+export PRISM_REFRESH_TOKEN=your-govcloud-refresh-token
+export PRISMATIC_URL=https://app.us-gov-west-1.prismatic.io
+prism components:publish
+```
+
+Note that component versions increment independently in each region.
+If you've published your custom component 50 times to US Commercial, and 10 versions to the Sydney region, the same component code will be seen as `v50` and `v10` respectively.
+
+## Building multi-region deployment into a CI/CD pipeline
+
+If you would like to develop integrations and custom components in one tenant, and automatically deploy them to another, you can save your custom component code and integration YAML in a version control system (like a git repo), and configure a CI/CD pipeline to automatically deploy new versions of components and integrations when code passes QA and is merged to your production branch.
+
+Because integrations are dependent on components, [build and publish](/docs/composer/builder/custom-components/writing-custom-components.mdx#publishing-a-component) your components first, and then update your integrations.
+See [above](#syncing-components-between-regions) for information on publishing components in several regions.
+
+Once components are published, you can use the same `prism` authentication you used for components to [import integrations](#loading-an-integrations-yaml-definition).
+The `prism integrations:import` command will return an **integration ID** (SW50Z....).
+Using that integration ID, you can **publish** a new version of your integration:
+
+```
+prism integrations:publish SW50Z... --comment "My publication comment"
+```
+
+The `integrations:publish` command will return an **integration version ID** (SW50Z...).
+You can use that ID along with the [`updateInstance`](/docs/composer/builder/api/schema/mutation/updateInstance.mdx) GraphQL mutation to update deployed instances to the latest published version of your integration.
