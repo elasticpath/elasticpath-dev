@@ -35,6 +35,85 @@ servers:
     description: EU West Production Server
     variables: { }
 paths:
+  /oauth/access_token:
+    post:
+      summary: Create an Access Token
+      tags:
+        - Authentication
+      description: |
+
+        ### Client Credentials
+
+        A `client_credentials` token is used when the credentials are not publicly exposed, usually a server-side language such as PHP or Node.js. This type of authentication enables `CRUD` access to all resources.
+
+        `client_id` and `client_secret` are created and managed via [Application Keys](/docs/authentication/application-keys/create-an-application-key).
+
+        To see the access granted by a `client_credentials` token, refer to [Permissions](/docs/authentication/Tokens/permissions).
+
+
+        ### Implicit
+
+        An `implicit` token is typically used for situations where you are requesting data on the client side and you are exposing your public key. When authenticated implicitly, you can only fetch (`GET`) data with live status (products, categories, brands, etc).
+
+        The `implicit` token is most appropriate for use inside client-side applications, such as JavaScript.
+
+        :::caution
+        An `implicit` token can be thought of as a **Read only** token.
+        :::
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  expires:
+                    type: integer
+                  identifier:
+                    type: string
+                  expires_in:
+                    type: integer
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                x-examples:
+                  Example 1:
+                    expires: 1524486008
+                    identifier: implicit
+                    expires_in: 3600
+                    access_token: xa3521ca621113e44eeed9232fa3e54571cb08bc
+                    token_type: Bearer
+      operationId: post-oauth-access_token
+      requestBody:
+        description: ''
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+              properties:
+                grant_type:
+                  type: string
+
+                  description: 'The grant type, choices are `client_credentials` or `implicit`'
+                client_id:
+                  type: string
+                  description: Your `client_id`
+                client_secret:
+                  type: string
+                  description: Only required for client credentials.
+            examples:
+              Example 1:
+                value:
+                  expires: 1524486008
+                  identifier: client_credentials
+                  expires_in: 3600
+                  access_token: xa3521ca621113e44eeed9232fa3e54571cb08bc
+                  token_type: Bearer
   /v2/carts:
     get:
       tags:
@@ -4840,6 +4919,48 @@ components:
         expires_at:
           examples: '2023-11-12T23:04:18.845Z'
 tags:
+  - name: Authentication
+    description: |
+      ### Authenticating for Documentation
+    
+      Use the appropriate key(s) for the actions you wish to take on the documentation site. Once you have authenticated, copy the Bearer token contained within the response. Use this bearer token on your first request on any page within the endpoint documentation. Once you have entered your bearer token on one page, that token will be long lived across all other endpoints. Tokens expire after a period of one hour. You may navigate back to the authentication endpoint at any time to change credential types. Doing so will require the use of the new Bearer token generated when switching credentials.
+      
+      ```json
+      Authorization: Bearer 212LJ3k0i2382364HIUEjfeJB98yvH
+      ```
+      
+      ### Authentication for APIs
+      
+      All requests to the API need to be accompanied by an authorization header with an authentication token:
+  
+      ```json
+      Authorization: Bearer 212LJ3k0i2382364HIUEjfeJB98yvH
+      ```
+  
+      Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.
+  
+      :::note
+      Read our [Quick Start guide](/guides/Getting-Started/your-first-api-request) on how to make your first API request.
+      :::
+  
+      Authentication tokens are generated via the `authentication` endpoint and expire within 1 hour. They need to be then regenerated. If you’re using our [JavaScript SDK](https://github.com/moltin/js-sdk), this is automatically handled for you.
+  
+      There are two main token types available for use within your store `client_credentials` and `implicit`. The [implicit token](/docs/authentication/Tokens/implicit-token) is the more limited of the two, restricting access to mostly read-only, whereas [client credential token](/docs/authentication/Tokens/client-credential-token) has full read and write access.
+  
+      For more details on token formatting, see [Content Type](/guides/Getting-Started/content-type).
+  
+      :::caution
+      Do not use or disclose your `client_secret` in public.
+      :::
+  
+      ## Client Credentials vs. Implicit Use Case Scenarios
+  
+      Typically, you would use the implicit authentication method for client-side browser based applications (i.e. frontend), and client credentials for all administrative tasks (`CRUD`) you need to perform at the backend.
+  
+      ## Customer Authentication
+  
+      You can also generate [customer tokens](/docs/customer-management/customer-management-api/customer-tokens#post-generate-a-token) to authenticate the customers with single sign-on, or email address and password. You must use customer token with the implicit token to access orders or customer APIs. Using the tokens, you can create and filter orders and addresses.
+
   - name: Cart Management
     description: |
       A Cart contains the product and custom cart items that a user intends to purchase. After a Cart is ready for Checkout, you can use the [Checkout endpoint](/docs/api/carts/checkout) to convert the cart to an order.
