@@ -738,7 +738,7 @@ export default integration({
 To invoke an instance of an execution that has been deployed, this `curl` command would invoke the flow named "Create Opportunity":
 
 ```bash {4} title="Invoke an instance specific endpoint with a flow name specified in a header"
-curl https://hooks.prismatic.io/trigger/SW5ExampleInstanceSpecificEndpoint \
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/SW5ExampleInstanceSpecificEndpoint \
  -X POST \
  --header "content-type: application/json" \
  --header "x-acme-flow: Create Opportunity" \
@@ -768,7 +768,7 @@ export default integration({
 ```
 
 ```bash {4,6} title="Invoke an shared endpoint with a flow name header and customer ID in the body"
-curl https://hooks.prismatic.io/trigger/SW5ExampleSharedEndpoint \
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/SW5ExampleSharedEndpoint \
  -X POST \
  --header "content-type: application/json" \
  --header "x-acme-flow: Create Opportunity" \
@@ -855,7 +855,7 @@ The above preprocess flow will look at a property named `event` in the request b
 It will also extract an `acctId` from the request body and make an HTTP request to `https://api.example.com/get-customer-id` to get an external customer ID, returning that customer ID as well.
 
 ```bash {5,6}
-curl https://hooks.prismatic.io/trigger/SW5ExampleSharedEndpoint \
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/SW5ExampleSharedEndpoint \
  -X POST \
  --header "content-type: application/json" \
  --data '{

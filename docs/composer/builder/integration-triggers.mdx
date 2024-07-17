@@ -68,7 +68,7 @@ The outside application can assemble some data, and send that data to a Builder 
 For example, third-party software could invoke an instance with a JSON payload whenever a job in the third-party application is complete, like this:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --data '{"renderId":51266,"s3Bucket":"test-customer-renders","status":"complete"}' \
   --header "Content-Type: application/json"
 ```
@@ -100,7 +100,7 @@ The response looks like this:
 curl \
   --data '{}' \
   --header "Content-Type: application/json" \
-  'https://hooks.prismatic.io/trigger/EXAMPLE=='
+  'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE=='
 
 {"executionId":"SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6OTdiNWQxYmEtZGUyZi00ZDY4LWIyMTgtMDFlZGMwMTQxNTM5"}
 ```
@@ -125,7 +125,7 @@ Builder responds to the request with an HTTP 303 redirect, redirecting your HTTP
 Ensure that your HTTP client follows redirects (for `curl`, you add a `--location` flag).
 
 ```txt title="Synchronous request redirected"
-$ curl 'https://hooks.prismatic.io/trigger/example==' --location -v
+$ curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/example==' --location -v
 
 ...
 
@@ -252,7 +252,7 @@ A webhook endpoint URL can be invoked up to 50 times per second.
 If a request is received for an endpoint URL that has already received 50 requests in the last second, the request will receive a 429 "too many requests" response.
 
 ```txt title="Request rate limited"
-$ curl 'https://hooks.prismatic.io/trigger/example==' -v
+$ curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/example==' -v
 
 ...
 
@@ -295,7 +295,7 @@ Take, for example, this `curl` invocation:
 
 ```bash
 curl \
-  'https://hooks.prismatic.io/trigger/EXAMPLE==/my/custom/path?param-one=ParamValueOne&param-two=ParamValueTwo' \
+  'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==/my/custom/path?param-one=ParamValueOne&param-two=ParamValueTwo' \
   --header "header-one: First header value" \
   --header "header-two: Second header value" \
   --header "Content-Type: application/json" \
@@ -319,7 +319,7 @@ If you have binary data (like an image or PDF) that you would like to post as pa
 For example, if you have an image, `my-image.png`, you could invoke a test of an integration with:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --request POST \
   --header 'Content-Type: image/png' \
   --data-binary '@/path/to/my-image.png'
@@ -334,7 +334,7 @@ For example, you might want to post information about a person, as well as an av
 To do that, use a content type of `multipart/form-data` with your webhook invocation:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --request POST \
   --header "Content-Type: multipart/form-data" \
   --form person='{"firstname":"Taylor","lastname":"Reece"};type=application/json' \
@@ -537,7 +537,7 @@ When you choose to run your integrations **synchronously**, the HTTP request tha
 For example, if the final step of your integration pulls down JSON from https://jsonplaceholder.typicode.com/users/1, you will see this when you invoke the integration synchronously:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --data '{}' \
   --header "Content-Type: application/json" \
   --header "prismatic-synchronous: true" \
@@ -551,7 +551,7 @@ You can toggle if your integration is synchronous or asynchronous by clicking th
 You can also pass in a header, `prismatic-synchronous` with a webhook invocation to instruct your instance to run synchronously or asynchronously:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --header "prismatic-synchronous: false" \
   --request POST
 ```
@@ -571,7 +571,7 @@ If your final step's output is greater than 5MB, they'll be redirected to S3.
 This works well if your final step's result is text.
 
 ```bash title="Skip the redirect to Amazon S3"
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --header "prismatic-synchronous: true" \
   --header "prismatic-prefer-direct-sync-response: true" \
   --request POST \
@@ -581,7 +581,7 @@ curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
 If the third-party also doesn't support custom headers, you can append `prismatic-prefer-direct-sync-response=true` as a search parameter:
 
 ```bash title="Skip the redirect to Amazon S3 with a search parameter"
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==?prismatic-prefer-direct-sync-response=true'
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==?prismatic-prefer-direct-sync-response=true'
 ```
 
 :::tip Response content type
@@ -620,7 +620,7 @@ Most commonly, you can add a [Stop Execution](/docs/composer/builder/builder-com
 />
 
 ```bash
-$ curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+$ curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
    --verbose \
    --location \
    --header "prismatic-synchronous: true"
@@ -674,7 +674,7 @@ If your integration regularly takes over 29 seconds to run, or produces large re
 When you invoke an integration asynchronously you receive an `executionId`:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --data '{}' \
   --header "Content-Type: application/json"
 

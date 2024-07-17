@@ -17,7 +17,7 @@ const StyledTooltip = styled(Tooltip)({
 const OAuthCallbackURL = () => {
   return (
     <span>
-      <strong>https://oauth2.prismatic.io/callback</strong> (
+      <strong>https://oauth2.us-east-2.elasticpathintegrations.com/callback</strong> (
       <a href="/docs/connections/#creating-an-oauth-20-app-in-a-third-party-service">
         See other region endpoints
       </a>

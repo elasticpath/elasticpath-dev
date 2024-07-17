@@ -55,7 +55,7 @@ To create a Slack OAuth 2.0 connection, first create and configure a Slack App b
 1. Choose to create the app **From scratch**
 1. Give your app a name and select your workspace. We'll configure it to be multi-workspace capable in a moment
 1. Select **OAuth & Permissions** from the sidebar
-   1. Under **Redirect URLs**, add `https://oauth2.prismatic.io/callback` as a redirect URL.
+   1. Under **Redirect URLs**, add `https://oauth2.us-east-2.elasticpathintegrations.com/callback` as a redirect URL.
    1. At the bottom, add some **User Token Scopes** if you plan for this integration to send messages on behalf of customers, or **Bot Token Scopes** if a Slack "bot" will send the messages.
       What [scopes](https://api.slack.com/scopes/) you need is dependent on what types of things your Slack integration will need to do (create channels, send messages, etc).
       If you just need to send messages to a channel as a bot, add these scopes: `chat:write chat:write.public`. If you want to send messages as a user, see the section [below](#sending-messages-as-a-user).
@@ -295,7 +295,7 @@ When that header is present your integration will follow the "Management" branch
       "accept": "*/*",
       "Content-Type": "application/json",
       "User-Agent": "Slackbot 1.0 (+https://api.slack.com/robots)",
-      "Host": "hooks.example.prismatic.io"
+      "Host": "hooks.example.elasticpathintegrations.com"
     },
     "body": {
       "data": {}
@@ -308,7 +308,7 @@ When that header is present your integration will follow the "Management" branch
     },
     "queryParameters": {},
     "webhookUrls": {
-      "Flow 1": "https://hooks.example.prismatic.io/trigger/EXAMPLEGbG93Q29uZmlnOmRlNmNmNDMyLTliNWMtN0005NDMxLTRmYzA4ZjViODgxOA=="
+      "Flow 1": "https://hooks.example.elasticpathintegrations.com/trigger/EXAMPLEGbG93Q29uZmlnOmRlNmNmNDMyLTliNWMtN0005NDMxLTRmYzA4ZjViODgxOA=="
     },
     "webhookApiKeys": {
       "Flow 1": ["abc-123"]

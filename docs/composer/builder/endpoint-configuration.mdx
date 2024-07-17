@@ -76,7 +76,7 @@ If you do not use a preprocess flow, you can send the name of the flow to run as
 For example, you could send the name of the flow you'd like to execute as part of your payload like this:
 
 ```bash title="Determine flow name from HTTP payload"
-curl https://hooks.prismatic.io/trigger/EXAMPLE== \
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE== \
   --header "Content-Type: application/json" \
   --data '{"myFlowName":"Update Inventory","item":"widgets","quantity":5,"state":"removed"}'
 ```
@@ -101,7 +101,7 @@ Enter a sample payload and click the globe icon to the right of the **Run** butt
 If you'd like to pass flow name as an HTTP header instead, a `curl` invocation could look like this:
 
 ```bash {4} title="Determine flow name from an HTTP header"
-curl https://hooks.prismatic.io/trigger/EXAMPLE== \
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE== \
   --location \
   --header "Content-Type: application/json" \
   --header "myflowname: Update Inventory" \
@@ -160,7 +160,7 @@ You can mix-and-match if you'd like - provide one value as an HTTP header and th
 For example, if "Customer A" had an external ID of `abc-123`, and you wanted to invoke their `Update Inventory` flow, you could send this `curl` request with the flow name represented as an HTTP header, and customer ID represented in the HTTP payload:
 
 ```bash {4,5} title="Routing a request by header and payload"
-curl https://hooks.prismatic.io/trigger/EXAMPLE== \
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE== \
   --location \
   --header "Content-Type: application/json" \
   --header "myflowname: Update Inventory" \
@@ -290,7 +290,7 @@ You can add additional headings, helper text, and images to assist your customer
 If your instance's flow has an API key, pass in an additional `Api-Key` header as part of your POST request:
 
 ```bash
-curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
   --location \
   --header "Content-Type: application/json" \
   --header "Api-Key: 5cc74e1546382c52a8e93dce6795a5d4" \

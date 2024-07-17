@@ -1080,19 +1080,19 @@ We're not confident that they'll arrive to Composer in any particular order, so 
 We'll come up with a unique "Collection ID", and begin sending our data in any order:
 
 ```bash "Data gets sent in any order"
-$ curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+$ curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
     --header "Content-Type: application/json" \
     --data '{"item": "whatsits", "index": 2}' \
     --header 'collectionid: abc-123' \
     --header 'collectionlength: 3'
 
-$ curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+$ curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
     --header "Content-Type: application/json" \
     --data '{"item": "widgets", "index": 0}' \
     --header 'collectionid: abc-123' \
     --header 'collectionlength: 3'
 
-$ curl 'https://hooks.prismatic.io/trigger/EXAMPLE==' \
+$ curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
     --header "Content-Type: application/json" \
     --data '{"item": "gadgets", "index": 1}' \
     --header 'collectionid: abc-123' \

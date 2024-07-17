@@ -1,5 +1,5 @@
 ---
-id: hello-prismatic
+id: hello-Builder
 title: Hello Builder
 description: Initialize and Publish Your First Integration
 ---
@@ -15,12 +15,12 @@ Be sure that you've [set up your environment](/docs/composer/builder/getting-sta
 ## Initialize your component
 
 The Builder CLI tool, `prism`, has a variety of commands, one of which initializes a new custom component project.
-Run `prism components:init hello-prismatic`. You can give your component a description of "My First Component", and for **Type of Connection** select **Basic Connection**.
+Run `prism components:init hello-builder`. You can give your component a description of "My First Component", and for **Type of Connection** select **Basic Connection**.
 
 ```bash title="Initialize a new component"
 $ prism components:init hello-prismatic
 
-Creating component directory for "hello-prismatic"...
+Creating component directory for "hello-builder"...
 ? Description of Component My First Component
 ? Type of Connection Basic Connection
    create package.json
@@ -51,14 +51,14 @@ To publish the component, run "prism components:publish"
 For documentation on writing custom components, visit https://prismatic.io/docs/custom-components/writing-custom-components/
 ```
 
-This will create a new directory called `hello-prismatic` in your current directory.
+This will create a new directory called `hello-builder` in your current directory.
 Open that directory in your code editor.
 
 ## Edit your component
 
 The boilerplate component code that is generated contains custom triggers, data sources, connections, and more.
 These are all things that are covered fully in the [Writing Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx) article, but we can safely remove them for now.
-Open the component directory that you just created in your code editor, and remove all files from the `hello-prismatic/src/` directory _except_ for `index.ts`.
+Open the component directory that you just created in your code editor, and remove all files from the `hello-builder/src/` directory _except_ for `index.ts`.
 Then, replace the contents of `index.ts` with this:
 
 ```typescript title="index.ts"
@@ -94,7 +94,7 @@ const myAction = action({
 });
 
 export default component({
-  key: "hello-prismatic",
+  key: "hello-builder",
   public: false,
   // This is what the component should look like in the integration designer
   display: {
