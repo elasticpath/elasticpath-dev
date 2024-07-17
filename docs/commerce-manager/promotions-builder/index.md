@@ -24,8 +24,6 @@ To understand the difference between Promotions Standard and Promotions Builder,
 
 As a best practice, we recommend creating new promotions in the Promotions Builder and allowing Promotions Standard to expire. While Promotions Standard can currently run side by side with new ones, transitioning to the Promotions Builder ensures alignment with updated features and facilitates smoother management of promotions over time.
 
-<iframe class="vidyard_iframe" title="Commerce Extensions" src="//play.vidyard.com/4xHaUsR9fh8Z5PUjF4o5nm?" width="800" height="460" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-
 ## Stacking Multiple Promotions
 
 You can simultaneously apply multiple promotions, stacking both cart-level and item-level discounts on top of each other.
