@@ -352,6 +352,16 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
+          authentication: {
+            specPath: "openapispecs/authentication/OpenAPISpec.yaml",
+            outputDir: "docs/api/authentication",
+            downloadUrl:
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/authentication/OpenAPISpec.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
           customeraddresses: {
             specPath: "openapispecs/customeraddresses/CustomerAddresses.yaml",
             outputDir: "docs/api/customer-addresses",
