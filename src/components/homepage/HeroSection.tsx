@@ -2,14 +2,26 @@ import React from "react";
 import {
   CharlotteTilbury,
   Norgren,
+  Pella,
   Pokemon,
   SerenaLily,
-  United,
 } from "./HeroBrandLogos";
 export default function HeroSection() {
   return (
     <section className="px-4 py-28 md:py-44 text-center leading-tight tracking-tight">
       <div className="flex flex-col items-center justify-between dark:text-white">
+        <div className="px-3 py-1 text-sm ring-1 ring-gray-300 dark:ring-white/50 rounded-3xl shadow-sm dark:shadow-[0px_0px_28px_0px_#0b3168]">
+          <span className="mr-2">💡</span>
+          <span className="text-black dark:text-white font-semibold mr-4 hidden md:inline">
+            Note from our CTO:
+          </span>{" "}
+          <a
+            className="text-gray-600 hover:text-gray-600 dark:text-white dark:hover:text-white dark:hover:decoration-green-400 hover:decoration-green-600 hover:decoration-2 hover:decoration-dotted font-medium transition-all"
+            href="https://www.elasticpath.com/blog/modern-commerce-ipaas-dbaas"
+          >
+            Why an iPaaS brings world-class commerce to life →
+          </a>
+        </div>
         <h1 className="mb-4 text-center text-[4.5rem] md:text-[6.5rem] font-bold dark:drop-shadow-lg dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-[#394464] -from-3% via-[#1F8552] via-32% to-[#2BCC7E] to-64%">
           Enterprise-ready commerce
         </h1>
@@ -39,12 +51,12 @@ export default function HeroSection() {
           .
         </p>
         <p className="mt-8">Trusted by these leading brands...</p>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12">
-          <SerenaLily className="max-w-full invert dark:invert-0" />
-          <United className="max-w-full invert dark:invert-0" />
-          <Pokemon className="max-w-full" />
-          <Norgren className="max-w-full invert dark:invert-0" />
-          <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0" />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 items-center">
+          <SerenaLily className="max-w-full invert dark:invert-0 mx-auto" />
+          <Pokemon className="max-w-full mx-auto" />
+          <Pella className="max-w-full invert dark:invert-0 mx-auto" />
+          <Norgren className="max-w-full invert dark:invert-0 mx-auto" />
+          <CharlotteTilbury className="hidden md:block max-w-full invert dark:invert-0 mx-auto" />
         </div>
 
         <svg

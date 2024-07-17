@@ -1,7 +1,7 @@
 ---
 title: Integrating MailChimp
 nav_label: MailChimp
-sidebar_position: 202
+sidebar_position: 203
 ---
 
 ## Overview

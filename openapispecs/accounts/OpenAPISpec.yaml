@@ -2,15 +2,38 @@ openapi: 3.1.0
 info:
   version: '1.0'
   title: Account Management Introduction
+  #language=markdown
   description: |
-    In the Commerce store, sellers can create accounts and account members. Sellers can also assign the account members to accounts using account memberships. Associated account members can log in to the store and create orders for their accounts.
+    An Account represents the entity that participates in a Commerce transaction. Accounts can have Carts, Orders, Subscriptions, and Addresses.
     
-    Each account can have multiple account members. Users associated with an account can transact on behalf of the account.
-  contact:
+    Each account can have multiple account members, which represent users and can transact on behalf of the account.
+
+    In a typical B2C scenario, an account usually has a single account member. However, this functionality can also be used to support use cases such as family accounts, allowing multiple family members to transact on behalf of their shared account. In a B2B scenario, an account will have multiple members from a business unit, all of whom can transact on behalf of their organization.
+    
+     ## Accounts vs Customers
+
+      Accounts is the next generation of [Customers](/docs/customer-management/customers). Customers are not going anywhere, but accounts offers more capabilities. We recommend using Accounts for any of your new use cases.
+
+       | Feature                                                 | Customers        | Accounts         |
+       | ------------------------------------------------------- | ---------------- | ---------------- |
+       | B2C Accounts                                            | ✅                | ✅                |
+       | Family Accounts                                         | ⛔️               | ✅                |
+       | B2B Accounts                                            | ⛔️               | ✅                |
+       | Authentication: Shopper impersonation                   | ⛔️               | ✅                |
+       | Authentication: OpenID support                          | ✅                | ✅                |
+       | Authentication: One time passwords, and password reset  | ⛔️               | ✅                |
+       | Authentication: Configurable token expiry               | ⛔️               | ✅                |
+       | Cart association                                        | ✅                | ✅                |
+       | Shopper specific Promotions                             | ✅                | Planned          |
+       | Shopper specific Catalogs                               | ✅                | ✅                |
+       | Addresses                                               | ✅                | ✅                |
+       | Personal Data support                                   | ✅                | ✅                |
+
+contact:
     name: Elastic Path
     url: 'https://www.elasticpath.com'
     email: support@elasticpath.com
-  license:
+license:
     url: 'https://elasticpath.dev'
     name: MIT
 servers:
@@ -20,9 +43,60 @@ servers:
     description: EU West
 paths:
   /v2/accounts:
+    post:
+      tags:
+        - Accounts
+      summary: Create an Account
+      description: With the account creation endpoint, you have the ability to create parent accounts and subaccounts.
+      operationId: post-v2-accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  oneOf:
+                    - $ref: '#/components/schemas/Account'
+                    - $ref: '#/components/schemas/SubAccount'
+              required:
+                - data
+            examples:
+              Create an account:
+                value:
+                  data:
+                    type: account
+                    name: acc-name
+                    legal_name: acc-legal-name
+                    registration_id: reg-id
+                    external_ref: ext-ref
+              Create a subaccount:
+                value:
+                  data:
+                    type: account
+                    name: acc-sub-name
+                    legal_name: 'acc-legal-name, ltd'
+                    registration_id: reg-id
+                    external_ref: ext-ref
+                    parent_id: 96b1f750-55d3-4768-a3f8-adffba694a2c
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/AccountResponse'
+        '400':
+          $ref: '#/components/schemas/ErrorBadRequest'
+      security:
+        - BearerToken: []
     get:
       tags:
-        - Account Management
+        - Accounts
       summary: Get All Accounts
       description: |-
         Use this endpoint to Get all accounts.
@@ -91,75 +165,10 @@ paths:
                         example: null
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-    post:
-      tags:
-        - Account Management
-      summary: Create an account
-      description: With the account creation endpoint, you have the ability to create parent accounts and subaccounts.
-      operationId: post-v2-accounts
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                data:
-                  type: object
-                  oneOf:
-                    - $ref: '#/components/schemas/Account'
-                    - $ref: '#/components/schemas/SubAccount'
-                  required:
-                    - type
-                    - name
-                    - legal_name
-              required:
-                - data
-            examples:
-              Create an account:
-                value:
-                  data:
-                    type: account
-                    name: acc-name
-                    legal_name: acc-legal-name
-                    registration_id: reg-id
-                    external_ref: ext-ref
-              Create a subaccount:
-                value:
-                  data:
-                    type: account
-                    name: acc-sub-name
-                    legal_name: 'acc-legal-name, ltd'
-                    registration_id: reg-id
-                    external_ref: ext-ref
-                    parent_id: 96b1f750-55d3-4768-a3f8-adffba694a2c
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    $ref: '#/components/schemas/AccountResponse'
-        '400':
-          $ref: '#/components/schemas/ErrorBadRequest'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   '/v2/accounts/{accountID}':
     get:
       tags:
-        - Account Management
+        - Accounts
       summary: Get an Account
       description: View a specific account contained within your store
       operationId: get-v2-accounts-accountID
@@ -184,14 +193,9 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     put:
       tags:
-        - Account Management
+        - Accounts
       summary: Update an Account
       description: Update the information contained on an account.
       operationId: put-v2-accounts-accountID
@@ -323,14 +327,9 @@ paths:
                           example: "Not Found"
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     delete:
       tags:
-        - Account Management
+        - Accounts
       summary: Delete an Account
       description: Delete a specific account within a store
       operationId: delete-v2-accounts-accountID
@@ -348,11 +347,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   /v2/account-members:
     get:
       tags:
@@ -396,17 +390,17 @@ paths:
                         description: Always the current page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/account-members?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/account-members?page[offset]=0&page[limit]=25"
                       first:
                         description: Always the first page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/account-members?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/account-members?page[offset]=0&page[limit]=25"
                       last:
                         description: Always `null` if there is only one page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/account-members?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/account-members?page[offset]=0&page[limit]=25"
                       next:
                         description: Always `null` if there is only one page.
                         type: string
@@ -417,11 +411,6 @@ paths:
                         example: null
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   '/v2/account-members/{accountMemberID}':
     get:
       tags:
@@ -450,11 +439,126 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
+  '/v2/accounts/{accountID}/account-memberships':
+    post:
+      tags:
+        - Account Membership
+      summary: Create an Account Membership
+      description: |
+        :::caution
+
+        You can only create up to 1000 account memberships in an account.
+
+        :::
+      operationId: post-v2-accounts-accountID-account-memberships
+      parameters:
+        - name: accountID
+          in: path
+          description: The unique identifier of the account that the account is associated with.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/AccountMembership'
+            examples:
+              Create account membership:
+                value:
+                  data:
+                    type: account_membership
+                    account_member_id: 9e227208-b592-49c0-8c8f-043b66c634b0
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/AccountMembershipResponse'
+        '404':
+          $ref: '#/components/schemas/ErrorNotFound'
+        '409':
+          $ref: '#/components/schemas/ErrorConflict'
+      security:
+        - BearerToken: [ ]
+    get:
+      tags:
+        - Account Membership
+      summary: Get all Account Memberships
+      description: |-
+        You can also use `include=account_member` to retrieve details about the account members associated with the account memberships.
+
+        With this option, you can get more information about the account members such as name and email in a single request.
+
+        ### Filtering
+
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) account memberships.
+
+        | Operator | Description |
+        | :--- | :--- |
+        | `eq` | Checks whether the values of two operands are equal. If the values are equal, the condition is true. |
+        | `like` | Checks if the operand contains the specified string. You can use wildcard characters in operand. |
+
+        | Attribute | Type | Operator | Example |
+        | :--- | :--- | :--- | :--- |
+        | `account_member_id` | `string` | `eq` / `like` | `eq(account_member_id,00000000-0000-1000-8000-0000000)` |
+
+      operationId: get-v2-accounts-accountID-account-memberships
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page-limit'
+        - $ref: '#/components/parameters/page-offset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccountMembershipResponse'
+                  meta:
+                    $ref: '#/components/schemas/MetaList'
+                  links:
+                    type: object
+                    properties:
+                      current:
+                        description: Always the current page.
+                        type: string
+                        format: uri
+                        example: "https://useast.api.elasticpath.com/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships?page[offset]=0&page[limit]=25"
+                      first:
+                        description: Always the first page.
+                        type: string
+                        format: uri
+                        example: "https://useast.api.elasticpath.com/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships?page[offset]=0&page[limit]=25"
+                      last:
+                        description: Always `null` if there is only one page.
+                        type: string
+                        format: uri
+                        example: "https://useast.api.elasticpath.com/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships?page[offset]=0&page[limit]=25"
+                      next:
+                        description: Always `null` if there is only one page.
+                        type: string
+                        example: null
+                      prev:
+                        description: Always `null` if the user is on the first page.
+                        type: string
+                        example: null
+      security:
+        - BearerToken: [ ]
   '/v2/account-members/{accountMemberId}/account-memberships':
     get:
       tags:
@@ -528,11 +632,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   '/v2/accounts/{accountID}/account-memberships/unassigned-account-members':
     get:
       tags:
@@ -595,17 +694,17 @@ paths:
                         description: Always the current page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23/account-memberships/unassigned-account-members?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23/account-memberships/unassigned-account-members?page[offset]=0&page[limit]=25"
                       first:
                         description: Always the first page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23/account-memberships/unassigned-account-members?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23/account-memberships/unassigned-account-members?page[offset]=0&page[limit]=25"
                       last:
                         description: Always `null` if there is only one page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23/account-memberships/unassigned-account-members?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/accounts/deb6b25f-8451-4211-9a22-95610333df23/account-memberships/unassigned-account-members?page[offset]=0&page[limit]=25"
                       next:
                         description: Always `null` if there is only one page.
                         type: string
@@ -618,141 +717,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-  '/v2/accounts/{accountID}/account-memberships':
-    get:
-      tags:
-        - Account Membership
-      summary: Get all Account Memberships
-      description: |-
-        You can also use `include=account_member` to retrieve details about the account members associated with the account memberships.
-
-        With this option, you can get more information about the account members such as name and email in a single request.
-        
-        ### Filtering
-        
-        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) account memberships.
-
-        | Operator | Description |
-        | :--- | :--- |
-        | `eq` | Checks whether the values of two operands are equal. If the values are equal, the condition is true. |
-        | `like` | Checks if the operand contains the specified string. You can use wildcard characters in operand. |
-
-        | Attribute | Type | Operator | Example |
-        | :--- | :--- | :--- | :--- |
-        | `account_member_id` | `string` | `eq` / `like` | `eq(account_member_id,00000000-0000-1000-8000-0000000)` |
-
-      operationId: get-v2-accounts-accountID-account-memberships
-      parameters:
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page-limit'
-        - $ref: '#/components/parameters/page-offset'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/AccountMembershipResponse'
-                  meta:
-                    $ref: '#/components/schemas/MetaList'
-                  links:
-                    type: object
-                    properties:
-                      current:
-                        description: Always the current page.
-                        type: string
-                        format: uri
-                        example: "https://useast.api.elasticpath.com/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships?page[offset]=0&page[limit]=25"
-                      first:
-                        description: Always the first page.
-                        type: string
-                        format: uri
-                        example: "https://useast.api.elasticpath.com/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships?page[offset]=0&page[limit]=25"
-                      last:
-                        description: Always `null` if there is only one page.
-                        type: string
-                        format: uri
-                        example: "https://useast.api.elasticpath.com/v2/accounts/5b495058-9ffc-4b9b-810a-c9d43ffc6500/account-memberships?page[offset]=0&page[limit]=25"
-                      next:
-                        description: Always `null` if there is only one page.
-                        type: string
-                        example: null
-                      prev:
-                        description: Always `null` if the user is on the first page.
-                        type: string
-                        example: null
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-    post:
-      tags:
-        - Account Membership
-      summary: Create an Account Membership
-      description: |
-        :::caution
-        
-        You can only create up to 1000 account memberships in an account.
-        
-        :::
-      operationId: post-v2-accounts-accountID-account-memberships
-      parameters:
-        - name: accountID
-          in: path
-          description: The unique identifier of the account that the account is associated with.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: ''
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                data:
-                  $ref: '#/components/schemas/AccountMembership'
-            examples:
-              Create account membership:
-                value:
-                  data:
-                    type: account_membership
-                    account_member_id: 9e227208-b592-49c0-8c8f-043b66c634b0
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    $ref: '#/components/schemas/AccountMembershipResponse'
-        '404':
-          $ref: '#/components/schemas/ErrorNotFound'
-        '409':
-          $ref: '#/components/schemas/ErrorConflict'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   '/v2/accounts/{accountID}/account-memberships/{membershipID}':
     get:
       tags:
@@ -787,11 +751,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     put:
       tags:
         - Account Membership
@@ -844,11 +803,6 @@ paths:
           $ref: '#/components/schemas/ErrorConflict'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     delete:
       tags:
         - Account Membership
@@ -875,11 +829,6 @@ paths:
           $ref: '#/components/schemas/ErrorNotFound'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   /v2/settings/account-membership:
     get:
       tags:
@@ -896,11 +845,6 @@ paths:
                 $ref: '#/components/schemas/AccountMembershipSettings'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     put:
       tags:
         - Account Membership Settings
@@ -929,11 +873,6 @@ paths:
           $ref: '#/components/schemas/ErrorBadRequest'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   /v2/settings/account-authentication:
     get:
       tags:
@@ -950,11 +889,6 @@ paths:
                 $ref: '#/components/schemas/AccountAuthenticationSettingsResponse'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
     put:
       tags:
         - Account Authentication Settings
@@ -980,11 +914,6 @@ paths:
           $ref: '#/components/schemas/ErrorBadRequest'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
   /v2/account-members/tokens:
     post:
       tags:
@@ -993,7 +922,7 @@ paths:
       description: |
         Commerce provides authentication tokens for anyone using the Account Management APIs, including accounts and account members.
 
-        For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/carts-orders/carts/account-cart-associations/account-cart-associations-overview), [orders](/docs/api/carts/orders), [catalogs with associated rules](/docs/api/pxm/catalog/rules), and [addresses](/docs/api/addresses/addresses-introduction).
+        For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/carts-orders/account-cart-associations), [orders](/docs/api/carts/orders), [catalogs with associated rules](/docs/api/pxm/catalog/rules), and [addresses](/docs/api/addresses/addresses-introduction).
 
         The set of permissions available to a shopper using an Account Management Authentication token is documented in [Permissions](/docs/authentication/Tokens/permissions)
         
@@ -1019,9 +948,8 @@ paths:
                     - $ref: '#/components/schemas/PasswordlessRequest'
                     - $ref: '#/components/schemas/SelfSignupRequest'
                     - $ref: '#/components/schemas/SwitchingAccountRequest'
-                  required:
-                    - type
-                    - authentication_mechanism
+              required:
+                - data
             examples:
               OpenID Connect:
                 value:
@@ -1083,17 +1011,17 @@ paths:
                         description: Always the current page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"
                       first:
                         description: Always the first page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"
                       last:
                         description: Always `null` if there is only one page.
                         type: string
                         format: uri
-                        example: "https://useast.cm.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"
+                        example: "https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"
                       next:
                         description: Always `null` if there is only one page.
                         type: string
@@ -1106,36 +1034,21 @@ paths:
           $ref: '#/components/schemas/ErrorUnauthorized'
       security:
         - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
 tags:
-  - name: Account Management Authentication
-    description: Commerce provides authentication tokens for an `Account` and an account member.
-    externalDocs:
-      url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview'
-  - name: Account Authentication Settings
-    description: You can use the Account Authentication Settings endpoint to retrieve settings controlling account authentication.
-    externalDocs:
-      url: 'https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/account-authentication-settings'
-  - name: Account Management Introduction
+  - name: Accounts
     description: |
-      In the Commerce store, sellers can create accounts and account members. Sellers can also assign the account members to accounts using account memberships. Associated account members can log in to the store and create orders for their accounts.
-      
-      Each account can have multiple account members. Users associated with an account can transact on behalf of the account.
+      An Account represents the entity that participates in a Commerce transaction. Accounts can have Carts, Orders, Subscriptions, and Addresses.
     externalDocs:
       url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-management-api/account-management-api-overview'
   - name: Account Members
     description: |
       An `Account Member` resource is a user that you can add to accounts using account memberships.
       
-      Account members API is read only, and you cannot add users using this API. You must use the `user_authentication_info` object to create users in the authentication realm of account authentication settings. For more information on adding account members, see the [Adding Accounts and Account Members](/guides/How-To/Accounts/add-account-and-member) section.
+      Account members API is read only, and you cannot add users using this API. There is a 1 to 1 correspondence between User Authentication Info and an Account Member, the corresponding objects have the same id. You must use the `user_authentication_info` object to create users in the authentication realm of account authentication settings. For more information on adding account members, see the [Adding Accounts and Account Members](/guides/How-To/Accounts/add-account-and-member) section.
     externalDocs:
       url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-members-api/overview'
   - name: Account Membership
-    description: The `Account Membership` resource represents the relationship between an account and an account member.
+    description: The `Account Membership` resource represents the relationship between an account and an account member. This relationship is many to many. Each account can have multiple account members, and each account member can be a member of multiple accounts.
     externalDocs:
       url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/using-account-membership-api/overview'
   - name: Account Membership Settings
@@ -1145,6 +1058,14 @@ tags:
       This setting is only applied to new account memberships. If an account member is added to 3 accounts, and the setting is reduced to 1, the account member remains in the 3 accounts and can no longer be added to more.
     externalDocs:
       url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/account-membership-settings'
+  - name: Account Management Authentication
+    description: Commerce provides authentication tokens for an `Account` and an `Account Member`.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/accounts/account-management-authentication/account-member-authentication-api-overview'
+  - name: Account Authentication Settings
+    description: You can use the Account Authentication Settings endpoint to retrieve or modify how settings controlling account and account member authentication.
+    externalDocs:
+      url: 'https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/account-authentication-settings'
 components:
   parameters:
     filter:
@@ -1268,6 +1189,10 @@ components:
           type: string
           description: The unique attribute associated with the account. For example, this could be an external reference from a separate company system. The maximum length is 2048 characters. Default is `null`.
           example: ext-ref
+      required:
+        - type
+        - name
+        - legal_name
     SubAccount:
       allOf:
         - $ref: '#/components/schemas/Account'
@@ -1525,12 +1450,12 @@ components:
               description: Specifies the Proof Key for Code Exchange (PKCE) code verifier corresponding to the code challenge supplied to the authorization endpoint. For more information about code verifier and challenge, see Generating a [Code Verifier and Challenge](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters).
               type: string
               example: 0E934PurR8ExVg6Pj7T4kQewxKzWSfSFG5d15FGfww8
-      required:
-        - type
-        - authentication_mechanism
-        - oauth_authorization_code
-        - oauth_redirect_uri
-        - oauth_code_verifier
+          required:
+            - type
+            - authentication_mechanism
+            - oauth_authorization_code
+            - oauth_redirect_uri
+            - oauth_code_verifier
     PasswordRequest:
       allOf:
         - $ref: '#/components/schemas/AccountManagementAuthenticationToken'
@@ -1553,12 +1478,12 @@ components:
               description: The password.
               type: string
               example: pa$$word
-      required:
-        - type
-        - authentication_mechanism
-        - password_profile_id
-        - username
-        - password
+          required:
+            - type
+            - authentication_mechanism
+            - password_profile_id
+            - username
+            - password
     SelfSignupRequest:
       allOf:
         - $ref: '#/components/schemas/AccountManagementAuthenticationToken'
@@ -1590,14 +1515,14 @@ components:
               description: The email.
               type: string
               example: totallylegit@gmail.com
-      required:
-        - type
-        - authentication_mechanism
-        - password_profile_id
-        - username
-        - password
-        - name
-        - email
+          required:
+            - type
+            - authentication_mechanism
+            - password_profile_id
+            - username
+            - password
+            - name
+            - email
     PasswordlessRequest:
       allOf:
         - $ref: '#/components/schemas/AccountManagementAuthenticationToken'
@@ -1620,12 +1545,12 @@ components:
               description: The one-time password token.
               type: string
               example: abd1g5
-      required:
-        - type
-        - authentication_mechanism
-        - password_profile_id
-        - username
-        - one_time_password_token
+          required:
+            - type
+            - authentication_mechanism
+            - password_profile_id
+            - username
+            - one_time_password_token
     SwitchingAccountRequest:
       allOf:
         - $ref: '#/components/schemas/AccountManagementAuthenticationToken'
@@ -1635,9 +1560,9 @@ components:
               description: Species the authentication mechanism. You must use `account_management_authentication_token`.
               type: string
               default: account_management_authentication_token
-      required:
-        - type
-        - authentication_mechanism
+          required:
+            - type
+            - authentication_mechanism
     AccountManagementAuthenticationTokenResponse:
       properties:
         type:

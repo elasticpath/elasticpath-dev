@@ -1,10 +1,10 @@
 ---
 title: Customer Tokens
 nav_label: Customer Tokens
-sidebar_position: 10
+sidebar_position: 20
 ---
 
-Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](/docs/customer-management/customer-management-api/customer-tokens#using-a-username-and-password) or [Single Sign-On through OpenID Connect](/docs/customer-management/customer-management-api/customer-tokens#using-open-id-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/api/addresses/addresses-introduction) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
+Commerce provides a basic `/tokens` endpoint using which you can authenticate using a [password](#using-a-username-and-password) or [Single Sign-On through OpenID Connect](#using-openid-connect). With this endpoint, you can allow customers to manage their [addresses](/docs/api/customer-addresses/addresses-introduction) or [get orders](/docs/api/carts/get-customer-orders) by `customer`.
 
 ## The `customer token` Object
 
@@ -103,7 +103,7 @@ Moltin.Customers.TokenViaPassword(email, password).then((data) => {
 
 ## Using OpenID Connect
 
-For more information on requesting a customer token with OpenID Connect, refer to the Developer How-To: [Single sign-on with OpenID Connect](/guides/How-To/Authentication/get-single-sign-on-customer-token).
+For more information on requesting a customer token with OpenID Connect, refer to the Developer How-To: [Single sign-on with OpenID Connect](https://elasticpath.dev/guides/How-To/Authentication/get-single-sign-on-account-management-token).
 
 ### Headers
 
@@ -119,7 +119,7 @@ For more information on requesting a customer token with OpenID Connect, refer t
 | `authentication_mechanism` | Required | `string` | For OpenID Connect login this value should be `oidc`. |
 | `oauth_authorization_code` | Required | `string` | The code returned from the OpenID Connect Provider authentication. |
 | `oauth_redirect_uri`       | Required | `string` | The url of the front-end that handles the callback of the token. |
-| `oauth_code_verifier`      | Required | `string` | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. See [Generating a Code Verifier and Challenge](/guides/How-To/Authentication/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters). |
+| `oauth_code_verifier`      | Required | `string` | The Proof Key for Code Exchange (PKCE) Code Verifier, corresponding to the Code Challenge that was supplied to the Authorization endpoint. See [Generating a Code Verifier and Challenge](https://elasticpath.dev/guides/How-To/Authentication/get-single-sign-on-account-management-token#generate-proof-key-for-code-exchange-parameters). |
 
 ## Open ID Connect Request Example
 
@@ -178,12 +178,12 @@ You can use a `X-Moltin-Customer-Token` header with the following endpoints. The
 
 - [Get a Customer](/docs/customer-management/customer-management-api/get-a-customer)
 - [Update a Customer](/docs/customer-management/customer-management-api/update-a-customer)
-- [Get Customer Addresses](/docs/api/addresses/get-v-2-customer-addresses)
-- [Get an Address](/docs/api/addresses/get-v-2-customer-address)
-- [Create an Address](/docs/api/addresses/post-v-2-customer-address)
-- [Update an Address](/docs/api/addresses/put-v-2-customer-address)
+- [Get Customer Addresses](/docs/api/customer-addresses/get-v-2-customer-addresses)
+- [Get an Address](/docs/api/customer-addresses/get-v-2-customer-addresses)
+- [Create an Address](/docs/api/customer-addresses/post-v-2-customer-address)
+- [Update an Address](/docs/api/customer-addresses/put-v-2-customer-address)
 - [Get all Orders](/docs/api/carts/get-customer-orders)
 - [Get an Order](/docs/api/carts/get-an-order)
-- [Get Customer Carts](/docs/carts-orders/carts/customer-cart-associations/get-customer-carts)
+- [Get Customer Carts](/docs/api/carts/get-customer-carts)
 - [Create an Association between a Customer and a Cart](/docs/api/carts/create-customer-cart-association)
 - [Delete an Association Between a Customer and a Cart](/docs/api/carts/delete-customer-cart-association)

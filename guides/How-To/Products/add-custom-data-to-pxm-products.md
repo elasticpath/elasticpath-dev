@@ -1,6 +1,6 @@
 ---
-title: Add Custom Data to Extend Products
-nav_label: Add Custom Data to Extend Products
+title: Add Custom-Data to Extend Products
+nav_label: Add Custom-Data to Extend Products
 sidebar_position: 31
 ---
 

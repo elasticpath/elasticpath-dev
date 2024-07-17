@@ -30,7 +30,7 @@ You can find more detailed instructions on password profile creation [here](/doc
 
 ### Update the account authentication settings
 
-Send a PUT request to update [Account Authentication Settings](/docs/authentication/single-sign-on/account-authentication-settings) to set `enable_self_signup` to `true`. This enables self sign up for the account.
+Send a PUT request to update [Account Authentication Settings](/docs/api/accounts/account-authentication-settings) to set `enable_self_signup` to `true`. This enables self sign up for the account.
 
 You can also set `auto_create_account_for_account_members` to `true`. This automatically creates an account for the account member and then creates a membership. 
 
@@ -43,6 +43,6 @@ You can find more detailed instructions on generating an authentication token us
 
 Log in as an Admin to [add a newly created account member to the account](/docs/api/accounts/post-v-2-accounts-account-id-account-memberships). Once this step is completed, a buyer can [log in as usual](/docs/authentication/Tokens/account-management-authentication-token). 
 
-If your `auto_create_account_for_account_members` setting in [account authentication settings](/docs/authentication/single-sign-on/account-authentication-settings) is set to `false` then you need to manually create an account for the account member and afterwards [create account membership](/docs/api/accounts/post-v-2-accounts-account-id-account-memberships). 
+If your `auto_create_account_for_account_members` setting in [account authentication settings](/docs/api/accounts/account-authentication-settings) is set to `false` then you need to manually create an account for the account member and afterwards [create account membership](/docs/api/accounts/post-v-2-accounts-account-id-account-memberships). 
 
 If the setting is set to `true`, you can log in as usual without any additional steps.
