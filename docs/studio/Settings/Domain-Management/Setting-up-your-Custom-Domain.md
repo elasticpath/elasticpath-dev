@@ -23,7 +23,7 @@ table to walk you through the remainder of the steps:
 
 Follow the below steps to add your domain to Studio with a custom **subdomain**:
 
-1. Open **√ > Settings,** scroll down to **Domain** and select ****Custom domain****
+1. Open **Studio > Settings,** scroll down to **Domain** and select ****Custom domain****
 
    ![Custom Domain](/assets/studio/1-dm.png)
 
