@@ -294,7 +294,24 @@ paths:
       tags:
         - Cart Management
       summary: Delete a Cart
-      description: You can delete a cart, including the items, name, description, and remove all associations.
+      description: |
+        You can delete a cart, including the items, name, description, and remove all associations.
+
+        ### Errors
+
+        The following error message is received when you attempt to delete a cart that is associated with a customer. Before deletion, ensure that the cart is disassociated.
+
+        ```json
+        message: {
+            errors: [
+              {
+                status: 400,
+                title: 'Last cart',
+                detail: 'This is the last cart associated with a customer and it cannot be deleted, try disassociating instead'
+              }
+            ]
+          }
+        ````
       operationId: deleteACart
       parameters:
         - name: cartID
