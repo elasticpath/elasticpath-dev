@@ -183,7 +183,6 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -387,6 +386,16 @@ const config = {
             outputDir: "docs/api/addresses",
             downloadUrl:
               "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/addresses/AccountAddresses.yaml",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          },
+          authentication: {
+            specPath: "openapispecs/authentication/OpenAPISpec.yaml",
+            outputDir: "docs/api/authentication",
+            downloadUrl:
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/authentication/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
