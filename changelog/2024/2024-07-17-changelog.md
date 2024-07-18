@@ -1,5 +1,5 @@
 ---
-title: 'Klevu Integration added to Integration Hub'
+title: 'Removed the deprecated field `bundle_configuation'
 date: '2024-07-17'
 tags: ['Cart Management']
 hide_blog_post_date: false
