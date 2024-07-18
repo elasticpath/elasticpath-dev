@@ -6,6 +6,10 @@ sidebar_position: 10
 
 An OpenID Connect Profile resource represents a specific configuration of an OpenID Connect Provider.
 
+An authentication realm can have multiple OpenID Connect Profiles. This allows shoppers to authenticate using multiple OpenID providers. In the example shown below, Jane can login using both Apple and Google, whereas Joan can only login using Google.
+
+![oidc profiles](/assets/oidc-profiles.png)
+
 ## The OpenID Connect Profile Object
 
 | Attribute | Type | Description |

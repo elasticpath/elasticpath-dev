@@ -294,7 +294,24 @@ paths:
       tags:
         - Cart Management
       summary: Delete a Cart
-      description: You can delete a cart, including the items, name, description, and remove all associations.
+      description: |
+        You can delete a cart, including the items, name, description, and remove all associations.
+
+        ### Errors
+
+        The following error message is received when you attempt to delete a cart that is associated with a customer. Before deletion, ensure that the cart is disassociated.
+
+        ```json
+        message: {
+            errors: [
+              {
+                status: 400,
+                title: 'Last cart',
+                detail: 'This is the last cart associated with a customer and it cannot be deleted, try disassociating instead'
+              }
+            ]
+          }
+        ````
       operationId: deleteACart
       parameters:
         - name: cartID
@@ -636,31 +653,30 @@ paths:
               "data": {
                 "type": "product",
                   "attributes": {
-                  /*** other product attributes ommitted ***/
-                  "custom_inputs": {
-                    "front": {
-                    "name": "T-Shirt Front",
-                    "validation_rules": [
-                      {
-                        "type": "string",
-                        "options": {
-                        "max_length": 50
-                      }
-                    }
-                  ],
-                "required": false
+                      "custom_inputs": {
+                          "front": {
+                              "name": "T-Shirt Front",
+                              "validation_rules": [
+                              {
+                                  "type": "string",
+                                  "options": {
+                                  "max_length": 50
+                              }
+                          }
+                      ],
+                            "required": false
                 },
-                "back": {
-                  "name": "T-Shirt Back",
-                  "validation_rules": [
-                    {
-                      "type": "string",
-                      "options": {
-                      "max_length": 50
+                          "back": {
+                            "name": "T-Shirt Back",
+                            "validation_rules": [
+                        {
+                              "type": "string",
+                              "options": {
+                              "max_length": 50
                     }
                   }
                 ],
-                "required": false
+                           "required": false
                 }
               }
             }
@@ -686,7 +702,7 @@ paths:
         - [Tax items](/docs/api/carts/tax-items) may optionally be added with the product. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the product.
         - The cart currency is set when the first item is added to the cart.
         - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
-        - A cart can contain a maximum of 100 unique items. Items include products and custom items.
+        - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
         - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) documentation.
 
         :::
@@ -697,36 +713,8 @@ paths:
 
         For [Shipping Groups](/docs/ship-groups/shipping-groups), once you have created a [cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group), you need to link it to the cart items. This is important, because it is necessary to associate items with shipping groups in order to include shipping groups in the corresponding cart, order, and totals.
 
-        #### Personalized Products
-
-        You can allow your shoppers to add custom text when adding custom items to their carts. This is useful, for example, if you have a custom item that can be personalized. You can do this using the `custom_inputs` attribute. The `custom_inputs` attribute must be an object. For example, you sell greetings cards that can be printed with your shoppers personalized messages.
-
-        You can allow shoppers to personalize their goods by adding custom text inputs directly to carts when adding custom items. This feature is particularly useful for customizable items, such as personalized T-shirts or greeting cards. You can use this functionality by leveraging the `custom_inputs` attribute, and defining the details and validation rules for the custom text.
-
-        Once you have defined your custom inputs on a custom item, you must configure the custom inputs in your orders.
-
-        When the custom item is added to the cart, those custom inputs are supplied.
-
-        ```json
-        {
-          "custom_inputs": {
-            "name": {
-              "name": "Fred",
-              "message": "Happy Birthday"
-            }
-          }
-        }
-        ```
-
-        If the same custom item has different `custom_inputs` attributes then, these are added as separate items in a cart.
-
-        The `custom_inputs` attribute is stored in the cart item and must not exceed 1MB. When a cart is checked out, the `custom_inputs` attribute becomes part of the order items.  There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
-
         :::note
 
-        - Any requests to add a custom item to a cart returns a collection of [cart items](/docs/api/carts/cart-items).
-        - [Tax items](/docs/api/carts/tax-items) may optionally be added with the custom item. Only administrators with [client credentials](/docs/authentication/Tokens/client-credential-token) are able to do this. If included, they replace any existing taxes on the custom item.
-        - A cart can contain a maximum of 100 unique items. Items include products, custom items, tax items, and promotions.
         - Custom Cart Items are available through [implicit authentication](/docs/authentication/Tokens/implicit-token). Ensure that you always check each order has the correct details for each item, most importantly, price.
 
         :::
@@ -1931,7 +1919,31 @@ paths:
       tags:
         - Payments
       summary: Create Stripe Payment Intent for a Cart
-      description: Creates a payment intent for a cart using Stripe as the gateway.
+      description: |
+        The Cart Payment Intent feature enables the creation of a Stripe Payment Intent specifically tied to a shopping cart and its subsequent order. This allows Payment Intent users to track payment details from the cart stage and seamlessly maintain consistency in payment information throughout the order stage. Using these features, you can create Payment Intents for their carts, update Payment Intents with final cart details, and synchronize Payment Intents from Stripe to Commerce.
+
+        :::note
+
+        - Typically, in Commerce, inventory is allocated at the time of payment initiation after an order is created. However, in the case of Cart Payment Intent, information about the payment is received only upon synchronizing the order from Stripe to Commerce. This may happen after the payment is completed. Therefore, there might be a delay between the payment made and allocation, increasing the chance of paying for items that are not in stock.
+        - There are certain fields you can choose to set up when [creating a payment intent](https://stripe.com/docs/api/payment_intents/create). However, if you decide to update a payment intent, the available options may not be the same as those allowed while creating a payment intent. See [updating a payment intent](https://stripe.com/docs/api/payment_intents/update).
+
+        :::
+
+        The following steps outline the workflow associated with the Payment Intent:
+
+        1. [Add items to cart](/docs/api/carts/cart-merge#add-custom-item-to-cart).
+        1. [Create a Payment Intent for the cart](/docs/api/carts/create-cart-payment-intent). The Payment Intent is created in Stripe, reflecting the cart and transaction details, including currency, amounts, payment type, and any optional Stripe details. The Payment Intent ID is generated and linked to the cart.
+        1. [Update a Payment Intent](/docs/carts-orders/update-cart-payment-intent). This step is optional but becomes necessary when there are changes in the cart details at the time of payment. It ensures the Payment Intent accurately reflects the current cart details when processing the payments on the front end.
+        1. [Checkout the cart](/docs/api/carts/checkout). An unpaid order is created, and the Payment Intent ID is linked to the order.
+        1. [Confirm the order](/docs/carts-orders/confirm-an-order). This is important because after checkout, it is essential to confirm the Payment Intent and synchronize it with Commerce. This results in a corresponding transaction and change in order statuses in Commerce. Additionally, the Payment Intent ID is removed from the order once it is linked via the transaction.
+
+        ### Best Practices
+
+        We recommend you follow these practices to maintain consistency and accuracy when using Cart Payment Intent.
+
+        - After checkout, we recommend clearing the shopping cart. You can achieve this using a [Delete a cart](/docs/api/carts/delete-a-cart) endpoint or [Update a cart](/docs/api/carts/update-a-cart) to remove the Payment Intent ID. This helps to avoid potential issues where subsequent checkouts for the same cart might unintentionally use the previous Stripe Payment Intent ID.
+        - If it is not reasonable to clear the cart immediately after checkout due to several subsequent, duplicate checkouts to the same cart, ensure that you only synchronize the Payment Intent when finalizing the order. Each order confirmation is unaware of the others, and syncing Payment Intent IDs for each confirmation can lead to duplicate transactions in Commerce. In other words, if you synchronize Payment Intents for earlier versions of a repeated checkout, you'll end up with multiple orders from the same cart, each having transactions linked to the same Payment Intent.
+        - To pay the entire amount at once, use the [Update Cart Payment Intent](/docs/carts-orders/update-cart-payment-intent) endpoint to update the Stripe Payment Intent with the final cart details when preparing to take the payment. Doing so, ensures that the Payment Intent accurately reflects the current cart details when processing payments on the front end. We do not recommend calling the [Update Cart Payment Intent](/docs/carts-orders/update-cart-payment-intent) for each individual change in the cart, as this can lead to more requests and may slow down the front-end performance.
       operationId: createCartPaymentIntent
       parameters:
         - name: cartID
@@ -2001,11 +2013,17 @@ paths:
 
         After a successful checkout, a response that contains the order is returned. If the cart is linked to a shipping group, the shipping group is also associated with the order after checkout.
 
+        You can checkout using one of the following methods:
+        - Customer ID. You can checkout a cart with an existing customer ID.
+        - Guest Checkout (Checkout with Customer Object). You can checkout a cart with an associated customer name and email.
+        - Checkout with Account. The shopper authenticates with the `Client Credentials` Token.
+        - Checkout with Account Management Authentication Token. The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
+
         :::note
 
         - The cart currency is set when the first item is added to the cart.
         - The product being added to the cart requires a price in the same currency as the other items in the cart. The API returns a 400 error if a price is not defined in the correct currency.
-        - To ensure that a free gift is automatically applied to an order, set the promotion to automatic. The checkout process will not be successful if free gift items are out of stock. See Errors section.
+        - To ensure that a free gift is automatically applied to an order, set the promotion to automatic. The checkout process will not be successful if free gift items are out of stock. See [Errors](#errors) section.
 
         :::
 
@@ -2016,7 +2034,29 @@ paths:
 
         :::
 
-        The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
+        ### Next Steps
+
+        After a cart has been converted to an Order using either of the previous methods, you most likely want to capture payment for order. See [Paying for an Order](/docs/api/carts/payments).
+
+        ### Errors
+
+        The following error response is returned during checkout when an eligible item is added to the cart, and the free gift is out of stock.
+
+        ```json
+        {
+            "errors": [
+                {
+                    "status": 400,
+                    "title": "Insufficient stock",
+                    "detail": "There is not enough stock to add gift2 to your cart",
+                    "meta": {
+                        "id": "f2b68648-9621-45a3-aed6-1b526b0f5beb",
+                        "sku": "gift2"
+                    }
+                }
+            ]
+        }
+        ```
       operationId: checkoutWithAccountManagementAuthenticationToken
       parameters:
         - name: cartID
@@ -4556,13 +4596,6 @@ components:
               properties:
                 id:
                   description: The ID of the customer.
-                  type: string
-                email:
-                  description: The customer email address.
-                  type: string
-                  format: email
-                name:
-                  description: The full name of the customer.
                   type: string
             billing_address:
               $ref: '#/components/schemas/BillingAddress'

@@ -11,7 +11,7 @@ sidebar_position: 40
     - **Plain text** - Use **Plain text** if you want your descriptions in plain text or if you want your descriptions to contain HTML tags. 
     - **Formatted** - Use **Formatted** to use our rich text editor when formatting your descriptions. You must only use the formatting options provided. No other HTML tags are supported. If you do provide descriptions that contain HTML tags, the HTML is reformatted to match the formats supported by our rich text editor. If you want your descriptions to contain HTML tags, you must use **Plain text**.
 
-![Wysiwyg](/assets/wysiwyg5.gif)
+    ![Wysiwyg](/assets/wysiwyg5.gif)
  
 1. Turn the **Product Status** toggle on to make the product `live`. Only products with a `live` status are published in catalogs. 
 1. Turn the **Product Bundle** toggle on to make this product a bundle. See [Bundles in Commerce Manager](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).

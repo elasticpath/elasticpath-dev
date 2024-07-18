@@ -6,7 +6,7 @@ sidebar_position: 10
 
 You can view your store’s integrations on the **SYSTEM > Store Settings > Webhooks** tab.
 
-For an overview of how integrations work in Commerce, see [Integrations](https://beta.elasticpath.dev/docs/api/integrations/integrations-introduction).
+For an overview of how integrations work in Commerce, see [Integrations](/docs/api/integrations/integrations-introduction).
 
 ## Sorting and filtering integrations
 
@@ -27,5 +27,5 @@ You can filter the integrations list to show which integrations are enabled or d
      | **Enabled** | Enable the integration.|
 
     :::caution
-    You cannot edit `aws_sqs` and `stomp` integration types using Commerce Manager. You can edit these integrations using the [update an integration](https://beta.elasticpath.dev/docs/api/integrations/update-integration) endpoint.
+    You cannot edit `aws_sqs` and `stomp` integration types using Commerce Manager. You can edit these integrations using the [update an integration](/docs/api/integrations/update-integration) endpoint.
     :::

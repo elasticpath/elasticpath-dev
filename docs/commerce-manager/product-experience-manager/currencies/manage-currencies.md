@@ -9,7 +9,7 @@ In your store, you can display prices to customers in their local currency. You 
 You can do this using:
 
 - [Commerce Manager](#managing-currencies)
-- [Currencies API](/docs/api/pxm/currencies/elastic-path-composable-commerce)
+- [Currencies API](/docs/api/pxm/currencies/currencies-introduction)
 
 After a customer selects a locale, the product prices in the catalog, carts, and orders are displayed in the currency for that locale. Order totals and taxes are calculated in the same currency. See [Using Currencies in Catalogs, Carts and Orders](#using-currencies-in-ep-pxm-products-and-catalogs-carts-and-orders).
 
