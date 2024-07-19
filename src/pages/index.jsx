@@ -11,8 +11,11 @@ import Success from "../components/homepage/Success";
 import Testimonials from "../components/homepage/Testimonials";
 import APIs from "../components/homepage/apis/APIs";
 import AbstractBG from "../components/homepage/ui/AbstractBG";
+import useLinkedinInsight from "../components/homepage/hooks/useLinkedinInsight";
 
 export default function Homepage() {
+  useLinkedinInsight();
+
   return (
     <div className="dev-homepage dark:bg-homepage-gradient bg-white scroll-smooth">
       <Layout
