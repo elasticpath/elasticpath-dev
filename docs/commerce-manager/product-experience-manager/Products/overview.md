@@ -4,9 +4,9 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-import CreatingProducts from "../../../partials/_creating-products.mdx";
+import Overview from "../../../partials/pxm/products/_products-overview.mdx";
 
-<CreatingProducts></CreatingProducts>
+<Overview></Overview>
 
 ### Products and Catalog Releases
 
