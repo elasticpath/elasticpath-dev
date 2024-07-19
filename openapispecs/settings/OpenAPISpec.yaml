@@ -209,8 +209,7 @@ paths:
         
         :::note
         
-        - You cannot use both custom discounts and rule promotions at the same time.
-        - You must remove all existing discounts in the cart before updating it to use rule promotions.
+        You cannot use both custom discounts and rule promotions at the same time.
         
         :::
         
@@ -223,16 +222,6 @@ paths:
             "status": 422,
             "title": "Cannot use both discounts together",
             "detail": "Only one discount setting can be set to true at a time."
-        }
-        ```
-        
-        The following error is received if the cart already has an existing promotion and you update it to use rule promotions:
-        
-        ```jsom
-        {
-            "status": 422,
-            "title": "Cart contains existing discounts",
-            "detail": "Remove all existing discounts in cart before updating cart to use rule promotions."
         }
         ```
       operationId: put-v2-settings-cart
