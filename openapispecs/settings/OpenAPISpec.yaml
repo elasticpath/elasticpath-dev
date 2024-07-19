@@ -34,13 +34,13 @@ info:
     :::note
     
     - For stores created since February 2020, `line` is the default calculation method. Stores created before February 2020 use `simple` as their calculation method.
-    - Line-item discount promotions, such as item percent discount and item fixed discount, are only supported by the line calculation method. For more information, see [Promotions](/docs/commerce-cloud/promotions/promotions-overview).
+    - Line-item discount promotions, such as item percent discount and item fixed discount, are only supported by the line calculation method. For more information, see [Promotions Standard](/docs/api/promotions/promotions-standard-introduction).
     
     :::
     
     ### Address Mandatory Fields
     
-    You can create an address to associate with an account in your storefront. This defines the address fields that you can use when creating an address in Commerce Manager. For more information, see [Addresses](/docs/api/addresses).
+    You can create an address to associate with an account in your storefront. This defines the address fields that you can use when creating an address in Commerce Manager. For more information, see [Addresses](/docs/api/addresses/addresses-introduction).
     
     Address fields can be required or optional. You can choose which optional address fields to use in your address, depending on your requirements. To change which fields are mandatory for creating an address, see [Update Settings](/docs/api/settings/put-v-2-settings). Changing the mandatory fields does not impact the addresses of customers made before the change.
     
@@ -69,7 +69,7 @@ info:
   
     :::note
     
-    - Refer to the [Performance](/docs/commerce-cloud/api-overview/pagination#performance) section in the Pagination documentation, which outlines patterns for retrieving all documents without using a higher page offset limit.
+    - Refer to the [Performance](https://beta.elasticpath.dev/guides/Getting-Started/pagination#performance) section in the Pagination documentation, which outlines patterns for retrieving all documents without using a higher page offset limit.
     - To change any predefined configuration, contact [Elastic Path support team](https://support.elasticpath.com/hc/en-us).
     
     :::
@@ -112,7 +112,7 @@ paths:
         
         :::note
         
-        The default calculation_method is line.
+        The default `calculation_method` is `line`.
         
         :::
       operationId: get-v2-settings
@@ -204,8 +204,37 @@ paths:
 
         With update cart settings endpoint, you can:
 
-        - Enable or disable custom discounts by setting the custom_discounts_enabled field to true. This allows you to activate your custom discounts from external services. 
+        - Enable or disable custom discounts by setting the `custom_discounts_enabled` field to `true`. This allows you to activate your custom discounts from external services. By default, this setting is determined by the cart settings configured for the store.
         - Enable or disable the use of rule promotions within the cart. You can apply this setting either at the store level using the update cart setting endpoint or individually to a specific cart using the [update a cart](/docs/api/carts/update-a-cart) endpoint.
+        
+        :::note
+        
+        - You cannot use both custom discounts and rule promotions at the same time.
+        - You must remove all existing discounts in the cart before updating it to use rule promotions.
+        
+        :::
+        
+        ### Errors
+        
+        The following error is received if you enable a cart to use both custom discounts and rule promotions:
+        
+        ```json
+        {
+            "status": 422,
+            "title": "Cannot use both discounts together",
+            "detail": "Only one discount setting can be set to true at a time."
+        }
+        ```
+        
+        The following error is received if the cart already has an existing promotion and you update it to use rule promotions:
+        
+        ```jsom
+        {
+            "status": 422,
+            "title": "Cart contains existing discounts",
+            "detail": "Remove all existing discounts in cart before updating cart to use rule promotions."
+        }
+        ```
       operationId: put-v2-settings-cart
       requestBody:
         content:
@@ -314,7 +343,7 @@ components:
             - simple
         address_mandatory_fields:
           type: array
-          description: Indicates an array of fields that are required for creating an [address](https://elasticpath.dev/docs/commerce-cloud/addresses/about-addresses-api#the-address-object).
+          description: Indicates an array of fields that are required for creating an [address](/docs/api/addresses/account-addresses).
           items:
             type: string
             example: ["first_name", "last_name", "line_1", "city", "region", "postcode", "country", "instructions"]
@@ -395,6 +424,14 @@ components:
                   description: When `true`, custom discounts are enabled. Default is false. This setting only affects the new empty carts while the existing active carts will not be affected.
                   type: boolean
                   example: false
+                use_rule_promotions:
+                  description: When set to `true`, this parameter allows the cart to use rule promotions.
+                  type: boolean
+                  example: false
+            snapshot_date:
+                    description: This optional parameter sets a reference date for the cart. If this parameter is set, it allows the cart to act as one that might occur on that specified date. For example, such future carts might acquire future-enabled discounts, allowing users to test and validate future interactions with carts. The snapshot_date must be in the format `2026-02-21T15:07:25Z`. By default, this parameter is left empty.
+                    type: string
+                    example: 2026-02-21T15:07:25Z
           required:
             - type
     SettingsAccountMembership:
