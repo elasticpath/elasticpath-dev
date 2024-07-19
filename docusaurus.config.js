@@ -576,6 +576,16 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "learn",
+        path: "learn",
+        routeBasePath: "learn",
+        sidebarPath: require.resolve("./sidebar-learn.js"),
+        // ... other options
+      },
+    ],
+    [
       "@docusaurus/plugin-content-blog",
       {
         blogTitle: 'Elastic Path Commerce Cloud Changelog',
