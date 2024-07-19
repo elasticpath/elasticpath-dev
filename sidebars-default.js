@@ -42,6 +42,7 @@ const sidebarsDefault = {
     },
   ],
   customer: [
+
     {
       type: "category",
       label: "Authentication",
@@ -125,6 +126,7 @@ const sidebarsDefault = {
     },
   ],
   accounts: [
+
     {
       type: "category",
       label: "Authentication",
@@ -160,6 +162,7 @@ const sidebarsDefault = {
     },
   ],
   carts: [
+
     {
       type: "category",
       label: "Authentication",
@@ -203,6 +206,7 @@ const sidebarsDefault = {
     },
   ],
   commerceextensions: [
+
     {
       type: "category",
       label: "Authentication",
@@ -227,6 +231,7 @@ const sidebarsDefault = {
     },
   ],
   flows: [
+
     {
       type: "category",
       label: "Authentication",
@@ -251,6 +256,7 @@ const sidebarsDefault = {
     },
   ],
   integrations: [
+
     {
       type: "category",
       label: "Authentication",
@@ -275,6 +281,7 @@ const sidebarsDefault = {
     },
   ],
   payments: [
+
     {
       type: "category",
       label: "Authentication",
@@ -299,6 +306,7 @@ const sidebarsDefault = {
     },
   ],
   promotions: [
+
     {
       type: "category",
       label: "Authentication",
@@ -323,6 +331,7 @@ const sidebarsDefault = {
     },
   ],
   pxm: [
+
     {
       type: "category",
       label: "Authentication",
@@ -411,6 +420,7 @@ const sidebarsDefault = {
    // },
   ],
   settings: [
+
     {
       type: "category",
       label: "Authentication",
@@ -435,6 +445,7 @@ const sidebarsDefault = {
     },
   ],
   subscriptions: [
+
     {
       type: "category",
       label: "Authentication",
