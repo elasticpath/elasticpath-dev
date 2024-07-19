@@ -25,7 +25,15 @@ const PRODUCTS = [
     text: 'Authentication token gives permissions for the client to access their data, and is used to authenticate a request to the API endpoint.',
   },
   {
-    title: 'Commerce Extensions',
+    title: 'Account Management',
+    link: '/docs/commerce-manager/account-management/accounts',
+    icon: PeopleTeamRegular,
+    // lightImage: '/static/landing-page/hero/video-graphic.png',
+    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
+    text: 'Create accounts and account members. Associated account members can log in to the store and create orders for their accounts.',
+  },
+  {
+    title: 'Custom APIs (Commerce Extensions)',
     link: '/docs/commerce-manager/commerce-extension/commerce-extension-in-cm',
     icon: BookDatabaseRegular,
     // lightImage: '/static/landing-page/hero/video-graphic.png',
@@ -33,12 +41,22 @@ const PRODUCTS = [
     text: 'Commerce Extensions allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options.',
   },
   {
-    title: 'Subscriptions',
-    link: '/docs/commerce-manager/subscriptions/overview',
-    icon: ArrowSyncFilled,
-    // lightImage: '/static/landing-page/hero/livestream-graphic.png',
-    // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
-    text: 'Easily deploy paid memberships, subscribe & save, and more to drive recurring revenue and improved average order value.',
+    title: 'Orders',
+    beta: false,
+    link: '/docs/commerce-manager/orders/orders-cm',
+    icon: ShoppingBagRegular,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'Use orders manage orders placed on your frontends.',
+  },
+  {
+    title: 'Payments',
+    beta: false,
+    link: '/docs/commerce-manager/payments/overview',
+    icon: WalletCreditCardRegular,
+    // lightImage: '/static/landing-page/hero/chat-graphic.png',
+    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
+    text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
   },
   {
     title: 'Product Experience Manager',
@@ -49,21 +67,21 @@ const PRODUCTS = [
     text: 'Create unique product experiences that exceed your customer expectations and drive growth, all with less reliance on IT for custom work.'
   },
   {
-    title: 'Rule Promotions',
+    title: 'Promotions Builder',
     beta: false,
-    link: '/docs/commerce-manager/promotions-builder/overview',
+    link: '/docs/commerce-manager/promotions-builder',
     icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
     text: 'Manage your promotions with industry leading capabilities by using our Rules Promotion Builder.',
   },
   {
-    title: 'Account Management',
-    link: '/docs/commerce-manager/account-management/accounts',
-    icon: PeopleTeamRegular,
-    // lightImage: '/static/landing-page/hero/video-graphic.png',
-    // darkImage: '/static/landing-page/hero/video-graphic-dark.png',
-    text: 'Create accounts and account members. Associated account members can log in to the store and create orders for their accounts.',
+    title: 'Subscriptions',
+    link: '/docs/commerce-manager/subscriptions/overview',
+    icon: ArrowSyncFilled,
+    // lightImage: '/static/landing-page/hero/livestream-graphic.png',
+    // darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
+    text: 'Easily deploy paid memberships, subscribe & save, and more to drive recurring revenue and improved average order value.',
   },
   //{
   //  title: 'Addresses',
@@ -74,15 +92,6 @@ const PRODUCTS = [
   //  // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
   //  text: 'Store customer addresses for billing and shipping.',
   //},
-  {
-    title: 'Orders',
-    beta: false,
-    link: '/docs/commerce-manager/orders/orders-cm',
-    icon: ShoppingBagRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Use orders manage orders placed on your frontends.',
-  },
   //{
   //  title: 'Shipping Groups',
   //  beta: false,
@@ -92,17 +101,8 @@ const PRODUCTS = [
   //  // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
   //  text: 'Use carts, checkout and orders to get your products from the catalog into the cart, through checkout and into order completed state.',
   //},
-  {
-    title: 'Payments',
-    beta: false,
-    link: '/docs/commerce-manager/payments/overview',
-    icon: WalletCreditCardRegular,
-    // lightImage: '/static/landing-page/hero/chat-graphic.png',
-    // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
-    text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
-  },
  // {
- //   title: 'Custom Data',
+ //   title: 'Custom-Data',
  //   beta: false,
  //   link: '/docs/api/flows/flows-service-api',
  //   icon: BookDatabaseRegular,
@@ -120,7 +120,7 @@ const PRODUCTS = [
   //  text: 'You can integrate Commerce with your external systems like enterprise resource planning, order management, fulfilment, and other systems, ensuring that buying is quick and easy for your shoppers.',
   //},
   //{
-  //  title: 'Personal Data Service',
+  //  title: 'Personal-Data Service',
   //  beta: false,
   //  link: '/docs/commerce-cloud/personal-data',
   //  icon: DatabasePersonRegular,
@@ -138,7 +138,7 @@ const PRODUCTS = [
   //  text: 'In Commerce, every change to a user’s personal data is logged. The API allows you to fetch these logs, including the list of related data items. In other words, the data items that belong to the same personal data set.',
   //},
   {
-    title: 'Promotions Standard',
+    title: 'Promotions-Standard',
     beta: false,
     link: '/docs/commerce-manager/promotions-standard/overview',
     icon: BuildingRetailRegular,
@@ -204,7 +204,7 @@ export default function HeroSectionCM() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 md:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-6 px-4 pb-16 md:grid-cols-2">
         {PRODUCTS.map((product) => (
           <HeroCM {...product} key={product.title} />
         ))}

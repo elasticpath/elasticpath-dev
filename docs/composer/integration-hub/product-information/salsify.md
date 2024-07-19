@@ -7,7 +7,7 @@ sidebar_position: 1
 You can quickly and easily integrate Commerce with Salsify using the **Integrations Hub** in Commerce Manager. Integrating Salsify with Commerce means you can synchronize catalog data such as products, price, images, and categories between Commerce and Salsify.
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting your Setup Information
@@ -24,7 +24,7 @@ Collect the following setup information from Salsify.
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/docs/commerce-cloud/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
+To create a new [application key](/docs/commerce-manager/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
@@ -42,7 +42,7 @@ As part of the Salsify Integration, changes in Catalog data in Salsify automatic
 ### Prerequisites
 
  - Ensure that you have [collected your setup Information](#collecting-your-setup-information).
- - Ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), and [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates) in Commerce Manager.
+ - Ensure that you have created a [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies), and [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates) in Commerce Manager.
 
  ### Procedure
 
@@ -72,9 +72,8 @@ As part of the Salsify Integration, changes in Catalog data in Salsify automatic
 
     The following example shows how this should look in the Product Template.
 
-{% escape-code-block %}
-```Json
-"attributes":[
+    ```Json
+    "attributes":[
     [
         {
             "templateSlug":"products(extension)",
@@ -104,11 +103,11 @@ As part of the Salsify Integration, changes in Catalog data in Salsify automatic
             ]
         }
     ]
-] ~> $filter(function($v, $i, $a) {
+    ] ~> $filter(function($v, $i, $a) {
         $count($v.templateAttributes) > 0
-})
-``` 
-{% /escape-code-block %}
+    })
+    ``` 
+
 
 1. Click **Edit** under **ElasticPath Price Template**. Update the price book name of Commerce in `priceBookName` field. For example, if the price book name is `UKandIEPricebook` in Commerce cloud, update the same in the **Price Template**.
     For example: 

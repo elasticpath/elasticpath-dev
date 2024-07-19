@@ -25,7 +25,7 @@ In this exercise we're going to page through all 100 posts, 10 at a time, so we'
 :::note
 
 With paginated APIs you often don't know how many total results exist. We happen to know that we're going to fetch 100 total "posts", but the looping strategy we cover here will accommodate any unknown number of posts. We'll simply loop until there are no more records left to loop over.
-{% /callout  %}
+:::
 
 ## Our paginated integration
 

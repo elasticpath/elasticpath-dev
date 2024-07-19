@@ -44,7 +44,7 @@ Once a template is deleted, you cannot reassign a new template to the attributes
     - **Description**
     - **Status**
 
-1. All attributes assigned to the template are displayed in a table. However, you can only view the attributes, you cannot edit or delete the attributes. If you want to remove an attribute from the template, see [Deleting Attributes](/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/delete-attribute).
+1. All attributes assigned to the template are displayed in a table. However, you can only view the attributes, you cannot edit or delete the attributes. If you want to remove an attribute from the template, see [Deleting Attributes](/docs/api/flows/delete-a-field).
 1. Click **Save** to save your template.
 
 ### Deleting templates
@@ -119,12 +119,12 @@ For the changes to appear in the storefront, you must republish the affected cat
 
 ## Related Resources
 
-- [Product Templates](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/pxm-product-templates-overview)
-- [Product Attributes](/docs/pxm/products/pxm-products#product-attributes)
-- [Price books](/docs/pxm/pricebooks/price-books)
-- [Catalog](/docs/pxm/catalogs)
-- [Create a template](/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/create-a-template)
-- [Create an attribute](/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/create-attribute)
+- [Product Templates](/docs/api/flows/flows)
+- [Product Attributes](/docs/api/flows/fields)
+- [Price books](/docs/api/pxm/pricebooks)
+- [Catalog](/docs/api/pxm/catalog)
+- [Create a template](/docs/api/flows/create-a-flow)
+- [Create an attribute](/docs/api/flows/create-a-field)
 
 ### Demos
 

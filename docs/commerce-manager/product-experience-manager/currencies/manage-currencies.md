@@ -9,15 +9,15 @@ In your store, you can display prices to customers in their local currency. You 
 You can do this using:
 
 - [Commerce Manager](#managing-currencies)
-- [Currencies API](/docs/pxm/currencies/currencies-api/currencies-api-overview)
+- [Currencies API](/docs/api/pxm/currencies/currencies-introduction)
 
 After a customer selects a locale, the product prices in the catalog, carts, and orders are displayed in the currency for that locale. Order totals and taxes are calculated in the same currency. See [Using Currencies in Catalogs, Carts and Orders](#using-currencies-in-ep-pxm-products-and-catalogs-carts-and-orders).
 
-In Commerce Manager, under **SYSTEM > Store Settings > Currencies** tab, an **ORG** tag is displayed to indicate that the currency belongs to your organization. For more information about organization-level currencies, see [Managing Currencies in Organizations](/docs/commerce-cloud/organizations/organizations-in-commerce-manager/manage-org-currencies).
+In Commerce Manager, under **SYSTEM > Store Settings > Currencies** tab, an **ORG** tag is displayed to indicate that the currency belongs to your organization. For more information about organization-level currencies, see [Managing Currencies in Organizations](/docs/commerce-manager/organizations/manage-org-currencies).
 
 ## Currency Use Cases
 
-You can use [Currencies API](/docs/pxm/currencies/currencies-api/currencies-api-overview) or Commerce Manager to achieve the following goals:
+You can use [Currencies API](/docs/api/pxm/currencies/elastic-path-composable-commerce)) or Commerce Manager to achieve the following goals:
 
 - [Set-up default currency](#set-a-default-currency)
 - [Set-up multiple currencies](#create-a-currency)
@@ -34,7 +34,7 @@ Configure currencies only for the locales in which you do business, and select o
 
 ### Create a Currency
 
-You can create a currency using [Create a Currency](/docs/pxm/currencies/currencies-api/create-a-currency) endpoint or Commerce Manager. You can configure several currency types for your project. 
+You can create a currency using [Create a Currency](/docs/api/pxm/currencies/create-a-currency) endpoint or Commerce Manager. You can configure several currency types for your project. 
 
 1. In Commerce Manager, go to **SYSTEM > Store Settings > Currencies** tab.
 1. Click **New Currency**.
@@ -59,9 +59,9 @@ If a currency is no longer needed, you can delete it. Deleting destroys that cur
 
 You cannot delete the default currency. If you want to delete the default currency, you must make another currency the default. See [Set a default currency](#set-a-default-currency).
 
-You can do this using the [Delete a Currency](/docs/pxm/currencies/currencies-api/delete-a-currency) endpoint or Commerce Manager.
+You can do this using the [Delete a Currency](/docs/api/pxm/currencies/delete-a-currency) endpoint or Commerce Manager.
 
-If a currency is no longer needed but you still want to retain it for archiving purposes, disable it. Disabled currencies still show in the currency header, but they can’t be actively used. You can do this using the [Update a Currency](/docs/pxm/currencies/currencies-api/update-a-currency) endpoint or Commerce Manager.
+If a currency is no longer needed but you still want to retain it for archiving purposes, disable it. Disabled currencies still show in the currency header, but they can’t be actively used. You can do this using the [Update a Currency](/docs/api/pxm/currencies/update-a-currency) endpoint or Commerce Manager.
 
 #### Disable a currency in Commerce Manager
 
@@ -79,7 +79,7 @@ If a currency is no longer needed but you still want to retain it for archiving 
 
 ### Edit a Currency
 
-Editing the existing currency updates all products that have that currency set-up. You can edit the currency using the [Update a Currency](/docs/pxm/currencies/currencies-api/update-a-currency) endpoint or Commerce Manager.
+Editing the existing currency updates all products that have that currency set-up. You can edit the currency using the [Update a Currency](/docs/api/pxm/currencies/update-a-currency) endpoint or Commerce Manager.
 
 1. In Commerce Manager, go to **SYSTEM** > **Store Settings** > **Currencies** tab.
 1. On the currency you want to edit, from **Actions**, select the ellipsis.
@@ -100,7 +100,7 @@ The default currency is USD and it’s also enabled by default. You can set up a
 
 In the API, the default currency is used as a fallback currency in a request, if no currency header is provided.
 
-You can configure a default currency using either the [Update a Currency](/docs/pxm/currencies/currencies-api/update-a-currency) endpoint or Commerce Manager.
+You can configure a default currency using either the [Update a Currency](/docs/api/pxm/currencies/update-a-currency) endpoint or Commerce Manager.
 
 1. In Commerce Manager, go to **SYSTEM** > **Store Settings** > **Currencies** tab.
 1. On the currency you want to set as default, from **Actions**, select the ellipsis.
@@ -153,5 +153,5 @@ The formatted price can be found outside the regular price object for a product,
 
 ## Related Resources
 
-- [Currencies](/docs/pxm/currencies)
-- [Managing Currencies in Organizations](/docs/commerce-cloud/organizations/organizations-in-commerce-manager/manage-org-currencies)
+- [Currencies](/docs/api/pxm/currencies/elastic-path-composable-commerce)
+- [Managing Currencies in Organizations](/docs/commerce-manager/organizations/manage-org-currencies)

@@ -12,7 +12,7 @@ To view all the orders in the store, log into Commerce Manager and go to **STORE
 
     1. Click an order. 
         
-        You can view a product's details by clicking on a product name. This only applies to [products](/docs/pxm/products/pxm-products).
+        You can view a product's details by clicking on a product name. This only applies to [products](/docs/commerce-manager/product-experience-manager/Products/view-product-details).
     1. Click **Jump to order** and do the following:
         1. In the **Order ID** field, enter the order ID of the order that you want to view.
         1. Click **Search**.
@@ -83,7 +83,7 @@ Do the following to anonymize an order:
 
 ## Refunding an Order
 
-You can refund an order directly through your payment gateway, or using Commerce API or Commerce Manager. See [Refunds](/docs/commerce-cloud/payments/paying-for-an-order/overview#refunds).
+You can refund an order directly through your payment gateway, or using Commerce API or Commerce Manager. See [Refunds](/docs/api/carts/payments#refunds).
 
 On the **View order** tab, you can refund the order directly from Elastic Path Commerce Manager. You can refund partially or the full amount.
 
@@ -116,11 +116,11 @@ Canceling an order does not automatically refund a payment, you must refund the 
 1. Update the address and delivery instructions as required.
 1. Click **Save**.
 
-Depending on the flow configuration for orders, the custom fields are displayed on the **Order details** page. You can enter the required information in these fields. For more information about adding custom fields, see the [Flows](/docs/commerce-cloud/custom-data/flows) section.
+Depending on the flow configuration for orders, the custom fields are displayed on the **Order details** page. You can enter the required information in these fields. For more information about adding custom fields, see the [Flows](/docs/commerce-manager/flows/) section.
 
 ## Updating External Reference ID
 
-1. On the **All orders** page, click an order that is updated with an external reference ID. See [Update an Order](/docs/commerce-cloud/orders/orders-api/update-an-order#body).
+1. On the **All orders** page, click an order that is updated with an external reference ID. See [Update an Order](/docs/api/carts/update-an-order).
 1. On the **View order** tab, click the **Edit** icon associated with **External Reference ID**. 
 1. Update the external reference ID for an order as required.
 
@@ -167,9 +167,8 @@ Only seller administrators can export order details.
 
 ## Related Resources
 
-- [Orders](/docs/commerce-cloud/orders)
-- [Orders API](/docs/commerce-cloud/orders/orders-api/orders-api-overview.md)
-- [Shipping Groups](/docs/commerce-cloud/shipping-groups/Overview.md)
+- [Orders API](/docs/api/carts/orders)
+- [Shipping Groups](/docs/ship-groups/shipping-groups/)
 
 ### Demos
 

@@ -1,16 +1,16 @@
 ---
-title: Jobs in Commerce Manager
-nav_label: Jobs in Commerce Manager
+title: Jobs
+nav_label: Jobs
 sidebar_position: 50
 ---
 
 Several tasks that you perform in Commerce Manager trigger a job. 
 
-- product [import](/docs/pxm/products/importing-products/product-importer).
-- product [export](/docs/pxm/products/exporting-products/export-products-cm).
-- price book [import](/docs/pxm/pricebooks/pxm-pricebooks#importing-price-books-and-prices).
-- [duplicating hierarchies](/docs/pxm/hierarchies/hierarchy#duplicating-hierarchies).
-- [building child products](/docs/commerce-manager/product-experience-manager/Products/assign-variations-build-child-products).
+- product [import](/docs/commerce-manager/product-experience-manager/product-import/product-importer).
+- product [export](/docs/commerce-manager/product-experience-manager/product-export/export-products-cm).
+- price book [import](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#importing-price-books-and-prices).
+- [duplicating hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/duplicating).
+- [building child products](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products).
 
 ## Job Lifecycle
 
@@ -29,7 +29,7 @@ To view jobs in Commerce Manager:
   
     When you expand an individual job, the information that is displayed depends on the activity you performed. 
 
-![product export job](/assets/product_export_job.png)
+    ![product export job](/assets/product_export_job.png)
 
     Each job has the following information:
 
@@ -40,7 +40,7 @@ To view jobs in Commerce Manager:
        - **PENDING** - Commerce has received the request but is currently busy processing other requests.
        - **STARTED** - Commerce has started processing the job.
        - **SUCCESS** - The job has successfully completed.
-       - **FAILED** - The job has failed. See [Get job errors](/docs/pxm/jobs-api/get-a-job-error).
+       - **FAILED** - The job has failed. See [Get job errors](/docs/api/pxm/products/get-job).
 
     In addition to the above information: 
 

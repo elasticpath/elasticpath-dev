@@ -4,14 +4,14 @@ nav_label: Adding Product Details
 sidebar_position: 40
 ---
 
-1. (Optional) In **Locale**, select a language to use to localize product names and descriptions when creating your products. See [Configuring Locales](/docs/pxm/products/pxm-products-commerce-manager/configure-locales).
+1. (Optional) In **Locale**, select a language to use to localize product names and descriptions when creating your products. See [Configuring Locales](/docs/commerce-manager/product-experience-manager/Products/configure-locales).
 1. In **Name**: Enter a name for the product.
 1. (Optional) **Description**: A description of the product. You can select:
 
     - **Plain text** - Use **Plain text** if you want your descriptions in plain text or if you want your descriptions to contain HTML tags. 
     - **Formatted** - Use **Formatted** to use our rich text editor when formatting your descriptions. You must only use the formatting options provided. No other HTML tags are supported. If you do provide descriptions that contain HTML tags, the HTML is reformatted to match the formats supported by our rich text editor. If you want your descriptions to contain HTML tags, you must use **Plain text**.
 
-![Wysiwyg](/assets/wysiwyg5.gif)
+    ![Wysiwyg](/assets/wysiwyg5.gif)
  
 1. Turn the **Product Status** toggle on to make the product `live`. Only products with a `live` status are published in catalogs. 
 1. Turn the **Product Bundle** toggle on to make this product a bundle. See [Bundles in Commerce Manager](/docs/commerce-manager/product-experience-manager/bundles/bundle-configuration).

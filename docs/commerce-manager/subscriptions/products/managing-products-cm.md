@@ -16,7 +16,7 @@ Product data is stored in a database. After you have added your products, you ca
 
 Images and files are linked to repeat products using a hypertext reference (HREF). You can either upload your images to Commerce or you can use your own content delivery network. 
 
-An extensive range of [media and file extensions](/docs/pxm/products/product-assets/files-overview) are supported.
+An extensive range of [media and file extensions](/docs/commerce-manager/product-experience-manager/product-assets/files) are supported.
 
 ## Product Pricing
 

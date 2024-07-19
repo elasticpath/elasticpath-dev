@@ -9,7 +9,7 @@ You can quickly and easily integrate Commerce with Pimberly using the **Integrat
 You can also migrate your catalog data related information to Commerce as this integration can load all the data from Pimberly.
 
 :::note
-When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs table](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
 :::
 
 ## Collecting your Setup Information
@@ -26,7 +26,7 @@ Collect the following setup information from Pimberly.
 
 ### Collecting Commerce Manager Setup Information
 
-To create a new [application key](/docs/commerce-cloud/authentication/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
+To create a new [application key](/docs/commerce-manager/application-keys/application-keys-cm), go to **SYSTEM > Application Keys**.
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
@@ -43,7 +43,7 @@ As part of the Pimberly Integration, changes in catalog data in Pimberly automat
 ### Prerequisites
 
  - Ensure that you have [collected your setup Information](#collecting-your-setup-information).
- - Ensure that you have created a template for [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/pxm/hierarchies/hierarchy#creating-hierarchies), [templates](/docs/pxm/products/extending-pxm-products/templates#creating-templates), and [Variations](/docs/pxm/products/pxm-product-variations/variations#creating-variations) in Commerce Manager.
+ - Ensure that you have created a template for [price book](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks#creating-price-books), [hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies), [templates](/docs/commerce-manager/product-experience-manager/extending-products/templates#creating-templates), and [Variations](/docs/commerce-manager/product-experience-manager/variations#creating-variations) in Commerce Manager.
 
  ### Procedure
 

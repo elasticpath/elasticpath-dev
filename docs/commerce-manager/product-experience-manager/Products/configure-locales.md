@@ -8,19 +8,19 @@ You can localize product names and descriptions when creating your products.
 
 By default, there are a number of language codes available. You activate locales in Commerce Manager in [**SYSTEM** > **Store Settings** > **Locales**]( /docs/commerce-manager/product-experience-manager/locales/). You can activate a maximum of five languages. 
 
-You can also add your own custom language codes if the language that you want to use is not available in [**SYSTEM** > **Store Settings** > **Locales**]( /docs/commerce-manager/product-experience-manager/locales/). You can do this using the [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product) API request. Locales that are added using the [Create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product) API request are available in Commerce Manager under **Custom Product Locales**.
+You can also add your own custom language codes if the language that you want to use is not available in [**SYSTEM** > **Store Settings** > **Locales**]( /docs/commerce-manager/product-experience-manager/locales/). You can do this using the [create a product](/docs/api/pxm/products/create-product) API request. Locales that are added using the [Create a product](/docs/api/pxm/products/create-product) API request are available in Commerce Manager under **Custom Product Locales**.
 
 1. In the **Product Details** tab, expand **Locale** drop-down list. The languages you have activated in [**SYSTEM** > **Store Settings** > **Locale**]( /docs/commerce-manager/product-experience-manager/locales/) are displayed.
 1. Select the language you want to use. If the language you want is not available, perform the following steps.
 
     1. Go to **SYSTEM** > **Store Settings** > **Locales** to find and activatd the language you want.
-    1. If the language you want is not shown in **SYSTEM** > **Store Settings** > **Locales** then add a custom locale using [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product).
+    1. If the language you want is not shown in **SYSTEM** > **Store Settings** > **Locales** then add a custom locale using [create a product](/docs/api/pxm/products/create-product).
 
        :::caution
-       If you add locales using [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product) API request.
+       If you add locales using [create a product](/docs/api/pxm/products/create-product) API request.
 
          - Locales created using this API request are not displayed in Commerce Manager.
-         - The localized product names and descriptions for products created using this API request cannot be edited in Commerce Manager. You must update localized product names and descriptions using [update a product](/docs/pxm/products/ep-pxm-products-api/update-a-product) API request.
+         - The localized product names and descriptions for products created using this API request cannot be edited in Commerce Manager. You must update localized product names and descriptions using [update a product](/docs/api/pxm/products/update-product) API request.
 
        :::
 

@@ -32,9 +32,9 @@ Before assigning variations to your products:
     - Contain digits from 0 to 9, underscore (_), or hyphen (-).
     - Do not contain any other special characters.
 
-    You can build the child products only if all variations and the options are named appropriately. See [Creating Variations and Options](/docs/pxm/products/pxm-product-variations/variations#creating-variations-and-options).
+    You can build the child products only if all variations and the options are named appropriately. See [Creating Variations and Options](/docs/commerce-manager/product-experience-manager/variations/).
 
-- (Optional) In addition, for each option you can configure product and price modifiers. See [Creating Product Modifiers](/docs/pxm/products/pxm-product-variations/variations#adding-product-modifiers).
+- (Optional) In addition, for each option you can configure product and price modifiers. See [Creating Product Modifiers](/docs/commerce-manager/product-experience-manager/variations/).
 
 ## Assigning Variations
 

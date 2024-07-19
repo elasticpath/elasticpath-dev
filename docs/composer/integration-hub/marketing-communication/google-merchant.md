@@ -52,17 +52,17 @@ For more information, see [Merchant Center - Google for Retail](https://www.goog
 You need to perform the following steps in Commerce before configuring the integration.
 
 1. Products that you want to synchronize with the Google Content API for Shopping must have a `EAN/UPC` attribute configured. Although this is an optional attribute for products in Commerce, Google analyses your product data for quality and may downrank your products in search results if your products do not have the `EAN/UPC` attribute configured.
-1. You must have created your catalogs. See [create a catalog](/docs/pxm/catalogs/catalog-configuration/create-a-catalog).
+1. You must have created your catalogs. See [create a catalog](/docs/api/pxm/catalog/create-catalog).
 1. You must have collected the setup information from Commerce. You can find this information in Commerce Manager under **SYSTEM**, in **Application Keys**, when logged in as a user with Seller Admin privileges.
 
     | Option | Description                            |
     |:------------------------------------|:---------------------------------------|
-    | **API Base URL**                    | Your Commerce API Base URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls). |
+    | **API Base URL**                    | Your Commerce API Base URL. For example, `https://useast.api.elasticpath.com/oauth/access_token`. See [Regions and URLs](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls). |
     | **Client ID**                       | Your Commerce Client ID. |
     | **Client Secret**                   | Your Commerce Client Secret. |
 
     :::note
-    When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+    When integrating with third-party providers, we recommend you use the closest region in the third-party service to reduce latency as much as possible. See [Regions and URLs](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
     :::
 
 ## Configuring the Integration
@@ -86,7 +86,7 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
         - **Client-Secret** - Your Commerce Client Secret.
         - **Token URL** - Your Commerce API Token URL.
     1. Click **Connect** to make sure that the authentication is completed successfully.
-    1. In **epcc_base_url**, type your Commerce API base URL. For example, `https://useast.api.elasticpath.com`. See [Regions and URLs](/docs/commerce-cloud/api-overview/elastic-path-domains#regions-and-ur-ls).
+    1. In **epcc_base_url**, type your Commerce API base URL. For example, `https://useast.api.elasticpath.com`. See [Regions and URLs](/guides/Getting-Started/elastic-path-domains#regions-and-ur-ls).
     1. Create a new secret or passphrase and type it in **webhook_key**. This is used to authenticate the Elastic Path webhook and the integration.
     1. Complete the Integration Tuning Values fields. 
     

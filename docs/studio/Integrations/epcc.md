@@ -9,12 +9,12 @@ sidebar_position: 111
 - Ensure that you have an account within Elastic Path Commerce Manager.
 - Ensure that you have a paid plan in your [Studio](https://app.unstack.com/) account.
 - Ensure that you have created the following items in Commerce Manager for seamless integration into the Studio storefront:
-    - [Products](/docs/pxm/products/pxm-products-commerce-manager/overview)
+    - [Products](/docs/commerce-manager/product-experience-manager/Products/overview)
     - [Price books](/docs/commerce-manager/product-experience-manager/pricebooks/pxm-pricebooks)
-    - [Hierarchies](/docs/pxm/hierarchies/hierarchy)
-    - [Catalogs](/docs/pxm/catalogs/catalogs-cm/catalog-configuration)
-    - [Catalog rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules)
-- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/commerce-cloud/payments/payment-gateway-cm/payments-powered-by-stripe) in Commerce Manager.
+    - [Hierarchies](/docs/commerce-manager/product-experience-manager/hierarchies/creating_hierarchies)
+    - [Catalogs](/docs/commerce-manager/product-experience-manager/catalogs/catalog-configuration)
+    - [Catalog rules](/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules)
+- Ensure that you have configured [Elastic Path Payments Powered by Stripe](/docs/commerce-manager/payments/ep-payments-powered-by-stripe) in Commerce Manager.
 - (Optional) Ensure that you have set up an [Algolia integration](/docs/studio/Integrations/algolia) or Advanced Commerce (GrapheneHC) integration if you want to enable search indexing in your Studio storefront.
 
 ## Configuring **Elastic Path** Integration
@@ -22,7 +22,7 @@ sidebar_position: 111
 The following steps describe how to configure an integration between Studio and Elastic Path Composable Commerce.
 
 1. Log into Commerce Manager.
-1. Go to **SYSTEM** > **Application keys** to create your new API keys. Make a note of the API keys as you will need them to configure the **Elastic Path** integration in Studio. See [Application keys](/docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+1. Go to **SYSTEM** > **Application keys** to create your new API keys. Make a note of the API keys as you will need them to configure the **Elastic Path** integration in Studio. See [Application keys](/docs/commerce-manager/application-keys/application-keys-cm).
 1. Log into Studio.
 1. Go to **Settings** > **Integrations**.
 1. Navigate to **Payment & Storefront**.
@@ -36,8 +36,8 @@ The following steps describe how to configure an integration between Studio and 
 
 1. The **Coupon Endpoint URL** is not currently in use. Please leave this blank.
 1. Leave **Password Profile** blank. Once you create the integration, **Password Profile** is auto-populated.
-1. (Optional) In **Catalog Rule Tag**, enter the tag you specified when you created your catalog rule in Product Experience Manager. Tags are user-defined criteria that you can use to define eligibility for a catalog. For example, you might use **Pro** or **Elite** to define a membership tier. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules). If you leave this blank, the default catalog is used.
-1. (Optional) In **Catalog Channel**, enter the channel you specified when you created your catalog rule in Product Experience Manager. Channels represent your ecommerce sales channel through which your shoppers may select and pay for your products, for example, **Mobile** for a mobile app or **Web** for website. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules). If you leave this blank, the default catalog is used.
+1. (Optional) In **Catalog Rule Tag**, enter the tag you specified when you created your catalog rule in Product Experience Manager. Tags are user-defined criteria that you can use to define eligibility for a catalog. For example, you might use **Pro** or **Elite** to define a membership tier. See [Configure Shopper Catalog Rules](/docs/api/pxm/catalog/rules). If you leave this blank, the default catalog is used.
+1. (Optional) In **Catalog Channel**, enter the channel you specified when you created your catalog rule in Product Experience Manager. Channels represent your ecommerce sales channel through which your shoppers may select and pay for your products, for example, **Mobile** for a mobile app or **Web** for website. See [Configure Shopper Catalog Rules](/docs/api/pxm/catalog/rules). If you leave this blank, the default catalog is used.
 1. (Optional) Configure the shipping options. If you have configured the **Shipping Service** in the [Integrations Hub](/docs/composer/integration-hub/integrations-hub), you can use the information from the integration to configure your shipping options in the **Elastic Path** integration. This enables you to use the shipping options available in your Elastic Path store in your Studio storefront.
 
 ![shipping service](/assets/studio/shippingoptions.png)

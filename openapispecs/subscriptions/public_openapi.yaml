@@ -5,7 +5,7 @@ info:
   description: |
     Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts.
 
-    You can create subscriptions using the Elastic Path Subscriptions API or Commerce Manager.
+    You can create subscriptions using the Elastic Path Subscriptions API or Commerce Manager See [Subscriptions](/docs/commerce-manager/subscriptions/overview).
 
     Scenarios include:
 
@@ -33,11 +33,7 @@ info:
 
     Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions. Elastic Path Subscriptions provides seamless integration with Elastic Path Payments powered by Stripe. See [**Invoicing and Payments**](/docs/api/subscriptions/invoices).
 servers:
-  - url: https://epcc-integration.global.ssl.fastly.net/v2
-    description: Integration cluster
-  - url: https://api.epcc-staging.epcloudops.com/v2
-    description: Staging cluster
-  - url: https://api.moltin.com/v2
+  - url: https://euwest.api.elasticpath.com/v2
     description: EU west cluster
   - url: https://useast.api.elasticpath.com/v2
     description: US east cluster
@@ -103,38 +99,39 @@ tags:
       You can configure this using `end_behavior`. If `end_behaviour` is `rolling`, the customers pay regularly and repeatedly. If `end_behavior` is `closed`, it allows you to create installment plans where the customer's pay a total amount in a limited number of partial payments.
   - name: Offerings
     description: |
-      An offering includes a product and plans; a product is combined
-      with one or more plans to form an offering. 
+      An offering is a combination of products and plans; products are combined with one or more plans to form an offering. 
 
       For example, your company provides online
       streaming of movies, web-series, and music. Your customers can purchase these services through either a weekly or monthly plan.
 
-      An offering can have only one product. Offering products can be either:
+      Offering products can be either:
 
       - a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
       - a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
 
       ### Offering Examples
 
-      Offerings can have any combination of a product and plans. The pricing of an offering is determined by the pricing you have configured for your products and plans.
+      Offerings can have any combination of products and plans. The pricing of an offering is determined by the pricing you have configured for your products and plans.
 
        | Example | Product | Plans | Offering |
        | --- | --- | --- | --- |
-       | <ul><li>Single product and plan</li></ul> | <ul><li>One product with a product price of $50</li></ul> | <ul><li>A monthly plan with a 5% discount</li></ul> | <ul><li>An offering with a monthly plan for $47.50 a month</li></ul> |
-       | <ul><li>Single product with multiple plans</li></ul> | <ul><li>One product with a product price of $50</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | <ul><li>An offering with two plans: </li><ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul></ul> |
+       | Single product and plan | One product with a product price of $50 | A monthly plan with a 5% discount | An offering with a monthly plan for $47.50 a month |
+       | Single product with multiple plans | One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
+       | Multiple products and plan | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75</li></ul>. | A monthly plan with a 5% discount. | An offering with a monthly plan for $118.75 a month. | 
+       | Multiple products with multiple plans | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75</li></ul>. | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $118.75 a month</li><li>A yearly plan for $112.50 a month</li></ul> | 
 
       ### Building an Offering
 
-      Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach them to a new offering.
+      Offerings represent a snapshot of their products and plans. If you make updates to products or plans within an offering, the original products and plans are not updated. Only the products and plans within the offering are updated. Alternatively, you can create new products or plans and attach them to a new offering.
 
       When you are building an offering:
 
       - you can create new plans and products.
-      - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
+      - you can modify existing products and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
 
       Here's how you build an offering:
 
-      1. Create your repeat product. A product can either be a subscription product or Product Experience Manager product. An offering can have only one product. 
+      1. Create your repeat products. Products can either be subscription products or Product Experience Manager products. 
 
           - to create a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
           - to create a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
@@ -205,7 +202,7 @@ tags:
 
       By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [**Schedules**](/docs/api/subscriptions/schedules).
 
-      ### Characteristics of Billing & Payments Jobs
+      ### Characteristics of Billing, Tax & Payments Jobs
 
       Billing and payment jobs have the following characteristics.
 
@@ -214,7 +211,7 @@ tags:
       - Jobs report any errors to help you understand the reason for any failed jobs.
       - Only one billing run and payment run is allowed per store at a time. Although billing and payments are constantly generated, the jobs are queued. Subscriptions looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed.
 
-      ### Billing & Payments Jobs Lifecycle
+      ### Billing, Tax & Payments Jobs Lifecycle
 
       A job can have the following status types:
 
@@ -222,12 +219,48 @@ tags:
       - STARTED - Subscriptions has started processing the job.
       - SUCCESS - The job has successfully completed.
       - FAILED - The job has failed.
+
+      ### Billing, Tax & Payment Reports
+
+      You can track your Subscriptions billing, payment and tax operations using reports. There are three types of report:
+
+      - `BillingRunReport` - This report provides invoice summaries such as invoices ready for payment, invoices that require tax, and invoice failures.
+      - `TaxRunReport` - This report provides invoice summaries such as invoices to which tax was successfully or unsuccessfully added.
+      - `PaymentRunReport` - This report provides invoice summaries such as invoices for which payment was attempted, failed payment attempts and totals collected by a payment run. 
+
+      See [Get a job](/docs/api/subscriptions/get-job) and [List jobs](/docs/api/subscriptions/list-jobs).
   - name: Imports
     description: |
-      Imports are an asynchronous process that are triggered manually to add data to Subscriptions.
+      You can import subscription products, plans and subscribers using Subscriptions Import. This is useful if you want to import subscriptions from an external system into Elastic Path Subscriptions. 
+
+      The API uses a [**JSONL**](https://jsonlines.org/) file. Here is an [**example of a JSONL file**](/assets/subscriptions_import.jsonl).
+
+      When you send an import request, an import job is created. Jobs are processed one at a time. You can continue to send import requests, but those jobs are queued. In other words, Subscriptions looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed. Use [List import jobs](/docs/api/subscriptions/list-import-jobs) to see a list of all import jobs.
+
+      A file can include up to 50,000 objects. If you have more than 50,000 objects, then you must create a separate file, and import each file, one at a time.
+
+      ### Characteristics of Subscriptions Import
+
+      The Subscriptions Import API has the following characteristics:
+
+      - The Subscriptions Import API reads the entire file and then creates the subscription objects. This means the subscription objects can be in any order in the file.
+
+      - Subscriptions imports are asynchronous and are processed one at a time. You can continue to send import requests, but these are queued. 
+
+      - The API works on a "best endeavours" approach. In other words, the API does its best to create the subscription objects based on the file that you provide. 
+
+      ### Subscriptions Import File
+
+      The following table describes the subscriptions objects, and their attributes, that the import file can include.
+
+      | Object | Attributes |
+      | --- | --- |
+      | A product object | The attributes you specify for a product object are the attributes you specify when you [creating a product](/docs/api/subscriptions/create-product). |
+      | A plan object | The attributes you specify for a product object are the attributes you specify when you [creating a plan](/docs/api/subscriptions/create-plan). | 
+      | A subscriber object | The attributes you specify for a product object are the attributes you specify when you [creating a subscriber](/docs/api/subscriptions/create-subscriber). |
   - name: Schedules
     description: |
-      You can schedule your billing and payment runs. By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner.  You can define a schedule in the format (`* * * * *`) which is a set of five fields in a line, indicating when a job should be executed. For example, you can define a schedule so that your job runs multiple times a day, or runs on specific days and months.
+      You can schedule your billing, tax, and payment runs. By scheduling billing, tax, and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner.  You can define a schedule in the format (`* * * * *`) which is a set of five fields in a line, indicating when a job should be executed. For example, you can define a schedule so that your job runs multiple times a day, or runs on specific days and months.
 
       Subscriptions runs on Coordinated Universal Time (UTC) time and conforms to [**RFC 3339**](https://www.rfc-editor.org/rfc/rfc3339). 
 
@@ -313,7 +346,24 @@ tags:
       1. When a subscription is created, an invoice for the first billing period is created. When a subscription is created as part of an order, the payment for the order covers the first billing period.
       2. Subscription invoices are created by [**billing runs**](/docs/api/subscriptions/jobs). The billing run identifies subscriptions that require a new invoice for their next billing period and creates them. At this point, invoices are marked as outstanding.
       3. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.  
-      3. The [**payment run**](/docs/api/subscriptions/jobs) identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
+      3. The [**payment run**](/docs/api/subscriptions/jobs) identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment. If an invoice has a failed payment, payment is only retried if the fixed interval has passed from the last payment attempt as defined in Settings.
+
+      #### Payment Retries
+
+      It is important to limit the number of times Subscriptions retries a failed payment request for many reasons, including: frequent payment retries can indicate fraudulent activities; multiple failed payment attempts can lead to customers accounts being locked out or flagged for suspicious activity resulting in poor customer experience; and excessive retries places an unnecessary load on your payment processing system.
+
+      In Subscriptions, by default, the number of payment retries is 10. You can set this to a limit between 0 - 20, depending on your requirements. Each payment retry is made as a payment run. 
+
+      Once the number of payment retries reaches the limit, the payment retries stop, resulting in status of the invoice being unpaid. See [Invoices](#invoices).
+
+      When configuring payment retries, you have the following options.
+
+      | Attribute | Required | Description |
+      | --- | --- | --- |
+      | `payment_retry_type` | Optional | One of the following options: <ul><li>`fixed` - use `fixed` if you want a fixed time interval between payment retries.</li><li>`backoff` - use `backoff` if you want the time between retry attempts to increase exponentially.</li><li>`tiered` - use `tiered` if you want to specify a list of time durations</li></ul>.  |
+      | `payment_retry_interval` | Optional | Represents the retry interval. For example, if `payment_retry_unit` is `week` and `payment_retry_interval` is `1` then, the payment retry interval is 1 week.  |
+      | `payment_retry_multiplier` | Optional | Use when `payment_retry_type` is `tiered` and represents the factor by which the time duration increases after each retry.   |
+      | `payment_retry_unit` | Optional | Represents the unit of time, either `day` or `week`. |
 
       ### Rounding
 
@@ -332,7 +382,12 @@ tags:
 
       ### Payments
 
-      When your customers add a subscription to a cart and the cart is checked out, an unpaid order is returned. You can process the payment for the order though a payment gateway. You can do this using Elastic Path Payments Powered by Stripe. The Elastic Path Payments Powered by Stripe gateway interacts with Stripe to allow your subscribers to pay for their subscriptions. 
+      When your customers add a subscription to a cart and the cart is checked out, an unpaid order is returned. You can process the payment for the order though a payment gateway. You can do this using:
+
+      - Elastic Path Payments Powered by Stripe. The Elastic Path Payments Powered by Stripe gateway interacts with Stripe to allow your subscribers to pay for their subscriptions. 
+      - Authorize.Net. 
+
+      #### Using Elastic Path Payments Powered by Stripe
 
       To use Elastic Path Payments Powered by Stripe gateway, contact the [**Customer Success Team**](mailto:customersuccess@elasticpath.com). 
 
@@ -340,16 +395,38 @@ tags:
 
       Once you have signed up for Elastic Path Payments Powered by Stripe, you must configure the payment gateway so that your shoppers can make payments. See [**Configure Elastic Path Payments Powered by Stripe**](/docs/payments/onboarding).
 
+      #### Using Authorize.Net
+
+      To use Authorize.Net, you must have: 
+
+      - an active merchant account with Authorize.Net
+      - obtained API credentials. These include an **API Login ID** and a **Transaction Key**.
+      - Enabled Authorize.Net in Commerce Manager. See [Enabling Authorize.net](/docs/commerce-manager/payments/configure-other-payment-gateways#enabling-authorizenet).
+
+      #### Payment Requests
+
       Subscriptions only supports the `purchase` payment mechanism. The gateway attempts to charge the customer immediately, and the result of the attempt is returned. If a payment fails, the invoice is kept as outstanding and the payment information, with the reason for the failure is attached to the invoice. A new payment run is required to attempt another payment. 
 
       When sending a payment request to the Payments service, you must specify the following.
 
       | Attribute | Required | Description |
       | --- | --- | --- |
-      | `gateway` | Required| Must be `elastic_path_payments_stripe`. |
+      | `gateway` | Required| Either `elastic_path_payments_stripe` or `authorize_net`. |
       | `method` | Required | Must be `purchase`.
       | `payment` | Required | The type of payment, for example, `pm_card_visa_debit`.
       | `options` | Required | These options must be set as they set up the card to be used in future without the customer being present. If these options are not set, future payments may fail. There are two options. <ul><li>`off_session`. Must be set to `true`. </li><li>`confirm`. Must be set to `true`.</li></ul> |
+  - name: Dunning Rules
+    description: |
+
+      Dunning is the process of handling failed payment attempts. This is important for recovering revenue from failed payments, reduces customer churn and maintains cashflow. By implementing efficient dunning processes, you can enhance financial health and operational efficiency.
+
+      Subscriptions enables you to create a dunning rule that allows you to configure payment retry schedules. Subscriptions retries failed payments automatically. You can customize the timing and frequency of the payment retries.
+
+      Dunning is enabled by default. You can choose to disable dunning. If no dunning rule is configured, then payment is retried once a day for 10 days, in total 11 payments. You can decide what action to take after the Subscriptions has stopped retrying the payments.
+
+      - Do nothing - the subscription remains active and Subscriptions does not attempt to retry the payment. However, the subscription is still available for a subscriber to use.
+      - Suspend the subscription. Subscriptions does not attempt to retry the payment. A subscriber can choose to pay the outstanding invoice. However, a subscriber cannot renew their subscription; a merchandizer must renew the subscription on behalf of the subscriber.
+      - close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment. 
   - name: Observable Events
     description: |
       You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. 
@@ -552,7 +629,7 @@ paths:
         - Plans
       summary: List plans
       description: |
-        Retrieves a list of all subscription plans.
+        Retrieves a list of all subscription plans. 
 
         ### Filtering
 
@@ -739,25 +816,25 @@ paths:
         - Offerings
       summary: Build an offering
       description: |
-        An offering includes a product and plans; a product is combined with one or more plans to form an offering. An offering can have only one product. An offering can include either:
-         
-        - a subscription product. See [**create a product**](/docs/api/subscriptions/create-product).
-        - a Product Experience Manager product. See [**create a product**](/docs/api/pxm/products/create-product).
-         
-        Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
+        An offering includes products and plans; products are combined with one or more plans to form an offering. An offering can include either:
+
+        - subscription products. See [**create a product**](/docs/api/subscriptions/create-product).
+        - Product Experience Manager products. See [**create a product**](/docs/api/pxm/products/create-product).
+
+        Offerings represent a snapshot of their products and plans. If you make updates to products or plans within an offering, the original products and plans are not updated. Only the products and plans within the offering are updated. Alternatively, you can create new products or plans and attach them to an existing offering.
 
         When you are building an offering:
 
         - you can create new plans and products.
         - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
-         
+
         Here's how you build an offering:
-         
+
         1. Specify the product to build with the offering. A product can be:
-         
-             - a subscription product. Specify the subscription product attributes. 
-             - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
-         
+
+             - subscription products. Specify the subscription product attributes. 
+             - Product Experience Manager products. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
+
         2. Specify the plans to build with the offering. Plans are the rules that govern your subscription, for example, any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.
           An offering must have at least one plan. 
       operationId: BuildOffering
@@ -1140,6 +1217,49 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/relationships/proration-policies:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    put:
+      tags:
+        - Offerings
+      summary: Manage prorations on an offering
+      operationId: ManageProrationsOnOffering
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ProrationPolicyRelationshipAttributes'
+      responses:
+        '200':
+          description: Success. A proration policy relationship is added to the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProrationPolicyRelationshipAttributes'
+        '204':
+          description: Success. A proration policy relationship has been removed from the offering.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /subscriptions/offerings/{offering_uuid}/products/{product_uuid}:
     parameters:
       - name: offering_uuid
@@ -1259,6 +1379,18 @@ paths:
         | Operator | Attribute | Description |
         | --- | --- | --- | 
         | `eq` | `account_id`, `name`, `email`, `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
+
+        ### Including Resources
+
+        You can use the `include` parameter to include the following resources with this endpoint.
+
+        | Resource | Required | Description |
+        | --- | --- | --- |
+        | `plans, products` | Optional | Retrieves all plans and products associated with a subscription. |
+        | `products` | Optional | Retrieves all products associated with a subscription. |
+        | `plans` | Optional | Retrieves all plans associated with a subscription. |
+
+        See [Characteristics of Include Parameter](/docs/commerce-cloud/api-overview/includes#characteristics-of-include-parameter).
       responses:
         '200':
           description: Success. A list of subscriptions is returned.
@@ -1312,6 +1444,41 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Subscriptions
+      summary: Update a subscription
+      description: |
+        Updates a subscription. For example, a subscriber can switch from one plan to another in a subscription.
+      operationId: UpdateSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/SubscriptionUpdate'
+      responses:
+        '200':
+          description: Success. The subscription is updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /subscriptions/subscriptions/{subscription_uuid}/products:
     parameters:
       - name: subscription_uuid
@@ -1324,6 +1491,7 @@ paths:
       tags:
         - Subscriptions
       summary: List subscription products
+      description: Retrieves a list of products associated with the specified subscription.
       operationId: ListSubscriptionProducts
       responses:
         '200':
@@ -1355,6 +1523,7 @@ paths:
       tags:
         - Subscriptions
       summary: List subscription plans
+      description: Retrieves a list of plans associated with the specified subscription. Using this endpoint you can see the plans that are currently active in a subscription. If `active_plan` is `true`, a plan is active in a subscription. If `active_plan` is null, the plan is not active.
       operationId: ListSubscriptionPlans
       responses:
         '200':
@@ -1601,7 +1770,7 @@ paths:
                 external_ref:
                   $ref: '#/components/schemas/ExternalRef'
                 import_file:
-                  description: The JSONL file you want to upload
+                  description: The JSONL file you want to upload.
                   type: string
                   format: binary
       responses:
@@ -1620,6 +1789,32 @@ paths:
           $ref: '#/components/responses/WriteConflictError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Imports
+      summary: List import jobs
+      description: |
+        Retrieves a list of all import jobs.
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListImportJobs
+      responses:
+        '200':
+          description: Success. A list of import jobs is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Import'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /subscriptions/imports/{import_uuid}:
     parameters:
       - name: import_uuid
@@ -1632,6 +1827,7 @@ paths:
       tags:
         - Imports
       summary: Get import
+      description: Retrieves the import job for the specified ID.
       operationId: GetImport
       responses:
         '200':
@@ -2213,6 +2409,305 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /subscriptions/dunning-rules:
+    post:
+      tags:
+        - Dunning Rules
+      summary: Create a dunning rule
+      description: |
+        Dunning rules must use a `fixed` strategy. This means payments are retried on a fixed schedule. 
+         
+        When an invoice is created, it immediately becomes eligible for payment by the next payment run. If the first payment attempt fails then the invoice enters dunning. In subsequent payment runs, invoices are only  considered for payment if they meet the dunning rules you create.
+         
+        You can configure a dunning rule to be the default for your store. There can only be one default rule per store. All invoices in your store will then perform dunning according to the specified rules. 
+         
+        :::note
+        If no dunning rule is configured, then payment is retried once a day for 10 days, in total 11 payments. You can decide what action to take after the Subscriptions has stopped retrying the payments.
+        :::
+         
+        The following attributes are used to define a `fixed` schedule:
+         
+        - `payment_retry_unit - the unit of time used to measure the intervals between payment attempts or retries. 
+        - `payment_retry_interval` - the number of `payment_interval-units` to wait between each payment retry attempt.
+        - `payment_retries_limit` - the number of times subscriptions attempts payments retries before an `action` is taken.
+        - `action` - the action to take if payment is not successful.
+         
+        For example, if:
+         
+        - the `payment_retry_unit` is `days` 
+        - the `payment_retry_interval` is `2`
+        - the `payment_rety_limit` is `10`
+        - the `action` is `close`.
+         
+        Subscriptions attempts to retry the payment every 2 days until 10 payment attempts have been tried. At that point, the subscription ends and it's status changes to `inacive`. 
+
+        Following on from this, you can specify that the dunning rule is no longer the default. You do not have to specify another rule to replace it. If you do remove the default dunning rule, the store defaults to the behavior that is followed when dunning is not enabled.
+      operationId: CreateDunningRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/DunningRuleCreate'
+      responses:
+        '201':
+          description: Success. The dunning rule set is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DunningRule'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Dunning Rules
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      summary: List dunning rules
+      description: |
+        Retrieves a list of all dunning rule sets.
+      operationId: ListDunningRules
+      responses:
+        '200':
+          description: Success. A list of dunning rules is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DunningRule'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/dunning-rules/{dunning_rule_uuid}:
+    parameters:
+      - name: dunning_rule_uuid
+        in: path
+        description: The unique identifier of a dunning rule set.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Dunning Rules
+      summary: Get dunning rule policy
+      operationId: GetDunningRule
+      responses:
+        '200':
+          description: Success. The dunning rule details are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DunningRule'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Dunning Rules
+      summary: Update dunning rule policy
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the rule is not updated.
+      operationId: UpdateDunningRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/DunningRuleUpdate'
+      responses:
+        '200':
+          description: Success. The dunning rule set has been updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DunningRule'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Dunning Rules
+      summary: Delete dunning rules
+      description: You can delete a dunning rule at any time. If a dunning rule is deleted then Subscriptions reverts to the configuration used if no dunning rule is set; payment is retried once a day for 10 days, in total 11 payments. You can decide what action to take after the Subscriptions has stopped retrying the payments. See [Dunning Rules](/docs/api/subscriptions/dunning-rules).
+      operationId: DeleteDunningRule
+      responses:
+        '204':
+          description: Success. The dunning rule is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/proration-policies:
+    post:
+      tags:
+        - ProrationPolicies
+      summary: Create a Proration Policy
+      operationId: CreateProrationPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ProrationPolicyCreate'
+      responses:
+        '201':
+          description: Success. The proration policy is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProrationPolicy'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - ProrationPolicies
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      summary: List proration policies
+      description: |
+        Retrieves a list of all proration policies.
+      operationId: ListProrationPolicies
+      responses:
+        '200':
+          description: Success. A list of proration policies is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProrationPolicy'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/proration-policies/{proration_policy_uuid}:
+    parameters:
+      - name: proration_policy_uuid
+        in: path
+        description: The unique identifier of a proration policy.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - ProrationPolicies
+      summary: Get proration policy
+      operationId: GetProrationPolicy
+      responses:
+        '200':
+          description: Success. The proration policy details are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProrationPolicy'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - ProrationPolicies
+      summary: Update proration policy
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the proration policy is not updated.
+      operationId: UpdateProrationPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ProrationPolicyUpdate'
+      responses:
+        '200':
+          description: Success. The proration policy details are updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProrationPolicy'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+    delete:
+      tags:
+        - ProrationPolicies
+      summary: Delete proration policy
+      description: Delete a proration policy
+      operationId: DeleteProrationPolicy
+      responses:
+        '204':
+          description: Success. The proration policy details are removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   securitySchemes:
     BearerToken:
@@ -2321,6 +2816,10 @@ components:
               - title: Write Conflict
                 status: '409'
   schemas:
+    ActivePlan:
+      type: boolean
+      description: Whether a plan is active on a subscription using that offering. The `active_plan` attribute is null if a plan is not active in a subscription.
+      example: true
     ExternalRef:
       description: A unique attribute that you could use to contain information from another company system, for example. The maximum length is 2048 characters.
       type: string
@@ -2337,63 +2836,63 @@ components:
       example: subscription
       enum:
         - subscription
-      default: subscription
     SubscriptionProductType:
       type: string
       example: subscription_product
       enum:
         - subscription_product
-      default: subscription_product
+    ProrationPolicyType:
+      type: string
+      example: proration_policy
+      enum:
+        - proration_policy
+    SubscriptionDunningRuleType:
+      type: string
+      example: subscription_dunning_rule
+      enum:
+        - subscription_dunning_rule
     SubscriptionPlanType:
       type: string
       example: subscription_plan
       enum:
         - subscription_plan
-      default: subscription_plan
     SubscriptionOfferingType:
       type: string
       example: subscription_offering
       enum:
         - subscription_offering
-      default: subscription_offering
     SubscriptionOfferingProductType:
       type: string
       example: subscription_offering_product
       enum:
         - subscription_offering_product
-      default: subscription_offering_product
     SubscriptionOfferingPlanType:
       type: string
       example: subscription_offering_plan
       enum:
         - subscription_offering_plan
-      default: subscription_offering_plan
     SubscriptionJobType:
       type: string
       example: subscription_job
       enum:
         - subscription_job
-      default: subscription_job
     SubscriptionImportType:
       type: string
       example: subscription_import
       enum:
         - subscription_import
-      default: subscription_import
     SubscriptionInvoiceType:
       description: This represents the type of resource object being returned. Always `subscription_invoice`.
       type: string
       example: subscription_invoice
       enum:
         - subscription_invoice
-      default: subscription_invoice
     SubscriptionInvoicePaymentType:
       type: string
       description: This represents the type of resource object being returned. Always `subscription_invoice_payment`.
       example: subscription_invoice_payment
       enum:
         - subscription_invoice_payment
-      default: subscription_invoice_payment
     Links:
       type: object
       additionalProperties:
@@ -2445,18 +2944,6 @@ components:
       x-go-type-import:
         name: model
         path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
-    Closed:
-      type: boolean
-      description: Whether a subscription is closed or not.
-      example: true
-    Paused:
-      type: boolean
-      description: Whether a subscription is paused or not.
-      example: true
-    Canceled:
-      type: boolean
-      description: Whether a subscription is canceled or not.
-      example: true
     Relationships:
       description: Relationships are established between different subscription entities. For example, a product and a plan are related to an offering, as both are attached to it.
       additionalProperties:
@@ -2499,6 +2986,7 @@ components:
           $ref: '#/components/schemas/UUID'
         type:
           type: string
+          description: This represents the type of resource being returned.
           example: 00000000-0000-0000-0000-000000000000
     RelationshipLinks:
       description: |
@@ -2801,6 +3289,303 @@ components:
           $ref: '#/components/schemas/NullablePrice'
         price_units:
           $ref: '#/components/schemas/NullablePriceUnits'
+    DunningRule:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionDunningRuleType'
+        attributes:
+          $ref: '#/components/schemas/DunningRuleAttributes'
+        meta:
+          $ref: '#/components/schemas/DunningRuleMeta'
+    DunningRuleMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    DunningRuleCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionDunningRuleType'
+        attributes:
+          $ref: '#/components/schemas/DunningRuleAttributes'
+    DunningRuleUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionDunningRuleType'
+        attributes:
+          $ref: '#/components/schemas/DunningRuleUpdateAttributes'
+    DunningRuleAttributes:
+      description: |
+        The dunning rule attributes you can use to configure your payment retry strategy.
+      example:
+        payment_retry_type: fixed
+        payment_retry_unit: day
+        payment_retry_interval: 1
+        payment_retries_limit: 10
+        action: none
+      required:
+        - payment_retry_type
+        - payment_retries_limit
+        - action
+      properties:
+        payment_retry_type:
+          type: string
+          enum:
+            - fixed
+            - backoff
+            - tiered
+          example: fixed
+          description: |
+            The strategy used to make payments. Always `fixed`. This means payments are retried on a fixed schedule as defined by the `payment_retry_unit` and `payment_retry_interval`, for example, every two days.
+          x-go-type: model.PaymentRetryType
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        payment_retry_interval:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 1024
+          example: 1
+          description: The number of `payment_interval_unit`s to wait between each payment retry attempt.
+        payment_retry_unit:
+          type: string
+          enum:
+            - day
+            - week
+          example: day
+          description: The unit of time used to measure the intervals between payment attempts or retries.
+          x-go-type: model.PaymentRetryUnit
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        payment_retry_multiplier:
+          type: number
+          format: double
+          minimum: 1
+          maximum: 1024
+          example: 1
+          description: The multiplier that increases the interval between consecutive each payment attempts or retries. This is typically used to gradually extend the time between retries. Allowing more time between attempts as failures persist, helps reduce the risk of triggering multiple failures in a short period and gives the subscriber more time to resolve the issue. Must only be set for backup types.
+        payment_retries_limit:
+          type: integer
+          format: int64
+          minimum: 0
+          example: 5
+          description: The number of times Subscriptions attempts payment retries before `action` is taken.
+        action:
+          type: string
+          enum:
+            - none
+            - pause
+            - close
+            - suspend
+          example: none
+          description: |
+            The action to take after all payment attempts for an invoice have failed.
+             
+            - None - the subscription remains active and Subscriptions does not attempt to retry the payment. However, the subscription is still available for a subscriber to use.
+            - Suspend the subscription. Subscriptions does not attempt to retry the payment. A subscriber can choose to pay the outstanding invoice. However, a subscriber cannot renew their subscription; a merchandizer must renew the subscription on behalf of the subscriber.
+            - close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment.
+          x-go-type: model.DunningAction
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        default:
+          type: boolean
+          example: false
+          description: Set to `true` if you want this rule to be the default for the store.
+    DunningRuleUpdateAttributes:
+      properties:
+        payment_retry_type:
+          type: string
+          enum:
+            - fixed
+            - backoff
+            - tiered
+          example: fixed
+          description: |
+            The strategy used to make payments. Always `fixed`. This means payments are retried on a fixed schedule as defined by the `payment_retry_unit` and `payment_retry_interval`, for example, every two days.
+          x-go-type: model.PaymentRetryType
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        payment_retry_interval:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 1024
+          example: 1
+          description: The number of `payment_interval_unit`s to wait between each payment retry attempt.
+          nullable: true
+        payment_retry_unit:
+          type: string
+          enum:
+            - day
+            - week
+          example: day
+          description: The unit of time used to measure the intervals between payment attempts or retries.
+          nullable: true
+          x-go-type: model.PaymentRetryUnit
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        payment_retry_multiplier:
+          type: number
+          format: double
+          minimum: 1
+          maximum: 1024
+          example: 1
+          description: The multiplier that increases the interval between consecutive each payment attempts or retries. This is typically used to gradually extend the time between retries. Allowing more time between attempts as failures persist, helps reduce the risk of triggering multiple failures in a short period and gives the subscriber more time to resolve the issue. Must only be set for backup types.
+          nullable: true
+        payment_retries_limit:
+          type: integer
+          format: int64
+          minimum: 0
+          example: 5
+          description: The number of times Subscriptions attempts payment retries before `action` is taken.
+        action:
+          type: string
+          enum:
+            - none
+            - pause
+            - close
+            - suspend
+          example: none
+          description: The action to take after all payment attempts for an invoice have failed.
+          x-go-type: model.DunningAction
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        default:
+          type: boolean
+          example: false
+          description: Set to `true` if you want this rule to be the default for the store.
+    ProrationPolicy:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/ProrationPolicyType'
+        attributes:
+          $ref: '#/components/schemas/ProrationPolicyResponseAttributes'
+        meta:
+          $ref: '#/components/schemas/ProrationPolicyMeta'
+    ProrationPolicyUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/ProrationPolicyType'
+        attributes:
+          $ref: '#/components/schemas/ProrationPolicyUpdateAttributes'
+    ProrationPolicyRelationshipAttributes:
+      type: object
+      nullable: true
+      required:
+        - type
+        - id
+      properties:
+        type:
+          $ref: '#/components/schemas/ProrationPolicyType'
+        id:
+          $ref: '#/components/schemas/UUID'
+    ProrationPolicyResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/ProrationPolicyAttributes'
+    ProrationPolicyCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/ProrationPolicyType'
+        attributes:
+          $ref: '#/components/schemas/ProrationPolicyAttributes'
+    ProrationPolicyAttributes:
+      required:
+        - name
+        - rounding
+      properties:
+        name:
+          type: string
+          description: A name for the proration policy.
+          example: Main Policy
+          minLength: 3
+          maxLength: 1024
+        rounding:
+          type: string
+          description: Whether to round up or down
+          enum:
+            - up
+            - down
+            - nearest
+          example: up
+          x-go-type: model.ProrationPolicyRounding
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+    ProrationPolicyUpdateAttributes:
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRefUpdate'
+        name:
+          type: string
+          description: The name of the proration policy.
+          minLength: 3
+          maxLength: 1024
+          example: Main Policy
+        rounding:
+          type: string
+          description: Whether to round up or down
+          enum:
+            - up
+            - down
+            - nearest
+          example: up
+          x-go-type: model.ProrationPolicyRounding
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+    ProrationPolicyMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
     Plan:
       required:
         - type
@@ -3163,6 +3948,8 @@ components:
           $ref: '#/components/schemas/Price'
         display_price:
           $ref: '#/components/schemas/DisplayPrice'
+        active_plan:
+          $ref: '#/components/schemas/ActivePlan'
         owner:
           $ref: '#/components/schemas/OwnerMeta'
         timestamps:
@@ -3246,6 +4033,8 @@ components:
           maxLength: 1024
           example: A lovely magazine that is published every month.
           nullable: true
+        proration_policy_id:
+          $ref: '#/components/schemas/UUID'
     BuildSubscription:
       required:
         - account_id
@@ -3296,6 +4085,28 @@ components:
           $ref: '#/components/schemas/Relationships'
         meta:
           $ref: '#/components/schemas/SubscriptionMeta'
+    SubscriptionUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionUpdateAttributes'
+    SubscriptionUpdateAttributes:
+      properties:
+        plan_id:
+          x-go-type: uuid.UUID
+          x-go-type-import:
+            name: uuid
+            path: github.com/google/uuid
+          example: 00000000-0000-0000-0000-000000000001
+        payment_authority:
+          $ref: '#/components/schemas/PaymentAuthority'
     SubscriptionIncludes:
       readOnly: true
       properties:
@@ -3316,6 +4127,8 @@ components:
         - canceled
         - paused
         - closed
+        - suspended
+        - invoice_after
       properties:
         owner:
           $ref: '#/components/schemas/OwnerMeta'
@@ -3326,11 +4139,25 @@ components:
         state:
           $ref: '#/components/schemas/SubscriptionState'
         canceled:
-          $ref: '#/components/schemas/Canceled'
+          type: boolean
+          description: Whether a subscription is canceled or not.
+          example: true
         paused:
-          $ref: '#/components/schemas/Paused'
+          type: boolean
+          description: Whether a subscription is paused or not.
+          example: true
         closed:
-          $ref: '#/components/schemas/Closed'
+          type: boolean
+          description: Whether a subscription is closed or not.
+          example: true
+        suspended:
+          type: boolean
+          description: Whether a subscription is suspended or not.
+          example: false
+        invoice_after:
+          description: The date and time after which a subscription invoice will be generated.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
     SubscriptionTimestamps:
       allOf:
         - $ref: '#/components/schemas/Timestamps'
@@ -3354,11 +4181,12 @@ components:
     SubscriptionAttributes:
       required:
         - account_id
-        - offering
         - plan_id
+        - offering
         - currency
         - name
         - email
+        - payment_authority
       properties:
         external_ref:
           $ref: '#/components/schemas/ExternalRef'
@@ -3370,6 +4198,8 @@ components:
           $ref: '#/components/schemas/UUID'
         currency:
           $ref: '#/components/schemas/CurrencyIdentifier'
+        payment_authority:
+          $ref: '#/components/schemas/PaymentAuthority'
     ChangeState:
       required:
         - type
@@ -3391,7 +4221,6 @@ components:
       example: subscription_state
       enum:
         - subscription_state
-      default: subscription_state
     SubscriptionStateAction:
       type: string
       description: |
@@ -3405,7 +4234,7 @@ components:
         - cancel
         - pause
         - resume
-      x-go-type: model.SubscriptionActionType
+      x-go-type: model.SubscriptionAction
       x-go-type-import:
         name: model
         path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
@@ -3433,10 +4262,45 @@ components:
         meta:
           $ref: '#/components/schemas/StateMeta'
     PaymentAuthority:
+      oneOf:
+        - $ref: '#/components/schemas/PaymentAuthorityStripe'
+        - $ref: '#/components/schemas/PaymentAuthorityAuthorizeNet'
+      discriminator:
+        propertyName: type
+        mapping:
+          elastic_path_payments_stripe: '#/components/schemas/PaymentAuthorityStripe'
+          authorize_net: '#/components/schemas/PaymentAuthorityAuthorizeNet'
+    PaymentAuthorityAuthorizeNet:
+      type: object
       required:
         - type
-        - customer_id
-        - card_id
+      properties:
+        type:
+          description: The name of the payment gateway facilitating the secure transmission of payment data.
+          type: string
+          example: authorize_net
+          enum:
+            - authorize_net
+          x-go-type: paymentgateways.GatewayName
+          x-go-type-import:
+            name: paymentgateways
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/paymentgateways
+        payment_profile_id:
+          description: The customer's payment profile id, unique to Authorize.net, used to facilitate payment of the subscription.
+          type: string
+          minLength: 3
+          maxLength: 1024
+          example: '1511660856'
+        customer_profile_id:
+          description: The customer's profile id, unique to Authorize.net, used to facilitate payment of the subscription.
+          type: string
+          minLength: 3
+          maxLength: 1024
+          example: '1511736979'
+    PaymentAuthorityStripe:
+      type: object
+      required:
+        - type
       properties:
         type:
           description: The name of the payment gateway facilitating the secure transmission of payment data.
@@ -3444,15 +4308,20 @@ components:
           example: elastic_path_payments_stripe
           enum:
             - elastic_path_payments_stripe
-            - authorize_net
+          x-go-type: paymentgateways.GatewayName
+          x-go-type-import:
+            name: paymentgateways
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/paymentgateways
         customer_id:
           description: The unique identifier for a customer.
           type: string
+          minLength: 3
           maxLength: 1024
           example: cus_OPfKlxWV3hp9h6
         card_id:
           description: The unique identifier of the card used to facilitate payment of the subscription.
           type: string
+          minLength: 3
           maxLength: 1024
           example: card_8Diw3FQPhxK27WADPVMeXieP
     Import:
@@ -3477,7 +4346,12 @@ components:
           $ref: '#/components/schemas/ExternalRef'
         status:
           type: string
-          description: The status of job.
+          description: |
+            The status of job.
+            - **pending** - Commerce has received the request but is currently busy processing other requests.
+            - **started** - Commerce has started processing the job.
+            - **success** - The job has successfully completed.
+            - **failed** - The job has failed.
           enum:
             - pending
             - started
@@ -3503,22 +4377,48 @@ components:
           $ref: '#/components/schemas/ImportRecords'
     ImportRecords:
       type: object
+      description: You can track the number of records imported to ensure the completeness, accuracy and integrity of the import. Uploaded shows the number of records ready to be imported into Subscriptions. However, this does not mean they are valid subscription objects, only that they have the correct type and their JSON format is properly formatted. Imported shows the number of records that have been both validated and successfully added to Subscriptions.
+      required:
+        - uploaded
+        - imported
       properties:
         uploaded:
           type: object
           properties:
             subscription_product:
+              description: The total number of products uploaded.
+              type: integer
+              example: 50000
+            subscription_plan:
+              description: The total number of plans uploaded.
+              type: integer
+              example: 50000
+            subscription_subscriber:
+              description: The total number of subscribers uploaded.
               type: integer
               example: 50000
           required:
             - subscription_product
+            - subscription_plan
+            - subscription_subscriber
         imported:
           properties:
             subscription_product:
+              description: The total number of products imported.
+              type: integer
+              example: 45090
+            subscription_plan:
+              description: The total number of plans imported.
+              type: integer
+              example: 45090
+            subscription_subscriber:
+              description: The total number of subscribers imported.
               type: integer
               example: 45090
           required:
             - subscription_product
+            - subscription_plan
+            - subscription_subscriber
     Job:
       required:
         - type
@@ -3548,7 +4448,7 @@ components:
         report:
           $ref: '#/components/schemas/JobReport'
     JobReport:
-      description: A job report summarizes the work done by the job.
+      description: You can track your Subscriptions billing, tax, and payment operations using reports.
       oneOf:
         - $ref: '#/components/schemas/BillingRunReport'
         - $ref: '#/components/schemas/TaxRunReport'
@@ -3566,7 +4466,7 @@ components:
           type: integer
           example: 100
         invoices_tax_required:
-          description: The total number of invoices created that need taxes to be applied before thay can be paid.
+          description: The total number of invoices created that need taxes to be applied before payment can be made.
           type: integer
           example: 100
         invoice_failures:
@@ -3575,11 +4475,11 @@ components:
           example: 0
         total_ready_for_payment:
           allOf:
-            - description: The total amount ready for pauyment invoiced in the billing run, segmented by currency.
+            - description: The total amount ready for payment invoiced in the billing run, segmented by currency.
             - $ref: '#/components/schemas/Price'
         total_tax_required:
           allOf:
-            - description: The total amount (minus tax) invoiced in the billing run but still requiring taxes, segmented by currency.
+            - description: The total amount (excluding tax) invoiced in the billing run but still requiring taxes, segmented by currency.
             - $ref: '#/components/schemas/Price'
     TaxRunReport:
       required:
@@ -3587,11 +4487,11 @@ components:
         - invoice_failures
       properties:
         invoices_updated:
-          description: The total number of invoices to which tax was successfully added
+          description: The total number of invoices to which tax was successfully added.
           type: integer
           example: 100
         invoice_failures:
-          description: The total number of invoices that tax could not be added to
+          description: The total number of invoices to which tax could not be added.
           type: integer
           example: 0
     PaymentRunReport:
@@ -3617,9 +4517,11 @@ components:
         - $ref: '#/components/schemas/Timestamps'
         - properties:
             started_at:
+              description: The date and time a job is started.
               type: string
               example: '2017-01-10T11:41:19.244842Z'
             finished_at:
+              description: The date and time a job finished.
               type: string
               example: '2017-01-10T11:41:19.244842Z'
     JobCreate:
@@ -3761,6 +4663,7 @@ components:
       required:
         - owner
         - timestamps
+        - proration_events
       properties:
         owner:
           $ref: '#/components/schemas/OwnerMeta'
@@ -3772,6 +4675,39 @@ components:
           $ref: '#/components/schemas/SingleCurrencyPrice'
         timestamps:
           $ref: '#/components/schemas/InvoiceTimestamps'
+        proration_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProrationEvent'
+    ProrationEvent:
+      required:
+        - proration_policy_id
+        - billing_cost_before_proration
+        - refunded_amount_for_unused_plan
+        - new_plan_cost
+        - prorated_at
+      properties:
+        proration_policy_id:
+          $ref: '#/components/schemas/UUID'
+        billing_cost_before_proration:
+          type: integer
+          format: int64
+          description: The value as a whole number of the currency's smallest subdivision
+          example: 100
+        refunded_amount_for_unused_plan:
+          type: integer
+          format: int64
+          description: The value as a whole number of the currency's smallest subdivision.
+          example: 100
+        new_plan_cost:
+          type: integer
+          format: int64
+          description: The value as a whole number of the currency's smallest subdivision.
+          example: 100
+        prorated_at:
+          description: The date and time the subscription was prorated.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
     InvoiceTimestamps:
       allOf:
         - $ref: '#/components/schemas/Timestamps'
@@ -3813,6 +4749,7 @@ components:
         - invoice_items
         - outstanding
         - tax_required
+        - payment_retries_limit_reached
       properties:
         billing_period:
           $ref: '#/components/schemas/TimePeriod'
@@ -3836,6 +4773,10 @@ components:
           type: boolean
           description: Whether tax is required for this invoice.
           example: true
+        payment_retries_limit_reached:
+          type: boolean
+          description: Whether the limit of payment retries has been reached.
+          example: false
         updated_at:
           description: The date and time an invoice was updated.
           type: string
@@ -3857,8 +4798,8 @@ components:
         gateway:
           type: string
           maxLength: 1024
-          example: stripe
-          description: Specifies the payment gateway. You must use `elastic_path_payments_stripe` as the required gateway.
+          example: elastic_path_payments_stripe
+          description: Specifies the payment gateway.
         external_payment_id:
           type: string
           maxLength: 1024
@@ -3971,7 +4912,6 @@ components:
       example: subscription_subscriber
       enum:
         - subscription_subscriber
-      default: subscription_subscriber
     SubscriberResponseAttributes:
       allOf:
         - $ref: '#/components/schemas/SubscriberAttributes'
@@ -4083,7 +5023,6 @@ components:
       example: subscription_schedule
       enum:
         - subscription_schedule
-      default: subscription_schedule
     ScheduleResponseAttributes:
       allOf:
         - $ref: '#/components/schemas/ScheduleAttributes'

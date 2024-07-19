@@ -7,7 +7,7 @@ sidebar_position: 10
 A catalog can have one or more hierarchies of products. The hierarchies contain all the products that you want to display in your organization or store. For products to be included in a catalog, the products must:
 [
 - have a `live` status.
-- be associated with nodes in the selected hierarchies. You can filter your products using the **Has Node Assignment** attributes to check that the products will be included in your catalog. See [Filtering Products](/docs/pxm/products/pxm-products-commerce-manager/filter-products).
+- be associated with nodes in the selected hierarchies. You can filter your products using the **Has Node Assignment** attributes to check that the products will be included in your catalog. See [Filtering Products](/docs/commerce-manager/product-experience-manager/Products/filter-products).
 
 A catalog must have at least one price book associated with it. 
 
@@ -17,13 +17,13 @@ When you publish a catalog, the products in the hierarchies appear in a catalog 
 
 If you make any changes to the hierarchies, the products in a hierarchy, or price books, you must republish your catalogs. The changes do not appear in the storefront unless a catalog is re-published.
 
-You can have many catalogs available in a store. You can use catalog rules to specify when to display your catalogs. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules).
+You can have many catalogs available in a store. You can use catalog rules to specify when to display your catalogs. See [Configure Shopper Catalog Rules](/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules).
 
 ## Catalog Releases
 
 When you publish a catalog, the products in the hierarchies appear in a catalog release. A catalog release provides a snapshot of product information taken at the time of publication.  Depending on how many times you have published the catalog, the latest release and the two releases prior to the latest release are available. This is useful if you want to go back to an earlier version of a catalog or see the changes that have been made between releases. You can:
 
-- use catalog rules to specify when to display your catalog releases. See [Configure Shopper Catalog Rules](/docs/pxm/catalogs/catalogs-cm/catalog-rules).
+- use catalog rules to specify when to display your catalog releases. See [Configure Shopper Catalog Rules](/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules).
 - edit catalog releases. See [Editing catalog releases](##editing-catalog-releases).
 - go back to an earlier release of a catalog. See [Deleting Catalog Releases](#deleting-catalog-releases).
 
@@ -78,7 +78,7 @@ You can edit product and hierarchy details from the **Edit Catalog** tab. If you
 1. Edit the **Basic Information**, depending on your requirements.
 1. In **Hierarchy**, add or remove the hierarchies you want.
 1. In **Price Books**, add or remove the price books you want.
-1. Select **Products List** to see a list of products displayed in this catalog. You can [filter](/docs/pxm/products/pxm-products-commerce-manager/filter-products) the products. For example, if you are editing a product description, you can filter using the **Description** attribute.
+1. Select **Products List** to see a list of products displayed in this catalog. You can [filter](/docs/commerce-manager/product-experience-manager/Products/filter-products) the products. For example, if you are editing a product description, you can filter using the **Description** attribute.
 1. Select the product you want to edit. If you make changes to a product's details, you are updating the product for all subsequent catalogs. However, you can go back to a previous release of a catalog. See [Deleting Catalog Releases](#deleting-catalog-releases).
 1. Once you have finished editing your catalog, either click **Save** to save your changes or **Publish** to save and publish your catalog.
 

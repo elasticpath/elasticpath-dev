@@ -100,7 +100,7 @@ Once you have met the [Prerequistes](#prequisites), you are ready to configure t
         - **Client-ID**  - Your Commerce Client ID.
         - **Client-Secret** - Your Commerce Client Secret.
 
-            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](docs/commerce-cloud/authentication/application-keys/application-keys-cm).
+            You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/commerce-manager/application-keys/application-keys-cm).
 
     1. Click **Connect**. The **Integration Hub** uses your current store crededentials to automatically connect you to your store. 
     1. Once you have successfully connected to Commerce, you can configure the following:
