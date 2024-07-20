@@ -38,20 +38,28 @@ paths:
   /v2/carts:
     get:
       tags:
-        - Customer Cart Associations
-      summary: Get Customer Carts
+        - Cart Management
+      summary: Get Shopper Carts
       description: |
-        You can retrieve the carts that are associated with a customer.
+        You can retrieve the carts that are associated with an [account](/docs/api/carts/account-cart-associations) or a [customer](/docs/api/carts/customer-cart-associations).
 
         When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/guides/Getting-Started/pagination).
 
         :::note
 
-        Requires an `implicit` token with a [customer token](/docs/customer-management/customer-management-api/customer-tokens).
+        Requires an `implicit` token with only one of [Account Management Authentication Token](/docs/api/accounts/post-v-2-account-members-tokens) or [customer token](/docs/customer-management/customer-management-api/customer-tokens).
 
         :::
-      operationId: getCustomerCarts
+      operationId: getCarts
       parameters:
+        - name: EP-Account-Management-Authentication-Token
+          in: header
+          description: An Account Management Authentication token to access a specific account's carts.
+          style: simple
+          schema:
+            type: string
+            examples:
+              - '{{accountToken}}'
         - name: x-moltin-customer-token
           in: header
           description: A customer token to access a specific customer's carts.
@@ -92,10 +100,10 @@ paths:
     post:
       tags:
         - Cart Management
-      summary: Create a Custom Cart
+      summary: Create a Cart
       description: |
 
-        Creates a custom cart. Call this endpoint each time a customer creates a cart.
+        Creates a cart. Call this endpoint each time a customer creates a cart.
 
         Each shopper can have multiple carts. Use the carts API to create a cart. The carts are distinct from one another. Shoppers can add different items to their carts. They can check out one of the carts without affecting the content or status of their other carts.
 
@@ -103,7 +111,7 @@ paths:
 
         You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Update Cart Settings](/docs/api/settings/put-v-2-settings-cart).
 
-      operationId: createACustomCart
+      operationId: createACart
       parameters:
         - name: x-moltin-customer-token
           in: header
@@ -121,7 +129,7 @@ paths:
               allOf:
                 - $ref: '#/components/schemas/CartsRequest'
             examples:
-              Create Custom Cart:
+              Create Cart:
                 value:
                   data:
                     name: "Bob’s cart"
@@ -174,7 +182,9 @@ paths:
         - Cart Management
       summary: Get a Cart
       description: |
-        Use this endpoint to retrieve a specific cart. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
+        Use this endpoint to retrieve a specific cart. If a cart ID does not exist, a new cart will be automatically created. 
+        
+        If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
 
         :::note
 
