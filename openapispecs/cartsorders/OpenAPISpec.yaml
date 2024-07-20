@@ -4973,13 +4973,13 @@ tags:
       :::
   - name: Account Cart Associations
     description: |
-      You can create associations between a account and one or more carts. After cart associations exist for a account, those carts are accessible across any device. You can delete associations as required.
+      You can create associations between an account and one or more carts. After cart associations exist for a account, those carts are accessible across any device. You can delete associations as required.
 
-      There are two ways to access the cart: with a account token and without one.
+      There are two ways to access the cart: with an [Account Management Authentication Tokens](/docs/api/accounts/post-v-2-account-members-tokens) and without one.
 
-      ### With a `account` token
+      ### With an `Account Management Authentication` token
 
-      These endpoints are for users who authenticated implicitly and require a account token in the header to access the account cart associations APIs. For more information, see the [Account Token](/docs/account-management/account-management-api/account-tokens) documentation.
+      These endpoints are for users who authenticated implicitly and require a Account Management Authentication token in the header to access the account cart associations APIs. For more information, see the [Account Token](/docs/api/accounts/post-v-2-account-members-tokens) documentation.
 
       #### Cart creation
 
@@ -4991,23 +4991,23 @@ tags:
 
       :::
 
-      ### Without a `account` token
+      ### Without an `Account Management Authentication` token
 
-      These endpoints are for users who use the Client Credentials Token and do not require a Account token in the header to access the account cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
+      These endpoints are for users who use the Client Credentials Token and do not require an account management authentication token in the header to access the account cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
 
-      This user acts as a system administrator and can call any account cart association operations for any accounts and carts.
+      This user acts as a system administrator and can call any account cart association operations for any account and cart.
 
       ### Error Codes
 
       You might encounter the following response codes, depending on the scenario:
 
-      * 400 - The type does not exist or is not listed as account. Ensure that the type is account and is present.
+      * `400` - `The type does not exist or is not listed as account` - Ensure that the type is `account` and is present.
 
-      * 403 - Cannot associate more than one account.
+      * `403` - `Cannot associate more than one account`.
 
-      * 403 - Account does not have the required permissions to fulfill this request.
+      * `403` - `Account does not have the required permissions to fulfill this request`.
 
-      * 403 - Invalid json payload. Check JSON input. The request body must be an array []. If the request body is an object, the error is generated.
+      * `403` - `Invalid json payload` - Check JSON input. The request body must be an array `[]`. If the request body is an object, the error is generated.
   - name: Customer Cart Associations
     description: |
       You can create associations between a customer and one or more carts. After cart associations exist for a customer, those carts are accessible across any device. You can delete associations as required.
@@ -5032,19 +5032,19 @@ tags:
 
       These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
 
-      This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
+      This user acts as a system administrator and can call any customer cart association operations for any customer and cart.
 
       ### Error Codes
 
       You might encounter the following response codes, depending on the scenario:
 
-      * 400 - The type does not exist or is not listed as customer. Ensure that the type is customer and is present.
+      * `400` - `The type does not exist or is not listed as customer` - Ensure that the type is `customer` and is present.
 
-      * 403 - Cannot associate more than one customer.
+      * `403` - `Cannot associate more than one customer`.
 
-      * 403 - Customer does not have the required permissions to fulfill this request.
+      * `403` - `Customer does not have the required permissions to fulfill this request`.
 
-      * 403 - Invalid json payload. Check JSON input. The request body must be an array []. If the request body is an object, the error is generated.
+      * `403` - `Invalid json payload` - Check JSON input. The request body must be an array `[]`. If the request body is an object, the error is generated.
   - name: Cart Items
     description: Products added to a cart are referred to as a `cart_item`.
   - name: Checkout
