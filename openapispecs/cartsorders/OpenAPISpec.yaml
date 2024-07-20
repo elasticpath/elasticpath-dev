@@ -1125,6 +1125,108 @@ paths:
                   title: Unauthorized
       deprecated: false
     parameters: [ ]
+  /v2/carts/{cartID}/relationships/accounts:
+    post:
+      tags:
+        - Account Cart Associations
+      summary: Create a Account Cart Association
+      description: You can create associations between an account and one or more carts. After cart associations exist for an account, the account can access those carts across any device.
+      operationId: createAccountCartAssociation
+      parameters:
+        - name: cartID
+          in: path
+          description: The ID for the cart created by the account. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/safe-characters).
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: EP-Account-Management-Authentication-Token
+          in: header
+          description: An Account Management Authentication token to access a specific account's carts. 
+          style: simple
+          schema:
+            type: string
+            examples:
+              - '{{accountToken}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CartsRelationshipsAccountsData'
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/CartsRelationshipsAccountsData'
+        '204':
+          description: 'No Content is sent back in case the account has already been associated to the cart.'
+          headers: { }
+          content: { }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+    delete:
+      tags:
+        - Account Cart Associations
+      summary: Delete Account Cart Association
+      description: You can delete an association between an account and a cart.
+      operationId: deleteAccountCartAssociation
+      parameters:
+        - name: cartID
+          in: path
+          description: The ID for the cart created by the account.
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: EP-Account-Management-Authentication-Token
+          in: header
+          description: An Account Management Authentication token to access a specific account's carts.
+          style: simple
+          schema:
+            type: string
+            examples:
+              - '{{accountToken}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CartsRelationshipsAccountsData'
+        required: false
+      responses:
+        '204':
+          description: 'No Content'
+          headers: { }
+          content: { }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+    parameters: [ ]
   /v2/carts/{cartID}/relationships/customers:
     post:
       tags:
@@ -3467,6 +3569,24 @@ components:
           readOnly: true
           examples:
             - false
+    CartsRelationshipsAccountsData:
+      title: Carts Relationships Accounts Data
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            properties:
+              id:
+                description: The ID of the account.
+                type: string
+                examples:
+                  - '{{accountID}}'
+              type:
+                description: The type of related object. Ensure that it is account.
+                type: string
+                examples:
+                  - account 
     CartsRelationshipsCustomersData:
       title: Carts Relationships Customers Data
       type: object
@@ -4851,6 +4971,43 @@ tags:
       - If you do not pass a `X-MOLTIN-CURRENCY` header specifying what currency you would like the cart to use, the products in the cart are converted to your default currency.
 
       :::
+  - name: Account Cart Associations
+    description: |
+      You can create associations between a account and one or more carts. After cart associations exist for a account, those carts are accessible across any device. You can delete associations as required.
+
+      There are two ways to access the cart: with a account token and without one.
+
+      ### With a `account` token
+
+      These endpoints are for users who authenticated implicitly and require a account token in the header to access the account cart associations APIs. For more information, see the [Account Token](/docs/account-management/account-management-api/account-tokens) documentation.
+
+      #### Cart creation
+
+      Shoppers create carts and can use any of the carts that they created to check out an order.
+
+      :::note
+
+      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/guides/Getting-Started/safe-characters).
+
+      :::
+
+      ### Without a `account` token
+
+      These endpoints are for users who use the Client Credentials Token and do not require a Account token in the header to access the account cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
+
+      This user acts as a system administrator and can call any account cart association operations for any accounts and carts.
+
+      ### Error Codes
+
+      You might encounter the following response codes, depending on the scenario:
+
+      * 400 - The type does not exist or is not listed as account. Ensure that the type is account and is present.
+
+      * 403 - Cannot associate more than one account.
+
+      * 403 - Account does not have the required permissions to fulfill this request.
+
+      * 403 - Invalid json payload. Check JSON input. The request body must be an array []. If the request body is an object, the error is generated.
   - name: Customer Cart Associations
     description: |
       You can create associations between a customer and one or more carts. After cart associations exist for a customer, those carts are accessible across any device. You can delete associations as required.
