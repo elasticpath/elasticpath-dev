@@ -1,0 +1,9 @@
+An Order is created through the [checkout](/docs/api/carts/checkout) endpoint within the Carts API.
+
+An order is created after a customer checks out their cart. On creation, the order is marked unpaid. The customer is prompted for a shipping address, a billing address, and a payment method. After the order is successfully paid, you can trigger an inventory process and a shipping process.
+
+You can keep a history of orders associated with the customer account.
+
+### Reorder
+
+A re-order is when a shopper copies items from a previous order from their order history into a cart of their choice. If a shopper re-orders to an empty cart, the same quantities as the past order are applied. If the shopper re-orders to an existing cart, and orders the same item, the quantity increases. If an item is out of stock, the item is not added to the cart, and the shopper sees an insufficient stock error. The tax for the items in a re-order is not applied. For more information, see [Tax Items](/docs/api/carts/tax-items).
