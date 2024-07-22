@@ -38,20 +38,28 @@ paths:
   /v2/carts:
     get:
       tags:
-        - Customer Cart Associations
-      summary: Get Customer Carts
+        - Cart Management
+      summary: Get Shopper Carts
       description: |
-        You can retrieve the carts that are associated with a customer.
+        You can retrieve the carts that are associated with an [account](/docs/api/carts/account-cart-associations) or a [customer](/docs/api/carts/customer-cart-associations).
 
         When a shopper retrieves their latest carts, the carts are sorted in descending order by the updated_date. For more information, see [Pagination](/guides/Getting-Started/pagination).
 
         :::note
 
-        Requires an `implicit` token with a [customer token](/docs/customer-management/customer-management-api/customer-tokens).
+        Requires an `implicit` token with only one of [Account Management Authentication Token](/docs/api/accounts/post-v-2-account-members-tokens) or [customer token](/docs/customer-management/customer-management-api/customer-tokens).
 
         :::
-      operationId: getCustomerCarts
+      operationId: getCarts
       parameters:
+        - name: EP-Account-Management-Authentication-Token
+          in: header
+          description: An Account Management Authentication token to access a specific account's carts.
+          style: simple
+          schema:
+            type: string
+            examples:
+              - '{{accountToken}}'
         - name: x-moltin-customer-token
           in: header
           description: A customer token to access a specific customer's carts.
@@ -92,10 +100,10 @@ paths:
     post:
       tags:
         - Cart Management
-      summary: Create a Custom Cart
+      summary: Create a Cart
       description: |
 
-        Creates a custom cart. Call this endpoint each time a customer creates a cart.
+        Creates a cart. Call this endpoint each time a customer creates a cart.
 
         Each shopper can have multiple carts. Use the carts API to create a cart. The carts are distinct from one another. Shoppers can add different items to their carts. They can check out one of the carts without affecting the content or status of their other carts.
 
@@ -103,7 +111,7 @@ paths:
 
         You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Update Cart Settings](/docs/api/settings/put-v-2-settings-cart).
 
-      operationId: createACustomCart
+      operationId: createACart
       parameters:
         - name: x-moltin-customer-token
           in: header
@@ -121,7 +129,7 @@ paths:
               allOf:
                 - $ref: '#/components/schemas/CartsRequest'
             examples:
-              Create Custom Cart:
+              Create Cart:
                 value:
                   data:
                     name: "Bob’s cart"
@@ -174,7 +182,9 @@ paths:
         - Cart Management
       summary: Get a Cart
       description: |
-        Use this endpoint to retrieve a specific cart. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
+        Use this endpoint to retrieve a specific cart. If a cart ID does not exist, a new cart will be automatically created. 
+        
+        If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
 
         :::note
 
@@ -1125,6 +1135,108 @@ paths:
                   title: Unauthorized
       deprecated: false
     parameters: [ ]
+  /v2/carts/{cartID}/relationships/accounts:
+    post:
+      tags:
+        - Account Cart Associations
+      summary: Create an Account Cart Association
+      description: You can create associations between an account and one or more carts. After cart associations exist for an account, the account can access those carts across any device.
+      operationId: createAccountCartAssociation
+      parameters:
+        - name: cartID
+          in: path
+          description: The ID for the cart created by the account. Ensure that you follow the guidelines for [Safe Characters](/guides/Getting-Started/safe-characters).
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: EP-Account-Management-Authentication-Token
+          in: header
+          description: An Account Management Authentication token to access a specific account's carts. 
+          style: simple
+          schema:
+            type: string
+            examples:
+              - '{{accountToken}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CartsRelationshipsAccountsData'
+        required: false
+      responses:
+        '200':
+          description: 'OK'
+          headers: { }
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/CartsRelationshipsAccountsData'
+        '204':
+          description: 'No Content is sent back in case the account has already been associated to the cart.'
+          headers: { }
+          content: { }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+    delete:
+      tags:
+        - Account Cart Associations
+      summary: Delete Account Cart Association
+      description: You can delete an association between an account and a cart.
+      operationId: deleteAccountCartAssociation
+      parameters:
+        - name: cartID
+          in: path
+          description: The ID for the cart created by the account.
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: EP-Account-Management-Authentication-Token
+          in: header
+          description: An Account Management Authentication token to access a specific account's carts.
+          style: simple
+          schema:
+            type: string
+            examples:
+              - '{{accountToken}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CartsRelationshipsAccountsData'
+        required: false
+      responses:
+        '204':
+          description: 'No Content'
+          headers: { }
+          content: { }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response.Error'
+              example:
+                errors:
+                  status: 401
+                  title: Unauthorized
+      deprecated: false
+    parameters: [ ]
   /v2/carts/{cartID}/relationships/customers:
     post:
       tags:
@@ -1158,7 +1270,7 @@ paths:
         required: false
       responses:
         '200':
-          description: ''
+          description: 'OK'
           headers: { }
           content:
             application/json:
@@ -3467,6 +3579,24 @@ components:
           readOnly: true
           examples:
             - false
+    CartsRelationshipsAccountsData:
+      title: Carts Relationships Accounts Data
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            properties:
+              id:
+                description: The ID of the account.
+                type: string
+                examples:
+                  - '{{accountID}}'
+              type:
+                description: The type of related object. Ensure that it is account.
+                type: string
+                examples:
+                  - account 
     CartsRelationshipsCustomersData:
       title: Carts Relationships Customers Data
       type: object
@@ -4851,6 +4981,43 @@ tags:
       - If you do not pass a `X-MOLTIN-CURRENCY` header specifying what currency you would like the cart to use, the products in the cart are converted to your default currency.
 
       :::
+  - name: Account Cart Associations
+    description: |
+      You can create associations between an account and one or more carts. After cart associations exist for a account, those carts are accessible across any device. You can delete associations as required.
+
+      There are two ways to access the cart: with an [Account Management Authentication Tokens](/docs/api/accounts/post-v-2-account-members-tokens) and without one.
+
+      ### With an `Account Management Authentication` token
+
+      These endpoints are for users who authenticated implicitly and require a Account Management Authentication token in the header to access the account cart associations APIs. For more information, see the [Account Token](/docs/api/accounts/post-v-2-account-members-tokens) documentation.
+
+      #### Cart creation
+
+      Shoppers create carts and can use any of the carts that they created to check out an order.
+
+      :::note
+
+      You can create a cart id, name, and description for the cart. The cart requires a name. Ensure that the string length is greater than or equal to one. Use any symbol in the name and description. For cart id, ensure that you follow the guidelines for safe characters. For more information about cart id naming requirements, see [Safe Characters](/guides/Getting-Started/safe-characters).
+
+      :::
+
+      ### Without an `Account Management Authentication` token
+
+      These endpoints are for users who use the Client Credentials Token and do not require an account management authentication token in the header to access the account cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
+
+      This user acts as a system administrator and can call any account cart association operations for any account and cart.
+
+      ### Error Codes
+
+      You might encounter the following response codes, depending on the scenario:
+
+      * `400` - `The type does not exist or is not listed as account` - Ensure that the type is `account` and is present.
+
+      * `403` - `Cannot associate more than one account`.
+
+      * `403` - `Account does not have the required permissions to fulfill this request`.
+
+      * `403` - `Invalid json payload` - Check JSON input. The request body must be an array `[]`. If the request body is an object, the error is generated.
   - name: Customer Cart Associations
     description: |
       You can create associations between a customer and one or more carts. After cart associations exist for a customer, those carts are accessible across any device. You can delete associations as required.
@@ -4875,19 +5042,19 @@ tags:
 
       These endpoints are for users who use the Client Credentials Token and do not require a Customer token in the header to access the customer cart associations APIs. For more information, see the [Authentication](/docs/authentication/security) documentation.
 
-      This user acts as a system administrator and can call any customer cart association operations for any customers and carts.
+      This user acts as a system administrator and can call any customer cart association operations for any customer and cart.
 
       ### Error Codes
 
       You might encounter the following response codes, depending on the scenario:
 
-      * 400 - The type does not exist or is not listed as customer. Ensure that the type is customer and is present.
+      * `400` - `The type does not exist or is not listed as customer` - Ensure that the type is `customer` and is present.
 
-      * 403 - Cannot associate more than one customer.
+      * `403` - `Cannot associate more than one customer`.
 
-      * 403 - Customer does not have the required permissions to fulfill this request.
+      * `403` - `Customer does not have the required permissions to fulfill this request`.
 
-      * 403 - Invalid json payload. Check JSON input. The request body must be an array []. If the request body is an object, the error is generated.
+      * `403` - `Invalid json payload` - Check JSON input. The request body must be an array `[]`. If the request body is an object, the error is generated.
   - name: Cart Items
     description: Products added to a cart are referred to as a `cart_item`.
   - name: Checkout
