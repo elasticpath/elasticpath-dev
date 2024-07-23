@@ -3010,72 +3010,6 @@ paths:
           $ref: '#/components/responses/unprocessable_entity'
         '500':
           $ref: '#/components/responses/internal'
-  /pcm/custom_relationships:
-    post:
-      summary: Create a custom relationship
-      description: Create a custom relationship
-      operationId: createCustomRelationship
-      tags:
-        - Custom Relationships
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/create_custom_relationship'
-            examples:
-              create-custom-relationship:
-                $ref: '#/components/examples/create_custom_relationship'
-        required: true
-      responses:
-        '201':
-          description: Returns a created custom relationship with the following attributes.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/single_custom_relationship'
-              examples:
-                created-custom-relationship:
-                  $ref: '#/components/examples/custom_relationship_created'
-        '422':
-          $ref: '#/components/responses/unprocessable_entity'
-        '500':
-          $ref: '#/components/responses/internal'
-  /pcm/custom_relationships/{customRelationshipSlug}:
-    put:
-      operationId: updateCustomRelationship
-      parameters:
-        - $ref: '#/components/parameters/custom_relationship_slug'
-      summary: Update a custom relationship
-      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the custom relationship is not updated.
-      tags:
-        - Custom Relationships
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/update_custom_relationship'
-            examples:
-              update-custom-relationship:
-                $ref: '#/components/examples/update_custom_relationship'
-        required: true
-      responses:
-        '200':
-          description: Successfully returns the updated custom relationship
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/single_custom_relationship'
-              examples:
-                updated-custom-relationship:
-                  $ref: '#/components/examples/custom_relationship_updated'
-        '403':
-          $ref: '#/components/responses/forbidden'
-        '404':
-          $ref: '#/components/responses/not_found'
-        '422':
-          $ref: '#/components/responses/unprocessable_entity'
-        '500':
-          $ref: '#/components/responses/internal'
 components:
   securitySchemes:
     bearerAuth:
@@ -3244,6 +3178,21 @@ components:
                     description: A description of an error message.
                     type: string
                     example: 'data.attributes.sku: Must be unique amongst products.'
+    product_locales:
+      type: object
+      description: Product Experience Manager supports localization of products and hierarchies. If your store supports multiple languages, you can localize product names and descriptions. You can have as many locales as you want.
+      additionalProperties:
+        description: A [three-letter language code](https://www.iso.org/iso-639-language-code) that represents the name of language you have used.
+        type: object
+        required:
+          - name
+        properties:
+          name:
+            type: string
+            description: A localized name for the product.
+          description:
+            type: string
+            description: A localized description for the product.
     product_custom_inputs:
       type: object
       description: You use the `custom_inputs` attribute to allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized or you sell greetings cards that can be printed with your shoppers personalized messages. See [Personalizing Products](/docs/api/pxm/products/create-product#personalizing-products).
@@ -3382,8 +3331,7 @@ components:
               description: The unique attribute associated with the product. This could be an external reference from a separate company system, for example. The maximum length is 2048 characters.
               type: string
             locales:
-              description: Product Experience Manager supports localization of products and hierarchies. If your store supports multiple languages, you can localize product names and descriptions. You can have as many locales as you want.
-              type: object
+              $ref: '#/components/schemas/product_locales'
             tags:
               description: You can use product tags to store or assign a key word against a product. The product tag can then be used to describe or label that product. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on. A product can have up to 20 tags. A product tag can be up to 255 characters. Product tags must not contain any spaces or commas.
               type: array
@@ -3451,6 +3399,52 @@ components:
                         description:
                           type: string
                           description: A description of an option.
+            child_variations:
+              description: A child product's variations and the option defined for each variation. This details the variation and options specific to a child product.
+              type: array
+              nullable: true
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: A unique ID generated when a variation is created.
+                  name:
+                    type: string
+                    description: The name of a variation.
+                  sort_order:
+                    description: The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variation options in the order that you want. The variation with the highest value of `sort_order` is displayed first. For example, a variation with a `sort_order` value of 3 appears before a variation with a `sort_order` value of 2. You can specify any numbers that you want. You can use 1, 2, 3, or 100, 90, 80, including, zero or negative numbers. You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
+                    type: integer
+                  options:
+                    type: array
+                    nullable: true
+                    description: This will be unset for child product variations.
+                    items:
+                      type: object
+                      description: The options available for this variation.
+                      properties:
+                        id:
+                          type: string
+                          description: A unique ID that is generated an option is created.
+                        name:
+                          type: string
+                          description: The name of an option.
+                        description:
+                          type: string
+                          description: A description of an option.
+                  option:
+                    type: object
+                    description: The options available for this variation.
+                    properties:
+                      id:
+                        type: string
+                        description: A unique ID that is generated an option is created.
+                      name:
+                        type: string
+                        description: The name of an option.
+                      description:
+                        type: string
+                        description: A description of an option.
             product_types:
               description: |
                 One of the following product types: 
@@ -3538,21 +3532,6 @@ components:
                   description: Total number of results for the entire collection.
                   type: integer
                   example: 2
-    product_locales:
-      type: object
-      description: Product Experience Manager supports localization of products and hierarchies. If your store supports multiple languages, you can localize product names and descriptions. You can have as many locales as you want.
-      additionalProperties:
-        description: A [three-letter language code](https://www.iso.org/iso-639-language-code) that represents the name of language you have used.
-        type: object
-        required:
-          - name
-        properties:
-          name:
-            type: string
-            description: A localized name for the product.
-          description:
-            type: string
-            description: A localized description for the product.
     product_attributes:
       type: object
       additionalProperties: false
@@ -5403,110 +5382,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/tag'
-    req_attributes_custom_relationship:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          description: The name of the custom relationship, such as `Kitchen electrics`.
-          type: string
-        description:
-          description: A description of the custom relationship.
-          type: string
-        slug:
-          description: A unique slug for the custom relationship. Must match the slug specified in the request path.
-          type: string
-    create_custom_relationship:
-      type: object
-      properties:
-        data:
-          type: object
-          required:
-            - type
-            - attributes
-          properties:
-            type:
-              description: This represents the type of resource object being returned. Always `custom-relationship`.
-              type: string
-              enum:
-                - custom-relationship
-            attributes:
-              $ref: '#/components/schemas/req_attributes_custom_relationship'
-    attributes_custom_relationship:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          description: The name of the custom relationship, such as `Kitchen electrics`.
-          type: string
-        description:
-          description: A description of the custom relationship.
-          type: string
-        slug:
-          description: A unique slug for the custom relationship.
-          type: string
-    custom_relationship:
-      type: object
-      properties:
-        id:
-          description: A unique identifier generated when a custom relationship is created.
-          type: string
-        type:
-          description: This represents the type of resource object being returned. Always `hierarchy`.
-          type: string
-          enum:
-            - custom-relationship
-        attributes:
-          $ref: '#/components/schemas/attributes_custom_relationship'
-        meta:
-          type: object
-          properties:
-            owner:
-              description: The owner of the resource.
-              type: string
-              example: store
-            timestamps:
-              type: object
-              properties:
-                created_at:
-                  description: The date and time the resource is created.
-                  type: string
-                  example: '2024-01-10T20:16:35.343Z'
-                  format: date-time
-                updated_at:
-                  description: The date and time the resource is updated.
-                  type: string
-                  example: '2024-01-10T20:16:35.343Z'
-                  format: date-time
-    single_custom_relationship:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/custom_relationship'
-    update_custom_relationship:
-      type: object
-      required:
-        - data
-      properties:
-        data:
-          type: object
-          required:
-            - id
-            - type
-            - attributes
-          properties:
-            id:
-              type: string
-              description: The unique identifier of the custom relationship.
-              example: 00000000-0000-0000-0000-000000000000
-            type:
-              description: This represents the type of resource object being returned. Always `custom-relationship`.
-              type: string
-              enum:
-                - custom-relationship
-              example: custom-relationship
-            attributes:
-              $ref: '#/components/schemas/req_attributes_custom_relationship'
   examples:
     multi:
       value:
@@ -6208,6 +6083,21 @@ components:
               - child
             updated_at: '2024-01-05T10:29:45.155Z'
             variation_matrix: {}
+            child_variations:
+              - id: 119b2b76-0014-4077-826e-ae80ff207393
+                name: Size
+                options: null
+                option:
+                  id: fad253ad-4485-4b35-8e3b-b475ad28e78d
+                  name: Medium
+                  description: Medium
+              - id: 10ceafef-7ac9-4352-9797-4825a1671482
+                name: Colour
+                options: null
+                option:
+                  id: b8128e51-1b0a-4b16-9eda-bb783b17026b
+                  name: Red
+                  description: '#EE2238'
     get_component_product_response:
       value:
         data:
@@ -6857,6 +6747,21 @@ components:
                 - child
               updated_at: '2024-01-05T10:29:45.155Z'
               variation_matrix: {}
+              child_variations:
+                - id: 119b2b76-0014-4077-826e-ae80ff207393
+                  name: Size
+                  options: null
+                  option:
+                    id: fad253ad-4485-4b35-8e3b-b475ad28e78d
+                    name: Medium
+                    description: Medium
+                - id: 10ceafef-7ac9-4352-9797-4825a1671482
+                  name: Colour
+                  options: null
+                  option:
+                    id: b8128e51-1b0a-4b16-9eda-bb783b17026b
+                    name: Red
+                    description: '#EE2238'
     template_response:
       value:
         data:
@@ -7386,51 +7291,6 @@ components:
             created_at: '2024-03-20T18:37:43.398Z'
             owner: organization
             updated_at: '2024-03-20T18:37:43.398Z'
-    create_custom_relationship:
-      value:
-        data:
-          type: custom-relationship
-          attributes:
-            name: Kitchen electrics
-            description: Kitchen electric devices
-            slug: CRP_kitchen_individual_devices
-    custom_relationship_created:
-      value:
-        data:
-          type: custom-relationship
-          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
-          attributes:
-            name: Kitchen electrics
-            description: Kitchen electric devices
-            slug: CRP_kitchen_individual_devices
-          meta:
-            owner: store
-            timestamps:
-              created_at: '2024-01-10T20:16:35.343Z'
-              updated_at: '2024-01-10T20:16:35.343Z'
-    update_custom_relationship:
-      value:
-        data:
-          type: custom-relationship
-          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
-          attributes:
-            name: Kitchen electrics
-            description: Kitchen electric devices 2024
-            slug: CRP_kitchen_individual_devices
-    custom_relationship_updated:
-      value:
-        data:
-          type: custom-relationship
-          id: f3297ee8-da90-45e9-ae56-a2654aebbdfe
-          attributes:
-            name: Kitchen electrics
-            description: Kitchen electric devices 2024
-            slug: CRP_kitchen_individual_devices
-          meta:
-            owner: store
-            timestamps:
-              created_at: '2024-01-10T20:16:35.343Z'
-              updated_at: '2024-01-10T20:16:35.343Z'
   responses:
     bad_request:
       description: Bad request. The request failed validation.
@@ -7654,11 +7514,3 @@ components:
         example: 00000000-0000-0000-0000-000000000000
       required: true
       description: A unique identifier for the tag.
-    custom_relationship_slug:
-      name: customRelationshipSlug
-      in: path
-      schema:
-        type: string
-        example: CRP_electric_devices_2024
-      required: true
-      description: A custom relationship slug.
