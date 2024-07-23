@@ -210,6 +210,7 @@ You may also generate OpenAPI docs for a single path or OAS by specifying the un
 ```bash
 yarn docusaurus gen-api-docs <id>
 ```
+The <id> is the name of the folder of specs in "openapispecs" folder.
 
 Example:
 
@@ -217,7 +218,7 @@ Example:
 yarn docusaurus gen-api-docs commerceextensions
 ```
 
-> The example above will only generate API docs relative to `commerceextensions`.
+> The example above will only generate API docs relative to `commerceextensions`. 
 
 ### Cleaning API Docs
 
@@ -232,6 +233,8 @@ You may also remove a particular set of API docs by specifying the unique `id` o
 ```bash
 yarn docusaurus clean-api-docs <id>
 ```
+
+The <id> is the name of the folder of specs in "openapispecs" folder.
 
 Example:
 
