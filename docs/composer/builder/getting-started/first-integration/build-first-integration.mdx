@@ -1,0 +1,212 @@
+---
+id: build-first-integration
+title: "Build Your First Integration"
+description: Create your first Builder Integration, pulling down JSON from a REST API, and sending data to Slack
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+<Vimeo title="Build Your First Integration" video="897291214" />
+
+## Overview
+
+This tutorial will walk you through some basic concepts of integration development.
+You will:
+
+- Fetch data from an API
+- Learn how data flows between steps of an integration
+- Use a loop to iterate over the records you fetch
+- Use logical branches to determine what to do with each record
+- Send certain records to another system (this example uses Slack)
+
+## Integration overview
+
+The integration you build here will fetch data (a list of to-do tasks) from an API, loops over the list, determine which tasks are marked "incomplete", and notify you via Slack of any "incomplete" tasks.
+We'll use a placeholder API to stand in for the to-do list "API" - https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo.
+
+You'll design this integration to be **configurable**, so the same integration can be deployed to multiple customers with unique API endpoints and Slack credentails and channel names.
+
+## Let's build!
+
+You're encouraged you to follow along with the video above, or steps below.
+If you'd like to import a completed integration, you can download this integration's YAML definition [here](pathname:///docs/samples/my-first-integration.yml).
+
+As you build, you'll pull data from this API endpoint: `https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo`
+
+You will need to create a Slack app and have access to a Slack workspace, which you can do for free at https://slack.com/.
+Be sure to assign your Slack app the `chat:write`, `chat:write.public`, and `channels:read` scopes.
+Docs for creating a Slack app can be found [here](https://api.slack.com/authentication/basics).
+
+<Screenshot
+  filename="getting-started/build-first-integration/completed-integration.png"
+  maxWidth="550px"
+  alt="Sample integration diagram in Builder app"
+  caption="The completed integration"
+/>
+
+### Create a new integration
+
+From the integrations page, click the **New Integration** button.
+Select **Quickstart** to create a new integration from scratch.
+Then, give your integration a name like "My First Integration."
+
+<Screenshot
+  filename="getting-started/build-first-integration/add-new-integration.png"
+  maxWidth="450px"
+  alt="Create a new integration"
+/>
+
+### Fetch data from an API
+
+Next, add a new step to your integration by clicking the **+** button below your trigger.
+Search for the **HTTP** endpoint and add a **GET Request** step.
+
+<Screenshot
+  filename="getting-started/build-first-integration/add-http-get-step.png"
+  maxWidth="450px"
+  alt="Add an HTTP GET step"
+/>
+
+Configure your **GET Request** step to fetch data from the to-do API endpoint - `https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo`.
+
+<Screenshot
+  filename="getting-started/build-first-integration/configure-http-get-step.png"
+  maxWidth="550px"
+  alt="Configure HTTP GET step"
+/>
+
+Finally, click the green **Run** button on the bottom of your screen to test your integration so far.
+If you select the **Get Request** step in your test runner drawer at the bottom of your screen, you will be able to expand the **results** section in the **Output** tab on the right to see the data that was fetched from the API.
+
+<Screenshot
+  filename="getting-started/build-first-integration/http-get-step-results.png"
+  alt="HTTP GET step results"
+/>
+
+### Loop over the records
+
+Now that we're fetching an list of to-do tasks, we need to loop over each task to determine which ones are incomplete.
+To do this, we'll add a **Loop** step to our integration.
+Add another step under your **GET Request** step, this time searching for the **Loop** component and its **Loop Over Items** action.
+
+Configure your loop step to loop over the `results` property of the previous step. You can do that by clicking **Configure Reference** in the loop step's configuration panel, and selecting the `results` property of the **Get Request** step.
+
+<Screenshot
+  filename="getting-started/build-first-integration/configure-loop-step.png"
+  maxWidth="750px"
+  alt="Configure loop step"
+/>
+
+Run a test of your integration again.
+This time, you'll see that the loop step has a **currentItem** property in its output that contains the data for the current item that is being looped over.
+We'll use this property in the next step to determine if the current item is incomplete.
+
+<Screenshot
+  filename="getting-started/build-first-integration/loop-step-results.png"
+  alt="Loop step results"
+/>
+
+### Identify complete items
+
+Now that we're looping over each item, we need to determine if the current item is complete or not.
+`completed` is a boolean property on each item that indicates whether or not the item is complete.
+
+Add a step within your loop - select the **Branch** component, **Branch on Expression** action.
+Configure the branch step to have a condition called **Is Complete?**.
+Select the loop step's **currentItems.completed** property as the **Field** input, and under **Operator** select **is true**.
+
+<Screenshot
+  filename="getting-started/build-first-integration/configure-branch-step.png"
+  maxWidth="800px"
+  alt="Configure branch step"
+/>
+
+Now, steps that have `completed: true` will follow the **Is Complete?** branch, while steps that have `completed: false` will follow the **Else** branch.
+
+### Send incomplete items to Slack
+
+Next, we want to send a message to Slack for each incomplete item.
+Within the **Else** branch, add a **Slack** component, **Post Message** step.
+
+Up until now, steps we've added have not required additional connection configuration or credentials.
+This step will take additional setup.
+Make sure that you have created a Slack OAuth app and have access to a Slack workspace ([see docs](/docs/composer/builder/builder-components/slack.mdx#slack-oauth-20)).
+
+Click the **Configuration Wizard** button on the top of your screen and edit your **Slack Connection** config variable.
+Enter your **Client ID**, **Client Secret**, and **Signing Secret** from the Slack app you created.
+
+<Screenshot
+  filename="getting-started/build-first-integration/slack-connection-config.png"
+  maxWidth="800px"
+  alt="Slack connection configuration"
+/>
+
+Configure your test runner to use your test Slack workspace by clicking **Test Configuration** on the bottom of the screen, and select **Test-instance configuration** - that will open up a configuration wizard for your test instance.
+
+Now, configure the Slack step to send a message to a channel in your Slack workspace.
+For now, hard-code a channel name like `general` in the **Channel Name** input - we'll make that dynamic in a moment.
+Your **Message** input can be a template, concatenating a string like `Incomplete task: ` with the `currentItem.task` property.
+
+<Screenshot
+  filename="getting-started/build-first-integration/configure-slack-step.png"
+  maxWidth="800px"
+  alt="Configure slack step"
+/>
+
+Finally, run a test of your integration.
+You should see messages in your Slack workspace for each incomplete task.
+
+<Screenshot
+  filename="getting-started/build-first-integration/example-slack-messages.png"
+  maxWidth="350px"
+  alt="Example Slack messages"
+/>
+
+### Make the integration configurable
+
+Now that we have a working integration, let's make it configurable so that we can deploy it to multiple customers.
+We'll make the Slack channel name configurable, as well as the API endpoint we're fetching data from.
+
+First, we'll make the Slack channel name configurable.
+Click the **Configuration Wizard** button on the top of your screen and crate a second **Config Page**.
+Name it something like "Slack Configuration".
+Then, add a new Config Variable.
+Name it **Slack Channel** and choose **Picklist** as its **Data Type**.
+
+We want our config variable to be a picklist of all the channels in our customer's Slack workspace.
+We'll use a [data source](/docs/composer/builder/configuration-wizard.mdx#config-variable-data-sources) to make the dropdown menu dynamic.
+Select the Slack component's **Select Channel** data source, as shown here:
+
+<Screenshot
+  filename="getting-started/build-first-integration/slack-channel-data-source.png"
+  alt="Slack channel config variable"
+/>
+
+Next, add an additional **String** config variable called **API Endpoint**, and give it a default value of
+
+<Screenshot
+  filename="getting-started/build-first-integration/api-endpoint-config-variable.png"
+  maxWidth="750px"
+  alt="API endpoint config variable"
+/>
+
+Finally, we need to update our integration to use these new config variables.
+Update the HTTP step to use the **API Endpoint** config variable as the URL to fetch data from.
+Then, update the Slack step to use the **Slack Channel** config variable as the channel name to send messages to.
+
+<Screenshot
+  filename="getting-started/build-first-integration/configure-slack-step-config-variable.png"
+  maxWidth="500px"
+  alt="Configure slack step config var"
+/>
+
+Run a test of your integration again and verify that it still works as expected.
+
+## Next steps
+
+Congratulations! You created your first integration! Here are a few things you should try next:
+
+- Send your message to a different system, like [Microsoft Teams](/docs/composer/builder/builder-components/ms-teams.mdx).
+- Swap out the HTTP GET action for a different data source component (perhaps pull from an [SFTP](/docs/composer/builder/builder-components/sftp.mdx) server)?
+- Write your message out to a file in [Dropbox](/docs/composer/builder/builder-components/dropbox.mdx) or [Amazon S3](/docs/composer/builder/builder-components/aws-s3.mdx) instead of Slack.

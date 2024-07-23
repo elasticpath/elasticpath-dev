@@ -169,6 +169,11 @@ const config = {
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
+          exclude: [
+            "**/_*/**", // Allow for .md files prepended with underscores, like for our API
+            "**/*.test.{js,jsx,ts,tsx}",
+            "**/__tests__/**",
+          ],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

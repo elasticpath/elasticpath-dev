@@ -1,0 +1,41 @@
+---
+id: alertTriggers
+title: alertTriggers Query
+sidebar_label: alertTriggers
+description: Learn how to use the alertTriggers Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of AlertTrigger objects.
+
+Access is permitted when any of the following condition(s) are met: 1. Always allowed.
+
+## Input fields
+
+| Argument             | Type                                                                   | Description                                                                                      |
+| -------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`              | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`              | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                     | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`               | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                     | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`             | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                     |                                                                                                  |
+| `isInstanceSpecific` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                             | Filter for objects where isInstanceSpecific matches the specified value.                         |
+| `orderBy`            | [`AlertTriggerOrder`](/docs/composer/builder/api/schema/input_object/AlertTriggerOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`             | [`[AlertTriggerOrder]`](/docs/composer/builder/api/schema/input_object/AlertTriggerOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([AlertTriggerConnection!](/docs/composer/builder/api/schema/object/AlertTriggerConnection.mdx))
+
+###### <b>edges</b> ([[AlertTriggerEdge]!](/docs/composer/builder/api/schema/object/AlertTriggerEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[AlertTrigger]!](/docs/composer/builder/api/schema/object/AlertTrigger.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

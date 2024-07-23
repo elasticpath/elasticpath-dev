@@ -1,0 +1,55 @@
+---
+id: alertMonitors
+title: alertMonitors Query
+sidebar_label: alertMonitors
+description: Learn how to use the alertMonitors Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of AlertMonitor objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_instance_permissions, customer_view_instances]. 3. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_admin_permissions, instance_view, instance_edit, instance_remove].
+
+## Input fields
+
+| Argument                  | Type                                                                   | Description                                                                                      |
+| ------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before`                  | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`                   | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`                   | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                     | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`                    | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                     | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`                  | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                     |                                                                                                  |
+| `name_Icontains`          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Filter for objects where name contains the specified value (case insensitive).                   |
+| `instance_Customer`       | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                       | Filter for objects where instance.customer matches the specified ID.                             |
+| `instance_Integration`    | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                       | Filter for objects where instance.integration matches the specified ID.                          |
+| `instance`                | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                       | Filter for objects where instance matches the specified ID.                                      |
+| `instance_Name_Icontains` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Filter for objects where instance.name contains the specified value (case insensitive).          |
+| `triggers`                | [`[ID]`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                     | Filter for objects where triggers contains at least one of the specified values.                 |
+| `triggers_Name_Icontains` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                               | Filter for objects where triggers.name contains the specified value (case insensitive).          |
+| `triggered`               | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                             | Filter for objects where triggered matches the specified value.                                  |
+| `lastTriggeredAt_Gte`     | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                           | Filter for objects where lastTriggeredAt occurs on or after the specified value.                 |
+| `lastTriggeredAt_Lte`     | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                           | Filter for objects where lastTriggeredAt occurs on or before the specified value.                |
+| `flowConfig`              | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                       | Filter for objects where flowConfig matches the specified ID.                                    |
+| `createdAt_Gte`           | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                           | Filter for objects where createdAt occurs on or after the specified value.                       |
+| `createdAt_Lte`           | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                           | Filter for objects where createdAt occurs on or before the specified value.                      |
+| `updatedAt_Gte`           | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                           | Filter for objects where updatedAt occurs on or after the specified value.                       |
+| `updatedAt_Lte`           | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                           | Filter for objects where updatedAt occurs on or before the specified value.                      |
+| `orderBy`                 | [`AlertMonitorOrder`](/docs/composer/builder/api/schema/input_object/AlertMonitorOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`                  | [`[AlertMonitorOrder]`](/docs/composer/builder/api/schema/input_object/AlertMonitorOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([AlertMonitorConnection!](/docs/composer/builder/api/schema/object/AlertMonitorConnection.mdx))
+
+###### <b>edges</b> ([[AlertMonitorEdge]!](/docs/composer/builder/api/schema/object/AlertMonitorEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[AlertMonitor]!](/docs/composer/builder/api/schema/object/AlertMonitor.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

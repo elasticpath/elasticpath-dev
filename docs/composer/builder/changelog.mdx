@@ -1,0 +1,1480 @@
+---
+id: changelog
+title: Builder Changelog
+description: The latest updates to the Builder platform make it even easier to build, manage, and deploy integrations for your customers.
+---
+
+import { ChangeLogEntry } from "@site/src/components/changelog";
+import Screenshot from "@site/src/components/screenshot";
+import InternalLink from "@site/src/components/internal-link";
+import Vimeo from "@site/src/components/vimeo";
+
+<ChangeLogEntry date="2024-07-08">
+
+### New Components - July 2024
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- Karbon - Karbon is a collaborative practice management platform for accounting firms.
+- Workday (Beta) - Workday HCM is a single, cloud-based solution for workforce planning, talent management, and payroll processes.
+- Duro PLM - Duro PLM is a platform designed to intuitively centralize part data, manage change orders, and connect to the rest of your tech stack.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-07-08">
+
+### Start a New Integration From a Template
+
+When you create a new integration, you can now start from a variety of Builder-built integration templates.
+The integration templates demonstrate common integration patterns across our most popular connectors.
+
+<Screenshot
+  filename="changelog/integration-templates.png"
+  alt="Configure a new integration"
+  maxWidth="800px"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-06-20">
+
+### GitHub Actions for Components and Integrations
+
+You can now use Builder-provided GitHub Actions to automate the deployment of your components and integrations to Builder.
+This is handy if you have multiple Builder tenants and you've designated one for development and the other(s) for production.
+
+<Vimeo video="962688223" />
+
+Read more about how to use the [Builder GitHub Actions](/docs/composer/builder/github-actions.mdx) in our docs.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-06-14">
+
+### New Components - June 2024
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [Sage 200](/docs/composer/builder/builder-components/sage-200.mdx) - Sage 200 is an online business management solution designed to help businesses manage their finances, customers, and business insight in one solution.
+- [Bynder](/docs/composer/builder/builder-components/bynder.mdx) - Bynder is a leading digital asset management software that allows users to easily create, find, and use content, such as documents, graphics, and videos.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-06-11">
+
+### In-app Docs
+
+You can now search Builder's docs from within the web app.
+This makes it easier to find the information you need while building integrations.
+
+To open up the docs search, click "Help" on the top right of the Builder web app and search for the topic you're interested in.
+
+<Screenshot
+  filename="changelog/in-app-docs.png"
+  maxWidth="400px"
+  alt="In-app docs"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-05-21">
+
+### On-Prem Agent
+
+The on-prem agent allows you to connect your integrations to resources that are on private networks or behind firewalls.
+This is handy if you want to integrate with a database, file system, or other resource that is not accessible from the public internet.
+
+<Vimeo video="948746349" />
+
+Read more about how the on-prem agent works in [docs](/docs/composer/builder/on-prem-agent.mdx).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-05-14">
+
+### New Components - May 2024
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [Microsoft Intune](/docs/composer/builder/builder-components/ms-intune.mdx) - Microsoft Intune is a cloud-based service that focuses on device management and application management. Use the Microsoft Intune component to manage users, devices, and applications.
+- [ServiceDesk Plus](/docs/composer/builder/builder-components/servicedesk-plus.mdx) - ServiceDesk Plus is a comprehensive service desk software that offers a suite of IT Service management, IT asset management, CBDM, and more. Use the ServiceDesk Plus to efficiently manage Assets and Configuration Items for integrations.
+- [Databricks](/docs/composer/builder/builder-components/databricks.mdx) - Databricks is an analytics and artificial intelligence platform where you can build, scale and govern data and AI, including generative AI and other machine learning models. Manage compute, workflow jobs, ML models, SQL queries and more within a Databricks workspace.
+- [Zendesk Knowledge](/docs/composer/builder/builder-components/zendesk.mdx) - Zendesk Knowledge is a comprehensive solution that allows you to manage content such as articles, sections, categories, topics, and posts, as well as subscriptions and attachments in the Help Center of Zendesk. The Knowledge and Help Center actions have been added to our existing Zendesk Component.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-05-03">
+
+### New Component - April 2024
+
+We are pleased to announce the following component has been recently added to the Builder library:
+
+- [Contentful](/docs/composer/builder/builder-components/contentful.mdx) - Contentful is a content management system (CMS) that allows developers to manage and deliver content across multiple platforms and devices.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-04-15">
+
+### Code-Native Integrations - Reference components
+
+You can now reference triggers, connections, and data sources of existing components when building code-native integrations. Both public and private components can be used in your code-native integrations. By leveraging an existing component, you can save time and effort by reusing existing functionality.
+
+To reference existing components you will need to upgrade to Prism 6.0.0 and Spectral 8.1.0. Prism 6.0.0 requires Node 18 or higher. For those of you that have already started building code-native integrations, note that type definitions now use strings rather than enums to minimize the number of imports required.
+
+Check out the [code-native documentation](/docs/composer/builder/code-native-integrations.mdx) and the video below to learn more.
+
+<Vimeo video="934975353" />
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-03-29">
+
+### New Components - March 2024
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [ServiceTitan](/docs/composer/builder/builder-components/servicetitan.mdx) - ServiceTitan is a comprehensive field service management solution that helps businesses manage their operations, workforce, and customer service.
+- [Yoti Sign](/docs/composer/builder/builder-components/yoti-sign.mdx) - Yoti Sign is a digital identity and e-signature solution that allows users to verify their identity and sign documents electronically and securely.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-03-07">
+
+### Code-Native Integrations
+
+We've introduced a new option for building integrations called code-native! This is the perfect building experience for integration builders who prefer to write code rather than use a low-code designer.
+
+Code-native highlights:
+
+- Build integrations completely within your IDE rather than the low-code designer.
+- Triggers, connections, integration logic, and the customer-facing configuration experience are all defined in code.
+- Define integration logic however you see fit rather than leveraging predefined logic steps.
+- More easily incorporate integrations into your existing CI/CD process and code repositories.
+
+Check out [this blog post](https://prismatic.io/blog/introducing-code-native-integrations/) as well as the video below for more information about the benefits of code-native integrations. Our [code-native documentation](/docs/composer/builder/code-native-integrations.mdx) is an excellent place to start when you're ready to start building your first code-native integration.
+
+<Vimeo video="920504336" />
+
+<br />
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-03-01">
+
+### New Components - February 2024
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [ArcGIS](/docs/composer/builder/builder-components/arcgis.mdx) - Esri ArcGIS is an online geographic information system providing and maintaining detailed information and tools for maps and locations.
+- [Aspose](/docs/composer/builder/builder-components/aspose.mdx) - Aspose is a robust file manipulation service that can manage various document and image file formats. Use the Aspose component to create, edit, process, and convert file formats from several languages, and several platforms.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-02-05">
+
+### Extended i18n Support
+
+You can now provide translations for dynamic phrases in your embedded marketplace.
+That means that you can translate things like the names of your integrations, config variables, flows, steps, config wizard page titles, and more.
+
+Update to the latest version of `@prismatic-io/embedded` and check out our [docs](/docs/composer/builder/embedding-marketplace.mdx#dynamic-phrases) to take advantage of this new feature.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-01-26">
+
+### New Components - January 2024
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [Adobe Acrobat Sign](/docs/composer/builder/builder-components/adobe-acrobat-sign.mdx) - Adobe Acrobat Sign is an e-signature management solution. Use the Adobe Acrobat Sign component to send, sign, track, and manage the signature process.
+- [DocuSign](/docs/composer/builder/builder-components/docusign.mdx) - DocuSign provides intuitive solutions for sending and collecting signatures on documents. Use the DocuSign component to manage signature collection and document distribution.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2024-01-26">
+
+### New Components - December 2023
+
+We are pleased to announce the following component has been recently added to the Builder library:
+
+- [Sage Intacct](/docs/composer/builder/builder-components/sage-intacct.mdx) - Industry-leading financial accounting software system with a broad set of functionalities for businesses across a number of different verticals. Use the Sage Intacct component to manage Invoices, Payments, Vendors, and more.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-12-19">
+
+### New Integration Designer UX
+
+We've built a new integration designer experience!
+Many of our customers have already switched to the new designer, and we're hearing great things.
+
+The new designer makes it faster and easier to build integrations in our low-code environment. Here are the highlights:
+
+1. Streamlined designer canvas that makes better use of space
+1. Panning and zooming so you can move around quickly
+1. A more intuitive experience for adding and configuring integration steps
+1. ...and more enhancements coming soon!
+
+<Vimeo video="894294812" title="New Designer UX" />
+
+To try out the new experience, just toggle the Designer Beta setting you'll see at the top of your integration designer screen.
+(Note that any of your customers using the embedded designer won't see the beta version at this time.)
+
+We love it, and we hope you will too!
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-12-07">
+
+### Labels and Categories in Integration YAML
+
+An integration's labels and category are now included in its YAML definition when it is [exported as a YAML file](/docs/composer/builder/integrations.mdx#yaml-definition).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-12-04">
+
+### New Components - November 2023
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [Expensify](/docs/composer/builder/builder-components/expensify.mdx) - Programmatically download expense report data for analysis or insertion into your accounting package, provision accounts for new hires, and much more.
+- [Calendly](/docs/composer/builder/builder-components/calendly.mdx) - Manage the scheduling of events; attendee availability; and retrieve pertinent data on users and attendees.
+- [Confluence](/docs/composer/builder/builder-components/confluence.mdx) - Manage spaces, pages, and content properties on your Confluence workspaces.
+- [Qlik](/docs/composer/builder/builder-components/qlik.mdx) - Manage your Data Sets, Assets, and Apps.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-11-29">
+
+### Connection templates
+
+[Connection templates](/docs/composer/builder/connections.mdx#connection-templates) allow you to prepopulate input values for common connections used by you and your customers.
+For example, you can create an OAuth 2.0 connection template for Salesforce that prepopluate your OAuth client ID and client secret.
+When you (or your customers in embedded designer) create a Salesforce connection, they can select your Salesforce connection template and will not need to set up a client ID and secret themselves.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-10-27">
+
+### New Components - October 2023
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [Paylocity](/docs/composer/builder/builder-components/paylocity.mdx) - Performs tasks related to workforce management, payroll, and other HR tasks
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-09-29">
+
+### New Components - September 2023
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [Azure OpenAI Service](/docs/composer/builder/builder-components/azure-openai-service.mdx) - Performs OpenAI functions using Microsoft Azure's OpenAI service models.
+- [Adobe I/O Events](/docs/composer/builder/builder-components/adobe-io-events.mdx) - Facilitates trigger changes to content and data on Adobe's Experience Platform; or when predefined rules or thresholds have been met.
+- [ShipStation](/docs/composer/builder/builder-components/shipstation.mdx) - This component allows you to list, create, update, and delete orders and shipments in your ShipStation account.
+- [Segment](/docs/composer/builder/builder-components/segment.mdx) - Manage your Sources, Warehouses, and Destinations of your Segment account.
+- [Amazon Seller Central](/docs/composer/builder/builder-components/amazon-seller-central.mdx) - Manage your catalog, orders, and shipping information of the managed stores on your amazon seller account.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-09-26">
+
+### New Trigger Events
+
+Custom triggers can now handle the following events:
+
+- `onInstanceDeploy` - when an instance is deployed, all triggers with an `onInstanceDeploy` function will execute that function.
+  These functions are handy for setting up webhooks in third-party apps, or for updating your own API to let your team know that a customer has deployed an instance.
+- `onInstanceDelete` - when an instance is deleted, all triggers with an `onInstanceDelete` function will execute that function.
+  These functions are handy for cleaning up configuration in third-party apps, or for updating your own API to let your team know that a customer has deleted an instance.
+
+Read more about these new events in our [docs](/docs/composer/builder/custom-components/writing-custom-components.mdx#instance-deploy-and-delete-events-for-triggers).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-09-25">
+
+### Disabling Log and Step Result Retention
+
+For compliance reasons your organization may need to disable the storage of logs and step results.
+You can now disable the storage of logs and step results on a per-instance basis.
+For more information, see [docs](/docs/composer/builder/logging.mdx/#disabling-logs-and-step-results).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-09-20">
+
+### Custom Fonts in Embedded
+
+You can now use custom fonts in your embedded marketplace and designer.
+This is handy if you want to match the fonts in your embedded marketplace to the fonts in your app.
+Builder currently supports any font available in the [Google Fonts](https://fonts.google.com/) catalog.
+
+Read more about [custom fonts](/docs/composer/builder/embedding-marketplace.mdx#using-a-custom-font) in our docs.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-09-05">
+
+### Customer-Scoped Custom Components
+
+Customer users can now build and deploy their own custom components, and can use those custom components in integrations they build in your embedded marketplace.
+This is handy if your customers need to build custom components to interact with their own internal systems, or if they need to build custom components that interact with third-party apps that you don't already support.
+
+Read more about customer-scoped custom components on the [Embedded Designer](/docs/composer/builder/embedded-designer.mdx#customer-users-and-custom-components) article.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-09-01">
+
+### New Components - September, 1 2023
+
+We are pleased to announce the following components have been recently added to the Builder library:
+
+- [BigCommerce](/docs/composer/builder/builder-components/bigcommerce.mdx) - Manage your Products, Brands, Categories and more.
+- [Domo](/docs/composer/builder/builder-components/domo.mdx) - Manage your Projects, Streams and various other actions within your business's data sets.
+- [Gong](/docs/composer/builder/builder-components/gong.mdx) - Manage your calls, users, libraries, to best collect insights from customer interactions.
+- [Google Cloud Pub/Sub](/docs/composer/builder/builder-components/google-cloud-pub-sub.mdx) - Subscribe to topics and configure push notifications for your various Google integrations.
+- [Google Docs](/docs/composer/builder/builder-components/google-docs.mdx) - Manage and share documents from your Google cloud.
+- [Mixpanel](/docs/composer/builder/builder-components/mixpanel.mdx) - Manage your custom reports and measure user engagement with collected data.
+- [Sage HR](/docs/composer/builder/builder-components/sage-hr.mdx) - Manage employees, teams, projects, and more in this robust Human Resources solution.
+- [ShipBob](/docs/composer/builder/builder-components/shipbob.mdx) - Manage orders, shipments, and generate lables with this fulfillment services solution.
+- [Square](/docs/composer/builder/builder-components/square.mdx) - Manage your total point of sale system including payments, refunds, and inventory.
+- [Zendesk Sell](/docs/composer/builder/builder-components/zendesk-sell.mdx) - Manage your sales force automation including leads, orders, and deals.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-08-15">
+
+### Integration Runner Moving to NodeJS 18.x
+
+**Platform Announcement**: We are pleased to announce that we will be transitioning our integration runner from NodeJS 14.x to 18.x beginning on Monday, August 21st.
+Running on the latest LTS version of NodeJS has huge advantages, including performance improvements, continued support and security patches, and a baked-in [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch).
+
+This change will not require any action on your part.
+Your flows and components will transition seamlessly to their new environment.
+We will let you know once the upgrade is complete, so you can take advantage of any new features NodeJS 18.x has to offer.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-08-10">
+
+### Embedded designer improvements
+
+Two new features were added to embedded designer:
+
+1. You can now issue a `prismatic.showDashboard()` to give users a holistic view of their integrations, instances, executions, logs, and more. See [docs](/docs/composer/builder/embedded-designer.mdx#showing-the-customer-dashboard) for more information.
+   <Screenshot
+     filename="changelog/show-dashboard.png"
+     alt="Open the customer dashboard in embedded"
+     maxWidth="800px"
+   />
+2. You can now filter the list of components that are available to your customers. See [docs](/docs/composer/builder/embedded-designer.mdx#filtering-components-in-the-embedded-designer) for more information.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-08-09">
+
+### Embedded Designer
+
+Your customers may want to build integrations for themselves between your product and the other apps and services they use.
+Embedded designer allows your customers to log in to your app and build integrations using Builder's integration designer.
+You can provision your customers access to private components that you have built, and can provide your customers with "templates" that they can use as a starting point for building their own integrations.
+
+<Vimeo video="852820250" title="Embedded Designer Announcement" />
+
+Read more about the embedded designer on [Embedding Integration Designer](/docs/composer/builder/embedded-designer.mdx) docs page.
+
+If you're interested in using embedded designer, please [contact support](mailto:support@prismatic.io) to discuss enabling embedded designer for your organization.
+
+### New Embedded SDK
+
+Along with embedded designer comes a new embedded SDK.
+If you are currently using [@prismatic-io/marketplace](https://www.npmjs.com/package/@prismatic-io/marketplace) for embedded marketplace, swap it out for the new [@prismatic-io/embedded](https://www.npmjs.com/package/@prismatic-io/embedded) NodeJS package to begin using the embedded designer features.
+`@prismatic-io/marketplace` will continue to work, but `@prismatic-io/embedded` is a superset of features and new features and enhancements will only be added to the new embedded SDK.
+
+### Embedded SDK v2.0.0
+
+The newest version of the embedded SDK changes the Marketplace default of `screenConfiguration.marketplace.configuration` to `allow-details` instead of `always-show-details`.
+See [docs](/docs/composer/builder/embedding-marketplace.mdx#integration-configuration-detail-screen) for information on the integration configuration detail screen options.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-07-26">
+
+### Linking Execution Replays
+
+[Replays](/docs/composer/builder/instances.mdx#execution-replay) of executions are now linked to the original execution.
+This makes it easier to query for failed executions, and replay only those executions that don't have a subsequent replay that succeeded.
+
+<Vimeo video="848852783" title="Linking Execution Replays" />
+
+See [docs](/docs/composer/builder/instances.mdx/#instance-execution-retry-and-replay) for more information, and the [Examples repo](https://github.com/prismatic-io/examples/tree/main/api/replay-failed-executions) in GitHub for the script mentioned in the above video.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-07-25">
+
+### New Components - July 2023
+
+Some exciting new components landed this month:
+
+- [Google Content Shopping](/docs/composer/builder/builder-components/google-content-shopping.mdx) - Update Google Content Shopping feeds, products, and more
+- [Azure Service Bus](/docs/composer/builder/builder-components/azure-service-bus.mdx) - Manage Azure Service Bus queues and topics
+- [SAP S4/HANA](/docs/composer/builder/builder-components/sapS4Hana.mdx) - Maintain ERP records in SAP S4/HANA
+- [Google BigQuery](/docs/composer/builder/builder-components/google-cloud-bigquery.mdx) - Manage Google BigQuery datasets, tables, and more
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-06-30">
+
+### New Components - June 2023
+
+This month we released several new components to help you build integrations for your customers:
+
+- [Algolia](/docs/composer/builder/builder-components/algolia.mdx) - Update Algolia indexes and records and perform search operations.
+- [ClickUp](/docs/composer/builder/builder-components/click-up.mdx) - Manage Click Up users, projects and teams within your customers' Click Up workspaces.
+- [Greenhouse](/docs/composer/builder/builder-components/greenhouse.mdx) - Manage Greenhouse jobs, candidates, applications, and more.
+- [Postmark](/docs/composer/builder/builder-components/postmark.mdx) - Send and receive emails using Postmark's email API.
+- [SMTP](/docs/composer/builder/builder-components/smtp.mdx) - Send emails using SMTP.
+- [Snowflake](/docs/composer/builder/builder-components/snowflake.mdx) - Manage Snowflake databases, warehouses, schemas, tables, and more.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-06-21">
+
+### Hide the Instance Details Configuration Page
+
+You now have options for configuring how and if a marketplace user should access the integrations configuration details screen. This includes the ability to prevent a marketplace user from accessing the instance configuration details screen. This is useful if your customers should not access the **Test**, **Executions**, **Monitors** or **Logs** functionality.
+Check out our [docs](/docs/composer/builder/embedding-marketplace.mdx#integration-configuration-detail-screen) for more information.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-05-30">
+
+### New Components - May 2023
+
+This month we released a new component to connect to [Adobe Analytics](/docs/composer/builder/builder-components/adobe-analytics.mdx), so your customers can manage companies, report suites, metrics and more.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-05-16">
+
+### Multiple Instances of Integrations in Embedded Marketplace
+
+Your customers can now enable multiple instances of an integration through embedded marketplace.
+This allows your customers to set up several copies of an integration of themselves, each with different configurations.
+
+Check out our [docs](/docs/composer/builder/embedding-marketplace.mdx#multiple-instances-of-one-integration-in-marketplace) for more information.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-05-15">
+
+### Embedded Config Variable Settings
+
+Granular config variable and connection input settings allow your org to better control who can see and set integration configurations values. Read more in [docs](/docs/composer/builder/configuration-wizard.mdx#config-variable-visibility).
+
+### Endpoint Security Settings
+
+New Endpoint security settings allow your org to configure which endpoints should have API keys and who should set them (org vs customer). Read more in [docs](/docs/composer/builder/endpoint-configuration.mdx#securing-endpoints-with-api-keys).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-04-28">
+
+### New Components - April 2023
+
+A couple of new components are available!
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [Gusto](/docs/composer/builder/builder-components/gusto.mdx) - Manage payroll, benefits, and human resource within Gusto
+- [Notion](/docs/composer/builder/builder-components/notion.mdx) - Manage Notion pages, databases, and users
+
+Additionally, the [Airtable](/docs/composer/builder/builder-components/airtable.mdx) component was updated to handle OAuth connections, as API key connections are being deprecated early next year.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-04-18">
+
+### Advanced Embedded Marketplace Filtering
+
+You can now use logical operators like `and`, `or`, `startsWith`, `notEqual` and more to filter the integrations in your embedded marketplace.
+For example, if you would like to show all integrations that have a category "ERP" and label "paid", and would also like your Dropbox and Slack integrations to be displayed, a filter could look like:
+
+```ts
+[
+  BooleanOperator.or,
+  [
+    BooleanOperator.and,
+    [TermOperator.equal, "category", "ERP"],
+    [TermOperator.in, "labels", "paid"],
+  ],
+  [TermOperator.equal, "name", "Dropbox"],
+  [TermOperator.equal, "name", "Slack"],
+];
+```
+
+Read more about advanced filters in the [docs](/docs/composer/builder/embedding-marketplace.mdx#advanced-integration-filters).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-03-30">
+
+### New Components - March 2023
+
+Our list of built-in components continues to grow.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [Microsoft Graph API](/docs/composer/builder/builder-components/ms-graph-api.mdx) - Interact with the Microsoft Graph API
+- [OpenAI](/docs/composer/builder/builder-components/openai.mdx) - Interact with OpenAI models, including Chat GPT and DALL·E
+
+Additionally,
+
+- [Microsoft Outlook](/docs/composer/builder/builder-components/ms-outlook.mdx) - Added actions to interact with mailboxes, folders and email messages
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-02-22">
+
+### New Components - February 2023
+
+We added a few additional components in February:
+
+- [Arena PLM](/docs/composer/builder/builder-components/arena-plm.mdx) - Interact with items and resources in Arena PLM
+- [Google Analytics - GA4](/docs/composer/builder/builder-components/google-analytics-ga4.mdx) - Manage Google Analytics GA4 accounts and data
+- [HTML Utils](/docs/composer/builder/builder-components/html-utils.mdx) - Helpful HTML-related functions for building HTML documents and HTML-based emails.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2023-01-26">
+
+### New Components - January 2023
+
+Our list of built-in components continues to grow.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [HTML Utils](/docs/composer/builder/builder-components/html-utils.mdx) - Helpful HTML-related functions for building HTML documents and HTML-based emails
+- [JSON Forms](/docs/composer/builder/builder-components/jsonforms.mdx) - Create powerful custom forms for the configuration wizard
+- [Marketo](/docs/composer/builder/builder-components/marketo.mdx) - Manage Marketo records
+- [MessagePack](/docs/composer/builder/builder-components/messagepack.mdx) - Efficiently serialize or deserialize data into a JSON-like format
+- [Microsoft Outlook](/docs/composer/builder/builder-components/ms-outlook.mdx) - Read and manage Microsoft Outlook calendars
+- [NetSuite](/docs/composer/builder/builder-components/netsuite.mdx) - Manage NetSuite records
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-12-29">
+
+### JSON Forms Config Variables
+
+We've integrated [JSON Forms](https://jsonforms.io/) into our configuration wizard to give you more control over your users' integration configuration experience.
+You can build a static JSON form using the built-in [JSON Forms](/docs/composer/builder/builder-components/jsonforms.mdx) component, or create dynamic configuration experiences by adding JSON Forms [data sources](/docs/composer/builder/custom-components/writing-custom-components.mdx#json-forms-data-sources) to your custom components.
+
+<Screenshot
+  filename="changelog/jsonforms.png"
+  maxWidth="500px"
+  caption="JSON Forms in the configuration wizard"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-12-14">
+
+### Internationalization (i18n) Support
+
+Not all of your customers speak English.
+You can now offer translations for embedded marketplace, so your customers can enable integrations in their native language.
+
+See [Embedding Marketplace](/docs/composer/builder/embedding-marketplace.mdx#translations-and-internationalization) for information on how to offer i18n support to your customers.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-11-29">
+
+### New Components - October / November 2022
+
+Our component team has been busy!
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+In October and November we added:
+
+- [GraphQL](/docs/composer/builder/builder-components/graphql.mdx) - Make GraphQL requests (queries and mutations) to a GraphQL-based API
+- [Microsoft Bing Ads](/docs/composer/builder/builder-components/ms-bing-ads.mdx) - Manage Microsoft Bing Ad Customer Services
+- [Microsoft Bot Framework](/docs/composer/builder/builder-components/ms-bot-framework.mdx) - Manage conversational interactions across platforms using Microsoft Bot Framework
+- [Microsoft Outlook](/docs/composer/builder/builder-components/ms-outlook.mdx) - Read and manage Microsoft Outlook calendars
+- [Odoo](/docs/composer/builder/builder-components/odoo.mdx) - Manage records in an Odoo database
+- [Zoho](/docs/composer/builder/builder-components/zoho.mdx) - Manage records, users, and more in your Zoho CRM and Books apps
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-11-09">
+
+### User Level Configuration
+
+We're proud to introduce a new instance configuration option - **User-Level Configuration** (ULC).
+
+**What is ULC**?
+ULC helps when multiple users of a single customer all need an integration.
+It allows you to configure a single instance of an integration for a customer, but collect configuration from multiple users and execute using user-specific configuration.
+
+**Why use ULC**?
+ULC is handy if your integration requires user-specific config variables and credentials.
+For example, suppose your app needs to write data to several users' private Dropbox folders.
+With ULC, you can collect connection information for several users within a customer, and integrate with each of their individual Dropbox accounts.
+
+**How does ULC work**?
+At a high level, a single instance of an integration is deployed to a customer, and is configured with some customer-wide config variables.
+Individual users within the customer, then, go through a ULC config wizard and supply user-specific credentials and config variables.
+When the instance runs, it pulls in user-specific configuration depending on some rules you set.
+
+Read more about ULC in our [docs](/docs/composer/builder/user-level-configuration.mdx).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-11-03">
+
+### Persisting Data for Integrations
+
+You can now persist data between instances of the same integration.
+This is handy if your customers need to share some state, or if you need to persist a customer mapping for [preprocess flows](/docs/composer/builder/endpoint-configuration.mdx).
+
+See the [Persist Data](/docs/composer/builder/builder-components/persist-data.mdx) docs, or write your own component that [persists integration data](/docs/composer/builder/custom-components/writing-custom-components.mdx#execution-instance-and-cross-flow-state)
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-10-04">
+
+### Source Code for Prism and Marketplace
+
+Source code for the `@prismatic-io/prism` CLI tool and the embedded marketplace library, `@prismatic-io/marketplace`, have been added to public repositories on GitHub.
+
+`prism` wraps the [Builder API](/docs/composer/builder/api/api-overview.mdx) and provides users a way to perform CRUD (create, read, update, delete) operations on a variety of Builder resources (components, integrations, instances, customers, etc.) from the command line.
+Having it publicly available provides a great reference for developers looking to wrap the Builder API themselves.
+
+The two projects join the custom component SDK, `@prismatic-io/spectral`, which was already publicly available:
+
+- `@prismatic-io/prism` - [https://github.com/prismatic-io/prism](https://github.com/prismatic-io/prism)
+- `@prismatic-io/marketplace` - [https://github.com/prismatic-io/marketplace](https://github.com/prismatic-io/marketplace)
+- `@prismatic-io/spectral` - [https://github.com/prismatic-io/spectral](https://github.com/prismatic-io/spectral)
+- `@prismatic-io/examples` - [https://github.com/prismatic-io/examples](https://github.com/prismatic-io/examples)
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-09-28">
+
+### New Components - September 2022
+
+Our list of built-in components continues to grow.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [Fluent Commerce](/docs/composer/builder/builder-components/fluent-commerce.mdx) - Manage orders within Fluent Commerce
+- [Google Analytics](/docs/composer/builder/builder-components/google-analytics.mdx) - Manage Google Analytics accounts
+- [Gmail](/docs/composer/builder/builder-components/google-gmail.mdx) - Fetch, read and manage messages in Gmail
+- [UUID](/docs/composer/builder/builder-components/uuid.mdx) - Generate UUIDs and GUIDs
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-09-19">
+
+### Reimagined Instance Configuration Wizard
+
+We've overhauled the way deploy-time configuration management works, making it much more flexible and dynamic.
+
+It's a wizard now, so you can split complex configuration pages in a way that's intuitive to your customers.
+Any existing configuration pages will simply become part of a one page wizard, so everything will continue to work as-is.
+
+Read more about the configuration wizard designer on the [Building Integrations](/docs/composer/builder/configuration-wizard.mdx#configuration-wizard-designer) docs page.
+
+<Screenshot
+  filename="changelog/old-instance-config.png"
+  maxWidth="600px"
+  caption="Embedded Instance Configuration Experience (Before)"
+/>
+
+<br />
+
+<Screenshot
+  filename="changelog/new-instance-config.png"
+  maxWidth="600px"
+  caption="Embedded Instance Configuration Experience (After)"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-09-19">
+
+### UI Redesign
+
+You've probably noticed that the Builder UI has gotten a facelift!
+Based on everything we've learned over the last couple of years, we've improved the UI to feel better and be more intuitive.
+
+<Screenshot
+  filename="changelog/old-ui.png"
+  maxWidth="600px"
+  caption="UI (Before)"
+/>
+
+<br />
+
+<Screenshot
+  filename="changelog/new-ui.png"
+  maxWidth="600px"
+  caption="UI (After)"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-07-29">
+
+### New Components - July 2022
+
+This month we added a new utility component for zipping and unzipping files:
+
+- [Zip](/docs/composer/builder/builder-components/zip.mdx) - Provides utility methods for working with zip files
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-06-29">
+
+### Access Instance Metadata from an Action
+
+You can now access additional information about the currently running execution from your custom component including:
+
+- The name and ID of the running instance
+- The name, ID and external ID of the customer the instance is deployed to
+- Webhook URLs for all flows of the running instance
+
+This is handy if you need to know information about the current run context, or if you're building actions that configure or delete webhooks in a third-party app.
+To access new `context` properties, update your custom component's `@prismatic-io/spectral` version `6.6.0`.
+
+Read more about the expanded [context parameter](/docs/composer/builder/custom-components/writing-custom-components.mdx#the-context-parameter).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-06-28">
+
+### New Components - June 2022
+
+Our list of built-in components continues to grow!
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [GitHub](/docs/composer/builder/builder-components/github.mdx) - Manage users, repositories, licenses, and more on GitHub
+- [Hash](/docs/composer/builder/builder-components/hash.mdx) - Compute hashes of strings using common hash functions
+- [Pipedrive](/docs/composer/builder/builder-components/pipedrive.mdx) - Manage leads, companies, activities, and more on the Pipedrive platform
+- [Rippling](/docs/composer/builder/builder-components/rippling.mdx) - Rippling makes it easy to manage your company's Payroll, Benefits, HR, and IT—all in one, modern platform
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-06-06">
+
+### Additional Control Over Marketplace UI
+
+You now have more control over the UI elements that appear to your customers in your embedded marketplace.
+If you would like to hide the **Back to Marketplace** link, or the **Test**, **Executions**, **Logs**, or **Monitors** tabs on an instance configuration screen [you can](/docs/composer/builder/embedding-marketplace.mdx#hiding-ui-elements-in-marketplace)!
+
+Bump your `@prismatic-io/marketplace` version to `3.1.0`, and add a `screenConfiguration` code block to your marketplace.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-05-24">
+
+### New Components - May 2022
+
+We have five new components this month (including a component to Builder itself - how meta!).
+
+- [IMAP](/docs/composer/builder/builder-components/imap.mdx) - Fetch and manage email via IMAP
+- [Intercom](/docs/composer/builder/builder-components/intercom.mdx) - Manage companies, contacts and tags on the Intercom platform
+- [Microsoft Sharepoint](/docs/composer/builder/builder-components/ms-sharepoint.mdx) - Interact with sites, drives, and items within Microsoft Sharepoint
+- [Pretty Good Privacy (PGP)](/docs/composer/builder/builder-components/pgp.mdx) - Create and translate encrypted messages
+- [Builder](/docs/composer/builder/builder-components/prismatic.mdx) - Interact with the Builder API to manage customers, integrations, instances, etc.
+
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-05-17">
+
+### Improvements to Custom Component Development
+
+We've made several improvements to the custom component development experience. To highlight a few:
+
+- You can now [`clean`](/docs/composer/builder/custom-components/writing-custom-components.mdx#cleaning-inputs) your reusable inputs, which helps ensure type safety and catches problems with inputs before they reach the `perform` function.
+- You can now add a [global error handler](/docs/composer/builder/custom-components/writing-custom-components.mdx#global-error-handlers) to your component, which helps you capture and display more informative errors if they're thrown.
+- The improved [testing harness](/docs/composer/builder/spectral/spectral-6-upgrade-guide.mdx#new-spectral-testing-harness) gives you more flexibility when unit testing your actions and triggers.
+- The `prism` CLI tool can now fetch existing integration connections (including OAuth 2.0 access tokens) and store them in environment variables, so you can [use them for unit testing](/docs/composer/builder/cli/prism.mdx#componentsdevrun).
+
+Update to the latest [`@prismatic-io/spectral`](https://www.npmjs.com/package/@prismatic-io/spectral) 6.x version to take advantage of these new features!
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-05-04">
+
+### Cross-Flow State Storage
+
+You can now store and load across flows of an instance.
+One flow can save state, and another flow can load that saved state.
+
+Check out our [Persist Data](/docs/composer/builder/builder-components/persist-data.mdx) for documentation on the new "Cross Flow" actions, and see our [docs](/docs/composer/builder/custom-components/writing-custom-components.mdx#execution-instance-and-cross-flow-state) to build state storage into your custom components.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-05-04">
+
+### Step-Level Error Handling
+
+Sometimes a step in an integration throws an error.
+This can be caused by a variety of external factors - temporary network connectivity issues, brief third-party API outages, etc.
+
+You can now configure how the integration runner handles errors on each step.
+You can choose to stop the instance execution (that's the current default behavior), you can ignore the error and continue the run, or you can choose to wait and retry the step at a later time.
+
+Read more in our [docs](/docs/composer/builder/building-integrations.mdx#step-error-handling).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-05-03">
+
+### Instance Remove Trigger
+
+A new management trigger - [Instance Remove](/docs/composer/builder/builder-components/management-triggers.mdx#instance-remove) has been added to the [Management Triggers](/docs/composer/builder/builder-components/management-triggers.mdx) component.
+Flows that use the instance remove trigger are run when an instance is deleted.
+
+This new trigger is handy for cleaning up configuration created by the integration.
+For example, you can remove webhook configuration in third-party apps, or update our own API so your team knows that a customer removed an integration.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-05-02">
+
+### Set Config Variables from Marketplace
+
+You can now set values for configuration variables from your app within your embedded marketplace.
+This is helpful if you know some information about your customer (their API key, a special endpoint they use, data mapping configuration, etc), and would like to set a config variable value so they don't need to.
+
+Read more about [Dynamically Setting Config Variables in Marketplace](/docs/composer/builder/embedding-marketplace.mdx#dynamically-setting-config-variables-in-marketplace) in our docs.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-04-28">
+
+### New Components - April 2022
+
+We added some new components to [our catalog](/docs/composer/builder/builder-components/component-catalog.mdx) in April.
+This past month, we added:
+
+- [Facebook Marketing](/docs/composer/builder/builder-components/facebook-marketing.mdx) - Interact with ads and adsets in your Facebook Marketing account
+- [Google Ads](/docs/composer/builder/builder-components/google-ads.mdx) - Manage Google Ad campaigns
+- [WooCommerce](/docs/composer/builder/builder-components/woo-commerce.mdx) - Easily manage your customers, orders, and products in your WooCommerce platform
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-04-28">
+
+### Sending Data Through URL Path
+
+Some popular SaaS applications append URL paths to the webhooks that they're configured to use.
+So, given a webhook endpoint `https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==` they might send data to `https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==/order/created`.
+
+You can now send data to webhook triggers four ways:
+
+- Request body
+- Request headers
+- URL parameters
+- URL path (added)
+
+Check out our [Integration Triggers](/docs/composer/builder/integration-triggers.mdx/#sending-data-to-webhook-triggers) article for more information.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-04-26">
+
+### Improved Shared Endpoint Configuration
+
+Instance-specific endpoints (meaning all flows in an instance share one webhook URL) and shared endpoints (meaning all instances of an integration share one webhook URL) are now easier to configure, test and troubleshoot.
+Check out our [Endpoint Configuration](/docs/composer/builder/endpoint-configuration.mdx) article for details and our [Using Shared Webhooks and Preprocess Flows](/docs/composer/builder/custom-components/quickstarts/using-shared-webhooks-and-preprocess-flows.mdx) for an example of how to use shared endpoints.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-04-19">
+
+### Using the GET HTTP Verb to Invoke Instances
+
+Instance webhook triggers can now be invoked using the GET HTTP verb in addition to the POST verb.
+
+Some third-party apps (notably [Dropbox](/docs/composer/builder/builder-components/dropbox.mdx) among others) verify that a webhook endpoint is ready to receive requests with a GET request.
+They then send webhook payloads with POST requests.
+This change was made to support the initial verification GET requests.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-03-29">
+
+### New Components - March 2022
+
+Our list of built-in components continues to grow.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [Collection Tools](/docs/composer/builder/builder-components/collection-tools.mdx) - Perform common operations on collections
+- [Microsoft OneDrive](/docs/composer/builder/builder-components/ms-onedrive.mdx) - Interact with files and drives inside Microsoft OneDrive
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-03-24">
+
+### Cloning Flows
+
+If you need to add a flow that is similar to another flow you've already built, it's helpful to be able to **clone** (make a copy of) a flow.
+You can now clone an existing flow from the flow menu in the integration designer.
+
+<Screenshot
+  filename="integrations/clone-flow.png"
+  maxWidth="600px"
+  alt="Clone integration flow in Builder app"
+/>
+
+For more information, see our [Building Integrations](/docs/composer/builder/building-integrations.mdx#cloning-a-flow) article.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-03-21">
+
+### Filter Marketplace Integrations
+
+You can now filter the integrations that you show in your embedded marketplace by [category](/docs/composer/builder/integrations.mdx#categorizing-integrations) or [label](/docs/composer/builder/integrations.mdx#integration-labels).
+This gives you the flexibility to show specific types of integrations to specific users or customers.
+
+To get started with filtering your embedded marketplace, update your [@prismatic-io/marketplace](https://www.npmjs.com/package/@prismatic-io/marketplace) package to version 1.1.2, and add a `filters` attribute to your `prismatic.showMarketplace()` invocation - see [docs](/docs/composer/builder/embedding-marketplace.mdx#filtering-integrations) for details.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-03-16">
+
+### Labels for Customers, Integrations and Instances
+
+You can now assign labels to your [customers](/docs/composer/builder/customers.mdx#customer-labels), [integrations](/docs/composer/builder/integrations.mdx#integration-labels) and [instances](/docs/composer/builder/org-deployed-instances.mdx).
+This helps you keep your Builder account organized so you can find what you need quickly.
+
+<Screenshot
+  filename="changelog/labels.png"
+  maxWidth="650px"
+  alt="Assign labels to customers, integrations and instances in Builder app"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-02-28">
+
+### Improvements to Embedded Theming
+
+You can now create custom themes for your embedded marketplace for both dark and light mode users of your application.
+Check out our [embedded marketplace docs](/docs/composer/builder/embedding-marketplace.mdx/#theming-embedded-marketplace) for information on how to theme your embedded marketplace to match your app's dark and light mode look-and-feel.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-02-23">
+
+### New Components - February 2022
+
+We have a couple new components this month!
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [Math](/docs/composer/builder/builder-components/math.mdx) - Perform common math operations on numbers or lists of numbers
+- [Microsoft Dynamics 365](/docs/composer/builder/builder-components/ms-dynamics.mdx) - Query, create, update or delete Microsoft Dynamics 365 API records
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-01-21">
+
+### New Components - January 2022
+
+We have some new components to show off this month:
+
+- [QuickBooks Time](/docs/composer/builder/builder-components/quickbooks-time.mdx) - Manage employee time tracking within Intuit QuickBooks Time
+- [Sage](/docs/composer/builder/builder-components/sage.mdx) - Manage contacts and others connected to your Sage account
+- [SOAP](/docs/composer/builder/builder-components/soap.mdx) - Easily interact with SOAP-based APIs
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-01-20">
+
+### Integrate Faster with SOAP APIs
+
+It's now easier to integrate with SOAP-based APIs. For quick one-off calls, you can use our built-in [SOAP component](/docs/composer/builder/builder-components/soap.mdx) to fetch WSDL definitions and make requests to an API's SOAP methods. For more complex SOAP APIs, you can leverage our custom component SDK to wrap SOAP methods into a series of component actions.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2022-01-05">
+
+### Simpler, More Flexible Authentication
+
+We've revamped the way that components connect to third-party apps and services.
+The new concept is called **connections**, and they make authentication _simpler_, more _flexible_, and _easier to support_.
+
+We'll be updating our built-in components to use connections in the coming weeks, and credentials will eventually be phased out in favor of connections (but don't worry - credentials won't be sunset immediately!).
+
+For a full run-down how connections improve integration development and support and customer self-deployment, check out our <InternalLink href="/blog/simpler-more-flexible-authentication/">blog announcement.</InternalLink>
+Here's a quick summary:
+
+- Component developers have _more flexibility_ when declaring what information their components need to connect to a third party.
+  They can define [custom connections](/docs/composer/builder/custom-components/writing-custom-components.mdx#adding-connections) that include any number of fields, like username, password, API key, tenant ID, endpoint URL or other fields that are unique to the service they're integrating with.
+- The [OAuth 2.0 flow](/docs/composer/builder/configuration-wizard.mdx#oauth-20-connection-config-variables) got much _simpler_ and cleaner for both integration builders and customers who deploy the integration - customers just see a single button to click when they need to authenticate with OAuth.
+- Authorization got _simpler_ in general - connections live within the integration designer or a deployed instance.
+  You don't need to create credentials from the organization or customer settings pages, nor juggle credential types.
+  Components know what connections they're compatible with, and can only be paired with those connection config variables.
+- Connections are _easier to support_.
+  You can now configure alert monitors to [notify you](/docs/composer/builder/monitoring-and-alerting.mdx#alerting-on-connection-errors) when connections (OAuth or otherwise) expire or fail to authenticate in an integration.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-12-22">
+
+### New Components - December 2021
+
+We created new components for three popular SaaS apps this month:
+
+- [BambooHR](/docs/composer/builder/builder-components/bamboohr.mdx) - Keep track of employees' HR needs
+- [Xero](/docs/composer/builder/builder-components/xero.mdx) - Create and manage invoices, items, accounts, payments and more objects within a Xero account
+- [Zoom](/docs/composer/builder/builder-components/zoom.mdx) - Manage Zoom users, meetings and webinars
+
+A full catalog of all of our components is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-12-14">
+
+### Looping and Pagination
+
+The [loop component](/docs/composer/builder/builder-components/loop.mdx) has been improved to facilitate easily looping over a paginated API.
+Many third-party APIs limit the number of records you can fetch at once, and let you load a batch (page) of records at a time.
+You can now more easily loop over paged records that you fetch from an external API, and you can break out of a loop whenever you've paged over all available records.
+
+Check out our [quickstart](/docs/composer/builder/custom-components/quickstarts/looping-over-a-paginated-api.mdx) for a tutorial on how to loop over pages of records in an integration.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-11-24">
+
+### New Components - November 2021
+
+We have a bunch of new built-in components this month.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [Asana](/docs/composer/builder/builder-components/asana.mdx) - Manage users, projects, and teams in your Asana workspace
+- [Monday](/docs/composer/builder/builder-components/monday.mdx) - Manage boards, items, and columns inside your Monday account
+- [Microsoft Project](/docs/composer/builder/builder-components/ms-project.mdx) - Make queries to reporting data from a Project Web App instance
+- [New Relic](/docs/composer/builder/builder-components/new-relic.mdx) - Easily manage metrics, logs, and events
+- [Tableau](/docs/composer/builder/builder-components/tableau.mdx) - Manage projects and workbooks in your Tableau site
+- [Zendesk](/docs/composer/builder/builder-components/zendesk.mdx) - Manage Tickets and users in Zendesk
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-11-16">
+
+### Stream Logs to External Logging Services
+
+Customers on enterprise plans can now stream logs and metrics to external logging services (like DataDog or New Relic).
+This is useful, since you likely already use a logging service to collect logs from your various applications.
+Now, your integration logs can live alongside the rest of your applications' logs.
+
+Read more on our [logging article](/docs/composer/builder/logging.mdx#external-log-streaming).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-11-10">
+
+### New Step Input: Expressions
+
+You can now reference multiple config variables, step results, and static strings for step input using templated [inputs](/docs/composer/builder/building-integrations.mdx#template-inputs).
+This lets you concatenate config variables, text, and step results together, without needing an additional step to do the concatenation.
+It's helpful for dynamically generating URLs, queries, messages, and more.
+
+<Screenshot
+  filename="changelog/expression-input.png"
+  maxWidth="600px"
+  alt="Expressions for step inputs in Builder app"
+/>
+
+**Update:** As of 2022-05-25, "Expression inputs" have been renamed "Template inputs"
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-10-20">
+
+### New Components - October 2021
+
+Our list of built-in components continues to grow.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This past month, we added:
+
+- [AWS Glue](/docs/composer/builder/builder-components/aws-glue.mdx) - Perform data transformation through AWS Glue
+- [AWS Lambda](/docs/composer/builder/builder-components/aws-lambda.mdx) - Manage and invoke AWS Lambdas
+- [CSV](/docs/composer/builder/builder-components/csv.mdx) - Build and parse CSV files to and from JavaScript arrays
+- [Firebase](/docs/composer/builder/builder-components/firebase.mdx) - Create, read, update, and delete documents in a Firebase Cloud Firestore database collection
+- [Google Calendar](/docs/composer/builder/builder-components/google-calendar.mdx) - Manage calendars and events in Google Calendar
+- [Hubspot](/docs/composer/builder/builder-components/hubspot.mdx) - Manage objects and associations in the Hubspot CRM platform
+- [Jira](/docs/composer/builder/builder-components/atlassian-jira.mdx) - Manage Jira issues, comments, projects and users
+- [Mailchimp](/docs/composer/builder/builder-components/mailchimp.mdx) - Interact with email campaign lists and e-commerce resources
+- [Microsoft Excel](/docs/composer/builder/builder-components/ms-excel.mdx) - Parse and build xlsx files (spreadsheets)
+- [Microsoft Teams](/docs/composer/builder/builder-components/ms-teams.mdx) - Manage the teams, groups, channels, and messages associated with your Microsoft Teams account
+- [Redis](/docs/composer/builder/builder-components/redis.mdx) - Manage items in a Redis database
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-10-18">
+
+### Write Your Own Triggers
+
+The vast majority of integrations are triggered in one of two ways: they either run on a schedule (i.e "At 15 minutes past each hour") or they're invoked by an HTTP request to a [webhook](/docs/composer/builder/integration-triggers.mdx#webhook-triggers).
+
+Not all apps and services that you integrate with are the same, though, and some require additional functionality or validation.
+For example, Salesforce [outbound messages](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_understanding.htm) (webhooks) require a special XML-formatted acknowledgement (ACK) response to a webhook request, and Amazon's Simple Notification Service (SNS) requires that integrations send an HTTP POST request to AWS to [confirm an SNS subscription](https://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.prepare.html).
+
+With those considerations in mind, we've extended our [custom component SDK](/docs/composer/builder/spectral/custom-component-library.mdx) to allow you to write your own triggers for your components.
+Your triggers can handle things like:
+
+- Replying to webhook requests with custom responses
+- Validating webhook headers and payload data
+- Transforming and processing XML, CSV, or proprietary data formats so the rest of your integration can easily reference data that comes in
+
+If you've [written your own actions](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-actions), writing a trigger will feel very familiar.
+Check out our docs on [writing triggers](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-triggers) to get started, or take a look at our [quickstart](/docs/composer/builder/custom-components/quickstarts/writing-a-trigger.mdx) that details how we wrote the Salesforce trigger.
+
+### Configurable Webhook Triggers
+
+The general webhook trigger is now more configurable.
+You can now specify the HTTP code, headers, response type, and response body that the webhook trigger returns to a webhook caller.
+This helps you handle APIs that require custom responses, and allows you to redirect webhook callers as needed.
+
+<Screenshot
+  filename="changelog/webhook-trigger-responses.png"
+  maxWidth="500px"
+  alt="Configure webhook trigger in Builder app"
+/>
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-09-16">
+
+### Improved Embedded Marketplace Experience
+
+We've significantly enhanced Builder's embedded marketplace experience, enabling you to provide your customers a seamless, native integration experience with minimal engineering effort.
+
+You can now embed Builder's [integration marketplace](/docs/composer/builder/integration-marketplace.mdx) into your application with just a few lines of code. You can choose to display the sleek marketplace UX directly within your application or as a popover, and apply [custom theming](/docs/composer/builder/organization.mdx#custom-themes) to make your integration marketplace look native to your application.
+
+The embedded marketplace showcases your integration offerings and allows customers to self-activate and configure the integrations they need. Just as previously, you can specify which integrations appear in your marketplace, which ones can be self-activated, and define each integration's configuration screen.
+
+Your customers do not need to juggle another set of credentials to access your embedded marketplace. Instead, you can sign JSON web tokens (JWTs) for your users, which can be used to automatically authenticate them for the marketplace.
+
+Check out our [docs](/docs/composer/builder/embedding-marketplace.mdx) to get started.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-09-14">
+
+### Configurable Webhook Endpoints
+
+You now have more control over how webhook endpoints are configured for deployed instances.
+You already had the option to create a webhook endpoint for each flow of each deployed instance (**Instance and Flow-Specific**).
+You can now select two other configuration options:
+
+- **Instance-Specific**: Create a single webhook endpoint for each instance.
+  Identify which of the instances' flows should run based on data in the webhook request.
+- **Shared**: Create a single webhook that is shared by all customers who have a particular integration.
+  Route the webhook request to a flow in a specific customer's instance based on data in the webhook request.
+
+Both of these additional configuration options allows you to route webhook requests to a particular customer and flow based on the data that comes in to the webhook.
+If the data that comes in needs additional processing, or if you need to look up a flow's name or customer's ID, you can assign one of your integration's flows to be a **Preprocess Flow** - a flow that's run when a webhook is invoked and aids in making sure the request gets to the right place.
+
+For more information, check out our [webhook docs](/docs/composer/builder/integration-triggers.mdx#webhook-endpoint-configuration) and [Shared Webhook Quickstart](/docs/composer/builder/custom-components/quickstarts/using-shared-webhooks-and-preprocess-flows.mdx).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-09-01">
+
+### Granular Permissions for Third Parties
+
+You can now invite third-party vendors to log in to Builder with limited access to your integrations, custom components, and customers.
+This is helpful if you need to collaborate on a new integration with a third-party vendor.
+You can grant them **view** or **edit** access to a particular integration or set of custom components, which allows them to test the integration against their app or service.
+You can debug and iterate faster on integration and custom component development, and can have one central place to view logs and test runs.
+You can also view logs of each test a third-party vendor performs to give you a sense of how their side of the integration development is progressing.
+
+Permissions are granular - third-party users only see what they've been given permissions to see.
+So, if you're integrating with two competing companies, or even with one of your competitors, they are not given insight into the other integrations, custom components, or customers you have in your Builder account.
+
+Read more about the third-party user role in our [docs](/docs/composer/builder/users.mdx#third-party-users).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-08-25">
+
+### Integration Categories and Icons
+
+You can now assign a category and icon to each of your integrations.
+This helps your team manage and filter integrations and improves the way you present them to customers.
+
+<Screenshot
+  filename="changelog/assign-category.png"
+  maxWidth="600px"
+  alt="Assign integration to category in Builder app"
+/>
+
+<Screenshot
+  filename="changelog/filter-by-category.png"
+  maxWidth="600px"
+  alt="Filter integrations by category in Builder app"
+/>
+
+Check out our docs on [categorizing integrations](/docs/composer/builder/integrations.mdx#categorizing-integrations) and [assigning an icon](/docs/composer/builder/integrations.mdx#assigning-an-icon-to-an-integration) for more info.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-08-24">
+
+### Multi-Flow Integrations
+
+Builder now provides full support for multi-flow integrations!
+
+Integrations can now include multiple **flows**. (A flow is a trigger and a series of steps.) This enables you to provide your customers with a complex third-party integration that performs multiple related tasks, but is packaged and deployed as a single integration.
+
+For example, you might integrate with an ERP that sends a variety of data via webhooks to your application (a webhook when inventory is updated, a webhook when customer info is updated, and so on). Rather than constructing integrations with complex branches or assembling multiple integrations, you can now create a single integration with flows that handle each type of webhook payload. You would create a flow to handle inventory updates, another flow to handle customer updates, and deploy all of those flows together as a single instance to a customer.
+
+Each flow has its own trigger (so it gets its own webhook URL), and flows are tested and run independently of one another.
+
+When customers or customer-facing teams deploy a multi-flow integration, they configure and deploy all of the flows at once using a single configuration screen.
+
+Your existing integrations will continue to operate as expected. Please note:
+
+1. The **Selected Test Run** dropdown has been moved to the input reference selector.
+   When configuring an input for a step, you can select which test run to preview outputs for within the **Reference** tab.
+   <Screenshot
+     filename="changelog/selected-test-run.png"
+     maxWidth="400px"
+     alt="Select test run in Builder app"
+   />
+2. Builder's CLI, Prism, has been updated to version 3.0.0 to account for this change.
+   To install the latest Prism, run:
+   ```bash
+   npm install --global @prismatic-io/prism
+   ```
+3. The YAML that defines integrations has been updated.
+   See the [Integrations](/docs/composer/builder/integrations.mdx#yaml-definition) docs article.
+
+Check out our [building integrations](/docs/composer/builder/building-integrations.mdx#flows-in-integrations) page for more information.
+
+### Deploy-Time Triggers
+
+You can now configure integration flows with triggers that are invoked when an instance is deployed to a customer. This is helpful if you have a set of “initialization” tasks that need to be completed _once_ to set up a customer’s instance.
+
+A deploy-time flow could enable features in a third-party app, set up third-party users or permissions, create a directory structure in a file storage system, or even set up webhooks in a third-party application to point to the instance’s other flows.
+
+Check out our [deploy trigger](/docs/composer/builder/integration-triggers.mdx#instance-deploy-trigger) docs for more info.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-08-16">
+
+### New Components - August 2021
+
+We've continued to expand our built-in component offering.
+A full catalog is available [here](/docs/composer/builder/builder-components/component-catalog.mdx).
+This month, we added:
+
+- [Airtable](/docs/composer/builder/builder-components/airtable.mdx) - List, create, delete, and update records in an Airtable Base
+- [Amazon SES](/docs/composer/builder/builder-components/aws-ses.mdx) - Send email through Amazon's Simple Email Service (SES)
+- [Google Drive](/docs/composer/builder/builder-components/google-drive.mdx) - Manage files that are stored in a Google Drive account
+- [Google Sheets](/docs/composer/builder/builder-components/google-sheets.mdx) - Create, read and modify spreadsheets in a Google Drive account
+- [Mongo DB](/docs/composer/builder/builder-components/mongo.mdx) - Create, read, update and delete documents inside a NoSQL MongoDB collection
+- [Microsoft Power BI](/docs/composer/builder/builder-components/ms-power-bi.mdx) - Interact with datasets and data schemas within Microsoft's data visualization and business analytics service
+- [MySQL](/docs/composer/builder/builder-components/mysql.mdx) - Query and manage data in a MySQL database
+- [Shopify](/docs/composer/builder/builder-components/shopify.mdx) - Interact with Shopify's Access Service API
+- [Stripe](/docs/composer/builder/builder-components/stripe.mdx) - Interact with Stripe's payment platform
+
+The Shopify and Stripe components were both generated from OpenAPI definitions using Prism's [component generator tool](/docs/composer/builder/custom-components/writing-custom-components.mdx#custom-components-from-wsdls-or-openapi-specs).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-08-05">
+
+### Per-Action Authorization in Components
+
+You can now configure authorization settings per _action_ (as opposed to per _component_).
+This is helpful if you are building a component with multiple actions and only some of your actions require authorization.
+
+Read about how to upgrade your component to use per-action authorization on our [Spectral 3.x Upgrade Guide](/docs/composer/builder/spectral/spectral-3-upgrade-guide.mdx).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-07-14">
+
+### New Components - July 2021
+
+Several new components have been added to our [catalog](/docs/composer/builder/builder-components/component-catalog.mdx) of built-in components:
+
+- [Amazon DynamoDB](/docs/composer/builder/builder-components/aws-dynamodb.mdx) - Create, update, fetch, or delete items in an Amazon DynamoDB database
+- [Amazon SNS](/docs/composer/builder/builder-components/aws-sns.mdx) - Manage subscriptions, topics, and messages within Amazon SNS
+- [Amazon SQS](/docs/composer/builder/builder-components/aws-sqs.mdx) - Send, receive and manage messages within an Amazon SQS queue
+- [AMQP](/docs/composer/builder/builder-components/amqp.mdx) - Send and receive messages on an AMQP-based message broker
+- [Apache Kafka](/docs/composer/builder/builder-components/kafka.mdx) - Publish messages to an Apache Kafka event stream
+- [Customer.io](/docs/composer/builder/builder-components/customer-io.mdx) - Manage customers on the Customer.io platform
+- [Microsoft SQL Server](/docs/composer/builder/builder-components/ms-sql-server.mdx) - Query and manage data in a Microsoft SQL Server Database
+- [MQTT](/docs/composer/builder/builder-components/mqtt.mdx) - Send and receive messages on an MQTT-based queue
+- [PostgreSQL](/docs/composer/builder/builder-components/postgres.mdx) - Query and manage data in a PostgreSQL database
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-07-08">
+
+### Spectral 2.x Released
+
+Builder's custom component TypeScript library, `@prismatic-io/spectral`, has been expanded and updated to improve the developer experience for [building custom components](/docs/composer/builder/custom-components/writing-custom-components.mdx).
+Updated syntax for creating components, actions, and inputs helps to catch common errors at compile time (rather than runtime), and new utility functions help to guarantee that you pass the correct variable types to third party SDKs and APIs.
+
+For info on upgrading an existing 1.x custom component to 2.x, see our [Upgrade Guide](/docs/composer/builder/spectral/spectral-2-upgrade-guide.mdx).
+You can dive in to the Spectral code on [GitHub](https://github.com/prismatic-io/spectral), or review the [Spectral 2.x docs](/docs/composer/builder/spectral/index.md).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-06-16">
+
+### Enhanced Versioning for Components, Integrations, and Instances
+
+Versioning has been improved for components, integrations, and instances to give you more fine-grained control over exactly what code is deployed to customers.
+
+**Components** are now assigned an integer version that increments each time the component is published.
+If a custom component is at "version 3" and you publish a new component definition, that new definition gets "version 4".
+This allows you to update or extend components without unintentionally impacting existing integrations that use them, ensuring your integrations remain stable.
+Integration builders can then update the component versions used in their integrations, or roll back to a previous versions when desired, and will be notified when newer versions of components are available.
+
+Read more about [Versioning of Components](/docs/composer/builder/components.mdx#component-versioning) and [Choosing Components Versions in Integrations](/docs/composer/builder/building-integrations.mdx#choosing-component-versions).
+
+**Integration** versioning has been improved, giving you more control over what versions of integrations you deploy to customers.
+When you publish new changes to an integration, similar to components, your integration is assigned a new version number.
+Then, when you deploy an instance to a customer, you can choose which version of the integration to use.
+That means you can have some customers on version 1, and others on version 2 as needed, giving you control over which customers have what, and allowing you to test a new integration version with a small subset of your customer base before deploying it broadly.
+
+Rolling back an instance deployment is a breeze - if you deploy a new version of an integration to a customer and something seems off, you can easily roll back your instance to a known working version of the integration with just a couple of clicks.
+
+As always, updating customers' instances can be scripted, so you don't need to manually deploy a new version of an integration to each customer.
+
+Read more about [Publishing an Integration](/docs/composer/builder/integrations.mdx#publishing-an-integration) and [Specifying Integration Version in Instances](/docs/composer/builder/instances.mdx#setting-integration-version-for-an-instance).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-05-17">
+
+### Generate Custom Components From API Specs
+
+APIs often have hundreds of unique endpoints that you can interact with.
+With the release of [Prism](/docs/composer/builder/cli/cli-usage.mdx) version 1.0.8, you can now generate a custom component from a WSDL or OpenAPI file.
+That means you can have a custom component for a third-party service with hundreds of actions with a single CLI command.
+
+Read more on our [Writing Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx#custom-components-from-wsdls-or-openapi-specs) article.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-04-27">
+
+### Customer Self-Service
+
+It's now easier for your customers to manage instances of integrations that have been deployed to them.
+Customer users with **admin** permissions can update config variables and credentials that are associated with their instances.
+So, if their config or credentials for a third-party service change, they can log in and make the change without needing your help.
+
+For more information on customer user roles and permissions, see the [users article](/docs/composer/builder/users.mdx#customer-user-roles).
+
+### Custom Theming
+
+Organizations with an enterprise plan can now create a custom theme for the Builder web application.
+This takes Builder’s white-label capabilities to the next level by allowing you to customize the color scheme and other UI elements to match your branding.
+Once you apply a custom theme, it will be displayed for both your team members and customers.
+
+For more information, see our [custom theming docs](/docs/composer/builder/organization.mdx#custom-themes).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-03-30">
+
+### Configure Instances to Run on a Per-Customer Schedule
+
+It's now much easier to configure instances of your integrations to run on a unique schedule for each of your customers.
+For example, Customer A could be set up to run the integration each day at 4:00PM, while Customer B could be set up to run the integration hourly, depending on their needs.
+
+<Screenshot
+  filename="integrations/schedule-trigger/schedule-config-variable.png"
+  maxWidth="700px"
+  alt="Configure instances to run on customer schedule via Builder app"
+/>
+
+For more information, check out our [integrations article](/docs/composer/builder/integration-triggers.mdx#scheduled-triggers).
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-03-25">
+
+### Intuitive Instance Deployment
+
+Significant improvements have been made to credentials, integration configuration and instance deployment.
+
+Integration builders now have the ability to create an easy-to-use configuration page for customer-facing teams.
+Builders can define config variable names, give hints as to what sort of data is expected, add headers, etc., giving their customer-facing teams an intuitive experience when it comes to deploying an integration.
+
+<Screenshot
+  filename="changelog/intuitive-instance-deployment.webp"
+  maxWidth="600px"
+  alt="Integration configuration and config variables via Builder app"
+/>
+
+This ultimately makes for easier and faster deployment of integrations, without the need for developer intervention.
+Read more about setting up config variables on our [integrations](/docs/composer/builder/building-integrations.mdx#config-variables-in-integrations) article, and about the new instance configuration experience on the [instances](/docs/composer/builder/instances.mdx#configuring-instances) article.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-03-12">
+
+### Persisting Instance State
+
+Small amounts of data (state) can now be stored between instance executions.
+This is handy if you want to save some information about one instance execution to use later in a subsequent execution.
+
+Builder handles several common state persistence scenarios for you through the new [Persist Data](/docs/composer/builder/builder-components/persist-data.mdx) and [Process Data](/docs/composer/builder/builder-components/process-data.mdx) components.
+Check out the [Integrations](/docs/composer/builder/building-integrations.mdx#persisting-data-between-runs) article to learn how to leverage state persistence in your integrations, or read the [Writing Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx#execution-instance-and-cross-flow-state) article to incorporate state persistence into your custom components.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-03-04">
+
+### Terraform Provider
+
+You can now publish Builder integrations and custom components using the Builder Terraform Provider.
+
+This helps you incorporate Builder into your existing CI/CD pipeline, and push changes to integrations and custom components automatically when pull requests are approved.
+
+</ChangeLogEntry>
+
+<ChangeLogEntry date="2021-01-21">
+
+### Retry and Replay
+
+Organizations with a professional or enterprise plan can now configure instances to [automatically retry](/docs/composer/builder/building-integrations.mdx#integration-retry-configuration) if an execution fails.
+You can control how many times an instance attempts to run with the same input, and how long it should wait between failed attempts.
+If you have an integration that relies on a flaky third-party API, for example, this minimizes interruptions for both your customers and your team.
+
+You can also [replay](/docs/composer/builder/instances.mdx#instance-execution-retry-and-replay) - manually retry - a specific failed execution of an instance.
+
+### Invoking Instances Synchronously
+
+You can now choose to invoke your instances [synchronously or asynchronously](/docs/composer/builder/integration-triggers.mdx#synchronous-and-asynchronous-integrations).
+When you invoke an instance synchronously, your request says open until the instance completes, and results from the instance's run are returned as an HTTP response.
+
+</ChangeLogEntry>

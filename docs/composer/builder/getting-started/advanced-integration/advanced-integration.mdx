@@ -1,0 +1,225 @@
+---
+id: advanced-integration
+title: "Tutorial: Build an Advanced Integration"
+description: Build out a full integration that syncs data between Zendesk and GitHub
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+import ExampleIntegrationLink from "@site/src/components/example-integration-link";
+
+The intro guide [Your First Integration](/docs/composer/builder/getting-started/first-integration/build-first-integration.mdx) walked you through basic concepts in Builder, like fetching data from an API, passing data between steps of an integration, and using built-in connectors to send data to a third-party app.
+This tutorial expands on those ideas.
+We'll build a more complex integration from start to finish that uses webhooks to sync data between two systems.
+
+## The GitHub - Zendesk integration overview
+
+For this example, pretend that we are engineers at [Zendesk](https://www.zendesk.com/) (or a similar customer service SaaS).
+Some of our customers are software companies and maintain public [GitHub](https://github.com/) repositories.
+They've asked for an integration that syncs GitHub repository **issues** with Zendesk **tickets**.
+
+<Vimeo video="923043480" />
+
+Our product team provided us with this spec for an integration:
+
+- When a customer enables this integration, they should use OAuth 2.0 to connect their GitHub account.
+- After authenticating, the customer should be able to select one of their GitHub repositories from a dropdown menu.
+- If someone creates an **issue** in their chosen GitHub repository, a corresponding Zendesk **ticket** should be created.
+- If someone comments on the GitHub issue, that comment should be added to the same Zendesk ticket.
+- If a support person comments on the Zendesk ticket, that comment should be added to the GitHub issue.
+- If someone closes the GitHub issue, the Zendesk ticket be automatically closed.
+
+<Screenshot
+  filename="getting-started/advanced-integration/github-zendesk-sync.png"
+  alt="Screenshot of the GitHub-Zendesk integration in action"
+  caption="The desired result - GitHub issues syncing with Zendesk tickets"
+/>
+
+We'll implement this integration in the following videos.
+If you'd like to follow along with this example, you can download the YAML definition of the integration and [import](/docs/composer/builder/integrations.mdx#importing-an-integration) it into your tenant.
+
+<ExampleIntegrationLink
+  href="https://github.com/prismatic-io/examples/blob/main/integrations/github.yml"
+  title="Integration YAML"
+/>
+
+## Connecting to GitHub and Zendesk
+
+When building any integration, the first step is to make sure you can connect to all apps that you're integrating with.
+This video covers how to connect to both Zendesk and GitHub.
+
+<Vimeo video="923061312" />
+
+:::note Correction: use the repo scope
+This video erroneously uses a `repos` scope for GitHub that does not exist.
+That should be singular `repo` instead.
+
+A full list of GitHub scopes can be found [here](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps).
+:::
+
+Zendesk and GitHub both support the [OAuth 2.0 Auth Code flow](/docs/composer/builder/connections.mdx#oauth-20-in-integrations) for authentication.
+This means your customers can connect their GitHub and Zendesk accounts by clicking a button and consenting to give your integration access to their data.
+
+<Screenshot
+  filename="getting-started/advanced-integration/configure-connection.png"
+  alt="GitHub configure connection"
+  maxWidth="650px"
+/>
+
+## Handling webhook requests
+
+We want our integration to be event-driven, so that when something happens in one app (like a comment being made on a GitHub issue), our integration is alerted to the change so it can make a corresponding change in Zendesk.
+This video covers how to handle webhook requests from GitHub.
+
+<Vimeo video="923063791" />
+
+GitHub will send our integration several types of webhook requests, including:
+
+- Issue created
+- Issue updated
+- Issue closed
+- Comment added
+
+Our integration will need to handle each of these webhook events differently.
+The best way to do that is with [branching](/docs/composer/builder/builder-components/branch.mdx) logic - we'll detect what type of request we received, and follow a series of steps to process the request accordingly.
+
+<Screenshot
+  filename="getting-started/advanced-integration/github-zendesk-flow.png"
+  alt="GitHub to Zendesk flow"
+/>
+
+### Avoiding infinite loops with branching
+
+Looking at the flow that handles GitHub webhook requests, you may notice the "short-circuit" logic under the **comment** branch.
+It would be very easy to get into an infinite loop with this integration:
+
+- A comment is added to a GitHub issue - this causes a GitHub webhook to fire
+- A corresponding Zendesk comment is added - this causes a Zendesk webhook to fire
+- A corresponding GitHub comment is added
+- GOTO 10
+
+We avoid this simply by prepending messages from the integration with `[Comment Created in GitHub]` or `[Comment Created in Zendesk]`.
+Then, when we get a webhook request from GitHub or Zendesk we check if the message contains those strings.
+If the message does, we stop and don't process the webhook request.
+There are likely more elegant ways of tracking messages that have been passed, but for illustration purposes this is sufficient.
+
+### Leveraging external IDs
+
+In order to map data from one app to another, it's common to leverage **external IDs**.
+In our case, we use GitHub's **issue number** as a Zendesk ticket's external ID.
+For GitHub issue number 13, for example, the Zendesk ticket is assigned an external ID `gh-13`.
+
+External IDs allow you to easily look up matching records.
+When a comment is added to a GitHub issue, we can look up the corresponding Zendesk ticket by fetching the ticket with external ID `gh-13`, and then we can add a comment to the ticket we looked up.
+
+<Screenshot
+  filename="getting-started/advanced-integration/leverage-external-ids.png"
+  alt="GitHub to Zendesk flow"
+  maxWidth="500px"
+/>
+
+### Validating HMAC signatures
+
+We want to ensure that messages received from GitHub and Zendesk originated from GitHub and Zendesk (rather than from some mischievous party).
+It's common practice with webhooks to **sign** a message using **Hash-Based Message Authentication Codes** (HMAC).
+We have an entire [article on HMAC](/docs/composer/builder/best-practices/secure-webhook-endpoints-hmac.mdx), but the quick summary is that you and the third party (GitHub or Zendesk) know some secret, and the third-party uses that secret to generate a unique hash of the message they sent.
+By verifying the HMAC signature of a webhook request, you can be sure that the message originated from the correct party, since no one else knows your HMAC signing secret.
+
+Different apps implement HMAC in different ways:
+
+- When Zendesk sends a webhook request, it includes an HMAC signature header and a webhook ID header.
+  The Zendesk trigger, then, uses the Zendesk connection to fetch the webhook's signing secret and verifies the HMAC signature.
+  This is all done for you by the built-in Zendesk trigger.
+- GitHub lets you optionally set an HMAC signing secret when you create the webhook.
+  We can use a config variable that users set at deployment time as the HMAC signing secret.
+  The GitHub trigger references that config variable to verify webhook HMAC signature headers.
+
+For both apps, their respective triggers throw an error and immediately stop an execution if HMAC signatures are not correct, preventing malicious messages from being processed.
+
+## Automating webhook setup
+
+In the previous video, we manually set up webhooks in GitHub.
+But, that's not a process that we want our customers to go through.
+In this video, we'll automate the process of setting up webhooks in GitHub and Zendesk when a customer deploys our integration.
+
+<Vimeo video="923064368" />
+
+To run some "setup" logic when an instance of our integration is deployed, we'll use an [Instance Deploy](/docs/composer/builder/builder-components/management-triggers.mdx#instance-deploy) trigger.
+You can similarly use an [Instance Remove](/docs/composer/builder/builder-components/management-triggers.mdx#instance-remove) trigger to run "teardown" logic when an instance is removed.
+
+### GitHub repos and data sources
+
+We need to know which GitHub repo to configure a webhook for.
+To know that, we'll need to present a list of the customer's GitHub repositories in a dropdown menu when they configure our integration.
+The GitHub component's [List Repos](/docs/composer/builder/builder-components/github.mdx#list-repos) data source will allow us to create that dropdown menu.
+
+<Screenshot
+  filename="getting-started/advanced-integration/github-configure-dropdown.png"
+  alt="GitHub configure connection"
+  maxWidth="850px"
+/>
+
+The data source will use the end user's OAuth 2.0 credentials to fetch a list of repositories that the user has access to, and it will present the repositories as a dropdown picklist menu.
+
+<Screenshot
+  filename="getting-started/advanced-integration/github-dropdown-menu.png"
+  alt="GitHub complete connection"
+  maxWidth="750px"
+/>
+
+### Removing webhooks on instance removal
+
+We also want to remove webhooks that we've created if someone removes an instance of the integration.
+To do that, we'll begin another flow with an [Instance Remove](/docs/composer/builder/builder-components/management-triggers.mdx#instance-remove) trigger, which executes when someone deletes an instance.
+
+We can leverage GitHub and Zendesk's respective **Delete Instance Webhooks** actions.
+These actions are aware of the current instance's webhook URLs, and remove only webhooks in GitHub and Zendesk that target those URLs.
+The clean-up flow consists of a trigger and three steps:
+
+<Screenshot
+  filename="getting-started/advanced-integration/instance-remove-flow.png"
+  alt="Advanced integration instance remove flow to remove webhooks"
+  maxWidth="720px"
+/>
+
+:::caution Don't delete other apps' webhooks!
+It's easy to make the mistake of listing webhooks and removing all of them.
+Use caution when listing and removing webhooks – some of your customer's webhooks may be configured for other apps and are completely unrelated to your integration.
+Most built-in components that support webhooks have a **Delete Instance Webhooks** action that removes only webhooks for your instance.
+:::
+
+## Preparing for the integration marketplace
+
+Now that we've built and tested a fully functional integration that sets up webhooks and syncs data between GitHub and Zendesk, we're ready to publish it to our [embedded Builder marketplace](/docs/composer/builder/embedding-marketplace.mdx).
+
+<Vimeo video="923064732" />
+
+Additional metadata can be [added](/docs/composer/builder/integrations.mdx/#categorizing-integrations) to our integration, and helpful documentation, images, and even raw HTML can be added to the [config wizard](/docs/composer/builder/configuration-wizard.mdx) that your customers work through.
+
+### What your customer sees
+
+When your customer deploys an instance of your integration for themselves, they will not see the flow editor or any of the components that you used to build the integration.
+
+Instead, they'll see a configuration wizard that you've designed.
+The wizard will guide them through the process of connecting their GitHub and Zendesk accounts:
+
+<Screenshot
+  filename="getting-started/advanced-integration/config-wizard-1.png"
+  alt="GitHub to Zendesk config wizard 1"
+  maxWidth="750px"
+/>
+
+Then, it will ask them to select a GitHub repository from a dropdown menu:
+
+<Screenshot
+  filename="getting-started/advanced-integration/config-wizard-2.png"
+  alt="GitHub to Zendesk config wizard 2"
+  maxWidth="750px"
+/>
+
+## Conclusion
+
+This example integration modeled what a bi-directional, event-driven integration could look like.
+We used Zendesk and GitHub for illustration purposes, but you can build similar integrations between your app and a [variety](/docs/composer/builder/builder-components/component-catalog.mdx) of other third-party apps.
+
+In the next guide, [Your First Custom Component](/docs/composer/builder/getting-started/first-custom-component/set-up-environment.mdx), you'll walk through how to use NodeJS to build a custom component for your app.

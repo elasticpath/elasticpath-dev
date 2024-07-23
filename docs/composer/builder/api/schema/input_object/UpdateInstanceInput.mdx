@@ -1,0 +1,25 @@
+---
+id: UpdateInstanceInput
+title: UpdateInstanceInput Input Object
+sidebar_label: UpdateInstanceInput
+description: Learn how to use the UpdateInstanceInput Input Object for Builder's API.
+---
+
+## Input fields
+
+| Argument              | Type                                                                                       | Description                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `description`         | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | Additional notes about the Instance.                                                                               |
+| `name`                | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | The name of the Instance.                                                                                          |
+| `integration`         | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                           | The Integration that has been deployed for the Instance.                                                           |
+| `enabled`             | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Specifies whether the Instance is currently enabled and in an executable state.                                    |
+| `logsDisabled`        | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Specifies whether to disable the creation of logs during Instance execution.                                       |
+| `stepResultsDisabled` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Specifies whether to disable the creation of step results during Instance execution.                               |
+| `labels`              | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                 | The labels that are associated with the object.                                                                    |
+| `configVariables`     | [`[InputInstanceConfigVariable]`](/docs/composer/builder/api/schema/input_object/InputInstanceConfigVariable.mdx) | The Instance with which the Config Variable is associated.                                                         |
+| `flowConfigs`         | [`[InputInstanceFlowConfig]`](/docs/composer/builder/api/schema/input_object/InputInstanceFlowConfig.mdx)         | The configuration for the IntegrationFlow associated with the Instance.                                            |
+| `preserveDeployState` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Specifies whether to update the value of needsDeploy as part of the mutation or leave its current value unaltered. |
+| `configMode`          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | Desired configuration mode.                                                                                        |
+| `starred`             | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                                                 | Indicates whether the record is starred by the signed-in User.                                                     |
+| `id`                  | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                           | The ID of the Instance to mutate.                                                                                  |
+| `clientMutationId`    | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                                   | A unique identifier for the client performing the mutation.                                                        |

@@ -1,0 +1,56 @@
+---
+id: spectral-3-upgrade-guide
+title: Spectral 3.x Upgrade Guide
+description: Upgrade your custom component from Spectral 2.x to 3.x
+---
+
+Some changes were made between Spectral 2.x and Spectral 3.x to allow component developers to specify authorization methods (Basic Auth, OAuth2, etc.) at the action level (rather than at the component level).
+Let's look at this change, and how to go about upgrading a component from Spectral 2.x to Spectral 3.x.
+
+To start, update `@prismatic-io/spectral` to `^3.0.0` in your `package.json` file and then run `npm install` or `yarn install`:
+
+```json
+{
+  "dependencies": {
+    "@prismatic-io/spectral": "^3.0.0"
+  }
+}
+```
+
+Next, **remove** the `authorization` block from your `component` definition:
+
+```typescript {10-13}
+export default component({
+  key: "sampleComponent",
+  public: false,
+  display: {
+    label: "Sample Component",
+    description: "sampleComponent",
+    iconPath: "icon.png",
+  },
+  actions: { myAction },
+  authorization: {
+    required: true,
+    methods: ["basic", "api_key"],
+  }
+});
+```
+
+Finally, **add** an `authorization` block to any `action` definition that requires credentials:
+
+```typescript {10-13}
+export const myAction = action({
+  display: {
+    label: "My Action",
+    description: "This is my action",
+  },
+  perform: async ({ credential }, { myInput }) => {
+    // Do something with the credential ...
+  },
+  inputs: { myInput: myInputField },
+  authorization: {
+    required: true,
+    methods: ["basic", "api_key"],
+  }
+});
+```

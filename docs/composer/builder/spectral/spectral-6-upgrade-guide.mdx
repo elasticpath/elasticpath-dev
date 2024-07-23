@@ -1,0 +1,152 @@
+---
+id: spectral-6-upgrade-guide
+title: Spectral 6.x Upgrade Guide
+description: Upgrade your custom component from Spectral 5.x to 6.x
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+Spectral 6.x is completely backwards-compatible with Spectral 5.x.
+You can safely bump your version of Spectral from 5.x to 6.x without changes to your custom component code.
+
+The focus of Spectral 6.x was developer experience enhancements - helping developers follow [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principles, ensuring type safety, creating better error handling and building a more robust component testing suite.
+
+## New - Cleaning and Typing Input Values
+
+An input of an action can be anything - a number, string, boolean, JavaScript Buffer, a complex object with lots of properties, etc.
+Prior to Spectral 6.x, that meant that inputs were passed to `perform` functions with TypeScript type `unknown`.
+
+<Screenshot
+  filename="spectral/spectral-6-upgrade-guide/unknown-type.png"
+  maxWidth="400px"
+  alt="Screenshot of code editor showing unknown type"
+/>
+
+In order to ensure that the input was properly typed, each step that used that input had to use a utility function, like [`util.types.toNumber()`](/docs/composer/builder/spectral/modules/_util_.md/#const-tonumber), to ensure that the value was cast to the proper type.
+
+If multiple actions shared the same input, that resulted in a lot of repetitive code.
+
+You can now `clean` an input prior to it being presented to the `perform` function.
+
+```typescript {6} title="Ensure an input is cast to a string with a clean function"
+const lastName = input({
+  label: "Last Name",
+  placeholder: "Last name of a person",
+  type: "string",
+  required: true,
+  clean: (value) => util.types.toString(value),
+});
+```
+
+With a typed clean function (like `util.types.toString`, which always returns a `string`), your perform function will be cognizant of the input's type.
+
+<Screenshot
+  filename="spectral/spectral-6-upgrade-guide/string-type.png"
+  maxWidth="400px"
+  alt="Screenshot of code editor showing string type"
+/>
+
+The `clean` function always takes one parameter - the input from the integration runner - and should return a typed value.
+Your clean functions can be as simple or complex as you like, and you can incorporate data validation within the clean function to catch incorrectly formatted input.
+
+For example, you can ensure that the input you received is an array, and that the array's values are cast to numbers (in case they happen to come in as strings):
+
+```typescript {6-11} title="Ensure input is an array of numbers"
+const prices = input({
+  label: "Prices",
+  placeholder: "A list of prices",
+  type: "string",
+  required: true,
+  clean: (value) => {
+    if (!Array.isArray(value)) {
+      throw new Error("Provided list is not an array.");
+    }
+    return value.map(util.types.toNumber);
+  },
+});
+```
+
+An example of a more complex `clean` function that returns an object with multiple fields is available in our [examples repo](https://github.com/prismatic-io/examples/blob/9ff35d3174c6d55b25381a9b0c33997aea5625f1/components/data-example/src/index.ts#L10-L27).
+
+## New - Global Error Handlers
+
+This is another improvement that helps keep your component code DRY.
+
+The actions in your component might all wrap API endpoints using an HTTP client, and that client might throw certain errors.
+You could handle those errors within each action, but you'd end up writing the same error handlers over and over.
+
+You can now specify an error handler function to run whenever any of your actions throws an error.
+To specify an error handler, add a `handlers` block to your `component({})` function definition:
+
+```typescript
+components({
+  // ...
+  handlers: {
+    error: (error) => doSomething(error),
+  },
+});
+```
+
+For example, the popular HTTP client [axios](https://www.npmjs.com/package/axios) throws an error whenever it receives a status code that's [_not_ between 200-299](https://github.com/axios/axios/blob/1f13dd7e26124a27c373c83eff0a8614acc1a04f/lib/defaults/index.js#L127-L129).
+If your HTTP client receives a status code in the 4xx or 5xx range, an error is thrown with a minimal message.
+If you would like additional information, like the status code or full response to the HTTP request, you can inspect the error being thrown and return a more detailed error message, as illustrated in Spectral [here](https://github.com/prismatic-io/spectral/blob/v6.5.0/packages/spectral/src/clients/http/index.ts#L53-L62).
+
+## New Spectral Testing Harness
+
+New error handlers are defined at the _component_ level, so testing your component's behavior holistically is important.
+
+Prior to Spectral 6.x, you would write a Jest unit test for an action using an `invoke` function like this:
+
+```typescript title="Example of unit testing in Spectral 5.x"
+// highlight-next-line
+import { myAction } from ".";
+// highlight-next-line
+import { invoke } from "@prismatic-io/spectral/dist/testing";
+
+describe("test my action", () => {
+  test("verify the return value of my action", async () => {
+    const sampleInputData = {
+      productName: "Widget",
+      price: 1.25,
+      quantity: 75,
+    };
+    const expectedOutput =
+      "This is an invoice for 75 Widgets at price $1.25. Total price: $93.75";
+    // highlight-next-line
+    const { result } = await invoke(myAction, {
+      pointOfSale: sampleInputData,
+    });
+    expect(result.data).toBe(expectedOutput);
+  });
+});
+```
+
+The same test can be done by creating a testing harness with `new ComponentTestHarness(component)`.
+The advantage of this method is that your component-level global error handling hooks and input `clean` functions will be included in your test.
+
+```typescript title="The same test in Spectral 6.x"
+// highlight-next-line
+import component from ".";
+// highlight-next-line
+import { ComponentTestHarness } from "@prismatic-io/spectral/dist/testing";
+
+// highlight-next-line
+const harness = new ComponentTestHarness(component);
+
+describe("test my action", () => {
+  test("verify the return value of my action", async () => {
+    const sampleInputData = {
+      productName: "Widget",
+      price: 1.25,
+      quantity: 75,
+    };
+    const expectedOutput =
+      "This is an invoice for 75 Widgets at price $1.25. Total price: $93.75";
+    // highlight-next-line
+    const result = await harness.action("myAction", {
+      pointOfSale: sampleInputData,
+    });
+    expect(result.data).toBe(expectedOutput);
+  });
+});
+```

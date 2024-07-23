@@ -1,0 +1,715 @@
+---
+id: customers
+title: Customers
+description: Create and manage Builder customers
+---
+
+import Icon from "@mui/material/Icon";
+import ExampleTabs from "@site/src/components/example-tabs";
+import TabItem from "@theme/TabItem";
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+When we reference customers, we're talking about _your_ customers.
+Your [organization](/docs/composer/builder/organization.mdx) creates customers and [integrations](/docs/composer/builder/integrations.mdx) in Builder.
+Then, your customers can either enable instances of your integrations themselves through your [integration marketplace](/docs/composer/builder/integration-marketplace.mdx), or your team members can deploy [instances](/docs/composer/builder/instances.mdx) to them.
+You can create [users](/docs/composer/builder/users.mdx#customer-users) for your customers and assign them [roles](/docs/composer/builder/users.mdx#customer-user-roles) so that they can manage and have insight into the instances that are deployed to them.
+
+<Screenshot
+  filename="getting-started/introduction/organization_and_customers.png"
+  maxWidth="600px"
+  alt="Simple diagram of an org and customers"
+/>
+
+Like all Builder resources, customers can be managed via Builder's CLI tool, [prism](/docs/composer/builder/cli/cli-usage.mdx), or through the web app by clicking the **Customers** link on the left-hand sidebar.
+
+<Screenshot
+  filename="customers/customers-page.png"
+  alt="List of customers in Builder app"
+/>
+
+## Creating new customers
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+After clicking on the **Customers** link on the left-hand sidebar, click the **+ Add Customer** button on the upper-right.
+Enter an appropriate name and description for your customer.
+
+<Screenshot
+  filename="customers/add-customer.png"
+  maxWidth="600px"
+  alt="Add customer in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To create new customers, use the `prism customers:create` subcommand.
+
+```bash
+prism customers:create \
+    --name 'FTL Rockets' \
+    --description 'Faster-Than-Light Rocket Inc'
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Create a new customer using the [createCustomer](/docs/composer/builder/api/schema/mutation/createCustomer.mdx) mutation:
+
+```graphql
+mutation {
+  createCustomer(
+    input: { name: "FTL Rockets", description: "Faster-Than-Light Rocket Inc" }
+  ) {
+    customer {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Searching customers
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+After clicking the **Customers** link on the left-hand sidebar, you can enter a portion of a customer's name into the search bar to filter customers by name.
+To filter customers by **description**, **[external ID](#customer-external-ids)**, or **[label](#customer-labels)** instead, click the **Filter** button to the right of the search bar.
+
+<Screenshot
+  filename="customers/search-customers.png"
+  maxWidth="600px"
+  alt="Search customer in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+You can list customers using `prism customers:list`, and can `--filter` or `--sort` the results:
+
+```bash
+prism customers:list --filter "Name=Smith Rocket Company"
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Query [customers](/docs/composer/builder/api/schema/query/customers.mdx) for a list of customers:
+
+```graphql
+query {
+  customers {
+    nodes {
+      id
+      name
+      description
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Modifying customers
+
+After clicking the **Customers** link on the left-hand sidebar, you will be presented with a list of your customers.
+
+Clicking the name of any customer will bring you to the customer's page.
+This page contains a menu with options to manage instances assigned to the customer, alert monitors, logs, customer users, and file attachments.
+
+### Editing customer name, description and logo
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the customer's page, click into the **Details** tab on the top of the page to change the customer's name or modify the longer customer description.
+To modify the customer's avatar icon, click the _Upload a photo_ link on the **Details** tab.
+The avatar icon you upload will be resized and cropped to 500 x 500 pixels.
+Transparent PNG images tend to look the best.
+
+<Screenshot
+  filename="customers/details.png"
+  maxWidth="600px"
+  alt="Edit customer details in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+Update the customer name or description from the command line using the `prism customers:update` subcommand with the customer's ID:
+
+```bash
+prism customers:update \
+    EXAMPLEtZXI6M2JkYzcwNTAtZTU2ZS00ZGJkLThmMzQtNWI0MDdhOTEXAMPLE \
+    --name "New Customer Name" \
+    --description "New Customer Description"
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Use the [updateCustomer](/docs/composer/builder/api/schema/mutation/updateCustomer.mdx) mutation to update a customer:
+
+```graphql
+mutation {
+  updateCustomer(
+    input: {
+      id: "Q3VzdG9tZXI6ZDIyOGUwNjItYzc0NC00NDFkLWE0MDMtNjQ1NTU4MDQ1OTZk"
+      name: "New Customer Name"
+      description: "New customer description"
+    }
+  ) {
+    customer {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Customer labels
+
+Labels help you keep your customers organized.
+You can assign any number of labels to a customer from the customer's **summary** tab, and can then [search](#searching-customers) for customers by label.
+_Note_: for consistency, labels are always lower-cased.
+
+<Screenshot
+  filename="customers/search-by-label.png"
+  maxWidth="800px"
+  alt="Search customers by label in Builder app"
+/>
+
+## Deploying instances to a customer
+
+An **instance** of an integration is a versioned copy of an integration that is configured and deployed to a specific customer.
+Config variables that are unique to the customer can be applied to an instance.
+
+For more information on attaching config variables, see the [instances](/docs/composer/builder/instances.mdx) page.
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the customer's page select the **Instances** tab.
+There, you will see any instances currently deployed to your customer, with information on when they were last run, what versions are deployed, etc.
+
+To deploy a new instance, click the **+ Add instance** button on the top-right corner.
+Select the integration you wish to deploy, and give the instance an appropriate name and description.
+
+<Screenshot
+  filename="shared/add-instance.png"
+  maxWidth="600px"
+  alt="Deploy instance to a customer in Builder app"
+/>
+
+Once the instance is created, you will be prompted to configure any config variables required by the integration.
+
+</TabItem>
+<TabItem value='cli'>
+
+To deploy an instance to a customer, use the `prism instances:create` subcommand.
+
+```bash
+# Get the Customer ID
+CUSTOMER_ID=$(
+    prism customers:list \
+        --columns id \
+        --filter 'Name=^FTL Rockets$' \
+        --no-header)
+
+# Find the ID of the integration you want to deploy
+INTEGRATION_ID=$(prism integrations:list --columns id --no-header --filter 'name=Acme Inc')
+
+# Find the version ID of the latest available published version
+VERSION_ID=$(prism integrations:versions ${INTEGRATION_ID} --latest-available --columns id --no-header)
+
+# Connection config variables must be escaped
+CREDENTIALS='[{\"name\":\"username\",\"type\":\"value\",\"value\":\"my.username\"},{\"name\":\"password\",\"type\":\"value\",\"value\":\"Pa$$W0Rd\"}]'
+
+# Create an instance given a specific $VERSION_ID,
+# a customer $CUSTOMER_ID and required config variables
+# ("My Endpoint", "Do Thing?" and "Acme Basic Auth"):
+prism instances:create \
+    --name 'Acme Inc' \
+    --description 'Acme Inc instance for Smith Rocket Co' \
+    --integration ${VERSION_ID} \
+    --customer ${CUSTOMER_ID} \
+    --config-vars "[
+        {
+            \"key\": \"My Endpoint\",
+            \"value\": \"https://example.com/api\"
+        },
+        {
+            \"key\": \"Do Thing?\",
+            \"value\": \"true\"
+        },
+        {
+            \"key\": \"Acme Basic Auth\",
+            \"values\": \"${CREDENTIALS}\"
+        }
+    ]" \
+    --label 'Production' \
+    --label 'Paid'
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Use the [createInstance](/docs/composer/builder/api/schema/mutation/createInstance.mdx) mutation to deploy an instance to a customer:
+
+```graphql
+mutation {
+  createInstance(
+    input: {
+      name: "My Instance"
+      description: "Deployment of my integration"
+      integration: "SW50ZWdyYXRpb246ZDgwZjkyYmEtNTEyZS00N2IxLWEzMzgtZTAxOGE1OGNkMDRi"
+      customer: "Q3VzdG9tZXI6MmM4YmUxZDgtOTU5Ny00MTI3LWI5MTUtYjBmMjc3Y2YyNWYw"
+    }
+  ) {
+    instance {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+**For More Information**:
+[Instances](/docs/composer/builder/instances.mdx)
+
+## Managing alert monitors
+
+**Alert monitors** allow you to send alerts to your team when an [alert trigger](/docs/composer/builder/monitoring-and-alerting.mdx#alert-triggers) fires on an instance.
+
+For example, you may want to your DevOps team to be alerted via text message when an instance fails to run,
+or you may want your project management team to be emailed when an instance is enabled.
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the customer's page select the **Monitors** tab.
+There, you will see any monitors currently deployed to your customer, with information on if/when it was last triggered, which instance it is associated with, and what triggers the monitor.
+
+<Screenshot
+  filename="customers/alert-monitor-list.png"
+  alt="Alert monitors list for customer in Builder app"
+/>
+
+To deploy a new monitor, click the **+ Add alert monitor** button on the top-right corner.
+Give the monitor a name and and select the trigger that will activate this alert. The alert will be linked to the current instance.
+
+<Screenshot
+  filename="customers/add-alert-monitor.png"
+  maxWidth="800px"
+  alt="Add alert monitor in Builder app"
+/>
+
+After creating the new monitor, select the users to alert or webhooks to invoke when the monitor is triggered from the **Details** tab.
+You can add additional triggers that will trigger an alert.
+When you are finished editing the alert, be sure to click **Save** to save your changes.
+
+<Screenshot
+  filename="customers/alert-notifications.png"
+  alt="Alert monitors for an instance in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To create an alert monitor on an instance, identify the alert trigger ID, instance ID, and groups, users, or webhooks you want to alert.
+
+```bash
+# Get a User ID
+USER_ID=$(prism customers:users:list
+            Q3VzdG9tZXI6NTRlNDQyMDgtNTJiNi00ZGVhLTgyODYtOWRkNDU4MTA2ZTYw \
+            --columns id \
+            --no-header \
+            --filter 'Email=alexander.cooper@progix.io')
+
+# List available alert triggers
+prism alerts:triggers:list --extended
+
+ Id                                                                   Name
+ ──────────────────────────────────────────────────────────────────── ──────────────────────────────────────
+ QWxlcnRUcmlnZ2VyOjgxNTY0MzAxLWUwZGEtNDI2ZC1hMDNlLWVmYWYzYzJhYzI5OA== Log Level Matched or Exceeded
+ QWxlcnRUcmlnZ2VyOmQwZjFiMDkyLTBiMmUtNDI3OS1iZjY2LWI0ZDdiZjQwNWFmMQ== Execution Duration Matched or Exceeded
+ QWxlcnRUcmlnZ2VyOmQ1ZTgzMDZmLTdjMTAtNDk4NC1iZDkwLWVlMjcwODE3NGMwZA== Execution Overdue
+ QWxlcnRUcmlnZ2VyOjZlMWJmYWNkLTA3ODgtNGY2MC04MDFlLTE3MWU4ZDlhNGFiNA== Execution Started
+ QWxlcnRUcmlnZ2VyOjlkMjkyM2MzLTZkYWEtNDY3NS05MWQ1LTg0YjVjNjQxODdkYw== Execution Completed
+ QWxlcnRUcmlnZ2VyOjQyYmM2MDY5LTE5YTktNDE1MS04ZjAwLTQ4ZWExN2E3MzZjMQ== Execution Failed
+ QWxlcnRUcmlnZ2VyOjA5NDI5ODIwLTJiMzgtNDEwZS1iNmRmLTM1MzJkZDdlYjdjNw== Execution Failed, Retry Pending
+ QWxlcnRUcmlnZ2VyOjcxMDg4Mzg1LWRkYjMtNGU1MS04Y2YyLTgyNjQwNDMyNWEyYg== Instance Disabled
+ QWxlcnRUcmlnZ2VyOjQ1YzQyYjI0LWI5YjItNDU2OC1iOTE1LTBjNzkwYTAwMDI1OQ== Instance Enabled
+ QWxlcnRUcmlnZ2VyOmVjYTlkMGRmLTRlZWYtNDgwZC04MTE3LTYxZjQyMzBmMWZjZA== Instance Removed
+
+# Create an alert monitor for Alex if the "Fabricate 3D Model" instance fails
+prism alerts:monitors:create \
+    --users "[\"${USER_ID}\"]" \
+    --name 'Alert Alex on Execution Failure' \
+    --instance $(prism instances:list --columns id --filter 'name=Fabricate 3D Model' --no-header) \
+    --triggers "[\"QWxlcnRUcmlnZ2VyOjQyYmM2MDY5LTE5YTktNDE1MS04ZjAwLTQ4ZWExN2E3MzZjMQ==\"]"
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To create an alert monitor for an instance, you will need to query [alertTriggers](/docs/composer/builder/api/schema/query/alertTriggers.mdx) and select which types of triggers should result in an alert:
+
+```graphql
+query listTriggers {
+  alertTriggers {
+    nodes {
+      id
+      name
+    }
+  }
+}
+```
+
+You will also need the ID of the instance you want to attach the alert to, and the IDs of any users or groups who should be notified.
+Then, use the [createAlertMonitor](/docs/composer/builder/api/schema/mutation/createAlertMonitor.mdx) mutation to create the alert monitor:
+
+```graphql
+mutation (
+  $name: String!
+  $instance: ID!
+  $triggers: [ID]!
+  $groups: [ID]
+  $users: [ID]
+) {
+  createAlertMonitor(
+    input: {
+      name: $name
+      instance: $instance
+      triggers: $triggers
+      groups: $groups
+      users: $users
+    }
+  ) {
+    alertMonitor {
+      id
+    }
+  }
+}
+```
+
+```json title="Query Variables"
+{
+  "name": "Alert Alex and DevOps on Execution Failure",
+  "instance": "SW5zdGFuY2U6OTc1YzgyMTEtYTIxZi00OTg1LThhODYtMTUxMTczM2ZiYTJh",
+  "triggers": [
+    "QWxlcnRUcmlnZ2VyOjhiOTg3YmYxLTk4YmMtNDViNy1hZDFkLTEwNWY0YTExZjdlOA==",
+    "QWxlcnRUcmlnZ2VyOjdlOWEzMDA2LTQxODItNDQ0MC1iYzE2LTFiNjNjMzI2NzkwZA=="
+  ],
+  "groups": ["QWxlcnRHcm91cDo5MDQyYmM1ZC1hYTU5LTQ3Y2EtOWE4NC00NWIxNDBmZjYzYmQ"],
+  "users": ["VXNlcjo4MzBjZTZmYS1iNDFlLTQ2MTQtODgzNi04NjA1MTcyY2IyOTc="]
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+**For More Information**:
+[Alert Monitors](/docs/composer/builder/monitoring-and-alerting.mdx)
+
+## Accessing customer logs
+
+At Builder we believe verbose and searchable logs are critical to any software ecosystem.
+Logs of all instance invocations are stored for all customers, and are searchable and filterable.
+
+To access logs of instances for a specific customer, open the customer's page and select the **Logs** tab.
+
+<Screenshot
+  filename="customers/logs-list.png"
+  alt="Access customer instance logs in Builder app"
+/>
+
+You can search log messages using the search bar on the top of the page.
+
+<Screenshot
+  filename="shared/search-customer-logs.png"
+  alt="Search customer instance logs in Builder app"
+/>
+
+Logs can be filtered by clicking the **Filter** button to the right of the search bar.
+You can filter logs by:
+
+- Log Type
+- Log Severity
+- Date/Time Range
+- Integration
+- Version
+- Instance
+
+<Screenshot
+  filename="shared/filter-customer-logs.png"
+  alt="Filter customer instance logs in Builder app"
+/>
+
+Clicking on a log line will open a pane with the full message of the log.
+
+<Screenshot
+  filename="shared/log-line-more-info.png"
+  alt="Customer instance log entry details in Builder app"
+/>
+
+**For More Information**:
+[Logging](/docs/composer/builder/logging.mdx),
+[Log Retention](/docs/composer/builder/logging.mdx#log-retention),
+[Logging from Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx#logger-object)
+
+## Viewing instance execution results
+
+It's useful for debugging purposes to be able to see execution results of instance invocations.
+Click the **Executions** tab from a customer's page to see the logs and step outputs of all instances deployed to that customer.
+
+<Screenshot
+  filename="customers/execution-results.png"
+  alt="Logs and step outputs for customer instances in Builder app"
+/>
+
+## Managing customer users
+
+Customer users are users at _your_ customer locations who have access to instances deployed to them.
+Depending on the [role](/docs/composer/builder/users.mdx#customer-user-roles) you assign to the user, the user might have read or write access to their instances.
+That means that you can grant permission to your customers to update instances that are deployed to them, so they can do things like update config variables to third-party APIs without needing you to intervene.
+
+Customer users' accounts are limited in scope. They cannot view instances belonging to your other customers, nor see organization-level resources.
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+Users for your customers are managed by opening a customer's page and selecting the **Users** tab.
+
+<Screenshot
+  filename="shared/list-customer-users.png"
+  maxWidth="800px"
+  alt="Manage customer users in Builder app"
+/>
+
+New users can be added by clicking the **+ Add user** button.
+Enter the user's name and email address and give the user an appropriate role.
+More information about customer user roles can be found on the [users](/docs/composer/builder/users.mdx#customer-user-roles) page.
+
+<Screenshot
+  filename="shared/add-customer-user.png"
+  maxWidth="800px"
+  alt="Add customer user in Builder app"
+/>
+
+When users are added, they receive an email confirmation that will prompt them to log in and set their password and optional phone number.
+
+<Screenshot
+  filename="shared/edit-customer-user.png"
+  alt="Edit customer user in Builder app"
+/>
+
+To delete a user, select the user from the **Users** tab.
+Click the **Delete user** on the bottom of the page.
+
+</TabItem>
+<TabItem value='cli'>
+
+To list users with the `prism` CLI tool, use the `prism customers:users:list` subcommand.
+
+```bash
+# Get your customer's ID
+CUSTOMER_ID=$(
+    prism customers:list \
+        --columns=id \
+        --filter 'Name=^FTL Rockets$' \
+        --no-header)
+
+# List that customer's users
+prism customers:users:list ${CUSTOMER_ID}
+```
+
+To add a new customer, use the `prism customers:users:create` subcommand.
+More information about user roles can be found on the [users](/docs/composer/builder/users.mdx#customer-user-roles) page.
+
+```bash
+# Get your customer's ID
+CUSTOMER_ID=$(
+    prism customers:list \
+        --columns=id \
+        --filter 'Name=^FTL Rockets$' \
+        --no-header)
+
+# Get the ID of the "Admin" role
+ROLE_ID=$(prism customers:users:roles \
+            --columns id \
+            --no-header \
+            --filter 'name=^Admin$')
+
+# Create a user "Lisa Nguyen" that has the "Admin" role
+prism customers:users:create \
+    --email 'lisa.nguyen@ftl-rockets.com' \
+    --name 'Lisa Nguyen' \
+    --customer ${CUSTOMER_ID} \
+    --role ${ROLE_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To list all customers query [customers](/docs/composer/builder/api/schema/query/customers.mdx), or query [customer](/docs/composer/builder/api/schema/query/customer.mdx) for a specific customer's users:
+
+```graphql
+query {
+  customers {
+    nodes {
+      name
+      users {
+        nodes {
+          name
+          email
+        }
+      }
+    }
+  }
+}
+```
+
+To create a new customer user, use the [createCustomerUser](/docs/composer/builder/api/schema/mutation/createCustomerUser.mdx) mutation.
+You will need to know the ID of the role you want to assign the user, as well as the ID of the customer:
+
+```graphql
+mutation {
+  createCustomerUser(
+    input: {
+      name: "Lisa Nguyen"
+      email: "lisa.nguyen@ftl-rockets.com"
+      role: "Um9sZTplMTRlZjUzNC0yOTZiLTQ4MjAtYjhmNS1jZjQ1Zjg4N2I0YjM="
+      customer: "Q3VzdG9tZXI6ZDIyOGUwNjItYzc0NC00NDFkLWE0MDMtNjQ1NTU4MDQ1OTZk"
+    }
+  ) {
+    user {
+      id
+    }
+  }
+}
+```
+
+Delete a user using the [deleteUser](/docs/composer/builder/api/schema/mutation/deleteUser.mdx) mutation:
+
+```graphql
+mutation {
+  deleteUser(
+    input: { id: "VXNlcjpmYjFiNDMyZC0zN2Y5LTQyZTUtOTljNy1hNjc1ZWIzZGUyNTA=" }
+  ) {
+    user {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+**For More Information**:
+[Users](/docs/composer/builder/users.mdx)
+
+## Using customer attachments
+
+Attachments are a place to store documents that both customers and your team members can reference.
+After opening a customer's page select the **Attachments** tab.
+
+Documents can be added using the **+Add attachment** button, and deleted by clicking the <Icon>delete</Icon> icon.
+
+<Screenshot
+  filename="customers/attachments.png"
+  alt="Add attachments to customers in Builder app"
+/>
+
+## Deleting customers
+
+:::warning Deleting a Customer is Permanent
+When a customer is deleted, all associated users, and instances are also deleted.
+Use caution when deleting customers.
+:::
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+After clicking on the **Customers** link on the left-hand sidebar, click the name of the customer you would like to delete, and then select the **Details** tab.
+
+Verify that the name shown matches the customer you wish to delete, and click the **Delete customer** button.
+Confirm your choice by typing the customer name exactly, and then click **Remove customer**.
+
+<Screenshot
+  filename="customers/delete-customer.png"
+  maxWidth="400px"
+  alt="Delete customer in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To delete a customer, use the `prism customers:delete` subcommand.
+
+```bash
+# Get the customer's ID
+CUSTOMER_ID=$(prism customers:list \
+                --columns id \
+                --filter 'Name=^FTL Rockets$' \
+                --no-header)
+
+prism customers:delete ${CUSTOMER_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Delete a customer using the [deleteCustomer](/docs/composer/builder/api/schema/mutation/deleteCustomer.mdx) mutation:
+
+```graphql
+mutation {
+  deleteCustomer(
+    input: {
+      id: "Q3VzdG9tZXI6ZDIyOGUwNjItYzc0NC00NDFkLWE0MDMtNjQ1NTU4MDQ1OTZk"
+    }
+  ) {
+    customer {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Customer external IDs
+
+A customer can be assigned an **External ID** - a unique identifier from an external system.
+So, if you know "Smith Rocket Company" as a customer with an ID of `abc-123` in another system you use, you can assign "Smith Rocket Company" in Builder the `externalId` of `abc-123`.
+This is helpful if you need to quickly look up or associate customers in Builder with customers in your external system.
+
+External IDs can be set programmatically (see the next section), or can be edited within the Builder we app by clicking the **Customers** link on the left-hand sidebar, selecting a customer, and then clicking on the **Details** tab.
+
+<Screenshot
+  filename="customers/external-id.png"
+  maxWidth="700px"
+  alt="Set customer external IDs in Builder app"
+/>
+
+External IDs are required if you want to route webhook requests to instances deployed to specific customers using [shared](/docs/composer/builder/integration-triggers.mdx#webhook-endpoint-configuration) webhook triggers.
+
+### Sync customers from an external system programmatically
+
+If you use a customer management tool to keep track of your customers, like Salesforce or another tool specific to your company or industry, you can use Builder's API to programmatically sync customers from your external tool to Builder.
+
+In addition at a **name** and **description**, a customer created through the [createCustomer](/docs/composer/builder/api/schema/mutation/createCustomer.mdx) mutation can be assigned an `externalId`, so that you can match customers in Builder to customers saved in other systems.
+
+See our [Syncing Customers to Builder](/docs/composer/builder/custom-components/quickstarts/syncing-customers-to-builder.mdx) quickstart guide for an example of how to sync customers to Builder using our API.

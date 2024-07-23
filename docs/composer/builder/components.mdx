@@ -1,0 +1,152 @@
+---
+id: components
+title: Introduction to Components
+description: Builder components, actions, inputs, results and versioning
+---
+
+import ExampleTabs from "@site/src/components/example-tabs";
+import TabItem from "@theme/TabItem";
+import Screenshot from "@site/src/components/screenshot";
+
+A **component** is a portion of reusable code that accomplishes a specific task, or connects with an outside service.
+For example, the [SFTP component](/docs/composer/builder/builder-components/sftp.mdx) allows integrations to download and modify files on an SFTP server.
+The [Slack component](/docs/composer/builder/builder-components/slack.mdx) posts messages to Slack channels.
+
+Several components are strung together to form an [integration](/docs/composer/builder/integrations.mdx).
+A very simple integration might use the Amazon S3 component to pull down a file from S3, and post the contents of the file to a Slack channel using the Slack component.
+
+<Screenshot
+  filename="components/simple-sample-integration.png"
+  maxWidth="300px"
+  alt="Simple integration in Builder app"
+/>
+
+Complex integrations might be comprised of dozens of actions.
+
+### Builder-provided components
+
+Builder offers a wide array of components to accomplish a variety of things, like serializing data formats, invoking REST endpoints, or interacting with commonly-used SaaS platforms like AWS, Slack, or Dropbox - see our [component catalog](/docs/composer/builder/builder-components/component-catalog.mdx) for a full list of components.
+Source code for some Builder-provided components is available on [GitHub](https://github.com/prismatic-io/examples/tree/main/components).
+
+You can read about components within the web app by clicking the **Components** link on the left-hand sidebar.
+For more detail about a particular component, click the **Component >** link of the component you want to know more about.
+
+<Screenshot
+  filename="components/list-components.png"
+  alt="List of components in Builder app"
+/>
+
+### Custom components
+
+The majority of your integrations can likely be developed using Builder-provided components.
+For the portions of your integrations that are specific to your industry or product, Builder provides the ability to run your own code as part of your integration.
+You can deploy your own code in the form of reusable [custom components](/docs/composer/builder/custom-components/code-vs-custom-components.mdx) or short [code component](/docs/composer/builder/builder-components/code.mdx) steps.
+
+**For More Information**:
+[When Should I Use a Custom Component vs a Code Component?](/docs/composer/builder/custom-components/code-vs-custom-components.mdx#when-should-i-use-a-custom-component-vs-a-code-component)
+
+## Component actions
+
+Components contain one or more **actions** that can be invoked.
+For example, the [Amazon S3 component](/docs/composer/builder/builder-components/aws-s3.mdx) contains actions to copy S3 objects, delete objects, get an object's contents, etc.
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+You can view the actions of a component by clicking **Components** on the left-hand sidebar of the web app, and then clicking into a component.
+You will see the actions a component contains, required credentials to execute those actions, and inputs the actions take.
+
+<Screenshot
+  filename="components/component-actions.png"
+  alt="Component actions in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+The `components:actions:list` CLI subcommand lists all component actions.
+The `--filter` flag allows you to filter results.
+The expression you pass to `--filter` uses [regex](https://regexr.com/) pattern matching (hence the `^` and `$`)
+
+```bash title="List actions of the Amazon S3 component whose keys start with 'delete'"
+prism components:actions:list aws-s3 --filter 'Key=^delete'
+
+ Label         Description
+ ───────────── ────────────────────────────────────
+ Delete Object Delete an Object within an S3 Bucket
+```
+
+</TabItem>
+<TabItem value='api'>
+
+In this query we list the `label` of each of component, and the `label` and `description` of each of their respective actions.
+
+```graphql
+query {
+  components {
+    nodes {
+      label
+      actions {
+        nodes {
+          label
+          description
+        }
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+**For More Information**:
+[Custom Component Actions](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-actions)
+
+## Component authorization methods
+
+Some components require credentials to interact with a SaaS provider, REST endpoint, etc.
+Those credentials might be username/password sets, API keys, OAuth2 tokens, etc.
+
+To see what authorization methods a component can use, click the **Components** link on the left-hand sidebar and select a component.
+Authorization methods will be listed in the component description page.
+
+<Screenshot
+  filename="components/component-auth-methods.png"
+  alt="Component auth methods in Builder app"
+/>
+
+## Component connections
+
+A **connection** is the mechanism by which a component authenticates with a third-party app or service.
+A connection is an input and might contain a username/password set, API key, OAuth 2.0 token, or some other proprietary authentication type.
+
+Component developers define the fields that make up a connection.
+For example, a connection for one component might require a tenant ID and API key.
+The single config variable representing that connection would be made up of two fields: one for tenant ID and one for API key.
+
+## Component versioning
+
+Components are versioned.
+The first time a component is published it is given version "1".
+Thereafter, each time the component is republished its version number increments by one.
+
+Within the integration designer, you can choose which version of a component to use.
+Components marked in grey are using the latest version, and components marked with yellow have newer versions available.
+
+<Screenshot
+  filename="shared/component-version-drawer.png"
+  maxWidth="500px"
+  alt="Component version drawer in Builder app"
+/>
+
+In most cases, you'll will want to use the latest version of each component.
+For the sake of stability and consistency, though, versions of components used in integrations are not bumped to the latest version automatically.
+This prevents unintended issues in your integration if your team member were to publish a broken custom component.
+You can keep an integration pinned to component "version 6" for example, while your team members experiment with a newer "version 7" of a custom component for another integration.
+
+When your team publishes a new version of a custom component, or when Builder publishes a new version of a built-in component, you will see an notification in the integration designer on the **Component Versions** button indicating that some components are outdated.
+To upgrade those components, click the **Component Versions** button and select **CHANGE VERSION** for the component whose version you want to change.
+
+**For More Information**:
+[Choosing Component Versions](/docs/composer/builder/building-integrations.mdx#choosing-component-versions)

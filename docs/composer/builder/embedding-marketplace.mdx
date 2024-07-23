@@ -1,0 +1,972 @@
+---
+id: embedding-marketplace
+title: Embedding Integration Marketplace
+sidebar_label: Embedded Marketplace
+description: Builder's embedded integration marketplace allows your customers to discover all your integrations. Learn how to install the embedded integration marketplace.
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Vimeo title="Embed Builder Marketplace in 20 Minutes" video="906041989" />
+
+The video above walks through the steps to embed Builder in your app, starting from a blank React app.
+
+## Embed the integration marketplace
+
+You can embed the [Integration Marketplace](/docs/composer/builder/integration-marketplace.mdx) into your application with just a few lines of code, giving your customers a native integration deployment experience.
+This article details how to embed Builder's integration marketplace into your application.
+
+For information on how to install the embedded SDK and authenticate customer users, see [Installing Embedded SDK](/docs/composer/builder/installing-embedded.mdx)
+
+Once a user has been authenticated, you can display the integration marketplace to them using the `prismatic.showMarketplace()` function.
+The `showMarketplace()` function takes three optional arguments:
+
+- `usePopover` is a boolean that determines if the marketplace should display as a popover.\
+  By default, the screen is injected as an iframe into an existing DOM element.
+- `selector` identifies which element in the DOM to inject the iframe into when `usePopover` is false.
+- `theme` can override [custom theming](#theming-embedded-marketplace) default behavior, and can be set to `"LIGHT"` or `"DARK"` mode.
+
+### iframe injection method
+
+When `showPopover` is set to `false`, an [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) HTML element is injected into an element that you select with the `selector` argument.
+The iframe contains the integration marketplace.
+
+For example, if you have a section of your app that reads:
+
+```html
+<div id="integration-marketplace-placeholder" style="height:100%">
+  Loading...
+</div>
+```
+
+You can inject the integration marketplace iframe into that div, replacing the "Loading..." text, by invoking:
+
+```javascript
+prismatic.showMarketplace({
+  selector: `#integration-marketplace-placeholder`,
+  usePopover: false,
+});
+```
+
+The result is that the integration marketplace appears to be a portion of the rest of your application:
+
+<Screenshot
+  filename="embedded-marketplace/progix-default.png"
+  alt="Builder integration marketplace embedded in your app"
+/>
+
+Note: at this point marketplace has not been themed to match your app.
+To match your app branding, see [Theming Embedded Marketplace](#theming-embedded-marketplace) below.
+
+For an example of the iframe injection method, see [GitHub](https://github.com/prismatic-io/embedded/blob/main/example-embedded-app/pages/examples/embedded-marketplace.tsx).
+
+### Popover method
+
+If you elect to set `usePopover` to `true`, a popover will be opened containing the integration marketplace:
+
+```typescript
+prismatic.showMarketplace({
+  usePopover: true,
+});
+```
+
+<Screenshot
+  filename="embedded-marketplace/popover.png"
+  alt="Enable popover for Builder embedded marketplace"
+/>
+
+### Filtering integrations
+
+You can choose to show a subset of your integrations by applying `filters` to your `showMarketplace()` invocation.
+
+#### Simple integration filters
+
+You can filter your integrations by a single [category](/docs/composer/builder/integrations.mdx#categorizing-integrations) or [label](/docs/composer/builder/integrations.mdx#integration-labels) (or both).
+If you filter by both, integrations will appear only if they match both `category` and `label`.
+
+For example, if you would like to show only integrations with the category "ERP" and the label "enterprise" in an embedded marketplace, you can issue this invocation:
+
+```javascript title="Filter by category and label"
+prismatic.showMarketplace({
+  selector: `#my-div-id`,
+  usePopover: false,
+  filters: {
+    marketplace: {
+      category: "ERP",
+      label: "enterprise",
+    },
+  },
+});
+```
+
+#### Advanced integration filters
+
+You can use a `filterQuery` to perform more advanced logic when filtering integrations.
+You can query for integrations given the integration's `name`, `labels` or `category`.
+The following operators are at your disposal:
+
+- `TermOperator.equal` checks if the first term is equal to the second term and can be used for `name` and `category`.
+  For example, to show only the integration named "Dropbox" enter:
+
+  ```ts
+  prismatic.showMarketplace({
+    filters: {
+      marketplace: {
+        filterQuery: [TermOperator.equal, "name", "Dropbox"],
+      },
+    },
+  });
+  ```
+
+- `TermOperator.notEqual` checks if the first term is _not_ equal to the second term and can be used for `name` and `category`.
+  For example, to show all integrations _except_ those with the category "ERP" use:
+
+  ```ts
+  prismatic.showMarketplace({
+    filters: {
+      marketplace: {
+        filterQuery: [TermOperator.notEqual, "category", "ERP"],
+      },
+    },
+  });
+  ```
+
+- `TermOperator.in` is used to check if the integration's `labels` include a specific label.
+  For example, if you want to show integrations with a "paid" label, use:
+
+  ```ts
+  prismatic.showMarketplace({
+    filters: {
+      marketplace: {
+        filterQuery: [TermOperator.in, "labels", "paid"],
+      },
+    },
+  });
+  ```
+
+- `TermOperator.notIn` will show integrations that do _not_ have certain labels.
+- `TermOperator.startsWith` checks if a `name` or `category` begins with a certain string.
+  For example, to find all integrations that start with "Algolia" use:
+
+  ```ts
+  prismatic.showMarketplace({
+    filters: {
+      marketplace: {
+        filterQuery: [TermOperator.startsWith, "name", "Algolia"],
+      },
+    },
+  });
+  ```
+
+  That will match integrations with names like `Algolia - Dropbox` or `Algolia - SFTP`.
+
+- `TermOperator.doesNotStartWith` returns integrations with name or category that does _not_ start with a certain string.
+- `TermOperator.endsWith` returns integrations with name or cateogry that ends with a certain string.
+- `TermOperator.doesNotEndWith` returns integrations with name or cateogry that does _not_ end with a certain string.
+
+Several conditionals can be applied in unison with `and` and `or` logic.
+For example, if you would like to show all integrations that have a category "ERP" and label "paid", and would also like the Dropbox and Slack integrations, a filter could look like:
+
+```ts
+import prismatic, {
+  BooleanOperator,
+  TermOperator,
+} from "@prismatic-io/embedded";
+
+prismatic.showMarketplace({
+  filters: {
+    marketplace: {
+      filterQuery: [
+        BooleanOperator.or,
+        [
+          BooleanOperator.and,
+          [TermOperator.equal, "category", "ERP"],
+          [TermOperator.in, "labels", "paid"],
+        ],
+        [TermOperator.equal, "name", "Dropbox"],
+        [TermOperator.equal, "name", "Slack"],
+      ],
+    },
+  },
+});
+```
+
+### Configure a specific integration
+
+If you'd like to use your own UI elements (a button, div, hyperlink, etc) for selecting an integration to deploy, you can.
+
+Invoke the `prismatic.configureInstance()` function from your UI element to display a configuration screen for a specific integration by passing in the name of the integration as `integrationName`.
+You can pass in other display information (like `usePopover` and `selector`) as you would with the iframe injection and popover methods described above.
+
+You can also pass in an optional `skipRedirectOnRemove` boolean, which defaults to `false`.
+This determines if your user should be redirected to the list of integrations upon removing an integration.
+If you are embedding marketplace, you probably want to keep this value `false`.
+If you're wrapping our API and handling displaying of integrations yourself, you might want this to be `true`.
+
+For example, if you would like your "Salesforce" integration to appear when someone clicks one of your buttons, you could invoke `configureInstance` like this:
+
+```jsx
+const deploySalesforce = () => {
+  prismatic.configureInstance({
+    integrationName: "Salesforce",
+    skipRedirectOnRemove: false,
+    usePopover: true,
+  });
+};
+
+<Button onClick={deploySalesforce}>Configure Salesforce Integration</Button>;
+```
+
+For an example of rendering a custom UI for marketplace, and opening the configuration screen for a specific integration with `prismatic.configureInstance()`, see [GitHub](https://github.com/prismatic-io/embedded/blob/main/example-embedded-app/pages/examples/custom-ui-elements.tsx#L212-L219).
+
+### Listening to Marketplace events
+
+The embedded marketplace emits custom JavaScript [events](https://www.w3schools.com/js/js_events.asp) when certain things happen:
+
+- An `INSTANCE_CREATED` event is emitted the _first time_ an integration's configuration screen is opened.
+- An `INSTANCE_CONFIGURATION_OPENED` event is emitted when an instance configuration screen is opened.
+- An `INSTANCE_CONFIGURATION_LOADED` event is emitted when an instance configuration screen has loaded. This is a good event to hook into if you want to [programmatically set config variables](#dynamically-setting-config-variables-in-marketplace).
+- An `INSTANCE_CONFIGURATION_PAGE_LOADED` event is emitted when an instance configuration screen has moved from one page to another.
+- An `INSTANCE_CONFIGURATION_CLOSED` event is emitted when an instance configuration screen is closed (regardless of if configuration was completed or not).
+- An `INSTANCE_DEPLOYED` event is emitted when an instance has been configured and enabled for a customer.
+- An `INSTANCE_DELETED` event is emitted when an integration has been deactivated (the instance has been deleted).
+
+You can subscribe to these events so your app can take additional steps when an instance has been created, configured, deleted, etc.
+All events return data structured similar to this (except for `INSTANCE_CONFIGURATION_LOADED`, which returns additional data):
+
+```json
+{
+  "event": "INSTANCE_CONFIGURATION_OPENED",
+  "data": {
+    "customerId": "Q3VzdG9tZXI6OThiMjU3MDUtZmMzNC00NWYwLTk0ZDItODA0ZjFkYzEyYTZk",
+    "customerName": "Smith Rockets",
+    "instanceId": "SW5zdGFuY2U6YzJlYTliZjEtY2Y3MS00NTg1LTk2MjMtYjZhNDAxYjQyNWRm",
+    "instanceName": "Salesforce",
+    "integrationName": "Salesforce",
+    "integrationVersionNumber": 18,
+    "readOnly": false
+  }
+}
+```
+
+In this example we log out the name of the customer and what integration they opened:
+
+```typescript
+import { BuilderMessageEvent } from "@prismatic-io/embedded";
+
+window.addEventListener("message", (event) => {
+  // Check if the message event is of type INSTANCE_CONFIGURATION_OPENED
+  if (
+    event.data.event === BuilderMessageEvent.INSTANCE_CONFIGURATION_OPENED
+  ) {
+    // Grab some data
+    const { customerName, integrationName } = event.data.data;
+    // Log out the customer and integration name. You can replace this with whatever data or helper functions you want
+    console.log(
+      `${customerName} opened the configuration page for ${integrationName}`
+    );
+  }
+});
+```
+
+Similar event listeners can be added for when an instance configuration page is closed or loads, or an instance is initially created or deleted.
+
+### User-level configuration Marketplace events
+
+If [user-level configuration](/docs/composer/builder/user-level-configuration.mdx) is enabled for an integration, you will see the following marketplace events:
+
+- A `USER_CONFIGURATION_OPENED` event is emitted when a ULC configuration screen is opened.
+- A `USER_CONFIGURATION_LOADED` event is emitted when a ULC configuration screen has loaded. This is a good event to hook into if you want to [programmatically set config variables](#dynamically-setting-config-variables-in-marketplace).
+- A `USER_CONFIGURATION_PAGE_LOADED` event is emitted when aa ULC configuration screen has moved from one page to another.
+- A `USER_CONFIGURATION_CLOSED` event is emitted when a ULC configuration screen is closed (regardless of if configuration was completed or not).
+- A `USER_CONFIGURATION_DEPLOYED` event is emitted when a ULC configuration is completed.
+- A `USER_CONFIGURATION_DELETED` event is emitted when a ULC configuration is deleted.
+
+For all of these events, the event's `data` property will look like this:
+
+```json
+{
+  "event": "USER_CONFIGURATION_LOADED",
+  "data": {
+    "customerId": "Q3VzdG9tZXI6ZjYxMzY4MzItMzYxYi00NmI3LTlmMmItN2ZkNTc3YzY1YTg1",
+    "customerName": "Smith Real Estate",
+    "instanceId": "SW5zdGFuY2U6N2I1MjFiNzItYzllNS00YjkwLWIzZGEtZTY4OTY5OWU2ZjBl",
+    "instanceName": "Dropbox",
+    "integrationName": "Dropbox",
+    "integrationVersionNumber": 9,
+    "userConfigId": "VXNlckxldmVsQ29uZmlnOjI0NDU5MjA2LWQxNGUtNDRhMy04NWE4LTJjMzgwMzg2Y2NmZg==",
+    "userEmail": "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1",
+    "userId": "VXNlcjpmYjc4YzE1OS1kOWMwLTQxMDctYjIyNC0zYmNhMDFlOTQ5NzY=",
+    "userLevelConfigVariables": {
+      "Dropbox Connection": {
+        "status": "ACTIVE"
+      }
+    },
+    "readOnly": false,
+    "userName": "Phil Embedmonson"
+  }
+}
+```
+
+## Dynamically setting config variables in marketplace
+
+You can programmatically set values for your customers' config variables by leveraging [marketplace events](#listening-to-marketplace-events).
+This is handy if you know some value (an API key, endpoint, etc), and would like to set a config variable on your customer's behalf (so they don't need to look up the values themselves).
+
+When your app receives an `INSTANCE_CONFIGURATION_LOADED` event message (or `USER_CONFIGURATION_LOADED` for ULC), the message's payload contains the properties listed above, plus current config variable values.
+
+You can inspect that event's data, and conditionally set values for some config variables using the `prismatic.setConfigVars()` function.
+Let's look at the event message, and how to respond to it with some config variable values:
+
+<Tabs defaultValue="event-payload" values={[{label: "Event Payload", value: "event-payload"},{label: "NodeJS Example", value: "nodejs-example"},{label: "React Example", value: "react-example"}]}>
+<TabItem value="event-payload">
+
+Here's what the `INSTANCE_CONFIGURATION_LOADED` payload looks like.
+The event message's `.data.configVars` property contains all currently set config variables and their values:
+
+```json title="Example INSTANCE_CONFIGURATION_LOADED event payload"
+{
+  "event": "INSTANCE_CONFIGURATION_LOADED",
+  "data": {
+    "instanceId": "SW5zdGFuY2U6ZTE4NTNkYWItZjJhMi00OGIyLTk1ZWItODRjYzQ3YzRiMzc4",
+    "instanceName": "Test Embedded config vars",
+    "integrationName": "Test Embedded config vars",
+    "integrationVersionNumber": 1,
+    "customerId": "Q3VzdG9tZXI6OThiMjU3MDUtZmMzNC00NWYwLTk0ZDItODA0ZjFkYzEyYTZk",
+    "customerName": "Smith Rockets",
+    "readOnly": false,
+    "configVars": {
+      "Acme Connection": {
+        "inputs": {
+          "username": { "value": "" },
+          "password": { "value": "" }
+        },
+        "status": "PENDING"
+      },
+      "My Key/Value List": {
+        "value": [],
+        "collectionType": "keyvaluelist",
+        "codeLanguage": null,
+        "dataType": "string",
+        "pickList": null,
+        "scheduleType": null,
+        "timeZone": null
+      },
+      "My String": {
+        "value": "",
+        "collectionType": null,
+        "codeLanguage": null,
+        "dataType": "string",
+        "pickList": null,
+        "scheduleType": null,
+        "timeZone": null
+      },
+      "My List": {
+        "value": [],
+        "collectionType": "valuelist",
+        "codeLanguage": null,
+        "dataType": "string",
+        "pickList": null,
+        "scheduleType": null,
+        "timeZone": null
+      },
+      "My String With Default": {
+        "value": "Some Default",
+        "collectionType": null,
+        "codeLanguage": null,
+        "dataType": "string",
+        "pickList": null,
+        "scheduleType": null,
+        "timeZone": null
+      },
+      "My List With Default": {
+        "value": ["Foo1", "Foo2"],
+        "collectionType": "valuelist",
+        "codeLanguage": null,
+        "dataType": "string",
+        "pickList": null,
+        "scheduleType": null,
+        "timeZone": null
+      },
+      "My Picklist": {
+        "value": "",
+        "collectionType": null,
+        "codeLanguage": null,
+        "dataType": "picklist",
+        "pickList": ["Foo", "Bar", "Baz"],
+        "scheduleType": null,
+        "timeZone": null
+      },
+      "My Boolean": {
+        "value": false,
+        "collectionType": null,
+        "codeLanguage": null,
+        "dataType": "boolean",
+        "pickList": null,
+        "scheduleType": null,
+        "timeZone": null
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+
+<TabItem value="nodejs-example">
+
+In this example we add a [message event listener](https://developer.mozilla.org/en-US/docs/Web/API/Window/message_event) to listen for the `BuilderMessageEvent.INSTANCE_CONFIGURATION_LOADED` event.
+If that event contains a config variable named `Acme Connection`, a value for that config variable is assigned.
+Additionally, if this is the `Salesforce` integration, values for some additional example config variables are assigned.
+
+```typescript title="Dynamically set config variable values"
+import prismatic, {
+  getMessageIframe,
+  BuilderMessageEvent,
+} from "@prismatic-io/embedded";
+
+const myListener = (message: MessageEvent) => {
+  // Destructure the event and data information from the message
+  const { event, data } = message.data;
+
+  // Check if this is an "INSTANCE_CONFIGURATION_LOADED" event and
+  // that the config screen was not opened in read-only mode
+  if (
+    event === BuilderMessageEvent.INSTANCE_CONFIGURATION_LOADED &&
+    !data.readOnly
+  ) {
+    // Destructure the integration name and config variables
+    const { integrationName, configVars } = data;
+
+    // Determine which iframe sent the message, so we can send one back
+    const iframe = getMessageIframe(message);
+
+    // Check if the instance has an "Acme Connection" config variable:
+    if (Object.keys(configVars).includes("Acme Connection")) {
+      // Check if they're empty, or have already been filled in:
+      if (
+        configVars["Acme Connection"].inputs.username === "" &&
+        configVars["Acme Connection"].inputs.password === "" &&
+        configVars["Acme Connection"].status === "PENDING"
+      ) {
+        // Set username and password fields for "Acme Connection"
+        prismatic.setConfigVars({
+          iframe, // Send back to the iframe that sent us a message
+          configVars: {
+            "Acme Connection": {
+              inputs: {
+                username: { value: "My-User" },
+                password: { value: "supersecretpassword" },
+              },
+            },
+          },
+        });
+      }
+    }
+
+    // Set a couple of config variables if this is the Salesforce integration
+    if (integrationName === "Salesforce") {
+      prismatic.setConfigVars({
+        iframe,
+        configVars: {
+          "String Config Var": { value: "Updated Value" }, // Update a simple string
+          "String Valuelist": { value: ["Value 1", "Value 2"] }, // Update a value list of strings
+          // Update a key-value list
+          "String Keyvaluelist": {
+            value: [
+              { key: "A Key", value: "A Value" },
+              { key: "B Key", value: "B Value" },
+            ],
+          },
+        },
+      });
+    }
+  }
+};
+
+window.addEventListener("message", myListener);
+```
+
+</TabItem>
+
+<TabItem value="react-example">
+
+Here's how to wrap a similar JavaScript example in a React [useEffect hook](https://reactjs.org/docs/hooks-effect.html):
+
+```typescript title="setConfigVars Example in React"
+import React, { useEffect } from "react";
+import prismatic, {
+  getMessageIframe,
+  BuilderMessageEvent,
+} from "@prismatic-io/embedded";
+
+import Loading from "../components/Loading";
+
+const id = "embedded-marketplace-container";
+
+const EmbeddedMarketplace = () => {
+  useEffect(() => {
+    prismatic.showMarketplace({
+      selector: `#${id}`,
+      usePopover: false,
+      theme: "LIGHT",
+    });
+  }, []);
+
+  useEffect(() => {
+    const listener = (message: MessageEvent) => {
+      const { event, data } = message.data;
+
+      if (
+        event === BuilderMessageEvent.INSTANCE_CONFIGURATION_LOADED &&
+        !data.readOnly
+      ) {
+        const iframe = getMessageIframe(message);
+        if (data.integrationName === "Test Embedded config vars") {
+          prismatic.setConfigVars({
+            iframe,
+            configVars: {
+              "Amazon S3 Connection": {
+                inputs: {
+                  accessKeyId: { value: "supersecretpassword" },
+                  secretAccessKey: { value: "My-User" },
+                },
+              },
+            },
+          });
+        }
+      }
+    };
+    window.addEventListener("message", listener);
+    return () => {
+      window.removeEventListener("message", listener);
+    };
+  }, []);
+
+  return (
+    <div id={id} style={{ height: "100%" }}>
+      <Loading />
+    </div>
+  );
+};
+
+export default EmbeddedMarketplace;
+```
+
+</TabItem>
+</Tabs>
+
+### The getMessageIframe helper function
+
+Your app needs to know which iframe to send a `setConfigVars` message to.
+Your app might have multiple iframes, and potentially multiple instances of the embedded marketplace on a single page.
+
+The `getMessageIframe` function helps to identify which iframe generated the `INSTANCE_CONFIGURATION_LOADED` event.
+
+If you would like to send a `setConfigVars` message to a specific iframe, you can instead pass a `selector` property to the `setConfigVars` function (like you did for `prismatic.showMarketplace()`):
+
+```typescript title="setConfigVars message by selector"
+prismatic.setConfigVars({
+  selector: "#my-marketplace-container",
+  configVars: {
+    "My Config Var Name": { value: "My config var value" },
+  },
+});
+```
+
+## Theming embedded marketplace
+
+You can theme your embedded marketplace to match your app's look and feel.
+To create a custom theme for your customers, click your organization's name on the bottom of the left-hand sidebar, and then open the **Theme** tab.
+_Note_: You need to have the _admin_ or _owner_ [role](/docs/composer/builder/users.mdx) to edit custom themes.
+
+The left side of the **Theme** tab shows properties (colors and styles) that you can customize, and the right side shows a preview of how various UI elements would look given those custom properties.
+
+<Screenshot
+  filename="embedded-marketplace/theme-settings.png"
+  alt="Theming the Builder integration marketplace for your app"
+/>
+
+Your embedded themes will be reflected in your embedded application:
+
+<Screenshot
+  filename="embedded-marketplace/progix-themed.png"
+  maxWidth="710px"
+  alt="Example of themed integration marketplace"
+/>
+
+### Light and dark mode themes
+
+Under **Theme Mode** you have four options:
+
+- **Light** and **Dark** determine what the Builder app itself looks like when you use "dark" or "light" mode.
+  Each of your team members can configure dark or light mode settings from their [profile settings page](/docs/composer/builder/users.mdx#setting-light-or-dark-mode), or they can choose to have Builder follow their operating system's dark/light mode theme.
+
+  _Note_: Your customers will not see **Light** or **Dark** themes unless you create customer users for them and they log directly in to Builder.
+
+- **Embedded Light** and **Embedded Dark** determine the theme for your embedded marketplace.
+  These are the themes that your customers using embedded marketplace in your app will see.
+
+By default, embedded marketplace follows your customers' operating system dark/light mode theme settings.
+That's helpful if your app has dark and light modes that also follow OS theme settings - the embedded marketplace will swap between dark and light alongside your app.
+
+If you would like to override the dark/light mode behavior for embedded, and only show either the dark or light theme, add a `theme` property to your `showMarketplace` invocations:
+
+```typescript title="Only show light-mode theme"
+prismatic.showMarketplace({
+  selector: `#my-embedded-div`,
+  usePopover: false,
+  theme: "LIGHT", // or "DARK"
+});
+```
+
+### Using a custom font
+
+You can use a custom font for your embedded marketplace.
+This is useful if you have a custom font for your app, and would like to use the same font in the embedded marketplace.
+
+Builder currently supports any font that is available on [Google Fonts](https://fonts.google.com/).
+To use a custom font, add it to `prismatic.init()` as `fontConfiguration.google.families`:
+
+```typescript title="Use a custom font"
+prismatic.init({
+  fontConfiguration: {
+    google: {
+      families: ["Inter"],
+    },
+  },
+});
+```
+
+### Customizing the loading screen
+
+A loading screen appears briefly when `prismatic.showMarketplace()` is invoked.
+The screen is simple - a loading icon on top of a monocolor background.
+
+You can customize the color of the background and the color of the loading icon and "Loading" text by adding a `screenConfiguration.initializing` argument.
+Add it to `prismatic.init()` to customize color for all marketplace loading screens, or to `prismatic.configureInstance()` or `prismatic.showMarketplace()` to customize color for just one marketplace div.
+Colors can be any valid CSS color.
+
+```typescript title="Customize loading screen color"
+prismatic.init({
+  screenConfiguration: {
+    initializing: {
+      background: "#FF5733",
+      color: "blue",
+    },
+  },
+});
+
+// or
+
+prismatic.showMarketplace({
+  screenConfiguration: {
+    initializing: {
+      background: "rgb(5,102,0)",
+      color: "rgba(255,153,255,.2)",
+    },
+  },
+});
+```
+
+## Hiding UI elements in marketplace
+
+You can optionally hide the **Back to Marketplace** link, some tabs from the instance screen, and elements of the instance configuration wizard.
+This is useful if you want to prevent your customers from running tests from the **Test** tab or reconfiguring alert monitors for themselves.
+
+To disable certain UI elements, add a `screenConfiguration` block to your `prismatic.showMarketplace()` or `prismatic.configureInstance()` invocations:
+
+```typescript {5-13} title="Hide the 'back' link and 'monitors' and 'test' tabs"
+prismatic.showMarketplace({
+  selector: `#${id}`,
+  usePopover: false,
+  theme: "LIGHT",
+  screenConfiguration: {
+    instance: {
+      hideBackToMarketplace: true,
+      hideTabs: ["Monitors", "Test"],
+    },
+    configurationWizard: {
+      hideSidebar: true,
+      isInModal: true,
+      triggerDetailsConfiguration: "hidden",
+    },
+    marketplace: {
+      hideSearch: true,
+      hideActiveIntegrationsFilter: true,
+    },
+  },
+});
+```
+
+- `instance.hideBackToMarketplace` determines whether or not to hide the **Back to Marketplace** link in the instance configuration screen and defaults to `false`.
+- `instance.hideTabs` determines which tabs to hide from the instance configuration screen.
+  You can choose from the **Test**, **Executions**, **Monitors** or **Logs** tabs.
+  No tabs are hidden by default.
+- `configurationWizard.hideSidebar` hides the left-hand sidebar from the configuration wizard (the config wizard page titles and numbers).
+- `configurationWizard.isInModal` affects if the config wizard should appear over the current page in a modal.
+  When set to `true`, it's assumed that your embedded marketplace is already in a modal, (and since a modal-in-a-modal isn't the best look), opens the config wizard to fill its containing `<div>`.
+- `configurationWizard.triggerDetailsConfiguration` determines if and how trigger details are shown in the config wizard.
+  Your options are `hidden` to hide trigger details completely, `default` to include the element, but collapse them, or `default-open` to include the element and have it expanded.
+  Endpoint details may also be hidden if they are not configured to be **Secured by Customer** (see [Endpoint Configuration](/docs/composer/builder/endpoint-configuration.mdx/#securing-endpoints-with-api-keys)).
+- `marketplace.hideSearch` will hide the search bar in the marketplace.
+- `marketplace.hideActiveIntegrationsFilter` will hide top-right filter for active integrations in the marketplace.
+
+If you would like to apply your preferences globally (in the case that you have multiple invocations `showMarketplace()` and `configureInstance()`), you can configure settings when you run `prismatic.init()`:
+
+```typescript {2-7} title="Hide UI elements globally"
+prismatic.init({
+  screenConfiguration: {
+    instance: {
+      hideBackToMarketplace: true,
+      hideTabs: ["Test", "Monitors"],
+    },
+  },
+});
+```
+
+Screen configuration settings in `prismatic.init()` can be overridden within a specific `showMarketplace()` or `configureInstance()` invocation.
+`hideTabs` properties are _not_ merged if yo do this - the `screenConfiguration` settings in `showMarketplace` / `configureInstance` completely override the default settings in `init`.
+
+## Integration configuration detail screen
+
+The embedded SDK configuration allows you to fine-tune the user experience for accessing the integration configuration details screen. It includes the ability to prevent a marketplace user from accessing the detail screen. This is useful if you do not want your customer to access the **Test**, **Executions**, **Monitors** or **Logs** functionality.
+
+- `allow-details` Will redirect the marketplace user back to the marketplace listing after the user finishes the configuration wizard.
+  When a user clicks on an integration from the marketplace listing, they will see a summary of the integration including the integration status.
+  The user can manage the instances from the overflow menu at the bottom. "View Details" will open the full details integration screen.
+  You can [hide some UI elements](#hiding-ui-elements-in-marketplace) of this page.
+  This is the default behavior if no configuration is provided, starting in SDK version 2.0.0.
+- `disallow-details` Will provide the same experience as the `allow-details` option described above.
+  However, users will not have access to the details option from the overflow menu.
+- `always-show-details` Will redirect the marketplace user to the full integration details screen after the integration has been configured or when an instance is selected from the marketplace listing.
+
+```typescript {5} title="Inline configuration experience that allows marketplace users to access integration config details"
+prismatic.showMarketplace({
+  selector: `#my-div`,
+  screenConfiguration: {
+    marketplace: {
+      configuration: "allow-details",
+    },
+  },
+});
+```
+
+## Showing all instances in marketplace
+
+Sometimes you will have an integration that you would like to deploy to a specific customer via Marketplace, but you don't want to make it generally available to all customers.
+To accomplish that, deploy an [unconfigured instance](/docs/composer/builder/instances.mdx/#creating-an-unconfigured-instance) of the integration to your customer as an organization user.
+Then, set the `screenConfiguration.marketplace.includeActiveIntegrations` marketplace option to `true` to show instances that are enabled for a customer (even if the integration is not in marketplace):
+
+```typescript {5} title="Show all instances in marketplace"
+prismatic.showMarketplace({
+  selector: `#my-div`,
+  screenConfiguration: {
+    marketplace: {
+      includeActiveIntegrations: true,
+    },
+  },
+});
+```
+
+:::note filters take presidence over `includeActiveIntegrations` by default
+Note that if you have [filters](#filtering-integrations) enabled, the `includeActiveIntegrations` option will not override the filters.
+By default, active integrations that are deployed to a customer must match the filters you specify in order to be shown.
+
+If you would like to show all active integrations, regardless of filters, in addition to the marketplace integrations that match your filters, set the `includeActiveIntegrations` option to `true`, and set an additional property `strictMatchFilterQuery` to `false`.
+:::
+
+## Multiple instances of one integration in Marketplace
+
+By default customer users can enable a single instance of an integration through embedded marketplace.
+There are situations, though, where you want customers to be able to deploy multiple intances of an integration.
+For example, your customers may have multiple Shopify stores, and require a separate instance of your Shopify integration for each store.
+
+Enabling customers to deploy multiple instances of an integration is configured on a per-integration basis.
+From the marketplace configuration screen or the marketplace drawer in the integration designer, enable the **Allow Multiple Instances** toggle.
+
+<Screenshot
+  filename="embedded-marketplace/allow-multiple-instances.png"
+  maxWidth="450px"
+  alt="Allow multiple instances toggle in marketplace drawer"
+/>
+
+Embedded customer users who select your integration will be able to view existing instances of the integration that are enabled, and will have the option to add addtional instances of the integration.
+
+<Screenshot
+  filename="embedded-marketplace/multiple-instances.png"
+  maxWidth="400px"
+  alt="Multiple instances in embedded marketplace"
+/>
+
+Customers will see a similar view if you have enabled mutltiple instances of an integration for them.
+
+## Translations and internationalization
+
+Your customers may not speak English.
+Internationalization (i18n) allows you to translate the embedded marketplace into other languages.
+
+Examine marketplace's [translations package](https://github.com/prismatic-io/translations/tree/main/src).
+This repo contains all phrases in marketplace that you can override, along with their English translations.
+There are three types of phrases that can to be translated:
+
+- `SimplePhrase` phrases are direct string-to-string translations.
+  For example, `input.integrationVersionLabel` "Integration Version" may translate to French "Version d'intégration".
+- `ComplexPhrase` phrases are templated strings, where a set of variables representing customer name, integration name, counts, etc., will be templated into the string.
+  For example, `integrations.id__banner.customerActivateText` could have a value of `"Please contact %{organization} to activate this integration."`
+  This will template your organization's name into the string.
+- **Dynamic Phrases** represent translations of your content (like integration name, config variable key, etc), and is described [below](#dynamic-phrases).
+
+An example of i18n in action is available in our example embedded app [on GitHub](https://github.com/prismatic-io/embedded/blob/main/example-embedded-app/pages/examples/i18n.tsx).
+
+### Adding an i18n dictionary for a user
+
+To apply an i18n dictionary for a user, add a `translation` property to your `prismatic.init` invocation.
+Phrases can also be added to `prismatic.showMarketplace` or similar functions to apply translations to just a specific iframe.
+Include any `phrases` that you would like to translate:
+
+```typescript title="Translating phrases"
+prismatic.init({
+  translation: {
+    phrases: {
+      // Static Translations:
+      "integration-marketplace__filterBar.allButton": "Alle, bitte!",
+      "integration-marketplace__filterBar.activateButton": "Solo activado",
+      "detail.categoryLabel": "カテゴリー",
+      "detail.descriptionLabel": "विवरण",
+      "detail.overviewLabel": "概述",
+
+      // Complex translation with variables:
+      "activateIntegrationDialog.banner.text--isNotConfigurable": {
+        _: "Veuillez contacter %{organization} pour activer cette intégration",
+      },
+    },
+  },
+});
+```
+
+After making changes, reload marketplace.
+You will see the new translations.
+
+<Screenshot filename="embedded-marketplace/i18n-example.png" maxWidth="250px" />
+
+:::tip Use Intellisense
+The Marketplace NPM package includes helpful comments that show current English values for phrases you can translate.
+Enable intellisense in your code editor and mouse over the phrase you want to translate to see the English version of the phrase.
+
+<Screenshot
+  filename="embedded-marketplace/i18n-intellisense.png"
+  maxWidth="550px"
+/>
+:::
+
+### i18n debug mode
+
+If you would like to identify what phrase matches what UI element in Builder, turn on **debug mode** by adding `debugMode: true` to the `translation` property of `prismatic.init`:
+
+```typescript title="Enable debug mode for translations"
+prismatic.init({
+  translation: {
+    debugMode: true,
+  },
+});
+```
+
+This will cause all UI elements in an embedded marketplace to show their phrase's key names and current values:
+
+<Screenshot
+  filename="embedded-marketplace/i18n-debug-mode.png"
+  maxWidth="600px"
+/>
+
+### Namespaced phrases
+
+Some phrases are shared across several pages in the embedded marketplace.
+A list of these common/shared pharases are available on [GitHub](https://github.com/prismatic-io/translations/tree/main/src/lib/shared).
+
+For example, `common.loading` translates to `"Loading"` in English on several screens.
+You can set `common.loading` once, and that translation will affect multiple screens.
+
+If you would like to customize common phrases on a per-page basis, you can namespace phrases.
+For example, if you would like to translate `common.loading` to a different phrase, but only on the [alert monitors](/docs/composer/builder/monitoring-and-alerting.mdx) page, prepend the phrase key with a `PhraseNamespace`, entering `NAMESPACE__PHRASE-KEY` (see [translations](https://github.com/prismatic-io/translations/tree/main/src)):
+
+```typescript title="Namespacing phrases"
+prismatic.init({
+  translation: {
+    phrases: {
+      "integrations.id.alert-monitors__common.loading": "Sit tight a sec...",
+    },
+  },
+});
+```
+
+### Dynamic Phrases
+
+As you build integrations you create several phrases that are unique to your organization.
+These unique phrases include:
+
+- Integration name
+- Config variable name
+- Config wizard page title
+- Config wizard page description
+- Config wizard helper text
+- Flow names (customers see these if they look at execution results pages)
+- Step names (customers see these if they look at execution results pages)
+
+You can translate these phrases by adding a `dynamicPhrase` property to the `phrases` object.
+For example, if your integration is named `"Sync customer data with Salesforce"` and you would like to translate it to French, add a `dynamicPhrase` to your `prismatic.init` invocation:
+
+```typescript
+prismatic.init({
+  translation: {
+    phrases: {
+      dynamicPhrase: {
+        "Sync customer data with Salesforce":
+          "Synchronisez les données clients avec Salesforce",
+      },
+    },
+  },
+});
+```
+
+You can override any other dynamic phrases in the same way.
+
+```typescript
+prismatic.init({
+  translation: {
+    phrases: {
+      dynamicPhrase: {
+        "Microsoft Teams": "Microsoft Squadre", // Integration name
+        "Notify a Teams channel of new leads":
+          "Notifica un canale di Teams di nuovi lead", // Integration description
+        "Teams Configuration": "Configurazione di Teams", // Config wizard page title
+        "Enter your Teams authentication info": "", // Config wizard page subtitle
+        "Teams Authentication": "Autenticazione di Teams", // Config variable
+        "<h1>Teams OAuth</h1>": "<h1>OAuth di Teams</h1>", // HTML helper text in the config wizard
+      },
+    },
+  },
+});
+```
+
+:::tip Dynamic phrases must match exactly
+Dynamic phrases must match the exact phrase that you use in your integration.
+If your config variable has a capital letter or punctuation, you must include that in the dynamic phrase.
+Partial matches will not translate (for example, if you translate `{"Customer": "Cliente"}`, a config variable named `"Customer Name"` will _not_ translate to `"Cliente Name"`).
+:::
+
+Note the `<h1>` portion of the last example.
+If you provide your own HTML helper text in your config wizard, you must translate the full HTML string.
+
+#### Listing all dynamic phrases
+
+If you would like to see a list of all dynamic phrases that you can translate from your account, you can do so using `prism`.
+
+```bash title="List all dynamic phrases for all integrations in marketplace"
+prism translations:list
+```
+
+A file called `translations_output.json` will be created in your current directory containing all dynamic phrases for your account or for a specific integration - you can use that file as a reference as you fill out your `dynamicPhrase` object.

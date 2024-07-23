@@ -1,0 +1,206 @@
+---
+id: organization
+title: Organization Settings
+description: Create and manage your Builder organization
+---
+
+import Icon from "@mui/material/Icon";
+import Screenshot from "@site/src/components/screenshot";
+import ExampleTabs from "@site/src/components/example-tabs";
+import InternalLink from "@site/src/components/internal-link";
+import TabItem from "@theme/TabItem";
+
+In order to disambiguate who Builder's customers are, and who your customers are, we refer to Builder's customers as **organizations** and your customers as **customers**.
+For example, if you work for a company that develops project management software for rocket companies, your organization may be "Progix Software" with customers like "Rockets, Inc" and "Eastern Spaceflight".
+
+Your organization can contain integrations for all of your products, and team members from multiple departments within your company can access the integrations you create.
+Your team members can be assigned [roles](/docs/composer/builder/users.mdx#organization-team-member-roles), so your DevOps team members might have administrator access, while your support team might have permission to review integration logs.
+
+## Creating your organization
+
+To create an organization within Builder, first <InternalLink href="/sign-up/">sign up</InternalLink>.
+
+For large organizations with multiple distinct divisions, consider creating an organization per division.
+
+:::note
+If your company has already created an organization, ask your organization's administrator to create a user account for you instead.
+Registering with Builder again will create a second organization.
+:::
+
+## Editing your organization
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+To edit any settings of your organization, click the **Settings** link on the left-hand sidebar.
+From this screen you can manage team members, alerting, and your subscription settings.
+You can also view your organization's utilization of Builder resources.
+
+Your organization's logo can be changed from the **Theme** tab.
+Logos are cropped and resized to 512 x 512 pixels, and must be an image.
+Transparent square PNG images tend to look the best.
+
+<Screenshot
+  filename="organization/change-org-name.png"
+  alt="Change logo for org in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To rename your organization, use the `prism organization:update` subcommand:
+
+```bash
+prism organization:update --name "New Organization Name"
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To update your organization's name programmatically, use the [updateOrganization](/docs/composer/builder/api/schema/mutation/updateOrganization.mdx) mutation:
+
+```graphql
+mutation {
+  updateOrganization(input: { name: "New Organization Name" }) {
+    organization {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Managing organization users
+
+After creating your organization, you can create [accounts](/docs/composer/builder/users.mdx#organization-users) for your team members so that they can create and maintain integrations for your customers.
+Click the **Settings** link on the left-hand sidebar, and select the **Team Members** tab.
+Click the **+ Add team member** button to create a new user.
+Select an appropriate [role](/docs/composer/builder/users.mdx#organization-team-member-roles) for your team member, and enter their name and email address.
+Once you create your team member's account, they will receive a confirmation email and registration link to set their password and personal information.
+
+<Screenshot
+  filename="shared/list-org-users.png"
+  alt="List of org users in Builder app"
+/>
+
+**For More Information**: [Users](/docs/composer/builder/users.mdx)
+
+## Organization single sign-On (SSO)
+
+As an organization with an <InternalLink href="/pricing/">Enterprise plan</InternalLink> you can elect to authenticate your team members through your existing identity provider.
+If your team members sign in to other applications through Active Directory, Active Directory Federation Services (ADFS), or Lightweight Directory Access Protocol (LDAP), then we can configure your organization to sign in to Builder the same way.
+
+If you use **single sign-on** (SSO), your team members will be redirected to your identity provider from the login screen if they enter an email address that matches your domain.
+Otherwise, they will be prompted for a password like usual.
+
+<Screenshot
+  filename="organization/sso-diagram.png"
+  maxWidth="800px"
+  alt="Diagram showing paths and logic for SSO (single sign on)"
+/>
+
+If you are interested in using Single Sign-On for Builder, please reach out to our [support](mailto:support@prismatic.io) team to get SSO configured and enabled for your organization.
+
+## Creating alert groups
+
+When instances of integrations behave unexpectedly, you likely want to be notified.
+For example, you may want your DevOps team to be alerted when an instance fails to run to completion.
+An [alert group](/docs/composer/builder/monitoring-and-alerting.mdx#alert-groups) is a set of users to notify and webhooks to invoke when an [alert trigger](/docs/composer/builder/monitoring-and-alerting.mdx#alert-triggers) fires.
+
+To create or modify an alert group, click the **Settings** link on the left-hand sidebar, and then select the **Alert Groups** tab.
+Click the **+ Add alert group** button to create a new alert group, and enter users to notify and webhooks to invoke in the event of an alert trigger.
+
+<Screenshot
+  filename="organization/alert-groups.png"
+  alt="Create alert groups in Builder app"
+/>
+
+**For More Information**: [Monitoring and Alerting](/docs/composer/builder/monitoring-and-alerting.mdx)
+
+## Using alert webhooks
+
+In addition to email and text alerts, you can configure alert monitors to invoke a webhook with a payload of your choice.
+To create or modify a webhook URL, click into the **Settings** page and select the **Alert Webhooks** tab.
+Click the **+Alert Webhook** button, enter an appropriate name for your alert webhook, and enter URL, header, and payload information for your webhook.
+
+Alert webhooks can be used to invoke the [PagerDuty API](https://developer.pagerduty.com/docs/events-api-v2/overview/), your own DevOps alert endpoint, or any other alerting service with an HTTP-based API.
+
+<Screenshot
+  filename="shared/alert-webhook.png"
+  maxWidth="500px"
+  alt="Add alert webhook in Builder app"
+/>
+
+**For More Information**: [Monitoring and Alerting](/docs/composer/builder/monitoring-and-alerting.mdx)
+
+## Custom themes
+
+See the [Embedding Marketplace](/docs/composer/builder/embedding-marketplace.mdx#theming-embedded-marketplace) article for information on custom theming.
+
+## Tracking service utilization
+
+You can track metrics about your organization's usage of Builder services from the **Utilization** tab of the **Settings** page.
+On this page, you can view details about:
+
+- Instance and integration counts
+- Blob storage usage
+- Instance execution count
+- Customer and user counts
+- Step Execution counts
+- Execution speed
+
+Additionally, you can view metrics from this week and last week to help identify changes and anomalies.
+
+<Screenshot
+  filename="organization/utilization.png"
+  alt="Track organization usage of services in Builder app"
+/>
+
+## Managing billing
+
+When you first sign up for Builder, you are entered into the "free plan" so you can try assembling and deploying a few integrations before paying for it.
+To view information on pricing, see our <InternalLink href="/pricing/">pricing page</InternalLink>.
+
+To manage billing within the web app, click **Settings** on the left-hand sidebar, and then open the **Subscription** tab.
+From there you can manage your subscription type, and update credit card and other billing information.
+
+<Screenshot
+  filename="organization/subscription.png"
+  alt="Manage organization billing in Builder app"
+/>
+
+Please <InternalLink href="/contact/">reach out</InternalLink> with any questions about billing.
+
+## Deleting your organization
+
+You can delete your organization from the **Subscription** tab shown above.
+Note that deleting your organization is permanent.
+
+## Custom domains
+
+As an organization with an <InternalLink href="/pricing/">Enterprise plan</InternalLink>, you can choose to interact with the Builder platform through a custom domain that you control.
+For example, you might want to white-label Builder so your team members and customers access **https<!---->://integrations.your-company.com** instead of [https://app.prismatic.io](https://app.prismatic.io/).
+
+To configure a custom domain, please reach out to our [support team](mailto:support@prismatic.io), and let us know what subdomain (like https<!---->://integrations.your-company.com) you would like to use.
+We'll create an [SOA record](https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record/) for that subdomain along with a few A and CNAME records for things like web app access, webhook invocation, and OAuth 2.0 callbacks:
+
+- https<!---->://**integrations**.your-company.com - web app and embedded URL
+- https<!---->://**hooks.integrations**.your-company.com - webhooks
+- https<!---->://**oauth2.integrations**.your-company.com - OAuth 2.0 callback
+
+Once we have those records ready, you'll just need to create an [NS record](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) to point to a list of nameservers we'll provide you.
+_Note:_ some DNS providers represent a list of NS servers as separate NS records (one server per record), and others have single NS records with a list of values.
+
+Once your domain is white-labeled, your OAuth2 apps can use https<!---->://**oauth2.integrations**.your-company.com/callback as a callback URL.
+
+:::note Webhook and OAuth 2.0 URLs are derived from the URL you visit
+Note that once a subdomain is configured, you can access your tenant through either the custom domain or the default Builder domain.
+Custom domains are not tenant-specific.
+If you have prod and dev tenants, both tenants can use the custom domain you establish.
+
+- If you access or embed Builder via **https<!---->://app.prismatic.io**, you will see webhook and OAuth URLs with the Builder domain.
+- If you access or embed Builder via your custom domain like **https<!---->://integrations.your-company.com**, you will see webhook and OAuth URLs with your custom domain.
+
+:::

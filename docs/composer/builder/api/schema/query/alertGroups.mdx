@@ -1,0 +1,44 @@
+---
+id: alertGroups
+title: alertGroups Query
+sidebar_label: alertGroups
+description: Learn how to use the alertGroups Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of AlertGroup objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances].
+
+## Input fields
+
+| Argument        | Type                                                               | Description                                                                                      |
+| --------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `before`        | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                           | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`         | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                           | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`         | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                 | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`          | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                 | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`        | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                 |                                                                                                  |
+| `createdAt_Gte` | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                       | Filter for objects where createdAt occurs on or after the specified value.                       |
+| `createdAt_Lte` | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                       | Filter for objects where createdAt occurs on or before the specified value.                      |
+| `updatedAt_Gte` | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                       | Filter for objects where updatedAt occurs on or after the specified value.                       |
+| `updatedAt_Lte` | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                       | Filter for objects where updatedAt occurs on or before the specified value.                      |
+| `orderBy`       | [`AlertGroupOrder`](/docs/composer/builder/api/schema/input_object/AlertGroupOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`        | [`[AlertGroupOrder]`](/docs/composer/builder/api/schema/input_object/AlertGroupOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([AlertGroupConnection!](/docs/composer/builder/api/schema/object/AlertGroupConnection.mdx))
+
+###### <b>edges</b> ([[AlertGroupEdge]!](/docs/composer/builder/api/schema/object/AlertGroupEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[AlertGroup]!](/docs/composer/builder/api/schema/object/AlertGroup.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

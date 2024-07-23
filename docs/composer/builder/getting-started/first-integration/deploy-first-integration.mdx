@@ -1,0 +1,79 @@
+---
+id: deploy-first-integration
+title: "Deploy to a Customer"
+description: Deploy your first integration to a customer
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+Now that you've [built your first integration](/docs/composer/builder/getting-started/first-integration/build-first-integration.mdx), let's deploy the integration to a customer.
+We use the term **instance** to describe a copy of an integration that has been configured for a specific customer, using some customer-specific configuration variables.
+
+Note, you have the option to deploy your integration to a customer yourself, or you can add your integration to your integration marketplace, so your customers can configure and deploy instances themselves.
+Learn more about your options [here](/docs/composer/builder/instances.mdx#options-for-deploying-instances).
+
+## Create a customer
+
+Your software company has [customers](/docs/composer/builder/customers.mdx).
+
+For this example we will create a customer - "FTL Rockets".
+You can choose another name if you would like.
+
+Navigate to the customers screen by clicking **Customers** on the left-hand sidebar, and then click the **+ Add customer** button in the upper right.
+
+<Screenshot
+  filename="getting-started/deploy-first-integration/customers-page.png"
+  maxWidth="700px"
+  alt="Customers page in Builder app"
+/>
+
+Give your customer the name "FTL Rockets", and a description of your choice. Click the **Add** button.
+
+<Screenshot
+  filename="getting-started/deploy-first-integration/add-customer.png"
+  maxWidth="400px"
+  alt="Add Customer page in Builder app"
+/>
+
+## Deploy an instance
+
+Open the customer you created and then open the **Summary** tab.
+Click the **+ Add instance** link in the Instances card.
+
+<Screenshot
+  filename="getting-started/deploy-first-integration/create-instance-1.png"
+  maxWidth="600px"
+  alt="Create an instance in Builder app"
+/>
+
+Select the integration you created and published from the menu, and give the instance a name and description of your choice.
+
+<Screenshot
+  filename="getting-started/deploy-first-integration/create-instance-2.png"
+  maxWidth="400px"
+  alt="Name an instance in Builder app"
+/>
+
+Once your instance has been created, you will be brought to the instance's **Summary** tab. From here you can click the **Reconfigure** button in the top right to open the Config Wizard.
+
+On the Config Wizard, you can customize **Slack Webhook URL** and **Todo API URL** for this customer (or leave the defaults).
+Once you are satisfied with the configuration, click the **Finish** button at the bottom right.
+
+<Screenshot
+  filename="getting-started/deploy-first-integration/configure-and-deploy.png"
+  maxWidth="800px"
+  alt="Configure and deploy an instance in Builder app"
+/>
+
+You can now test the instance by clicking into the **Test** tab and clicking **Save and Run Test**.
+You should get a Slack message, as you did before.
+
+## Delete your deployed instance
+
+Since Builder charges per deployed instance, and free accounts have a limit of 4 deployed instances, you probably want to delete this instance.
+When you're ready, click the **Delete instance** button on the bottom of the **Summary** tab.
+
+## Next steps
+
+Your first integration has been deployed to one customer, but can be deployed to multiple customers now (each with their own API endpoint and Slack webhook URL).
+In the next page you'll learn how to productize your integration and [prepare it for marketplace](/docs/composer/builder/getting-started/first-integration/prepare-for-marketplace.mdx).

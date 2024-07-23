@@ -1,0 +1,865 @@
+---
+id: monitoring-and-alerting
+title: Alerts
+description: Get notified when an integration experiences problems. Use various monitors and alerts in Builder to notify your integration team of issues in real-time.
+---
+
+import ExampleTabs from "@site/src/components/example-tabs";
+import TabItem from "@theme/TabItem";
+import Icon from "@mui/material/Icon";
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+When something goes wrong (perhaps a REST endpoint you rely on goes down, or an integration starts taking five minutes when you expect it to take five seconds) your incident response team should be alerted right away.
+It should never be the case that customers are **calling you** to inform you that your integrations are down.
+Your team should be able to proactively, or at least quickly reactively, respond to issues with your integrations.
+
+With properly configured monitoring and alerting you can put your mind at ease - no news is good news!
+
+Builder alert monitors are configurable.
+You can choose from a variety of alert triggers, including triggering on elevated log levels, long execution times, failed executions, etc., and you can notify your integration team via email and SMS, or via Slack, Pager Duty, OpsGenie, or any other notification system you choose by using webhooks.
+
+<Vimeo
+  video="499651619"
+  title="How to Alert People When an Instance has an Error"
+/>
+
+## Terminology
+
+- An **alert group** is a set of users to notify (by email or SMS) and webhooks to invoke when when an instance does something noteworthy or unexpected, like failing to run to completion.
+- An **alert trigger** is a noteworthy or unexpected event that causes an alert monitor to fire.
+  An alert trigger may fire if an instance takes longer than expected or logs error or warning messages unexpectedly.
+  You can also trigger on positive things, like successful instance runs or when you set an instance to _enabled_.
+  A full list of alert triggers are [below](#alert-triggers).
+- An **alert monitor** is a combination of an alert group and some alert triggers, and is configured for an [instance](/docs/composer/builder/instances.mdx).
+  You add an alert monitor to an instance, specify when the monitor should be triggered, and which alert groups should be notified in the event of a trigger.
+- An **alert event** is created when an alert trigger causes an alert monitor to fire.
+  For example, one alert event might notify the DevOps team at 07:30 AM that an instance failed to run.
+  If the instance is scheduled to run every 15 minutes, another event would be created 15 minutes later if the issue hadn't been resolved.
+
+## Alert triggers
+
+Many events can trigger an alert monitor:
+
+- **Execution Completed**: This will trigger an alert upon a successful run of an instance.
+  You could use this to notify customers when an instance runs to completion.
+- **Execution Duration Matched or Exceeded**: Does your integration normally take 5 seconds?
+  Do you want to be alerted if it takes longer than 10 seconds?
+  Specify the maximum number of seconds you expect an instance to take, after which you'd like to be notified.
+- **Execution Failed**: This will trigger an alert upon a failed run of an instance.
+- **Execution Failed, Retry Pending**: This will trigger an alert if an instance fails to run, but a retry has been queued.
+- **Execution Overdue**: Do you expect your integration to run every X minutes?
+  This will trigger an alert if X has been reached.
+- **Execution Started**: This will trigger an alert upon a start of an instance.
+- **Instance Disabled**: This will trigger if an instance is disabled.
+- **Instance Enabled**: This will trigger if an instance is enabled.
+  You might want to use this to notify project managers when an instance is ready for a customer.
+- **Instance Removed**: This will trigger if an instance is deleted.
+- **Log Level Matched or Exceeded**: Are `error`, or `warn` log lines expected in standard execution of your integration?
+  Presumably not.
+  Specify a log level (`error`, or `warn`), and if log lines are written that match or exceed that log level, an alert is triggered.
+- **Connection Threw an Exception**: This will trigger if a connection that is part of your deployed instance threw an exception, generally indicating that credentials in the connection are expired or invalid, or that the API that you are connecting to is down.
+
+Some triggers, like **Instance {Disabled, Enabled, Removed}** are instance-specific, meaning they're not tied to a particular flow.
+The others are flow-specific, meaning you can set up [alert monitors](#alert-monitors) to trigger when events happen in specific flows.
+
+**For More Information**:
+[Log Levels](/docs/composer/builder/logging.mdx#log-levels)
+
+## Alert webhooks
+
+In addition to email and SMS notifications, you can configure alert monitors to invoke a webhook URL with a payload of your choice.
+An alert webhook could be used to send alert info the PagerDuty or OpsGenie APIs, your own DevOps alert endpoint, or any other alerting service with an HTTP-based API.
+
+### Creating alert webhooks
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+To create or modify a webhook endpoint, click into the **Settings** page and select the **Alert Webhooks** tab.
+Click the **+ Add alert webhook** button, enter an appropriate name for your alert webhook, URL, and payload information.
+
+Alert webhooks are meant to be general enough that they can be used by multiple alert monitors, and their payload templates help with that.
+Within the **Payload Template** section you can enter certain keywords, which are replaced when an alert monitor fires with information about the alert monitor, instance, trigger, and monitor URL.
+
+- `$SUBJECT` - The string literal "Builder.io Alert"
+- `$NAME` - The name of the [alert monitor](#alert-monitors) that was triggered
+- `$INSTANCE` - The name of the instance that had the triggered alert monitor
+- `$INSTANCE_ID` - The global identifier of the instance (the `SW5z....` portion of the URL when you open the instance)
+- `$EXECUTION_ID` - the global identifier of the running execution
+- `$CUSTOMER` - The name of the customer the instance is deployed to
+- `$CUSTOMER_EXTERNAL_ID` - The [external ID](/docs/composer/builder/customers.mdx#customer-external-ids) of the customer the instance is deployed to
+- `$FLOW` - The name of the flow that was running when the alert monitor triggered
+- `$TRIGGER` - The name of the [alert trigger](#alert-triggers) (like "Execution Failed")
+- `$STEP` - The name of the step within the integration that triggered the alert monitor
+- `$URL` - A URL that will navigate to the specific alert monitor that was triggered
+
+<Screenshot
+  filename="shared/alert-webhook.png"
+  maxWidth="500px"
+  alt="Add alert trigger in Builder app"
+/>
+
+After creating the alert webhook, you can modify the name, URL, or alert payload, and optionally add HTTP headers.
+Headers are frequently used for passing an authorization token to a webhook.
+
+<Screenshot
+  filename="alerting/alert-webhook-headers.png"
+  maxWidth="700px"
+  alt="Add HTTP headers to alert trigger in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To create an alert webhook, use the `alerts:webhooks:create` subcommand.
+
+```bash
+prism alerts:webhooks:create \
+  --name 'Devops Webhook' \
+  --headers '{"Authorization": "Bearer abc123"}' \
+  --payloadTemplate 'The instance "$INSTANCE" was triggered by "$TRIGGER" on monitor "$NAME". It appears that step "$STEP" generated and error. Respond by visiting $URL.' \
+  --url https://devops.progix.io/alerts/webhook
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To create an alert webhook, use the [createAlertWebhook](/docs/composer/builder/api/schema/mutation/createAlertWebhook.mdx) mutation:
+
+```graphql
+mutation {
+  createAlertWebhook(
+    input: {
+      name: "Devops Webhook"
+      url: "https://devops.progix.io/alerts/webhook"
+      headers: "{\"Authorization\": \"Bearer abc123\"}"
+      payloadTemplate: "The instance \"$INSTANCE\" was triggered by \"$TRIGGER\" on monitor \"$NAME\". It appears that step \"$STEP\" generated and error. Respond by visiting $URL."
+    }
+  ) {
+    alertWebhook {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Editing existing alert webhooks
+
+To modify an existing alert webhook, click **Settings** on the left-hand sidebar and then select the **Alert Webhooks** tab.
+Click into an existing alert webhook.
+In this screen, you can modify the name by clicking the name at the top of the page.
+You can modify the webhook template, payload template, or URL from the **Details** tab, and you can also add optional HTTP headers if your webhook requires authorization tokens, etc.
+
+<Screenshot
+  filename="alerting/edit-webhook.png"
+  maxWidth="700px"
+  alt="Edit alert webhooks in Builder app"
+/>
+
+### Deleting alert webhooks
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+To delete an alert webhook open the **Settings** page from the left-hand sidebar.
+Click the **Alert Webhooks** tab and select an alert webhook.
+Within the alert webhook's page, click **Delete Alert Webhook**.
+Confirm deletion by clicking **Remove alert webhook**.
+
+</TabItem>
+<TabItem value='cli'>
+
+Find the webhook's ID with
+
+```bash
+prism alerts:webhooks:list --extended
+```
+
+and then delete the webhook with
+
+```bash
+prism alerts:webhooks:delete ${WEBHOOK_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Delete an alert webhook by alert webhook ID using the [deleteAlertWebhook](/docs/composer/builder/api/schema/mutation/deleteAlertWebhook.mdx) mutation:
+
+```graphql
+mutation {
+  deleteAlertWebhook(
+    input: {
+      id: "QWxlcnRXZWJob29rOjczOGNiNTM2LWFhMGMtNGUwNS05ZTBmLTQ5ZDMzZDE5ODYwNA=="
+    }
+  ) {
+    alertWebhook {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Sending incidents to PagerDuty with alert webhooks
+
+Many operations teams prefer to use an incident response service like PagerDuty to track production issues.
+Alert webhooks can be configured to generate PagerDuty incidents by invoking [PagerDuty's API](https://developer.pagerduty.com/docs/events-api-v2/trigger-events/).
+
+To send alerts to PagerDuty, point an alert webhook at `https://events.pagerduty.com/v2/enqueue` and then configure a payload template that contains PagerDuty API's required fields:
+
+```json
+{
+  "routing_key": "YOUR-PAGERDUTY-KEY",
+  "event_action": "trigger",
+  "links": [{ "href": "$URL", "text": "Link to Builder alert monitor" }],
+  "payload": {
+    "summary": "$NAME triggered - $INSTANCE failed to run.",
+    "severity": "error",
+    "source": "$SUBJECT"
+  }
+}
+```
+
+Additional fields listed in [PagerDuty's docs](https://developer.pagerduty.com/docs/events-api-v2/trigger-events/) can be added to the payload template to add additional information to the PagerDuty incident.
+No special headers are required for this alert webhook since the PagerDuty key is passed in as part of the payload.
+When an alert monitor using this alert webhook fires, an incident is created in PagerDuty:
+
+<Screenshot
+  filename="alerting/pagerduty.png"
+  alt="Sample alert details in PagerDuty app"
+/>
+
+### Sending notifications to Slack with alert webhooks
+
+<Vimeo video="500205967" title="How to Send Alerts to Slack" />
+
+Many operations teams use Slack to notify themselves of production issues.
+Builder alert webhooks can be configured to send messages to a Slack channel.
+
+To send alerts as messages to Slack, first generate a new Slack webhook:
+
+1. Navigate to https://api.slack.com/apps
+1. Click **Create New App**, adding an app to your workspace.
+1. Under **Add features and functionality** select **Incoming Webhooks**
+1. **Activate Incoming Webhooks** and then **Add New Webhook to Workspace**
+1. Take note of the Webhook URL. It should be of the form `https://hooks.slack.com/services/foo/bar/baz`
+
+Use the Slack webhook URL that you generated in a Builder alert webhook, and configure the payload template to read similar to this:
+
+```json
+{
+  "text": "$NAME triggered - $INSTANCE failed to run. See $URL"
+}
+```
+
+No special headers are required for this alert webhook.
+When an alert monitor that uses the alert webhook next fires, a message will be sent to your Slack channel.
+
+<Screenshot
+  filename="alerting/slack.png"
+  alt="Sample channel with alert details in Slack app"
+/>
+
+## Alert groups
+
+You will likely want to alert the same group of people if integration X fails and if integration Y fails.
+To do that, you can create an **alert group** that can be assigned to multiple alert monitors.
+That way, if you hire a new DevOps engineer, you can quickly add them to the DevOps alert group and they'll automatically be added to each alert monitor the DevOps group is attached to.
+
+Note that you can add both **organization** team members and **customer** users to alert groups.
+If you wish to notify customers when alerts trigger, for the sake of reusability we recommend creating an alert group per customer, and alert group(s) for your team.
+You can then attach your team's alert group(s) to all alert monitors, and your customer's alert group to the monitors only for their instances.
+
+### Creating alert groups
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+Click **Settings** on the left-hand sidebar, and select the **Alert Groups** tab.
+Click the **+ Add alert group** button on the upper-right and give your alert group a name (e.g. "Progix DevOps Team").
+From there, you can enumerate users to be notified and webhooks to be invoked upon an alert being triggered.
+
+<Screenshot
+  filename="alerting/create-alert-group.png"
+  maxWidth="700px"
+  alt="Create alert group in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+Use the `alerts:group:create` subcommand to create a new alert group.
+You can pass in JSON-formatted lists of user IDs and webhook IDs
+
+```bash
+USER_IDS="[
+  \"$(prism organization:users:list --columns id --no-header --filter 'Email=edward.davis@progix.io')\",
+  \"$(prism organization:users:list --columns id --no-header --filter 'Email=kristin.henry@progix.io')\",
+  \"$(prism organization:users:list --columns id --no-header --filter 'Email=samantha.johnson@progix.io')\"
+]"
+
+WEBHOOK_IDS="[\"$(prism alerts:webhooks:list --columns id --no-header --filter 'name=Devops Webhook')\"]"
+
+# Create an alert group to email your DevOps Team
+prism alerts:groups:create \
+  --name DevOps \
+  --users "${USER_IDS}" \
+  --webhooks "${WEBHOOK_IDS}"
+```
+
+You can take advantage of [jq](https://stedolan.github.io/jq/) to process JSON on the command line to simply your user IDs query.
+
+```bash
+# Create an alert group to alert customer users at FTL Rockets
+CUSTOMER_ID=$(prism customers:list --columns id --no-header --filter 'Name=^FTL Rockets$')
+CUSTOMER_USER_IDS=$(
+    prism customers:users:list \
+      --customer $CUSTOMER_ID \
+      --output json \
+      --columns id | jq '[.[].id]')
+
+prism alerts:groups:create \
+  --name 'Customer - FTL Rockets' \
+  --users "${CUSTOMER_USER_IDS}"
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To create an alert group you will need to know the IDs of the users and webhooks who you would like to add to the group.
+You can look up user IDs grouped by customer name with this query:
+
+```graphql
+query {
+  customers {
+    nodes {
+      name
+      users {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+Alert webhook IDs can be queried for using this query:
+
+```graphql
+query {
+  alertWebhooks {
+    nodes {
+      id
+      name
+    }
+  }
+}
+```
+
+Once you have user IDs and alert webhook IDs, create an alert group using the [createAlertGroup](/docs/composer/builder/api/schema/mutation/createAlertGroup.mdx) mutation:
+
+```graphql
+mutation createAlertGroup($name: String!, $users: [ID], $webhooks: [ID]) {
+  createAlertGroup(input: { name: $name, users: $users, webhooks: $webhooks }) {
+    alertGroup {
+      id
+    }
+  }
+}
+```
+
+```json title="Query Variables"
+{
+  "name": "DevOps",
+  "users": [
+    "VXNlcjplZTI3N2I4My0zOTBmLTQ3ODAtOGU4ZS1iYmNjOGY1Y2RlMTk=",
+    "VXNlcjpiNmZmNDJhNS1mOTM3LTRlOWEtYWMyYi0yNjNjYTFiYjgzYjQ="
+  ],
+  "webhooks": [
+    "QWxlcnRXZWJob29rOjA2NmJkN2Q1LThiYTgtNGJlMi1hM2MyLTE3NzFlMzY3NmI3Zg=="
+  ]
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Editing existing alert groups
+
+To modify an existing alert group, you will return to the same screen you saw when you created your alert group by clicking **Settings** on the left-hand sidebar and then select the **Alert Groups** tab.
+Click into an existing alert group.
+Within this screen, you can modify the name of the group by clicking the group's name at the top of the page.
+You can also modify the list of users and webhooks associated with the group.
+
+### Deleting alert groups
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+To delete an alert group click the **Settings** link on the left-hand sidebar.
+Then, click the **Alert Groups** tab and select an alert group.
+Scroll to the bottom of the alert group's page and click **Delete alert group**.
+Click **Remove alert group** to confirm deletion.
+
+</TabItem>
+<TabItem value='cli'>
+
+Find the ID of the alert group you want to delete using
+
+```bash
+prism alerts:groups:list --extended
+```
+
+and then reference that ID using
+
+```bash
+prism alerts:groups:delete ${ALERT_GROUP_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Delete an alert group using the [deleteAlertGroup](/docs/composer/builder/api/schema/mutation/deleteAlertGroup.mdx) mutation:
+
+```graphql
+mutation {
+  deleteAlertGroup(
+    input: {
+      id: "QWxlcnRHcm91cDo3MmU0OTMyNi1lMWYyLTRlNGEtYTNmZi00ZGIxZmY1NWViNmU="
+    }
+  ) {
+    alertGroup {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Alert monitors
+
+An **alert monitor** is a combination of an [alert group](#alert-groups) (users and webhooks) and an [alert trigger](#alert-triggers) that is configured for an [instance](/docs/composer/builder/instances.mdx).
+When you add an alert monitor to an instance, you specify when the monitor should be triggered, and which alert group(s) should be notified in the event of a trigger firing.
+
+:::note Alert monitors cannot be bound to preprocess flows
+Note that if your instances are configured to use a [shared endpoint](/docs/composer/builder/endpoint-configuration.mdx#shared-endpoint-configuration) and a **preprocess flow**, an alert monitor cannot be assigned to the preprocess flow since the preprocess flow runs independently of any deployed instance.
+:::
+
+### Creating an alert monitor
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+After selecting an instance from a customer's **Instances** tab or the **Instances** link on the left-hand sidebar, click the instance's **Monitors** tab.
+Click the **+ Add alert monitor** button on the top-right of the screen.
+Specify a name for the monitor and select a trigger. if you are in a customer's **Instances** tab, you'll need to also specify the instance.
+
+<Screenshot
+  filename="alerting/create-alert-monitor.png"
+  maxWidth="500px"
+  alt="Create alert monitor in Builder app"
+/>
+
+After creating the alert monitor you will find yourself in the monitor's **Details** tab.
+Within this tab, you can add additional triggers to your alert monitor within the **Triggers** card.
+You can also choose the groups or users to notify and webhooks to trigger when an alert trigger fires.
+
+<Screenshot
+  filename="alerting/configure-alert-monitor.png"
+  alt="Configure alert monitor in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To create an alert monitor you need to look up ID of the trigger you would like to create a monitor for, the instance's ID, and the ID of the group(s) to alert.
+Then, you can create a monitor using that trigger ID, instance ID, and group ID(s).
+
+```bash
+# Get Trigger ID
+prism alerts:triggers:list --extended --filter 'name=^Execution Failed$'
+
+ Id                                                                   Name
+ ──────────────────────────────────────────────────────────────────── ────────────────
+ QWxlcnRUcmlnZ2VyOjQyYmM2MDY5LTE5YTktNDE1MS04ZjAwLTQ4ZWExN2E3MzZjMQ== Execution Failed
+
+# Get Alert Group ID
+prism alerts:groups:list --extended --filter 'name=^DevOps$'
+
+ Id                                                               Name
+ ──────────────────────────────────────────────────────────────── ──────
+ QWxlcnRHcm91cDplMzcwMzY2OC0yZWM4LTQ0MWEtODdlYS02OGZjYTg1N2U5N2E= DevOps
+
+INSTANCE_ID=$(prism instances:list --columns id --filter 'name=^Fabricate 3D Model for FTL Rockets$' --no-header)
+
+prism alerts:monitors:create \
+  --groups "[\"QWxlcnRHcm91cDplMzcwMzY2OC0yZWM4LTQ0MWEtODdlYS02OGZjYTg1N2U5N2E=\"]" \
+  --name 'Alert Devops on Failure' \
+  --instance ${INSTANCE_ID} \
+  --triggers "[\"QWxlcnRUcmlnZ2VyOjQyYmM2MDY5LTE5YTktNDE1MS04ZjAwLTQ4ZWExN2E3MzZjMQ==\"]"
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To create an alert monitor for an instance, you will need to query [alertTriggers](/docs/composer/builder/api/schema/query/alertTriggers.mdx) and select which types of triggers should result in an alert:
+
+```graphql
+query listTriggers {
+  alertTriggers {
+    nodes {
+      id
+      name
+    }
+  }
+}
+```
+
+You will also need the ID of the instance you want to attach the alert to, and the IDs of any users or groups who should be notified.
+Then, use the [createAlertMonitor](/docs/composer/builder/api/schema/mutation/createAlertMonitor.mdx) mutation to create the alert monitor:
+
+```graphql
+mutation (
+  $name: String!
+  $instance: ID!
+  $triggers: [ID]!
+  $groups: [ID]
+  $users: [ID]
+) {
+  createAlertMonitor(
+    input: {
+      name: $name
+      instance: $instance
+      triggers: $triggers
+      groups: $groups
+      users: $users
+    }
+  ) {
+    alertMonitor {
+      id
+    }
+  }
+}
+```
+
+```json title="Query Variables"
+{
+  "name": "Alert Alex and DevOps on Execution Failure",
+  "instance": "SW5zdGFuY2U6OTc1YzgyMTEtYTIxZi00OTg1LThhODYtMTUxMTczM2ZiYTJh",
+  "triggers": [
+    "QWxlcnRUcmlnZ2VyOjhiOTg3YmYxLTk4YmMtNDViNy1hZDFkLTEwNWY0YTExZjdlOA==",
+    "QWxlcnRUcmlnZ2VyOjdlOWEzMDA2LTQxODItNDQ0MC1iYzE2LTFiNjNjMzI2NzkwZA=="
+  ],
+  "groups": ["QWxlcnRHcm91cDo5MDQyYmM1ZC1hYTU5LTQ3Y2EtOWE4NC00NWIxNDBmZjYzYmQ"],
+  "users": ["VXNlcjo4MzBjZTZmYS1iNDFlLTQ2MTQtODgzNi04NjA1MTcyY2IyOTc="]
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Alerting on connection errors
+
+You can set up an alert monitor to notify you if a connection in an instance becomes invalid (i.e. credentials expired or have been revoked, an API is down, etc).
+To alert on connection errors, create a new alert monitor and select **Connection Threw an Exception** as the trigger.
+
+This is especially useful with OAuth 2.0 connections.
+You can be alerted if refreshing your access key fails for any reason, and you will be directed straight to relevant logs from the alert message that is sent to you or your team members
+
+### Editing existing alert monitors
+
+To modify an existing alert monitor, click **Instances** on the left-hand sidebar and then select an instance.
+Under the instance's **Monitors** tab, select a monitor.
+This will bring you to the same screen you saw when you created the monitor, where you can modify who is notified under what conditions under the **Details** tab.
+
+### Clearing a triggered alert monitor
+
+<Vimeo video="500203509" title="How to Respond to an Alert Message" />
+
+If multiple team members are notified by an alert event, it's important for the team to know if the event has been addressed.
+By marking an alert monitor as "cleared", your team member acknowledges the event and indicates that they are working to resolve the issue.
+
+Click the **Monitors** link on the left-hand sidebar.
+Select one or more triggered monitors.
+Click the <Icon>refresh</Icon> icon to clear your selected events.
+
+<Screenshot
+  filename="alerting/clear-events.png"
+  alt="Clear alert events in Builder app"
+/>
+
+### Deleting an alert monitor
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+Click **Customers** from the left-hand sidebar and select a customer.
+Under the customer's **Instances** tab, select an instance and then click **Monitors**.
+Click into an alert monitor and open the **Details** tab.
+Scroll to the bottom of the page.
+Click **Delete Monitor** and confirm deletion by clicking **Remove monitor**
+
+</TabItem>
+<TabItem value='cli'>
+
+Find the ID of the alert monitor you would like to delete using
+
+```bash
+prism alerts:monitors:list --extended
+```
+
+and then delete the monitor with
+
+```bash
+prism alerts:monitors:delete ${ALERT_MONITOR_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+Delete an alert monitor with the [deleteAlertMonitor](/docs/composer/builder/api/schema/mutation/deleteAlertMonitor.mdx) mutation:
+
+```graphql
+mutation {
+  deleteAlertMonitor(
+    input: {
+      id: "QWxlcnRNb25pdG9yOjQ4ZjVkZjkzLWU3MTAtNGFmNi1iZmRmLWU5ZWM4MDAzYTAyOA=="
+    }
+  ) {
+    alertMonitor {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Alert events
+
+An **alert event** is created when an alert monitor is triggered.
+When an event is created, any users in the monitor's associated alert groups receive a notification (email or SMS) with a link to the event.
+Your team members can indicate that the issue has been acknowledged and is being addressed by **clearing** the alert event.
+
+### Viewing alert events
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+The easiest way to view an alert event is to click the link that is sent in the alert event email/SMS.
+
+Alternatively, after clicking the **Instances** link on the left-hand sidebar, you will be presented with a list of all instances.
+Each instance has an indicator in the lower-right indicating if any alert monitors have been triggered but not yet cleared.
+
+<Screenshot
+  filename="alerting/triggered-alert-monitor.png"
+  alt="Alert monitor indicator on instance in Builder app"
+/>
+
+If you click an instance with triggered monitors and then select the **Monitors** tab, you can view currently triggered monitors.
+
+<Screenshot
+  filename="alerting/list-instance-monitors.png"
+  alt="Instance monitors with current uncleared alerts highlighted in Builder app"
+/>
+
+Clicking a triggered monitor will bring you to the monitor's **Details** tab. Then you can click the **Events** tab to see exactly what happened.
+
+From there, clicking a specific alert event will bring up logs from just before and after the event on the bottom of the page.
+
+<Screenshot
+  filename="alerting/alert-event-logs.png"
+  alt="Logs for time adjacent to alert events in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To view alert events, use the `alerts:events:list` subcommand with an alert monitor's ID.
+
+```bash
+prism alerts:monitors:list --extended
+
+ Id                                                                   Name                               Triggered
+ ──────────────────────────────────────────────────────────────────── ────────────────────────────────── ─────────
+ QWxlcnRNb25pdG9yOmQyM2NlOGZlLTZiMzktNGFkNy1hMGM1LTFlMTRjMjY4MTI1Mg== Alert Project Managers on Enabling true
+ QWxlcnRNb25pdG9yOmQ0MTM3N2M5LWE1NTItNDJjNi04ZWYwLWNiY2ZkM2E2ODMxYg== Alert Devops                       false
+
+prism alerts:events:list QWxlcnRNb25pdG9yOmQ0MTM3N2M5LWE1NTItNDJjNi04ZWYwLWNiY2ZkM2E2ODMxYg==
+```
+
+</TabItem>
+<TabItem value='api'>
+
+List alert events for a particular alert monitor by querying [alertEvents](/docs/composer/builder/api/schema/query/alertEvents.mdx).
+
+</TabItem>
+</ExampleTabs>
+
+**For More Information:**
+[Log Retention](/docs/composer/builder/logging.mdx#log-retention)
+
+## Programmatically creating alert monitors
+
+An [alert monitor](/docs/composer/builder/monitoring-and-alerting.mdx#alert-monitors) allows you to be notified when something happens in a particular instance's flow.
+Most commonly, alert monitors are used to notify you when an execution fails.
+
+Let's look at how to create alert monitors programmatically for all instances.
+
+An example script that creates alert monitors for all flows of all instances is available in the [examples repository](https://github.com/prismatic-io/examples/tree/main/api/create-alert-monitors).
+
+### List instances programmatically
+
+First, we need to get a list of all of our customers instances, along with their flows, the customer the instance is deployed to and any monitors that currently exist.
+A full query to the Primsatic GraphQL API might look like this:
+
+```graphql
+query myGetInstancesQuery($cursor: String) {
+  instances(
+    isSystem: false
+    enabled: true
+    sortBy: { direction: ASC, field: CREATED_AT }
+    after: $cursor
+  ) {
+    nodes {
+      id
+      name
+      flowConfigs {
+        nodes {
+          id
+          flow {
+            name
+          }
+          monitors {
+            nodes {
+              id
+              name
+              groups {
+                nodes {
+                  id
+                }
+              }
+            }
+          }
+        }
+      }
+      customer {
+        id
+        name
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+Note three important details about this query:
+
+- `isSystem: false` will ensure that we exclude test instances that are used in the integration designer.
+- `enabled: true` will ensure that we only get instances that are currently enabled.
+- A combination of `sortBy: { direction: ASC, field: CREATED_AT }`, `after: $cursor`, and `pageInfo` at the end of the query will allow us to [paginate](/docs/composer/builder/api/using-builder-api.mdx#pagination-with-prismatics-api) through the results.
+
+If you'd like to see an example of how to paginate through results, check out the [example script](https://github.com/prismatic-io/examples/blob/main/api/create-alert-monitors/queries/get-instances.ts) which implements the query above.
+
+### Fetch info about alert triggers
+
+Next, we need to fetch information about the alert monitor we want to create.
+Alert monitors can be [triggered](/docs/composer/builder/monitoring-and-alerting.mdx#alert-triggers) by a number of events, including when an execution fails, when an execution succeeds, or when an execution takes longer than a certain amount of time.
+
+You can fetch a list of all available alert triggers with the following query:
+
+```graphql
+{
+  alertTriggers {
+    nodes {
+      id
+      name
+    }
+  }
+}
+```
+
+The `id` returned by this query is what you'll use to create the alert monitor.
+An example of this query is available in the [example script](https://github.com/prismatic-io/examples/blob/main/api/create-alert-monitors/queries/get-alert-trigger.ts).
+
+### Fetch info about a user who should be notified
+
+Assuming you want to notify a user when an alert is triggered, you'll need to fetch information about that user.
+That user's email address must be registered in your Builder organization in order to send emails to the user.
+
+You can fetch a user by email address with a query like this:
+
+```graphql
+query myGetUsersByEmail($email: String!) {
+  users(email: $email) {
+    nodes {
+      id
+      name
+      email
+    }
+  }
+}
+```
+
+Note that this query may return zero or one users - you'll need to check the length of the `nodes` array to determine if a user was found, like the example script does [here](https://github.com/prismatic-io/examples/blob/main/api/create-alert-monitors/queries/get-user.ts).
+The user's `id` is important here, as it's what you'll use to create the alert monitor.
+
+### Create the alert monitor
+
+Finally, we can loop over all instances and their flows and create alert monitors.
+For each flow of an instance, we'll check if an alert monitor already exists for that flow.
+If not, we can create one with the `createAlertMonitor` mutation:
+
+```graphql
+mutation myCreateAlertMonitor(
+  $name: String!
+  $instanceId: ID!
+  $flowConfigId: ID!
+  $triggerId: ID!
+  $userId: ID!
+) {
+  createAlertMonitor(
+    input: {
+      name: $name
+      instance: $instanceId
+      flowConfig: $flowConfigId
+      triggers: [$triggerId]
+      users: [$userId]
+    }
+  ) {
+    alertMonitor {
+      id
+    }
+    errors {
+      field
+      messages
+    }
+  }
+}
+```
+
+This mutation takes a number of variables:
+
+- `name` is the name of the alert monitor. To ensure your script is idempotent (doesn't create multiple monitors that all do the same thing), you can follow a specific naming scheme like `[Generated] Alert on Error - FLOW NAME`.
+- `instanceId` is the ID of the instance you want to create the alert monitor for. We got that when we listed instances programmatically.
+- `flowConfigId` is the ID of the flow you want to create the alert monitor for. We also got that when we listed instances programmatically.
+- `triggerId` is the ID of the alert trigger you want to use. We got that when we fetched info about alert triggers.
+- `userId` is the ID of the user you want to notify. We got that when we fetched info about a user who should be notified.
+
+Catching errors that may crop up when creating the alert monitor is important - you can look for errors in the `errors` field of the response.
+See the end of the example script [here](https://github.com/prismatic-io/examples/blob/main/api/create-alert-monitors/queries/create-alert-monitor.ts).

@@ -1,0 +1,33 @@
+---
+id: updateOAuth2Connection
+title: updateOAuth2Connection Mutation
+sidebar_label: updateOAuth2Connection
+description: Learn how to use the updateOAuth2Connection Mutation for Builder's API.
+---
+
+    Update OAuth2 Connection properties for a given Instance Config Variable.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_edit]. 3. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_manage_instances, customer_manage_marketplace_integrations]. 4. The signed-in User has any of the following permissions for the object's 'instance_Integration_Customer' attribute: [customer_admin_manage_instances, customer_manage_marketplace_integrations].
+
+## Input fields ([UpdateOAuth2ConnectionInput!](/docs/composer/builder/api/schema/input_object/UpdateOAuth2ConnectionInput.mdx))
+
+| Argument                | Type                                         | Description                                                                                                  |
+| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `refreshAt`             | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx) | The timestamp at which the next refresh attempt will occur for the Connection.                               |
+| `accessToken`           | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The OAuth2 access token to use for the Connection.                                                           |
+| `refreshToken`          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The OAuth2 refresh token to use for the Connection.                                                          |
+| `tokenType`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The type of OAuth2 token to use for the Connection.                                                          |
+| `expiresIn`             | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)           | The number of seconds until the token is expired and a refresh must occur for the Connection.                |
+| `context`               | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The context to use for the Connection. Completely replaces any existing value for context on the Connection. |
+| `status`                | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | The status to use for the Connection.                                                                        |
+| `additionalTokenFields` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | Additional fields to store on the token.                                                                     |
+| `id`                    | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)             | The ID of the InstanceConfigVariable to mutate.                                                              |
+| `clientMutationId`      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)     | A unique identifier for the client performing the mutation.                                                  |
+
+## Return fields ([UpdateOAuth2ConnectionPayload](/docs/composer/builder/api/schema/object/UpdateOAuth2ConnectionPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>instanceConfigVariable</b> ([InstanceConfigVariable](/docs/composer/builder/api/schema/object/InstanceConfigVariable.mdx))

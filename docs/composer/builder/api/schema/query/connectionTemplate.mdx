@@ -1,0 +1,54 @@
+---
+id: connectionTemplate
+title: connectionTemplate Query
+sidebar_label: connectionTemplate
+description: Learn how to use the connectionTemplate Query for Builder's API.
+---
+
+    Returns the specified ConnectionTemplate object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_view]. 2. The signed-in User has any of the following permissions for the associated Customer: [customer_manage_integrations].
+
+## Input fields
+
+| Argument | Type                              | Description                              |
+| -------- | --------------------------------- | ---------------------------------------- |
+| `id`     | [`ID!`](/docs/composer/builder/api/schema/scalar/ID.mdx) | The ID of the ConnectionTemplate object. |
+
+## Return fields ([ConnectionTemplate](/docs/composer/builder/api/schema/object/ConnectionTemplate.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the ConnectionTemplate.
+
+###### <b>allowUpdate</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the ConnectionTemplate.
+
+###### <b>connection</b> ([Connection!](/docs/composer/builder/api/schema/object/Connection.mdx))
+
+The Connection from which this template is structured.
+
+###### <b>hasDeployedInstances</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Indicates template is in use on an Instance.
+
+###### <b>id</b> ([ID!](/docs/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>inputFieldTemplates</b> ([InputFieldTemplateConnection!](/docs/composer/builder/api/schema/object/InputFieldTemplateConnection.mdx))
+
+The template that this input is associated with.
+
+###### <b>instances</b> ([InstanceConnection!](/docs/composer/builder/api/schema/object/InstanceConnection.mdx))
+
+Returns a list of deployed customer instances that are leveraging this template.
+
+###### <b>name</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The name of this template.
+
+###### <b>templatedInputKeys</b> ([[String]](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+Returns a list of the keys that are preset by this template.

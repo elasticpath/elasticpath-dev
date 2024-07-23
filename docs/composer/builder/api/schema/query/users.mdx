@@ -1,0 +1,52 @@
+---
+id: users
+title: users Query
+sidebar_label: users
+description: Learn how to use the users Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of User objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The specified object is the signed-in User. 2. The signed-in User has any of the following permissions for the associated Organization: [org_admin_users, org_view_users]. 3. The signed-in User has any of the following permissions for the associated Organization: [org_admin_customer_permissions, org_manage_customers, org_view_customers]. 4. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_users, customer_view_users].
+
+## Input fields
+
+| Argument            | Type                                                   | Description                                                                                      |
+| ------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `before`            | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`             | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                     | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`              | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                     | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`            | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                     |                                                                                                  |
+| `name`              | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Filter for objects where name matches the specified value.                                       |
+| `name_Icontains`    | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Filter for objects where name contains the specified value (case insensitive).                   |
+| `email`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Filter for objects where email matches the specified value.                                      |
+| `email_Icontains`   | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Filter for objects where email contains the specified value (case insensitive).                  |
+| `customer`          | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                       | Filter for objects where customer matches the specified ID.                                      |
+| `customer_Isnull`   | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)             | Filter for objects where customer is NULL.                                                       |
+| `createdAt_Gte`     | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)           | Filter for objects where createdAt occurs on or after the specified value.                       |
+| `createdAt_Lte`     | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)           | Filter for objects where createdAt occurs on or before the specified value.                      |
+| `updatedAt_Gte`     | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)           | Filter for objects where updatedAt occurs on or after the specified value.                       |
+| `updatedAt_Lte`     | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)           | Filter for objects where updatedAt occurs on or before the specified value.                      |
+| `externalId`        | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)               | Filter for objects where externalId matches the specified value.                                 |
+| `externalId_Isnull` | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)             | Filter for objects where externalId is NULL.                                                     |
+| `orderBy`           | [`UserOrder`](/docs/composer/builder/api/schema/input_object/UserOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`            | [`[UserOrder]`](/docs/composer/builder/api/schema/input_object/UserOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([UserConnection!](/docs/composer/builder/api/schema/object/UserConnection.mdx))
+
+###### <b>edges</b> ([[UserEdge]!](/docs/composer/builder/api/schema/object/UserEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[User]!](/docs/composer/builder/api/schema/object/User.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

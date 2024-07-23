@@ -1,0 +1,343 @@
+---
+id: cli-usage
+title: How to Use Composer's CLI Tool
+description: Installing the prism CLI tool allows Composer users access to our API via the command line. You can also run CLI commands and get contextual help.
+---
+
+The Composer CLI tool allows you to interact with the Composer API programmatically so you can build, deploy, and support integrations from the command line.
+The CLI tool is built using the [Composer API](/docs/composer/builder/api/api-overview.mdx), so any action that can be completed through the web app or API can be completed through the CLI tool, as well.
+
+## Installing the CLI Tool
+
+[![Prism NPM version](https://badge.fury.io/js/@prismatic-io%2Fprism.svg)](https://www.npmjs.com/package/@prismatic-io/prism)
+
+Composer's CLI tool, `prism`, is available at https://www.npmjs.com/package/@prismatic-io/prism and can be installed using `npm` or `yarn`:
+
+```bash
+npm install -g @prismatic-io/prism
+# OR
+yarn global add @prismatic-io/prism
+```
+
+Prism's source code is available on [GitHub](https://github.com/prismatic-io/prism), and serves as a great example for how to wrap the [Composer API](/docs/composer/builder/api/api-overview.mdx).
+
+## Authenticating with the CLI Tool
+
+Once `prism` has been installed login by typing:
+
+```bash
+prism login
+```
+
+This will open a web browser for you to authenticate with your Composer credentials.
+Once you authenticate, your CLI tool will store an authentication token for subsequent `prism` commands.
+
+To verify that you are logged in you can run `prism me` to see information about your user.
+
+```bash
+prism me
+
+Name: Alex Cooper
+Email: alexander.cooper@progix.io
+Organization: Progix Software
+Endpoint URL: https://app.prismatic.io
+```
+
+If you want to view the authentication token that your CLI tool uses, run `prism me:token`.
+
+```bash
+prism me:token
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5lVV9aYzFNdFRrSE93bXB1T2ZlUCJ9.eyJodHRwczovL3ByaXNtYXRpYy5pby9lbWFpbCI6InRlc3QudXNlckBlbWFpbC5jb20iLCJodHRwczovL3ByaXNtYXRpYy5pby9sYXN0X2xvZ2luIjoiMzAyMS0wMS0wMVQwMDowMDowMC4wMDFaIiwiaXNzIjoiaHR0cHM6Ly9wcmlzbWF0aWMtaW8udXMuYXV0aDAuY29tLyIsImF1ZCI6WyJodHRwczovL3ByaXNtYXRpYy5pby9hcGkiLCJodHRwczovL3ByaXNtYXRpYy1pby51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjEyMjA4NjQyLCJleHAiOjE2MTIyOTUwNDIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgb2ZmbGluZV9hY2Nlc3MifQ.iKQWx95vUWTxF62O3-mZFqHPgfapH7TQjsy-BunqWWDJrhk88byJpJQYy__hJE779qAahkEtZD914zgpZ8UnjGW0i_PUcCf5nZsDJBR-jfTEARCLmeVYge3Hy40BAFzj3eCcCouDFqxMNaD3oeXSjfizO9Cy_P-XKEkDdIOJ-rk
+```
+
+To clear your token from memory and log out, run `prism logout`.
+
+:::tip Logging in to other regions
+By default your data is stored in the US commercial region and `prism` authenticates against that region.
+If your enterprise plan includes additional regions or private cloud, you will need to instruct `prism` to point to that region.
+See [Integrations in Multiple Regions](/docs/composer/builder/integrations-multiple-regions.mdx#logging-in-to-additional-regions-with-prism).
+:::
+
+## Running CLI Commands and Getting Help
+
+All Composer CLI commands generally follow the form `prism COMMAND`.
+For example, you can run `prism customers:list` to list all of your customers, or `prism integrations:create` to create an integration.
+A full list of `prism` commands can be found on the [Composer CLI Command Reference](/docs/composer/builder/cli/prism.mdx) page.
+
+Typing `prism --help` will also list top-level commands that you can run.
+
+```bash
+prism --help
+
+Build, deploy, and support integrations in Composer from the comfort of your command line
+
+VERSION
+  @prismatic-io/prism/4.2.6 darwin-arm64 node-v14.17.6
+
+USAGE
+  $ prism [COMMAND]
+
+TOPICS
+  alerts                 Manage Alerting resources
+  authorization-methods  List Authorization Methods that Components can use
+  components             Manage, create, and publish Components
+  customers              Manage Customers
+  executions             Fetch results of Instance executions or Integration test runs
+  instances              Manage Instances
+  integrations           Manage and import Integrations
+  logs                   List Log Severities for use by Alert Triggers
+  me                     Print your user profile information
+  organization           Manage your Organization
+
+COMMANDS
+  help    Display help for prism.
+  login   Log in to your Composer account
+  logout  Log out of your Composer account
+  me      Print your user profile information
+```
+
+To see subcommands of top level commands, you can type `prism COMMAND --help`.
+For example, to see what you can do with customers run
+
+```bash
+prism customers --help
+
+Manage Customers
+
+USAGE
+  $ prism customers:COMMAND
+
+TOPICS
+  customers:credentials  Manage Customer Credentials
+  customers:users        Manage Customer Users
+
+COMMANDS
+  customers:create  Create a new Customer
+  customers:delete  Delete a Customer
+  customers:list    List your Customers
+  customers:update  Update a Customer
+```
+
+For a list of all required arguments of a command, type `prism COMMAND:SUBCOMMAND --help`.
+For example, to see the required arguments to create a customer, run
+
+```bash
+prism customers:create --help
+
+Create a new Customer
+
+USAGE
+  $ prism customers:create -n <value> [-d <value>]
+
+FLAGS
+  -d, --description=<value>  longer description of the customer
+  -n, --name=<value>         (required) short name of the new customer
+
+DESCRIPTION
+  Create a new Customer
+```
+
+## Listing Resources
+
+All types of prismatic resources (customers, components, integrations, instances, actions, etc.) have `:list` subcommands.
+By default, list commands show basic information about the resource, like name and description, but additional information like resource ID can be displayed.
+You can optionally select exactly what attributes of resources you want to list, you can filter the results, and you can format the results as CSV, JSON, or YAML.
+
+```bash
+prism components:list
+
+ Label                   Public Description                                                                                   Version Category
+ ─────────────────────── ────── ───────────────────────────────────────────────────────────────────────────────────────────── ─────── ──────────────────────
+ Acme ERP                false  Interact with Acme ERP's inventory and customer systems                                       2       null
+ Airtable                true   Manage items (records) in an Airtable Base                                                    2       Data Platforms
+ Amazon DynamoDB         true   Create, update, fetch, or delete items in an Amazon (AWS) DynamoDB database                   5       Data Platforms
+ Amazon S3               true   Manage files within an Amazon (AWS) S3 bucket                                                 34      Data Platforms
+ Amazon SES              true   Send Emails through Amazon (AWS) SES                                                          5       Application Connectors
+ Amazon SNS              true   Manage subscriptions, topics, and messages within Amazon (AWS) SNS                            7       Data Platforms
+ Amazon SQS              true   Send, receive and manage messages within an Amazon (AWS) SQS queue                            10      Data Platforms
+ AMQP                    true   Send and receive messages on an AMQP-based message broker                                     5       Data Platforms
+```
+
+### Listing Resource IDs
+
+All Composer resources have unique IDs.
+IDs are not displayed by default through `list` subcommands, but can optionally be displayed with the `--extended` flag.
+For example, to see IDs for components, run
+
+```bash
+prism components:list --extended
+
+ Id                                                               Key                     Label                   Public Description                                                                                   Version Category
+ ──────────────────────────────────────────────────────────────── ─────────────────────── ─────────────────────── ────── ───────────────────────────────────────────────────────────────────────────────────────────── ─────── ──────────────────────
+ Q29tcG9uZW50OjI3ZWM4ODlmLTI1ODUtNDFiMy05MDdlLWI2YWExNTg5ZGNhNA== acmeerp                 Acme ERP                false  Interact with Acme ERP's inventory and customer systems                                       2       null
+ Q29tcG9uZW50OmVkMjcwNmExLThiMTEtNDI0YS05MjM0LTgzZjU4NDBmNzA3NQ== airtable                Airtable                true   Manage items (records) in an Airtable Base                                                    2       Data Platforms
+ Q29tcG9uZW50Ojg3NzE3YThhLTFiODktNDY5My1hYmZlLWRjY2VkMjMxM2RlZg== aws-dynamodb            Amazon DynamoDB         true   Create, update, fetch, or delete items in an Amazon (AWS) DynamoDB database                   5       Data Platforms
+ Q29tcG9uZW50OjE3NmRjYWU3LWEzMzktNDQ2NC1iYmJkLTU4ODllNzdmOWJjYQ== aws-s3                  Amazon S3               true   Manage files within an Amazon (AWS) S3 bucket                                                 34      Data Platforms
+ Q29tcG9uZW50Ojg3NjlhODE1LTY1OTEtNDliZC1hMGQ5LTNhMWNlYjUxZmZkYQ== aws-ses                 Amazon SES              true   Send Emails through Amazon (AWS) SES                                                          5       Application Connectors
+ Q29tcG9uZW50OjNkMzFkYjYxLWFlYzItNDRjZS05NGNkLTVhZWJjMjIxNjlhZg== aws-sns                 Amazon SNS              true   Manage subscriptions, topics, and messages within Amazon (AWS) SNS                            7       Data Platforms
+ Q29tcG9uZW50OmQ5ZmJkYzViLTFhMGUtNDRlMS1hNDcxLTNjMWE0NzFhYzAwNQ== aws-sqs                 Amazon SQS              true   Send, receive and manage messages within an Amazon (AWS) SQS queue                            10      Data Platforms
+ Q29tcG9uZW50OmFmYjNlMTNmLTg0NDctNGJmMC05MWIyLTAxNGQ1OTliYThkYg== amqp                    AMQP                    true   Send and receive messages on an AMQP-based message broker                                     5       Data Platforms
+```
+
+### Configuring Columns of a List to Display
+
+You can optionally choose which attributes of a resource to display using the `--columns` flag.
+For example, to get the Key, Label, and ID of all components, you can run
+
+```bash
+prism components:list --columns key,label,id
+
+ Key          Label           Id
+ ──────────── ─────────────── ────────────────────────────────────────────────────────────────
+ acmeerp      Acme ERP        Q29tcG9uZW50OjI3ZWM4ODlmLTI1ODUtNDFiMy05MDdlLWI2YWExNTg5ZGNhNA==
+ airtable     Airtable        Q29tcG9uZW50OmVkMjcwNmExLThiMTEtNDI0YS05MjM0LTgzZjU4NDBmNzA3NQ==
+ aws-dynamodb Amazon DynamoDB Q29tcG9uZW50Ojg3NzE3YThhLTFiODktNDY5My1hYmZlLWRjY2VkMjMxM2RlZg==
+ aws-s3       Amazon S3       Q29tcG9uZW50OjE3NmRjYWU3LWEzMzktNDQ2NC1iYmJkLTU4ODllNzdmOWJjYQ==
+ aws-ses      Amazon SES      Q29tcG9uZW50Ojg3NjlhODE1LTY1OTEtNDliZC1hMGQ5LTNhMWNlYjUxZmZkYQ==
+ aws-sns      Amazon SNS      Q29tcG9uZW50OjNkMzFkYjYxLWFlYzItNDRjZS05NGNkLTVhZWJjMjIxNjlhZg==
+ aws-sqs      Amazon SQS      Q29tcG9uZW50OmQ5ZmJkYzViLTFhMGUtNDRlMS1hNDcxLTNjMWE0NzFhYzAwNQ==
+ amqp         AMQP            Q29tcG9uZW50OmFmYjNlMTNmLTg0NDctNGJmMC05MWIyLTAxNGQ1OTliYThkYg==
+```
+
+### Filtering List Output
+
+You can filter the output that a `:list` subcommand displays using a `--filter` flag.
+For example, to only show the component with the key "aws-s3", run
+
+```bash
+prism components:list --filter 'key=^aws-s3$'
+
+ Label     Public Description                                   Version Category
+ ───────── ────── ───────────────────────────────────────────── ─────── ──────────────
+ Amazon S3 true   Manage files within an Amazon (AWS) S3 bucket 34      Data Platforms
+```
+
+:::note Filter uses regex
+The `--filter` flag uses [regex](https://regexr.com/) pattern matching, hence the "start of string" `^` character, and "end of string" `$` character.
+:::
+
+In a bash script, you can combine the `--filter` flag with the `--columns` and `--no-header` flags to get the ID of a specific resource
+
+```bash
+AWS_S3_COMPONENT_ID=$(prism components:list --filter 'key=aws-s3' --no-header --columns id)
+echo ${AWS_S3_COMPONENT_ID}
+Q29tcG9uZW50OjJlMDcyMGU4LTFjNTUtNDY1Ni04NzY0LTI1N2RmZDVhNTE3Mw==
+```
+
+### Formatting List Output
+
+Lists can be optionally formatted as CSV, JSON, or YAML using the `--output` flag.
+This flag can be combined with the `--columns FORMAT` and `--filter` flag, as well.
+For example, if you want id and key of all components in CSV format, run
+
+```bash
+prism components:list --output csv --columns id,key
+
+Id,Key
+Q29tcG9uZW50OjNiODQ1NGVkLTE5MjEtNGYxNS04MDhmLTBlZjkxNDEzNGRhZA==,airtable
+Q29tcG9uZW50OjE5YWYzMzQzLTU2OWQtNDY0Yy1iNTAwLWUzM2RhNjg3YmQxYQ==,aws-dynamodb
+Q29tcG9uZW50OjQ1ZGVkMzEyLTE2ZmUtNGY0Mi04OWVlLWZhOTIzNTQ0ZDEyYQ==,aws-s3
+Q29tcG9uZW50OmEyNjRjMTVkLThjM2QtNGY0Yi1hNDNkLWEzYzMzZjgxZGY0MQ==,aws-ses
+Q29tcG9uZW50OjRmNTM5MWVkLWE3ZDEtNDljZi1hNjViLTE4ZGNmMTRmNGJlMA==,aws-sns
+Q29tcG9uZW50OmQ0YjhmOTllLWU3YTYtNDUxMS04YWIxLWNkOGQ1M2QyNDJiZg==,aws-sqs
+```
+
+## Using the Composer CLI in Bash Scripts
+
+Multiple `prism` commands can be strung together to manage prismatic resources.
+For example, to create an instance you need to know the ID of the integration, and the ID of the customer you want to deploy an instance to.
+You can use `customers:list`, `integrations:list` and `instances:create` commands together to create a new instance.
+
+```bash
+# Get the Customer ID
+CUSTOMER_ID=$(
+  prism customers:list \
+    --columns id \
+    --filter 'Name=^FTL Rockets$' \
+    --no-header)
+
+# Get the Integration ID
+INTEGRATION_ID=$(
+  prism integrations:list \
+    --columns id \
+    --filter 'name=^Acme$' \
+    --no-header)
+
+# Get the integration's latest version ID
+VERSION_ID=$(
+  prism integrations:versions ${INTEGRATION_ID} \
+    --columns id \
+    --latest-available \
+    --no-header)
+
+# Create the instance
+prism instances:create \
+  --customer ${CUSTOMER_ID} \
+  --integration ${VERSION_ID} \
+  --name 'Acme ERP' \
+  --description 'Sync data with Acme ERP'
+```
+
+## Headless prism Usage for CI/CD Pipelines
+
+If you would like to use `prism` on a headless (no GUI) server for CI/CD or scripting purposes, you will need to log in on a system that has a web browser and then transfer your "refresh token" to the headless system.
+Refresh tokens do _not_ expire, and are used to generate short-lived access tokens for Composer's API.
+
+After logging in to `prism` with `prism login`, get your refresh token with `prism me:token --type refresh`.
+Take note of your token, and the API endpoint that you are currently using (see that with `prism me`).
+
+Now, on our headless CI/CD system, set an environment variable `PRISM_REFRESH_TOKEN` with the value you found.
+If you use
+
+```bash
+export PRISM_REFRESH_TOKEN=my-refresh-token
+```
+
+If you're working with [regions](/docs/composer/builder/integrations-multiple-regions.mdx) other than the default US commercial region, you can also specify an endpoint:
+
+```bash
+export PRISM_REFRESH_TOKEN=my-refresh-token
+export PRISMATIC_URL=https://app.eu-west-1.prismatic.io
+```
+
+If your app uses a white-labeled domain (like integrations.my-company.com), you can use that endpoint instead for `PRISMATIC_URL`.
+
+**Note**: If you are using PowerShell on a Windows machine, you can set an environment variable with this syntax:
+
+```powershell
+$ENV:PRISMATIC_URL=https://app.eu-west-1.prismatic.io
+```
+
+## Autocomplete in Prism
+
+Enable autocomplete in `prism` by running `prism autocomplete` and then follow the instructions that are displayed.
+Instructions are different depending on which shell you use (bash, zsh, etc.).
+
+## Troubleshooting Common Problems
+
+Misconfiguration of [WSL](https://docs.microsoft.com/en-us/windows/wsl/) or [NodeJS](https://nodejs.org/) can result in odd behaviors for a Node-based package like `prism`.
+Here are a couple of common problems with their respective solutions:
+
+#### Error: spawn cmd.exe ENOENT
+
+When you run `prism login` from within Windows Subsystem for Linux (WSL), you might see `Error: spawn cmd.exe ENOENT`.
+This is a problem with the WSL distribution's `PATH` environment variable.
+Ensure that your `PATH` environment variable contains `System32`, which is where `cmd.exe` is located.
+Usually, you can run something like this:
+
+```bash
+export PATH=$PATH:/mnt/c/Windows/System32
+```
+
+#### Error: spawn xdg-open ENOENT
+
+If you run `prism login` in a headless Linux environment (a Linux environment without a desktop or web browser such as an Ubuntu server or docker container), `prism` will be unable to open a GUI web browser to authenticate you.
+You might see an error that reads `Error: spawn xdg-open ENOENT` or `Error: Exited with code 3`.
+
+You will need to authenticate on a computer with a desktop environment and web browser, and set the refresh token you receive as an environment variable on the headless server.
+See [Headless prism Usage for CI/CD Pipelines](#headless-prism-usage-for-cicd-pipelines).
+
+#### prism: command not found
+
+If you have followed the [instructions above](#installing-the-cli-tool) to install `prism`, but then see `prism: command not found` on Linux or MacOS, or `'prism' is not recognized as an internal or external command, operable program or batch file` on Windows when you run `prism`, you likely don't have your NodeJS `PATH` configured correctly.
+Ensure that your `PATH` environment variable contains the `bin/` directory of your NodeJS installation.

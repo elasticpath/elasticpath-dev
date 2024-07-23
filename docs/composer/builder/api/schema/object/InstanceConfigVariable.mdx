@@ -1,0 +1,87 @@
+---
+id: InstanceConfigVariable
+title: InstanceConfigVariable Object
+sidebar_label: InstanceConfigVariable
+description: Learn how to use the InstanceConfigVariable Object for Builder's API.
+---
+
+Associates specific values to the Required Config Variables specified by an
+Integration when creating an Instance.
+
+## Return fields
+
+###### <b>allowRemove</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the InstanceConfigVariable.
+
+###### <b>allowUpdate</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the InstanceConfigVariable.
+
+###### <b>authorizeUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The Authorize URL of this Config Variable if associated with an OAuth 2.0 Connection.
+
+###### <b>contentMetadataUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The presigned URL to fetch metadata of the content used to populate the widget, when applicable.
+
+###### <b>contentUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The presigned URL to download the content used to populate the widget, when applicable.
+
+###### <b>id</b> ([ID!](/docs/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>inputs</b> ([ExpressionConnection](/docs/composer/builder/api/schema/object/ExpressionConnection.mdx))
+
+The collection of Expressions that serve as inputs to the InstanceConfigVariable.
+
+###### <b>instance</b> ([Instance!](/docs/composer/builder/api/schema/object/Instance.mdx))
+
+The Instance with which the Config Variable is associated.
+
+###### <b>logs</b> ([LogConnection!](/docs/composer/builder/api/schema/object/LogConnection.mdx))
+
+The InstanceConfigVariable which relates to the Log entry.
+
+###### <b>meta</b> ([JSONString](/docs/composer/builder/api/schema/scalar/JSONString.mdx))
+
+Contains arbitrary metadata about this Config Var.
+
+###### <b>onPremiseResource</b> ([OnPremiseResource](/docs/composer/builder/api/schema/object/OnPremiseResource.mdx))
+
+The On-Premise Resource that is associated with the Config Variable.
+
+###### <b>refreshAt</b> ([DateTime](/docs/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the OAuth2 token will automatically be refreshed, if necessary. Only applies to OAuth2 methods where refresh is necessary.
+
+###### <b>requiredConfigVariable</b> ([RequiredConfigVariable!](/docs/composer/builder/api/schema/object/RequiredConfigVariable.mdx))
+
+The Required Config Variable that is satisfied with the assignment of a Config Variable.
+
+###### <b>scheduleType</b> ([InstanceConfigVariableScheduleType](/docs/composer/builder/api/schema/enum/InstanceConfigVariableScheduleType.mdx))
+
+The schedule type to show in the UI when the Config Var uses the 'schedule' dataType.
+
+###### <b>status</b> ([InstanceConfigVariableStatus](/docs/composer/builder/api/schema/enum/InstanceConfigVariableStatus.mdx))
+
+Status indicating if this Connection is working as expected or encountering issues.
+
+###### <b>supplementalDataMetadataUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The presigned URL to fetch metadata of the supplemental data that may have been fetched as part of populating the content, when applicable.
+
+###### <b>supplementalDataUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The presigned URL to download supplemental data that may have been fetched as part of populating the content, when applicable.
+
+###### <b>timeZone</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+An optional timezone property for when the Config Var uses the 'schedule' dataType.
+
+###### <b>value</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The value for the Required Config Variable that becomes part of the Instance definition.

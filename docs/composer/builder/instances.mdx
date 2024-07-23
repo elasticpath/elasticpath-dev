@@ -1,0 +1,151 @@
+---
+id: instances
+title: Introduction to Instance Deployment
+description: Manage instances of Builder integrations
+---
+
+import ExampleTabs from "@site/src/components/example-tabs";
+import TabItem from "@theme/TabItem";
+import Icon from "@mui/material/Icon";
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+An **instance** of an [integration](/docs/composer/builder/integrations.mdx) is a copy of an integration that has been configured for a specific [customer](/docs/composer/builder/customers.mdx).
+When the instance is configured for a customer or by a customer, config variables and connections to third-party apps and services specific to that customer are set by walking through a [configuration wizard](/docs/composer/builder/configuration-wizard.mdx).
+
+You can deploy instances of the integrations you create [on behalf of your customers](/docs/composer/builder/org-deployed-instances.mdx) or your customers can enable instances themselves through the [integration marketplace](/docs/composer/builder/integration-marketplace.mdx).
+For your customers, **instance** doesn't have any meaning - they either have an integration or they don't. So, when customers log in to Builder they're presented phrases like "activate this integration", or "configure this integration". A customer "activates" an "integration" - which is the same as deploying an "instance" in your lingo as an organization user.
+
+When a [flow](/docs/composer/builder/building-integrations.mdx#flows-in-integrations) within an instance is triggered, an [execution](/docs/composer/builder/executions.mdx) of your instance's flow runs.
+
+## What happens when an instance is deployed
+
+Once an instance is deployed, any triggers that are marked as [deploy triggers](/docs/composer/builder/integration-triggers.mdx#instance-deploy-trigger) are executed.
+Note: the instance will still deploy even if a deploy trigger fails to run to completion.
+We recommend adding an [alert monitor](/docs/composer/builder/monitoring-and-alerting.mdx#alert-monitors) to instances you deploy, so you can be alerted if an execution (a deploy flow included) fails to run to completion.
+
+Webhooks are generated for each flow and can be invoked after the instance is deployed.
+Schedule triggers are registered with the Builder scheduler and will run at the interval you specify.
+
+Instances are billed based on how long the instance is enabled.
+You are not billed when an instance is paused.
+
+## Invoking instances
+
+An instance's flows can be invoked one of three ways:
+
+1. You can set up your integration to run [on a schedule](/docs/composer/builder/integration-triggers.mdx#scheduled-triggers)
+1. You can invoke them [through a webhook](/docs/composer/builder/integration-triggers.mdx#webhook-triggers)
+1. You can configure your flow to run [on deployment](/docs/composer/builder/integration-triggers.mdx#instance-deploy-trigger) or [on instance removal](/docs/composer/builder/integration-triggers.mdx#instance-remove-trigger)
+
+### Invoking instances with webhook triggers
+
+If you choose to invoke your instance's flows with a webhook trigger, webhook URLs will be generated for each flow you when you deploy the instance.
+
+To invoke an instance's flow programmatically, you can send a POST request to the webhook URL with an optional payload.
+Here's an example using `curl`, though you can use any language you like:
+
+```bash
+curl 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
+  --location \
+  --header "Content-Type: application/json" \
+  --data '{"examplePayloadKey": "examplePayloadValue"}'
+```
+
+**More Information**:
+[Webhook Triggers](/docs/composer/builder/integration-triggers.mdx#webhook-triggers)
+
+## Searching instances across customers
+
+Click the **Instances** link on the left-hand sidebar to view all instances for all customers.
+You can search instance names through the **Search Instances** search bar on the top of the page.
+You can further filter instances by description, integration or labels by clicking the **Filter** link to the right of the search bar.
+
+<Screenshot
+  filename="instances/search-instances.png"
+  alt="Search instances across customers in Builder app"
+/>
+
+**How do I filter instances by customer?**
+
+To view instances for a specific customer, click the **Customers** link on the left-hand sidebar and select a customer.
+Select the **Instances** tab to view instances for that customer.
+
+## Options for deploying instances
+
+<Vimeo video="894996278" title="Options for deploying an instance" />
+
+Once you've built and published an integration it's time to configure and deploy an instance of your integration to a customer.
+You can either deploy the instance yourself, or grant your customer access to deploy the instance themselves.
+
+### Option 1: Deploy an instance yourself
+
+As you work with your first few customers and build out an MVP, it may be easiest to [deploy instances yourself](/docs/composer/builder/org-deployed-instances.mdx).
+
+**Advantages**:
+
+- You can quickly iterate on your integration and fix any production issues that arise.
+- No additional development work is required to support self-deployment.
+
+**Disadvantages**:
+
+- You'll need to manually deploy instances for each customer.
+- You'll possibly need to handle the customers' credentials for the third-party service as you configure the instance.
+
+### Option 2: Grant customers access to deploy instances through the Builder app
+
+You can invite your customers to log in to Builder and deploy instances themselves.
+You can do this by publishing your integration to the [integration marketplace](/docs/composer/builder/integration-marketplace.mdx) and then invite the [customer user](/docs/composer/builder/users.mdx#managing-customer-users) to your tenant.
+The customer user will only be able to see instances that are deployed to them (and not to your other customers).
+
+**Advantages**:
+
+- Your customer can configure deploy instances themselves.
+- You don't need to handle the customers' credentials for the third-party service.
+
+**Disadvantages**:
+
+- Your customer will need an additional login to Builder.
+
+### Option 3: Embed the integration marketplace in your app
+
+You can [embed the integration marketplace](/docs/composer/builder/embedding-marketplace.mdx) in your app so that your customers can deploy instances without leaving your app.
+
+**Advantages**:
+
+- Customers can deploy instances for themselves without leaving your app.
+- You can leverage your existing authentication system to authenticate customers.
+- You have some control over the fonts, colors and other styling of the marketplace, so you can make the embedded iframe match your app.
+
+**Disadvantages**:
+
+- Some development work is required to embed the marketplace in your app (though, the Builder embedded SDK makes this easy!).
+
+### Option 4: Build your own UI for deploying instances
+
+If you want to build a custom UI for deploying instances, you can use the Builder embedded SDK to [make API requests](/docs/composer/builder/embedded-api-requests.mdx) to the Builder API on behalf of your customer user.
+You can query for integrations in the integration marketplace, components, etc., and can map those records to custom UI elements in your app.
+
+**Advantages**:
+
+- You have full control over the UI and can build a custom UI that fits your app's look and feel.
+
+**Disadvantages**:
+
+- This option requires the most development work.
+
+## Configuring instances
+
+When you or your customer deploy an instance, you will work through the [Configuration Wizard](/docs/composer/builder/configuration-wizard.mdx) that your integration builders created.
+
+This is where you can set values for connections and configuration variables for your deployed instance.
+If your integration developers set default values for the config variables, those will be set initially, but you can override them if you choose.
+Depending on config variable type, you'll have the option to toggle boolean values, enter string values, enter JSON or XML for a code config variable, or select options from a dropdown.
+
+<Screenshot
+  filename="instances/integration-configuration.png"
+  maxWidth="800px"
+  alt="Configure instance in Builder app"
+/>
+
+Be sure to click **Save and deploy** on the last page of the **Configuration Wizard** to save any changes you make.

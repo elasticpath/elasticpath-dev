@@ -1,0 +1,209 @@
+---
+id: integration-marketplace
+title: Integration Marketplace
+description: Allow customers to manage integrations deployed to them
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+Builder's **integration marketplace** is a place where you can present your integrations to your customers.
+You can [embed](/docs/composer/builder/embedding-marketplace.mdx) marketplace within your app so your users can seamlessly deploy integrations natively using your existing authentication system.
+
+Within the integration marketplace your customers can:
+
+- Explore your integration offerings in an attractive marketplace
+- Easily self-activate integrations that connect your app to third-party services they use
+- Monitor their active integrations using powerful logging and alerting tools
+
+You can choose which integrations you'd like to include in your integration marketplace, and how they're presented to your customers.
+Customers follow a simple configuration and deployment experience that [you create](/docs/composer/builder/building-integrations.mdx#config-variables-in-integrations) when you build the integration - they enter some configuration values and credentials, select a few options from some dropdown menus, and click "activate".
+
+:::info Disambiguating "integrations" and "instances"
+For organization users, an **integration** refers to a general, productized and published integration that can be configured and deployed to multiple customers.
+An **instance** of an integration is a copy of the integration that has been configured and deployed a specific customer.
+
+For your customers, **instance** doesn't have any meaning - they either have an integration or they don't.
+So, when customers log in to Builder they're presented phrases like "activate this integration", or "configure this integration".
+A customer "activates" an "integration" - which is the same as deploying an "instance" in your lingo as an organization user.
+:::
+
+## Presenting the integration marketplace to your customers
+
+You have a few options for presenting the integration marketplace to your customers:
+
+1. You can [embed the integration marketplace](/docs/composer/builder/embedding-marketplace.mdx) within your app as an iframe.
+   This option allows your customers to activate integrations natively within your app.
+   You can [theme](/docs/composer/builder/embedding-marketplace.mdx#theming-embedded-marketplace) the integration marketplace to match your app's branding.
+
+   <Screenshot
+     filename="integration-marketplace/presenting-embed-iframe.png"
+     maxWidth="650px"
+     caption="Your customers log in to your app activate integrations through an embedded iframe"
+   />
+
+2. For a fully native expeirence, you can use the [embedded SDK](/docs/composer/builder/installing-embedded.mdx) to [query Builder's API](/docs/composer/builder/embedded-api-requests.mdx) for information on integrations.
+   You can then use this information to build your own integration marketplace within your app.
+   This option requires the most development effort, but allows you to build a fully native integration marketplace experience.
+
+   <Screenshot
+     filename="integration-marketplace/presenting-custom-ui.png"
+     maxWidth="650px"
+     caption="Your customers log in to your app activate integrations through a custom UI"
+   />
+
+3. You can create Builder accounts for your customers and have them log in to Builder to activate integrations.
+   This is the simplest option, and is a good choice if you don't have an existing authentication system.
+   However, this option requires your customers to log in to Builder to activate integrations, rather than activating integrations natively within your app.
+
+   <Screenshot
+     filename="integration-marketplace/presenting-login-to-prismatic.png"
+     maxWidth="600px"
+     caption="Your customers log in to Builder to activate integrations"
+   />
+
+## Preparing an integration for the integration marketplace
+
+If you'd like to configure an integration to appear in the integration marketplace for your customers, follows these steps:
+
+1. First, [publish your integration](/docs/composer/builder/integrations.mdx#publishing-an-integration) from the integration designer.
+1. Next, open your integration's marketplace configuration page.
+   You can either:
+   1. Click the **Settings** link on the left-hand side of the integration designer and choose **Marketplace Configuration**.
+      Click the **RECONFIGURE** button that appears in the upper-right corner of the next screen.
+      Or,
+   1. Select the **Integration Marketplace** link on the left-hand sidebar of the main screen, click **+ Integration**, and select the integration you'd like to add.
+1. Select the version of your integration that you would like to appear in the integration marketplace and provide a nice overview for your integration to explain to users what your integration does.
+   Your overview can contain [markdown](https://markdownlivepreview.com/).
+
+   <Screenshot
+     filename="integration-marketplace/org-configure-integration.png"
+     maxWidth="600px"
+     alt="Configure integration for marketplace in Builder app"
+   />
+
+   Toggle **Customer Deployable** _on_ if you would like your customers to be able to activate the integration themselves.
+   If **Customer Deployable** is _off_, your integration will appear in the integration marketplace with a note instructing your customers to contact your company to activate the integration:
+
+   <Screenshot
+     filename="integration-marketplace/customer-deployable-off.png"
+     maxWidth="700px"
+     alt="Toggle customer deployable option for integration in Builder app"
+   />
+
+   Click the **UPDATE** button when you are ready for the integration to be available in the integration marketplace.
+
+To change any details about your integration marketplace offering (like updating the integration version or overview text), open the **Integration Marketplace** link on the left-hand sidebar again and select the integration you want to modify.
+
+:::tip Add an icon to your integration
+To make your integration look attractive in the integration marketplace, you can [add an icon](/docs/composer/builder/integrations.mdx#assigning-an-icon-to-an-integration) to your integration.
+:::
+
+### Preparing the configuration experience
+
+Integrations are driven by [config variables](/docs/composer/builder/building-integrations.mdx/#config-variables-in-integrations).
+As you develop your integration, you create a series of config variables and connections that are required by the steps in your integration.
+We recommend grouping related config variables together (for example, putting all Amazon S3 variables together), and adding appropriate headers between groups of config variables.
+This will give your customers a richer deployment experience.
+
+You can choose which config variables customers are allowed to configure when you create the config variables:
+
+<Screenshot
+  filename="integration-marketplace/customer-configurable-config-variable.png"
+  maxWidth="650px"
+  alt="Enable config variables for customers in Builder app"
+/>
+
+This is handy if you have a config variable or credential that you would generally like to use for all of your customers, but you don't want your customers to see the variable or credential's value (say you have an API key you use as an organization, but don't want your customers to see it).
+
+If a config variable is **not** customer-configurable, then the variable's **Default Value** is used.
+
+:::note Set default values for non-customer-configurable variables
+All non-customer-configurable config variables need default values.
+If one does not have a default value, the integration won't be deployable by your customers.
+Instead, your customers will get a message when they attempt to activate the integration instructing them to contact your company, and your team will need to set a value for that missing config variable.
+:::
+
+## Updating integration marketplace version
+
+Your customers have access to the version of the integration that is available in the integration marketplace.
+You can update the version two ways.
+Either:
+
+1. Select the **Marketplace configuration** link on the left-hand sidebar of the main screen select your integration, and then select a version of your integration to present.
+1. When you publish a new version of your integration, you can choose to update your integration marketplace version from the publish drawer in the integration designer.
+   <Screenshot
+     filename="integration-marketplace/update-integration-version.png"
+     maxWidth="550px"
+     alt="Update integration version in integration marketplace from designer"
+   />
+
+## Activating integrations as a customer
+
+:::info You can embed marketplace, or let your customers log in to Builder
+Most organizations choose to [embed](/docs/composer/builder/embedding-marketplace.mdx) marketplace in their apps so integration activation is a seamless experience and their users never have to leave their app.
+
+The instructions below apply if you're choosing _not_ to embed marketplace in your app.
+You have the option to create [customer users](/docs/composer/builder/users.mdx#customer-users) in Builder, allowing your customers to log in to Builder and activate integrations for themselves.
+:::
+
+Once you have an integration in your marketplace, customers can activate the integration to themselves.
+The customer's view of Builder differs from an organization user's view - a customer can only see integrations, configuration, users, etc., that are specific to them.
+
+As a customer user, open the **Integration Marketplace** link on the left-hand sidebar.
+Integrations that have been activated are marked with a green check mark:
+
+<Screenshot
+  filename="integration-marketplace/integration-marketplace.png"
+  maxWidth="700px"
+  alt="List of integrations with activated integrations highlighted in Builder integration marketplace"
+/>
+
+A customer can activate a new integration by clicking into an integration that hasn't been activated (no green check mark).
+They will be greeted with a popover with the name, description, and overview of the integration:
+
+<Screenshot
+  filename="integration-marketplace/deploy-modal.png"
+  maxWidth="700px"
+  alt="Customer activates integration in Builder integration marketplace"
+/>
+
+Once a customer has clicked **ACTIVATE**, they are brought to the integration configuration screen:
+
+<Screenshot
+  filename="integration-marketplace/customer-configure-integration.png"
+  maxWidth="700px"
+  alt="Customer configures integration in Builder integration marketplace"
+/>
+
+Your customer can now enter values for config variables and connections, and click **ACTIVATE** when they are finished.
+They can test the integration by clicking into the **Test** tab, and view logs and execution data by clicking into the **Logs** and **Executions** tabs.
+
+Webhook URL(s) are listed at the bottom of the page so they can be used to configure third-party apps and services.
+
+## Deactivating an integration as a customer
+
+To remove an integration as a customer, open the integration from the **Integration Marketplace** page, and click **Deactivate Integration** on the bottom of the page.
+
+## Supporting and modifying deployed instances
+
+To modify an activated integration as a customer, open the integration from the **Integration Marketplace** page again and click **Reconfigure**.
+Make changes to configuration and click **SAVE** to save changes.
+
+As an organization user, you can modify an integration that a customer activated as you would any other deployed [instance](/docs/composer/builder/instances.mdx#configuring-instances).
+You also have the ability to modify config variables that are marked non-customer-configurable.
+
+## Removing an integration from the integration marketplace
+
+To remove an integration from the integration marketplace, open the **Integration Marketplace** page from the left-hand sidebar.
+Select the integration you would like to remove, and then click **Remove Integration** on the bottom of the page.
+
+:::info Activated Instances will not be removed
+If you remove an integration from the integration marketplace, instances of the integration that customers have activated will not automatically be removed.
+You can safely remove an integration marketplace offering without affecting existing deployments, and instances will still show up on the **Instances** page.
+:::
+
+## Embedding marketplace in an application
+
+Marketplace can be embedded into your application.
+See our [Embedding Marketplace](/docs/composer/builder/embedding-marketplace.mdx) article for more details.

@@ -1,0 +1,37 @@
+---
+id: microsoft-oauth2
+title: Set up OAuth 2.0 for Microsoft Apps
+description: Learn how to set up an OAuth 2.0 client for Microsoft Azure-based apps
+---
+
+import Vimeo from "@site/src/components/vimeo";
+
+<Vimeo
+  video="907604023"
+  title="Configuring OAuth 2.0 for integrations with Microsoft apps"
+/>
+
+## Configuring OAuth 2.0 for integrations with Microsoft apps
+
+Many Microsoft apps (like [Teams](/docs/composer/builder/builder-components/ms-teams.mdx), [Outlook](/docs/composer/builder/builder-components/ms-outlook.mdx), [OneDrive](/docs/composer/builder/builder-components/ms-onedrive.mdx), etc.) use OAuth 2.0 for authorization.
+
+To enable OAuth 2.0 auth in your integration, you'll first need to register your app with Microsoft.
+
+1. Open [Azure Portal](https://portal.azure.com/) and create a new app registration.
+1. Be sure to select **Any Azure AD directory - Multitenant** as the supported account type, so your customers (who have different Microsoft tenants) can use your integration.
+1. Select **Web** under **Platforms** and add the Builder OAuth 2.0 callback URL as the **Redirect URI**. The Builder OAuth 2.0 callback URL for the US commercial region is `https://oauth2.us-east-2.elasticpathintegrations.com/callback`.
+   If your Builder tenant is in a different region or you're using a custom domain, you'll need to use the appropriate callback URL for your region or domain. See [OAuth 2.0 callback URLs](/docs/composer/builder/connections.mdx#creating-an-oauth-20-app-in-a-third-party-service) for more information.
+1. Open **Certificates & Secrets** and add a new Client Secret.
+   Note the **value** of the secret (not the ID!).
+1. Note the **Application (client) ID** from the **Overview** page.
+
+With your app registered, you can now configure your integration to use OAuth 2.0 using the **client ID** and **client secret** you generated.
+
+## Customizing the Microsoft OAuth 2.0 consent screen
+
+You can customize the icon and name that appear on the OAuth 2.0 consent screen by adding a **Branding & properties** section to your app registration.
+
+## Microsoft OAuth 2.0 app approval
+
+Microsoft will allow you to test your integration with your own Microsoft account, but you'll need to submit your app for approval before it can be used by other users.
+You can do that by adding your MPN ID under the **Branding & properties** section of your app registration.

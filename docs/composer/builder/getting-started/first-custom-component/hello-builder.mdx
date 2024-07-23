@@ -1,0 +1,162 @@
+---
+id: hello-Builder
+title: Hello Builder
+description: Initialize and Publish Your First Integration
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+Here, we'll walk through initializing, modifying, publishing and testing a new component.
+Be sure that you've [set up your environment](/docs/composer/builder/getting-started/first-custom-component/set-up-environment.mdx) first.
+
+<Vimeo title="Your first custom component" video="897263444" />
+
+## Initialize your component
+
+The Builder CLI tool, `prism`, has a variety of commands, one of which initializes a new custom component project.
+Run `prism components:init hello-builder`. You can give your component a description of "My First Component", and for **Type of Connection** select **Basic Connection**.
+
+```bash title="Initialize a new component"
+$ prism components:init hello-prismatic
+
+Creating component directory for "hello-builder"...
+? Description of Component My First Component
+? Type of Connection Basic Connection
+   create package.json
+   create assets/icon.png
+   create src/index.ts
+   create src/index.test.ts
+   create src/client.ts
+   create jest.config.js
+   create tsconfig.json
+   create webpack.config.js
+   create src/actions.ts
+   create src/triggers.ts
+   create src/dataSources.ts
+   create src/connections.ts
+
+Running npm install for you to install the required dependencies.
+
+added 798 packages, and audited 799 packages in 41s
+
+found 0 vulnerabilities
+
+"hello-prismatic" is ready for development.
+To install dependencies, run either "npm install" or "yarn install"
+To test the component, run "npm run test" or "yarn test"
+To build the component, run "npm run build" or "yarn build"
+To publish the component, run "prism components:publish"
+
+For documentation on writing custom components, visit https://prismatic.io/docs/custom-components/writing-custom-components/
+```
+
+This will create a new directory called `hello-builder` in your current directory.
+Open that directory in your code editor.
+
+## Edit your component
+
+The boilerplate component code that is generated contains custom triggers, data sources, connections, and more.
+These are all things that are covered fully in the [Writing Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx) article, but we can safely remove them for now.
+Open the component directory that you just created in your code editor, and remove all files from the `hello-builder/src/` directory _except_ for `index.ts`.
+Then, replace the contents of `index.ts` with this:
+
+```typescript title="index.ts"
+import { action, component, input } from "@prismatic-io/spectral";
+
+const myAction = action({
+  // This is what the action should look like in the integration designer
+  display: {
+    label: "Say Hello",
+    description: "Take a first and last name, and say hello",
+  },
+  // This action should have these inputs
+  inputs: {
+    firstName: input({
+      label: "First Name",
+      type: "string",
+      required: true,
+      example: "John",
+    }),
+    lastName: input({
+      label: "Last Name",
+      type: "string",
+      required: true,
+      example: "Doe",
+    }),
+  },
+  // When run, this action should execute this function
+  perform: async (context, params) => {
+    const message = `Hello ${params.firstName} ${params.lastName}!`;
+    // Promise.resolve because perform functions are async
+    return Promise.resolve({ data: message });
+  },
+});
+
+export default component({
+  key: "hello-builder",
+  public: false,
+  // This is what the component should look like in the integration designer
+  display: {
+    label: "Hello Builder",
+    description: "I'm testing custom components",
+    iconPath: "icon.png",
+  },
+  // The component includes these actions
+  actions: { myAction },
+});
+```
+
+<Screenshot
+  filename="getting-started/first-custom-component/vscode-index-ts.png"
+  maxWidth="700px"
+  alt="Screenshot of VS Code editor and a Builder custom component"
+  caption="Initialize your custom component"
+/>
+
+## Build your component
+
+The boilerplate default component code uses [webpack](https://webpack.js.org/) to compile TypeScript code into minified JavaScript.
+To invoke webpack, run the build command from your `hello-prismatic` directory:
+
+```bash
+npm run build
+```
+
+That will create a `dist/` directory that contains an `icon.png` file for your component (you can swap that out by replacing `assets/icon.png`), and an `index.js` file - the compiled JavaScript code for your component.
+Next, run the publish command from your `hello-prismatic/` directory:
+
+```bash
+prism components:publish
+```
+
+<Screenshot
+  filename="getting-started/first-custom-component/vscode-build-publish.png"
+  maxWidth="700px"
+  alt="Screenshot of VS Code editor building and publishing a custom Builder component"
+  caption="Publish your component to your Builder organization"
+/>
+
+## Test your component
+
+Log in to Builder and create a new integration.
+Add an action and search for "My First Component" and select your component and action.
+
+Fill in the **First Name** and **Last Name** inputs of the action.
+Then, click **Run** to run a test of your integration.
+Select your **Say Hello** step in the test drawer and verify that your step returned a string that concatenates your first and last name together.
+
+<Screenshot
+  filename="getting-started/first-custom-component/say-hello-test.png"
+  maxWidth="800px"
+  alt="Screenshot of the Hello Builder step results"
+/>
+
+## Next steps
+
+Developers learn best by trying things out in code.
+Try to add a middle name input, but only print the middle initial, or add a title input that presents a [dropdown menu](/docs/composer/builder/custom-components/writing-custom-components.mdx#dropdown-menu-inputs), so users can select "Mr.", "Mrs.", "Dr.", etc.
+
+Make sure to `npm run build` and `prism components:publish` to publish new component changes to Builder, and within the Builder integration designer, you'll need to click **Component Versions** and bump your component version to the latest version.
+
+Once you're ready, head to the [next tutorial](/docs/composer/builder/custom-components/quickstarts/wrapping-an-api-in-a-component.mdx) where we'll cover making API calls from a custom component.

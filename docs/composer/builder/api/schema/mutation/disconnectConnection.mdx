@@ -1,0 +1,25 @@
+---
+id: disconnectConnection
+title: disconnectConnection Mutation
+sidebar_label: disconnectConnection
+description: Learn how to use the disconnectConnection Mutation for Builder's API.
+---
+
+    Disconnect the specified Connection.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_edit]. 3. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_manage_instances, customer_manage_marketplace_integrations]. 4. The signed-in User has any of the following permissions for the object's 'instance_Integration_Customer' attribute: [customer_admin_manage_instances, customer_manage_marketplace_integrations].
+
+## Input fields ([DisconnectConnectionInput!](/docs/composer/builder/api/schema/input_object/DisconnectConnectionInput.mdx))
+
+| Argument           | Type                                     | Description                                                 |
+| ------------------ | ---------------------------------------- | ----------------------------------------------------------- |
+| `id`               | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the InstanceConfigVariable to mutate.             |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation. |
+
+## Return fields ([DisconnectConnectionPayload](/docs/composer/builder/api/schema/object/DisconnectConnectionPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>instanceConfigVariable</b> ([InstanceConfigVariable](/docs/composer/builder/api/schema/object/InstanceConfigVariable.mdx))

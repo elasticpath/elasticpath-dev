@@ -1,0 +1,700 @@
+---
+id: users
+title: Users
+description: Manage Builder organization and customer users
+---
+
+import Icon from "@mui/material/Icon";
+import ExampleTabs from "@site/src/components/example-tabs";
+import TabItem from "@theme/TabItem";
+import Screenshot from "@site/src/components/screenshot";
+import Vimeo from "@site/src/components/vimeo";
+
+Two types of users can log into Builder systems:
+
+- **Organization users** are team members who work at your company.
+  They are responsible for building, deploying, and supporting integrations for your customers.
+  They might include your developers, devops engineers, project managers, support technicians, etc.
+
+  Organization users have permission to view information about your customers and their users, instances, and alert monitors.
+  Depending on their role, some organization users have permission to manage customer resources, as well.
+
+  A full list of [organization team member permissions](#organization-team-member-roles) can be found below.
+
+- **Customer users** are users at your customers' sites.
+  Customer users' permissions are limited in scope.
+  They can view and manage users and the instances of integrations that have been deployed to them, but they cannot view your other customers' resources.
+
+  Customer users can be granted permission to update instance configuration, so they can modify config variables and credentials tied to an instance on their own without requiring your direct support.
+
+## Organization users
+
+Organization users are team members who work at _your_ company.
+They are responsible for building, deploying, and supporting integrations for your customers,
+and can be granted a set of permissions based on the role they are assigned.
+
+## Organization team member roles
+
+<Vimeo title="What are Team Member Roles?" video="502283103" />
+
+Organization users can be granted a variety of _roles_:
+
+- An organization **owner** is a super-user, and can manage all aspects of an organization (users, customers, integrations, billing, etc.).
+- An organization **admin** has all the permissions of an owner, except the ability to make changes to the organization and manage billing.
+  This role is generally granted to user management teams (like your IT team).
+- An organization **integrator** can manage customers, integrations, and instances.
+  Most developers, DevOps, implementation technicians, etc., will have this role.
+- An organization **guest** is a read-only user who can view information about customer instances, but cannot modify anything.
+  This is a good role for a support technician who needs to view logs, but shouldn't necessarily be able to modify instance configuration.
+- An organization **customer manager** has limited permissions and can manage customers, but cannot view or manage their instances.
+  This is a good role for a support user who should not have access to customers' instance configuration.
+- An organization **third-party** user is used when you are integrating with a third-party app or service and would like to grant limited access to a user from that third-party to specific integrations, components, or customers.
+  The **third-party** role is described in more detail [below](#third-party-users).
+
+|                           | Owner | Admin | Integrator | Guest | Customer Manager | Third-Party |
+| ------------------------- | :---: | :---: | :--------: | :---: | :--------------: | :---------: |
+| View Customers            |   x   |   x   |     x      |   x   |        x         |      ?      |
+| View Customer Users       |   x   |   x   |     x      |   x   |        x         |             |
+| View Customer Instances   |   x   |   x   |     x      |   x   |                  |             |
+| View Alert Monitors       |   x   |   x   |     x      |   x   |                  |             |
+| Manage Customers          |   x   |   x   |     x      |       |        x         |             |
+| Manage Customer Users     |   x   |   x   |     x      |       |        x         |             |
+| Manage Components         |   x   |   x   |     x      |       |                  |      ?      |
+| Manage Instances          |   x   |   x   |     x      |       |                  |      ?      |
+| Manage Integrations       |   x   |   x   |     x      |       |                  |      ?      |
+| Manage Organization Users |   x   |   x   |            |       |                  |             |
+| Configure Embedded Themes |   x   |   x   |            |       |                  |             |
+| Manage Embedded Settings  |   x   |   x   |            |       |                  |             |
+| Configure Log Streaming   |   x   |   x   |            |       |                  |             |
+| Manage Organization       |   x   |       |            |       |                  |             |
+| Manage Billing            |   x   |       |            |       |                  |             |
+
+## Managing organization users
+
+Only organization users with **admin** or **owner** roles can manage organization users.
+
+To manage organization users in the web app, click **Settings** on the left-hand sidebar, and select the **Team Members** tab.
+
+### Listing organization users
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+Organization users are listed under the **Team Members** tab.
+You can filter what users are shown by typing the name of a user into the search bar on the top of the page.
+You can also filter by email address by clicking the **Filter** link to the right of the search bar.
+
+<Screenshot
+  filename="shared/list-org-users.png"
+  alt="List of org users in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+Users can be listed via CLI through the `organization:users:list` subcommand.
+
+```bash title="List all organization users"
+prism organization:users:list
+
+ Name             Email
+ ──────────────── ──────────────────────────
+ James Patton     james.patton@progix.io
+ Samantha Johnson samantha.johnson@progix.io
+ Ed Davis         edward.davis@progix.io
+ Kristin Henry    kristin.henry@progix.io
+ Alex Cooper      alexander.cooper@progix.io
+```
+
+</TabItem>
+<TabItem value='api'>
+
+List users by querying the `users` field on [organization](/docs/composer/builder/api/schema/query/organization.mdx):
+
+```graphql
+query {
+  organization {
+    users {
+      nodes {
+        id
+        name
+        email
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Adding organization users
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the **Team Members** tab, click the **+ Add team member** button in the upper-right.
+Select an appropriate role for the new user (see above for permissions), and provide a name and email address for the user.
+
+<Screenshot
+  filename="users/add-org-user.png"
+  maxWidth="500px"
+  alt="Add team member in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+Management of organization users is done through the `prism organization:users` subcommands.
+You can find role ID's of roles that you are allowed to grant through `organization:users:roles`.
+
+```bash title="Add 'Susan Smith' as a new 'integrator'"
+ROLE_ID=$(prism organization:users:roles \
+            --columns id \
+            --no-header \
+            --filter 'name=Integrator')
+
+prism organization:users:create \
+    --email 'susan.smith@progix.io' \
+    --name 'Susan Smith' \
+    --role ${ROLE_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To create an organization user you will need to know the ID of the role you want to assign the user:
+
+```graphql
+query listOrganizationRoles {
+  authenticatedUser {
+    grantableRoles(roleType: ORGANIZATION) {
+      id
+      name
+      description
+    }
+  }
+}
+```
+
+Once you have that role ID, use the [createOrganizationUser](/docs/composer/builder/api/schema/mutation/createOrganizationUser.mdx) mutation to create a new organization user:
+
+```graphql
+mutation {
+  createOrganizationUser(
+    input: {
+      name: "Susan Smith"
+      email: "susan.smith@progix.io"
+      role: "Um9sZTpmYzE0ODIwNC1mZmQxLTQxMWUtYmRlYS1iNmFmYzM4YmViOGE="
+    }
+  ) {
+    user {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+After creating the new user, they will receive a confirmation email with a link to set up their profile and set their password.
+
+### Changing an organization user's role, name, avatar picture or phone number
+
+From the **Team Members** tab, click the name of a user.
+You can change the role of the user, or the user's name, phone number or avatar picture under the **Details** tab.
+After modifying a team member be sure to click **Save** to save your changes.
+
+<Screenshot
+  filename="users/edit-org-user.png"
+  maxWidth="600px"
+  alt="Edit team member in Builder app"
+/>
+
+### Deleting organization users
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the **Team Members** tab, click the name of a user.
+Select the **Details** tab within that user's page and click the **Delete user** button on the bottom of the page.
+Enter the **Confirmation text** and click the **Remove user** button to confirm the removal.
+
+</TabItem>
+<TabItem value='cli'>
+
+```bash title="Delete user 'Susan Smith'"
+USER_ID=$(prism organization:users:list \
+            --columns id \
+            --no-header \
+            --filter 'email=susan.smith@progix.io')
+
+prism organization:users:delete ${USER_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To delete an organization team member, use the [deleteUser](/docs/composer/builder/api/schema/mutation/deleteUser.mdx) mutation:
+
+```graphql
+mutation {
+  deleteUser(
+    input: { id: "VXNlcjpiMmNmNmY5MS1iMjljLTRlODUtOTc1My04NWE0NGM2ZDE2YzE=" }
+  ) {
+    user {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+## Third-party users
+
+It's often helpful and necessary to get people from third-party vendors involved as you build, test, and debug your integrations with them.
+Granting third-party vendors the ability to view and test specific integrations and components allows you to develop your integrations much faster and lets you, them, and your customers stay "on the same page" with regards to development progress and the flow of data between your systems.
+
+### Creating third-party users
+
+Organization users with **admin** or **owner** permissions can create new organization-level users with the **third-party** role.
+This role is very limited in scope - by default **third-party** users can only edit their own profile information and view built-in components.
+They cannot view information about your custom components, integrations, or customers.
+Once the user is created, they can be granted additional permissions to interact with specific resources.
+
+You can create a third-party user as you would any other organization-level user, by clicking **Settings** on the left-hand sidebar and then clicking **+ Add team member**.
+Give the new user a role of **Third-Party**.
+
+<Screenshot
+  filename="users/add-third-party-user.png"
+  maxWidth="450px"
+  alt="Add third-party team member in Builder app"
+/>
+
+### Granular access for third-party users
+
+To grant access to specific resources, like integrations, custom components or customers, click **Settings** on the left-hand sidebar and then **Team Members**.
+Select the third-party user you would like to grant access to, and click into the **Granular Access** tab.
+
+<Screenshot
+  filename="users/granular-access-tab.png"
+  alt="Set granular access for third-party team member in Builder app"
+/>
+
+From here, you can grant the user access to specific **integrations**, **components**, or **customers** by clicking the **+ Add permission** button on the top-right.
+
+<Screenshot
+  filename="users/third-party-add-permission-dialogue.png"
+  maxWidth="450px"
+  alt="Add specific permissions to third-party team member in Builder app"
+/>
+
+### Integration access
+
+The most common use case for third-party users is to allow a third-party vendor to view, and possibly edit and test an integration.
+That way, they can test invoking an integration in Builder from their third-party service and can verify that the data the integration receives is in the format you agreed upon.
+
+Giving integration access to a third-party vendor also allows you to see what sort of attempts are being made on their end to make sure the integration works.
+You can view logs of each test a third-party vendor performs to give you a sense of how their side of the integration development is progressing, and if and when you jump on calls with your mutual customer and the third party, you can test and debug issues quickly (rather than relying on email chains that drag on for weeks).
+
+To grant a third-party vendor access to a specific integration, select **Integration** from the **+ Add permission** dialog, then search for and select the integration you want to give permissions for.
+
+<Screenshot
+  filename="users/third-party-select-integration.png"
+  maxWidth="450px"
+  alt="Select integration for third-party permissions in Builder app"
+/>
+
+On the next screen select the types of permissions you would like to grant for that integration.
+If you would like the third-party user to be able to see the integration in their Integrations list view, select **View Integration**.
+If you would like the third-party user to be able to edit the integration, select **Edit Integration**.
+
+<Screenshot
+  filename="users/third-party-select-integration-permissions.png"
+  maxWidth="450px"
+  alt="Choose integration permissions for third-party team member in Builder app"
+/>
+
+The third party user will then be able to see the integration that they've been granted permission to see, but all other integrations will remain hidden from them.
+This is handy if you are integrating with multiple competing vendors - the third-party vendors cannot see one another's integrations (or even know they exist).
+
+<Screenshot
+  filename="users/third-party-only-one-integration.png"
+  maxWidth="800px"
+  alt="Single integration in Builder app"
+/>
+
+:::info You must also grant access to relevant custom components
+If you give a third-party user access to an integration that uses custom components, you must also grant them access to those custom components.
+:::
+
+### Component access
+
+Similar to integrations, you can grant third-party users access to specific custom components.
+By default, third-party users have access to Builder built-in public components, but you may not want third-party vendors to see all of the custom components you've published (especially if you integrate with several competing vendors).
+
+To grant a third-party user access to a custom component, select **Component** after opening the **+ Add permission** dialog, and then search for and select the component you would like to grant access to.
+
+<Screenshot
+  filename="users/third-party-select-component.png"
+  maxWidth="450px"
+  alt="Select component for third-party permissions in Builder app"
+/>
+
+You can grant a variety of component-related permissions to a third-party user.
+If they are assisting in the development of the custom component, they will need the **Edit Component** permission.
+Otherwise, to use the component in an integration they will just need the **View Component** permission.
+
+<Screenshot
+  filename="users/third-party-select-component-permissions.png"
+  maxWidth="450px"
+  alt="Choose component permissions for third-party team member in Builder app"
+/>
+
+Custom components that are not granted to a user are not visible.
+This is once again handy if you are integrating with several competing companies, or your own competitors - their users will not be able to see what other custom components you've published.
+
+### Customer access
+
+You can grant a third-party user access to a specific customer.
+This is handy if you and another vendor share a customer in common, and are working on an integration together for that customer.
+
+To grant permissions to a specific customer, select **Customer** after clicking **+ PERMISSION** and then select the customer you'd like to grant permissions for.
+
+<Screenshot
+  filename="users/third-party-select-customer.png"
+  maxWidth="450px"
+  alt="Select customer for third-party permissions in Builder app"
+/>
+
+Next, select the permissions on this customer you would like to grant.
+There are a variety of options, each with a description below them.
+You can elect to let the third-party user view or manage the customer, the customer's users, and the instances deployed to the customer.
+
+:::caution read-only access grants viewing of customer credentials
+Note that if you grant the **View Customer** permission on a customer to a third-party user, that user can view the customer's saved credentials.
+:::
+
+<Screenshot
+  filename="users/third-party-select-customer-permissions.png"
+  maxWidth="450px"
+  alt="Choose component permissions for third-party team member in Builder app"
+/>
+
+Permissions are scoped to a specific customer.
+That way, if you are developing an integration with a competing software vendor they will not be able to view information about the other customers in your system.
+
+## Customer users
+
+Customer users are users who work for your customers.
+They are granted permissions to manage only the users and instances of integrations that have been deployed to them.
+
+## Customer user roles
+
+Customer users can be granted one of two roles:
+
+- A customer **admin** can manage their users and the instances that have been deployed to them.
+  Grant a customer user this role if you would like them to be able to deploy, modify, enable or disable instances of integrations deployed to them.
+- A customer **member** is a read-only account that can view information about users and instances that have been deployed to them.
+  This is a good role for customer users who should be able to view logs, but who shouldn't be permitted to modify instances.
+- A customer that is created through an [Embedded Marketplace](/docs/composer/builder/embedding-marketplace.mdx) is automatically assigned the **marketplace admin** role, and is permitted to deploy and manage integrations that are deployed to them.
+  A **marketplace user** only has the ability to configure their own [User level configuration](/docs/composer/builder/user-level-configuration.mdx) for an instance.
+  Note: **marketplace** users are not assigned credentials and cannot log in to Builder, except through the embedded integration marketplace.
+
+|                       | Admin | Member | Marketplace Admin | Marketplace User |
+| --------------------- | :---: | :----: | :---------------: | :--------------: |
+| View Customer Users   |   x   |   x    |                   |                  |
+| Manage Customer Users |   x   |        |                   |                  |
+| View Instances        |   x   |   x    |         x         |                  |
+| View Instance Logs    |   x   |   x    |         x         |                  |
+| Configure Instances   |   x   |        |         x         |                  |
+| Test Instances        |   x   |        |         x         |                  |
+| Configure ULC         |       |        |         x         |        x         |
+
+## Managing customer users
+
+Only customer users with the **admin** role or organization users with **integrator**, **admin**, or **owner** roles can manage customer users.
+
+To manage customers users in the web app, click **Customers** on the left-hand sidebar, select a customer from that list and open the customer's **Users** tab.
+
+If you are a customer user with the **admin** role, click the **Team Members** link on the left-hand sidebar to manage your users.
+
+### Listing customer users
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+Users for a specific customer are listed on the main customer's **Users** tab.
+You can filter what users are shown by typing the name of a user into the search bar on the top of the page.
+You can also filter by email address by clicking the **Filter** link to the right of the search bar.
+
+<Screenshot
+  filename="shared/list-customer-users.png"
+  maxWidth="800px"
+  alt="Filter customer users in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To list users with the Builder CLI tool, use the `prism customers:users:list` subcommand.
+
+```bash title="List all users of customer 'FTL Rockets'"
+# Get your customer's ID
+CUSTOMER_ID=$(prism customers:list \
+                --columns=id \
+                --filter 'Name=^FTL Rockets$' \
+                --no-header)
+
+# List that customer's users
+prism customers:users:list --customer ${CUSTOMER_ID}
+
+ Name        Email
+ ─────────── ───────────────────────────
+ Jim Simms   james.simms@ftl-rockets.com
+ Lisa Nguyen lisa.nguyen@ftl-rockets.com
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To list all customers query [customers](/docs/composer/builder/api/schema/query/customers.mdx), or query [customer](/docs/composer/builder/api/schema/query/customer.mdx) for a specific customer's users:
+
+```graphql
+query {
+  customers {
+    nodes {
+      name
+      users {
+        nodes {
+          name
+          email
+        }
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Adding a customer user
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the customer's **Users** tab, click the **+ User** button in the upper-right.
+Select an appropriate role for the new user (see above for permissions), and provide a name and email address for the user.
+
+<Screenshot
+  filename="shared/add-customer-user.png"
+  maxWidth="450px"
+  alt="Add customer user in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+To add a new customer, use the `customers:users:create` subcommand.
+You can use `customers:list` to get a customer's ID, and `customers:users:roles` to get a desired role ID.
+
+```bash title="Add a new 'Admin' user for customer 'FTL Rockets'"
+# Get your customer's ID
+CUSTOMER_ID=$(prism customers:list \
+                --columns=id \
+                --filter 'Name=^FTL Rockets$' \
+                --no-header)
+
+# Get the ID of the "Admin" role
+ROLE_ID=$(prism customers:users:roles \
+            --columns id \
+            --no-header \
+            --filter 'name=Admin')
+
+# Create a user "Lisa Nguyen" that has the "Admin" role
+prism customers:users:create \
+    --email 'lisa.nguyen@ftl-rockets.com' \
+    --name 'Lisa Nguyen' \
+    --customer ${CUSTOMER_ID} \
+    --role ${ROLE_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+To create a new customer user, use the [createCustomerUser](/docs/composer/builder/api/schema/mutation/createCustomerUser.mdx) mutation.
+You will need to know the ID of the role you want to assign the user, as well as the ID of the customer:
+
+```graphql
+mutation {
+  createCustomerUser(
+    input: {
+      name: "Lisa Nguyen"
+      email: "lisa.nguyen@ftl-rockets.com"
+      role: "Um9sZTplMTRlZjUzNC0yOTZiLTQ4MjAtYjhmNS1jZjQ1Zjg4N2I0YjM="
+      customer: "Q3VzdG9tZXI6ZDIyOGUwNjItYzc0NC00NDFkLWE0MDMtNjQ1NTU4MDQ1OTZk"
+    }
+  ) {
+    user {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Changing a customer user's role, name, avatar picture or phone number
+
+From the customer's **Users** tab, click the name of a user.
+Like organization users, you can change the role of a customer user under the **Details** tab.
+You can also change the user's name, avatar picture, or phone number under the **Details** tab.
+
+<Screenshot
+  filename="shared/edit-customer-user.png"
+  maxWidth="600px"
+  alt="Edit customer user in Builder app"
+/>
+
+### Deleting a customer user
+
+<ExampleTabs>
+<TabItem value='webapp'>
+
+From the specific customer's **Users** tab, click the name of a user.
+Open the **Details** tab, and click the **Delete user** button on the bottom of the page.
+Enter the **Confirmation text** and click the **Remove user** button to confirm the removal.
+
+<Screenshot
+  filename="users/delete-customer-user.png"
+  maxWidth="450px"
+  alt="Delete customer user in Builder app"
+/>
+
+</TabItem>
+<TabItem value='cli'>
+
+You can find the ID of the user to delete through the `customers:users:list` subcommand, and can delete the user with the `customers:users:delete` subcommand.
+
+```bash title="Delete customer user 'Lisa Nguyen'"
+USER_ID=$(prism customers:users:list \
+            --customer EXAMPLEtZXI6NTRlNDQyMDgtNTJiNi00ZGVhLTgyODYtOWRkNDU4MTA2ZTYw \
+            --columns id \
+            --no-header \
+            --filter 'Email=lisa.nguyen@ftl-rockets.com')
+
+prism customers:users:delete ${USER_ID}
+```
+
+</TabItem>
+<TabItem value='api'>
+
+```graphql
+mutation {
+  deleteUser(
+    input: { id: "VXNlcjpmYjFiNDMyZC0zN2Y5LTQyZTUtOTljNy1hNjc1ZWIzZGUyNTA=" }
+  ) {
+    user {
+      id
+    }
+  }
+}
+```
+
+</TabItem>
+</ExampleTabs>
+
+### Searching all customer users
+
+You can search for users on a per-customer basis from the customer's **Users** tab.
+To search users of all customers, click the **Users** link on the left-hand sidebar.
+To search for a user by name, enter their name in the search bar on the top of the page.
+To search for a user by email, click the **Filter** link on the top of the page.
+
+<Screenshot
+  filename="users/search-customer-users.png"
+  maxWidth="800px"
+  alt="Search all customer users in Builder app"
+/>
+
+## Managing your own user profile
+
+You can update your name, password, phone number, avatar image, and light/dark mode preferences.
+Start by clicking your user avatar at the top-right side of the screen and then the **User settings** link.
+All user profile preferences are available in the **Password** and **Details** tabs.
+
+### Updating your password
+
+After clicking your avatar at the top-right side of the screen and selecting **User settings**, open the **Password** tab.
+Enter your current password, and then select a new password.
+Your password must have:
+
+- At least 8 characters
+- At least one upper case letter
+- At least one lower case letter
+- At least one number
+
+<Screenshot
+  filename="users/change-own-password.png"
+  maxWidth="600px"
+  alt="Change own password in Builder app"
+/>
+
+### Resetting a forgotten password
+
+If you have forgotten your password, navigate to https://app.prismatic.io.
+If you are not logged out, do so by clicking your avatar at the top-right of the screen and selecting **Logout**.
+
+Enter your email address, and then click **Continue**. Click the **Forgot password?** button and then click **Continue** again.
+You will be emailed a password reset link where you can create a new password.
+
+### Updating your name, avatar picture, or phone number
+
+After clicking your avatar at the top-right of the screen, select the **Details** tab.
+You can alter your name or phone number from this screen.
+If you provide a phone number, it can be used by your team members for monitoring and alerting purposes.
+If you alter your avatar image, the image you upload will be resized and cropped to 500 x 500 pixels.
+Transparent PNG avatar images tend to look the best.
+
+### Setting light or dark mode
+
+By default, the web app will present light or dark mode so that it matches your operating system settings.
+If you would like to override the light/dark mode setting, click your avatar at the top-right of the screen, and click the **Light** or **Dark** button as needed.
+
+<Screenshot
+  filename="users/dark-mode.png"
+  maxWidth="600px"
+  alt="Set light/dark mode in Builder app"
+/>
+
+Light / dark mode settings follow your user, so if you set a preference on one computer, that preference will be remembered if you log in from another computer.
+
+## Syncing customer users to Builder programmatically
+
+Similar to [syncing customers programmatically](/docs/composer/builder/customers.mdx#sync-customers-from-an-external-system-programmatically), if you manage customer users in an external system you can sync those users to Builder programmatically.
+Though this tutorial is about syncing customers to Builder, the concepts are similar for syncing users: [Syncing Customers to Builder](/docs/composer/builder/custom-components/quickstarts/syncing-customers-to-builder.mdx).
+
+To list customer users, use the [users](/docs/composer/builder/api/schema/query/users.mdx) query, and give it the argument `customer_Isnull: false` to indicate that you want _customer_ users:
+
+```graphql
+users(customer_Isnull: false) {
+  edges {
+    node {
+      id
+      name
+      email
+      externalId
+    }
+  }
+}
+```
+
+To create new users, look up a customer's ID and the **role** that you want the user to have, and then invoke the [createCustomerUser](/docs/composer/builder/api/schema/mutation/createCustomerUser.mdx) mutation along with the user's `email`, `name`, and optional `phone` number.
+You can also specify an `externalId` if you would like users in Builder to easily correspond to users in an external system.
+
+To update customer users, use the [updateUser](/docs/composer/builder/api/schema/mutation/updateUser.mdx) mutation, and to delete a user use the [deleteUser](/docs/composer/builder/api/schema/mutation/deleteUser.mdx) mutation.

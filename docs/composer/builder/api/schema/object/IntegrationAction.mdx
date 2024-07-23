@@ -1,0 +1,66 @@
+---
+id: IntegrationAction
+title: IntegrationAction Object
+sidebar_label: IntegrationAction
+description: Learn how to use the IntegrationAction Object for Builder's API.
+---
+
+Represents an association of a Component Action to an Integration.
+
+## Return fields
+
+###### <b>action</b> ([Action!](/docs/composer/builder/api/schema/object/Action.mdx))
+
+The specific Component Action that is being associated to the IntegrationFlow.
+
+###### <b>allowRemove</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the IntegrationAction.
+
+###### <b>allowUpdate</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the IntegrationAction.
+
+###### <b>description</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+A brief description of the IntegrationAction.
+
+###### <b>errorHandlerType</b> ([IntegrationActionErrorHandlerType](/docs/composer/builder/api/schema/enum/IntegrationActionErrorHandlerType.mdx))
+
+The type of error handling to use when failures occur for this IntegrationAction.
+
+###### <b>id</b> ([ID!](/docs/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>inputs</b> ([ExpressionConnection!](/docs/composer/builder/api/schema/object/ExpressionConnection.mdx))
+
+The collection of Expressions that serve as inputs to the IntegrationAction.
+
+###### <b>integration</b> ([Integration!](/docs/composer/builder/api/schema/object/Integration.mdx))
+
+The Integration to which the IntegrationAction is associated via the IntegrationFlow.
+
+###### <b>name</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The displayed name of the IntegrationAction.
+
+###### <b>retryDelaySeconds</b> ([Int](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Specifies the delay in seconds between retry attempts for failures of this IntegrationAction.
+
+###### <b>retryIgnoreFinalError</b> ([Boolean](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether to fail the Execution when the final retry attempt fails for this IntegrationAction, or whether to ignore and continue.
+
+###### <b>retryMaxAttempts</b> ([Int](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Specifies the maximum number of retry attempts that will be performed for failures of this IntegrationAction.
+
+###### <b>retryUsesExponentialBackoff</b> ([Boolean](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether to use exponential backoff in scheduling retries for failures of this IntegrationAction.
+
+###### <b>stableKey</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+A user-provided value that represents identity across multiple integration versions and across step renames.

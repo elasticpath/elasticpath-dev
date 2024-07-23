@@ -1,0 +1,1299 @@
+---
+id: code-native-integrations
+title: Code-Native Integrations
+description: An integration can either be built in the low-code designer, or as a TypeScript project in an IDE. This covers how to build an integration in code.
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import GraphqlExample from "@site/src/components/graphql-example";
+import Screenshot from "@site/src/components/screenshot";
+
+When you build an integration, you can build it in the [low-code designer](/docs/composer/builder/building-integrations.mdx), or as a TypeScript project in your favorite IDE.
+We call an integration built with code a "code-native integration" (or CNI).
+This article covers how to build an integration purely in code.
+
+<Screenshot
+  filename="code-native-integrations/cni-in-vscode.png"
+  alt="A code-native integration being built in Visual Studio Code"
+  maxWidth="800px"
+/>
+
+Please see [GitHub](https://github.com/prismatic-io/examples/tree/main/integrations/code-native-integrations) for a few example code-native integrations.
+
+:::tip The rest of the platform is the same
+Regardless of how you build your integrations, the rest of the platform is the same.
+Both code-native and low-code integrations are deployed to the same runner environment.
+Both can include OAuth 2.0 connections, data sources and other advanced configuration wizard steps.
+Integrations built using either tool can include multiple flows, and can be added to your integration marketplace.
+The same logging, monitoring, and alerting tools are available for both types of integrations.
+
+The key difference between the two is how you build the integration - you either assemble as set of low-code steps in the designer, or you write blocks of TypeScript code to accomplish the same task.
+:::
+
+## Setting up your development environment
+
+To build a code-native integration, you'll need to set up your development environment.
+The requirements are the same as the requirements for building custom components.
+Check out [this article](/docs/composer/builder/getting-started/first-custom-component/set-up-environment.mdx) for a detailed guide on setting up your development environment.
+
+## Initializing a new code-native integration
+
+To initialize a new code-native integration, you can use the Builder CLI.
+Run the following command to create a new code-native integration:
+
+```bash
+prism integrations:init my-new-integration
+```
+
+You will be prompted to give your integration a description and select a type of connection (OAuth 2.0 or basic auth).
+Then, a boilerplate TypeScript project will be created in the `my-new-integration` directory.
+Your project's directory will look like this:
+
+```plaintext
+├── assets
+│   └── icon.png        # The icon for your integration
+├── jest.config.js      # Configuration for the Jest unit testing suite
+├── node_modules
+├── package-lock.json
+├── package.json        # Includes a dependency on @prismatic-io/spectral
+├── src
+│   ├── client.ts       # Code for connecting to a third-party API
+│   ├── configPages.ts  # The config wizard experience
+│   ├── flows.ts        # Your integration's flows
+│   ├── index.test.ts   # Unit testing code
+│   └── index.ts        # Metadata about the integration
+├── tsconfig.json
+└── webpack.config.js
+```
+
+## Configuring code-native integration metadata
+
+Your integration's name, description, and other metadata are defined in the `src/index.ts` file.
+
+The `name`, `description` and `category` properties are customer-facing and will be visible when customers deploy your integration from the embedded marketplace.
+
+```typescript
+export default integration({
+  name: "Example Slack Integration with CNI",
+  description: "My code-native Slack integration!",
+  category: "Communication",
+  labels: ["chat", "beta", "paid"],
+  iconPath: "icon.png",
+  flows,
+  configPages,
+});
+```
+
+<Screenshot
+  filename="code-native-integrations/integration-metadata-marketplace.png"
+  alt="The integration's name, description, and category are visible when customers deploy your integration from the embedded marketplace"
+  maxWidth="500px"
+/>
+
+### Semantic versioning in code-native integrations
+
+Each time you publish your integration, the version number will be incremented.
+Versions are not synced between stacks.
+That means that if you've published your Salesforce integration ten times in the US stack, and twice on the EU stack, instances on v10 in the US stack will be running the same code as instances on v2 in the EU stack.
+
+You can specify your own semantic versioning in the `integration()` definition in `src/index.ts`:
+
+```typescript
+export default integration({
+  // ...
+  version: "1.2.3",
+});
+```
+
+This version is accessible in the Builder API as the integration's `externalVersion` property.
+For example, this query will return these results:
+
+<GraphqlExample example="integrationExternalVersions" />
+
+```json title="Response"
+{
+  "data": {
+    "integration": {
+      "versionSequence": {
+        "nodes": [
+          {
+            "versionNumber": 2,
+            "externalVersion": "1.2.3"
+          },
+          {
+            "versionNumber": 1,
+            "externalVersion": "1.2.1"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Supplying an external version in this way is optional, but a great way to determine which version of your integration is running in a given stack.
+
+## Building and importing your code-native integration
+
+To build your project, run
+
+```bash
+npm run build
+```
+
+Webpack will compile your TypeScript code into a single JavaScript file, and the `dist` directory will be created.
+
+Once your integration is built, you can import your code-native integration using the `prism` CLI tool:
+
+```bash
+prism integrations:import --open
+```
+
+The `--open` flag is optional and will open the integration in the Builder designer, where you can configure a test instance and test datasources and flows.
+
+:::note Renaming integrations
+By default, the `integrations:import` command will use the name of the integration defined in code to determine which existing integration to replace (or, if no integration with that name exists, it will create a new integration).
+If you update your integration's name in code, you will need to use a `--integrationId` flag to specify the ID of the integration you want to update.
+:::
+
+## Code-native integration flows
+
+Just like low-code integrations, code-native integrations can include multiple flows.
+Flows consist of a `name` and `description`, and a `stableKey` that uniquely identifies the flow.
+It also contains four functions:
+
+- `onTrigger` is called when a flow is invoked.
+  If a flow is invoked asynchronously, you can return a custom HTTP response to the caller from the trigger.
+- `onExecution` is run immediately after the `onTrigger` function and is where the bulk of the flow's work is done.
+- `onInstanceDeploy` is called when a new instance of the integration is deployed.
+  These functions are optional and can be used to set up resources or perform other tasks when an instance is deployed.
+- `onInstanceDelete` is called when an instance of the integration is deleted,
+
+### Code-native flow triggers
+
+The `onTrigger` function of a flow is called when the flow is invoked.
+A simple no-op trigger that is called asynchronously can simply return the payload it was called with:
+
+```typescript
+import { configPages } from "../configPages";
+
+flow<typeof configPages>({
+  // ...
+  onTrigger: async (context, payload) => {
+    return Promise.resolve({ payload });
+  },
+});
+```
+
+:::tip Use the generic webhook trigger
+If you omit the `onTrigger` function, the Builder platform will automatically use the generic Webhook trigger.
+:::
+
+This will yield the payload to the next StereoPannerNode, the `onExecution` function.
+
+If you want to return a custom HTTP response to the caller or would like to complete additional work in the trigger, you can additionally return an `HttpResponse` object from the trigger.
+
+In this example, suppose the trigger is invoked via an XML webhook payload that looks like this:
+
+```xml
+<notification>
+  <type>new_account</type>
+  <challenge>067DEAB4-B89C-4211-9767-84C96A39CF8C</challenge>
+  <account>
+    <first>Nelson</first>
+    <last>Bighetti</last>
+    <company>
+      <name>Hooli</name>
+      <city>Palo Alto</city>
+      <state>CA</state>
+    </company>
+  </account>
+</notification>
+```
+
+The app calling the trigger requires that you parse the XML payload and return the `challenge` property in the HTTP response body with an HTTP 200 Response.
+You could write a trigger that parses the XML payload and returns the `challenge` property:
+
+```typescript
+import { HttpResponse, flow, util } from "@prismatic-io/spectral";
+import { XMLParser } from "fast-xml-parser";
+import { configPages } from "../configPages";
+
+flow<typeof configPages>({
+  // ...
+  onTrigger: async (context, payload) => {
+    // Parse the raw XML from the webhook request
+    const parser = new XMLParser();
+    const parsedBody = parser.parse(util.types.toString(payload.rawBody.data));
+
+    // Respond to the request with a plaintext response that includes the challenge key
+    const response: HttpResponse = {
+      statusCode: 200,
+      contentType: "text/plain",
+      body: parsedBody.notification.challenge,
+    };
+
+    // Ensure that the payload is updated with the parsed body
+    return Promise.resolve({
+      payload: { ...payload, body: { data: parsedBody } },
+      response,
+    });
+  },
+});
+```
+
+### Running code-native flows on a schedule
+
+Code-native flows support running on a schedule.
+The schedule can either be a static schedule that you define in your code, or you can create a config variable of `"schedule"` and let your customer define the schedule.
+
+In the example below, the first flow defines a static schedule of "Run at 10:20 every day on US Central time".
+For tips on creating cron strings, check out [crontab.guru](https://crontab.guru/).
+
+The second flow uses a config variable to define the schedule.
+
+```ts
+import { configPage, flow, integration } from "@prismatic-io/spectral";
+
+const scheduleWithCronExpression = flow({
+  name: "Schedule Trigger with cron expression",
+  description: "This flow is triggered by schedule following a cron expression",
+  stableKey: "schedule-trigger-cron-expression",
+  onExecution: async (context) => {
+    const now = new Date();
+    context.logger.info(`Flow executed at ${now}`);
+    return Promise.resolve({ data: null });
+  },
+  schedule: { cronExpression: "20 10 * * *", timeZone: "America/Chicago" }, // Run at 10:20 AM CST
+});
+
+const scheduleWithConfigVar = flow({
+  name: "Schedule with config var",
+  description: "This flow is triggered by a schedule following a config var",
+  stableKey: "schedule-trigger-config-var",
+  onExecution: async (context) => {
+    const now = new Date();
+    context.logger.info(`Flow executed at ${now}`);
+    return Promise.resolve({ data: null });
+  },
+  schedule: { configVarKey: "My Schedule" }, // Run on a user-defined schedule
+});
+
+export default integration({
+  name: "schedule-trigger-test",
+  description: "Schedule Trigger Test",
+  iconPath: "icon.png",
+  flows: [scheduleWithCronExpression, scheduleWithConfigVar],
+  configPages: {
+    "Page One": configPage({
+      elements: {
+        "My Schedule": {
+          dataType: "schedule",
+          stableKey: "my-schedule",
+        },
+      },
+    }),
+  },
+});
+```
+
+### Code-native flow onInstanceDeploy and onInstanceDelete
+
+Code-native flows support `onInstanceDeploy` and `onInstanceDelete` callback functions.
+These functions run when an instance of the integration is deployed and deleted respectively.
+
+These functions are handy for setting up resources or performing other tasks when an instance is deployed or deleted, and are often used to set up webhooks in third-party apps.
+
+The functions work the same as custom trigger functions, which are documented in the [Writing Custom Components](/docs/composer/builder/custom-components/writing-custom-components.mdx#instance-deploy-and-delete-events-for-triggers) article.
+
+### Code-native flow onExecution
+
+The `onExecution` function runs immediately after the `onTrigger` function, and is where the bulk of the flow's work is done.
+The `onExecution` function takes two parameters:
+
+- `context` - in addition to the [attributes](/docs/composer/builder/custom-components/writing-custom-components.mdx#the-context-parameter) that a normal custom component receives (like a logger, persisted data, metadata about the integration, customer and instance), a CNI flow's `context` object also contains a `configVars` object which has the values of all config variables that your integration includes.
+- `params` - the `params` object contains the payload that was returned from the `onTrigger` function.
+
+This example `onExecution` function performs the same logic that the low-code [Build Your First Integration](/docs/composer/builder/getting-started/first-integration/build-first-integration.mdx) integration did, but in TypeScript:
+
+```typescript
+import { flow } from "@prismatic-io/spectral";
+import { configPages } from "../configPages";
+import axios from "axios";
+import { createSlackClient } from "../slackClient";
+
+interface TodoItem {
+  id: number;
+  completed: boolean;
+  task: string;
+}
+
+// <typeof configPages> provides your flow with type hinting
+// and access to config variables defined in configPages
+export const todoAlertsFlow = flow<typeof configPages>({
+  // ...
+  onExecution: async (context) => {
+    // Config variables are accessed using the context object
+    const { logger, configVars } = context;
+
+    // Make an HTTP request to the Acme API using the config variable
+    const { data: todoItems } = await axios.get<TodoItem[]>(
+      configVars["Acme API Endpoint"]
+    );
+
+    // Create an HTTP Slack client using the Slack OAuth connection
+    const slackClient = createSlackClient(configVars["Slack OAuth Connection"]);
+
+    // Loop over the todo items
+    for (const item of todoItems) {
+      if (item.completed) {
+        logger.info(`Skipping completed item ${item.id}`);
+      } else {
+        // Send a message to the Slack channel for each incomplete item
+        logger.info(`Sending message for item ${item.id}`);
+        try {
+          await slackClient.post("chat.postMessage", {
+            channel: configVars["Select Slack Channel"],
+            text: `Incomplete task: ${item.task}`,
+          });
+        } catch (e) {
+          throw new Error(`Failed to send message for item ${item.id}: ${e}`);
+        }
+      }
+    }
+
+    // Asynchronously-invoked flows should simply return null
+    return { data: null };
+  },
+});
+```
+
+#### Referencing the trigger payload in the onExecution function
+
+The trigger will generally return the payload it received, but you can also return a modified payload from the trigger.
+The `onExecution` function will receive the payload that was returned from the trigger.
+
+The trigger may receive a payload of any format, so annotating a TypeScript `interface` is helpful for type hinting and code completion:
+
+```typescript {27} title="Reference the trigger payload in the onExecution function"
+import { configPages } from "../configPages";
+import { createSlackClient } from "../slackClient";
+
+interface AccountNotification {
+  notification: {
+    type: string;
+    challenge: string;
+    account: {
+      first: string;
+      last: string;
+      company: {
+        name: string;
+        city: string;
+        state: string;
+      };
+    };
+  };
+}
+
+const sendMessagesFlow = flow<typeof configPages>({
+  // ...
+  onExecution: async (context, params) => {
+    const { configVars } = context;
+    const slackClient = createSlackClient(configVars["Slack OAuth Connection"]);
+
+    // The parsed XML payload is available in the params object
+    const data = params.onTrigger.results.body.data as AccountNotification;
+
+    // Construct a message to send to Slack
+    const message =
+      `New account received:\n` +
+      `Name: ${data.notification.account.first} ${data.notification.account.last}\n` +
+      `Company: ${data.notification.account.company.name}\n` +
+      `Location: ${data.notification.account.company.city}, ${data.notification.account.company.state}\n`;
+
+    await slackClient.post("chat.postMessage", {
+      channel: configVars["Select Slack Channel"],
+      text: message,
+    });
+
+    return { data: null };
+  },
+});
+```
+
+## Code-native integration config wizard
+
+Just like low-code integrations, code-native integrations include a [config wizard](/docs/composer/builder/configuration-wizard.mdx).
+The config wizard can include things like OAuth 2.0 connections, API key connections, dynamically-sourced UI elements (data sources), and other advanced configuration wizard steps.
+
+A config wizard consists of multiple pages.
+Each page has a title, which is derived from the `key` of the configPage object, and a `tagline` as well as a set of `elements` (individual config variables).
+
+For example, a config wizard might contain a page for a Slack OAuth 2.0 connection, a page where the user selects a channel from a dynamically-populated dropdown menu, and a page where a user enters two static string inputs:
+
+```typescript title="Example config pages definition"
+import { configPage, configVar } from "@prismatic-io/spectral";
+import { slackConnectionConfigVar } from "./connections";
+import { slackSelectChannelDataSource } from "./dataSources";
+
+export const configPages = {
+  Connections: configPage({
+    tagline: "Authenticate with Slack",
+    elements: {
+      "Slack OAuth Connection": slackConnectionConfigVar,
+    },
+  }),
+  "Slack Config": configPage({
+    tagline: "Select a Slack channel from a dropdown menu",
+    elements: {
+      "Select Slack Channel": slackSelectChannelDataSource,
+    },
+  }),
+  "Other Config": configPage({
+    elements: {
+      "Acme API Endpoint": configVar({
+        stableKey: "acme-api-endpoint",
+        dataType: "string",
+        description: "The endpoint to fetch TODO items from Acme",
+        defaultValue:
+          "https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo",
+      }),
+      "Webhook Config Endpoint": configVar({
+        stableKey: "webhook-config-endpoint",
+        dataType: "string",
+        description:
+          "The endpoint to call when deploying or deleting an instance",
+      }),
+    },
+  }),
+};
+```
+
+### Connections in code-native integrations
+
+Connection definitions in CNI are very similar to [custom component connection definitions](/docs/composer/builder/custom-components/writing-custom-components.mdx#adding-connections), but you use the `connectionConfigVar` function instead of the `connection` function.
+
+For example, a Slack OAuth 2.0 connection might look like this:
+
+```typescript title="Example connection definition"
+export const slackConnectionConfigVar = connectionConfigVar({
+  stableKey: "2873B0E7-62C0-4B00-B5D0-3EF6F5362C6D",
+  label: "Slack OAuth Connection Label",
+  oauth2Type: OAuth2Type.AuthorizationCode,
+  inputs: {
+    authorizeUrl: {
+      label: "Authorize URL",
+      placeholder: "Authorize URL",
+      type: "string",
+      default: "https://slack.com/oauth/v2/authorize",
+      required: true,
+      shown: false,
+      comments: "The OAuth 2.0 Authorization URL for the API",
+    },
+    tokenUrl: {
+      label: "Token URL",
+      placeholder: "Token URL",
+      type: "string",
+      default: "https://slack.com/api/oauth.v2.access",
+      required: true,
+      shown: false,
+      comments: "The OAuth 2.0 Token URL for the API",
+    },
+    revokeUrl: {
+      label: "Revoke URL",
+      placeholder: "Revoke URL",
+      type: "string",
+      required: true,
+      shown: false,
+      comments: "The OAuth 2.0 Revocation URL for Slack",
+      default: "https://slack.com/api/auth.revoke",
+    },
+    scopes: {
+      label: "Scopes",
+      placeholder: "Scopes",
+      type: "string",
+      required: false,
+      shown: false,
+      comments: "Space separated OAuth 2.0 permission scopes for the API",
+      default: "chat:write chat:write.public channels:read",
+    },
+    clientId: {
+      label: "Client ID",
+      placeholder: "Client ID",
+      type: "string",
+      required: true,
+      shown: false,
+      comments: "Client Identifier of your app for the API",
+      default: "REPLACE-ME",
+    },
+    clientSecret: {
+      label: "Client Secret",
+      placeholder: "Client Secret",
+      type: "password",
+      required: true,
+      shown: false,
+      comments: "Client Secret of your app for the API",
+      default: "REPLACE-ME",
+    },
+    signingSecret: {
+      label: "Signing Secret",
+      type: "password",
+      required: true,
+      shown: false,
+      default: "REPLACE-ME",
+    },
+  },
+});
+```
+
+The above OAuth 2.0 connection would be rendered in a config wizard as a card with a **connect** button that a user can click to authenticate with Slack.
+
+<Screenshot
+  filename="code-native-integrations/config-page-oauth.png"
+  alt="A card with a connect button that a user can click to authenticate with Slack"
+  maxWidth="800px"
+/>
+
+Connection inputs yield objects.
+To access one of the fields in the connection definition (like the `signingSecret` input) in a trigger, or `onExecution` function, you can access it using the `configVars` object in the `context` parameter.
+OAuth
+
+```typescript title="Accessing connection inputs in a trigger or onExecution function"
+// Access a field defined in the connection definition
+context.configVars["Slack OAuth Connection"].fields.signingSecret;
+
+// Access the access token from the OAuth 2.0 flow
+context.configVars["Slack OAuth Connection"].token?.access_token;
+```
+
+### Data sources is code-native integrations
+
+Data sources are defined in CNI similar to how they are defined in [custom components](/docs/composer/builder/custom-components/writing-custom-components.mdx#writing-data-sources), but you use the `dataSourceConfigVar` function rather than the `dataSource` function.
+
+For example, if you would like to add a picklist dropdown menu to your config wizard that displays a list of Slack channels, you could define a data source like this:
+
+```typescript title="Example data source definition"
+import {
+  Connection,
+  Element,
+  dataSourceConfigVar,
+} from "@prismatic-io/spectral";
+import { createSlackClient } from "./slackClient";
+import { AxiosResponse } from "axios";
+
+interface Channel {
+  id: string;
+  name: string;
+}
+
+interface ListChannelsResponse {
+  ok: boolean;
+  channels: Channel[];
+  response_metadata?: {
+    next_cursor: string;
+  };
+}
+
+export const slackSelectChannelDataSource = dataSourceConfigVar({
+  stableKey: "2BB5F3A9-9CFF-4DE4-8004-ECACDE6D03E3",
+  dataSourceType: "picklist",
+  perform: async (context) => {
+    const client = createSlackClient(
+      context.configVars["Slack OAuth Connection"] as Connection
+    );
+    let channels: Channel[] = [];
+    let cursor = null;
+    let counter = 1;
+    // Loop over pages of conversations, fetching up to 10,000 channels
+    // If we loop more than 10 times, we risk hitting Slack API limits,
+    // and returning over 10,000 channels can cause the UI to hang
+    do {
+      const response: AxiosResponse<ListChannelsResponse> = await client.get(
+        "conversations.list",
+        {
+          params: {
+            exclude_archived: true,
+            types: "public_channel",
+            cursor,
+            limit: 1000,
+          },
+        }
+      );
+      if (!response.data.ok) {
+        throw new Error(
+          `Error when fetching data from Slack: ${response.data}`
+        );
+      }
+      channels = [...channels, ...response.data.channels];
+      cursor = response.data.response_metadata?.next_cursor;
+      counter += 1;
+    } while (cursor && counter < 10);
+    // Map conversations to key/label objects, sorted by name
+    const objects = channels
+      .sort((a, b) => (a.name < b.name ? -1 : 1))
+      .map<Element>((channel) => ({
+        key: channel.id,
+        label: channel.name,
+      }));
+    return { result: objects };
+  },
+});
+```
+
+The above data source would be rendered in a config wizard as a picklist dropdown menu that displays a list of Slack channels.
+
+<Screenshot
+  filename="code-native-integrations/config-page-datasource.png"
+  alt="A picklist dropdown menu that displays a list of Slack channels"
+  maxWidth="800px"
+/>
+
+You can build advanced UI elements, like field mappers, into your config wizard using [JSON Forms data sources](/docs/composer/builder/jsonforms.mdx).
+
+### Other config variable types in code-native integrations
+
+Other types of config variables that Builder supports (picklists, text inputs, schedules, etc) can be added to CNI integrations, as well.
+These are generally defined inline alongside other `elements` in a `configPage`:
+
+```typescript title="Example config variable definition"
+export const configPages = {
+  // ...
+  "Other Config": configPage({
+    "Acme API Endpoint": configVar({
+      stableKey: "1F886045-27E7-452B-9B44-776863F6A862",
+      dataType: "string",
+      description: "The endpoint to fetch TODO items from Acme",
+      defaultValue:
+        "https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo",
+    }),
+  }),
+};
+```
+
+<Screenshot
+  filename="code-native-integrations/config-page-static-inputs.png"
+  alt="A page in the config wizard with two static string inputs"
+  maxWidth="800px"
+/>
+
+## Code-native flow and config variable stable keys
+
+Flows and config variables each have a user-supplied `stableKey` property.
+These keys are used to uniquely identify the flow or config variable in the Builder API, and help guard against inadvertent changes to the name of a flow or config variable.
+Without a stable key, a flow or config variable's name can be changed, and the Builder API will treat it as a new flow or config variable, and flows would receive new webhook URLs and config variables on instances would need to be reconfigured.
+With a stable key, the Builder API will treat the flow or config variable as the same flow or config variable, even if its name is changed.
+
+Stable keys can be any user-supplied string.
+You can choose a random UUID, or a string that describes the flow or config variable.
+
+## Endpoint configuration in code-native integrations
+
+By default, instances of integrations that you deploy will be assigned unique webhook URLs - one URL for each flow.
+We call this **Instance and Flow Specific** endpoint configuration.
+Alternatively, you can choose **Instance Specific** endpoint configuration (each instance gets its own webhook URL and all flows share the single URL) or **Shared** endpoint configuration, where all flows of all instances share one URL.
+
+To specify endpoint type, add an `endpointType` property to the `integration()` definition in `src/index.ts`.
+It can have values `"instance_specific"`, `"flow_specific"` or `"shared_instance"`, and defaults to `"flow_specific"`:
+
+```typescript {11}
+import { integration } from "@prismatic-io/spectral";
+import flows from "./flows";
+import { configPages } from "./configPages";
+
+export default integration({
+  name: "shared-endpoint-example",
+  description: "Shared Endpoint Example",
+  iconPath: "icon.png",
+  flows,
+  configPages,
+  endpointType: "instance_specific",
+});
+```
+
+When **Instance Specific** or **Shared** endpoint configuration is selected, you need some logic to determine which flow (and which customer's instance in the case of **Shared**) should be run.
+This can be done with or without a [preprocess flow](/docs/composer/builder/endpoint-configuration.mdx#instance-specific-endpoint-with-a-preprocess-flow), and both methods are described below.
+
+Full documentation on endpoint configuration is available in the [Endpoint Configuration](/docs/composer/builder/endpoint-configuration.mdx) article.
+
+### Endpoint configuration in code-native without preprocess flow
+
+If the flow that you want to run is specified in the webhook request's body or in a header, you can configure shared endpoint without a preprocess flow.
+If, for example, the flow you want to run is specified using a header named `x-acme-flow`, note that header's name in your integration definition using the `triggerPreprocessFlowConfig` property:
+
+```typescript {7-10} title="Instance specific endpoint configuration without a preprocess flow"
+export default integration({
+  name: "shared-endpoint-example",
+  description: "Shared Endpoint Example",
+  iconPath: "icon.png",
+  flows,
+  configPages,
+  endpointType: "instance_specific",
+  triggerPreprocessFlowConfig: {
+    flowNameField: "headers.x-acme-flow",
+  },
+});
+```
+
+To invoke an instance of an execution that has been deployed, this `curl` command would invoke the flow named "Create Opportunity":
+
+```bash {4} title="Invoke an instance specific endpoint with a flow name specified in a header"
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/SW5ExampleInstanceSpecificEndpoint \
+ -X POST \
+ --header "content-type: application/json" \
+ --header "x-acme-flow: Create Opportunity" \
+ --data '{
+  "opportunity": {
+    "name": "Foo",
+    "amount": 10000
+  }
+ }'
+```
+
+If all of your instances share an endpoint, you can similarly specify a customer external ID from the request body or headers:
+
+```typescript {7-11} title="Shared endpoint configuration without a preprocess flow"
+export default integration({
+  name: "shared-endpoint-example",
+  description: "Shared Endpoint Example",
+  iconPath: "icon.png",
+  flows,
+  configPages,
+  endpointType: "shared_instance",
+  triggerPreprocessFlowConfig: {
+    flowNameField: "headers.x-acme-flow",
+    externalCustomerIdField: "body.data.acmeAccountId",
+  },
+});
+```
+
+```bash {4,6} title="Invoke an shared endpoint with a flow name header and customer ID in the body"
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/SW5ExampleSharedEndpoint \
+ -X POST \
+ --header "content-type: application/json" \
+ --header "x-acme-flow: Create Opportunity" \
+ --data '{
+  "acmeAccountId": "abc-123",
+  "opportunity": {
+    "name": "Foo",
+    "amount": 10000
+  }
+ }'
+```
+
+### Endpoint configuration in code-native with preprocess flow
+
+A preprocess flow allows you to run custom logic to determine which flow should be run (and in the case of **Shared** endpoint config, which customer should be run).
+One of your flows can look at the request body or headers, make API calls, etc., and then return the name of the flow (and customer) to run.
+
+If you use a preprocess flow, one (and exactly one) of your flows must be marked as the preprocess flow.
+You cannot specify both a preprocess flow and a `triggerPreprocessFlowConfig` property.
+
+This example preprocess flow has an `onExecution` function (like any other flow).
+This flow returns two properties: `myFlowName` and `myCustomerId` - you can name those properties whatever you like.
+These property `preprocessFlowConfig` specifies which properties to look for in the response from the preprocess flow:
+
+```typescript {34-37,49-54} title="Shared endpoint configuration with a preprocess flow"
+import axios from "axios";
+import { flow } from "@prismatic-io/spectral";
+import type { ConfigPages } from "./configPages";
+
+const flowMapper = {
+  create_opportunity: "Create Opportunity",
+  update_opportunity: "Update Opportunity",
+};
+
+interface CreateOpportunityPayload {
+  event: "create_opportunity";
+  acctId: string;
+  opportunity: {
+    name: string;
+    amount: number;
+  };
+}
+
+interface UpdateOpportunityPayload {
+  event: "update_opportunity";
+  acctId: string;
+  opportunity: {
+    id: string;
+    name: string;
+    amount: number;
+  };
+}
+
+type Payload = CreateOpportunityPayload | UpdateOpportunityPayload;
+
+export const myPreprocessFlow = flow<ConfigPages>({
+  name: "My Preprocess Flow",
+  stableKey: "my-preprocess-flow",
+  preprocessFlowConfig: {
+    flowNameField: "myFlowName",
+    externalCustomerIdField: "myCustomerId",
+  },
+  description: "This determines which sibling flow should be invoked",
+  onExecution: async (context, params) => {
+    const { event, acctId } = params.onTrigger.results.body.data as Payload;
+    const customerIdResponse = await axios.post(
+      "https://api.example.com/get-customer-id",
+      {
+        acmeAcctId: acctId,
+      }
+    );
+
+    return Promise.resolve({
+      data: {
+        myFlowName: flowMapper[event],
+        myCustomerId: customerIdResponse.data.customerId,
+      },
+    });
+  },
+});
+```
+
+The above preprocess flow will look at a property named `event` in the request body and map an event of `create_opportunity` to the string `Create Opportunity`, returning `Create Opportunity` as the name of the flow to run.
+It will also extract an `acctId` from the request body and make an HTTP request to `https://api.example.com/get-customer-id` to get an external customer ID, returning that customer ID as well.
+
+```bash {5,6}
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/SW5ExampleSharedEndpoint \
+ -X POST \
+ --header "content-type: application/json" \
+ --data '{
+  "event": "create_opportunity",
+  "acctId": "abc-123",
+  "opportunity": {
+    "name": "Foo",
+    "amount": 10000
+  }
+ }'
+```
+
+To create a preprocess flow for **Instance Specific** endpoint configuration, omit the `externalCustomerIdField` property from the `preprocessFlowConfig` object.
+
+## Using existing components in code-native integrations
+
+Builder provides a number of [existing components](/docs/composer/builder/builder-components/component-catalog.mdx) that you can use in your code-native integrations.
+By leveraging an existing component, you can save time and effort by reusing existing functionality.
+Both public and your private components can be used in your code-native integrations.
+
+:::info Existing component's connections, data sources, and triggers
+As of the 8.1.x release of Spectral you can use an existing component's connections, data sources, and triggers in your code-native integration.
+You cannot currently use an existing component's actions, though that feature is coming soon.
+:::
+
+An example integration that uses existing Slack OAuth 2.0 connection and Slack select channels data source is available in [GitHub](https://github.com/prismatic-io/examples/tree/main/integrations/code-native-integrations/slack-with-components).
+
+### Generating types from existing components
+
+To use an existing trigger, connection or data source, you need to generate TypeScript types form the existing component.
+`prism` has a command which helps with that - you can run `prism integrations:init:selector` to generate TypeScript types.
+Select the type of resource you need a type for (trigger, connection or dataSource).
+Then, select the existing component you want to generate types for.
+You can search for a component by typing in the component's name.
+
+The selected connection, data source or trigger's type definition will be printed to the console.
+
+```bash Generate types for the existing Slack OAuth 2.0 connection
+$ prism integrations:init:selector
+   Type of the component selector: connection
+   Desired component: Slack
+   Selector: Slack OAuth 2.0
+
+interface SlackOauth2Connection {
+  type: "connection";
+  component: "slack";
+  key: "oauth2";
+  values: {
+    // The OAuth 2.0 Authorization URL for Slack. If you want to request access to the API on behalf of a user, append a 'user_scope' query parameter to the end of the Authorize URL: https://slack.com/oauth/v2/authorize?user_scope=chat:write
+    authorizeUrl: string
+    // The OAuth 2.0 Token URL for Slack
+    tokenUrl: string
+    // The OAuth 2.0 Revocation URL for Slack
+    revokeUrl: string
+    // A space-delimited set of one or more scopes to get the users permission to access.
+    scopes: string
+    clientId: string
+    clientSecret: string
+    signingSecret: string
+    // Flip the flag to true if you want to access the API as a user. If flipped you must also provide a 'user_scope' query parameter to the end of the Authorize URL. Leaving the flag false will grant you a bot token instead.
+    isUser: string
+  };
+}
+```
+
+We recommend pasting the generated type definition into a `components.ts` file in your project, so you can reference it in your code.
+You may need to modify some of the generated types to fit your specific use case - for example, if `authorizeUrl` is optional or defined in the built-in component, you can make it optional in your type definition.
+
+```ts title="Example components.ts"
+import type { KeyValuePair } from "@prismatic-io/spectral";
+
+// Example type from an existing trigger
+export interface HmacWebhookTrigger {
+  type: "trigger";
+  component: "hash";
+  key: "hmacWebhookTrigger";
+  values: {
+    statusCode?: string;
+    contentType?: string;
+    headers?: KeyValuePair[];
+    body?: string;
+    hmacHeaderName: string;
+    secretKey: string;
+    hashFunction: string;
+  };
+}
+
+// Example type from an existing connection
+export interface SlackOAuthConnection {
+  type: "connection";
+  component: "slack";
+  key: "oauth2";
+  values: {
+    authorizeUrl?: string;
+    tokenUrl?: string;
+    revokeUrl?: string;
+    scopes?: string;
+    isUser?: string;
+    clientId: string;
+    clientSecret: string;
+    signingSecret: string;
+  };
+}
+
+// Example type from an existing data source
+export interface SlackSelectChannelsDataSource {
+  type: "dataSource";
+  component: "slack";
+  key: "selectChannels";
+  values: {
+    connection: string;
+    includeImChannels?: string;
+    includeMultiPartyImchannels?: string;
+    includePublicChannels?: string;
+    includePrivateChannels?: string;
+    showIdInDropdown?: string;
+  };
+}
+
+export type Components =
+  | HmacWebhookTrigger
+  | SlackOAuthConnection
+  | SlackSelectChannelsDataSource;
+```
+
+:::note Your flow definitions must include your `Components` generic
+If you use built-in components, your flows must be type-aware of the connections' types.
+You can do this by passing your `Components` type as a generic
+:::
+
+### Using existing connections in code-native integrations
+
+After generating types for an existing connection, you can use the connection in your code-native integration's `configPages` definition.
+At the top of your config pages file, import the `reference` function from `@prismatic-io/spectral` and give it your `Components` generic type that you accumulated above.
+Then, use the reference's `.connection()` function.
+This will let you build out a connection from an existing component that is type-aware:
+
+```ts title="Using an existing connection in a code-native integration"
+import {
+  configPage,
+  connectionConfigVar,
+  reference,
+} from "@prismatic-io/spectral";
+import { Components } from "./components";
+
+export const configPages = {
+  Connections: configPage({
+    tagline: "Authenticate with Slack",
+    elements: {
+      "Slack OAuth Connection": reference<Components>().connection({
+        stableKey: "my-slack-connection",
+        connection: {
+          component: "slack",
+          key: "oauth2",
+          values: {
+            clientId: { value: "REPLACE_ME_WITH_YOUR_CLIENT_ID" },
+            clientSecret: { value: "REPLACE_ME_WITH_YOUR_CLIENT_SECRET" },
+            signingSecret: { value: "REPLACE_ME_WITH_YOUR_SIGNING_SECRET" },
+            scopes: { value: "chat:write chat:write.public channels:read" },
+          },
+        },
+      }),
+    },
+  }),
+};
+```
+
+Note that both `configPage` and `connectionConfigVar` are generic functions that take a type parameter from the generated types.
+
+### Using existing data sources in code-native integrations
+
+After generating types for an existing data source, you can use the data source in your code-native integration's `configPages` definition.
+Similar to connections above, you'll use the `reference` function to make your data source type-aware:
+
+```ts title="Using an existing data source in a code-native integration
+import {
+  configPage,
+  dataSourceConfigVar,
+  reference,
+} from "@prismatic-io/spectral";
+import { Components } from "./components";
+
+export const configPages = {
+  // ...
+  "Slack Config": configPage({
+    tagline: "Select a Slack channel from a dropdown menu",
+    elements: {
+      "Select Slack Channel": reference<Components>().dataSource({
+        stableKey: "my-slack-channel-picklist",
+        dataSourceType: "picklist",
+        dataSource: {
+          component: "slack",
+          key: "selectChannels",
+          values: {
+            connection: { configVar: "Slack OAuth Connection" },
+            includePublicChannels: { value: "true" },
+          },
+        },
+      }),
+    },
+  }),
+};
+```
+
+If the data source requires a connection, you can pass a connection to the data source using the appropriate input value by specifying a `configVar` by name (`connection: { configVar: "Slack OAuth Connection" },` in the example above).
+
+### Using existing triggers in code-native integrations
+
+After generating types for an existing trigger, you can use the trigger in your code-native integration's `flow` definition.
+Similar to connections or data sources above, you'll use the `reference` function to make your trigger type-aware:
+
+```ts title="Using an existing trigger in a code-native integration" {5-13}
+export const existingComponentTriggerFlow = flow<ConfigPages, Components>({
+  name: "Existing Component Trigger Flow",
+  stableKey: "6f58c32c-b29a-4f55-97e6-b86bf9e24551",
+  description: "This flow uses an existing component trigger",
+  onTrigger: {
+    component: "hash",
+    key: "hmacWebhookTrigger",
+    values: {
+      hmacHeaderName: { value: "X-Signature-256" },
+      secretKey: { configVar: "My Secret Key Config Var" },
+      hashFunction: { value: "sha256" },
+    },
+  },
+  onExecution: async (context, params) => {
+    const { logger } = context;
+
+    logger.info(`Action context: ${JSON.stringify(context)}`);
+    logger.info(`Action params: ${JSON.stringify(params)}`);
+
+    return Promise.resolve({ data: null });
+  },
+});
+```
+
+If the trigger takes inputs, those inputs are passed to the trigger as `values`, and values can be either static string `value`, or can reference config variables with `configVar: "Config Variable Name"`.
+
+## Testing a code-native integration
+
+There are two types of testing that you can do with a code-native integration: you can run unit tests of your code locally in your IDE, and you can import the integration and test it in the Builder runner.
+
+- Unit tests in your IDE are great for testing the logic of your integration and testing modular portions of your code
+- Testing in the Builder runner is great for trying out the configuration wizard experience you've built and testing the integration's behavior in a real-world environment.
+
+You will probably want to incorporate both types of testing into your development process.
+
+### Testing a code-native integration in Builder
+
+After building with `npm run build` and importing your code-native integration with `prism integrations:import --open` you can test your integration in the Builder runner similar to how you test a low-code integration.
+
+<Screenshot
+  filename="code-native-integrations/testing-cni-in-prismatic.png"
+  alt="Testing a code-native integration in the Builder runner"
+/>
+
+To test your config wizard experience, click the **Test Configuration** button.
+To run a test of a flow, select the flow from the dropdown menu on the top right of the page and then click the green **Run** button.
+When you're satisfied with your integration, you can click **Publish** to publish a new version of your integration, and manage instances of your integration from the **Management** tab.
+
+:::tip Use a debug logger
+A code-native integration has no steps - just a trigger and `onExecution` function, so there's no step results to inspect.
+To debug your integration, use the `context.logger` object in your `onExecution`.
+You can even conditionally log lines based on a config variable you create.
+You can make the debug config variable invisible to customer users.
+
+```typescript title="Add a debug config variable"
+configVar({
+  stableKey: "debug",
+  dataType: "boolean",
+  description: "Enable debug logging",
+  defaultValue: "false",
+  orgOnly: true,
+  visibleToCustomerDeployer: false,
+});
+```
+
+:::
+
+### Unit tests for code-native integrations
+
+You can also write unit tests for your code-native integration, similar to [unit tests for custom components](/docs/composer/builder/custom-components/quickstarts/unit-testing-custom-components.mdx).
+The `invokeFlow` function from the custom component SDK is used to invoke a test of a flow in a code-native integration.
+You can specify a sample payload to "send" to your flow's `onTrigger` function, and the `invokeFlow` function will run both `onTrigger` and `onExecution` and return the result of the flow's `onExecution` function.
+
+Below is a simple flow that takes a payload and sends the payload to an API, returning the results of the API call.
+The corresponding unit test code invokes the flow, "sending" a sample payload and verifying that the results received are as expected.
+
+<Tabs>
+
+<TabItem value="index.ts" label="CNI Code" default>
+
+```typescript title="index.ts"
+import {
+  configPage,
+  configVar,
+  flow,
+  integration,
+} from "@prismatic-io/spectral";
+import axios from "axios";
+
+const configPages = {
+  "Acme Config": configPage({
+    elements: {
+      "Acme API Endpoint": configVar({
+        stableKey: "1F886045-27E7-452B-9B44-776863F6A862",
+        dataType: "string",
+        description: "The endpoint to fetch TODO items from Acme",
+        defaultValue:
+          "https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo",
+      }),
+      "Acme API Key": configVar({
+        stableKey: "webhook-config-endpoint",
+        dataType: "string",
+        description:
+          "The endpoint to call when deploying or deleting an instance",
+      }),
+    },
+  }),
+};
+
+export const myFlow = flow<typeof configPages>({
+  name: "Create Acme Opportunity",
+  stableKey: "create-acme-opportunity",
+  description: "Create an opportunity in Acme",
+  onExecution: async (context, params) => {
+    const { id, name, value } = params.onTrigger.results.body.data as {
+      id: string;
+      name: string;
+      value: number;
+    };
+
+    if (value < 0) {
+      throw new Error("Invalid value - values cannot be negative");
+    }
+
+    const acmeEndpoint = context.configVars["Acme API Endpoint"];
+
+    const response = await axios.post(
+      `${acmeEndpoint}/opportunity`,
+      { id, name, value },
+      {
+        headers: {
+          Authorization: `Bearer ${context.configVars["Acme API Key"]}`,
+        },
+      }
+    );
+
+    return { data: response.data };
+  },
+});
+
+export default integration({
+  name: "acme-cni",
+  description: "Acme CNI",
+  iconPath: "icon.png",
+  flows: [myFlow],
+  configPages,
+});
+```
+
+</TabItem>
+
+<TabItem value="index.test.ts" label="Unit test code">
+
+```typescript title="index.test.ts"
+import { myFlow } from ".";
+import {
+  invokeFlow,
+  defaultTriggerPayload,
+} from "@prismatic-io/spectral/dist/testing";
+
+interface MyFlowResponse {
+  externalId: string;
+  id: string;
+  name: string;
+  value: number;
+}
+
+describe("test myFlow", () => {
+  test("Verify that the API returns an external ID that matches the specified ID", async () => {
+    const { result } = await invokeFlow(
+      myFlow,
+      {
+        "Acme API Endpoint": "https://staging.api.example.com",
+        "Acme API Key": "my-api-key",
+      },
+      {},
+      {
+        ...defaultTriggerPayload(),
+        body: {
+          data: { id: "123", name: "my-opportunity", value: 1000 },
+          contentType: "application/json",
+        },
+      }
+    );
+    expect((result?.data as MyFlowResponse).externalId).toBe("123");
+  });
+
+  test("Verify that errors are thrown when provided negative values", async () => {
+    await expect(
+      invokeFlow(
+        myFlow,
+        {
+          "Acme API Endpoint": "https://staging.api.example.com",
+          "Acme API Key": "my-api-key",
+        },
+        {},
+        {
+          ...defaultTriggerPayload(),
+          body: {
+            data: { id: "123", name: "my-opportunity", value: -1000 },
+            contentType: "application/json",
+          },
+        }
+      )
+    ).rejects.toThrow("Invalid value - values cannot be negative");
+  });
+});
+```
+
+</TabItem>
+
+</Tabs>
+
+You can run a unit test with
+
+```bash
+npm run test
+```
+
+<Screenshot
+  filename="code-native-integrations/cni-unit-test.png"
+  maxWidth="600px"
+  alt="Running a unit test for a code-native integration"
+/>
+
+#### Unit testing a code-native integration with an OAuth 2.0 connection
+
+If your integration includes an OAuth 2.0 connection, you can use the same strategy outlined in the [Unit Testing Custom Components](/docs/composer/builder/custom-components/quickstarts/unit-testing-custom-components.mdx#option-2---pull-the-connection-information-from-an-existing-connection-in-prismatic) guide.
+Both custom components and code-native integrations can take advantage of the `prism components:dev:run` command to fetch an established connection from an existing test instance.

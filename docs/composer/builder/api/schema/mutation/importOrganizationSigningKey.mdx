@@ -1,0 +1,25 @@
+---
+id: importOrganizationSigningKey
+title: importOrganizationSigningKey Mutation
+sidebar_label: importOrganizationSigningKey
+description: Learn how to use the importOrganizationSigningKey Mutation for Builder's API.
+---
+
+    Creates a new OrganizationSigningKey object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_users].
+
+## Input fields ([ImportOrganizationSigningKeyInput!](/docs/composer/builder/api/schema/input_object/ImportOrganizationSigningKeyInput.mdx))
+
+| Argument           | Type                                      | Description                                                 |
+| ------------------ | ----------------------------------------- | ----------------------------------------------------------- |
+| `publicKey`        | [`String!`](/docs/composer/builder/api/schema/scalar/String.mdx) | Public key of the Signing Keypair.                          |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)  | A unique identifier for the client performing the mutation. |
+
+## Return fields ([ImportOrganizationSigningKeyPayload](/docs/composer/builder/api/schema/object/ImportOrganizationSigningKeyPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>organizationSigningKey</b> ([OrganizationSigningKey](/docs/composer/builder/api/schema/object/OrganizationSigningKey.mdx))

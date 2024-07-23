@@ -1,0 +1,57 @@
+---
+id: set-up-environment
+title: Set Up Your Dev Environment
+description: Set up your development environment for custom component development
+---
+
+In this section you'll learn how to set up your environment for custom component development.
+
+## Operating system considerations
+
+You can develop custom components on any operating system that supports NodeJS (Windows, Linux, MacOS, etc).
+If you use Windows, you may find it helpful to work in a Windows Subsystem for Linux [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) environment.
+
+## Install NodeJS
+
+Custom components are written in NodeJS (with TypeScript layered on top).
+While many version of NodeJS can be used to build custom components, we recommend using the latest LTS version available on [NodeJS.org](https://nodejs.org/).
+
+Once you install NodeJS, ensure that you can run both `node --version` and `npm --version`.
+
+## Install an IDE
+
+If you have a favorite code editor, use that.
+We've found that [VS Code](https://code.visualstudio.com/) works great for custom component development, but some of our developers prefer [Sublime](https://www.sublimetext.com/) or [neovim](https://neovim.io/).
+
+It's not necessary, but if you use VS Code we've found the following extensions helpful:
+
+- [ES Lint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for code linting
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting
+- [Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) for showing the latest version for each package in package.json
+
+VS Code has built-in TypeScript IntelliSense (auto-complete), but if you want to use the latest-and-greatest, you can also install the [TypeScript Nightly build extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next).
+
+## Install the Builder CLI tool
+
+The Builder CLI tool, `prism` is used for initializing and publishing custom components.
+You can install it after installing NodeJS and `npm` with this command:
+
+```bash title="Install prism"
+npm install --global @prismatic-io/prism
+```
+
+Once you've installed `prism`, log in by typing `prism login`.
+You'll be prompted to enter your Builder credentials, and then to authorize `prism` to access your Builder account.
+Click **Accept**.
+
+Once you've logged in, run `prism me` to verify that you are logged in.
+
+```bash
+$ prism me
+Name: John Doe
+Email: john.doe@example.com
+Organization: Example Corp - US Region
+Endpoint URL: https://app.prismatic.io
+```
+
+##

@@ -1,0 +1,28 @@
+---
+id: updateConnectionTemplate
+title: updateConnectionTemplate Mutation
+sidebar_label: updateConnectionTemplate
+description: Learn how to use the updateConnectionTemplate Mutation for Builder's API.
+---
+
+    Updates the specified ConnectionTemplate object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_integrations].
+
+## Input fields ([UpdateConnectionTemplateInput!](/docs/composer/builder/api/schema/input_object/UpdateConnectionTemplateInput.mdx))
+
+| Argument           | Type                                                                               | Description                                                 |
+| ------------------ | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `connection`       | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                   | The Connection from which this template is structured.      |
+| `name`             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                           | The name of this template.                                  |
+| `presets`          | [`[ConnectionTemplateField]`](/docs/composer/builder/api/schema/input_object/ConnectionTemplateField.mdx) | The input presets associated with this template.            |
+| `id`               | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                                   | The ID of the ConnectionTemplate to mutate.                 |
+| `clientMutationId` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                                           | A unique identifier for the client performing the mutation. |
+
+## Return fields ([UpdateConnectionTemplatePayload](/docs/composer/builder/api/schema/object/UpdateConnectionTemplatePayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>connectionTemplate</b> ([ConnectionTemplate](/docs/composer/builder/api/schema/object/ConnectionTemplate.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/docs/composer/builder/api/schema/object/ErrorType.mdx))

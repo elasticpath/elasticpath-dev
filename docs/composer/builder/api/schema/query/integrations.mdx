@@ -1,0 +1,71 @@
+---
+id: integrations
+title: integrations Query
+sidebar_label: integrations
+description: Learn how to use the integrations Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of Integration objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_integration_permissions, org_manage_integrations, org_view_integrations]. 2. The signed-in User has any of the following permissions for any version of the object: [integration_admin_permissions, integration_view, integration_edit, integration_remove]. 3. The signed-in User has any of the following permissions for the associated Customer of Integrations available in the Marketplace: [customer_admin_instance_deploy, customer_manage_marketplace_integrations]. 4. The signed-in User has any of the following permissions for the associated Customer of Integrations available in the Marketplace: [customer_access_marketplace_integrations]. 5. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations]. 6. The Customer User has any of the following permissions for the Customer and the Objects Attribute template_configuration is AVAILABLE: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations].
+
+## Input fields
+
+| Argument                               | Type                                                                 | Description                                                                                           |
+| -------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `marketplace`                          | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Returns only the version of Integrations either deployed or available in the Marketplace              |
+| `allVersions`                          | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Return all versions instead of only the latest                                                        |
+| `hasInstances`                         | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Return only Integrations that have Instances                                                          |
+| `hasOutdatedComponents`                | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Return only Integrations that use outdated Components                                                 |
+| `before`                               | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Specifies a cursor for use in combination with `last` to implement backward pagination.               |
+| `after`                                | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Specifies a cursor for use in combination with `first` to implement forward pagination.               |
+| `first`                                | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                   | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.       |
+| `last`                                 | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                   | A non-negative integer that specifies to return at most `last` edges before the `before` cursor.      |
+| `offset`                               | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                   |                                                                                                       |
+| `name`                                 | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where name matches the specified value.                                            |
+| `name_Icontains`                       | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where name contains the specified value (case insensitive).                        |
+| `description`                          | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where description matches the specified value.                                     |
+| `description_Icontains`                | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where description contains the specified value (case insensitive).                 |
+| `hasUnpublishedChanges`                | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Filter for objects where hasUnpublishedChanges matches the specified value.                           |
+| `category`                             | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where category matches the specified value.                                        |
+| `category_Icontains`                   | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where category contains the specified value (case insensitive).                    |
+| `marketplaceConfiguration_Istartswith` | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where marketplaceConfiguration starts with the specified value (case insensitive). |
+| `marketplaceConfiguration_Iexact`      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where marketplaceConfiguration.iexact matches the specified value.                 |
+| `marketplaceConfiguration_In`          | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx)                           | Filter for objects where marketplaceConfiguration is contained in the list of specified values.       |
+| `customer`                             | [`ID`](/docs/composer/builder/api/schema/scalar/ID.mdx)                                     | Filter for objects where customer matches the specified ID.                                           |
+| `customer_Isnull`                      | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Filter for objects where customer is NULL.                                                            |
+| `useAsTemplate`                        | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Filter for objects where useAsTemplate matches the specified value.                                   |
+| `templateConfiguration_Istartswith`    | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where templateConfiguration starts with the specified value (case insensitive).    |
+| `templateConfiguration_Iexact`         | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where templateConfiguration.iexact matches the specified value.                    |
+| `templateConfiguration_In`             | [`[String]`](/docs/composer/builder/api/schema/scalar/String.mdx)                           | Filter for objects where templateConfiguration is contained in the list of specified values.          |
+| `allowMultipleMarketplaceInstances`    | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Filter for objects where allowMultipleMarketplaceInstances matches the specified value.               |
+| `createdAt_Gte`                        | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                         | Filter for objects where createdAt occurs on or after the specified value.                            |
+| `createdAt_Lte`                        | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                         | Filter for objects where createdAt occurs on or before the specified value.                           |
+| `updatedAt_Gte`                        | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                         | Filter for objects where updatedAt occurs on or after the specified value.                            |
+| `updatedAt_Lte`                        | [`DateTime`](/docs/composer/builder/api/schema/scalar/DateTime.mdx)                         | Filter for objects where updatedAt occurs on or before the specified value.                           |
+| `isCodeNative`                         | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Filter for objects where isCodeNative matches the specified value.                                    |
+| `versionSequenceId`                    | [`UUID`](/docs/composer/builder/api/schema/scalar/UUID.mdx)                                 | Filter for objects where versionSequenceId matches the specified value.                               |
+| `versionNumber`                        | [`Int`](/docs/composer/builder/api/schema/scalar/Int.mdx)                                   | Filter for objects where versionNumber matches the specified value.                                   |
+| `versionIsAvailable`                   | [`Boolean`](/docs/composer/builder/api/schema/scalar/Boolean.mdx)                           | Filter for objects where versionIsAvailable matches the specified value.                              |
+| `labels_Icontains`                     | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where labels contains the specified value (case insensitive).                      |
+| `labels_Contains`                      | [`String`](/docs/composer/builder/api/schema/scalar/String.mdx)                             | Filter for objects where labels contains the specified value (case sensitive).                        |
+| `orderBy`                              | [`IntegrationOrder`](/docs/composer/builder/api/schema/input_object/IntegrationOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                        |
+| `sortBy`                               | [`[IntegrationOrder]`](/docs/composer/builder/api/schema/input_object/IntegrationOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                                  |
+
+## Return fields ([IntegrationConnection!](/docs/composer/builder/api/schema/object/IntegrationConnection.mdx))
+
+###### <b>edges</b> ([[IntegrationEdge]!](/docs/composer/builder/api/schema/object/IntegrationEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[Integration]!](/docs/composer/builder/api/schema/object/Integration.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/docs/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

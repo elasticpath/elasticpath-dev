@@ -1,0 +1,68 @@
+---
+id: field-mapping-in-a-flow
+title: Using Field Mapping in a Flow
+description: In this tutorial, you will learn how to use field mapping data in a flow.
+---
+
+import Vimeo from "@site/src/components/vimeo";
+
+If you've already built a [custom field mapper](/docs/composer/builder/custom-components/quickstarts/field-mapping-json-forms-datasource.mdx), the next step is to use the results of that field mapper to map data in a flow.
+
+<Vimeo video="928574747" />
+
+In the video above, we create a field mapper that maps Salesforce fields to "Acme" fields.
+The result of the field mapper config variable is a JavaScript object that looks like this:
+
+```json
+[
+  {
+    "source": "Id",
+    "destination": "external_id",
+  },
+  {
+    "source": "Name",
+    "destination": "acct_name",
+  },
+  {
+    "source": "AnnualRevenue",
+    "destination": "revenue",
+  },
+];
+```
+
+Salesforce yields data that looks like this, with keys in [Pascal Case](https://en.wikipedia.org/wiki/Camel_case):
+
+```json
+{
+  "Id": "0018c0000321QvpAAE",
+  "Name": "Example Account",
+  "AnnualRevenue": 1000000
+}
+```
+
+To map fields from the Salesforce payload to an "Acme" payload, we can apply a JavaScript [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) function onto the map config object:
+
+```javascript
+module.exports = async ({ logger, configVars }, stepResults) => {
+  const sfdcAccount = stepResults.loopOverAccounts.currentItem;
+  const mapping = configVars["Salesforce Account Field Mapping"];
+  const mappedFields = mapping.reduce(
+    (acc, { source, destination }) => ({
+      [destination]: sfdcAccount[source],
+      ...acc,
+    }),
+    {}
+  );
+  return { data: mappedFields };
+};
+```
+
+That will yield an object that our "Acme" API can consume:
+
+```json
+{
+  "external_id": "0018c0000321QvpAAE",
+  "acct_name": "Taylor test account 5",
+  "revenue": 10000
+}
+```

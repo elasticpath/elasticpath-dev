@@ -1,0 +1,437 @@
+---
+id: using-builder-api
+title: Common API Queries and Mutations
+description: Examples of how to use Builder's API to manage customers and instances
+---
+
+import GraphqlExample from "@site/src/components/graphql-example";
+import Screenshot from "@site/src/components/screenshot";
+
+As you incorporate Builder into your development ecosystem, it's handy to be able to wrap Builder's GraphQL-based API so you can programmatically manage users, customers, instances, monitors, alerting and more.
+On this page you will find examples of how to wrap common Builder GraphQL queries and and mutations.
+
+This page doesn't cover every query or mutation that Builder supports, but should give you a good idea of how to do standard CRUD (create, read, update, delete) operations using the Builder API.
+
+Before you begin, please read through our [Intro to Builder's API](/docs/composer/builder/api/api-overview.mdx) article and generate an [API token](/docs/composer/builder/api/api-overview.mdx#how-do-i-get-an-api-authorization-token) for yourself, so you can make API calls.
+
+:::tip Reference the prism CLI tool's source code
+Builder's CLI tool, [prism](/docs/composer/builder/cli/cli-usage.mdx) is open-source and wraps the Builder API.
+Reference its source code on [GitHub](https://github.com/prismatic-io/prism) to see examples of interacting with customers, integrations, components, etc. programmatically.
+:::
+
+## Managing Customers Through the API
+
+Let's start by managing [customers](/docs/composer/builder/customers.mdx) programmatically.
+If you'd like to see examples of these queries and mutations in code, check out this [python script](https://github.com/prismatic-io/examples/blob/main/api/customers/customers.py) that wraps many of the customer-related queries and mutations.
+
+### Querying Customers Through the API
+
+If you know the ID of the customer you would like to query, use the [customer](/docs/composer/builder/api/schema/query/customer.mdx) query.
+The `myCustomerId` (you can call it anything) query variable that you pass into the query is substituted in for `customer(id)`, and a customer with the given ID is returned:
+
+<GraphqlExample example="getCustomer" />
+
+:::tip Use Query Variables
+While you _can_ do some string concatenation or hard-code customer IDs, instance variable values, etc., to create a query, we recommend that you instead leverage GraphQL [query variables](https://graphql.org/learn/queries/#variables).
+The examples below use query variables.
+:::
+
+If you would like information about several customers, use the [customers](/docs/composer/builder/api/schema/query/customers.mdx) query instead:
+
+<GraphqlExample example="getCustomers" />
+
+The `isSystem: false` property above removes system-generated customers that are used when testing integrations in the integration designer.
+
+### Adding a New Customer Through the API
+
+To add a new customer to your account, use the [createCustomer](/docs/composer/builder/api/schema/mutation/createCustomer.mdx) _mutation_.
+(It's called a _mutation_ and not a _query_ because you are mutating data, not just accessing it).
+We'll make heave use of [query variables](https://graphql.org/learn/queries/#variables) for this mutation:
+
+<GraphqlExample example="createCustomer" />
+
+In the `createCustomer` example above, we capture the `id` of the customer that is created, as well as `errors` (if any) that are thrown.
+The API might throw an error if a customer with the same name or external ID already exists.
+
+### Updating a Customer Through the API
+
+You can update a customer using the [updateCustomer](/docs/composer/builder/api/schema/mutation/createCustomer.mdx) mutation.
+You must know the ID of the customer you want to update.
+In this example, the ID of the customer and the new information that we want to change are passed in as query variables:
+
+<GraphqlExample example="updateCustomer" />
+
+### Deleting a Customer Through the API
+
+The [deleteCustomer](/docs/composer/builder/api/schema/mutation/deleteCustomer.mdx) mutation takes a customer ID, and returns the customer (if it has been deleted), or an error if the customer can't be found.
+
+<GraphqlExample example="deleteCustomer" />
+
+## Managing Users Through the API
+
+There are two types of users: your customer's users and your organization's team members.
+If you're using the embedded marketplace and [signed JWTs](/docs/composer/builder/embedding-marketplace.mdx#authenticating-users) to seamlessly authenticate customer users, you probably won't need to manage your customer users programmatically.
+It's more likely that you'll manage organization users, but we'll look at how to manage both.
+
+### Creating a User Through the API
+
+In order to create a new user, you will need to know the user's **email address**, and **role**.
+You can optionally include the user's **name** and **phone number**.
+
+First, look up the **roles** you can assign a user using either the [customerRoles](/docs/composer/builder/api/schema/query/customerRoles.mdx) or [organizationRoles](/docs/composer/builder/api/schema/query/organizationRoles.mdx) query:
+
+<GraphqlExample example="organizationRoles" />
+
+This will give you a series of **roles** along with their IDs and the permissions that are associated with them.
+Find an appropriate role for the user you want to add, and note its ID.
+Next, run the either the [createCustomerUser](/docs/composer/builder/api/schema/mutation/createCustomerUser.mdx) or [createOrganizationUser](/docs/composer/builder/api/schema/mutation/createOrganizationUser.mdx) mutation to create the user:
+
+<GraphqlExample example="createOrganizationUser" />
+
+Users who are created in this way are immediately sent an email asking them to set a password for Builder.
+
+### Listing Users by Customer Through the API
+
+One big advantage of GraphQL is that you can query resources for _related_ data.
+Once again we'll use the [customers](/docs/composer/builder/api/schema/query/customers.mdx) query to list each customer's **ID** and **name**, but in addition we'll list the users attached to the customer.
+Specifically, we'll list each customer user's **ID**, **email address**, **name**, and **external ID**:
+
+<GraphqlExample example="usersByCustomer" />
+
+### Updating and Deleting Users Through the API
+
+You can accomplish the other CRUD operations (update and delete) using the [updateUser](/docs/composer/builder/api/schema/mutation/updateUser.mdx) and [deleteUser](/docs/composer/builder/api/schema/mutation/deleteUser.mdx) mutations, similar to how you [update or delete customers](#updating-a-customer-through-the-api)
+
+## Deploying New Instances Through the API
+
+### Find Integrations Through the API
+
+Before deploying an instance of an integration, you'll need to know the **ID** of the **version** of the integration you want to deploy.
+You can use the [integrations](/docs/composer/builder/api/schema/query/integrations.mdx) query to list integrations.
+You'll want to deploy a specific **version** of the integration, so including the `allVersions: true` and `versionIsAvailable: true` parameters will show you all available published versions of your integration (not just your canonical integration ID).
+
+This query also uses `sortBy`, so results are sorted by version, and the latest version is returned first.
+
+<GraphqlExample example="versionsOfIntegration" />
+
+### Creating a New Instance Through the API
+
+The [createInstance](/docs/composer/builder/api/schema/mutation/createInstance.mdx) mutation requires four pieces of information:
+
+- The **ID** of a customer this instance is for. This can be found through the [customers query](/docs/composer/builder/api/schema/query/customers.mdx).
+- The **ID** of the **version** of the integration you want to deploy. This can be found through [above query](#find-integrations-through-the-api).
+- A **name** for your instance.
+
+Once you've collected that information, you can create your instance:
+
+<GraphqlExample example="createInstance" />
+
+This query returns some additional data about the instance, including a list of [flows](/docs/composer/builder/building-integrations.mdx#flows-in-integrations) and their respective webhook URLs for invoking the flows.
+
+Config variables _can_ be set during the `createInstance` mutation.
+They can also be set with an `updateInstance` or `updateInstanceConfigVariables` mutation, which we'll address [below](#updating-instance-config-variables-through-the-api).
+If you'd like to set the config variables as part of the `createInstance` mutation, follow the same pattern that we show in the `updateInstance` mutation below.
+
+## Updating Instance Config Variables Through the API
+
+If you're programmatically updating an instance, you're likely updating the instance's config variable values.
+There are two mutations that you can use to update instance config variables:
+
+- `updateInstance` lets you update multiple properties of an instance (like name, description, config variables, etc.).
+  Note, though, that this mutation sets values for _all_ config variables whether or not you specify a value for them.
+  If you omit a config variable from the mutation, its value will be reset to its default value (or `null` if no default is configured).
+  Use this mutation with caution.
+  :::caution Setting config variables with `updateInstance`
+  When you programmatically set config variables using the [updateInstance](/docs/composer/builder/api/schema/mutation/updateInstance.mdx) mutation, all config variables must be given a value.
+  If you omit a config variable, that config variable will be set to its default value (even if it was previously set).
+
+  If you'd like to set just a subset of config variables while leaving the others alone, use the [updateInstanceConfigVariables](/docs/composer/builder/api/schema/mutation/updateInstanceConfigVariables.mdx) mutation, described [below](#updating-config-variables-with-updateinstanceconfigvariables).
+  :::
+
+- `updateInstanceConfigVariables` lets you safely update specific instance config variables, while leaving the other config variables untouched.
+  Use this mutation if you would like to modify one (or a few) values.
+
+### Updating Config Variables with `updateInstance`
+
+Before the [updateInstance](/docs/composer/builder/api/schema/mutation/updateInstance.mdx) mutation, let's query the instance for its current config variables.
+
+Each config variable is tied to a `requiredConfigVariable` which has a `key` (like `Acme Inventory Endpoint`) and a `defaultValue`.
+Non-connection config variables also have a `value` property, which is the customer-specific value you'd like to set for that config variable (like `https://app.acme.com/api`).
+
+If your config variable is a [connection](/docs/composer/builder/building-integrations.mdx#connection-config-variables), which usually represents a username, password, API key, OAuth 2.0 connection, the shape is a bit different. It'll be comprised of a set of `inputs` that have a `name`, `type`, and `value`.
+
+<GraphqlExample example="queryInstanceConfigVars" />
+
+If you run the query above, you'll get back something similar to the JSON below.
+Note that the different config variables each returned something slightly different, depending on the type of config variable they represent:
+
+- `Acme Inventory Endpoint` is a plain string and returned a `value` of `""` (empty string).
+- `Sync Inventory Item Metadata?` is a boolean toggle and returned a `value` of `"false"`.
+- `Inventory Field Mapping` is a key-value list, and returned a `value` of `"[]"` (empty array).
+- `Acme Inventory User/Pass` is a connection with two `inputs` - `username` and `password` which have blank values of their own.
+
+```json title="Get an Instance's Required Config Variables - Response"
+{
+  "data": {
+    "instance": {
+      "name": "Acme Inventory",
+      "configVariables": {
+        "nodes": [
+          {
+            "id": "EXAMPLE",
+            "requiredConfigVariable": {
+              "key": "Inventory Field Mapping",
+              "collectionType": "KEYVALUELIST",
+              "dataType": "STRING",
+              "defaultValue": "[]"
+            },
+            "value": "[]",
+            "inputs": {
+              "nodes": []
+            }
+          },
+          {
+            "id": "EXAMPLE2",
+            "requiredConfigVariable": {
+              "key": "Sync Inventory Item Metadata?",
+              "collectionType": null,
+              "dataType": "BOOLEAN",
+              "defaultValue": "false"
+            },
+            "value": "false",
+            "inputs": {
+              "nodes": []
+            }
+          },
+          {
+            "id": "EXAMPLE3",
+            "requiredConfigVariable": {
+              "key": "Acme Inventory User/Pass",
+              "collectionType": null,
+              "dataType": "CONNECTION",
+              "defaultValue": null
+            },
+            "value": null,
+            "inputs": {
+              "nodes": [
+                {
+                  "name": "password",
+                  "type": "VALUE",
+                  "value": ""
+                },
+                {
+                  "name": "username",
+                  "type": "VALUE",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "EXAMPLE4",
+            "requiredConfigVariable": {
+              "key": "Acme Inventory Endpoint",
+              "collectionType": null,
+              "dataType": "STRING",
+              "defaultValue": ""
+            },
+            "value": "",
+            "inputs": {
+              "nodes": []
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Once we know the shape of the config variables (which ones are strings, which ones are key-value lists, and which ones are connections, etc), we can send back a config variable object that matches that shape. We use `values` to set connection config variables, and for connections and key-value lists we serialize the name-value or key-value pairs as JSON strings:
+
+<GraphqlExample example="updateInstanceConfigVarsWithUpdateInstance" />
+
+### Updating Config Variables with `updateInstanceConfigVariables`
+
+This mutation lets you set values for a subset of config variables, while keeping the others untouched.
+In this example, we set a string value for a config variable named `My String`, a list of values for a list config variable named `My List`, and a couple of values for a connection config variable named `Amazon S3 Connection` which has a couple of connection inputs:
+
+<GraphqlExample example="updateInstanceConfigVarsWithUpdateInstanceConfigVariables" />
+
+### Importing an OAuth 2.0 Connection
+
+If you are migrating to Builder from your own service or another integration platform, you may want to import your customers' OAuth 2.0 access and refresh tokens so that they do not need to re-authenticate.
+To do that, you'll need to first [deploy an instance](#deploying-new-instances-through-the-api) of an integration.
+Then, [get an instance's config variables](#updating-config-variables-with-updateinstance).
+Identify the `id` of the config variable that represents an OAuth 2.0 connection.
+
+Using that config variable `id`, along with the `accessToken` and `refreshToken` from the system you're migrating from you can import the OAuth 2.0 connection:
+
+<GraphqlExample example="importOauthConnection" />
+
+**Note:** you can set `refreshAt` to the UTC datetime when the token should next be refreshed, or you can set it to a date in the past (like the example above) to force an immediate refresh of the token.
+
+:::note importing OAuth 2.0 user-level config connections
+[User-level](/docs/composer/builder/user-level-configuration.mdx) OAuth 2.0 connections can be imported simiarly using the `updateUserLevelOAuth2Connection`.
+Note that your config variable ID will start with `VXN...` instead.
+:::
+
+### Deploying an Instance Through the API
+
+An instance needs to be [deployed](/docs/composer/builder/instances.mdx#deploying-instances) in order for your new configuration to take effect.
+To deploy an instance, use the [deployInstance](/docs/composer/builder/api/schema/mutation/deployInstance.mdx) mutation:
+
+<GraphqlExample example="deployInstance" />
+
+## Fetching Step Results Through the API
+
+When you invoke an integration [asynchronously](/docs/composer/builder/integration-triggers.mdx#synchronous-and-asynchronous-integrations), an `executionId` is returned:
+
+```bash
+curl https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE== \
+    --data '{}'  \
+    --header "Content-Type: application/json"
+
+{"executionId":"SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6OTdiNWQxYmEtZGUyZi00ZDY4LWIyMTgtMDFlZGMwMTQxNTM5"}
+```
+
+You can use the [executionResult](/docs/composer/builder/api/schema/query/executionResult.mdx) along with that `executionId` to fetch the results of that execution.
+
+<GraphqlExample example="executionResult" />
+
+If the execution is still running, the `endedAt` property will be `null`.
+You can query for `stepResults`, and specifically ask for the `resultsUrl` of a specific step.
+Step names are "camelCased" in the `stepResults` filter (so, `My Code Block` -> `myCodeBlock`).
+Step results are written out to Amazon S3, and the `resultsUrl` returns a short-lived presigned URL where you can fetch the step's results.
+
+:::tip Unpacking Step Results
+A step can return anything.
+They often return javascript objects or JSON, but some steps return binary files like PDFs or MP3s or a JavaScript `Buffer`.
+To account for the variety of things that a step can return, Builder uses [msgpack](https://msgpack.org/) to package up step results.
+The step result file you download from S3 will appear encoded, but after "unpacking" the contents, it'll look like normal JSON (or the type of data your step yielded).
+
+To "unpack" step results, use `msgpack.decode()` in NodeJS (or a similar function in a language of your choosing - `msgpack` supports many languages).
+:::
+
+### Fetching and Unpacking Step Results with NodeJS
+
+In the example below, assume that a step named `Create Object` returned a JavaScript object with three properties: `myImage1`, `myImage2`, and `myJavaScriptObject`.
+
+<Screenshot
+  filename="using-builder-api/step-results.png"
+  maxWidth="500px"
+  alt="Step results for create object action"
+/>
+
+The first two properties are images, and the third is a JavaScript object.
+This code will fetch the step results, decode them, and write the images and JavaScript object to disk.
+The JavaScript object will be encoded as JSON.
+
+<Screenshot
+  filename="using-builder-api/written-to-disk.png"
+  maxWidth="500px"
+  alt="Step results for create object action written to disk"
+/>
+
+```js title="Fetching and Unpacking Step Results with NodeJS"
+const msgpack = require("@msgpack/msgpack");
+const fs = require("fs");
+
+const PRISMATIC_URL =
+  process.env.PRISMATIC_URL || "https://app.prismatic.io/api";
+const PRISMATIC_API_KEY = process.env.PRISMATIC_API_KEY;
+
+const query = `query getStepResults ($executionId: ID!) {
+  executionResult(id: $executionId) {
+    startedAt
+    endedAt
+    error
+    stepResults(displayStepName: "Create Object") {
+      nodes {
+        stepName
+        resultsUrl
+      }
+    }
+  }
+}`;
+
+async function main() {
+  const executionId = process.argv[2];
+
+  // Make an API call to Builder to get the results URL
+  const apiResponse = await fetch(PRISMATIC_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${PRISMATIC_API_KEY}`,
+    },
+    body: JSON.stringify({
+      query,
+      variables: {
+        executionId,
+      },
+    }),
+  });
+
+  const apiResult = await apiResponse.json();
+  const resultUrl =
+    apiResult.data.executionResult.stepResults.nodes[0].resultsUrl;
+
+  // Get the result from Amazon S3
+  const encodedResult = await fetch(resultUrl);
+  const encodedResultBuffer = await encodedResult.arrayBuffer();
+
+  // Use msgpack to decode the results
+  const decodedResult = msgpack.decode(encodedResultBuffer);
+  const { myImage1, myImage2, myJavaScriptObject } = decodedResult.data;
+
+  // Write the results to disk
+  fs.writeFileSync("myImage1.png", myImage1.data);
+  fs.writeFileSync("myImage2.png", myImage2.data);
+  fs.writeFileSync(
+    "myJavaScriptObject.json",
+    JSON.stringify(myJavaScriptObject)
+  );
+}
+
+main();
+```
+
+## Pagination with Builder's API
+
+By default, most queries return a maximum of 100 results.
+If you have more than 100 records of a particular type (say, more than 100 instances), you can pull down 100, process those results, and then ask for the next 100 results, etc., until you process all records.
+
+If you would like to fetch fewer than 100 records at a time, you can specify a `first` property in your query.
+
+To request page info, add `pageInfo` alongside the `nodes` of any query.
+`pageInfo` has several properties - the two you'll likely be interested in are `hasNextPage`, which tells you if more results are available, and `endCursor`, which is an indicator of where your query "left off", so your next query can pick up from there.
+
+<GraphqlExample example="pagination" />
+
+After fetching your results, you can check if `pageInfo.hasNextPage` is `true`.
+If it is, grab the `pageInfo.endCursor` (which might read something like `YXJyYXljb25uZWN0aW9uOjEwMA==`) and run the same query, changing your query variables to read
+
+```json
+{ "cursor": "YXJyYXljb25uZWN0aW9uOjEwMA==" }
+```
+
+That `cursor` query variable will be used by the query above as the `after` property.
+That will cause the API to fetch up to 100 more results, but instead of starting at the beginning the API will start where your previous query left off.
+
+:::info sort order is important when paginating
+When fetching multiple pages of results, sort order is important.
+Without a sort order, two consecutive pages may contain duplicate records, or you may miss records.
+
+Most queries support a `CREATED_AT` sort field, which will sort results by the time they were created.
+In the query above, instances were sorted by creation date in ascending order with `sortBy: [{field: CREATED_AT, direction: ASC}]`
+
+Some record types like `logs` do not have a `CREATED_AT` field, but have a `TIMESTAMP` field that you can sort by instead.
+`components` are versioned, and versions of components can be sorted by `VERSION_CREATED_AT`.
+:::
+
+## Other CRUD Operations Through the API
+
+This article covers some common GraphQL queries and mutations that you might encounter, but there are dozens of other queries and mutations that are not covered here.
+For information on other queries and mutations that are available, see the sidebar to the left.
+Each query and mutation has its own documentation page with details on what inputs they expect, and what objects are returned.

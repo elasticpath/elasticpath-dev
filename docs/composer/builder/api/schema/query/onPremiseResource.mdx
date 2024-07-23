@@ -1,0 +1,46 @@
+---
+id: onPremiseResource
+title: onPremiseResource Query
+sidebar_label: onPremiseResource
+description: Learn how to use the onPremiseResource Query for Builder's API.
+---
+
+    Returns the specified OnPremiseResource object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_customer_permissions, org_manage_customers, org_crud_customers, org_view_customers]. 2. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_view, customer_edit, customer_remove, customer_admin_users, customer_view_users, customer_admin_instance_permissions, customer_view_instances, customer_manage_marketplace_integrations, customer_access_marketplace_integrations].
+
+## Input fields
+
+| Argument | Type                              | Description                             |
+| -------- | --------------------------------- | --------------------------------------- |
+| `id`     | [`ID!`](/docs/composer/builder/api/schema/scalar/ID.mdx) | The ID of the OnPremiseResource object. |
+
+## Return fields ([OnPremiseResource](/docs/composer/builder/api/schema/object/OnPremiseResource.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the OnPremiseResource.
+
+###### <b>allowUpdate</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the OnPremiseResource.
+
+###### <b>customer</b> ([Customer!](/docs/composer/builder/api/schema/object/Customer.mdx))
+
+The Customer associated with this resource.
+
+###### <b>id</b> ([ID!](/docs/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>name</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The name of this resource.
+
+###### <b>port</b> ([Int!](/docs/composer/builder/api/schema/scalar/Int.mdx))
+
+The local port on the proxy service assigned to this resource.
+
+###### <b>status</b> ([OnPremiseResourceStatus!](/docs/composer/builder/api/schema/enum/OnPremiseResourceStatus.mdx))
+
+The current status of this On-Premise Resource.

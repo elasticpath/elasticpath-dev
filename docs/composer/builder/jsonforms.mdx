@@ -1,0 +1,628 @@
+---
+id: jsonforms
+title: JSON Forms in the Configuration Wizard
+sidebar_label: JSON Forms & Config Wizard
+description: You can customize your customers' deployment experience by using JSON Forms in your config wizard.
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import JsonFormsExampleButton from "@site/src/components/json-forms-example-button";
+
+JSON Forms help customize the deployment experience for your customers.
+They allow you to add one or many custom fields to the configuration wizard by defining a JSON schema and UI schema.
+
+This article describes how JSON Forms can be used in the [configuration wizard](/docs/composer/builder/configuration-wizard.mdx) to provide your customers a tailored deployment experience.
+Check out the [JSON Forms Playground](/jsonforms/playground/) to see sevral examples of JSON Forms in action.
+
+Several additional examples can be found in the JSON Forms project [documentation](https://jsonforms.io/).
+
+## Schema and UI schema
+
+A JSON Form is defined by `schema`, which is the data model (the shape of the data you expect to be returned), and `uiSchema`, which describes how various input fields should be rendered.
+
+A simple `schema` might look like this:
+
+```json title="Example JSON Schema"
+{
+  "type": "object",
+  "properties": {
+    "companyName": {
+      "type": "string"
+    },
+    "companyDescription": {
+      "type": "string",
+      "description": "You can enter multiple lines here"
+    },
+    "numEmployees": {
+      "type": "integer",
+      "description": "Include employees in all offices"
+    },
+    "continent": {
+      "type": "string",
+      "enum": [
+        "North America",
+        "South America",
+        "Europe",
+        "Asia",
+        "Africa",
+        "Australia"
+      ]
+    },
+    "biDirectionalSync": {
+      "type": "boolean"
+    }
+  },
+  "required": ["companyName"]
+}
+```
+
+In the example above, we declare that this JSON form will return an object, and that object will have five properties: `companyName`, `companyDescription`, `numEmployees`, `continent`, and `biDirectionalSync`.
+Company name is required, but the other fields are optional.
+The `companyDescription` field is a string, and the `numEmployees` field is an integer.
+The `continent` field is a string, but it can only be one of the values in the `enum` array.
+The `biDirectionalSync` field is a boolean.
+
+This JSON form will return an object like this:
+
+```json title="Example JSON Form data"
+{
+  "companyName": "Acme Corp",
+  "companyDescription": "We make everything",
+  "numEmployees": 100,
+  "continent": "North America",
+  "biDirectionalSync": true
+}
+```
+
+In order to render this form, we need to define a `uiSchema` that describes how the fields should be rendered.
+A `uiSchema` could look something like this:
+
+```json title="Simple UI Schema"
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/companyName"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/companyDescription",
+      "options": {
+        "multi": true
+      }
+    },
+    {
+      "type": "Control",
+      "label": "Employee Count",
+      "scope": "#/properties/numEmployees"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/continent"
+    },
+    {
+      "type": "Control",
+      "label": "Sync Data Bi-Directionally?",
+      "scope": "#/properties/biDirectionalSync"
+    }
+  ]
+}
+```
+
+In the example above, we declare that the form should be rendered as a vertical layout, and that the fields should be rendered in the order they are defined in the `elements` array.
+Some optional labels were added to override the default labels that are derived from property names.
+
+<Screenshot
+  filename="json-forms/basic-form.png"
+  alt="Screenshot of a basic JSON form"
+  maxWidth="600px"
+/>
+
+<JsonFormsExampleButton exampleKey="basic" />
+
+## Types of fields in JSON Forms
+
+Several types of input fields are supported in JSON Forms, including plain strings, boolean checkboxes or toggles, numbers, datetime pickers, and more.
+Note that time and datetime fields are `string` type fields with a `time` or `date-time` format property.
+
+```json title="Examples of fields in JSON forms"
+{
+  "type": "object",
+  "properties": {
+    "string": {
+      "type": "string"
+    },
+    "boolean": {
+      "type": "boolean",
+      "description": "Boolean description as a tooltip"
+    },
+    "number": {
+      "type": "number"
+    },
+    "integer": {
+      "type": "integer"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "time": {
+      "type": "string",
+      "format": "time"
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
+```
+
+## Schema UI Layouts
+
+UI Elements can be laid out horizontally or vertically, and layouts can be nested.
+In this example, a `HorizontalLayout` contains two `VerticalLayout` elements.
+The second vertical layout element is a `Group` type layout, which adds a container and `label` around the vertically organized input elements.
+
+```json title="Nested Layouts" {2,5,18-19}
+{
+  "type": "HorizontalLayout",
+  "elements": [
+    {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/companyName"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/companyDescription"
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Additional Data",
+      "elements": [
+        {
+          "type": "Control",
+          "label": "Employee Count",
+          "scope": "#/properties/numEmployees"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/continent"
+        }
+      ]
+    }
+  ]
+}
+```
+
+<Screenshot
+  filename="json-forms/nested-layouts.png"
+  alt="Screenshot of nested layouts in JSON forms"
+  maxWidth="600px"
+/>
+
+<JsonFormsExampleButton exampleKey="nested-layouts" />
+
+## Dropdown menus in JSON Forms
+
+If you would like to present your customer with a dropdown menu of prepopulated options, you can use an `enum` or `oneOf` property in your schema.
+
+An `enum` can be used to select from one of a set of string values:
+
+```json title="Example using enum"
+{
+  "type": "object",
+  "properties": {
+    "continent": {
+      "type": "string",
+      "enum": [
+        "North America",
+        "South America",
+        "Europe",
+        "Asia",
+        "Africa",
+        "Australia"
+      ]
+    }
+  }
+}
+```
+
+<Screenshot
+  filename="json-forms/enum.png"
+  alt="Screenshot of dropdown menu in JSON forms"
+  maxWidth="600px"
+/>
+
+In this case, if someone selects "North America", the data presented to the integration will be `{ continent: "North America" }`.
+
+`oneOf` is handy if you would like to present a dropdown menu with human-readable labels, but you want to return a different value or to the integration.
+In this example, the same dropdown menu is presented, but the data returned to the integration will be the two-letter continent code (i.e. "NA" for North America):
+
+```json title="Example using oneOf"
+{
+  "type": "object",
+  "properties": {
+    "continent": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "North America",
+          "const": "NA"
+        },
+        {
+          "title": "South America",
+          "const": "SA"
+        },
+        {
+          "title": "Europe",
+          "const": "EU"
+        },
+        {
+          "title": "Asia",
+          "const": "AS"
+        },
+        {
+          "title": "Africa",
+          "const": "AF"
+        },
+        {
+          "title": "Australia",
+          "const": "AU"
+        }
+      ]
+    }
+  }
+}
+```
+
+## Arrays of fields in JSON Forms
+
+Arrays allow your users to specify values for several copies of a set of fields.
+In this example, two fields (`channel` which is a `string` and `notifications` which is a dropdown menu) are properties of an object.
+The object can be represented one or many times within an `array` named `slackChannels`.
+
+```json title="Example of an array" {2}
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "channel": {
+        "type": "string"
+      },
+      "notifications": {
+        "type": "string",
+        "enum": [
+          "Opportunity Created",
+          "Opportunity Updated",
+          "Opportunity Closed/Won",
+          "Opportunity Closed/Lost"
+        ]
+      }
+    }
+  }
+}
+```
+
+You can optionally choose to display sort buttons, so a customer user can reorder the array elements within the `uiSchema`:
+
+```json title="Example UI Schema" {7-9}
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#",
+      "options": {
+        "showSortButtons": true
+      }
+    }
+  ]
+}
+```
+
+<Screenshot
+  filename="json-forms/basic-array.png"
+  alt="Screenshot of a basic array in JSON forms"
+  maxWidth="600px"
+/>
+
+Arrays are presented to the integration as a list of objects:
+
+```json
+[
+  {
+    "channel": "#sales-opportunities",
+    "notifications": "Opportunity Created"
+  },
+  {
+    "channel": "#sales-opportunities",
+    "notifications": "Opportunity Updated"
+  },
+  {
+    "channel": "#sales-opportunities-won",
+    "notifications": "Opportunity Closed/Won"
+  },
+  {
+    "channel": "#sales-opportunities-lost",
+    "notifications": "Opportunity Closed/Lost"
+  }
+]
+```
+
+<JsonFormsExampleButton exampleKey="basic-array" />
+
+Arrays can be presented in an `Accordion` layout to save space in the configuration wizard.
+The field used to derive the accordion labels can be specified with the `elementLabelProp` option:
+
+```json title="Accordion layout UI Schema" {7-11}
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#",
+      "options": {
+        "layout": "Accordion",
+        "elementLabelProp": "channel",
+        "showSortButtons": true
+      }
+    }
+  ]
+}
+```
+
+<Screenshot
+  filename="json-forms/basic-array-accordion.png"
+  alt="Screenshot of a basic array in JSON forms"
+  maxWidth="600px"
+/>
+
+<JsonFormsExampleButton exampleKey="basic-array-accordion" />
+
+### Data mapping with JSON Forms
+
+Arrays are especially helpful when building a data mapping UI.
+See the [Building a Field Mapper Data Source](/docs/composer/builder/custom-components/quickstarts/field-mapping-json-forms-datasource.mdx) tutorial for an example of how to build a data mapper between custom fields in Salesforce, and custom fields in your app.
+
+<JsonFormsExampleButton exampleKey="data-mapper-accordion" />
+
+## Showing or hiding inputs with UI Rules
+
+You can choose to show or hide fields conditionally based on the value of other fields.
+A `rule` is defined in UI schema and contains a `condition` that determines wheter or not an `effect` should be applied.
+
+In this example, the `convertToUSD` input field is only shown if the value of the `country` field is _not_ `United States`:
+
+```json {7-17}
+{
+  "type": "Control",
+  "scope": "#/properties/convertToUSD",
+  "options": {
+    "toggle": true
+  },
+  "rule": {
+    "effect": "SHOW",
+    "condition": {
+      "scope": "#/properties/country",
+      "schema": {
+        "not": {
+          "const": "United States"
+        }
+      }
+    }
+  }
+}
+```
+
+<JsonFormsExampleButton exampleKey="ui-rules" />
+
+Additional examples are available in JSON Forms' [documentation](https://jsonforms.io/docs/uischema/rules)
+
+## Input validation in JSON Forms
+
+You can validate what your customers enter into input fields by adding `format`, `minimum`, `maximum`, `maxLength` and other properties to your schema.
+For string inputs, a `pattern` property allows you to specify a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) (regex) pattern that values must adhere to - this is useful if you are expecting a very specific format of user-supplied input.
+
+```json title="Examples of input validation"
+{
+  "type": "object",
+  "properties": {
+    "stringMinLength": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Please enter a string with at least 5 characters"
+    },
+    "stringMaxLength": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Please enter a string with at most 5 characters"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Please enter a valid email address."
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Please enter a valid URI."
+    },
+    "ipv4": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "Please enter a valid IPv4 address."
+    },
+    "regex": {
+      "type": "string",
+      "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$",
+      "description": "Please enter a valid phone number in the form (123)456-7890."
+    },
+    "intOneTen": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Please enter an integer between 1 and 10."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Please enter a date between the first and last day of the current month.",
+      "formatMinimum": "2023-08-01",
+      "formatMaximum": "2023-08-31"
+    }
+  },
+  "required": [
+    "stringMinLength",
+    "stringMaxLength",
+    "email",
+    "uri",
+    "ipv4",
+    "regex",
+    "intOneTen",
+    "startDate"
+  ]
+}
+```
+
+<JsonFormsExampleButton exampleKey="input-validation" />
+
+## Autocomplete for JSON Forms Dropdown Inputs
+
+You can provide a list of options for a dropdown input, and JSON Forms will provide an autocomplete feature for the dropdown menu.
+
+Autocomplete can be added to a `oneOf` dropdown menu input by specifying the `autocomplete` option in the `uiSchema`:
+
+```json
+{
+  "options": {
+    "autocomplete": true
+  }
+}
+```
+
+In this example, begin typing `"Cor"`. Both `"Acme Corp"` and `"Umbrella Corp"` will match.
+
+<Screenshot
+  filename="json-forms/autocomplete.png"
+  alt="Screenshot of a autocomplete in dropdown menu in JSON forms"
+  maxWidth="650px"
+/>
+
+<JsonFormsExampleButton exampleKey="autocomplete" />
+
+## Field mapper with custom layout
+
+The [Building a Field Mapper Data Source](/docs/composer/builder/custom-components/quickstarts/field-mapping-json-forms-datasource.mdx) tutorial demonstrates how to build a basic field mapper with JSON Forms.
+
+If you would like to control the layout of the field mapper, you can use a custom layout.
+To specify your custom layout, give your `uiSchema` a `options.layout` of `"Accordion"` and design your custom layout using `options.detail`.
+
+```json title="Custom layout UI Schema"
+{
+  "type": "Control",
+  "label": "Salesforce Lead <> Acme Sale Field Mapper",
+  "scope": "#",
+  "options": {
+    "layout": "Accordion",
+    "detail": {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/source",
+          "options": {
+            "autocomplete": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/destination",
+          "options": {
+            "autocomplete": true
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+<Screenshot
+  filename="json-forms/field-mapper-custom-ui.png"
+  alt="Screenshot of a custom field mapper in JSON forms"
+  maxWidth="650px"
+/>
+
+<JsonFormsExampleButton exampleKey="data-mapper-detail" />
+
+## JSON Forms with multiple tabs
+
+JSON forms can be used to build complex field mappers with multiple tabs.
+For example, suppose you would like to map fields from multiple objects in Salesforce to multiple objects.
+
+Create tabs with a `"type": "Categorization"` layout in your `uiSchema`.
+Give each category a `label`:
+
+```json title="Tabs UI Schema"
+{
+  "type": "Categorization",
+  "elements": [
+    {
+      "type": "Category",
+      "label": "Contacts",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contacts"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Leads",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/leads"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Opportunities",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/opportunities"
+        }
+      ]
+    }
+  ]
+}
+```
+
+<Screenshot
+  filename="json-forms/field-mapper-tabs.png"
+  alt="Screenshot of a field mapper with tabs in JSON forms"
+  maxWidth="650px"
+/>
+
+<JsonFormsExampleButton exampleKey="data-mapper-tabs" />
+
+## Wrapping JSON Forms in a custom component
+
+If your form is static and does not depend on fetching data from third-party apps before it renders, you can provide `schema` and `uiSchema` directly to the [JSONForms component](/docs/composer/builder/builder-components/jsonforms.mdx) for rendering.
+If you would like your form to present dropdown menus and other fields that are sourced from a third-party app, you can build a form in a custom component using the custom component SDK (see [documentation](/docs/composer/builder/custom-components/writing-custom-components.mdx#json-forms-data-sources)).
+
+### Pre-filling default data
+
+In addition to `schema` and `uiSchema` properties, your custom JSON Forms data sources can include a `data` property.
+When `data` is included, your form will be pre-filled with the data you provide.

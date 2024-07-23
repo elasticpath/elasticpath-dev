@@ -1,0 +1,130 @@
+---
+id: managing-instances
+title: Managing Instances
+description: Manage instances of Builder integrations
+---
+
+import Icon from "@mui/material/Icon";
+import Screenshot from "@site/src/components/screenshot";
+
+## Enabling and disabling instances
+
+If you would like to stop a deployed instance from executing, click the **Pause Instance** link at the right side of the green bar on the **Summary** tab to disable the instance.
+When disabled, your instance will not execute on a cron schedule (if configured to use [scheduled triggers](/docs/composer/builder/integration-triggers.mdx#scheduled-triggers)), nor respond to webhook invocations.
+
+<Screenshot
+  filename="instances/pause-instance.png"
+  maxWidth="750px"
+  alt="Pause instance in Builder app"
+/>
+
+To re-enable a disabled instance, click **Unpause Instance**.
+
+## Testing instances
+
+You can invoke an instance outside of its cron schedule to ensure it functions properly.
+To run a test of an instance, open the **Test** tab.
+You can fill in a test payload body and custom HTTP headers to simulate a webhook trigger payload.
+Click the **Run** button to invoke the test.
+
+Alternatively, look up the ID of a flow in an instance with `prism instances:flow-configs:list ${INSTANCE_ID}` and then run `prism instances:flow-configs:test ${FLOW_ID}` from the command line.
+
+<Screenshot
+  filename="instances/test-instance.png"
+  maxWidth="700px"
+  alt="Test instance in Builder app"
+/>
+
+Logs from the test can be found by clicking the **Logs** tab.
+
+## Viewing instance execution results
+
+It's useful for debugging purposes to be able to see execution results of instance invocations.
+Click the **Executions** tab from an instances page to see the logs and step outputs of each execution of the instance.
+
+<Screenshot
+  filename="instances/execution-results.png"
+  maxWidth="600px"
+  alt="Instance execution results in Builder app"
+/>
+
+If an instance failed to run to completion for whatever reason, you can review the data that was passed in to the instance when it was invoked, and that can help you to debug instances.
+
+Results for all instances and all customers can be found by clicking the **Executions** link on the left-hand sidebar, and results for a specific customer can be found by clicking into a **Customer**, and then selecting their **Executions** tab.
+
+## Instance execution retry and replay
+
+Executions sometimes fail.
+Errors can be thrown for a variety of reasons.
+A third-party app your integration relies on may be down, or your integration may encounter an edge-case that it doesn't handle correctly.
+
+With **retry** and **replay** you can re-run a failed executions so you don't miss important data.
+
+- **Retry** allows you to automatically re-run an execution if it fails to run to completion.
+  This is useful if you want to handle temporary outages of third-party apps or services.
+  Following a failure, your instance will re-attempt the execution a configurable number of times, with a configurable delay between each attempt.
+- **Replay** allows you to manually re-run an execution.
+  This is useful if you want to fix a bug in your integration and then re-run an execution with the same payload that caused it to run initially.
+
+### Execution retry
+
+Integrations can be configured to automatically [retry](/docs/composer/builder/building-integrations.mdx#integration-retry-configuration) in the event that an instance fails to run to completion.
+Information about instance retries can be found on the [execution results pages](#viewing-instance-execution-results).
+There, you will see when the instance last ran, and when it will attempt to run again.
+
+<Screenshot
+  filename="instances/execution-retry.png"
+  alt="Instance execution details in Builder app"
+/>
+
+An <Icon>sync_problem</Icon> icon beside an execution indicates that the execution was an automatic retry of an instance execution that failed.
+
+### Execution replay
+
+To manually retry (i.e. "Replay") an invocation of an instance, click the <Icon>replay</Icon> icon beside any execution run.
+The instance will be run again with the same webhook payload that caused it to run initially.
+
+To programmatically retry many failed executions, the [executionResults](/docs/composer/builder/api/schema/query/executionResults.mdx) query can be used to find executions that failed to run to completion.
+You can then use the [replayExecution](/docs/composer/builder/api/schema/mutation/replayExecution.mdx) mutation to replay the execution.
+
+For an example of how to bulk-replay failed executions, see our [examples repo](https://github.com/prismatic-io/examples/tree/main/api/replay-failed-executions) in GitHub or review the [Execution Retry & Replay](/docs/composer/builder/retry-and-replay.mdx) docs.
+
+Replays are linked with the original execution, so you can query for only original executions that have not had a successful subsequent replay.
+
+## Adding alert monitors to instances
+
+Instance alert monitors allow you to notify your team when a variety of things occur, including failed instance executions, slow executions, instances in unexpected disabled states, etc.
+They can be found by clicking the **Monitors** tab from the instance's page.
+
+**For more information**:
+[Creating Alert Monitors](/docs/composer/builder/monitoring-and-alerting.mdx#creating-an-alert-monitor).
+
+## Viewing instance logs
+
+Logs for an instance can be viewed by clicking the **Logs** tab from the instance's page.
+
+You can search log message text through the **Search Logs** search bar on the top of the page, and you can filter logs by Log Severity or date range by clicking the **Filter** link to the right of the search bar.
+
+<Screenshot
+  filename="instances/instance-logs.png"
+  alt="Filter instance logs in Builder app"
+/>
+
+**For More Information**:
+[Logging](/docs/composer/builder/logging.mdx),
+[Log Retention](/docs/composer/builder/logging.mdx#log-retention)
+
+## Deleting instances
+
+Deleting an instance removes the instance and any associated data.
+Before choosing to delete an instance, consider if you want to [disable](#enabling-and-disabling-instances) the instance from running instead.
+
+If you choose to delete the instance, scroll to the bottom of the instance's **Details** tab.
+Click the **Delete instance** button, and type the name of the instance in the input field to confirm that you want to delete the instance.
+Click **Remove instance**.
+
+<Screenshot
+  filename="instances/delete-instance.png"
+  maxWidth="450px"
+  alt="Delete instance in Builder app"
+/>

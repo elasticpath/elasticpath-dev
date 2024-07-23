@@ -1,0 +1,99 @@
+---
+id: authenticatedUser
+title: authenticatedUser Query
+sidebar_label: authenticatedUser
+description: Learn how to use the authenticatedUser Query for Builder's API.
+---
+
+    Returns the signed-in User.
+
+Access is permitted when any of the following condition(s) are met: 1. The specified object is the signed-in User. 2. The signed-in User has any of the following permissions for the associated Organization: [org_admin_users, org_view_users]. 3. The signed-in User has any of the following permissions for the associated Organization: [org_admin_customer_permissions, org_manage_customers, org_view_customers]. 4. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_users, customer_view_users].
+
+## Input fields
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+
+## Return fields ([User!](/docs/composer/builder/api/schema/object/User.mdx))
+
+###### <b>allowChangeRoles</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can change the Role of the User.
+
+###### <b>allowRemove</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the User.
+
+###### <b>allowUpdate</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the User.
+
+###### <b>appAvatarUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The URL for the main avatar image that is displayed in Builder.
+
+###### <b>appName</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The app name displayed in Builder.
+
+###### <b>avatarUrl</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The URL for the avatar image.
+
+###### <b>createdAt</b> ([DateTime!](/docs/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was created.
+
+###### <b>customer</b> ([Customer](/docs/composer/builder/api/schema/object/Customer.mdx))
+
+The Customer the user belongs to, if any. If this is NULL then Organization will be specified.
+
+###### <b>darkMode</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Designates whether the User has dark mode activated or not.
+
+###### <b>darkModeSyncWithOs</b> ([Boolean!](/docs/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Designates whether dark mode should be derived from the operating system.
+
+###### <b>dateJoined</b> ([DateTime!](/docs/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The date the User was created.
+
+###### <b>email</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The email address associated with the User.
+
+###### <b>externalId</b> ([String](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+Allows for mapping an external entity to a Builder record.
+
+###### <b>featureFlags</b> ([JSONString!](/docs/composer/builder/api/schema/scalar/JSONString.mdx))
+
+###### <b>id</b> ([ID!](/docs/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>marketplaceName</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The name displayed for the Marketplace.
+
+###### <b>name</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The user's preferred name.
+
+###### <b>org</b> ([Organization](/docs/composer/builder/api/schema/object/Organization.mdx))
+
+The Organization that the User belongs to, if any. If this is NULL then Customer will be specified.
+
+###### <b>phone</b> ([String!](/docs/composer/builder/api/schema/scalar/String.mdx))
+
+The preferred contact phone number for the User.
+
+###### <b>role</b> ([Role!](/docs/composer/builder/api/schema/object/Role.mdx))
+
+The Role associated with the User which determines its permissions.
+
+###### <b>updatedAt</b> ([DateTime!](/docs/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was most recently updated.
