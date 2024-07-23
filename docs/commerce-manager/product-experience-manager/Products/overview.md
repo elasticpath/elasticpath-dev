@@ -4,9 +4,14 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-import Overview from "../../../partials/pxm/products/_products-overview.mdx";
+import Overview from "../../../partials/pxm/products/productsoverview.mdx";
+import ProductTypes from '/docs/partials/pxm/products/types.mdx';
 
 <Overview></Overview>
+
+### Product Types
+      
+<ProductTypes> </ProductTypes>
 
 ### Products and Catalog Releases
 
