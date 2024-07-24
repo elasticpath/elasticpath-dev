@@ -1483,7 +1483,7 @@ const config = {
           { to: '/docs/api/integrations/list-integration-logs', from: '/docs/commerce-cloud/integrations/integrations-api/get-integration-logs'},
           { to: '/docs/studio/Integrations/epcc', from: '/docs/cx-studio/Integrations/epcc'},
           { to: '/docs/api/pxm/catalog/get-child-nodes', from: '/docs/pxm/catalogs/catalog-latest-release/get-node-children-in-a-release'},
-          { to: '/docs/api/carts/cart-merge', from: '/docs/commerce-cloud/carts/cart-items/merging-carts'},
+          { to: '/docs/api/carts/manage-carts', from: '/docs/commerce-cloud/carts/cart-items/merging-carts'},
           { to: '/docs/api/commerce-extensions/delete-a-custom-api', from: '/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-apis/delete-a-custom-api'},
           { to: '/docs/api/payments/payment-gateways-introduction', from: '/docs/commerce-cloud/payments/paying-for-an-order/manual-payments'},
           { to: '/docs/api/payments/update-braintree-gateway', from: '/docs/commerce-cloud/payments/paying-for-an-order/braintree-payments'},
