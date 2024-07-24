@@ -182,8 +182,8 @@ paths:
         - Cart Management
       summary: Get a Cart
       description: |
-        Use this endpoint to retrieve a specific cart. If a cart ID does not exist, a new cart will be automatically created. 
-        
+        Use this endpoint to retrieve a specific cart. If a cart ID does not exist, a new cart will be automatically created.
+
         If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
 
         :::note
@@ -864,7 +864,7 @@ paths:
             }
           }
           ```
-      operationId: cartMerge
+      operationId: manageCarts
       parameters:
         - name: cartID
           in: path
@@ -1152,7 +1152,7 @@ paths:
             type: string
         - name: EP-Account-Management-Authentication-Token
           in: header
-          description: An Account Management Authentication token to access a specific account's carts. 
+          description: An Account Management Authentication token to access a specific account's carts.
           style: simple
           schema:
             type: string
@@ -3596,7 +3596,7 @@ components:
                 description: The type of related object. Ensure that it is account.
                 type: string
                 examples:
-                  - account 
+                  - account
     CartsRelationshipsCustomersData:
       title: Carts Relationships Customers Data
       type: object
