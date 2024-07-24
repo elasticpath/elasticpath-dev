@@ -34,7 +34,7 @@ Do the following to apply a promotion at a cart level:
     - [Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/promotions-standard/overview#creating-promotion-codes)
     - [API](https://beta.elasticpath.dev/docs/api/promotions/create-promotion-codes)
 
-1. [Add items to the cart](https://beta.elasticpath.dev/docs/api/carts/cart-merge#add-product-to-cart).
+1. [Add items to the cart](https://beta.elasticpath.dev/docs/api/carts/manage-carts#add-product-to-cart).
 1. Apply promotion using code if the promotion is not automatically applied.
 1. [Checkout the cart](https://beta.elasticpath.dev/docs/api/carts/checkout) that is updated with the promotion.
 
