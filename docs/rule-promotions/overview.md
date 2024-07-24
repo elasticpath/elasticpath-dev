@@ -591,7 +591,7 @@ When both an item discount and a cart discount are non-stackable, only the highe
 | Bulk code generation (over 1000)                                   | ✅  | coming soon |
 | Advanced search                                                    | ⛔️  | coming soon |
 | Buy X for Y (buy in multiples of)                                  | ✅  | coming soon |
-| Stacking and ranking control                                       | ⛔️  | coming soon |
+| Stacking and ranking control (currently API only)                  | ⛔️  | ✅ |
 | Free gift with auto Add                                            | ✅  | coming soon |
 | Free shipping promotions (for shipping groups)                     | ⛔️  | coming soon |
 | Cart item quantity conditions (line item quantity)                 | ✅ (limited to bundle promotions) | coming soon |
