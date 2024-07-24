@@ -549,6 +549,23 @@ This method is applicable to both cart-level and item-level discount rule promot
 
 You can include both SKUs and product IDs within the same rule promotion, providing flexibility in defining conditions and accommodating scenarios involving SKUless bundles or products without SKUs.
 
+## Stacking and Ranking
+
+Stacking and Ranking are essential concepts in managing rule promotions, ensuring that promotions are applied effectively and as intended.
+
+**Stacking** refers to the ability to combine multiple promotions on a single cart, particularly when multiple promotions target the same items. The newest rule promotion applies first and then the next one will be applied against the discounted item price. When promotions are stackable, they can be applied simultaneously, allowing shoppers to benefit from multiple discounts. The `stackable` flag in the promotion settings determines whether a promotion can be combined with others. By default, this flag is set to `true`, enabling stacking. If the flag is set to `false`, the promotion will not be applied if there are other promotions already applied to the cart.
+
+**Ranking** refers to the order in which promotions are applied. This is managed using the `priority` setting.  Priorities are represented as integers, with higher numbers indicating higher priority. Each promotion must have a unique priority value when active to avoid conflicts. This ensures that when multiple promotions are eligible, the one with the highest priority is applied first, followed by the next highest. 
+
+When a promotion is set to non-stackable, the highest priority promotion is applied to the cart. If a higher priority non-stackable promotion is applied, it will remove any existing lower priority promotions from the cart. If there is no priority set, the most recently created promotion will be applied.
+
+When promotions are stackable, they can be combined on a cart. The order is determined first by priority and then by the creation date.
+
+If hybrid mode is enabled, promotions standard can still be applied even if Rule Promotions are also in use.
+Promotions Standard can coexist with non-stackable Rule Promotion.
+
+When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
+
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
 | Features                           | Promotions Standard | Rule Promotions  |
