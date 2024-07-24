@@ -1,7 +1,7 @@
 ---
 title: Customer token
 nav_label: Customer
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 A customer token provides access to the records of the customer. Use single sign-on or the email address and password of the customer to retrieve the [customer tokens](/docs/customer-management/customer-management-api/customer-tokens).  Use the `X-Moltin-Customer-Token` header and the implicit token to access the orders and the following APIs:
