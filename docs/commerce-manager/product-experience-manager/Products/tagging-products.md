@@ -8,14 +8,6 @@ import ProductTags from "../../../partials/pxm/products/tags.mdx";
 
 <ProductTags></ProductTags>
 
-### Characteristics of Product Tags
-
-Product tags have the following characteristics:
-
-- A product can have up to 20 tags.
-- A product tag can be up to 255 characters.
-- Product tags must not contain any spaces or commas.
-
 The following steps describe how to create product tags.
 
 1. Go to Product Experience Manager. 

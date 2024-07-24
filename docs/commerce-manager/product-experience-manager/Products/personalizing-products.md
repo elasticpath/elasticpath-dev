@@ -4,7 +4,7 @@ nav_label: Personalizing Products
 sidebar_position: 91
 ---
 
-import PersonalProducts from '/docs/partials/pxm/products/types.mdx';
+import PersonalProducts from '/docs/partials/pxm/products/personalizing.mdx';
 
 <PersonalProducts></PersonalProducts>
 
