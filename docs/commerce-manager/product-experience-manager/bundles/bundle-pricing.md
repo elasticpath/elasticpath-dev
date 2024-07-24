@@ -4,10 +4,11 @@ sidebar_label: Bundle pricing
 sidebar_position: 40
 ---
 
-Bundles can have:
+import BundlePricing from "/docs/partials/pxm/bundles/bundlepricing.mdx";
 
-- Fixed pricing - enables you to assign a fixed price for all products in a bundle.
-- Automatic/cumulative pricing - the price of a bundle is generated automatically based on the sum of the component products.
+<BundlePricing></BundlePricing>
+
+## Prerequisites
 
 Depending on the type of pricing you want to implement for your bundles, you must already have configured the following.
 
