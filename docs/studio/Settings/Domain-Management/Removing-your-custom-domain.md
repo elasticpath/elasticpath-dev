@@ -26,3 +26,12 @@ and correctly point to your Studio site all others will be rejected.
 
 See [Setting Up Custom Domain](/docs/studio/Settings/Domain-Management/Setting-up-your-Custom-Domain).
 
+## How to update to a new custom domain with minimal downtime
+
+1. [Remove the currently configured custom domain](/docs/studio/Settings/Domain-Management/Removing-your-custom-domain) and [set up the new custom domain](/docs/studio/Settings/Domain-Management/Setting-up-your-Custom-Domain) that you would like to update to.  This will generate a new DNS entries for the new domain.
+
+2. Now, remove the newly configured custom domain set up the previously configured custom domain while configuring the new custom domain.
+
+3. After a 24 hour delay, remove configure custom domain and set up the newly configured custom domain again.
+
+4. The DNS entries will remain the same as they were previously and the custom domains will switch with minimal downtime.
