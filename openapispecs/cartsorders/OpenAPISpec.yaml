@@ -6,7 +6,7 @@ info:
 
     A cart item identifies the product, the product price, the quantity selected, and the total price for the quantity selected. The cart displays a running total of the cost for the selected products plus the calculated tax.
 
-    You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](/docs/api/carts/cart-merge#add-product-to-cart).
+    You can allow your shoppers to add custom text to a product when adding an item to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized. See [Add product to cart](/docs/api/carts/manage-carts#add-product-to-cart).
 
     After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
 
@@ -733,7 +733,7 @@ paths:
 
         You can use the Promotions API to apply discounts to your cart as a special cart item type. Any requests to add a product to cart will return a collection of cart items.
 
-         There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/cart-merge#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
+         There are certain limitations on usage of the `custom_inputs` attribute with some promotion types. See [Limitations on Usage of `custom_inputs` with Specific Promotion Types](/docs/api/carts/manage-carts#limitations-on-usage-of-custom_inputs-with-specific-promotion-types).
 
         To remove promotion from the cart via the promotion code, see [Delete Promotion Code from Cart](/docs/api/carts/delete-a-promotion-via-promotion-code).
 
@@ -2043,7 +2043,7 @@ paths:
 
         The following steps outline the workflow associated with the Payment Intent:
 
-        1. [Add items to cart](/docs/api/carts/cart-merge#add-custom-item-to-cart).
+        1. [Add items to cart](/docs/api/carts/manage-carts#add-custom-item-to-cart).
         1. [Create a Payment Intent for the cart](/docs/api/carts/create-cart-payment-intent). The Payment Intent is created in Stripe, reflecting the cart and transaction details, including currency, amounts, payment type, and any optional Stripe details. The Payment Intent ID is generated and linked to the cart.
         1. [Update a Payment Intent](/docs/carts-orders/update-cart-payment-intent). This step is optional but becomes necessary when there are changes in the cart details at the time of payment. It ensures the Payment Intent accurately reflects the current cart details when processing the payments on the front end.
         1. [Checkout the cart](/docs/api/carts/checkout). An unpaid order is created, and the Payment Intent ID is linked to the order.
