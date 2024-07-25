@@ -570,7 +570,7 @@ See [how to create a rule promotion with stackable and priority flags](/docs/rul
 
 ### Stacking Promotion Scenarios
 
-**Scenario 1:** Only one higher priority non-stackable promotion is applied
+#### Scenario 1: Only one higher priority non-stackable promotion is applied
 
 Consider you have the following promotions:
 
@@ -595,7 +595,7 @@ The following error message is returned:
         ]
 ```
 
-**Scenario 2:** Higher Priority non-stackable promotion removes lower priority Promotion
+#### Scenario 2: Higher Priority non-stackable promotion removes lower priority Promotion
 
 Consider you have the following promotions:
 
@@ -652,7 +652,7 @@ The following messaged is returned in the cart response:
         ]
 ```
 
-**Scenario 3:** Higher priority promotion takes precedence when mixing stackable and non-stackable Promotions
+#### Scenario 3: Higher priority promotion takes precedence when mixing stackable and non-stackable Promotions
 
 Consider you have the following Promotions:
 
