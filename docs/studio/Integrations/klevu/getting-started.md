@@ -35,7 +35,7 @@ You must have the following before configuring the Klevu integration in Studio.
 
 Follow these steps to integrate with Klevu.
 
-1. In Studio, configure the [Klevu](#configure-the-algolia-integration) integration.
+1. In Studio, configure the [Klevu](#configure-the-klevu-integration) integration.
 1. In Studio, create a [**Search**](/docs/studio/Integrations/klevu/search) page that uses a **Search** component.
 1. In Studio, create a page that uses a [**Klevu recommendations**](/docs/studio/Integrations/klevu/recommendations) component.
 
