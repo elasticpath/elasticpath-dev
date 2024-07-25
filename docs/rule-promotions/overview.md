@@ -561,8 +561,7 @@ Stacking and Ranking are essential concepts in managing rule promotions, ensurin
 
 When promotions are stackable, they can be stacked on a cart. The order is determined first by priority and then by the creation date. **For example**, Promotion E (priority 70) and Promotion F (priority 60) are both stackable. Both promotions will be applied, with Promotion E being applied first due to its higher priority.
 
-If hybrid mode is enabled, promotions standard can still be applied even if Rule Promotions are also in use.
-Promotions Standard can coexist with non-stackable Rule Promotion.
+If hybrid mode is enabled, promotions standard can still be applied even if Rule Promotions are also in use. Promotions Standard can coexist with non-stackable Rule Promotion.
 
 When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
 
