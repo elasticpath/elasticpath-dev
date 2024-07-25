@@ -555,7 +555,7 @@ Stacking and Ranking are essential concepts in managing rule promotions, ensurin
 
 **Stacking** refers to the ability to stack multiple promotions on a single cart, particularly when multiple promotions target the same items. The newest rule promotion applies first and then the next one will be applied against the discounted item price. When promotions are stackable, they can be applied simultaneously, allowing shoppers to benefit from multiple discounts. The `stackable` flag in the promotion settings determines whether a promotion can be stacked with others. By default, this flag is set to `true`, enabling stacking. If the flag is set to `false`, the promotion will not be applied if there are other promotions already applied to the cart.
 
-**Ranking** refers to the order in which promotions are applied. This is managed using the `priority` setting.  Priorities are represented as integers, with higher numbers indicating higher priority. Each promotion must have a unique priority value when active to avoid conflicts. This ensures that when multiple promotions are eligible, the one with the highest priority is applied first, followed by the next highest. **For example**, Promotion A (priority 90) and Promotion B (priority 80) are both non-stackable. If Promotion B is applied and then Promotion A becomes eligible, Promotion A will replace Promotion B in the cart.
+**Ranking** refers to the order in which promotions are applied. This is managed using the `priority` setting. Priorities are represented as integers, with higher numbers indicating higher priority. Each promotion must have a unique priority value when active to avoid conflicts. This ensures that when multiple promotions are eligible, the one with the highest priority is applied first, followed by the next highest. **For example**, Promotion A (priority 90) and Promotion B (priority 80) are both non-stackable. If Promotion B is applied and then Promotion A becomes eligible, Promotion A will replace Promotion B in the cart.
 
 If there is no priority set, the most recently created promotion will be applied. **For example**, Promotion C (no priority) was created on July 1, and Promotion D (no priority) was created on July 15. If both are non-stackable, only Promotion D will be applied to the cart.
 
@@ -565,6 +565,8 @@ If hybrid mode is enabled, promotions standard can still be applied even if Rule
 Promotions Standard can coexist with non-stackable Rule Promotion.
 
 When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
+
+See [how to create a rule promotion with stackable and priority flags](/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-fixed-discount-rule-promotion#request-example---priority-and-stackable-flags).
 
 ### Stacking Promotion Scenarios
 
