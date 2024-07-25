@@ -566,6 +566,147 @@ Promotions Standard can coexist with non-stackable Rule Promotion.
 
 When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
 
+### Stacking Promotion Scenarios
+
+**Scenario 1:** Only one higher priority non-stackable promotion is applied
+
+Consider you have the following promotions:
+
+- Promotion A: Priority 90, Non-Stackable
+- Promotion B: Priority 60, Non-Stackable
+
+If Promotion A is applied first and the shopper attempts to apply Promotion B, Promotion B will not be applied.
+
+The following error message is returned:
+
+```json
+"messages": [
+            {
+                "source": {
+                    "type": "promotion",
+                    "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
+                    "code": "90"
+                },
+                "title": "Couldn't Stack Promotion",
+                "description": "Non-stackable promotion can't be applied with non-stackable promotion."
+            }
+        ]
+```
+
+**Scenario 2:** Higher Priority non-stackable promotion removes lower priority Promotion
+
+Consider you have the following promotions:
+
+- Promotion B: Priority 90, Non-Stackable
+- Promotion E: Priority 60, Non-Stackable
+
+If Promotion E is applied first and the cart becomes eligible for Promotion B, Promotion B is applied and Promotion E is removed.
+
+The following messaged is returned in the cart response:
+
+```json
+"messages": [
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "660883ba-01d5-4f43-a791-df4151e0d0b3"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "20b475c2-cfb9-4472-9fa1-e70c91dcbf3a"
+                },
+                "title": "Deleted Promotion",
+                "description": "Promotion has been removed from cart."
+            },
+            {
+                "source": {
+                    "type": "promotion",
+                    "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
+                    "code": "90"
+                },
+                "title": "Couldn't Stack Promotion",
+                "description": "Non-stackable promotion can't be applied with non-stackable promotion."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "1e1ed778-d3f3-45ea-9095-ffc8afffd0ae"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "1e1ed778-d3f3-45ea-9095-ffc8afffd0ae"
+                },
+                "title": "Discount Deleted",
+                "description": "Item discount has been removed."
+            }
+        ]
+```
+
+**Scenario 3:** Higher priority promotion takes precedence when mixing stackable and non-stackable Promotions
+
+Consider you have the following Promotions:
+
+- Promotion A: Priority 100, Stackable
+- Promotion B: Priority 90, Non-Stackable
+
+If Promotion B is applied first (non-stackable) and the shopper applies Promotion A, Promotion A is applied because it has a higher priority. Therefore, Promotion B will be removed from the cart.
+
+The following messages indicating the removal of Promotion B and the application of Promotion A is returned:
+
+```json
+"messages": [
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "860a5a24-cce1-4241-84c1-53f54a7237ce"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "884357f0-83b8-4d5d-8e0b-4c845345033d"
+                },
+                "title": "Deleted Promotion",
+                "description": "Promotion has been removed from cart."
+            },
+            {
+                "source": {
+                    "type": "promotion",
+                    "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
+                    "code": "90"
+                },
+                "title": "Couldn't Stack Promotion",
+                "description": "Non-stackable promotion can't be applied with stackable promotions."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "7547f703-f8d6-44e4-ba0c-94bf505d0659"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "7547f703-f8d6-44e4-ba0c-94bf505d0659"
+                },
+                "title": "Discount Deleted",
+                "description": "Item discount has been removed."
+            }
+        ]
+```
+
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
 | Features                           | Promotions Standard | Rule Promotions  |
