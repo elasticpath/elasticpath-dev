@@ -19,6 +19,7 @@ The following endpoints support the `include` parameter:
 - [Get a Price Book by ID](/docs/api/pxm/pricebooks/get-pricebook-by-id)
 - [Get a product in the latest catalog release](/docs/api/pxm/catalog/get-product)
 - [Get all products in the latest release](/docs/api/pxm/catalog/get-all-products)
+- [Get a nodes children](/docs/api/pxm/catalog/get-child-nodes)
 - [Get all products in a shopper catalog](/docs/api/pxm/catalog/get-by-context-all-products)
 - [Get a product in a shopper catalog](/docs/api/pxm/catalog/get-by-context-product)
 - [Configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product)
