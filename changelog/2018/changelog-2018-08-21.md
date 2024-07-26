@@ -2,7 +2,7 @@
 title: 'Changelog 2018-08-21'
 date: '2018-08-21'
 ---
-**Major** Added ​Inventory Management is now available.
+**Major** Added Inventory Management is now available.
 **Major** Order exporting is now available.
 - `POST` to `variation.option` returns the newly created `option` object instead of the parent `variation`.
 - `PUT` to `variation.modifier` returns the updated `modifier` object instead of the parent `variation`.
