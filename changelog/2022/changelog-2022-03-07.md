@@ -6,4 +6,4 @@ tags:
   - Payments
 ---
 **Minor** 
-Added `purchase` as an option to support Manual Payments. For more information, see [Manual Payments](/docs/commerce-cloud/payments/paying-for-an-order/manual-payments).
+Added `purchase` as an option to support Manual Payments. For more information, see [Manual Payments](/docs/carts-orders/elastic-path-payments-stripe).
