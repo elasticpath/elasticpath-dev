@@ -5,4 +5,4 @@ tags:
   - Account Management
   - Addresses
 ---
-**Minor** Added support for [account addresses](/docs/commerce-cloud/customer-management/addresses-api).
+**Minor** Added support for [account addresses](/docs/api/addresses/account-addresses).

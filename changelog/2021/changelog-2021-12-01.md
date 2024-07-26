@@ -5,4 +5,4 @@ tags:
   - Commerce Manager
   - Product Experience Manager
 ---
-**Major** You can now create variations and options in Commerce Manger and build child products using them. For more information, see the [Variations](/docs/pxm/products/pxm-product-variations/variations) section.
+**Major** You can now create variations and options in Commerce Manger and build child products using them. For more information, see the [Variations](/docs/api/pxm/products/variations) section.
