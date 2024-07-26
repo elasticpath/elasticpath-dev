@@ -10,7 +10,7 @@ sidebar_position: 160
 https://useast.api.elasticpath.com/v2/orders/:orderID/confirm
 ```
 
-Use this endpoint to confirm the stripe payment intent and synchronize it with Commerce Cloud. See [Cart Payment Intent](/docs/carts-orders/cart-payment-intent).
+Use this endpoint to confirm the stripe payment intent and synchronize it with Commerce Cloud. See [Cart Payment Intent](/docs/api/carts/create-cart-payment-intent).
 
 ## Parameters
 
