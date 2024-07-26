@@ -5,6 +5,6 @@ tags:
   - Product Experience Manager
   - Carts & Orders
 ---
-**Major** A new `custom_inputs` attribute allows you to add personalized or custom text to a product that can be displayed in your storefront. For more information, see [create a product](/docs/pxm/products/ep-pxm-products-api/create-a-product).
+**Major** A new `custom_inputs` attribute allows you to add personalized or custom text to a product that can be displayed in your storefront. For more information, see [create a product](/docs/api/pxm/products/create-product).
 
-**Major** A new `custom_inputs` attribute allows your shoppers to add personalized text to products when adding items to a cart. For more information, see [Carts](/docs/commerce-cloud/carts/carts).
+**Major** A new `custom_inputs` attribute allows your shoppers to add personalized text to products when adding items to a cart. For more information, see [Carts](/docs/api/carts/cart-items).

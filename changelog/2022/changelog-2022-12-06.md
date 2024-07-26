@@ -10,4 +10,4 @@ tags:
   - [Algolia](/docs/composer/integration-hub/site-search/algolia).
   - [Coveo](/docs/composer/integration-hub/site-search/coveo).
   - [Elasticsearch](/docs/composer/integration-hub/site-search/elasticsearch).
-  - [SendGrid](/docs/composer/integration-hub/email-sms/sendgrid).
+  - [SendGrid](/docs/composer/integration-hub/marketing-communication/sendgrid).
