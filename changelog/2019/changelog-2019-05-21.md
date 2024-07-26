@@ -13,7 +13,7 @@ tags:
 
 **Minor** Fixed an issue with carts whereby changing the product quantity would change the order of cart items. This is now preserved.
 
-**Minor** Added attribute validation so that only [known events](/docs/commerce-cloud/integrations/observable-events) are accepted.
+**Minor** Added attribute validation so that only [known events](/docs/api/integrations/integrations-introduction#observable-events) are accepted.
 
 **Minor** DELETE calls are now rejected to remove a relationship from a collection for incorrectly formatted requests.
 

@@ -5,4 +5,4 @@ tags:
   - Account Management
   - Integrations
 ---
-**Minor** The [list of observable events](/docs/commerce-cloud/integrations/observable-events) has been extended to include account, account member, account membership, and user authentication info entities.
+**Minor** The [list of observable events](/docs/api/integrations/integrations-introduction#observable-events) has been extended to include account, account member, account membership, and user authentication info entities.

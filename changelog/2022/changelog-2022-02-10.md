@@ -5,4 +5,4 @@ tags:
   - Commerce Manager
   - Promotions
 ---
-**Major** Commerce Manager: You can now [view promotion history](/docs/commerce-cloud/promotions/promotions-cm/promotions#viewing-promotion-history) in Commerce Manager.
+**Major** Commerce Manager: You can now [view promotion history](/docs/commerce-manager/promotions-standard/overview#viewing-promotion-history) in Commerce Manager.

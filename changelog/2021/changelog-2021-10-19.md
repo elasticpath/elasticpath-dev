@@ -5,4 +5,4 @@ tags:
   - Account Management
   - Flows
 ---
-**Minor** You can now extend [`accounts`](/docs/commerce-cloud/accounts/using-account-management-api/account-management-api-overview) and [`account-memberships`](/docs/commerce-cloud/accounts/using-account-membership-api/overview) with [core flows](/docs/commerce-cloud/custom-data/extend-any-resource).
+**Minor** You can now extend [`accounts`](/docs/api/accounts/accounts) and [`account-memberships`](/docs/api/accounts/account-membership) with [core flows](/docs/api/flows/flows-service-introduction).
