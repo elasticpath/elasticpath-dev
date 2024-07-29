@@ -716,7 +716,7 @@ const config = {
           { to: '/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-fixed-discount-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-fixed-discount-rule-promotion'},
           { to: '/docs/api/personal-data/get-erasure-request', from: '/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/get-personal-data-erasure-requests'},
           { to: '/docs/studio/content/Media-Management/Managing-video-settings', from: '/docs/cx-studio/content/Media-Management/Managing-video-settings'},
-          { to: '/docs/personal-data/personal-data-related-data-entries-api/get-personal-data-related-data-entries', from: '/docs/commerce-cloud/personal-data/personal-data-related-data-entries-api/get-personal-data-related-data-entries'},
+          { to: '/docs/api/personal-data/get-related-data-entries', from: '/docs/commerce-cloud/personal-data/personal-data-related-data-entries-api/get-personal-data-related-data-entries'},
           { to: '/docs/studio/developers/custom-themes/custom-codeblocks', from: '/docs/cx-studio/developers/custom-themes/custom-codeblocks'},
           { to: '/docs/studio/developers/tags/articles', from: '/docs/cx-studio/developers/tags/articles'},
           { to: '/docs/studio/content/Forms-&-Contacts/Customers', from: '/docs/cx-studio/content/Forms-&-Contacts/Customers'},
