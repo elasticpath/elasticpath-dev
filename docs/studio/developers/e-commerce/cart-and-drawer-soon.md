@@ -16,10 +16,10 @@ The Cart generator allows you to show the products that your shoppers have selec
 
 The following table describes the attributes you can configure for the Cart generator.
 
-| Option | Format | Required | Description                                                                                                                    |
-| --- | --- | --- |--------------------------------------------------------------------------------------------------------------------------------| 
-| `products` | `object` | Required | A list of product elements that a shopper has in their cart. See [The `products` object](#the-products-object).                |
-| `dataRef` | `DataLocater` | Required | The options of a product to be iterated on.                                                                                    |
+| Option | Format | Required | Description                                                                                                                   |
+| --- | --- | --- |-------------------------------------------------------------------------------------------------------------------------------| 
+| `products` | `object` | Required | A list of product elements that a shopper has in their cart. See [The `products` object](#the-products-object).               |
+| `dataRef` | `DataLocater` | Required | The iterated options of a product.                                                                           |
 | `il8n` | `object` | Required | An object that is used to represent total price information in different languages. See [The `il8n` object](#the-il8n-object). |
 
 ### The `products` object
@@ -95,16 +95,28 @@ Below is an example of a `CartButton`.
   />
 ```
 
-`action` can have the following values:
+#### Attributes
 
-- `decrement` reduces the quantity of the product in the cart by 1.
-- `increment` increases the quantity of the product in the cart by 1.
-- `remove` removes the product in the cart.
-- `checkout` submits the cart to our checkout to be processed and purchased by a shopper.
+The following table describes the attributes you can configure for the `CartButton`.
+
+| Option         | Format           | Required | Description                                                                                                                                                                                                                                                                                                                                                               |
+|----------------|------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `dataRef`      | `content.button` | Required | The actions that the cart button should perform.                                                                                                                                                                                                                                                                                                                          |
+| `action`       | `object`         | Required | You can have the following actions: <ul><li>`decrement` reduces the quantity of the product in the cart by 1.</li><li>`increment` increases the quantity of the product in the cart by 1.</li><li>`remove` removes the product in the cart.</li><li>`checkout` submits the cart to our checkout to be processed and purchased by a shopper.</li></ul>                     |
+| `className`    | `string`         | Optional | *only applies if `action` is either `increment` or `decrement`.* Allows the shopper to specify the quantity to increment or decrement for a product. Must be either <ul><li>`quantity-selector-decrement` if you want shoppers to be able to decrement a product.</li><li>`quantity-selector-increment` if you want shoppers to be able to increment a product.</li></ul> |
+| `productID`    | `string`         | Optional | *only applies if `action` is either `increment` or `decrement`.* Specify the product ID of the product you want to increment or decrement.                                                                                                                                                                                                                                |
+| `defaultType`  | `string`         | Optional | Allows you to specify if this is a primary or secondary button in Studio. See [Buttons](/docs/studio/design/Design-&-Styles/Using-your-Style-Guide#buttons).                                                                                                                                                                                                              |
+| `defaultValue` | `string`         | Optional |                                                                                                                                                                                                                                                                                                                                                                           |
+
 
 ### CartError
 
-If there is an issue with adding, removing, updating the quantity, viewing, or submitting the cart, the errors are displayed in a format similar to the example below. 
+If there is an issue with:
+
+- adding, removing, or updating the quantity
+- viewing, or submitting the cart
+
+the errors are displayed in a format similar to the example below. 
 
 ```html
 <CartError dataRef={cart.error} item={(error) => <div>{error}</div>} />
