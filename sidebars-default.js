@@ -292,6 +292,19 @@ const sidebarsDefault = {
       items: require("./docs/api/payments/sidebar.js")
     },
   ],
+  personal: [
+    {
+      type: "category",
+      label: "Personal Data",
+      link: {
+        type: "generated-index",
+        title: "Personal Data",
+        slug: "/api/personal-data"
+      },
+      // @ts-ignore
+      items: require("./docs/api/personal-data/sidebar.js")
+    },
+  ],
   promotions: [
     {
       type: "category",
