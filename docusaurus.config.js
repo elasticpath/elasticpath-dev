@@ -689,7 +689,7 @@ const config = {
           { to: '/docs/studio/design/Header-and-Footer/Adding-&-Removing-Header-Dropdowns', from: '/docs/cx-studio/design/Header-and-Footer/Adding-&-Removing-Header-Dropdowns'},
           { to: '/docs/studio/Integrations/Integrating-Mailchimp', from: '/docs/cx-studio/Integrations/Integrating-Mailchimp'},
           { to: '/docs/studio/content/Forms-&-Contacts/Warning-when-using-email-less-form', from: '/docs/cx-studio/content/Forms-&-Contacts/Warning-when-using-email-less-form'},
-          { to: '/docs/docs/api/personal-data/post-erasure-request', from: '/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/create-personal-data-erasure-request'},
+          { to: '/docs/api/personal-data/post-erasure-request', from: '/docs/commerce-cloud/personal-data/personal-data-erasure-requests-api/create-personal-data-erasure-request'},
           { to: '/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-custom-attribute-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-custom-attribute-rule-promotion'},
           { to: '/docs/authentication/single-sign-on/merchant-realm-mappings/merchant-realm-mappings-overview', from: '/docs/commerce-cloud/authentication/single-sign-on/merchant-realm-mappings/merchant-realm-mappings-overview'},
           { to: '/changelog/Studio-Release-Notes/2021/Release-121-Nov-7-2021', from: '/docs/cx-studio/Release-Notes/2021/Release-121-Nov-7-2021'},
