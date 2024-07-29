@@ -4,7 +4,7 @@ nav_label: Managing Accounts
 sidebar_position: 10
 ---
 
-In an Elastic Path Commerce Cloud store, sellers can create accounts using Commerce Manager and view the purchase history and the addresses associated with an account. To update the membership limit, see [Updating Account Membership Settings](/docs/api/settings/put-v-2-settings-account-membership).
+In an Elastic Path Commerce Cloud store, sellers can create accounts using Commerce Manager and view the purchase history and the addresses associated with an account. To update the membership limit, see [Updating Account Membership Settings](/docs/commerce-manager/settings/general-settings#updating-address-form-settings).
 
 ## Creating Accounts
 

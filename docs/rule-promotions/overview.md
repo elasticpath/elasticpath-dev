@@ -109,7 +109,7 @@ Consider the following scenarios:
 
 You can generate codes for a Rule Promotion so that shoppers receive the discount when the code is provided. You can enable this feature by setting the `automatic` field to `false` in the promotions schema when you create a Rule Promotion. For more information, see [Create Rule Promotion Codes](/docs/rule-promotions/rule-promotion-codes/create-rule-promotion-codes#post-create-rule-promotion-codes). To create promotion codes in Commerce Manager, see [Creating Promotion Codes in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-promotion-codes).
 
-To learn more about promotion codes, see [Promotion Codes](/docs/promotions/promotions-overview#promotion-codes).
+To learn more about promotion codes, see [Promotion Codes](/docs/api/promotions/promotion-codes).
 
 :::note
 - The promotion codes are case-insensitive.
@@ -585,4 +585,4 @@ You can include both SKUs and product IDs within the same rule promotion, provid
 
 - [Promotions Builder in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder)
 - [Rule Promotions API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
-- [Promotion Codes](/docs/promotions/promotions-overview#promotion-codes)
+- [Promotion Codes](/docs/rule-promotions/overview#promotion-codes)

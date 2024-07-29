@@ -1,7 +1,7 @@
-<h1>Docusaurus OpenAPI Doc Generator for Elastic Path APIs</h1>
+<h1>OpenAPI Doc Generator for Elastic Path APIs</h1>
 
 <div>
-<img alt="docusaurus" width="200" src="https://user-images.githubusercontent.com/9343811/165975569-1bc29814-884c-4931-83df-860043b625b7.svg" />
+<img alt="Elastic Path" width="200" src="https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/static/logo/light.svg" />
 </div>
 
 <div>
@@ -71,7 +71,7 @@ Partials are stored in the standard Docusaurus location of `/docs/partials` usin
 
 Update HeroSectionAPIs.tsx located at `/src/components/api/HeroSectionAPIs.tsx`. Be sure to include a new icon for every service being added. We utilize [!FluentUI Icons Regular (not filled)](https://react.fluentui.dev/?path=/docs/icons-catalog--page)
 
-## PaloAlto Networks OpenAPI Docs Overview
+## OpenAPI Docs Overview
 
 The `docusaurus-plugin-openapi-docs` package extends the Docusaurus CLI with commands for generating MDX using the OpenAPI specification as the source. The resulting MDX is fully compatible with [plugin-content-docs](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs) and can be used to render beautiful reference API docs by setting `docItemComponent` to `@theme/ApiItem`, a custom component included in the `docusaurus-theme-openapi-docs` theme.
 
@@ -210,14 +210,15 @@ You may also generate OpenAPI docs for a single path or OAS by specifying the un
 ```bash
 yarn docusaurus gen-api-docs <id>
 ```
+The <id> is the name of the folder of specs in "openapispecs" folder.
 
 Example:
 
 ```bash
-yarn docusaurus gen-api-docs burgers
+yarn docusaurus gen-api-docs commerceextensions
 ```
 
-> The example above will only generate API docs relative to `burgers`.
+> The example above will only generate API docs relative to `commerceextensions`. 
 
 ### Cleaning API Docs
 
@@ -233,13 +234,15 @@ You may also remove a particular set of API docs by specifying the unique `id` o
 yarn docusaurus clean-api-docs <id>
 ```
 
+The <id> is the name of the folder of specs in "openapispecs" folder.
+
 Example:
 
 ```bash
-yarn docusaurus clean-api-docs burgers
+yarn docusaurus clean-api-docs commerceextensions
 ```
 
-> The example above will remove all API docs relative to `burgers`.
+> The example above will remove all API docs relative to `commerceextensions`.
 
 ### Versioning OpenAPI docs
 
@@ -269,9 +272,9 @@ After [forking](https://github.com/elasticpath/elasticpath-dev) the main reposit
 git clone https://github.com/<your account>/elasticpath-dev.git
 cd elasticpath-dev
 yarn
-yarn build-packages
-yarn watch:demo
+yarn start
 ```
+This will start the development server on localhost.
 
 ## Credits
 

@@ -32,9 +32,9 @@ An example for bulk add is:
 
 With the bulk add items to cart capability, you can use one or more of the following cart actions in a transaction:
 
-- [Add Product to Cart](/docs/api/carts/cart-merge#add-product-to-cart)
-- [Add Custom Item to Cart](/docs/api/carts/cart-merge#add-custom-item-to-cart)
-- [Add Promotion to Cart](/docs/api/carts/cart-merge#add-promotion-to-cart)
+- [Add Product to Cart](/docs/api/carts/manage-carts#add-product-to-cart)
+- [Add Custom Item to Cart](/docs/api/carts/manage-carts#add-custom-item-to-cart)
+- [Add Promotion to Cart](/docs/api/carts/manage-carts#add-promotion-to-cart)
 
 :::caution
 The request body depends on the type of items that you want to add, such as promotion, custom or product.

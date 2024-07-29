@@ -4,7 +4,41 @@ sidebar_label: Creating Bundles
 sidebar_position: 20
 ---
 
-With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product comprising one or more products that you want to sell together.
+With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product comprising one or more products that you want to sell together. You can have:
+
+- Dynamic bundles. Dynamic bundles allow your shoppers to choose their own options in a bundle.
+- Bundles of bundles. Your bundle consists of child bundles.
+
+import DynamicBundles from "/docs/partials/pxm/bundles/dynamic.mdx";
+
+## Dynamic Bundles
+
+<DynamicBundles></DynamicBundles>
+
+import BundlesBundles from "/docs/partials/pxm/bundles/bundlesof.mdx";
+
+### Creating Dynamic Bundles: An Overview
+
+1. [Create your products](/docs/commerce-manager/product-experience-manager/Products/create-products).
+1. Create a bundle.
+1. Specify minimum and/or maximum values for the number of product options that can be selected within the bundle. For example, if you want the shopper to select exactly 4 out of 10 options, set both the minimum and maximum values to 4 for each of the 10 product options.
+1. For each product option in the bundle, specify if it is a default option by adding `"default": true` to the product options that you want to be pre-selected for the shopper.
+1. [Publish the bundle to your catalog](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs) so you can display the products to your shoppers in your storefront.
+1. When a shopper interacts with the bundle on your storefront, they can select the products they want from the list of options. Use the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint to capture the shoppers selections. This updates the `bundle_configuration` with the product options chosen by a shopper.
+1. Once a shopper has configured their bundle, use the [add a product to a cart](/docs/api/carts/manage-carts) endpoint to add the selected bundle to the shopper’s cart.
+1. When the shopper proceeds to checkout, the selected product options from the bundle are included in the order.
+
+## Bundles of Bundles
+
+<BundlesBundles></BundlesBundles>
+
+### Creating bundles of bundles: an overview
+
+To create a bundle of bundles, simply add a bundle as a component to another bundle.
+
+1. [Create your products](/docs/commerce-manager/product-experience-manager/Products/create-products).
+1. Create all your child bundles.
+1. Create a parent bundle and specify the product ID of your child bundle as an option of a component in your bundle. You cannot have more than 1500 options in a bundle.
 
 ## Before you Begin
 
