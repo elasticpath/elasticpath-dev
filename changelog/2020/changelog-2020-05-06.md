@@ -4,4 +4,4 @@ date: '2020-05-06'
 tags:
   - Promotions Standard
 ---
-**Major** Implemented [customer-specific promotions](/docs/commerce-cloud/promotions/promotion-management).
+**Major** Implemented [customer-specific promotions](/docs/api/promotions/promotions-standard-introduction).

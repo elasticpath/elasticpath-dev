@@ -14,9 +14,9 @@ A customer token provides access to the records of the customer. Use single sign
 - [Update an Address](/docs/api/addresses/put-v-2-account-address)
 - [Get all Orders](/docs/api/carts/get-customer-orders)
 - [Get an Order](/docs/api/carts/get-an-order)
-- [Get Customer Carts](/docs/api/carts/get-customer-carts)
+- [Get Customer Carts](/docs/carts-orders/get-a-cart)
 - [Create an Association between a Customer and a Cart](/docs/api/carts/create-customer-cart-association)
 - [Delete an Association Between a Customer and a Cart](/docs/api/carts/delete-customer-cart-association)
-- [Add Promotion to Cart](/docs/api/carts/cart-merge#add-promotion-to-cart)
+- [Add Promotion to Cart](/docs/api/carts/manage-carts#add-promotion-to-cart)
 
 For more information on implementing customer tokens, see [Customer Tokens](/docs/customer-management/customer-management-api/customer-tokens).

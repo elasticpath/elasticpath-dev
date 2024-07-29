@@ -2819,6 +2819,12 @@ components:
       title: Currencies
       additionalProperties:
         $ref: '#/components/schemas/amount'
+    shopper_attributes:
+      type: object
+      description: The optional price extension with values in string format, viewable by shoppers.
+      title: ShopperAttributes
+      additionalProperties:
+        type: string
     diff-list-data:
       type: object
       title: DiffListData
@@ -3703,6 +3709,8 @@ components:
           x-go-name: Name
         price:
           $ref: '#/components/schemas/currencies'
+        shopper_attributes:
+          $ref: '#/components/schemas/shopper_attributes'
         tiers:
           $ref: '#/components/schemas/tiers'
         components:
@@ -4006,46 +4014,25 @@ components:
           description: If you specified `build_rules` for a product, the `variations` object lists the variation option IDs that you specified to include when building your child products. If no `build_rules` are specified, all the variation and variation options available for a product are displayed. If a product does not have any variations, then the `variations` object is not displayed.
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: A unique identifier for a variation.
-                type: string
-                format: uuid
-                x-go-name: ID
-              name:
-                description: The name of a variation.
-                type: string
-              sort_order:
-                description: If you specified a `sort_order` when creating your variations and variation options, then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
-                type: integer
-                x-go-name: Sort Order
-                nullable: true
-              options:
-                description: The options available for this variation.
-                type: array
-                items:
-                  description: The options available for a variation.
-                  type: object
-                  properties:
-                    id:
-                      description: A unique identifier for an option.
-                      type: string
-                      format: uuid
-                      x-go-name: ID
-                    name:
-                      description: The name of an option.
-                      type: string
-                    sort_order:
-                      type: integer
-                      x-go-name: Sort Order
-                      nullable: true
-                    description:
-                      description: A description for an option.
-                      type: string
-                  x-go-name: ProductVariationOption
-            x-go-name: ProductVariation
+            $ref: '#/components/schemas/variation'
           x-omitempty: true
+        child_option_ids:
+          description: An array of Variation Options IDs that a child product has.
+          type: array
+          items:
+            type: string
+            example:
+              - 8dbb35b2-ef04-477e-974d-e5f3abe6faae
+              - 6ddf2a66-d805-449c-a0e1-8e81335e31a6
+          x-omitempty: true
+          nullable: true
+        child_variations:
+          description: If this is a child product, the `child_variations` object lists the variation option IDs that you Child product represent.
+          type: array
+          items:
+            $ref: '#/components/schemas/variation'
+          x-omitempty: true
+          nullable: true
         product_types:
           description: |
             Commerce automatically assigns types to the products you create. In Commerce Manager, you can see at a glance the product types in a list of a products. In addition, you can filter on product types in both the API and Commerce Manager.
@@ -4069,6 +4056,51 @@ components:
           example: en-GB
       x-go-name: ProductMeta
       x-omitempty: true
+    variation_option:
+      description: The options available for a variation.
+      type: object
+      properties:
+        id:
+          description: A unique identifier for an option.
+          type: string
+          format: uuid
+          x-go-name: ID
+        name:
+          description: The name of an option.
+          type: string
+        sort_order:
+          type: integer
+          x-go-name: Sort Order
+          nullable: true
+        description:
+          description: A description for an option.
+          type: string
+      x-go-name: ProductVariationOption
+    variation:
+      type: object
+      properties:
+        id:
+          description: A unique identifier for a variation.
+          type: string
+          format: uuid
+          x-go-name: ID
+        name:
+          description: The name of a variation.
+          type: string
+        sort_order:
+          description: If you specified a `sort_order` when creating your variations and variation options, then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
+          type: integer
+          x-go-name: Sort Order
+          nullable: true
+        option:
+          $ref: '#/components/schemas/variation_option'
+        options:
+          description: The options available for this variation.
+          type: array
+          x-omitempty: true
+          items:
+            $ref: '#/components/schemas/variation_option'
+      x-go-name: ProductVariation
     bundle-configuration-data:
       type: object
       title: BundleConfigurationData

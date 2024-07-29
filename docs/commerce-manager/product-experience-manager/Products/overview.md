@@ -4,15 +4,19 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-import CreatingProducts from "../../../partials/_creating-products.mdx";
+import Overview from "../../../partials/pxm/products/productsoverview.mdx";
+import ProductTypes from '/docs/partials/pxm/products/types.mdx';
+import ProductCatalogs from '/docs/partials/pxm/products/catalogs.mdx';
 
-<CreatingProducts></CreatingProducts>
+<Overview></Overview>
+
+### Product Types
+      
+<ProductTypes> </ProductTypes>
 
 ### Products and Catalog Releases
 
-For a product to appear in the store, the product must be in a `live` state. By default, a product is created in the `draft` state. This is to ensure that the product details are reviewed and approved before publishing it. When you publish a catalog, only the live products appear in the catalog release. If you change a product's state to live, you must republish the catalog for the product to be displayed in the catalog.
-
-In addition, a product must belong to at least one hierarchy. When you publish a catalog, the live products in the hierarchies appear in a catalog release. A catalog can have one or more hierarchies of products. The hierarchies contain all the products that you want to display in your store. Only the products that are associated with nodes in the selected hierarchies are included in the catalog. You can create your hierarchies and nodes when configuring your products.
+<ProductCatalogs> </ProductCatalogs>
 
 - See the nodes that products belong to.
 

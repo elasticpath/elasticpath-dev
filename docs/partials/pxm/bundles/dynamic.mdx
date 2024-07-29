@@ -1,0 +1,26 @@
+A dynamic bundle allows you to create a bundle where shoppers can choose products from a list of options. For example, a shopper can select 0 or more products from a list of 10. You can also configure some products as default options. A shopper can either select the bundle with the default products or choose products from all the components. Shoppers must either select products for all components or use the default options for all components; they cannot choose products for only one component and leave the others with default options.
+
+For example, a shopper can select 0 or more product options from a list of 10. When purchasing a monitor, you might want to offer additional optional items that a shopper can select like monitor lamps, extendable arms, or screen wipes.
+
+You can do this by configuring minimum and/or maximum values for the product options in a component. For example, to sell 4 books for a fixed price from a list of 10, set both minimum and maximum selections to 4.
+
+When minimum is 0, it means that component product lists are optional for your shoppers.
+
+If you do not specify any minimum or maximum values for the product options in your components, your shoppers can select any combination of product options.
+
+To configure default product options, add `"default": true` to all the product options in the bundle that you want to be the defaults. Each component in the bundle must have a default product option. For example, you may have some products in a bundle that are performing better than others. For the products that are not performing as well, you can promote them above the rest by configuring a default product option. Moreover, you may have a default set of products that make sense for a given context. For example, when adding a new fragrance to a fragrance bundle, you may want the new addition to appear as the default option.
+
+:::caution
+
+Your shoppers cannot change the quantities of a product. They must purchase the quantity of products that you have specified when you created your components and options.
+
+:::
+
+## Bundle configuration
+
+Dynamic bundles have a `bundle_configuration` which describe the options selected.
+
+1. Once your bundles are [published in a catalog](/docs/api/pxm/catalog/publish-release), a shopper can select the products they want.
+1. Use [Get a product in a catalog release](/docs/api/pxm/catalog/get-by-context-all-products) to check a `bundle_configuration`.
+1. Use the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint to store a shopper's selections. The response from the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint updates the `bundle_configuration` with the product options a shopper selects. In your storefront, you can display this as a summary of the product options a shopper has selected.
+

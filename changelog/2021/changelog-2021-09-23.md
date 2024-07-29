@@ -4,4 +4,4 @@ date: '2021-09-23'
 tags:
   - Account Management
 ---
-**Minor** Added filtering for [unassigned account members](/docs/commerce-cloud/accounts/using-account-membership-api/get-all-unassigned-account-members).
+**Minor** Added filtering for [unassigned account members](/docs/api/accounts/get-v-2-accounts-account-id-account-memberships-unassigned-account-members).

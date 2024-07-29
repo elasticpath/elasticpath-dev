@@ -9,7 +9,7 @@ tags:
 **Files Service Refactor**:
 
   - Improved performance of the files service.
-  - Added supported and supported file types, see [Create a File](/docs/pxm/products/product-assets/create-a-file)
+  - Added supported and supported file types, see [Create a File](/docs/api/pxm/files/create-a-file)
   
 **Major** 
-**Hierarchy Node Sorting**: You can now specify sort order for child nodes within a hierarchy. The default sort order is in the descending order of the `updated_at` time, see [Create a hierarchy node](/docs/pxm/hierarchies/nodes-api/create-a-hierarchy-node).
+**Hierarchy Node Sorting**: You can now specify sort order for child nodes within a hierarchy. The default sort order is in the descending order of the `updated_at` time, see [Create a hierarchy node](/docs/api/pxm/products/create-node).

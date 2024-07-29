@@ -585,4 +585,4 @@ You can include both SKUs and product IDs within the same rule promotion, provid
 
 - [Promotions Builder in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder)
 - [Rule Promotions API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
-- [Promotion Codes](/docs/promotions/promotions-overview#promotion-codes)
+- [Promotion Codes](/docs/rule-promotions/overview#promotion-codes)

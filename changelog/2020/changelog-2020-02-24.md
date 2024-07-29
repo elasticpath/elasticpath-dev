@@ -5,4 +5,4 @@ tags:
   - Promotions Standard
 ---
 **Major** Implemented bundled promotions.
-**Major** Prevented multiple promotions from targeting a single item. For more information, see [Promotions](/docs/commerce-cloud/promotions/promotions#multiple-promotions-for-the-same-sku).
+**Major** Prevented multiple promotions from targeting a single item. For more information, see [Promotions](/docs/api/promotions/promotions-standard-introduction).
