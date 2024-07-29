@@ -46,12 +46,12 @@ tags:
     description: |
       When a user’s personal data is changed, an event is logged by Commerce. You can use the Personal Data Logs endpoint to access these logs.
   
-      This API is read only, and you cannot add/update/delete logs using this API.
+      This API is read only, and you cannot add, update, or delete logs using this API.
   
       The API only allows you to read all logs for a particular data entry (specified in the filter GET parameter).
       
       :::note
-      Currently, personal data management is only enabled for a limited set of endpoints. See the [personal data concepts page](docs/api/personal-data/personal-data-introduction) for the list of endpoints that support personal data management.
+      Currently, personal data management is only enabled for a limited set of endpoints. See the [personal data concepts page](/docs/api/personal-data/personal-data-introduction) for the list of endpoints that support personal data management.
       :::
   - name: Personal Data Related Data Entries
     # language=Markdown
@@ -72,8 +72,7 @@ tags:
       * All related resources (for example, addresses, customers, and so on.)
       * Personal Data Logs
 
-      Erasure requests can be created for any data entry in the personal data set (
-      see [Personal Data Concept](/docs/personal-data) for details), and the result is the same.
+      Erasure requests can be created for any data entry in the personal data set (see [Personal Data Concept](/docs/api/personal-data/personal-data-introduction) for details), and the result is the same.
 
       :::note
       Currently, it does not include flows or data external to Commerce.
@@ -88,7 +87,7 @@ tags:
 
       :::note
       Currently, personal data management is only enabled for a limited set of endpoints. See
-      the [personal data concepts page](/docs/personal-data) for the list of endpoints that support personal data
+      the [personal data concepts page](/docs/api/personal-data/personal-data-introduction) for the list of endpoints that support personal data
       management.
       :::
 
@@ -221,7 +220,7 @@ paths:
         * This request is only accessible to `client_credentials` token users with `Seller Admin`, `Support` and `IT` roles.
         * Non `client_credentials` token users cannot access this endpoint. See [Permissions](/docs/authentication/Tokens/permissions).
         * This request requires a filter for `resource_type` and `resource_id`.
-          :::
+         :::
         
         ## Filtering
                 
@@ -628,7 +627,7 @@ components:
       name: filter
       in: query
       required: false
-      description: Filter attributes. For more information, see the [Filtering](/docs/commerce-cloud/api-overview/filtering) section.
+      description: Filter attributes. For more information, see the [Filtering](/guides/Getting-Started/filtering) section.
       schema:
         type: string
         format: string
