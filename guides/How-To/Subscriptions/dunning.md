@@ -4,9 +4,9 @@ nav_label: Implementing Dunning Rule
 sidebar_position: 40
 ---
 
-Dunning is the process of handling failed payment attempts. This is important for recovering revenue from failed payments, reduces customer churn and maintains cashflow. By implementing efficient dunning processes, you can enhance financial health and operational efficiency.
+Dunning is the process of handling failed payment attempts. This is important for recovering revenue from failed payments, reduces customer churn and maintains cashflow. By implementing efficient dunning processes, you can enhance the financial health and operational efficiency of your business.
 
-Subscriptions retries failed payments automatically. By default, payments are retried once a day for 10 days. You can decided whether to keep the subscription active or make the subscription inactive.
+Subscriptions retries failed payments automatically. By default, payments are retried once a day for 10 days. You can decide whether to keep the subscription active or make the subscription inactive.
 
 Alternatively, Subscriptions enables you to create a dunning rule that allows you to configure payment retry schedules. You can customize the timing and frequency of the payment retries. You can create as many dunning rules as you want but you can have only one default dunning rule.
 
@@ -14,19 +14,18 @@ This guide describe how to use the Subscriptions API to:
 
 - Configure a dunning rule that defines:
 
-    - sets this dunning rule to be the default for the store.
     - the unit of time used to measure the intervals between payment attempts or retries is days.
     - the number of intervals to wait between each payment retry attempt is 2.
     - the number of times Subscriptions attempts payments retries before an action is taken is 10.
     - the action to take if payment is not successful is to close the subscription.
   
-- Make the dunning rule default.
-- List your dunning rules.
-- Demonstrate what happens when a payment fails.
-- Demonstrate how subscribers can query their payments.
+- Makes the dunning rule default.
+- Lists your dunning rules.
+- Demonstrates what happens when a payment fails.
+- Demonstrates how subscribers can query their payments.
 - Demonstrate how you can retrieve an invoice, check its status and resume an inactive subscription.
-- Update a dunning rule.
-- Delete a dunning rule from a store.
+- Updates a dunning rule.
+- Deletes a dunning rule from a store.
 
 ## Making Your API Calls
 
@@ -36,7 +35,7 @@ All API requests must contain a generated access token for authentication purpos
 
 Dunning rules must use a `fixed` strategy. This means payments are retried on a fixed schedule.
 
-When an invoice is created, it immediately becomes eligible for payment by the next payment run. If the first payment attempt fails then the invoice enters dunning. In subsequent payment runs, invoices are only considered for payment if they meet the dunning rules you create.
+When an invoice is created, it immediately becomes eligible for payment by the next [payment run](/docs/api/subscriptions/jobs). If the first payment attempt fails then the invoice enters dunning. In subsequent payment runs, invoices are only considered for payment if they meet the criteria specified in the dunning rule you created.
 
 You can specify that the dunning rule is no longer the default. You do not have to specify another rule to replace it. If you do remove the default dunning rule, the store defaults to the behavior that is followed when dunning is not enabled.
 
@@ -90,7 +89,7 @@ curl --location 'https://euwest.api.elasticpath.com/v2/subscriptions/dunning-rul
 
 ## List dunning rules 
 
-You can see retrieve a list of all your dunning rules.
+You can retrieve a list of all your dunning rules.
 
 ### Request example
 
@@ -174,7 +173,7 @@ curl --location 'https://euwest.api.elasticpath.com/v2/subscriptions/dunning-rul
 
 ## Managing Failed Payments
 
-Once the number of payment retries reaches the limit, the payment retries stop, resulting in status of the invoice being unpaid.
+Once the number of payment retries reaches the limit, the payment retries stop, resulting in the status of the invoice becoming unpaid.
 
 ### Retrieving a list of outstanding invoices
 
