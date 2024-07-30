@@ -824,7 +824,7 @@ const config = {
           { to: '/docs/studio/design/Header-and-Footer/How-to-make-my-header-transparent', from: '/docs/cx-studio/design/Header-and-Footer/How-to-make-my-header-transparent'},
           { to: '/guides/How-To/paymentgateways/integrate-applepay-with-swift', from: '/docs/commerce-cloud/payments/payments-developer/integrate-applepay-with-swift'},
           { to: '/docs/studio/content/Basic-Page-Editing/Deleting-a-Page', from: '/docs/cx-studio/content/Basic-Page-Editing/Deleting-a-Page'},
-          { to: 'docs/api/application-keys/application-keys-introduction', from: '/docs/commerce-cloud/authentication/application-keys/application-keys-overview'},
+          { to: '/docs/api/application-keys/application-keys-introduction', from: '/docs/commerce-cloud/authentication/application-keys/application-keys-overview'},
           { to: '/docs/studio/developers/e-commerce/product', from: '/docs/cx-studio/developers/e-commerce/product'},
           { to: '/docs/authentication/single-sign-on/user-authentication-info-api/delete-a-user-authentication-info', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-info-api/delete-a-user-authentication-info'},
           { to: '/docs/rule-promotions/rule-promotions-api/rule-promotions-management/delete-a-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-management/delete-a-rule-promotion'},
