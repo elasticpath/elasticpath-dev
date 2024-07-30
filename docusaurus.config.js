@@ -411,6 +411,17 @@ const config = {
               categoryLinkSource: "tag",
             },
           },
+        },
+        applicationkeys: {
+          specPath: "openapispecs/applicationkeys/OpenAPISpec.yaml",
+          outputDir: "docs/api/application-keys",
+          downloadUrl:
+            "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/applicationkeys/OpenAPISpec.yaml",
+          sidebarOptions: {
+            groupPathsBy: "tag",
+            categoryLinkSource: "tag",
+          },
+        },
           catalog: {
             specPath: "openapispecs/catalog/catalog_view.yaml",
             outputDir: "docs/api/pxm/catalog",
