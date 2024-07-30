@@ -14,7 +14,7 @@ Use this endpoint to create a cart shipping group. Once you have created a cart 
 
 Use any one of the following endpoints to associate the cart shipping group to the cart item:
 
-- [Add custom items to cart](/docs/api/carts/cart-merge#add-custom-item-to-cart)
+- [Add custom items to cart](/docs/api/carts/manage-carts#add-custom-item-to-cart)
 - [Update cart item](/docs/api/carts/update-a-cart-item)
 
 :::note

@@ -25,7 +25,7 @@ import BundlesBundles from "/docs/partials/pxm/bundles/bundlesof.mdx";
 1. For each product option in the bundle, specify if it is a default option by adding `"default": true` to the product options that you want to be pre-selected for the shopper.
 1. [Publish the bundle to your catalog](/docs/commerce-manager/product-experience-manager/catalogs/publishing-catalogs) so you can display the products to your shoppers in your storefront.
 1. When a shopper interacts with the bundle on your storefront, they can select the products they want from the list of options. Use the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint to capture the shoppers selections. This updates the `bundle_configuration` with the product options chosen by a shopper.
-1. Once a shopper has configured their bundle, use the [add a product to a cart](/docs/api/carts/cart-merge) endpoint to add the selected bundle to the shopper’s cart.
+1. Once a shopper has configured their bundle, use the [add a product to a cart](/docs/api/carts/manage-carts) endpoint to add the selected bundle to the shopper’s cart.
 1. When the shopper proceeds to checkout, the selected product options from the bundle are included in the order.
 
 ## Bundles of Bundles
