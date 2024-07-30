@@ -502,7 +502,7 @@ const config = {
             },
           },
           inventory: {
-            specPath: "openapispecs/inventory/openapi.yaml",
+            specPath: "openapispecs/inventory/public_openapi.yaml",
             outputDir: "docs/api/pxm/inventory",
             downloadUrl:
               "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/openapi.yaml",
