@@ -123,40 +123,36 @@ tags:
       You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity.
   - name: Variations
     description: |
-      Product variations are the product options available for a base product that your shoppers can choose. As a merchandiser, you want to be able to present all the options you have available for your products to make it easier for your shoppers to visualize them and influence a potential sale. Product Variations allow you to create and manage up to 10,000 unique combinations of options for variations of a product. You can then use PXM Catalogs to build different catalogs for different users, giving you greater flexibility with your product data and making it easier for your shoppers to interact with your products. 
+      ```mdx-code-block
+       import VariationsOverview from '/docs/partials/pxm/variations/variationsoverview.mdx';
+       import VariationsResuability from '/docs/partials/pxm/varations/variationsreusability.mdx';
+       import ChildProducts from '/docs/partials/pxm/variations/childproducts.mdx';
+       import BuildChildren from '/docs/partials/pxm/variations/buildchildproducts.mdx';
+       import ProductModifiers from '/docs/partials/pxm/variations/productmodifiers.mdx';
+       import PriceModifiers from "/docs/partials/pxm/variations/pricemodifiers.mdx";
 
-      For example, a product has two variations size and color. The size variation has three options, such as small, medium, and large and the color variation has three options, such as green, red, and blue. This creates a variation matrix with nine possible unique combinations or child products as shown in the following example:
+       <VariationsOverview />
 
-      ![The sizes are across the top row and the colors are in the first column.](/assets/product-variations-1.png)
+       ### Resuability
 
-      You can create additional variations or options and attach them to a product to increase the number of combinations. Using the previous example, if you add a third variation with three options, you can build child products with 27 unique combinations of variations and options.
+       <VariationsResuability />
 
-      ### Reusability
+       ### Child Products
 
-      Variations are reusable, and you can attach the same variation to any number of products. You can also create a link between the existing variation and a new product. The following scenario provides an example:
+       <ChildProducts />
 
-      1. Create a variation `shoe size` and add five options in the variation.
-      1. Create a product `shoe 1` and link the variation `shoe size` to the product.
-      1. Create second product, `shoe 2` and link the variation `shoe size` to this product as well.
-      1. Create a third product `shoe 3` and do not link any variation to this product.
+       ### Building Child Products
 
-      `shoe 1` and `shoe 2` inherit the properties of `shoe size` variation, and you can build the child products with the options. However, you cannot build child products for `shoe 3` unless you assign a variation with at-least one option to the product.
+       <BuildChildren />
 
-      ### Child Products
+      ### Product Modifiers
 
-      Child products inherit attributes from their parent products. When you make changes to the attributes of the parent products, you can rebuild your child products, ensuring that changes to the parent products are propagated to the child products.
+      <ProductModifiers />
 
-      Alternatively, you can modify a child product independently, without impacting its parent product. For example, you may prefer the status of your child product to be `live`, while keeping the parent product's status as `draft`. When you directly update a child product, it becomes independent of its parent product. In other words, any subsequent changes made to the parent product are not automatically reflected in the child product when you rebuild the parent product and its child products. Once a child product is independent of its parent, you cannot recreate the association between the child product and its parent. You must delete the child product and rebuild the parent to recreate the child product.
+      ### Price Modifiers
 
-      Following on from that, if you add the same flow to both a parent and child product, the child flow values are not affected by changes to the parent flow values in a rebuild.
-
-      In addition, when building your child products, you can choose to exclude or include certain combinations of variation options. This is useful, for example, if you have a variation option that you do not sell. This makes managing and building your child products quick and easy. See [**Build child products**](/docs/api/pxm/products/build-child-products).
-
-      Re-building child products after adding or removing a new variation changes the total number of child products that you can generate from a base product. When you rebuild the child products after updating variations associated with the base product, all existing child products that belong to a base product are deleted. New child products are created with new product IDs. 
-
-      If you have any bundles that reference child products directly, then you must update the bundles with the new child product IDs.
-
-      However, re-building child products after adding or removing an option does not change the existing product IDs.
+      <PriceModifiers />
+      ```
 
       ### Sorting the Order of Variations and Options
 
@@ -177,37 +173,6 @@ tags:
       - You must rebuild your products for the sort order changes to take effect. See [**Build Child Products**](#build-child-products).
 
       :::
-
-      ### Product Modifiers
-
-      Use modifiers to change the properties of child products that are inherited from a base product. With modifiers, you only need to have one base product with a variation attached to the product.
-
-      Modifiers attached to a variation option are applied to a base product to create child products. For example, instead of creating three base products for three different shirt colors, you can do the following:
-
-      1. [**Create a parent product**](/docs/api/pxm/products/create-product), *shirt*, with the variation, *color*, attached to it.
-      1. Create three options for the *color* variation. See [**Create a variation option**](/docs/api/pxm/products/create-variation-option).
-      1. [**Create a modifier**](/docs/api/pxm/products/create-modifier) for each option to change the properties of each child product. For example, attach a *description append* modifier to each option so that each child product has different description based on the color of the child product.
-      1. [**Build the child products**](/docs/api/pxm/products/build-child-products).
-
-      This screenshot provides an example of a child product of *shirt* which has a specific description associated with it because of the *description append* modifier setting for the option *yellow*:
-
-      ![Child products with different descriptions](/assets/modifier-description-append.png)
-
-      ### Price Modifiers
-
-      You can use price modifiers to change the price property of child products. By default, child products inherit the same price as their base products. Using price modifiers, you can enable child products to inherit a different price. This enables you to configure the price of child products, for example, to be lower than its base product, without having to individually update the price of your child products. There are three types of price modifier.
-
-      Modifier | Data Type | Effect |
-      | :--- | :--- | :--- |
-      | `price_increment` | `string` | Increases the price of a product. |
-      | `price_decrement` | `string` | Decreases the price of a product. |
-      | `price_equals` | `string` | Sets the price of a product to the amount you specify. |
-
-      The following is an overview of the steps you need to follow to use price modifiers.
-
-      1. Create a price modifier. You must give the price modifier a unique name, for example, tax_modifier. 
-      1. Create a product modifier that uses the same name as the price modifier. 
-      1. [**Build your child products**](/docs/api/pxm/products/build-child-products) with the new product modifier.
   - name: Product File Relationships
     description: |
       Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details.
@@ -693,9 +658,9 @@ paths:
 
          | Operator | Attribute                                                                                       | Description                                                                                                                                                                                                           | Example                         |
          | :--- |:------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
-         | `eq` | `sku`, `slug`,`upc_ean`, `mpn`, `name`, `templates`, `commodity_type`, `owner`, `product_types`, `tags` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`                 | `filter=eq(name,some-name)`     |
-         | `like` | `sku`, `slug`,`upc_ean`, `mpn`, `name`, `tags`                                                          | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                   | `filter=like(name,*some-name*)` |
-         | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `mpn`, `product_types`, `tags`                                | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
+         | `eq` | `sku`, `slug`,`upc_ean`, `manufacturer_part_num`, `name`, `templates`, `commodity_type`, `owner`, `product_types`, `tags` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`                 | `filter=eq(name,some-name)`     |
+         | `like` | `sku`, `slug`,`upc_ean`, `manufacturer_part_num`, `name`, `tags`                                                          | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                   | `filter=like(name,*some-name*)` |
+         | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `manufacturer_part_num`, `product_types`, `tags`                                | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
       operationId: getAllProducts
       tags:
         - Products
@@ -796,9 +761,9 @@ paths:
 
         | Operator | Attribute                                              | Description                                                                                                                                                    | Example |
         | :--- |:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
-        | `eq` | `sku`, `slug`, `upc_ean`, `mpn`, `name`, `description`, `tags`  | Equals. Checks if the values of two operands are equal. If they are, the condition is true. When filtering on tags, you can only specify one product tag.      | `filter=eq(name,some-name)` |
+        | `eq` | `sku`, `slug`, `upc_ean`, `manufacturer_part_num`, `name`, `description`, `tags`  | Equals. Checks if the values of two operands are equal. If they are, the condition is true. When filtering on tags, you can only specify one product tag.      | `filter=eq(name,some-name)` |
         | `In` | `sku`, `tags`                                                | Checks if the values are included in the specified string. If they are, the condition is true. When filtering on tags, you can specify a list of product tags. | `filter=in(id,some-id)` |
-        | `like` | `sku`, `slug`, `upc_ean`, `mpn`, `name`, `description` | Like. Checks if the operand contains the specified string. Wildcards are supported.  | `filter=like(name,some-name)` |
+        | `like` | `sku`, `slug`, `upc_ean`, `manufacturer_part_num`, `name`, `description` | Like. Checks if the operand contains the specified string. Wildcards are supported.  | `filter=like(name,some-name)` |
       operationId: exportProducts
       tags:
         - Product Export
@@ -956,9 +921,9 @@ paths:
          
           | Operator | Attribute                                                                                       | Description                                                                                                                                                                                                           | Example                         |
           | :--- |:------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
-          | `eq` | `sku`, `slug`,`upc_ean`, `mpn`, `name`, `templates`, `commodity_type`, `owner`, `product_types` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`                 | `filter=eq(name,some-name)`     |
-          | `like` | `sku`, `slug`,`upc_ean`, `mpn`, `name`                                                          | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                   | `filter=like(name,*some-name*)` |
-          | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `mpn`, `product_types`                                  | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
+          | `eq` | `sku`, `slug`,`upc_ean`, `manufacturer_part_num`, `name`, `templates`, `commodity_type`, `owner`, `product_types` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`                 | `filter=eq(name,some-name)`     |
+          | `like` | `sku`, `slug`,`upc_ean`, `manufacturer_part_num`, `name`                                                          | Like. Checks if the operand contains the specified string. Wildcards are supported.                                                                                                                                   | `filter=like(name,*some-name*)` |
+          | `In` | `id`, `name`, `SKU`, `slug`, `upc_ean`, `manufacturer_part_num`, `product_types`                                  | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `filter=in(id,some-id)`         |
          
       operationId: attachNodes
       tags:
