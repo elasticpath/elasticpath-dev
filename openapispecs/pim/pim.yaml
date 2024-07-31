@@ -305,7 +305,7 @@ tags:
 
       Using the Export API builds a `.csv` file containing the product entries. A `.csv` file can contain up to 10,000 product entries. If you have more than 10,000 product entries, then another `.csv` file is created and so on, until all your products are exported. 
 
-      You might have specified custom extension data in a `.csv` file when you imported the products. These modifications are all exported. So, when you send a request to the Export API, the `.csv` file, included in the Job endpoint response, reflects any changes that you have made. For more information, see [Importing Custom Data (Flows)](/docs/pxm/products/importing-products/product-importer-csv#importing-custom-data-flows).
+      You might have specified custom extension data in a `.csv` file when you imported the products. These modifications are all exported. So, when you send a request to the Export API, the `.csv` file, included in the Job endpoint response, reflects any changes that you have made. For more information, see [Exporting Custom Data (Flows)](#exporting-custom-data-flows).
 
       After the files are exported, you get a link to the location where the `.csv` files are stored. You can then make any changes to the product fields (modify product information, add main image files, and custom extension data) in your exported `.csv` files. See [**Product Export CSV File**](/docs/api/pxm/products/product-export#product-export-csv-file).
 
@@ -356,7 +356,7 @@ tags:
 
       ### Exporting Main Image Files
 
-      The main images that you have previously uploaded Commerce are exported. A `main_image_id` header is added to your `.csv` file. The ID in `main_image_id` is the ID of a file that has already been uploaded to Commerce using [create a file](/docs/pxm/products/product-assets/create-a-file).
+      The main images that you have previously uploaded Commerce are exported. A `main_image_id` header is added to your `.csv` file. The ID in `main_image_id` is the ID of a file that has already been uploaded to Commerce using [create a file](/docs/api/pxm/files/create-a-file).
 
       ### Exporting Custom Data (Flows)
 
@@ -687,7 +687,7 @@ paths:
 
         #### Filtering
 
-         Many Commerce API endpoints support filtering. The general syntax is described in [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+         Many Commerce API endpoints support filtering. The general syntax is described in [**Filtering**](/guides/Getting-Started/filtering).
 
          The following attributes and operators are supported.
 
@@ -950,7 +950,7 @@ paths:
     post:
       summary: Attach multiple nodes
       description: |
-        Assigns products to multiple hierarchies and their children nodes. You can apply a filter to search for the appropriate products to attach to a node. For general filtering syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+        Assigns products to multiple hierarchies and their children nodes. You can apply a filter to search for the appropriate products to attach to a node. For general filtering syntax, see [**Filtering**](/guides/Getting-Started/filtering).
          
          The following attributes and operators are supported.
          
@@ -1036,7 +1036,7 @@ paths:
     post:
       summary: Detach multiple nodes
       description: |
-        Dissociates products from multiple hierarchies and their children nodes. You can apply filters to search for the appropriate products to detach. For general filtering syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering).
+        Dissociates products from multiple hierarchies and their children nodes. You can apply filters to search for the appropriate products to detach. For general filtering syntax, see [**Filtering**](/guides/Getting-Started/filtering).
          
         The following attributes and operators are supported.
          
@@ -1287,7 +1287,7 @@ paths:
         - Extending Products with Templates
       responses:
         '200':
-          description: Returns all product template relationships
+          description: Returns all product template relationships.
           content:
             application/json:
               schema:
@@ -1346,7 +1346,7 @@ paths:
         - Bundle Component Products Relationships
       responses:
         '200':
-          description: Returns all Component Products relationships
+          description: Returns all Component Products relationships.
           content:
             application/json:
               schema:
@@ -1529,7 +1529,7 @@ paths:
         - $ref: '#/components/parameters/product_id'
       responses:
         '200':
-          description: Returns all product variation relationships
+          description: Returns all product variation relationships.
           content:
             application/json:
               schema:
@@ -1844,7 +1844,7 @@ paths:
         '500':
           $ref: '#/components/responses/internal'
     delete:
-      summary: Delete a variation and all it's associated options
+      summary: Delete a variation and all it's associated options.
       operationId: deleteVariation
       parameters:
         - $ref: '#/components/parameters/variation_id'
@@ -1877,7 +1877,7 @@ paths:
                 $ref: '#/components/examples/create_option'
       responses:
         '201':
-          description: Successfully returns the created variation option
+          description: Successfully returns the created variation option.
           content:
             application/json:
               schema:
@@ -1900,7 +1900,7 @@ paths:
         - Variations
       responses:
         '200':
-          description: Successfully returns all variation options
+          description: Successfully returns all variation options.
           content:
             application/json:
               schema:
@@ -1923,7 +1923,7 @@ paths:
         - Variations
       responses:
         '200':
-          description: Successfully returns the variation option
+          description: Successfully returns the variation option.
           content:
             application/json:
               schema:
@@ -1993,6 +1993,32 @@ paths:
   /pcm/variations/{variationID}/options/{optionID}/modifiers:
     post:
       summary: Create a modifier
+      description: |
+        You can specify different modifiers for different options in a variation. When you build child products using options in variations, the properties of a child products depends on the modifier set for the options that are applied to the child product.
+         
+        The table below describes the different types of modifiers.
+
+        | Modifier | Data Type | Effect |
+        | :--- | :--- | :--- |
+        | `name_equals` | `string` | Overrides the name of the child product with the name specified by the modifier. |
+        | `name_append` | `string` | Appends the string specified in the modifier to the name of the child product. |
+        | `name_prepend` | `string` | Prepends the string specified in the modifier to the name of the child product. |
+        | `description_equals` | `string` | Overrides the description of the child product. |
+        | `description_append` | `string` | Appends the string specified in the modifier to the description of the child product. |
+        | `description_prepend` | `string` | Prepends the string specified in the modifier to the product description of the child product. |
+        | `commodity_type` | `string` | Sets the commodity type of the child product, such as `physical` or `digital`. |
+        | `price` | `string` | Allows application of price modifiers (`price_increment`, `price_decrement`, and `price_equals`) to the child products. |
+        | `price_increment` | `string` | Increases the price of the child product. |
+        | `price_decrement` | `string` | Decreases the price of the child product. |
+        | `price_equals` | `string` | Sets the price of a child product to the amount you specify. |
+        | `slug_append` | `string` | Appends the string specified in the modifier to the slug of the child product. Can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. However, for the `slug-builder` modifier, you can use `{}` in the `seek` field, for example, `"seek": :{COLOR}"`. |
+        | `slug_prepend` | `string` | Prepends the string specified in the modifier to the slug of the child product. Can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. However, for the `slug-builder` modifier, you can use `{}` in the `seek` field, for example, `"seek": :{COLOR}"`. |
+        | `slug_builder` | `string`| Sets a part of the slug of the child product. Can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. However, for the `slug-builder` modifier, you can use `{}` in the `seek` field, for example, `"seek": :{COLOR}"`. |
+        | `sku_equals` | `string` | Sets the SKU of the child product. |
+        | `sku_append` | `string` | Appends the string specified in the modifier to the SKU of the child product. |
+        | `sku_prepend` | `string` | Prepends the string specified in the modifier to the SKU of the child product. |
+        | `sku_builder` | `string` | Sets a part of the SKU of the child product. |
+        | `status` | `string` | Sets the status of the child product, such as `draft` or `live`. |
       operationId: createModifier
       parameters:
         - $ref: '#/components/parameters/variation_id'
@@ -2033,7 +2059,7 @@ paths:
         - $ref: '#/components/parameters/page_limit'
       responses:
         '200':
-          description: Successfully returns all variation modifiers
+          description: Successfully returns all variation modifiers.
           content:
             application/json:
               schema:
@@ -2091,7 +2117,7 @@ paths:
                 $ref: '#/components/examples/update_modifier'
       responses:
         '200':
-          description: Successfully returns the updated modifier
+          description: Successfully returns the updated modifier.
           content:
             application/json:
               schema:
@@ -2388,21 +2414,21 @@ paths:
       summary: Update a node
       description: |
         Updates the specified node in a hierarchy. You can do a partial update, where you specify only the field value to change.
-
+         
         ### Sorting Nodes in a hierarchy
 
         You can sort the order of your nodes, regardless of where the nodes are in the hierarchy.
-
+         
         The node with the highest value of sort_order is displayed first. For example, a node with a `sort_order` value of `3` appears before a node with a `sort_order` value of `2`.
-
+         
         - If you don’t provide `sort_order` when creating nodes, all child nodes in the response for Get a Node’s Children request are ordered by the `updated_at` time in descending order, with the most recently updated child node first.
         - If you set `sort_order` for only a few child nodes or not all, the child nodes with a `sort_order` value appear first and then other child nodes appear in the order of `updated_at` time.
-
+         
         You can also specify a sort_order when creating a node relationship.
 
         - If you update a node (**Node A**) with a `sort_order` and then you create a relationship for **Node A** with another node (**Node B**), the `sort_order` you specified when updating **Node A** is overwritten.
         - If you have updated **Node A** and then you create a relationship with **Node B** but do not configure a `sort_order`, the `sort_order` you specified when you updated **Node A** is not overwritten.
-
+         
         ### Curating Products in a node
 
         You can curate the products in a node. Product curation allows you to promote specific products within each node of your hierarchies, enabling you to create unique product collections in your storefront. For example, you may find you have an abundance of cotton T-Shirts and you want to promote these products to the top of the product list. When a shopper navigates to T-shirts, the cotton T-Shirts are displayed first.
@@ -2410,19 +2436,19 @@ paths:
         You can do this by adding a `curated_products` attribute to the body of your request and adding an array of product IDs to the attribute. You should add the products IDs in the order you want them to be displayed in your node. The first product ID is displayed first in the product list.
 
         You can only curate 20 products or less. You cannot have more than 20 curated products.
-
+         
         - The product IDs you provide must exist in the specified node.
         - If a curated product is removed from a node, the product is also removed from the curated_products list.
         - Once you have curated the products in a node, you can use the get node products endpoint to retrieve a list of curated products.
-
+         
         You can then display your curated products in your catalogs using the following catalog endpoints.
-
-        - Get a node in your latest catalog release.
-        - Get a node in a catalog.
-        - Get all nodes in your latest catalog release.
-        - Get all nodes in a catalog.
-        - Get node children in your latest catalog release.
-        - Get node children in a catalog.
+         
+        - [Get a node in your latest catalog release](/docs/api/pxm/catalog/get-node)
+        - [Get a node in a catalog](/docs/api/pxm/catalog/get-by-context-node)
+        - [Get all nodes in your latest catalog release](/docs/api/pxm/catalog/get-all-nodes)
+        - [Get all nodes in a catalog](/docs/api/pxm/catalog/get-by-context-all-nodes)
+        - [Get node children in your latest catalog release](/docs/api/pxm/catalog/get-child-nodes)
+        - [Get node children in a catalog](/docs/api/pxm/catalog/get-by-context-child-nodes)
       operationId: updateNode
       tags:
         - Hierarchies
@@ -4477,29 +4503,7 @@ components:
                 type:
                   type: string
                   description: |
-                    You can specify different modifiers for different options in a variation. When you build child products using options in variations, the properties of a child products depends on the modifier set for the options that are applied to the child product. The table below describes the different types of modifiers.
-
-                    | Modifier | Data Type | Effect |
-                    | :--- | :--- | :--- |
-                    | `name_equals` | `string` | Overrides the name of the child product with the name specified by the modifier. |
-                    | `name_append` | `string` | Appends the string specified in the modifier to the name of the child product. |
-                    | `name_prepend` | `string` | Prepends the string specified in the modifier to the name of the child product. |
-                    | `description_equals` | `string` | Overrides the description of the child product. |
-                    | `description_append` | `string` | Appends the string specified in the modifier to the description of the child product. |
-                    | `description_prepend` | `string` | Prepends the string specified in the modifier to the product description of the child product. |
-                    | `commodity_type` | `string` | Sets the commodity type of the child product, such as `physical` or `digital`. |
-                    | `price` | `string` | Allows application of price modifiers (`price_increment`, `price_decrement`, and `price_equals`) to the child products. |
-                    | `price_increment` | `string` | Increases the price of the child product. |
-                    | `price_decrement` | `string` | Decreases the price of the child product. |
-                    | `price_equals` | `string` | Sets the price of a child product to the amount you specify. |
-                    | `slug_append` | `string` | Appends the string specified in the modifier to the slug of the child product. Can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. However, for the `slug-builder` modifier, you can use `{}` in the `seek` field, for example, `"seek": :{COLOR}"`. |
-                    | `slug_prepend` | `string` | Prepends the string specified in the modifier to the slug of the child product. Can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. However, for the `slug-builder` modifier, you can use `{}` in the `seek` field, for example, `"seek": :{COLOR}"`. |
-                    | `slug_builder` | `string`| Sets a part of the slug of the child product. Can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. However, for the `slug-builder` modifier, you can use `{}` in the `seek` field, for example, `"seek": :{COLOR}"`. |
-                    | `sku_equals` | `string` | Sets the SKU of the child product. |
-                    | `sku_append` | `string` | Appends the string specified in the modifier to the SKU of the child product. |
-                    | `sku_prepend` | `string` | Prepends the string specified in the modifier to the SKU of the child product. |
-                    | `sku_builder` | `string` | Sets a part of the SKU of the child product. |
-                    | `status` | `string` | Sets the status of the child product, such as `draft` or `live`. |
+                    You can specify different modifiers for different options in a variation. When you build child products using options in variations, the properties of a child products depends on the modifier set for the options that are applied to the child product. See [Create a Modifier](/docs/api/pxm/products/create-modifier).
                   enum:
                     - commodity_type
                     - status
