@@ -421,6 +421,16 @@ const config = {
             categoryLinkSource: "tag",
           },
         },
+        merchantrealmmappings: {
+          specPath: "openapispecs/merchantrealmmappings/OpenAPISpec.yaml",
+          outputDir: "docs/api/merchant-realm-mappings",
+          downloadUrl:
+            "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/merchant-realm-mappings/OpenAPISpec.yaml",
+          sidebarOptions: {
+            groupPathsBy: "tag",
+            categoryLinkSource: "tag",
+          },
+        },
           catalog: {
             specPath: "openapispecs/catalog/catalog_view.yaml",
             outputDir: "docs/api/pxm/catalog",
