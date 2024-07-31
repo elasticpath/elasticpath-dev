@@ -1191,8 +1191,8 @@ paths:
          
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
          
         ### Building breadcrumbs in a storefront
 
@@ -1203,6 +1203,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         
+        ### Including Resources
+         
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+         
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getAllProducts
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1306,6 +1318,18 @@ paths:
         You can create multiple components within a bundle. Each component must have at least one or more options. Each option is a product and a quantity.
 
         This endpoint returns a list of component product IDs for the specified bundle.
+
+        ### Including Resources
+
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getComponentProductIDs
       parameters:
         - description: The catalog ID.
@@ -1359,8 +1383,8 @@ paths:
          
           | Operator | Description                                                                                     | Supported Attributes                                     | Example |
           |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-          | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-          | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+          | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+          | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
          
           ### Building breadcrumbs in a storefront
          
@@ -1371,6 +1395,18 @@ paths:
           - Specify the node Ids in the filter expression.
           - You can have as many node Ids as you want.
           - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         
+          ### Including Resources
+         
+          Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         
+          | Parameter | Required | Description                                                                                                                                                                                                    |
+          |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+          | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+          | `main_image`         | Optional | The main images associated with a product. |
+          | `files`              | Optional | Any files associated with a product. |
+         
+          See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getChildProducts
       parameters:
         - description: The catalog ID.
@@ -1428,8 +1464,8 @@ paths:
 
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.          | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types`, you can only specify one product type. For example, `filter=eq(product_types,child)`.          | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types`, you can specify more than one product type. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
 
         ### Building breadcrumbs in a storefront
 
@@ -1440,6 +1476,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+
+        ### Including Resources
+
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getProductsForHierarchy
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1503,8 +1551,8 @@ paths:
          
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.          | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.          | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
          
         ### Building breadcrumbs in a storefront
          
@@ -1515,6 +1563,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         
+        ### Including Resources
+         
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+         
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getProductsForNode
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -1979,8 +2039,8 @@ paths:
          
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
 
         ### Building breadcrumbs in a storefront
          
@@ -1991,6 +2051,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         
+        ### Including Resources
+         
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+         
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getByContextAllProducts
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -2111,8 +2183,8 @@ paths:
          
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
          
         ### Building breadcrumbs in a storefront
          
@@ -2123,6 +2195,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         
+         ### Including Resources
+         
+         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         
+          | Parameter | Required | Description                                                                                                                                                                                                    |
+          |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+          | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+          | `main_image`         | Optional | The main images associated with a product. |
+          | `files`              | Optional | Any files associated with a product. |
+         
+          See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getByContextChildProducts
       parameters:
         - $ref: '#/components/parameters/channel'
@@ -2168,8 +2252,8 @@ paths:
 
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
 
         ### Building breadcrumbs in a storefront
 
@@ -2180,6 +2264,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+         
+         ### Including Resources
+         
+         Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+         
+         | Parameter | Required | Description                                                                                                                                                                                                    |
+         |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+         | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+         | `main_image`         | Optional | The main images associated with a product. |
+           `files`              | Optional | Any files associated with a product. |
+         
+         See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getByContextProductsForHierarchy
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -2225,8 +2321,8 @@ paths:
 
         | Operator | Description                                                                                     | Supported Attributes                                     | Example |
         |:---|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:--- |
-        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
-        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `mpn`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
+        | `Eq` | Checks if the values of two operands are equal. If they are, the condition is true. For `product_types` and `tags`, you can only specify one. For example, `filter=eq(product_types,child)`.            | `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags` | `filter=eq(name,some-name)` |
+        | `In` | Checks if the values are included in the specified string. If they are, the condition is true. For `product_types` and `tags`, you can specify more than one. For example, `filter=in(product_types,child,bundle)`. | `id`, `name`, `sku`, `slug`, `manufacturer_part_num`, `upc_ean`, `product_types`, `tags`          | `filter=in(id,some-id)` |
 
         ### Building breadcrumbs in a storefront
 
@@ -2237,6 +2333,18 @@ paths:
         - Specify the node Ids in the filter expression.
         - You can have as many node Ids as you want.
         - It does not matter what order you specify the node Ids. The nodes are returned in the order they were last updated.
+
+        ### Including Resources
+
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug.
+
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: getByContextProductsForNode
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -2278,6 +2386,18 @@ paths:
         If you have configured minimum and maximum values using [Create a Bundle](/docs/api/pxm/products/create-product), this becomes part of the `bundle_configuration`. You can check how your bundle is configured using [Get a product in a catalog release](/docs/api/pxm/catalog/get-product) in `bundle_configuration` under `meta`. The `bundle_configuration` forms the body of the request.
 
         The response updates the `bundle_configuration` with the product options the shopper selects. The `meta` data is updated with the `meta` data of the selected product options. In your storefront, you could display this as a summary of the product options a shopper has selected.
+
+        ### Including Resources
+
+        Using the `include` parameter, you can retrieve top-level resources, such as, files or main image, bundle component products and product attributes, such as SKU or slug. 
+
+        | Parameter | Required | Description                                                                                                                                                                                                    |
+        |  :---------------------|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | `component_products` | Optional | The  component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle.  |
+        | `main_image`         | Optional | The main images associated with a product. |
+        | `files`              | Optional | Any files associated with a product. |
+
+        See [**Including Resources**](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes).
       operationId: configureByContextProduct
       parameters:
         - $ref: '#/components/parameters/accept-language'
@@ -4017,7 +4137,7 @@ components:
             $ref: '#/components/schemas/variation'
           x-omitempty: true
         child_option_ids:
-          description: An array of Variation Options IDs that a child product has.
+          description: An array of variation options IDs that a child product has.
           type: array
           items:
             type: string
@@ -4027,7 +4147,7 @@ components:
           x-omitempty: true
           nullable: true
         child_variations:
-          description: If this is a child product, the `child_variations` object lists the variation option IDs that you Child product represent.
+          description: If this is a child product, the `child_variations` object lists the variation option IDs that define this child product.
           type: array
           items:
             $ref: '#/components/schemas/variation'
@@ -4066,21 +4186,22 @@ components:
           format: uuid
           x-go-name: ID
         name:
-          description: The name of an option.
+          description: The name of the option.
           type: string
         sort_order:
+          description: If you specified a `sort_order` when creating your variations and variation options, then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
           type: integer
           x-go-name: Sort Order
           nullable: true
         description:
-          description: A description for an option.
+          description: The option description to display to customers.
           type: string
       x-go-name: ProductVariationOption
     variation:
       type: object
       properties:
         id:
-          description: A unique identifier for a variation.
+          description: A unique identifier of a variation.
           type: string
           format: uuid
           x-go-name: ID
