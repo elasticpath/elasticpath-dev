@@ -700,7 +700,7 @@ const config = {
           { to: '/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-discount-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-discount-rule-promotion'},
           { to: '/docs/commerce-manager/product-experience-manager/variations/', from: '/docs/pxm/products/pxm-product-variations/variations'},
           { to: '/docs/studio/developers/custom-themes/headers-footers', from: '/docs/cx-studio/developers/custom-themes/headers-footers'},
-          { to: '/api/merchant-realm-mappings/get-merchant-realm-mapping', from: '/docs/commerce-cloud/authentication/single-sign-on/merchant-realm-mappings/get-merchant-realm-mapping'},
+          { to: '/docs/api/merchant-realm-mappings/get-merchant-realm-mapping', from: '/docs/commerce-cloud/authentication/single-sign-on/merchant-realm-mappings/get-merchant-realm-mapping'},
           { to: '/docs/studio/Integrations/Using-the-Facebook-Pixel', from: '/docs/cx-studio/Integrations/Using-the-Facebook-Pixel'},
           { to: '/guides/How-To/Custom-Data/create-a-wishlist-resource', from: '/docs/commerce-cloud/custom-data/create-a-wishlist-resource'},
           { to: '/docs/rule-promotions/rule-promotions-api/item-rule-promotions/create-limitation-and-condition-rule-promotion', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-limitation-and-condition-rule-promotion'},
