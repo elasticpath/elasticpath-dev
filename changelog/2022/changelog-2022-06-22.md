@@ -7,6 +7,6 @@ tags:
   - Addresses
   - Account Management
 ---
-**Major** Commerce Manager: You can now onboard PayPal Express Checkout from Commerce Manager. For more information, see [Onboarding PayPal Express Checkout](/docs/commerce-cloud/payments/payment-gateway-cm).
+**Major** Commerce Manager: You can now onboard PayPal Express Checkout from Commerce Manager. For more information, see [Onboarding PayPal Express Checkout](//docs/commerce-manager/payments/paypal).
 
-**Minor** Commerce Manager: You can now set required fields for addresses from Commerce Manager. For more information, see [Updating Address Form Settings](/docs/commerce-cloud/customer-management/manage-customers#updating-address-form-settings).
+**Minor** Commerce Manager: You can now set required fields for addresses from Commerce Manager. For more information, see [Updating Address Form Settings](/docs/commerce-manager/settings/general-settings#updating-address-form-settings).

@@ -8,4 +8,4 @@ tags:
 ---
 **Major** **Jump to another Order** feature is now available on the **Order details** page in Elastic Path Commerce Cloud Commerce Manager.
 
-**Major** Added support for managing accounts in Commerce Manager. For more information, see the [Accounts](/docs/commerce-cloud/accounts/accounts) section.
+**Major** Added support for managing accounts in Commerce Manager. For more information, see the [Accounts](/docs/api/accounts/accounts) section.

@@ -75,7 +75,7 @@ Once you have created a dynamic template in SendGrid, you need to do the followi
 
 Each event mapping configuration is a set of parameters for a specific event type in Commerce. The event mapping configuration is stored as key + value pairs.
 
-- An event key is the name of the Commerce event that triggers the event mapping configuration. For example, `order.paid` or `order.created`. See [Observable events](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events) for a list of Commerce events.
+- An event key is the name of the Commerce event that triggers the event mapping configuration. For example, `order.paid` or `order.created`. See [Observable events](/docs/api/integrations/integrations-introduction#observable-events) for a list of Commerce events.
 - An event value is a JSON object that must contain a `messagingProvider` element and a `dynamicFieldMapping` element. The event value object can be:
     - A single object (if you want to send one email when a Commerce event is triggered).
     - An array of event value objects (if you want to send more than one email from SendGrid when a Commerce event is triggered).

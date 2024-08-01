@@ -24,6 +24,6 @@ Only sellers with Seller Admins, Support and IT roles can access the API
 
 2. Call the `logs` endpoint and specify the `id` and `type` in the filter
 
-   See the [Personal Data Logs](https://beta.elasticpath.dev/docs/personal-data/personal-data-logs-api/get-personal-data-logs) page for more information
+   See the [Personal Data Logs](/docs/api/personal-data/personal-data-logs) page for more information
 
 3. You can use pagination links inside the `meta` field to navigate. Visit the [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) page for more information.

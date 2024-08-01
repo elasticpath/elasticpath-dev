@@ -89,9 +89,9 @@ const PRODUCTS = [
     text: 'Payments for orders are processed through a payment gateway. Composable Commerce offers integrations for a selection of payment gateway providers, or you can create your own integrations.',
   },
   {
-    title: 'Personal-Data Service',
+    title: 'Personal Data',
     beta: false,
-    link: '/docs/personal-data',
+    link: '/docs/api/personal-data/personal-data-introduction',
     icon: DatabasePersonRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',

@@ -23,7 +23,7 @@ For example, AllGoods have a unique identifier for all their organization and st
 
 To create templates in organizations:
 
-1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/api/application-keys/application-keys-introduction).
 1. [Create your template](/docs/api/flows/create-a-flow).
 1. [Create your attributes](/docs/api/flows/create-a-field).
 1. [Create your entries](/docs/api/flows/create-an-entry).

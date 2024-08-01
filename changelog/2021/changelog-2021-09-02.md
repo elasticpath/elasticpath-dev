@@ -5,4 +5,4 @@ tags:
   - Customers
   - Account Management
 ---
-**Minor** Filtering improvements for [customers](/docs/commerce-cloud/customer-management/customers) and [account members](/docs/commerce-cloud/accounts/using-account-members-api/overview).
+**Minor** Filtering improvements for [customers](/docs/customer-management/customers) and [account members](/docs/api/accounts/account-members).
