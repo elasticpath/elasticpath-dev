@@ -20,13 +20,13 @@ servers:
 security:
   - bearerAuth: [ ]
 tags:
-  - name: Merchant Realm Mappings
+  - name: Merchant Realm Mapping
     description: The Merchant Realm Mapping object is used to locate the [Authentication Realm](/docs/authentication/single-sign-on/authentication-realm-api/authentication-realm-api-overview) which administrators use to sign in to a store via single sign-on.
 paths:
   /v2/merchant-realm-mappings:
     get:
       tags:
-        - Merchant Realm Mappings
+        - Merchant Realm Mapping
       summary: Get the Merchant Realm Mapping for the current store
       # language=Markdown
       description: |
@@ -54,7 +54,7 @@ paths:
       - $ref: "#/components/parameters/MappingId"
     get:
       tags:
-        - Merchant Realm Mappings
+        - Merchant Realm Mapping
       summary: Get a Merchant Realm Mapping
       operationId: getMerchantRealmMapping
       responses:
@@ -76,7 +76,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     put:
       tags:
-        - Merchant Realm Mappings
+        - Merchant Realm Mapping
       summary: Update a Merchant Realm Mapping
       operationId: updateMerchantRealmMapping
       requestBody:
