@@ -553,7 +553,7 @@ You can include both SKUs and product IDs within the same rule promotion, provid
 
 Stacking and Ranking are essential concepts in managing rule promotions, ensuring that promotions are applied effectively and as intended.
 
-**Promotion Stacking** refers to the ability to stack multiple promotions on a single cart, it is possible to target the same items with multiple promotions or completely different items. A priority can be set to determine which promotions is applied first. If no priority is set, the newest rule promotion applies first and then the next one will be applied next. Our discount strategy calculates the discount against a previously discounted item price. When promotions are stackable, they can be applied simultaneously, allowing shoppers to benefit from multiple discounts. The `stackable` flag in the promotion settings determines whether a promotion can be stacked with others. By default, this flag is set to `true`, enabling stacking. If the flag is set to `false`, If the flag is set to false, no other promotion can stack on top. The promotion with the highest priority will take precedence. For more details, refer to the [Stacking Promotion Scenarios](/docs/rule-promotions/overview#stacking-promotion-scenarios) to understand the effects on stackable and non-stackable promotions.
+**Promotion Stacking** refers to the ability to stack multiple promotions on a single cart, it is possible to target the same items with multiple promotions or completely different items. A priority can be set to determine which promotions are applied first. If no priority is set, the Rule Promotions apply in order of creation date, with the newest promotions applied first and discounted prices calculated against any previously-discounted item prices. When promotions are stackable, they can be applied simultaneously, allowing shoppers to benefit from multiple discounts. The `stackable` flag in the promotion settings determines whether a promotion can be stacked with others. By default, this flag is set to `true`, enabling stacking. If the flag is set to `false`, no other promotion can stack on top. The promotion with the highest priority will take precedence. For more details, refer to the [Stacking Promotion Scenarios](/docs/rule-promotions/overview#stacking-promotion-scenarios) to understand the effects on stackable and non-stackable promotions.
 
 **Promotion Priority** refers to the order in which promotions are applied and calculated in the cart. This is managed using the `priority` setting while creating a Rule Promotion. Priorities are represented as integers, with higher numbers indicating higher priority. Setting a priority for promotions is optional; by default, promotions do not have a priority value. If there is no priority set, the most recently created promotion will be applied first. When `priority` is set, each promotion must have a unique priority value. This ensures that when multiple promotions are eligible, the one with the highest priority is applied first, followed by the next highest. If a non-stackable promotion has the highest priority, it will be the only promotion that applies.
 
@@ -561,7 +561,7 @@ Stacking and Ranking are essential concepts in managing rule promotions, ensurin
 
 When promotions are stackable, they can be stacked on a cart. The order is determined first by priority and then by the creation date. **For example**, Promotion E (priority 70) and Promotion F (priority 60) are both stackable. Both promotions will be applied, with Promotion E being applied first due to its higher priority.
 
-If hybrid mode is enabled, promotions standard can still be applied even if Rule Promotions are also in use. Promotions Standard can coexist with non-stackable Rule Promotion.
+If hybrid mode is enabled, Promotions Standard can still be applied even if Rule Promotions are also in use. Promotions Standard can coexist with non-stackable Rule Promotion.
 
 When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
 
@@ -603,7 +603,7 @@ Consider you have the following promotions:
 
 If Promotion E is applied first and the cart becomes eligible for Promotion B, Promotion B is applied and Promotion E is removed.
 
-The following messaged is returned in the cart response:
+The following message is returned in the cart response:
 
 ```json
 "messages": [
