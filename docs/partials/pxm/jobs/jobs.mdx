@@ -1,0 +1,31 @@
+Several Product Experience Manager endpoints function as jobs. When any of these endpoints are run, a job is automatically created.
+
+- product [**import**](/docs/api/pxm/products/import-products).
+- product [**export**](/docs/api/pxm/products/export-products).
+- price book [import](/docs/api/pxm/pricebooks/import-a-price-book-and-prices).
+- [**duplicating hierarchies**](/docs/api/pxm/products/duplicate-hierarchy).
+- [**building child products**](/docs/api/pxm/products/build-child-products).
+
+#### Characteristics of Jobs
+
+Jobs have the following characteristics.
+
+- Jobs are asynchronous.
+- Jobs have a different status, depending on where a job is in its lifecycle. See [**Job Lifecycle**](#job-lifecycle).
+- Jobs include the data used when an endpoint is run.
+- Jobs are processed one at a time. You can continue to send requests using endpoints that function as jobs, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed.
+- Jobs report messages and/or errors to help you understand:
+
+- what changes a job implemented in Commerce.
+- the reasons for any failed jobs.
+
+#### Job Lifecycle
+
+A job has the following lifecycle.
+
+![job lifecycle](/assets/job-lifecycle.png)
+
+- **PENDING** - Commerce has received the request but is currently busy processing other requests.
+- **STARTED** - Commerce has started processing the job.
+- **SUCCESS** - The job has successfully completed.
+- **FAILED** - The job has failed. See [**Get job errors**](/docs/api/pxm/products/get-all-jobs).

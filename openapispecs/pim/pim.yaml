@@ -105,17 +105,11 @@ tags:
       ```
   - name: Extending Products with Templates
     description: |
-      With extension templates, you can attach a specific set of custom fields to your products in Product Experience Manager. You can create templates for your products at both the organization and store level.
+      ```mdx-code-block
+      import TemplatesOverview from '/docs/partials/pxm/templates/templates.mdx';
 
-      ### Product Templates
-
-      Templates are a collection of attributes. Attributes are grouped together to match a particular product type or to provide an input for other purposes, such as Search Engine Optimization (SEO) or product specification. For example, a *Book* template might contain the attributes, such as *ISBN*, *Author*, *Number of pages*, *Year Published*, or *Condition (New/Used)*.
-
-      You can create product templates for both organization and store. However, stores can use organization templates for store level products.
-
-      ### Product Attributes
-
-      Use attributes to define the characteristics of products in a store. For example, you can assign attributes such as, *care instructions* or *fabric*, to a shirt. When a shopper searches for a specific item, attributes help stores to return the products that match the search criteria. For example, when a shopper searches for a large blue shirt, all shirts that are large and blue are returned as the search result.
+      <TemplatesOverview />
+      ```
   - name: Bundle Component Products Relationships
     description: |
       With Product Experience Manager, you can create and manage bundles. A bundle is a purchasable product, comprising of one or more products that you want to sell together.
@@ -145,15 +139,6 @@ tags:
 
       <BuildChildren />
 
-      ### Product Modifiers
-
-      <ProductModifiers />
-
-      ### Price Modifiers
-
-      <PriceModifiers />
-      ```
-
       ### Sorting the Order of Variations and Options
 
       The `variation_matrix` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variation_matrix` can then be added to your catalogs.
@@ -173,6 +158,15 @@ tags:
       - You must rebuild your products for the sort order changes to take effect. See [**Build Child Products**](#build-child-products).
 
       :::
+
+      ### Product Modifiers
+
+      <ProductModifiers />
+
+      ### Price Modifiers
+
+      <PriceModifiers />
+      ```
   - name: Product File Relationships
     description: |
       Products are the items or services that you might want to sell in your store. In Product Experience Manager, products can also have associated rich media assets, such as product images or a file containing additional product details.
@@ -189,25 +183,11 @@ tags:
       Once you have created your files, you associate files with your products using the [Create Product Main Image Relationships API](/docs/api/pxm/products/create-product-main-image-relationships).
   - name: Product Import/Bulk Update
     description: |
-      You can use the Product Import API to:
+      ```mdx-code-block
+      import ProductImport from '/docs/partials/pxm/import/import.mdx';
 
-      - Add new products.
-      - Add new:
-
-          - main image files. See [**Importing Main Image Files**](#using-imported-main-image-files).
-          - custom data. See [**Importing custom data**](#importing-custom-data-flows).
-      - Make bulk updates to existing products, main image files, and custom data.
-
-      You cannot use product import to:
-
-      - Delete existing products.
-      - Import product bundles.
-
-      The Product Import API uses a [**Comma Separated Values (CSV)**](#characteristics-of-csv-import-files) file to import/update products, main image files, and custom extension data. 
-
-      When you send a product import request, a job is created. Jobs are processed one at a time. You can continue to send product import requests, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed. See [**Jobs**](/docs/api/pxm/products/jobs).
-
-      We recommend that you include the maximum allowed number of products in each `csv`file (for example, up to 50,000 rows or a file size of 50 megabytes, see [**Characteristics of CSV Import File**](#characteristics-of-csv-import-files)) to minimize the number of files you submit. This helps prevent extended waiting times for processing jobs. 
+      <ProductImport />
+      ```
 
       #### Using Imported Main Image Files
 
@@ -266,15 +246,11 @@ tags:
       | `template:<flowID>:<fieldSlug>` | Optional | You can also specify custom extension data in the CSV by specifying the flow `ID` or `slug` and the field `name`. For example, `template:<flowSlug>:<fieldName>` format. See [**Importing Custom Data (Flows)**](#importing-custom-data-flows). |
   - name: Product Export
     description: |
-      The Export API allows you to import/update products, main image files, and custom extension data. 
+      ```mdx-code-block
+      import ProductExport from '/docs/partials/pxm/import/export.mdx';
 
-      Using the Export API builds a `.csv` file containing the product entries. A `.csv` file can contain up to 10,000 product entries. If you have more than 10,000 product entries, then another `.csv` file is created and so on, until all your products are exported. 
-
-      You might have specified custom extension data in a `.csv` file when you imported the products. These modifications are all exported. So, when you send a request to the Export API, the `.csv` file, included in the Job endpoint response, reflects any changes that you have made. For more information, see [Exporting Custom Data (Flows)](#exporting-custom-data-flows).
-
-      After the files are exported, you get a link to the location where the `.csv` files are stored. You can then make any changes to the product fields (modify product information, add main image files, and custom extension data) in your exported `.csv` files. See [**Product Export CSV File**](/docs/api/pxm/products/product-export#product-export-csv-file).
-
-      Once you are happy with your changes, you can import the updated `.csv` files using product import. See [**Product Import/Bulk Update**](/docs/api/pxm/products/product-import-bulk-update).
+      <ProductExport />
+      ```
 
       ### Characteristics of Exporting Products
 
