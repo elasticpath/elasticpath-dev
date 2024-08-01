@@ -573,8 +573,8 @@ See [how to create a rule promotion with stackable and priority flags](/docs/rul
 
 Consider you have the following promotions:
 
-- Promotion A: Priority 90, Non-Stackable
-- Promotion B: Priority 60, Non-Stackable
+- Promotion A: Priority 90, Non-Stackable, with coupon code `big-flash-sale`.
+- Promotion B: Priority 60, Non-Stackable, with coupon code `monthly-special`.
 
 If Promotion A is applied first and the shopper attempts to apply Promotion B, Promotion B will not be applied.
 
@@ -586,7 +586,7 @@ The following error message is returned:
                 "source": {
                     "type": "promotion",
                     "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
-                    "code": "90"
+                    "code": "big-flash-sale"
                 },
                 "title": "Couldn't Stack Promotion",
                 "description": "Non-stackable promotion can't be applied with non-stackable promotion."
