@@ -586,7 +586,7 @@ The following error message is returned:
                 "source": {
                     "type": "promotion",
                     "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
-                    "code": "big-flash-sale"
+                    "code": "monthly-special"
                 },
                 "title": "Couldn't Stack Promotion",
                 "description": "Non-stackable promotion can't be applied with non-stackable promotion."
