@@ -108,3 +108,33 @@ curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
     }
 }
 ```
+
+You can pass the following request to update the Rule Promotion with the `priority` setting:
+
+```bash
+curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
+     -H "Authorization: Bearer XXXX" \
+     -H "Content-Type: application/json" \
+     -d $ {
+     "data": {
+        "type": "rule_promotion",
+        "priority": 90
+         }
+}
+```
+To remove the `priority` field, update `priority` to `null`:
+
+```bash
+curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
+     -H "Authorization: Bearer XXXX" \
+     -H "Content-Type: application/json" \
+     -d {
+       "data": {
+         "type": "rule_promotion",
+         "priority": null
+       }
+     }
+```
+
+
+
