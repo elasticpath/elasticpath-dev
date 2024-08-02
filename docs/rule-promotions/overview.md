@@ -551,7 +551,7 @@ You can include both SKUs and product IDs within the same rule promotion, provid
 
 ## Promotion Stacking and Priority
 
-Stacking and Ranking are essential concepts in managing rule promotions, ensuring that promotions are applied effectively and as intended.
+Stacking and Priority are essential concepts in managing rule promotions, ensuring that promotions are applied effectively and as intended.
 
 **Promotion Stacking** refers to the ability to stack multiple promotions on a single cart, it is possible to target the same items with multiple promotions or completely different items. A priority can be set to determine which promotions are applied first. If no priority is set, the Rule Promotions apply in order of creation date, with the newest promotions applied first and discounted prices calculated against any previously-discounted item prices. When promotions are stackable, they can be applied simultaneously, allowing shoppers to benefit from multiple discounts. The `stackable` flag in the promotion settings determines whether a promotion can be stacked with others. By default, this flag is set to `true`, enabling stacking. If the flag is set to `false`, no other promotion can stack on top. The promotion with the highest priority will take precedence. For more details, refer to the [Stacking Promotion Scenarios](/docs/rule-promotions/overview#stacking-promotion-scenarios) to understand the effects on stackable and non-stackable promotions.
 
