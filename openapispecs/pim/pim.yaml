@@ -324,22 +324,13 @@ tags:
       | BestEver Range | bestever-range-1a1a-30 | BE-Range-1a1a-30 | draft | as-new |
   - name: Hierarchies
     description: |
-      Use hierarchies to organize your products into categories and sub-categories. Define hierarchies that work for the products in your store.
+      ```mdx-code-block
+      import HierarchyOverview from '/docs/partials/pxm/hierarchies/hierarchies.mdx';
+      import HierarchyCatalog from '/docs/partials/pxm/hierarchies/hierarchycatalogs.mdx';
 
-      A hierarchy is a tree structure that consists of a root node with 1 or more parent nodes. Each parent node can also have one or more children nodes, and so on, creating a parent-child relationship between nodes.
+      <HierarchyOverview />
 
-      A product can belong to multiple nodes in multiple hierarchies.
-
-      ![Hierarchy Nodes](/assets/heirarchynodes.png)
-
-      - Sibling nodes are nodes with the same parent. Sibling nodes must have unique names and unique slugs.
-      - Nodes that are in different locations in a hierarchy, or across multiple hierarchies, do not need unique names and slugs.
-
-      ![Hierarchy Example](/assets/hierarchexample.png)
-
-      - If you move the **Electric Ranges** node to the **Built-in** node, all the children of the **Electric Ranges** node also move to the **Built-in** node.
-      - The nodes **Electric Ranges** and **Gas Ranges** are siblings. They must have unique names and slugs.
-      - The **Double Oven** nodes can have the same name because they have different parents.
+      ## Creating Hierarchies and Nodes
 
       You can create the **Major Appliances** hierarchy by performing the following steps.
 
@@ -363,22 +354,11 @@ tags:
           - **Built-in**
           - **Standalone**
 
-      Once you have created your products, (for more information, see [**Products API**](/docs/api/pxm/products/create-product)), you can use the Hierarchies API to organize your products. 
+      ## Hierarchies and Catalogs
 
-      - You can associate products with nodes. You cannot associate a product with the root node. For more information, see [**Create Node Product Relationships**](/docs/api/pxm/products/create-node-product-relationship).
-      - You can duplicate an existing hierarchy. This is useful because it enables you to quickly and easily create multiple hierarchies with the same node structure. Any nodes in the existing hierarchy are also created in the duplicated hierarchy. In addition, you can optionally specify whether you want products associated with the nodes in an existing hierarchy to be associated with the nodes in the duplicated hierarchy. See [**Duplicate a Hierarchy**](/docs/api/pxm/products/duplicate-hierarchy).
-      - You can move an existing node to a different location within the same hierarchy by changing its parent node. If the node has child nodes, they retain their relationship with the moved node. In other words, the node and all its children move to the new location in the hierarchy. For more information, see [**Create a Node in a hierarchy**](/docs/api/pxm/products/create-node).
-      - If your store supports multiple languages, you can localize new and existing hierarchies and nodes.
+      <HierarchyCatalog />
 
-      #### Hierarchies and Catalogs
-
-      The hierarchies determine which products appear in the catalog. When you create a catalog, you specify one or more hierarchies. Only the products that are associated with the selected hierarchies are included in the catalog. Your Front-end developers use the hierarchies to create and populate navigation menus in your storefront. You can improve how your customers search your store using the Catalog View API.
-
-      You can also specify the order you want your hierarchies to display in a published catalog. You can order your hierarchies on a catalog-by-catalog basis.
-
-      ![Hierarchy_sorting](/assets/hierarchy_sorting.png)
-
-      For more information, see Update a Catalog.
+      ```
   - name: Jobs
     description: |
       ```mdx-code-block
