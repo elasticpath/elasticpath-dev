@@ -1,0 +1,31 @@
+Use hierarchies to organize your products into categories and sub-categories. Define hierarchies that work for the products in your store.
+
+A hierarchy is a tree structure that consists of a root node with 1 or more parent nodes. Each parent node can also have one or more children nodes, and so on, creating a parent-child relationship between nodes.
+
+![Hierarchy Nodes](/assets/heirarchynodes.png)
+
+A product can belong to multiple nodes in multiple hierarchies. The following example of Elpa basketball shoe for men shows different hierarchies and nodes that the product might be in:
+
+- Brands > **Elpa**
+- Shoppers > **Men**
+- Shoes > Sports > **Basketball**
+
+The root of a hierarchy specifies the aspect of the product data that the hierarchy displays. For example, root can be categories, brands, types, or manufacturers of the products. You cannot assign products to a root node.A node in a hierarchy contains products grouped in a specific theme, such as a products from a specific brand.
+
+## Characteristics of Hierarchies and Nodes
+
+Below is an example of a hierarchy and its nodes.
+
+![Hierarchy Example](/assets/hierarchexample.png)
+
+- Sibling nodes are nodes with the same parent. Sibling nodes must have unique names and unique slugs. The nodes **Electric Ranges** and **Gas Ranges** are siblings. They must have unique names and slugs.
+- Nodes that are in different locations in a hierarchy, or across multiple hierarchies, do not need unique names and slugs.
+- If you move the **Electric Ranges** node to the **Built-in** node, all the children of the **Electric Ranges** node also move to the **Built-in** node.
+- The **Double Oven** nodes can have the same name because they have different parents.
+
+Once you have created your products, (for more information, see [**Products API**](/docs/api/pxm/products/create-product) or [Hierarhies](/docs/commerce-manager/product-experience-manager/hierarchies/overview) in Commerce Manager), you can use Hierarchies to organize your products.
+
+- You can associate products with nodes. You cannot associate a product with the root node. For more information, see [**Create Node Product Relationships**](/docs/api/pxm/products/create-node-product-relationship).
+- You can duplicate an existing hierarchy. This is useful because it enables you to quickly and easily create multiple hierarchies with the same node structure. Any nodes in the existing hierarchy are also created in the duplicated hierarchy. In addition, you can optionally specify whether you want products associated with the nodes in an existing hierarchy to be associated with the nodes in the duplicated hierarchy. See [**Duplicate a Hierarchy**](/docs/api/pxm/products/duplicate-hierarchy).
+- You can move an existing node to a different location within the same hierarchy by changing its parent node. If the node has child nodes, they retain their relationship with the moved node. In other words, the node and all its children move to the new location in the hierarchy. For more information, see [**Create a Node in a hierarchy**](/docs/api/pxm/products/create-node).
+- If your store supports multiple languages, you can localize new and existing hierarchies and nodes.
