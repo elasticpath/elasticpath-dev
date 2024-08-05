@@ -43,17 +43,29 @@ composable-cli [COMMAND] --[FLAG]
 
 ## Command reference
 
-| Command     | Alias |                                             Description |
+| **Command** | **Alias** |                                     **Description** |
 |:------------|:-----:|--------------------------------------------------------:|
 | login       |       |                             Login to the Composable CLI |
 | logout      |       |                            Logout of the Composable CLI |
-| generate    |   g   |                         generate Elasticpath storefront |
-| integration |  int  |     setup Elastic Path integrations for your storefront |
-| payments    |   p   | setup Elastic Path payment gateways for your storefront |
+| feedback    |       |                          Feedback to the Composable CLI |
 | config      |       |                      interact with stored configuration |
 | store       |       |                         interact with Elasticpath store |
-| feedback    |       |                          Feedback to the Composable CLI |
+| generate    |   g   |                         generate Elasticpath storefront |
 | insights    |       |                             opt in/out product insights |
+| integration |  int  |     setup Elastic Path integrations for your storefront |
+| payments    |   p   | setup Elastic Path payment gateways for your storefront |
+
+| **Options**    | **Description**                                     | **Value**                  |
+|:---------------|:----------------------------------------------------|---------------------------:|
+| --version      | Show version number                                 | [boolean]                  |
+| --debug      | Debug mode. This is true by default if the collection is a relative path | [boolean] [default: null] |
+| --interactive  | Setting to false disables interactive input prompts.| [boolean] [default: true]  |
+| -v, --verbose  | Run with verbose logging                            | [boolean] [default: false] |
+| -dry-run       | Run without generating output                       | [boolean] [default: null]  |
+| -allow-private | Allow private schematics to be run from the command line. | [boolean] [default: false] |
+| --force        | Force overwriting files that would otherwise be an error. | [boolean] |
+| --list-schematics | List all schematics from the collection, by name. | [boolean]                 |
+| -h, --help          | Show help                                       | [boolean]                 |
 
 ---
 
@@ -73,7 +85,7 @@ ep login
 
 ---
 
-## logout
+## Logout
 
 Logout of the Composable CLI
 
@@ -83,12 +95,16 @@ ep logout
 
 ---
 
-## generate
+:::note
+D2C is the only available option at this time
+:::
+
+## Generate
 
 Generate a new Elastic Path storefront
 
 ```bash
-ep generate [project-name]
+ep generate d2c [project-name]
 ```
 
 ### Flags
