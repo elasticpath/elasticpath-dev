@@ -7,7 +7,7 @@ import HomeFooter from '../components/homepage/HomeFooter';
 export default function Homepage() {
   return (
     <Layout
-      description="Changelog for Elastic Path's Composable APIs"
+      description="Changelog for Elastic Path's Composable, Headless APIs"
       wrapperClassName="homepage flex flex-col"
       noFooter
     >
