@@ -728,17 +728,21 @@ The following messages indicating the removal of Promotion B and the application
 | Conditions by item price (currently API only)                      | ⛔️  | ✅  |
 | Cart promotion preview                                             | ✅  | ✅ | 
 | Promotions by product SKU, category, product attribute             | ✅  | ✅  |
+| Promotions by product ID                                          | ✅  | ✅ |
 | Bundle fixed discount                                              | ✅  | coming soon |
 | Promotion history                                                  | ✅  | coming soon |
 | Bulk code generation (over 1000)                                   | ✅  | coming soon |
 | Advanced search                                                    | ⛔️  | coming soon |
 | Buy X for Y (buy in multiples of)                                  | ✅  | coming soon |
-| Stacking and ranking control (currently API only)                  | ⛔️  | ✅ |
+| Promotion Stacking and Priority (currently API only)               | ⛔️  | ✅ |
 | Free gift with auto Add                                            | ✅  | coming soon |
 | Free shipping promotions (for shipping groups)                     | ⛔️  | coming soon |
 | Cart item quantity conditions (line item quantity)                 | ✅ (limited to bundle promotions) | coming soon |
 | Item quantity conditions (minimum number of items in cart)         | ⛔️  | coming soon |
-|  Promotions by product ID                                          | ✅  | ✅ |
+| Targeting sub-total |                                              | ✅  | ✅ |
+| Targeting line item totals |                                       | ⛔️  | ⛔️ |
+| Coupon Code limitations for maximum quantity                       | ⛔️  | coming soon |
+| Copy Promotion                                                     | ✅  | coming soon |
 
 ## Related Resources
 
