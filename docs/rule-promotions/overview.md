@@ -741,8 +741,8 @@ The following messages indicating the removal of Promotion B and the application
 | Item quantity conditions (minimum number of items in cart)         | ⛔️  | coming soon |
 | Targeting sub-total                                                | ✅  | ✅ |
 | Targeting line item totals                                         | ⛔️  | ⛔️ |
-| Coupon Code limitations for maximum quantity                       | ✅  | ✅ |
-| Coupon Code limitations for maximum usage per customer             | ⛔️  | coming soon |
+| Coupon code limitations for maximum quantity                       | ✅  | ✅ |
+| Coupon code limitations for maximum usage per customer             | ⛔️  | coming soon |
 | Copy Promotion                                                     | ✅  | coming soon |
 
 ## Related Resources
