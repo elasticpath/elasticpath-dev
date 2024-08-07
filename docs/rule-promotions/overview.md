@@ -603,7 +603,7 @@ Consider you have the following promotions:
 
 If Promotion E is applied first and the cart becomes eligible for Promotion B, Promotion B is applied and Promotion E is removed.
 
-The following message is returned in the cart response:
+The following messages are returned in the cart response:
 
 ```json
 "messages": [
@@ -660,7 +660,7 @@ Consider you have the following Promotions:
 
 If Promotion B is applied first (non-stackable) and the shopper applies Promotion A, Promotion A is applied because it has a higher priority. Therefore, Promotion B will be removed from the cart.
 
-The following messages indicating the removal of Promotion B and the application of Promotion A is returned:
+The following messages indicating the removal of Promotion B and the application of Promotion A are returned:
 
 ```json
 "messages": [
@@ -707,6 +707,19 @@ The following messages indicating the removal of Promotion B and the application
             }
         ]
 ```
+
+#### Scenario 4: Higher priority promotion takes precedence when applying multiple stackable promotions
+
+When multiple promotions are stackable, and if these promotions have different priority levels, the one with the highest priority will be applied first. Subsequent promotions will be applied in order of their priority.
+
+For example, consider two stackable promotions:
+
+- Promotion A: Priority 90, discount 20%
+- Promotion B: Priority 60, discount 10%
+
+In this scenario, Promotion A, with a higher priority of 90, will be applied first, providing a 20% discount. Afterward, Promotion B, with a priority of 60, will be applied, giving an additional 10% discount on the already reduced price.
+
+The following cart response is received:
 
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
