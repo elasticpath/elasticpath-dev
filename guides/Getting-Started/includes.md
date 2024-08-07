@@ -36,6 +36,9 @@ The following endpoints support the `include` parameter:
 - [Get all Promotions](/docs/api/promotions/get-all-promotions)
 - [Get a Promotion](/docs/api/promotions/get-a-promotion)
 - [Get a Promotion History](/docs/api/promotions/get-a-promotion-history)
+- [Get all Account Memberships](/docs/api/accounts/get-v-2-accounts-account-id-account-memberships)
+- [Get a List of Account Memberships of Account Member](/docs/api/accounts/get-v-2-account-members-account-member-id-account-memberships)
+- [Get an Account Membership](/docs/api/accounts/get-v-2-accounts-account-id-account-memberships-membership-id)
 
 ## Characteristics of Include Parameter
 
