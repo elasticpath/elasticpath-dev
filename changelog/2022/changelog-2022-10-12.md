@@ -6,7 +6,7 @@ tags:
   - Commerce Manager
   - Product Experience Manager
 ---
-**Major** You can now create Application Keys, which are tied to the actual store instead of a user. This is helpful in avoiding scenarios like when a user in your organization leaves, then their user-specific keys leave with them. For more information, see [Application Keys](/docs/authentication/application-keys/application-keys-overview).
+**Major** You can now create Application Keys, which are tied to the actual store instead of a user. This is helpful in avoiding scenarios like when a user in your organization leaves, then their user-specific keys leave with them. For more information, see [Application Keys](/docs/api/application-keys/application-keys-introduction).
 
 Additionally, we have moved all keys and credentials to **Settings > Application Keys** section in Commerce Manager. For more information, see [Creating an Application Key](/docs/commerce-manager/application-keys/application-keys-cm).
 
