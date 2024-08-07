@@ -710,16 +710,418 @@ The following messages indicating the removal of Promotion B and the application
 
 #### Scenario 4: Higher priority promotion takes precedence when applying multiple stackable promotions
 
-When multiple promotions are stackable, and if these promotions have different priority levels, the one with the highest priority will be applied first. Subsequent promotions will be applied in order of their priority.
+When multiple promotions are stackable and have different priority levels, the one with the highest priority is applied first. Subsequent promotions are applied in descending order of their priority.
 
 For example, consider two stackable promotions:
 
 - Promotion A: Priority 90, discount 20%
 - Promotion B: Priority 60, discount 10%
 
-In this scenario, Promotion A, with a higher priority of 90, will be applied first, providing a 20% discount. Afterward, Promotion B, with a priority of 60, will be applied, giving an additional 10% discount on the already reduced price.
+In this scenario, Promotion A, with a higher priority of 90, is applied first, providing a 20% discount. Promotion B, with a priority of 60, is then applied, offering an additional 10% discount on the already reduced price.
 
-The following cart response is received:
+In this following cart response, you can see that the item originally priced at $100.00 has been reduced to $72.00 after applying both the 20% and 10% discounts in the correct order of priority.
+
+```json
+{
+    "data": [
+        {
+            "id": "f1ea154f-09ed-484c-a1eb-7d89d2687bf4",
+            "type": "custom_item",
+            ...,
+            "unit_price": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": true
+            },
+            "value": {
+                "amount": 10000,
+                "currency": "USD",
+                "includes_tax": true
+            },
+            "discounts": [
+                {
+                    "amount": {
+                        "amount": -2000,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "20-off",
+                    "id": "6683e778-54a1-4206-a042-36412ee0f104",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true,
+                    "ordinal": 1
+                },
+                {
+                    "amount": {
+                        "amount": -800,
+                        "currency": "USD",
+                        "includes_tax": false
+                    },
+                    "code": "10-off",
+                    "id": "c6ed29ea-be53-4e94-ba43-aa12d34b2124",
+                    "promotion_source": "rule-promotion",
+                    "is_cart_discount": true,
+                    "ordinal": 2
+                }
+            ],
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": 7200,
+                            "currency": "USD",
+                            "formatted": "$72.00"
+                        },
+                        "value": {
+                            "amount": 7200,
+                            "currency": "USD",
+                            "formatted": "$72.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": 7200,
+                            "currency": "USD",
+                            "formatted": "$72.00"
+                        },
+                        "value": {
+                            "amount": 7200,
+                            "currency": "USD",
+                            "formatted": "$72.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": -2800,
+                            "currency": "USD",
+                            "formatted": "-$28.00"
+                        },
+                        "value": {
+                            "amount": -2800,
+                            "currency": "USD",
+                            "formatted": "-$28.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        },
+                        "value": {
+                            "amount": 10000,
+                            "currency": "USD",
+                            "formatted": "$100.00"
+                        }
+                    },
+                    "discounts": {
+                        "10-off": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00",
+                            "constituents": {
+                                "c6ed29ea-be53-4e94-ba43-aa12d34b2124": {
+                                    "amount": -800,
+                                    "currency": "USD",
+                                    "formatted": "-$8.00"
+                                }
+                            }
+                        },
+                        "20-off": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00",
+                            "constituents": {
+                                "6683e778-54a1-4206-a042-36412ee0f104": {
+                                    "amount": -2000,
+                                    "currency": "USD",
+                                    "formatted": "-$20.00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-08-07T20:05:58Z",
+                    "updated_at": "2024-08-07T20:05:58Z"
+                }
+            }
+        },
+        {
+            "id": "869ae2ca-b6ee-4307-8e9e-d5954524029d",
+            "type": "promotion_item",
+            "online_store_url": null,
+            "promotion_id": "6683e778-54a1-4206-a042-36412ee0f104",
+            "name": "10% off your items!",
+            "description": "Promotion",
+            "sku": "20-off",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": -2000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -2000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-08-07T20:05:58Z",
+                    "updated_at": "2024-08-07T20:05:58Z"
+                }
+            },
+            "promotion_source": "rule-promotion"
+        },
+        {
+            "id": "cf90c0ff-973d-4dcf-90aa-3a678c8a1ba1",
+            "type": "promotion_item",
+            "online_store_url": null,
+            "promotion_id": "c6ed29ea-be53-4e94-ba43-aa12d34b2124",
+            "name": "10% off your items!",
+            "description": "Promotion",
+            "sku": "10-off",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": -800,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -800,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        },
+                        "value": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        },
+                        "value": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-08-07T20:05:58Z",
+                    "updated_at": "2024-08-07T20:05:58Z"
+                }
+            },
+            "promotion_source": "rule-promotion"
+        }
+    ],
+    "meta": {
+        "display_price": {
+            "with_tax": {
+                "amount": 7200,
+                "currency": "USD",
+                "formatted": "$72.00"
+            },
+            "without_tax": {
+                "amount": 7200,
+                "currency": "USD",
+                "formatted": "$72.00"
+            },
+            "tax": {
+                "amount": 0,
+                "currency": "USD",
+                "formatted": "$0.00"
+            },
+            "discount": {
+                "amount": -2800,
+                "currency": "USD",
+                "formatted": "-$28.00"
+            },
+            "without_discount": {
+                "amount": 10000,
+                "currency": "USD",
+                "formatted": "$100.00"
+            },
+            "shipping": {
+                "amount": 0,
+                "currency": "USD",
+                "formatted": "$0.00"
+            }
+        },
+        "timestamps": {
+            "created_at": "2024-08-06T20:56:01Z",
+            "updated_at": "2024-08-07T20:05:58Z",
+            "expires_at": "2024-09-06T20:05:58Z"
+        },
+        "messages": [
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "869ae2ca-b6ee-4307-8e9e-d5954524029d"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "cf90c0ff-973d-4dcf-90aa-3a678c8a1ba1"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "custom_item",
+                    "id": "f1ea154f-09ed-484c-a1eb-7d89d2687bf4"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            }
+        ]
+    }
+}
+```
 
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
