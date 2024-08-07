@@ -19,14 +19,9 @@ servers:
     description: EU West
 security:
   - bearerAuth: [ ]
-tags:
-  - name: Merchant Realm Mapping
-    description: The Merchant Realm Mapping object is used to locate the [Authentication Realm](/docs/authentication/single-sign-on/authentication-realm-api/authentication-realm-api-overview) which administrators use to sign in to a store via single sign-on.
 paths:
   /v2/merchant-realm-mappings:
     get:
-      tags:
-        - Merchant Realm Mapping
       summary: Get the Merchant Realm Mapping for the current store
       # language=Markdown
       description: |
@@ -50,13 +45,17 @@ paths:
         default:
           $ref: '#/components/responses/InternalServerError'
   /v2/merchant-realm-mappings/{mapping_id}:
-    parameters:
-      - $ref: "#/components/parameters/MappingId"
     get:
-      tags:
-        - Merchant Realm Mapping
       summary: Get a Merchant Realm Mapping
       operationId: getMerchantRealmMapping
+      parameters:
+        - name: mapping_id
+          in: path
+          required: true
+          description: The id of the Application Key.
+          schema:
+            type: string
+            example: "0c45e4ec-26e0-4043-86e4-c15b9cf985a0"
       responses:
         '200':
           description: OK
@@ -75,10 +74,16 @@ paths:
         default:
           $ref: '#/components/responses/InternalServerError'
     put:
-      tags:
-        - Merchant Realm Mapping
       summary: Update a Merchant Realm Mapping
       operationId: updateMerchantRealmMapping
+      parameters:
+        - name: mapping_id
+          in: path
+          required: true
+          description: The id of the Application Key.
+          schema:
+            type: string
+            example: "0c45e4ec-26e0-4043-86e4-c15b9cf985a0"
       requestBody:
         required: true
         content:
@@ -118,15 +123,6 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-  parameters:
-    MappingId:
-      name: mapping_id
-      in: path
-      required: true
-      description: The id of the Application Key.
-      schema:
-        type: string
-      example: "0c45e4ec-26e0-4043-86e4-c15b9cf985a0"
   schemas:
     MerchantRealmMapping:
       properties:
