@@ -1,0 +1,13 @@
+You can use price modifiers to change the price property of child products. By default, child products inherit the same price as their base products. Using price modifiers, you can enable child products to inherit a different price. This enables you to configure the price of child products, for example, to be lower than its base product, without having to individually update the price of your child products. There are three types of price modifier.
+
+Modifier | Data Type | Effect |
+| :--- | :--- | :--- |
+| `price_increment` | `string` | Increases the price of a product. |
+| `price_decrement` | `string` | Decreases the price of a product. |
+| `price_equals` | `string` | Sets the price of a product to the amount you specify. |
+
+The following is an overview of the steps you need to follow to use price modifiers.
+
+1. Create a price modifier. You must give the price modifier a unique name, for example, tax_modifier.
+1. Create a product modifier that uses the same name as the price modifier.
+1. [**Build your child products**](/docs/api/pxm/products/build-child-products) with the new product modifier.

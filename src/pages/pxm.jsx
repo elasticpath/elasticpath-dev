@@ -6,7 +6,7 @@ import HomeFooter from '../components/homepage/HomeFooter';
 export default function Pxm() {
     return (
         <Layout
-            description="Documentation and OpenAPI specifications for Elastic Path's Composable APIs"
+            description="Documentation and OpenAPI specifications for Elastic Path's Product Experience Manager APIs"
             wrapperClassName="homepage flex flex-col"
             noFooter
         >

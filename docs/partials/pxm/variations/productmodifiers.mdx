@@ -1,0 +1,12 @@
+Use modifiers to change the properties of child products that are inherited from a base product. With modifiers, you only need to have one base product with a variation attached to the product.
+
+Modifiers attached to a variation option are applied to a base product to create child products. For example, instead of creating three base products for three different shirt colors, you can do the following:
+
+1. [**Create a parent product**](/docs/api/pxm/products/create-product), *shirt*, with the variation, *color*, attached to it.
+1. Create three options for the *color* variation. See [**Create a variation option**](/docs/api/pxm/products/create-variation-option).
+1. [**Create a modifier**](/docs/api/pxm/products/create-modifier) for each option to change the properties of each child product. For example, attach a *description append* modifier to each option so that each child product has different description based on the color of the child product.
+1. [**Build the child products**](/docs/api/pxm/products/build-child-products).
+
+This screenshot provides an example of a child product of *shirt* which has a specific description associated with it because of the *description append* modifier setting for the option *yellow*:
+
+![Child products with different descriptions](/assets/modifier-description-append.png)
