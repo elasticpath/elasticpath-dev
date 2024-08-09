@@ -598,8 +598,8 @@ The following error message is returned:
 
 Consider you have the following promotions:
 
-- Promotion B: Priority 90, Non-Stackable
-- Promotion E: Priority 60, Non-Stackable
+  - Promotion B: Priority 90, Non-Stackable
+  - Promotion E: Priority 60, Non-Stackable
 
 If Promotion E is applied first and the cart becomes eligible for Promotion B, Promotion B is applied and Promotion E is removed.
 
