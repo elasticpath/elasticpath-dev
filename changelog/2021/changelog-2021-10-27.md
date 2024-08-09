@@ -4,4 +4,4 @@ date: '2021-10-27'
 tags:
   - Promotions
 ---
-**Major** You can now view the history of a promotion using the API endpoint [`history`](/docs/commerce-cloud/promotions/promotion-management/get-promotion-history).
+**Major** You can now view the history of a promotion using the API endpoint [`history`](/docs/api/promotions/get-a-promotion-history).

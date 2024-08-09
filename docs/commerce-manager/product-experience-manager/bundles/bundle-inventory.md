@@ -4,13 +4,9 @@ sidebar_label: Bundle inventory
 sidebar_position: 60
 ---
 
-Bundle inventory allows you and your business to keep track of inventory, including a transaction-historic log.
+import BundleInventory from "/docs/partials/pxm/bundles/bundleinventory.mdx";
 
-You can track the number of bundles by SKU, if you set the number of bundles available in store. Bundle inventory can be tracked based on the availability of individual items in the bundle. In this case, the maximum number of bundles you can sell is equal to the number of the option that is least available.
-
-You cannot track the inventory of a bundle without a SKU. However, you can track the inventory based on the availability of individual items.
-
-Whether your bundle has a SKU or is SKU-less depends on your bundle's pricing. See [Bundle pricing](/docs/commerce-manager/product-experience-manager/bundles/bundle-pricing).
+<BundleInventory></BundleInventory>
 
 1. Go to **Products**.
 1. In **All Products**, select the bundle for which you want to configure inventory.

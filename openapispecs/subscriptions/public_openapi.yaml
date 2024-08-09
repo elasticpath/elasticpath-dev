@@ -117,8 +117,8 @@ tags:
        | --- | --- | --- | --- |
        | Single product and plan | One product with a product price of $50 | A monthly plan with a 5% discount | An offering with a monthly plan for $47.50 a month |
        | Single product with multiple plans | One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
-       | Multiple products and plan | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75</li></ul>. | A monthly plan with a 5% discount. | An offering with a monthly plan for $118.75 a month. | 
-       | Multiple products with multiple plans | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75</li></ul>. | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $118.75 a month</li><li>A yearly plan for $112.50 a month</li></ul> | 
+       | Multiple products and plan | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | A monthly plan with a 5% discount. | An offering with a monthly plan for $118.75 a month. | 
+       | Multiple products with multiple plans | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $118.75 a month</li><li>A yearly plan for $112.50 a month</li></ul> | 
 
       ### Building an Offering
 
@@ -360,7 +360,7 @@ tags:
 
       | Attribute | Required | Description |
       | --- | --- | --- |
-      | `payment_retry_type` | Optional | One of the following options: <ul><li>`fixed` - use `fixed` if you want a fixed time interval between payment retries.</li><li>`backoff` - use `backoff` if you want the time between retry attempts to increase exponentially.</li><li>`tiered` - use `tiered` if you want to specify a list of time durations</li></ul>.  |
+      | `payment_retry_type` | Optional | One of the following options: <ul><li>`fixed` - use `fixed` if you want a fixed time interval between payment retries.</li><li>`backoff` - use `backoff` if you want the time between retry attempts to increase exponentially.</li><li>`tiered` - use `tiered` if you want to specify a list of time durations.</li></ul>  |
       | `payment_retry_interval` | Optional | Represents the retry interval. For example, if `payment_retry_unit` is `week` and `payment_retry_interval` is `1` then, the payment retry interval is 1 week.  |
       | `payment_retry_multiplier` | Optional | Use when `payment_retry_type` is `tiered` and represents the factor by which the time duration increases after each retry.   |
       | `payment_retry_unit` | Optional | Represents the unit of time, either `day` or `week`. |
@@ -427,6 +427,25 @@ tags:
       - Do nothing - the subscription remains active and Subscriptions does not attempt to retry the payment. However, the subscription is still available for a subscriber to use.
       - Suspend the subscription. Subscriptions does not attempt to retry the payment. A subscriber can choose to pay the outstanding invoice. However, a subscriber cannot renew their subscription; a merchandizer must renew the subscription on behalf of the subscriber.
       - close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment. 
+  - name: Proration Policies
+    description: |
+      Proration is the adjustment of charges or credits on a subscriber's account based on the amount of time a service is used. Proration ensures that subscribers are only charged for the actual time they use the service, whether they upgrade, downgrade, start, or cancel their subscription partway through a billing cycle. This means fair billing for your subscribers and provides you with the flexibility to change your subscribers subscriptions at any time.
+
+      Proration occurs for:
+
+      - Plan upgrades/downgrades:  If a subscriber changes their plan in the middle of a billing cycle, proration adjusts the charges to reflect the time spent on each plan.
+      - Service cancellation: If a subscriber cancels a subscription before the end of a billing cycle, they may receive a prorated invoice for the used portion of the subscription.
+      - Mid-cycle subscription: If a subscriber starts a subscription in the middle of a billing cycle, they are charged a prorated amount for the remaining days in the billing cycle.
+
+      There are several scenarios when implementing proration policies.
+
+      1. You may want one policy for multiple offerings because only some subscriptions need prorating.
+      2. You may want a default proration policy for your store.
+      3. You may want several policies for different offerings. 
+
+      In Subscriptions, charges only prorate by day. As soon as a subscriber changes their subscription, a manual billing run is triggered and an invoice is generated with the new price on the next billing run and the difference in price is prorated over days.  
+
+      By default, proration is not enabled for Subscriptions. Once you have attached a proration policy to an offering, proration is enabled automatically.
   - name: Observable Events
     description: |
       You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. 
@@ -1229,6 +1248,10 @@ paths:
       tags:
         - Offerings
       summary: Manage prorations on an offering
+      description: |
+        Proration ensures that subscribers are only charged for the actual time they use a service, whether they upgrade, downgrade, start, or cancel their subscription partway through a billing cycle. By default, proration is not enabled for Subscriptions. Once you have attached a proration policy to an offering, proration is enabled automatically.
+
+        You must create a proration policy before you can attach the policy to an offering. See [Create a Proration Policy](/docs/api/subscriptions/create-proration-policy).
       operationId: ManageProrationsOnOffering
       requestBody:
         content:
@@ -1507,6 +1530,44 @@ paths:
                       $ref: '#/components/schemas/OfferingProduct'
         '400':
           $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Subscriptions
+      summary: Manage subscription products
+      description: Manage subscription products by replacing, changing or detaching products on the subscription
+      operationId: ManageSubscriptionProducts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  type: array
+                  description: A list of product IDs to manage on the subscription.
+                  items:
+                    $ref: '#/components/schemas/ManageSubscriptionProducts'
+              example:
+                data:
+                  - type: attach
+                    products:
+                      - bafa601f-359c-48da-834e-377b6c0d9466
+                  - type: detach
+                    products:
+                      - a8aad94d-60fc-44f7-8dfa-299249566ec4
+      responses:
+        '204':
+          description: Success. The subscription's products have been updated.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
         '404':
           $ref: '#/components/responses/NotFoundError'
         '500':
@@ -2416,29 +2477,29 @@ paths:
       summary: Create a dunning rule
       description: |
         Dunning rules must use a `fixed` strategy. This means payments are retried on a fixed schedule. 
-         
+
         When an invoice is created, it immediately becomes eligible for payment by the next payment run. If the first payment attempt fails then the invoice enters dunning. In subsequent payment runs, invoices are only  considered for payment if they meet the dunning rules you create.
-         
+
         You can configure a dunning rule to be the default for your store. There can only be one default rule per store. All invoices in your store will then perform dunning according to the specified rules. 
-         
+
         :::note
         If no dunning rule is configured, then payment is retried once a day for 10 days, in total 11 payments. You can decide what action to take after the Subscriptions has stopped retrying the payments.
         :::
-         
+
         The following attributes are used to define a `fixed` schedule:
-         
+
         - `payment_retry_unit - the unit of time used to measure the intervals between payment attempts or retries. 
         - `payment_retry_interval` - the number of `payment_interval-units` to wait between each payment retry attempt.
         - `payment_retries_limit` - the number of times subscriptions attempts payments retries before an `action` is taken.
         - `action` - the action to take if payment is not successful.
-         
+
         For example, if:
-         
+
         - the `payment_retry_unit` is `days` 
         - the `payment_retry_interval` is `2`
         - the `payment_rety_limit` is `10`
         - the `action` is `close`.
-         
+
         Subscriptions attempts to retry the payment every 2 days until 10 payment attempts have been tried. At that point, the subscription ends and it's status changes to `inacive`. 
 
         Following on from this, you can specify that the dunning rule is no longer the default. You do not have to specify another rule to replace it. If you do remove the default dunning rule, the store defaults to the behavior that is followed when dunning is not enabled.
@@ -2577,8 +2638,10 @@ paths:
   /subscriptions/proration-policies:
     post:
       tags:
-        - ProrationPolicies
+        - Proration Policies
       summary: Create a Proration Policy
+      description: |
+        In Subscriptions, you configure proration by creating a proration policy and attaching it to an offering. Once you have [attached](/docs/api/subscriptions/manage-prorations-on-offering) the policy, the proration policy applies to all subscriptions that use the offering.
       operationId: CreateProrationPolicy
       requestBody:
         content:
@@ -2606,7 +2669,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     get:
       tags:
-        - ProrationPolicies
+        - Proration Policies
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -2642,7 +2705,7 @@ paths:
           $ref: '#/components/schemas/UUID'
     get:
       tags:
-        - ProrationPolicies
+        - Proration Policies
       summary: Get proration policy
       operationId: GetProrationPolicy
       responses:
@@ -2663,9 +2726,18 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     put:
       tags:
-        - ProrationPolicies
+        - Proration Policies
       summary: Update proration policy
-      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the proration policy is not updated.
+      description: |
+        You can update a proration policy at any time. For any subscriptions that are using the updated proration policy, the changes are also applied. Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the proration policy is not updated.
+         
+        When updating proration policies:
+         
+        - You can change the name of an existing policy.
+        - You can update `rounding`.
+        - You can update `external_ref` as long as `external_ref` is still unique in  your store.
+        - You can remove `external_ref` as this attribute is optional.
+        - You cannot remove any required attributes, such as `name` or `rounding`.
       operationId: UpdateProrationPolicy
       requestBody:
         content:
@@ -2697,9 +2769,9 @@ paths:
           $ref: '#/components/responses/WriteConflictError'
     delete:
       tags:
-        - ProrationPolicies
+        - Proration Policies
       summary: Delete proration policy
-      description: Delete a proration policy
+      description: A proration policy cannot be deleted if it is being used by any subscriptions. This means you must detach a proration policy that you want to delete from any offerings using that policy before deleting the policy. See [Remove a proration policy from an offering](/docs/api/subscriptions/manage-prorations-on-offering).
       operationId: DeleteProrationPolicy
       responses:
         '204':
@@ -2843,9 +2915,9 @@ components:
         - subscription_product
     ProrationPolicyType:
       type: string
-      example: proration_policy
+      example: subscription_proration_policy
       enum:
-        - proration_policy
+        - subscription_proration_policy
     SubscriptionDunningRuleType:
       type: string
       example: subscription_dunning_rule
@@ -3402,7 +3474,7 @@ components:
           example: none
           description: |
             The action to take after all payment attempts for an invoice have failed.
-             
+
             - None - the subscription remains active and Subscriptions does not attempt to retry the payment. However, the subscription is still available for a subscriber to use.
             - Suspend the subscription. Subscriptions does not attempt to retry the payment. A subscriber can choose to pay the outstanding invoice. However, a subscriber cannot renew their subscription; a merchandizer must renew the subscription on behalf of the subscriber.
             - close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment.
@@ -3542,7 +3614,12 @@ components:
           maxLength: 1024
         rounding:
           type: string
-          description: Whether to round up or down
+          description: |
+            When rounding in proration, you must decide how to round the units of time used to calculate the charges.
+             
+            - round up to the next unit, ensuring subscribers are charged slightly more to cover any partial use.
+            - round down to the previous whole unit, providing subscribers with a slight benefit by not charging for partial use.
+            - round to the nearest whole unit, whether up or down, based on standard rounding rules. For example, rounding 0.5 up and rounding 0.5 down.
           enum:
             - up
             - down
@@ -4038,8 +4115,6 @@ components:
     BuildSubscription:
       required:
         - account_id
-        - offering_id
-        - plan_id
         - currency
         - name
         - email
@@ -4067,8 +4142,30 @@ components:
           minLength: 3
           maxLength: 1024
           example: albert@elasticpath.com
+        offering:
+          $ref: '#/components/schemas/OfferingAttributes'
+        products:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ProductAttributes'
+        plans:
+          type: array
+          minItems: 1
+          items:
+            allOf:
+              - $ref: '#/components/schemas/PlanAttributes'
+              - $ref: '#/components/schemas/SelectedPlanMeta'
         meta:
           $ref: '#/components/schemas/SubscriptionMeta'
+    SelectedPlanMeta:
+      properties:
+        meta:
+          properties:
+            selected:
+              type: boolean
+              example: true
+              description: One plan must be selected for use in the subscription
     Subscription:
       required:
         - type
@@ -4085,6 +4182,28 @@ components:
           $ref: '#/components/schemas/Relationships'
         meta:
           $ref: '#/components/schemas/SubscriptionMeta'
+    ManageSubscriptionProducts:
+      type: object
+      required:
+        - type
+        - products
+      properties:
+        type:
+          type: string
+          enum:
+            - attach
+            - detach
+            - replace
+          example: detach
+          x-go-type: model.ManageProductsAction
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        products:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/UUID'
     SubscriptionUpdate:
       required:
         - id
@@ -4155,7 +4274,7 @@ components:
           description: Whether a subscription is suspended or not.
           example: false
         invoice_after:
-          description: The date and time after which a subscription invoice will be generated.
+          description: The time when the subscription becomes eligible for a new invoice. The next invoice will be generated at the next billing run after this point.
           type: string
           example: '2017-01-10T11:41:19.244842Z'
     SubscriptionTimestamps:
@@ -4827,6 +4946,16 @@ components:
           example: Magazine issue
         price:
           $ref: '#/components/schemas/SingleCurrencyPrice'
+        product_id:
+          $ref: '#/components/schemas/UUID'
+        from_time_period:
+          description: The start date and time of the billing period in this price
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+        until_time_period:
+          description: The end date and time of the billing period in this price
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
     ErrorResponse:
       required:
         - errors

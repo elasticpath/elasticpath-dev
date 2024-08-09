@@ -30,7 +30,7 @@ You can generate different types of access tokens based on the level of access n
 - `client_credentials` token - Enables full access to all resources in the store. Use this type of token to create, read, update, or delete resources by using the API.
 - `implicit` token - Enables read access to resources in the store. Use this type of token to perform actions that a store customer would do, that is, access live resources available from the storefront.
 
-In addition, a `customer` token is required to access a customer profile, including addresses and order history when using an `implicit` token.
+In addition, an `account` or `customer` token is required to access a shopper profile, including addresses and order history when using an `implicit` token.
 
 :::caution
 Removing a team member removes the unique ClientID and Client Secret associated with that team member.
@@ -44,4 +44,4 @@ Single sign-on allows authentication with Commerce using an external authenticat
 
 - [Your first API request](/guides/Getting-Started/your-first-api-request)
 - [Authentication](/docs/authentication)
-- [Application Keys](/docs/authentication/application-keys/application-keys-overview)
+- [Application Keys](/docs/api/application-keys/application-keys-introduction)

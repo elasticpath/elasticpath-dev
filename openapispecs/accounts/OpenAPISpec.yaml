@@ -10,30 +10,29 @@ info:
 
     In a typical B2C scenario, an account usually has a single account member. However, this functionality can also be used to support use cases such as family accounts, allowing multiple family members to transact on behalf of their shared account. In a B2B scenario, an account will have multiple members from a business unit, all of whom can transact on behalf of their organization.
     
-     ## Accounts vs Customers
-
-      Accounts is the next generation of [Customers](/docs/customer-management/customers). Customers are not going anywhere, but accounts offers more capabilities. We recommend using Accounts for any of your new use cases.
-
-       | Feature                                                 | Customers        | Accounts         |
-       | ------------------------------------------------------- | ---------------- | ---------------- |
-       | B2C Accounts                                            | ✅                | ✅                |
-       | Family Accounts                                         | ⛔️               | ✅                |
-       | B2B Accounts                                            | ⛔️               | ✅                |
-       | Authentication: Shopper impersonation                   | ⛔️               | ✅                |
-       | Authentication: OpenID support                          | ✅                | ✅                |
-       | Authentication: One time passwords, and password reset  | ⛔️               | ✅                |
-       | Authentication: Configurable token expiry               | ⛔️               | ✅                |
-       | Cart association                                        | ✅                | ✅                |
-       | Shopper specific Promotions                             | ✅                | Planned          |
-       | Shopper specific Catalogs                               | ✅                | ✅                |
-       | Addresses                                               | ✅                | ✅                |
-       | Personal Data support                                   | ✅                | ✅                |
-
-contact:
+    ## Accounts vs Customers
+    
+    Accounts is the next generation of [Customers](/docs/customer-management/customers). Customers are not going anywhere, but accounts offers more capabilities. We recommend using Accounts for any of your new use cases.
+    
+    | Feature                                                 | Customers        | Accounts         |
+    | ------------------------------------------------------- | ---------------- | ---------------- |
+    | B2C Accounts                                            | ✅                | ✅                |
+    | Family Accounts                                         | ⛔️               | ✅                |
+    | B2B Accounts                                            | ⛔️               | ✅                |
+    | Authentication: Shopper impersonation                   | ⛔️               | ✅                |
+    | Authentication: OpenID support                          | ✅                | ✅                |
+    | Authentication: One time passwords, and password reset  | ⛔️               | ✅                |
+    | Authentication: Configurable token expiry               | ⛔️               | ✅                |
+    | Cart association                                        | ✅                | ✅                |
+    | Shopper specific Promotions                             | ✅                | Planned          |
+    | Shopper specific Catalogs                               | ✅                | ✅                |
+    | Addresses                                               | ✅                | ✅                |
+    | Personal Data support                                   | ✅                | ✅                |
+  contact:
     name: Elastic Path
     url: 'https://www.elasticpath.com'
     email: support@elasticpath.com
-license:
+  license:
     url: 'https://elasticpath.dev'
     name: MIT
 servers:
@@ -60,6 +59,8 @@ paths:
                   oneOf:
                     - $ref: '#/components/schemas/Account'
                     - $ref: '#/components/schemas/SubAccount'
+              discriminator:
+                propertyName: parent_id
               required:
                 - data
             examples:
@@ -91,7 +92,9 @@ paths:
                   data:
                     $ref: '#/components/schemas/AccountResponse'
         '400':
-          $ref: '#/components/schemas/ErrorBadRequest'
+          $ref: '#/components/responses/BadRequestError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     get:
@@ -163,6 +166,10 @@ paths:
                         description: Always `null` if the user is on the first page.
                         type: string
                         example: null
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   '/v2/accounts/{accountID}':
@@ -190,7 +197,9 @@ paths:
                   data:
                     $ref: '#/components/schemas/AccountResponse'
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     put:
@@ -213,7 +222,12 @@ paths:
               type: object
               properties:
                 data:
-                  $ref: '#/components/schemas/Account'
+                  type: object
+                  oneOf:
+                    - $ref: '#/components/schemas/Account'
+                    - $ref: '#/components/schemas/SubAccount'
+              discriminator:
+                propertyName: parent_id
               required:
                 - type
             examples:
@@ -325,6 +339,8 @@ paths:
                         title:
                           type: string
                           example: "Not Found"
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     delete:
@@ -344,7 +360,9 @@ paths:
         '204':
           description: No Content
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   /v2/account-members:
@@ -352,7 +370,7 @@ paths:
       tags:
         - Account Members
       summary: Get all Account Members
-      description: | 
+      description: |
         Get all account members contained within your store.
         
         ### Filtering
@@ -409,6 +427,10 @@ paths:
                         description: Always `null` if the user is on the first page.
                         type: string
                         example: null
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   '/v2/account-members/{accountMemberID}':
@@ -436,7 +458,9 @@ paths:
                   data:
                     $ref: '#/components/schemas/AccountMemberResponse'
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   '/v2/accounts/{accountID}/account-memberships':
@@ -472,7 +496,7 @@ paths:
                 value:
                   data:
                     type: account_membership
-                    account_member_id: 9e227208-b592-49c0-8c8f-043b66c634b0
+                    account_member_id: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
       responses:
         '201':
           description: Created
@@ -484,9 +508,11 @@ paths:
                   data:
                     $ref: '#/components/schemas/AccountMembershipResponse'
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
         '409':
-          $ref: '#/components/schemas/ErrorConflict'
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: [ ]
     get:
@@ -494,9 +520,7 @@ paths:
         - Account Membership
       summary: Get all Account Memberships
       description: |-
-        You can also use `include=account_member` to retrieve details about the account members associated with the account memberships.
-
-        With this option, you can get more information about the account members such as name and email in a single request.
+        You can also use `include=account_member` to retrieve details about the account members associated with the account memberships. With this option, you can get more information about the account members such as name and email in a single request. For more information see [including resources](/guides/Getting-Started/includes).
 
         ### Filtering
 
@@ -517,6 +541,13 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page-limit'
         - $ref: '#/components/parameters/page-offset'
+        - $ref: '#/components/parameters/include-account-member'
+        - name: accountID
+          in: path
+          description: The ID of the account for which you want to get the list of unassigned account members.
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -557,6 +588,10 @@ paths:
                         description: Always `null` if the user is on the first page.
                         type: string
                         example: null
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: [ ]
   '/v2/account-members/{accountMemberId}/account-memberships':
@@ -565,7 +600,9 @@ paths:
         - Account Membership
       summary: Get a List of Account Memberships of Account Member
       description: |
-        You can also use `include=account` to retrieve details about the accounts associated with the account memberships. You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
+        You can also use `include=account` to retrieve details about the accounts associated with the account memberships. For more information see [including resources](/guides/Getting-Started/includes).
+        
+        You can use pagination with this resource. For more information, see [pagination](/guides/Getting-Started/pagination).
         
         ### Filtering
 
@@ -582,6 +619,7 @@ paths:
       operationId: get-v2-account-members-accountMemberId-account-memberships
       parameters:
         - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/include-account'
         - name: accountMemberId
           in: path
           description: The ID of the account member for which you want to list the memberships.
@@ -629,7 +667,9 @@ paths:
                         type: string
                         example: null
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   '/v2/accounts/{accountID}/account-memberships/unassigned-account-members':
@@ -714,7 +754,11 @@ paths:
                         type: string
                         example: null
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   '/v2/accounts/{accountID}/account-memberships/{membershipID}':
@@ -722,9 +766,13 @@ paths:
       tags:
         - Account Membership
       summary: Get an Account Membership
-      description: Get an account membership from an account in your store
+      description: |
+        Get an account membership from an account in your store.
+        
+        You can also use `include=account_member` to retrieve details about the account member associated with this account membership. With this option, you can get more information about the account member such as name and email in a single request. For more information see [including resources](/guides/Getting-Started/includes).
       operationId: get-v2-accounts-accountID-account-memberships-membershipID
       parameters:
+        - $ref: '#/components/parameters/include-account-member'
         - name: accountID
           in: path
           description: The unique identifier of the account that the account member is associated with.
@@ -748,7 +796,9 @@ paths:
                   data:
                     $ref: '#/components/schemas/AccountMembershipResponse'
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     put:
@@ -786,7 +836,7 @@ paths:
                 value:
                   data:
                     type: account_membership
-                    account_member_id: 9e227208-b592-49c0-8c8f-043b66c634b0
+                    account_member_id: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
       responses:
         '200':
           description: OK
@@ -798,9 +848,11 @@ paths:
                   data:
                     $ref: '#/components/schemas/AccountMembershipResponse'
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
         '409':
-          $ref: '#/components/schemas/ErrorConflict'
+          $ref: '#/components/responses/ConflictError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     delete:
@@ -826,7 +878,9 @@ paths:
         '204':
           description: No Content
         '404':
-          $ref: '#/components/schemas/ErrorNotFound'
+          $ref: '#/components/responses/NotFoundError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   /v2/settings/account-membership:
@@ -843,6 +897,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountMembershipSettings'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     put:
@@ -870,7 +928,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/AccountMembershipSettings'
         '400':
-          $ref: '#/components/schemas/ErrorBadRequest'
+          $ref: '#/components/responses/BadRequestError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   /v2/settings/account-authentication:
@@ -887,6 +947,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountAuthenticationSettingsResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
     put:
@@ -911,7 +975,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/AccountAuthenticationSettingsResponse'
         '400':
-          $ref: '#/components/schemas/ErrorBadRequest'
+          $ref: '#/components/responses/BadRequestError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
   /v2/account-members/tokens:
@@ -922,7 +988,7 @@ paths:
       description: |
         Commerce provides authentication tokens for anyone using the Account Management APIs, including accounts and account members.
 
-        For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/carts-orders/account-cart-associations), [orders](/docs/api/carts/orders), [catalogs with associated rules](/docs/api/pxm/catalog/rules), and [addresses](/docs/api/addresses/addresses-introduction).
+        For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/api/carts/account-cart-associations), [orders](/docs/api/carts/orders), [catalogs with associated rules](/docs/api/pxm/catalog/rules), and [addresses](/docs/api/addresses/addresses-introduction).
 
         The set of permissions available to a shopper using an Account Management Authentication token is documented in [Permissions](/docs/authentication/Tokens/permissions)
         
@@ -948,6 +1014,8 @@ paths:
                     - $ref: '#/components/schemas/PasswordlessRequest'
                     - $ref: '#/components/schemas/SelfSignupRequest'
                     - $ref: '#/components/schemas/SwitchingAccountRequest'
+              discriminator:
+                propertyName: authentication_mechanism
               required:
                 - data
             examples:
@@ -1031,7 +1099,9 @@ paths:
                         type: string
                         example: null
         '401':
-          $ref: '#/components/schemas/ErrorUnauthorized'
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       security:
         - BearerToken: []
 tags:
@@ -1098,6 +1168,20 @@ components:
         minimum: 0
         maximum: 10000
         example: 10
+    include-account-member:
+      name: 'include'
+      in: query
+      description: Parameter to retrieve more information about any related resources like account members.
+      schema:
+        type: string
+        example: account_member
+    include-account:
+      name: 'include'
+      in: query
+      description: Parameter to retrieve more information about any related resources like accounts.
+      schema:
+        type: string
+        example: account
     sort:
       name: sort
       in: query
@@ -1343,7 +1427,7 @@ components:
         account_member_id:
           type: string
           description: Specifies the unique identifier of the account member that the membership is associated with.
-          example: 9e227208-b592-49c0-8c8f-043b66c634b0
+          example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
         type:
           type: string
           default: account_membership
@@ -1372,7 +1456,7 @@ components:
                     id:
                       description: Specifies the ID of the account member.
                       type: string
-                      example: 9e227208-b592-49c0-8c8f-043b66c634b0
+                      example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
                     type:
                       description: Specifies the type of the account member.
                       type: string
@@ -1400,18 +1484,18 @@ components:
         relationships:
           type: object
           properties:
-            account_member:
+            account:
               type: object
               properties:
                 data:
                   type: object
                   properties:
                     id:
-                      description: Specifies the ID of the account member.
+                      description: Specifies the ID of the account.
                       type: string
-                      example: 9e227208-b592-49c0-8c8f-043b66c634b0
+                      example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
                     type:
-                      description: Specifies the type of the Account Member.
+                      description: Specifies the type of the Account.
                       type: string
                       default: account
         links:
@@ -1577,7 +1661,7 @@ components:
           description: The ID of the account that this token grants access to.
           type: string
           format: uuid
-          example: 9e227208-b592-49c0-8c8f-043b66c634b0
+          example: 908f7849-60da-4e4a-a3b1-51d4cbe3b953
         token:
           description: The JWT authentication token that the shopper uses as the `EP-Account-Management-Authentication-Token` header [in all other endpoints](https://elasticpath.dev/docs/commerce-cloud/authentication/tokens/account-management-authentication-token).
           type: string
@@ -1588,16 +1672,26 @@ components:
           format: date-time
           example: 2021-03-16T19:36:11.070Z
     Error:
+      required:
+        - status
+        - title
       properties:
-        status:
-          type: string
-          description: The HTTP response code of the error.
         title:
           type: string
           description: A brief summary of the error.
+          examples:
+            - "Bad Request"
+        status:
+          type: string
+          format: string
+          description: The HTTP response code of the error.
+          examples:
+            - "400"
         detail:
           type: string
           description: Optional additional detail about the error.
+          examples:
+            - "The field 'name' is required"
     ErrorResponse:
       required:
         - errors
@@ -1606,7 +1700,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    ErrorBadRequest:
+  responses:
+    InternalServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              summary: Internal server error
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Internal Server Error",
+                      "status": "500",
+                      "detail": "there was a problem processing your request"
+                    }
+                  ]
+                }
+    BadRequestError:
       description: Bad Request
       content:
         application/json:
@@ -1614,24 +1729,36 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           examples:
             bad-request-error:
-              value:
-                errors:
-                  - status: '400'
-                    title: Bad Request
-                    detail: "Validation failed: field 'Name' on the 'min' tag."
-    ErrorUnauthorized:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Bad Request",
+                      "status": "400",
+                      "detail": "Validation failed: field 'Name' on the 'min' tag."
+                    }
+                  ]
+                }
+    UnauthorizedError:
       description: Unauthorized
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           examples:
-            bad-request-error:
-              value:
-                errors:
-                  - status: '401'
-                    title: Unauthorized
-    ErrorNotFound:
+            unauthorized-error:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Unauthorized",
+                      "status": "401"
+                    }
+                  ]
+                }
+    NotFoundError:
       description: Not Found
       content:
         application/json:
@@ -1639,23 +1766,35 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           examples:
             not-found-error:
-              value:
-                errors:
-                  - status: '404'
-                    title: Not Found
-                    detail: "account not found"
-    ErrorConflict:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Not Found",
+                      "status": "404",
+                      "detail": "account not found"
+                    }
+                  ]
+                }
+    ConflictError:
       description: Conflict
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           examples:
-            not-found-error:
-              value:
-                errors:
-                  - status: '409'
-                    title: Conflict
-                    detail: "account membership with the given account id and account member id already exists"
+            conflict-error:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Conflict",
+                      "status": "409",
+                      "detail": "account membership with the given account id and account member id already exists"
+                    }
+                  ]
+                }
 security:
   - BearerToken: []

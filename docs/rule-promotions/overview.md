@@ -549,6 +549,478 @@ This method is applicable to both cart-level and item-level discount rule promot
 
 You can include both SKUs and product IDs within the same rule promotion, providing flexibility in defining conditions and accommodating scenarios involving SKUless bundles or products without SKUs.
 
+## Promotion Stacking and Priority
+
+Stacking and Priority are essential concepts in managing rule promotions, ensuring that promotions are applied effectively and as intended.
+
+**Promotion Stacking** refers to the ability to stack multiple promotions on a single cart, it is possible to target the same items with multiple promotions or completely different items. A priority can be set to determine which promotions are applied first. If no priority is set, the Rule Promotions apply in order of creation date, with the newest promotions applied first and discounted prices calculated against any previously-discounted item prices. When promotions are stackable, they can be applied simultaneously, allowing shoppers to benefit from multiple discounts. The `stackable` flag in the promotion settings determines whether a promotion can be stacked with others. By default, this flag is set to `true`, enabling stacking. If the flag is set to `false`, no other promotion can stack on top. The promotion with the highest priority will take precedence. For more details, refer to the [Stacking Promotion Scenarios](/docs/rule-promotions/overview#stacking-promotion-scenarios) to understand the effects on stackable and non-stackable promotions.
+
+**Promotion Priority** refers to the order in which promotions are applied and calculated in the cart. This is managed using the `priority` setting while creating a Rule Promotion. Priorities are represented as integers, with higher numbers indicating higher priority. Setting a priority for promotions is optional; by default, promotions do not have a priority value. If there is no priority set, the most recently created promotion will be applied first. When `priority` is set, each promotion must have a unique priority value. This ensures that when multiple promotions are eligible, the one with the highest priority is applied first, followed by the next highest. If a non-stackable promotion has the highest priority, it will be the only promotion that applies.
+
+**For example**, Promotion A (priority 90) and Promotion B (priority 80) are both non-stackable. If Promotion B is applied and then Promotion A becomes eligible, Promotion A will replace Promotion B in the cart.
+
+When promotions are stackable, they can be stacked on a cart. The order is determined first by priority and then by the creation date. **For example**, Promotion E (priority 70) and Promotion F (priority 60) are both stackable. Both promotions will be applied, with Promotion E being applied first due to its higher priority.
+
+If hybrid mode is enabled, Promotions Standard can still be applied even if Rule Promotions are also in use. Promotions Standard can coexist with non-stackable Rule Promotion. Rule Promotion stackability and priority don't impact Promotions Standard applications.
+
+When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
+
+See [how to create a rule promotion with stackable and priority flags](/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-fixed-discount-rule-promotion#request-example---priority-and-stackable-flags).
+
+### Stacking Promotion Scenarios
+
+#### Scenario 1: Only one higher priority non-stackable promotion is applied
+
+Consider you have the following promotions:
+
+- Promotion A: Priority 90, Non-Stackable, with coupon code `big-flash-sale`.
+- Promotion B: Priority 60, Non-Stackable, with coupon code `monthly-special`.
+
+If Promotion A is applied first and the shopper attempts to apply Promotion B, Promotion B will not be applied.
+
+The following error message is returned:
+
+```json
+"messages": [
+            {
+                "source": {
+                    "type": "promotion",
+                    "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
+                    "code": "monthly-special"
+                },
+                "title": "Couldn't Stack Promotion",
+                "description": "Non-stackable promotion can't be applied with non-stackable promotion."
+            }
+        ]
+```
+
+#### Scenario 2: Higher Priority non-stackable promotion removes lower priority Promotion
+
+Consider you have the following promotions:
+
+- Promotion B: Priority 90, Non-Stackable
+- Promotion E: Priority 60, Non-Stackable
+
+If Promotion E is applied first and the cart becomes eligible for Promotion B, Promotion B is applied and Promotion E is removed.
+
+The following messages are returned in the cart response:
+
+```json
+"messages": [
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "660883ba-01d5-4f43-a791-df4151e0d0b3"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "20b475c2-cfb9-4472-9fa1-e70c91dcbf3a"
+                },
+                "title": "Deleted Promotion",
+                "description": "Promotion has been removed from cart."
+            },
+            {
+                "source": {
+                    "type": "promotion",
+                    "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
+                    "code": "90"
+                },
+                "title": "Couldn't Stack Promotion",
+                "description": "Non-stackable promotion can't be applied with non-stackable promotion."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "1e1ed778-d3f3-45ea-9095-ffc8afffd0ae"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "1e1ed778-d3f3-45ea-9095-ffc8afffd0ae"
+                },
+                "title": "Discount Deleted",
+                "description": "Item discount has been removed."
+            }
+        ]
+```
+
+#### Scenario 3: Higher priority promotion takes precedence when mixing stackable and non-stackable Promotions
+
+Consider you have the following Promotions:
+
+- Promotion A: Priority 100, Stackable
+- Promotion B: Priority 90, Non-Stackable
+
+If Promotion B is applied first (non-stackable) and the shopper applies Promotion A, Promotion A is applied because it has a higher priority. Therefore, Promotion B will be removed from the cart.
+
+The following messages indicating the removal of Promotion B and the application of Promotion A are returned:
+
+```json
+"messages": [
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "860a5a24-cce1-4241-84c1-53f54a7237ce"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "884357f0-83b8-4d5d-8e0b-4c845345033d"
+                },
+                "title": "Deleted Promotion",
+                "description": "Promotion has been removed from cart."
+            },
+            {
+                "source": {
+                    "type": "promotion",
+                    "id": "50b49554-60d7-4ddc-b18b-0f2a7d1781c3",
+                    "code": "90"
+                },
+                "title": "Couldn't Stack Promotion",
+                "description": "Non-stackable promotion can't be applied with stackable promotions."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "7547f703-f8d6-44e4-ba0c-94bf505d0659"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            },
+            {
+                "source": {
+                    "type": "cart_item",
+                    "id": "7547f703-f8d6-44e4-ba0c-94bf505d0659"
+                },
+                "title": "Discount Deleted",
+                "description": "Item discount has been removed."
+            }
+        ]
+```
+
+#### Scenario 4: Higher priority promotion takes precedence when applying multiple stackable promotions
+
+When multiple promotions are stackable and have different priority levels, the one with the highest priority is applied first. Subsequent promotions are applied in descending order of their priority.
+
+For example, consider two stackable promotions:
+
+- Promotion A: Priority 90, discount 20%
+- Promotion B: Priority 60, discount 10%
+
+In this scenario, Promotion A, with a higher priority of 90, is applied first, providing a 20% discount. Promotion B, with a priority of 60, is then applied, offering an additional 10% discount on the already reduced price.
+
+In this following cart response, you can see that the item originally priced at $100.00 has been reduced to $72.00 after applying both the 20% and 10% discounts in the correct order of priority.
+
+```json
+{
+    "data": [
+                    :::
+                    "discounts": {
+                        "10-off": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00",
+                            "constituents": {
+                                "c6ed29ea-be53-4e94-ba43-aa12d34b2124": {
+                                    "amount": -800,
+                                    "currency": "USD",
+                                    "formatted": "-$8.00"
+                                }
+                            }
+                        },
+                        "20-off": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00",
+                            "constituents": {
+                                "6683e778-54a1-4206-a042-36412ee0f104": {
+                                    "amount": -2000,
+                                    "currency": "USD",
+                                    "formatted": "-$20.00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-08-07T20:05:58Z",
+                    "updated_at": "2024-08-07T20:05:58Z"
+                }
+            }
+        },
+        {
+            "id": "869ae2ca-b6ee-4307-8e9e-d5954524029d",
+            "type": "promotion_item",
+            "online_store_url": null,
+            "promotion_id": "6683e778-54a1-4206-a042-36412ee0f104",
+            "name": "10% off your items!",
+            "description": "Promotion",
+            "sku": "20-off",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": -2000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -2000,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        },
+                        "value": {
+                            "amount": -2000,
+                            "currency": "USD",
+                            "formatted": "-$20.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-08-07T20:05:58Z",
+                    "updated_at": "2024-08-07T20:05:58Z"
+                }
+            },
+            "promotion_source": "rule-promotion"
+        },
+        {
+            "id": "cf90c0ff-973d-4dcf-90aa-3a678c8a1ba1",
+            "type": "promotion_item",
+            "online_store_url": null,
+            "promotion_id": "c6ed29ea-be53-4e94-ba43-aa12d34b2124",
+            "name": "10% off your items!",
+            "description": "Promotion",
+            "sku": "10-off",
+            "slug": "",
+            "image": {
+                "mime_type": "",
+                "file_name": "",
+                "href": ""
+            },
+            "quantity": 1,
+            "manage_stock": false,
+            "unit_price": {
+                "amount": -800,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "value": {
+                "amount": -800,
+                "currency": "USD",
+                "includes_tax": false
+            },
+            "links": {},
+            "meta": {
+                "display_price": {
+                    "with_tax": {
+                        "unit": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        },
+                        "value": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        }
+                    },
+                    "without_tax": {
+                        "unit": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        },
+                        "value": {
+                            "amount": -800,
+                            "currency": "USD",
+                            "formatted": "-$8.00"
+                        }
+                    },
+                    "tax": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "USD",
+                            "formatted": "$0.00"
+                        }
+                    },
+                    "without_discount": {
+                        "unit": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        },
+                        "value": {
+                            "amount": 0,
+                            "currency": "",
+                            "formatted": "0"
+                        }
+                    }
+                },
+                "timestamps": {
+                    "created_at": "2024-08-07T20:05:58Z",
+                    "updated_at": "2024-08-07T20:05:58Z"
+                }
+            },
+            "promotion_source": "rule-promotion"
+        }
+    ],
+    "meta": {
+        "display_price": {
+            "with_tax": {
+                "amount": 7200,
+                "currency": "USD",
+                "formatted": "$72.00"
+            },
+            "without_tax": {
+                "amount": 7200,
+                "currency": "USD",
+                "formatted": "$72.00"
+            },
+            "tax": {
+                "amount": 0,
+                "currency": "USD",
+                "formatted": "$0.00"
+            },
+            "discount": {
+                "amount": -2800,
+                "currency": "USD",
+                "formatted": "-$28.00"
+            },
+            "without_discount": {
+                "amount": 10000,
+                "currency": "USD",
+                "formatted": "$100.00"
+            },
+            "shipping": {
+                "amount": 0,
+                "currency": "USD",
+                "formatted": "$0.00"
+            }
+        },
+        "timestamps": {
+            "created_at": "2024-08-06T20:56:01Z",
+            "updated_at": "2024-08-07T20:05:58Z",
+            "expires_at": "2024-09-06T20:05:58Z"
+        },
+        "messages": [
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "869ae2ca-b6ee-4307-8e9e-d5954524029d"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "promotion_item",
+                    "id": "cf90c0ff-973d-4dcf-90aa-3a678c8a1ba1"
+                },
+                "title": "Promotion Added",
+                "description": "Promotion has been added to cart."
+            },
+            {
+                "source": {
+                    "type": "custom_item",
+                    "id": "f1ea154f-09ed-484c-a1eb-7d89d2687bf4"
+                },
+                "title": "Discount Added",
+                "description": "Item discount has been added."
+            }
+        ]
+    }
+}
+```
+
 ## Feature Comparison: Promotions Standard vs. Rule Promotions
 
 | Features                           | Promotions Standard | Rule Promotions  |
@@ -569,20 +1041,25 @@ You can include both SKUs and product IDs within the same rule promotion, provid
 | Conditions by item price (currently API only)                      | ⛔️  | ✅  |
 | Cart promotion preview                                             | ✅  | ✅ | 
 | Promotions by product SKU, category, product attribute             | ✅  | ✅  |
+| Promotions by product ID                                          | ✅  | ✅ |
 | Bundle fixed discount                                              | ✅  | coming soon |
 | Promotion history                                                  | ✅  | coming soon |
 | Bulk code generation (over 1000)                                   | ✅  | coming soon |
 | Advanced search                                                    | ⛔️  | coming soon |
 | Buy X for Y (buy in multiples of)                                  | ✅  | coming soon |
-| Stacking and ranking control                                       | ⛔️  | coming soon |
+| Promotion Stacking and Priority (currently API only)               | ⛔️  | ✅ |
 | Free gift with auto Add                                            | ✅  | coming soon |
 | Free shipping promotions (for shipping groups)                     | ⛔️  | coming soon |
 | Cart item quantity conditions (line item quantity)                 | ✅ (limited to bundle promotions) | coming soon |
 | Item quantity conditions (minimum number of items in cart)         | ⛔️  | coming soon |
-|  Promotions by product ID                                          | ✅  | ✅ |
+| Targeting sub-total                                                | ✅  | ✅ |
+| Targeting line item totals                                         | ⛔️  | ⛔️ |
+| Coupon code limitations for maximum quantity                       | ✅  | ✅ |
+| Coupon code limitations for maximum usage per customer             | ⛔️  | coming soon |
+| Copy Promotion                                                     | ✅  | coming soon |
 
 ## Related Resources
 
 - [Promotions Builder in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder)
 - [Rule Promotions API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
-- [Promotion Codes](/docs/promotions/promotions-overview#promotion-codes)
+- [Promotion Codes](/docs/rule-promotions/overview#promotion-codes)

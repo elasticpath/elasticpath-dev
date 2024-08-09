@@ -4,25 +4,16 @@ nav_label: Overview
 sidebar_position: 10
 ---
 
-A hierarchy is a tree structure that consists of a root node with one or more parent nodes. Each parent node can also have one or more children nodes, and so on, creating a parent-child relationship between nodes.
+import HierarchyOverview from "/docs/partials/pxm/hierarchies/hierarchies.mdx";
 
-A product can belong to multiple nodes in multiple hierarchies. When you create a catalog, you specify one or more hierarchies. Any products associated with those hierarchies are included in the catalog. 
+<HierarchyOverview></HierarchyOverview>
 
-If your store supports multiple languages, you can localize new and existing hierarchies and nodes.
+## Hierarchies and Catalogs
 
-The following example of *Elpa basketball shoe for men* shows different hierarchies and nodes that the product might be in:
+import HierarchyCatalog from "/docs/partials/pxm/hierarchies/hierarchycatalogs.mdx";
 
-- Brands > **Elpa**
-- Shoppers > **Men**
-- Shoes > Sports > **Basketball**
+<HierarchyCatalog></HierarchyCatalog>
 
-The root of a hierarchy specifies the aspect of the product data that the hierarchy displays. For example, root can be categories, brands, types, or manufacturers of the products. You cannot assign products to a root node.
-
-A node in a hierarchy contains products grouped in a specific theme, such as a products from a specific brand.
-
-## Localizing Hierarchies
-
-You can localize your hierarchies. If your store supports multiple languages, you can localize hierarchy names and descriptions. Commerce supports all languages in [Unicode 14.0 Character Code Charts](https://www.unicode.org/charts/index.html).
 
 ## Sorting Node Order 
 

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: Authentication
   version: '1.0'
@@ -40,23 +40,27 @@ info:
 
     Typically, you would use the implicit authentication method for client-side browser based applications (i.e. frontend), and client credentials for all administrative tasks (`CRUD`) you need to perform at the backend.
 
+    ## Account Authentication
+    
+    You can also generate [account tokens](/docs/api/accounts/post-v-2-account-members-tokens) to authenticate account members (shoppers) with one of many available authentication methods. You must use account management authentication token with the implicit token to access orders or account APIs. Using the tokens, you can create and filter orders and addresses.
+    
     ## Customer Authentication
 
     You can also generate [customer tokens](/docs/customer-management/customer-management-api/customer-tokens#post-generate-a-token) to authenticate the customers with single sign-on, or email address and password. You must use customer token with the implicit token to access orders or customer APIs. Using the tokens, you can create and filter orders and addresses.
 
   contact:
-    name: Support
-    url: 'https://support.elasticpath.com'
-    email: ''
-  termsOfService: ''
+    name: Elastic Path
+    url: 'https://www.elasticpath.com'
+    email: support@elasticpath.com
   license:
+    url: 'https://elasticpath.dev'
     name: MIT
-    url: ''
 servers:
   - url: 'https://euwest.api.elasticpath.com'
     description: EU West
   - url: 'https://useast.api.elasticpath.com'
     description: US East
+security: []
 paths:
   /oauth/access_token:
     post:
@@ -69,7 +73,7 @@ paths:
 
         A `client_credentials` token is used when the credentials are not publicly exposed, usually a server-side language such as PHP or Node.js. This type of authentication enables `CRUD` access to all resources.
 
-        `client_id` and `client_secret` are created and managed via [Application Keys](/docs/authentication/application-keys/create-an-application-key).
+        `client_id` and `client_secret` are created and managed via [Application Keys](/docs/api/application-keys/create-key).
 
         To see the access granted by a `client_credentials` token, refer to [Permissions](/docs/authentication/Tokens/permissions).
 
@@ -89,25 +93,42 @@ paths:
           content:
             application/json:
               schema:
-                type: object
                 properties:
-                  expires:
-                    type: integer
-                  identifier:
-                    type: string
-                  expires_in:
-                    type: integer
-                  access_token:
-                    type: string
-                  token_type:
-                    type: string
-                x-examples:
-                  Example 1:
-                    expires: 1524486008
-                    identifier: implicit
-                    expires_in: 3600
-                    access_token: xa3521ca621113e44eeed9232fa3e54571cb08bc
-                    token_type: Bearer
+                  data:
+                    $ref: "#/components/schemas/Bearer"
+              examples:
+                client_credentials:
+                  summary: Client Credentials
+                  # language=JSON
+                  value: |-
+                    {
+                      "data": {
+                        "access_token": "xa3521ca621113e44eeed9232fa3e54571cb08bc",
+                        "token_type": "Bearer",
+                        "expires_in": 3600,
+                        "expires": 1524486008,
+                        "identifier": "client_credentials"
+                      }
+                    }
+                implicit:
+                  summary: Implicit
+                  # language=JSON
+                  value: |-
+                    {
+                      "data": {
+                        "access_token": "xa3521ca621113e44eeed9232fa3e54571cb08bc",
+                        "token_type": "Bearer",
+                        "expires_in": 3600,
+                        "expires": 1524486008,
+                        "identifier": "implicit"
+                      }
+                    }
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
       operationId: post-oauth-access_token
       requestBody:
         description: ''
@@ -115,27 +136,125 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               type: object
-              required:
-                - grant_type
-                - client_id
-              properties:
-                grant_type:
-                  type: string
-
-                  description: 'The grant type, choices are `client_credentials` or `implicit`'
-                client_id:
-                  type: string
-                  description: Your `client_id`
-                client_secret:
-                  type: string
-                  description: Only required for client credentials.
+              $ref: '#/components/schemas/Token'
             examples:
-              Example 1:
+              client-credentials:
+                summary: Client Credentials
                 value:
-                  expires: 1524486008
-                  identifier: client_credentials
-                  expires_in: 3600
-                  access_token: xa3521ca621113e44eeed9232fa3e54571cb08bc
-                  token_type: Bearer
+                  grant_type: 'client_credentials'
+                  client_id: 'jJBrLb0q1Q7bZ5GiGttD5T1471b0IeXAVgNyOlw19q'
+                  client_secret: 'mzr6gnvdQODSgT3mSxxWIv3y8pAp8cUzDELXa3g4fB'
 components:
-  schemas: {}
+  schemas:
+    Token:
+      properties:
+        grant_type:
+          type: string
+          description: 'The grant type, choices are `client_credentials` or `implicit`'
+        client_id:
+          type: string
+          description: Your `client_id`
+        client_secret:
+          type: string
+          description: Your `client_secret`. Only required for client credentials.
+      required:
+        - grant_type
+        - client_id
+    Bearer:
+      properties:
+        access_token:
+          type: string
+          description: The access token you use for subsequent authenticated requests to the API.
+        token_type:
+          type: string
+          description: Right now this is only `Bearer`.
+        identifier:
+          type: string
+          description: The type of token requested. This can be a `client_credentials` or `implicit`.
+        expires_in:
+          type: integer
+          description: The duration in seconds after which the token expires.
+        expires:
+          type: integer
+          description: The epoch time that this token expires at.
+    Error:
+      required:
+        - status
+        - title
+      properties:
+        title:
+          type: string
+          description: A brief summary of the error.
+          examples:
+            - "Bad Request"
+        status:
+          type: string
+          format: string
+          description: The HTTP response code of the error.
+          examples:
+            - "400"
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+  responses:
+    InternalServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              summary: Internal server error
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Internal Server Error",
+                      "status": "500",
+                      "detail": "there was a problem processing your request"
+                    }
+                  ]
+                }
+    BadRequestError:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            bad-request-error:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Bad Request",
+                      "status": "400"
+                    }
+                  ]
+                }
+    UnauthorizedError:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            unauthorized-error:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Unauthorized",
+                      "status": "401"
+                    }
+                  ]
+                }

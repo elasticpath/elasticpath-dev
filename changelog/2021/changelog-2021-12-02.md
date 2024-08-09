@@ -4,4 +4,4 @@ date: '2021-12-02'
 tags:
   - Payments
 ---
-**Major** Added support for [Stripe Connect](/docs/commerce-cloud/payments/payment-gateway/configure-stripe-connect) and [Stripe Intent](/docs/commerce-cloud/payments/payment-gateway/configure-stripe-payment-intents). You can also use Stripe Connect in Commerce Manager.
+**Major** Added support for [Stripe Connect](/docs/api/payments/update-stripe-connect-gateway) and [Stripe Intent](/docs/api/payments/update-stripe-intents-gateway). You can also use Stripe Connect in Commerce Manager.

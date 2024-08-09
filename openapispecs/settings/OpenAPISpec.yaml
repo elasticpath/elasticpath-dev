@@ -85,9 +85,7 @@ info:
     | `tax_item_limit`        | `integer` | `5`                                                  |
     | `promotions_limit`      | `integer` | `1000`                                               |
     | `promotion_codes_limit` | `integer` | `1000`                                               |
-    | `page_offset_limit`     | `integer` | `10000` |
-    
-    
+    | `page_offset_limit`     | `integer` | `10000`                                              |
 
   contact:
     name: Elastic Path
@@ -101,6 +99,11 @@ servers:
     description: US East
   - url: 'https://euwest.api.elasticpath.com'
     description: EU West
+security:
+  - BearerToken: []
+tags:
+  - name: Settings
+    description: The Settings API allow you to configure global settings for your project.
 paths:
   /v2/settings:
     get:
@@ -123,13 +126,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SettingsResponse'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
     put:
       tags:
         - Settings
@@ -149,13 +149,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SettingsResponse'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
     delete:
       tags:
         - Settings
@@ -166,13 +163,10 @@ paths:
       responses:
         '204':
           description: No Content
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
   /v2/settings/cart:
     get:
       tags:
@@ -188,13 +182,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SettingsCart'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
     put:
       tags:
         - Settings
@@ -237,65 +228,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SettingsCart'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-  /v2/settings/account-memberships:
-    get:
-      tags:
-        - Settings
-      summary: Get Account Membership Settings
-      description: |-
-        Account Membership Settings allow Account Members to be associated to, at most, N accounts at a time. You can set this value to any number up to 10,000. The default value is 10,000.
-        
-        This setting is only applied to new account memberships. If an account member is added to 3 accounts, and the setting is reduced to 1, the account member remains in the 3 accounts and can no longer be added to more.
-      operationId: get-v2-settings-account-membership
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SettingsAccountMembership'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-    put:
-      tags:
-        - Settings
-      summary: Update Account Membership Settings
-      description: |-
-        Use this endpoint to update Account Membership Settings.
-      operationId: put-v2-settings-account-membership
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SettingsAccountMembership'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SettingsAccountMembership'
-      security:
-        - BearerToken: []
-      servers:
-        - url: 'https://useast.api.elasticpath.com'
-          description: US East
-        - url: 'https://euwest.api.elasticpath.com'
-          description: EU West
-tags:
-  - name: Settings
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        default:
+          $ref: '#/components/responses/InternalServerError'
 components:
   securitySchemes:
     BearerToken:
@@ -423,21 +359,90 @@ components:
                     example: 2026-02-21T15:07:25Z
           required:
             - type
-    SettingsAccountMembership:
-      type: object
+    Error:
+      required:
+        - status
+        - title
       properties:
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              description: This describes the type of request payload you’re sending. Set this value to `account_membership_setting`.
-              example: account_membership_setting
-            membership_limit:
-              type: integer
-              description: "Maximum number of memberships allowed on an account."
-              example: 10000
-          required:
-            - type
-security:
-  - BearerToken: []
+        title:
+          type: string
+          description: A brief summary of the error.
+          examples:
+            - "Bad Request"
+        status:
+          type: string
+          format: string
+          description: The HTTP response code of the error.
+          examples:
+            - "400"
+        detail:
+          type: string
+          description: Optional additional detail about the error.
+          examples:
+            - "The field 'name' is required"
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+  responses:
+    InternalServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              summary: Internal server error
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Internal Server Error",
+                      "status": "500",
+                      "detail": "there was a problem processing your request"
+                    }
+                  ]
+                }
+    BadRequestError:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            bad-request-error:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "enum",
+                      "source": "data.type",
+                      "detail": "data.type must be one of the following: \"settings\""
+                    }
+                  ]
+                }
+    UnauthorizedError:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            unauthorized-error:
+              # language=JSON
+              value: |
+                {
+                  "errors": [
+                    {
+                      "title": "Unauthorized",
+                      "status": "401"
+                    }
+                  ]
+                }

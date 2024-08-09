@@ -4,7 +4,9 @@ nav_label: Personalizing Products
 sidebar_position: 91
 ---
 
-You can allow your shoppers to add custom text to a product when adding product items to their carts. This is useful, for example, if you have a product like a T-shirt that can be personalized or you sell greetings cards that can be printed with your shoppers personalized messages.
+import PersonalProducts from '/docs/partials/pxm/products/personalizing.mdx';
+
+<PersonalProducts></PersonalProducts>
 
 1. Go to **Product Experience Manager** > **Products**.
 2. From **All Products**, navigate to the product you want to personalize.
