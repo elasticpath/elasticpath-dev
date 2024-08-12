@@ -1,5 +1,5 @@
 ---
-title: Studio Release 201 | August 3, 2024
+title: Studio Release 201 | August 12, 2024
 date: 2024-08-03
 tags:
   - Studio
@@ -14,7 +14,6 @@ A refactored CSS parser and bug fixes in this release.
 We have refactored our CSS parser to process CSS more efficiently, reducing the time it takes to apply styles to web pages, leading to faster page rendering and enhancing page insights.
 
 #### Complete List of Resolved Items
-
 
 #### Landing pages
 
