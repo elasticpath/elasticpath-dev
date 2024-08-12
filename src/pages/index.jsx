@@ -19,7 +19,7 @@ export default function Homepage() {
   return (
     <div className="dev-homepage dark:bg-homepage-gradient bg-white scroll-smooth">
       <Layout
-        description="Elastic Path delivers the speed and flexibility commerce teams need to tackle today's toughest challenges."
+        description="Build scalable, API-driven commerce experiences with Elastic Path's headless commerce platform. Unlock seamless integrations and automate operations through our open API, empowering developers to craft innovative shopping experiences."
         wrapperClassName="relative homepage flex flex-col relative"
         noFooter
         noNav

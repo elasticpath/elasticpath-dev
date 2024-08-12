@@ -39,6 +39,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
  | `/integrations`                              | ⛔️ | ⛔️ |
  | `/inventories`                               | ✅ | ⛔️ |
  | `/jobs`                                      | ⛔️ | ⛔️ |
+ | `/pcm/jobs`                                  | ⛔️ | ⛔️ |
  | `/merchant-realm-mappings`                   | ⛔️ | ⛔️ |
  | `/orders`                                    | ⛔️ | ⛔️ |
  | `/orders/:id`                                | ⛔️ | ⛔️ |
@@ -79,6 +80,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                              | ⛔️          | ⛔️           |
 | `/inventories`                               | ✅           | ⛔️           |
 | `/jobs`                                      | ⛔️          | ⛔️           |
+| `/pcm/jobs`                                  | ⛔️          | ⛔️           |
 | `/merchant-realm-mappings`                   | ⛔️          | ⛔️           |
 | `/orders`                                    | ✅           | ⛔️           |
 | `/orders/:id`                                | ✅           | ⛔️           |
@@ -122,6 +124,7 @@ Note that you can only fetch data with live status.
 | `/integrations`                              | ⛔️          | ⛔️           |
 | `/inventories`                               | ✅           | ⛔️           |
 | `/jobs`                                      | ⛔️          | ⛔️           |
+| `/pcm/jobs`                                  | ⛔️          | ⛔️           |
 | `/merchant-realm-mappings`                   | ⛔️          | ⛔️           |
 | `/orders`                                    | ✅           | ⛔️           |
 | `/orders/:id`                                | ✅           | ⛔️           |
@@ -166,6 +169,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                              | ✅           | ✅            |
 | `/inventories`                               | ✅           | ✅            |
 | `/jobs`                                      | ✅           | ✅            |
+| `/pcm/jobs`                                  | ✅           | ✅            |
 | `/personal-data/logs`                        | ✅           | ✅            |
 | `/personal-data/personal-data-entries`       | ✅           | ✅            |
 | `/merchant-realm-mappings`                   | ✅           | ✅            |
@@ -210,6 +214,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ⛔️ | ⛔️ |
 | `/inventories`                         | ✅ | ⛔️ |
 | `/jobs`                                | ⛔️ | ⛔️ |
+| `/pcm/jobs`                            | ⛔️ | ⛔️ |
 | `/personal-data/logs`                  | ⛔️ | ⛔️ |
 | `/personal-data/personal-data-entries` | ⛔️ | ⛔️ |
 | `/merchant-realm-mappings`             | ⛔️ | ⛔️ |
@@ -254,6 +259,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ⛔ | ⛔ |
 | `/inventories`                         | ✅ | ✅ |
 | `/jobs`                                | ⛔ | ⛔ |
+| `/pcm/jobs`                            | ✅ | ✅ |
 | `/personal-data/logs`                  | ⛔️ | ⛔️ |
 | `/personal-data/personal-data-entries` | ⛔️ | ⛔️ |
 | `/merchant-realm-mappings`             | ⛔ | ⛔ |
@@ -298,6 +304,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ⛔️ | ⛔️ |
 | `/inventories`                         | ⛔️ | ⛔️ |
 | `/jobs`                                | ⛔️ | ⛔️ |
+| `/pcm/jobs`                            | ⛔️ | ⛔️ |
 | `/personal-data/logs`                  | ✅ | ✅️ |
 | `/personal-data/personal-data-entries` | ✅ | ✅️ |
 | `/merchant-realm-mappings`             | ⛔️ | ⛔️ |
@@ -342,6 +349,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ✅️ | ✅️ |
 | `/inventories`                         | ⛔️ | ⛔️ |
 | `/jobs`                                | ⛔️ | ⛔️ |
+| `/pcm/jobs`                            | ⛔️ | ⛔️ |
 | `/personal-data/logs`                  | ✅ | ✅️ |
 | `/personal-data/personal-data-entries` | ✅ | ✅️ |
 | `/merchant-realm-mappings`             | ✅ | ✅️ |
@@ -387,6 +395,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                              | ⛔ | ⛔ |
 | `/inventories`                               | ⛔ | ⛔ |
 | `/jobs`                                      | ⛔ | ⛔ |
+| `/pcm/jobs`                                  | ⛔ | ⛔ |
 | `/personal-data/logs`                        | ⛔️ | ⛔️ |
 | `/personal-data/personal-data-entries`       | ⛔️ | ⛔️ |
 | `/merchant-realm-mappings`                   | ⛔ | ⛔ |
@@ -431,8 +440,9 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/integrations`                        | ⛔ | ⛔ |
 | `/inventories`                         | ✅ | ✅ |
 | `/jobs`                                | ⛔ | ⛔ |
+| `/pcm/jobs`                            | ✅ | ✅ |
 | `/personal-data/logs`                  | ✅ | ✅ |
-| `/personal-data/personal-data-entries`  |✅ | ✅ |
+| `/personal-data/personal-data-entries` |✅ | ✅ |
 | `/merchant-realm-mappings`             | ⛔ | ⛔ |
 | `/orders`                              | ⛔ | ⛔ |
 | `/orders/:id`                          | ✅ | ✅ |

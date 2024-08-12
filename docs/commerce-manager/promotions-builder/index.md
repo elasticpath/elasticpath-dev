@@ -125,3 +125,6 @@ By implementing this, shoppers can use a promotion code to purchase the product 
 
 ![Scenario 6](/assets/promotion-example-scenario-6.png)
 
+## Demos
+
+<iframe class="vidyard_iframe" title="Promotions Builder" src="//play.vidyard.com/4xHaUsR9fh8Z5PUjF4o5nm.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>

@@ -107,7 +107,7 @@ Collect the following Amazon credentials. See [Create an AWS access key](https:/
 
 ### Collecting Commerce Manager Setup Information
 
-Collect the following Commerce API keys. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/authentication/application-keys/application-keys-overview).
+Collect the following Commerce API keys. You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. See [Application Keys](/docs/api/application-keys/application-keys-introduction).
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
