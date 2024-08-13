@@ -130,6 +130,6 @@ When a catalog is published, the breadcrumb information for a child product incl
 
 ## Related Resources
 
-- [Products](https://beta.elasticpath.dev/docs/pxm/products/pxm-products)
-- [Hierarchies](https://beta.elasticpath.dev/docs/pxm/hierarchies)
-- [Price Books](https://beta.elasticpath.dev/docs/pxm/pricebooks/price-books)
+- [Products](/docs/api/pxm/products/products)
+- [Hierarchies](/docs/api/pxm/products/hierarchies)
+- [Price Books](/docs/api/pxm/pricebooks)

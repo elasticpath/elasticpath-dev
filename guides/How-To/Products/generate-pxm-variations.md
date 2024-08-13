@@ -37,8 +37,8 @@ However, re-building child products after adding or removing an option does not 
 Ensure that you have the following:
 
 - A Composable Commerce account.
-- The [client ID and client secret](https://beta.elasticpath.dev/docs/commerce-manager/application-keys/application-keys-cm) of your store.
-- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request#get-an-access-token).
+- The [client ID and client secret](/docs/commerce-manager/application-keys/application-keys-cm) of your store.
+- An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:
@@ -54,7 +54,7 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
 
 ### Procedure - API
 
-1. [Create the product](https://beta.elasticpath.dev/docs/api/pxm/products/create-product).
+1. [Create the product](/docs/api/pxm/products/create-product).
 
 1. Create the product variation `Shirt Size` using the following request:
 
@@ -72,7 +72,7 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
         }'
     ```
 
-    This request creates the variation and returns the variation ID. Ensure that you make a note of the variation ID. For more information about creating variations, see the [Create Variations](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation) section.
+    This request creates the variation and returns the variation ID. Ensure that you make a note of the variation ID. For more information about creating variations, see the [Create Variations](/docs/api/pxm/products/create-variation) section.
 
 1. Create the variation options. Option names can only contain A-Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. 
 
@@ -93,7 +93,7 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
               }'
           ```
 
-        Replace the `:variationId` with variation ID generated in the response of Step 1. For more information on creating options, see the [Create Options](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation-option) section.
+        Replace the `:variationId` with variation ID generated in the response of Step 1. For more information on creating options, see the [Create Options](/docs/api/pxm/products/create-variation-option) section.
     1. Repeat step 1 twice to create the options `Large` and `Medium`.
 
 1. To define how the child product varies from the base product, create modifiers. Modifiers related to slugs can only contain A t Z, a-z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed. 
@@ -117,7 +117,7 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
 
     1. Repeat step 1 and create modifier for each option, such as `-medium` and `-large`, as required.
 
-        If you do not provide modifiers for SKU and slug in an option, the default modifier `sku_append` is used for SKU and `slug_append` is used for slug. For more information about modifiers, see [Modifiers API](https://beta.elasticpath.dev/docs/api/pxm/products/create-modifier).
+        If you do not provide modifiers for SKU and slug in an option, the default modifier `sku_append` is used for SKU and `slug_append` is used for slug. For more information about modifiers, see [Modifiers API](/docs/api/pxm/products/create-modifier).
 
 1. To associate base product with a variation:
     1. Make the following request:
@@ -152,7 +152,7 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
 
 ### Procedure - Commerce Manager
 
-1. See [Create variations](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation) and create the following options in the *Shirt Size* variation:
+1. See [Create variations](/docs/api/pxm/products/create-variation) and create the following options in the *Shirt Size* variation:
 
     - *Large*
     - *Medium*
@@ -163,8 +163,8 @@ curl -X POST https://useast.api.elasticpath.com/oauth/access_token \
     - *-medium* for *Medium* option.
     - *-small* for *Small* option.
 
-1. [Create a product](https://beta.elasticpath.dev/docs/api/pxm/products/create-product) with the name *Shirt*.
-1. Associate the product with the variation and build the child products by following the instructions in the [Assigning variations and building child products](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products) section.
+1. [Create a product](/docs/api/pxm/products/create-product) with the name *Shirt*.
+1. Associate the product with the variation and build the child products by following the instructions in the [Assigning variations and building child products](/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products) section.
 
 ## View the Child Products Associated with a Base Product using API
 
@@ -175,7 +175,7 @@ curl -X GET https://useast.api.elasticpath.com/pcm/products/:{{productID}}/child
     -H "Authorization: Bearer XXXX" \
 ```
 
-You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) section.
+You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](/guides/Getting-Started/pagination) section.
 
 ## Adding a Child Product to the Cart Using API
 
@@ -193,5 +193,5 @@ Whenever you update variations, options, or modifiers associated with a product,
 
 ## Related Resources
 
-- [Products](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/Products/overview)
-- [Products API](https://beta.elasticpath.dev/docs/api/pxm/products/products)
+- [Products](/docs/commerce-manager/product-experience-manager/Products/overview)
+- [Products API](/docs/api/pxm/products/products)

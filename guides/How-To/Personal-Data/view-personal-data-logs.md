@@ -26,4 +26,4 @@ Only sellers with Seller Admins, Support and IT roles can access the API
 
    See the [Personal Data Logs](/docs/api/personal-data/personal-data-logs) page for more information
 
-3. You can use pagination links inside the `meta` field to navigate. Visit the [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) page for more information.
+3. You can use pagination links inside the `meta` field to navigate. Visit the [pagination](/guides/Getting-Started/pagination) page for more information.
