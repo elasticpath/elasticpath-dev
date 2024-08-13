@@ -126,52 +126,10 @@ paths:
 
         ### Errors
 
-        You might encounter the following response codes, depending on the scenario:
+        - `400 Bad Request` : This is returned when the submitted request does not adhere to the expected API contract for the endpoint.
 
-        - `400 Bad Request` - `Blank name` - The `name` parameter is blank or contains whitespace characters. Specify a valid string.
-        - `400 Bad Request` - `Name with > 255 characters` - Strings must be less than or equal to 255 characters.
-        - `400 Bad Request` - `Odd characters` - The `name` parameter cannot contain whitespace characters. Unicode Transformation Format (UTF-8) characters are allowed.
-
-        The following error is returned when you checkout a cart with `snapshot_date`:
-
-        ```json
-        {
-            "errors": [
-                {
-                    "status": 400,
-                    "title": "Bad Request",
-                    "detail": "Checking out carts with snapshot dates not permitted"
-                }
-            ]
-        }
-        ```
-        The following error is returned when `snapshot_date` is in the past:
-
-        ```json
-        {
-            "errors": [
-                {
-                    "status": 400,
-                    "title": "Invalid Snapshot Date",
-                    "detail": "Snapshot date must be a date in the future. Targeted snapshot date [2023-09-07 00:12:00 +0000 UTC] is in the past."
-                }
-            ]
-        }
-        ```
-
-        The following error is returned while updating `snapshot_date` with an empty string:
-
-        ```json
-        {
-            "errors": [
-                {
-                    "status": 400,
-                    "title": "Bad Request",
-                    "detail": "Cannot remove snapshot dates from carts with existing snapshot dates."
-                }
-            ]
-        }
-        ```
+           - For example, in the case of string fields, this error might indicate issues in the length or format of submitted strings. For more information about valid string fields, refer to Safe Characters section.
+           - In the case of preview carts (those with `snapshot_date`), an error is returned for invalid actions, such as removing the preview date, setting a preview date in the past, or attempting to checkout a cart with a `snapshot_date`.
       operationId: createACart
       parameters:
         - name: x-moltin-customer-token
