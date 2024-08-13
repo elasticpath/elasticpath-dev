@@ -1566,7 +1566,7 @@ const config = {
           { to: '/docs/api/pxm/products/product-experience-manager-introduction', from: '/docs/pxm/products/product-content-management'},
           { to: '/docs/api/pxm/catalog/administrator-latest-releases-catalog-api', from: '/docs/pxm/catalogs/catalog-latest-release/get-products-by-hierarchy-in-a-release'},
           { to: '/docs/api/accounts/account-management-authentication', from: '/docs/commerce-cloud/accounts/account-management-authentication/overview'},
-          { to: '/docs/api/carts/manage-carts#re-order', from: '/docs/commerce-cloud/carts/cart-items/re-order'},
+          { to: '/docs/api/carts/manage-carts', from: '/docs/commerce-cloud/carts/cart-items/re-order'},
           { to: '/docs/commerce-manager/product-experience-manager/Products/overview', from: '/docs/pxm/catalogs/catalog-latest-release/get-a-product-in-a-release'},
           { to: '/docs/api/pxm/catalog/get-by-context-release', from: '/docs/pxm/catalogs/catalog-latest-release/get-all-products-in-a-release'},
           { to: '/docs/api/pxm/products/get-all-products', from: '/docs/pxm/products/ep-pxm-products-api/get-all-products'},
