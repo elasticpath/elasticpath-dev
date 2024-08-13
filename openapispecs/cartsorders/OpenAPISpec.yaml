@@ -123,6 +123,55 @@ paths:
         - The promotion preview cart has the same expiration time as a regular cart based on the store's [cart settings](/docs/api/settings/put-v-2-settings-cart).
         - Preview cart interactions skip inventory checks and events, allowing users to preview future carts without impacting related external systems.
         :::
+
+        ### Errors
+
+        You might encounter the following response codes, depending on the scenario:
+
+        - `400 Bad Request` - `Blank name` - The `name` parameter is blank or contains whitespace characters. Specify a valid string.
+        - `400 Bad Request` - `Name with > 255 characters` - Strings must be less than or equal to 255 characters.
+        - `400 Bad Request` - `Odd characters` - The `name` parameter cannot contain whitespace characters. Unicode Transformation Format (UTF-8) characters are allowed.
+
+        The following error is returned when you checkout a cart with `snapshot_date`:
+
+        ```json
+        {
+            "errors": [
+                {
+                    "status": 400,
+                    "title": "Bad Request",
+                    "detail": "Checking out carts with snapshot dates not permitted"
+                }
+            ]
+        }
+        ```
+        The following error is returned when `snapshot_date` is in the past:
+
+        ```json
+        {
+            "errors": [
+                {
+                    "status": 400,
+                    "title": "Invalid Snapshot Date",
+                    "detail": "Snapshot date must be a date in the future. Targeted snapshot date [2023-09-07 00:12:00 +0000 UTC] is in the past."
+                }
+            ]
+        }
+        ```
+
+        The following error is returned while updating `snapshot_date` with an empty string:
+
+        ```json
+        {
+            "errors": [
+                {
+                    "status": 400,
+                    "title": "Bad Request",
+                    "detail": "Cannot remove snapshot dates from carts with existing snapshot dates."
+                }
+            ]
+        }
+        ```
       operationId: createACart
       parameters:
         - name: x-moltin-customer-token
@@ -5222,7 +5271,7 @@ tags:
       :::caution
 
       - You can apply up to five custom discounts to cart and cart item.
-      - The stores that use [simple calculation method](https://beta.elasticpath.dev/guides/Carts/calculate-totals) do not support custom discounts.
+      - The stores that use [simple calculation method](/guides/How-To/Carts/calculate-totals) do not support custom discounts.
 
       :::
   - name: Tax Items
