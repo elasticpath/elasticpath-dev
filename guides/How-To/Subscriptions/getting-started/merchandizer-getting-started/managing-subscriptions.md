@@ -42,7 +42,7 @@ Select **Product Preview** at any time to view a snapshot of your product or ser
 
 ![getting started with products](/assets/getting_started_sub_products.png)
 
-For more information about product media and pricing, see [Repeat Products](https://beta.elasticpath.dev/docs/commerce-manager/subscriptions/products/creating-products).
+For more information about product media and pricing, see [Repeat Products](/docs/commerce-manager/subscriptions/products/creating-products).
 
 ## Creating Plans
 
@@ -90,7 +90,7 @@ The following steps describe how to create the **Standard** plan. This is the sa
 
 ![getting started with plans](/assets/getting_started_sub_plans.png).
 
-For more information about plan pricing and trial periods, see [Plans](https://beta.elasticpath.dev/docs/commerce-manager/subscriptions/subscription-plans/creating-plans).
+For more information about plan pricing and trial periods, see [Plans](/docs/commerce-manager/subscriptions/subscription-plans/creating-plans).
 
 ## Creating an Offering
 
