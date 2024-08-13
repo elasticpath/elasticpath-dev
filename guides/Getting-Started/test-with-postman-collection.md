@@ -17,7 +17,7 @@ Use the Postman collection to run and explore Commerce APIs. The collection incl
 ## Procedure
 
 1. In Commerce Manager, go to **SYSTEM > Application Keys**.
-1. Click **Create New** to create a new application key. See [Creating an Application Key](/docs/authentication/application-keys/create-an-application-key).
+1. Click **Create New** to create a new application key. See [Creating an Application Key](/docs/api/application-keys/create-key).
 
     Make a note of the following values:
 

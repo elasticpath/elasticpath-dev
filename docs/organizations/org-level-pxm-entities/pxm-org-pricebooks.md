@@ -44,7 +44,7 @@ The API can use a [JSONL](https://jsonlines.org/) file. The JSONL file can be co
 
 A file can include up to 50,000 objects. If you have more than 50,000 objects, then you must create a separate file, and import each file, one at a time.
 
-1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/api/application-keys/application-keys-introduction).
 1. Generate a [.JSONL](/docs/api/pxm/pricebooks/import-a-price-book-and-prices#price-book-import-file) file to import price books and product prices using [price book import](/docs/api/pxm/pricebooks/import-pricebook).
 
 Your organization price books and prices are automatically available to all the stores that belong to your organization.
@@ -53,7 +53,7 @@ Your organization price books and prices are automatically available to all the 
 
 To create price books in organizations:
 
-1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/authentication/application-keys/application-keys-overview).
+1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/api/application-keys/application-keys-introduction).
 1. Create your [price books](/docs/api/pxm/pricebooks/create-pricebook). 
 1. Create your [product prices](/docs/api/pxm/pricebooks/create-product-price). Depending on your requirements, when creating product prices:
 

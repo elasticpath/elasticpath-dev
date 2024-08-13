@@ -1,0 +1,11 @@
+You can use product export to export your products in Product Experience Manager. Export builds a `.csv` file containing the product entries. A `.csv` file can contain up to 10,000 product entries. If you have more than 10,000 product entries, then another `.csv` file is created and so on, until all your products are exported.
+
+You might have specified custom extension data in a `.csv` file when you imported the products. These modifications are all exported. So, when you send a request to the Export API, the `.csv` file, included in the Job endpoint response, reflects any changes that you have made. For more information, see [Exporting Custom Data (Flows)](#exporting-custom-data-flows).
+
+When you send a product export request, a job is created. Jobs are processed one at a time. You can continue to send product export
+
+requests, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed. See [**Jobs**](/docs/api/pxm/products/jobs) API or [Jobs](/docs/commerce-manager/product-experience-manager/jobs/) in Commerce Manager.
+
+After the files are exported, you get a link to the location where the `.csv` files are stored. You can then make any changes to the product fields (modify product information, add main image files, and custom extension data) in your exported `.csv` files. See [**Product Export CSV File**](/docs/api/pxm/products/product-export#product-export-csv-file).
+
+Once you are happy with your changes, you can import the updated `.csv` files using product import. See [**Product Import/Bulk Update**](/docs/api/pxm/products/product-import-bulk-update).

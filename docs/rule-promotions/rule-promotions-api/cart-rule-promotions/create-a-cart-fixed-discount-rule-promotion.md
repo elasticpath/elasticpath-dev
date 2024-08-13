@@ -106,3 +106,101 @@ curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions \
     }
 }
 ```
+
+## Request Example - Priority and Stackable Flags
+
+The following request example shows how to create a rule promotion with `priority` and `stackable` flags:
+
+```bash
+curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions \
+     -H "Authorization: Bearer XXXX" \
+     -H "Content-Type: application/json" \
+     -d $ {
+      "data": {
+        "type": "rule_promotion",
+        "name": "promo with priority 100",
+        "description": "promo with priority 100",
+        "enabled": false,
+        "automatic": false,
+        "priority": 100,
+        "stackable": true,
+        "start": "2023-12-01",
+        "end": "2024-01-01",
+        "rule_set": {
+            "rules": {
+                "strategy": "cart_total",
+                "operator": "gte",
+                "args": [10000]
+            },
+            "actions": [
+                {
+                    "strategy": "cart_discount",
+                    "args": ["fixed", 500]
+                }
+            ]
+        }
+    }
+}
+```
+
+## Response Example - Priority and Stackable Flags
+
+The following response example shows the `priority` and `stackable` values:
+
+`201 Created`
+
+```json
+{
+    "data": {
+        "type": "rule_promotion",
+        "id": "422d4cff-3069-4ec2-9d04-410db05444e3",
+        "store_id": "85ea6cac-589a-4141-80d0-42b91aae73a7",
+        "name": "promo with priority 100",
+        "description": "promo with priority 100",
+        "enabled": false,
+        "automatic": false,
+        "rule_set": {
+            "rules": {
+                "strategy": "cart_total",
+                "operator": "gte",
+                "args": [
+                    10000
+                ]
+            },
+            "actions": [
+                {
+                    "strategy": "cart_discount",
+                    "args": [
+                        "fixed",
+                        500
+                    ]
+                }
+            ]
+        },
+        "start": "2023-12-01T00:00:00Z",
+        "end": "2024-12-31T00:00:00Z",
+        "stackable": true,
+        "priority": 100,
+        "meta": {
+            "timestamps": {
+                "created_at": "2024-07-09T17:03:04.211Z",
+                "updated_at": "2024-07-09T17:03:04.211Z"
+            }
+        }
+    }
+}
+```
+
+The following error message is returned when you attempt to create a rule promotion with a `priority` that is already in use by another promotion:
+
+```json
+{
+    "errors": [
+        {
+            "status": "422",
+            "title": "Duplicate priority",
+            "detail": "Priority already in use in another running or scheduled promotion"
+        }
+    ]
+}
+```

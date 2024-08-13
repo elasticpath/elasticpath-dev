@@ -34,7 +34,7 @@ Elastic Path officially maintains the following Software Development Kits (SDK) 
 
 If you are beginning a new project, we recommend that you use the JavaScript SDK for Composable Commerce, which is under active maintenance. Within this guide, the supported endpoints include sample **JavaScript SDK** requests. The Composable Commerce Reference Store is implemented using this SDK.
 
-Get the [JavaScript SDK](https://github.com/moltin/js-sdk).
+Get the [JavaScript SDK](https://github.com/elasticpath/js-sdk).
 
 ### Composable CLI
 
