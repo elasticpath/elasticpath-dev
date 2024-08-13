@@ -17,7 +17,7 @@ A cart can be created through either a back-end or front-end action:
 
 An implicit action is when the shopper initiates the cart with their first add-to-cart action. When a shopper adds the first product to a cart, a cart is created with a unique reference ID and the product is added as a cart item. You need the reference ID field for any action related to the cart, such as updating, deleting or checking out a cart.
 
-An explicit action is when a user calls the cart creation endpoint. For more information, see [Create a Custom Cart](/docs/carts-orders/create-multi-cart).
+An explicit action is when a user calls the cart creation endpoint. For more information, see [Create a Custom Cart](docs/api/carts/create-a-cart).
 
 
 ## Front-end actions
@@ -42,5 +42,5 @@ Carts within a store have a default expiry threshold of seven days. The elapsed 
 
 ## Related Resources
 
-- [Checkout API](/docs/api/carts/checkout)
+- [Checkout API](/docs/api/carts/checkout-api)
 - [Implement Shopkit](https://www.moltin.com/commerce-solutions/shopkit) - an embeddable cart and checkout solution
