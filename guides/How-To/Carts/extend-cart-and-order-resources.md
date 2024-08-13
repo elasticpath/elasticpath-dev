@@ -18,8 +18,8 @@ This example only describes `flows` API calls and does not provide code that you
 
 Ensure that you have the following:
 
-- A Commerce account and the Client ID and Client Secret for your store, available from [Commerce Manager](https://beta.elasticpath.dev/ui).
-- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request#get-an-access-token).
+- A Commerce account and the Client ID and Client Secret for your store, available from [Commerce Manager](/ui).
+- An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token).
 - Basic understanding of object-oriented programming or JavaScript.
 - A store set up with products and payment details.
 
@@ -492,9 +492,9 @@ This scenario assumes you already have an order. The order created in this examp
 
 ## Related Resources
 
-- [Custom Data (Flows) Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/flows/)
-- [Orders Commerce Manager](https://beta.elasticpath.dev/docs/commerce-manager/orders/orders-cm)
-- [Checkout workflow](https://beta.elasticpath.dev/docs/api/carts/checkout)
-- [Custom Data (Flows) API](https://beta.elasticpath.dev/docs/api/flows/flows-service-introduction)
-- [Orders API](https://beta.elasticpath.dev/docs/api/carts/orders)
+- [Custom Data (Flows) Commerce Manager](/docs/commerce-manager/flows/)
+- [Orders Commerce Manager](/docs/commerce-manager/orders/orders-cm)
+- [Checkout workflow](/docs/api/carts/checkout)
+- [Custom Data (Flows) API](/docs/api/flows/flows-service-introduction)
+- [Orders API](/docs/api/carts/orders)
 - [Extend a resource with custom data](/docs/commerce-manager/flows/)

@@ -12,7 +12,7 @@ This guide gives you a general idea and know-how around extending an existing re
 guides about extending specific types of resources, see:
 
 - [Extend customer resources](/guides/How-To/Customers/extend-customer-resources)
-- [Extend product resources](https://beta.elasticpath.dev/guides/Products/add-custom-data-to-pxm-products)
+- [Extend product resources](/guides/How-To/Products/add-custom-data-to-pxm-products)
 - [Extend cart and order resources](/guides/How-To/Carts/extend-cart-and-order-resources)
 
 ## Prerequisites
@@ -20,7 +20,7 @@ guides about extending specific types of resources, see:
 If you want to follow along, you need the following items:
 
 - A Composable Commerce account and the Client ID and Client Secret of your store
-- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request#get-an-access-token)
+- An [access token](/guides/Getting-Started/your-first-api-request#get-an-access-token)
 - A basic understanding of object-oriented programming or JavaScript
 
 ## Step-by-step walkthrough

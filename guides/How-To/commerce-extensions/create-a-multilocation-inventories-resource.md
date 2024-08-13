@@ -34,7 +34,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 
-Make sure to take note of the Custom API ID [returned](https://beta.elasticpath.dev/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID.
+Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID.
 
 ## Create Custom Fields
 
@@ -78,7 +78,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
       }
     }
 ```
-Take note of `validation` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](https://beta.elasticpath.dev/docs/api/commerce-extensions/custom-fields#integer-validation).
+Take note of `validation` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](/docs/api/commerce-extensions/custom-fields#integer-validation).
 
 ### Create Custom Field - location-name
 In this step, you will create a Custom Field `location-name`, this stores a string to represent where a SKU is stored. Additionally, you will restrict this value to specific options using regex.
@@ -107,7 +107,7 @@ Take note of `validation` in the step above, this field is restricted to only al
 * London
 * New York
 
-For more information, see [string validation](https://beta.elasticpath.dev/docs/api/commerce-extensions/custom-fields#string-validation).
+For more information, see [string validation](/docs/api/commerce-extensions/custom-fields#string-validation).
 
 ### Create Custom Field - collection-name
 In this step, you will create a Custom Field `collection-name`, this stores a string to represent the collection a SKU is associated with.
@@ -171,7 +171,7 @@ curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventori
 
 When using Custom API Entries, if multiple independent clients update the same resource, you should have them use the `If-Match` header to prevent lost updates and other data consistency issues in the inventory amounts. For example, if two users simultaneously see an amount of 3 and each allocate 1, both would update the amount to 2. The `If-Match` header ensures that only one of these requests succeeds. It works by comparing the provided ETag value with the current ETag value of the resource. If the resource hasn't changed since you last read it, the ETag will not change, ensuring the update is safe. 
 
-To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](https://elasticpath.dev/docs/api/commerce-extensions/update-a-custom-entry). If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned. If a client receives an `HTTP 412`, they should re-read the resource to get the latest version, ensure the update is safe, that is check that the amount is greater than zero, and try again.
+To update a resource, include the `If-Match` header in your request and set its value to the ETag. For more information, see [update a custom entry](/docs/api/commerce-extensions/update-a-custom-entry). If the value of the header matches the current ETag, the request completes successfully. If not, `HTTP 412 Precondition Failed` is returned. If a client receives an `HTTP 412`, they should re-read the resource to get the latest version, ensure the update is safe, that is check that the amount is greater than zero, and try again.
 
 The following example shows how to perform a Conditional Update on a Custom API Entry for location inventories using the `If-Match` header:
 
@@ -209,4 +209,4 @@ curl -X GET "https://useast.api.elasticpath.com/v2/extensions/location-inventori
      -H "Authorization: XXXX" \
 ```
 
-For more information, see [Filtering](https://beta.elasticpath.dev/docs/api/commerce-extensions/get-all-custom-entries#filtering).
+For more information, see [Filtering](/docs/api/commerce-extensions/get-all-custom-entries#filtering).

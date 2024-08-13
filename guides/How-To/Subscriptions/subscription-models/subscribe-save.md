@@ -33,7 +33,7 @@ The following steps describe how to sell personal care items using a subscribe a
 
 2. Assign a price for each of these products.
 
-   See [Repeat Products](https://beta.elasticpath.dev/docs/commerce-manager/subscriptions/products/creating-products).
+   See [Repeat Products](/docs/commerce-manager/subscriptions/products/creating-products).
 
 3. Create your plans, for example:
 
@@ -44,7 +44,7 @@ The following steps describe how to sell personal care items using a subscribe a
 
 4. Assign a discount for each plan.
 
-   See [Plans](https://beta.elasticpath.dev/docs/commerce-manager/subscriptions/subscription-plans/creating-plans).
+   See [Plans](/docs/commerce-manager/subscriptions/subscription-plans/creating-plans).
 
 5. Create an offering that combines each product with the plans.
 
@@ -52,4 +52,4 @@ The following steps describe how to sell personal care items using a subscribe a
     - offering 2 - Desensitizing toothpaste with monthly, 3 monthly, 6 monthly, and yearly plans.
     - offering 3 - Whitening toothpaste with monthly, 3 monthly, 6 monthly, and yearly plans.
    
-    See [Offerings](https://beta.elasticpath.dev/docs/commerce-manager/subscriptions/offerings/creating-offerings).
+    See [Offerings](/docs/commerce-manager/subscriptions/offerings/creating-offerings).
