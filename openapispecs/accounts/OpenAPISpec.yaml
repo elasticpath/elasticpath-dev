@@ -40,6 +40,8 @@ servers:
     description: US East
   - url: 'https://euwest.api.elasticpath.com'
     description: EU West
+security:
+  - BearerToken: []
 paths:
   /v2/accounts:
     post:
@@ -170,8 +172,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   '/v2/accounts/{accountID}':
     get:
       tags:
@@ -200,8 +200,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
     put:
       tags:
         - Accounts
@@ -341,8 +339,6 @@ paths:
                           example: "Not Found"
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
     delete:
       tags:
         - Accounts
@@ -363,8 +359,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   /v2/account-members:
     get:
       tags:
@@ -431,8 +425,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   '/v2/account-members/{accountMemberID}':
     get:
       tags:
@@ -461,8 +453,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   '/v2/accounts/{accountID}/account-memberships':
     post:
       tags:
@@ -513,8 +503,6 @@ paths:
           $ref: '#/components/responses/ConflictError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: [ ]
     get:
       tags:
         - Account Membership
@@ -592,8 +580,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: [ ]
   '/v2/account-members/{accountMemberId}/account-memberships':
     get:
       tags:
@@ -670,8 +656,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   '/v2/accounts/{accountID}/account-memberships/unassigned-account-members':
     get:
       tags:
@@ -759,8 +743,6 @@ paths:
           $ref: '#/components/responses/ConflictError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   '/v2/accounts/{accountID}/account-memberships/{membershipID}':
     get:
       tags:
@@ -799,8 +781,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
     put:
       tags:
         - Account Membership
@@ -853,8 +833,6 @@ paths:
           $ref: '#/components/responses/ConflictError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
     delete:
       tags:
         - Account Membership
@@ -881,8 +859,6 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   /v2/settings/account-membership:
     get:
       tags:
@@ -901,8 +877,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
     put:
       tags:
         - Account Membership Settings
@@ -931,8 +905,6 @@ paths:
           $ref: '#/components/responses/BadRequestError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   /v2/settings/account-authentication:
     get:
       tags:
@@ -951,8 +923,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
     put:
       tags:
         - Account Authentication Settings
@@ -978,8 +948,6 @@ paths:
           $ref: '#/components/responses/BadRequestError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
   /v2/account-members/tokens:
     post:
       tags:
@@ -1102,8 +1070,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         default:
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - BearerToken: []
 tags:
   - name: Accounts
     description: |
@@ -1796,5 +1762,3 @@ components:
                     }
                   ]
                 }
-security:
-  - BearerToken: []
