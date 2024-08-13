@@ -31,7 +31,7 @@ Only sellers with Seller Admins, Support and IT roles can access the API.
 
    See [Personal Data Related Data Entries](/docs/api/personal-data/get-related-data-entries) for more information.
 
-1. You can use pagination links inside the `meta` field to navigate. See [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) for more information.
+1. You can use pagination links inside the `meta` field to navigate. See [pagination](/guides/Getting-Started/pagination) for more information.
 1. You can view the logs for the original data item from Step 1 or any of the related data items found in Step 2.
 1. Call the `logs` endpoint and specify the `id` and `type` in the filter
 gg
