@@ -49,11 +49,11 @@ You must log in as a user with seller admin privileges.
     - Client ID
     - Client Secret
 
-7. Enter a value for the **Secret Phrase**. This is required when you want to manually trigger the migration. For example, {"secret": "This is my answer to the secret phrase."}.
+7. Enter a value for the **Secret Phrase**. This is required when you want to manually trigger the migration. For example, \{"secret": "This is my answer to the secret phrase."}.
 
 ## Configuring Legacy to Product Experience Manager Migration Tool
 
-Once you have completed the [Prerequistes](#prequisites), you are ready to configure the Legacy to Product Expereince Manager Migration tool:
+Once you have completed the [Prerequisites](#prequisites), you are ready to configure the Legacy to Product Experience Manager Migration tool:
 
 1. In Commerce Manager, under **COMPOSER**, click **Integrations Hub**.
 2. Under **Store Management & Configuration**, click **Legacy to Product Experience Manager Catalog Migration**.
@@ -87,7 +87,7 @@ The migration process is completed in three phases:
 2. Click **Legacy to Product Experience Manager Catalog Migration**.
 3. Click the **Test** tab.
 4. In the **Flow Selector** list, select **Copy Categories to Product Experience Manager**.
-5. In the **Payload body**, add a JSON object consisting of 1 key value pair {"secret": "your secret phrase."}.
+5. In the **Payload body**, add a JSON object consisting of 1 key value pair \{"secret": "your secret phrase."}.
 6. Copy the JSON object as you require this later.
 7. Click **Save & Run Test**.
 

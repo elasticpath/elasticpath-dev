@@ -131,7 +131,7 @@ The `docusaurus-plugin-openapi-docs` plugin can be configured with the following
 | `sidebarCollapsed`   | `boolean` | `true`  | Whether sidebar categories are collapsed by default.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `customProps`        | `object`  | `null`  | Additional props for customizing a sidebar item.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
-> You may optionally configure a `sidebarOptions`. In doing so, an individual `sidebar.js` slice with the configured options will be generated within the respective `outputDir`.
+> You may optionally configure a `sidebarOptions`. In doing so, an individual `sidebar.ts` slice with the configured options will be generated within the respective `outputDir`.
 
 `versions` can be configured with the following options:
 

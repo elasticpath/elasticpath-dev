@@ -25,5 +25,5 @@ The `<Section>` tag is required for all components. It is a block-level tag that
 * **defaultTextTheme**: string (optional) - A string (`"dark-bg"` or `"light-bg"`) indicating the default text theme to use for the component
 * **defaultBackgroundColor**: string (optional) - A CSS color value indicating the default background color (Default: none)
 * **enableHeader**: boolean (optional) - When true, allows content authors to add a section-header to this section type (Default: `false)`
-* **location**: Array\``<string>``` (optional) - Where the component can appear; can include `'header'`, `'main'`, and `'footer'` (Default: `['main']`)
-* **properties**: Array<\[object]> (optional) - defines properties that content authors can configure within the page editor. For details see [custom properties](/docs/studio/developers/features/properties).
+* **location**: `Array\<string>` (optional) - Where the component can appear; can include `'header'`, `'main'`, and `'footer'` (Default: `['main']`)
+* **properties**: Array`<\[object]>` (optional) - defines properties that content authors can configure within the page editor. For details see [custom properties](/docs/studio/developers/features/properties).

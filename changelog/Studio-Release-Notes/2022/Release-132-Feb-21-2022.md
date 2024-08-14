@@ -52,13 +52,13 @@ setting by default, but you can now set a custom width:
 You can now align text to the right! This is something we probably should have done a long time ago, but we’re only now
 getting to it along with a number of other editor improvements.
 
-![Rigt-alignment of Text](/assets/studio/Screen_Shot_2022-02-24_at_11.59.05_AM.png)
+![Right-alignment of Text](/assets/studio/Screen_Shot_2022-02-24_at_11.59.05_AM.png)
 
 #### Complete List of Resolved Items
 
 * Added intro video for the editor.
 * Added deep-links. Among other things, this allows us to provide one URL that all users can use to access a specific
-  part of their account. For example, <https://app.CX-Studio.com/goto/landing-pages> will now take you to the landing
+  part of their account. For example, [Landing Pages](https://app.CX-Studio.com/goto/landing-pages) will now take you to the landing
   pages section in *your* account.
 * Adjusted media policy to allow product images to be used any place where media can be used.
 * Updated the Studio UI to account for Shopify plans which use the proxy by default.

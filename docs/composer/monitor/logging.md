@@ -63,16 +63,16 @@ To view a connection's logs, click the log icon to the right of the connection.
 
 ## What Gets Logged?
 
-If a component invokes `context.logger.{debug,info,warn,error}()` within its code, the log line is saved in Monitor's logging system.
+If a component invokes `context.logger.\{debug,info,warn,error}()` within its code, the log line is saved in Monitor's logging system.
 
 In addition to logs issuing from components, you will see the following types of log lines in your logs:
 
-| Type           | 	Example	                             | Purpose                                                                                      | 	Log Level |
-|----------------|---------------------------------------|----------------------------------------------------------------------------------------------|------------|
+| Type           | 	Example	                           | Purpose                                                                                      | 	Log Level |
+|----------------|-------------------------------------|----------------------------------------------------------------------------------------------|------------|
 | Instance Start | 	Starting Instance 'Sample Instance'	 | Indicates when an instance begins to run.	                                                   | info       |
-| Instance End	  | Ending Instance 'Sample Instance'	    | Indicates that an instance ran successfully to completion.                                   | 	info      |
-| Step Started   | 	Fetch file from Dropbox	             | Displays the name of the step that was invoked.                                              | 	info      |
-| Step Failed	   | {{ERROR MESSAGE}}	                    | Indicates that a step of an instance failed to run, and displays the related error message.	 | error      |
+| Instance End	  | Ending Instance 'Sample Instance'	  | Indicates that an instance ran successfully to completion.                                   | 	info      |
+| Step Started   | 	Fetch file from Dropbox	           | Displays the name of the step that was invoked.                                              | 	info      |
+| Step Failed	   | \{ERROR MESSAGE}	                   | Indicates that a step of an instance failed to run, and displays the related error message.	 | error      |
 
 
 ## Log Levels

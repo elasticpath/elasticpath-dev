@@ -1,6 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+import {themes as prismThemes} from 'prism-react-renderer';
+
 const elasticpath = {
   plain: {
     color: "#ebf4ff",
@@ -116,9 +118,6 @@ const elasticpath = {
   ],
 };
 
-const lightCodeTheme = require("prism-react-renderer/themes/vsLight");
-const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
-
 const fs = require("fs");
 const resourcesHTML = fs.readFileSync("./src/snippets/resources.html", "utf-8");
 const resourceDOCS = fs.readFileSync(
@@ -166,8 +165,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars-default.js"),
-          docLayoutComponent: "@theme/DocPage",
-          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
         },
         theme: {
@@ -317,8 +314,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Elastic Path Software`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
         additionalLanguages: [
           "dart",
           "ruby",

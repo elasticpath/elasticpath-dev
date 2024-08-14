@@ -26,4 +26,4 @@ The `<Box>` tag is a special type of block-level element, which acts as a config
 * **defaultTextAlignment**: string (optional) - A string ("left", "right", or "center") indicating the default alignment of this box (Default "center')
 * **enableVerticalAlignment**: boolean (optional) - When true, allows the user to select the vertical alignment for the text inside the box
 * **defaultVerticalAlignment**: string (optional) - A string ("left", "right", or "middle") indicating the vertical alignment for the text inside the box (Default "middle')
-* **properties**: Array<\[object]> (optional) - defines properties that content authors can configure within the page editor. For details see [custom properties](/docs/studio/developers/features/properties).
+* **properties**: Array`<\[object]>` (optional) - defines properties that content authors can configure within the page editor. For details see [custom properties](/docs/studio/developers/features/properties).

@@ -24,7 +24,7 @@ An example of how inventory data is imported using an Inventory Import integrati
 
 1. Create a JSON file with the inventory data you want to import. You can have more than one JSON file, depending on your requirements. See [Inventory Import Integration File Format](#inventory-import-integration-file-format).
 1. Configure an Inventory Import integration in the store where you want to import the inventory data. This creates the webhooks that consumes the message and JSON files when you send the API request to import the inventory data.
-1. In Postman, run `POST {{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Inventory Import Integration Files](#using-inventory-import-integration-files).
+1. In Postman, run `POST \{{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Inventory Import Integration Files](#using-inventory-import-integration-files).
 
     - The Iventory Import integration processes your Gzip files.
     - The inventory data are imported to the store.
@@ -46,12 +46,12 @@ To invoke the inventory import, you must invoke the webhook created when you con
 
 ### Body
 
-| Name | Required | Type | Description |
-| :--- | :--- | :--- | :--- |
-| `gzipFileUrls` | Required | `string` | The Gzip file URls for the JSON files you want to import in the format `https://{path}/products-inventory.jsonl.gz` where `path` is the path to your Gzip file. You can specify more than one. We recommend aligning the number of products per file with the `pageSize`, as processing each page requires rereading the file. |
-| `fileIndex` | Optional | `integer` | The zero based index of the gzip file to start with. The default is zero. This is useful to restart processing in case of failure. |
-| `PageSize` | Optional | `integer` | The number of products to process from a given file in a `paged` manner. The default is `500` and the upper limit depends on the number of custom attributes, files and variations. Tuning may be required to find the optimal page size. |
-| `page` | Optional | `integer` | Execution start page index. |
+| Name | Required | Type | Description                                                                                                                                                                                                                                                                                                                     |
+| :--- | :--- | :--- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `gzipFileUrls` | Required | `string` | The Gzip file URls for the JSON files you want to import in the format `https://\{path}/products-inventory.jsonl.gz` where `path` is the path to your Gzip file. You can specify more than one. We recommend aligning the number of products per file with the `pageSize`, as processing each page requires rereading the file. |
+| `fileIndex` | Optional | `integer` | The zero based index of the gzip file to start with. The default is zero. This is useful to restart processing in case of failure.                                                                                                                                                                                              |
+| `PageSize` | Optional | `integer` | The number of products to process from a given file in a `paged` manner. The default is `500` and the upper limit depends on the number of custom attributes, files and variations. Tuning may be required to find the optimal page size.                                                                                       |
+| `page` | Optional | `integer` | Execution start page index.                                                                                                                                                                                                                                                                                                     |
 
 ### Request Example
 
@@ -114,9 +114,9 @@ You can perform the inventory import using Postman.
 1. From **Summary** > **Trigger Details**, click **Gzip File URL Handler** to display the webhook.
 1. Select **Copy to Clipboard** to copy the URL.
 1. Go to Postman.
-1. Open `POST {{gzip-file-url-handler-webhook-url}}` where *{{gzip-file-url-handler-webhook-url}}* is the webhook you copied in step 5.
+1. Open `POST \{{gzip-file-url-handler-webhook-url}}` where *\{{gzip-file-url-handler-webhook-url}}* is the webhook you copied in step 5.
 1. In **Body**, add the list of Gzip file URLs for the JSON files you want to import. See [Inventory Import Integration File Format](#inventory-import-integration-file-format).
-11. Run `POST {{gzip-file-url-handler-webhook-url}}`.
+11. Run `POST \{{gzip-file-url-handler-webhook-url}}`.
 12. When the import has finished, go to your store to see all the resources you just imported.
 
 ## Troubleshooting the Inventory Import Integration

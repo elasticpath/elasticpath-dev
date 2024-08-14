@@ -19,7 +19,7 @@ An example of how price data is imported using a Price Import integration is des
 
 1. Create a JSON file with the price data you want to import. You can have more than one JSON file, depending on your requirements. See [Price Import Integration File Format](#price-import-integration-file-format).
 1. Configure a Price Import integration in the store where you want to import the price data. This creates the webhooks that consumes the message and JSON files when you send the API request to import the price data.
-1. In Postman, run `POST {{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Price Import Integration Files](#using-price-import-integration-files).
+1. In Postman, run `POST \{{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Price Import Integration Files](#using-price-import-integration-files).
 
     - The Price Import integration processes your Gzip files.
     - The prices are imported to the store.
@@ -136,21 +136,21 @@ To invoke the price import, you must invoke the webhook created when you configu
 
 ## Prerequisites
 
-1. The store where you are importing your price data must already have the pricebooks defined. The Price Import does not create pricebooks as part of the import.
-1. You must have a JSON file configured that defines the price data you want to import. See [Price Import Integration File Formats](#price-import-integration-file-formats).
+1. The store where you are importing your price data must already have the price books defined. The Price Import does not create price books as part of the import.
+2. You must have a JSON file configured that defines the price data you want to import. See [Price Import Integration File Formats](#price-import-integration-file-formats).
 
 ## Configuring the Price Import Integration
 
-Once you have met the [Prerequistes](#prequisites), you are ready to configure the price import integration in **Integrations Hub**.
+Once you have met the [Prerequisites](#prequisites), you are ready to configure the price import integration in **Integrations Hub**.
 
 1. In Commerce Manager, go to the store where you want to import price data.
-1. Go to **COMPOSER** > **Integrations Hub**.
-1. Under **Store Management & Configuration**, click **Commerce Price Import**. The **Commerce Price Import** integration guides you through the steps you need to follow to complete the integration.
-1. Click **Configure**. The **Trigger details** are displayed. **URL** is the webhook that consumes your Gzip files. 
-1. Click **Next**. The **Commerce Configuration** page is displayed.
-1. Complete the information in the **Commerce Configuration** page. 
+2. Go to **COMPOSER** > **Integrations Hub**.
+3. Under **Store Management & Configuration**, click **Commerce Price Import**. The **Commerce Price Import** integration guides you through the steps you need to follow to complete the integration.
+4. Click **Configure**. The **Trigger details** are displayed. **URL** is the webhook that consumes your Gzip files. 
+5. Click **Next**. The **Commerce Configuration** page is displayed.
+6. Complete the information in the **Commerce Configuration** page. 
 
-    1. **Commerce Connection** details.
+   a. **Commerce Connection** details.
 
         - **Client-ID**  - Your Commerce Client ID.
         - **Client-Secret** - Your Commerce Client Secret.
@@ -163,12 +163,12 @@ Once you have met the [Prerequistes](#prequisites), you are ready to configure t
         - **Throttle Interval** - Specify throttle interval for this integration. Default value is 125. This supports staying within rate limits.
         - **Throttle Limit** - Specify throttle request limit interval for this integration. Default value is 3. This supports staying within rate limits.
 
-    1. Click **Connect**. The **Integration Hub** uses your cuurent store crededentials to automatically connect you to your store. 
-    1. **Elapsed Execution Time Cutoff** is the number of seconds to wait before the node import is stopped, if page processing has halted for any reason. This may need to be increased if the number of nodes being processed for the store is exceptionally large.
-    1. **Default Page Size** is the default page size processed when importing.
-    1. **Log Level** - From **Log Level** list, select the level of logging.
+   b. Click **Connect**. The **Integration Hub** uses your current store credentials to automatically connect you to your store. 
+   c. **Elapsed Execution Time Cutoff** is the number of seconds to wait before the node import is stopped, if page processing has halted for any reason. This may need to be increased if the number of nodes being processed for the store is exceptionally large.
+   d. **Default Page Size** is the default page size processed when importing.
+   e. **Log Level** - From **Log Level** list, select the level of logging.
     
-1. Click **Finish**. Your integration is enabled. You must enable a Price Import integration on each store where you want to import your price data.  
+7. Click **Finish**. Your integration is enabled. You must enable a Price Import integration on each store where you want to import your price data.  
 
 ## Importing your Price Data
 
@@ -180,9 +180,9 @@ You can perform the price import using Postman.
 1. From **Summary** > **Trigger Details**, click **Gzip File URL Handler** to display the webhook.
 1. Select **Copy to Clipboard** to copy the URL.
 1. Go to Postman.
-1. Open `POST {{gzip-file-url-handler-webhook-url}}` where *{{gzip-file-url-handler-webhook-url}}* is the webhook you copied in step 5.
+1. Open `POST \{{gzip-file-url-handler-webhook-url}}` where *\{{gzip-file-url-handler-webhook-url}}* is the webhook you copied in step 5.
 1. In **Body**, add the list of Gzip file URLs for the JSON files you want to import. See [Price Import Integration File Format](#price-import-integration-file-format).
-11. Run `POST {{gzip-file-url-handler-webhook-url}}`.
+11. Run `POST \{{gzip-file-url-handler-webhook-url}}`.
 12. When the import has finished, if you go to your store, you should see all the resources you just imported.
 
 ## Troubleshooting the Price Import Integration
