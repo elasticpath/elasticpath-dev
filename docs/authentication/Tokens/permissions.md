@@ -444,7 +444,7 @@ The following tables show a breakdown of the API endpoint actions that are avail
 | `/personal-data/logs`                  | ✅ | ✅ |
 | `/personal-data/personal-data-entries` |✅ | ✅ |
 | `/merchant-realm-mappings`             | ⛔ | ⛔ |
-| `/orders`                              | ⛔ | ⛔ |
+| `/orders`                              | ✅ | ✅ |
 | `/orders/:id`                          | ✅ | ✅ |
 | `/v2/products`                         | ✅ | ✅ |
 | `/catalog/products`                    | ✅ | ⛔️ |
