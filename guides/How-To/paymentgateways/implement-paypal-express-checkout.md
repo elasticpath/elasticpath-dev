@@ -327,5 +327,5 @@ To confirm multiple payments, follow the instructions to update multiple payment
 ## Related Resources
 
 - [PayPal Express Checkout Payments](https://elasticpath.dev/docs/api/carts/authorize-setup)
-- [Checkout workflow](/docs/carts-orders/checkout/)
+- [Checkout workflow](/docs/api/carts/checkout)
 - [Carts API](/docs/api/carts/cart-management)
