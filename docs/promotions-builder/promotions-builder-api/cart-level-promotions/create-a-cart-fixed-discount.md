@@ -1,10 +1,10 @@
 ---
-title: Create a Cart Fixed Discount Rule Promotion
-nav_label: Create a Cart Fixed Discount Rule Promotion
+title: Create a Cart Fixed Discount
+nav_label: Create a Cart Fixed Discount
 sidebar_position: 3
 ---
 
-## `POST` Create a Cart Fixed Discount Rule Promotion
+## `POST` Create a Cart Fixed Discount
 
 ```http
 https://useast.api.elasticpath.com/v2/rule-promotions
