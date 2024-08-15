@@ -781,7 +781,7 @@ const config = {
           { to: '/docs/promotions-builder/promotions-builder-api/promotions-builder-management/get-a-promotions-builder-by-id', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-management/get-a-rule-promotion-by-id'},
           { to: '/docs/studio/design/Header-and-Footer/Header-Formatting-Options', from: '/docs/cx-studio/design/Header-and-Footer/Header-Formatting-Options'},
           { to: '/docs/authentication/single-sign-on/user-authentication-password-profiles-api/delete-a-user-authentication-password-profile', from: '/docs/commerce-cloud/authentication/single-sign-on/user-authentication-password-profiles-api/delete-a-user-authentication-password-profile'},
-          { to: '/docs/rule-promotions/rule-promotion-codes/delete-multiple-rule-promotion-codes', from: '/docs/commerce-cloud/rule-promotions/rule-promotion-codes/delete-multiple-rule-promotion-codes'},
+          { to: '//docs/promotions-builder/promotions-builder-codes/delete-multiple-rule-promotion-codes', from: '/docs/commerce-cloud/rule-promotions/rule-promotion-codes/delete-multiple-rule-promotion-codes'},
           { to: '/docs/studio/content/advanced-page-editing/Managing-Redirects', from: '/docs/cx-studio/content/advanced-page-editing/Managing-Redirects'},
           { to: '/docs/promotions-builder/promotions-builder-api/promotions-builder-management/update-a-promotions-builder', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-management/update-a-rule-promotion'},
           { to: '/changelog/Studio-Release-Notes/2022/Release-154-October-13-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-154-October-13-2022'},
