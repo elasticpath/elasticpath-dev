@@ -85,7 +85,7 @@ To invoke the node import, you must invoke the webhook created when you configur
 
 ## Configuring the Node Import Integration
 
-Once you have met the [Prerequistes](#prequisites), you are ready to configure the node import integration in **Integrations Hub**.
+Once you have met the [Prerequisites](#prequisites), you are ready to configure the node import integration in **Integrations Hub**.
 
 1. In Commerce Manager, go to the store where you want to import node data.
 1. Go to **COMPOSER** > **Integrations Hub**.

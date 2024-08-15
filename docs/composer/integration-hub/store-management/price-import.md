@@ -19,7 +19,7 @@ An example of how price data is imported using a Price Import integration is des
 
 1. Create a JSON file with the price data you want to import. You can have more than one JSON file, depending on your requirements. See [Price Import Integration File Format](#price-import-integration-file-format).
 1. Configure a Price Import integration in the store where you want to import the price data. This creates the webhooks that consumes the message and JSON files when you send the API request to import the price data.
-1. In Postman, run `POST \{{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Price Import Integration Files](#using-price-import-integration-files).
+1. In Postman, run `POST {{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Price Import Integration Files](#using-price-import-integration-files).
 
     - The Price Import integration processes your Gzip files.
     - The prices are imported to the store.
@@ -180,9 +180,9 @@ You can perform the price import using Postman.
 1. From **Summary** > **Trigger Details**, click **Gzip File URL Handler** to display the webhook.
 1. Select **Copy to Clipboard** to copy the URL.
 1. Go to Postman.
-1. Open `POST \{{gzip-file-url-handler-webhook-url}}` where *\{{gzip-file-url-handler-webhook-url}}* is the webhook you copied in step 5.
+1. Open `POST {{gzip-file-url-handler-webhook-url}}` where `{{gzip-file-url-handler-webhook-url}}` is the webhook you copied in step 5.
 1. In **Body**, add the list of Gzip file URLs for the JSON files you want to import. See [Price Import Integration File Format](#price-import-integration-file-format).
-11. Run `POST \{{gzip-file-url-handler-webhook-url}}`.
+11. Run `POST {{gzip-file-url-handler-webhook-url}}`.
 12. When the import has finished, if you go to your store, you should see all the resources you just imported.
 
 ## Troubleshooting the Price Import Integration

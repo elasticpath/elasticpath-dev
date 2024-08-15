@@ -211,7 +211,7 @@ To invoke the product import, you must invoke the webhook created when you confi
 
 ## Configuring the Product Import Integration
 
-Once you have met the [Prerequistes](#prequisites), you are ready to configure the product import integration in **Integrations Hub**.
+Once you have met the [Prerequisites](#prequisites), you are ready to configure the product import integration in **Integrations Hub**.
 
 1. In Commerce Manager, go to the store where you want to import product data.
 1. Go to **COMPOSER** > **Integrations Hub**.

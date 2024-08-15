@@ -24,7 +24,7 @@ An example of how inventory data is imported using an Inventory Import integrati
 
 1. Create a JSON file with the inventory data you want to import. You can have more than one JSON file, depending on your requirements. See [Inventory Import Integration File Format](#inventory-import-integration-file-format).
 1. Configure an Inventory Import integration in the store where you want to import the inventory data. This creates the webhooks that consumes the message and JSON files when you send the API request to import the inventory data.
-1. In Postman, run `POST \{{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Inventory Import Integration Files](#using-inventory-import-integration-files).
+1. In Postman, run `POST {{webhook-url}}` request. As part of the request, you must supply the Gzip file URLs for the JSON files you want to process as part of the import. See [Using Inventory Import Integration Files](#using-inventory-import-integration-files).
 
     - The Iventory Import integration processes your Gzip files.
     - The inventory data are imported to the store.
@@ -72,7 +72,7 @@ You must have a JSON file configured that defines the price data you want to imp
 
 ## Configuring the Inventory Import Integration
 
-Once you have met the [Prerequistes](#prerequisites), you are ready to configure the inventory import integration in **Integrations Hub**.
+Once you have met the [Prerequisites](#prerequisites), you are ready to configure the inventory import integration in **Integrations Hub**.
 
 1. In Commerce Manager, go to the store where you want to import inventory data.
 1. Go to **COMPOSER** > **Integrations Hub**.
@@ -94,7 +94,7 @@ Once you have met the [Prerequistes](#prerequisites), you are ready to configure
         - **Throttle Limit** - Specify throttle request limit interval for this integration. Default value is 3. This supports staying within rate limits.
         - **Token URL** - Your Commerce API Token URL. For example, `api.motlin.com/oauth/<access_token>` (EU) or `useast.api.elasticpath.com/oauth/<access_token>` (US).
 
-    1. Click **Connect**. The **Integration Hub** uses your current store crededentials to automatically connect you to your store. 
+    1. Click **Connect**. The **Integration Hub** uses your current store credentials to automatically connect you to your store. 
     1. Once you have successfully connected to Commerce, you can configure the following:
 
         - **Elapsed Execution Time Cutoff** - The number of seconds to wait before the inventory import is stopped, if page processing has halted for any reason. This may need to be increased if the number of products being processed for the store is exceptionally large.
@@ -114,9 +114,9 @@ You can perform the inventory import using Postman.
 1. From **Summary** > **Trigger Details**, click **Gzip File URL Handler** to display the webhook.
 1. Select **Copy to Clipboard** to copy the URL.
 1. Go to Postman.
-1. Open `POST \{{gzip-file-url-handler-webhook-url}}` where *\{{gzip-file-url-handler-webhook-url}}* is the webhook you copied in step 5.
+1. Open `POST {{gzip-file-url-handler-webhook-url}}` where `{{gzip-file-url-handler-webhook-url}}` is the webhook you copied in step 5.
 1. In **Body**, add the list of Gzip file URLs for the JSON files you want to import. See [Inventory Import Integration File Format](#inventory-import-integration-file-format).
-11. Run `POST \{{gzip-file-url-handler-webhook-url}}`.
+11. Run `POST {{gzip-file-url-handler-webhook-url}}`.
 12. When the import has finished, go to your store to see all the resources you just imported.
 
 ## Troubleshooting the Inventory Import Integration

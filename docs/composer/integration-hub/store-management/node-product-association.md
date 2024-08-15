@@ -71,7 +71,7 @@ To invoke the node product association import, you must invoke the webhook creat
 
 ## Configuring the Node Product Association Import Integration
 
-Once you have met the [Prerequistes](#prequisites), you are ready to configure the node product association import integration in **Integrations Hub**.
+Once you have met the [Prerequisites](#prequisites), you are ready to configure the node product association import integration in **Integrations Hub**.
 
 1. In Commerce Manager, go to the store where you want to import node data.
 1. Go to **COMPOSER** > **Integrations Hub**.

@@ -29,10 +29,10 @@ definitions and options for each setting.
 - **Category URL Structure**: This field is not editable and has a single value: /{blog}/{category}/
 - **Article URL Structure**: There are four options available here:
 
-    - /{blog}/category}/{article}
-    - /{blog}/{article}
-    - /{category}/{article}
-    - /{article}
+    - `/{blog}/category}/{article}`
+    - `/{blog}/{article}`
+    - `/{category}/{article}`
+    - `/{article}`
 
 - **URL**: Define the URL where the blog should be found.
 - **Description**: Define a meta description for the blog.
