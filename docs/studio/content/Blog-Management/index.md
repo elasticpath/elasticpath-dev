@@ -26,7 +26,7 @@ definitions and options for each setting.
 - **Studio Name**: Define an internal-only name used for organization.
 - **Title**: Define a public-facing title for the blog. This is also what is used when your browser needs a title for
   the tab.
-- **Category URL Structure**: This field is not editable and has a single value: /{blog}/{category}/
+- **Category URL Structure**: This field is not editable and has a single value: `/{blog}/{category}/`
 - **Article URL Structure**: There are four options available here:
 
     - `/{blog}/category}/{article}`
