@@ -149,8 +149,8 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "ignore",
+  onBrokenMarkdownLinks: "ignore",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
