@@ -108,7 +108,7 @@ const PRODUCTS = [
   {
     title: 'Promotions Builder',
     beta: false,
-    link: '/docs/rule-promotions/overview',
+    link: '/docs/promotions-builder/overview',
     icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
