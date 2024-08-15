@@ -761,5 +761,4 @@ Now, consider an item with an original price of $100. The price after applying P
 ## Related Resources
 
 - [Promotions Builder in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder)
-- [Promotions Builder API](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview)
-- [Promotion Codes](/docs/rule-promotions/overview#promotion-codes)
+- [Promotions Builder API](/docs/promotions-builder/promotions-builder-api/promotions-builder-api-overview)

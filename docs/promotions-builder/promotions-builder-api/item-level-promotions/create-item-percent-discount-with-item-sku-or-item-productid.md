@@ -24,7 +24,7 @@ For more information on how to handle item SKU and product ID together, see [Han
 
 ### Body
 
-For descriptions of the fields, refer to [Rules Promotion API overview](/docs/rule-promotions/rule-promotions-api/rule-promotions-api-overview).
+For descriptions of the fields, refer to [Promotions Builder API overview](/docs/promotions-builder/promotions-builder-api/promotions-builder-api-overview).
 
 
 ## Request Example
