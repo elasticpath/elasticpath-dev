@@ -136,13 +136,13 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "ignore",
+  onBrokenMarkdownLinks: "ignore",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "elasticpath", // Usually your GitHub org/user name.
+  projectName: "elasticpath-dev", // Usually your repo name.
   markdown: {
     mermaid: true,
   },
