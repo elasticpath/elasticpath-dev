@@ -281,7 +281,7 @@ Ensure that you have the following:
 
 - A Composable Commerce account.
 - The [client ID and client secret](https://dashboard.elasticpath.com/app) of your store.
-- An [access token](https://beta.elasticpath.dev/guides/Getting-Started/your-first-api-request).
+- An [access token](/guides/Getting-Started/your-first-api-request).
 
 :::note
 If you don’t have an access token, make the following request to get the access token:
@@ -307,12 +307,12 @@ Re-building child products after adding or removing a new variation changes the 
 
 ### Procedure - API
 
-1. [Create the variations](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation).
-1. [Create your options](https://beta.elasticpath.dev/docs/api/pxm/products/create-variation-option).
+1. [Create the variations](/docs/api/pxm/products/create-variation).
+1. [Create your options](/docs/api/pxm/products/create-variation-option).
 1. The endpoint you use to build child products based on a combination of variations depends on your scenario.
 
-    - Scenario 1: You want to create a product, associate the product with variations and build a combination of child products in one request. You can use [create a product](https://beta.elasticpath.dev/docs/api/pxm/products/create-product).
-    - Scenario 2: You already have a product and/or associated variations and you want to build a combination of child products. You can use [update a product](https://beta.elasticpath.dev/docs/api/pxm/products/update-product).
+    - Scenario 1: You want to create a product, associate the product with variations and build a combination of child products in one request. You can use [create a product](/docs/api/pxm/products/create-product).
+    - Scenario 2: You already have a product and/or associated variations and you want to build a combination of child products. You can use [update a product](/docs/api/pxm/products/update-product).
 
 1. To create a base product called **Shirt**, associate the **Shirt Size**, **Shirt Color** and **Shirt Material** variations with the **Shirt** product, configure the build rules to build all child products except small, red T-Shirts, make the following request:
 
@@ -391,7 +391,7 @@ To view all child products associated with a base product, make the following re
          -H "Content-Type: application/json" \
 ```
 
- You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](https://beta.elasticpath.dev/guides/Getting-Started/pagination) section.
+ You can navigate through the list using the pagination query parameters, `page[limit]` and `page[offset]`. For more information, see the [pagination](/guides/Getting-Started/pagination) section.
 
 ## Adding a Child Product to the Cart Using API
 
@@ -410,5 +410,5 @@ Whenever you update variations, options, or modifiers associated with a product,
 
 ## Related Resources
 
-- [Products](https://beta.elasticpath.dev/docs/commerce-manager/product-experience-manager/Products/overview)
-- [Products API](https://beta.elasticpath.dev/docs/api/pxm/products/products)
+- [Products](/docs/commerce-manager/product-experience-manager/Products/overview)
+- [Products API](/docs/api/pxm/products/products)
