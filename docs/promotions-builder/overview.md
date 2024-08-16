@@ -42,7 +42,7 @@ You can create actions to specify:
 
 ### Sub Conditions
 
-Sub conditions offer further refinement within rules and actions, specifying additional criteria that must be met for the promotion or discount to be applied. These can include conditions such as minimum quantities for specific item SKUs, exclusion of certain items, or additional constraints for eligibility. For more information, see [Create a Cart Percent Discount with Sub Conditions](/docs/rule-promotions/rule-promotions-api/cart-rule-promotions/create-a-cart-percent-discount-with-subconditions) and [Create an Item Promotion with Sub Conditions](/docs/rule-promotions/rule-promotions-api/item-rule-promotions/create-an-item-rule-promotion-with-sub-conditions).
+Sub conditions offer further refinement within rules and actions, specifying additional criteria that must be met for the promotion or discount to be applied. These can include conditions such as minimum quantities for specific item SKUs, exclusion of certain items, or additional constraints for eligibility. For more information, see [Create a Cart Percent Discount with Sub Conditions](/docs/promotions-builder/promotions-builder-api/cart-level-promotions/create-a-cart-percent-discount-with-subconditions) and [Create an Item Promotion with Sub Conditions](/docs/promotions-builder/promotions-builder-api/item-level-promotions/create-an-item-promotion-with-sub-conditions).
 
 ### Strategies
 
@@ -107,7 +107,7 @@ Consider the following scenarios:
 
 ## Promotion Codes
 
-You can generate codes for a Promotions Builder so that shoppers receive the discount when the code is provided. You can enable this feature by setting the `automatic` field to `false` in the promotions schema when you create a Promotions Builder. For more information, see [Create Promotion Codes](/docs/rule-promotions/rule-promotion-codes/create-rule-promotion-codes#post-create-rule-promotion-codes). To create promotion codes in Commerce Manager, see [Creating Promotion Codes in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-promotion-codes).
+You can generate codes for a Promotions Builder so that shoppers receive the discount when the code is provided. You can enable this feature by setting the `automatic` field to `false` in the promotions schema when you create a Promotions Builder. For more information, see [Create Promotion Codes](/docs/promotions-builder/promotions-builder-codes/create-promotion-codes). To create promotion codes in Commerce Manager, see [Creating Promotion Codes in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-promotion-codes).
 
 To learn more about promotion codes, see [Promotion Codes](/docs/promotions-builder/promotions-builder-codes/create-promotion-codes).
 
