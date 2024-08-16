@@ -12,7 +12,7 @@ https://useast.api.elasticpath.com/v2/rule-promotions
 ```
 You can create rule promotions with nested conditions, where the use of `or` with `item_sku` and `item_product_id` conditions allows for flexible and effective rule management. 
 
-For more information on how to handle item SKU and product ID together, see [Handling both Item SKU and Product ID together in Rule Promotion](/docs/rule-promotions/overview#handling-both-item-sku-and-product-id-together-in-rule-promotion).
+For more information on how to handle item SKU and product ID together, see [Handling both Item SKU and Product ID together](/docs/promotions-builder/overview#handling-both-item-sku-and-product-id-together).
 
 ## Parameters
 

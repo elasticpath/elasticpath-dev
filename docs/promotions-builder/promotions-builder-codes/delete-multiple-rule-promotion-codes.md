@@ -30,22 +30,29 @@ https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID/codes/
 curl https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID/codes/ \
      -H "Authorization: Bearer XXXX" \
      -H "Content-Type: application/json" \
-     -d $ {
-     "data": {
-          "type": "promotion_codes",
-     "data": {
-       "type": "promotion_codes",
-       "codes": [
-         {
-           "code": "fall2024"
-         },
-         {
-           "code": "Winter2024"
-         }
-       ]
-    }
+     -d $ '{
+      "data": {
+        "type": "promotion_codes",
+        "codes": [
+          {
+            "code": "spring2024"
+          },
+          {
+            "code": "summer2024"
+          },
+          {
+            "code": "summer2024_limited"
+          },
+          {
+            "code": "fall2024_limited"
+          },
+          {
+            "code": "winter_VIP_limited"
+          }
+      ]
+    }'
 ```
- 
+
 ## Response Example
 
 `204 No Content`
