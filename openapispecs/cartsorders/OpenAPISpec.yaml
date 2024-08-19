@@ -776,9 +776,15 @@ paths:
 
         ### Merging Carts
 
-        A shopper can have more than one cart and decide to merge the carts into one cart. If a shopper adds items to a cart anonymously and then signs into their account as a registered user, the system asks them which cart to use. For example, a shopper has an existing cart with items `A`, `B` and `C` in it. The shopper returns later and adds items `D` and `E` while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. After the carts merge, the cart contains items `A`, `B`, `C`, `D` and `E`.
+        A shopper can have multiple carts, and the system may automatically merge items from an anonymous cart into the shopper's registered cart when they sign in. For example, if a shopper has an existing cart with items `A`, `B` and `C`, and later adds items `D` and `E` while not signed in, the system can merge these carts when the shopper signs in. After the carts merge, the cart contains items `A`, `B`, `C`, `D` and `E`.
 
-        Any items that are duplicated from the anonymous cart to the registered cart are incremented by the quantity from the anonymous cart. For example, the shopper has an existing cart with items `A`, `B` and `C`, returns later and adds two more `A` items and one B item while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. The existing cart will contain three `A` items, two `B` items, and one `C` item.
+        If any items are duplicated from the anonymous cart to the registered cart, their quantities are incremented accordingly. For example, if a shopper's existing cart with items `A`, `B` and `C`, and they later add two more `A` items and one `B` item while not signed in, the system will merge the carts when the shopper signs in. The existing cart will now contain three `A` items, two `B` items, and one `C` item.
+
+        :::note
+
+        When the system merges items from one cart into another cart, properties such as custom attributes, custom discounts, and payment intent ID will remain unchanged in the original cart.
+
+        :::
 
         ### Best Practices
 
