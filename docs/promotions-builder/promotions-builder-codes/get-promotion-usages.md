@@ -1,10 +1,10 @@
 ---
-title: Get Usages for Promotion
-nav_label: Get Usages for Promotion
+title: Get Promotion Usages
+nav_label: Get Promotion Usages
 sidebar_position: 6
 ---
 
-## `GET` Get Usages for Promotion
+## `GET` Get Promotion Usages
 
 ```http
 https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID/usages

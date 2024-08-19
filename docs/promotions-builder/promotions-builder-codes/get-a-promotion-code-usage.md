@@ -18,7 +18,7 @@ This endpoint retrieves the usage history of a specific promotion code within a 
 
 | Name | Required | Type     | Description                      |
 |:-----|:---------|:---------|:---------------------------------|
-| `promotionID` | Required | `string` | The unique identifier of the rule promotion. |
+| `promotionID` | Required | `string` | The unique identifier for the rule promotion. |
 | `code` | Required | `string` | Specifies the name of the code. For example, `10OFF`.  |
 
 ### Headers

@@ -1,10 +1,10 @@
 ---
-title: Anonymize Promotion Code Usage
-nav_label: Anonymize Promotion Code Usage
+title: Anonymize Promotion Code Usages
+nav_label: Anonymize Promotion Code Usages
 sidebar_position: 8
 ---
 
-## `Post` Anonymize Promotion Code Usage
+## `Post` Anonymize Promotion Code Usages
 
 ```http
 https://useast.api.elasticpath.com/v2/rule-promotions/usages/anonymize
