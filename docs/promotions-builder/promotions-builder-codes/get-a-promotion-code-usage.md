@@ -56,6 +56,8 @@ curl https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID/codes/:c
 
 ## Response Example
 
+When a cart with a promotion is checked out using an `accountID`, the `accountID` will be included in the response.
+
 `200 OK`
 
 ```json
@@ -74,7 +76,8 @@ curl https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID/codes/:c
                     "updated_at": "2024-08-15T18:25:41.209Z"
                 }
             },
-            "anonymized": false
+            "anonymized": false,
+            "account_id": "c40ee30c-f5f9-4a40-8f3f-08f7c652b0c5"
         }
     ],
     "links": {
