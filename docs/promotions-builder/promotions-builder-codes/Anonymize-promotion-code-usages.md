@@ -30,7 +30,7 @@ Use this endpoint to anonymize promotion code usage. When anonymization is succe
 ## Request Example
 
 ```bash
-curl -X POST https://useast.api.elasticpath.com/v2/promotions/usages/anonymize \
+curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions/usages/anonymize \
     -H "Authorization: Bearer XXXX" \
     -H "Content-Type: application/json" \
     -d $ {
