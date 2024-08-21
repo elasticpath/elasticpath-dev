@@ -4,11 +4,12 @@ nav_label: Create First-time Shopper's Coupon Code
 sidebar_position: 10
 ---
 
-First-time shopper is a shopper who has not completed any purchases or authorized orders with the store. 
+A first-time shopper is a shopper who has not completed any purchases or authorized orders with the store. 
 
 :::note
 - Orders without payment transactions do not count as completed purchases. 
 - Canceling or refunding an order does not reinstate first-time shopper status.
+- A first-time shopper coupon code cannot have limited uses or be assigned to specific users, meaning the code cannot be restricted by the number of times it can be used or tied to a specific customer ID.
 :::
 
 ## `POST` Create First-time Shopper's Coupon Code
