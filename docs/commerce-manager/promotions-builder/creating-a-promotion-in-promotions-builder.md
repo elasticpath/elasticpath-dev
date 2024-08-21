@@ -4,7 +4,7 @@ nav_label: Creating a Promotion in Promotions Builder
 sidebar_position: 1
 ---
 
-## Creating a Promotion in Promotions Builder
+## Creating a Promotion
 
 1. Go to **STORE > Promotions Builder**.
 1. Click **Add Promotion**.
@@ -43,6 +43,10 @@ In the **Promotions Engine** section, do the following:
 1. If you selected **Items quantity**, enter the quantity of items.
 
     You can add multiple conditions according to your business requirements.
+1. To exclude items from cart total, select **Add an exclusion** and do the following:
+    * **Product**: Select the **+** icon. Then, in the **Select Product** window either select a product from the list or include a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products)
+    * **Category**: Select the **+** icon and select the hierarchy checkbox. Then, click the hierarchy if you want to add nodes to your promotion conditions.
+    * **Attribute**: Select the template from the list, select the attribute, and then set the value for the selected attribute.
 
 ### Creating a Cart Items Condition
 
