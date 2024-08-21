@@ -590,35 +590,6 @@ const config: Config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-blog",
-      {
-        blogTitle: "Elastic Path Commerce Cloud Changelog",
-        blogDescription:
-          "The changelog contains updates and modifications to all Elastic Path Cloud Services",
-        postsPerPage: 30,
-        blogSidebarCount: 0,
-        blogSidebarTitle: "Recent Changelogs",
-        id: "changelog",
-        routeBasePath: "changelog",
-        path: "./changelog",
-        tagsBasePath: "product",
-        showReadingTime: false,
-        feedOptions: {
-          type: "all",
-          copyright: `Copyright © ${new Date().getFullYear()} Elastic Path`,
-          description: "Elastic Path Cloud Services Changelog",
-          createFeedItems: async (params) => {
-            const { blogPosts, defaultCreateFeedItems, ...rest } = params;
-            return defaultCreateFeedItems({
-              // keep only the 10 most recent blog posts in the feed
-              blogPosts: blogPosts.filter((item, index) => index < 20),
-              ...rest,
-            });
-          },
-        },
-      },
-    ],
-    [
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
