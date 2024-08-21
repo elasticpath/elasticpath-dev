@@ -615,10 +615,6 @@ const config: Config = {
             from: "/docs/cx-studio/Integrations/Integrating-Zapier",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2021/Release-120-Nov-2-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-120-Nov-2-2021",
-          },
-          {
             to: "/docs/studio/Integrations/Integrating-Triple-Whale",
             from: "/docs/cx-studio/Integrations/Integrating-Triple-Whale",
           },
@@ -707,10 +703,6 @@ const config: Config = {
             from: "/docs/cx-studio/Integrations/Integrating-Drift",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-147-August-10-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-147-August-10-2022",
-          },
-          {
             to: "/docs/studio/Integrations/stripe-payment-intents",
             from: "/docs/cx-studio/Integrations/stripe-payment-intents",
           },
@@ -747,10 +739,6 @@ const config: Config = {
             from: "/docs/cx-studio/content/Basic-Page-Editing/Using-Anchor-Links",
           },
           {
-            to: "/changelog/Studio-Release-Notes/Older-Release-Notes",
-            from: "/docs/cx-studio/Release-Notes/Older-Release-Notes",
-          },
-          {
             to: "/docs/studio/Shopify/Change-Cart-Bag-Language-and-Icon",
             from: "/docs/cx-studio/Shopify/Change-Cart-Bag-Language-and-Icon",
           },
@@ -767,10 +755,6 @@ const config: Config = {
             from: "/docs/cx-studio/content/Forms-&-Contacts/Managing-your-Contacts",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-130-Feb-7-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-130-Feb-7-2022",
-          },
-          {
             to: "/docs/studio/content/Blog-Management/Import-&-Export-XML",
             from: "/docs/cx-studio/content/Blog-Management/Import-&-Export-XML",
           },
@@ -781,10 +765,6 @@ const config: Config = {
           {
             to: "/docs/studio/Integrations/Integrating-Weglot",
             from: "/docs/cx-studio/Integrations/Integrating-Weglot",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-129-Jan-16-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-129-Jan-16-2022",
           },
           {
             to: "/docs/studio/design/Header-and-Footer/How-to-customize-header-color",
@@ -891,10 +871,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/authentication/single-sign-on/merchant-realm-mappings/merchant-realm-mappings-overview",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2021/Release-121-Nov-7-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-121-Nov-7-2021",
-          },
-          {
             to: "/docs/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info",
             from: "/docs/commerce-cloud/authentication/single-sign-on/user-authentication-openid-connect-profile-api/create-a-user-authentication-oidc-profile-info",
           },
@@ -931,10 +907,6 @@ const config: Config = {
             from: "/docs/pxm/products/pxm-product-variations/build-pxm-variations",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-128-Jan-9-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-128-Jan-9-2022",
-          },
-          {
             to: "/docs/studio/developers/features/literals",
             from: "/docs/cx-studio/developers/features/literals",
           },
@@ -949,18 +921,6 @@ const config: Config = {
           {
             to: "/docs/studio/content/Basic-Page-Editing/Publishing",
             from: "/docs/cx-studio/content/Basic-Page-Editing/Publishing",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-197-April-30-2024",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-139-April-17-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-197-April-30-2024",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-138-April-10-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-197-April-30-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-195-April-8-2024",
           },
           {
             to: "/docs/organizations/org-level-pxm-entities/pxm-org-entities-in-store-level-catalogs",
@@ -1015,10 +975,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-condition-rule-promotion",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-137-April-4-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-137-April-4-2022",
-          },
-          {
             to: "/docs/studio/Integrations/Adding-HTML-CSS-or-JavaScript-to-all-your-pages",
             from: "/docs/cx-studio/Integrations/Adding-HTML-CSS-or-JavaScript-to-all-your-pages",
           },
@@ -1049,38 +1005,6 @@ const config: Config = {
           {
             to: "/docs/studio/policies/Downgrading-or-Cancelling-your-Unstack-Account",
             from: "/docs/cx-studio/policies/Downgrading-or-Cancelling-your-Unstack-Account",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-125-Dec-6-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-125-Dec-6-2021",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-149-August-30-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-149-August-30-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-194-March-27-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-193-March-22-2024",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-194-March-27-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-192-March-13-2024",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-194-March-27-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-194-March-27-2024",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-194-March-27-2024",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-136-March-27-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-194-March-27-2024",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-135-March-15-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-194-March-27-2024",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-134-March-3-2022",
           },
           {
             to: "/docs/studio/policies/Acceptable-Use-Policy",
@@ -1179,10 +1103,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-management/update-a-rule-promotion",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-154-October-13-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-154-October-13-2022",
-          },
-          {
             to: "/docs/studio/developers/features/values",
             from: "/docs/cx-studio/developers/features/values",
           },
@@ -1259,10 +1179,6 @@ const config: Config = {
             from: "/docs/cx-studio/content/advanced-page-editing/Using-Conditional-Content",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-140-May-9-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-140-May-9-2022",
-          },
-          {
             to: "/docs/rule-promotions/rule-promotions-api/item-rule-promotions/create-an-Item-percent-product-attribute",
             from: "/docs/commerce-cloud/rule-promotions/rule-promotions-api/item-rule-promotions/create-an-Item-percent-product-attribute",
           },
@@ -1325,10 +1241,6 @@ const config: Config = {
           {
             to: "/docs/commerce-manager/organizations/org-pxm-entities-in-commerce-manager/create-org_pxm_templates",
             from: "/docs/commerce-cloud/organizations/organizations-in-commerce-manager/org-pxm-entities-in-commerce-manager/create-org_pxm_templates",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-143-June-23-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-143-June-23-2022",
           },
           {
             to: "/docs/commerce-manager/product-experience-manager/variations/assign-variations-build-child-products",
@@ -1587,10 +1499,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/organizations/org-level-pxm-entities/overview",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-161-December-19-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-161-December-19-2022",
-          },
-          {
             to: "/guides/How-To/orders/create-formatted-orders",
             from: "/docs/commerce-cloud/orders/create-formatted-orders",
           },
@@ -1655,10 +1563,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/rule-promotions/rule-promotion-codes/get-rule-promotion-codes",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-132-Feb-21-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-132-Feb-21-2022",
-          },
-          {
             to: "/docs/studio/policies/Support-Identification-Policy",
             from: "/docs/cx-studio/policies/Support-Identification-Policy",
           },
@@ -1707,10 +1611,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/integrations/sqs-queues",
           },
           {
-            to: "/changelog/Studio-Release-Notes/Release-188-January-17-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-188-January-17-2024",
-          },
-          {
             to: "/docs/api/pxm/products/variations",
             from: "/docs/pxm/products/pxm-product-variations/pxm-variations",
           },
@@ -1725,10 +1625,6 @@ const config: Config = {
           {
             to: "/guides/How-To/orders/send-order-confirmations",
             from: "/docs/commerce-cloud/orders/send-order-confirmations",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-150-September-12-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-150-September-12-2022",
           },
           {
             to: "/guides/How-To/Personal-Data/erase-personal-data",
@@ -2151,14 +2047,6 @@ const config: Config = {
             from: "/docs/pxm/products/ep-pxm-products-api/get-product-tags",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-144-July-4-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-144-July-4-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-144-July-4-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-146-July-26-2022",
-          },
-          {
             to: "/docs/studio/developers/e-commerce/product-inventory",
             from: "/docs/cx-studio/developers/e-commerce/product-inventory",
           },
@@ -2317,10 +2205,6 @@ const config: Config = {
           {
             to: "/docs/api/application-keys/create-key",
             from: "/docs/commerce-cloud/authentication/application-keys/application-keys-cm",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-142-June-2-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-142-June-2-2022",
           },
           {
             to: "/docs/commerce-manager/Invoicing/create-invoices",
@@ -2575,18 +2459,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/orders/jobs-api/create-a-job",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-159-November-28-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-157-November-14-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-159-November-28-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-159-November-28-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-198-May-29-2024",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-141-May-16-2022",
-          },
-          {
             to: "/guides/Getting-Started/elastic-path-domains",
             from: "/docs/commerce-cloud/api-overview/elastic-path-domains",
           },
@@ -2649,10 +2521,6 @@ const config: Config = {
           {
             to: "/docs/api/pxm/products/product-import-bulk-update",
             from: "/docs/pxm/products/importing-products/product-importer-csv",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-189-January-29-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-189-January-29-2024",
           },
           {
             to: "/docs/authentication/",
@@ -2736,10 +2604,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/carts/cart-management/get-all-carts",
           },
           {
-            to: "/changelog/Studio-Release-Notes/Release-189-January-29-2024",
-            from: "/docs/cx-studio/Release-Notes/2023/Release-163-January-17-2023",
-          },
-          {
             to: "/docs/api/accounts/account-authentication-settings",
             from: "/docs/commerce-cloud/authentication/single-sign-on/account-authentication-settings/get-account-authentication-settings",
           },
@@ -2774,14 +2638,6 @@ const config: Config = {
           {
             to: "/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules",
             from: "/docs/pxm/catalogs/catalog-rules/catalog-rules",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-118-Oct-11-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-119-Oct-20-2021",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-118-Oct-11-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-118-Oct-11-2021",
           },
           {
             to: "/docs/api/pxm/products/get-all-modifiers",
@@ -2830,10 +2686,6 @@ const config: Config = {
           {
             to: "/docs/api/accounts/get-v-2-accounts-account-id",
             from: "/docs/commerce-cloud/accounts/using-account-management-api/get-an-account",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-162-January-5-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-162-January-5-2022",
           },
           {
             to: "/docs/api/carts/delete-custom-discount-from-cart-item",
@@ -2908,14 +2760,6 @@ const config: Config = {
             from: "/docs/pxm/products/pxm-products-commerce-manager/add-product-templates",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2021/Release-126-Dec-12-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-127-Dec-20-2021",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-126-Dec-12-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-126-Dec-12-2021",
-          },
-          {
             to: "/docs/api/carts/get-cart-items",
             from: "/docs/commerce-cloud/carts/cart-items/get-cart-items",
           },
@@ -2954,18 +2798,6 @@ const config: Config = {
           {
             to: "/docs/studio/Integrations/stripe-payment-intents",
             from: "/docs/commerce-cloud/payments/payment-gateway/configure-stripe-payment-intents",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-121-Nov-7-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-124-Nov-28-2021",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-121-Nov-7-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-123-Nov-22-2021",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2021/Release-121-Nov-7-2021",
-            from: "/docs/cx-studio/Release-Notes/2021/Release-122-Nov-14-2021",
           },
           {
             to: "/docs/commerce-manager/product-experience-manager/catalogs/catalog-rules",
@@ -3316,16 +3148,8 @@ const config: Config = {
             from: "/docs/commerce-cloud/customer-management/customer-managment-api/delete-a-customer",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-152-September-26-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-151-September-19-2022",
-          },
-          {
             to: "/docs/api/flows/update-a-flow",
             from: "/docs/commerce-cloud/custom-data/custom-data-flows-api/Flows/update-a-flow",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-152-September-26-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-152-September-26-2022",
           },
           {
             to: "/docs/studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain",
@@ -3342,14 +3166,6 @@ const config: Config = {
           {
             to: "/docs/api/pxm/catalog/get-by-context-all-nodes",
             from: "/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-190-February-14-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-190-February-14-2024",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/Release-190-February-14-2024",
-            from: "/docs/cx-studio/Release-Notes/Release-191-February-27-2024",
           },
           {
             to: "/docs/api/pxm/products/build-child-products",
@@ -3430,18 +3246,6 @@ const config: Config = {
           {
             to: "/docs/api/pxm/products/product-image-relationships",
             from: "/docs/pxm/products/product-asset-relationships/image-relationship/create-main-image-relationship",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-153-October-4-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-153-October-4-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-153-October-4-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-156-October-30-2022",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-153-October-4-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-155-October-23-2022",
           },
           {
             to: "/docs/api/flows/entries",
@@ -3642,10 +3446,6 @@ const config: Config = {
             from: "/docs/pxm/products/extending-pxm-products/pxm-product-templates-api/create-a-template",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-133-Feb-27-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-133-Feb-27-2022",
-          },
-          {
             to: "/docs/subscriptions/observable-events",
             from: "/docs/commerce-cloud/integrations/observable-events",
           },
@@ -3700,10 +3500,6 @@ const config: Config = {
           {
             to: "/docs/commerce-manager/product-experience-manager/product-import/product-importer",
             from: "/docs/pxm/products/importing-products/product-importer",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-133-Feb-27-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-131-Feb-16,-2022",
           },
           {
             to: "/docs/api/flows/delete-an-entry",
@@ -3840,10 +3636,6 @@ const config: Config = {
           {
             to: "/docs/api/integrations/integrations",
             from: "/docs/commerce-cloud/integrations/integrations-examples",
-          },
-          {
-            to: "/changelog/Studio-Release-Notes/2022/Release-160-December-5-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-160-December-5-2022",
           },
           {
             to: "/docs/api/pxm/catalog/get-release-by-id",
@@ -4327,10 +4119,6 @@ const config: Config = {
             from: "/docs/commerce-cloud/payments/paying-for-an-order/stripe-payment-connect",
           },
           {
-            to: "/changelog/Studio-Release-Notes/2022/Release-148-August-23-2022",
-            from: "/docs/cx-studio/Release-Notes/2022/Release-148-August-23-2022",
-          },
-          {
             to: "/docs/api/commerce-extensions/create-a-custom-api",
             from: "/docs/commerce-cloud/commerce-extensions/commerce-extensions-api/custom-apis/create-a-custom-api",
           },
@@ -4463,10 +4251,9 @@ const config: Config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        blogRouteBasePath: "changelog",
         docsRouteBasePath: ["docs", "guides"],
         highlightSearchTermsOnTargetPage: false,
-        searchContextByPaths: ["docs", "guides", "changelog"],
+        searchContextByPaths: ["docs", "guides"],
         useAllContextsWithNoSearchContext: true,
         // For Docs using Chinese, The `language` is recommended to set to:
         // ```
