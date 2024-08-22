@@ -162,7 +162,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebar-composer.js"),
-          path: "composer",
+          path: "self-managed/composer",
           routeBasePath: "/",
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
           exclude: [
