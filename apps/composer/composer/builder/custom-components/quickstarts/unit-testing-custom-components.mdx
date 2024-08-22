@@ -1,0 +1,199 @@
+---
+id: unit-testing-custom-components
+title: Unit Testing Custom Components
+description: Learn to add unit testing to your custom components with the Jest JavaScript testing framework
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+Unit testing is an incredibly important part of software development.
+You want to catch errors and breaking changes before they wreak havoc on your customers' integrations.
+
+By creating a series of unit tests for your custom components, your development team can feel comfortable updating custom component code without the risk of introducing regressions.
+Plus, when you write unit tests you're creating sample use cases for your component, which yields documentation-as-code for your custom component.
+
+Today let's work through adding unit tests to a sample custom component.
+
+## Unit testing with Jest
+
+There are numerous JavaScript testing frameworks available, but we'll use [Jest](https://jestjs.io/) for this tutorial.
+
+## Add tests to the Hello Composer component
+
+In the [Hello Composer](/composer/builder/getting-started/first-custom-component/hello-builder.mdx) tutorial, you build a custom component that takes a first name and last name as inputs, and returns a message that greets the user.
+Let's verify that the component works as expected by adding unit tests.
+
+1. First, create a test file by adding an `index.test.ts` file to the `src/` directory.
+2. Next, import the testing harness from the Primsatic custom component SDK, create a test harness, and write a few test cases for the `myAction` action.
+
+   ```ts title="index.test.ts"
+   // Import the Composer custom component SDK testing harness
+   import { createHarness } from "@prismatic-io/spectral/dist/testing";
+
+   // Import your component from index.ts
+   import myComponent from ".";
+
+   // Create a new test harness
+   const harness = createHarness(myComponent);
+
+   // Test your component
+   describe("Test the myAction action", () => {
+     test("Test what happens if both first and last name are provided", async () => {
+       // Invoke the action by name
+       const result = await harness.action("myAction", {
+         firstName: "John", // These keys should match the action's input keys
+         lastName: "Doe",
+       });
+       // Declare your expectations - a unit test will fail if this expectation is not met
+       expect(result?.data).toBe("Hello John Doe!");
+     });
+
+     test("Test what happens if first name is an empty string", async () => {
+       const result = await harness.action("myAction", {
+         firstName: "",
+         lastName: "Doe",
+       });
+
+       expect(result?.data).toBe("Hello  Doe!");
+     });
+   });
+   ```
+
+   3. Finally, run your tests with `npm run test` and verify that your unit tests pass.
+
+If your tests pass, you will see a set of green checkmarks in your terminal.
+
+<Screenshot
+  filename="quickstarts/unit-testing-custom-components/hello-prismatic-success.png"
+  alt="Screenshot of successful unit tests"
+  maxWidth="450px"
+/>
+
+If someone from your team adjusts the `myAction` action to return a different message, your unit tests will fail and you'll know that you need to update your code, or update your integration.
+
+<Screenshot
+  filename="quickstarts/unit-testing-custom-components/hello-prismatic-failure.png"
+  alt="Screenshot of failed unit tests"
+  maxWidth="450px"
+/>
+
+## Test actions that require a connection
+
+In the [Wrap an API in a Component](/composer/builder/custom-components/quickstarts/wrapping-an-api-in-a-component.mdx) tutorial, you build a custom component that wraps a mock API.
+That component included a connection with an API key.
+
+Let's look at two different ways to supply that connection to a unit test:
+
+### Option 1 - Source the connection information from environment variables.
+
+You can use the `process.env` object to access environment variables in your unit tests.
+This is a great option if you want to run your unit tests in a CI/CD pipeline.
+
+```ts title="index.test.ts"
+import {
+  createConnection,
+  createHarness,
+} from "@prismatic-io/spectral/dist/testing";
+import myComponent from ".";
+import { acmeErpConnection } from "./connections";
+
+const harness = createHarness(myComponent);
+
+// Create a connection to be used by the action test
+const myConnection = createConnection(acmeErpConnection, {
+  baseUrl: "https://my-json-server.typicode.com/prismatic-io/placeholder-data",
+  apiKey: process.env.ACME_API_KEY, // Source the API key from an environment variable
+});
+
+describe("Test the get item by ID action", () => {
+  test("Ensure the get item by ID action returns an item", async () => {
+    const result = await harness.action("getItemById", {
+      connection: myConnection,
+      itemId: "1",
+    });
+    expect(result?.data).toEqual({
+      id: 1,
+      name: "Widgets",
+      quantity: 20,
+    });
+  });
+});
+```
+
+When running your test, you can supply an `ACME_API_KEY` environment variable by setting it in an `.env` file, by passing it in as a command line argument, or by `export`ing it in your terminal.
+
+<Screenshot
+  filename="quickstarts/unit-testing-custom-components/test-with-env-variable.png"
+  alt="Screenshot of unit test with environment variable"
+  maxWidth="450px"
+/>
+
+### Option 2 - Pull the connection information from an existing connection in Composer
+
+Assuming you already have a valid connection in an existing Composer integration, you can instruct `prism` to fetch the connection's information from Composer and use it in your unit tests.
+The connection that you fetch will be accesible from an environment variable named `PRISMATIC_CONNECTION_VALUE`.
+
+Look at your browser's address bar when viewing your integration in Composer, and copy the `SW5....` portion of the URL.
+That is your integration's ID.
+
+<Screenshot
+  filename="quickstarts/unit-testing-custom-components/import-existing-connection.png"
+  alt="Import an existing connection from Composer"
+  maxWidth="800px"
+/>
+
+You can then print your connection's value to the console by running the following command:
+
+```bash
+prism components:dev:run \
+  --integrationId SW50ZWdyYXRpb246YmU1N2NlYTgtYjQ4Ny00YWEzLTk0ZTktZDA4NmJiNmM2Yzdi \
+  --connectionKey "Acme ERP Connection" -- printenv PRISMATIC_CONNECTION_VALUE | jq
+```
+
+You should see a JSON object that contains your connection's information.
+
+<Screenshot
+  filename="quickstarts/unit-testing-custom-components/print-connection-with-jq.png"
+  alt="Import an existing connection from Composer"
+  maxWidth="600px"
+/>
+
+That JSON string can be parsed and referenced in your unit test.
+Or, the `harness.connectionValue` method will take care of parsing the JSON and returning a connection object that can be used in your unit test for you.
+
+```ts title="index.test.ts with connection from Composer" {6}
+import { createHarness } from "@prismatic-io/spectral/dist/testing";
+import myComponent from ".";
+import { acmeErpConnection } from "./connections";
+
+const harness = createHarness(myComponent);
+const myConnection = harness.connectionValue(acmeErpConnection);
+
+describe("Test the get item by ID action", () => {
+  test("Ensure the get item by ID action returns an item", async () => {
+    const result = await harness.action("getItemById", {
+      connection: myConnection,
+      itemId: "1",
+    });
+    expect(result?.data).toEqual({
+      id: 1,
+      name: "Widgets",
+      quantity: 20,
+    });
+  });
+});
+```
+
+To invoke the unit test with the connection from Composer, run `prism components:dev:run` along with `npm run test`:
+
+```bash
+prism components:dev:run \
+  --integrationId SW50ZWdyYXRpb246YmU1N2NlYTgtYjQ4Ny00YWEzLTk0ZTktZDA4NmJiNmM2Yzdi \
+  --connectionKey "Acme ERP Connection" -- npm run test
+```
+
+<Screenshot
+  filename="quickstarts/unit-testing-custom-components/test-with-prism.png"
+  alt="Test with connection from Composer"
+  maxWidth="550px"
+/>

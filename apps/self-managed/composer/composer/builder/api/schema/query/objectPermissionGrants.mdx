@@ -1,0 +1,44 @@
+---
+id: objectPermissionGrants
+title: objectPermissionGrants Query
+sidebar_label: objectPermissionGrants
+description: Learn how to use the objectPermissionGrants Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of ObjectPermissionGrant objects.
+
+Access is permitted when any of the following condition(s) are met: 1. Always allowed.
+
+## Input fields
+
+| Argument        | Type                                                                                     | Description                                                                                      |
+| --------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before`        | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                                 | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`         | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                                 | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`         | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                                       | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`          | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                                       | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`        | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                                       |                                                                                                  |
+| `user`          | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                                                         | Filter for objects where user matches the specified ID.                                          |
+| `obj`           | [`UUID`](/composer/builder/api/schema/scalar/UUID.mdx)                                                     | Filter for objects where obj matches the specified value.                                        |
+| `permission`    | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                                                         | Filter for objects where permission matches the specified ID.                                    |
+| `grantedByRole` | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                                                         | Filter for objects where grantedByRole matches the specified ID.                                 |
+| `orderBy`       | [`ObjectPermissionGrantOrder`](/composer/builder/api/schema/input_object/ObjectPermissionGrantOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`        | [`[ObjectPermissionGrantOrder]`](/composer/builder/api/schema/input_object/ObjectPermissionGrantOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([ObjectPermissionGrantConnection!](/composer/builder/api/schema/object/ObjectPermissionGrantConnection.mdx))
+
+###### <b>edges</b> ([[ObjectPermissionGrantEdge]!](/composer/builder/api/schema/object/ObjectPermissionGrantEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[ObjectPermissionGrant]!](/composer/builder/api/schema/object/ObjectPermissionGrant.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

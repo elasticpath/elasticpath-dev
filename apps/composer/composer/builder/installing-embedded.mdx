@@ -1,0 +1,353 @@
+---
+id: installing-embedded
+title: Installing the Embedded SDK
+sidebar_label: Installing Embedded SDK
+description: This article walks you through installing the embedded SDK and authenticating users
+---
+
+import InternalLink from "@site/src/components/internal-link";
+import Screenshot from "@site/src/components/screenshot";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Installing Builder's SDK
+
+To embed Builder in your app, you must include some Builder JavaScript code with your client application.
+You have two choices for how to incorporate that code: you can add the [@prismatic-io/embedded](https://www.npmjs.com/package/@prismatic-io/embedded) NPM package to your web app Node.js project, or you can build the package from source and include it in your app through a `<script>` tag.
+We strongly recommend installing the SDK via NPM so that you have intellisense and TypeScript support.
+
+You can view the source code for the Embedded NPM package on [GitHub](https://github.com/prismatic-io/embedded).
+
+### Installing embedded through NPM
+
+[![Embedded NPM version](https://badge.fury.io/js/@prismatic-io%2Fembedded.svg)](https://www.npmjs.com/package/@prismatic-io/embedded)
+
+If your web application is written in Node.js, you can include Builder's JavaScript code as a Node.js import.
+Install the Builder Embedded Node.js package from NPM with `npm` or `yarn`:
+
+```bash
+npm install @prismatic-io/embedded
+
+# or
+
+yarn add @prismatic-io/embedded
+```
+
+Then, for any page that needs to invoke a `prismatic.*` function, include the `@prismatic-io/embedded` package at the top of the file:
+
+```javascript
+import prismatic from "@prismatic-io/embedded";
+```
+
+### Installing embedded with a script tag
+
+:::tip We recommend installing embedded through NPM
+Installing Embedded through the script tag is great for prototyping and testing, but for production use we recommend installing Embedded through NPM.
+The TypeScript NPM package gives you advanced features, like code completion and type safety.
+:::
+
+To install the Builder SDK through a script tag, you will first need to build the `@prismatic-io/embedded` package.
+You will need [Node.js](https://nodejs.org/) installed on your machine.
+
+```bash title="Clone and build the Builder SDK"
+# Clone the @prismatic-io/embedded repository from GitHub
+git clone https://github.com/prismatic-io/embedded.git prismatic-embedded
+
+# Install node dependencies
+cd prismatic-embedded
+npm install
+
+# Build the @prismatic-io/embedded package
+npm run build
+```
+
+This will create a directory in `prismatic-embedded/` called `dist/`, which contains `index.js` (along with some TypeScript files).
+You can copy that file into your app's static scripts directory and then include it in your HTML with a `script` tag:
+
+```html
+<script src="/static/js/path/to/prismatic/index.js"></script>
+```
+
+Once the script has loaded, `prismatic.*` functions (described below) are available for you to use.
+
+You can also pull down the built `index.js` file from a JavaScript CDN like UNKPG: [unpkg.com/browse/@prismatic-io/embedded/](https://unpkg.com/browse/@prismatic-io/embedded/).
+
+## Initialize the Builder client
+
+When Builder is embedded in your app, it's presented in an [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) that by default points to Builder's application URL (https://app.prismatic.io).
+
+To initialize the Builder client, run the `init` function:
+
+```javascript
+prismatic.init();
+```
+
+If you use a [custom white-label domain](/composer/builder/organization.mdx#custom-domains) (something like **https<!---->://integrations.my-example-company.com**), you can point the iframes that you embed your white-label domain instead.
+To do that, add this snippet of code:
+
+```javascript title="Optional white-label iframe config"
+prismatic.init({
+  prismaticUrl: "https://integrations.my-example-company.com",
+});
+```
+
+## Authenticating users
+
+One big advantage of embedding the Builder marketplace or integration designer is that users don't need to be assigned an additional set of credentials to remember.
+They can log in to your application, and you can provide them with an authentication token that allows them to deploy Builder integrations.
+You do this by generating a JSON Web Token (JWT) that is signed by a unique private key that you get from Builder.
+The JWT contains information about the user from your system.
+When Builder is presented a signed JWT, the JWT signature is verified and the user is granted a [customer role](/composer/builder/users.mdx#customer-user-roles) of **Marketplace**, which allows them to deploy integrations for their specific customer in Builder.
+
+### JWT signing keys
+
+Before you can generate a JWT, you will need a valid **signing key** from Builder.
+Within Builder click on your organization name on the bottom of the left-hand sidebar, and then open the **Embedded** tab.
+Click the **+ Add signing Key** button.
+_Note_: You must be an [owner or admin](/composer/builder/users.mdx#organization-team-member-roles) to create a signing key.
+
+You will be presented with a private signing key.
+Store this key somewhere safe - it's the key you'll use to validate that users are authenticated within your application.
+
+<Screenshot
+  filename="embedded/example-private-key.png"
+  maxWidth="600px"
+  alt="Get signing key in Builder app"
+/>
+
+:::note Private keys are not stored in Builder
+Builder does not store the private signing key that is generated, and only saves the last 8 characters so you can easily match up a private key you have with one in our system.
+Instead, we store the corresponding public key to verify signatures of JWTs you send.
+Save the private key that you generate somewhere safe.
+If it's ever compromised, or you lose it, you can deactivate old keys and generate a new one.
+:::
+
+#### Importing your own private signing key
+
+You can also import your own private signing key for embedded.
+The OpenSSL CLI tool is most commonly used for generating public/private keys pairs yourself:
+
+```bash
+# Generate a private key with 4096 bit encryption
+openssl genrsa -out my-private-key.pem 4096
+
+# Generate the corresponding public key
+openssl rsa -in my-private-key.pem -pubout > my-public-key.pub
+```
+
+This will generate two files - a private key called `my-private-key.pem` and a public key called `my-public-key.pub`.
+Your public key will look like this:
+
+```
+-----BEGIN PUBLIC KEY-----
+EXAMPLE
+-----END PUBLIC KEY-----
+```
+
+Import the public key using the [prism CLI tool](/composer/builder/cli/prism.mdx#organizationsigningkeysimport):
+
+```bash
+prism organization:signingkeys:import -p my-public-key.pub
+```
+
+### Create and sign a JWT
+
+Now that you have a signing key, you can create and sign a JSON web token (JWT).
+Your backend API (not your frontend) should generate a JWT for your users, and your frontend client should request a signed JWT from your backend API.
+
+:::caution Do your JWT generation on the backend
+Generate the JWT tokens on the backend.
+Baking JWT generation (including the signing key) into your frontend presents a security problem - someone with the signing key could sign their own JWT and pretend to be anyone.
+:::
+
+Most programming languages that APIs are written in have a JWT library for generating tokens - see [jwt.io](https://jwt.io/).
+
+The JWT that you generate for a user should have the following properties:
+
+- The **header** should indicate that it's HMAC with SHA-256 encrypted, and should read:
+  ```json
+  {
+    "alg": "RS256",
+    "typ": "JWT"
+  }
+  ```
+- The **private signing key** you generated.
+- A **payload** with a few fields:
+  - A unique user ID `sub`.
+    This should generally be a UUID.
+  - An optional `external_id` sets the external ID of the _user_ in Builder.
+    This generally matches the `sub` and represents the ID of the user in your system.
+  - The user's `name` (_optional_)
+  - Your `organization` ID, found on the **Embedded** tab where you generate signing certificates
+  - The [external ID](/composer/builder/customers.mdx#customer-external-ids) of the `customer` the user belongs to
+  - A signing time (current time) `iat`
+  - A `role` is only necessary for [user level configuration](/composer/builder/user-level-configuration.mdx) (ULC).
+    A role of `"admin"` gives the user the ability to deploy ULC instances.
+    A role of `"user"` gives the user the ability to supply user configuration to an already deployed ULC instance.
+    This value defaults to `"admin"`.
+  - An expiration time `exp`
+    ```json title="Example JWT Payload"
+    {
+      "sub": "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1",
+      "external_id": "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1",
+      "name": "Phil Embedmonson",
+      "organization": "T3JnYW5pemF0aW9uOmU5ZGVhZDU5LWU3YzktNDNkMi1hNjhhLWFhMjcyMzEyMTAxNw==",
+      "customer": "abc-123",
+      "role": "admin",
+      "iat": 1631676917,
+      "exp": 1631680517
+    }
+    ```
+
+:::tip Use unique identifiers as JWT subjects
+The `sub` (subject) within the JWT identifies the user who is logged in to your system.
+The `sub` value can be any unique identifier - a UUID, email address, etc.
+
+A customer user with that identifier will be created in Builder if it doesn't already exist, and will be granted permissions to configure and deploy instances to the customer they're assigned to (you assign the user to a customer in the examples below).
+:::
+
+Here are a couple of code snippets for JavaScript and Python that would create a valid JWT to authenticate a user in Builder:
+
+<Tabs>
+<TabItem value="js" label="JavaScript Example" default>
+
+```javascript
+import jsonwebtoken from "jsonwebtoken";
+
+/*
+ This is for illustrative purposes only;
+ Obviously don't hard-code a signing key in your code.
+*/
+const signingKey = `-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDP3+OrT0IXqCu4
+EXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEE
+c5R7QVzxgmGRXjPZGPf5huA1
+-----END PRIVATE KEY-----`;
+
+const currentTime = Math.floor(Date.now() / 1000);
+
+const token = jsonwebtoken.sign(
+  {
+    sub: "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1", // Some unique identifier for the user
+    external_id: "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1", // Generally matches sub
+    name: "Phil Embedmonson", // Optional
+    organization:
+      "T3JnYW5pemF0aW9uOmU5ZGVhZDU5LWU3YzktNDNkMi1hNjhhLWFhMjcyMzEyMTAxNw==",
+    customer: "abc-123", // This is an external ID of a customer
+    iat: currentTime,
+    exp: currentTime + 60 * 60, // 1 hour from now
+  },
+  signingKey, // Store this somewhere safe
+  { algorithm: "RS256" }
+);
+```
+
+</TabItem>
+<TabItem value="py" label="Python Example">
+
+```python
+import jwt
+import math
+from time import time
+
+# This is for illustrative purposes only;
+# Obviously don't hard-code a signing key in your code.
+signing_key = '''-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDP3+OrT0IXqCu4
+EXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEE
+c5R7QVzxgmGRXjPZGPf5huA1
+-----END PRIVATE KEY-----'''
+
+current_time = math.floor(time())
+
+token = jwt.encode(
+  {
+    "sub": "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1", # Some unique identifier for the user
+    "external_id": "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1", # Generally matches sub
+    "name": "Phil Embedmonson", # Optional
+    "organization": "T3JnYW5pemF0aW9uOmU5ZGVhZDU5LWU3YzktNDNkMi1hNjhhLWFhMjcyMzEyMTAxNw==",
+    "customer": "abc-123", # This is an external ID of a customer
+    "iat": current_time,
+    "exp": current_time + 60 * 60, # 1 hour from now
+  },
+  signing_key,
+  algorithm="RS256")
+```
+
+</TabItem>
+<TabItem value="dotnet" label=".Net (C#) Example">
+
+```csharp
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+
+/*
+ This is for illustrative purposes only;
+ Obviously don't hard-code a signing key in your code.
+*/
+var pem = @"-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDP3+OrT0IXqCu4
+EXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEE
+c5R7QVzxgmGRXjPZGPf5huA1
+-----END PRIVATE KEY-----";
+
+Task<string> GetToken() {
+  using var rsa = RSA.Create();
+  rsa.ImportFromPem(pem);
+
+  var descriptor = new SecurityTokenDescriptor();
+  descriptor.SigningCredentials = new SigningCredentials(new RsaSecurityKey(rsa), SecurityAlgorithms.RsaSha256)
+  {
+    CryptoProviderFactory = new CryptoProviderFactory { CacheSignatureProviders = false }
+  };
+
+  var claims = new List<Claim> {
+    new Claim("sub", "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1"), // Some unique identifier for the user
+    new Claim("external_id", "2E52B7CB-071B-4EA2-8E9D-F64910EBDBB1"), // Generally matches sub
+    new Claim("name", "Phil Embedmonson"), // Optional
+    new Claim("organization", "T3JnYW5pemF0aW9uOmU5ZGVhZDU5LWU3YzktNDNkMi1hNjhhLWFhMjcyMzEyMTAxNw=="),
+    new Claim("customer", "abc-123") // This is an external ID of a customer
+  };
+
+  descriptor.Subject = new ClaimsIdentity(claims);
+  descriptor.IssuedAt = DateTime.UtcNow;
+  descriptor.Expires = DateTime.UtcNow.AddHours(1); // Expire 1 hour from now
+
+  var token = new JwtSecurityTokenHandler().CreateEncodedJwt(descriptor);
+  return Task.FromResult(token);
+}
+
+var token = await GetToken();
+```
+
+</TabItem>
+</Tabs>
+
+An example NextJS implementation of JWT generation is available in [GitHub](https://github.com/prismatic-io/embedded/blob/main/example-embedded-app/pages/api/prismatic-auth.tsx).
+
+### Use the JWT to authenticate the user
+
+Now that a user in your application has a signed JWT from the backend, you can authenticate them with the Builder library using the `prismatic.authenticate()` function in your frontend application:
+
+```javascript
+// Some function that fetches the JWT from your API:
+const token = getJwtToken();
+
+try {
+  await prismatic.authenticate({ token });
+} catch (error) {
+  console.error(`Authentication failed with error ${error}`);
+}
+```
+
+If your customer or organization ID in your JWT are incorrect, if your JWT is not signed correctly, or if the JWT is expired, `prismatic.authenticate()` will throw an error.
+
+For an example React hook that wraps the `prismatic.authenticate()` function, see the [GitHub](https://github.com/prismatic-io/embedded/blob/main/example-embedded-app/src/useBuilderAuth.ts#L66).
+
+#### Refreshing an embedded JWT
+
+If a customer user's JWT expires, the customer user will see a 404 in their embedded iframe.
+To reauthenticate a user prior to expiration, ensure that your frontend app fetches a new token for your user and then run `prismatic.authenticate({ token })` with the new token.
+Existing iframes and the embedded client will be updated to use the new token.

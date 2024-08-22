@@ -1,0 +1,34 @@
+---
+id: updateAlertMonitor
+title: updateAlertMonitor Mutation
+sidebar_label: updateAlertMonitor
+description: Learn how to use the updateAlertMonitor Mutation for Builder's API.
+---
+
+    Updates the specified AlertMonitor object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_edit]. 3. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_manage_instances].
+
+## Input fields ([UpdateAlertMonitorInput!](/composer/builder/api/schema/input_object/UpdateAlertMonitorInput.mdx))
+
+| Argument                           | Type                                     | Description                                                                  |
+| ---------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                             | [`String`](/composer/builder/api/schema/scalar/String.mdx) | The name of the AlertMonitor.                                                |
+| `flowConfig`                       | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The IntegrationFlow that is being monitored by the AlertMonitor.             |
+| `logSeverityLevelCondition`        | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | The log severity level condition to monitor for relevant AlertTrigger types. |
+| `durationSecondsCondition`         | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | The execution duration condition to monitor for relevant AlertTrigger types. |
+| `executionOverdueMinutesCondition` | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | The execution overdue condition to monitor for relevant AlertTrigger types.  |
+| `triggers`                         | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The AlertTriggers that are setup to trigger the AlertMonitor.                |
+| `groups`                           | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The AlertGroups to notify when the AlertMonitor is triggered.                |
+| `users`                            | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The Users to notify when the AlertMonitor is triggered.                      |
+| `webhooks`                         | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The AlertWebhooks to call when the AlertMonitor is triggered.                |
+| `id`                               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the AlertMonitor to mutate.                                        |
+| `clientMutationId`                 | [`String`](/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation.                  |
+
+## Return fields ([UpdateAlertMonitorPayload](/composer/builder/api/schema/object/UpdateAlertMonitorPayload.mdx))
+
+###### <b>alertMonitor</b> ([AlertMonitor](/composer/builder/api/schema/object/AlertMonitor.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))

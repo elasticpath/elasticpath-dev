@@ -1,0 +1,31 @@
+---
+id: publishComponent
+title: publishComponent Mutation
+sidebar_label: publishComponent
+description: Learn how to use the publishComponent Mutation for Builder's API.
+---
+
+    Publishes a Component.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_components]. 2. The signed-in User has any of the following permissions for the access function context object 'customer': [customer_manage_components] when 'customer' is provided in the access function context.
+
+## Input fields ([PublishComponentInput!](/composer/builder/api/schema/input_object/PublishComponentInput.mdx))
+
+| Argument           | Type                                                                                   | Description                                                                                                    |
+| ------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `customer`         | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                                                       | The Customer the Component belongs to, if any. If this is NULL then the Component belongs to the Organization. |
+| `definition`       | [`ComponentDefinitionInput!`](/composer/builder/api/schema/input_object/ComponentDefinitionInput.mdx)    | The Component definition.                                                                                      |
+| `actions`          | [`[ActionDefinitionInput]`](/composer/builder/api/schema/input_object/ActionDefinitionInput.mdx)         | A list of Component Actions.                                                                                   |
+| `triggers`         | [`[TriggerDefinitionInput]`](/composer/builder/api/schema/input_object/TriggerDefinitionInput.mdx)       | A list of Component Triggers.                                                                                  |
+| `dataSources`      | [`[DataSourceDefinitionInput]`](/composer/builder/api/schema/input_object/DataSourceDefinitionInput.mdx) | A list of Component Data Sources.                                                                              |
+| `connections`      | [`[ConnectionDefinitionInput]`](/composer/builder/api/schema/input_object/ConnectionDefinitionInput.mdx) | A list of Component Connections.                                                                               |
+| `comment`          | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                               | Comment about changes in this Publish.                                                                         |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                               | A unique identifier for the client performing the mutation.                                                    |
+
+## Return fields ([PublishComponentPayload](/composer/builder/api/schema/object/PublishComponentPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>publishResult</b> ([PublishComponentResult](/composer/builder/api/schema/object/PublishComponentResult.mdx))

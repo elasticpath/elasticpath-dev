@@ -1,0 +1,22 @@
+---
+id: UpdateAlertMonitorInput
+title: UpdateAlertMonitorInput Input Object
+sidebar_label: UpdateAlertMonitorInput
+description: Learn how to use the UpdateAlertMonitorInput Input Object for Builder's API.
+---
+
+## Input fields
+
+| Argument                           | Type                                     | Description                                                                  |
+| ---------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                             | [`String`](/composer/builder/api/schema/scalar/String.mdx) | The name of the AlertMonitor.                                                |
+| `flowConfig`                       | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The IntegrationFlow that is being monitored by the AlertMonitor.             |
+| `logSeverityLevelCondition`        | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | The log severity level condition to monitor for relevant AlertTrigger types. |
+| `durationSecondsCondition`         | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | The execution duration condition to monitor for relevant AlertTrigger types. |
+| `executionOverdueMinutesCondition` | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | The execution overdue condition to monitor for relevant AlertTrigger types.  |
+| `triggers`                         | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The AlertTriggers that are setup to trigger the AlertMonitor.                |
+| `groups`                           | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The AlertGroups to notify when the AlertMonitor is triggered.                |
+| `users`                            | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The Users to notify when the AlertMonitor is triggered.                      |
+| `webhooks`                         | [`[ID]`](/composer/builder/api/schema/scalar/ID.mdx)       | The AlertWebhooks to call when the AlertMonitor is triggered.                |
+| `id`                               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the AlertMonitor to mutate.                                        |
+| `clientMutationId`                 | [`String`](/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation.                  |

@@ -1,0 +1,94 @@
+---
+id: alertMonitor
+title: alertMonitor Query
+sidebar_label: alertMonitor
+description: Learn how to use the alertMonitor Query for Builder's API.
+---
+
+    Returns the specified AlertMonitor object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances]. 2. The signed-in User has any of the following permissions for the object's 'instance_Customer' attribute: [customer_admin_instance_permissions, customer_view_instances]. 3. The signed-in User has any of the following permissions for the object's 'instance' attribute: [instance_admin_permissions, instance_view, instance_edit, instance_remove].
+
+## Input fields
+
+| Argument | Type                              | Description                        |
+| -------- | --------------------------------- | ---------------------------------- |
+| `id`     | [`ID!`](/composer/builder/api/schema/scalar/ID.mdx) | The ID of the AlertMonitor object. |
+
+## Return fields ([AlertMonitor](/composer/builder/api/schema/object/AlertMonitor.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the AlertMonitor.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the AlertMonitor.
+
+###### <b>createdAt</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was created.
+
+###### <b>durationSecondsCondition</b> ([Int](/composer/builder/api/schema/scalar/Int.mdx))
+
+The execution duration condition to monitor for relevant AlertTrigger types.
+
+###### <b>events</b> ([AlertEventConnection!](/composer/builder/api/schema/object/AlertEventConnection.mdx))
+
+The AlertMonitor to which the AlertEvent is associated.
+
+###### <b>executionOverdueMinutesCondition</b> ([Int](/composer/builder/api/schema/scalar/Int.mdx))
+
+The execution overdue condition to monitor for relevant AlertTrigger types.
+
+###### <b>flowConfig</b> ([InstanceFlowConfig](/composer/builder/api/schema/object/InstanceFlowConfig.mdx))
+
+The IntegrationFlow that is being monitored by the AlertMonitor.
+
+###### <b>groups</b> ([AlertGroupConnection!](/composer/builder/api/schema/object/AlertGroupConnection.mdx))
+
+The AlertGroups to notify when the AlertMonitor is triggered.
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>instance</b> ([Instance!](/composer/builder/api/schema/object/Instance.mdx))
+
+The Instance that is being monitored by the AlertMonitor.
+
+###### <b>lastTriggeredAt</b> ([DateTime](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp when the AlertMonitor was last triggered.
+
+###### <b>logSeverityLevelCondition</b> ([Int](/composer/builder/api/schema/scalar/Int.mdx))
+
+The log severity level condition to monitor for relevant AlertTrigger types.
+
+###### <b>name</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+The name of the AlertMonitor.
+
+###### <b>systemSuspended</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the Alert Monitor has been suspended by Builder.
+
+###### <b>triggered</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the AlertMonitor is currently triggered.
+
+###### <b>triggers</b> ([AlertTriggerConnection!](/composer/builder/api/schema/object/AlertTriggerConnection.mdx))
+
+The AlertTriggers that are setup to trigger the AlertMonitor.
+
+###### <b>updatedAt</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was most recently updated.
+
+###### <b>users</b> ([UserConnection!](/composer/builder/api/schema/object/UserConnection.mdx))
+
+The Users to notify when the AlertMonitor is triggered.
+
+###### <b>webhooks</b> ([AlertWebhookConnection!](/composer/builder/api/schema/object/AlertWebhookConnection.mdx))
+
+The AlertWebhooks to call when the AlertMonitor is triggered.

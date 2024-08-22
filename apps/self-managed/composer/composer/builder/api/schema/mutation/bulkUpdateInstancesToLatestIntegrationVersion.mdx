@@ -1,0 +1,28 @@
+---
+id: bulkUpdateInstancesToLatestIntegrationVersion
+title: bulkUpdateInstancesToLatestIntegrationVersion Mutation
+sidebar_label: bulkUpdateInstancesToLatestIntegrationVersion
+description: Learn how to use the bulkUpdateInstancesToLatestIntegrationVersion Mutation for Builder's API.
+---
+
+    Updates all Instances that reference the specified Integration to the
+    latest published version of the specified Integration. If the Instances
+    are deployed, it will re-deploy them as necessary.
+    Returns an instance of the latest version of the specified Integration.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_integrations]. 2. The signed-in User has any of the following permissions for any version of the object: [integration_edit]. 3. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations].
+
+## Input fields ([BulkUpdateInstancesToLatestIntegrationVersionInput!](/composer/builder/api/schema/input_object/BulkUpdateInstancesToLatestIntegrationVersionInput.mdx))
+
+| Argument           | Type                                     | Description                                                 |
+| ------------------ | ---------------------------------------- | ----------------------------------------------------------- |
+| `id`               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the Integration to mutate.                        |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation. |
+
+## Return fields ([BulkUpdateInstancesToLatestIntegrationVersionPayload](/composer/builder/api/schema/object/BulkUpdateInstancesToLatestIntegrationVersionPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>integration</b> ([Integration](/composer/builder/api/schema/object/Integration.mdx))

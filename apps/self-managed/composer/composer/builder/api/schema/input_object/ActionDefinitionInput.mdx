@@ -1,0 +1,23 @@
+---
+id: ActionDefinitionInput
+title: ActionDefinitionInput Input Object
+sidebar_label: ActionDefinitionInput
+description: Learn how to use the ActionDefinitionInput Input Object for Builder's API.
+---
+
+Represents a collection of data that defines a Component Action.
+
+## Input fields
+
+| Argument             | Type                                                                              | Description                                                                    |
+| -------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `key`                | [`String!`](/composer/builder/api/schema/scalar/String.mdx)                                         | A string which uniquely identifies the Action in the context of the Component. |
+| `display`            | [`ActionDisplayDefinition!`](/composer/builder/api/schema/input_object/ActionDisplayDefinition.mdx) | Specifies how the Component Action is displayed.                               |
+| `inputs`             | [`[InputFieldDefinition]!`](/composer/builder/api/schema/input_object/InputFieldDefinition.mdx)     | The InputFields supported by the Component Action.                             |
+| `authorization`      | [`AuthorizationDefinition`](/composer/builder/api/schema/input_object/AuthorizationDefinition.mdx)  | Specifies how the Action handles Authorization.                                |
+| `terminateExecution` | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                                        | Specifies whether the Action will terminate Instance execution.                |
+| `breakLoop`          | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                                        | Specifies whether an Action will break out of a loop.                          |
+| `allowsBranching`    | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                                        | Specifies whether the Action will allow Conditional Branching.                 |
+| `staticBranchNames`  | [`[String]`](/composer/builder/api/schema/scalar/String.mdx)                                        | The static branch names associated with an Action.                             |
+| `dynamicBranchInput` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                          | The input associated with dynamic branching.                                   |
+| `examplePayload`     | [`JSONString`](/composer/builder/api/schema/scalar/JSONString.mdx)                                  | An example of the returned payload of an Action.                               |

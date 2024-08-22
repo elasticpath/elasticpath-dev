@@ -1,0 +1,25 @@
+---
+id: deleteOnPremiseResource
+title: deleteOnPremiseResource Mutation
+sidebar_label: deleteOnPremiseResource
+description: Learn how to use the deleteOnPremiseResource Mutation for Builder's API.
+---
+
+    Removes the specified OnPremiseResource object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_customers, org_crud_customers]. 2. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_remove].
+
+## Input fields ([DeleteOnPremiseResourceInput!](/composer/builder/api/schema/input_object/DeleteOnPremiseResourceInput.mdx))
+
+| Argument           | Type                                     | Description                                                 |
+| ------------------ | ---------------------------------------- | ----------------------------------------------------------- |
+| `id`               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the OnPremiseResource to mutate.                  |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation. |
+
+## Return fields ([DeleteOnPremiseResourcePayload](/composer/builder/api/schema/object/DeleteOnPremiseResourcePayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>onPremiseResource</b> ([OnPremiseResource](/composer/builder/api/schema/object/OnPremiseResource.mdx))

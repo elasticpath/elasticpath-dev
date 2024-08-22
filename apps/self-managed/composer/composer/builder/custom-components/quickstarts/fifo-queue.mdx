@@ -1,0 +1,89 @@
+---
+id: fifo-queue
+title: Use a FIFO Queue to Ensure In-Order Processing
+description: Use a FIFO queue from Amazon SQS or Azure Service Bus to ensure in-order processing of requests.
+---
+
+import Screenshot from "@site/src/components/screenshot";
+import ExampleIntegrationLink from "@site/src/components/example-integration-link";
+
+Composer's integration runner is designed to process requests in parallel.
+If you invoke an integration with multiple requests in quick succession, the runner will scale and process all of the requests at the same time.
+
+If you have a workflow that requires requests to be processed in a specific order, or a workflow that requires you to process only one record at a time, you'll need to take some extra steps to ensure that the requests are processed sequentially.
+
+Queueing systems, like [Amazon SQS](https://aws.amazon.com/sqs/) or [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-bus-messaging/) often offer a FIFO (first-in, first-out) queue type which allow you to write messages to the queue, and retrieve them in the order that they were added.
+You can use a FIFO queue in an integration to queue up requests your integration receives and process them one by one.
+
+## First-in, first-out (FIFO) flows
+
+Regardless of which queueing system you use, the general flow of a FIFO integration is the same:
+
+- One flow recieves requests in parallel and quickly writes them to the queue.
+- Another flow runs on a regular schedule, reads one message from the queue at a time, and processes messages in serial.
+
+<Screenshot
+  filename="quickstarts/fifo-queue/fifo-illustration.png"
+  maxWidth="600px"
+  alt="Illustration of a FIFO queue"
+  appFrame={false}
+/>
+
+Additional flows can be added to the integration to handle other tasks, like configuring queues or cleaning up unprocessable requests from a [dead letter queue](https://en.wikipedia.org/wiki/Dead_letter_queue).
+
+## FIFO queues in Amazon SQS
+
+You can use the built-in [Amazon SQS](/composer/builder/builder-components/aws-sqs.mdx) component to ensure that your integration processes requests one at a time.
+
+<ExampleIntegrationLink href="https://github.com/prismatic-io/examples/blob/main/integrations/amazon-sqs-fifo-queue.yml" />
+
+An Amazon SQS-based FIFO integration will generally have four flows:
+
+1. A "setup" flow that creates and configures the SQS queue.
+   The flow is triggered by an [instance deploy trigger](/composer/builder/builder-components/management-triggers.mdx#instance-deploy) so that it runs when a customer deploys an instance.
+   It contains a single action - [Create Queue](/composer/builder/builder-components/aws-sqs.mdx#create-queue) - which is idempotent and can be run many times.
+   We can use the instance's ID as the queue name to ensure that each instance has its own queue.
+2. A "write" flow that receives requests and writes them to the queue.
+   This flow is triggered by a webhook request, and can run several executions in parallel.
+   This flow contains two steps - one step that fetches the queue's URL based on its name, and another step that writes the trigger's payload to the queue.
+   You can once again use the instance's ID as the group ID to ensure only one message is processed at a time.
+3. A "read" flow that reads messages from the queue and processes them.
+   This flow is triggered on a schedule (as often as every minute).
+   The flow enters a loop and requests a message from the queue.
+   If the queue is empty, the flow exits.
+   If a message is returned, the flow processes the message and deletes it from the queue.
+4. A "cleanup" flow that deletes the queue.
+   This flow is triggered by an [instance delete trigger](/composer/builder/builder-components/management-triggers.mdx#instance-delete) so that it runs when a customer deletes an instance.
+   It contains two actions - one that fetches the queue's URL based on its name, and another that deletes the queue.
+
+### Message deduplication in Amazon SQS
+
+When creating an Amazon SQS queue, you have the option to enable [content-based deduplication](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing).
+When enabled, if two messages with the same content are added to the queue within a 5-minute window, only one message will be added to the queue.
+This is handy if your integration receives duplicate requests.
+
+If you have your own mechanism for determining whether a message is a duplicate, you can disable content-based deduplication and use the [Message Deduplication ID](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html) in the "write" flow to determine whether a message is a duplicate.
+
+### Assured ordering in Amazon SQS
+
+One concern you may have with this approach is that if the "read" flow runs every minute, and one flow takes time to process a large batch of messages, another "read" flow may begin running.
+_Will this cause messages to be processed out of order?_
+No.
+Amazon SQS will not return additional messages to any reader until the current message has been processed / deleted (or the message runs past its [visibility timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)).
+If one "read" flow is already processing a message, an additional "read" flow will be told that no new messages are available, and will exit.
+
+### Real-time processing in an Amazon SQS FIFO integration
+
+The "read" flow runs every minute to process messages.
+If you need to process messages in real-time, you can use a webhook trigger to trigger the "read" flow from the "write" flow after a message is written to the queue.
+
+### Handling AWS credentials in an Amazon SQS FIFO integration
+
+If you leverage Amazon SQS in your integration, you will need to provide AWS credentials to the integration runner.
+You can either:
+
+- Have your customer provide their own AWS credentials when they deploy an instance.
+  This requires that your customer have an AWS account and create an IAM user with the appropriate permissions.
+- Use your own AWS account and credentials.
+  You can provide default credentials in the config wizard designer, but mark the connection as [organization-visible](/composer/builder/configuration-wizard.mdx#config-variable-visibility).
+  Your customers' instances will then use your credentials to access AWS, but they will not be able to see the credentials in the config wizard or through the API.

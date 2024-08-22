@@ -1,0 +1,146 @@
+---
+id: instance
+title: instance Query
+sidebar_label: instance
+description: Learn how to use the instance Query for Builder's API.
+---
+
+    Returns the specified Instance object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances]. 2. The signed-in User has any of the following permissions for the object: [instance_admin_permissions, instance_view, instance_edit, instance_remove]. 3. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_instance_permissions, customer_view_instances, customer_manage_marketplace_integrations]. 4. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_access_marketplace_integrations]. 5. The signed-in User has any of the following permissions for the object's 'integration' attribute: [integration_admin_permissions, integration_view, integration_edit, integration_remove]. 6. The signed-in User has any of the following permissions for the object's 'integration_Customer' attribute: [customer_admin_manage_instances, customer_admin_integration_permissions, customer_manage_integrations].
+
+## Input fields
+
+| Argument | Type                              | Description                    |
+| -------- | --------------------------------- | ------------------------------ |
+| `id`     | [`ID!`](/composer/builder/api/schema/scalar/ID.mdx) | The ID of the Instance object. |
+
+## Return fields ([Instance](/composer/builder/api/schema/object/Instance.mdx))
+
+###### <b>allowDeploy</b> ([Boolean](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can deploy the Instance.
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the Instance.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the Instance.
+
+###### <b>allowUpdateConfigVariables</b> ([Boolean](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update config variables for the Instance.
+
+###### <b>configState</b> ([InstanceConfigState](/composer/builder/api/schema/enum/InstanceConfigState.mdx))
+
+Describes the state of configuration of this Instance.
+
+###### <b>configVariables</b> ([InstanceConfigVariableConnection!](/composer/builder/api/schema/object/InstanceConfigVariableConnection.mdx))
+
+The Instance with which the Config Variable is associated.
+
+###### <b>createdAt</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was created.
+
+###### <b>customer</b> ([Customer!](/composer/builder/api/schema/object/Customer.mdx))
+
+The Customer for which the Instance is deployed.
+
+###### <b>deployedVersion</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+The specific version of the Instance that is deployed.
+
+###### <b>description</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+Additional notes about the Instance.
+
+###### <b>enabled</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the Instance is currently enabled and in an executable state.
+
+###### <b>executionResults</b> ([InstanceExecutionResultConnection!](/composer/builder/api/schema/object/InstanceExecutionResultConnection.mdx))
+
+The Instance for which a specific InstanceFlowConfig is being executed.
+
+###### <b>flowConfigs</b> ([InstanceFlowConfigConnection!](/composer/builder/api/schema/object/InstanceFlowConfigConnection.mdx))
+
+The configuration for the IntegrationFlow associated with the Instance.
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>inFailedState</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the latest execution of this Instance resulted in a failure.
+
+###### <b>integration</b> ([Integration!](/composer/builder/api/schema/object/Integration.mdx))
+
+The Integration that has been deployed for the Instance.
+
+###### <b>isCustomerDeployable</b> ([Boolean](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the Instance can be deployed through the Marketplace.
+
+###### <b>isCustomerUpgradeable</b> ([Boolean](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the Instance can be upgraded through the Marketplace.
+
+###### <b>labels</b> ([[String!]](/composer/builder/api/schema/scalar/String.mdx))
+
+The labels that are associated with the object.
+
+###### <b>lastDeployedAt</b> ([DateTime](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the Instance was most recently deployed.
+
+###### <b>lastExecutedAt</b> ([DateTime](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the Instance was most recently executed.
+
+###### <b>logs</b> ([LogConnection!](/composer/builder/api/schema/object/LogConnection.mdx))
+
+The Instance which created the Log entry.
+
+###### <b>logsDisabled</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether to disable the creation of logs during Instance execution.
+
+###### <b>monitors</b> ([AlertMonitorConnection!](/composer/builder/api/schema/object/AlertMonitorConnection.mdx))
+
+The Instance that is being monitored by the AlertMonitor.
+
+###### <b>name</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+The name of the Instance.
+
+###### <b>needsDeploy</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether a deploy is needed to reflect the newest configuration for this Instance.
+
+###### <b>starred</b> ([Boolean](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Indicates whether the record is starred by the signed-in User.
+
+###### <b>stepResultsDisabled</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether to disable the creation of step results during Instance execution.
+
+###### <b>systemSuspended</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the Instance has been suspended by Builder.
+
+###### <b>updatedAt</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was most recently updated.
+
+###### <b>userLevelConfigVariables</b> ([CustomUserLevelConfigVariableConnection](/composer/builder/api/schema/object/CustomUserLevelConfigVariableConnection.mdx))
+
+The User Level Config variables for the requesting User on this Instance.
+
+###### <b>userLevelConfigs</b> ([UserLevelConfigConnection!](/composer/builder/api/schema/object/UserLevelConfigConnection.mdx))
+
+The Instance with which the User Level Config is associated.

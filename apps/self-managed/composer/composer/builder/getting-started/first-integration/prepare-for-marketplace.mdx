@@ -1,0 +1,121 @@
+---
+id: prepare-for-marketplace
+title: Add to Marketplace
+description: Prepare your integration for the integration marketplace
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+In this step you'll prepare the [integration you created](/composer/builder/getting-started/first-integration/build-first-integration.mdx) for the [integration marketplace](/composer/builder/integration-marketplace.mdx).
+Once the integration has been added to your integration marketplace, your customers can activate it for themselves.
+The can do that by logging in to Builder using [customer users](/composer/builder/users.mdx#customer-users), or if you [embed the marketplace](/composer/builder/embedding-marketplace.mdx) in your app, they can activate the integration without leaving your app.
+
+## Adding a logo
+
+Integrations in the marketplace look best with a logo.
+Since this is a Slack integration, it makes sense to use the Slack logo.
+Right-click this image and click "Save As" to save a copy locally:
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/slack-icon.png"
+  maxWidth="200px"
+  alt="Slack icon"
+  appFrame={false}
+/>
+
+Next, open your integration back up and click the image icon to the left of your integration's name.
+Select the Slack icon you just downloaded to make that the icon for this integration.
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/add-icon.png"
+  maxWidth="350px"
+  alt="Add icon to integration in Builder app"
+/>
+
+## Give your integration a category
+
+Click the **Integration Details** button on the left of your integration designer and give your integration a category and description.
+This will help your customers filter and find your integration easier.
+
+Since this is a Slack integration, a category of "communication" makes sense, but you can choose whatever category you want.
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/add-category.png"
+  maxWidth="500px"
+  alt="Add category to integration in Builder app"
+/>
+
+## Clean up config variables
+
+For integrations with few config variables, this may not be necessary, but it's nice to organize required config variables with headers.
+Open up the config wizard designer from the top of your page.
+Add two headers by clicking the **+ Text/Image** button - one for reading "Slack Info" and another reading "Todo App Info". Drag the headers and config variables to rearrange them.
+
+That'll give your customers a more polished configuration experience when they deploy this integration:
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/clean-up-config-variables.png"
+  maxWidth="700px"
+  alt="Clean up config variables in Builder app"
+/>
+
+While you're in the configuration wizard designer, open each config variable by clicking the pencil icon, and remove the default value from each - that will require your customers to enter their own values for each config variable.
+
+## Re-publish your integration
+
+Open the **Version History** drawer and **Save & Publish** a new version of this integration that includes your config variable and icon changes.
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/republish.png"
+  maxWidth="480px"
+  alt="Republish integration in Builder app"
+/>
+
+## Add your integration to the integration marketplace
+
+Click **Marketplace Configuration** on the left-hand sidebar and select **Add integration** from the top right.
+Give your marketplace offering an **Overview**:
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/configure-integration-marketplace.png"
+  maxWidth="500px"
+  alt="Configur integration overview for integration marketplace via Builder app"
+/>
+
+Click **Update** when you are done.
+
+## Let customers activate this integration
+
+Now, you can either [add customer users](/composer/builder/users.mdx#customer-users) to Builder and let them activate this integration, or you can [embed marketplace](/composer/builder/embedding-marketplace.mdx) in your own app so users can seamlessly activate integrations without having to leave your app.
+
+Your integration within an embedded marketplace would look like this:
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/embedded-marketplace-list.png"
+  maxWidth="800px"
+  alt="Sample list of integrations in embedded marketplace"
+/>
+
+Clicking on the integration brings customers to a screen with the description and overview you set:
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/embedded-marketplace-overview.png"
+  maxWidth="500px"
+  alt="Activate integration from embedded marketplace"
+/>
+
+If a customer chooses to activate this integration, their configuration experience looks clean and straight-forward, thanks to the changes you made to the configuration experience (above):
+
+<Screenshot
+  filename="getting-started/prepare-for-integration-marketplace/embedded-marketplace-configure.png"
+  maxWidth="700px"
+  alt="Configure integration from embedded marketplace"
+/>
+
+## Next steps
+
+You are now ready to create your own integrations.
+Here are a few things we recommend you try next:
+
+- Modify your integration to use [additional components](/composer/builder/builder-components/component-catalog.mdx).
+- Write [your own component](/composer/builder/custom-components/code-vs-custom-components.mdx) to accomplish industry-specific business logic for your company.

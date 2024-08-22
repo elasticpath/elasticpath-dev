@@ -1,0 +1,27 @@
+---
+id: updateComponent
+title: updateComponent Mutation
+sidebar_label: updateComponent
+description: Learn how to use the updateComponent Mutation for Builder's API.
+---
+
+    Users should not be able to actually update a component,
+    but will use this mutation to update the "starred" status
+
+Access is permitted when any of the following condition(s) are met: 1. The object's 'public' attribute equals: True. 2. The signed-in User has any of the following permissions for the associated Organization: [org_admin_component_permissions, org_manage_components, org_view_components]. 3. The signed-in User has any of the following permissions for any version of the object: [component_view, component_edit, component_remove, component_admin_permissions, component_publish_new_version]. 4. The signed-in User has any of the following permissions for the associated Customer: [customer_view_org_components].
+
+## Input fields ([UpdateComponentInput!](/composer/builder/api/schema/input_object/UpdateComponentInput.mdx))
+
+| Argument           | Type                                       | Description                                                    |
+| ------------------ | ------------------------------------------ | -------------------------------------------------------------- |
+| `starred`          | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx) | Indicates whether the record is starred by the signed-in User. |
+| `id`               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)           | The ID of the Component to mutate.                             |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | A unique identifier for the client performing the mutation.    |
+
+## Return fields ([UpdateComponentPayload](/composer/builder/api/schema/object/UpdateComponentPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>component</b> ([Component](/composer/builder/api/schema/object/Component.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))

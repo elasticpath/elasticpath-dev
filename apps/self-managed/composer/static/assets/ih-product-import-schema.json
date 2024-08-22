@@ -1,0 +1,1319 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://elasticpath.com/product-schema.json",
+  "type": "object",
+  "title": "EPCC Product Canonical Schema",
+  "description": "The canonical schema for EPCC products",
+
+  "required": [
+      "slug",
+      "productType",
+      "name",
+      "status",
+      "commodityType"
+  ],
+  "properties": {
+      "slug": {
+          "$id": "#/properties/slug",
+          "type": "string",
+          "title": "The product slug",
+          "description": "The slug that is used to identify this product",
+          "examples": [
+              "800BL"
+          ]
+      },
+      "sku": {
+          "$id": "#/properties/sku",
+          "type": "string",
+          "title": "The product sku",
+          "description": "The sku that is used to identify this product.  Required unless creating a sku-less bundle.",
+          "examples": [
+              "800BL"
+          ]
+      },
+      "externalRef": {
+        "$id": "#/properties/externalRef",
+        "type": "string",
+        "title": "An external reference for the product.",
+        "description": "The external reference that is used to identify this product.",
+        "examples": [
+            "0123456789"
+        ]
+      },
+      "mpn": {
+          "$id": "#/properties/mpn",
+          "type": "string",
+          "title": "The product mpn",
+          "description": "The mpn that is used to identify this product.",
+          "examples": [
+              "1234-5678-ABCD"
+          ]
+      },
+      "upc_ean": {
+          "$id": "#/properties/upc_ean",
+          "type": "string",
+          "title": "The product upc_ean",
+          "description": "The upc_ean that is used to identify this product.",
+          "examples": [
+              "98734567987"
+          ]
+      },
+      "productType": {
+          "$id": "#/properties/productType",
+          "type": "string",
+          "title": "The product type",
+          "description": "The product type of this product.",
+          "default": "product",
+          "enum": ["product", "bundle"],
+          "examples": [
+              "product",
+              "bundle"
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "array",
+          "minItems": 1,
+          "title": "Localized product names",
+          "description": "An array of localized name of this product.",
+          "examples": [
+              [
+                  {
+                      "locale": "en",
+                      "value": "800BL"
+                  },
+                  {
+                      "locale": "de",
+                      "value": "800BL"
+                  }
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/name/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/name/items/anyOf/0",
+                      "type": "object",
+                      "title": "Localized product name",
+                      "description": "The name of this product in the specified locale",
+                      "examples": [
+                          {
+                              "locale": "en",
+                              "value": "800BL"
+                          }
+                      ],
+                      "required": [
+                          "locale",
+                          "value"
+                      ],
+                      "properties": {
+                          "locale": {
+                              "$id": "#/properties/name/items/anyOf/0/properties/locale",
+                              "type": "string",
+                              "title": "The locale of this product name",
+                              "description": "An locale that applies to the value of this name.",
+                              "examples": [
+                                  "en"
+                              ]
+                          },
+                          "value": {
+                              "$id": "#/properties/name/items/anyOf/0/properties/value",
+                              "type": "string",
+                              "title": "The product name",
+                              "description": "The name of this product, in the specified locale.",
+                              "examples": [
+                                  "800BL"
+                              ]
+                          }
+                      },
+                      "additionalProperties": true
+                  }
+              ]
+          }
+      },
+      "description": {
+          "$id": "#/properties/description",
+          "type": "array",
+          "minItems": 1,
+          "title": "The product description",
+          "description": "An array of localized descriptions of the product.",
+          "examples": [
+              [
+                  {
+                      "locale": "en",
+                      "value": "The Hemisphere Pro"
+                  },
+                  {
+                      "locale": "de",
+                      "value": "800BL"
+                  }
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/description/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/description/items/anyOf/0",
+                      "type": "object",
+                      "title": "A localized product description.",
+                      "description": "A locale and localized description for this product.",
+                      "examples": [
+                          {
+                              "locale": "en",
+                              "value": "The Hemisphere Pro"
+                          }
+                      ],
+                      "required": [
+                          "locale",
+                          "value"
+                      ],
+                      "properties": {
+                          "locale": {
+                              "$id": "#/properties/description/items/anyOf/0/properties/locale",
+                              "type": "string",
+                              "title": "The locale of this product description.",
+                              "description": "The locale that applies to this description value.",
+                              "examples": [
+                                  "en"
+                              ]
+                          },
+                          "value": {
+                              "$id": "#/properties/description/items/anyOf/0/properties/value",
+                              "type": "string",
+                              "title": "The localized value for this product description.",
+                              "description": "The description of the product in the specified locale.",
+                              "examples": [
+                                  "The Hemisphere Pro"
+                              ]
+                          }
+                      },
+                      "additionalProperties": true
+                  }
+              ]
+          }
+      },
+      "status": {
+          "$id": "#/properties/status",
+          "type": "string",
+          "title": "The product status",
+          "description": "The publishing status of this product.",
+          "default": "draft",
+          "enum": ["live", "draft"],
+          "examples": [
+              "draft"
+          ]
+      },
+      "media": {
+          "$id": "#/properties/media",
+          "type": "array",
+          "minItems": 1,
+          "title": "The product media",
+          "description": "An array of digital assets for this product.",
+          "examples": [
+              [
+                  {
+                      "type": "main_image",
+                      "url": "http://www.bellevie.com/images/800BL.jpg"
+                  },
+                  {
+                      "type": "file",
+                      "url": "http://www.bellevie.com/manuals/800BL_user_manual.pdf"
+                  }
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/media/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/media/items/anyOf/0",
+                      "type": "object",
+                      "title": "A digital asset instance for this product.",
+                      "description": "An instance of a digital asset that applies to this product.",
+                      "examples": [
+                          {
+                              "type": "main_image",
+                              "url": "http://www.bellevie.com/images/800BL.jpg"
+                          }
+                      ],
+                      "required": [
+                          "type",
+                          "url"
+                      ],
+                      "properties": {
+                          "type": {
+                              "$id": "#/properties/media/items/anyOf/0/properties/type",
+                              "type": "string",
+                              "title": "The media type",
+                              "description": "The type of the digital asset.",
+                              "default": "file",
+                              "enum": ["main_image", "file"],
+                              "examples": [
+                                  "main_image"
+                              ]
+                          },
+                          "url": {
+                              "$id": "#/properties/media/items/anyOf/0/properties/url",
+                              "type": "string",
+                              "title": "The digital asset url",
+                              "description": "The url where the digital asset will be served from.",
+                              "examples": [
+                                  "http://www.bellevie.com/images/800BL.jpg"
+                              ]
+                          }
+                      },
+                      "additionalProperties": true
+                  }
+              ]
+          }
+      },
+      "commodityType": {
+          "$id": "#/properties/commodityType",
+          "type": "string",
+          "title": "The product commodityType",
+          "description": "The type of commidity for this product.",
+          "default": "physical",
+          "enum": ["digital", "physical"],
+          "examples": [
+              "physical"
+          ]
+      },
+      "attributes": {
+          "$id": "#/properties/attributes",
+          "type": "array",
+          "minItems": 1,
+          "title": "The product attributes",
+          "description": "An array of attributes, organized by template, for this product.",
+          "examples": [
+              [
+                  {
+                      "templateSlug": "products(ext)",
+                      "templateAttributes": [
+                          {
+                              "fieldSlug": "availableDate",
+                              "type": "date",
+                              "value": "2020-07-01T00:00:00.000Z"
+                          },
+                          {
+                              "fieldSlug": "releaseDate",
+                              "type": "date",
+                              "value": "2020-07-01T00:00:00.000Z"
+                          },
+                          {
+                              "fieldSlug": "brand",
+                              "type": "string",
+                              "value": "BelleVie"
+                          }
+                      ]
+                  },
+                  {
+                      "templateSlug": "products(template1)",
+                      "templateAttributes": [
+                          {
+                              "fieldSlug": "customAttribute1",
+                              "type": "string",
+                              "value": "Some string attribute."
+                          },
+                          {
+                              "fieldSlug": "customAttribute2",
+                              "type": "number",
+                              "value": "42"
+                          }
+                      ]
+                  }
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/attributes/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/attributes/items/anyOf/0",
+                      "type": "object",
+                      "title": "A template attribute instance for this product.",
+                      "description": "A group of templated attributes for this product.",
+                      "examples": [
+                          {
+                              "templateSlug": "products(ext)",
+                              "templateAttributes": [
+                                  {
+                                      "fieldSlug": "availableDate",
+                                      "type": "date",
+                                      "value": "2020-07-01T00:00:00.000Z"
+                                  },
+                                  {
+                                      "fieldSlug": "releaseDate",
+                                      "type": "date",
+                                      "value": "2020-07-01T00:00:00.000Z"
+                                  },
+                                  {
+                                      "fieldSlug": "brand",
+                                      "type": "string",
+                                      "value": "BelleVie"
+                                  }
+                              ]
+                          }
+                      ],
+                      "required": [
+                          "templateSlug",
+                          "templateAttributes"
+                      ],
+                      "properties": {
+                          "templateSlug": {
+                              "$id": "#/properties/attributes/items/anyOf/0/properties/templateSlug",
+                              "type": "string",
+                              "title": "The template slug",
+                              "description": "The slug that identifies the template for the following attributes.",
+                              "examples": [
+                                  "products(ext)"
+                              ]
+                          },
+                          "templateAttributes": {
+                              "$id": "#/properties/attributes/items/anyOf/0/properties/templateAttributes",
+                              "type": "array",
+                              "minItems": 1,
+                              "title": "The template attributes",
+                              "description": "An array of attribute values for the template.",
+                              "examples": [
+                                  [
+                                      {
+                                          "fieldSlug": "availableDate",
+                                          "type": "date",
+                                          "value": "2020-07-01T00:00:00.000Z"
+                                      },
+                                      {
+                                          "fieldSlug": "releaseDate",
+                                          "type": "date",
+                                          "value": "2020-07-01T00:00:00.000Z"
+                                      }
+                                  ]
+                              ],
+                              "additionalItems": true,
+                              "items": {
+                                  "$id": "#/properties/attributes/items/anyOf/0/properties/templateAttributes/items",
+                                  "anyOf": [
+                                      {
+                                          "$id": "#/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "An attribute for this template and product.",
+                                          "description": "An attribute that applies to this template.",
+                                          "examples": [
+                                              {
+                                                  "fieldSlug": "availableDate",
+                                                  "type": "date",
+                                                  "value": "2020-07-01T00:00:00.000Z"
+                                              }
+                                          ],
+                                          "required": [
+                                              "fieldSlug",
+                                              "type",
+                                              "value"
+                                          ],
+                                          "properties": {
+                                              "fieldSlug": {
+                                                  "$id": "#/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0/properties/fieldSlug",
+                                                  "type": "string",
+                                                  "title": "The attribute slug",
+                                                  "description": "The slug that identifies the template field for this attribute value.",
+                                                  "examples": [
+                                                      "availableDate"
+                                                  ]
+                                              },
+                                              "type": {
+                                                  "$id": "#/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0/properties/type",
+                                                  "type": "string",
+                                                  "title": "The attribute type",
+                                                  "description": "The type of the attribute.",
+                                                  "default": "string",
+                                                  "enum": ["string", "integer", "boolean", "float", "date", "relationship"]
+                                              },
+                                              "value": {
+                                                  "$id": "#/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0/properties/value",
+                                                  "type": ["string", "integer", "boolean", "number", "null"],
+                                                  "title": "The attribute value",
+                                                  "description": "The value for this attribute.",
+                                                  "examples": [
+                                                      "2020-07-01T00:00:00.000Z"
+                                                  ]
+                                              }
+                                          },
+                                          "additionalProperties": true
+                                      }
+                                  ]
+                              }
+                          }
+                      },
+                      "additionalProperties": true
+                  }
+              ]
+          }
+      },
+      "bundleComponents": {
+        "$id": "#/properties/bundleComponents",
+        "type": "array",
+        "minItems": 2,
+        "title": "The bundle components",
+        "description": "An array of components that make up the bundle.",
+        "examples": [
+            [
+                {
+                    "groupIdentifier": "group-identifier-a",
+                    "groupName": "example-group-a",
+                    "options": [
+                        {
+                            "type": "product",
+                            "sku": "sku-a",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                {
+                    "groupIdentifier": "group-identifier-b",
+                    "groupName": "example-group-b",
+                    "options": [
+                        {
+                            "type": "product",
+                            "sku": "sku-b",
+                            "quantity": 1
+                        }
+                    ]
+                }
+            ]
+        ],
+        "additionalItems": true,
+        "items": {
+            "$id": "#/properties/bundleComponents/items",
+            "anyOf": [
+                {
+                    "$id": "#/properties/bundleComponents/items/anyOf/0",
+                    "type": "object",
+                    "title": "A bundle component",
+                    "description": "The definition of this bundle component",
+                    "examples": [
+                        {
+                            "groupIdentifier": "group-identifier-a",
+                            "groupName": "example-group-a",
+                            "options": [
+                                {
+                                    "type": "product",
+                                    "sku": "sku-a",
+                                    "quantity": 1
+                                }
+                            ]
+                        }
+                    ],
+                    "required": [
+                        "groupIdentifier",
+                        "groupName",
+                        "options"
+                    ],
+                    "properties": {
+                        "groupIdentifier": {
+                            "$id": "#/properties/bundleComponents/items/anyOf/0/properties/groupIdentifier",
+                            "type": "string",
+                            "title": "The bundle group identifier",
+                            "description": "The group identifier for this bundle component.",
+                            "examples": [
+                                "group-identifier-a"
+                            ]
+                        },
+                        "groupName": {
+                            "$id": "#/properties/bundleComponents/items/anyOf/0/properties/groupName",
+                            "type": "string",
+                            "title": "The bundle group name",
+                            "description": "The name of the bundle group for this bundle component.",
+                            "examples": [
+                                "example-group-a"
+                            ]
+                        },
+                        "options": {
+                            "$id": "#/properties/bundleComponents/items/anyOf/0/properties/options",
+                            "type": "array",
+                            "minItems": 1,
+                            "title": "The bundle component options",
+                            "description": "An array of options for this bundle component..",
+                            "examples": [
+                                [
+                                    {
+                                        "type": "product",
+                                        "sku": "sku-a",
+                                        "quantity": 1
+                                    }
+                                ]
+                            ],
+                            "additionalItems": true,
+                            "items": {
+                                "$id": "#/properties/bundleComponents/items/anyOf/0/properties/options/items",
+                                "anyOf": [
+                                    {
+                                        "$id": "#/properties/bundleComponents/items/anyOf/0/properties/options/items/anyOf/0",
+                                        "type": "object",
+                                        "title": "A bundle component option",
+                                        "description": "An option for this bundle component.",
+                                        "examples": [
+                                            {
+                                                "type": "product",
+                                                "sku": "sku-a",
+                                                "quantity": 1
+                                            }
+                                        ],
+                                        "required": [
+                                            "type",
+                                            "sku",
+                                            "quantity"
+                                        ],
+                                        "properties": {
+                                            "type": {
+                                                "$id": "#/properties/bundleComponents/items/anyOf/0/properties/options/items/anyOf/0/properties/type",
+                                                "type": "string",
+                                                "title": "The option type",
+                                                "description": "The type of this bundle component option.",
+                                                "enum": ["product"],
+                                                "default": "product",
+                                                "examples": [
+                                                    "product"
+                                                ]
+                                            },
+                                            "sku": {
+                                                "$id": "#/properties/bundleComponents/items/anyOf/0/properties/options/items/anyOf/0/properties/sku",
+                                                "type": "string",
+                                                "title": "The option sku",
+                                                "description": "The sku of this bundle component option.",
+                                                "examples": [
+                                                    "sku-a"
+                                                ]
+                                            },
+                                            "quantity": {
+                                                "$id": "#/properties/bundleComponents/items/anyOf/0/properties/options/items/anyOf/0/properties/quantity",
+                                                "type": "integer",
+                                                "title": "The option quantity",
+                                                "description": "The quantity of this bundle component option.",
+                                                "default": 1,
+                                                "minimum": 1,
+                                                "maximum": 100000,
+                                                "examples": [
+                                                    1
+                                                ]
+                                            }
+                                        },
+                                        "additionalProperties": true
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            ]
+        }
+      },
+      "skuProducts": {
+          "$id": "#/properties/skuProducts",
+          "type": "array",
+          "minItems": 1,
+          "title": "Sku Products",
+          "description": "An array of products for this sku.",
+          "examples": [
+              [
+                  {
+                      "slug": "800BLXLGR",
+                      "sku": "800BLXLGR",
+                      "externalRef": "0123456789-1",
+                      "productType": "sku",
+                      "name": [
+                          {
+                              "locale": "en",
+                              "value": "800BLXLGR"
+                          },
+                          {
+                              "locale": "de",
+                              "value": "800BLXLGR"
+                          }
+                      ],
+                      "description": [
+                          {
+                              "locale": "en",
+                              "value": "The Hemisphere Pro Extra Large Green"
+                          },
+                          {
+                              "locale": "de",
+                              "value": "800BLXLGR"
+                          }
+                      ],
+                      "status": "draft",
+                      "media": [
+                          {
+                              "type": "main_image",
+                              "url": "http://www.bellevie.com/images/800BLXL.jpg"
+                          },
+                          {
+                              "type": "file",
+                              "url": "http://www.bellevie.com/manuals/800BLXL_user_manual.pdf"
+                          }
+                      ],
+                      "commodityType": "physical",
+                      "variation": [
+                          {
+                              "variantSlug": "size",
+                              "optionName": "XL"
+                          },
+                          {
+                              "variantSlug": "color",
+                              "optionName": "Green"
+                          }
+                      ],
+                      "attributes": [
+                          {
+                              "templateSlug": "products(template3)",
+                              "templateAttributes": [
+                                  {
+                                      "fieldSlug": "customAttribute5",
+                                      "type": "string",
+                                      "value": "Some string attribute."
+                                  },
+                                  {
+                                      "fieldSlug": "customAttribute6",
+                                      "type": "number",
+                                      "value": "42"
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  {
+                      "slug": "800BLXLRD",
+                      "sku": "800BLXLRD",
+                      "externalRef": "0123456789-2",
+                      "productType": "sku",
+                      "name": [
+                          {
+                              "locale": "en",
+                              "value": "800BLXLRD"
+                          },
+                          {
+                              "locale": "de",
+                              "value": "800BLXLRD"
+                          }
+                      ],
+                      "description": [
+                          {
+                              "locale": "en",
+                              "value": "The Hemisphere Pro Extra Large Red"
+                          },
+                          {
+                              "locale": "de",
+                              "value": "800BLXLRD"
+                          }
+                      ],
+                      "status": "draft",
+                      "media": [
+                          {
+                              "type": "main_image",
+                              "url": "http://www.bellevie.com/images/800BLXLRD.jpg"
+                          },
+                          {
+                              "type": "file",
+                              "url": "http://www.bellevie.com/manuals/800BLXLRD_user_manual.pdf"
+                          }
+                      ],
+                      "commodityType": "physical",
+                      "variation": [
+                          {
+                              "variantSlug": "size",
+                              "optionName": "XL"
+                          },
+                          {
+                              "variantSlug": "color",
+                              "optionName": "Red"
+                          }
+                      ],
+                      "attributes": [
+                          {
+                              "templateSlug": "products(template3)",
+                              "templateAttributes": [
+                                  {
+                                      "fieldSlug": "customAttribute5",
+                                      "type": "string",
+                                      "value": "Some string attribute."
+                                  },
+                                  {
+                                      "fieldSlug": "customAttribute6",
+                                      "type": "number",
+                                      "value": "42"
+                                  }
+                              ]
+                          }
+                      ]
+                  }
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/skuProducts/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/skuProducts/items/anyOf/0",
+                      "type": "object",
+                      "title": "A sku product.",
+                      "description": "A product definition for this sku.",
+                      "examples": [
+                          {
+                              "slug": "800BLXLGR",
+                              "sku": "800BLXLGR",
+                              "productType": "sku",
+                              "name": [
+                                  {
+                                      "locale": "en",
+                                      "value": "800BLXLGR"
+                                  },
+                                  {
+                                      "locale": "de",
+                                      "value": "800BLXLGR"
+                                  }
+                              ],
+                              "description": [
+                                  {
+                                      "locale": "en",
+                                      "value": "The Hemisphere Pro Extra Large Green"
+                                  },
+                                  {
+                                      "locale": "de",
+                                      "value": "800BLXLGR"
+                                  }
+                              ],
+                              "status": "draft",
+                              "media": [
+                                  {
+                                      "type": "main_image",
+                                      "url": "http://www.bellevie.com/images/800BLXL.jpg"
+                                  },
+                                  {
+                                      "type": "file",
+                                      "url": "http://www.bellevie.com/manuals/800BLXL_user_manual.pdf"
+                                  }
+                              ],
+                              "commodityType": "physical",
+                              "variation": [
+                                  {
+                                      "variantSlug": "size",
+                                      "optionName": "XL"
+                                  },
+                                  {
+                                      "variantSlug": "color",
+                                      "optionName": "Green"
+                                  }
+                              ],
+                              "attributes": [
+                                  {
+                                      "templateSlug": "products(template3)",
+                                      "templateAttributes": [
+                                          {
+                                              "fieldSlug": "customAttribute5",
+                                              "type": "string",
+                                              "value": "Some string attribute."
+                                          },
+                                          {
+                                              "fieldSlug": "customAttribute6",
+                                              "type": "number",
+                                              "value": "42"
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ],
+                      "required": [
+                          "slug",
+                          "sku",
+                          "productType",
+                          "name",
+                          "status",
+                          "commodityType",
+                          "variation"
+                      ],
+                      "properties": {
+                          "slug": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/slug",
+                              "type": "string",
+                              "title": "The product slug.",
+                              "description": "The slug for this product.",
+                              "examples": [
+                                  "800BLXLGR"
+                              ]
+                          },
+                          "sku": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/sku",
+                              "type": "string",
+                              "title": "The product sku.",
+                              "description": "The sku identifier for this product.",
+                              "examples": [
+                                  "800BLXLGR"
+                              ]
+                          },
+                          "externalRef": {
+                            "$id": "#/properties/externalRef",
+                            "type": "string",
+                            "title": "An external reference for the product.",
+                            "description": "The external reference that is used to identify this product.",
+                            "examples": [
+                                "0123456789"
+                            ]
+                          },
+                          "upc_ean": {
+                            "$id": "#/properties/upc_ean",
+                            "type": "string",
+                            "title": "The product upc_ean",
+                            "description": "The upc_ean that is used to identify this product.",
+                            "examples": [
+                                "98734567987"
+                            ]
+                        },
+                          "productType": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/productType",
+                              "type": "string",
+                              "title": "The product type",
+                              "description": "The product type for this product.",
+                              "enum": ["sku"]
+                          },
+                          "name": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/name",
+                              "type": "array",
+                              "minItems": 1,
+                              "title": "The product name",
+                              "description": "An array of localized names for this sku.",
+                              "examples": [
+                                  [
+                                      {
+                                          "locale": "en",
+                                          "value": "800BLXLGR"
+                                      },
+                                      {
+                                          "locale": "de",
+                                          "value": "800BLXLGR"
+                                      }
+                                  ]
+                              ],
+                              "additionalItems": true,
+                              "items": {
+                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/name/items",
+                                  "anyOf": [
+                                      {
+                                          "$id": "#/properties/skuProducts/items/anyOf/0/properties/name/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "The product name",
+                                          "description": "A localized name for this product.",
+                                          "examples": [
+                                              {
+                                                  "locale": "en",
+                                                  "value": "800BLXLGR"
+                                              }
+                                          ],
+                                          "required": [
+                                              "locale",
+                                              "value"
+                                          ],
+                                          "properties": {
+                                              "locale": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/name/items/anyOf/0/properties/locale",
+                                                  "type": "string",
+                                                  "title": "The name locale",
+                                                  "description": "The locale that applies to this product name.",
+                                                  "examples": [
+                                                      "en"
+                                                  ]
+                                              },
+                                              "value": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/name/items/anyOf/0/properties/value",
+                                                  "type": "string",
+                                                  "title": "The product name",
+                                                  "description": "The localized value of this product name.",
+                                                  "examples": [
+                                                      "800BLXLGR"
+                                                  ]
+                                              }
+                                          },
+                                          "additionalProperties": true
+                                      }
+                                  ]
+                              }
+                          },
+                          "description": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/description",
+                              "type": "array",
+                              "minItems": 1,
+                              "title": "The product descriptions",
+                              "description": "An array of localized descriptions for this sku.",
+                              "examples": [
+                                  [
+                                      {
+                                          "locale": "en",
+                                          "value": "The Hemisphere Pro Extra Large Green"
+                                      },
+                                      {
+                                          "locale": "de",
+                                          "value": "800BLXLGR"
+                                      }
+                                  ]
+                              ],
+                              "additionalItems": true,
+                              "items": {
+                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/description/items",
+                                  "anyOf": [
+                                      {
+                                          "$id": "#/properties/skuProducts/items/anyOf/0/properties/description/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "The sku description",
+                                          "description": "A localized description for this sku.",
+                                          "examples": [
+                                              {
+                                                  "locale": "en",
+                                                  "value": "The Hemisphere Pro Extra Large Green"
+                                              }
+                                          ],
+                                          "required": [
+                                              "locale",
+                                              "value"
+                                          ],
+                                          "properties": {
+                                              "locale": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/description/items/anyOf/0/properties/locale",
+                                                  "type": "string",
+                                                  "title": "The description locale",
+                                                  "description": "The locale of this description.",
+                                                  "examples": [
+                                                      "en"
+                                                  ]
+                                              },
+                                              "value": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/description/items/anyOf/0/properties/value",
+                                                  "type": "string",
+                                                  "title": "The localized sku description.",
+                                                  "description": "The value of this description.",
+                                                  "examples": [
+                                                      "The Hemisphere Pro Extra Large Green"
+                                                  ]
+                                              }
+                                          },
+                                          "additionalProperties": true
+                                      }
+                                  ]
+                              }
+                          },
+                          "status": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/status",
+                              "type": "string",
+                              "title": "The sku status.",
+                              "description": "The publishing status of this sku.",
+                              "default": "draft",
+                              "enum": [
+                                  "draft",
+                                  "live"
+                              ]
+                          },
+                          "media": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/media",
+                              "type": "array",
+                              "minItems": 1,
+                              "title": "The sku media",
+                              "description": "An array of digital media for this sku.",
+                              "examples": [
+                                  [
+                                      {
+                                          "type": "main_image",
+                                          "url": "http://www.bellevie.com/images/800BLXL.jpg"
+                                      },
+                                      {
+                                          "type": "file",
+                                          "url": "http://www.bellevie.com/manuals/800BLXL_user_manual.pdf"
+                                      }
+                                  ]
+                              ],
+                              "additionalItems": true,
+                              "items": {
+                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/media/items",
+                                  "anyOf": [
+                                      {
+                                          "$id": "#/properties/skuProducts/items/anyOf/0/properties/media/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "A sku media",
+                                          "description": "A digital media instance for this sku.",
+                                          "examples": [
+                                              {
+                                                  "type": "main_image",
+                                                  "url": "http://www.bellevie.com/images/800BLXL.jpg"
+                                              }
+                                          ],
+                                          "required": [
+                                              "type",
+                                              "url"
+                                          ],
+                                          "properties": {
+                                              "type": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/media/items/anyOf/0/properties/type",
+                                                  "type": "string",
+                                                  "title": "The media type",
+                                                  "description": "They type of this digital media.",
+                                                  "default": "file",
+                                                  "enum": [
+                                                      "main_image",
+                                                      "file"
+                                                  ]
+                                              },
+                                              "url": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/media/items/anyOf/0/properties/url",
+                                                  "type": "string",
+                                                  "title": "The media url",
+                                                  "description": "The url to the media.",
+                                                  "examples": [
+                                                      "http://www.bellevie.com/images/800BLXL.jpg"
+                                                  ]
+                                              }
+                                          },
+                                          "additionalProperties": true
+                                      }
+                                  ]
+                              }
+                          },
+                          "commodityType": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/commodityType",
+                              "type": "string",
+                              "title": "The sku commodityType",
+                              "description": "The type of commodity for this sku.",
+                              "default": "physical",
+                              "examples": [
+                                  "physical",
+                                  "digital"
+                              ]
+                          },
+                          "variation": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/variation",
+                              "type": "array",
+                              "minItems": 1,
+                              "title": "The sku variations",
+                              "description": "An array of variations for this sku.",
+                              "examples": [
+                                  [
+                                      {
+                                          "variantSlug": "size",
+                                          "optionName": "XL"
+                                      },
+                                      {
+                                          "variantSlug": "color",
+                                          "optionName": "Green"
+                                      }
+                                  ]
+                              ],
+                              "additionalItems": true,
+                              "items": {
+                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/variation/items",
+                                  "anyOf": [
+                                      {
+                                          "$id": "#/properties/skuProducts/items/anyOf/0/properties/variation/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "A sku variant",
+                                          "description": "An intance of a variant for this sku.",
+                                          "examples": [
+                                              {
+                                                  "variantSlug": "size",
+                                                  "optionName": "XL"
+                                              }
+                                          ],
+                                          "required": [
+                                              "variantSlug",
+                                              "optionName"
+                                          ],
+                                          "properties": {
+                                              "variantSlug": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/variation/items/anyOf/0/properties/variantSlug",
+                                                  "type": "string",
+                                                  "title": "The slug of the variant.",
+                                                  "description": "The slug identifier for this sku variant.",
+                                                  "examples": [
+                                                      "size"
+                                                  ]
+                                              },
+                                              "optionName": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/variation/items/anyOf/0/properties/optionName",
+                                                  "type": "string",
+                                                  "title": "The variant option name",
+                                                  "description": "The name of the variant for this option.",
+                                                  "examples": [
+                                                      "XL"
+                                                  ]
+                                              }
+                                          },
+                                          "additionalProperties": true
+                                      }
+                                  ]
+                              }
+                          },
+                          "attributes": {
+                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes",
+                              "type": "array",
+                              "minItems": 1,
+                              "title": "The sku attributes",
+                              "description": "An array of templates and attributes for this sku.",
+                              "examples": [
+                                  [
+                                      {
+                                          "templateSlug": "products(template3)",
+                                          "templateAttributes": [
+                                              {
+                                                  "fieldSlug": "customAttribute5",
+                                                  "type": "string",
+                                                  "value": "Some string attribute."
+                                              },
+                                              {
+                                                  "fieldSlug": "customAttribute6",
+                                                  "type": "number",
+                                                  "value": "42"
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              ],
+                              "additionalItems": true,
+                              "items": {
+                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items",
+                                  "anyOf": [
+                                      {
+                                          "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "The sku template",
+                                          "description": "A template and associated attributes for this sku.",
+                                          "examples": [
+                                              {
+                                                  "templateSlug": "products(template3)",
+                                                  "templateAttributes": [
+                                                      {
+                                                          "fieldSlug": "customAttribute5",
+                                                          "type": "string",
+                                                          "value": "Some string attribute."
+                                                      },
+                                                      {
+                                                          "fieldSlug": "customAttribute6",
+                                                          "type": "number",
+                                                          "value": "42"
+                                                      }
+                                                  ]
+                                              }
+                                          ],
+                                          "required": [
+                                              "templateSlug",
+                                              "templateAttributes"
+                                          ],
+                                          "properties": {
+                                              "templateSlug": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateSlug",
+                                                  "type": "string",
+                                                  "title": "The template slug",
+                                                  "description": "The template slug used to identify the particular template.",
+                                                  "examples": [
+                                                      "products(template3)"
+                                                  ]
+                                              },
+                                              "templateAttributes": {
+                                                  "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateAttributes",
+                                                  "type": "array",
+                                                  "minItems": 1,
+                                                  "title": "The template attributes",
+                                                  "description": "An array of attributes for this template.",
+                                                  "examples": [
+                                                      [
+                                                          {
+                                                              "fieldSlug": "customAttribute5",
+                                                              "type": "string",
+                                                              "value": "Some string attribute."
+                                                          },
+                                                          {
+                                                              "fieldSlug": "customAttribute6",
+                                                              "type": "number",
+                                                              "value": "42"
+                                                          }
+                                                      ]
+                                                  ],
+                                                  "additionalItems": true,
+                                                  "items": {
+                                                      "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateAttributes/items",
+                                                      "anyOf": [
+                                                          {
+                                                              "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0",
+                                                              "type": "object",
+                                                              "title": "The sku attribute",
+                                                              "description": "An attribute for this template.",
+                                                              "examples": [
+                                                                  {
+                                                                      "fieldSlug": "customAttribute5",
+                                                                      "type": "string",
+                                                                      "value": "Some string attribute."
+                                                                  }
+                                                              ],
+                                                              "required": [
+                                                                  "fieldSlug",
+                                                                  "type",
+                                                                  "value"
+                                                              ],
+                                                              "properties": {
+                                                                  "fieldSlug": {
+                                                                      "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0/properties/fieldSlug",
+                                                                      "type": "string",
+                                                                      "title": "The slug of the field.",
+                                                                      "description": "The slug used to identify this field / attribute.",
+                                                                      "examples": [
+                                                                          "customAttribute5"
+                                                                      ]
+                                                                  },
+                                                                  "type": {
+                                                                      "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0/properties/type",
+                                                                      "type": "string",
+                                                                      "title": "The field type",
+                                                                      "description": "The type of the field / attribute.",
+                                                                      "default": "string",
+                                                                      "enum": ["string", "integer", "boolean", "float", "date", "relationship"]
+                                                                  },
+                                                                  "value": {
+                                                                      "$id": "#/properties/skuProducts/items/anyOf/0/properties/attributes/items/anyOf/0/properties/templateAttributes/items/anyOf/0/properties/value",
+                                                                      "type": "string",
+                                                                      "title": "The field value",
+                                                                      "description": "The value of the field / attribute.",
+                                                                      "examples": [
+                                                                          "Some string attribute."
+                                                                      ]
+                                                                  }
+                                                              },
+                                                              "additionalProperties": true
+                                                          }
+                                                      ]
+                                                  }
+                                              }
+                                          },
+                                          "additionalProperties": true
+                                      }
+                                  ]
+                              }
+                          }
+                      },
+                      "additionalProperties": true
+                  }
+              ]
+          }
+      }
+  },
+  "anyOf": [
+    {
+        "properties": {
+            "productType": { "const": "product" }
+        },
+        "required": ["sku"]
+    },
+    {
+        "properties": {
+            "productType": { "const": "bundle" }
+        },
+        "required": ["bundleComponents"]
+    }
+  ],
+  "additionalProperties": true
+}

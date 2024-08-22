@@ -1,0 +1,29 @@
+---
+id: updateIntegrationMarketplaceConfiguration
+title: updateIntegrationMarketplaceConfiguration Mutation
+sidebar_label: updateIntegrationMarketplaceConfiguration
+description: Learn how to use the updateIntegrationMarketplaceConfiguration Mutation for Builder's API.
+---
+
+    Updates the configuration of an Integration Version for use in the Integration Marketplace.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_integrations]. 2. The signed-in User has any of the following permissions for any version of the object: [integration_edit]. 3. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations].
+
+## Input fields ([UpdateIntegrationMarketplaceConfigurationInput!](/composer/builder/api/schema/input_object/UpdateIntegrationMarketplaceConfigurationInput.mdx))
+
+| Argument                            | Type                                       | Description                                                                                                                                |
+| ----------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `overview`                          | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | Specifies an Overview of the Integration to describe its functionality for use in the Integration Marketplace.                             |
+| `marketplaceConfiguration`          | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | Specifies whether an Integration will be available in the Integration Marketplace and if the Integration is deployable by a Customer User. |
+| `marketplaceTabConfiguration`       | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | The Marketplace Tabs available to Customer Users for configuring this Integration.                                                         |
+| `allowMultipleMarketplaceInstances` | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx) | Specifies whether multiple Instances of this Integration may be created from the Marketplace.                                              |
+| `id`                                | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)           | The ID of the Integration to mutate.                                                                                                       |
+| `clientMutationId`                  | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | A unique identifier for the client performing the mutation.                                                                                |
+
+## Return fields ([UpdateIntegrationMarketplaceConfigurationPayload](/composer/builder/api/schema/object/UpdateIntegrationMarketplaceConfigurationPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>integration</b> ([Integration](/composer/builder/api/schema/object/Integration.mdx))

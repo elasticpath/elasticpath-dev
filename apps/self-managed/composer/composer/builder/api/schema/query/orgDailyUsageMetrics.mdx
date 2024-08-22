@@ -1,0 +1,43 @@
+---
+id: orgDailyUsageMetrics
+title: orgDailyUsageMetrics Query
+sidebar_label: orgDailyUsageMetrics
+description: Learn how to use the orgDailyUsageMetrics Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of OrgDailyUsageMetrics objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_view_utilization].
+
+## Input fields
+
+| Argument           | Type                                                                                   | Description                                                                                      |
+| ------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before`           | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                               | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`            | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                               | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`            | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                                     | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`             | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                                     | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`           | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                                     |                                                                                                  |
+| `snapshotDate_Gte` | [`Date`](/composer/builder/api/schema/scalar/Date.mdx)                                                   | Filter for objects where snapshotDate occurs on or after the specified value.                    |
+| `snapshotDate_Lte` | [`Date`](/composer/builder/api/schema/scalar/Date.mdx)                                                   | Filter for objects where snapshotDate occurs on or before the specified value.                   |
+| `snapshotDate`     | [`Date`](/composer/builder/api/schema/scalar/Date.mdx)                                                   | Filter for objects where snapshotDate matches the specified value.                               |
+| `orderBy`          | [`OrgDailyUsageMetricsOrder`](/composer/builder/api/schema/input_object/OrgDailyUsageMetricsOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`           | [`[OrgDailyUsageMetricsOrder]`](/composer/builder/api/schema/input_object/OrgDailyUsageMetricsOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([OrgDailyUsageMetricsConnection!](/composer/builder/api/schema/object/OrgDailyUsageMetricsConnection.mdx))
+
+###### <b>edges</b> ([[OrgDailyUsageMetricsEdge]!](/composer/builder/api/schema/object/OrgDailyUsageMetricsEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[OrgDailyUsageMetrics]!](/composer/builder/api/schema/object/OrgDailyUsageMetrics.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

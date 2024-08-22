@@ -1,0 +1,28 @@
+---
+id: testIntegrationEndpointConfig
+title: testIntegrationEndpointConfig Mutation
+sidebar_label: testIntegrationEndpointConfig
+description: Learn how to use the testIntegrationEndpointConfig Mutation for Builder's API.
+---
+
+    Initiates an execution for testing the endpoint configuration of the specified Integration.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_manage_integrations]. 2. The signed-in User has any of the following permissions for any version of the object: [integration_edit]. 3. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_integration_permissions, customer_manage_integrations, customer_view_integrations].
+
+## Input fields ([TestIntegrationEndpointConfigInput!](/composer/builder/api/schema/input_object/TestIntegrationEndpointConfigInput.mdx))
+
+| Argument           | Type                                     | Description                                                                                                           |
+| ------------------ | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `payload`          | [`String`](/composer/builder/api/schema/scalar/String.mdx) | The payload to send with the POST request to test the endpoint configuration for the Integration.                     |
+| `contentType`      | [`String`](/composer/builder/api/schema/scalar/String.mdx) | The content type of the payload to send with the POST request to test the endpoint configuration for the Integration. |
+| `headers`          | [`String`](/composer/builder/api/schema/scalar/String.mdx) | The headers to send with the POST request to test the endpoint configuration for the Integration.                     |
+| `id`               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)         | The ID of the Integration to mutate.                                                                                  |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx) | A unique identifier for the client performing the mutation.                                                           |
+
+## Return fields ([TestIntegrationEndpointConfigPayload](/composer/builder/api/schema/object/TestIntegrationEndpointConfigPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>testIntegrationEndpointConfigResult</b> ([TestIntegrationEndpointConfigResult](/composer/builder/api/schema/object/TestIntegrationEndpointConfigResult.mdx))

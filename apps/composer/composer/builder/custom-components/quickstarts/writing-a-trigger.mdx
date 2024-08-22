@@ -1,0 +1,214 @@
+---
+id: writing-a-trigger
+title: Writing a Custom Trigger
+description: Learn how to write a trigger for a custom component by examining how our Salesforce trigger handles webhook requests.
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+In this tutorial we'll walk through how we wrote a trigger for our [Salesforce component](/composer/builder/builder-components/salesforce.mdx) to serve as an example for how you'd go about writing triggers for your own custom components.
+Salesforce [outbound messages](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_understanding.htm) allow you to send updates about Salesforce accounts, opportunities, and more to webhooks of your choosing.
+However, integrations with Salesforce do not work well with the [standard webhook trigger](/composer/builder/integration-triggers.mdx#webhook-triggers) for two reasons:
+
+1. Salesforce outbound messages send XML payloads rather than JSON.
+   This isn't a deal-breaker, but all integrations with Salesforce would then need to start with an extra [Deserialize XML](/composer/builder/builder-components/change-data-format.mdx#deserialize-xml) step.
+   It'd be convenient if the trigger took care of the XML deserialization.
+1. Salesforce outbound messages require an acknowledgement (ack) response that has a [very particular format](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_wsdl.htm).
+   The standard webhook trigger does not send that proprietary acknowledgement response.
+   Instead, it responds with an execution ID in JSON format.
+   Since it wouldn't get its proprietary ACK response, Salesforce would resend its outbound message dozens of times and then report "failure".
+   We need a trigger that can respond to Salesforce requests with a Salesforce ACK.
+
+So, let's develop a Salesforce trigger that deserializes XML, and responds with a Salesforce ACK.
+
+## Deserializing XML
+
+Let's start by addressing the first problem: deserializing XML within the trigger.
+We could omit this step, but then every integration with Salesforce would require an extra [Deserialize XML](/composer/builder/builder-components/change-data-format.mdx#deserialize-xml) step.
+If we know that we can expect XML from Salesforce, so it's cleaner to take care of XML deserialization as part of the trigger.
+
+We'll use [fast-xml-parser](https://www.npmjs.com/package/fast-xml-parser) to deserialize the XML, and we'll save the object that's created from deserialization into the trigger payload's `body.data`:
+
+```typescript
+import {
+  trigger,
+  TriggerPayload,
+  HttpResponse,
+  util,
+} from "@prismatic-io/spectral";
+import { parse } from "fast-xml-parser";
+
+export const salesforceTrigger = trigger({
+  display: {
+    label: "Webhook",
+    description:
+      "Trigger for handling webhook requests from the Salesforce platform. Returns the expected response to Salesforce and converts the XML payload to an object for more convenient use in the rest of the flow.",
+  },
+  perform: async (context, payload, params) => {
+    // Make a copy of the payload that the trigger received
+    const finalPayload: TriggerPayload = { ...payload };
+
+    const parseOptions = {
+      ignoreAttributes: false,
+      ignoreNameSpace: false,
+      textNodeName: "_text",
+    };
+
+    // Deserialize XML to JS Object.
+    finalPayload.body.data =
+      parse(util.types.toString(finalPayload.body.data), parseOptions) || {};
+    delete finalPayload.body.contentType;
+
+    // Return the payload, with a deserialized body.
+    return Promise.resolve({
+      payload: finalPayload,
+    });
+  },
+  inputs: {}, // This trigger takes no inputs
+  synchronousResponseSupport: "invalid",
+  scheduleSupport: "invalid",
+});
+
+export default { salesforceTrigger };
+```
+
+Let's concentrate on a few portions of this code:
+
+Similar to an [action](/composer/builder/custom-components/writing-custom-components.mdx#writing-actions), a trigger's `perform` function takes [context](/composer/builder/custom-components/writing-custom-components.mdx#the-context-parameter) and `params` (inputs) parameters (though this trigger doesn't happen to take inputs).
+Additionally, it takes a `payload` parameter, which contains the payload (headers and body) of the webhook invocation:
+
+```typescript
+perform: async (context, payload, params) => {};
+```
+
+We can reference the raw body of the webhook payload, and ensure that it is cast to a string using the Spectral [toString](/composer/builder/spectral/modules/_util_.md#const-tostring) function.
+Then, we can parse the XML into a JavaScript object so it's easier to reference.
+Since we're returning a deserialized object, and not serialized XML, we can delete `contentType` from the payload body:
+
+```typescript
+// Deserialize XML to JS Object.
+finalPayload.body.data =
+  parse(util.types.toString(finalPayload.body.data), parseOptions) || {};
+delete finalPayload.body.contentType;
+```
+
+Finally, we can return an updated payload that can be referenced by subsequent steps.
+This updated payload contains a deserialized XML body, so keys within the XML can be easily referenced:
+
+```typescript
+return Promise.resolve({
+  payload: finalPayload,
+});
+```
+
+Now that we're parsing the XML that comes in, we can see that the output of the Salesforce trigger when invoked from a Salesforce outbound message is an object with easy-to-reference keys:
+
+<Screenshot
+  filename="quickstarts/writing-a-trigger/deserialized-body.png"
+  maxWidth="600px"
+  alt="Integration Trigger step outputs in Composer integration designer"
+/>
+
+## Responding with an acknowledgement message
+
+Next, let's configure the trigger to respond with a Salesforce ACK message.
+Without a proper ACK message, Salesforce attempts to resend the same message several times over a few hours.
+
+To do that, all we have to do is add a `response` to our `perform` function's return object.
+That `repsonse` should be of type `HttpResponse` (defined in Spectral):
+
+```typescript {1,8-19,24}
+import { HttpResponse } from "@prismatic-io/spectral";
+
+export const salesforceTrigger = trigger({
+  //...
+  perform: async (context, payload, params) => {
+    // ...
+
+    // Create the HTTP response that Salesforce expects
+    const response: HttpResponse = {
+      statusCode: 200,
+      contentType: "text/xml; charset=utf-8",
+      body: `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+      <soapenv:Body>
+        <notificationsResponse xmlns="http://soap.sforce.com/2005/09/outbound">
+          <Ack>true</Ack>
+        </notificationsResponse>
+      </soapenv:Body>
+      </soapenv:Envelope>`,
+    };
+
+    // Return the payload, with a deserialized body.
+    return Promise.resolve({
+      payload: finalPayload,
+      response,
+    });
+  },
+});
+```
+
+Within our `response` object, we indicate that the trigger should return HTTP status code `200`, that we're returning XML `text/xml`, and it includes the ACK message that [Salesforce requires](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_wsdl.htm).
+When the `return` block includes a `reponse`, the default execution ID response is overridden by the response that we specify.
+
+Now our trigger is configured to respond to Salesforce in a way that Salesforce expects.
+We can see that response in action by hitting our integration's webhook endpoint:
+
+```bash
+curl -L 'https://hooks.us-east-2.elasticpathintegrations.com/trigger/EXAMPLE==' \
+  --header "Content-Type: application/xml" \
+  --data '
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <notifications xmlns="http://soap.sforce.com/2005/09/outbound">
+         <OrganizationId>00D2w000ghj72NEAT</OrganizationId>
+         <ActionId>04k2w0000004FdvAAE</ActionId>
+         <SessionId>00D2w00000DM72N!ARsfgG0PvTV4_PFOLH7FfAf0MSc</SessionId>
+         <EnterpriseUrl>https://ap16.salesforce.com/services/Soap/c/50.0/00D2w00000Dfhy2N\</EnterpriseUrl\>
+         <PartnerUrl>https://ap16.salesforce.com/services/Soap/u/50.0/00D2w00000Dyh72N\</PartnerUrl\>
+         <Notification>
+            <Id>04l2w0000005fyhjAAI</Id>
+            <sObject xmlns:sf="urn:sobject.enterprise.soap.sforce.com" xsi:type="sf:Case">
+               <sf:Id>5002w00000BSfffAA1</sf:Id>
+               <sf:CaseNumber>000007551</sf:CaseNumber>
+               <sf:ContactEmail>test@email.com</sf:ContactEmail>
+               <sf:ContactId>056632w0000fyhjntHAA3</sf:ContactId>
+               <sf:ContactPhone>0999155r475</sf:ContactPhone>
+               <sf:CreatedById>0052w00000fhzLcAAI</sf:CreatedById>
+               <sf:CreatedDate>2020-11-23T07:36:08.000Z</sf:CreatedDate>
+               <sf:IsClosed>false</sf:IsClosed>
+               <sf:IsDeleted>false</sf:IsDeleted>
+               <sf:IsEscalated>false</sf:IsEscalated>
+               <sf:LastModifiedById>0052w0000g6likuzLcAAI</sf:LastModifiedById>
+               <sf:LastModifiedDate>2020-11-23T07:37:22.000Z</sf:LastModifiedDate>
+               <sf:LastReferencedDate>2020-11-23T07:37:22.000Z</sf:LastReferencedDate>
+               <sf:LastViewedDate>2020-11-23T07:37:22.000Z</sf:LastViewedDate>
+               <sf:Origin>Web</sf:Origin>
+               <sf:OwnerId>0052w00000hlzghAI</sf:OwnerId>
+               <sf:Priority>Medium</sf:Priority>
+               <sf:Status>New</sf:Status>
+               <sf:Subject>id check</sf:Subject>
+               <sf:SystemModstamp>2020-11-23T07:37:22.000Z</sf:SystemModstamp>
+            </sObject>
+         </Notification>
+      </notifications>
+   </soapenv:Body>
+</soapenv:Envelope>'
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <notificationsResponse xmlns="http://soap.sforce.com/2005/09/outbound">
+         <Ack>true</Ack>
+      </notificationsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+## Conclusion
+
+In this tutorial we covered processing the webhook payload within a trigger and modifying the webhook's HTTP response.
+The example used was for Salesforce, but could be adapted for many other third-party systems.
+Some third-party systems, for example, require you to echo back part of the webhook payload in the response to ensure it was received correctly - that could easily be done by capturing a key or header of the webhook payload, and creating an `HttpResponse` object containing that information
+
+To read more about authoring triggers, check out our [Writing Custom Components](/composer/builder/custom-components/writing-custom-components.mdx#writing-triggers) article.

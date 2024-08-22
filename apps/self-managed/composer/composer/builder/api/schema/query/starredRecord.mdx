@@ -1,0 +1,40 @@
+---
+id: starredRecord
+title: starredRecord Query
+sidebar_label: starredRecord
+description: Learn how to use the starredRecord Query for Builder's API.
+---
+
+    Returns the specified StarredRecord object.
+
+Access is permitted when any of the following condition(s) are met: 1. The object's 'user' attribute is the signed-in User.
+
+## Input fields
+
+| Argument | Type                              | Description                         |
+| -------- | --------------------------------- | ----------------------------------- |
+| `id`     | [`ID!`](/composer/builder/api/schema/scalar/ID.mdx) | The ID of the StarredRecord object. |
+
+## Return fields ([StarredRecord](/composer/builder/api/schema/object/StarredRecord.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the StarredRecord.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the StarredRecord.
+
+###### <b>description</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>timestamp</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+Date/Time when the record was starred
+
+###### <b>user</b> ([User!](/composer/builder/api/schema/object/User.mdx))
+
+User that starred a record

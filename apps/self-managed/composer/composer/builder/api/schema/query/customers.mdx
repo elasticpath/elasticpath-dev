@@ -1,0 +1,54 @@
+---
+id: customers
+title: customers Query
+sidebar_label: customers
+description: Learn how to use the customers Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of Customer objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_customer_permissions, org_manage_customers, org_crud_customers, org_view_customers]. 2. The signed-in User has any of the following permissions for the object: [customer_view, customer_edit, customer_remove, customer_admin_users, customer_view_users, customer_admin_instance_permissions, customer_view_instances, customer_manage_marketplace_integrations, customer_access_marketplace_integrations].
+
+## Input fields
+
+| Argument                | Type                                                           | Description                                                                                      |
+| ----------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before`                | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`                 | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`                 | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                             | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`                  | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                             | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`                | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                             |                                                                                                  |
+| `name`                  | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where name matches the specified value.                                       |
+| `name_Icontains`        | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where name contains the specified value (case insensitive).                   |
+| `name_Istartswith`      | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where name starts with the specified value (case insensitive).                |
+| `description_Icontains` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where description contains the specified value (case insensitive).            |
+| `isSystem`              | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                     | Filter for objects where isSystem matches the specified value.                                   |
+| `allowEmbeddedDesigner` | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                     | Filter for objects where allowEmbeddedDesigner matches the specified value.                      |
+| `createdAt_Gte`         | [`DateTime`](/composer/builder/api/schema/scalar/DateTime.mdx)                   | Filter for objects where createdAt occurs on or after the specified value.                       |
+| `createdAt_Lte`         | [`DateTime`](/composer/builder/api/schema/scalar/DateTime.mdx)                   | Filter for objects where createdAt occurs on or before the specified value.                      |
+| `updatedAt_Gte`         | [`DateTime`](/composer/builder/api/schema/scalar/DateTime.mdx)                   | Filter for objects where updatedAt occurs on or after the specified value.                       |
+| `updatedAt_Lte`         | [`DateTime`](/composer/builder/api/schema/scalar/DateTime.mdx)                   | Filter for objects where updatedAt occurs on or before the specified value.                      |
+| `externalId`            | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where externalId matches the specified value.                                 |
+| `externalId_Isnull`     | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                     | Filter for objects where externalId is NULL.                                                     |
+| `labels_Icontains`      | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where labels contains the specified value (case insensitive).                 |
+| `labels_Contains`       | [`String`](/composer/builder/api/schema/scalar/String.mdx)                       | Filter for objects where labels contains the specified value (case sensitive).                   |
+| `orderBy`               | [`CustomerOrder`](/composer/builder/api/schema/input_object/CustomerOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`                | [`[CustomerOrder]`](/composer/builder/api/schema/input_object/CustomerOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([CustomerConnection!](/composer/builder/api/schema/object/CustomerConnection.mdx))
+
+###### <b>edges</b> ([[CustomerEdge]!](/composer/builder/api/schema/object/CustomerEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[Customer]!](/composer/builder/api/schema/object/Customer.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

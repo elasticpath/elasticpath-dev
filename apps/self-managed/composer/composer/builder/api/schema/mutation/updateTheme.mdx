@@ -1,0 +1,27 @@
+---
+id: updateTheme
+title: updateTheme Mutation
+sidebar_label: updateTheme
+description: Learn how to use the updateTheme Mutation for Builder's API.
+---
+
+    Updates an Organizations Theme.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_users].
+
+## Input fields ([UpdateThemeInput!](/composer/builder/api/schema/input_object/UpdateThemeInput.mdx))
+
+| Argument           | Type                                                                     | Description                                                      |
+| ------------------ | ------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `colors`           | [`[ThemeColorInput]`](/composer/builder/api/schema/input_object/ThemeColorInput.mdx)       | A list of inputs that describe the colors used in the theme.     |
+| `properties`       | [`[ThemePropertyInput]`](/composer/builder/api/schema/input_object/ThemePropertyInput.mdx) | A list of inputs that describe the properties used in the theme. |
+| `id`               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                                         | The ID of the Theme to mutate.                                   |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                 | A unique identifier for the client performing the mutation.      |
+
+## Return fields ([UpdateThemePayload](/composer/builder/api/schema/object/UpdateThemePayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>theme</b> ([Theme](/composer/builder/api/schema/object/Theme.mdx))

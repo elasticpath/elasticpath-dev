@@ -1,0 +1,114 @@
+---
+id: spectral-5-upgrade-guide
+title: Spectral 5.x Upgrade Guide
+description: Upgrade your custom component from Spectral 4.x to 5.x
+---
+
+The big change in Spectral 5.x is the introduction of [connections](/composer/builder/spectral/modules/_index_.md/#const-connection), which allow you to package up all the information you need (endpoints, credentials, etc) into single inputs.
+They work similar to credentials, except that you can create connections with any number of custom fields that you need.
+
+It's easiest to show the upgrade through example.
+Suppose you have a component that interacts with "Acme Inventory".
+The component has a single action, "Get Item", which fetches information about a single item in inventory.
+
+To connect to an Acme Inventory server you need to know the server's host name.
+To authenticate with Acme, you need to know a user's `username`, `token`, and `tenantid`.
+
+In Spectral 4.x, this component might have looked like this:
+
+```typescript {5-6,15-16,18-20,24} title="Sample Component using Spectral 4.x"
+import { action, input, component } from "@prismatic-io/spectral";
+import { acmeClient } from "@acme-inventory/client";
+
+const itemIdInput = input({ label: "Item ID", type: "string" });
+const acmeEndpointInput = input({ label: "Acme Endpoint", type: "string" });
+const tenantIdInput = input({ label: "Tenant ID", type: "string" });
+
+const getItem = action({
+  display: {
+    label: "Get Item",
+    description: "Get an item from inventory",
+  },
+  inputs: {
+    item: itemIdInput,
+    endpoint: acmeEndpointInput,
+    tenant: tenantIdInput,
+  },
+  perform: async ({ credential }, { item, endpoint, tenant }) => {
+    const { username, password: token } = credential.fields;
+    const client = new acmeClient({ endpoint, username, token, tenant });
+    const item = await client.get(item);
+    return { data: item };
+  },
+  authorization: { required: true, methods: ["basic"] },
+});
+
+export default component({
+  key: "acme-inventory",
+  public: false,
+  display: {
+    label: "Acme Inventory",
+    description: "Manage items in Acme inventory",
+    iconPath: "icon.png",
+  },
+  actions: { getItem },
+});
+```
+
+Note that secret information, like `username` and `token` were slotted into basic auth (username/password) out of convenience (each have two fields).
+The action declared with its `authorization` block that it supports basic auth.
+Other information about how to connect to Acme Inventory (`endpoint` and `tenant`) were passed in as inputs.
+
+Since username, token, endpoint, and tenant are all used to connect to Acme, it makes more sense to package them together into one cohesive **connection** input.
+
+Here's the same component and action in Spectral 5.x, using connections:
+
+```typescript {6-15,22-25,40} title="Sample Component using Spectral 5.x"
+import { action, input, component, connection } from "@prismatic-io/spectral";
+import { acmeClient } from "@acme-inventory/client";
+
+const itemIdInput = input({ label: "Item ID", type: "string" });
+
+const acmeConnection = connection({
+  key: "acmeTokenAuth",
+  label: "Acme Token Authentication",
+  inputs: {
+    endpoint: { label: "Acme Endpoint", type: "string" },
+    tenant: { label: "Tenant ID", type: "string", example: "606B0F820C0C" },
+    token: { label: "Token", type: "string", example: "30A5979A91F0" },
+    username: { label: "Username", type: "string" },
+  },
+});
+
+const getItem = action({
+  display: {
+    label: "Get Item",
+    description: "Get an item from inventory",
+  },
+  inputs: { connection: acmeConnection, item: itemIdInput },
+  perform: async (context, { connection, item }) => {
+    const { endpoint, tenant, token, username } = connection.fields;
+    const client = new acmeClient({ endpoint, username, token, tenant });
+    const item = await client.get(item);
+    return { data: item };
+  },
+});
+
+export default component({
+  key: "acme-inventory",
+  public: false,
+  display: {
+    label: "Acme Inventory",
+    description: "Manage items in Acme inventory",
+    iconPath: "icon.png",
+  },
+  actions: { getItem },
+  connections: [acmeConnection],
+});
+```
+
+Endpoint, tenant ID, token and username are now presented as a cohesive **connection** config variable to integration builders, and that config variable is now passed in to an action as an input with multiple `fields`.
+Finally, the component has a `connections:` block which declares the types of custom connections that this component supports.
+
+You can read more about connection development on our [Writing Custom Components](/composer/builder/custom-components/writing-custom-components.mdx#adding-connections) article.
+Check out [this section](/composer/builder/custom-components/writing-custom-components.mdx#writing-oauth-20-connections) for information on upgrading an OAuth 2.0 connection.

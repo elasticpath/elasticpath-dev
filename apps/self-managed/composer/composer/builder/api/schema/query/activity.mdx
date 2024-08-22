@@ -1,0 +1,46 @@
+---
+id: activity
+title: activity Query
+sidebar_label: activity
+description: Learn how to use the activity Query for Builder's API.
+---
+
+    Returns the specified Activity object.
+
+Access is permitted when any of the following condition(s) are met: 1. The object's 'user' attribute is the signed-in User. 2. The signed-in User has any of the following permissions for the associated Organization: [org_view_activities]. 3. The signed-in User has any of the following permissions for the object's 'user_Customer' attribute: [customer_view_activities].
+
+## Input fields
+
+| Argument | Type                              | Description                    |
+| -------- | --------------------------------- | ------------------------------ |
+| `id`     | [`ID!`](/composer/builder/api/schema/scalar/ID.mdx) | The ID of the Activity object. |
+
+## Return fields ([Activity](/composer/builder/api/schema/object/Activity.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the Activity.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the Activity.
+
+###### <b>description</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+Description of an activity performed by a user
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>timestamp</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+Date/Time when an activity occurred
+
+###### <b>user</b> ([User](/composer/builder/api/schema/object/User.mdx))
+
+User that performed an activity
+
+###### <b>userName</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+Name of the user that performed the activity

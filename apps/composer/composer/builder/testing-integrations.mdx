@@ -1,0 +1,101 @@
+---
+id: testing-integrations
+title: Testing Integrations
+description: Test integrations as you build them
+---
+
+import Screenshot from "@site/src/components/screenshot";
+
+The integration designer provides a sandbox for testing integrations.
+From the designer you can invoke a test instance of your integration, configure test values for config variables, and view test logs in real time.
+
+You can test your integration after you set test values for config variables by clicking the green **Run** button.
+
+If your integration is made up of multiple [flows](/composer/builder/building-integrations.mdx#flows-in-integrations), each flow is tested independently.
+Click the flow name on the top of the integration designer area, select the flow you would like to test, and then click **Run** for that flow.
+Note that each flow has a distinct webhook URL, so if you are invoking the integration from a third-party app via webhook, you'll need to note the flow's webhook URL.
+
+## The test runner drawer
+
+The test runner drawer is where you can configure and run tests of your integration.
+It's located at the bottom of the integration designer screen.
+
+<Screenshot
+  filename="testing-integrations/test-runner-drawer.png"
+  alt="Test runner drawer in Builder app"
+/>
+
+## Test instance config variables
+
+If your integration uses config variables, you can specify testing values for those variables by clicking **Test Configuration** in **Test Runner** drawer and then select **Test-instance configuration**.
+You will be prompted to fill out the same configuration wizard that your customers will see when they deploy an instance of your integration.
+
+If you specified default values for your [config variables](/composer/builder/building-integrations.mdx#config-variables-in-integrations), those will be preset for you.
+Otherwise, fill in testing values and connection information for the purposes of testing your integration.
+
+<Screenshot
+  filename="testing-integrations/config-wizard.png"
+  maxWidth="800px"
+  alt="Config wizard for testing integrations in Builder app"
+/>
+
+We recommend that you create testing, non-production sandbox credentials for integration tests.
+
+## Running a test of your flow
+
+To run a test of your flow, click the green **Run** button in the **Test Runner** drawer.
+If you would like to send data to your integration's trigger as a webhook payload, you can specify that payload in the **Test Configuration** tab by clicking **Trigger payload**.
+
+<Screenshot
+  filename="testing-integrations/trigger-payload.png"
+  maxWidth="800px"
+  alt="Trigger payload dialog for testing integrations in Builder app"
+/>
+
+Within the trigger payload dialog, you can also specify custom HTTP headers to be sent with the webhook request.
+If you would like to invoke your integration from an external system (i.e. send a webhook from your app or a third-party system), copy the webhook URL that is displayed in the **Trigger payload** dialog and send HTTP requests to that endpoint.
+
+## Replaying test invocations
+
+:::tip Time-saving tip
+Just like [instance replays](/composer/builder/instances.mdx#instance-execution-retry-and-replay), you can replay a test integration invocation.
+That comes in handy if you are testing an integration invocation from a third-party app.
+You don't need to set up your third-party environment every time - you can send a webhook invocation once from your third-party app with a payload, and run that same payload through your integration until you're happy with the results.
+:::
+
+To replay a test integration invocation, open the **Test Runner** drawer and select a test that you'd like to replay.
+Click the replay button to the right of the test.
+
+<Screenshot
+  filename="testing-integrations/test-integration-replay.png"
+  maxWidth="500px"
+  alt="Replay test integration invocation in Builder app"
+/>
+
+The payload that was sent to trigger this integration test will be fed back into another test of the integration.
+This allows you to make changes to your integration and iterate quickly, without needing to reconfigure your third-party apps and services to fire new webhook requests over and over.
+
+## Test run results and logs
+
+After running an integration test, the steps that ran are displayed in the **Steps** column of the **Test Runner** drawer.
+You can toggle the **Logs** option to show logs for each step that ran.
+
+Clicking on a step will display the step's outputs and logs in the third column.
+This is helpful for debugging and verifying the flow of data within your integration.
+
+**For More Information**:
+[Logging](/composer/builder/logging.mdx),
+[Log Retention](/composer/builder/logging.mdx#log-retention)
+
+## Testing a trigger's instance deploy and instance delete events
+
+In addition to recieving and processing a webhook request, some triggers contain code that runs when an instance of the integration is deployed or removed.
+This code is useful for setting up or removing resources that are required for the integration to run (like configuring webhooks in third-party apps).
+
+If your the trigger you are using contains code that runs on instance deploy or delete, you can test that code by clicking **Test Configuration** in the **Test Runner** drawer, and then select **Test trigger functions**.
+You can opt to test the instance deploy or instance delete functions.
+
+<Screenshot
+  filename="testing-integrations/test-deploy-delete.png"
+  alt="Test deploy and delete events in Builder app"
+/>

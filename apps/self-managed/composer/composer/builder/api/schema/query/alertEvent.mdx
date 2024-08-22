@@ -1,0 +1,42 @@
+---
+id: alertEvent
+title: alertEvent Query
+sidebar_label: alertEvent
+description: Learn how to use the alertEvent Query for Builder's API.
+---
+
+    Returns the specified AlertEvent object.
+
+Access is permitted when any of the following condition(s) are met: 1. The signed-in User has any of the following permissions for the associated Organization: [org_admin_instance_permissions, org_manage_instances, org_view_instances]. 2. The signed-in User has any of the following permissions for the object's 'monitor_Instance_Customer' attribute: [customer_admin_instance_permissions, customer_view_instances, customer_admin_manage_instances]. 3. The signed-in User has any of the following permissions for the object's 'monitor_Instance' attribute: [instance_admin_permissions, instance_view, instance_edit, instance_remove].
+
+## Input fields
+
+| Argument | Type                              | Description                      |
+| -------- | --------------------------------- | -------------------------------- |
+| `id`     | [`ID!`](/composer/builder/api/schema/scalar/ID.mdx) | The ID of the AlertEvent object. |
+
+## Return fields ([AlertEvent](/composer/builder/api/schema/object/AlertEvent.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the AlertEvent.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the AlertEvent.
+
+###### <b>createdAt</b> ([DateTime!](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the object was created.
+
+###### <b>details</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+Additional information about the event.
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>monitor</b> ([AlertMonitor!](/composer/builder/api/schema/object/AlertMonitor.mdx))
+
+The AlertMonitor to which the AlertEvent is associated.

@@ -1,0 +1,254 @@
+{
+	"common": {
+		"currencies": [
+			{
+				"code": "USD",
+				"format": "${price}",
+				"exchange_rate": 1,
+				"decimal_point": ".",
+				"thousand_separator": ",",
+				"decimal_places": 2,
+				"default": true,
+				"enabled": true
+			},
+			{
+				"code": "CAD",
+				"format": "${price}",
+				"exchange_rate": 1,
+				"decimal_point": ".",
+				"thousand_separator": ",",
+				"decimal_places": 2,
+				"default": false,
+				"enabled": true
+			},
+			{
+				"code": "EUR",
+				"format": "€{price}",
+				"exchange_rate": 1,
+				"decimal_point": ".",
+				"thousand_separator": ",",
+				"decimal_places": 2,
+				"default": false,
+				"enabled": true
+			}
+		],
+		"variations" : [
+			{
+				"variation": {
+					"attributes": {
+						"name": "color"
+					}
+				},
+				"options": [
+					{
+						"attributes": {
+							"name": "Black",
+							"description": "Black color."
+						}
+					},
+					{
+						"attributes": {
+							"name": "White",
+							"description": "White color."
+						}
+					}
+				]
+			},
+			{
+				"variation": {
+					"attributes": {
+						"name": "size"
+					}
+				},
+				"options": [
+					{
+						"attributes": {
+							"name": "small",
+							"description": "Small size"
+						}
+					},
+					{
+						"attributes": {
+							"name": "large",
+							"description": "Large size"
+						}
+					}
+				]
+			}
+		],
+		"flows": [
+			{
+				"flow": {
+					"name": "Products Base Extensions",
+					"slug": "products(ext)",
+					"description": "Products Base Extensions",
+					"enabled": true
+				},
+				"fields": [
+					{
+						"field_type": "string",
+						"slug": "brand",
+						"name": "Brand",
+						"description": "Brand",
+						"required": false,
+						"default": null,
+						"enabled": true,
+						"order": null,
+						"omit_null": false,
+						"validation_rules": [],
+						"relationships": {
+							"flow": {
+								"data": {
+									"type": "flow"
+								}
+							}
+						}
+					},
+                    {
+						"field_type": "date",
+						"slug": "availableDate",
+						"name": "Available Date",
+						"description": "Available Date",
+						"required": false,
+						"default": null,
+						"enabled": true,
+						"order": null,
+						"omit_null": false,
+						"validation_rules": [],
+						"relationships": {
+							"flow": {
+								"data": {
+									"type": "flow"
+								}
+							}
+						}
+					},
+                    {
+						"field_type": "integer",
+						"slug": "minOrderQty",
+						"name": "Minimum Order Quantity",
+						"description": "Minimum Order Quantity",
+						"required": false,
+						"default": null,
+						"enabled": true,
+						"order": null,
+						"omit_null": false,
+						"validation_rules": [],
+						"relationships": {
+							"flow": {
+								"data": {
+									"type": "flow"
+								}
+							}
+						}
+					},
+                    {
+						"field_type": "integer",
+						"slug": "orderLimit",
+						"name": "Order Limit",
+						"description": "Order Limit",
+						"required": false,
+						"default": null,
+						"enabled": true,
+						"order": null,
+						"omit_null": false,
+						"validation_rules": [],
+						"relationships": {
+							"flow": {
+								"data": {
+									"type": "flow"
+								}
+							}
+						}
+					}
+                ]
+            },
+		],
+		"integrations": [],
+		"pricebooks": [
+			{
+				"name": "Example_Pricebook",
+				"description": "Example_Pricebook"
+			},
+		],
+		"hierarchies": [
+			{
+				"hierarchy": {
+					"attributes": {
+						"name": "Example Hierarchy",
+						"description": "Example Hierarchy",
+						"slug": "example-hierarchy"
+					}
+				},
+				"nodes": [
+					{
+						"attributes": {
+							"name": "Movies",
+							"description": "Movies",
+							"slug": "movies"
+						}
+					},
+					{
+						"attributes": {
+							"name": "Phones",
+							"description": "Phones",
+							"slug": "phones"
+						}
+					}
+				]
+			}
+		],
+		"catalogs": [
+			{
+				"attributes": {
+					"name": "example-catalog",
+					"description": "Example Catalog"
+				},
+				"hierarchy_slugs": ["example-hierarchy"],
+				"pricebook_name": "Example_Pricebook"
+			}
+		],
+		"catalogRules": [
+			{
+				"name": "example-catalog-rule",
+				"description": "Example Catalog Rule",
+				"catalog": "example-catalog",
+				"accounts": [],
+				"customers": [],
+				"tags": [
+					"tag1",
+					"tag2"
+				],
+				"channels": [
+					"channel1, channel2"
+				],
+				"schedules": [
+					{
+						"valid_from": "2023-01-01T22:10:57.000Z",
+						"valid_to": "2050-12-31T22:11:07.000Z"
+					}
+				]
+			}
+		]
+	},
+	"development": {
+		"currencies": [],
+		"variations": [],
+		"flows": [],
+		"integrations": [
+			{
+				"name": "Order Fulfillment",
+				"description": "Event handling for order fulfillment",
+				"observes": ["order.updated", "order.paid"],
+				"configuration": {
+					"url": "https://somewebhookurl/"
+				},
+				"integration_type": "webhook",
+				"enabled": true
+			}
+		],
+		"hierarchies": [],
+		"pricebooks": [],
+		"catalogs": []
+	}
+}

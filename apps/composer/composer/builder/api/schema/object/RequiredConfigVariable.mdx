@@ -1,0 +1,116 @@
+---
+id: RequiredConfigVariable
+title: RequiredConfigVariable Object
+sidebar_label: RequiredConfigVariable
+description: Learn how to use the RequiredConfigVariable Object for Builder's API.
+---
+
+Represents a Required Config Variable (with optional default value) associated with an Integration.
+
+## Return fields
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the RequiredConfigVariable.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the RequiredConfigVariable.
+
+###### <b>codeLanguage</b> ([RequiredConfigVariableCodeLanguage](/composer/builder/api/schema/enum/RequiredConfigVariableCodeLanguage.mdx))
+
+The language to use in the code editor UI when the Required Config Var uses the 'code' dataType.
+
+###### <b>collectionType</b> ([RequiredConfigVariableCollectionType](/composer/builder/api/schema/enum/RequiredConfigVariableCollectionType.mdx))
+
+The type of collection, if the value is meant to represent a collection of values for this RequiredConfigVariable.
+
+###### <b>connection</b> ([Connection](/composer/builder/api/schema/object/Connection.mdx))
+
+The Connection type used by this Required Config Variable.
+
+###### <b>connectionTemplate</b> ([ConnectionTemplate](/composer/builder/api/schema/object/ConnectionTemplate.mdx))
+
+The Connection Template from which this config var was derived.
+
+###### <b>credentialTypes</b> ([RequiredConfigVariableCredentialTypeConnection!](/composer/builder/api/schema/object/RequiredConfigVariableCredentialTypeConnection.mdx))
+
+The Required Config Var for which the Authorization Method is a valid type of Credential.
+
+###### <b>dataSource</b> ([Action](/composer/builder/api/schema/object/Action.mdx))
+
+The Component Data Source used by this Required Config Variable.
+
+###### <b>dataType</b> ([RequiredConfigVariableDataType!](/composer/builder/api/schema/enum/RequiredConfigVariableDataType.mdx))
+
+The intended datatype of the Required Config Var, used to choose an appropriate UI.
+
+###### <b>defaultValue</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+The default value for the Required Config Variable if none is specified on the Instance.
+
+###### <b>description</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+Additional notes about the Required Config Var.
+
+###### <b>hasDivider</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+This field has been deprecated.
+
+###### <b>header</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+The header text that will appear in the UI above the Required Config Variable fields.
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>inputs</b> ([ExpressionConnection](/composer/builder/api/schema/object/ExpressionConnection.mdx))
+
+The collection of Expressions that serve as inputs to the RequiredConfigVariable.
+
+###### <b>integration</b> ([Integration!](/composer/builder/api/schema/object/Integration.mdx))
+
+###### <b>key</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+The Key for the Required Config Variable. Referred to as 'Name' in the UI.
+
+###### <b>meta</b> ([JSONString](/composer/builder/api/schema/scalar/JSONString.mdx))
+
+Contains arbitrary metadata about this Required Config Var.
+
+###### <b>onPremiseConnectionConfig</b> ([RequiredConfigVariableOnPremiseConnectionConfig!](/composer/builder/api/schema/enum/RequiredConfigVariableOnPremiseConnectionConfig.mdx))
+
+Specifies the configuration for this Required Config Variable with respect to using an On-Premise Resource connection.
+
+###### <b>orgOnly</b> ([Boolean](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the Required Config Variable is only viewable by Organization Users.
+
+###### <b>pickList</b> ([[String!]](/composer/builder/api/schema/scalar/String.mdx))
+
+The valid choices when the Required Config Var uses the 'picklist' dataType.
+
+###### <b>scheduleType</b> ([RequiredConfigVariableScheduleType](/composer/builder/api/schema/enum/RequiredConfigVariableScheduleType.mdx))
+
+The schedule type to show in the UI when the Required Config Var uses the 'schedule' dataType.
+
+###### <b>sortOrder</b> ([Int](/composer/builder/api/schema/scalar/Int.mdx))
+
+The UI location in which this Required Config Var will appear relative to the other Required Config Vars for the Integration.
+
+###### <b>stableId</b> ([UUID](/composer/builder/api/schema/scalar/UUID.mdx))
+
+Represents identity across different Required Config Variable versions. Not intended to be used directly by end users, as the implementation may change at any time.
+
+###### <b>stableKey</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+A user-provided value that represents identity across config var key renames.
+
+###### <b>timeZone</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+An optional timezone property for when the Required Config Var uses the 'schedule' dataType.
+
+###### <b>userLevelConfigured</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether this Required Config Variable uses values from User Level Configs.

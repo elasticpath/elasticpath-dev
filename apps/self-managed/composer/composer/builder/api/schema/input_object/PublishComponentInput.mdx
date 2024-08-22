@@ -1,0 +1,19 @@
+---
+id: PublishComponentInput
+title: PublishComponentInput Input Object
+sidebar_label: PublishComponentInput
+description: Learn how to use the PublishComponentInput Input Object for Builder's API.
+---
+
+## Input fields
+
+| Argument           | Type                                                                                   | Description                                                                                                    |
+| ------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `customer`         | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                                                       | The Customer the Component belongs to, if any. If this is NULL then the Component belongs to the Organization. |
+| `definition`       | [`ComponentDefinitionInput!`](/composer/builder/api/schema/input_object/ComponentDefinitionInput.mdx)    | The Component definition.                                                                                      |
+| `actions`          | [`[ActionDefinitionInput]`](/composer/builder/api/schema/input_object/ActionDefinitionInput.mdx)         | A list of Component Actions.                                                                                   |
+| `triggers`         | [`[TriggerDefinitionInput]`](/composer/builder/api/schema/input_object/TriggerDefinitionInput.mdx)       | A list of Component Triggers.                                                                                  |
+| `dataSources`      | [`[DataSourceDefinitionInput]`](/composer/builder/api/schema/input_object/DataSourceDefinitionInput.mdx) | A list of Component Data Sources.                                                                              |
+| `connections`      | [`[ConnectionDefinitionInput]`](/composer/builder/api/schema/input_object/ConnectionDefinitionInput.mdx) | A list of Component Connections.                                                                               |
+| `comment`          | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                               | Comment about changes in this Publish.                                                                         |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                               | A unique identifier for the client performing the mutation.                                                    |

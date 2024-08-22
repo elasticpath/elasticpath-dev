@@ -1,0 +1,38 @@
+---
+id: authorizationMethods
+title: authorizationMethods Query
+sidebar_label: authorizationMethods
+description: Learn how to use the authorizationMethods Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of AuthorizationMethod objects.
+
+Access is permitted when any of the following condition(s) are met: 1. Always allowed.
+
+## Input fields
+
+| Argument | Type                                     | Description                                                                                      |
+| -------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `before` | [`String`](/composer/builder/api/schema/scalar/String.mdx) | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`  | [`String`](/composer/builder/api/schema/scalar/String.mdx) | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`  | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`   | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset` | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)       |                                                                                                  |
+
+## Return fields ([AuthorizationMethodConnection!](/composer/builder/api/schema/object/AuthorizationMethodConnection.mdx))
+
+###### <b>edges</b> ([[AuthorizationMethodEdge]!](/composer/builder/api/schema/object/AuthorizationMethodEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[AuthorizationMethod]!](/composer/builder/api/schema/object/AuthorizationMethod.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

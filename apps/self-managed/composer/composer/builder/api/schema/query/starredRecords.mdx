@@ -1,0 +1,40 @@
+---
+id: starredRecords
+title: starredRecords Query
+sidebar_label: starredRecords
+description: Learn how to use the starredRecords Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of StarredRecord objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The object's 'user' attribute is the signed-in User.
+
+## Input fields
+
+| Argument  | Type                                                                     | Description                                                                                      |
+| --------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `before`  | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                 | Specifies a cursor for use in combination with `last` to implement backward pagination.          |
+| `after`   | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                 | Specifies a cursor for use in combination with `first` to implement forward pagination.          |
+| `first`   | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                       | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.  |
+| `last`    | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                       | A non-negative integer that specifies to return at most `last` edges before the `before` cursor. |
+| `offset`  | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                                       |                                                                                                  |
+| `orderBy` | [`StarredRecordOrder`](/composer/builder/api/schema/input_object/StarredRecordOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                   |
+| `sortBy`  | [`[StarredRecordOrder]`](/composer/builder/api/schema/input_object/StarredRecordOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                             |
+
+## Return fields ([StarredRecordConnection!](/composer/builder/api/schema/object/StarredRecordConnection.mdx))
+
+###### <b>edges</b> ([[StarredRecordEdge]!](/composer/builder/api/schema/object/StarredRecordEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[StarredRecord]!](/composer/builder/api/schema/object/StarredRecord.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

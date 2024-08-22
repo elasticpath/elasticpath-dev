@@ -1,0 +1,20 @@
+---
+id: CreateIntegrationInput
+title: CreateIntegrationInput Input Object
+sidebar_label: CreateIntegrationInput
+description: Learn how to use the CreateIntegrationInput Input Object for Builder's API.
+---
+
+## Input fields
+
+| Argument                        | Type                                       | Description                                                                                                                 |
+| ------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| `name`                          | [`String!`](/composer/builder/api/schema/scalar/String.mdx)  | The name of the Integration.                                                                                                |
+| `description`                   | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | Additional notes about the Integration.                                                                                     |
+| `customer`                      | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)           | The Customer the Integration belongs to, if any. If this is NULL then the Integration belongs to the Organization.          |
+| `endpointConfigTestPayload`     | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | Data payload for testing the endpoint configuration for this Integration.                                                   |
+| `endpointConfigTestContentType` | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | Content type of the payload for testing the endpoint configuration for this Integration.                                    |
+| `endpointConfigTestHeaders`     | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | A JSON string of key/value pairs that will be sent as headers when testing the endpoint configuration for this Integration. |
+| `labels`                        | [`[String]`](/composer/builder/api/schema/scalar/String.mdx) | The labels that are associated with the object.                                                                             |
+| `definition`                    | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | The YAML serialized definition of the Integration to import.                                                                |
+| `clientMutationId`              | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | A unique identifier for the client performing the mutation.                                                                 |

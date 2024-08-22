@@ -1,0 +1,33 @@
+---
+id: updateUser
+title: updateUser Mutation
+sidebar_label: updateUser
+description: Learn how to use the updateUser Mutation for Builder's API.
+---
+
+    Updates the specified User object.
+
+Access is permitted when any of the following condition(s) are met: 1. The specified object is the signed-in User. 2. The signed-in User has any of the following permissions for the associated Organization: [org_admin_users] when a value for 'customer' does not exist on the object. 3. The signed-in User has any of the following permissions for the object's 'customer' attribute: [customer_admin_users] when a value for 'customer' exists on the object. 4. The signed-in User has any of the following permissions for the associated Organization: [org_admin_customer_permissions, org_manage_customers] when a value for 'customer' exists on the object.
+
+## Input fields ([UpdateUserInput!](/composer/builder/api/schema/input_object/UpdateUserInput.mdx))
+
+| Argument             | Type                                       | Description                                                               |
+| -------------------- | ------------------------------------------ | ------------------------------------------------------------------------- |
+| `name`               | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | The user's preferred name.                                                |
+| `darkMode`           | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx) | Designates whether the User has dark mode activated or not.               |
+| `darkModeSyncWithOs` | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx) | Designates whether dark mode should be derived from the operating system. |
+| `role`               | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)           | The role to associate with the User.                                      |
+| `phone`              | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | The preferred contact phone number for the User.                          |
+| `featureFlags`       | [`String`](/composer/builder/api/schema/scalar/String.mdx)   |                                                                           |
+| `avatarUrl`          | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | The URL for the avatar image.                                             |
+| `externalId`         | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | Allows for mapping an external entity to a Builder record.              |
+| `id`                 | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)           | The ID of the User to mutate.                                             |
+| `clientMutationId`   | [`String`](/composer/builder/api/schema/scalar/String.mdx)   | A unique identifier for the client performing the mutation.               |
+
+## Return fields ([UpdateUserPayload](/composer/builder/api/schema/object/UpdateUserPayload.mdx))
+
+###### <b>clientMutationId</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+###### <b>errors</b> ([[ErrorType!]!](/composer/builder/api/schema/object/ErrorType.mdx))
+
+###### <b>user</b> ([User](/composer/builder/api/schema/object/User.mdx))

@@ -1,0 +1,49 @@
+---
+id: organizationRoles
+title: organizationRoles Query
+sidebar_label: organizationRoles
+description: Learn how to use the organizationRoles Query for Builder's API.
+---
+
+    Returns a list of Organization Role objects.
+
+Access is permitted when any of the following condition(s) are met: 1. The Role level is less than that of the signed-in User's Role.
+
+## Input fields
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+
+## Return fields ([[Role]!](/composer/builder/api/schema/object/Role.mdx))
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the Role.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the Role.
+
+###### <b>description</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+Description of the Role.
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>level</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+An integer that specifies the level of privilege with respect to other Roles.
+
+###### <b>name</b> ([String!](/composer/builder/api/schema/scalar/String.mdx))
+
+The name of the Role. Must be unique within the context of the AuthObjectType.
+
+###### <b>objType</b> ([AuthObjectType!](/composer/builder/api/schema/object/AuthObjectType.mdx))
+
+The type of object that the Role is associated with.
+
+###### <b>permissions</b> ([PermissionConnection!](/composer/builder/api/schema/object/PermissionConnection.mdx))
+
+List of Permissions that the Role provides.

@@ -1,0 +1,55 @@
+---
+id: actions
+title: actions Query
+sidebar_label: actions
+description: Learn how to use the actions Query for Builder's API.
+---
+
+    Returns a Relay Connection to a collection of Action objects.
+
+Access is permitted when any of the following condition(s) are met: 1. Always allowed.
+
+## Input fields
+
+| Argument                | Type                                                       | Description                                                                                        |
+| ----------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `filterQuery`           | [`JSONString`](/composer/builder/api/schema/scalar/JSONString.mdx)           | JSON structure defining a conditional logic expression tree to use for including specific Actions. |
+| `before`                | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Specifies a cursor for use in combination with `last` to implement backward pagination.            |
+| `after`                 | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Specifies a cursor for use in combination with `first` to implement forward pagination.            |
+| `first`                 | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                         | A non-negative integer that specifies to return at most `first` edges after the `after` cursor.    |
+| `last`                  | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                         | A non-negative integer that specifies to return at most `last` edges before the `before` cursor.   |
+| `offset`                | [`Int`](/composer/builder/api/schema/scalar/Int.mdx)                         |                                                                                                    |
+| `key`                   | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where key matches the specified value.                                          |
+| `key_Icontains`         | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where key contains the specified value (case insensitive).                      |
+| `key_In`                | [`[String]`](/composer/builder/api/schema/scalar/String.mdx)                 | Filter for objects where key is contained in the list of specified values.                         |
+| `label_Icontains`       | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where label contains the specified value (case insensitive).                    |
+| `label_Fulltext`        | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where label.fulltext matches the specified value.                               |
+| `description_Icontains` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where description contains the specified value (case insensitive).              |
+| `component`             | [`ID`](/composer/builder/api/schema/scalar/ID.mdx)                           | Filter for objects where component matches the specified ID.                                       |
+| `isTrigger`             | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                 | Filter for objects where isTrigger matches the specified value.                                    |
+| `isCommonTrigger`       | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                 | Filter for objects where isCommonTrigger matches the specified value.                              |
+| `isDataSource`          | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                 | Filter for objects where isDataSource matches the specified value.                                 |
+| `dataSourceType`        | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where dataSourceType matches the specified value.                               |
+| `hasOnInstanceDeploy`   | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                 | Filter for objects where hasOnInstanceDeploy matches the specified value.                          |
+| `hasOnInstanceDelete`   | [`Boolean`](/composer/builder/api/schema/scalar/Boolean.mdx)                 | Filter for objects where hasOnInstanceDelete matches the specified value.                          |
+| `searchTerms_Fulltext`  | [`String`](/composer/builder/api/schema/scalar/String.mdx)                   | Filter for objects where searchTerms.fulltext matches the specified value.                         |
+| `orderBy`               | [`ActionOrder`](/composer/builder/api/schema/input_object/ActionOrder.mdx)   | DEPRECATED. Prefer using sort_by instead as it allows ordering by many fields.                     |
+| `sortBy`                | [`[ActionOrder]`](/composer/builder/api/schema/input_object/ActionOrder.mdx) | Allows specifying many field and direction pairs to sort results by.                               |
+
+## Return fields ([ActionConnection!](/composer/builder/api/schema/object/ActionConnection.mdx))
+
+###### <b>edges</b> ([[ActionEdge]!](/composer/builder/api/schema/object/ActionEdge.mdx))
+
+List of edges containing the nodes in this connection.
+
+###### <b>nodes</b> ([[Action]!](/composer/builder/api/schema/object/Action.mdx))
+
+List of nodes in this connection.
+
+###### <b>pageInfo</b> ([PageInfo!](/composer/builder/api/schema/object/PageInfo.mdx))
+
+Pagination data for this connection.
+
+###### <b>totalCount</b> ([Int!](/composer/builder/api/schema/scalar/Int.mdx))
+
+Total count of nodes available.

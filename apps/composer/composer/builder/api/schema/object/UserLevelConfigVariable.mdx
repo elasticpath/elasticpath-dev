@@ -1,0 +1,71 @@
+---
+id: UserLevelConfigVariable
+title: UserLevelConfigVariable Object
+sidebar_label: UserLevelConfigVariable
+description: Learn how to use the UserLevelConfigVariable Object for Builder's API.
+---
+
+Associates specific values to the Dynamic Config to satisfy Required Config Variables
+of the related Instance.
+
+## Return fields
+
+###### <b>allowRemove</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can remove the UserLevelConfigVariable.
+
+###### <b>allowUpdate</b> ([Boolean!](/composer/builder/api/schema/scalar/Boolean.mdx))
+
+Specifies whether the signed-in User can update the UserLevelConfigVariable.
+
+###### <b>authorizeUrl</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+The Authorize URL of this Config Variable if associated with an OAuth 2.0 Connection.
+
+###### <b>config</b> ([UserLevelConfig!](/composer/builder/api/schema/object/UserLevelConfig.mdx))
+
+The Dynamic Config with which the Config Variable is associated.
+
+###### <b>id</b> ([ID!](/composer/builder/api/schema/scalar/ID.mdx))
+
+The ID of the object
+
+###### <b>inputs</b> ([ExpressionConnection](/composer/builder/api/schema/object/ExpressionConnection.mdx))
+
+The collection of Expressions that serve as inputs to the UserLevelConfigVariable.
+
+###### <b>logs</b> ([LogConnection!](/composer/builder/api/schema/object/LogConnection.mdx))
+
+The UserLevelConfigVariable which relates to the Log entry.
+
+###### <b>meta</b> ([JSONString](/composer/builder/api/schema/scalar/JSONString.mdx))
+
+Contains arbitrary metadata about this Config Var.
+
+###### <b>onPremiseResource</b> ([OnPremiseResource](/composer/builder/api/schema/object/OnPremiseResource.mdx))
+
+The On-Premise Resource that is associated with the Config Variable.
+
+###### <b>refreshAt</b> ([DateTime](/composer/builder/api/schema/scalar/DateTime.mdx))
+
+The timestamp at which the OAuth2 token will automatically be refreshed, if necessary. Only applies to OAuth2 methods where refresh is necessary.
+
+###### <b>requiredConfigVariable</b> ([RequiredConfigVariable!](/composer/builder/api/schema/object/RequiredConfigVariable.mdx))
+
+The Required Config Variable that is satisfied with the value of this Dynamic Config Variable.
+
+###### <b>scheduleType</b> ([UserLevelConfigVariableScheduleType](/composer/builder/api/schema/enum/UserLevelConfigVariableScheduleType.mdx))
+
+The schedule type to show in the UI when the Config Var uses the 'schedule' dataType.
+
+###### <b>status</b> ([UserLevelConfigVariableStatus](/composer/builder/api/schema/enum/UserLevelConfigVariableStatus.mdx))
+
+Status indicating if this Connection is working as expected or encountering issues.
+
+###### <b>timeZone</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+An optional timezone property for when the Config Var uses the 'schedule' dataType.
+
+###### <b>value</b> ([String](/composer/builder/api/schema/scalar/String.mdx))
+
+The value for the Required Config Variable that becomes part of the Instance definition.

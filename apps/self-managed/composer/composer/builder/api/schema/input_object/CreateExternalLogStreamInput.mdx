@@ -1,0 +1,17 @@
+---
+id: CreateExternalLogStreamInput
+title: CreateExternalLogStreamInput Input Object
+sidebar_label: CreateExternalLogStreamInput
+description: Learn how to use the CreateExternalLogStreamInput Input Object for Builder's API.
+---
+
+## Input fields
+
+| Argument           | Type                                                                            | Description                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `name`             | [`String!`](/composer/builder/api/schema/scalar/String.mdx)                                       | Name of the ExternalLogStream.                                                                  |
+| `url`              | [`String!`](/composer/builder/api/schema/scalar/String.mdx)                                       | The URL of the ExternalLogStream.                                                               |
+| `payloadTemplate`  | [`String!`](/composer/builder/api/schema/scalar/String.mdx)                                       | The template that is hydrated and then used as the body of the ExternalLogStream request.       |
+| `headers`          | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                        | A JSON string of key/value pairs that will be sent as headers in the ExternalLogStream request. |
+| `severityLevels`   | [`[LogSeverityLevelInput]!`](/composer/builder/api/schema/input_object/LogSeverityLevelInput.mdx) | The Log severity levels for which Logs should be sent to the ExternalLogStream.                 |
+| `clientMutationId` | [`String`](/composer/builder/api/schema/scalar/String.mdx)                                        | A unique identifier for the client performing the mutation.                                     |

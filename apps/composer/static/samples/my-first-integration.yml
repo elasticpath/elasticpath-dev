@@ -1,0 +1,280 @@
+category: ""
+configPages:
+  - elements:
+      - type: configVar
+        value: Slack Connection
+    name: Authentication
+    tagline: ""
+  - elements:
+      - type: configVar
+        value: Slack Channel
+    name: Slack Configuration
+    tagline: ""
+    userLevelConfigured: false
+definitionVersion: 7
+description: ""
+documentation: "Example integration from https://prismatic.io/docs/getting-started/first-integration/build-first-integration/"
+endpointType: flow_specific
+flows:
+  - endpointSecurityType: customer_optional
+    isSynchronous: false
+    name: Flow 1
+    steps:
+      - action:
+          key: webhook
+          component:
+            isPublic: true
+            key: webhook-triggers
+            version: LATEST
+        description: ""
+        inputs: {}
+        isTrigger: true
+        name: Trigger
+      - action:
+          key: httpGet
+          component:
+            isPublic: true
+            key: http
+            version: LATEST
+        description: ""
+        inputs:
+          connection:
+            type: configVar
+            value: ""
+          debugRequest:
+            type: value
+            value: "false"
+          headers:
+            type: complex
+            value: []
+          ignoreSslErrors:
+            type: value
+            value: "false"
+          includeFullResponse:
+            type: value
+            value: "false"
+          maxRetries:
+            type: value
+            value: "0"
+          queryParams:
+            type: complex
+            value: []
+          responseType:
+            type: value
+            value: json
+          retryDelayMS:
+            type: value
+            value: "0"
+          retryOnAllErrors:
+            type: value
+            value: "false"
+          timeout:
+            type: value
+            value: ""
+          url:
+            type: value
+            value: >-
+              https://my-json-server.typicode.com/prismatic-io/placeholder-data/todo
+          useExponentialBackoff:
+            type: value
+            value: "false"
+        name: Get to-do tasks
+      - action:
+          key: loopOverItems
+          component:
+            isPublic: true
+            key: loop
+            version: LATEST
+        description: ""
+        inputs:
+          items:
+            type: reference
+            value: getToDoTasks.results
+        name: Loop over to-do tasks
+        steps:
+          - action:
+              key: branchOnExpression
+              component:
+                isPublic: true
+                key: branch
+                version: LATEST
+            branches:
+              - name: Is completed?
+                steps:
+                  - action:
+                      key: writeLog
+                      component:
+                        isPublic: true
+                        key: log
+                        version: LATEST
+                    description: ""
+                    inputs:
+                      level:
+                        type: value
+                        value: info
+                      message:
+                        type: template
+                        value: >-
+                          "{{$loopOverToDoTasks.currentItem.task}}" is already
+                          marked complete.
+                    name: Log out completed tasks
+              - name: Else
+                steps:
+                  - action:
+                      key: postMessage
+                      component:
+                        isPublic: true
+                        key: slack
+                        version: LATEST
+                    description: ""
+                    inputs:
+                      channelName:
+                        type: configVar
+                        value: Slack Channel
+                      connection:
+                        type: configVar
+                        value: Slack Connection
+                      debug:
+                        type: value
+                        value: "false"
+                      message:
+                        type: template
+                        value: >-
+                          Incomplete task:
+                          {{$loopOverToDoTasks.currentItem.task}}
+                      messageId:
+                        type: value
+                        value: ""
+                      username:
+                        type: value
+                        value: ""
+                    name: Post Message
+            description: ""
+            inputs:
+              conditions:
+                type: complex
+                value:
+                  - name: Is completed?
+                    type: complex
+                    value:
+                      - and
+                      - - isTrue
+                        - type: reference
+                          value: loopOverToDoTasks.currentItem.completed
+            name: Check if task is complete
+name: My First Integration
+requiredConfigVars:
+  - connection:
+      key: oauth2
+      component:
+        isPublic: true
+        key: slack
+        version: LATEST
+    dataType: connection
+    inputs:
+      authorizeUrl:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "https://slack.com/oauth/v2/authorize"
+      clientId:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: ""
+      clientSecret:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: ""
+      isUser:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "false"
+      revokeUrl:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "https://slack.com/api/auth.revoke"
+      scopes:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: >-
+          chat:write chat:write.public chat:write.customize channels:read
+          groups:read im:read mpim:read
+      signingSecret:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: ""
+      tokenUrl:
+        meta:
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "https://slack.com/api/oauth.v2.access"
+    key: Slack Connection
+    onPremiseConnectionConfig: disallowed
+    orgOnly: false
+  - dataSource:
+      key: selectChannels
+      component:
+        isPublic: true
+        key: slack
+        version: LATEST
+    dataType: picklist
+    defaultValue: ""
+    inputs:
+      connection:
+        meta:
+          orgOnly: true
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: configVar
+        value: Slack Connection
+      includeImChannels:
+        meta:
+          orgOnly: true
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "false"
+      includeMultiPartyImchannels:
+        meta:
+          orgOnly: true
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "false"
+      includePrivateChannels:
+        meta:
+          orgOnly: true
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "false"
+      includePublicChannels:
+        meta:
+          orgOnly: true
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "true"
+      showIdInDropdown:
+        meta:
+          orgOnly: true
+          visibleToCustomerDeployer: false
+          visibleToOrgDeployer: false
+        type: value
+        value: "false"
+    key: Slack Channel
+    orgOnly: false

@@ -1,0 +1,3758 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Subscriptions
+  description: |
+    Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts.
+
+    You can create subscriptions using the Elastic Path Subscriptions API or Commerce Manager.
+
+    Scenarios include:
+
+    - repeat products that your customers purchase on a recurring basis.
+    - membership subscriptions where your customers pay a recurring fee to become members of a particular service, program or organization.
+    - subscribe and save that allows your customers to subscribe to regular deliveries of products they use frequently, for example, household essentials, or personal care items.
+
+    ### How Subscriptions Work
+
+    Elastic Path Subscriptions enables you to manage your subscriptions products and plans, using offerings. Offerings can contain any combination of products and plans.
+
+    Here's how a typical subscription works:
+
+    1. Create your repeat products. See [**Repeat Products**](#tag/Products).   
+    2. Create your plans. Plans are the rules that govern your subscription, for example, delivery frequency, the quantity and any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. See [**Plans**](#tag/Plans).
+    3. Create your offerings. Offerings are the product and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer. See [**Offerings**](#tag/Offerings).
+    4. When a [**customer**](#tag/Subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](#tag/Subscriptions).
+    5. Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Payments**](#tag/Invoices).
+
+    ### Subscriber Management
+
+    Elastic Path Subscriptions enables you to create customer accounts that you can use to manage their subscription details, including payment methods and billing information. See [**Subscribers**](#tag/Subscribers).
+
+    ### Invoicing & Payments
+
+    Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions. Elastic Path Subscriptions provides seamless integration with Elastic Path Payments powered by Stripe. See [**Invoicing and Payments**](#tag/Invoices).
+servers:
+  - url: https://epcc-integration.global.ssl.fastly.net/v2
+    description: Integration cluster
+  - url: https://api.epcc-staging.epcloudops.com/v2
+    description: Staging cluster
+  - url: https://api.moltin.com/v2
+    description: EU west cluster
+  - url: https://useast.api.elasticpath.com/v2
+    description: US east cluster
+security:
+  - BearerToken: []
+tags:
+  - name: Products
+    description: |
+      Create the products and services that you want to offer in a subscription. For example, an online streaming service organization might have different services available for subscription, such as Standard Definition Streaming, High-Definition Streaming, and 4K Streaming; each service provides a specific level of video quality. 
+      Products can have additional attributes, such as price, and rich media assets, such as images or files containing additional product details.
+
+       In addition, you can build offerings with products created in Product Experience Manager. Product Experience Manager manages product information, hierarchies, and price books. Ideally, Product Experience Manager becomes the single source of truth for product data across your organization. See [**Create a Product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product).
+
+      You combine your products and plans into offerings. Offerings can contain any combination of products and plans. See [**Building an Offering**](#tag/Offerings/operation/BuildOffering).
+
+      Product data is stored in a database. After you have added your products, you can update your product information at any time, and include those products in your subscription offerings.
+
+      ### Product Media
+      Images and files are linked to repeat products using a hypertext reference (HREF). You can either upload your images to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](https://elasticpath.dev/docs/pxm/products/product-assets/create-a-file) to upload your file and return an HREF link in the response.
+      An extensive range of [**media and file extensions**](https://elasticpath.dev/docs/pxm/products/product-assets/files-overview) are supported.
+
+      ### Product Pricing
+      You can assign prices for your products and services. You can display prices to your customers in their local currency. You can configure up to 10 currencies per subscription. Use the Commerce Currencies API to [**create a currency**](https://elasticpath.dev/docs/pxm/currencies/currencies-api/create-a-currency). You must select one currency to be the default currency. If a default currency is not selected, the store uses the United States Dollar (USD). 
+
+      In addition, you can specify a unit price for a product. A unit price is the timeframe during which the product price is applicable, either days or months. For example, for a streaming service, the price is $12.99 and the unit price is months. In other words, the streaming service is available for $12.99 a month. You may want to specify a unit price if you have many products that all have different prices. Rather than having to create separate plans for each product, you can specify the timeframe during which the product price is applicable and then create one plan that determines the billing frequency for those products.
+
+      Alternatively, when creating a plan, you can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling those products to be offered at a discounted price. The prices you specify for a plan override the individual product prices you specified when creating a product. See [**Plan Pricing**](#plan-pricing).
+  - name: Plans
+    description: |
+      You can use plans to model your subscription. Plans are a set of rules and conditions that manage the provision of repeat products in an offering. 
+
+      - **Billing Cycles** - Plans specify the frequency at which your customer is billed – yearly, monthly, or weekly. See [**Billing Cycles**](#billing-cycles).
+      - **Trial Periods** - Plans specify any trial periods. See [**Trial Periods**](#trial-periods).
+      - **Recurring Payments** - Plans specify if the subscription is rolling, (customers pay regularly and repeatedly), or closed (customers split purchases into a few payments). See [**Recurring Payments**](#recurring-payments).
+      - **Pricing** - Plans may also specify whether a discount is offered and specify the timeframe during which the discount is available to your customers. See [**Plan Pricing**](#plan-pricing). 
+
+      You create plans based on your business requirements. Once the plans are available, you can associate the repeat products and plans in an offering. You can combine and reuse plans in your offerings. Offerings can contain any combination of products and plans. For example, your company provides customized meal boxes; you can create different subscription plans, like weekly or monthly meal boxes at specific prices.
+
+      ### Trial Periods
+
+      You can configure a trial period when creating a plan by providing a value in `trial_period`. `trial_period` works with `billing_interval_type`. For example, if `billing_interval_type` is months, and `trial_period` is `1` then the trial period is 1 month. The trial period becomes active as soon as a subscription becomes active. When creating a subscription with a trial period, no payment method is required for the customer. An immediate invoice is still created, but for a price of zero.
+
+      When a trial period ends, Subscriptions automatically generates an invoice. 
+
+      ### Billing Cycles
+
+      You can configure the billing cycle when creating a plan. A plan's billing cycle is determined by `billing_interval_type` and `billing_frequency`. For example, a customer with a monthly subscription set to cycle on the 2nd of the month is always billed on the second. The plan is cycled from the date a subscription becomes active. 
+
+      You can also combine `billing_interval_type` with `trial_period` to create a [**trial period**](#trial-period). 
+
+      ### Plan Pricing
+      You can provide a price for the total cost of a plan, or, provide a discount on the total cost of all products within an offering. For example, you can configure a percentage discount on the total cost of any products within an offering.  
+
+      You can configure a total price for all the products in an offering. This is useful, as it allows you to provide a fixed price for all products in an offering, enabling these products to be offered at a discounted price. You can enter a price for all the currencies you have configured for your store. See [**Create a Currency**](https://elasticpath.dev/docs/pxm/currencies).
+
+      Alternatively, when creating your products, you can configure individual prices for a product. The prices you specify for a plan override the individual product prices you specified when creating a product. See [**Repeat Products**](#product-pricing).
+
+      ### Recurring Payments
+      There are two types of recurring payments:
+      - customers pay regularly and repeatedly
+      - customers split purchases into a few payments
+
+      You can configure this using `end_behavior`. If `end_behaviour` is `rolling`, the customers pay regularly and repeatedly. If `end_behavior` is `closed`, it allows you to create installment plans where the customer's pay a total amount in a limited number of partial payments.
+  - name: Offerings
+    description: |
+      An offering includes a product and plans; a product is combined
+      with one or more plans to form an offering. 
+
+      For example, your company provides online
+      streaming of movies, web-series, and music. Your customers can purchase these services through either a weekly or monthly plan.
+
+      An offering can have only one product. Offering products can be either:
+
+      - a subscription product, see [**Create a product**](#tag/Products/operation/CreateProduct).
+      - a Product Experience Manager product, see [**create a product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product)
+
+      ### Offering Examples
+
+      Offerings can have any combination of a product and plans. The pricing of an offering is determined by the pricing you have configured for your products and plans.
+
+       | Example | Product | Plans | Offering |
+       | --- | --- | --- | --- |
+       | <ul><li>Single product and plan</ul></li> | <ul><li>One product with a product price of $50</ul></li> | <ul><li>A monthly plan with a 5% discount</ul></li> | <ul><li>An offering with a monthly plan for $47.50 a month</ul></li> |
+       | <ul><li>Single product with multiple plans | <ul><li>One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</ul></li> | <ul><li>An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
+
+      ### Building an Offering
+
+      Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach them to a new offering.
+
+      When you are building an offering:
+
+      - you can create new plans and products.
+      - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
+
+      Here's how you build an offering:
+
+      1. Create your repeat product. A product can either be a subscription product or Product Experience Manager product. An offering can have only one product. 
+
+          - to create a subscription product, see [**Create a product**](#tag/Products/operation/CreateProduct).
+          - to create a Product Experience Manager product, see [**create a product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product)
+      2. Create your plans. 
+          - Plans are the rules that govern your subscription, for example, any discount. 
+          - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
+          - An offering must have at least one plan. See [**Create a plan**](#tag/Plans/operation/CreatePlan).
+      3. [**Build your offerings**](#tag/Offerings/operation/BuildOffering). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer.
+
+          - When a [**customer**](#tag/Subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](#tag/Subscriptions).
+          - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Billing**](#tag/Jobs).
+
+      ### Editing Offerings
+
+      After saving an offering, you can, at any time:
+
+      - update an offering's details, for example, name or description. See [**Update an Offering**](#tag/Offerings/operation/UpdateOffering).
+      - update the existing product and plans. 
+      - replace an existing product in an offering with a new one. See [**Replace a Product**](#tag/Offerings/operation/AttachOfferingProduct)
+      - attach a new plan to an offering. See [**Attach a Plan**](#tag/Offerings/operation/AttachOfferingPlan).
+      - remove plans. See [**Removing a plan from an offering**](#tag/Offerings/operation/DeleteOfferingPlan).
+
+      Any modifications that you make to offerings, and products or plans in an offering, does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
+  - name: Subscriptions
+    description: |
+      Elastic Path Subscriptions enables you to manage your subscriptions products and plans, using offerings. Offerings can contain any combination of plans and a product. When a customer chooses a plan, a subscription is created.  
+
+      ### Managing the Subscription Lifecycle
+
+      The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product. 
+
+      A subscription can have the following states:
+
+      - `canceled`
+      - `paused`
+      - `resumed`
+
+      A subscriber can decide to cancel or pause and/or resume a subscription. The following example describes pausing or canceling and resuming a subscription.
+
+      1. The subscriber pauses or cancels the subscription. 
+         - The subscription status is `active`. 
+         - either `paused` or `cancelled` is set to `true`.
+         - either the `paused_at` or `cancelled_at` timestamp is populated with the date and time the subscription is paused or cancelled.
+      2. When the next billing run is due, the billing run checks the subscription state. If the subscription state is paused or cancelled then no invoice is created and the subscription status is updated to `inactive`.
+      3. Subsequent billing runs skip that subscription completely as the subscription status is `inactive`.
+      4. If the subscriber resumes the subscription:
+         - either `paused` or `cancelled` is set to `false`.
+         - the `resumed_at` timestamp is populated with the date and time the subscription is resumed.
+      5. When the next billing run is due, the billing run checks the subscription state. If the `paused` or `cancelled` is set to `false` then the billing run creates an invoice.
+      6. The payment run processes the invoice. Once the payment succeeds then the payment run updates the status of the subscription to `active`.
+
+      ### Orders
+
+      When a customer chooses a subscription, they need to add the subscription to a cart, checkout the cart and then pay for the order. 
+
+      1. When a customer adds a subscription to cart, this is handled using the `Add subscription to cart` endpoint. 
+      2. Once a subscription has been added to a cart, the [**Checkout API**](https://elasticpath.dev/docs/api/carts/checkout) converts the cart to an order. 
+      3. Once the order is created, payment needs to be taken. This is handled by Elastic Path Payments Powered by Stripe. See [**Payments**](#payments).
+  - name: Jobs
+    description: |
+      Jobs are an asynchronous process that can be triggered manually or scheduled. 
+
+      There are three types of job:
+
+      - a billing run. Subscriptions generates an [**invoice**](#invoices) when a billing run occurs. Billing runs generate invoices for the remaining billing cycles for each subscription. The invoice dates come from your plans. Billing runs are independent of payment runs.
+      - a tax run. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.
+      - a payment run. The payment run identifies invoices that are outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
+
+      By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner. See [**Schedules**](#tag/Schedules).
+
+      ### Characteristics of Billing & Payments Jobs
+
+      Billing and payment jobs have the following characteristics.
+
+      - Jobs are asynchronous.
+      - Jobs have a different status, depending on where a job is in its lifecycle.
+      - Jobs report any errors to help you understand the reason for any failed jobs.
+      - Only one billing run and payment run is allowed per store at a time. Although billing and payments are constantly generated, the jobs are queued. Subscriptions looks for any jobs that have a status of PENDING and starts the job with the earliest created date. This process is repeated until all jobs are processed.
+
+      ### Billing & Payments Jobs Lifecycle
+
+      A job can have the following status types:
+
+      - PENDING - Subscriptions has received the request but is currently busy processing other requests.
+      - STARTED - Subscriptions has started processing the job.
+      - SUCCESS - The job has successfully completed.
+      - FAILED - The job has failed.
+  - name: Schedules
+    description: |
+      You can schedule your billing and payment runs. By scheduling billing and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner.  You can define a schedule in the format (`* * * * *`) which is a set of five fields in a line, indicating when a job should be executed. For example, you can define a schedule so that your job runs multiple times a day, or runs on specific days and months.
+
+      Subscriptions runs on Coordinated Universal Time (UTC) time and conforms to [**RFC 3339**](https://www.rfc-editor.org/rfc/rfc3339). 
+
+      ### Unrestricted fields
+
+      Setting a field to an asterisk (`*`) is sometimes referred to as leaving a field unrestricted because it is not restricted to a specific value.
+
+      You can use the asterisk (`*`) to indicate the range of all values for the field. When you use the asterisk, the first value in the range is: 0 for the minute, hour, and day of the week (Sunday) fields, and 1 for day of the month and the month fields.
+
+      ### Configuring fields
+
+      The time fields have the following format and possible values and must be specified in the following order:
+
+      | Field | Format | Description  |                                                                                                    
+      | --- | --- | -----|
+      | Minute | 0-59 | Indicates how far past the top of the hour your job runs, in minutes. For example if a minute is set to 0, then the job runs at the top of the hour because it is 0 minutes after the hour. This means if the hour is 8.00 AM, the job runs at 8.00 AM. |
+      | Hour | 0-23 | Indicates how far past midnight your job runs, in hours. This is rounded down to the nearest hours. This is because minutes are indicated by the minute field. |
+      | Day of the month | 0-31 | Indicates the calendar date of the month. For example, 1 for the first day of the month. |
+      | Month | 1-12 or JAN to DEC | Indicates the month. Specify the month number or the first three letters of the month name in uppercase. For example, 1 or JAN for January.  |
+      | Day of the week | 0-6 (or SUN to SAT, or 7 for Sunday) | Indicates the day of the week. Monday is 1, Tuesday is 2, and so on. Either 0 or 7 indicates Sunday. Alternatively, specify the day of the week using the first three letters of the weekday name in uppercase. For example SUN for Sunday. If you use this field with the day of the month field, then this field is evaluated as an inclusive OR. For example, if the day of the month is set to 1 and the day of the week is set to SAT, the job runs on the first day of the month and on every Saturday of the month, even if the first day of the month is not a Saturday. If the day of the week is marked by an asterisk (*) then the field is marked as unrestricted. This means the job only runs on the first day of the month. |
+
+      ### Matching all values
+
+      To match all values for a field, set the field to an asterisk (`*`). When a field is set to an asterisk, the field matches all valid values for that field whenever the other field conditions are satisfied. 
+
+       Here are some examples.
+
+       - `* 0 1 1 1`: the job runs every minute of the midnight hour on January 1st and Mondays.
+       - `* * * * *`: the job runs every minute (of every hour, of every day of the month, of every month, every day of the week, because each of these is unrestricted).
+
+       ### Matching a range
+
+       To match a range of values, specify your start and stop values, separated by a hyphen (`-`). Do not include spaces in the range. Ranges are inclusive. The first number must be less than the second number. If you are using abbreviated names for the month or weekday (for example, JAN instead of 1 for the first month of the year), the first value must come earlier in the month or week than the second value.
+
+      The following equivalent examples run at midnight on Mondays, Tuesdays, Wednesdays, Thursdays, and Fridays (for all months):
+
+       - `0 0 * * 1-5`
+       - `0 0 * * MON-FRI`
+
+      ### Matching a list
+
+      Lists can contain any valid value for the field, including ranges. Specify your values, separated by a comma (,). Do not include spaces in the list.
+
+      Examples:
+
+      - `0 0,12 * * *`: the job runs at midnight and noon.
+      - `0-5,30-35 * * * *`: the job runs in each of the first five minutes of every half hour (at the top of the hour and at half past the hour).
+
+      ### Skipping values in a range
+
+      You can skip values in a range by specifying a rate at which to step through the range. To do this, specify the range, followed by the forward slash (`/`) and the rate at which you want to skip through the range.
+
+      The step value cannot be larger than the largest possible value for the field. The default step is 1, so the step function `/1` is the same as not using a step function at all.
+
+      Example ranges that use step functions:
+
+      - `*/2`: this is a valid step function for any field. 
+          - For the minute field, it matches 0, 2, 4, ... , 58. 
+          - For the hour, it matches 0, 2, 4, ... , 22. 
+          - For the day of the month, it matches 1, 3, 5, ... , 31 (for a month with 31 days). 
+          - For the month, it matches 1, 3, 5, ... , 11. 
+          - For the day of the week, it matches 0, 2, 4, 6.
+
+      - `0-12/2`: this is a valid step function for the minute and hour fields. It matches 0, 2, 4, ... , 12.
+
+      Example schedules using step functions:
+
+      - `*/2 * * * *`: the job runs every two minutes.
+      - `0 0-12/2 * * *`: the job runs every two hours, on the hour. The first run is at midnight. The last run is at noon.
+  - name: Subscribers
+    description: |
+      TBA ..
+  - name: Invoices
+    description: |
+      Invoices represent the amount a customer owes for a subscription. Elastic Path Subscriptions generates an invoice for every period in a subscription billing cycle. Invoices provide:
+
+      - an itemized list of goods and services provided by a subscription.
+      - the cost of a subscription.
+      - if applicable, any taxes.
+
+      The invoice lifecycle is described below.
+
+      1. When a subscription is created, an invoice for the first billing period is created. When a subscription is created as part of an order, the payment for the order covers the first billing period.
+      2. Subscription invoices are created by [**billing runs**](#tag/Jobs). The billing run identifies subscriptions that require a new invoice for their next billing period and creates them. At this point, invoices are marked as outstanding.
+      3. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.  
+      3. The [**payment run**](#tag/Jobs) identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment.
+
+      ### Rounding
+
+      Subscriptions always rounds down to the penny. 
+
+       ### Tax
+
+      Subscriptions allows you to apply any number of tax rates to your invoices and subscriptions. When applying a tax rate, you must specify:
+
+      - a name that appears on your customer's invoice that describes the specific type of tax.
+      - the tax rate which is the percentage of the subscription amount that is required to be paid as tax.
+
+      In addition, you can optionally specify the jurisdiction which is the geographic area or political entity that has authority to levey and collect taxes.
+
+      You can apply more than one tax rate for all items in an invoice. You cannot apply a tax rate per line item.
+
+      ### Payments
+
+      When your customers add a subscription to a cart and the cart is checked out, an unpaid order is returned. You can process the payment for the order though a payment gateway. You can do this using Elastic Path Payments Powered by Stripe. The Elastic Path Payments Powered by Stripe gateway interacts with Stripe to allow your subscribers to pay for their subscriptions. 
+
+      To use Elastic Path Payments Powered by Stripe gateway, contact the [**Customer Success Team**](mailto:customersuccess@elasticpath.com). 
+
+      Create your Stripe account in [**Stripe Dashboard**](https://dashboard.stripe.com/login) and complete an onboarding form to make payments using the gateway. For more information, see [**Onboarding**](https://elasticpath.dev/docs/payments/onboarding).
+
+      Once you have signed up for Elastic Path Payments Powered by Stripe, you must configure the payment gateway so that your shoppers can make payments. See [**Configure Elastic Path Payments Powered by Stripe**](https://elasticpath.dev/docs/commerce-cloud/payments/payment-gateway/configure-elastic-path-payments-powered-by-stripe).
+
+      Subscriptions only supports the `purchase` payment mechanism. The gateway attempts to charge the customer immediately, and the result of the attempt is returned. If a payment fails, the invoice is kept as outstanding and the payment information, with the reason for the failure attached to the invoice. A new payment run is required to attempt another payment. 
+
+      When sending a payment request to the Payments service, you must specify the following.
+
+      | <div style="width:100px">Attribute</div> | <div style="width:60px">Required</div> | <div style="width:290px">Description</div> |
+      | --- | --- | --- |
+      | `gateway` | Required| Must be `elastic_path_payments_stripe`. |
+      | `method` | Required | Must be `purchase`.
+      | `payment` | Required | The type of payment, for example, `pm_card_visa_debit`.
+      | `options` | Required | These options must be set as they set up the card to be used in future without the customer being present. If these options are not set, future payments may fail. There are two options. <ul><li>`off_session`. Must be set to `true`. </li><li>`confirm`. Must be set to `true`.</li></ul> |
+  - name: Subscriber
+    description: |
+      A subscriber is an individual that owns a subscription
+paths:
+  /subscriptions/products:
+    parameters:
+      - $ref: '#/components/parameters/Filter'
+    post:
+      tags:
+        - Products
+      summary: Create a product
+      operationId: CreateProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: Success. The product is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      summary: List products
+      operationId: ListProducts
+      responses:
+        '200':
+          description: Success. A list of products is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/products/{product_uuid}:
+    parameters:
+      - name: product_uuid
+        in: path
+        description: The unique identifier of a product.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Products
+      summary: Get product
+      operationId: GetProduct
+      responses:
+        '200':
+          description: Success. The product details are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Products
+      summary: Delete product
+      description: You cannot delete a product if it is part of an offering. You must detach the product from the offering first.
+      operationId: DeleteProduct
+      responses:
+        '204':
+          description: Success. The product details are removed.
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Products
+      summary: Update a product
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the product is not updated.
+      operationId: UpdateProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ProductUpdate'
+      responses:
+        '200':
+          description: Success. The product details are updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/plans:
+    post:
+      tags:
+        - Plans
+      summary: Create a plan
+      operationId: CreatePlan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/PlanCreate'
+      responses:
+        '201':
+          description: Success. The subscription plan is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Plan'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Plans
+      summary: List plans
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListPlans
+      responses:
+        '200':
+          description: Success. A list of subscription plans is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plan'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/plans/{plan_uuid}:
+    parameters:
+      - name: plan_uuid
+        in: path
+        description: The unique identifier of the plan.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Plans
+      summary: Get plan
+      operationId: GetPlan
+      responses:
+        '200':
+          description: Success. The details of the plan are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Plan'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Plans
+      summary: Delete plan
+      description: You must not delete a plan if it is associated with an offering as this invalidates the offering. You must detach a plan from an offering before deleting it.
+      operationId: DeletePlan
+      responses:
+        '204':
+          description: Success. The subscription plan is removed.
+    put:
+      tags:
+        - Plans
+      summary: Update a plan
+      description: Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the plan is not updated.
+      operationId: UpdatePlan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/PlanUpdate'
+      responses:
+        '200':
+          description: Success. The details of the plan are updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Plan'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings:
+    parameters:
+      - $ref: '#/components/parameters/Filter'
+    post:
+      tags:
+        - Offerings
+      summary: Create an offering
+      operationId: CreateOffering
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingCreate'
+      responses:
+        '201':
+          description: Success. The offering is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Offering'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Offerings
+      summary: List offerings
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Include'
+      operationId: ListOfferings
+      responses:
+        '200':
+          description: Success. A list of offerings is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Offering'
+                  included:
+                    $ref: '#/components/schemas/OfferingIncludes'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/build:
+    post:
+      tags:
+        - Offerings
+      summary: Build an offering
+      description: |
+        An offering includes a product and plans; a product is combined with one or more plans to form an offering. An offering can have only one product. An offering can include either:
+
+        - a subscription product. See [**create a product**](#tag/Products/operation/CreateProduct).
+        - a Product Experience Manager product. See [**create a product**](https://elasticpath.dev/docs/pxm/products/ep-pxm-products-api/create-a-product).
+
+         Offerings represent a snapshot of their product and plans. If you make updates to a product or plans within an offering, the original product and plans are not updated. Only the product and plans within the offering are updated. Alternatively, you can create a new product or plan and attach it to an existing offering.
+
+         When you are building an offering:
+
+        - you can create new plans and products.
+        - you can modify an existing product and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
+
+         Here's how you build an offering:
+
+        1. Specify the product to build with the offering. A product can be:
+
+            - a subscription product. Specify the subscription product attributes. 
+            - a Product Experience Manager product. Specify the Product Experience Manager product ID in `external_ref` in `ProductAttributes`. For the remaining product attributes, you can specify their values to match the values of the existing Product Experience Manager product attributes. However, you can also specify different values, depending on your requirements.
+
+        2. Specify the plans to build with the offering. Plans are the rules that govern your subscription, for example, any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings.
+         An offering must have at least one plan.
+      operationId: BuildOffering
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/BuildOffering'
+      responses:
+        '201':
+          description: Success. The new subscription offering is created with the specified subscription products and plans attached to the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Offering'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/Include'
+      tags:
+        - Offerings
+      summary: Get offering
+      operationId: GetOffering
+      responses:
+        '200':
+          description: Success. The details of the subscription offering are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Offering'
+                  included:
+                    $ref: '#/components/schemas/OfferingIncludes'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Offerings
+      summary: Delete offering
+      description: When a subscription is created, it creates a snapshot of the offering. This means you can delete an offering without affecting any active subscriptions.
+      operationId: DeleteOffering
+      responses:
+        '204':
+          description: Success. The subscription offering is removed.
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Offerings
+      summary: Update an offering
+      description: |
+        After saving an offering, you can update an offering at any time. Updating an offering does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: UpdateOffering
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingUpdate'
+      responses:
+        '200':
+          description: Success. The details of the subscription offering are updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Offering'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/plans:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Offerings
+      summary: List an offering's plans
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListOfferingPlans
+      responses:
+        '200':
+          description: Success. A list of plans attached with the offering is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingPlan'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/plans/attach:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    post:
+      tags:
+        - Offerings
+      summary: Attach a plan
+      description: |
+        After saving an offering, you can attach new plans to it at any time.
+
+        Attaching new plans to an offering does not affect any existing active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: AttachOfferingPlan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingPlanAttach'
+      responses:
+        '200':
+          description: Success. The subscription plan is attached with the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingPlan'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/plans/{plan_uuid}:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: plan_uuid
+        in: path
+        description: The unique identifier of the plan.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    put:
+      summary: Updates a plan in an offering
+      operationId: UpdateOfferingPlan
+      tags:
+        - Offerings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingPlanUpdate'
+      responses:
+        '200':
+          description: Success. The plan details are updated on the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/OfferingPlan'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Offerings
+      summary: Remove a plan from an offering
+      description: |
+        After saving an offering, you can remove plans from it at any time.
+
+        Removing a plan from an offering does not affect any existing active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: DeleteOfferingPlan
+      responses:
+        '204':
+          description: Success. The subscription plan is no longer associated with the offering.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+  /subscriptions/offerings/{offering_uuid}/products:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Offerings
+      summary: List an offering's products
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListOfferingProducts
+      responses:
+        '200':
+          description: Success. A list of subscription products attached to the offering is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingProduct'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/products/attach:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    post:
+      tags:
+        - Offerings
+      summary: Attach a product
+      description: |
+        After saving an offering, you can attach new products to it at any time.
+
+        Adding new products does not affect any existing active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: AttachOfferingProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingProductAttach'
+      responses:
+        '200':
+          description: Success. The subscription product is attached with the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingProduct'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/products/replace:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    put:
+      tags:
+        - Offerings
+      summary: Replace a product
+      description: |
+        After saving an offering, you can replace its products at any time.
+
+        Replacing products on an offering does not affect any existing active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: ReplaceOfferingProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingProductReplace'
+      responses:
+        '200':
+          description: Success. The subscription product is replaced on the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OfferingProduct'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/offerings/{offering_uuid}/products/{product_uuid}:
+    parameters:
+      - name: offering_uuid
+        in: path
+        description: The unique identifier of the offering.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: product_uuid
+        in: path
+        description: The unique identifier of the product.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    put:
+      summary: Updates a product in an offering
+      description: Use the unique identifier of the product in the offering that you want to update. Any modifications that you make to the products in an offering, does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: UpdateOfferingProduct
+      tags:
+        - Offerings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/OfferingProductUpdate'
+      responses:
+        '200':
+          description: Success. The product details are updated on the offering.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Remove a product from an offering
+      description: |
+        After saving an offering, you can remove products from it at any time.
+
+         Removing a product from an offering does not affect any existing active subscriptions. The changes take effect on all new subscriptions that are created.
+      operationId: DeleteOfferingProduct
+      tags:
+        - Offerings
+      responses:
+        '204':
+          description: Success. The subscription product is removed from the offering.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+  /subscriptions/subscriptions:
+    parameters:
+      - $ref: '#/components/parameters/Filter'
+    post:
+      tags:
+        - Subscriptions
+      summary: Create a subscription
+      operationId: CreateSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/BuildSubscription'
+      responses:
+        '201':
+          description: Success. The subscription is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Subscriptions
+      summary: List subscriptions
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListSubscriptions
+      responses:
+        '200':
+          description: Success. A list of subscriptions is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscriptions/{subscription_uuid}:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: Get subscription
+      operationId: GetSubscription
+      responses:
+        '200':
+          description: Success. The details of a subscription are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscriptions/{subscription_uuid}/states:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    post:
+      tags:
+        - Subscriptions
+      summary: Create a subscription state.
+      description: |
+        The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product. 
+
+        A subscription can have the following states:
+
+        - `canceled`
+        - `paused`
+        - `resumed`
+      operationId: CreateSubscriptionState
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ChangeState'
+      responses:
+        '204':
+          description: Success. The subscription's state has changed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Subscriptions
+      summary: List subscription states
+      operationId: ListSubscriptionStates
+      responses:
+        '200':
+          description: Success. A list of subscription states is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubscriptionState'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscriptions/{subscription_uuid}/states/{state_uuid}:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: state_uuid
+        in: path
+        description: The unique identifier of the subscription state.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: Get subscription state
+      operationId: GetSubscriptionState
+      responses:
+        '200':
+          description: Success. A subscription state is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SubscriptionState'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/jobs:
+    parameters:
+      - $ref: '#/components/parameters/Filter'
+    post:
+      tags:
+        - Jobs
+      summary: Create a job
+      operationId: CreateJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/JobCreate'
+      responses:
+        '201':
+          description: Success. The job was created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Job'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - Jobs
+      summary: List jobs
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListJobs
+      responses:
+        '200':
+          description: Success. A list of jobs is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/jobs/{job_uuid}:
+    parameters:
+      - name: job_uuid
+        in: path
+        description: The unique identifier of the job.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Jobs
+      summary: Get job
+      operationId: GetJob
+      responses:
+        '200':
+          description: Success. The job is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Job'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Jobs
+      summary: Delete job
+      operationId: DeleteJob
+      responses:
+        '204':
+          description: Success. The job was deleted.
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+  /subscriptions/subscriptions/{subscription_uuid}/invoices:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: List subscription invoices
+      description: Lists all invoices for a given subscription.
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListSubscriptionInvoices
+      responses:
+        '200':
+          description: Success. A list of invoices is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubscriptionInvoice'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscriptions/{subscription_uuid}/invoices/{invoice_uuid}/payments:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: invoice_uuid
+        in: path
+        description: The unique identifier of the invoice.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      summary: List subscription invoice payments
+      description: Lists all invoice payments for a given invoice.
+      operationId: ListSubscriptionInvoicePayments
+      responses:
+        '200':
+          description: Success. Payments for the invoice are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubscriptionInvoicePayment'
+                  links:
+                    $ref: '#/components/schemas/Links'
+  /subscriptions/subscriptions/{subscription_uuid}/invoices/{invoice_uuid}/payments/{payment_uuid}:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: invoice_uuid
+        in: path
+        description: The unique identifier of the invoice.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: payment_uuid
+        in: path
+        description: The unique identifier of the payment.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: Get subscription invoice payment
+      description: Gets a specific payment for a given invoice.
+      operationId: GetSubscriptionInvoicePayment
+      responses:
+        '200':
+          description: Success. Specific payment for the invoice is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SubscriptionInvoicePayment'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /subscriptions/subscriptions/{subscription_uuid}/invoices/{invoice_uuid}:
+    parameters:
+      - name: subscription_uuid
+        in: path
+        description: The unique identifier of the subscription.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: invoice_uuid
+        in: path
+        description: The unique identifier of the invoice.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscriptions
+      summary: Get subscription invoice
+      description: Gets a specific invoice for a given subscription.
+      operationId: GetSubscriptionInvoice
+      responses:
+        '200':
+          description: Success. An invoice is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SubscriptionInvoice'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/invoices:
+    get:
+      tags:
+        - Invoices
+      summary: List invoices
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListInvoices
+      responses:
+        '200':
+          description: Success. A list of invoices is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubscriptionInvoice'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/invoices/{invoice_uuid}:
+    parameters:
+      - name: invoice_uuid
+        in: path
+        description: The unique identifier of the invoice.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Invoices
+      summary: Get invoice
+      operationId: GetInvoice
+      responses:
+        '200':
+          description: Success. The details of the invoice are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SubscriptionInvoice'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/invoices/{invoice_uuid}/payments:
+    parameters:
+      - name: invoice_uuid
+        in: path
+        description: The unique identifier of the invoice.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Invoices
+      summary: List invoice payments
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListInvoicePayments
+      responses:
+        '200':
+          description: Success. Payments for the invoice are returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubscriptionInvoicePayment'
+                  links:
+                    $ref: '#/components/schemas/Links'
+  /subscriptions/invoices/{invoice_uuid}/payments/{payment_uuid}:
+    parameters:
+      - name: invoice_uuid
+        in: path
+        description: The unique identifier of the invoice.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - name: payment_uuid
+        in: path
+        description: The unique identifier of the payment.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Invoices
+      summary: Get invoice payment
+      operationId: GetInvoicePayment
+      responses:
+        '200':
+          description: Success. Specific payment for the invoice is returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SubscriptionInvoicePayment'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /subscriptions/schedules:
+    parameters:
+      - $ref: '#/components/parameters/Filter'
+    get:
+      tags:
+        - Schedules
+      summary: List schedules
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListSchedules
+      responses:
+        '200':
+          description: Success. A list of schedules is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Schedule'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags:
+        - Schedules
+      summary: Create a schedule
+      operationId: CreateSchedule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ScheduleCreate'
+      responses:
+        '201':
+          description: Success. The schedule is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Schedule'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/schedules/{schedule_uuid}:
+    parameters:
+      - name: schedule_uuid
+        in: path
+        description: The unique identifier of the schedule.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Schedules
+      summary: Get a schedule
+      operationId: GetSchedule
+      responses:
+        '200':
+          description: Success. A schedule is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Schedule'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Schedules
+      summary: Update a schedule
+      operationId: UpdateSchedule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/ScheduleUpdate'
+      responses:
+        '200':
+          description: Success. The schedule details are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Schedule'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Schedules
+      summary: Delete schedule
+      operationId: DeleteSchedule
+      responses:
+        '204':
+          description: Success. The schedule is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscribers:
+    parameters:
+      - $ref: '#/components/parameters/Filter'
+    get:
+      tags:
+        - Subscribers
+      summary: List subscribers
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+      operationId: ListSubscribers
+      responses:
+        '200':
+          description: Success. A list of subscribers is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscriber'
+                  links:
+                    $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags:
+        - Subscribers
+      summary: Create a subscriber
+      operationId: CreateSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/SubscriberCreate'
+      responses:
+        '201':
+          description: Success. The subscriber is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscriber'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /subscriptions/subscribers/{subscriber_uuid}:
+    parameters:
+      - name: subscriber_uuid
+        in: path
+        description: The unique identifier of the subscriber.
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+    get:
+      tags:
+        - Subscribers
+      summary: Get a subscriber
+      operationId: GetSubscriber
+      responses:
+        '200':
+          description: Success. A subscriber is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscriber'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags:
+        - Subscribers
+      summary: Update a subscriber
+      operationId: UpdateSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/SubscriberUpdate'
+      responses:
+        '200':
+          description: Success. The subscriber details are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Subscriber'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Subscribers
+      summary: Delete subscriber
+      operationId: DeleteSubscriber
+      responses:
+        '204':
+          description: Success. The subscriber is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    BearerToken:
+      scheme: bearer
+      type: http
+  parameters:
+    Include:
+      name: include
+      in: query
+      required: false
+      schema:
+        type: string
+        description: A comma-separated list of resources to include. See [Characteristics of Include Parameter](https://elasticpath.dev/docs/commerce-cloud/api-overview/includes#characteristics-of-include-parameter).
+        example: products,plans
+    Filter:
+      name: filter
+      in: query
+      required: false
+      schema:
+        type: string
+        format: string
+        example: eq(name,Alan Turing)
+    PageOffset:
+      name: page[offset]
+      description: The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [page length](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+        maximum: 10000
+        example: 10
+    PageLimit:
+      name: page[limit]
+      description: The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the [page length](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+        example: 100
+  responses:
+    InternalServerError:
+      description: Internal server error. There was a system failure in the platform.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internal-server-error:
+              value:
+                errors:
+                  - title: Internal Server Error
+                    status: '500'
+    NotFoundError:
+      description: Not found. The requested entity does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            not-found:
+              value:
+                errors:
+                  - title: Not Found
+                    status: '404'
+                    detail: No plan found
+    ForbiddenError:
+      description: Forbidden. The operation is forbidden on this entity.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            not-found:
+              value:
+                errors:
+                  - title: Permission denied
+                    status: '404'
+                    detail: 'Permission denied: plan tenancy mismatch'
+    ValidationError:
+      description: Bad request. The request failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missing-name:
+              value:
+                errors:
+                  - title: Validation Error
+                    status: '400'
+                    detail: 'data.attributes.name: "name" is required'
+    WriteConflictError:
+      description: Write conflict. Unable to perform the operation at this time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - title: Write Conflict
+                status: '409'
+  schemas:
+    ExternalRef:
+      description: A unique attribute that you could use to contain information from another company system, for example. The maximum length is 2048 characters.
+      type: string
+      example: abc123
+      maxLength: 2048
+    ExternalRefUpdate:
+      description: A unique attribute that you could use to contain information from another company system, for example. The maximum length is 2048 characters.
+      type: string
+      example: abc123
+      maxLength: 2048
+      nullable: true
+    SubscriptionType:
+      type: string
+      example: subscription
+      enum:
+        - subscription
+      default: subscription
+    SubscriptionProductType:
+      type: string
+      example: subscription_product
+      enum:
+        - subscription_product
+      default: subscription_product
+    SubscriptionPlanType:
+      type: string
+      example: subscription_plan
+      enum:
+        - subscription_plan
+      default: subscription_plan
+    SubscriptionOfferingType:
+      type: string
+      example: subscription_offering
+      enum:
+        - subscription_offering
+      default: subscription_offering
+    SubscriptionOfferingProductType:
+      type: string
+      example: subscription_offering_product
+      enum:
+        - subscription_offering_product
+      default: subscription_offering_product
+    SubscriptionOfferingPlanType:
+      type: string
+      example: subscription_offering_plan
+      enum:
+        - subscription_offering_plan
+      default: subscription_offering_plan
+    SubscriptionJobType:
+      type: string
+      example: subscription_job
+      enum:
+        - subscription_job
+      default: subscription_job
+    SubscriptionInvoiceType:
+      description: This represents the type of resource object being returned. Always `subscription_invoice`.
+      type: string
+      example: subscription_invoice
+      enum:
+        - subscription_invoice
+      default: subscription_invoice
+    SubscriptionInvoicePaymentType:
+      type: string
+      description: This represents the type of resource object being returned. Always `subscription_invoice_payment`.
+      example: subscription_invoice_payment
+      enum:
+        - subscription_invoice_payment
+      default: subscription_invoice_payment
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+    Link:
+      anyOf:
+        - $ref: '#/components/schemas/LinkURI'
+        - $ref: '#/components/schemas/LinkObject'
+    LinkURI:
+      type: string
+      format: uri
+      example: http://example.com/articles/1/comments
+      nullable: true
+    LinkObject:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+          example: http://example.com/articles/1/comments
+        title:
+          type: string
+          example: Comments
+        describedby:
+          type: string
+          format: uri
+          example: http://example.com/schemas/article-comments
+    Timestamps:
+      required:
+        - created_at
+        - updated_at
+      properties:
+        updated_at:
+          description: The date and time a resource was updated.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+        created_at:
+          description: The date and time a resource was created.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+    Status:
+      type: string
+      description: The status of a subscription, either `active` or `inactive`.
+      example: active
+      enum:
+        - active
+        - inactive
+      x-go-type: model.SubscriptionStatus
+      x-go-type-import:
+        name: model
+        path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+    Paused:
+      type: boolean
+      description: Whether a subscription is paused or not.
+      example: true
+    Canceled:
+      type: boolean
+      description: Whether a subscription is canceled or not.
+      example: true
+    Relationships:
+      description: Relationships are established between different subscription entities. For example, a product and a plan are related to an offering, as both are attached to it.
+      additionalProperties:
+        $ref: '#/components/schemas/Relationship'
+      example:
+        plans:
+          links:
+            related: /offerings/:offering-id/plans
+            self: /offerings/:offering-id
+          data:
+            type: offering-plan
+            id: 625fe958-7b4b-40a0-a2c0-dbb8f31eec0d
+    Relationship:
+      anyOf:
+        - $ref: '#/components/schemas/SingleRelationship'
+        - $ref: '#/components/schemas/ManyRelationship'
+    ManyRelationship:
+      description: The list of resources that are related.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelationshipData'
+        links:
+          $ref: '#/components/schemas/RelationshipLinks'
+    SingleRelationship:
+      description: The subscription resource that is related.
+      properties:
+        data:
+          $ref: '#/components/schemas/RelationshipData'
+        links:
+          $ref: '#/components/schemas/RelationshipLinks'
+    RelationshipData:
+      type: object
+      required:
+        - id
+        - type
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    RelationshipLinks:
+      description: |
+        Links are used to allow you, as an API consumer, to move between requests. Single entities use a self parameter with a link to that specific resource. Sometimes, there aren’t enough entities for a project to fill multiple pages. In this situation, we return some defaults, instead of expecting you to check for these special cases. 
+
+         - current - Always the current page.
+         - first - Always the first page.
+         - last - always `null`.
+         - next - `null` if the user is on the first page.
+         - previous - `null` if there is only one page.
+      type: object
+      properties:
+        related:
+          type: string
+          example: foo.bar
+    TimePeriod:
+      description: A period of time between a start and end point.
+      required:
+        - start
+        - end
+      properties:
+        start:
+          description: The date and time a billing period started.
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        end:
+          description: The date and time a billing period ended.
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+    SingleCurrencyPrice:
+      description: A price in a single currency.
+      required:
+        - amount
+        - currency
+      properties:
+        currency:
+          type: string
+          description: The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in uppercase, associated with a price.
+          example: USD
+          maxLength: 1024
+        amount:
+          type: integer
+          format: int64
+          description: The value as a whole number of the currency's smallest subdivision.
+          example: 100
+        includes_tax:
+          type: boolean
+          description: Whether the amount includes any taxes.
+          example: true
+      example:
+        currency: USD
+        amount: 100
+        includes_tax: false
+    PriceUnits:
+      type: object
+      description: The timeframe during which the product price is applicable. For example, for a streaming service, the price is $12.99 and the `unit` is `months` and the `amount` is `1`. In other words, the streaming service is available for $12.99 a month. You may want to specify a unit price if you have many products that all have different prices. Rather than having to create separate plans for each product, you can specify the timeframe during which the product price is applicable and then create one plan that determines the billing frequency for those products.
+      required:
+        - unit
+        - amount
+      properties:
+        unit:
+          type: string
+          description: A unit of time.
+          enum:
+            - day
+            - month
+          example: day
+          x-go-type: model.PriceUnitsUnit
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        amount:
+          type: integer
+          description: The number of days or months the period covers.
+          example: 7
+          minimum: 1
+    NullablePriceUnits:
+      type: object
+      nullable: true
+      description: The timeframe during which the product price is applicable. For example, for a streaming service, the price is $12.99 and the `unit` is `months` and the `amount` is `1`. In other words, the streaming service is available for $12.99 a month. You may want to specify a unit price if you have many products that all have different prices. Rather than having to create separate plans for each product, you can specify the timeframe during which the product price is applicable and then create one plan that determines the billing frequency for those products.
+      required:
+        - unit
+        - amount
+      properties:
+        unit:
+          type: string
+          description: A unit of time, either days or months.
+          enum:
+            - day
+            - month
+          example: day
+          x-go-type: model.PriceUnitsUnit
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        amount:
+          type: integer
+          description: The number of days or months the period covers.
+          example: 7
+          minimum: 1
+    Price:
+      additionalProperties:
+        type: object
+        description: The base price.
+        required:
+          - amount
+        properties:
+          amount:
+            type: integer
+            format: int64
+            example: 100
+            description: The value as a whole number of the currency's smallest subdivision.
+          includes_tax:
+            type: boolean
+            example: true
+            description: Indicates whether the amount includes any taxes.
+      example:
+        USD:
+          amount: 100
+          includes_tax: false
+        GBP:
+          amount: 90
+          includes_tax: true
+    NullablePrice:
+      type: object
+      additionalProperties:
+        type: object
+        required:
+          - amount
+        properties:
+          amount:
+            type: integer
+            format: int64
+            example: 100
+            description: The value as a whole number of the currency's smallest subdivision.
+          includes_tax:
+            type: boolean
+            example: true
+            description: Whether the amount includes any taxes.
+        nullable: true
+      example:
+        USD:
+          amount: 100
+          includes_tax: false
+        GBP:
+          amount: 90
+          includes_tax: true
+      nullable: true
+    DisplayPrice:
+      properties:
+        without_tax:
+          $ref: '#/components/schemas/PriceFormatting'
+        with_tax:
+          $ref: '#/components/schemas/PriceFormatting'
+      example:
+        without_tax:
+          amount: 100
+          currency: USD
+          formatted: $1.00
+        with_tax:
+          amount: 110
+          currency: USD
+          formatted: $1.10
+    PriceFormatting:
+      required:
+        - amount
+        - currency
+        - formatted
+      properties:
+        amount:
+          type: integer
+          format: int64
+          example: 100
+          description: The unformatted amount for the objects.
+        currency:
+          type: string
+          format: string
+          example: USD
+          description: The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in uppercase, associated with a price.
+        formatted:
+          type: string
+          format: string
+          example: $1.00
+          description: The formatted amount for the objects.
+    Product:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionProductType'
+        attributes:
+          $ref: '#/components/schemas/ProductResponseAttributes'
+        meta:
+          $ref: '#/components/schemas/ProductMeta'
+    ProductMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        display_price:
+          $ref: '#/components/schemas/DisplayPrice'
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    ProductCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionProductType'
+        attributes:
+          $ref: '#/components/schemas/ProductAttributes'
+    ProductUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionProductType'
+        attributes:
+          $ref: '#/components/schemas/ProductUpdateAttributes'
+    ProductResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/ProductAttributes'
+        - $ref: '#/components/schemas/Timestamps'
+    ProductAttributes:
+      required:
+        - name
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        name:
+          type: string
+          description: The name of the product.
+          minLength: 3
+          maxLength: 1024
+          example: Magazine
+        description:
+          type: string
+          description: The product or service description to display to customers.
+          maxLength: 1024
+          example: A lovely magazine that is published every month.
+        sku:
+          type: string
+          description: A stock keeping unit for the product, if appropriate.
+          maxLength: 1024
+          example: MAGAZINE1
+        main_image:
+          type: string
+          format: uri
+          description: A URL from which an image or file for the product can be fetched. You can either upload your images and files to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](https://elasticpath.dev/docs/pxm/products/product-assets/create-a-file) to upload your file and return an HREF link in the response. An extensive range of [**media and file extensions**](https://elasticpath.dev/docs/pxm/products/product-assets/files-overview) are supported.
+          maxLength: 1024
+          example: https://magazine.com/cover.jpg
+        price:
+          $ref: '#/components/schemas/Price'
+        price_units:
+          $ref: '#/components/schemas/PriceUnits'
+    ProductUpdateAttributes:
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRefUpdate'
+        name:
+          type: string
+          description: The name of the product.
+          minLength: 3
+          maxLength: 1024
+          example: Magazine
+        description:
+          type: string
+          description: The product or service description to display to customers.
+          maxLength: 1024
+          example: A lovely magazine that is published every month.
+          nullable: true
+        sku:
+          type: string
+          description: A stock keeping unit for the product, if appropriate.
+          maxLength: 1024
+          example: MAGAZINE1
+          nullable: true
+        main_image:
+          type: string
+          format: uri
+          description: A URL from which an image or file for the product can be fetched. You can either upload your images and files to Commerce using the Commerce Files API or you can use your own content delivery network. If you are using the Commerce Files API, use [**Create a File**](https://elasticpath.dev/docs/pxm/products/product-assets/create-a-file) to upload your file and return an HREF link in the response. An extensive range of [**media and file extensions**](https://elasticpath.dev/docs/pxm/products/product-assets/files-overview) are supported.
+          maxLength: 1024
+          example: https://magazine.com/cover.jpg
+          nullable: true
+        price:
+          $ref: '#/components/schemas/NullablePrice'
+        price_units:
+          $ref: '#/components/schemas/NullablePriceUnits'
+    Plan:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionPlanType'
+        attributes:
+          $ref: '#/components/schemas/PlanResponseAttributes'
+        meta:
+          $ref: '#/components/schemas/PlanMeta'
+    PlanMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    PlanCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionPlanType'
+        attributes:
+          $ref: '#/components/schemas/PlanAttributes'
+    PlanUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionPlanType'
+        attributes:
+          $ref: '#/components/schemas/PlanUpdateAttributes'
+    PlanResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/PlanAttributes'
+        - $ref: '#/components/schemas/Timestamps'
+    PlanAttributes:
+      required:
+        - name
+        - billing_interval_type
+        - billing_frequency
+        - plan_length
+        - end_behavior
+        - can_pause
+        - can_resume
+        - can_cancel
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        name:
+          type: string
+          description: A name for the plan.
+          example: Monthly
+          minLength: 3
+          maxLength: 1024
+        description:
+          type: string
+          description: The plan description to display to customers.
+          maxLength: 1024
+          example: A monthly subscription.
+        billing_interval_type:
+          type: string
+          description: The unit of time that billing intervals are measured.
+          example: month
+          enum:
+            - day
+            - week
+            - month
+            - year
+          x-go-type: model.BillingIntervalType
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        billing_frequency:
+          type: integer
+          description: The number of intervals between issuing bills.
+          example: 1
+          minimum: 1
+        trial_period:
+          type: integer
+          description: The number of intervals from the start of the subscription before billing starts. Used with `billing_interval_type`. For example, if `billing_interval_type` is `months`, and `trial_period` is `1`, the trial period is 1 month.
+          example: 7
+          minimum: 0
+        plan_length:
+          type: integer
+          description: The number of intervals that the subscription runs for.
+          example: 12
+          minimum: 1
+        end_behavior:
+          type: string
+          description: Enables you to specify recurring payments. If `end_behavior` is `roll`, customers pay regularly and repeatedly. If `end_behavior` is `close`, customers pay a total amount in a limited number of partial payments.
+          example: close
+          enum:
+            - close
+            - roll
+          x-go-type: model.EndBehavior
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        can_pause:
+          type: boolean
+          description: The subscriber can pause a subscription.
+          example: false
+        can_resume:
+          type: boolean
+          description: The subscriber can resume a paused subscription.
+          example: false
+        can_cancel:
+          type: boolean
+          description: The subscriber can cancel a subscription.
+          example: false
+        base_price_percentage:
+          type: number
+          format: double
+          description: A percentage discount on the total cost of any products within an offering. For example, you can configure a percentage that equates the cost of a plan to the total value of all products within the offering, reduced by a percentage. For example, if you specify `10`, a 10% discount is applied to the total value of all repeat products in an offering.
+          example: 90
+          minimum: 0
+          maximum: 100
+        fixed_price:
+          $ref: '#/components/schemas/Price'
+    PlanUpdateAttributes:
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRefUpdate'
+        name:
+          type: string
+          example: Monthly
+          minLength: 3
+          maxLength: 1024
+        description:
+          type: string
+          description: The plan description to display to customers.
+          example: A monthly subscription.
+          maxLength: 1024
+          nullable: true
+        billing_interval_type:
+          type: string
+          description: The unit of time in which billing intervals are measured.
+          example: month
+          enum:
+            - day
+            - week
+            - month
+            - year
+          x-go-type: model.BillingIntervalType
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        billing_frequency:
+          type: integer
+          description: The number of intervals between issuing bills.
+          example: 1
+          minimum: 1
+        trial_period:
+          type: integer
+          description: The number of intervals from the start of the subscription before billing starts. Used with `billing_interval_type`. For example, if `billing_interval_type` is `months`, and `trial_period` is `1`, the trial period is 1 month.
+          example: 7
+          minimum: 0
+          nullable: true
+        plan_length:
+          type: integer
+          description: The length of time for which a subscription plan is valid. For example, six months after which the plan is renewed.
+          example: 12
+          minimum: 1
+        end_behavior:
+          type: string
+          description: Enables you to specify recurring payments. If `end_behavior` is `roll`, customers pay regularly and repeatedly. If `end_behavior` is `close`, customers pay a total amount in a limited number of partial payments.
+          example: close
+          enum:
+            - close
+            - roll
+          x-go-type: model.EndBehavior
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+        can_pause:
+          type: boolean
+          description: The subscriber can pause a subscription.
+          example: false
+        can_resume:
+          type: boolean
+          description: The subscriber can resume a paused subscription.
+          example: false
+        can_cancel:
+          type: boolean
+          description: The subscriber can cancel a subscription.
+          example: false
+        base_price_percentage:
+          type: number
+          format: double
+          description: A percentage discount on the total cost of any products within an offering. For example, you can configure a percentage that equates the cost of a plan to the total value of all products within the offering, reduced by a percentage. For example, if you specify `10`, a 10% discount is applied to the total value of all repeat products in an offering.
+          example: 90
+          minimum: 0
+          maximum: 100
+          nullable: true
+        fixed_price:
+          $ref: '#/components/schemas/NullablePrice'
+    BuildOffering:
+      required:
+        - name
+        - products
+        - plans
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        name:
+          type: string
+          description: The name of the offering.
+          minLength: 3
+          maxLength: 1024
+          example: Magazine
+        description:
+          type: string
+          description: The offering description to display to customers.
+          maxLength: 1024
+          example: A lovely magazine that is published every month.
+        products:
+          type: array
+          description: Either IDs of existing products to be attached to the plan or product information to be created directly within the plan
+          minItems: 1
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/UUID'
+              - $ref: '#/components/schemas/ProductAttributes'
+        plans:
+          type: array
+          description: The IDs of the plans to attach to the offering.
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/UUID'
+    Offering:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingType'
+        attributes:
+          $ref: '#/components/schemas/OfferingResponseAttributes'
+        relationships:
+          $ref: '#/components/schemas/Relationships'
+        meta:
+          $ref: '#/components/schemas/OfferingMeta'
+    OfferingIncludes:
+      readOnly: true
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferingProduct'
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferingPlan'
+    OfferingMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+        - external_product_refs
+      properties:
+        external_product_refs:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferingProductExternalRefMeta'
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    OfferingCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingType'
+        attributes:
+          $ref: '#/components/schemas/OfferingAttributes'
+        relationships:
+          $ref: '#/components/schemas/Relationships'
+    OfferingProductUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingProductType'
+        attributes:
+          $ref: '#/components/schemas/ProductUpdateAttributes'
+    OfferingProduct:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingProductType'
+        attributes:
+          $ref: '#/components/schemas/ProductResponseAttributes'
+        relationships:
+          $ref: '#/components/schemas/Relationships'
+        meta:
+          $ref: '#/components/schemas/ProductMeta'
+    OfferingPlanUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingPlanType'
+        attributes:
+          $ref: '#/components/schemas/PlanUpdateAttributes'
+    OfferingPlan:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingPlanType'
+        attributes:
+          $ref: '#/components/schemas/PlanResponseAttributes'
+        relationships:
+          $ref: '#/components/schemas/Relationships'
+        meta:
+          $ref: '#/components/schemas/OfferingPlanMeta'
+    OfferingPlanMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        price:
+          $ref: '#/components/schemas/Price'
+        display_price:
+          $ref: '#/components/schemas/DisplayPrice'
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    OfferingPlanAttach:
+      description: A list of plan IDs to attach to the offering. See [**List Plans**](#tag/Plans/operation/ListPlans).
+      required:
+        - plans
+      properties:
+        plans:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/UUID'
+    OfferingProductAttach:
+      description: A list of product IDs to attach to the offering. See [**List Products**](#tag/Products/operation/ListProducts).
+      required:
+        - products
+      properties:
+        products:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/UUID'
+    OfferingProductReplace:
+      description: A list of product IDs to replace on the offering. See [**List Products**](#tag/Products/operation/ListProducts).
+      required:
+        - products
+      properties:
+        products:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/UUID'
+    OfferingUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionOfferingType'
+        attributes:
+          $ref: '#/components/schemas/OfferingUpdateAttributes'
+    OfferingResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/OfferingAttributes'
+        - $ref: '#/components/schemas/Timestamps'
+    OfferingAttributes:
+      required:
+        - name
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        name:
+          type: string
+          description: The name of the offering.
+          minLength: 3
+          maxLength: 1024
+          example: Magazine
+        description:
+          type: string
+          description: The offering description to display to customers.
+          maxLength: 1024
+          example: A lovely magazine that is published every month.
+    OfferingUpdateAttributes:
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRefUpdate'
+        name:
+          type: string
+          description: The name of the offering.
+          minLength: 3
+          maxLength: 1024
+          example: Magazine
+        description:
+          type: string
+          description: The offering description to display to customers.
+          maxLength: 1024
+          example: A lovely magazine that is published every month.
+          nullable: true
+    BuildSubscription:
+      required:
+        - account_id
+        - offering_id
+        - plan_id
+        - currency
+        - name
+        - email
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        account_id:
+          $ref: '#/components/schemas/UUID'
+        offering_id:
+          $ref: '#/components/schemas/UUID'
+        plan_id:
+          $ref: '#/components/schemas/UUID'
+        currency:
+          $ref: '#/components/schemas/CurrencyIdentifier'
+        payment_authority:
+          $ref: '#/components/schemas/PaymentAuthority'
+        name:
+          type: string
+          minLength: 3
+          maxLength: 1024
+          example: Albert Einstein
+        email:
+          type: string
+          minLength: 3
+          maxLength: 1024
+          example: albert@elasticpath.com
+        meta:
+          $ref: '#/components/schemas/SubscriptionMeta'
+    Subscription:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionAttributes'
+        relationships:
+          $ref: '#/components/schemas/Relationships'
+        meta:
+          $ref: '#/components/schemas/SubscriptionMeta'
+    SubscriptionMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+        - status
+        - canceled
+        - paused
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/SubscriptionTimestamps'
+        status:
+          $ref: '#/components/schemas/Status'
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        canceled:
+          $ref: '#/components/schemas/Canceled'
+        paused:
+          $ref: '#/components/schemas/Paused'
+    SubscriptionTimestamps:
+      allOf:
+        - $ref: '#/components/schemas/Timestamps'
+        - properties:
+            canceled_at:
+              description: The date and time a subscription was cancelled.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+            paused_at:
+              description: The date and time a subscription was paused.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+            resumed_at:
+              description: The date and time a subscription was resumed.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+    SubscriptionAttributes:
+      required:
+        - account_id
+        - offering
+        - plan_id
+        - currency
+        - name
+        - email
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        account_id:
+          $ref: '#/components/schemas/UUID'
+        offering:
+          $ref: '#/components/schemas/Offering'
+        plan_id:
+          $ref: '#/components/schemas/UUID'
+        currency:
+          $ref: '#/components/schemas/CurrencyIdentifier'
+        updated_at:
+          description: The date and time a subscription was updated.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+        created_at:
+          description: The date and time a subscription was created.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+    ChangeState:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionStateType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionStateAttributes'
+    SubscriptionStateAttributes:
+      required:
+        - action
+      properties:
+        action:
+          $ref: '#/components/schemas/SubscriptionStateAction'
+    SubscriptionStateType:
+      type: string
+      description: This represents the type of resource object being returned. Always `subscription_state`.
+      example: subscription_state
+      enum:
+        - subscription_state
+      default: subscription_state
+    SubscriptionStateAction:
+      type: string
+      description: |
+        The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product.
+
+        A subscription can have the following states:
+
+        - canceled
+        - paused
+        - resumed
+
+        See [**Managing the subscription lifecycle**](#managing-the-subscription-lifecycle).
+      example: cancel
+      enum:
+        - cancel
+        - pause
+        - resume
+      x-go-type: model.SubscriptionActionType
+      x-go-type-import:
+        name: model
+        path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+    StateMeta:
+      readOnly: true
+      required:
+        - created_at
+      properties:
+        created_at:
+          description: The date and time a resource was created.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+    SubscriptionState:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionStateType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionStateAttributes'
+        meta:
+          $ref: '#/components/schemas/StateMeta'
+    PaymentAuthority:
+      discriminator:
+        propertyName: type
+        mapping:
+          elastic_path_payments_stripe: '#/components/schemas/PaymentAuthorityEpPayments'
+      oneOf:
+        - $ref: '#/components/schemas/PaymentAuthorityEpPayments'
+    PaymentAuthorityEpPayments:
+      required:
+        - type
+        - customer_id
+        - card_id
+      properties:
+        type:
+          description: The name of the payment gateway facilitating the secure transmission of payment data. Always `elastic_path_payments_stripe`.
+          type: string
+          example: elastic_path_payments_stripe
+          enum:
+            - elastic_path_payments_stripe
+        customer_id:
+          description: The unique identifier for a customer.
+          type: string
+          maxLength: 1024
+          example: cus_OPfKlxWV3hp9h6
+        card_id:
+          description: The unique identifier of the card used to facilitate payment of the subscription.
+          type: string
+          maxLength: 1024
+          example: card_8Diw3FQPhxK27WADPVMeXieP
+    Job:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionJobType'
+        attributes:
+          $ref: '#/components/schemas/JobResponseAttributes'
+        relationships:
+          $ref: '#/components/schemas/Relationships'
+        meta:
+          $ref: '#/components/schemas/JobMeta'
+    JobMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/JobTimestamps'
+    JobTimestamps:
+      allOf:
+        - $ref: '#/components/schemas/Timestamps'
+        - properties:
+            started_at:
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+            finished_at:
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+    JobCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionJobType'
+        attributes:
+          $ref: '#/components/schemas/JobCreateAttributes'
+    JobResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/JobCreateAttributes'
+        - $ref: '#/components/schemas/JobAttributes'
+        - $ref: '#/components/schemas/Timestamps'
+    JobType:
+      type: string
+      description: |
+        The type of job. One of the following:
+         - `billing_run` - a billing run job.
+         - `payment_run` - a payment run job.
+         - `tax_run` - a tax run job.
+      enum:
+        - billing-run
+        - tax-run
+        - payment-run
+      example: billing-run
+      x-go-type: model.JobType
+      x-go-type-import:
+        name: model
+        path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+    JobCreateAttributes:
+      required:
+        - job_type
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        job_type:
+          $ref: '#/components/schemas/JobType'
+        taxes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/InvoiceTaxItems'
+    JobAttributes:
+      required:
+        - status
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        status:
+          type: string
+          description: The status of job.
+          enum:
+            - pending
+            - started
+            - success
+            - failed
+          example: pending
+          x-go-type: model.JobStatus
+          x-go-type-import:
+            name: model
+            path: gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model
+    InvoiceTaxItems:
+      required:
+        - invoice_id
+        - tax_items
+      properties:
+        invoice_id:
+          $ref: '#/components/schemas/UUID'
+        tax_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxItem'
+    TaxItem:
+      required:
+        - type
+        - rate
+      properties:
+        type:
+          description: This represents the type of resource object being returned. Always `tax_item`.
+          type: string
+          enum:
+            - tax_item
+          example: tax_item
+        name:
+          description: The name that appears on your customer's invoice and usually describes the specific type of tax, for example, `Sales`, `VAT` or `GST`.
+          type: string
+          maxLength: 1024
+          example: GST
+        code:
+          description: The unique identifier assigned to goods and services for taxation purposes.
+          type: string
+          maxLength: 1024
+          example: 20.0 % S
+        rate:
+          description: The tax rate is the percentage of the subscription amount that is required to be paid as tax.
+          type: number
+          format: double
+          example: 0.2
+        jurisdiction:
+          description: The geographic area or political entity that has authority to levy and collect taxes.
+          type: string
+          maxLength: 1024
+          example: USA
+    SubscriptionInvoice:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionInvoiceType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionInvoiceAttributes'
+        meta:
+          $ref: '#/components/schemas/SubscriptionInvoiceMeta'
+    SubscriptionInvoicePayment:
+      required:
+        - id
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionInvoicePaymentType'
+        attributes:
+          $ref: '#/components/schemas/SubscriptionInvoicePaymentAttributes'
+        meta:
+          $ref: '#/components/schemas/SubscriptionInvoicePaymentMeta'
+    SubscriptionInvoiceMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        subscription_id:
+          $ref: '#/components/schemas/UUID'
+        subscriber_id:
+          $ref: '#/components/schemas/UUID'
+        price:
+          $ref: '#/components/schemas/SingleCurrencyPrice'
+        timestamps:
+          $ref: '#/components/schemas/InvoiceTimestamps'
+    InvoiceTimestamps:
+      allOf:
+        - $ref: '#/components/schemas/Timestamps'
+        - properties:
+            taxes_added_at:
+              description: The date and time taxes were added to an invoice.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+    SubscriptionInvoicePaymentMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+        - invoice_id
+        - subscription_id
+        - job_id
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        subscription_id:
+          $ref: '#/components/schemas/UUID'
+        invoice_id:
+          $ref: '#/components/schemas/UUID'
+        job_id:
+          $ref: '#/components/schemas/UUID'
+        timestamps:
+          $ref: '#/components/schemas/InvoicePaymentTimestamps'
+    InvoicePaymentTimestamps:
+      allOf:
+        - $ref: '#/components/schemas/Timestamps'
+        - properties:
+            payment_taken_at:
+              description: The date and time a payment was taken.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+    SubscriptionInvoiceAttributes:
+      required:
+        - billing_period
+        - invoice_items
+        - outstanding
+        - tax_required
+      properties:
+        billing_period:
+          $ref: '#/components/schemas/TimePeriod'
+        invoice_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionInvoiceItem'
+        tax_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxItem'
+        outstanding:
+          type: boolean
+          description: The invoice still requires payment if `true`.
+          example: true
+        number:
+          type: integer
+          description: A sequential number assigned by the billing run.
+          example: 1
+        tax_required:
+          type: boolean
+          description: Whether tax is required for this invoice.
+          example: true
+        updated_at:
+          description: The date and time an invoice was updated.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+        created_at:
+          description: The date and time an invoice was created.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+    SubscriptionInvoicePaymentAttributes:
+      required:
+        - success
+        - amount
+        - gateway
+      properties:
+        success:
+          type: boolean
+          example: true
+          description: Whether the payment was successful.
+        gateway:
+          type: string
+          maxLength: 1024
+          example: stripe
+          description: Specifies the payment gateway. You must use `elastic_path_payments_stripe` as the required gateway.
+        external_payment_id:
+          type: string
+          maxLength: 1024
+          example: 33e7ec6b-8b34-4c92-a95b-2e2647922e47
+          description: An optional external ID that is specific to the gateway used.
+        failure_detail:
+          $ref: '#/components/schemas/PaymentFailureDetail'
+        amount:
+          $ref: '#/components/schemas/SingleCurrencyPrice'
+    PaymentFailureDetail:
+      type: object
+      description: The reason the payment failed.
+      properties:
+        reason:
+          type: string
+          example: Card Failure
+    SubscriptionInvoiceItem:
+      required:
+        - description
+        - price
+      properties:
+        description:
+          type: string
+          description: A description of the subscribed item.
+          example: Magazine issue
+        price:
+          $ref: '#/components/schemas/SingleCurrencyPrice'
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      required:
+        - status
+        - title
+      properties:
+        status:
+          type: string
+          description: The HTTP response code of the error.
+          example: 500
+        title:
+          type: string
+          description: A brief summary of the error.
+          example: Internal server error
+        detail:
+          type: string
+          description: Optional additional detail about the error.
+          example: An internal error has occurred.
+        meta:
+          type: object
+          description: Additional supporting meta data for the error.
+          example:
+            missing_ids:
+              - e7d50bd5-1833-43c0-9848-f9d325b08be8
+    CurrencyIdentifier:
+      type: string
+      description: The three-letter [**ISO currency code**](https://www.iso.org/iso-4217-currency-codes.html) in uppercase.
+      maxLength: 1024
+      example: USD
+    UUID:
+      type: string
+      description: The unique identifier.
+      x-go-type: uuid.UUID
+      x-go-type-import:
+        name: uuid
+        path: github.com/google/uuid
+      example: 00000000-0000-0000-0000-000000000000
+    OwnerMeta:
+      readOnly: true
+      type: string
+      format: string
+      description: The owner of a resource, either `store` or `organization`.
+      example: store
+    OfferingProductExternalRefMeta:
+      readOnly: true
+      type: string
+      format: string
+      description: The offerings product external_ref value
+      example: 97dddc65-eabd-45d8-b45b-2ece5cfc8c50
+    Subscriber:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionSubscriberType'
+        attributes:
+          $ref: '#/components/schemas/SubscriberResponseAttributes'
+        meta:
+          $ref: '#/components/schemas/SubscriberMeta'
+    SubscriberMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    SubscriptionSubscriberType:
+      type: string
+      example: subscription_subscriber
+      enum:
+        - subscription_subscriber
+      default: subscription_subscriber
+    SubscriberResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/SubscriberAttributes'
+        - $ref: '#/components/schemas/Timestamps'
+    SubscriberAttributes:
+      required:
+        - name
+        - email
+        - account_id
+      properties:
+        account_id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          type: string
+          description: The name of the subscriber.
+          minLength: 3
+          maxLength: 1024
+          example: John Doe
+        email:
+          type: string
+          format: email
+          description: The email of the subscriber.
+          minLength: 3
+          maxLength: 1024
+          example: john.doe@example.com
+          x-go-type: types.Email
+          x-go-type-import:
+            name: email
+            path: github.com/oapi-codegen/runtime/types
+    SubscriberUpdateAttributes:
+      properties:
+        name:
+          type: string
+          description: The name of the subscriber.
+          minLength: 3
+          maxLength: 1024
+          example: John Doe
+        email:
+          type: string
+          format: email
+          description: The email of the subscriber.
+          minLength: 3
+          maxLength: 1024
+          example: john.doe@example.com
+          x-go-type: types.Email
+          x-go-type-import:
+            name: email
+            path: github.com/oapi-codegen/runtime/types
+    SubscriberCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionSubscriberType'
+        attributes:
+          $ref: '#/components/schemas/SubscriberAttributes'
+    SubscriberUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionSubscriberType'
+        attributes:
+          $ref: '#/components/schemas/SubscriberUpdateAttributes'
+    ScheduleCreate:
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          $ref: '#/components/schemas/SubscriptionScheduleType'
+        attributes:
+          $ref: '#/components/schemas/ScheduleAttributes'
+    Schedule:
+      required:
+        - type
+        - attributes
+        - meta
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionScheduleType'
+        attributes:
+          $ref: '#/components/schemas/ScheduleResponseAttributes'
+        meta:
+          $ref: '#/components/schemas/ScheduleMeta'
+    ScheduleMeta:
+      readOnly: true
+      required:
+        - owner
+        - timestamps
+      properties:
+        scheduled_for:
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        owner:
+          $ref: '#/components/schemas/OwnerMeta'
+        timestamps:
+          $ref: '#/components/schemas/Timestamps'
+    SubscriptionScheduleType:
+      type: string
+      example: subscription_schedule
+      enum:
+        - subscription_schedule
+      default: subscription_schedule
+    ScheduleResponseAttributes:
+      allOf:
+        - $ref: '#/components/schemas/ScheduleAttributes'
+        - $ref: '#/components/schemas/Timestamps'
+    ScheduleAttributes:
+      required:
+        - specification
+        - location
+        - job
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRef'
+        name:
+          type: string
+          description: The name of the schedule.
+          minLength: 3
+          maxLength: 1024
+          example: Daily billing run.
+        specification:
+          type: string
+          description: A cron-style specification of when the jobs should be created. See [**Schedules**](#tag/Schedules).
+          maxLength: 1024
+          example: 30 0 * * *
+        location:
+          type: string
+          description: The location of the time zone that the schedule operates in. Subscriptions runs on Coordinated Universal Time (UTC) time and conforms to [**RFC 3339**](https://www.rfc-editor.org/rfc/rfc3339).
+          maxLength: 1024
+          example: Europe/London
+        job:
+          $ref: '#/components/schemas/ScheduleJob'
+    ScheduleUpdateAttributes:
+      properties:
+        external_ref:
+          $ref: '#/components/schemas/ExternalRefUpdate'
+        name:
+          type: string
+          description: The name of the schedule.
+          minLength: 3
+          maxLength: 1024
+          example: Daily billing run.
+          nullable: true
+        specification:
+          type: string
+          description: A cron-style specification of when the jobs should be created.
+          maxLength: 1024
+          example: 30 0 * * *
+        location:
+          type: string
+          description: The location of the time zone that the schedule operates in.
+          maxLength: 1024
+          example: Europe/London
+        job:
+          $ref: '#/components/schemas/ScheduleJob'
+    ScheduleJob:
+      required:
+        - job_type
+      properties:
+        job_type:
+          $ref: '#/components/schemas/JobType'
+    ScheduleUpdate:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionScheduleType'
+        attributes:
+          $ref: '#/components/schemas/ScheduleUpdateAttributes'
