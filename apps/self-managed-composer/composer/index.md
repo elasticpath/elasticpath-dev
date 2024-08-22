@@ -4,7 +4,7 @@ nav_label: Composer
 sidebar_position: 1
 ---
 
-Composer is a vertical-specific commerce intelligence IPaaS for Self Managed Customers. 
+Composer is a vertical-specific commerce intelligence IPaaS. 
 
 With Composer, you can:
 
