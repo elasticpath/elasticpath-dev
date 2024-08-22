@@ -255,9 +255,10 @@ tags:
 
       | Object | Attributes |
       | --- | --- |
-      | A product object | The attributes you specify for a product object are the attributes you specify when you [creating a product](/docs/api/subscriptions/create-product). |
-      | A plan object | The attributes you specify for a product object are the attributes you specify when you [creating a plan](/docs/api/subscriptions/create-plan). | 
-      | A subscriber object | The attributes you specify for a product object are the attributes you specify when you [creating a subscriber](/docs/api/subscriptions/create-subscriber). |
+      | A product object | The attributes you specify for a product object are the attributes you specify when [creating a product](/docs/api/subscriptions/create-product). |
+      | A plan object | The attributes you specify for a product object are the attributes you specify when [creating a plan](/docs/api/subscriptions/create-plan). | 
+      | A subscriber object | The attributes you specify for a product object are the attributes you specify when [creating a subscriber](/docs/api/subscriptions/create-subscriber). |
+      | An offering object | The attributes you specify for an offering object are the attributes you specify when [building an offering](/docs/api/subscriptions/build-offering). |
   - name: Schedules
     description: |
       You can schedule your billing, tax, and payment runs. By scheduling billing, tax, and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner.  You can define a schedule in the format (`* * * * *`) which is a set of five fields in a line, indicating when a job should be executed. For example, you can define a schedule so that your job runs multiple times a day, or runs on specific days and months.
@@ -369,7 +370,7 @@ tags:
 
       Subscriptions always rounds down to the penny. 
 
-       ### Tax
+      ### Tax
 
       Subscriptions allows you to apply any number of tax rates to your invoices and subscriptions. When applying a tax rate, you must specify:
 
@@ -415,6 +416,10 @@ tags:
       | `method` | Required | Must be `purchase`.
       | `payment` | Required | The type of payment, for example, `pm_card_visa_debit`.
       | `options` | Required | These options must be set as they set up the card to be used in future without the customer being present. If these options are not set, future payments may fail. There are two options. <ul><li>`off_session`. Must be set to `true`. </li><li>`confirm`. Must be set to `true`.</li></ul> |
+
+      #### Card declines
+
+      Card payments can fail for a variety of reasons, including insufficient funds, incorrect card data or fraudulent activity. You can use the `card_id` and `customer_id` attributes to program your front-end implementation to allow your preferred payment service provider to update a subscription with new card details, enabling you to easily manage your subscription changes.
   - name: Dunning Rules
     description: |
 
@@ -1498,6 +1503,22 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '403':
           $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Subscriptions
+      summary: Delete a subscription
+      operationId: DeleteSubscription
+      description: |
+        Deletes a subscription
+      responses:
+        '204':
+          description: Success. The subscription is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
         '500':
@@ -2730,9 +2751,9 @@ paths:
       summary: Update proration policy
       description: |
         You can update a proration policy at any time. For any subscriptions that are using the updated proration policy, the changes are also applied. Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the proration policy is not updated.
-         
+
         When updating proration policies:
-         
+
         - You can change the name of an existing policy.
         - You can update `rounding`.
         - You can update `external_ref` as long as `external_ref` is still unique in  your store.
@@ -3616,7 +3637,7 @@ components:
           type: string
           description: |
             When rounding in proration, you must decide how to round the units of time used to calculate the charges.
-             
+
             - round up to the next unit, ensuring subscribers are charged slightly more to cover any partial use.
             - round down to the previous whole unit, providing subscribers with a slight benefit by not charging for partial use.
             - round to the nearest whole unit, whether up or down, based on standard rounding rules. For example, rounding 0.5 up and rounding 0.5 down.
@@ -3894,18 +3915,22 @@ components:
           example: A lovely magazine that is published every month.
         products:
           type: array
-          description: Either IDs of existing products to be attached to the plan or product information to be created directly within the plan
+          description: Either references of existing products to be attached to the offering or product information to be created directly within the offering
           minItems: 1
           items:
             anyOf:
-              - $ref: '#/components/schemas/UUID'
+              - $ref: '#/components/schemas/ExternalRef'
               - $ref: '#/components/schemas/ProductAttributes'
+              - $ref: '#/components/schemas/UUID'
         plans:
           type: array
-          description: The IDs of the plans to attach to the offering.
+          description: Either references of existing plans to be attached to the offering or plan information to be created directly within the offering
           minItems: 1
           items:
-            $ref: '#/components/schemas/UUID'
+            anyOf:
+              - $ref: '#/components/schemas/ExternalRef'
+              - $ref: '#/components/schemas/PlanAttributes'
+              - $ref: '#/components/schemas/UUID'
     Offering:
       required:
         - type
@@ -4118,10 +4143,13 @@ components:
         - currency
         - name
         - email
+        - manual_payments
       properties:
         external_ref:
           $ref: '#/components/schemas/ExternalRef'
         account_id:
+          $ref: '#/components/schemas/UUID'
+        address_id:
           $ref: '#/components/schemas/UUID'
         offering_id:
           $ref: '#/components/schemas/UUID'
@@ -4131,6 +4159,8 @@ components:
           $ref: '#/components/schemas/CurrencyIdentifier'
         payment_authority:
           $ref: '#/components/schemas/PaymentAuthority'
+        manual_payments:
+          $ref: '#/components/schemas/ManualPayments'
         name:
           type: string
           minLength: 3
@@ -4142,6 +4172,10 @@ components:
           minLength: 3
           maxLength: 1024
           example: albert@elasticpath.com
+        pending:
+          type: boolean
+          description: Whether a subscription is pending activation or not.
+          example: false
         offering:
           $ref: '#/components/schemas/OfferingAttributes'
         products:
@@ -4224,8 +4258,22 @@ components:
             name: uuid
             path: github.com/google/uuid
           example: 00000000-0000-0000-0000-000000000001
+        address_id:
+          type: string
+          format: UUID
+          nullable: true
+          x-go-type: uuid.UUID
+          x-go-type-import:
+            name: uuid
+            path: github.com/google/uuid
+          example: 00000000-0000-0000-0000-000000000001
         payment_authority:
           $ref: '#/components/schemas/PaymentAuthority'
+        go_live_after:
+          description: The date and time a subscription will go live and become active.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+          nullable: true
     SubscriptionIncludes:
       readOnly: true
       properties:
@@ -4246,8 +4294,10 @@ components:
         - canceled
         - paused
         - closed
+        - pending
         - suspended
         - invoice_after
+        - manual_payments
       properties:
         owner:
           $ref: '#/components/schemas/OwnerMeta'
@@ -4257,6 +4307,8 @@ components:
           $ref: '#/components/schemas/Status'
         state:
           $ref: '#/components/schemas/SubscriptionState'
+        manual_payments:
+          $ref: '#/components/schemas/ManualPayments'
         canceled:
           type: boolean
           description: Whether a subscription is canceled or not.
@@ -4272,6 +4324,10 @@ components:
         suspended:
           type: boolean
           description: Whether a subscription is suspended or not.
+          example: false
+        pending:
+          type: boolean
+          description: Whether a subscription is pending activation or not.
           example: false
         invoice_after:
           description: The time when the subscription becomes eligible for a new invoice. The next invoice will be generated at the next billing run after this point.
@@ -4297,6 +4353,14 @@ components:
               description: The date and time a subscription will end.
               type: string
               example: '2017-01-10T11:41:19.244842Z'
+            go_live_after:
+              description: The date and time a subscription will go live and become active.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+            go_live:
+              description: The date and time a subscription was released from the pending state and made active.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
     SubscriptionAttributes:
       required:
         - account_id
@@ -4305,11 +4369,12 @@ components:
         - currency
         - name
         - email
-        - payment_authority
       properties:
         external_ref:
           $ref: '#/components/schemas/ExternalRef'
         account_id:
+          $ref: '#/components/schemas/UUID'
+        address_id:
           $ref: '#/components/schemas/UUID'
         offering:
           $ref: '#/components/schemas/Offering'
@@ -4353,6 +4418,7 @@ components:
         - cancel
         - pause
         - resume
+        - pending
       x-go-type: model.SubscriptionAction
       x-go-type-import:
         name: model
@@ -4380,6 +4446,11 @@ components:
           $ref: '#/components/schemas/SubscriptionStateAttributes'
         meta:
           $ref: '#/components/schemas/StateMeta'
+    ManualPayments:
+      type: boolean
+      example: false
+      default: false
+      description: When configured to true, no payment gateway will be used and a pending payment will be created.
     PaymentAuthority:
       oneOf:
         - $ref: '#/components/schemas/PaymentAuthorityStripe'
@@ -4438,7 +4509,7 @@ components:
           maxLength: 1024
           example: cus_OPfKlxWV3hp9h6
         card_id:
-          description: The unique identifier of the card used to facilitate payment of the subscription.
+          description: The unique identifier of the card used to facilitate payment of the subscription. If a card payment fails, you can use the `card_id` and `customer_id` attributes to program your front-end implementation to allow your preferred payment service provider to update a subscription with new card details. See [Card declines](/docs/api/subscriptions/invoices#card-declines).
           type: string
           minLength: 3
           maxLength: 1024
@@ -4516,10 +4587,15 @@ components:
               description: The total number of subscribers uploaded.
               type: integer
               example: 50000
+            subscription_offering:
+              description: The total number of offerings uploaded.
+              type: integer
+              example: 50000
           required:
             - subscription_product
             - subscription_plan
             - subscription_subscriber
+            - subscription_offering
         imported:
           properties:
             subscription_product:
@@ -4534,10 +4610,15 @@ components:
               description: The total number of subscribers imported.
               type: integer
               example: 45090
+            subscription_offering:
+              description: The total number of offerings imported.
+              type: integer
+              example: 45090
           required:
             - subscription_product
             - subscription_plan
             - subscription_subscriber
+            - subscription_offering
     Job:
       required:
         - type
@@ -4843,6 +4924,7 @@ components:
         - invoice_id
         - subscription_id
         - job_id
+        - manual_payment
       properties:
         owner:
           $ref: '#/components/schemas/OwnerMeta'
@@ -4854,6 +4936,10 @@ components:
           $ref: '#/components/schemas/UUID'
         timestamps:
           $ref: '#/components/schemas/InvoicePaymentTimestamps'
+        manual_payment:
+          type: boolean
+          example: false
+          description: Whether manual payments are enabled or the payment will be handled by the configured gateway.
     InvoicePaymentTimestamps:
       allOf:
         - $ref: '#/components/schemas/Timestamps'
