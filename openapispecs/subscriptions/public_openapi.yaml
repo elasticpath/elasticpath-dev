@@ -434,7 +434,13 @@ tags:
       - close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment. 
   - name: Proration Policies
     description: |
-      Proration is the adjustment of charges or credits on a subscriber's account based on the amount of time a service is used. Proration ensures that subscribers are only charged for the actual time they use the service, whether they upgrade, downgrade, start, or cancel their subscription partway through a billing cycle. This means fair billing for your subscribers and provides you with the flexibility to change your subscribers subscriptions at any time.
+      Proration is the adjustment of charges or credits on a subscriber's account based on the amount of time a service is used. Proration ensures that subscribers are only charged for the actual time they use the service, whether they upgrade, downgrade, start, or cancel their subscription partway through a billing cycle. This means fair billing for your subscribers and provides you with the flexibility to change your subscribers subscriptions at any time. 
+
+      ::: note
+
+      Subscriptions use client credentials to enable changes to subscriptions, so if you want your shoppers to have the ability to make changes, you can implement a BFF layer using this approach.
+
+      :::
 
       Proration occurs for:
 
