@@ -142,8 +142,8 @@ const resourceDOCS = fs.readFileSync(
 const config = {
   title: "Elastic Path Documentation",
   tagline: "API, Commerce Manager, Guides and Documentation 🚀",
-  url: "https://stover.io",
-  baseUrl: "/self-managed/composer/",
+  url: "https://elasticpath.dev",
+  baseUrl: "/composer/",
   favicon: "/favicon.ico",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -162,7 +162,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebar-composer.js"),
-          path: "self-managed/composer",
+          path: "composer",
           routeBasePath: "/",
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
           exclude: [
