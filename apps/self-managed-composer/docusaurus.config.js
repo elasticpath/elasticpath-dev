@@ -143,7 +143,7 @@ const config = {
   title: "Elastic Path Documentation",
   tagline: "API, Commerce Manager, Guides and Documentation 🚀",
   url: "https://elasticpath.dev",
-  baseUrl: "/self-managed/composer/",
+  baseUrl: "/",
   favicon: "/favicon.ico",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
