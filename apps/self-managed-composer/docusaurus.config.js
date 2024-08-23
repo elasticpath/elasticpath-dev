@@ -143,7 +143,7 @@ const config = {
   title: "Elastic Path Documentation",
   tagline: "API, Commerce Manager, Guides and Documentation 🚀",
   url: "https://elasticpath.dev",
-  baseUrl: "/composer/",
+  baseUrl: "/self-managed/composer/",
   favicon: "/favicon.ico",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -162,7 +162,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebar-composer.js"),
-          path: "composer",
+          path: "self-managed/composer",
           routeBasePath: "/",
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
           exclude: [
