@@ -4,8 +4,6 @@ nav_label: Secure Webhook Endpoints with HMAC
 sidebar_position: 18
 ---
 
-When it comes to transferring data via integrations, security is a top concern. To secure data being passed via webhooks [for event-driven integrations](/self-managed/composer/builder/best-practices/common-integration-patterns#event-driven-integrations), you have a few options, including API keys, your own authorization headers, or HMAC. 
-
 We recommends using HMAC because it's about the the simplest (and stoutest) approach you could use. It doesn't require that your team learn a new language or gain an advanced understanding of encryption, but it does an excellent job of protecting the integrity of your data at the point of transfer.
 
 ## What is HMAC?
