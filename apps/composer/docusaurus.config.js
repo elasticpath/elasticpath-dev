@@ -142,7 +142,7 @@ const resourceDOCS = fs.readFileSync(
 const config = {
   title: "Elastic Path Documentation",
   tagline: "API, Commerce Manager, Guides and Documentation 🚀",
-  url: "https://stover.io",
+  url: "https://elasticpath.dev",
   baseUrl: "/composer/",
   favicon: "/favicon.ico",
   onBrokenLinks: "warn",
