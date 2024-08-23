@@ -30,4 +30,3 @@ Ideally (to make maintenance sane), you'll want to keep consumers on newer versi
 
 If you know for certain that you want all your consumers to be updated to the current version, you can click "Update all Instances" in the version drawer.
 
-Only one version of a given integration can be made available in the [Integrations Hub](/self-managed/composer/integration-hub/integrations-hub), but that's not automatically updated (since nothing is automatically updated) when a new version is created. You can have your team deploy a new version of an integration internally for testing, but only allow your consumers to update their instances via the marketplace when that QA is complete.

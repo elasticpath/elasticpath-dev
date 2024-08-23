@@ -22,7 +22,6 @@ For example, if you have a third-party service (Acme ERP) that sends data via a 
 Each flow has its own trigger, though they all share config variables.
 
 When an integration is completed, it can be [published](#publishing-an-integration).
-You can then enable the integration through the [Integration Hub](/self-managed/composer/integration-hub/integrations-hub).
 
 We recommend that you follow our [Getting Started](/self-managed/composer/builder/getting-started/build-first-integration) tutorials to first acquaint yourself with integration development and deployment.
 
@@ -67,7 +66,6 @@ You can choose if the template is just for org users.
 
 ## Assigning an icon to an integration
 
-Integrations can be assigned icons, to make them more presentable in the [Integration Hub](/self-managed/composer/integration-hub/integrations-hub).
 To assign an icon to an integration from the integration designer by clicking the icon to the left of your integration's name:
 
 ![Add icon to integration](/assets/add-icon.png)
@@ -107,7 +105,6 @@ You can search for specific integrations by name by typing a part of the name in
 
 Integrations can be assigned a "category" for easy sorting and filtering.
 For example, you might have a dozen "ERP" integrations, a few "Inventory Management" integrations, etc.
-Assigning each integration a category allows your team, as well as your customers in the [Integration Hub](/self-managed/composer/integration-hub/integrations-hub) to view integrations sorted by category.
 
 You can set a category for an integration by clicking the **DETAILS** dropdown button on the top-left of the integration designer:
 
@@ -128,8 +125,6 @@ Integration versions can be marked **Available** or **Unavailable** by toggling 
 ## Deploying an integration
 
 Once an integration has been [published](#publishing-an-integration), an instance of the integration can be configured and deployed to a customer.
-
-You can also enable your customers to deploy integrations themselves, using [Integration Hub](/self-managed/composer/integration-hub/integrations-hub).
 
 ## Viewing deployed integrations
 
