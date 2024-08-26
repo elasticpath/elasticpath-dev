@@ -1,7 +1,7 @@
 ---
 title: 'Usages for Promotions Builder'
 date: '2024-08-26'
-tags: ['Product Experience Manager']
+tags: ['Promotions Builder']
 hide_blog_post_date: false
 ---
 
