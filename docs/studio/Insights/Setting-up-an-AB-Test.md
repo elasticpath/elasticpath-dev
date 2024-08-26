@@ -4,7 +4,7 @@ nav_label: Setting up A/B Test
 sidebar_position: 30
 ---
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Nggeia2YJp8" title="Setting up First A/B Test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe class="vidyard_iframe" title="Using Smart Links & Anchor Tags for seamless shopping experiences" src="//play.vidyard.com/M5bLPb34e3SSYP6Mgssunx.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 Through Studio, you're able to run full A/B tests for the components that make up your webpages; in fact the process is
 very simple.
@@ -82,10 +82,6 @@ As an example, the below image shows the goal from a previous A/B Test is now an
 
    By default, this setting is set to 50% for both options. For most people, this is going to be the recommended
    setting.
-
-   *Don't just take it from us, Thanos feels the same way:*
-
-   ![perfectly_balanced.jpg](/assets/studio/perfectly_balanced.jpg)
 
 2. Next, you'll need to define when you feel comfortable letting Studio *auto-determine* the winner of a test. This is
    done by selecting a minimum **Result Certainty** percentage which is what we use to make that determination. In other

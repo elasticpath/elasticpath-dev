@@ -6,4 +6,4 @@ hide_blog_post_date: false
 ---
 **MINOR** We have added the capability to configure the storage of null values in Custom API Entries. For more information, see **[Null Values](/docs/api/commerce-extensions/custom-fields#null-values)**.
 
-**MINOR** On October 18, 2022, we notified customers that the **bundle\_configuration** object was misspelled as **bundle\_configuation** in the cart, cart items, and order items, and has been deprecated. We recommend using **bundle\_configuration** to create bundle configurations.
+**MINOR** On October 18, 2022, we notified customers that the **bundle_configuration** object was misspelled as **bundle_configuation** in the cart, cart items, and order items, and has been deprecated. We recommend using **bundle_configuration** to create bundle configurations.
