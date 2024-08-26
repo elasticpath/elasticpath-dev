@@ -161,8 +161,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebar-composer.js"),
-          path: "self-managed/composer",
+          sidebarPath: require.resolve("./sidebars.js"),
+          path: "docs",
           routeBasePath: "/",
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
           exclude: [
