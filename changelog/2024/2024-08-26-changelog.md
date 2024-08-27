@@ -1,5 +1,5 @@
 ---
-title: 'Usages for Promotions Builder'
+title: 'Added Usages for Promotions Builder, Exclusions feature in Promotions Builder '
 date: '2024-08-26'
 tags: ['Promotions Builder']
 hide_blog_post_date: false
@@ -13,4 +13,4 @@ hide_blog_post_date: false
 
 For more information see [Promotion Usages](/docs/promotions-builder/overview#promotion-usages).
 
-**MAJOR** We have introduced **Exclusions feature** in Promotions Builder in Commerce Manager.
+**MAJOR** We have introduced a new **Exclusion feature** in Promotions Builder within Commerce Manager. This feature allows you to exclude specific products, categories, or attributes from promotions, providing more flexibility in setting up promotion rules. With this feature, you can ensures certain items can be excluded from discounts or promotional conditions. For more information on setting up a new promotion with exclusions, see [Creating a Promotion in Promotions Builder](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder).
