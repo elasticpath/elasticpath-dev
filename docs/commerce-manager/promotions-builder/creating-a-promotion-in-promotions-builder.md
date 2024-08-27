@@ -68,7 +68,7 @@ In the **Create your rules** section, do the following:
 1. Select **Done** to apply the condition.
 
 :::note
-You can exclude cart items only if you selected **node/hierarchy (category)** while specifying the type of cart items you want to apply to the condition.
+You can exclude cart items only if you selected **node/hierarchy (category)** or **attribute** while specifying the type of cart items you want to apply to the condition.
 :::
 
 ### Adding Cart Custom Attributes
@@ -168,7 +168,7 @@ To create a BXGY promotion, do the following:
 1. Select **Done** to apply the changes.
 
 :::note
-You can exclude items from promotion only if you selected **node/hierarchy (category)** while specifying the type of cart items.
+You can exclude items from promotion only if you selected **node/hierarchy (category)** or **attribute** while specifying the type of cart items.
 :::
 
 ## Searching for Products

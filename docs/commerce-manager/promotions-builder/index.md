@@ -131,11 +131,11 @@ Let's say you want to create a promotion where certain products are excluded fro
 
 To set this up in the Promotions Builder:
 
-1. **Set a Condition**: Create a condition that excludes specific products, categories, or products with certain attributes from making the promotion eligible for a discount. For example, you might exclude products with the "Platinum Metal Type" attribute.
+1. **Set a Condition**: Create a condition that excludes specific products, categories, or products with certain attributes from making the promotion eligible for a discount. For example, you might exclude products with the "Platinum Metal Type" attribute. To do this, see [Creating a Cart Items Condition](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-cart-items-condition).
 
 ![Scenario 7](/assets/promotion-example-scenario-7-1.png)
 
-2. **Set an Action**: Configure the promotion to apply a discount to eligible items that are not excluded. For instance, apply a 20% discount to eligible products in the "Fashion Rings Jewellery" category, but exclude products like the "Platinum Flower Ring" or those with the "Platinum Metal Type" attribute.
+2. **Set an Action**: Configure the promotion to apply a discount to eligible items that are not excluded. For instance, apply a 20% discount to eligible products in the "Fashion Rings Jewellery" category, but exclude products like the "Platinum Flower Ring" or those with the "Platinum Metal Type" attribute. To do this, see [Creating a BXGY Promotion](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion).
 
 ![Scenario 7](/assets/promotion-example-scenario-7-2.png)
 

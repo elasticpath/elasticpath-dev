@@ -12,3 +12,5 @@ hide_blog_post_date: false
 - Anonymize customer email addresses associated with promotion usages. 
 
 For more information see [Promotion Usages](/docs/promotions-builder/overview#promotion-usages).
+
+**MAJOR** We have introduced **Exclusions feature** in Promotions Builder in Commerce Manager.
