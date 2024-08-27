@@ -63,8 +63,6 @@ const elasticpath = {
         "statement",
         "regex",
         "atrule",
-        "language-css",
-        "language-scss",
       ],
       style: {
         color: "#47ebb4",
