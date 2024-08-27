@@ -125,6 +125,23 @@ By implementing this, shoppers can use a promotion code to purchase the product 
 
 ![Scenario 6](/assets/promotion-example-scenario-6.png)
 
+### Scenario 7 - Creating a Promotion to Exclude Items from Promotion Eligibility
+
+Let's say you want to create a promotion where certain products are excluded from making the cart eligible for a discount, and they also do not qualify for any discount themselves.
+
+To set this up in the Promotions Builder:
+
+1. **Set a Condition**: Create a condition that excludes specific products, categories, or products with certain attributes from making the promotion eligible for a discount. For example, you might exclude products with the "Platinum Metal Type" attribute.
+
+![Scenario 7](/assets/promotion-example-scenario-7-1.png)
+
+2. **Set an Action**: Configure the promotion to apply a discount to eligible items that are not excluded. For instance, apply a 20% discount to eligible products in the "Fashion Rings Jewellery" category, but exclude products like the "Platinum Flower Ring" or those with the "Platinum Metal Type" attribute.
+
+![Scenario 7](/assets/promotion-example-scenario-7-2.png)
+
+So, if a shopper buys any product from the "Fashion Rings Jewellery" category, they will receive 20% off all the eligible items in the category. However, if the cart includes only excluded items, such as those with the "Platinum Metal Type" attribute, the discount will not be applied.
+
+
 ## Demos
 
 <iframe class="vidyard_iframe" title="Promotions Builder" src="//play.vidyard.com/4xHaUsR9fh8Z5PUjF4o5nm.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
