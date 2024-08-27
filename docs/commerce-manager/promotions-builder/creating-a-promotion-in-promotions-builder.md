@@ -23,7 +23,7 @@ In the **Create your rules** section, do the following:
 
 1. Select a currency for the promotion in the **Currency** field.
 1. Choose catalogs that are eligible for the promotion in the **Catalog** field.
-1. Under **Conditions**, select either **all** or **any** to apply the conditions.
+1. Under **Conditions**, select **all** to apply the conditions.
     - **Cart**: Configure by setting either a minimum cart subtotal or quantity of cart items. You can also add conditions to exclude the items that will not contribute to the cart eligibility. See [Creating a Cart Condition](#creating-a-cart-condition). 
     - **Cart Items**: Specifying the desired product quantity or value. You can also add conditions to exclude the items that will not contribute to the cart eligibility See [Creating a Cart Items Condition](#creating-a-cart-items-condition).
     - **Custom Attributes**: Define conditions using custom attributes. See [Adding Cart Custom Attributes](#adding-cart-custom-attributes).
@@ -48,7 +48,7 @@ In the **Create your rules** section, do the following:
 
     To exclude items from the cart total, select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
-    - **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
+    - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Select **Done** to apply the conditions.
 
@@ -64,7 +64,7 @@ In the **Create your rules** section, do the following:
 
     To exclude items from the cart items, select **Add an exclusion** and do the following:
     * **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
-    * **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
+    * **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     * **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Select **Done** to apply the conditions.
 
@@ -110,7 +110,7 @@ To create a cart discount promotion, do the following:
 
     To exclude items from the promotion, select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
-    - **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
+    - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Select  **+ more options**. This option is available only when you choose **percentage**.
 1. Enter the maximum allowed discount in the **value** field. 
@@ -133,7 +133,7 @@ To create an item discount promotion, do the following:
 
     To exclude items from the promotion, select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
-    - **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
+    - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Select **+ more options**.
 1. In the **value** field, enter the value to assign a maximum allowed discount for the promotion. This field is shown only if you choose **percentage** as your discount type.
@@ -161,7 +161,7 @@ To create a BXGY promotion, do the following:
 
     To exclude items from the promotion, select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
-    - **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
+    - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Click **+ more options**.
 1. Enter the value to assign a maximum allowed discount for the promotion. This field is shown only if you choose **percentage** as your discount type.
