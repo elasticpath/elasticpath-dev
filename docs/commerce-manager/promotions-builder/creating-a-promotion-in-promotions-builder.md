@@ -50,6 +50,7 @@ In the **Create your rules** section, do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     - **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
+1. Select **Done** to apply the conditions.
 
 ### Creating a Cart Items Condition
 
@@ -65,7 +66,7 @@ In the **Create your rules** section, do the following:
     * **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     * **node/hierarchy (category)**: Either enter the values directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     * **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
-1. Select **Done** to apply the condition.
+1. Select **Done** to apply the conditions.
 
 :::note
 You can exclude cart items only if you selected **node/hierarchy (category)** or **attribute** while specifying the type of cart items you want to apply to the condition.
