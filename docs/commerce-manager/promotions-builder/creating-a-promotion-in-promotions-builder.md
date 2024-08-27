@@ -14,7 +14,7 @@ sidebar_position: 1
 1. Select the end date the **End Date** field.
 1. Enable the **Activated** toggle to activate the promotion. It is disabled by default.
 1. (Optional) Select the **Coupon-driven** checkbox to manually create a single code or generate bulk codes manually. If not selected, a promotion code is automatically generated for you.
-1. In the **Create your rules** section, create a rule by adding at least one condition and one action. See [Setting up a Promotions Builder](#setting-up-a-promotions-builder) and [Creating Actions](#creating-actions).
+1. In the **Create your rules** section, create a rule by adding at least one condition and one action. See [Setting up a Promotion](#setting-up-a-promotion) and [Creating Actions](#creating-actions).
 1. Select **Create Promotion**.
 
 ## Setting up a Promotion
