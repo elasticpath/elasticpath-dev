@@ -1,0 +1,682 @@
+---
+id: list-store-logs
+title: "List logs for all integrations for the store"
+description: "Returns all integration logs for the store."
+sidebar_label: "List logs for all integrations for the store"
+hide_title: true
+hide_table_of_contents: true
+api: eJztPdt23DaSv4LT2YdYp9n3q85szjqOPeNZe+xY8snMWj4SSIJqxmyyQ5CSO7a+Zv9kv2yrCiAJ3lotyXLk3fSD1E0CVYWqQt0Agp86rpBO7G8SPwo7h503IknjUDIeBMwPE3Eec7zDguhcMi+KWbISTCZRLHqdbifh57Jz+K7zvGgpO++7nWgj1K/nLsB84cvkCLu8ACDQKxZyAw0FdP3UGQ0G+K9MxVHqOELKHsvJYQEAYZFXIwrJcCK4GCYIh282ge/Q7f6vEoF96khnJdYcvyXbjQDwkf2rcBLouImR0sRXpLg8MVvxOOZbaOQnYi3rND6WJi2SOTxkHvcDFl0IYJO/Fl32JFqvRewIBogufOhP7OO2H/jJliURs+PoUgrids7hbZTGJdC9GqW+20APS0P/t1QwwBMmvucDFcAvoMpk2eUqAnyEC/CwSx4mSMeFLy5JoGroMon98Bx+i498vQmIG87CtqcLYY3spW1NHMezlq47soTjetPBZDhfTJadqwxClbjjlS9ZLDYgeiBOsQFbIoVwDUYMTFJiYbYA3HAVJS/cHnscXPKtZGfGMM5202q0xOthukYlNa+CjrrC42mQVJrDCCQqn3CFa+iCHUWB4KGJJYlT0a0M85eVgJGpSVLiOpdMKp320qCHWHgCarVJDBzUQcQmjmEVwTEAhuHYWrYKhmRr7goUI2gJ4qjiJ4R25G4NbA1s+0eUsGdRGrqdJrTZrM0lw7w4WjeikglPUnnqRK7YPb7JYNKESvVn2H8PbCKOo/jUFQlMvt0DfCMc4V8ALF5CEaWJ9F3SxdHHjyzm4blgFktiAUhAFS+FvYqiD4yjHcIp3sIfLmmCbWvixz6gyUhsLAI1qVf+psGovDFvMx4LJoBSG4zfCsi2RXIpRMhc3/NEDBOphAVnPRqIHggxZnrUXTSd0TmYAbdqCn6NbMJAJAF00J9yC2OStVhMc+bc1Ly2gXSbZFhn9/OfUF5VTusJgMw2Be95i9l4whcWXyyFNRHcsWzObWtpz+2FM/EW89HANF7Xoa8bs9yIZVYNL97QoDUbsCv8dDsgrYfBYlSbb5XNFhBfYTXy9Up/gDI/oatGQANBSwdvrcU+vA38tZ80+T8BRvqjv07Xhv2OhRPFrmTQn204GB10/zy3tD32L3DRGFdIAV4a2XHBA/Dw6QYn63AwMGZok/cYDIDuyPOgezNJThqTGVFtmL2tE9dlIbgFpA4MyyvVDgj5XcQRCFerQDsNSIHGspsExHDNcFA+UcKDZkB0S7HRASeWXAfMkPZrfu6HJOyXKGQy0xJigwYDrT0h3tThMCmpdo1ZgIymOEY6ggCUZC9Teu3I6mpzO/zXMeONHno2JaZNATrOjzgEqqSIMdwlH9xjQC2gvSRHKbcSohPyfWmMJoQo24CvASrXNwrbY/FbCuNxMYojTJRklPmnr+8I300oarA1ICoqaIxZkGiuo8VGa/m34+PXhSRUYKHsk2KOyfApzUzN8evs4GPIEnzhQQC5XvN42w61WSqozu3BURnVK/oCALjr+vqr6gtJC4RJbYgfq7iBcNNttgIdiBya3Bj4GPr1FO//iMHoVe3yG80+CusU9DzOQOCWGpilBgY3yB6a4n/3qWTDiaIjxQ3C0OnmQkYhvM8tP5j3VYTZ6rmgycmTFfzom3lYP1D5qyJCIUtjYGtnlSQbedjvi/QS4rUe3/g9CKpk4jsIp+dE6xqr3x6xX6AtexKkME9QSlVgqYSIcm9gT7kJ7D1SCdyHNJPItAVEevHjFAf17r15+whnmeKy2SjXFKQGx0zNMBOiRiRRP/QiEgIwQ9Ex7A16g06jG5UMfsSRmzo6LSuPIPN0Gb9FkTtf+slKJcXiY6bfZFskC/wPZOxEvIl9aYQHYGbCEDS8y8BSguzXPATHsIamXQYZmOcH6juGxRGlbBpkF8DJFCcH6DoHl5hu8TsYWTAezgfqAGLZFpm6XEUbMCGydxKyk/DpBcUqGFdzR42b4NBcQCNIfZx8bFH8wQuiyy6mhyuVYTggwwhuM2cFmYiiRPgxzskYkzuMEUI9rryJzmcoSXIwcVEB/Yb7bhFGqBsaAfAhNCmEMaCNM6e+DvMQvpEjZYJR3NMwS6UQGSmQlytIVgCvuKAgA1kgcx5QEalLFqVCEHI7TkNg6ElopDKH+NtivxDQgkvpBqJeVVkpmKTgPsnamGkVe5nrQuajAJ+C4iplI5qQs6JXYMxYnmWOdF9mTFYIOeRlDoIBvKAsfqgyKhx+BJZ73YQZDGTqYHKn8sbCzZPjyvwm4a6pWB6Hg0aFOpIKtuiHAfBa8Ey2QnVZ8y1Fc7YAqx5AJgy4Swjw25Ygax2q5JK+p+t/xAJVXVIdDRauIXzwoTnVwLQk9iBA8jX8AR8tQozvkZBLjCY02B57bua6Cp6qMwLxxOiTDgw1QKMJFxxx0smQbNkmgvACGPMLyMhfo9D0LeCSlBjckuSBlPGArf0wRY2CkQdUhXyKJkEoVmLVDEyXf67VOKaaAk4RcvncwdgMfoIYUF8PDw9hwIIE94yi+6yQiTU/gzUEHCcp8AYsPyiUFIK9e2Wjt+E2sFPJ/f3330X5NUt1fqQUA3AhytuZ0hSneTbFVMFD4veXij/s51SkOEp0pj4oHWH87rvvjMaswA0jyG+Y3M4pyUYd4VSOQs8/T1EXKIgSobuJgPpejmMnERnOHThyIYN2pWQr4ig9VxPdgyA5ukSouhU1IpuqsRwSGos9XvPfQdOOfJwMVVrY90c/Hz0yOVYFo0Qs080milUklbXUEI9BKOwVxHphQhNJ3UYQr+MIDEoUAJLjVy9fP+qS+8mnpSbs5c+5HuQ6V1eGbBQ/H5H9bht0mVpCW2JbybU/fv288DJYS65VDVQUSeYsl48yxDH7gR0cHP3r6Pjpy4MD9QNdAzA2wfKb1BczdTo4UEZpHVFWoeJyQKEnzBPlj8qVrPff993IkX2IpcoRnTJzlnHNnEta+0zDcwxRkVK7fBiaR7KiTeboMZaSenK9JX/6ThcV5U1I65L1QR6v+IUxrTPN339SwfAcniJQ+llMVRS6KqEAC7doEc91gAS30O+O/vlPs3iKARZLOIRhJA9qNByAKAC/S6SolAjsGbkVGBmEEUiVLoqWmNKmjGD09C1L37KyWwZTdhoZE7SgTBVihQsOUw3tAthjMoDt04FWdTKh4VhInAw/YBkYFuKjGNOzLOFFE5+XjjPuE52qfoBTIYhk5px77G/RJXyNycvmBguZFmlXE12GivxiyODtLkThRrAp/qBWivkJkIT1XQoeFLXPvZwzKDgsEGOQCd7aWEPoGtQjJrwNQWAXIuKk8KvEWoXNx0VDqridRxS0Rgp87tv5GssylL4CrJLLKvuRk/BxZdEK3RbQYJbyTnFOnSG0d2eazrObzKVsDGCSgBFfyh1BdKZSNfaaI81oDNRKG4AubHAeZe7lfOq+p4UA5YN61zshdM9f0unUDMqfbufObue7m8j8FpOGX8pT+Zu8+6RxfYiBIe1A7JHKnYoZ9PiXI5J5YXZB9XLrpuPdIo2BJAjcDuMbrMvFPrKU0hgzP37B17bL82wxTxOrktElKydbxjPiNlHmng4LlShxAO/a277/Pi/2GEUZV1z0z1Nc4e+DGbeOo76pqH3gs6VwPCLtf4cs0XkcyelJEKXus4zyO+OQquore4Uy3Xi6t6kU8ecME+vNzXSnGhDtoUwlY6xV6DHoR4v1yI2bVJaj0JrcWHVJ54x1ckMdWzWpUAwYbbom3unVRtzVYVQN2ghDD4CunIKMXkPudBJiRLLh2yDirpEcAxPI92eu+CyNgzPkCti1UDaoO3kVLHMrjvaqoHmSxL5N+S1qIkWmRJorPD8s0vHCM+H6syA4n9njrDeFEuwzxcNs1+cz+6ko9O1sefvPZyTt0DI/rHqh/tmjyZ0/irQz3z0rseRM1d/P2kfE8u08z38qFnqUSL8k10qL0ESaWp/aRdpxUbVocC5qGZZU8NaUKtKAR+fnOAtO7e2ZyTVFwruiDqLJaayNKKOQw9qTkYoCvcHmLBv5mV4PauWOoqxhh45RA7mrJBVpWalbnmnSrlepY2MBXRa1Sio8FiRR7dDzReBiSB9Gl0D4BoyyKsK9xvoaVajYmTYpZ2AyZCI43FWk5dczru2nUteTdpfP51I1jkI9KwC4QabK2qYiI+HeKU5ZNJBnUXxOPy5xbZNLTHjPeej/rjYUNIKIQnBgWcdaovNUl7PRdvoOrVkTvzJLXVheHWvntltrvGhVdIFYsVCMJemzQqKlkOztmxe6aimqNQuNSJF8dnb2K7/gynifhJ/wYsd3TzqH8H805OPZ0Fla9nA4tybucGbZYuRaU+GOXAjP+HJqn3S61Mecx6p3QWTWRk8UvD1UVwzLglc/UfpaEMC9uW07ztzy5nPPmvCFZ3Hbta2JNxgvnamzdBdDBZyVgZGZUjC0Uy2ahZCnqluvqKqNFGLB2vf04nTR1Fi+Uj2e4Yp7sdiRFcbVIKHTlRpWruWq16eTkxPatoP/D+kX0Ye/8A8BwS9d/AOgshtDdzYfzgau5XIHRj0WrrUYCM9yxs5EzF3Xm88meT9VsMn7OhGqVSLy+yB3jGryBkR03nnlbzagHfndNFRLaIEoGmXLMcUwiJdZlzeYx1xCIA/cyrqINaRmeYsYInmpWvzHOgogYseVTrxzVaLiVK/wFIjA1cjktITu79z5kOPBELp8+yV33OgSkvOCAasoFKfKbhcsHo0n09l8sSxGCYyD/KQFmixQQiR1OsxbHFE1jD0Loijush9jP/HlClJZ1+fsbxHY0nLHUUHBlD3hceBDVH70WwpRWkGJn2zzZv8Qlw4MMsDFEqpRhoZoI5lgoa5o/HTIZm+fGWNKQwMWdibD94vgcblRXLT664+FToLxj9WqbqFhL6guBaYQ0nhnVUjRBq25NyH+KZ2SdK4ymj9oPqsLuI+t4Lvry03At6eQbDuiuIwJzWnCPxZXVPWOfg8H8NGzHpccHRPz65wqlZkkorBZ//PfuGdtMCioQzyQtXwNVG0obgk+B66h41pnAu7a0Gm9hnrKC8M6GgyX1mBuDSbHw+HhcHQ4Gv9XjkavdO7TXmMt7SYuENPKsSHjzL28q/sXbFpM5WKA4+V0PhsLYQ0X8wW4Vz6w+JyPrIU7Wczn4+HAndlECO6g0XbACVJX86hCRgNicmynd0VP/WDu4dZnJbuhmldqp8mpAXLijRbeaDSyOJ+Cw5yMHGvpiKXljEZj15k73nDKc5AlE3K04Wv2DOxCIuLCisgPad5CQgvL0y1AXsNZIdTQT6qz6+YKrpkr84ni8UAKxXjaA3VfwL+U+UA23PcMvzMjrkGyw2T93xnefsO6q9G8ZkB3tskP0Cg7PE5ye3d4Xdxfal21jnyyXNhgrqwRJkCTpeDWcmyPrdFoOBnb9mQw5o7mA9rnLMfK8kwjmyIK8t94pciOVOqhEx4z9dor9TD66eyD+uaph3E/yz6oQZEU6s5Z9kF3zdTDaJRnH8ZQyvmcmYDkHbGJykKoTUsK0tGtr+pE5XFsBa8RzRJkCmVLaIt4lhoUwWypVSktUbzPc5JSw1LoW4YoK4hV8Ettro98611Hmo5a7FumB90xNWyKfstjzEJg1VzHv5XRURBMDcoRcL1ZrNtBDFy6WUpTqEUlR2kQczVbuScp/ym8JuHVxaFiERSCcZHikYpgylFJ6SbezqOTyh28p50QlqGUUy3fzl2SJvO1OQitFbljoja5i+0Y7a66NYKykOKh0HQtLV+EjjoV+fcrUzsMT14Tp+HRVWmyyT13yqMzvPqOPgUtdWUse/mKAqrMp0Zp5m3fldhSZnHZB1MEUGGj6Yr3ypM6pe5Xxq/39RHS/6uibqqTulKMkA+vGEh5oJUg4rQ+jJsOodw3z/iycnFxy8j8CPxeaV8FfGGIy6lfpRlmgNSqIf2r6luRBd7LBC+lcNCMMrj2ya0i74dASYNNVzfqdl1d32nbVZN2+14Io/netSzYmxFZw30sbwNjsu4tgvrDaa1cqdF+jU9TTf6Uw1eQwxfg/xcfz71w/qtRWeV52btW7WF75KLpu3H0ovrdMIKpUlqxtjuiGU1mXo9oHEW1jlDiQB4MGECaRJ0v7e5T3qgK5qp9qLUgR4U9+Esvymar47XVZilAPsnpB6H1R/+W+CQx8KxYDk5jXUTIdu7pteUe3UBMJ+EVranXtgH8JLAg4hr7H4wNASchPX1m7I2grVqqB2ZSuLNMbwvIV5/V/nC9xs94vn/gcuU7K3ZwgPsTDg6KXWT1kxUQ8vOf9tgH4AzHi8V0wq3peDi0JtPJ2OLj2cIaDMVgufSm0+Fyxz4AHaz19IBuvRlgMl3O3KkYWqOZPYMgD+hZziauNbJnwpnMJvO55xayuvFmgNeKzJzve+4IeCESthbsA+6hoUch9XDLQqRHNtdbfahW61aB2v6H8YSP5wsbJsl4aU2GYmLx0WRgzey5mE29qW1PpwVtxTA1DSaehrpgQ/vurQj4Y+eYuWdalLbpm1siI+N5i/rOy9KDIzfZeUn7bsxm+DhEtuMmXqsHRMA1hC6PXebgDuDKns3KHky9RVOB2LWf87Bxs+bX3a3ZsCfz627KbNx6+XX3XtZ2WCIxe2/Vaz5+52bbK/VGStqYaYC/bifljTdSKjwYBZTx3Gzn3102/n3Wc/6+99dhDNPTwVfbDjtlKlr22GX2RCM9bPex5aCqwcE0GGUL6bN8w9sVGXZev5Ei8MqWVGwcx9yt3zsPIpsHPSmDnocV4G0vFEn/YtRH+LJv4CkXjKpp+86EnW46WQBfLiG1BPbVgP7t0U/VWkslkP+3ShxfrivWs6OvhbqtSmHiHw3uSsHoGgpaUvT7JeKkVk1ty5Ka8qPR0BpMreEc85zx4HAwL+VHJx3xcQPWUdZ6jCgzGg8PB4tKj3ouVcKhe2RUlxW+iBKfwIwopl1rRlWsVtbWMhrKxs1F42p2lsfB7mhhOyPbWrqQL02c5cxaDIa25XoD7kztyXA6HdVLdkaCRpTpFK0xhXrfzIVyjmeGfUi+PuipaFQ97ikL/LNxLPlo6NnTiTVzxrjCPOKWzV1hLUZ8NnD5zJ4ued7HdK+quxjOXXvgLqzJbA7dbW9sLZ3RzBq7nljYy5lYuvOsu/I8t7GGOYSNcPQROArMsDfI72FQn5Flj8diPFp41njIgTZ3OrfsAR9bwvaGg/HSHs+nszxXKjE0czjI2Ntkke05ZHdHEllKC2vndWR+jDa775NK7unlclc2mo/Hy+nCGsIX0IHF1FpymJTe0OHz2WLizWeDPROcW+mg8BCP61lLz4HMdjKegA6CEi1GQJa7tOejsfP/RQdreXqhhvpJtto5JSfmY8AbLmVxLowRbULSR8/GqEcXdPR1ph8/0dHvOzP8VQHlzQ5NUCc1mScg+aHrX/huyoP86Xvz5BI86ABPj1NZO/ZdgRYDufkQioMAkuIB97dvXqiKyWd2cPCUFqj6b/RcODhgX+WDqB/TLgfAiD8Mwfyn2OqL9PhL/5XxIAveAMLv/YG41o/K+1jlH/LyHYxIbcA4ODAFr3dlCFl8Q8HnZ4w9uj0Pn+gTtPARMAW7p+MQTJnUc+JE2x/2+cze6uOWDBrztOSh0Jg5JYNGbUIqNKKMHcoEKjJWF2X2xSqO0Not67IMVeeHK0OTyAcrRJPI66TIXgrcs3adMKmR3GeiNslT9/8mxJrR+i1IN6N1TyFjhrOfoKHhTlnvEDL2/ZYETfR+Q8ImelsFjqltxfuqOhBVgQqbfGuX20yu4eLKZbeHyE+isJ2DumZSZuLm47qvqyk+xDHF1xubxKwm83DniEnkgxWkSeQOWar6TSHLrKJjTIWmaxZNnObrFh4whmcYPTLIKglYdXvgAtZEPmwBayJbBKzEi4dLMUjiYl+UzujLju618ATNUKqsk3qQFIXq8ahJeAARAW5xFa5FjA3cLPVq5mvD8Eq9WjX5mR+IukXy4KpUf+9m0Es8QHgPT3kNxhGBrawyD4H8Xq8IlVl37QFIe5Bj8Mus/VTZ1mVm7v6HM9HQWZPqqrI+MKoN0ZtUVzWgiWrQh1ehsI7xyMTXXMrLKHbZcfRBhOwNnmAszTQ2TVb4PgZdasQDoAJh4QHCFvzc6N7WJo5oxikfobQnAhy4MmLlrRLEYcUKR8XIXNO6Ze7hUOigClW2awryaA/3jUyBWg7uOyvhfIjSHeu/9/Ipc4WOGmke+5keWv/Qd/v6KTT5NYgtTRlFYTZZ+uYJLr3irKXyyS6+NBbiqUqp94Sow8XV+azQ6KwNTD43myHlh3o7fJPgmnaXZU/uwddYeGnoqsWDKNyu/d/xexQXZ3W3svmrqsJn9ix7WrD/hIcOzGyD4/mThDnPHWoTPCQ9wbcxRDEyuCCc59d20ZnEPJT6HQR0QYvyPuj+DFbQRx4rZSlIJfXrV5XuhmpdOncfdTLTRPUCglxDaf/TtzEN6tJRwO5FqT6DU1KUFoLJaK97g9eae3+FIVzyasKqlb9/ru7u9AolK6d7WrpjSyRLtYaE4xvrYkFHjcmGjFm16GctbhqklkNzBczSwB56qFWuiZRJ/3birSrle8ZcuWqkwU69SG+fuTTrRvoQU5cmTUBCH3TubRLammsVRzCbIpb6av7lRhGpKdcMwIOWaU5kq6U8opfMHBeepD4l8nfP9M9FYmW5B/azDA90e0ZWIbUnGXuSafrFPckqUXQ9LX/YpyRdk852Aad2vuPTmAzSvNxv2Kj6mf0lwVcCBXLDw38/6YxPOj/UT2QvQVdHGN/mBVvF67Tqb9OqvD5IvQ+Kafrte395EzvCo9lvzcfeX/qJ+0Mujbdwn+LxIptnz0Mv2jfVT6G/VW5i4eMBlPEX1d+SOrf1ebi6vZPqB+uadlLd5Kcqr9n5Y86Txdck4gkca04vzMStqJ3Dzgt8wVT+Nnl8zVTp5WzZO0KJrOp7+D4VL+XsvKHXwMgqhAJ0DsV4u2gCJqQPxsEn4uiFhp/0yxRLb2DH9yjS6xTfdzsrGALe/vQJXyj7Ng6urvDyb6mI8e2F8PWCxz7OTHp5IXQQHHIYerHhB7HF9086jtjgaxv1+yDr7xPFVx7mr3j869PjztXV/wIr8au2
+sidebar_class_name: "get api-method"
+info_path: docs/api/integrations/integrations-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List logs for all integrations for the store"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/integrations/logs"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns all integration logs for the store.
+
+<div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success. Returns a list of integration logs.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 IntegrationLog[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A unique identifier of an integration whose logs you want to view.","type":"string","example":"ac8bb58e-2b9b-4ccf-9dd2-ecdf50417849"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`integration`]"}
+                              schema={{"description":"This represents the type of resource object being returned. Always `integration`.","type":"string","example":"integration","enum":["integration"],"default":"integration"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"succeeded"}
+                              required={false}
+                              schemaName={"boolean"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"boolean","example":true,"description":"Whether the integration was successful."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"attempt"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"integer","example":1,"description":"The number of attempts made to process the integration."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"body"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"Not Found","description":"The response returned from the integration."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status_code"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"integer","example":404,"description":"The status code returned from the integration."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"error_detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"Received a status code outside of 2xx range - treating webhook as a fail","description":"The reason why the integration failed."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      relationships
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Relationships are established between different integration entities. For example, a log and an integration job are related to an integration.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            integration
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <SchemaItem
+                                          collapsible={true}
+                                          className={"schemaItem"}
+                                        >
+                                          <details
+                                            style={{}}
+                                            className={"openapi-markdown__details"}
+                                          >
+                                            <summary
+                                              style={{}}
+                                            >
+                                              <span
+                                                className={"openapi-schema__container"}
+                                              >
+                                                <strong
+                                                  className={"openapi-schema__property"}
+                                                >
+                                                  data
+                                                </strong><span
+                                                  className={"openapi-schema__name"}
+                                                >
+                                                   object
+                                                </span>
+                                              </span>
+                                            </summary><div
+                                              style={{"marginLeft":"1rem"}}
+                                            >
+                                              <SchemaItem
+                                                collapsible={false}
+                                                name={"id"}
+                                                required={false}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"type":"string","description":"The ID of the integration processed.","example":"ff8634a8-a89e-4eac-baab-9b7b8c4f8720"}}
+                                              >
+                                                
+                                              </SchemaItem><SchemaItem
+                                                collapsible={false}
+                                                name={"type"}
+                                                required={false}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"type":"string","description":"This represents the resource type of the object being returned. Always `integration`.","example":"integration"}}
+                                              >
+                                                
+                                              </SchemaItem>
+                                            </div>
+                                          </details>
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            job
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <SchemaItem
+                                          collapsible={true}
+                                          className={"schemaItem"}
+                                        >
+                                          <details
+                                            style={{}}
+                                            className={"openapi-markdown__details"}
+                                          >
+                                            <summary
+                                              style={{}}
+                                            >
+                                              <span
+                                                className={"openapi-schema__container"}
+                                              >
+                                                <strong
+                                                  className={"openapi-schema__property"}
+                                                >
+                                                  data
+                                                </strong><span
+                                                  className={"openapi-schema__name"}
+                                                >
+                                                   object
+                                                </span>
+                                              </span>
+                                            </summary><div
+                                              style={{"marginLeft":"1rem"}}
+                                            >
+                                              <SchemaItem
+                                                collapsible={false}
+                                                name={"id"}
+                                                required={false}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"type":"string","description":"The ID of the integration job processed.","example":"ff8634a8-a89e-4eac-baab-9b7b8c4f8720"}}
+                                              >
+                                                
+                                              </SchemaItem><SchemaItem
+                                                collapsible={false}
+                                                name={"type"}
+                                                required={false}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"type":"string","description":"This represents the resource type of the object being returned. Always `integration-job`.","example":"job"}}
+                                              >
+                                                
+                                              </SchemaItem>
+                                            </div>
+                                          </details>
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                meta
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"limit"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The maximum number of records per page for a response. You can set this value up to 100.","type":"integer","example":100}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"offset"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The current offset by number of records, not pages. Offset is zero-based.","type":"integer","example":0}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"current"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The current page.","type":"integer","example":1}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"total"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The total page count.","type":"integer","example":1}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                results
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              The results for this response for the entire collection.
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={false}
+                              name={"total"}
+                              required={false}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The total number of records for this response for the entire collection.","type":"integer","example":1}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"id\": \"ac8bb58e-2b9b-4ccf-9dd2-ecdf50417849\",\n      \"type\": \"integration\",\n      \"succeeded\": true,\n      \"attempt\": 1,\n      \"body\": \"Not Found\",\n      \"status_code\": 404,\n      \"error_detail\": \"Received a status code outside of 2xx range - treating webhook as a fail\",\n      \"relationships\": {\n        \"integration\": {\n          \"data\": {\n            \"id\": \"ff8634a8-a89e-4eac-baab-9b7b8c4f8720\",\n            \"type\": \"integration\"\n          }\n        },\n        \"job\": {\n          \"data\": {\n            \"id\": \"ff8634a8-a89e-4eac-baab-9b7b8c4f8720\",\n            \"type\": \"job\"\n          }\n        }\n      }\n    }\n  ],\n  \"meta\": {\n    \"limit\": 100,\n    \"offset\": 0,\n    \"current\": 1,\n    \"total\": 1\n  },\n  \"results\": {\n    \"total\": 1\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"500"}
+        value={"500"}
+      >
+        <div>
+          
+          
+          Internal server error. There was a system failure in the platform.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 ErrorBody[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={false}
+                              schemaName={"int"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"integer","format":"int","description":"The HTTP response code of the error.","example":500}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": 500,\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"internal-server-error"}
+                  value={"internal-server-error"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Internal Server Error\",\n      \"status\": 500\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

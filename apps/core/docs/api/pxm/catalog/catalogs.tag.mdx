@@ -1,0 +1,86 @@
+---
+id: catalogs
+title: "Catalogs"
+description: "Catalogs"
+custom_edit_url: null
+---
+
+
+
+A catalog contains the products available for sale either in your organization or store. A catalog also contains information about how to organize those products for navigation menus and search facets in a shopper experience.
+
+Before you create a catalog you must define the following resources:
+
+- Hierarchies: hierarchies and nodes to categorize the products. See [**Hierarchies**](/docs/api/pxm/products/hierarchies).
+- Products: product information, associated assets, and links to hierarchy nodes. See [**Products**](/docs/api/pxm/products/products).
+- Price Books: prices for the products associated with the hierarchies. See [**Price Books**](/docs/api/pxm/pricebooks).
+
+A catalog is a combination of hierarchies and a price book.
+ 
+### Products
+ 
+Commerce automatically assigns types to the products you create. Product types can be used in catalogs. For example, in your catalog, you can filter on `parent` so that only your parent products are displayed in your storefront.
+ 
+You can use product tags to store or assign a key word against a product or service that you sell in your store. The product tag can then be used to describe or label that product. Product tags represent similarities between products who do not share the same attributes. Using product tags means that you can group your products together, for example, by brand, category, subcategory, colors, types, industries, and so on. Product tags can be used in catalogs. For example, you can categorize your products based on color. Your shoppers can then search your products by color, enabling shoppers to quickly find what they are looking for, increasing the likelihood of a purchase, and boosting conversion rates.
+ 
+### Hierarchies
+ 
+The hierarchies determine which products appear in the catalog, that is, only the products that are associated with the selected hierarchies are included in the catalog. You can also specify the order you want your hierarchies to display in a published catalog. You can order your hierarchies on a catalog-by-catalog basis.
+ 
+![Hierarchy_sorting](/assets/hierarchy_sorting.png)
+ 
+For more information, see [**create a Catalog**](/docs/api/pxm/catalog/create-catalog).
+ 
+#### Understanding How Products And Nodes Are Associated
+ 
+You can use `breadcrumb` metadata to understand how products and nodes are associated. it explains how products are associated with parent nodes and the relationship among the array of nodes. This is useful if you want to improve how your shoppers search within your store.
+ 
+The `breadcrumb` information that you get in an endpoint response depends on whether the endpoint is retrieving product or node details.
+ 
+|  Object |  Product/Node |  Description |
+| --- | --- | --- |
+| `breadcrumb` | Node | A list of nodes that a product is associated with. Up to 10 levels of nodes are displayed, depending on the number of levels of nodes you have. |
+| `bread_crumbs` | Product | The relationship among the array of nodes a product is associated with, demonstrating the linking of the children nodes with the parent nodes. Up to 10 levels of nodes are displayed, depending on the number of levels of nodes you have. |
+| `bread_crumb_nodes` | Product | An array of parent node IDs that a product is associated with. The `bread_crumb_node` metadata lists up to 10 levels of parent nodes, depending on the number of levels of parent nodes you have. |
+ 
+#### Understanding `bread_crumbs` Metadata
+ 
+The following diagram illustrates a parent and child nodes.
+ 
+![Breadcrumbs](/assets/breadcrumbs.PNG)
+ 
+1. The product is in **Node 2**. The ID for **Node 2** is shown first in the first set of breadcrumbs.
+1. **Node 2** is part of **Hierarchy 1**. The ID for **Hierarchy 1** is shown second.
+1. **Node 1** is the parent node of **Node 2**. The ID for **Node 1** is shown last.
+1. The product is also in **Node 3**. The ID for **Node 3** is shown first in the second set of breadcrumbs.
+1. **Node 3** is in the root of **Hierarchy 1**. The ID for **Hierarchy 1** is shown last.
+ 
+In the `bread_crumb_nodes` metadata, you can see a list of parent nodes a product is associated with.
+ 
+If you subsequently add a product to a new node, then the `bread_crumb_nodes` metadata appends the new node to the top of the list. Using the example above, if we add the product to **Node 1**:
+ 
+1. The `bread_crumb_nodes` metadata is generated to show the new node appended to the top of the list.
+1. The `bread_crumbs` metadata is updated with the new node.
+ 
+#### Understanding Breadcrumb Metadata for Child Products
+ 
+When a catalog is published, the breadcrumb information for a child product includes the metadata mentioned for the parent product, in addition to the information specific to the child product. For example, **Product A** is the parent product, associated with **Node 1** and **Node 2**. The metadata for child **Product B** includes **Node 1** and **Node 2**, in addition to its own metadata information.
+ 
+### Nodes
+ 
+The nodes determine which products appear under this in the catalog, that is, only the products that are associated with the selected node are shown under this node.
+ 
+### Price books
+
+A price book contains the prices for each of the products in the catalog. You can create multiple price books for different scenarios, such as seasonal sales, business versus retail customer pricing, and reward programs. When creating a catalog, you can specify up to five price books. You must set a priority for your price books. Product prices are displayed in the catalog according to the priority of the price books. See [Create a catalog](/docs/api/pxm/catalog/create-catalog).
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

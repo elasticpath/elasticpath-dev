@@ -1,0 +1,70 @@
+---
+id: variations
+title: "Variations"
+description: "Variations"
+custom_edit_url: null
+---
+
+
+
+```mdx-code-block
+import VariationsOverview from '/docs/partials/pxm/variations/variationsoverview.mdx';
+import VariationsResuability from '/docs/partials/pxm/variations/variationsreusability.mdx';
+import ChildProducts from '/docs/partials/pxm/variations/childproducts.mdx';
+import BuildChildren from '/docs/partials/pxm/variations/buildchildproducts.mdx';
+import ProductModifiers from '/docs/partials/pxm/variations/productmodifiers.mdx';
+import PriceModifiers from "/docs/partials/pxm/variations/pricemodifiers.mdx";
+
+<VariationsOverview />
+
+### Resuability
+
+<VariationsResuability />
+
+### Child Products
+
+<ChildProducts />
+
+### Building Child Products
+
+<BuildChildren />
+
+### Sorting the Order of Variations and Options
+
+The `variation_matrix` object lists the variation IDs and variation option IDs and their corresponding product IDs that are generated when the variation and variation options are built with a product. The `variation_matrix` can then be added to your catalogs.
+
+The order of the variations in the `variation_matrix` is the order of the variations in the array when the variations were linked to the product. For example, the first variation in the `variation_matrix` corresponds to the first variation in the array, and so on. You can use the `sort_order`attribute to sort the order of your variation and variation options in the `variation_matrix` object. The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variations and variation options in the order that you want.
+
+Add the `sort_order` attribute to the body of your request and specify a `sort_order` value. A `sort_order` value must be a number. You can specify any numbers that you want.
+
+- 1, 2, 3, or 100, 90, 80, and so on.
+- Zero or negative numbers.
+
+You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.
+
+:::caution
+
+- Commerce does not sort variations and variation options. You must program your storefront to sort the variations and variation options in the order that you want.
+- You must rebuild your products for the sort order changes to take effect. See [**Build Child Products**](#build-child-products).
+
+:::
+
+### Product Modifiers
+
+<ProductModifiers />
+
+### Price Modifiers
+
+<PriceModifiers />
+```
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

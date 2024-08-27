@@ -1,0 +1,779 @@
+---
+id: get-all-variation-options
+title: "Get all variation options"
+description: "Get all variation options"
+sidebar_label: "Get all variation options"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/api/pxm/products/product-experience-manager-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get all variation options"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/pcm/variations/{variationID}/options"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all variation options
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"variationID","in":"path","schema":{"type":"string","example":"00000000-0000-0000-0000-000000000000","x-postman-example":"{{variationID}}"},"required":true,"description":"A unique identifier for the variation."}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page[offset]","in":"query","description":"The number of records to offset the results by.","schema":{"type":"integer","minimum":0,"maximum":10000,"format":"int64","example":["0"]}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page[limit]","in":"query","description":"The number of records per page. The maximum limit is 100.","schema":{"type":"integer","minimum":0,"maximum":10000,"format":"int64","example":["10"]}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successfully returns all variation options.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A unique identifier generated when an option is created.","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`product-variation-option`]"}
+                              schema={{"description":"This represents the type of resource object being returned. Always `product-variation-option`.","type":"string","enum":["product-variation-option"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      attributes
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"name"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"A human-recognizable identifier for the option, also used in the SLUG for child products. Option names can only contain A to Z, a to z, 0 to 9, hyphen, underscore, and period. Spaces or other special characters like ^, [], *, and $ are not allowed.","type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"description"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"A human-recognizable description for the option.","type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"sort_order"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The sort order value is visible when you add the variations and variation options to your catalogs. You can then use the `sort_order` value to program your storefront to display the variation options in the order that you want. The variation with the highest value of `sort_order` is displayed first. For example, a variation with a `sort_order` value of 3 appears before a variation with a `sort_order` value of 2. You can specify any numbers that you want. You can use 1, 2, 3, or 100, 90, 80, including, zero or negative numbers. You can set `sort_order` to either `null` or omit it entirely from the request if you wish to remove an existing `sort_order` attribute.","type":"integer"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      meta
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"owner"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`organization`, `store`]"}
+                                    schema={{"description":"The owner of a resource, either `organization` or `store`.","type":"string","enum":["organization","store"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"created_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","description":"The date and time an option is created.","example":"2020-09-22T09:00:00","format":"date-time"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"updated_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","description":"The date and time an option is updated.","example":"2020-09-22T09:00:00","format":"date-time"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                meta
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      results
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Contains the results for the entire collection.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"total"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Total number of results for the entire collection.","type":"integer","example":3}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"product-variation-option\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort_order\": 0\n      },\n      \"meta\": {\n        \"owner\": \"organization\",\n        \"created_at\": \"2020-09-22T09:00:00\",\n        \"updated_at\": \"2020-09-22T09:00:00\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"results\": {\n      \"total\": 3\n    }\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"list-variations"}
+                  value={"list-variations"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"type\": \"product-variation-option\",\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"attributes\": {\n        \"description\": \"Our most popular color\",\n        \"name\": \"Blue\",\n        \"sort_order\": 0\n      },\n      \"meta\": {\n        \"owner\": \"store\",\n        \"created_at\": \"2024-01-25T11:25:38.001Z\",\n        \"updated_at\": \"2024-01-25T11:25:38.001Z\"\n      }\n    },\n    {\n      \"type\": \"product-variation-option\",\n      \"id\": \"fbe73839-58a2-41b4-aca6-cb0724668c97\",\n      \"attributes\": {\n        \"description\": \"Our second most popular color\",\n        \"name\": \"Red\"\n      },\n      \"meta\": {\n        \"owner\": \"store\",\n        \"created_at\": \"2024-01-25T11:25:38.001Z\",\n        \"updated_at\": \"2024-01-25T11:25:38.001Z\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"results\": {\n      \"total\": 2\n    }\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Bad request. The request failed validation.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 undefined[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The HTTP response code of the error.","example":"500"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"request_id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Internal request ID.","example":"00000000-0000-0000-0000-000000000000"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"meta"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object","description":"Additional supporting meta data for the error.","example":{"missing_ids":["e7d50bd5-1833-43c0-9848-f9d325b08be8"]}}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": \"500\",\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\",\n      \"request_id\": \"00000000-0000-0000-0000-000000000000\",\n      \"meta\": {\n        \"missing_ids\": [\n          \"e7d50bd5-1833-43c0-9848-f9d325b08be8\"\n        ]\n      }\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"bad-request"}
+                  value={"bad-request"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Bad Request\",\n      \"detail\": \"Could not parse the supplied filter\",\n      \"status\": \"400\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"500"}
+        value={"500"}
+      >
+        <div>
+          
+          
+          Internal server error. There was a system failure in the platform.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 undefined[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The HTTP response code of the error.","example":"500"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"request_id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Internal request ID.","example":"00000000-0000-0000-0000-000000000000"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"meta"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object","description":"Additional supporting meta data for the error.","example":{"missing_ids":["e7d50bd5-1833-43c0-9848-f9d325b08be8"]}}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": \"500\",\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\",\n      \"request_id\": \"00000000-0000-0000-0000-000000000000\",\n      \"meta\": {\n        \"missing_ids\": [\n          \"e7d50bd5-1833-43c0-9848-f9d325b08be8\"\n        ]\n      }\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"internal-server-error"}
+                  value={"internal-server-error"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": \"500\",\n      \"title\": \"Internal Server Error\",\n      \"detail\": \"There was an internal server error, you can report with your request id.\",\n      \"request_id\": \"635da56d-75a1-43cd-b696-7ab119756b3a\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

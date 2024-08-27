@@ -1,0 +1,485 @@
+---
+id: create-a-promotion-job
+title: "Create a Promotion Job"
+description: "Use this endpoint to create an asynchronous job to generate codes and export promotion codes."
+sidebar_label: "Create a Promotion Job"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/api/promotions/promotions-standard-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a Promotion Job"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v2/promotions/{promotionID}/jobs"}
+>
+  
+</MethodEndpoint>
+
+
+
+Use this endpoint to create an asynchronous job to generate codes and export promotion codes.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"promotionID","in":"path","required":true,"schema":{"type":"string"},"description":"The unique identifier of a promotion."}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"Authorization","in":"header","description":"The Bearer token required to get access to the API.","required":true,"schema":{"type":"string","format":"Bearer"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><strong
+          className={"openapi-schema__required"}
+        >
+          required
+        </strong>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"type"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"description":"Must be set to `promotion_job`.","type":"string","example":"promotion_job"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"job_type"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** [`code_generate`, `code_export`]"}
+          schema={{"description":"Specifies the type of task you want to run. For example, `code_generate` to generate codes or `code_export` to export codes.","type":"string","enum":["code_generate","code_export"]}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"name"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `<= 50 characters`"}
+          schema={{"type":"string","description":"Represents the name of the job. The maximum allowed length is 50.","maxLength":50}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={true}
+          className={"schemaItem"}
+        >
+          <details
+            style={{}}
+            className={"openapi-markdown__details"}
+          >
+            <summary
+              style={{}}
+            >
+              <span
+                className={"openapi-schema__container"}
+              >
+                <strong
+                  className={"openapi-schema__property"}
+                >
+                  parameters
+                </strong><span
+                  className={"openapi-schema__name"}
+                >
+                   object
+                </span>
+              </span>
+            </summary><div
+              style={{"marginLeft":"1rem"}}
+            >
+              <SchemaItem
+                collapsible={false}
+                name={"number_of_codes"}
+                required={false}
+                schemaName={"integer"}
+                qualifierMessage={"**Possible values:** `<= 1000`"}
+                schema={{"type":"integer","description":"Specifies the number of codes to be generated. It cannot be greater than the maximum number of codes per promotion, which defaults at 1000.","maximum":1000}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"max_uses_per_code"}
+                required={false}
+                schemaName={"integer"}
+                qualifierMessage={undefined}
+                schema={{"type":"integer","description":"Specifies the maximum number of usages of a code. If set to zero, you cannot use this promotion. If no value is set, it can be used unlimited times."}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"consume_unit"}
+                required={false}
+                schemaName={"string"}
+                qualifierMessage={"**Possible values:** [`per_item`, `per_cart`]"}
+                schema={{"type":"string","description":"Specifies whether the usage limitation is at the item-level or cart-level.","enum":["per_item","per_cart"]}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"code_prefix"}
+                required={false}
+                schemaName={"string"}
+                qualifierMessage={undefined}
+                schema={{"type":"string","description":"Indicates the prefix to include with the promotion code. For example, when the generated value is *aa2b-3c4d* and the prefix value is set as *summer*, the promotion code becomes *summer-aa2b-3c4d*."}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"code_length"}
+                required={false}
+                schemaName={"integer"}
+                qualifierMessage={undefined}
+                schema={{"type":"integer","description":"Specifies the code length, which ranges from 8 to 16 characters. The default code length is eight characters, and a dash is added after every four characters in the code. For example, *aa2b-3c4d*."}}
+              >
+                
+              </SchemaItem>
+            </div>
+          </details>
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"201"}
+        value={"201"}
+      >
+        <div>
+          
+          
+          Promotion job created
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A unique ID generated when a job is created."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always `promotion_job`.","type":"string","example":"promotion_job"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"promotion_id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A unique ID of a promotion.","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"job_type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The type of job you want to run. For example, `code_generate` to generate codes or `code_export` to export codes.","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The name of the job. The maximum length allowed is 50 characters.","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"parameters"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The status of the job. See [Overview](/docs/api/promotions/promotion-jobs).","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      meta
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            timestamps
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <SchemaItem
+                                          collapsible={false}
+                                          name={"created_at"}
+                                          required={false}
+                                          schemaName={"date-time"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"The creation date of the job.","type":"string","format":"date-time"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"updated_at"}
+                                          required={false}
+                                          schemaName={"date-time"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"The last updated date of the job.","type":"string","format":"date-time"}}
+                                        >
+                                          
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"promotion_job\",\n    \"promotion_id\": \"string\",\n    \"job_type\": \"string\",\n    \"name\": \"string\",\n    \"parameters\": {},\n    \"status\": \"string\",\n    \"meta\": {\n      \"timestamps\": {\n        \"created_at\": \"2024-07-29T15:51:28.071Z\",\n        \"updated_at\": \"2024-07-29T15:51:28.071Z\"\n      }\n    }\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

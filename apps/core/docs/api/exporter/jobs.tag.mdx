@@ -1,0 +1,38 @@
+---
+id: jobs
+title: "Jobs"
+description: "Jobs"
+custom_edit_url: null
+---
+
+
+
+
+Jobs have the following characteristics:
+
+  - Jobs are asynchronous.
+  - This process is repeated until all jobs are processed.
+  - Jobs have a different status, depending on where a job is in its lifecycle.
+  - Jobs are processed one at a time. You can continue to send requests using endpoints that function as jobs, but those jobs are queued. In other words, Commerce looks for any jobs that have a status of PENDING and starts the job with the earliest created date.
+  - Jobs include the data used when an endpoint is run.
+  - Jobs report messages and/or errors to help you understand the reasons for any failed jobs.
+    
+### Job Lifecycle
+    
+A job can have the following status:
+
+- PENDING - Commerce has received the request but is currently busy processing other requests.
+- STARTED - Commerce has started processing the job.
+- SUCCESS - The job has successfully completed.
+- FAILED - The job has failed.
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

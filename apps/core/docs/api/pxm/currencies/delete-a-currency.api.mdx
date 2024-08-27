@@ -1,0 +1,207 @@
+---
+id: delete-a-currency
+title: "Delete a Currency"
+description: ":::caution"
+sidebar_label: "Delete a Currency"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVs1u4zYQfpUBT7uAV06DPflmrF3AwKIN1jGKIusDTY0ibmVSyx9vBMNAX6Ov1yfpDCVZcuwC6bEJkFDk/H4z/IZHEeSzF7Mn8Sk6h0Zp9GI7ETl65XQdtDViJmazmZKRP77S7wd4LLUHNHlttQlA68I6mOd7bbQPTgb6ih7BmqrJYGHB2JA2woWeNdDY6EBFH+we3YdCKm2eoXDWBJLyGfv63UZQ0vz9518BcqwwIEhaFDJWgVRT0E3GcVGUX42YCFsjxUDBrnKKvdWZd+k1dF5LJ/e05zjvozD0QXK9qdWCRDRnXctQitdQPJYIq0VKONCyNwvBdtFlpOLwe9QOyX1wESfCh6ZiH17va1rQhipxL8XsKEJTp5PgKHVxOm1Z29fWeCoEnd/ffeR/l0H8YuFTwiiI00R8vC0S4GcbTU7eVCdLQrKuK60SOtNvniWP18FI52QCyjGUQbeR5Bikrm7EzPnJEP3No6ADp36d6PlIfOnyzZbOWcdK+CITUKSGvHfh/1yp1FZFl2MfAoExWB5AOKUfLmbtkPLn2hSy8lQcaoXSDp2SGoQKPxPTw/1UnW/F9Dh0yIkdojv0LRQdx1WGUPvZdEqdLn3IZK0zrGilFRvMlN1fddNmDUuSgAdn86h4E9bJLkkepNNyVyXwKfTXXjD+wDd6WW7gN3yTly3nRXnq0KTEdigdunlkPJ624+M1N03bGGOhc505zL7R+bsVSnXXprBJsqvSwDywMuEc41Ua6YaPeAgexxdw/rD6T0yE9LenIv8mLuoYhhyvOmmSdTjhNVMU5NrXlWygdlpRMkQJvTkP2rBP7aCySlYDcfX8BnRJC/0cHUKsWZW8wtB9QBexdZcC4evfSY9kOMszMyU/mBz/KLUqU5S5hV302qD3E5AmB089r5iKCaMi6Y3sURS7BNU138KquEHDXABGuLWK+SQpp7AZdZ8+N0bTEazpwtLOwlaVdPBus168b1ObF0TNZLzHrrPmaavNqbVat43Sg93iS0gGWdnnCS1c6HK0LucKUP/1FSL3vXwfeQubDJ2PDH5lLYKA7PlkJsgXbK2QgIoVk0hvxtMMua4pQ1HKAw8sDocCaWOhgqC7yoAtk7m9fiG7QxWyNNOYwqVKFN7Nq2V76eGhnVKvyOEVI9CtY7Jq79FP2V12x1u19WEvzcjooh+wo3F5cQmPwzD5n70KOl4K+BKm1AM04U8daseO8J/E4Z6hHh5CEzEbPQuI/UpCjAWPx530uHHV6cTb3yM6JsztwKeJPqndeD3Mmn/F8t2X7snwHt70wriZTT++TZOIvYr8Rcs/sLl84Jy2JF2ipF5McbYCc6WwDiPVq8cCD4DzuFwsPy8fl8To/wCjS50j
+sidebar_class_name: "delete api-method"
+info_path: docs/api/pxm/currencies/currencies-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a Currency"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v2/currencies/{currencyID}"}
+>
+  
+</MethodEndpoint>
+
+
+
+:::caution
+
+- This endpoint is for Administrator use only. Do not use this endpoint on your customer-facing frontends.
+- You can’t delete a default currency.
+
+:::
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"currencyID","in":"path","description":"The ID for the Currency to delete.","required":true,"style":"simple","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"204"}
+        value={"204"}
+      >
+        <div>
+          
+          
+          No Content
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem><TabItem
+        label={"404"}
+        value={"404"}
+      >
+        <div>
+          
+          
+          Not Found
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  null\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": {\n    \"detail\": \"currency not found\",\n    \"status\": 404,\n    \"title\": \"Not Found\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

@@ -1,0 +1,81 @@
+---
+id: prices
+title: "Prices"
+description: "Prices"
+custom_edit_url: null
+---
+
+
+
+Price books contain prices for the products in your catalog. Use the Price Books API to create price books and add product prices to the price book.
+
+### Volume (tiers) Pricing
+
+Using volume (tiers) pricing allows your store to offer different pricing for minimum quantities of items that your customers purchase. When a customer adds sufficient quantity of an item and meets the minimum required quantity for different pricing, all products with that item SKU are discounted in the cart. You can define the price range for different quantities of different items as in the following example:
+
+| Quantity | Price/Each |
+|:---------|:-----------|
+| 1-5      | $10.50     |
+| 6-10     | $10.00     |
+| 11-20    | $9.50      |
+| 21-50    | $8.50      |
+| 51+      | $7.90      |
+
+### Sales Pricing
+
+With sales pricing, a store can optionally add a sale price to a product price. For example, a store can schedule seasonal pricing on products without creating a new price book and catalog ruleset. Optionally, a store can schedule the date ranges for the sale products. 
+
+You can set a sale price for an item within a bundle so that the product is sold at the sale price when sold as part of the bundle. For example, if you have a bundle consisting of four items, you can apply a discounted price to an item within the bundle to get a bundle sales price. 
+
+1. For sale prices in the same price book:
+
+    - the schedules must not be exactly the same.
+    - schedules can partially overlap. If the schedule does contain overlapping sales prices, the sale price of the smallest sale period is chosen.
+    - if you have just one sale price, without a schedule, this is effectively a permanent price. If you want to add more sale prices to the price book, you must configure a schedule for the sale price. 
+
+2. Sale prices in different price books can have overlapping schedules.
+
+Both list and sale price (or was/is prices) are available in the catalog response, enabling you to display slash pricing on your storefront, depending on your requirements.
+
+### Creating a bundle sale price
+
+You can assign a sale price to an option in a bundle.
+
+1. In the product price book, create a sale.
+2. Specify the bundle ID that contains the option you want to provide a sale price for.
+3. Provide the sale price for the option. You can add the same sale price for the same option using an array of bundle_ids if you want to sell the product as part of different bundles.
+
+### Understanding Volume and Sale Pricing Behavior for Products
+
+If you have configured both sale and volume pricing for your products and product bundles, the following table describes how pricing behaves in the following scenarios.
+
+| Scenario | Description |
+| --- | --- |
+| Minimum quantities for volume pricing and sale pricing | <ul><li>(With sale schedule) If you have specified a minimum quantity of five whose price is $0.99 and at the same time, you have configured a sale for the time of purchase, then when a shopper checkouts 5 items or more, the total is based on the volume pricing. In other words, $0.99 x 5 = $4.95.</li><li>(With sale schedule) If a shopper's items in the cart do not meet the minimum quantity required for volume pricing, the total is calculated based on the sales price.</li><li>(Without sale schedule) If the sale is a permanent sale, then regardless of the quantity a shopper adds to a cart, the final price is always calculated based on the sales price.</li></ul>
+| Two levels of volume pricing with different prices for each volume. | If you have configured two levels of volume pricing, for example, the first minimum quantity is 5 and the second minimum quantity is 10:<ul><li>When the quantity in the cart is =&gt; 5, then the price for the minimum quantity of 5 is used.</li><li>When the quantity in the cart is =&gt; 10 then the price for the minimum quantity of 10 is used.</li></ul> |
+
+### Optimizing product prices
+
+You can add custom attributes to a product price, allowing your storefront to dynamically use these attributes in it's pricing and display logic. This enables you to optimize your pricing data, enhancing your ability to respond to market dynamics and customer preferences. Some examples of pricing optimization strategies are:
+
+- dynamic pricing - allows you to change the price of a product based on changes in customer demand, for example, raising prices during the high-demand holiday season or segment-focused, like special offers for new customers.
+- value-based pricing - allows you to offer different pricing tiers, for example, "pro" features cost more.
+- cost-plus pricing - allows you to set prices by adding a specific percentage to the production cost of a single unit.
+
+There are two types of custom attributes:
+
+- `admin_attributes` - `admin_attributes` are not displayed in catalogs. This means `admin-attributes` can only be viewed by administrators. For example, you may want to add custom attributes that can automate price updates based on predefined rules, saving time and reducing human error or you might want to integrate price attributes with your other company systems, (ERP, CRM) ensuring consistency and accuracy across platforms.
+- `shopper_attributes` - `shopper_attributes` are displayed in catalogs. This means `shopper_attributes` can be viewed by both shoppers and administrators.  For example, you can set prices based on customer segments, offering different prices for wholesale and retail customers or providing discounts to loyal customers. 
+
+Both `admin-attributes` and `shopper_attributes` are structured as key-value pairs. Both the keys and values are `strings`. You can have up to 100 keys for each type of attribute.
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

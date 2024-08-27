@@ -1,0 +1,114 @@
+---
+id: flows-service-introduction
+title: "Flows Service Introduction"
+description: "With flows, you can:"
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0"}
+>
+</span>
+
+<Export
+  url={"https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/flows/flows.yaml"}
+  proxy={undefined}
+>
+  
+</Export>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Flows Service Introduction"}
+>
+</Heading>
+
+
+
+
+With flows, you can:
+ 
+- in Commerce, define custom data fields for the resources that you use in your store or organization, such as adding more fields to the `customer` resource. You can also create new resources, such as a wishlist resource to support wishlists in your store. With flows, you can apply Composable Commerce to almost any use case. See [**Flows in Commerce Manager**](#flows-in-commerce).
+- in Product Experience Manager, attach a specific set of attributes for your products. In Product Experience Manager, flows are called templates. See [**Templates in Product Experience Manager**](#templates-in-product-experience-manager).
+ 
+You can create flows/templates at both organization and store level.
+ 
+:::caution
+
+Custom names and values prefixed with $ are not supported.
+ 
+::: 
+ 
+### Flows in Commerce
+ 
+You can define custom data fields for the resources that you use in your store or organization, such as adding more fields to the `customer` resource. You can also create new resources, such as a `wishlist` resource to support wishlists in your store. With flows, you can apply Composable Commerce to almost any use case.
+
+:::caution
+ 
+- In an organization, not all resources are available. See [**Extend a resource**](https://elasticpath.dev/guides/Custom%20Data/extend-any-resource) for a list of organization resources that can be extended.
+- If you store any sensitive Personal Identifiable Information (PII) or non-public data on your site, ensure that you do not use this data in flows to avoid potential access to the data. For more information, see [**Permissions**](/docs/authentication/Tokens/permissions).
+ 
+:::
+ 
+### Templates in Product Experience Manager
+ 
+ Templates allow you to attach a specific set of attributes to your products.
+ 
+ - You can use templates to define characteristics of your product, for example, a product specification. For example, a *Book* template might contain attributes, such as *ISBN*, *Author*, *Number of pages*, *Year Published*, or *Condition (New/Used)*.
+ - You can use templates for Search Engine Optimization (SEO). When you assign template attributes such as, *care instructions* or *fabric*, to a shirt and a shopper searches for a specific item, attributes help stores to return the products that match the search criteria. For example, when a shopper searches for a large blue shirt, all shirts that are large and blue are returned in the search result.
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div>
+      

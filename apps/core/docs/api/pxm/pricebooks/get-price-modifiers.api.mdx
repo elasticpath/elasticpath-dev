@@ -1,0 +1,950 @@
+---
+id: get-price-modifiers
+title: "Gets a list of all modifiers"
+description: "Retrieves a list of price modifiers for the specified price book."
+sidebar_label: "Gets a list of all modifiers"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/api/pxm/pricebooks/price-books-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets a list of all modifiers"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/pcm/pricebooks/{pricebookID}/modifiers"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves a list of price modifiers for the specified price book.
+
+### Filtering
+
+Filtering is supported on this endpoint. For the general syntax, see [Filtering](/docs/commerce-cloud/api-overview/filtering).
+
+You can filter on the following attributes and operators.
+
+| Operator | Attribute | Description | Example |
+| --- | --- | --- | --- |
+| `eq` | `external_ref`, `name` | Checks if the values you provide matches a price modifier. | `filter=eq(name,largesupplement)` |
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"pricebookID","in":"path","description":"Unique identifier of a Price Book","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"in":"query","description":"This endpoint supports filtering. See [Filtering]().\n","name":"filter","required":false,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page[limit]","in":"query","description":"The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.","required":false,"schema":{"type":"integer","format":"int64","minimum":1}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page[offset]","in":"query","description":"The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page offset is set, the [**page length**](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.","required":false,"schema":{"type":"integer","format":"int64","minimum":0,"maximum":10000}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The price modifier list.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                meta
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Contains the results for the entire collection.
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      results
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"total"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Total number of results for the entire collection.","type":"integer","example":1,"nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      page
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"limit"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The maximum number of records for all pages.","type":"integer","example":10,"x-omitempty":false}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"offset"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The current offset by number of pages.","type":"integer","example":0,"x-omitempty":false}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"current"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The current number of pages.","type":"integer","example":0,"x-omitempty":false}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"total"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The total number of records for the entire collection.","type":"integer","example":1,"x-omitempty":false}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`price-modifier`]"}
+                              schema={{"type":"string","example":"price-modifier","default":"price-modifier","enum":["price-modifier"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"pricebook_external_ref"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The unique attribute associated with the price book. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.","type":"string","example":"a-pricebook-external-ref","x-go-name":"Pricebook External Ref","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      attributes
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span><span
+                                      className={"openapi-schema__divider"}
+                                    >
+                                      
+                                    </span><span
+                                      className={"openapi-schema__required"}
+                                    >
+                                      required
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"external_ref"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"A unique identifier associated with the price modifier. This can be an external reference from a separate company system, for example. The maximum length is 2048 characters.","type":"string","example":"external-ref","x-go-name":"External Ref","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            currencies
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span><span
+                                            className={"openapi-schema__divider"}
+                                          >
+                                            
+                                          </span><span
+                                            className={"openapi-schema__required"}
+                                          >
+                                            required
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          A collection of one or more currencies objects that consists of the [**three-letter ISO code**](https://www.iso.org/iso-3166-country-codes.html) of the currencies associated with this price and the amount. This is the product's price.
+                                          
+                                          
+                                        </div><SchemaItem
+                                          collapsible={true}
+                                          className={"schemaItem"}
+                                        >
+                                          <details
+                                            style={{}}
+                                            className={"openapi-markdown__details"}
+                                          >
+                                            <summary
+                                              style={{}}
+                                            >
+                                              <span
+                                                className={"openapi-schema__container"}
+                                              >
+                                                <strong
+                                                  className={"openapi-schema__property"}
+                                                >
+                                                  property name*
+                                                </strong><span
+                                                  className={"openapi-schema__name"}
+                                                >
+                                                   amount
+                                                </span>
+                                              </span>
+                                            </summary><div
+                                              style={{"marginLeft":"1rem"}}
+                                            >
+                                              <div
+                                                style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                              >
+                                                
+                                                
+                                                The three-letter ISO code for the currency associated with this price.
+                                                
+                                                
+                                              </div><SchemaItem
+                                                collapsible={false}
+                                                name={"amount"}
+                                                required={false}
+                                                schemaName={"int64"}
+                                                qualifierMessage={undefined}
+                                                schema={{"description":"The price in the lowest denomination for the specified currency. This is a product's list price.","type":"integer","format":"int64","example":100,"x-go-name":"Amount","nullable":true}}
+                                              >
+                                                
+                                              </SchemaItem><SchemaItem
+                                                collapsible={false}
+                                                name={"includes_tax"}
+                                                required={false}
+                                                schemaName={"boolean"}
+                                                qualifierMessage={undefined}
+                                                schema={{"description":"Whether this price includes tax.","type":"boolean","example":false,"default":false,"x-go-name":"IncludesTax"}}
+                                              >
+                                                
+                                              </SchemaItem><SchemaItem
+                                                collapsible={true}
+                                                className={"schemaItem"}
+                                              >
+                                                <details
+                                                  style={{}}
+                                                  className={"openapi-markdown__details"}
+                                                >
+                                                  <summary
+                                                    style={{}}
+                                                  >
+                                                    <span
+                                                      className={"openapi-schema__container"}
+                                                    >
+                                                      <strong
+                                                        className={"openapi-schema__property"}
+                                                      >
+                                                        tiers
+                                                      </strong><span
+                                                        className={"openapi-schema__name"}
+                                                      >
+                                                         object
+                                                      </span>
+                                                    </span>
+                                                  </summary><div
+                                                    style={{"marginLeft":"1rem"}}
+                                                  >
+                                                    <div
+                                                      style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                                    >
+                                                      
+                                                      
+                                                      The price tier that an item is eligible for based on the quantity purchased. You cannot have conflicting tiers within the same currencies block.
+                                                      
+                                                      
+                                                    </div><SchemaItem
+                                                      collapsible={true}
+                                                      className={"schemaItem"}
+                                                    >
+                                                      <details
+                                                        style={{}}
+                                                        className={"openapi-markdown__details"}
+                                                      >
+                                                        <summary
+                                                          style={{}}
+                                                        >
+                                                          <span
+                                                            className={"openapi-schema__container"}
+                                                          >
+                                                            <strong
+                                                              className={"openapi-schema__property"}
+                                                            >
+                                                              property name*
+                                                            </strong><span
+                                                              className={"openapi-schema__name"}
+                                                            >
+                                                               tier-price
+                                                            </span>
+                                                          </span>
+                                                        </summary><div
+                                                          style={{"marginLeft":"1rem"}}
+                                                        >
+                                                          <div
+                                                            style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                                          >
+                                                            
+                                                            
+                                                            The name of the tier, for example, `Pencils`.
+                                                            
+                                                            
+                                                          </div><SchemaItem
+                                                            collapsible={false}
+                                                            name={"minimum_quantity"}
+                                                            required={false}
+                                                            schemaName={"int64"}
+                                                            qualifierMessage={undefined}
+                                                            schema={{"description":"The minimum quantity of 1 or more defined for the specified price. If a minimum quantity is not specified, an error is returned.","type":"integer","format":"int64","example":"10","x-go-name":"MinQuantity","nullable":true}}
+                                                          >
+                                                            
+                                                          </SchemaItem><SchemaItem
+                                                            collapsible={false}
+                                                            name={"amount"}
+                                                            required={false}
+                                                            schemaName={"int64"}
+                                                            qualifierMessage={undefined}
+                                                            schema={{"description":"The price for each quantity.","type":"integer","format":"int64","example":"50","x-go-name":"Amount","nullable":true}}
+                                                          >
+                                                            
+                                                          </SchemaItem>
+                                                        </div>
+                                                      </details>
+                                                    </SchemaItem>
+                                                  </div>
+                                                </details>
+                                              </SchemaItem>
+                                            </div>
+                                          </details>
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"name"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"A name for the modifier. You must give the price modifier a unique name. Price modifier names are case-sensitive.","type":"string","example":"large-supplement"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"modifier_type"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`price_equals`, `price_increment`, `price_decrement`]"}
+                                    schema={{"description":"There are three modifier types.\n   * `price_increment` - Increases the price of a product.\n   * `price_decrement` - Decreases the price of a product.\n   * `price_equals` - Sets the price of a product to the amount you specify.\n","type":"string","example":"price_equals","enum":["price_equals","price_increment","price_decrement"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"created_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The date and time when the price book was created.","type":"string","format":"date-time","example":"2020-09-22T09:00:00Z","x-go-name":"CreatedAt"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"updated_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The date and time when the price book was last updated.","type":"string","example":"2020-09-22T09:00:00Z","format":"date-time","x-go-name":"UpdatedAt"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A unique identifier for the price modifier.","type":"string","example":"37f2eed6-0bea-4d0b-a3c6-24cc76143bfd","x-go-name":"ID"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      meta
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"owner"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The product owner, either `organization` or `store`.","type":"string","example":"store","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                links
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Links are used to allow you to move between requests.
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={false}
+                              name={"self"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Single entities use a self parameter with a link to that specific resource.","type":"string","format":"uri","example":"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"first"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always the first page.","type":"string","format":"uri","example":"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=0&page[limit]=25","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"last"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This is `null` if there is only one page.","type":"string","format":"uri","example":"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=0&page[limit]=25","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"prev"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This is `null` if there is only one page.","type":"string","format":"uri","example":"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=0&page[limit]=25","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"next"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This is `null` if there is only one page.","type":"string","format":"uri","example":"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=25&page[limit]=25","nullable":true}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"meta\": {\n    \"results\": {\n      \"total\": 1\n    },\n    \"page\": {\n      \"limit\": 10,\n      \"offset\": 0,\n      \"current\": 0,\n      \"total\": 1\n    }\n  },\n  \"data\": [\n    {\n      \"type\": \"price-modifier\",\n      \"pricebook_external_ref\": \"a-pricebook-external-ref\",\n      \"attributes\": {\n        \"external_ref\": \"external-ref\",\n        \"currencies\": {\n          \"USD\": {\n            \"amount\": 100,\n            \"includes_tax\": false,\n            \"tiers\": {\n              \"min_5\": {\n                \"minimum_quantity\": 5,\n                \"amount\": 50\n              }\n            }\n          },\n          \"CAD\": {\n            \"amount\": 127,\n            \"includes_tax\": false,\n            \"tiers\": {\n              \"min_10\": {\n                \"minimum_quantity\": 10,\n                \"amount\": 100\n              }\n            }\n          },\n          \"GBP\": {\n            \"amount\": 73,\n            \"includes_tax\": true,\n            \"tiers\": {\n              \"min_20\": {\n                \"minimum_quantity\": 20,\n                \"amount\": 60\n              }\n            }\n          }\n        },\n        \"name\": \"large-supplement\",\n        \"modifier_type\": \"price_equals\",\n        \"created_at\": \"2020-09-22T09:00:00Z\",\n        \"updated_at\": \"2020-09-22T09:00:00Z\"\n      },\n      \"id\": \"37f2eed6-0bea-4d0b-a3c6-24cc76143bfd\",\n      \"meta\": {\n        \"owner\": \"store\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers\",\n    \"first\": \"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=0&page[limit]=25\",\n    \"last\": \"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=0&page[limit]=25\",\n    \"prev\": \"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=0&page[limit]=25\",\n    \"next\": \"/pcm/pricebooks/4c45e4ec-26e0-4043-86e4-c15b9cf985a7/modifiers?page[offset]=25&page[limit]=25\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          Unexpected error
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"The modifier already exists","x-go-name":"Detail"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"409","x-go-name":"Status"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"conflict","x-go-name":"Title"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"detail\": \"The modifier already exists\",\n      \"status\": \"409\",\n      \"title\": \"conflict\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

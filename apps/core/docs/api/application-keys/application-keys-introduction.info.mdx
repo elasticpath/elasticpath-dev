@@ -1,0 +1,146 @@
+---
+id: application-keys-introduction
+title: "Application Keys Introduction"
+description: "Application keys are used to directly manage access to Organizations and stores. These keys are identified based on their names, and are not associated with a user."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Export
+  url={"https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/applicationkeys/OpenAPISpec.yaml"}
+  proxy={undefined}
+>
+  
+</Export>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Application Keys Introduction"}
+>
+</Heading>
+
+
+
+Application keys are used to directly manage access to Organizations and stores. These keys are identified based on their names, and are not associated with a user.
+
+You can use application keys to generate `client_credentials` and `implicit tokens`. Unlike [User Credentials](/docs/authentication/security#user-credentials), Application keys are still valid even after a team member is removed from a store or organization.
+
+Each organization and store has a specific [rate limit](/guides/Getting-Started/rate-limits). You can fine-tune the performance and availability of your applications that are integrated with our platform by reserving a rate limit for each Application Key. Reserved rate limits ensures that applications using a token generated from that key can make at least that many requests per second.
+
+## Scenarios
+
+For example, consider the following two scenarios for using reserved rate limits:
+
+  - Scenario 1: Suppose you use a key for your store front. You can reduce the risk of customers experiencing throttling while shopping by reserving a majority of your store's rate limit for that store front to ensure a smooth shopping experience.
+
+  - Scenario 2: If you have a key for the store front but you also need to support several backend processes syncing data across systems, you can reserve a part of your store's rate limit to your store front key. This ensures that the backend process doesn't slow down the store front. Additionally, you can also reserve a rate limit for the key that is associated with most critical backend process.
+
+  It is important to note that the sum of the reserved value for all keys in your store or organization cannot exceed the total allowed requests per second for that store or organization. For example, suppose a store has a rate limit of 100 requests per second, and there is already a key that has a reserved limit of 80 requests per second. If you try to create a new key with reserved rate limit of 21 requests per second, the request will fail. However, if you reserve only 20 requests per second, it will succeed as it doesn't exceed the store's rate limit.
+
+  Keys without a reserved rate limits share from the same pool. If the total reserved rate limit across keys reaches the total rate limit for your store or organization, there will be nothing left in the unreserved, shared pool. Keys without a reserved rate limit will experience throttling when they attempt to make requests. Keys with a reserved rate limit can also use this shared pool.
+
+  Adjustments made to the reserved rate limit may take up to one hour to become effective.
+
+  The following table describes the management of application keys for organizations and stores.
+
+  | Organizations | Stores |
+  | --------------- | -------- |
+  | Application keys are granted the same permissions as Org Admins. | Application keys are granted the same permissions as Store Admins. |
+  | Org Admins can view and manage the list of application keys in their organization and all stores belonging to that organization. | Store Admins can view and manage the list of application keys within the store. |
+  | Application keys can be used to manage access to an organization and all stores in the organization. | Application keys can be used to manage access to a store. |
+
+## Best Practices for Application Keys
+
+- Assign a descriptive name for the application key associated with its purpose.
+- Create a unique application key each each distinct type of interactions, such as storefront and back-end interactions.
+- Do not embed API keys directly in your code.
+- Do not store API keys in files within your application's source tree.
+- Regularly review your application keys and delete any that are no longer in use.
+- Assign a reserved rate limit for your critical application keys.
+- Do not fully reserve the rate limit for your store or organizations across all keys. Instead, reserve rate limits thoughtfully to ensure that keys without a reserved rate limit can draw from a shared pool when needed.
+
+  To create your application key, see [Creating an Application Key](/docs/commerce-manager/application-keys/application-keys-cm).
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div><div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Contact
+  </h3><span>
+    Elastic Path: [support@elasticpath.com](mailto:support@elasticpath.com)
+  </span><span>
+    URL: [https://www.elasticpath.com](mailto:https://www.elasticpath.com)
+  </span>
+</div><div
+  style={{"marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    License
+  </h3><a
+    href={"https://elasticpath.dev"}
+  >
+    MIT
+  </a>
+</div>
+      

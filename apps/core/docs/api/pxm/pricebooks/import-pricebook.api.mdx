@@ -1,0 +1,453 @@
+---
+id: import-pricebook
+title: "Import a Price"
+description: "You can create and update product price books and prices in bulk, at both organization and store level, using the Price Book Import API. This is useful, for example, if you have a promotion and want to update 50,000 product prices. Rather than having to go to each price book and manually edit 50,000 prices, you can use the Price Book Import API to bulk update all your product prices at the same time, including setting different prices for different currencies."
+sidebar_label: "Import a Price"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/api/pxm/pricebooks/price-books-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Import a Price"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/pcm/pricebooks/import"}
+>
+  
+</MethodEndpoint>
+
+
+
+You can create and update product price books and prices in bulk, at both organization and store level, using the Price Book Import API. This is useful, for example, if you have a promotion and want to update 50,000 product prices. Rather than having to go to each price book and manually edit 50,000 prices, you can use the Price Book Import API to bulk update all your product prices at the same time, including setting different prices for different currencies.
+ 
+ The API uses a [JSONL](https://jsonlines.org/) file. The JSONL file can be compressed to a GZIP file. Here is an [example of a JSONL file](/assets/example_file_all.jsonl). See [Price Book Export JSONL File](#tag/Price-Book-Import).
+ 
+ The API works on a "best endeavours" approach. In other words, the API does its best to create/update the price book objects based on the file that you provide. If there are any errors, then the import is aborted, and the job fails with an error. You can then use the job results to understand what objects the API created/updated until the import failed, and to troubleshoot any errors. See [Import Results](#tag/Price-Book-Import).
+ 
+ Price book imports are processed sequentially in the order that you send your import API requests.
+
+
+<div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"201"}
+        value={"201"}
+      >
+        <div>
+          
+          
+          The created price book
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Top level entity in the jobs domain model. It contains a job details.
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"0dd4e7de-006f-460f-a43e-a581f375cedc","x-go-name":"ID"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      attributes
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span><span
+                                      className={"openapi-schema__divider"}
+                                    >
+                                      
+                                    </span><span
+                                      className={"openapi-schema__required"}
+                                    >
+                                      required
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"created_at"}
+                                    required={true}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","format":"date-time","example":"2020-09-22T09:00:00Z","x-go-name":"CreatedAt"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"updated_at"}
+                                    required={true}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","example":"2020-09-22T09:00:00Z","format":"date-time","x-go-name":"UpdatedAt"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"started_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","format":"date-time","example":"2020-09-22T09:00:00Z","x-go-name":"StartedAt","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"completed_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","example":"2020-09-22T09:00:00Z","format":"date-time","x-go-name":"CompletedAt","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"type"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","example":"pricebook-import","x-go-name":"Type"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"status"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","example":"pending","x-go-name":"Status"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      meta
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span><span
+                                      className={"openapi-schema__divider"}
+                                    >
+                                      
+                                    </span><span
+                                      className={"openapi-schema__required"}
+                                    >
+                                      required
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"x_request_id"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string","example":"2d70776e-c2b0-4446-84e6-d08a24edfca4","x-go-name":"XRequestID"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": {\n    \"id\": \"0dd4e7de-006f-460f-a43e-a581f375cedc\",\n    \"attributes\": {\n      \"created_at\": \"2020-09-22T09:00:00Z\",\n      \"updated_at\": \"2020-09-22T09:00:00Z\",\n      \"started_at\": \"2020-09-22T09:00:00Z\",\n      \"completed_at\": \"2020-09-22T09:00:00Z\",\n      \"type\": \"pricebook-import\",\n      \"status\": \"pending\"\n    },\n    \"meta\": {\n      \"x_request_id\": \"2d70776e-c2b0-4446-84e6-d08a24edfca4\"\n    }\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          Unexpected error.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"The price book already exists","x-go-name":"Detail"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"409","x-go-name":"Status"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"conflict","x-go-name":"Title"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"detail\": \"The price book already exists\",\n      \"status\": \"409\",\n      \"title\": \"conflict\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

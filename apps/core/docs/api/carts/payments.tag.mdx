@@ -1,0 +1,89 @@
+---
+id: payments
+title: "Payments"
+description: "Payments"
+custom_edit_url: null
+---
+
+
+
+When you [checkout](/docs/api/carts/checkout) a [cart](/docs/api/carts/cart-management), an unpaid [order](/docs/api/carts/orders) is returned. You can process the payment for the order though a payment gateway.
+
+:::note
+
+- You need to configure and enable a payment gateway before you can accept payments for orders.
+- Configure your store to use [Manual Gateway](/docs/api/payments/update-manual-gateway) to process payments if the order total is zero or the payment is through non-supported payment providers.
+- There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
+- We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](https://beta.elasticpath.dev/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
+
+:::
+
+### Payment Methods
+
+Depending on the chosen gateway, you may or may not have access to capture funds immediately or authorize for later payment. For more information, see [Transactions](/docs/api/carts/transactions).
+
+To make a partial payment in Postman through any payment gateway, specify the desired payment amount in the amount field within the request body. To learn about Split Payments, see the [Split Payments](/docs/api/payments/payment-gateways-introduction#split-payments) section.
+
+#### Purchase
+
+The simplest method is purchase. The gateway attempts to charge the customer immediately, and the result of the attempt is returned.
+
+You can partially pay funds using purchase method. The gateway attempts to charge the customer immediately, and the payment status for an order shows `partially_paid`.
+
+When you Get an order, you can see the following fields in the meta object:
+
+- `balance_owing`: Specifies the outstanding funds required to complete an order. It considers all complete or pending transactions, including authorized, paid, and captured transactions. (`balance_owing` = order total - `authorized` amount - `paid` amount).
+- `paid`: Specifies the total amount of purchased or captured transactions.
+- `authorized`: Specifies the total amount of completed or pending authorized transactions for an order.
+
+#### Authorize
+
+You can `authorize` a payment so funds can later be captured when an item is dispatched or restocked.
+
+You can partially pay for an order using `authorize` payment method so that the order is `partially_authorized`. The transaction must be complete for the order status to be `partially_authorized`.
+
+For more information about order and payment statuses for split payments, see [Split Payments](/docs/api/payments/payment-gateways-introduction#split-payments).
+
+#### Capture
+
+After authorizing a transaction, you have to capture the authorized funds.
+
+:::note
+
+We recommend capturing payments several hours to days after the authorization to mitigate risks of fraud and chargebacks. When you sell digital goods that are delivered immediately, we recommend using a single purchase call instead of separate authorize and capture calls.
+
+:::
+
+After the payment is `partially_authorized`, you must `capture` the authorized transaction later. Once you capture the authorized transactions, the order payment status will change to `partially_paid`.
+
+#### Refunds
+
+You can use either the Refund through Composable Commerce or use the Mark as Refunded capability, or a combination of both capabilities.
+
+For more information about refund for split payments, see [Refund a Payment](/docs/api/carts/refund-a-transaction).
+
+#### Refund through Composable Commerce
+
+You can start a full or partial refund to a supported payment provider directly from Commerce Manager or the API. When you start the refund process, the refund request is sent to the payment gateway. You no longer have to log on to your payment gateway’s console to process the refund.
+
+When you process a refund, use the refund endpoint to pass the refund amount. If you don’t pass an amount, the refund is processed as Mark as refunded. For more information, see the Mark as Refunded section.
+
+Each time a partial refund is triggered, the transaction.updated event is generated and updated with refunded.amount. The `order.updated` event is also triggered. The `order.refunded` event generates when the full amount is refunded.
+
+
+#### Mark as Refunded
+
+You can use your payment gateway’s console to process a refund. Process the refund first in the payment gateway and then use the **Mark as Refunded** capability in Composable Commerce to complete the process.
+
+When an order is **Marked as refunded**, the payment status `order.payment.status` is set to refunded. In this case, the `order.updated`, `transaction.updated` and `order.refunded` events are generated.
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

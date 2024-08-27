@@ -1,0 +1,420 @@
+---
+id: delete-dunning-rule
+title: "Delete dunning rules"
+description: "You can delete a dunning rule at any time. If a dunning rule is deleted then Subscriptions reverts to the configuration used if no dunning rule is set; payment is retried once a day for 10 days, in total 11 payments. You can decide what action to take after the Subscriptions has stopped retrying the payments. See [Dunning Rules](/docs/api/subscriptions/dunning-rules)."
+sidebar_label: "Delete dunning rules"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "delete api-method"
+info_path: docs/api/subscriptions/subscriptions-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete dunning rules"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/subscriptions/dunning-rules/{dunning_rule_uuid}"}
+>
+  
+</MethodEndpoint>
+
+
+
+You can delete a dunning rule at any time. If a dunning rule is deleted then Subscriptions reverts to the configuration used if no dunning rule is set; payment is retried once a day for 10 days, in total 11 payments. You can decide what action to take after the Subscriptions has stopped retrying the payments. See [Dunning Rules](/docs/api/subscriptions/dunning-rules).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"dunning_rule_uuid","in":"path","description":"The unique identifier of a dunning rule set.","required":true,"schema":{"type":"string","description":"The unique identifier.","x-go-type":"uuid.UUID","x-go-type-import":{"name":"uuid","path":"github.com/google/uuid"},"example":"00000000-0000-0000-0000-000000000000","title":"UUID"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"204"}
+        value={"204"}
+      >
+        <div>
+          
+          
+          Success. The dunning rule is removed.
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Bad request. The request failed validation.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 Error[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The HTTP response code of the error.","example":500}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"meta"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object","description":"Additional supporting meta data for the error.","example":{"missing_ids":["e7d50bd5-1833-43c0-9848-f9d325b08be8"]}}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": 500,\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\",\n      \"meta\": {\n        \"missing_ids\": [\n          \"e7d50bd5-1833-43c0-9848-f9d325b08be8\"\n        ]\n      }\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"missing-name"}
+                  value={"missing-name"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Validation Error\",\n      \"status\": \"400\",\n      \"detail\": \"data.attributes.name: \\\"name\\\" is required\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"500"}
+        value={"500"}
+      >
+        <div>
+          
+          
+          Internal server error. There was a system failure in the platform.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 Error[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The HTTP response code of the error.","example":500}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"meta"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object","description":"Additional supporting meta data for the error.","example":{"missing_ids":["e7d50bd5-1833-43c0-9848-f9d325b08be8"]}}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": 500,\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\",\n      \"meta\": {\n        \"missing_ids\": [\n          \"e7d50bd5-1833-43c0-9848-f9d325b08be8\"\n        ]\n      }\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"internal-server-error"}
+                  value={"internal-server-error"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Internal Server Error\",\n      \"status\": \"500\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

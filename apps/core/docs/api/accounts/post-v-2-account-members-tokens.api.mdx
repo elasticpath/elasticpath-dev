@@ -1,0 +1,1064 @@
+---
+id: post-v-2-account-members-tokens
+title: "Generate an Account Management Authentication Token"
+description: "Commerce provides authentication tokens for anyone using the Account Management APIs, including accounts and account members."
+sidebar_label: "Generate an Account Management Authentication Token"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/api/accounts/account-management-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate an Account Management Authentication Token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v2/account-members/tokens"}
+>
+  
+</MethodEndpoint>
+
+
+
+Commerce provides authentication tokens for anyone using the Account Management APIs, including accounts and account members.
+
+For each element in the list returned by the account member authentication API, a token value is returned. In order for a shopper to authenticate as the account, this value should be set as the `EP-Account-Management-Authentication-Token` header when calling Commerce. This header grants access to additional resources associated with the account, such as [carts](/docs/api/carts/account-cart-associations), [orders](/docs/api/carts/orders), [catalogs with associated rules](/docs/api/pxm/catalog/rules), and [addresses](/docs/api/addresses/addresses-introduction).
+
+The set of permissions available to a shopper using an Account Management Authentication token is documented in [Permissions](/docs/authentication/Tokens/permissions)
+
+Commerce provides authentication tokens for an account and an account member using:
+
+- OpenID Connect
+- Username and password
+- Self signup
+- One-time password token
+- Switch account token
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={true}
+          className={"schemaItem"}
+        >
+          <details
+            style={{}}
+            className={"openapi-markdown__details"}
+          >
+            <summary
+              style={{}}
+            >
+              <span
+                className={"openapi-schema__container"}
+              >
+                <strong
+                  className={"openapi-schema__property"}
+                >
+                  data
+                </strong><span
+                  className={"openapi-schema__name"}
+                >
+                   object
+                </span><span
+                  className={"openapi-schema__divider"}
+                >
+                  
+                </span><span
+                  className={"openapi-schema__required"}
+                >
+                  required
+                </span>
+              </span>
+            </summary><div
+              style={{"marginLeft":"1rem"}}
+            >
+              <div>
+                <span
+                  className={"badge badge--info"}
+                  style={{"marginBottom":"1rem"}}
+                >
+                  oneOf
+                </span><SchemaTabs>
+                  <TabItem
+                    label={"OpenIDConnectRequest"}
+                    value={"0-item-properties"}
+                  >
+                    <SchemaItem
+                      collapsible={false}
+                      name={"type"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifices the type of the object. You must use `account_management_authentication_token`.","type":"string","default":"account_management_authentication_token"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"authentication_mechanism"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Species the authentication mechanism. You must use `oidc`.","type":"string","default":"oidc"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"oauth_authorization_code"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifies the code returned from the OpenID Connect Provider authentication.","type":"string","example":"c2490f06-6d8e-4927-99aa-4bf02b419e96"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"oauth_redirect_uri"}
+                      required={true}
+                      schemaName={"uri"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifies the URL of the front-end that handles the callback of the token.","type":"string","format":"uri","example":"https://example-store.com/oauth2/callback"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"oauth_code_verifier"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifies the Proof Key for Code Exchange (PKCE) code verifier corresponding to the code challenge supplied to the authorization endpoint. For more information about code verifier and challenge, see Generating a [Code Verifier and Challenge](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/get-single-sign-on-customer-token#generate-proof-key-for-code-exchange-pkce-parameters).","type":"string","example":"0E934PurR8ExVg6Pj7T4kQewxKzWSfSFG5d15FGfww8"}}
+                    >
+                      
+                    </SchemaItem>
+                  </TabItem><TabItem
+                    label={"PasswordRequest"}
+                    value={"1-item-properties"}
+                  >
+                    <SchemaItem
+                      collapsible={false}
+                      name={"type"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifices the type of the object. You must use `account_management_authentication_token`.","type":"string","default":"account_management_authentication_token"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"authentication_mechanism"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Species the authentication mechanism. You must use `password`.","type":"string","default":"password"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"password_profile_id"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The password profile ID. For more information, see [password profiles page](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/password-profiles-api/overview).","type":"string","example":"c2490f06-6d8e-4927-99aa-4bf02b419e96"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"username"}
+                      required={true}
+                      schemaName={"uri"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The username.","type":"string","format":"uri","example":"username"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"password"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The password.","type":"string","example":"pa$$word"}}
+                    >
+                      
+                    </SchemaItem>
+                  </TabItem><TabItem
+                    label={"PasswordlessRequest"}
+                    value={"2-item-properties"}
+                  >
+                    <SchemaItem
+                      collapsible={false}
+                      name={"type"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifices the type of the object. You must use `account_management_authentication_token`.","type":"string","default":"account_management_authentication_token"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"authentication_mechanism"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Species the authentication mechanism. You must use `passwordless`.","type":"string","default":"passwordless"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"password_profile_id"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The password profile ID. For more information, see [password profiles page](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/password-profiles-api/overview).","type":"string","example":"c2490f06-6d8e-4927-99aa-4bf02b419e96"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"username"}
+                      required={true}
+                      schemaName={"uri"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The username.","type":"string","format":"uri","example":"jane.doe@gmail.com"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"one_time_password_token"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The one-time password token.","type":"string","example":"abd1g5"}}
+                    >
+                      
+                    </SchemaItem>
+                  </TabItem><TabItem
+                    label={"SelfSignupRequest"}
+                    value={"3-item-properties"}
+                  >
+                    <SchemaItem
+                      collapsible={false}
+                      name={"type"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifices the type of the object. You must use `account_management_authentication_token`.","type":"string","default":"account_management_authentication_token"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"authentication_mechanism"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Species the authentication mechanism. You must use `self_signup`.","type":"string","default":"self_signup"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"password_profile_id"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The password profile ID. For more information, see [password profiles page](https://elasticpath.dev/docs/commerce-cloud/authentication/single-sign-on/password-profiles-api/overview).","type":"string","example":"c2490f06-6d8e-4927-99aa-4bf02b419e96"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"username"}
+                      required={true}
+                      schemaName={"uri"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The username.","type":"string","format":"uri","example":"username"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"password"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The password.","type":"string","example":"pa$$word"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"name"}
+                      required={true}
+                      schemaName={"uri"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The name.","type":"string","format":"uri","example":"totallylegit"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"email"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"The email.","type":"string","example":"totallylegit@gmail.com"}}
+                    >
+                      
+                    </SchemaItem>
+                  </TabItem><TabItem
+                    label={"SwitchingAccountRequest"}
+                    value={"4-item-properties"}
+                  >
+                    <SchemaItem
+                      collapsible={false}
+                      name={"type"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Specifices the type of the object. You must use `account_management_authentication_token`.","type":"string","default":"account_management_authentication_token"}}
+                    >
+                      
+                    </SchemaItem><SchemaItem
+                      collapsible={false}
+                      name={"authentication_mechanism"}
+                      required={true}
+                      schemaName={"string"}
+                      qualifierMessage={undefined}
+                      schema={{"description":"Species the authentication mechanism. You must use `account_management_authentication_token`.","type":"string","default":"account_management_authentication_token"}}
+                    >
+                      
+                    </SchemaItem>
+                  </TabItem>
+                </SchemaTabs>
+              </div>
+            </div>
+          </details>
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"201"}
+        value={"201"}
+      >
+        <div>
+          
+          
+          Created
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 AccountManagementAuthenticationTokenResponse[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Specifies the type of the object.","type":"string","default":"account_management_authentication_token"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"account_name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The name of the account that this token grants access to.","type":"string","example":"acc-name-1"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"account_id"}
+                              required={false}
+                              schemaName={"uuid"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The ID of the account that this token grants access to.","type":"string","format":"uuid","example":"908f7849-60da-4e4a-a3b1-51d4cbe3b953"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"token"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The JWT authentication token that the shopper uses as the `EP-Account-Management-Authentication-Token` header [in all other endpoints](https://elasticpath.dev/docs/commerce-cloud/authentication/tokens/account-management-authentication-token).","type":"string","example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOiIyMDIxLTAzLTE2VDE5OjM2OjExLjA3MFoiLCJpYXQiOiIyMDIxLTAzLTE1VDE5OjM2OjExLjA3MFoiLCJzY29wZSI6IjFjNDVlNGVjLTI2ZTAtNDA0My04NmU0LWMxNWI5Y2Y5ODVhMyIsInN1YiI6IjFjNDVlNGVjLTI2ZTAtNDA0My04NmU0LWMxNWI5Y2Y5ODVhMiJ9.ytQ3UutTl_RJ8NiB1xN29Ta23p-FXsYOhcUM7MUQ4CM"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"expires"}
+                              required={false}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The epoch time that this token expires at. The time is set to 24 hours after the token is generated.","type":"string","format":"date-time","example":"2021-03-16T19:36:11.070Z"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                meta
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      page
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"limit"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"integer","description":"The maximum number of records per page for this response. You can set this value up to 100.","example":25}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"current"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"integer","description":"The current page.","example":0}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"offset"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"integer","description":"The current offset by number of records, not pages. Offset is zero-based.","example":0}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"total"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"integer","description":"The total page count.","example":1}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      results
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"total"}
+                                    required={false}
+                                    schemaName={"integer"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"integer","description":"The total number of results after applying filters, if any, or all results.","example":1}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                links
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"current"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always the current page.","type":"string","format":"uri","example":"https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"first"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always the first page.","type":"string","format":"uri","example":"https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"last"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always `null` if there is only one page.","type":"string","format":"uri","example":"https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"next"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always `null` if there is only one page.","type":"string","example":null}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"prev"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always `null` if the user is on the first page.","type":"string","example":null}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"type\": \"account_management_authentication_token\",\n      \"account_name\": \"acc-name-1\",\n      \"account_id\": \"908f7849-60da-4e4a-a3b1-51d4cbe3b953\",\n      \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOiIyMDIxLTAzLTE2VDE5OjM2OjExLjA3MFoiLCJpYXQiOiIyMDIxLTAzLTE1VDE5OjM2OjExLjA3MFoiLCJzY29wZSI6IjFjNDVlNGVjLTI2ZTAtNDA0My04NmU0LWMxNWI5Y2Y5ODVhMyIsInN1YiI6IjFjNDVlNGVjLTI2ZTAtNDA0My04NmU0LWMxNWI5Y2Y5ODVhMiJ9.ytQ3UutTl_RJ8NiB1xN29Ta23p-FXsYOhcUM7MUQ4CM\",\n      \"expires\": \"2021-03-16T19:36:11.070Z\"\n    }\n  ],\n  \"meta\": {\n    \"page\": {\n      \"limit\": 25,\n      \"current\": 0,\n      \"offset\": 0,\n      \"total\": 1\n    },\n    \"results\": {\n      \"total\": 1\n    }\n  },\n  \"links\": {\n    \"current\": \"https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25\",\n    \"first\": \"https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25\",\n    \"last\": \"https://useast.api.elasticpath.com/v2/account-members/tokens?page[offset]=0&page[limit]=25\",\n    \"next\": null,\n    \"prev\": null\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Unauthorized
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 Error[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","examples":["Bad Request"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","format":"string","description":"The HTTP response code of the error.","examples":["400"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","examples":["The field 'name' is required"]}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"status\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"unauthorized-error"}
+                  value={"unauthorized-error"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Unauthorized\",\n      \"status\": \"401\"\n    }\n  ]\n}\n"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          Internal server error.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 Error[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","examples":["Bad Request"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","format":"string","description":"The HTTP response code of the error.","examples":["400"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","examples":["The field 'name' is required"]}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"status\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"internal-server-error"}
+                  value={"internal-server-error"}
+                >
+                  <div
+                    className={"openapi-example__summary"}
+                  >
+                    Internal server error
+                  </div><ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Internal Server Error\",\n      \"status\": \"500\",\n      \"detail\": \"there was a problem processing your request\"\n    }\n  ]\n}\n"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

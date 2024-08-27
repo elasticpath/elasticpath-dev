@@ -1,0 +1,146 @@
+---
+id: custom-fields
+title: "Custom Fields"
+description: "Custom Fields"
+custom_edit_url: null
+---
+
+
+
+A Custom Field represents a single field of data (for example a Product Rating). A Custom API is composed of one or more Custom Fields.
+
+Here is a comparison of different types and validation available in Custom APIs vs Non-Core Flows.
+
+| Feature                           | Non-Core Flows   | Commerce Extensions                        |
+| --------------------------------- | ---------------- | ------------------------------------------ |
+| Data Type: String                 | ✅                | ✅                                          |
+| Data Type: Integer                | ✅                | ✅                                          |
+| Data Type: Float                  | ✅                | ✅                                          |
+| Data Type: Boolean                | ✅                | ✅                                          |
+| Data Type: Date                   | ✅                | ✅ Regex possible now, full support planned |
+| Data Type: One To Many            | ✅                | Planned                                    |
+| Validation: Regular Expression    | ⛔️               | ✅                                          |
+| Validation: Slug/Email            | ✅                | ✅ Replaced by Regex validation             |
+| Validation: Min/Max Value         | ✅                | ✅                                          |
+| Validation: Enum(String)          | ✅                | ✅ Replaced by Regex validation             |
+| Validation: Enum(Float/Integer)   | ✅                | ⛔️                                         |
+| Validation: Allow null values     | ⛔                | ✅                                          |
+| Validation: Unique(String)        | ⛔                | ✅                                          |
+
+## Validation
+
+When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
+
+:::note
+
+All validation changes, such as those to `allow_null_values` and any type specific rules, apply to new entries only. Existing Custom API Entry records are unaffected until updated.
+
+:::
+
+### Integer Validation
+- `min_value`: Specifies the minimum whole number that can be stored. If set, it must be less than `max_value`.
+- `max_value`: Specifies the maximum whole number that can be stored. If set, it must be greater than `min_value`.
+
+sample integer validation object:
+
+```json
+{
+  "validation": {
+    "integer": {
+      "min_value": 0,
+      "max_value": 32
+    }
+  }
+}
+```
+Even if no validation is set, field_type `integer` only supports values between -2^53+1 and 2^53+1. This is because the JSON format doesn't guarantee that values outside this range are portable ([Source](https://datatracker.ietf.org/doc/html/rfc7159#section-6)). 
+
+
+
+### Float Validation
+- `min_value`: Specifies the minimum number that can be stored. If set, it must be less than `max_value`.
+- `max_value`: Specifies the maximum number that can be stored. If set, it must be greater than `min_value`.
+
+sample float validation object:
+
+```json 
+{
+  "validation": {
+    "float": {
+      "min_value": 0.01,
+      "max_value": 32.01
+    }
+  }
+}
+```
+
+The `float` field_type cannot accurately represent some numbers and so using very small or large numbers might lose precision. We recommend that API clients use either the `integer` field_type if applicable , or the `string` data type if perfect precision or recall is required.
+
+### String Validation
+- `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be less than 0 and less than `max_length`.
+- `max_length`: Specifies the maximum number of characters that can be stored. If set, it must be greater than 0 and `min_length`.
+- `regex`: [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored. This must be less than 1024 characters.
+- `unique`: Specifies whether the field can have unique constraint or not. It must be `yes` or `no`.
+
+sample string validation object:
+
+```json
+{
+  "validation": {
+    "string": {
+      "min_length": 0,
+      "max_length": 64,
+      "regex": "^.+\\.(jpg|jpeg|png|gif|pdf)$",
+      "unique": "yes"
+    }
+  }
+}
+```
+Even if no validation is set, field_type `string` only supports values that are up to `65535` characters long.
+
+
+### Null Values
+
+All Custom Fields can be configured to restrict the storage of `null` values for that field on a Custom API Entry. By default, this is `true`.
+
+sample validation object :
+  
+```json
+{
+  "validation": {
+    "boolean": {
+      "allow_null_values": false
+    }
+  }
+}
+  ```
+
+## Reserved Slugs
+
+The following values cannot be used as a `slug` in a Custom Field.
+
+- slug
+- type
+- id
+- meta
+- created_at
+- updated_at
+- links
+- relationships
+- attributes
+- attribute
+- dimension
+- dimensions
+- weight
+- weights
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

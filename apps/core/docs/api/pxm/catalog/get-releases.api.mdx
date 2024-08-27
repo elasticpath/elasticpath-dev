@@ -1,0 +1,1037 @@
+---
+id: get-releases
+title: "Gets all authorized catalog releases"
+description: "Returns a list of all published releases of the specified catalog. Currently, published catalogs are limited to the current release and two releases prior to the current release. You can see the differences between the last 2 consecutive catalog releases using the `delta` link returned in the response of a `publish a catalog` endpoint."
+sidebar_label: "Gets all authorized catalog releases"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/api/pxm/catalog/catalogs-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets all authorized catalog releases"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/pcm/catalogs/{catalog_id}/releases"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a list of all published releases of the specified catalog. Currently, published catalogs are limited to the current release and two releases prior to the current release. You can see the differences between the last 2 consecutive catalog releases using the `delta` link returned in the response of a `publish a catalog` endpoint.
+
+You can use the `is_full_delta` attribute returned from the `get a release of a catalog` endpoint to determine if you need to refresh the data in your company system before publishing a catalog release and injecting fresh data in a delta link. The `is_full_delta` attribute tells you if this is a full publish of a catalog release. Using a search service as an example, if the `is_full_delta` attribute is `true`, you should remove all data about that catalog from the search service before publishing a catalog release and injecting fresh data from the delta file. 
+
+If the `is_full_publish` attribute returned in the response is `false`, data from the previous catalog release overlaid the existing data in the delta file. The `is_full_publish` attribute is always `true` the first time a catalog is published.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"The catalog ID.","name":"catalog_id","in":"path","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"The language and locale your storefront prefers. See [Accept-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language).","in":"header","name":"accept-language","required":false,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The list of catalogs.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A unique identifier for the catalog release.","type":"string","x-go-name":"ID","example":"8dbb35b2-ef04-477e-974d-e5f3abe6faae"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      attributes
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"name"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The name of a release.","type":"string","example":"Clothing"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"published_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The date and time a release was published.","type":"string","format":"date-time","example":"1970-01-01T00:00:00.000","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"catalog_id"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"A unique identifier for the catalog.","type":"string","example":"0194f54d-f2a1-4e33-9a6e-9ec366152490"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"description"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"A description of the catalog release.","type":"string","example":"Catalog for Store 123","default":""}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            hierarchies
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object[]
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          An array of hierarchy IDs associated with the release.
+                                          
+                                          
+                                        </div><li>
+                                          <div
+                                            style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                                          >
+                                            Array [
+                                          </div>
+                                        </li><SchemaItem
+                                          collapsible={false}
+                                          name={"id"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"The unique identifier of a hierarchy.","type":"string","example":"65477ce0-fcb8-436b-a120-3d57979421dd","x-go-name":"ID"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"label"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"A label for a hierarchy.","type":"string","example":"category","x-go-name":"Label"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"name"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"The name of a hierarchy.","type":"string","example":"Formal dresswear","x-go-name":"Name"}}
+                                        >
+                                          
+                                        </SchemaItem><li>
+                                          <div
+                                            style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                                          >
+                                            ]
+                                          </div>
+                                        </li>
+                                      </div>
+                                    </details>
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      relationships
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Relationships are established between different catalog entities. For example, products, hierarchies, price books, and catalog rules are related to a catalog, as they are associated with it.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            delta
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          A URL to a delta document that describes the changes between catalog releases.
+                                          
+                                          
+                                        </div><SchemaItem
+                                          collapsible={true}
+                                          className={"schemaItem"}
+                                        >
+                                          <details
+                                            style={{}}
+                                            className={"openapi-markdown__details"}
+                                          >
+                                            <summary
+                                              style={{}}
+                                            >
+                                              <span
+                                                className={"openapi-schema__container"}
+                                              >
+                                                <strong
+                                                  className={"openapi-schema__property"}
+                                                >
+                                                  links
+                                                </strong><span
+                                                  className={"openapi-schema__name"}
+                                                >
+                                                   object
+                                                </span>
+                                              </span>
+                                            </summary><div
+                                              style={{"marginLeft":"1rem"}}
+                                            >
+                                              <div
+                                                style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                              >
+                                                
+                                                
+                                                A URL to a related object, for example, catalog rules, hierarchies, price books, products and deltas.
+                                                
+                                                
+                                              </div><SchemaItem
+                                                collapsible={false}
+                                                name={"related"}
+                                                required={true}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"description":"A URL to a related object, for example, catalog rules, hierarchies, price books, products and deltas.","type":"string"}}
+                                              >
+                                                
+                                              </SchemaItem>
+                                            </div>
+                                          </details>
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            products
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          A URL to all products included in a catalog release.
+                                          
+                                          
+                                        </div><SchemaItem
+                                          collapsible={true}
+                                          className={"schemaItem"}
+                                        >
+                                          <details
+                                            style={{}}
+                                            className={"openapi-markdown__details"}
+                                          >
+                                            <summary
+                                              style={{}}
+                                            >
+                                              <span
+                                                className={"openapi-schema__container"}
+                                              >
+                                                <strong
+                                                  className={"openapi-schema__property"}
+                                                >
+                                                  links
+                                                </strong><span
+                                                  className={"openapi-schema__name"}
+                                                >
+                                                   object
+                                                </span>
+                                              </span>
+                                            </summary><div
+                                              style={{"marginLeft":"1rem"}}
+                                            >
+                                              <div
+                                                style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                              >
+                                                
+                                                
+                                                A URL to a related object, for example, catalog rules, hierarchies, price books, products and deltas.
+                                                
+                                                
+                                              </div><SchemaItem
+                                                collapsible={false}
+                                                name={"related"}
+                                                required={true}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"description":"A URL to a related object, for example, catalog rules, hierarchies, price books, products and deltas.","type":"string"}}
+                                              >
+                                                
+                                              </SchemaItem>
+                                            </div>
+                                          </details>
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            hierarchies
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          A URL to all hierarchies included in a catalog release.
+                                          
+                                          
+                                        </div><SchemaItem
+                                          collapsible={true}
+                                          className={"schemaItem"}
+                                        >
+                                          <details
+                                            style={{}}
+                                            className={"openapi-markdown__details"}
+                                          >
+                                            <summary
+                                              style={{}}
+                                            >
+                                              <span
+                                                className={"openapi-schema__container"}
+                                              >
+                                                <strong
+                                                  className={"openapi-schema__property"}
+                                                >
+                                                  links
+                                                </strong><span
+                                                  className={"openapi-schema__name"}
+                                                >
+                                                   object
+                                                </span><span
+                                                  className={"openapi-schema__divider"}
+                                                >
+                                                  
+                                                </span><span
+                                                  className={"openapi-schema__required"}
+                                                >
+                                                  required
+                                                </span>
+                                              </span>
+                                            </summary><div
+                                              style={{"marginLeft":"1rem"}}
+                                            >
+                                              <div
+                                                style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                              >
+                                                
+                                                
+                                                A URL to a related object, for example, catalog rules, hierarchies, price books, products and deltas.
+                                                
+                                                
+                                              </div><SchemaItem
+                                                collapsible={false}
+                                                name={"related"}
+                                                required={true}
+                                                schemaName={"string"}
+                                                qualifierMessage={undefined}
+                                                schema={{"description":"A URL to a related object, for example, catalog rules, hierarchies, price books, products and deltas.","type":"string"}}
+                                              >
+                                                
+                                              </SchemaItem>
+                                            </div>
+                                          </details>
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This represents the type of object being returned. Always `catalog-release`.","type":"string","x-go-name":"Type"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      meta
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    A release's metadata.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"created_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The date and time a release is created.","type":"string","format":"date-time","example":"1970-01-01T00:00:00.000"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"started_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The date and time a release is available for use. In other words, the date and time the status of a catalog release changes to PUBLISHED, rather than IN PROGRESS.","type":"string","format":"date-time","example":"1970-01-01T00:00:00.000","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"updated_at"}
+                                    required={false}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The date and time a release is updated.","type":"string","format":"date-time","example":"1970-01-01T00:00:00.000","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"release_status"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`PENDING`, `IN_PROGRESS`, `FAILED`, `PUBLISHED`]"}
+                                    schema={{"description":"The status of the current release.","type":"string","enum":["PENDING","IN_PROGRESS","FAILED","PUBLISHED"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"language"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Your storefront's preferred language code and locale.","type":"string","example":"en-GB"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"is_full_publish"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Indicates that a full publish was performed (either because this is the first time a catalog has been published or because of a change that occurred, for example, adding/removing a price book or hierarchy). When determining whether delta data needs to be refreshed, ignore this attribute and always use the `is_full_delta` attribute.\n","type":"boolean","example":false,"default":false,"x-go-name":"IsFullPublish"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"is_full_delta"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Indicates whether the release delta file contains the full content of a catalog release. Using a search service as an example, if the `is_full_delta` attribute is `true`, you should remove all data about that catalog release from the search service before injecting fresh data from the delta file. If the `is_full_delta` attribute is `false`, then data from the previous catalog release overlays the existing data in the delta file. The `is_full_delta` attribute is always `true` the first time a catalog is published.\n","type":"boolean","example":false,"default":false,"x-go-name":"IsFullDelta"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"total_products"}
+                                    required={false}
+                                    schemaName={"int64"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The total number of products displayed in a catalog release.","type":"integer","format":"int64","x-go-name":"TotalProducts","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"total_nodes"}
+                                    required={false}
+                                    schemaName={"int64"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"The total number of hierarchy nodes displayed in a catalog release.","type":"integer","format":"int64","x-go-name":"TotalNodes","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"percent_completed"}
+                                    required={false}
+                                    schemaName={"int32"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"An integer that represents the progress of a catalog publish. The attribute starts at `0` and reaches `100` when publishing is complete.","type":"integer","format":"int32","x-go-name":"PercentCompleted","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"owner"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`store`, `organization`]"}
+                                    schema={{"description":"The owner of the resource, can be either `organization` or `store`.","type":"string","enum":["store","organization"],"x-go-name":"Owner","nullable":true}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                links
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Links allow you to move between requests.
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={false}
+                              name={"self"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Single entities use a `self` parameter with a link the specific resource.","type":"string","format":"uri","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"first"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Always the first page.","type":"string","format":"uri","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"last"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This is `null` if there is only one page.","type":"string","format":"uri","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"prev"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This is `null` if there is only one page.","type":"string","format":"uri","nullable":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"next"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"This is `null` if there is only one page.","type":"string","format":"uri","nullable":true}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"id\": \"8dbb35b2-ef04-477e-974d-e5f3abe6faae\",\n      \"attributes\": {\n        \"name\": \"Clothing\",\n        \"published_at\": \"1970-01-01T00:00:00.000\",\n        \"catalog_id\": \"0194f54d-f2a1-4e33-9a6e-9ec366152490\",\n        \"description\": \"Catalog for Store 123\",\n        \"hierarchies\": [\n          {\n            \"id\": \"65477ce0-fcb8-436b-a120-3d57979421dd\",\n            \"label\": \"category\",\n            \"name\": \"Formal dresswear\"\n          }\n        ]\n      },\n      \"relationships\": {\n        \"delta\": {\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"products\": {\n          \"links\": {\n            \"related\": \"string\"\n          }\n        },\n        \"hierarchies\": {\n          \"links\": {\n            \"related\": \"string\"\n          }\n        }\n      },\n      \"type\": \"string\",\n      \"meta\": {\n        \"created_at\": \"1970-01-01T00:00:00.000\",\n        \"started_at\": \"1970-01-01T00:00:00.000\",\n        \"updated_at\": \"1970-01-01T00:00:00.000\",\n        \"release_status\": \"PENDING\",\n        \"language\": \"en-GB\",\n        \"is_full_publish\": false,\n        \"is_full_delta\": false,\n        \"total_products\": 0,\n        \"total_nodes\": 0,\n        \"percent_completed\": 0,\n        \"owner\": \"store\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          The unexpected error.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"not processable","x-go-name":"Detail"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"422","x-go-name":"Status"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","example":"There was a problem processing your request.","x-go-name":"Title"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"detail\": \"not processable\",\n      \"status\": \"422\",\n      \"title\": \"There was a problem processing your request.\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

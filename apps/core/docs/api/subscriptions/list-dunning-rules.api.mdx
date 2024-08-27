@@ -1,0 +1,869 @@
+---
+id: list-dunning-rules
+title: "List dunning rules"
+description: "Retrieves a list of all dunning rule sets."
+sidebar_label: "List dunning rules"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/api/subscriptions/subscriptions-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List dunning rules"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/subscriptions/dunning-rules"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves a list of all dunning rule sets.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"filter","in":"query","required":false,"schema":{"type":"string","format":"string","description":"Some Subscriptions API endpoints support filtering. For the general syntax, see [**Filtering**](/docs/commerce-cloud/api-overview/filtering), but you must go to a specific endpoint to understand the attributes and operators an endpoint supports.\n","example":"eq(name,Alan Turing)"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page[offset]","description":"The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [page length](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.","in":"query","required":false,"schema":{"type":"integer","format":"int64","minimum":0,"maximum":10000,"example":10}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page[limit]","description":"The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the [page length](/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.","in":"query","required":false,"schema":{"type":"integer","format":"int64","minimum":0,"example":100}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success. A list of dunning rules is returned.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 DunningRule[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"UUID (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The unique identifier.","x-go-type":"uuid.UUID","x-go-type-import":{"name":"uuid","path":"github.com/google/uuid"},"example":"00000000-0000-0000-0000-000000000000","title":"UUID"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={true}
+                              schemaName={"SubscriptionDunningRuleType (string)"}
+                              qualifierMessage={"**Possible values:** [`subscription_dunning_rule`]"}
+                              schema={{"type":"string","example":"subscription_dunning_rule","enum":["subscription_dunning_rule"],"title":"SubscriptionDunningRuleType"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      attributes
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       DunningRuleAttributes
+                                    </span><span
+                                      className={"openapi-schema__divider"}
+                                    >
+                                      
+                                    </span><span
+                                      className={"openapi-schema__required"}
+                                    >
+                                      required
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    The dunning rule attributes you can use to configure your payment retry strategy.
+                                    
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"payment_retry_type"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`fixed`, `backoff`, `tiered`]"}
+                                    schema={{"type":"string","enum":["fixed","backoff","tiered"],"example":"fixed","description":"The strategy used to make payments. Always `fixed`. This means payments are retried on a fixed schedule as defined by the `payment_retry_unit` and `payment_retry_interval`, for example, every two days.\n","x-go-type":"model.PaymentRetryType","x-go-type-import":{"name":"model","path":"gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model"}}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"payment_retry_interval"}
+                                    required={false}
+                                    schemaName={"int64"}
+                                    qualifierMessage={"**Possible values:** `>= 1` and `<= 1024`"}
+                                    schema={{"type":"integer","format":"int64","minimum":1,"maximum":1024,"example":1,"description":"The number of `payment_interval_unit`s to wait between each payment retry attempt."}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"payment_retry_unit"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`day`, `week`]"}
+                                    schema={{"type":"string","enum":["day","week"],"example":"day","description":"The unit of time used to measure the intervals between payment attempts or retries.","x-go-type":"model.PaymentRetryUnit","x-go-type-import":{"name":"model","path":"gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model"}}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"payment_retry_multiplier"}
+                                    required={false}
+                                    schemaName={"double"}
+                                    qualifierMessage={"**Possible values:** `>= 1` and `<= 1024`"}
+                                    schema={{"type":"number","format":"double","minimum":1,"maximum":1024,"example":1,"description":"The multiplier that increases the interval between consecutive each payment attempts or retries. This is typically used to gradually extend the time between retries. Allowing more time between attempts as failures persist, helps reduce the risk of triggering multiple failures in a short period and gives the subscriber more time to resolve the issue. Must only be set for backup types."}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"payment_retries_limit"}
+                                    required={true}
+                                    schemaName={"int64"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"integer","format":"int64","minimum":0,"example":5,"description":"The number of times Subscriptions attempts payment retries before `action` is taken."}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"action"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`none`, `pause`, `close`, `suspend`]"}
+                                    schema={{"type":"string","enum":["none","pause","close","suspend"],"example":"none","description":"The action to take after all payment attempts for an invoice have failed.\n\n- None - the subscription remains active and Subscriptions does not attempt to retry the payment. However, the subscription is still available for a subscriber to use.\n- Suspend the subscription. Subscriptions does not attempt to retry the payment. A subscriber can choose to pay the outstanding invoice. However, a subscriber cannot renew their subscription; a merchandizer must renew the subscription on behalf of the subscriber.\n- close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment.\n","x-go-type":"model.DunningAction","x-go-type-import":{"name":"model","path":"gitlab.elasticpath.com/commerce-cloud/subscriptions.svc/internal/domain/model"}}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"default"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"boolean","example":false,"description":"Set to `true` if you want this rule to be the default for the store."}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      meta
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       DunningRuleMeta
+                                    </span><span
+                                      className={"openapi-schema__divider"}
+                                    >
+                                      
+                                    </span><span
+                                      className={"openapi-schema__required"}
+                                    >
+                                      required
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <SchemaItem
+                                    collapsible={false}
+                                    name={"owner"}
+                                    required={true}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"readOnly":true,"type":"string","format":"string","description":"The owner of a resource, either `store` or `organization`.","example":"store","title":"OwnerMeta"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            timestamps
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             Timestamps
+                                          </span><span
+                                            className={"openapi-schema__divider"}
+                                          >
+                                            
+                                          </span><span
+                                            className={"openapi-schema__required"}
+                                          >
+                                            required
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <SchemaItem
+                                          collapsible={false}
+                                          name={"updated_at"}
+                                          required={true}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"The date and time a resource was updated.","type":"string","example":"2017-01-10T11:41:19.244842Z"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"created_at"}
+                                          required={true}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"The date and time a resource was created.","type":"string","example":"2017-01-10T11:41:19.244842Z"}}
+                                        >
+                                          
+                                        </SchemaItem>
+                                      </div>
+                                    </details>
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                links
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      property name*
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       Link
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div>
+                                    <span
+                                      className={"badge badge--info"}
+                                      style={{"marginBottom":"1rem"}}
+                                    >
+                                      anyOf
+                                    </span><SchemaTabs>
+                                      <TabItem
+                                        label={"LinkURI"}
+                                        value={"0-item-properties"}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          string
+                                          
+                                          
+                                        </div>
+                                      </TabItem><TabItem
+                                        label={"LinkObject"}
+                                        value={"1-item-properties"}
+                                      >
+                                        <SchemaItem
+                                          collapsible={false}
+                                          name={"href"}
+                                          required={false}
+                                          schemaName={"uri"}
+                                          qualifierMessage={undefined}
+                                          schema={{"type":"string","format":"uri","example":"http://example.com/articles/1/comments"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"title"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"type":"string","example":"Comments"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"describedby"}
+                                          required={false}
+                                          schemaName={"uri"}
+                                          qualifierMessage={undefined}
+                                          schema={{"type":"string","format":"uri","example":"http://example.com/schemas/article-comments"}}
+                                        >
+                                          
+                                        </SchemaItem>
+                                      </TabItem>
+                                    </SchemaTabs>
+                                  </div>
+                                </div>
+                              </details>
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"type\": \"subscription_dunning_rule\",\n      \"attributes\": {\n        \"payment_retry_type\": \"fixed\",\n        \"payment_retry_unit\": \"day\",\n        \"payment_retry_interval\": 1,\n        \"payment_retries_limit\": 10,\n        \"action\": \"none\"\n      },\n      \"meta\": {\n        \"owner\": \"store\",\n        \"timestamps\": {\n          \"updated_at\": \"2017-01-10T11:41:19.244842Z\",\n          \"created_at\": \"2017-01-10T11:41:19.244842Z\"\n        }\n      }\n    }\n  ],\n  \"links\": {}\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Bad request. The request failed validation.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 Error[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The HTTP response code of the error.","example":500}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"meta"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object","description":"Additional supporting meta data for the error.","example":{"missing_ids":["e7d50bd5-1833-43c0-9848-f9d325b08be8"]}}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": 500,\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\",\n      \"meta\": {\n        \"missing_ids\": [\n          \"e7d50bd5-1833-43c0-9848-f9d325b08be8\"\n        ]\n      }\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"missing-name"}
+                  value={"missing-name"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Validation Error\",\n      \"status\": \"400\",\n      \"detail\": \"data.attributes.name: \\\"name\\\" is required\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"500"}
+        value={"500"}
+      >
+        <div>
+          
+          
+          Internal server error. There was a system failure in the platform.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 Error[]
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The HTTP response code of the error.","example":500}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"title"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"A brief summary of the error.","example":"Internal server error"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"detail"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Optional additional detail about the error.","example":"An internal error has occurred."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"meta"}
+                              required={false}
+                              schemaName={"object"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"object","description":"Additional supporting meta data for the error.","example":{"missing_ids":["e7d50bd5-1833-43c0-9848-f9d325b08be8"]}}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"status\": 500,\n      \"title\": \"Internal server error\",\n      \"detail\": \"An internal error has occurred.\",\n      \"meta\": {\n        \"missing_ids\": [\n          \"e7d50bd5-1833-43c0-9848-f9d325b08be8\"\n        ]\n      }\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"internal-server-error"}
+                  value={"internal-server-error"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": [\n    {\n      \"title\": \"Internal Server Error\",\n      \"status\": \"500\"\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

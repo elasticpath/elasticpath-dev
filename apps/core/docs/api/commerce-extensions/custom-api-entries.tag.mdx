@@ -1,0 +1,58 @@
+---
+id: custom-api-entries
+title: "Custom API Entries"
+description: "Custom API Entries"
+custom_edit_url: null
+---
+
+
+
+A **Custom API Entry** is a specific instance of a resource, such as a single wishlist in a Custom API for wishlists.
+
+Custom API Entries can be accessed in two different ways, via the **settings** endpoint, or the **extension** endpoint:
+
+* Extension Endpoint: `/v2/extensions/{custom_api_slug}` - This is the primary endpoint created for use. Most clients should use this endpoint as it adheres to the semantics of the configuration. See [Commerce Extension Custom API](/docs/api/commerce-extensions/commerce-extension-custom-api)
+* Settings Endpoint: `/v2/settings/extensions/custom-apis/{custom_api_id}/entries/` - This endpoint should only be used in cases where you want to interact with your Custom APIs in a generic way in an admin capacity. 
+
+Currently, the distinction between these endpoints is minimal. The extension endpoint uses a slug in the URL path, and the settings endpoint uses an ID. For most use cases involving the new Custom API, we recommend using the extension endpoint.
+
+Conceptually, the settings endpoint is analogous to reflection in most programming languages. You use it when you want to operate in a generic way. For example, we used the settings endpoint to build Commerce Manager. Another example is if you need to import and export various types of data from CSV files. Instead of writing multiple scripts for different extension endpoints, you can write one script that operates on the settings endpoint.
+
+## Events
+
+You can integrate Commerce Extensions with your external systems by observing the appropriate events. For more information, see [Integrations](/docs/api/integrations/integrations-introduction).
+
+Given you have a Custom API with `api_type` of `wishlist_ext` and you want to perform additional processing when an action is taken, like when a wishlist is created:
+
+```bash
+curl -X POST https://useast.api.elasticpath.com/v2/extensions/wishlists \
+  -H "Authorization: Bearer XXXX" \
+  -H "Content-Type: application/json" \
+  -d $ {
+    "data": {
+      "type": "wishlist_ext",
+      "name": "My Wishlist",
+      "items_count": 0,
+      "keep_purchased": false
+    }
+  }
+```
+
+When you [create an integration](/docs/api/integrations/create-integration) with `wishlist_ext.created` in `observes` field.
+Then the configured `webhook` or `aws_sqs` will receive the appropriate message.
+
+You can configure integrations to observe the following events for your Custom API Entries:
+* Created
+* Updated
+* Deleted
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

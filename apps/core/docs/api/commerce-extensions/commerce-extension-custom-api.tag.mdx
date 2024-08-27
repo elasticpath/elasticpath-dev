@@ -1,0 +1,49 @@
+---
+id: commerce-extension-custom-api
+title: "Commerce Extension Custom API"
+description: "Commerce Extension Custom API"
+custom_edit_url: null
+---
+
+
+
+A **Commerce Extension Custom API** is the resulting API that gets created as a result of the Custom API, Custom Field.
+
+## Events
+
+You can integrate Commerce Extensions with your external systems by observing the appropriate events. For more information, see [Integrations](/docs/api/integrations/integrations-introduction).
+
+Given you have a Custom API with `api_type` of `wishlist_ext` and you want to perform additional processing when an action is taken, like when a wishlist is created:
+
+```bash
+curl -X POST https://useast.api.elasticpath.com/v2/extensions/wishlists \
+  -H "Authorization: Bearer XXXX" \
+  -H "Content-Type: application/json" \
+  -d $ {
+    "data": {
+      "type": "wishlist_ext",
+      "name": "My Wishlist",
+      "items_count": 0,
+      "keep_purchased": false
+    }
+  }
+```
+
+When you [create an integration](/docs/api/integrations/create-integration) with `wishlist_ext.created` in `observes` field.
+Then the configured `webhook` or `aws_sqs` will receive the appropriate message.
+
+You can configure integrations to observe the following events for your Custom API Entries:
+* Created
+* Updated
+* Deleted
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

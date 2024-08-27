@@ -1,0 +1,112 @@
+---
+id: subscriptions-introduction
+title: "Subscriptions Introduction"
+description: "Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Export
+  url={"https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/subscriptions/public_openapi.yaml"}
+  proxy={undefined}
+>
+  
+</Export>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Subscriptions Introduction"}
+>
+</Heading>
+
+
+
+Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts.
+
+You can create subscriptions using the Elastic Path Subscriptions API or Commerce Manager See [Subscriptions](/docs/commerce-manager/subscriptions/overview).
+
+Scenarios include:
+
+- repeat products that your customers purchase on a recurring basis.
+- membership subscriptions where your customers pay a recurring fee to become members of a particular service, program or organization.
+- subscribe and save that allows your customers to subscribe to regular deliveries of products they use frequently, for example, household essentials, or personal care items.
+
+### How Subscriptions Work
+
+Elastic Path Subscriptions enables you to manage your subscriptions products and plans, using offerings. Offerings can contain any combination of products and plans.
+
+Here's how a typical subscription works:
+
+1. Create your repeat products. See [**Repeat Products**](/docs/api/subscriptions/products).   
+2. Create your plans. Plans are the rules that govern your subscription, for example, delivery frequency, the quantity and any discount. You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. See [**Plans**](/docs/api/subscriptions/plans).
+3. Create your offerings. Offerings are the product and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer. See [**Offerings**](/docs/api/subscriptions/offerings).
+4. When a [**customer**](/docs/api/subscriptions/subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](/docs/api/subscriptions/subscriptions).
+5. Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Payments**](/docs/api/subscriptions/invoices).
+
+### Subscriber Management
+
+Elastic Path Subscriptions enables you to create customer accounts that you can use to manage their subscription details, including payment methods and billing information. See [**Subscribers**](/docs/api/subscriptions/subscribers).
+
+### Invoicing & Payments
+
+Elastic Path Subscriptions enables you to manage the billing and recurring payments associated with your customers subscriptions. Elastic Path Subscriptions provides seamless integration with Elastic Path Payments powered by Stripe. See [**Invoicing and Payments**](/docs/api/subscriptions/invoices).
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"BearerToken"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div>
+      

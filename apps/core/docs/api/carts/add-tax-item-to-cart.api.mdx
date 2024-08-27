@@ -1,0 +1,575 @@
+---
+id: add-tax-item-to-cart
+title: "Add Tax Item to Cart"
+description: "Use this endpoint to add a tax item to a cart."
+sidebar_label: "Add Tax Item to Cart"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/api/carts/carts-checkout-orders-introduction
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Tax Item to Cart"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v2/carts/{cartID}/items/{cartitemID}/taxes"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+Use this endpoint to add a tax item to a cart.
+
+:::note
+
+There is a soft limit of 5 unique tax items per cart item at any one time.
+
+:::
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"cartID","in":"path","description":"The unique identifier of the cart.","required":true,"style":"simple","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"cartitemID","in":"path","description":"The unique identifier of the cart item.","required":true,"style":"simple","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={true}
+          className={"schemaItem"}
+        >
+          <details
+            style={{}}
+            className={"openapi-markdown__details"}
+          >
+            <summary
+              style={{}}
+            >
+              <span
+                className={"openapi-schema__container"}
+              >
+                <strong
+                  className={"openapi-schema__property"}
+                >
+                  data
+                </strong><span
+                  className={"openapi-schema__name"}
+                >
+                   object
+                </span>
+              </span>
+            </summary><div
+              style={{"marginLeft":"1rem"}}
+            >
+              <SchemaItem
+                collapsible={false}
+                name={"code"}
+                required={false}
+                schemaName={"string"}
+                qualifierMessage={undefined}
+                schema={{"description":"A unique tax code in this jurisdiction.","type":"string","examples":["TAX01"]}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"jurisdiction"}
+                required={false}
+                schemaName={"string"}
+                qualifierMessage={undefined}
+                schema={{"description":"The relevant tax jurisdiction.","type":"string","examples":["UK"]}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"name"}
+                required={false}
+                schemaName={"string"}
+                qualifierMessage={undefined}
+                schema={{"description":"The name of the tax item.","type":"string","examples":["Tax name"]}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"rate"}
+                required={true}
+                schemaName={"number"}
+                qualifierMessage={undefined}
+                schema={{"description":"The tax rate represented as a decimal (12.5% -> 0.125).","type":"number","examples":[0.2]}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"type"}
+                required={true}
+                schemaName={"string"}
+                qualifierMessage={undefined}
+                schema={{"description":"The type of object being returned. Use `tax_item`.","type":"string","examples":["tax_item"]}}
+              >
+                
+              </SchemaItem>
+            </div>
+          </details>
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          
+          
+          
+        </div><details
+          style={{"textAlign":"left","marginBottom":"1rem"}}
+          className={"openapi-markdown__details"}
+          data-collapsed={true}
+          open={false}
+        >
+          <summary
+            style={{}}
+          >
+            <strong>
+              Response Headers
+            </strong>
+          </summary><ul
+            style={{"marginLeft":"1rem"}}
+          >
+            
+          </ul>
+        </details><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"code"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A unique tax code in this jurisdiction.","type":"string","examples":["TAX01"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"jurisdiction"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The relevant tax jurisdiction.","type":"string","examples":["UK"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The name of the tax item.","type":"string","examples":["Tax name"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"rate"}
+                              required={true}
+                              schemaName={"number"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The tax rate represented as a decimal (12.5% -> 0.125).","type":"number","examples":[0.2]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The type of object being returned. Use `tax_item`.","type":"string","examples":["tax_item"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"uuid"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The unique identifier for this tax item.","type":"string","format":"uuid","readOnly":true,"examples":["662461ad-ddcb-4dbd-8ed7-ade9aa63b5f9"]}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": {\n    \"code\": \"string\",\n    \"jurisdiction\": \"string\",\n    \"name\": \"string\",\n    \"rate\": 0,\n    \"type\": \"string\",\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Unauthorized
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  null\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": {\n    \"status\": 401,\n    \"title\": \"Unauthorized\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"422"}
+        value={"422"}
+      >
+        <div>
+          
+          
+          Unauthorized
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  null\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"errors\": {\n    \"status\": 422,\n    \"title\": \"Unprocessable Entity\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

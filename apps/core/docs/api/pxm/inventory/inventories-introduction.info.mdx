@@ -1,0 +1,142 @@
+---
+id: inventories-introduction
+title: "Inventories Introduction"
+description: "The Inventory API allows you to manage stock for products at both organization and store levels."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Export
+  url={"https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/openapi.yaml"}
+  proxy={undefined}
+>
+  
+</Export>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Inventories Introduction"}
+>
+</Heading>
+
+
+
+The Inventory API allows you to manage stock for products at both organization and store levels. 
+
+Inventory is the quantity of each product that you have in stock. The inventory service allows you and your business to keep track of inventory, including a transactional historic log. 
+
+Inventory for each product is tracked using the following values:
+
+- **Total**: The amount of product in stock. (Total = Available + Allocated)
+- **Available**: The amount of product available in stock minus allocated products. (Available = Total - Allocated)
+- **Allocated**: The amount of reserved product in stock.
+
+:::note
+
+In Commerce Manager, you can manage the inventory while creating a new product in Product Experience Manager. Go to **Products** > **Inventory** and you can specify the inventory details (**allocate**, **deallocate**, **increment**, and **decrement**). 
+
+:::
+
+### Order flow
+
+There are three mandatory steps to complete an order in relation to inventory:
+
+1. Added to a cart
+2. Checked out
+3. Paid
+4. Shipped (optional)
+
+#### Unpaid order flow
+
+The following flowchart depicts the process of an unpaid order.
+
+![The order is created from the cart during the checkout process.](/assets/order-flow.png)
+
+#### Payment flow
+
+The following flowchart depicts the process of paying for an order.
+
+![The payment workflow.](/assets/payment-workflow-1.png)
+
+### How stock is managed
+
+Stock is managed as follows:
+
+1. When a customer attempts to add products to a cart, the inventory service checks if there is enough available stock. If there is not enough stock available, you receive a 400 HTTP response with a warning. The response does not describe what products cannot be added, nor does it return how many products are in stock.
+2. If a customer successfully adds products to a cart, the customer can checkout to create an unpaid order.
+3. A final check on the available stock is performed. 
+4. After creating the unpaid order, the payment for an order can be taken. When a customer attempts to pay for an order, the inventory service reserves the stock before the payment is processed internally. At any time before the point of payment, a customer might lose their order, if the customer is slower than everyone else.
+
+    If the payment fails, the temporary stock allocation is removed, and the stock becomes available again for anyone to buy. 
+
+    If the payment succeeds, that stock is still allocated, and the items belong to the customer, unless for any reason they are reallocated before shipment. For example, if the customer cancels, or you realize the order is fraudulent, then you can reallocate the inventory. 
+5. Finally, when the order is marked as shipped, that stock is fully decremented. This means the allocation number is reduced, and therefore the total, and the products are no longer in the warehouse.
+
+During split payments, stocks are allocated only if the first transaction for an order is complete. If the transaction fails, the stocks are deallocated. Once the first transaction is complete, the stocks are not allocated for the subsequent transactions as they are already reserved for the order. The stocks are deallocated and return to available when the the order is canceled.
+
+### Implications of the inventories API
+
+- It is possible for more products to be in carts than there are in stock if the `add to cart` request quantity is less than available stocks. For example, when available stocks are 100, a user can add 60 to cart 1 and then 50 to cart 1, or user A can add 80 to cart 1, while user B can add 30 to cart 2.
+- It is possible for more products to be checked out than there are in stock if the `add to cart` request quantity is less than the available stocks.
+- It is not possible for more stock to be paid for than is in stock.
+- It is a race for your customers to pay for an order, and whoever does not pay fast enough, is left disappointed.
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div>
+      

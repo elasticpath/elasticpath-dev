@@ -1,0 +1,87 @@
+---
+id: products
+title: "Products"
+description: "Products"
+custom_edit_url: null
+---
+
+
+
+```mdx-code-block
+import ProductsOverview from '/docs/partials/pxm/products/productsoverview.mdx';
+import ProductTypes from '/docs/partials/pxm/products/types.mdx';
+import ProductTags from '/docs/partials/pxm/products/tags.mdx';
+import PersonalProducts from '/docs/partials/pxm/products/personalizing.mdx';
+import ProductCatalogs from '/docs/partials/pxm/products/catalogs.mdx';
+import Overview from "/docs/partials/pxm/bundles/bundles.mdx";
+import ComponentOptions from "/docs/partials/pxm/bundles/components.mdx";
+import BundlePricing from "/docs/partials/pxm/bundles/bundlepricing.mdx";
+import DynamicBundles from "/docs/partials/pxm/bundles/dynamic.mdx";
+import BundlesBundles from "/docs/partials/pxm/bundles/bundlesof.mdx";
+
+<ProductsOverview />
+
+### Product Types
+
+<ProductTypes />
+
+### Personalizing Products
+
+<PersonalProducts />
+
+### Products and Catalog Releases
+
+<ProductCatalogs />
+
+### Bundles
+
+<Overview></Overview>
+
+### Bundle Components and Options
+
+<ComponentOptions></ComponentOptions>
+
+### Bundle Pricing
+
+<BundlePricing></BundlePricing>
+
+### Dynamic Bundles
+
+<DynamicBundles></DynamicBundles>
+
+#### Creating Dynamic Bundles: An Overview
+
+The following steps are an overview of how to use dynamic bundles.
+
+1. Create your products using [**create a product**](/docs/api/pxm/products/create-product).
+1. Create a bundle using [**create a bundle**](/docs/api/pxm/products/create-product).
+1. Specify minimum and/or maximum values for the number of product options that can be selected within the bundle. For example, if you want the shopper to select exactly 4 out of 10 options, set both the minimum and maximum values to 4 for each of the 10 product options.
+1. For each product option in the bundle, specify if it is a default option by adding `"default": true` to the product options that you want to be pre-selected for the shopper.
+1. Publish the bundle to your catalog using the [Publish a catalog](/docs/api/pxm/catalog/publish-release) endpoint so you can display the products to your shoppers in your storefront.
+1. When a shopper interacts with the bundle on your storefront, they can select the products they want from the list of options. Use the [configure a shopper bundle](/docs/api/pxm/catalog/configure-by-context-product) endpoint to capture the shoppers selections. This updates the `bundle_configuration` with the product options chosen by a shopper.
+1. Once a shopper has configured their bundle, use the add a product to a cart endpoint to add the selected bundle to the shopper’s cart.
+1. When the shopper proceeds to checkout, the selected product options from the bundle are included in the order.
+
+### Bundles of Bundles
+
+<BundlesBundles></BundlesBundles>
+
+#### Creating bundles of bundles: an overview
+
+To create a bundle of bundles, simply add a bundle as a component to another bundle.
+
+1. Create your products using [**create a product**](/docs/api/pxm/products/create-product).
+1. Create all your child bundles using [**create a bundle**](/docs/api/pxm/products/create-product).
+1. [**Create a parent bundle**](/docs/api/pxm/products/create-product) and specify the product ID of your child bundle as an option of a component in your bundle. You cannot have more than 1500 options in a bundle.
+```
+
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      
