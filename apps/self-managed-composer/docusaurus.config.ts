@@ -148,7 +148,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "elasticpath", // Usually your GitHub org/user name.
-  projectName: "elasticpath-dev-self-managed-composer", // Usually your repo name.
+  projectName: "elasticpath-self-managed-composer", // Usually your repo name.
   markdown: {
     mermaid: true,
   },
