@@ -16,7 +16,6 @@ Sorting is also supported within [JavaScript SDK](/docs/developer-tools#software
 |:---------------|:---------|:---------|:-------------------------------------------------------------------------|
 | `sort`         | Optional | `string` | The attribute to sort by. Supported attributes differ based on endpoint. |
 
-
 ## Supported Endpoints
 
 * [Get All Accounts](/docs/api/accounts/get-v-2-accounts)
@@ -25,3 +24,5 @@ Sorting is also supported within [JavaScript SDK](/docs/developer-tools#software
 * [Get all User Authentication Info](/docs/authentication/single-sign-on/user-authentication-info-api/get-all-user-authentication-info)
 * [Get all Customers](/docs/customer-management/customer-management-api/get-all-customers)
 * [Get all Orders](/docs/api/carts/get-customer-orders)
+* [Get Usages for Promotion](/docs/promotions-builder/promotions-builder-codes/get-promotion-usages)
+* [Get a Promotion Code Usage](/docs/promotions-builder/promotions-builder-codes/get-a-promotion-code-usage)

@@ -58,6 +58,8 @@ Filtering is currently supported on the following endpoints:
 * [Get all Custom APIs](/docs/api/commerce-extensions/get-all-custom-apis)
 * [Get all Custom Fields](/docs/api/commerce-extensions/get-all-custom-fields)
 * [Get all Custom API Entries](/docs/api/commerce-extensions/get-all-custom-entries)
+* [Get Usages for Promotion](/docs/promotions-builder/promotions-builder-codes/get-promotion-usages)
+* [Get a Promotion Code Usage](/docs/promotions-builder/promotions-builder-codes/get-a-promotion-code-usage)
 
 ## Filtering Syntax
 
