@@ -70,6 +70,8 @@ Even if the result is zero, pagination fields are always included in the respons
 * [Get all Inventory](/docs/api/pxm/inventory/get-stock-for-all-products)
 * [Get all Files](/docs/api/pxm/files/get-all-files)
 * [Get all Jobs](/docs/api/pxm/products/get-all-jobs)
+* [Get Usages for Promotion](/docs/promotions-builder/promotions-builder-codes/get-promotion-usages)
+* [Get a Promotion Code Usage](/docs/promotions-builder/promotions-builder-codes/get-a-promotion-code-usage)
 
 ## Limitations
 

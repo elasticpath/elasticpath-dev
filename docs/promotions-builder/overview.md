@@ -116,6 +116,14 @@ To learn more about promotion codes, see [Promotion Codes](/docs/promotions-buil
 - Multiple promotions can have the same code name. This means that different promotions can be identified using the same code names, allowing shoppers to apply a single coupon code that triggers multiple promotions. For more information see [Duplicate Codes](/docs/promotions-builder/promotions-builder-codes/create-promotion-codes#duplicate-codes).
 :::
 
+### Promotion Usages
+
+Promotion usages are helpful in tracking and understanding how promotional offers are utilized. This includes details such as which promotions were used, how frequently they were used, order ID, code ID, customer email, date of the promotion's usage. To retrieve the usage history of a specific promotion, see [Get Promotion Usages](/docs/promotions-builder/promotions-builder-codes/get-promotion-usages).
+
+You can also track the history of a specific promotion code within a particular promotion. See [Get a Promotion Code Usage](/docs/promotions-builder/promotions-builder-codes/get-a-promotion-code-usage).
+
+Additionally, you can also choose to anonymize customer email addresses associated with promotion usages. For more information, see [Anonymizing Promotion Code Usages](/docs/promotions-builder/promotions-builder-codes/Anonymize-promotion-code-usages).
+
 ## Cart-level Discount Apportioning
 
 Discount apportioning involves distributing cart-level discounts among the individual items in the cart, ensuring transparency and clarity in how discounts are allocated and represented at both the cart and item levels. Each discount includes essential details such as IDs, codes, amounts, and indicates their source as `rule-promotion`. It is important to note that item-level apportioning for cart-level discounts specifically applies to Promotions Builder.

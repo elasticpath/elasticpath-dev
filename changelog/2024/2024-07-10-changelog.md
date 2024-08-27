@@ -1,5 +1,5 @@
 ---
-title: 'Introducing string uniqueness Constraints in Commerce Extensions'
+title: 'Introducing string uniqueness constraints in Commerce Extensions'
 date: '2024-07-10'
 tags: ['Commerce Extensions']
 hide_blog_post_date: false
