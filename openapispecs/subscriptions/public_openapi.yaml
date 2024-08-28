@@ -100,60 +100,60 @@ tags:
   - name: Offerings
     description: |
       An offering is a combination of products and plans; products are combined with one or more plans to form an offering. 
-
+       
       For example, your company provides online
-      streaming of movies, web-series, and music. Your customers can purchase these services through either a weekly or monthly plan.
-
+       streaming of movies, web-series, and music. Your customers can purchase these services through either a weekly or monthly plan.
+       
       Offering products can be either:
-
+       
       - a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
       - a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
-
+       
       ### Offering Examples
-
+       
       Offerings can have any combination of products and plans. The pricing of an offering is determined by the pricing you have configured for your products and plans.
 
-       | Example | Product | Plans | Offering |
-       | --- | --- | --- | --- |
-       | Single product and plan | One product with a product price of $50 | A monthly plan with a 5% discount | An offering with a monthly plan for $47.50 a month |
-       | Single product with multiple plans | One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
-       | Multiple products and plan | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | A monthly plan with a 5% discount. | An offering with a monthly plan for $118.75 a month. | 
-       | Multiple products with multiple plans | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $118.75 a month</li><li>A yearly plan for $112.50 a month</li></ul> | 
-
+      | Example | Product | Plans | Offering |
+      | --- | --- | --- | --- |
+      | Single product and plan | One product with a product price of $50 | A monthly plan with a 5% discount | An offering with a monthly plan for $47.50 a month |
+      | Single product with multiple plans | One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
+      | Multiple products and plan | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | A monthly plan with a 5% discount. | An offering with a monthly plan for $118.75 a month. | 
+      | Multiple products with multiple plans | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $118.75 a month</li><li>A yearly plan for $112.50 a month</li></ul> | 
+       
       ### Building an Offering
-
+       
       Offerings represent a snapshot of their products and plans. If you make updates to products or plans within an offering, the original products and plans are not updated. Only the products and plans within the offering are updated. Alternatively, you can create new products or plans and attach them to a new offering.
-
+       
       When you are building an offering:
 
       - you can create new plans and products.
       - you can modify existing products and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
 
       Here's how you build an offering:
-
+       
       1. Create your repeat products. Products can either be subscription products or Product Experience Manager products. 
-
-          - to create a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
-          - to create a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
+       
+           - to create a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
+           - to create a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
       2. Create your plans. 
-          - Plans are the rules that govern your subscription, for example, any discount. 
-          - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
-          - An offering must have at least one plan. See [**Create a plan**](/docs/api/subscriptions/create-product).
+           - Plans are the rules that govern your subscription, for example, any discount. 
+           - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
+           - An offering must have at least one plan. See [**Create a plan**](/docs/api/subscriptions/create-product).
       3. [**Build your offerings**](/docs/api/subscriptions/build-offering). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer.
-
-          - When a [**customer**](/docs/api/subscriptions/subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](/docs/api/subscriptions/subscriptions).
-          - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Billing**](/docs/api/subscriptions/jobs).
-
+       
+           - When a [**customer**](/docs/api/subscriptions/subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](/docs/api/subscriptions/subscriptions).
+           - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Billing**](/docs/api/subscriptions/jobs).
+       
       ### Editing Offerings
 
       After saving an offering, you can, at any time:
-
+       
       - update an offering's details, for example, name or description. See [**Update an Offering**](/docs/api/subscriptions/update-offering).
       - update the existing product and plans. 
       - replace an existing product in an offering with a new one. See [**Replace a Product**](/docs/api/subscriptions/replace-offering-product)
       - attach a new plan to an offering. See [**Attach a Plan**](/docs/api/subscriptions/attach-offering-plan).
       - remove plans. See [**Removing a plan from an offering**](/docs/api/subscriptions/delete-offering-plan).
-
+       
       Any modifications that you make to offerings, and products or plans in an offering, does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
   - name: Subscriptions
     description: |
@@ -255,9 +255,10 @@ tags:
 
       | Object | Attributes |
       | --- | --- |
-      | A product object | The attributes you specify for a product object are the attributes you specify when you [creating a product](/docs/api/subscriptions/create-product). |
-      | A plan object | The attributes you specify for a product object are the attributes you specify when you [creating a plan](/docs/api/subscriptions/create-plan). | 
-      | A subscriber object | The attributes you specify for a product object are the attributes you specify when you [creating a subscriber](/docs/api/subscriptions/create-subscriber). |
+      | A product object | The attributes you specify for a product object are the attributes you specify when [creating a product](/docs/api/subscriptions/create-product). |
+      | A plan object | The attributes you specify for a product object are the attributes you specify when [creating a plan](/docs/api/subscriptions/create-plan). | 
+      | A subscriber object | The attributes you specify for a product object are the attributes you specify when [creating a subscriber](/docs/api/subscriptions/create-subscriber). |
+      | An offering object | The attributes you specify for an offering object are the attributes you specify when [building an offering](/docs/api/subscriptions/build-offering). |
   - name: Schedules
     description: |
       You can schedule your billing, tax, and payment runs. By scheduling billing, tax, and payment runs, you automate the process, reducing manual intervention and ensuring the jobs are run in a timely manner.  You can define a schedule in the format (`* * * * *`) which is a set of five fields in a line, indicating when a job should be executed. For example, you can define a schedule so that your job runs multiple times a day, or runs on specific days and months.
@@ -369,7 +370,7 @@ tags:
 
       Subscriptions always rounds down to the penny. 
 
-       ### Tax
+      ### Tax
 
       Subscriptions allows you to apply any number of tax rates to your invoices and subscriptions. When applying a tax rate, you must specify:
 
@@ -415,6 +416,10 @@ tags:
       | `method` | Required | Must be `purchase`.
       | `payment` | Required | The type of payment, for example, `pm_card_visa_debit`.
       | `options` | Required | These options must be set as they set up the card to be used in future without the customer being present. If these options are not set, future payments may fail. There are two options. <ul><li>`off_session`. Must be set to `true`. </li><li>`confirm`. Must be set to `true`.</li></ul> |
+
+      #### Card Declines
+
+      Card payments can fail for a variety of reasons, including insufficient funds, incorrect card data or fraudulent activity. You can use the `card_id` and `customer_id` attributes to program your front-end implementation to allow your preferred payment service provider to update a subscription with new card details, enabling you to easily manage your subscription charges.
   - name: Dunning Rules
     description: |
 
@@ -429,7 +434,13 @@ tags:
       - close a subscription. The subscription ends and it's status becomes `inactive`. However, a merchandizer can choose to resume the subscription if a subscriber pays the outstanding payment. 
   - name: Proration Policies
     description: |
-      Proration is the adjustment of charges or credits on a subscriber's account based on the amount of time a service is used. Proration ensures that subscribers are only charged for the actual time they use the service, whether they upgrade, downgrade, start, or cancel their subscription partway through a billing cycle. This means fair billing for your subscribers and provides you with the flexibility to change your subscribers subscriptions at any time.
+      Proration is the adjustment of charges or credits on a subscriber's account based on the amount of time a service is used. Proration ensures that subscribers are only charged for the actual time they use the service, whether they upgrade, downgrade, start, or cancel their subscription partway through a billing cycle. This means fair billing for your subscribers and provides you with the flexibility to change your subscribers subscriptions at any time. 
+
+      ::: note
+
+      Subscriptions use client credentials to enable changes to subscriptions, so if you want your shoppers to have the ability to make changes, you can implement a BFF layer using this approach.
+
+      :::
 
       Proration occurs for:
 
@@ -802,7 +813,7 @@ paths:
 
         | Operator | Attribute | Description |
         | --- | --- | --- | 
-        | `eq` | `external_ref` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
+        | `eq` | `external_ref`, `proration_policy_id` | Equals. Checks if the values of two operands are equal. If they are, the condition is true. |
         | `in` | `external_product_refs` | In. Checks if the values are included in the specified string. If they are, the condition is true. |
       parameters:
         - $ref: '#/components/parameters/PageOffset'
@@ -1498,6 +1509,22 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '403':
           $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+        - Subscriptions
+      summary: Delete a subscription
+      operationId: DeleteSubscription
+      description: |
+        Deletes a subscription
+      responses:
+        '204':
+          description: Success. The subscription is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
         '500':
@@ -2730,9 +2757,9 @@ paths:
       summary: Update proration policy
       description: |
         You can update a proration policy at any time. For any subscriptions that are using the updated proration policy, the changes are also applied. Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the proration policy is not updated.
-         
+
         When updating proration policies:
-         
+
         - You can change the name of an existing policy.
         - You can update `rounding`.
         - You can update `external_ref` as long as `external_ref` is still unique in  your store.
@@ -3616,7 +3643,7 @@ components:
           type: string
           description: |
             When rounding in proration, you must decide how to round the units of time used to calculate the charges.
-             
+
             - round up to the next unit, ensuring subscribers are charged slightly more to cover any partial use.
             - round down to the previous whole unit, providing subscribers with a slight benefit by not charging for partial use.
             - round to the nearest whole unit, whether up or down, based on standard rounding rules. For example, rounding 0.5 up and rounding 0.5 down.
@@ -3894,18 +3921,22 @@ components:
           example: A lovely magazine that is published every month.
         products:
           type: array
-          description: Either IDs of existing products to be attached to the plan or product information to be created directly within the plan
+          description: Either references of existing products to be attached to the offering or product information to be created directly within the offering
           minItems: 1
           items:
             anyOf:
-              - $ref: '#/components/schemas/UUID'
+              - $ref: '#/components/schemas/ExternalRef'
               - $ref: '#/components/schemas/ProductAttributes'
+              - $ref: '#/components/schemas/UUID'
         plans:
           type: array
-          description: The IDs of the plans to attach to the offering.
+          description: Either references of existing plans to be attached to the offering or plan information to be created directly within the offering
           minItems: 1
           items:
-            $ref: '#/components/schemas/UUID'
+            anyOf:
+              - $ref: '#/components/schemas/ExternalRef'
+              - $ref: '#/components/schemas/PlanAttributes'
+              - $ref: '#/components/schemas/UUID'
     Offering:
       required:
         - type
@@ -4118,10 +4149,13 @@ components:
         - currency
         - name
         - email
+        - manual_payments
       properties:
         external_ref:
           $ref: '#/components/schemas/ExternalRef'
         account_id:
+          $ref: '#/components/schemas/UUID'
+        address_id:
           $ref: '#/components/schemas/UUID'
         offering_id:
           $ref: '#/components/schemas/UUID'
@@ -4131,6 +4165,8 @@ components:
           $ref: '#/components/schemas/CurrencyIdentifier'
         payment_authority:
           $ref: '#/components/schemas/PaymentAuthority'
+        manual_payments:
+          $ref: '#/components/schemas/ManualPayments'
         name:
           type: string
           minLength: 3
@@ -4142,6 +4178,10 @@ components:
           minLength: 3
           maxLength: 1024
           example: albert@elasticpath.com
+        pending:
+          type: boolean
+          description: Whether a subscription is pending activation or not.
+          example: false
         offering:
           $ref: '#/components/schemas/OfferingAttributes'
         products:
@@ -4224,8 +4264,22 @@ components:
             name: uuid
             path: github.com/google/uuid
           example: 00000000-0000-0000-0000-000000000001
+        address_id:
+          type: string
+          format: UUID
+          nullable: true
+          x-go-type: uuid.UUID
+          x-go-type-import:
+            name: uuid
+            path: github.com/google/uuid
+          example: 00000000-0000-0000-0000-000000000001
         payment_authority:
           $ref: '#/components/schemas/PaymentAuthority'
+        go_live_after:
+          description: The date and time a subscription will go live and become active.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
+          nullable: true
     SubscriptionIncludes:
       readOnly: true
       properties:
@@ -4246,8 +4300,10 @@ components:
         - canceled
         - paused
         - closed
+        - pending
         - suspended
         - invoice_after
+        - manual_payments
       properties:
         owner:
           $ref: '#/components/schemas/OwnerMeta'
@@ -4257,6 +4313,8 @@ components:
           $ref: '#/components/schemas/Status'
         state:
           $ref: '#/components/schemas/SubscriptionState'
+        manual_payments:
+          $ref: '#/components/schemas/ManualPayments'
         canceled:
           type: boolean
           description: Whether a subscription is canceled or not.
@@ -4272,6 +4330,10 @@ components:
         suspended:
           type: boolean
           description: Whether a subscription is suspended or not.
+          example: false
+        pending:
+          type: boolean
+          description: Whether a subscription is pending activation or not.
           example: false
         invoice_after:
           description: The time when the subscription becomes eligible for a new invoice. The next invoice will be generated at the next billing run after this point.
@@ -4297,6 +4359,14 @@ components:
               description: The date and time a subscription will end.
               type: string
               example: '2017-01-10T11:41:19.244842Z'
+            go_live_after:
+              description: The date and time a subscription will go live and become active.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
+            go_live:
+              description: The date and time a subscription was released from the pending state and made active.
+              type: string
+              example: '2017-01-10T11:41:19.244842Z'
     SubscriptionAttributes:
       required:
         - account_id
@@ -4305,11 +4375,12 @@ components:
         - currency
         - name
         - email
-        - payment_authority
       properties:
         external_ref:
           $ref: '#/components/schemas/ExternalRef'
         account_id:
+          $ref: '#/components/schemas/UUID'
+        address_id:
           $ref: '#/components/schemas/UUID'
         offering:
           $ref: '#/components/schemas/Offering'
@@ -4353,6 +4424,7 @@ components:
         - cancel
         - pause
         - resume
+        - pending
       x-go-type: model.SubscriptionAction
       x-go-type-import:
         name: model
@@ -4380,6 +4452,11 @@ components:
           $ref: '#/components/schemas/SubscriptionStateAttributes'
         meta:
           $ref: '#/components/schemas/StateMeta'
+    ManualPayments:
+      type: boolean
+      example: false
+      default: false
+      description: When configured to true, no payment gateway will be used and a pending payment will be created.
     PaymentAuthority:
       oneOf:
         - $ref: '#/components/schemas/PaymentAuthorityStripe'
@@ -4438,7 +4515,7 @@ components:
           maxLength: 1024
           example: cus_OPfKlxWV3hp9h6
         card_id:
-          description: The unique identifier of the card used to facilitate payment of the subscription.
+          description: The unique identifier of the card used to facilitate payment of the subscription. If a card payment fails, you can use the `card_id` and `customer_id` attributes to program your front-end implementation to allow your preferred payment service provider to update a subscription with new card details. See [Card declines](/docs/api/subscriptions/invoices#card-declines).
           type: string
           minLength: 3
           maxLength: 1024
@@ -4516,10 +4593,15 @@ components:
               description: The total number of subscribers uploaded.
               type: integer
               example: 50000
+            subscription_offering:
+              description: The total number of offerings uploaded.
+              type: integer
+              example: 50000
           required:
             - subscription_product
             - subscription_plan
             - subscription_subscriber
+            - subscription_offering
         imported:
           properties:
             subscription_product:
@@ -4534,10 +4616,15 @@ components:
               description: The total number of subscribers imported.
               type: integer
               example: 45090
+            subscription_offering:
+              description: The total number of offerings imported.
+              type: integer
+              example: 45090
           required:
             - subscription_product
             - subscription_plan
             - subscription_subscriber
+            - subscription_offering
     Job:
       required:
         - type
@@ -4843,6 +4930,7 @@ components:
         - invoice_id
         - subscription_id
         - job_id
+        - manual_payment
       properties:
         owner:
           $ref: '#/components/schemas/OwnerMeta'
@@ -4854,6 +4942,10 @@ components:
           $ref: '#/components/schemas/UUID'
         timestamps:
           $ref: '#/components/schemas/InvoicePaymentTimestamps'
+        manual_payment:
+          type: boolean
+          example: false
+          description: Whether manual payments are enabled or the payment will be handled by the configured gateway.
     InvoicePaymentTimestamps:
       allOf:
         - $ref: '#/components/schemas/Timestamps'
