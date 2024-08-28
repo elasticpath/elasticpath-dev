@@ -20,6 +20,8 @@ Promotions in the Promotions Builder support the following actions:
 - [Item Discount](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-an-item-discount-promotion): An item discount applies to the eligible items specified in the conditions. It can be a fixed amount, percentage, fixed price, or other discount specified such as **BXGY**.
 - [BXGY](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-bxgy-promotion): Buy X and Get Y (BXGY) discounts apply to the items identified within the promotional actions. This means that when a Buy X Get Y promotion is triggered, the specified items receive the associated discounts outlined in the promotion's configuration.
 
+Exclusions can be applied to any of these conditions and promotions, allowing you to refine your discount strategies further. For example, you can exclude specific products, categories, or attributes from promotions, providing more flexibility in setting up promotion rules.
+
 To understand the difference between Promotions Standard and Promotions Builder, see [Feature Comparison](/docs/rule-promotions/overview#feature-comparison-promotions-standard-vs-rule-promotions).
 
 As a best practice, we recommend creating new promotions in the Promotions Builder and allowing Promotions Standard to expire. While Promotions Standard can currently run side by side with new ones, transitioning to the Promotions Builder ensures alignment with updated features and facilitates smoother management of promotions over time.
