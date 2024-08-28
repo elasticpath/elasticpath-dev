@@ -1,7 +1,7 @@
 ---
 title: Editing Bullet Point Color
 nav_label: Editing Bullet Point Color
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 If you'd like to change the color of the bullet points used in your Studio Account; you'll need to update the value of

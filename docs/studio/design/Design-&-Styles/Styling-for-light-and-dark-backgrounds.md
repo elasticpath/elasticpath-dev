@@ -1,7 +1,7 @@
 ---
 title: Styling for Light and Dark Backgrounds
 nav_label: Styling for Light and Dark Backgrounds
-sidebar_position: 30
+sidebar_position: 20
 ---
 
 ## How to adjust the elements in a section for light/dark
