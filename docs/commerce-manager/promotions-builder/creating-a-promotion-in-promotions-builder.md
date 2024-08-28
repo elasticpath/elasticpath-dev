@@ -11,7 +11,7 @@ sidebar_position: 1
 1. Enter a name for the promotion in the **Name** field.
 1. Enter a description for the promotion in the **Description** field.
 1. Select the start date in the **Start Date** field.
-1. Select the end date the **End Date** field.
+1. Select the end date in the **End Date** field.
 1. Enable the **Activated** toggle to activate the promotion. It is disabled by default.
 1. (Optional) Select the **Coupon-driven** checkbox to manually create a single code or generate bulk codes manually. If not selected, a promotion code is automatically generated for you.
 1. In the **Create your rules** section, create a rule by adding at least one condition and one action. See [Setting up a Promotion](#setting-up-a-promotion) and [Creating Actions](#creating-actions).
@@ -24,7 +24,7 @@ In the **Create your rules** section, do the following:
 1. Select a currency for the promotion in the **Currency** field.
 1. Choose catalogs that are eligible for the promotion in the **Catalog** field.
 1. Under **Conditions**, select **all** to apply the conditions.
-    - **Cart**: Configure by setting either a minimum cart subtotal or quantity of cart items. You can also add conditions to exclude the items that will not contribute to the cart eligibility. See [Creating a Cart Condition](#creating-a-cart-condition). 
+    - **Cart**: Configure by setting either a minimum cart subtotal or quantity of cart items. You can also add conditions to exclude the items that will not contribute to the cart eligibility. See [Creating a Cart Condition](#creating-a-cart-condition).
     - **Cart Items**: Specifying the desired product quantity or value. You can also add conditions to exclude the items that will not contribute to the cart eligibility See [Creating a Cart Items Condition](#creating-a-cart-items-condition).
     - **Custom Attributes**: Define conditions using custom attributes. See [Adding Cart Custom Attributes](#adding-cart-custom-attributes).
 
@@ -110,7 +110,7 @@ To create a cart discount promotion, do the following:
 
     To exclude items from the promotion, select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
-    - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
+    - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies (categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Select  **+ more options**. This option is available only when you choose **percentage**.
 1. Enter the maximum allowed discount in the **value** field. 
@@ -137,7 +137,7 @@ To create an item discount promotion, do the following:
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Select **+ more options**.
 1. In the **value** field, enter the value to assign a maximum allowed discount for the promotion. This field is shown only if you choose **percentage** as your discount type.
-1. Enter the maximum quantities in the **Quantity** field to assign the maximum line quantities of items within the same SKU.
+1. Enter the maximum number of items allowed per SKU in the **Quantity** field.
 1. Select **Done**.
 
 ### Creating a BXGY Promotion
@@ -165,7 +165,7 @@ To create a BXGY promotion, do the following:
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Click **+ more options**.
 1. Enter the value to assign a maximum allowed discount for the promotion. This field is shown only if you choose **percentage** as your discount type.
-1. Enter the maximum quantities in the **Quantity** field to assign the maximum quantities of items within the same SKU.
+1. Enter the maximum number of items allowed per SKU in the **Quantity** field.
 1. Select **Done** to apply the changes.
 
 :::note
