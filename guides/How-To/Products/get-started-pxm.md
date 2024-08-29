@@ -153,7 +153,7 @@ curl -X POST https://useast.api.elasticpath.com/pcm/hierarchies/:hierarchyId/nod
 
 ## Create products and associate them with hierarchy nodes
 
-Now letʼs create two products. Most of the attributes should be familiar to you, but if not, see [the product_attributes object](https://beta.elasticpath.dev/docs/api/pxm/products/create-product).
+Now letʼs create two products. Most of the attributes should be familiar to you, but if not, see [the product_attributes object](/docs/api/pxm/products/create-product).
 
 :::caution
 To display the products from a published catalog, the products must be `live` and belong to a hierarchy that is part of the catalog.

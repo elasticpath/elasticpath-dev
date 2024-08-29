@@ -24,7 +24,7 @@ You can use any URL safe value you want for your cart IDs. If a cart does not al
 
 You can set up and confirm a purchase by doing the following:
 
-1. Checkout using a customer object. For more information, see [Checkout](/docs/carts-orders/account-checkout).
+1. Checkout using a customer object. For more information, see [Checkout](/docs/api/carts/checkout).
 
     :::caution
     Ensure that you use a valid country code. The URL used in this call is `http://localhost/v2/carts/{{cartID}}/checkout`.
@@ -327,5 +327,5 @@ To confirm multiple payments, follow the instructions to update multiple payment
 ## Related Resources
 
 - [PayPal Express Checkout Payments](https://elasticpath.dev/docs/api/carts/authorize-setup)
-- [Checkout workflow](/docs/carts-orders/checkout/)
+- [Checkout workflow](/docs/api/carts/checkout)
 - [Carts API](/docs/api/carts/cart-management)

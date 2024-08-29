@@ -1,7 +1,7 @@
 ---
 title: Adding Pricing Table to Your Page
 nav_label: Adding Pricing Table to Your Page
-sidebar_position: 10
+sidebar_position: 50
 ---
 
 Out of the box, Studio has several different section options that you can use to communicate feature differences

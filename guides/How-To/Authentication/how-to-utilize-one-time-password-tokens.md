@@ -128,4 +128,4 @@ In your application, use the One Time Password Token from the previous step to g
 The Account Management Authentication Token can be used to update the password using [Update User Authentication Password Profile Info](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/update-a-user-authentication-password-profile).
 
 ### Passwordless Authentication Scenario
-The Account Management Authentication Token can be used as the value to the `EP-Account-Management-Authentication-Token` header. API calls where we want to associate an account membership such as [Checkout](/docs/carts-orders/account-checkout) endpoint.
+The Account Management Authentication Token can be used as the value to the `EP-Account-Management-Authentication-Token` header. API calls where we want to associate an account membership such as [Checkout](/docs/api/carts/checkout-api) endpoint.

@@ -278,7 +278,17 @@ paths:
                       "name": "Wishlists",
                       "description": "Specifies the description for this Custom API.",
                       "slug": "wishlists",
-                      "api_type": "wishlist_ext"
+                      "api_type": "wishlist_ext",
+                      "relationships": {
+                        "parent_apis": {
+                          "data": [
+                            {
+                              "type": "custom_api",
+                              "id": "652e39d8-d613-493e-8c20-fef99ad6327a"
+                            }
+                          ]
+                        }
+                      }
                     }
                   }
       responses:
@@ -298,6 +308,7 @@ paths:
                       - slug
                       - api_type
                       - links
+                      - relationships
                     $ref: "#/components/schemas/CustomApiAttributes"
         '400':
           $ref: '#/components/responses/ValidationError'
@@ -416,7 +427,17 @@ paths:
                       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                       "name": "Wishlists",
                       "description": "Specifies the description for this Custom API.",
-                      "slug": "wishlists"
+                      "slug": "wishlists",
+                      "relationships": {
+                        "parent_apis": {
+                          "data": [
+                            {
+                              "type": "custom_api",
+                              "id": "652e39d8-d613-493e-8c20-fef99ad6327a"
+                            }
+                          ]
+                        }
+                      }
                     }
                   }
       responses:
@@ -1751,6 +1772,9 @@ components:
         meta:
           readOnly: true
           $ref: '#/components/schemas/Meta'
+        relationships:
+          readOnly: true
+          $ref: '#/components/schemas/Relationships'
     BaseCustomFieldAttributes:
       properties:
         id:
@@ -2071,6 +2095,39 @@ components:
               description: The total number of records for the entire collection.
               type: integer
               example: 1
+    Relationships:
+      type: object
+      required:
+        - parent_apis
+      properties:
+        parent_apis:
+          $ref: '#/components/schemas/ParentAPIs'
+    ParentAPIs:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Data'
+    Data:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataItem'
+    DataItem:
+      type: object
+      required:
+        - id
+        - type
+      properties:
+        id:
+          description: id
+          type: string
+        type:
+          description: type, can be custom_api or api_location
+          type: string
+          enum:
+            - custom_api
+            - api_location
     PaginationLinks:
       required:
         - current
@@ -2103,3 +2160,4 @@ components:
           description: Always `null` if the user is on the first page.
           type: [string, 'null']
           example: null
+

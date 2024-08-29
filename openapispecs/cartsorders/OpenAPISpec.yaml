@@ -10,7 +10,7 @@ info:
 
     After a shopper checks out, the cart is converted to an order, and you can manually delete the cart. If you donʼt delete the cart, it is purged automatically after seven days.
 
-    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/carts-orders/create-multi-cart#post-create-a-preview-cart).
+    The preview cart feature allows you to set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart. See [Create a Preview Cart](/docs/api/carts/create-a-cart#preview-cart).
 
     The following diagram shows a typical cart workflow:
 
@@ -111,6 +111,25 @@ paths:
 
         You can also create a cart to specify custom discounts. You can enable custom discounts when the `discount_settings.custom_discounts_enabled` field is set to `true`. Default is set from cart discount settings for the store. See [Update Cart Settings](/docs/api/settings/put-v-2-settings-cart).
 
+        ### Preview Cart
+
+        You can set a future date for your shopping cart and view the promotions that will be available during that time period. This feature enables you to validate your promotion settings and observe how they will be applied in the cart.
+
+        :::caution
+        - Once the cart is in preview mode, you cannot revert it to a regular cart.
+        - Carts with `snapshot_date` are same as preview carts.
+        - You cannot checkout a cart that includes a `snapshot_date`.
+        - To delete a promotion preview cart, use [Delete a cart](/docs/api/carts/delete-a-cart) endpoint.
+        - The promotion preview cart has the same expiration time as a regular cart based on the store's [cart settings](/docs/api/settings/put-v-2-settings-cart).
+        - Preview cart interactions skip inventory checks and events, allowing users to preview future carts without impacting related external systems.
+        :::
+
+        ### Errors
+
+        - `400 Bad Request` : This is returned when the submitted request does not adhere to the expected API contract for the endpoint.
+
+           - For example, in the case of string fields, this error might indicate issues in the length or format of submitted strings. For more information about valid string fields, refer to Safe Characters section.
+           - In the case of preview carts (those with `snapshot_date`), an error is returned for invalid actions, such as removing the preview date, setting a preview date in the past, or attempting to checkout a cart with a `snapshot_date`.
       operationId: createACart
       parameters:
         - name: x-moltin-customer-token
@@ -182,13 +201,20 @@ paths:
         - Cart Management
       summary: Get a Cart
       description: |
-        Use this endpoint to retrieve a specific cart. If a cart ID does not exist, a new cart will be automatically created.
+        Use this endpoint to retrieve a specific cart. If a cart ID does not exist, a new cart will be automatically created. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the `relationships` section.
 
-        If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
+        You can easily get a new or existing cart by providing the unique cart reference in the request. If the cart is associated with shipping groups, calling this endpoint displays the associated shipping group IDs in the relationships section.
 
         :::note
 
-        The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
+        - The default cart name is Cart. However, you can update the cart name as required. Ensure that the string length of the name is greater than or equal to one. Follow the safe character guidelines for name and description naming. For more information about cart ID naming requirements, see the [Safe Characters](/guides/Getting-Started/safe-characters) section.
+        - Outside of the JS-SDK, we don’t handle creating cart references. You need to create your own.
+
+        :::
+
+        :::caution
+
+        An empty cart is returned for any carts that don’t currently exist. For more information about the cart items object, see [Get Cart Items](/docs/api/carts/get-cart-items).
 
         :::
 
@@ -750,9 +776,15 @@ paths:
 
         ### Merging Carts
 
-        A shopper can have more than one cart and decide to merge the carts into one cart. If a shopper adds items to a cart anonymously and then signs into their account as a registered user, the system asks them which cart to use. For example, a shopper has an existing cart with items `A`, `B` and `C` in it. The shopper returns later and adds items `D` and `E` while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. After the carts merge, the cart contains items `A`, `B`, `C`, `D` and `E`.
+        A shopper can have multiple carts, and the system may automatically merge items from an anonymous cart into the shopper's registered cart when they sign in. For example, if a shopper has an existing cart with items `A`, `B` and `C`, and later adds items `D` and `E` while not signed in, the system can merge these carts when the shopper signs in. After the carts merge, the cart contains items `A`, `B`, `C`, `D` and `E`.
 
-        Any items that are duplicated from the anonymous cart to the registered cart are incremented by the quantity from the anonymous cart. For example, the shopper has an existing cart with items `A`, `B` and `C`, returns later and adds two more `A` items and one B item while not signed in. The shopper then signs in and wants to merge the new cart with the existing cart. The existing cart will contain three `A` items, two `B` items, and one `C` item.
+        If any items are duplicated from the anonymous cart to the registered cart, their quantities are incremented accordingly. For example, if a shopper's existing cart with items `A`, `B` and `C`, and they later add two more `A` items and one `B` item while not signed in, the system will merge the carts when the shopper signs in. The existing cart will now contain three `A` items, two `B` items, and one `C` item.
+
+        :::note
+
+        When the system merges items from one cart into another cart, properties such as custom attributes, custom discounts, and payment intent ID will remain unchanged in the original cart.
+
+        :::
 
         ### Best Practices
 
@@ -2169,7 +2201,7 @@ paths:
             ]
         }
         ```
-      operationId: checkoutWithAccountManagementAuthenticationToken
+      operationId: checkoutAPI
       parameters:
         - name: cartID
           in: path
@@ -5203,7 +5235,7 @@ tags:
       :::caution
 
       - You can apply up to five custom discounts to cart and cart item.
-      - The stores that use [simple calculation method](https://beta.elasticpath.dev/guides/Carts/calculate-totals) do not support custom discounts.
+      - The stores that use [simple calculation method](/guides/How-To/Carts/calculate-totals) do not support custom discounts.
 
       :::
   - name: Tax Items
