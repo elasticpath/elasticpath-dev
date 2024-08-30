@@ -9,6 +9,8 @@ You can quickly and easily integrate Studio with Klevu. Klevu is an advanced AI-
 - build a search page in Studio, enabling you to leverage the Klevu search engine in your Studio storefronts.
 - build a page in Studio that uses a **Klevu recommendations** component to leverage Klevu Recommendations, designed to enhance your shoppers experience by providing personalized product suggestions.
 
+<iframe class="vidyard_iframe" title="Demo: Connecting Klevu Search with Elastic Path Studio" src="//play.vidyard.com/h96aERCecByDRgrdnrmsVk.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 ## Klevu Events
 
 Reporting user interaction with Klevu is crucial to allow the machine learning algorithms to accurately rank items. By reporting user interactions, such as clicks, searches, and purchases, Klevu's algorithms can better understand which products are most relevant to users.

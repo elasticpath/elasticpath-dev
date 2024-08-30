@@ -36,5 +36,4 @@ the component to remove it.
 
 ## Watch a video tutorial
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ay8HxFmyI_U" title="Building eCommerce with cx-studio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+<iframe class="vidyard_iframe" title="Feature products in your Studio pages" src="//play.vidyard.com/AHxVmxQgetaYcdLavdrfb9.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
