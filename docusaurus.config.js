@@ -473,7 +473,7 @@ const config = {
             specPath: "openapispecs/personaldata/OpenAPISpec.yaml",
             outputDir: "docs/api/personal-data/",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs//OpenAPISpec.yaml",
+              "hhttps://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/personaldata/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
