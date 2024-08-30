@@ -743,6 +743,100 @@ paths:
 
         :::
 
+        ### Including Resources
+
+        When you make an `Add Product to Cart` request to the catalog-view service, you can obtain details of the component products. If you include the optional parameter `include=component_products` in the request, the response will include details for each component product.
+
+        When a bundle with selected component products is added to a cart, the cart displays both the bundle pricing and component product IDs.
+
+        The response example is returned with a new field called `component_products` under `bundle_configuration`, which is a list of component products that the user has selected for dynamic bundles.
+
+        | Parameter               | Required     | Description        |
+        |:------------------------|:-------------|:-------------------|
+        | `component_products`    | Optional     | The component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle. |
+        | `main_image`            | Optional     | The main images associated with a product. |
+        | `files`                 | Optional     | Any files associated with a product. |
+
+        ```json
+        "bundle_configuration": {
+            "selected_options": {
+                "mixed-shirts": {
+                    "16a6cc14-6ebb-4156-9973-e6a0f92f5731": 3,
+                    "55037cc5-f382-4039-95c6-1e04ac0351d3": 2,
+                "standard-shirts"
+                    "70f1c9d2-c580-4839-bd6c-a0a9b91d5159": 5
+                }
+            },
+            "component_products": [
+                {
+                    "id": "16a6cc14-6ebb-4156-9973-e6a0f92f5731",
+                    "type": "product",
+                    "attributes": {
+                        "name": "Red T-shirt",
+                        "description": "Standard red t-shirt.",
+                        "slug": "red-t-shirt-slug",
+                        "sku": "red-t-shirt-sku",
+                        "status": "live",
+                        "commodity_type": "physical"
+                    },
+                    "meta": {
+                        "display_price": {
+                            "without_tax": {
+                                "amount": 500,
+                                "currency": "USD",
+                                "formatted": "$5.00"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "55037cc5-f382-4039-95c6-1e04ac0351d3",
+                    "type": "product",
+                    "attributes": {
+                        "name": "Blue T-shirt",
+                        "description": "Standard blue t-shirt.",
+                        "slug": "blue-t-shirt-slug",
+                        "sku": "blue-t-shirt-sku",
+                        "status": "live",
+                        "commodity_type": "physical"
+                    },
+                    "meta": {
+                        "display_price": {
+                            "without_tax": {
+                                "amount": 500,
+                                "currency": "USD",
+                                "formatted": "$5.00"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "70f1c9d2-c580-4839-bd6c-a0a9b91d5159",
+                    "type": "product",
+                    "attributes": {
+                        "name": "White T-shirt",
+                        "description": "Standard white t-shirt.",
+                        "slug": "white-t-shirt-slug",
+                        "sku": "white-t-shirt-sku",
+                        "status": "live",
+                        "commodity_type": "physical"
+                    },
+                    "meta": {
+                        "display_price": {
+                            "without_tax": {
+                                "amount": 500,
+                                "currency": "USD",
+                                "formatted": "$5.00"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        ```
+
+        See [Including Resources](https://elasticpath.dev/guides/Getting-Started/includes).
+
         ### Add Custom Item to Cart
 
         You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
@@ -3214,6 +3308,9 @@ components:
             selected_options:
               description: Specifies selected options.
               type: object
+            component_products:
+              description: Array of component products for the selected options.
+              type: array
         shipping_group_id:
           description: Identifier for a created Cart Shipping Group
           type: string
@@ -5163,7 +5260,7 @@ tags:
       - You need to configure and enable a payment gateway before you can accept payments for orders.
       - Configure your store to use [Manual Gateway](/docs/api/payments/update-manual-gateway) to process payments if the order total is zero or the payment is through non-supported payment providers.
       - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
-      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](https://beta.elasticpath.dev/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
+      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
 
       :::
 

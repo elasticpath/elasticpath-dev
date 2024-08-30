@@ -1,7 +1,7 @@
 ---
 title: Using your Style Guide
 nav_label: Using your Style Guide
-sidebar_position: 40
+sidebar_position: 10
 ---
 
 The Styles Guide can be accessed through the Studio Admin and is a huge asset when trying to quickly spin up page with

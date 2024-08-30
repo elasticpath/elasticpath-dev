@@ -1,7 +1,7 @@
 ---
-title: 'Rule Promotion Stacking and Priority (API Only)'
+title: 'Stacking and Priority (API Only) for Promotions Builder'
 date: '2024-08-2'
-tags: ['Rule Promotions']
+tags: ['Promotions Builder']
 hide_blog_post_date: false
 ---
 
