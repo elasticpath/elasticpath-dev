@@ -1,7 +1,7 @@
 ---
 title: Understanding Image Optimization Settings
 nav_label: Understanding Image Optimization Settings
-sidebar_position: 70
+sidebar_position: 10
 ---
 
 When working with images in Studio, there is an option to apply an **Image Optimization Setting** to the images being

@@ -1,7 +1,7 @@
 ---
 title: Media Overview
 nav_label: Media Overview
-sidebar_position: 60
+sidebar_position: 5
 ---
 
 ## Overview
