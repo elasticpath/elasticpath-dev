@@ -569,7 +569,9 @@ Stacking and Priority are essential concepts in managing promotions, ensuring th
 
 When promotions are stackable, they can be stacked on a cart. The order is determined first by priority and then by the creation date. **For example**, Promotion E (priority 70) and Promotion F (priority 60) are both stackable. Both promotions will be applied, with Promotion E being applied first due to its higher priority.
 
-If hybrid mode is enabled, Promotions Standard can still be applied even if Promotions Builder are also in use. Promotions Standard can coexist with non-stackable Promotions Builder. Promotions Builder stackability and priority don't impact Promotions Standard applications.
+If Hybrid Mode is enabled, Promotions Standard and Promotions Builder features will coexist for the given store. In these cases, the Promotions Standard and Promotions Builder features function independently on the same cart. For example, Standard Promotions will still apply even if promotions configured in Promotions Builder are non-stackable.  Similarly, the stackability and priority configurations for promotions created with the Promotions Builder will not impact Standard Promotions.
+
+Promotions Standard can still be applied even if Promotions Builder are also in use. Promotions Standard can coexist with non-stackable Promotions Builder. Promotions Builder stackability and priority don't impact Promotions Standard applications.
 
 When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
 

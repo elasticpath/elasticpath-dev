@@ -34,6 +34,12 @@ For example, if you have two promotions that can be stacked, the promotion with 
 
 If no priority is set, the promotions are applied sequentially based on their creation dates. The newest promotion is applied first and discounted prices calculated against any previously-discounted item prices. For example, if a SKU matches the criteria of the multiple promotions, the promotions will be applied will be applied in order from the newest to the oldest. If the original item price is $50 and the newest promotion applies a 10% discount, the item price would be reduced to $45. The next promotion would then be applied to this new price.
 
+:::note
+
+Standard Promotions are always applied first, regardless of any priorities set. Once all Standard Promotions have been applied, promotions configured in Promotions Builder are applied in the order determined by their assigned priority numbers.
+
+:::
+
 ## Scenarios
 
 ### Scenario 1 - Creating a Promotion with Custom Attributes
