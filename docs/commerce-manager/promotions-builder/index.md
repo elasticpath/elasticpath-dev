@@ -32,7 +32,7 @@ You can simultaneously apply multiple promotions, stacking both cart-level and i
 
 For example, if you have two promotions that can be stacked, the promotion with priority 90 will be applied before the promotion with priority 60.
 
-If no priority is set, the promotions are applied sequentially based on their creation dates. The oldest promotion is applied first, with the newer promotions stacked upon it. For example, if a SKU matches the criteria of the oldest promotion, the promotion will be applied to the item price each time. For instance, if the item price is $50, each stacked promotion will be applied against the $50 item price.
+If no priority is set, the promotions are applied sequentially based on their creation dates. The newest promotion is applied first and discounted prices calculated against any previously-discounted item prices. For example, if a SKU matches the criteria of the multiple promotions, the promotions will be applied will be applied in order from the newest to the oldest. If the original item price is $50 and the newest promotion applies a 10% discount, the item price would be reduced to $45. The next promotion would then be applied to this new price.
 
 ## Scenarios
 
