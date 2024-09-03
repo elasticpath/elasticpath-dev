@@ -1,7 +1,7 @@
 ---
 title: Hyperlinking Images
 nav_label: Hyperlinking Images
-sidebar_position: 40
+sidebar_position: 20
 ---
 
 Hyperlinking an image will make it so when the visitor clicks the image it'll open the link within the same tab as the
