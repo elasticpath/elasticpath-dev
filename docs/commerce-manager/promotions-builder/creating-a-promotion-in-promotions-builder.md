@@ -12,7 +12,9 @@ sidebar_position: 1
 1. Enter a description for the promotion in the **Description** field.
 1. Select the start date in the **Start Date** field.
 1. Select the end date in the **End Date** field.
-1. Enable the **Activated** toggle to activate the promotion. It is disabled by default.
+1. Enter the priority number in the **Assign a priority** field. This field determines the order of the stackable promotions that can be applied simultaneously. Each promotion must have a unique priority number. If assign a priority number that is already in use by another promotion, you will receive an error messaage.
+1. Select the **Enabled** toggle to activate the promotion. It is disabled by default.
+1. Select the **Stackable** toggle to allow multiple promotions to be stacked. This option is disabled by default and controls whether a promotion can be stacked with others.
 1. (Optional) Select the **Coupon-driven** checkbox to manually create a single code or generate bulk codes manually. If not selected, a promotion code is automatically generated for you.
 1. In the **Create your rules** section, create a rule by adding at least one condition and one action. See [Setting up a Promotion](#setting-up-a-promotion) and [Creating Actions](#creating-actions).
 1. Select **Create Promotion**.
