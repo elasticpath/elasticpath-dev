@@ -1,7 +1,7 @@
 ---
 title: Background Media
 nav_label: Background Media
-sidebar_position: 20
+sidebar_position: 15
 ---
 
 ## What is background media?
