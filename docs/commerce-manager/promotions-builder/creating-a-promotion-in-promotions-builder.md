@@ -14,7 +14,7 @@ sidebar_position: 1
 1. Select the end date in the **End Date** field.
 1. Enter the priority number in the **Assign a priority** field. This field determines the order of the stackable promotions that can be applied simultaneously. Each promotion must have a unique priority number. If you assign a priority number that is already in use by another promotion, you will receive an error message.
 
-This step is optional. If a priority is not assigned, the promotions will be applied in the order of their creation dates, with the newest promotions applied first and discounted prices calculated against any previously-discounted item prices.
+    This step is optional. If a priority is not assigned, the promotions will be applied in the order of their creation dates, with the newest promotions applied first and discounted prices calculated against any previously-discounted item prices.
 1. Select the **Enabled** toggle to activate the promotion. It is disabled by default.
 1. Select the **Stackable** toggle to allow multiple promotions to be stacked. This option is disabled by default and controls whether a promotion can be stacked with others. If this toggle is not enabled, no other promotion can stack on top. The promotion with the highest priority will take precedence.
 1. (Optional) Select the **Coupon-driven** checkbox to manually create a single code or generate bulk codes manually. If not selected, a promotion code is automatically generated for you.
