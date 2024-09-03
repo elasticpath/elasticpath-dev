@@ -755,7 +755,7 @@ Now, consider an item with an original price of $100. The price after applying P
 | Bulk code generation (over 1000)                                   | ✅  | coming soon |
 | Advanced search                                                    | ⛔️  | coming soon |
 | Buy X for Y (buy in multiples of)                                  | ✅  | coming soon |
-| Promotion Stacking and Priority (currently API only)               | ⛔️  | ✅ |
+| Promotion Stacking and Priority                                    | ⛔️  | ✅ |
 | Free gift with auto Add                                            | ✅  | coming soon |
 | Free shipping promotions (for shipping groups)                     | ⛔️  | coming soon |
 | Cart item quantity conditions (line item quantity)                 | ✅ (limited to bundle promotions) | coming soon |
