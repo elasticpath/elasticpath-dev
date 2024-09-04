@@ -5,4 +5,4 @@ tags: ['Commerce Manager']
 hide_blog_post_date: false
 ---
 
-**MAJOR** We have introduced stacking and Priority features in Promotions Builder within Commerce Manager. This feature allows you to assign priority levels to promotions and stack multiple promotions together. With priority settings, you can control the order in which promotions are applied, giving you greater flexibility and precision in managing discounts. For more information, see [Stacking and Prioritizing Multiple Promotions](/docs/commerce-manager/promotions-builder#stacking-and-prioritizing-multiple-promotions).
+**MAJOR** We have introduced a new stacking and priority feature in Promotions Builder within Commerce Manager. This feature allows you to assign priority levels to promotions and stack multiple promotions together. With priority settings, you can control the order in which promotions are applied, giving you greater flexibility and precision in managing discounts. For more information, see [Stacking and Prioritizing Multiple Promotions](/docs/commerce-manager/promotions-builder#stacking-and-prioritizing-multiple-promotions).

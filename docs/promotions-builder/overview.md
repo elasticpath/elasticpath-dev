@@ -571,7 +571,7 @@ When promotions are stackable, they can be stacked on a cart. The order is deter
 
 If Hybrid Mode is enabled, Promotions Standard and Promotions Builder features will coexist for the given store. In these cases, the Promotions Standard and Promotions Builder features function independently on the same cart. For example, Standard Promotions will still apply even if promotions configured in Promotions Builder are non-stackable.  Similarly, the stackability and priority configurations for promotions created with the Promotions Builder will not impact Standard Promotions.
 
-Promotions Standard can still be applied even if Promotions Builder are also in use. Promotions Standard can coexist with non-stackable Promotions Builder. Promotions Builder stackability and priority don't impact Promotions Standard applications.
+Standard Promotions can be applied alongside promotions configured in the Promotions Builder. They can coexist with non-stackable Promotions configured in the Promotions Builder. The stackability and priority settings in the Promotions Builder don't impact the application of Standard Promotions.
 
 When both an item discount and a cart discount are non-stackable, only the higher priority or the newer one will be applied to the cart.
 
