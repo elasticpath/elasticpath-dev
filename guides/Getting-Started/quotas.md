@@ -8,21 +8,29 @@ The following table gives an overview of the entities that carry quotas and the 
 
 | Entity | Quota | Scope |
 | :--- | :--- | :--- |
+| Account Address | 25 | per account |
+| Catalog | 10,000 | pagination offset |
+| Child products | 10,000 | per product |
 | Currencies | 10 | per store |
-| Unique Cart Items | 100 | per cart |
-| Tax Items | 5 | per cart item |
-| Search parameters | 10 | per search filter |
+| Customers | 10,000 | pagination offset |
+| Customer Address | 25 | per customer |
 | Events | 5 | per integration |
+| Flow fields | 100 | per flow |
 | Integrations | 100 | per store |
-| Stores | 100 | per user |
+| Inventories | 10,000 | pagination offset |
 | Promotion codes | 1000 | per promotion |
 | Promotions | 1000 | per store |
-| Catalog | 10,000 | pagination offset |
-| Customers | 10,000 | pagination offset |
-| Inventories | 10,000 | pagination offset |
-| Flow fields | 100 | per flow |
-| Customer Address | 25 | per customer |
-| Account Address | 25 | per account |
+| Search parameters | 10 | per search filter |
+| Stores | 100 | per user |
+| Tax Items | 5 | per cart item |
+| Unique Cart Items | 100 | per cart |
+
+
+
+
+
+
+
 
 :::note
 The Product Experience Manager entities do not have quotas at this time. The entities include products, price books, hierarchies, catalogs, and catalog rules.
