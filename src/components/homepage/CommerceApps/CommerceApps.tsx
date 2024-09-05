@@ -122,7 +122,7 @@ export default function CommerceApps() {
 
       <div className="flex flex-col items-center justify-between dark:text-white">
         <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
-          Elastic Path Commerce Cloud
+          Elastic Path Composable Commerce
         </h2>
         <Tabs defaultValue="Products">
           <TabsList className="flex flex-col md:flex-row items-center justify-center gap-4">
