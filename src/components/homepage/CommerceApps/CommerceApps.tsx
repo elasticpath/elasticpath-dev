@@ -81,7 +81,7 @@ function Tab({
 export default function CommerceApps() {
   return (
     <section
-      id="CommerceApps"
+      id="CommerceServices"
       className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight"
     >
       <link
@@ -122,7 +122,7 @@ export default function CommerceApps() {
 
       <div className="flex flex-col items-center justify-between dark:text-white">
         <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
-          Apps for commerce
+          Elastic Path Commerce Cloud
         </h2>
         <Tabs defaultValue="Products">
           <TabsList className="flex flex-col md:flex-row items-center justify-center gap-4">
