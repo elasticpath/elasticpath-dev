@@ -27,12 +27,12 @@ export default function HeroSection() {
         </h1>
         <p className="text-base text-center md:text-[1.75rem] leading-10 font-light max-w-5xl">
           Launch faster, solve complex problems, and build world-class
-          experiences with our suite of interconnected{" "}
+          experiences with our {" "}
           <a
-            href="#CommerceApps"
+            href="#CommerceServices"
             className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
           >
-            e-Commerce Apps
+            e-Commerce Services
           </a>
           ,{" "}
           <a
