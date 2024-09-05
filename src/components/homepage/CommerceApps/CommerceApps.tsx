@@ -22,13 +22,13 @@ const Trigger = ({ name }: { name: string }) => {
 };
 
 function Tab({
-  img,
-  value,
-  icon,
-  tagline,
-  listItems,
-  linkItems,
-}: {
+               img,
+               value,
+               icon,
+               tagline,
+               listItems,
+               linkItems,
+             }: {
   img: string;
   value: string;
   icon: JSX.Element;
