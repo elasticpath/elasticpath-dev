@@ -12,8 +12,8 @@ info:
     url: 'https://www.elasticpath.com'
     email: support@elasticpath.com
   license:
-    url: 'https://elasticpath.dev'
     name: MIT
+    url: 'https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/LICENSE'
 servers:
   - url: 'https://useast.api.elasticpath.com'
     description: US East
@@ -62,6 +62,7 @@ tags:
       | Validation: Enum(Float/Integer)   | ✅                | ⛔️                                         |
       | Validation: Allow null values     | ⛔                | ✅                                          |
       | Validation: Unique(String)        | ⛔                | ✅                                          |
+      | Validation: Unique Case Insensitivity(String)        | ⛔                | ✅                                          |
 
       ## Validation
 
@@ -116,8 +117,8 @@ tags:
       - `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be less than 0 and less than `max_length`.
       - `max_length`: Specifies the maximum number of characters that can be stored. If set, it must be greater than 0 and `min_length`.
       - `regex`: [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored. This must be less than 1024 characters.
-      - `unique`: Specifies whether the field can have unique constraint or not. It must be `yes` or `no`.
-
+      - `unique`: Specifies whether the field must have unique constraint or not. It must be `yes` or `no`.      
+      - `unique_case_insensitivity`: For fields with `unique` set to `yes`, controls whether or not values with different cases (e.g., `ABC` and `abc`) should conflict. It must be true or false.
       sample string validation object:
 
       ```json
@@ -128,6 +129,7 @@ tags:
             "max_length": 64,
             "regex": "^.+\\.(jpg|jpeg|png|gif|pdf)$",
             "unique": "yes"
+            "unique_case_insensitivity": true
           }
         }
       }
@@ -314,7 +316,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        'default':
+        '500':
           $ref: '#/components/responses/InternalServerError'
     get:
       tags:
@@ -322,6 +324,8 @@ paths:
       summary: Get all Custom APIs
       # language=Markdown
       description: |
+        Get all Custom APIs
+
         ## Filtering
         The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom APIs:
 
@@ -369,7 +373,7 @@ paths:
                     $ref: "#/components/schemas/PaginationLinks"
         '400':
           $ref: '#/components/responses/BadFilterError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}:
@@ -459,7 +463,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     delete:
@@ -474,7 +478,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/fields:
@@ -515,7 +519,8 @@ paths:
                           "max_length": 128,
                           "regex": null,
                           "allow_null_values": true,
-                          "unique": "no"
+                          "unique": "no",
+                          "unique_case_insensitivity": false
                         }
                       }
                     }
@@ -610,7 +615,8 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
-                            "unique": "no"
+                            "unique": "no",
+                            "unique_case_insensitivity": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -716,7 +722,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     get:
@@ -725,6 +731,8 @@ paths:
       summary: Get all Custom Fields
       # language=Markdown
       description: |
+        Get all Custom Fields
+        
         ## Filtering
           The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom Fields:
         
@@ -787,7 +795,8 @@ paths:
                               "max_length": 128,
                               "regex": "[a-zA-Z0-9 ]{3,128}",
                               "allow_null_values": true,
-                              "unique": "no"
+                              "unique": "no",
+                              "unique_case_insensitivity": false
                             }
                           }
                         }
@@ -815,7 +824,7 @@ paths:
           $ref: '#/components/responses/BadFilterError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/fields/{custom_field_id}:
@@ -849,7 +858,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '400':
           $ref: '#/components/responses/ValidationError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
     put:
       tags:
@@ -885,7 +894,8 @@ paths:
                           "max_length": 128,
                           "regex": "^[a-zA-Z0-9 ]{3,128}$",
                           "allow_null_values": true,
-                          "unique": "no"
+                          "unique": "no",
+                          "unique_case_insensitivity": false
                         }
                       }
                     }
@@ -976,7 +986,8 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
-                            "unique": "no"
+                            "unique": "no",
+                            "unique_case_insensitivity": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1055,7 +1066,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     delete:
@@ -1070,7 +1081,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/entries:
@@ -1162,7 +1173,7 @@ paths:
         '413':
           $ref: '#/components/responses/PayloadTooLargeError'
           description: Payload Too Large. The total size of a Custom API Entry must not exceed 64KB.
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
     get: &getCustomAPIEntries
       tags:
@@ -1170,6 +1181,8 @@ paths:
       summary: Get all Custom API Entries
       # language=Markdown
       description: |
+        Get all Custom API Entries
+
         ## Filtering
           The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) all Custom API Entries:
         
@@ -1272,7 +1285,7 @@ paths:
                     }
         '400':
           $ref: '#/components/responses/BadFilterError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/entries/{custom_api_entry_id}:
@@ -1333,7 +1346,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     put: &putCustomAPIEntry
@@ -1430,7 +1443,7 @@ paths:
         '413':
           $ref: '#/components/responses/PayloadTooLargeError'
           description: Payload Too Large. The total size of a Custom API Entry must not exceed 64KB.
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     delete: &deleteCustomAPIEntry
@@ -1454,7 +1467,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '412':
           $ref: '#/components/responses/PreConditionError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/extensions/{custom_api_slug}:
@@ -1864,12 +1877,20 @@ components:
                     unique:
                       type: string
                       enum:
-                        - yes
-                        - no
+                        - "yes"
+                        - "no"
                       description: |
                         If `yes`, this prevents two Custom API entries from having the same value for this field within the Custom API. When set to `no` (the default), 
                         multiple Custom API entries may have the same value
-                      default: no
+                      default: "no"
+                    unique_case_insensitivity:
+                      type: boolean
+                      description: |
+                        Controls case-insensitive uniqueness for this field. Can only be set to `true` if `unique` is set to `yes`. 
+                        If `true`, prevents two Custom API entries from having the same value for this field within the Custom API, ignoring case differences. 
+                        When set to `false` (the default), case is considered when checking for uniqueness. 
+                        This value can only be set during field creation and cannot be modified afterwards.
+                      default: false
     IntegerCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -2120,10 +2141,13 @@ components:
         - type
       properties:
         id:
-          description: id
+          description: |
+            The unique identifier for the related Custom API. When the `type` of an object is set to `api_location` then `id` must be `/v2/extensions`.
+            When the `type` of an object is set to `custom_api`, then `id` must be that of a Custom API that results in a relationship that does not have a depth exceeding 2 and does not result in a cycle.
           type: string
+          example: 652e39d8-d613-493e-8c20-fef99ad6327a
         type:
-          description: type, can be custom_api or api_location
+          description: Specifies the type of parent relationship, can be `custom_api` or `api_location`.
           type: string
           enum:
             - custom_api
