@@ -115,10 +115,11 @@ tags:
       \ Custom Fields can be configured to restrict the storage of `null` values for\
       \ that field on a Custom API Entry. By default, this is `true`.\n\nsample validation\
       \ object :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"\
-      allow_null_values\": false\n    }\n  }\n}\n  ```\n\n## Reserved Slugs\n\nThe\
-      \ following values cannot be used as a `slug` in a Custom Field.\n\n- slug\n\
-      - type\n- id\n- meta\n- created_at\n- updated_at\n- links\n- relationships\n\
-      - attributes\n- attribute\n- dimension\n- dimensions\n- weight\n- weights\n"
+      allow_null_values\": false,\n      \"immutable\": false\n    }\n  }\n}\n  ```\n\
+      \n## Reserved Slugs\n\nThe following values cannot be used as a `slug` in a\
+      \ Custom Field.\n\n- slug\n- type\n- id\n- meta\n- created_at\n- updated_at\n\
+      - links\n- relationships\n- attributes\n- attribute\n- dimension\n- dimensions\n\
+      - weight\n- weights\n"
   - name: Custom API Entries
     description: "A **Custom API Entry** is a specific instance of a resource, such\
       \ as a single wishlist in a Custom API for wishlists.\n\nCustom API Entries\
@@ -421,25 +422,26 @@ paths:
                 value: {data: {type: "custom_field", name: "Name", description: "This\
                       \ field stores the name of the wishlist.", slug: "name", field_type: "string",
                     validation: {string: {min_length: 3, max_length: 128, regex: null,
-                        allow_null_values: true, unique: "no", unique_case_insensitivity: false}}}}
+                        allow_null_values: true, immutable: false, unique: "no", unique_case_insensitivity: false}}}}
               integer_field:
                 summary: "Integer field example"
                 value: {data: {type: "custom_field", name: "Items Count", description: "This\
                       \ field stores the total count of items in the wishlist.", slug: "items_count",
                     field_type: "integer", validation: {integer: {min_value: 0, max_value: null,
-                        allow_null_values: true}}}}
+                        allow_null_values: true, immutable: false}}}}
               boolean_field:
                 summary: "Boolean field example"
                 value: {data: {type: "custom_field", name: "Keep Purchased Items",
                     description: "This field stores whether or not to keep purchased\
                       \ items on the wishlist.", slug: "keep_purchased", field_type: "boolean",
-                    validation: {boolean: {allow_null_values: true}}}}
+                    validation: {boolean: {allow_null_values: true, immutable: false}}}}
               float_field:
                 summary: "Float field example"
                 value: {data: {type: "custom_field", name: "Items Weight", description: "This\
                       \ field stores the total weight (in kilograms) of the items\
                       \ in the wishlist.", slug: "items_weight", field_type: "float",
-                    validation: {float: {min_value: 0.0, max_value: null, allow_null_values: true}}}}
+                    validation: {float: {min_value: 0.0, max_value: null, allow_null_values: true,
+                        immutable: false}}}}
       responses:
         '201':
           description: Created
@@ -464,8 +466,9 @@ paths:
                   value: {data: {type: "custom_field", name: "Name", description: "This\
                         \ field stores the name of the wishlist.", slug: "name", field_type: "string",
                       validation: {string: {min_length: 3, max_length: 128, regex: null,
-                          allow_null_values: true, unique: "no", unique_case_insensitivity: false}},
-                      id: "859aeba1-03c2-4822-bd4c-89afce93d7eb", links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
+                          allow_null_values: true, immutable: false, unique: "no",
+                          unique_case_insensitivity: false}}, id: "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                      links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
                       meta: {timestamps: {created_at: "2017-01-10T11:41:19.244Z",
                           updated_at: "2017-01-10T11:41:19.244Z"}}}}
                 integer_field:
@@ -473,8 +476,9 @@ paths:
                   value: {data: {type: "custom_field", name: "Items Count", description: "This\
                         \ field stores the total count of items in the wishlist.",
                       slug: "items_count", field_type: "integer", validation: {integer: {
-                          min_value: null, max_value: null, allow_null_values: true}},
-                      id: "859aeba1-03c2-4822-bd4c-89afce93d7eb", links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
+                          min_value: null, max_value: null, allow_null_values: true,
+                          immutable: false}}, id: "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                      links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
                       meta: {timestamps: {created_at: "2017-01-10T11:41:19.244Z",
                           updated_at: "2017-01-10T11:41:19.244Z"}}}}
                 boolean_field:
@@ -482,8 +486,8 @@ paths:
                   value: {data: {type: "custom_field", name: "Keep Purchased Items",
                       description: "This field stores whether or not to keep purchased\
                         \ items on the wishlist.", slug: "keep_purchased", field_type: "boolean",
-                      validation: {boolean: {allow_null_values: true}}, id: "859aeba1-03c2-4822-bd4c-89afce93d7eb",
-                      links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
+                      validation: {boolean: {allow_null_values: true, immutable: false}},
+                      id: "859aeba1-03c2-4822-bd4c-89afce93d7eb", links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
                       meta: {timestamps: {created_at: "2017-01-10T11:41:19.244Z",
                           updated_at: "2017-01-10T11:41:19.244Z"}}}}
                 float_field:
@@ -491,8 +495,9 @@ paths:
                   value: {data: {type: "custom_field", name: "Items Weight", description: "This\
                         \ field stores the total weight (in kilograms) of the items\
                         \ in the wishlist.", slug: "items_weight", field_type: "float",
-                      validation: {float: {min_value: 0.0, max_value: null, allow_null_values: true}},
-                      id: "859aeba1-03c2-4822-bd4c-89afce93d7eb", links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
+                      validation: {float: {min_value: 0.0, max_value: null, allow_null_values: true,
+                          immutable: false}}, id: "859aeba1-03c2-4822-bd4c-89afce93d7eb",
+                      links: {self: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields/859aeba1-03c2-4822-bd4c-89afce93d7eb"},
                       meta: {timestamps: {created_at: "2017-01-10T11:41:19.244Z",
                           updated_at: "2017-01-10T11:41:19.244Z"}}}}
         '400':
@@ -561,8 +566,8 @@ paths:
                           \ field stores the name of the wishlist.", slug: "name",
                         field_type: "string", validation: {string: {min_length: 3,
                             max_length: 128, regex: "[a-zA-Z0-9 ]{3,128}", allow_null_values: true,
-                            unique: "no", unique_case_insensitivity: false}}}], meta: {
-                      page: {limit: 100, offset: 0, current: 1, total: 1}, results: {
+                            immutable: false, unique: "no", unique_case_insensitivity: false}}}],
+                    meta: {page: {limit: 100, offset: 0, current: 1, total: 1}, results: {
                         total: 1}}, links: {current: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
                       first: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
                       last: "/settings/extensions/custom-apis/3fa85f64-5717-4562-b3fc-2c963f66afa6/fields?page[limit]=100&page[offset]=0",
@@ -629,7 +634,8 @@ paths:
                 value: {data: {type: "custom_field", name: "Name", description: "This\
                       \ field stores the name of the wishlist.", slug: "name", field_type: "string",
                     validation: {string: {min_length: 3, max_length: 128, regex: "^[a-zA-Z0-9\
-                          \ ]{3,128}$", allow_null_values: true, unique: "no", unique_case_insensitivity: false}}}}
+                          \ ]{3,128}$", allow_null_values: true, immutable: false,
+                        unique: "no", unique_case_insensitivity: false}}}}
               integer_field:
                 summary: "Integer field example"
                 value: |
@@ -643,7 +649,8 @@ paths:
                         "integer": {
                           "min_value": 0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -672,7 +679,8 @@ paths:
                         "float": {
                           "min_value": 0.0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -712,6 +720,7 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
+                            "immutable": false,
                             "unique": "no",
                             "unique_case_insensitivity": false
                           }
@@ -742,7 +751,8 @@ paths:
                           "integer": {
                             "min_value": 0,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -769,7 +779,8 @@ paths:
                         "field_type": "boolean",
                         "validation": {
                           "boolean": {
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1904,6 +1915,11 @@ components:
                         \ can only be set during field creation and cannot be modified\
                         \ afterwards.\n"
                       default: false
+                    immutable:
+                      type: boolean
+                      description: |
+                        When set to true, the value of this field can be specified only during POST requests and cannot be modified during PUT requests.
+                      default: false
     IntegerCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1928,6 +1944,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [boolean, 'null']
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     BooleanCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1944,6 +1965,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [boolean, 'null']
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     FloatCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1968,6 +1994,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [boolean, 'null']
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     CustomFieldAttributes:
       anyOf:
         - $ref: '#/components/schemas/BooleanCustomFieldAttributes'
