@@ -1,5 +1,5 @@
 ---
-title: 'Copy exclusions between the **Actions** and **Conditions**'
+title: 'Copy exclusions between the Actions and Conditions'
 date: '2024-09-05'
 tags: ['Commerce Manager', 'Promotions Builder']
 hide_blog_post_date: false
