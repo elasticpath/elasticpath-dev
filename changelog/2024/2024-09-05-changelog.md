@@ -1,7 +1,7 @@
 ---
-title: 'Copy exclusions between the Conditions and Actions, Introducing unique_case_insensitivity field for string validation'
+title: 'Copy exclusions between the Conditions and Actions
 date: '2024-09-05'
-tags: ['Commerce Manager', 'Promotions Builder', 'Commerce Extensions']
+tags: ['Commerce Manager', 'Promotions Builder']
 hide_blog_post_date: false
 ---
 
