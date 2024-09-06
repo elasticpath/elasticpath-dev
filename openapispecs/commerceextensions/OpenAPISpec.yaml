@@ -114,8 +114,8 @@ tags:
       The `float` field_type cannot accurately represent some numbers and so using very small or large numbers might lose precision. We recommend that API clients use either the `integer` field_type if applicable , or the `string` data type if perfect precision or recall is required.
 
       ### String Validation
-      - `min_length`: Specifies the minimum number of characters can be stored. If set, it must be greater than 0 and less than `max_length`.
-      - `max_length`: Specifies the maximum number of characters can be stored. If set, it must be greater than 0 and `min_length`.
+      - `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be greater than 0 and less than `max_length`.
+      - `max_length`: Specifies the maximum number of characters that can be stored. If set, it must be greater than 0 and `min_length`.
       - `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax) regular expression used to restrict the specific characters that can be stored. It must be less than 1024 characters.
       - `unique`: Specifies whether the field must have unique constraint or not. It must be `yes` or `no`.      
       - `unique_case_insensitivity`: Applies when `unique` is set to `yes`. It controls whether values with different cases (for example, `ABC` and `abc`) should conflict. It must be `true` or `false`.
@@ -147,7 +147,8 @@ tags:
       {
         "validation": {
           "boolean": {
-            "allow_null_values": false
+            "allow_null_values": false,
+            "immutable": false
           }
         }
       }
@@ -519,6 +520,7 @@ paths:
                           "max_length": 128,
                           "regex": null,
                           "allow_null_values": true,
+                          "immutable": false,
                           "unique": "no",
                           "unique_case_insensitivity": false
                         }
@@ -539,7 +541,8 @@ paths:
                         "integer": {
                           "min_value": 0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -556,7 +559,8 @@ paths:
                       "field_type": "boolean",
                       "validation": {
                         "boolean": {
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -575,7 +579,8 @@ paths:
                         "float": {
                           "min_value": 0.0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -615,6 +620,7 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
+                            "immutable": false,
                             "unique": "no",
                             "unique_case_insensitivity": false
                           }
@@ -645,7 +651,8 @@ paths:
                           "integer": {
                             "min_value": null,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -672,7 +679,8 @@ paths:
                         "field_type": "boolean",
                         "validation": {
                           "boolean": {
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -701,7 +709,8 @@ paths:
                           "float": {
                             "min_value": 0.0,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -795,6 +804,7 @@ paths:
                               "max_length": 128,
                               "regex": "[a-zA-Z0-9 ]{3,128}",
                               "allow_null_values": true,
+                              "immutable": false,
                               "unique": "no",
                               "unique_case_insensitivity": false
                             }
@@ -894,6 +904,7 @@ paths:
                           "max_length": 128,
                           "regex": "^[a-zA-Z0-9 ]{3,128}$",
                           "allow_null_values": true,
+                          "immutable": false,
                           "unique": "no",
                           "unique_case_insensitivity": false
                         }
@@ -914,7 +925,8 @@ paths:
                         "integer": {
                           "min_value": 0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -945,7 +957,8 @@ paths:
                         "float": {
                           "min_value": 0.0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -986,6 +999,7 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
+                            "immutable": false,
                             "unique": "no",
                             "unique_case_insensitivity": false
                           }
@@ -1017,7 +1031,8 @@ paths:
                           "integer": {
                             "min_value": 0,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1045,7 +1060,8 @@ paths:
                         "field_type": "boolean",
                         "validation": {
                           "boolean": {
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1891,6 +1907,11 @@ components:
                         When set to `false` (the default), case is considered when checking for uniqueness. 
                         This value can only be set during field creation and cannot be modified afterwards.
                       default: false
+                    immutable:
+                      type: boolean
+                      description: |
+                        When set to true, the value of this field can be specified only during POST requests and cannot be modified during PUT requests.
+                      default: false
     IntegerCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1913,6 +1934,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [boolean, 'null']
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     BooleanCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1929,6 +1955,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [ boolean, 'null' ]
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     FloatCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1951,6 +1982,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [ boolean, 'null' ]
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     CustomFieldAttributes:
       anyOf:
         - $ref: '#/components/schemas/BooleanCustomFieldAttributes'
