@@ -50,7 +50,7 @@ In the **Create your rules** section, do the following:
     You can add multiple conditions according to your business requirements.
 1. Add exclusions:
 
-    To exclude items from the cart total, select **Add an exclusion** and do the following:
+    To exclude items from the cart total, either select **copy exclusions from actions** or select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
@@ -66,7 +66,7 @@ In the **Create your rules** section, do the following:
     - **attribute**: Select the template from the list, select the attribute, and then set the value for the selected attribute.
 1. Add exclusions: 
 
-    To exclude items from the cart items, select **Add an exclusion** and do the following:
+    To exclude items from the cart items, either select **copy exclusions from actions** or select **Add an exclusion** and do the following:
     * **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     * **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     * **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
@@ -112,7 +112,7 @@ To create a cart discount promotion, do the following:
 1. If you selected **amount**, specify the amount for the cart total discount.
 1. Add exclusions:
 
-    To exclude items from the promotion, select **Add an exclusion** and do the following:
+    To exclude items from the promotion, either select **copy exclusions from conditions** or select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies (categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
@@ -135,7 +135,7 @@ To create an item discount promotion, do the following:
 1. If you selected the **cheapest** or **most expensive** options, select quantities for the items to be included in the cart.
 1. Add exclusions:
 
-    To exclude items from the promotion, select **Add an exclusion** and do the following:
+    To exclude items from the promotion, either select **copy exclusions from conditions** or select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
@@ -163,7 +163,7 @@ To create a BXGY promotion, do the following:
         1. Select the value from the list corresponding to the chosen attributes.
 1. Add exclusions:
 
-    To exclude items from the promotion, select **Add an exclusion** and do the following:
+    To exclude items from the promotion, either select **copy exclusions from conditions** or select **Add an exclusion** and do the following:
     - **product**: Either enter the values directly or select **view list**. In the **Select Product** window, either choose a product from the list or enter a custom SKU in the **Add Custom SKU** field. For instructions on searching for products in the **Select Product** window, see [Searching for Products](#searching-for-products).
     - **node/hierarchy (category)**: Either enter the unique identifiers directly or select **view list**, then select the checkboxes for the desired nodes/hierarchies(categories).
     - **attribute**: Choose the template from the list, select the attribute, and then set the value for the selected attribute.
