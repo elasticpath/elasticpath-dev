@@ -114,9 +114,9 @@ tags:
       The `float` field_type cannot accurately represent some numbers and so using very small or large numbers might lose precision. We recommend that API clients use either the `integer` field_type if applicable , or the `string` data type if perfect precision or recall is required.
 
       ### String Validation
-      - `min_length`: Specifies the minimum number of characters allowed. If set, it must be greater than 0 and less than `max_length`.
-      - `max_length`: Specifies the maximum number of characters allowed. If set, it must be greater than 0 and `min_length`.
-      - `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax) regular expression used to restrict the specific characters. It must be less than 1024 characters.
+      - `min_length`: Specifies the minimum number of characters can be stored. If set, it must be greater than 0 and less than `max_length`.
+      - `max_length`: Specifies the maximum number of characters can be stored. If set, it must be greater than 0 and `min_length`.
+      - `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax) regular expression used to restrict the specific characters that can be stored. It must be less than 1024 characters.
       - `unique`: Specifies whether the field must have unique constraint or not. It must be `yes` or `no`.      
       - `unique_case_insensitivity`: Applies when `unique` is set to `yes`. It controls whether values with different cases (for example, `ABC` and `abc`) should conflict. It must be `true` or `false`.
       sample string validation object:
