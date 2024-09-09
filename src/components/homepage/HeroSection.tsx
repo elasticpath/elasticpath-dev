@@ -22,8 +22,8 @@ export default function HeroSection() {
             Why an iPaaS brings world-class commerce to life →
           </a>
         </div>
-        <h1 className="mb-4 text-center text-[4.5rem] md:text-[6.5rem] font-bold dark:drop-shadow-lg dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-[#394464] -from-3% via-[#1F8552] via-32% to-[#2BCC7E] to-64%">
-          Enterprise-ready commerce
+        <h1 className="mb-4 text-center text-[4.5rem] md:text-[5rem] font-bold dark:drop-shadow-lg dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-[#394464] -from-3% via-[#1F8552] via-32% to-[#2BCC7E] to-64%">
+          Build modern commerce experiences
         </h1>
         <p className="text-base text-center md:text-[1.75rem] leading-10 font-light max-w-5xl">
           Launch faster, solve complex problems, and build world-class
