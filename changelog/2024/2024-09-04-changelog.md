@@ -1,7 +1,7 @@
 ---
 title: 'Added Stacking and Priority in Promotions Builder'
 date: '2024-09-04'
-tags: ['Commerce Manager']
+tags: ['Commerce Manager', 'Promotions Builder']
 hide_blog_post_date: false
 ---
 
