@@ -100,17 +100,17 @@ tags:
   - name: Offerings
     description: |
       An offering is a combination of products and plans; products are combined with one or more plans to form an offering. 
-       
+
       For example, your company provides online
        streaming of movies, web-series, and music. Your customers can purchase these services through either a weekly or monthly plan.
-       
+
       Offering products can be either:
-       
+
       - a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
       - a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
-       
+
       ### Offering Examples
-       
+
       Offerings can have any combination of products and plans. The pricing of an offering is determined by the pricing you have configured for your products and plans.
 
       | Example | Product | Plans | Offering |
@@ -119,20 +119,20 @@ tags:
       | Single product with multiple plans | One product with a product price of $50 | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $47.50 a month</li><li>A yearly plan for $45 a month</li></ul> |
       | Multiple products and plan | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | A monthly plan with a 5% discount. | An offering with a monthly plan for $118.75 a month. | 
       | Multiple products with multiple plans | Two products: <ul><li>One product with a product price of $50.</li><li>One product with a product price of $75.</li></ul> | <ul><li>A monthly plan with a 5% discount</li><li>A yearly plan with a 10% discount</li></ul> | An offering with two plans: <ul><li>A monthly plan for $118.75 a month</li><li>A yearly plan for $112.50 a month</li></ul> | 
-       
+
       ### Building an Offering
-       
+
       Offerings represent a snapshot of their products and plans. If you make updates to products or plans within an offering, the original products and plans are not updated. Only the products and plans within the offering are updated. Alternatively, you can create new products or plans and attach them to a new offering.
-       
+
       When you are building an offering:
 
       - you can create new plans and products.
       - you can modify existing products and plans. For example, you can modify the product price or any attributes of a plan included in the offering.
 
       Here's how you build an offering:
-       
+
       1. Create your repeat products. Products can either be subscription products or Product Experience Manager products. 
-       
+
            - to create a subscription product, see [**Create a product**](/docs/api/subscriptions/create-product).
            - to create a Product Experience Manager product, see [**Create a product**](/docs/api/pxm/products/create-product)
       2. Create your plans. 
@@ -140,20 +140,20 @@ tags:
            - You can combine and reuse plans for as many products as you want, making it quick and easy to create your subscription offerings. 
            - An offering must have at least one plan. See [**Create a plan**](/docs/api/subscriptions/create-product).
       3. [**Build your offerings**](/docs/api/subscriptions/build-offering). Offerings are the products and plans that a customer can choose. An offering can consist of many combinations of a product or plans, depending on the products and services you offer.
-       
+
            - When a [**customer**](/docs/api/subscriptions/subscribers) chooses a plan, a subscription is created. See [**Subscriptions**](/docs/api/subscriptions/subscriptions).
            - Elastic Path Subscriptions manages the billing and recurring payments associated with the subscription. See [**Invoicing and Billing**](/docs/api/subscriptions/jobs).
-       
+
       ### Editing Offerings
 
       After saving an offering, you can, at any time:
-       
+
       - update an offering's details, for example, name or description. See [**Update an Offering**](/docs/api/subscriptions/update-offering).
       - update the existing product and plans. 
       - replace an existing product in an offering with a new one. See [**Replace a Product**](/docs/api/subscriptions/replace-offering-product)
       - attach a new plan to an offering. See [**Attach a Plan**](/docs/api/subscriptions/attach-offering-plan).
       - remove plans. See [**Removing a plan from an offering**](/docs/api/subscriptions/delete-offering-plan).
-       
+
       Any modifications that you make to offerings, and products or plans in an offering, does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
   - name: Subscriptions
     description: |
@@ -165,9 +165,32 @@ tags:
 
       A subscription can have the following states:
 
+      - `pending`
       - `canceled`
       - `paused`
       - `resumed`
+
+      #### Creating a pending subscription 
+
+      A subscription can be created in a `pending` state. This is useful for several reasons.
+
+      - If there are subscriptions that require user setup or onboarding, for example, installing software or setting up preferences. This helps reduce shopper frustration during the onboarding process, as the shopper is not paying for a service that they cannot use yet.
+      - When offering a free trial or promotion, keeping the subscription in a pending state until the trial or promotion starts or ends allows you to manage transitions more smoothly. 
+      - Before a subscription becomes active, you may need to verify the payment method or authorize the first payment. Keeping the subscription in a pending state allows time to complete these steps without activating the subscription.
+
+      For a subscription with a `pending` state, you can also configure a `go_live_after` date. The subscription starts from the `go_live_after` date. This is useful as it ensures both the subscription provider and subscriber are clear about when a subscription officially begins. Once the `go_live_after` date is passed, the subscription becomes `active`, initiating the billing and payment runs. If a subscription is activated this way, you can see this in the `timestamp` meta.   
+
+      You can configure a `go_live_after` date to be a past date. This is useful, for example, for backdating a subscription or managing a delay in activating a subscription. Setting the `go_live_after` date in the past ensures the subscriptions timeline correctly aligns with the agreed-upon service start date. 
+
+      :::caution
+
+      Although, billing runs generate one invoice per subscription, if a `go_live_date` is set far in the past, multiple invoices could be generated over the course of several billing runs, which could be frustrating and confusing to your subscribers. 
+
+      :::
+
+      See [create a subscription](/docs/api/subscriptions/create-subscription).
+
+      #### Cancelling or pausing and resuming subscriptions
 
       A subscriber can decide to cancel or pause and/or resume a subscription. The following example describes pausing or canceling and resuming a subscription.
 
@@ -349,7 +372,7 @@ tags:
       3. Invoices where `tax_required` is `true` will not have payment taken until a tax run has added the required tax to the invoice.  
       3. The [**payment run**](/docs/api/subscriptions/jobs) identifies invoices that are still outstanding and attempts to take payment for them. If the payment succeeds the the invoice is no longer outstanding. If the payment fails for any reason, then the invoice remains outstanding and is picked up by the next payment run to retry the payment. If an invoice has a failed payment, payment is only retried if the fixed interval has passed from the last payment attempt as defined in Settings.
 
-      #### Payment Retries
+      ### Payment Retries
 
       It is important to limit the number of times Subscriptions retries a failed payment request for many reasons, including: frequent payment retries can indicate fraudulent activities; multiple failed payment attempts can lead to customers accounts being locked out or flagged for suspicious activity resulting in poor customer experience; and excessive retries places an unnecessary load on your payment processing system.
 
@@ -417,9 +440,21 @@ tags:
       | `payment` | Required | The type of payment, for example, `pm_card_visa_debit`.
       | `options` | Required | These options must be set as they set up the card to be used in future without the customer being present. If these options are not set, future payments may fail. There are two options. <ul><li>`off_session`. Must be set to `true`. </li><li>`confirm`. Must be set to `true`.</li></ul> |
 
+      #### External Payments
+
+      External payments are payment methods not offered by Elastic Path Subscriptions (such as Elastic Path Payments powered by Stripe or Authorize.net), but they can still be integrated with Subscriptions. To do this, you must configure your subscriptions to use external payments by setting `manual_payments` to `true`. See [Create a Subscription](/docs/api/subscriptions/create-subscription).
+
+      When a subscription is created with `manual_payments` set to `true`:
+
+      1. When the payment run processes the generated invoice, it creates a pending payment. A `subscription-invoice-created` event is emitted that includes the `subscription_id`, `invoice_id` and `payment_id`. No payment is taken. 
+      2. You can use the events generated by Elastic Path Subscriptions to configure your external payment system to respond to these events, ensuring that your external payment system knows when the payment schedule has run and it's time to process the payment.
+      3. When the external payment system handles the payment (either takes the payment successfully or the payment fails) the [Update Invoice Payment](/docs/api/subscriptions/update-invoice-payment) endpoint, enables the update of the pending payment. 
+          - If payment is successful, the invoice is updated to `paid` and the billing/payment cycle continues as normal.
+          - If payment fails, the invoice continues to be marked as `outstanding`. The payment is not `pending` anymore. This is because a payment attempt has been made. Following on from this, the next payment run generates another manual pending payment. The external system is notified of this using the `subscription-invoice-payment-updated`.
+
       #### Card Declines
 
-      Card payments can fail for a variety of reasons, including insufficient funds, incorrect card data or fraudulent activity. You can use the `card_id` and `customer_id` attributes to program your front-end implementation to allow your preferred payment service provider to update a subscription with new card details, enabling you to easily manage your subscription charges.
+      Card payments can fail for a variety of reasons, including insufficient funds, incorrect card data or fraudulent activity. You can use the `card_id` and `customer_id` attributes to program your front-end implementation to allow your preferred payment service provider to update a subscription with new card details, enabling you to easily manage your subscription changes.
   - name: Dunning Rules
     description: |
 
@@ -457,6 +492,16 @@ tags:
       In Subscriptions, charges only prorate by day. As soon as a subscriber changes their subscription, a manual billing run is triggered and an invoice is generated with the new price on the next billing run and the difference in price is prorated over days.  
 
       By default, proration is not enabled for Subscriptions. Once you have attached a proration policy to an offering, proration is enabled automatically.
+
+      ### End dates when switching plans
+
+      Subscriptions manages the subscription end date when shoppers switch from one plan to another. Whether or not an end date is configured depends on the end behavior of the plans you are switching between.
+
+      | Current Subscription | New Subscription | Proration Behavior | End date |
+      | --- | --- | --- | --- |
+      | `close` | `roll` | The subscription switches from a plan with a fixed end date to a rolling plan so no end date is set after proration. | No end date is configured. |
+      | `roll` | `close` | The subscription switches to a fixed plan, and the end date is configured based on the duration of the plan. | An end date is configured. |
+      | `close` | `close` | The remaining time on the current plan is not carried over to the new plan. For example, if your current plan has 3 months remaining and you switch to a new plan that has a fixed length of 6 months, the new end date is calculated as 6 months from the day you switch plans, effectively resetting the subscription length to the new plan. | New end date calculated from the day you switched plan. |
   - name: Observable Events
     description: |
       You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. 
@@ -1642,15 +1687,17 @@ paths:
     post:
       tags:
         - Subscriptions
-      summary: Create a subscription state.
+      summary: Create a subscription state
       description: |
         The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product. 
 
         A subscription can have the following states:
 
+        - `pending` 
         - `canceled`
         - `paused`
         - `resumed`
+        For more information, see [Managing the Subscription Lifecycle](/docs/api/subscriptions/subscriptions#managing-the-subscription-lifecycle).
       operationId: CreateSubscriptionState
       requestBody:
         content:
@@ -2205,6 +2252,43 @@ paths:
                     $ref: '#/components/schemas/SubscriptionInvoicePayment'
         '404':
           $ref: '#/components/responses/NotFoundError'
+    put:
+      tags:
+        - Invoices
+      summary: Update Invoice Payment
+      description: |
+        External payment methods are payment methods not offered by Elastic Path Subscriptions (such as Elastic Path Payments powered by Stripe or Authorize.net), but they can still be integrated with Subscriptions. You can use the `Update Invoice Payment` endpoint to manually update a payment against an invoice where an external payment method is handling the payment of your invoices. See [External Payments](/docs/api/subscriptions/invoices#external-payments).
+      operationId: UpdateInvoicePayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: '#/components/schemas/UpdateInvoicePayment'
+      responses:
+        '200':
+          description: Success. Invoice payment has been updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SubscriptionInvoicePayment'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/WriteConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /subscriptions/schedules:
     parameters:
       - $ref: '#/components/parameters/Filter'
@@ -4157,6 +4241,8 @@ components:
           $ref: '#/components/schemas/UUID'
         address_id:
           $ref: '#/components/schemas/UUID'
+        offering_external_ref:
+          $ref: '#/components/schemas/ExternalRef'
         offering_id:
           $ref: '#/components/schemas/UUID'
         plan_id:
@@ -4180,7 +4266,7 @@ components:
           example: albert@elasticpath.com
         pending:
           type: boolean
-          description: Whether a subscription is pending activation or not.
+          description: Whether a subscription is pending activation or not. See [Creating a pending subscription](/docs/api/subscriptions/subscriptions#creating-a-pending-subscription).
           example: false
         offering:
           $ref: '#/components/schemas/OfferingAttributes'
@@ -4193,11 +4279,15 @@ components:
           type: array
           minItems: 1
           items:
-            allOf:
-              - $ref: '#/components/schemas/PlanAttributes'
-              - $ref: '#/components/schemas/SelectedPlanMeta'
+            $ref: '#/components/schemas/PlanAttributesAndSelectedMeta'
+        selected_plan:
+          $ref: '#/components/schemas/ExternalRef'
         meta:
           $ref: '#/components/schemas/SubscriptionMeta'
+    PlanAttributesAndSelectedMeta:
+      allOf:
+        - $ref: '#/components/schemas/PlanAttributes'
+        - $ref: '#/components/schemas/SelectedPlanMeta'
     SelectedPlanMeta:
       properties:
         meta:
@@ -4276,7 +4366,7 @@ components:
         payment_authority:
           $ref: '#/components/schemas/PaymentAuthority'
         go_live_after:
-          description: The date and time a subscription will go live and become active.
+          description: The date and time a `pending` subscription goes live and becomes active. See [Creating a pending subscription](/docs/api/subscriptions/subscriptions#creating-a-pending-subscription).
           type: string
           example: '2017-01-10T11:41:19.244842Z'
           nullable: true
@@ -4456,7 +4546,7 @@ components:
       type: boolean
       example: false
       default: false
-      description: When configured to true, no payment gateway will be used and a pending payment will be created.
+      description: When configured to true, no payment gateway is used and a pending payment is created. See [External Payments](/docs/api/subscriptions/invoices#external-payments).
     PaymentAuthority:
       oneOf:
         - $ref: '#/components/schemas/PaymentAuthorityStripe'
@@ -4597,11 +4687,16 @@ components:
               description: The total number of offerings uploaded.
               type: integer
               example: 50000
+            subscription:
+              description: The total number of subscriptions uploaded.
+              type: integer
+              example: 50000
           required:
             - subscription_product
             - subscription_plan
             - subscription_subscriber
             - subscription_offering
+            - subscription
         imported:
           properties:
             subscription_product:
@@ -4620,11 +4715,16 @@ components:
               description: The total number of offerings imported.
               type: integer
               example: 45090
+            subscription:
+              description: The total number of subscriptions imported.
+              type: integer
+              example: 45090
           required:
             - subscription_product
             - subscription_plan
             - subscription_subscriber
             - subscription_offering
+            - subscription
     Job:
       required:
         - type
@@ -4849,6 +4949,39 @@ components:
           $ref: '#/components/schemas/SubscriptionInvoiceAttributes'
         meta:
           $ref: '#/components/schemas/SubscriptionInvoiceMeta'
+    UpdateInvoicePayment:
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/SubscriptionInvoicePaymentType'
+        attributes:
+          $ref: '#/components/schemas/UpdateInvoicePaymentAttributes'
+    UpdateInvoicePaymentAttributes:
+      required:
+        - success
+      properties:
+        success:
+          type: boolean
+          example: true
+          description: Whether the payment was successful.
+        external_payment_id:
+          type: string
+          maxLength: 1024
+          example: 33e7ec6b-8b34-4c92-a95b-2e2647922e47
+          description: An optional external ID that is specific to the gateway used.
+        failure_detail:
+          description: A message generated by an external payment method that describes why a payment fails.
+          type: string
+          example: Card Failure
+        payment_taken_at:
+          description: The date and time the invoice payment was taken at.
+          type: string
+          example: '2017-01-10T11:41:19.244842Z'
     SubscriptionInvoicePayment:
       required:
         - id
@@ -4961,6 +5094,7 @@ components:
         - outstanding
         - tax_required
         - payment_retries_limit_reached
+        - manual_payment_pending
       properties:
         billing_period:
           $ref: '#/components/schemas/TimePeriod'
@@ -4996,6 +5130,10 @@ components:
           description: The date and time an invoice was created.
           type: string
           example: '2017-01-10T11:41:19.244842Z'
+        manual_payment_pending:
+          type: boolean
+          description: Whether there is a manual pending payment pending on the invoice.
+          example: true
     SubscriptionInvoicePaymentAttributes:
       required:
         - success
@@ -5006,6 +5144,10 @@ components:
           type: boolean
           example: true
           description: Whether the payment was successful.
+        pending:
+          type: boolean
+          example: true
+          description: Whether the payment is pending (only for manual payments).
         gateway:
           type: string
           maxLength: 1024

@@ -6,6 +6,8 @@ sidebar_position: 110
 
 Smart links are how you links to resources hosted within Studio. You can then use your smart links, in a button, for example.
 
+<iframe class="vidyard_iframe" title="Using Smart Links & Anchor Tags for seamless shopping experiences" src="//play.vidyard.com/M5bLPb34e3SSYP6Mgssunx.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 Below is the full list of resources that you are able
 to create smart links for.
 

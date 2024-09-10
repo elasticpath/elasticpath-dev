@@ -1,7 +1,7 @@
 ---
 title: Adding Parallax to Background Media
 nav_label: Adding Parallax to Background Media
-sidebar_position: 10
+sidebar_position: 35
 ---
 
 ## What is parallax?

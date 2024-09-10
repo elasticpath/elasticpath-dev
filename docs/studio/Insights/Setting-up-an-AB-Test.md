@@ -4,7 +4,7 @@ nav_label: Setting up A/B Test
 sidebar_position: 30
 ---
 
-<iframe class="vidyard_iframe" title="Using Smart Links & Anchor Tags for seamless shopping experiences" src="//play.vidyard.com/M5bLPb34e3SSYP6Mgssunx.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe class="vidyard_iframe" title="Setup A/B Tests on your pages to drive sales" src="//play.vidyard.com/QxqpN9ehYpQkaYeyZnq5AF.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 Through Studio, you're able to run full A/B tests for the components that make up your webpages; in fact the process is
 very simple.

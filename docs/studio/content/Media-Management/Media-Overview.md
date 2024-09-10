@@ -1,13 +1,15 @@
 ---
 title: Media Overview
 nav_label: Media Overview
-sidebar_position: 60
+sidebar_position: 5
 ---
 
 ## Overview
 
 When you upload images, icons, or videos the files are automatically added to your Media library. Once they're a part of
 this library, they can be used repeatedly through your site without having to upload the file more than once.
+
+<iframe class="vidyard_iframe" title="Adding media to your Studio landing pages" src="//play.vidyard.com/71zCeHQ82NtrA6QydtUGnk.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ## Uploading files
 

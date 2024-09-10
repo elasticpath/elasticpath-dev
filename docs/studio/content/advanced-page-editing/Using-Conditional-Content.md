@@ -7,6 +7,8 @@ sidebar_position: 110
 Want to control the visibility of individual sections on your page from a certain user, group of users, or user's who
 have completed a specific action? With Studio's Conditional Content you're able to do just that.
 
+<iframe class="vidyard_iframe" title="Using Conditional Content to personalize pages" src="//play.vidyard.com/b8ePXf4mYZ4zPhxVJ6kFbB.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 To enable Conditional Content on your section, just select the **{...}** icon from the section toolbar.
 
 ![Conditional Content Icon](/assets/studio/ConContent1.png)

@@ -1,7 +1,7 @@
 ---
 title: Embedding Videos
 nav_label: Embedding Videos
-sidebar_position: 30
+sidebar_position: 25
 ---
 
 ## Supported Video Embeds

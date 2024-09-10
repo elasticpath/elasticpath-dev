@@ -26,11 +26,19 @@ To understand the difference between Promotions Standard and Promotions Builder,
 
 As a best practice, we recommend creating new promotions in the Promotions Builder and allowing Promotions Standard to expire. While Promotions Standard can currently run side by side with new ones, transitioning to the Promotions Builder ensures alignment with updated features and facilitates smoother management of promotions over time.
 
-## Stacking Multiple Promotions
+## Stacking and Prioritizing Multiple Promotions
 
-You can simultaneously apply multiple promotions, stacking both cart-level and item-level discounts on top of each other.
+You can simultaneously apply multiple promotions, stacking both cart-level and item-level discounts on top of each other. When stacking promotions, the priority number assigned to each promotion determines the order in which they are applied. Higher numbers indicate higher priority, meaning those promotions will be applied first.
 
-The promotions are applied sequentially based on their creation dates. The oldest promotion is applied first, with the newer promotions stacked upon it. For example, if a SKU matches the criteria of the oldest promotion, the promotion will be applied to the item price each time. For instance, if the item price is $50, each stacked promotion will be applied against the $50 item price.
+For example, if you have two promotions that can be stacked, the promotion with priority 90 will be applied before the promotion with priority 60.
+
+If no priority is set, the promotions are applied sequentially based on their creation dates. The newest promotion is applied first and discounted prices calculated against any previously-discounted item prices. For example, if a SKU matches the criteria of the multiple promotions, the promotions will be applied in order from the newest to the oldest. If the original item price is $50 and the newest promotion applies a 10% discount, the item price would be reduced to $45. The next promotion would then be applied to this new price.
+
+:::note
+
+Standard Promotions are always applied first, regardless of any priorities set. Once all Standard Promotions have been applied, promotions configured in Promotions Builder are applied in the order determined by their assigned priority numbers.
+
+:::
 
 ## Scenarios
 

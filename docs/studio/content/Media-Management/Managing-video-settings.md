@@ -1,7 +1,7 @@
 ---
 title: Managing video settings
 nav_label: Managing video settings
-sidebar_position: 50
+sidebar_position: 30
 ---
 
 When you add a video to your page, you're given the option to adjust several different settings. Below are screenshots

@@ -7,7 +7,7 @@ sidebar_position: 10
 The Styles Guide can be accessed through the Studio Admin and is a huge asset when trying to quickly spin up page with
 a consistent brand, design, and voice.
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/za7vIUrwhOk" title="Adjusting your Styles" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe class="vidyard_iframe" title="Setting up your Style Guide in Studio" src="//play.vidyard.com/DiHarG3aMQX5P8LgZAevuY.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ## Colors
 

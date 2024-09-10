@@ -7,6 +7,8 @@ sidebar_position: 130
 When building a page with Studio it's important to understand the underlying structure of the page. In this article,
 we'll break down the underlying structure of all pages built using Studio in way that's easy to understand.
 
+<iframe class="vidyard_iframe" title="Using toolbars to style your content in Studio" src="//play.vidyard.com/XQijU9iCHvqBufJwUhASB2.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 First thing you need to understand is that the building blocks of all pages built on Studio are ***sections***. By
 adding a section to a page you're giving yourself a place to add text, images or videos, or even things like a quote to
 your page. However, as you'll see below, not all sections are created equal.

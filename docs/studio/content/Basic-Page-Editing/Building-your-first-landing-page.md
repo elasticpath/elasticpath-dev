@@ -4,6 +4,8 @@ nav_label: Building First Landing Page
 sidebar_position: 20
 ---
 
+<iframe class="vidyard_iframe" title="Build pages in Studio using sections & templates" src="//play.vidyard.com/t6ez56zKjTzhSzZjGuK4qN.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 The below guide is intended to walk you through the basics of building landing pages in Studio.
 
 1. Create a new page
