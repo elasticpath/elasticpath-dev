@@ -178,6 +178,9 @@ const config = {
           trackingID: 'G-NZ3NL8DLLD',
           anonymizeIP: true,
         },
+        googleTagManager: {
+          containerId: 'G-NZ3NL8DLLD',
+        },
       }),
     ],
   ],
