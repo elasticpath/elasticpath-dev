@@ -98,28 +98,27 @@ tags:
       \ that API clients use either the `integer` field_type if applicable , or the\
       \ `string` data type if perfect precision or recall is required.\n\n### String\
       \ Validation\n- `min_length`: Specifies the minimum number of characters that\
-      \ can be stored. If set, it must be less than 0 and less than `max_length`.\n\
+      \ can be stored. If set, it must be greater than 0 and less than `max_length`.\n\
       - `max_length`: Specifies the maximum number of characters that can be stored.\
-      \ If set, it must be greater than 0 and `min_length`.\n- `regex`: [RE2](https://github.com/google/re2/wiki/Syntax)\
-      \ regular expression that used to restrict the specific characters that can\
-      \ be stored. This must be less than 1024 characters.\n- `unique`: Specifies\
-      \ whether the field must have unique constraint or not. It must be `yes` or\
-      \ `no`.      \n- `unique_case_insensitivity`: For fields with `unique` set to\
-      \ `yes`, controls whether or not values with different cases (e.g., `ABC` and\
-      \ `abc`) should conflict. It must be true or false.\nsample string validation\
-      \ object:\n\n```json\n{\n  \"validation\": {\n    \"string\": {\n      \"min_length\"\
-      : 0,\n      \"max_length\": 64,\n      \"regex\": \"^.+\\\\.(jpg|jpeg|png|gif|pdf)$\"\
-      ,\n      \"unique\": \"yes\"\n      \"unique_case_insensitivity\": true\n  \
-      \  }\n  }\n}\n```\nEven if no validation is set, field_type `string` only supports\
-      \ values that are up to `65535` characters long.\n\n\n### Null Values\n\nAll\
-      \ Custom Fields can be configured to restrict the storage of `null` values for\
-      \ that field on a Custom API Entry. By default, this is `true`.\n\nsample validation\
-      \ object :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"\
-      allow_null_values\": false,\n      \"immutable\": false\n    }\n  }\n}\n  ```\n\
-      \n## Reserved Slugs\n\nThe following values cannot be used as a `slug` in a\
-      \ Custom Field.\n\n- slug\n- type\n- id\n- meta\n- created_at\n- updated_at\n\
-      - links\n- relationships\n- attributes\n- attribute\n- dimension\n- dimensions\n\
-      - weight\n- weights\n"
+      \ If set, it must be greater than 0 and `min_length`.\n- `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax)\
+      \ regular expression used to restrict the specific characters that can be stored.\
+      \ It must be less than 1024 characters.\n- `unique`: Specifies whether the field\
+      \ must have unique constraint or not. It must be `yes` or `no`.      \n- `unique_case_insensitivity`:\
+      \ Applies when `unique` is set to `yes`. It controls whether values with different\
+      \ cases (for example, `ABC` and `abc`) should conflict. It must be `true` or\
+      \ `false`.\nsample string validation object:\n\n```json\n{\n  \"validation\"\
+      : {\n    \"string\": {\n      \"min_length\": 0,\n      \"max_length\": 64,\n\
+      \      \"regex\": \"^.+\\\\.(jpg|jpeg|png|gif|pdf)$\",\n      \"unique\": \"\
+      yes\"\n      \"unique_case_insensitivity\": true\n    }\n  }\n}\n```\nEven if\
+      \ no validation is set, field_type `string` only supports values that are up\
+      \ to `65535` characters long.\n\n\n### Null Values\n\nAll Custom Fields can\
+      \ be configured to restrict the storage of `null` values for that field on a\
+      \ Custom API Entry. By default, this is `true`.\n\nsample validation object\
+      \ :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"allow_null_values\"\
+      : false,\n      \"immutable\": false\n    }\n  }\n}\n  ```\n\n## Reserved Slugs\n\
+      \nThe following values cannot be used as a `slug` in a Custom Field.\n\n- slug\n\
+      - type\n- id\n- meta\n- created_at\n- updated_at\n- links\n- relationships\n\
+      - attributes\n- attribute\n- dimension\n- dimensions\n- weight\n- weights\n"
   - name: Custom API Entries
     description: "A **Custom API Entry** is a specific instance of a resource, such\
       \ as a single wishlist in a Custom API for wishlists.\n\nCustom API Entries\
