@@ -1,5 +1,5 @@
 ---
-title: 'Released Klevu integration update'
+title: 'Klevu integration update'
 date: '2024-09-12'
 tags: ['Integrations']
 hide_blog_post_date: false
