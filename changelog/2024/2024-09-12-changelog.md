@@ -1,5 +1,5 @@
 ---
-title: 'Integration'
+title: 'Released Klevu Integration V6 (US) - V9 (EU'
 date: '2024-09-12'
 tags: ['Integrations']
 hide_blog_post_date: false
