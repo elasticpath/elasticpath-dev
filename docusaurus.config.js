@@ -1602,7 +1602,7 @@ const config = {
           { to: '/docs/commerce-manager/product-experience-manager/extending-products/templates', from: '/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/create-attribute'},
           { to: '/docs/customer-management/customer-management-api/update-a-customer', from: '/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/update-attribute'},
           { to: '/docs/commerce-manager/product-experience-manager/extending-products/templates', from: '/docs/pxm/products/extending-pxm-products/pxm-product-attributes-api/get-attribute'},
-          {to: '/guides/key-concepts/organizations/index', from: `/docs/organizations/`},
+          {to: '/guides/key-concepts/organizations', from: `/docs/organizations/`},
           {to: `/guides/key-concepts/organizations/org-level-entities`, from: '/docs/organizations/org-level-entities'},
           {to: '/guides/key-concepts/organizations/organization_authentication', from: '/docs/organizations/organization_authentication'},
           {to: '/guides/How-To/organizations/create-pxm-org-entities', from: '/docs/organizations/org-level-pxm-entities/create-pxm-org-entities'},
