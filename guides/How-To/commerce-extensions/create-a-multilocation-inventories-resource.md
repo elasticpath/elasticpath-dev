@@ -57,10 +57,29 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
         "name": "Slug",
         "description": "Slug of the entry",
         "field_type": "string",
+        "validation": {
+          "string": {
+            "min_value": 12,
+            "allow_null_values": false,
+            "unique": "yes",
+            "unique_case_insensitivity": true
+          }
+        },
+        "use_as_url_slug": true
         "type": "custom_field"
       }
     }
 ```
+
+A couple of things to note about the sample request above:
+* `data.validation.string.min_value`: Ensures that `slug` values have at least 12 characters.
+* `data.validation.string.allow_null_values`: Will reject any `null` values from being stored as a `sku`.
+* `data.validation.unique`: Blocks any duplicate values from being stored as a `sku`.
+* `data.validation.unique_case_insensitivity`: controls whether values with different cases (for example, `ABC` and `abc`) should conflict. Only applies when `unique` is set to `yes`.
+
+Each of this can be tailored to fit your business see [Custom Fields Overview](/docs/api/commerce-extensions/custom-fields) for more.
+
+"use_as_url_slug" is enabled this will allow access to your data using well-known identifiers in your domain rather than having to rely on identifiers generated from our platform.
 
 ### Create Custom Field - amount
 In this step, you will create a Custom Field `amount`, this stores the amount of inventory of this SKU at this location as an integer.
