@@ -1609,7 +1609,7 @@ const config = {
           {to: '/guides/How-To/organizations/org-level-pxm-entities/pxm-org-hierarchies', from: '/docs/organizations/org-level-pxm-entities/pxm-org-hierarchies'},
           {to: `/guides/How-To/organizations/pxm-org-templates`, from: '/docs/organizations/org-level-pxm-entities/pxm-org-templates'},
           {to: '/guides/How-to/organizations/pxm-org-entities-in-store-level-catalogs', from: '/docs/organizations/org-level-pxm-entities/pxm-org-entities-in-store-level-catalogs'},
-          {to: '/guides//How-To/organizations/pxm-org-pricebooks', from: '/docs/organizations/org-level-pxm-entities/pxm-org-pricebooks'}
+          {to: '/guides//How-To/organizations/pxm-org-pricebooks', from: '/docs/organizations/org-level-pxm-entities/pxm-org-pricebooks'},
           { to: '/', from: '/learn/power-of-the-catalog/complete'},
           { to: '/', from: '/learn/creating-an-online-store/lets-get-some-sales'},
           { to: '/', from: '/learn/creating-an-online-store/store-preview'},
