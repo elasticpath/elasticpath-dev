@@ -60,6 +60,15 @@ Filtering is currently supported on the following endpoints:
 * [Get all Custom API Entries](/docs/api/commerce-extensions/get-all-custom-entries)
 * [Get Usages for Promotion](/docs/promotions-builder/promotions-builder-codes/get-promotion-usages)
 * [Get a Promotion Code Usage](/docs/promotions-builder/promotions-builder-codes/get-a-promotion-code-usage)
+* [Get all jobs](/docs/api/subscriptions/list-jobs)
+* [Get all schedules](/docs/api/subscriptions/list-schedules)
+* [Get all subscription products](/docs/api/subscriptions/list-products)
+* [Get all subscription invoices](/docs/api/subscriptions/list-invoices)
+* [Get all subscribers](/docs/api/subscriptions/list-subscribers)
+* [Get all subscription offerings](/docs/api/subscriptions/list-offerings)
+* [Get all subscriptions](/docs/api/subscriptions/list-subscriptions)
+* [Get all dunning rules](/docs/api/subscriptions/list-dunning-rules)
+
 
 ## Filtering Syntax
 
@@ -198,6 +207,14 @@ As this feature is in beta, quoted operands are only working with the following 
 - [Get all promotions](/docs/api/promotions/get-all-promotions)
 - [Get all product prices](/docs/api/pxm/pricebooks/get-prices)
 - [Get all products](/docs/api/pxm/products/get-all-products)
+- [Get all jobs](/docs/api/subscriptions/list-jobs)
+- [Get all schedules](/docs/api/subscriptions/list-schedules)
+- [Get all subscription products](/docs/api/subscriptions/list-products)
+- [Get all subscription invoices](/docs/api/subscriptions/list-invoices)
+- [Get all subscribers](/docs/api/subscriptions/list-subscribers)
+- [Get all subscription offerings](/docs/api/subscriptions/list-offerings)
+- [Get all subscriptions](/docs/api/subscriptions/list-subscriptions)
+- [Get all dunning rules](/docs/api/subscriptions/list-dunning-rules)
 :::
 
 If you need to search for unsupported operands, or white space is significant (for example, a value starts with a
