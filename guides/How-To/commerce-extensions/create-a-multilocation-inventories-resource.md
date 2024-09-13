@@ -6,6 +6,12 @@ nav_position: 3
 
 Imagine managing inventory across multiple locations effortlessly. Commerce Extensions makes this possible with Custom APIs designed to handle specific data points like SKU, Collection Name, Location Name, and Inventory amount. This functionality allows businesses to quickly provide inventory information to customers, enhancing the shopping experience.
 
+In this guide you will learn how to:
+
+* Create a Custom API to store your location inventory data.
+* Streamline your data import and sync processes using upserts and accessing entries with well-known identifiers.
+* Ensure the accuracy of your inventory amounts using Conditional Updates to prevent lost updates and other data conistency issues.
+
 ## Prerequisites
 
 If you want to follow along, you need a [Client credential token](/docs/authentication/Tokens/client-credential-token).
