@@ -1,7 +1,7 @@
 ---
 title: Organization Templates
 nav_label: Organization Templates
-nav_position : 21
+sidebar_position : 21
 ---
 
 You can create templates for your products at both the organization and store level. Templates are a collection of attributes. Use attributes to define the characteristics of products in an organization or store or to provide an input for other purposes, such as Search Engine Optimization (SEO) or product specification. For example, a Book template might contain attributes, such as ISBN, Author, Number of pages, Year Published, or Condition (New/Used).
