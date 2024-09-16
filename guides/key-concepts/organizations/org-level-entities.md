@@ -1,7 +1,7 @@
 ---
 title: Organization and Store Entities
 nav_label: Organization and Store Entities
-nav_position : 12
+sidebar_position : 10
 ---
 
 Entities have different characteristics, depending on whether they are at organization or store level.

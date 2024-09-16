@@ -1,7 +1,7 @@
 ---
 title: Organization Pricing
 nav_label: Organization Pricing
-nav_position : 23
+sidebar_position : 23
 ---
 
 An organization can create its own price books. You can:
