@@ -35,17 +35,19 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
         "api_type": "location-inventories_ext",
         "name": "Location Inventories",
         "description": "Inventory entries for all SKUs at all retail locations.",
+        "allow_upserts": true,
         "type": "custom_api"
       }
     }
 ```
 
-Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID.
+Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID. In addition, notice that `data.allow_upserts` is set to `true`, this allows to perform [upserts](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#update-custom-api-entries) of Custom API Entries.
 
 ## Create Custom Fields
 
-### Create Custom Field - slug
-In this step, you will create a Custom Field `slug`, this stores a string to represent this SKU.
+### Create Custom Field - sku
+
+In this step, you will create a Custom Field `sku`, this stores a string to represent this SKU.
 
 ```sh
 curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApiId/fields" \
@@ -53,7 +55,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
      -H "Content-Type: application/json" \
      -d $ {
       "data": {
-        "slug": "slug",
+        "slug": "sku",
         "name": "Slug",
         "description": "Slug of the entry",
         "field_type": "string",
@@ -71,7 +73,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 
-A couple of things to note about the sample request above:
+Some things to note about the sample request above:
 * `data.validation.string.min_value`: Ensures that `slug` values have at least 12 characters.
 * `data.validation.string.allow_null_values`: Will reject any `null` values from being stored as a `sku`.
 * `data.validation.unique`: Blocks any duplicate values from being stored as a `sku`.
@@ -82,6 +84,7 @@ Each of these can be tailored to fit your business see [Custom Fields Overview](
 "use_as_url_slug" is enabled this will allow access to your data using well-known identifiers in your domain rather than having to rely on identifiers generated from our platform, we will build on this later.
 
 ### Create Custom Field - amount
+
 In this step, you will create a Custom Field `amount`, this stores the amount of inventory of this SKU at this location as an integer.
 
 ```sh
@@ -103,9 +106,10 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
       }
     }
 ```
-Take note of `validation` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](/docs/api/commerce-extensions/custom-fields#integer-validation).
+Take note of `data.validation.integer.min_value` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](/docs/api/commerce-extensions/custom-fields#integer-validation).
 
 ### Create Custom Field - location-name
+
 In this step, you will create a Custom Field `location-name`, this stores a string to represent where a SKU is stored. Additionally, you will restrict this value to specific options using regex.
 
 ```sh
@@ -127,30 +131,12 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
       }
     }
 ```
-Take note of `validation` in the step above, this field is restricted to only allow the following values:
+Take note of `data.validation.string` in the step above, this field is restricted to only allow the following values:
 * Paris
 * London
 * New York
 
 For more information, see [string validation](/docs/api/commerce-extensions/custom-fields#string-validation).
-
-### Create Custom Field - collection-name
-In this step, you will create a Custom Field `collection-name`, this stores a string to represent the collection a SKU is associated with.
-
-```sh
-curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-apis/:customApiId/fields" \
-     -H "Authorization: XXXX" \
-     -H "Content-Type: application/json" \
-     -d $ {
-      "data": {
-        "slug": "collection-name",
-        "name": "Collection Name",
-        "description": "Name of the collection",
-        "field_type": "string",
-        "type": "custom_field"
-      }
-    }
-```
 
 ## Create Custom API Entries 
 
@@ -163,8 +149,8 @@ curl -X POST "https://useast.api.elasticpath.com/v2/extensions/location-inventor
      -d ${
       "data": {
         "type": "location_inventory_ext",
-        "slug": "LR-SFA-201",
-        "amount": 4,
+        "sku": "TBL-DIN-6WD-OAK-0034",
+        "amount": 40,
         "location-name": "Paris"
       }
     }
@@ -178,21 +164,48 @@ Finally, take note that the keys (`slug`, `amount` and `location-name`) of the a
 
 ## Update Custom API Entries
 
-With your Custom API Entry created, you can update it to modify inventory `amount`.
+Recall that [earlier](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#create-custom-api-entries) when you created the Custom Field `sku` that you marked it for `use_as_url_slug`. This allows you to access a Custom API Entry by the value that is stored in that Custom Field for that record rather than having to:
+
+1. Filter for that record.
+2. Save the `data.id` attribute for that record.
+3. Update that record using an auto-generated identifier.
+
+Given a Custom API Entry exists with `"sku": "TBL-DIN-6WD-OAK-0034"`
+When you want to update the inventory `amount` you make the following request:
 
 ```sh
-curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/:customApiEntryId" \
+curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/TBL-DIN-6WD-OAK-0034" \
      -H "Authorization: XXXX" \
      -H "Content-Type: application/json" \
      -d ${
       "data": {
         "type": "location_inventory_ext",
-        "amount": 3
+        "amount": 43
       }
     }
 ```
 
-### Conditional Updates
+Notice that the resource identifier in the request above is one that should be well-known to you and your processes and not a random UUID generated by the platform `/v2/extensions/location-inventories/:customApiEntryId`.
+
+## Upsert Custom API Entries
+
+To further simplify and optimize your data import and synchronization processes you can upsert Custom API Entries. Instead of first having to check whether a record exists and then deciding to create or update a Custom API Entries, you can upsert a record, if it exists it is updated, and if it doesn't, then it is inserted or created. This is made possible by your setting of `data.allow_upserts` when you (created this Custom API)[/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#create-a-new-custom-api---location-inventories].
+
+```sh
+curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/FURN-SOFA-3S-LTH-BLK-0021" \
+     -H "Authorization: XXXX" \
+     -H "Content-Type: application/json" \
+     -d ${
+      "data": {
+        "sku": "FURN-SOFA-3S-LTH-BLK-0021",
+        "type": "location_inventory_ext",
+        "amount": 12,
+        "location-name": "Paris"
+      }
+    }
+```
+
+## Conditional Updates
 
 When using Custom API Entries, if multiple independent clients update the same resource, you should have them use the `If-Match` header to prevent lost updates and other data consistency issues in the inventory amounts. For example, if two users simultaneously see an amount of 3 and each allocate 1, both would update the amount to 2. The `If-Match` header ensures that only one of these requests succeeds. It works by comparing the provided ETag value with the current ETag value of the resource. If the resource hasn't changed since you last read it, the ETag will not change, ensuring the update is safe. 
 
