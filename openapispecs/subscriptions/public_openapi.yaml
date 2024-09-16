@@ -178,6 +178,16 @@ tags:
       - When offering a free trial or promotion, keeping the subscription in a pending state until the trial or promotion starts or ends allows you to manage transitions more smoothly. 
       - Before a subscription becomes active, you may need to verify the payment method or authorize the first payment. Keeping the subscription in a pending state allows time to complete these steps without activating the subscription.
 
+      For a subscription with a `pending` state, you can also configure a `go_live_after` date. The subscription starts from the `go_live_after` date. This is useful as it ensures both the subscription provider and subscriber are clear about when a subscription officially begins. Once the `go_live_after` date is passed, the subscription becomes `active`, initiating the billing and payment runs. If a subscription is activated this way, you can see this in the `timestamp` meta.   
+
+      You can configure a `go_live_after` date to be a past date. This is useful, for example, for backdating a subscription or managing a delay in activating a subscription. Setting the `go_live_after` date in the past ensures the subscriptions timeline correctly aligns with the agreed-upon service start date. 
+
+      :::caution
+
+      Although, billing runs generate one invoice per subscription, if a `go_live_date` is set far in the past, multiple invoices could be generated over the course of several billing runs, which could be frustrating and confusing to your subscribers. 
+
+      :::
+
       See [create a subscription](/docs/api/subscriptions/create-subscription).
 
       #### Cancelling or pausing and resuming subscriptions
@@ -482,6 +492,16 @@ tags:
       In Subscriptions, charges only prorate by day. As soon as a subscriber changes their subscription, a manual billing run is triggered and an invoice is generated with the new price on the next billing run and the difference in price is prorated over days.  
 
       By default, proration is not enabled for Subscriptions. Once you have attached a proration policy to an offering, proration is enabled automatically.
+
+      ### End dates when switching plans
+
+      Subscriptions manages the subscription end date when shoppers switch from one plan to another. Whether or not an end date is configured depends on the end behavior of the plans you are switching between.
+
+      | Current Subscription | New Subscription | Proration Behavior | End date |
+      | --- | --- | --- | --- |
+      | `close` | `roll` | The subscription switches from a plan with a fixed end date to a rolling plan so no end date is set after proration. | No end date is configured. |
+      | `roll` | `close` | The subscription switches to a fixed plan, and the end date is configured based on the duration of the plan. | An end date is configured. |
+      | `close` | `close` | The remaining time on the current plan is not carried over to the new plan. For example, if your current plan has 3 months remaining and you switch to a new plan that has a fixed length of 6 months, the new end date is calculated as 6 months from the day you switch plans, effectively resetting the subscription length to the new plan. | New end date calculated from the day you switched plan. |
   - name: Observable Events
     description: |
       You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. 
@@ -1667,15 +1687,17 @@ paths:
     post:
       tags:
         - Subscriptions
-      summary: Create a subscription state.
+      summary: Create a subscription state
       description: |
         The subscription lifecycle is the states that a subscription can go through when a customer subscribes to a service or a product. 
 
         A subscription can have the following states:
 
+        - `pending` 
         - `canceled`
         - `paused`
         - `resumed`
+        For more information, see [Managing the Subscription Lifecycle](/docs/api/subscriptions/subscriptions#managing-the-subscription-lifecycle).
       operationId: CreateSubscriptionState
       requestBody:
         content:
@@ -4344,7 +4366,7 @@ components:
         payment_authority:
           $ref: '#/components/schemas/PaymentAuthority'
         go_live_after:
-          description: The date and time a subscription will go live and become active.
+          description: The date and time a `pending` subscription goes live and becomes active. See [Creating a pending subscription](/docs/api/subscriptions/subscriptions#creating-a-pending-subscription).
           type: string
           example: '2017-01-10T11:41:19.244842Z'
           nullable: true
@@ -5122,6 +5144,10 @@ components:
           type: boolean
           example: true
           description: Whether the payment was successful.
+        pending:
+          type: boolean
+          example: true
+          description: Whether the payment is pending (only for manual payments).
         gateway:
           type: string
           maxLength: 1024
