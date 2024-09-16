@@ -71,11 +71,11 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 
-Some things to note about the sample request above:
-* `data.validation.string.min_value`: Ensures that `slug` values have at least 12 characters.
-* `data.validation.string.allow_null_values`: Will reject any `null` values from being stored as a `sku`.
-* `data.validation.unique`: Blocks any duplicate values from being stored as a `sku`.
-* `data.validation.unique_case_insensitivity`: Controls whether values with different cases (for example, `ABC` and `abc`) should conflict. Only applies when `unique` is set to `yes`.
+Some things to note about `validation` object in the sample request above:
+* `min_length`: Ensures that `slug` values have at least 12 characters.
+* `allow_null_values`: Will reject any `null` values from being stored as a `sku`.
+* `unique`: Blocks any duplicate values from being stored as a `sku`.
+* `unique_case_insensitivity`: Controls whether values with different cases (for example, `ABC` and `abc`) should conflict. Only applies when `unique` is set to `yes`.
 
 Each of these can be tailored to fit your business see [Custom Fields Overview](/docs/api/commerce-extensions/custom-fields) for more.
 
@@ -106,7 +106,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
       }
     }
 ```
-Take note of `data.validation.integer.min_value` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](/docs/api/commerce-extensions/custom-fields#integer-validation).
+Take note of `min_value` in the step above, this field is restricted to not allow negative values. For more information, see [integer validation](/docs/api/commerce-extensions/custom-fields#integer-validation).
 
 ### Create Custom Field - location-name
 
