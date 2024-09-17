@@ -18,7 +18,7 @@ Never share your user credentials.
 
 ## API Authentication Credentials
 
-All API requests must contain a generated access token for authentication purposes. To generate an access token, you need your API keys. API keys are the client ID and client secret. Access tokens expire after a predefined period of time. Application keys are used manage your own keys directly. They are not associated to a specific user, and are identified based on their names.
+All API requests must contain a generated access token for authentication purposes. To generate an access token, you need your API keys. API keys are the client ID and client secret. Access tokens expire after a predefined period of time. Application keys are used to manage your stores directly. They are not associated to a specific user, and are identified based on their names.
 
 
 :::caution

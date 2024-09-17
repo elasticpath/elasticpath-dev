@@ -35,12 +35,6 @@ const SECTIONS: Section[] = [
     section: 'commerce-cloud',
   },
   {
-    name: 'Organizations',
-    docId: 'organizations',
-    icon: null,
-    section: 'commerce-cloud',
-  },
-  {
     name: 'Team Management',
     docId: 'team-management',
     icon: null,

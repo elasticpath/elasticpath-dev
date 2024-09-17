@@ -1,7 +1,7 @@
 ---
 title: Organization Products
 nav_label: Organization Products 
-nav_position : 20
+sidebar_position : 20
 ---
 
 To create your organization products, you can:
