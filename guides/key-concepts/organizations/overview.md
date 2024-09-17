@@ -1,7 +1,7 @@
 ---
 title: Overview
 nav_label: Overview
-nav_position : 3
+sidebar_position: 5
 ---
 
 Organizations is a powerful tool for businesses seeking to streamline their eCommerce operations, manage their multi-store use cases and/or unlocking additional revenue opportunities. This unique capability enables our multi-store management solution which is used by franchises, distributor networks, multi-geo and multi-brand companies and more. The term store in this context refers to a Commerce store, which supports data segregation and access management across multiple business units in an organization.

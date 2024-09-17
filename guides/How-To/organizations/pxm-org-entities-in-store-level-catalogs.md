@@ -1,7 +1,7 @@
 ---
 title: Organization Catalogs
 nav_label: Organization Catalogs
-sidebar_position : 24
+sidebar_position : 30
 ---
 
 Organizations and stores can create their own catalogs. A catalog contains the products available for sale in your organization and/or stores.

@@ -1,7 +1,7 @@
 ---
 title: Organization Hierarchies
 nav_label: Organization Hierarchies
-sidebar_position : 22
+sidebar_position : 20
 ---
 
 Use hierarchies and nodes to group your products into categories and sub-categories. 
