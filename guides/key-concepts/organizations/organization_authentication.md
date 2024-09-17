@@ -1,7 +1,7 @@
 ---
 title: Organization Roles
 nav_label: Organizations Roles
-sidebar_position : 5
+sidebar_position : 2
 ---
 
 Organizations introduces the Org Admin role, providing enhanced management capabilities. As an Org Admin, you have the authority to:
