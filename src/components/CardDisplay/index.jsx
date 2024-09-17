@@ -5,7 +5,7 @@ const CardDisplay = ({ mediaSrc, mediaType, title, description, link }) => {
   return (
     <a
       href={link}
-      className="block rounded-3xl overflow-hidden hover:shadow-md shadow-lg transition-shadow duration-200 no-underline hover:no-underline dark:bg-gray-900"
+      className="block rounded-3xl overflow-hidden hover:bg-gray-100 hover:shadow-md shadow-lg transition-shadow duration-200 no-underline hover:no-underline dark:bg-gray-900"
     >
       <div className="aspect-video">
         {mediaType === 'video' ? (
