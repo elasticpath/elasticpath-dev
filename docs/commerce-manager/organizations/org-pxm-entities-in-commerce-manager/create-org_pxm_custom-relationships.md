@@ -39,7 +39,6 @@ To add a product to a custom relationship in your organization:
 1. Select **Add a Product Relationship**. A list of product relationships is displayed.
 1. Choose **Select** next to the product relationship where you want to add your product. 
 
-
 ## Associate Products to Products in a Product Relationship
 
 
