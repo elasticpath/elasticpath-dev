@@ -17,8 +17,8 @@ For more information, see [Organization and Store Entities](/guides/key-concepts
 To create custom relationships in organizations:
 
 1. Generate a [client_credentials](/docs/authentication/Tokens/client-credential-token) access token using your organization's [application keys](/docs/api/application-keys/application-keys-introduction).
-1. [Create your custom relationship](/docs/api/flows/create-a-flow).
-1. [Add a product to a custom relationship](/docs/api/flows/create-a-field).
+1. [Create your custom relationship](/docs/api/custom-relationships/create-custom-relationship).
+1. [Add a product to a custom relationship](/docs/api/custom-relationship/post-attach-custom-relationship).
 1. [Associate your products](/docs/api/flows/create-an-entry) with the product you added to the custom relationship
 1. [Publish](/docs/api/pxm/products/create-product-template-relationship) your catalog. Once you have created your custom relationships and attached and associated your products, these relationships are automatically available when you publish your catalogs. You can then program your storefront to dynamically display the custom relationships.
 
