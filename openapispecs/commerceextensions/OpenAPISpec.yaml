@@ -1133,6 +1133,56 @@ paths:
                         }
                       }
                     }
+        '201':
+          description: Created
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of\
+                \ the resource. When the resource changes, the ETag value will also\
+                \ change. The ETag hash will be the same value as `etag_id`, and is\
+                \ marked as a weak entity tag string. For example: etag: W/\"5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9\"\
+                , etag_id: 5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          },
+                          "resource_version": 0,
+                          "data_size": 6,
+                          "etag_id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+                        }
+                      }
+                    }
         '400':
           $ref: '#/components/responses/ValidationError'
         '404':
@@ -1484,6 +1534,56 @@ paths:
                         }
                       }
                     }
+        '201':
+          description: Created
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of\
+                \ the resource. When the resource changes, the ETag value will also\
+                \ change. The ETag hash will be the same value as `etag_id`, and is\
+                \ marked as a weak entity tag string. For example: etag: W/\"5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9\"\
+                , etag_id: 5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          },
+                          "resource_version": 0,
+                          "data_size": 6,
+                          "etag_id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+                        }
+                      }
+                    }
         '400':
           $ref: '#/components/responses/ValidationError'
         '404':
@@ -1798,6 +1898,14 @@ components:
             suffixed with `_ext` to distinguish it from built in APIs.
           examples:
             - "wishlist_ext"
+        allow_upserts:
+          type: boolean
+          description: Controls whether upsert operations are allowed for Custom API
+            Entries via the `PUT` method. When set to `true`, it allows the creation
+            of new Custom API Entries using `PUT` if the record doesn't exist, and
+            updates the existing record if it does. When `false`, `PUT` requests can
+            only update existing entries.
+          default: false
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLinkCustomApi'
