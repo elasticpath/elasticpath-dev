@@ -6,7 +6,15 @@ sidebar_position : 10
 
 You can create custom relationships between products in Product Experience Manager, allowing you to link or associate your products in certain ways based on criteria of your choosing. These relationships help improve user experience, boost sales, and enhance product discoverability. You can create custom relationships in both the [Product Experience Manager API](/docs/api/pxm/products/product-experience-manager-introduction) and [Commerce Manager](/ui). For more information, see [Custom Relationships](/docs/partials/pxm/custom-relationships/croverview).
 
-An organization can create up to 5 custom relationships. Organization products can be associated to organization products in organization custom relationships. Similarly, a store in an organization can create up to 5 custom relationships, and store products can be associated with store products in store custom relationships. Custom relationship in organizations and stores can have the same slug. However, when a store admin gets a custom relationship by specify a slug, only the store custom relationship is returned.
+:::note
+
+In Commerce Manager, custom relationships are called product relationships.
+
+:::
+
+An organization can create up to 5 custom relationships. Organization products can be associated to organization products in organization custom relationships. Similarly, a store in an organization can create up to 5 custom relationships, and store products can be associated with store products in store custom relationships. 
+
+Custom relationship in organizations and stores can have the same slug. However, when a store admin gets a custom relationship by specifying a slug, only the store custom relationship is returned.
 
 In addition, each store within an organization can access and use the organization's custom relationships and products. Furthermore, stores can also associate their custom relationships with organization-level products, even if those products are already associated to products in 5 custom relationships defined at organization level.
 
