@@ -63,10 +63,11 @@ tags:
       | Validation: Allow null values     | ⛔                | ✅                                          |
       | Validation: Unique(String)        | ⛔                | ✅                                          |
       | Validation: Unique Case Insensitivity(String)        | ⛔                | ✅                                          |
+      | Validation: Immutable             | ⛔                | ✅                                          |
 
       ## Validation
 
-      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
 
       :::note
 
@@ -152,10 +153,27 @@ tags:
           }
         }
       }
-        ```
+      ```
+
+      ### Immutable
+
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field can be configured to be `immutable`. When set to true, the value of this field can be specified only during POST requests and cannot be modified during PUT requests. By default, this is `false`.
+
+      sample validation object :
+        
+      ```json
+      {
+        "validation": {
+          "boolean": {
+            "immutable": false
+          }
+        }
+      }
+      ```
+
       ## Presentation
 
-      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, `presentation` can be used to influence the layout of fields within a Custom API in User Interface. It does not order or affect the JSON response, and has no semantics on the back end.
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a Custom Field, `presentation` can be used to influence the layout of fields within a Custom API in User Interface. It does not order or affect the JSON response, and has no semantics on the back end.
       
       ## Reserved Slugs
 
