@@ -43,8 +43,6 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
 
 Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID. In addition, notice that `data.allow_upserts` is set to `true`, this allows to perform [upserts](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#update-custom-api-entries) of Custom API Entries.
 
-Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID.
-
 ## Create Custom Fields
 
 ### Create Custom Field - sku
