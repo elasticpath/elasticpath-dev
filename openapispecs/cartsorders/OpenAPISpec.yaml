@@ -643,7 +643,7 @@ paths:
     post:
       tags:
         - Cart Items
-      summary: Manage Carts
+      summary: Add Items to Cart
       description: |
 
         ### Add Product to Cart
@@ -837,6 +837,26 @@ paths:
 
         See [Including Resources](https://elasticpath.dev/guides/Getting-Started/includes).
 
+        ### Add Subscription to Cart
+
+        To add a subscription to your cart, you need to provide the ID of the subscription offering and the ID of the plan within that offering that you want to subscribe to.
+
+        ```json
+          {
+            {
+              "data": {
+                "id": "5b9be99f-1c94-4ddd-9718-81adab0cc3e0",
+                "type": "subscription_item",
+                "quantity": 1,
+                "subscription_configuration": {
+                  "plan": "40010dde-2f38-489b-8b3f-14a13cbfb431"
+                }
+            }
+          }
+        ```
+
+        The price of the subscription item in the cart reflects the cost of the subscription's initial billing period. Once the cart has been checked out and the order paid for, the subscription will be automatically created in the subscriptions service.
+
         ### Add Custom Item to Cart
 
         You can add a custom item to the cart when you don't manage things like shipping, taxes and inventory in Commerce.
@@ -1022,6 +1042,14 @@ paths:
                       name:
                         tshirt_front: Jane
                         tshirt_back: Jane Doe's Dance Academy
+              Add Subscription Item:
+                value:
+                  data:
+                    type: subscription_item
+                    id: 1f49c20c-54b9-453b-a57c-ef8303a6415f
+                    quantity: 1
+                    subscription_configuration:
+                      plan: a2cd9dae-3a28-4185-93b7-1b02a8ce0c2e
               Add Custom Item:
                 value:
                   data:
@@ -2022,15 +2050,18 @@ paths:
               allOf:
                 - $ref: '#/components/schemas/CartsCustomDiscountsObject'
           required: false
-          responses:
-            '200':
-              description: ''
-              headers: { }
-              content:
-                application/json:
-                  schema:
-                    allOf:
-                      - $ref: '#/components/schemas/CartsCustomDiscountsResponse'
+      responses:
+        '200':
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/CartsCustomDiscountsResponse'
         '401':
           description: Unauthorized
           content:
@@ -2083,18 +2114,18 @@ paths:
                     data:
                       $ref: '#/components/schemas/CartsCustomDiscountsObject'
           required: false
-          responses:
-            '200':
-              description: ''
-              headers: { }
-              content:
-                application/json:
-                  schema:
-                    allOf:
-                      - $ref: '#/components/schemas/Response.Data'
-                      - properties:
-                          data:
-                            $ref: '#/components/schemas/CartsCustomDiscountsResponse'
+      responses:
+        '200':
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/CartsCustomDiscountsResponse'
         '401':
           description: Unauthorized
           content:
@@ -3258,6 +3289,7 @@ components:
       title: Cart Items Object Request
       oneOf:
         - $ref: "#/components/schemas/CartItemObject"
+        - $ref: "#/components/schemas/SubscriptionItemObject"
         - $ref: "#/components/schemas/CartMergeObjectRequest"
         - $ref: "#/components/schemas/CustomItemObject"
         - $ref: "#/components/schemas/ReOrderObjectRequest"
@@ -3314,6 +3346,49 @@ components:
         shipping_group_id:
           description: Identifier for a created Cart Shipping Group
           type: string
+    SubscriptionItemObject:
+      title: Subscription Item Object
+      type: object
+      properties:
+        data:
+          allOf:
+            - $ref: '#/components/schemas/SubscriptionItemObjectData'
+            - $ref: '#/components/schemas/CartItemResponse'
+    SubscriptionItemObjectData:
+      title: Subscription Item Object Data
+      type: object
+      required:
+        - id
+        - type
+        - quantity
+        - subscription_configuration
+      properties:
+        type:
+          description: The type of object being returned.
+          type: string
+          enum:
+            - subscription_item
+        quantity:
+          description: The number of items added to the cart.
+          type: number
+          examples:
+            - 1
+        id:
+          type: string
+          format: uuid
+          description: Specifies the ID of the subscription offering you want to add to cart.
+          examples:
+            - 4ca958bc-7d69-4e2d-b5d4-c74bd5a6cde6
+        subscription_configuration:
+          type: object
+          description: Specifies how the subscription offering should be configured.
+          required:
+            - plan
+          properties:
+            plan:
+              type: string
+              format: uuid
+              description: The ID of the plan within the offering to use for the subscription.
     CartMergeObjectRequest:
       title: Cart Merge Object Request
       type: object
@@ -3554,6 +3629,13 @@ components:
           readOnly: true
           examples:
             - 55cda543-f9d7-42a4-b40a-665f2e4ff7c5
+        subscription_offering_id:
+          description: The unique ID of the subscription offering for subscription items.
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 9c13669e-29d7-42ea-bc95-1b32399adb9d
         name:
           description: The name of this item
           type: string
@@ -4684,6 +4766,13 @@ components:
           readOnly: true
           examples:
             - 4e9c6098-9701-4839-a69c-54d8256d9012
+        subscription_offering_id:
+          description: The unique identifier for the subscription offering for this order item.
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 69a39623-e681-415e-83c0-e1281010c77d
         name:
           description: The name of this order item.
           type: string
