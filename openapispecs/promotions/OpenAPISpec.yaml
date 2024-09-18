@@ -519,14 +519,7 @@ paths:
       tags:
         - Promotion Codes
       summary: Get Promotion Codes
-      description: |
-        You can use this endpoint to retrieve promotion codes. 
-        
-        :::note
-        - The `codes.max_uses` attribute represents the maximum usage of the codes. 
-        - The `codes.uses` attribute represents the remaining number of times the codes can be used for the promotion.
-        - Codes created before April 27, 2023 will only have `codes.uses` attribute in the response body.
-        :::
+      description: Get promotion codes
       operationId: getPromotionCodes
       parameters:
         - name: promotionID
@@ -1415,12 +1408,12 @@ components:
           examples:
             - per_item
         user:
-          description: Specifies the users who can use the code. You can use the customer object ID or an array of customer object IDs. For more information, see the [Create a customer](/docs/customer-management/customer-management-api/create-a-customer) section. Additionally, you could pass any identifying string to the promotions service that identifies a user.
+          description: Specifies a string that specifies the users who can use the code. You can use the customer object ID or an array of customer object IDs. For more information, see the Create a customer section. Additionally, you could pass any identifying string to the promotions service that identifies a user.
           type: string
           examples:
             - '{customerID}'
         uses:
-          description: Specifies the maximum number of times the code can be used. If no value is set, the shopper can use the code any number of times.
+          description: Specifies the number of times the code can be used. If no value is set, the customer can use the code any number of times.
           type: number
           examples:
             - 10
