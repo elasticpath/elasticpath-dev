@@ -73,8 +73,9 @@ tags:
       \             |\n| Validation: Unique(String)        | ⛔                | ✅\
       \                                          |\n| Validation: Unique Case Insensitivity(String)\
       \        | ⛔                | ✅                                          |\n\
-      \n## Validation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
-      \ or [updating](/docs/api/commerce-extensions/create-a-custom-field#request)\
+      | Validation: Immutable             | ⛔                | ✅                 \
+      \                         |\n\n## Validation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
+      \ or [updating](/docs/api/commerce-extensions/update-a-custom-field#request)\
       \ a Custom Field, `validation` can be used to limit the values that may be stored\
       \ in the corresponding Custom API Entry.\n\n:::note\n\nAll validation changes,\
       \ such as those to `allow_null_values` and any type specific rules, apply to\
@@ -115,12 +116,17 @@ tags:
       \ be configured to restrict the storage of `null` values for that field on a\
       \ Custom API Entry. By default, this is `true`.\n\nsample validation object\
       \ :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"allow_null_values\"\
-      : false,\n      \"immutable\": false\n    }\n  }\n}\n  ```\n## Presentation\n\
-      \nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
-      \ or [updating](/docs/api/commerce-extensions/create-a-custom-field#request)\
+      : false,\n      \"immutable\": false\n    }\n  }\n}\n```\n\n### Immutable\n\n\
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
+      \ a Custom Field, it can be configured to be `immutable`. When set to true,\
+      \ the value of this field can be specified only during POST requests and cannot\
+      \ be modified during PUT requests. By default, this is `false`.\n\nsample validation\
+      \ object :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"\
+      immutable\": false\n    }\n  }\n}\n```\n\n## Presentation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
+      \ or [updating](/docs/api/commerce-extensions/update-a-custom-field#request)\
       \ a Custom Field, `presentation` can be used to influence the layout of fields\
       \ within a Custom API in User Interface. It does not order or affect the JSON\
-      \ response, and has no semantics on the back end.\n\n## Reserved Slugs\n\nThe\
+      \ response, and has no semantics on the backend.\n\n## Reserved Slugs\n\nThe\
       \ following values cannot be used as a `slug` in a Custom Field.\n\n- slug\n\
       - type\n- id\n- meta\n- created_at\n- updated_at\n- links\n- relationships\n\
       - attributes\n- attribute\n- dimension\n- dimensions\n- weight\n- weights\n"
