@@ -41,7 +41,7 @@ curl -X POST "https://useast.api.elasticpath.com/v2/settings/extensions/custom-a
     }
 ```
 
-Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID. In addition, notice that `data.allow_upserts` is set to `true`, this allows to perform [upserts](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#update-custom-api-entries) of Custom API Entries.
+Make sure to take note of the Custom API ID [returned](/docs/api/commerce-extensions/create-a-custom-api#responses), you must replace `:customApiId` in the following step with the Custom API ID. Additionally, ensure that `data.allow_upserts` is set to `true`, this allows to perform [upserts](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#update-custom-api-entries) for Custom API Entries.
 
 ## Create Custom Fields
 
@@ -190,7 +190,7 @@ Notice that the resource identifier in the request above is one that should be w
 
 ## Upsert Custom API Entries
 
-To further simplify and optimize your data import and synchronization processes you can upsert Custom API Entries. Instead of first having to check whether a record exists and then deciding to create or update a Custom API Entries, you can upsert a record, if it exists it is updated, and if it doesn't, then it is inserted or created. This is made possible by your setting of `allow_upserts` when you [created this Custom API](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#create-a-new-custom-api---location-inventories).
+To further simplify and optimize your data import and synchronization processes, you can upsert Custom API Entries. Instead of first checking whether a record exists before deciding to create or update a Custom API Entries, you can upsert a record. If the record exists, it is updated; if it doesn't, it is inserted or created. This is enabled by setting `allow_upserts` when you [created this Custom API](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#create-a-new-custom-api---location-inventories).
 
 ```sh
 curl -X PUT "https://useast.api.elasticpath.com/v2/extensions/location-inventories/FURN-SOFA-3S-LTH-BLK-0021" \
