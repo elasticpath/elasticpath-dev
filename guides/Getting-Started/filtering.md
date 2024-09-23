@@ -207,6 +207,8 @@ As this feature is in beta, quoted operands are only working with the following 
 - [Get all promotions](/docs/api/promotions/get-all-promotions)
 - [Get all product prices](/docs/api/pxm/pricebooks/get-prices)
 - [Get all products](/docs/api/pxm/products/get-all-products)
+- [Import a dataset](/docs/api/subscriptions/create-import)
+- [List subscription import jobs](/docs/api/subscriptions/list-import-jobs)
 - [Get all subscription jobs](/docs/api/subscriptions/list-jobs)
 - [Get all schedules](/docs/api/subscriptions/list-schedules)
 - [Get all subscription products](/docs/api/subscriptions/list-products)
