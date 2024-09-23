@@ -1,0 +1,13 @@
+
+The following flowchart depicts the process of an unpaid order.
+
+![The order is created from the cart during the checkout process.](/assets/unpaidorder.png)
+
+Stock is managed as follows:
+
+1. When a customer attempts to add products to a cart, the inventory service checks if there is enough available stock. If there is not enough stock available, you receive a 400 HTTP response with a warning. The response does not describe what products cannot be added, nor does it return how many products are in stock.
+2. If a customer successfully adds products to a cart, the customer can checkout to create an unpaid order.
+3. A final check on the available stock is performed.
+4. After creating the unpaid order, the payment for an order can be taken. When a customer attempts to pay for an order, the inventory service reserves the stock before the payment is processed internally. At any time before the point of payment, a customer might lose their order, if the customer is slower than everyone else.
+5. If the payment fails, the temporary stock allocation is removed, and the stock becomes available again for anyone to buy.
+

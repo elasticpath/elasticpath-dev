@@ -1,0 +1,16 @@
+The following flowchart depicts the process of paying for an order.
+
+![The payment workflow.](/assets/payment-workflow-1.png)
+
+Stock is managed as follows:
+
+1. When a customer attempts to add products to a cart, the inventory service checks if there is enough available stock. If there is not enough stock available, you receive a 400 HTTP response with a warning. The response does not describe what products cannot be added, nor does it return how many products are in stock.
+2. If a customer successfully adds products to a cart, the customer can checkout to create an unpaid order.
+3. A final check on the available stock is performed.
+4. After creating the unpaid order, the payment for an order can be taken. When a customer attempts to pay for an order, the inventory service reserves the stock before the payment is processed internally. At any time before the point of payment, a customer might lose their order, if the customer is slower than everyone else.
+5. When the payment succeeds, that stock is still allocated, and the items belong to the customer, unless for any reason they are reallocated before shipment. For example, if the customer cancels, or you realize the order is fraudulent, then you can reallocate the inventory.
+
+    During split payments, stocks are allocated only if the first transaction for an order is complete. If the transaction fails, the stocks are deallocated. Once the first transaction is complete, the stocks are not allocated for the subsequent transactions as they are already reserved for the order. The stocks are deallocated and return to available when the the order is canceled.
+
+6. Finally, when the order is marked as shipped, that stock is fully decremented. This means the allocation number is reduced, and therefore the total, and the products are no longer in the warehouse.
+

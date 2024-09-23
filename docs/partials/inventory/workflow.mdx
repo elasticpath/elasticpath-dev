@@ -1,36 +1,9 @@
-### Order flow
+Inventory transactions refer to the various actions that take place to adjust stock levels, such as receiving, storing, or shipping goods. Inventory transactions are tied to orders as each step of an order triggers changes in inventory levels.
 
-There are three mandatory steps to complete an order in relation to inventory:
+When processing an order, there are three mandatory inventory-related steps that must be completed.
 
-1. Added to a cart
-2. Checked out
-3. Paid
-4. Shipped (optional)
-
-#### Unpaid order flow
-
-The following flowchart depicts the process of an unpaid order.
-
-![The order is created from the cart during the checkout process.](/assets/order-flow.png)
-
-#### Payment flow
-
-The following flowchart depicts the process of paying for an order.
-
-![The payment workflow.](/assets/payment-workflow-1.png)
-
-### How stock is managed
-
-Stock is managed as follows:
-
-1. When a customer attempts to add products to a cart, the inventory service checks if there is enough available stock. If there is not enough stock available, you receive a 400 HTTP response with a warning. The response does not describe what products cannot be added, nor does it return how many products are in stock.
-2. If a customer successfully adds products to a cart, the customer can checkout to create an unpaid order.
-3. A final check on the available stock is performed.
-4. After creating the unpaid order, the payment for an order can be taken. When a customer attempts to pay for an order, the inventory service reserves the stock before the payment is processed internally. At any time before the point of payment, a customer might lose their order, if the customer is slower than everyone else.
-
-If the payment fails, the temporary stock allocation is removed, and the stock becomes available again for anyone to buy.
-
-If the payment succeeds, that stock is still allocated, and the items belong to the customer, unless for any reason they are reallocated before shipment. For example, if the customer cancels, or you realize the order is fraudulent, then you can reallocate the inventory.
-5. Finally, when the order is marked as shipped, that stock is fully decremented. This means the allocation number is reduced, and therefore the total, and the products are no longer in the warehouse.
-
-During split payments, stocks are allocated only if the first transaction for an order is complete. If the transaction fails, the stocks are deallocated. Once the first transaction is complete, the stocks are not allocated for the subsequent transactions as they are already reserved for the order. The stocks are deallocated and return to available when the the order is canceled.
+1. Adding a product to a cart.
+1. (*Optional*) Choosing a location
+1. Checking out a cart.
+1. Paying for an order.
+1. (*Optional*) Shipping an order.
