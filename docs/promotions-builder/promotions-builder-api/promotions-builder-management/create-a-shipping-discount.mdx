@@ -1,6 +1,6 @@
 ---
 title: Create a Shipping Discount
-nav_label: Delete a Shipping Discount
+nav_label: Create a Shipping Discount
 sidebar_position: 10
 ---
 
@@ -9,13 +9,29 @@ sidebar_position: 10
 ```http
 https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID
 ```
+The shipping discount applies to the shipping base price and does not include shipping taxes or additional fees.
 
 ## Parameters
 
+### Path parameters
+
+| Name            | Required | Type     | Description                          |
+|:----------------|:---------|:---------|:-------------------------------------|
+| `promotionID` | Required | `string` | The unique identifier of the promotion. |
+
 ### Headers
 
+| Name            | Required | Type     | Description                          |
+|:----------------|:---------|:---------|:-------------------------------------|
+| `Authorization` | Required | `string` | The Bearer token required to get access to the API. |
+
+## Body
+
+For descriptions about the fields, refer to [Promotions Builder API overview](/docs/promotions-builder/promotions-builder-api/promotions-builder-api-overview).
 
 ## Request Example
+
+In the request below, the discount is only applied to shipments with the "regular" `shipping_type`.
 
 ```bash
 curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
