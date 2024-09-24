@@ -207,7 +207,7 @@ curl --location 'https://euwest.api.elasticpath.com/v2/subscriptions/invoices?fi
                             "currency": "",
                             "includes_tax": false
                         },
-                        "product_id": "00000000-0000-0000-0000-000000000000"
+                        "product_id": "0b81c470-4e6d-40cf-abd8-5ee4e814888d"
                     }
                 ],
                 "number": 1,
@@ -249,7 +249,7 @@ curl --location 'https://euwest.api.elasticpath.com/v2/subscriptions/invoices?fi
                             "currency": "",
                             "includes_tax": false
                         },
-                        "product_id": "00000000-0000-0000-0000-000000000000"
+                        "product_id": "0b81c470-4e6d-40cf-abd8-5ee4e814888d"
                     }
                 ],
                 "number": 1,
