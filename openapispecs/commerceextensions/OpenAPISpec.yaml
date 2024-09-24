@@ -63,10 +63,11 @@ tags:
       | Validation: Allow null values     | ⛔                | ✅                                          |
       | Validation: Unique(String)        | ⛔                | ✅                                          |
       | Validation: Unique Case Insensitivity(String)        | ⛔                | ✅                                          |
+      | Validation: Immutable             | ⛔                | ✅                                          |
 
       ## Validation
 
-      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
 
       :::note
 
@@ -152,7 +153,27 @@ tags:
           }
         }
       }
-        ```
+      ```
+
+      ### Immutable
+
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, it can be configured to be `immutable`. When set to true, the value of this field can be specified only during POST requests and cannot be modified during PUT requests. By default, this is `false`.
+
+      sample validation object :
+        
+      ```json
+      {
+        "validation": {
+          "boolean": {
+            "immutable": false
+          }
+        }
+      }
+      ```
+
+      ## Presentation
+
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a Custom Field, `presentation` can be used to influence the layout of fields within a Custom API in User Interface. It does not order or affect the JSON response, and has no semantics on the backend.
       
       ## Reserved Slugs
 
@@ -1448,6 +1469,53 @@ paths:
                         }
                       }
                     }
+        '201':
+          description: Created
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change. The ETag hash will be the same value as `etag_id`, and is marked as a weak entity tag string. For example: etag: W/\"5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9\", etag_id: 5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          },
+                          "resource_version": 0,
+                          "data_size": 6,
+                          "etag_id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+                        }
+                      }
+                    }
         '400':
           $ref: '#/components/responses/ValidationError'
         '404':
@@ -1795,6 +1863,10 @@ components:
           description: Specifies a unique API type for this Custom API. Entries for this API will use this value for their `type` field. This field must be suffixed with `_ext` to distinguish it from built in APIs.
           examples:
             - "wishlist_ext"
+        allow_upserts:
+          type: boolean
+          description: Controls whether upsert operations are allowed for Custom API Entries via the `PUT` method. When set to `true`, it allows the creation of new Custom API Entries using `PUT` if the record doesn't exist, and updates the existing record if it does. When `false`, `PUT` requests can only update existing entries.
+          default: false
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLinkCustomApi'
@@ -1849,6 +1921,20 @@ components:
             - "integer"
             - "boolean"
             - "float"
+        use_as_url_slug:
+          type: boolean
+          description: |
+            Enabling this field will mean Custom API Entries created in this Custom API will use this value in the URL instead of the `id` attribute. In order to set this field, the field must be a string, and unique, not allow null values, no entries have been created yet, and this field cannot be set to true on another custom field. This field cannot be updated. In addition to any validation rules you create, the values must be [Unreserved URL Characters](https://datatracker.ietf.org/doc/html/rfc3986#section-2.3) (i.e., be alpha-numeric, or one of `-`, `.`, `_` or `~`).
+        presentation:
+          type: object
+          properties:
+            sort_order:
+              type: integer
+              description: Specifies the order of the field in the User Interface.
+              example: 10
+              default: 0
+              minimum: 0
+              maximum: 1000
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLink'
