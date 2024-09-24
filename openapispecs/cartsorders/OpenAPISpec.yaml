@@ -2283,10 +2283,10 @@ paths:
         After a successful checkout, a response that contains the order is returned. If the cart is linked to a shipping group, the shipping group is also associated with the order after checkout.
 
         You can checkout using one of the following methods:
-        - Customer ID. You can checkout a cart with an existing customer ID.
-        - Guest Checkout (Checkout with Customer Object). You can checkout a cart with an associated customer name and email.
-        - Checkout with Account. The shopper authenticates with the `Client Credentials` Token.
-        - Checkout with Account Management Authentication Token. The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
+        - **Customer ID**: You can checkout a cart with an existing customer ID.
+        - **Guest Checkout** (Checkout with Customer Object): You can checkout a cart with an associated customer name and email.
+        - **Checkout with Account**: The shopper authenticates with the `Client Credentials` Token.
+        - **Checkout with Account Management Authentication Token**: The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
 
         :::note
 
@@ -2302,6 +2302,8 @@ paths:
         - Your inventory is modified during checkout and payment of an order. For more information about the changes in the inventory, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) section.
 
         :::
+
+         You can pass `order_number` and `external_ref` in the checkout endpoint or when [updating an order](/docs/api/carts/update-an-order). The `order_number` is an optional, user-managed field that is used as an alternative to `order_id`. When processing transactions through Authorize.net, the `order_number` is sent instead of the `order_id`, and it will appear in the invoice number section. If no `order_number` is provided, the `order_id` is sent to Authorize.net on payment by default. There are no duplication restrictions on the `order_number` value.
 
         ### Next Steps
 
@@ -2356,6 +2358,8 @@ paths:
                 summary: Checkout with Customer ID
                 value:
                   data:
+                    order_number: 1234
+                    external_ref: e-123456789
                     customer:
                       id: c8c1c511-beef-4812-9b7a-9f92c587217c
                     billing_address:
@@ -2386,6 +2390,8 @@ paths:
                 summary: Guest Checkout (Checkout with Customer Object)
                 value:
                   data:
+                    order_number: 1234
+                    external_ref: e-123456789
                     customer:
                       email: john@moltin.com
                       name: John Doe
@@ -2417,6 +2423,8 @@ paths:
                 summary: Create Checkout with Account
                 value:
                   data:
+                    order_number: 1234
+                    external_ref: e-123456789
                     account:
                       id: 8cee1b9e-3e39-4d5f-bd4a-86cdb985c6ee
                       member_id: 338f84bf-e6c9-4704-9f33-2708addd462b
@@ -2475,7 +2483,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Get All Orders
+      summary: Get all Orders
       description: |
         This endpoint returns all orders with custom flow fields. The pagination offset is set to fetch a maximum of 10,000 orders. If the store has 10,000 orders and you fetch the orders without using filters, an error is returned. Use a filter to view orders when the order is beyond the 10,000 mark.
 
@@ -2513,6 +2521,7 @@ paths:
         | `created_at` | `date` | `eq` / `gt` / `ge`/ `le` / `lt` | `gt(created_at,YYYY-MM-DD)` |
         | `updated_at` | `date` | `eq` / `gt` / `ge`/ `le`/ `lt` | `lt(updated_at,YYYY-MM-DD)` |
         | `external_ref` | `string` | `eq` / `like` | `like(external_ref, 16be*)` |
+        | `order_number` | `string` | `eq` / `like` | `like(order_number, 123*)` |
 
       operationId: getCustomerOrders
       parameters:
@@ -2596,7 +2605,13 @@ paths:
         - Orders
       summary: Update an Order
       description: |
-        You can only update custom data, `shipping`, `shipping_address`, and status on orders. All other settings in the order object are immutable.
+        You can only update custom data, `shipping`, `shipping_address`, and status of orders. All other settings in the order object are immutable.
+
+         This endpoint allows you to:
+
+        - **Update an order number and external reference**: You can update an existing order that does not have an `order_number` and `external_ref`, modify the `order_number` and `external_ref` values, or remove them by passing an empty value in the `order_number` and `external_ref` fields.
+        - **Cancel an order**: You can cancel an order only if it has not been fulfilled.
+        - **Fulfill an order**: You can fulfill a paid order only.
 
         :::caution
 
@@ -2608,6 +2623,7 @@ paths:
 
         - This request is only accessible to client credentials token users with Seller Admin role.
         - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/authentication/Tokens/permissions).
+        - The `order_number` will appear as the invoice number in Authorize.net transactions.
 
         :::
       operationId: updateAnOrder
@@ -2626,6 +2642,19 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/OrdersUpdateRequest'
+            examples :
+              CancelAnOrder :
+                summary : Cancel an Order
+                value :
+                  data :
+                    type : order
+                    status : cancelled
+              FulfillAnOrder :
+                summary : Fulfill an Order by ID. You can fulfill a paid order only.
+                value :
+                  data :
+                    type : order
+                    shipping : fulfilled
         required: false
       responses:
         '200':
@@ -4088,7 +4117,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/OrdersAddressData'
             - $ref: '#/components/schemas/OrdersCancelData'
-            - $ref: '#/components/schemas/OrdersFulfulledData'
+            - $ref: '#/components/schemas/OrdersFulfilledData'
     OrdersAddressData:
       title: OrdersAddressData
       type: object
@@ -4096,8 +4125,13 @@ components:
         - type
         - shipping_address
       properties:
+        order_number:
+          description: Specifies a user-managed, optional field used as an alternative to the existing order_id. If provided, the order-number will be sent to Authorize.net instead of the order_id, and will appear as the invoice number in Authorize.net transactions.
+          type: string
+          examples:
+            - 1234
         external_ref:
-          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and does not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
           type: string
           examples:
             - external_order_123
@@ -4182,12 +4216,12 @@ components:
           examples:
             - order
         external_ref:
-          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and does not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
           type: string
           examples:
             - external_order_123
-    OrdersFulfulledData:
-      title: OrdersFulfulledData
+    OrdersFulfilledData:
+      title: OrdersFulfilledData
       type: object
       required:
         - type
@@ -4204,7 +4238,7 @@ components:
           examples:
             - order
         external_ref:
-          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and does not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
           type: string
           examples:
             - external_order_123
@@ -4871,6 +4905,16 @@ components:
           type: string
           examples:
             - order
+        order_number:
+          description: Specifies a user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
+          type: string
+          examples:
+            - 1234
+        external_ref :
+          description : An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          type : string
+          examples:
+            - e-123456789
         id:
           description: Specifies the unique identifier of the order.
           type: string
@@ -4939,6 +4983,12 @@ components:
         data:
           type: object
           properties:
+            order_number:
+              description: A user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
+              type: string
+            external_ref:
+              description: An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+              type: string
             customer:
               type: object
               properties:
@@ -4956,6 +5006,12 @@ components:
         data:
           type: object
           properties:
+            order_number:
+              description: A user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
+              type: string
+            external_ref :
+              description : An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+              type : string
             account:
               type: object
               properties:
