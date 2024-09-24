@@ -1,9 +1,11 @@
 ---
-title: Overview
-nav_label: Overview
+title: Inventory Workflow
+nav_label: Inventory Workflow
 sidebar_position: 5
 ---
 
 import InventoryWorkflow from "/docs/partials/inventory/workflow.mdx";
 
 <InventoryWorkflow></InventoryWorkflow>
+
+The order service first creates an [unpaid order](/guides/key-concepts/inventory/workflow/unpaidorder), which records the order details and holds the items. Once payment is completed, the order transitions to a [paid order](/guides/key-concepts/inventory/workflow/paidorder), allowing further processing, such as fulfillment or shipping.
