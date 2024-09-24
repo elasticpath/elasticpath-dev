@@ -731,7 +731,13 @@ paths:
       tags:
         - Gateways
       summary: Update Authorize.net Gateway
-      description: Use this endpoint to configure Authorize.net.
+      description: |
+      
+        Use this endpoint to configure Authorize.net.
+        
+        :::note
+        The credentials used for a test account may differ from those used for a live account. When configuring the payment gateway with your credentials and setting `test` to `true`, the system allows you to test various Authorize.net payment interactions to ensure everything works as expected. Once you are ready to go live, update `test` as `false` to direct requests to the live endpoints instead of the test account. Additionally, ensure that you switch to the credentials for the live account when making this change. To access your sandbox environment, see [Authorize.net Sandbox account](https://developer.authorize.net/hello_world/sandbox.html).
+        :::
       operationId: updateAuthorizeNetGateway
       parameters: [ ]
       requestBody:

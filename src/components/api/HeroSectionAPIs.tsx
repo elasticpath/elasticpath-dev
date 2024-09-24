@@ -73,7 +73,7 @@ const PRODUCTS = [
   {
     title: 'Organizations',
     beta: false,
-    link: '/docs/organizations',
+    link: '/guides/How-To/organizations/create-pxm-org-entities',
     icon: BoxMultipleRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',
@@ -108,7 +108,7 @@ const PRODUCTS = [
   {
     title: 'Promotions Builder',
     beta: false,
-    link: '/docs/rule-promotions/overview',
+    link: '/docs/promotions-builder/overview',
     icon: BuildingRetailMoneyRegular,
     // lightImage: '/static/landing-page/hero/chat-graphic.png',
     // darkImage: '/static/landing-page/hero/chat-graphic-dark.png',

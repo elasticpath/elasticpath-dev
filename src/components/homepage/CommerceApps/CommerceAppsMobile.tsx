@@ -110,12 +110,12 @@ export default function CommerceAppsMobile() {
     <section className="px-6 py-6 mx-auto w-full text-center leading-tight tracking-tight">
       <div className="flex flex-col items-center justify-between dark:text-white">
         <h2 className="mb-8 text-5xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
-          Apps for commerce
+          Elastic Path Composable Commerce
         </h2>
         <div className="flex flex-col my-6 w-full">
           <Tab
             img="/assets/homepage/products-screenshot.jpg"
-            value="Products"
+            value="Merchandise"
             icon={<ProductsIcon className="size-12" />}
             tagline="Efficiently manage product catalogs and info across channels with our Product Information Management (PIM) app."
             listItems={[
