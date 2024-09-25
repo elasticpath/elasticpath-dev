@@ -14,7 +14,7 @@ const Trigger = ({ name }: { name: string }) => {
   return (
     <TabsTrigger
       value={name}
-      className="data-[state='active']:dark:bg-[#1FEC90] data-[state='active']:bg-[#61DEA6] data-[state='active']:shadow-lg dark:data-[state='active']:shadow-[0px_0px_28px_0px_#1FEC90] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-xl py-1 px-6"
+      className="data-[state='active']:dark:bg-[#1FEC90] data-[state='active']:bg-[#61DEA6] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-xl py-1 px-6"
     >
       {name}
     </TabsTrigger>
@@ -62,6 +62,7 @@ function Tab({
         <div className="flex text-black gap-8 mt-8">
           <a
             href={linkItems[0]}
+            target="_blank"
             className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
           >
             Watch Demo
@@ -121,7 +122,7 @@ export default function CommerceApps() {
       />
 
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
+        <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight">
           Elastic Path Composable Commerce
         </h2>
         <Tabs defaultValue="Merchandise">
@@ -150,8 +151,7 @@ export default function CommerceApps() {
                 "Improve Customer Experience",
               ]}
               linkItems={[
-                "https://www.elasticpath.com/demo-library",
-                "/docs/api/pxm/products/products",
+                "https://www.elasticpath.com/demo-library?feedStatic33365=filter191470-%3Emerchandisers.89457",
               ]}
             />
 
