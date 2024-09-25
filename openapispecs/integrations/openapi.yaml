@@ -490,7 +490,7 @@ info:
              <td>Store</td>
         </tr>
         <tr>
-             <td><a href="/docs/api/carts/cart-management"><strong>Carts</strong></a>/<a href="/docs/api/carts/tax-items"><strong>Tax Items</strong></a></td>
+             <td><a href="/docs/api/carts/cart-management"><strong>Carts</strong></a></td>
              <td>Updated</td>
              <td><code>cart.updated</code></td>
              <td>Store</td>
@@ -538,7 +538,7 @@ info:
              <td>Store</td>
         </tr>
         <tr>
-             <td><a href="/docs/api/commerceextensions/custom-api-entries">Custom API Entries</a></td>
+             <td><a href="/docs/api/commerce-extensions/custom-api-entries">Custom API Entries</a></td>
              <td>Created</td>
              <td><code>customAPIEntryType.created</code></td>
              <td>Store</td>
@@ -595,37 +595,49 @@ info:
              <td><a href="/docs/api/carts/orders"><strong>Order Events</strong></a></td>
         </tr>
         <tr>
-             <td>/checkout</td>
+             <td><a href="/docs/api/carts/checkout-api">Checkout</a></td>
              <td>Created</td>
              <td><code>order.created</code></td>
              <td>Store</td>
         </tr>
         <tr>
-             <td>/orders/:id/payments</td>
+             <td><a href="/docs/api/carts/payments">Payments</a></td>
              <td>Updated</td>
              <td><code>order.updated</code> / <code>order.paid</code>. The event <code>order.paid</code> is triggered when the payment status is <code>paid</code>. The event <code>order.updated</code> is triggered when the order is captured, completed, refunded, anonymized, or updated.</td>
              <td>Store</td>
         </tr>
         <tr>
-             <td>/orders/:id</td>
-             <td>Fulfilled/Canceled</td>
-             <td><code>order.fulfilled</code> / <code>order.cancelled</code></td>
-             <td>Store</td>
-        </tr>
-        <tr>
-             <td>/orders/:id/payments</td>
+             <td></td>
              <td>Authorized</td>
              <td><code>order.authorized</code></td>
              <td>Store</td>
         </tr>
         <tr>
-             <td>/orders/:id/transactions/:id/capture</td>
-             <td>Paid/Captured</td>
-             <td><code>order.paid</code> / <code>order.updated</code>. The event <code>order.paid</code> is triggered when the order status is completed and captured, and the payment status is <code>paid</code>. The event <code>order.updated</code> is triggered when the order is captured, completed, refunded, anonymized, or updated.</td>
+             <td><a href="/docs/api/carts/orders">Orders</a></td>
+             <td>Fulfilled</td>
+             <td><code>order.fulfilled</code></td>
              <td>Store</td>
         </tr>
         <tr>
-             <td>/orders/:id/transactions/:id/refund</td>
+             <td></td>
+             <td>Canceled</td>
+             <td><code>order.cancelled</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/capture-a-transaction">Capture Transaction</a></td>
+             <td>Paid</td>
+             <td><code>order.paid</code>. The event <code>order.paid</code> is triggered when the order status is completed and captured, and the payment status is <code>paid</code>.</td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Captured</td>
+             <td><code>order.updated</code>. The event <code>order.updated</code> is triggered when the order is captured, completed, refunded, anonymized, or updated.</td>
+             <td>Store</td>
+        </tr>
+        <tr>
+            <td><a href="/docs/api/carts/refund-a-transaction">Refund Transaction</a></td>
              <td>Refunded</td>
              <td><code>order.refunded</code></td>
              <td>Store</td>
@@ -700,6 +712,12 @@ info:
              <td></td>
              <td>Updated</td>
              <td><code>transaction.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/tax-items"><strong>Tax Items</strong></a></td>
+             <td>Updated</td>
+             <td><code>cart.updated</code></td>
              <td>Store</td>
         </tr>
         <tr>

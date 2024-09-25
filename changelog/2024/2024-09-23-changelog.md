@@ -1,5 +1,5 @@
 ---
-title: 'Added cart.updated event for Tax Operations, Added order_number as a new optional field'
+title: 'Added cart update event for tax operations on the cart, Added order number as a new optional field'
 date: '2024-09-23'
 tags: ['Integrations', 'Carts', 'Orders']
 hide_blog_post_date: false
