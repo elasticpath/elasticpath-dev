@@ -12,8 +12,8 @@ info:
     url: 'https://www.elasticpath.com'
     email: support@elasticpath.com
   license:
-    url: 'https://elasticpath.dev'
     name: MIT
+    url: 'https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/LICENSE'
 servers:
   - url: 'https://useast.api.elasticpath.com'
     description: US East
@@ -62,10 +62,12 @@ tags:
       | Validation: Enum(Float/Integer)   | ✅                | ⛔️                                         |
       | Validation: Allow null values     | ⛔                | ✅                                          |
       | Validation: Unique(String)        | ⛔                | ✅                                          |
+      | Validation: Unique Case Insensitivity(String)        | ⛔                | ✅                                          |
+      | Validation: Immutable             | ⛔                | ✅                                          |
 
       ## Validation
 
-      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a Custom Field, `validation` can be used to limit the values that may be stored in the corresponding Custom API Entry.
 
       :::note
 
@@ -113,11 +115,11 @@ tags:
       The `float` field_type cannot accurately represent some numbers and so using very small or large numbers might lose precision. We recommend that API clients use either the `integer` field_type if applicable , or the `string` data type if perfect precision or recall is required.
 
       ### String Validation
-      - `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be less than 0 and less than `max_length`.
+      - `min_length`: Specifies the minimum number of characters that can be stored. If set, it must be greater than 0 and less than `max_length`.
       - `max_length`: Specifies the maximum number of characters that can be stored. If set, it must be greater than 0 and `min_length`.
-      - `regex`: [RE2](https://github.com/google/re2/wiki/Syntax) regular expression that used to restrict the specific characters that can be stored. This must be less than 1024 characters.
-      - `unique`: Specifies whether the field can have unique constraint or not. It must be `yes` or `no`.
-
+      - `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax) regular expression used to restrict the specific characters that can be stored. It must be less than 1024 characters.
+      - `unique`: Specifies whether the field must have unique constraint or not. It must be `yes` or `no`.      
+      - `unique_case_insensitivity`: Applies when `unique` is set to `yes`. It controls whether values with different cases (for example, `ABC` and `abc`) should conflict. It must be `true` or `false`.
       sample string validation object:
 
       ```json
@@ -128,6 +130,7 @@ tags:
             "max_length": 64,
             "regex": "^.+\\.(jpg|jpeg|png|gif|pdf)$",
             "unique": "yes"
+            "unique_case_insensitivity": true
           }
         }
       }
@@ -145,11 +148,32 @@ tags:
       {
         "validation": {
           "boolean": {
-            "allow_null_values": false
+            "allow_null_values": false,
+            "immutable": false
           }
         }
       }
-        ```
+      ```
+
+      ### Immutable
+
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) a Custom Field, it can be configured to be `immutable`. When set to true, the value of this field can be specified only during POST requests and cannot be modified during PUT requests. By default, this is `false`.
+
+      sample validation object :
+        
+      ```json
+      {
+        "validation": {
+          "boolean": {
+            "immutable": false
+          }
+        }
+      }
+      ```
+
+      ## Presentation
+
+      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request) or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a Custom Field, `presentation` can be used to influence the layout of fields within a Custom API in User Interface. It does not order or affect the JSON response, and has no semantics on the backend.
       
       ## Reserved Slugs
 
@@ -278,7 +302,17 @@ paths:
                       "name": "Wishlists",
                       "description": "Specifies the description for this Custom API.",
                       "slug": "wishlists",
-                      "api_type": "wishlist_ext"
+                      "api_type": "wishlist_ext",
+                      "relationships": {
+                        "parent_apis": {
+                          "data": [
+                            {
+                              "type": "custom_api",
+                              "id": "652e39d8-d613-493e-8c20-fef99ad6327a"
+                            }
+                          ]
+                        }
+                      }
                     }
                   }
       responses:
@@ -298,12 +332,13 @@ paths:
                       - slug
                       - api_type
                       - links
+                      - relationships
                     $ref: "#/components/schemas/CustomApiAttributes"
         '400':
           $ref: '#/components/responses/ValidationError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        'default':
+        '500':
           $ref: '#/components/responses/InternalServerError'
     get:
       tags:
@@ -311,6 +346,8 @@ paths:
       summary: Get all Custom APIs
       # language=Markdown
       description: |
+        Get all Custom APIs
+
         ## Filtering
         The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom APIs:
 
@@ -358,7 +395,7 @@ paths:
                     $ref: "#/components/schemas/PaginationLinks"
         '400':
           $ref: '#/components/responses/BadFilterError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}:
@@ -416,7 +453,17 @@ paths:
                       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                       "name": "Wishlists",
                       "description": "Specifies the description for this Custom API.",
-                      "slug": "wishlists"
+                      "slug": "wishlists",
+                      "relationships": {
+                        "parent_apis": {
+                          "data": [
+                            {
+                              "type": "custom_api",
+                              "id": "652e39d8-d613-493e-8c20-fef99ad6327a"
+                            }
+                          ]
+                        }
+                      }
                     }
                   }
       responses:
@@ -438,7 +485,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     delete:
@@ -453,7 +500,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/fields:
@@ -494,7 +541,9 @@ paths:
                           "max_length": 128,
                           "regex": null,
                           "allow_null_values": true,
-                          "unique": "no"
+                          "immutable": false,
+                          "unique": "no",
+                          "unique_case_insensitivity": false
                         }
                       }
                     }
@@ -513,7 +562,8 @@ paths:
                         "integer": {
                           "min_value": 0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -530,7 +580,8 @@ paths:
                       "field_type": "boolean",
                       "validation": {
                         "boolean": {
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -549,7 +600,8 @@ paths:
                         "float": {
                           "min_value": 0.0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -589,7 +641,9 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
-                            "unique": "no"
+                            "immutable": false,
+                            "unique": "no",
+                            "unique_case_insensitivity": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -618,7 +672,8 @@ paths:
                           "integer": {
                             "min_value": null,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -645,7 +700,8 @@ paths:
                         "field_type": "boolean",
                         "validation": {
                           "boolean": {
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -674,7 +730,8 @@ paths:
                           "float": {
                             "min_value": 0.0,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -695,7 +752,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     get:
@@ -704,6 +761,8 @@ paths:
       summary: Get all Custom Fields
       # language=Markdown
       description: |
+        Get all Custom Fields
+        
         ## Filtering
           The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom Fields:
         
@@ -766,7 +825,9 @@ paths:
                               "max_length": 128,
                               "regex": "[a-zA-Z0-9 ]{3,128}",
                               "allow_null_values": true,
-                              "unique": "no"
+                              "immutable": false,
+                              "unique": "no",
+                              "unique_case_insensitivity": false
                             }
                           }
                         }
@@ -794,7 +855,7 @@ paths:
           $ref: '#/components/responses/BadFilterError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/fields/{custom_field_id}:
@@ -828,7 +889,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '400':
           $ref: '#/components/responses/ValidationError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
     put:
       tags:
@@ -864,7 +925,9 @@ paths:
                           "max_length": 128,
                           "regex": "^[a-zA-Z0-9 ]{3,128}$",
                           "allow_null_values": true,
-                          "unique": "no"
+                          "immutable": false,
+                          "unique": "no",
+                          "unique_case_insensitivity": false
                         }
                       }
                     }
@@ -883,7 +946,8 @@ paths:
                         "integer": {
                           "min_value": 0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -914,7 +978,8 @@ paths:
                         "float": {
                           "min_value": 0.0,
                           "max_value": null,
-                          "allow_null_values": true
+                          "allow_null_values": true,
+                          "immutable": false
                         }
                       }
                     }
@@ -955,7 +1020,9 @@ paths:
                             "max_length": 128,
                             "regex": null,
                             "allow_null_values": true,
-                            "unique": "no"
+                            "immutable": false,
+                            "unique": "no",
+                            "unique_case_insensitivity": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -985,7 +1052,8 @@ paths:
                           "integer": {
                             "min_value": 0,
                             "max_value": null,
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1013,7 +1081,8 @@ paths:
                         "field_type": "boolean",
                         "validation": {
                           "boolean": {
-                            "allow_null_values": true
+                            "allow_null_values": true,
+                            "immutable": false
                           }
                         },
                         "id": "859aeba1-03c2-4822-bd4c-89afce93d7eb",
@@ -1034,7 +1103,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     delete:
@@ -1049,7 +1118,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/entries:
@@ -1141,7 +1210,7 @@ paths:
         '413':
           $ref: '#/components/responses/PayloadTooLargeError'
           description: Payload Too Large. The total size of a Custom API Entry must not exceed 64KB.
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
     get: &getCustomAPIEntries
       tags:
@@ -1149,6 +1218,8 @@ paths:
       summary: Get all Custom API Entries
       # language=Markdown
       description: |
+        Get all Custom API Entries
+
         ## Filtering
           The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) all Custom API Entries:
         
@@ -1251,7 +1322,7 @@ paths:
                     }
         '400':
           $ref: '#/components/responses/BadFilterError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/settings/extensions/custom-apis/{custom_api_id}/entries/{custom_api_entry_id}:
@@ -1312,7 +1383,7 @@ paths:
           $ref: '#/components/responses/ValidationError'
         '404':
           $ref: '#/components/responses/NotFoundError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     put: &putCustomAPIEntry
@@ -1398,6 +1469,53 @@ paths:
                         }
                       }
                     }
+        '201':
+          description: Created
+          headers:
+            ETag:
+              description: "A unique identifier representing the current version of the resource. When the resource changes, the ETag value will also change. The ETag hash will be the same value as `etag_id`, and is marked as a weak entity tag string. For example: etag: W/\"5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9\", etag_id: 5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - id
+                      - type
+                      - values
+                    $ref: "#/components/schemas/CustomApiEntryAttributes"
+              examples:
+                valid_entry:
+                  summary: "Default Wishlist"
+                  # language=JSON
+                  value: |
+                    {
+                      "data": {
+                        "id": "7e067539-6f6c-46e1-8c55-940031b36c6a",
+                        "type": "wishlist_ext",
+                        "name": "My Wishlist",
+                        "items_count": 0,
+                        "keep_purchased": false,
+                        "links": {
+                          "self": "/extensions/wishlists/7e067539-6f6c-46e1-8c55-940031b36c6a"
+                        },
+                        "meta": {
+                          "timestamps": {
+                            "updated_at": "2017-01-10T11:41:19.244Z",
+                            "created_at": "2017-01-10T11:41:19.244Z"
+                          },
+                          "resource_version": 0,
+                          "data_size": 6,
+                          "etag_id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+                        }
+                      }
+                    }
         '400':
           $ref: '#/components/responses/ValidationError'
         '404':
@@ -1409,7 +1527,7 @@ paths:
         '413':
           $ref: '#/components/responses/PayloadTooLargeError'
           description: Payload Too Large. The total size of a Custom API Entry must not exceed 64KB.
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
     delete: &deleteCustomAPIEntry
@@ -1433,7 +1551,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '412':
           $ref: '#/components/responses/PreConditionError'
-        default:
+        '500':
           $ref: '#/components/responses/InternalServerError'
 
   /v2/extensions/{custom_api_slug}:
@@ -1745,12 +1863,19 @@ components:
           description: Specifies a unique API type for this Custom API. Entries for this API will use this value for their `type` field. This field must be suffixed with `_ext` to distinguish it from built in APIs.
           examples:
             - "wishlist_ext"
+        allow_upserts:
+          type: boolean
+          description: Controls whether upsert operations are allowed for Custom API Entries via the `PUT` method. When set to `true`, it allows the creation of new Custom API Entries using `PUT` if the record doesn't exist, and updates the existing record if it does. When `false`, `PUT` requests can only update existing entries.
+          default: false
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLinkCustomApi'
         meta:
           readOnly: true
           $ref: '#/components/schemas/Meta'
+        relationships:
+          readOnly: true
+          $ref: '#/components/schemas/Relationships'
     BaseCustomFieldAttributes:
       properties:
         id:
@@ -1796,6 +1921,20 @@ components:
             - "integer"
             - "boolean"
             - "float"
+        use_as_url_slug:
+          type: boolean
+          description: |
+            Enabling this field will mean Custom API Entries created in this Custom API will use this value in the URL instead of the `id` attribute. In order to set this field, the field must be a string, and unique, not allow null values, no entries have been created yet, and this field cannot be set to true on another custom field. This field cannot be updated. In addition to any validation rules you create, the values must be [Unreserved URL Characters](https://datatracker.ietf.org/doc/html/rfc3986#section-2.3) (i.e., be alpha-numeric, or one of `-`, `.`, `_` or `~`).
+        presentation:
+          type: object
+          properties:
+            sort_order:
+              type: integer
+              description: Specifies the order of the field in the User Interface.
+              example: 10
+              default: 0
+              minimum: 0
+              maximum: 1000
         links:
           readOnly: true
           $ref: '#/components/schemas/SelfLink'
@@ -1840,12 +1979,25 @@ components:
                     unique:
                       type: string
                       enum:
-                        - yes
-                        - no
+                        - "yes"
+                        - "no"
                       description: |
                         If `yes`, this prevents two Custom API entries from having the same value for this field within the Custom API. When set to `no` (the default), 
                         multiple Custom API entries may have the same value
-                      default: no
+                      default: "no"
+                    unique_case_insensitivity:
+                      type: boolean
+                      description: |
+                        Controls case-insensitive uniqueness for this field. Can only be set to `true` if `unique` is set to `yes`. 
+                        If `true`, prevents two Custom API entries from having the same value for this field within the Custom API, ignoring case differences. 
+                        When set to `false` (the default), case is considered when checking for uniqueness. 
+                        This value can only be set during field creation and cannot be modified afterwards.
+                      default: false
+                    immutable:
+                      type: boolean
+                      description: |
+                        When set to true, the value of this field can be specified only during POST requests and cannot be modified during PUT requests.
+                      default: false
     IntegerCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1868,6 +2020,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [boolean, 'null']
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     BooleanCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1884,6 +2041,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [ boolean, 'null' ]
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     FloatCustomFieldAttributes:
       allOf:
         - $ref: '#/components/schemas/BaseCustomFieldAttributes'
@@ -1906,6 +2068,11 @@ components:
                       description: |
                         When set to `true`, this allows `null` values for that field on Custom API Entries. When set to `false`, storing `null` values is not permitted.
                       default: true
+                    immutable:
+                      type: [ boolean, 'null' ]
+                      description: |
+                        When set to `true`, prevents changing the field.
+                      default: false
     CustomFieldAttributes:
       anyOf:
         - $ref: '#/components/schemas/BooleanCustomFieldAttributes'
@@ -2071,6 +2238,42 @@ components:
               description: The total number of records for the entire collection.
               type: integer
               example: 1
+    Relationships:
+      type: object
+      required:
+        - parent_apis
+      properties:
+        parent_apis:
+          $ref: '#/components/schemas/ParentAPIs'
+    ParentAPIs:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Data'
+    Data:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataItem'
+    DataItem:
+      type: object
+      required:
+        - id
+        - type
+      properties:
+        id:
+          description: |
+            The unique identifier for the related Custom API. When the `type` of an object is set to `api_location` then `id` must be `/v2/extensions`.
+            When the `type` of an object is set to `custom_api`, then `id` must be that of a Custom API that results in a relationship that does not have a depth exceeding 2 and does not result in a cycle.
+          type: string
+          example: 652e39d8-d613-493e-8c20-fef99ad6327a
+        type:
+          description: Specifies the type of parent relationship, can be `custom_api` or `api_location`.
+          type: string
+          enum:
+            - custom_api
+            - api_location
     PaginationLinks:
       required:
         - current
@@ -2103,3 +2306,4 @@ components:
           description: Always `null` if the user is on the first page.
           type: [string, 'null']
           example: null
+

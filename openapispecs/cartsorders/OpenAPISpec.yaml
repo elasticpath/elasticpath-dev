@@ -643,7 +643,7 @@ paths:
     post:
       tags:
         - Cart Items
-      summary: Manage Carts
+      summary: Add Items to Cart
       description: |
 
         ### Add Product to Cart
@@ -742,6 +742,120 @@ paths:
         - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) documentation.
 
         :::
+
+        ### Including Resources
+
+        When you make an `Add Product to Cart` request to the catalog-view service, you can obtain details of the component products. If you include the optional parameter `include=component_products` in the request, the response will include details for each component product.
+
+        When a bundle with selected component products is added to a cart, the cart displays both the bundle pricing and component product IDs.
+
+        The response example is returned with a new field called `component_products` under `bundle_configuration`, which is a list of component products that the user has selected for dynamic bundles.
+
+        | Parameter               | Required     | Description        |
+        |:------------------------|:-------------|:-------------------|
+        | `component_products`    | Optional     | The component product data and key attribute data, such as SKU or slug, to return for component products in a product bundle. |
+        | `main_image`            | Optional     | The main images associated with a product. |
+        | `files`                 | Optional     | Any files associated with a product. |
+
+        ```json
+        "bundle_configuration": {
+            "selected_options": {
+                "mixed-shirts": {
+                    "16a6cc14-6ebb-4156-9973-e6a0f92f5731": 3,
+                    "55037cc5-f382-4039-95c6-1e04ac0351d3": 2,
+                "standard-shirts"
+                    "70f1c9d2-c580-4839-bd6c-a0a9b91d5159": 5
+                }
+            },
+            "component_products": [
+                {
+                    "id": "16a6cc14-6ebb-4156-9973-e6a0f92f5731",
+                    "type": "product",
+                    "attributes": {
+                        "name": "Red T-shirt",
+                        "description": "Standard red t-shirt.",
+                        "slug": "red-t-shirt-slug",
+                        "sku": "red-t-shirt-sku",
+                        "status": "live",
+                        "commodity_type": "physical"
+                    },
+                    "meta": {
+                        "display_price": {
+                            "without_tax": {
+                                "amount": 500,
+                                "currency": "USD",
+                                "formatted": "$5.00"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "55037cc5-f382-4039-95c6-1e04ac0351d3",
+                    "type": "product",
+                    "attributes": {
+                        "name": "Blue T-shirt",
+                        "description": "Standard blue t-shirt.",
+                        "slug": "blue-t-shirt-slug",
+                        "sku": "blue-t-shirt-sku",
+                        "status": "live",
+                        "commodity_type": "physical"
+                    },
+                    "meta": {
+                        "display_price": {
+                            "without_tax": {
+                                "amount": 500,
+                                "currency": "USD",
+                                "formatted": "$5.00"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "70f1c9d2-c580-4839-bd6c-a0a9b91d5159",
+                    "type": "product",
+                    "attributes": {
+                        "name": "White T-shirt",
+                        "description": "Standard white t-shirt.",
+                        "slug": "white-t-shirt-slug",
+                        "sku": "white-t-shirt-sku",
+                        "status": "live",
+                        "commodity_type": "physical"
+                    },
+                    "meta": {
+                        "display_price": {
+                            "without_tax": {
+                                "amount": 500,
+                                "currency": "USD",
+                                "formatted": "$5.00"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        ```
+
+        See [Including Resources](https://elasticpath.dev/guides/Getting-Started/includes).
+
+        ### Add Subscription to Cart
+
+        To add a subscription to your cart, you need to provide the ID of the subscription offering and the ID of the plan within that offering that you want to subscribe to.
+
+        ```json
+          {
+            {
+              "data": {
+                "id": "5b9be99f-1c94-4ddd-9718-81adab0cc3e0",
+                "type": "subscription_item",
+                "quantity": 1,
+                "subscription_configuration": {
+                  "plan": "40010dde-2f38-489b-8b3f-14a13cbfb431"
+                }
+            }
+          }
+        ```
+
+        The price of the subscription item in the cart reflects the cost of the subscription's initial billing period. Once the cart has been checked out and the order paid for, the subscription will be automatically created in the subscriptions service.
 
         ### Add Custom Item to Cart
 
@@ -928,6 +1042,14 @@ paths:
                       name:
                         tshirt_front: Jane
                         tshirt_back: Jane Doe's Dance Academy
+              Add Subscription Item:
+                value:
+                  data:
+                    type: subscription_item
+                    id: 1f49c20c-54b9-453b-a57c-ef8303a6415f
+                    quantity: 1
+                    subscription_configuration:
+                      plan: a2cd9dae-3a28-4185-93b7-1b02a8ce0c2e
               Add Custom Item:
                 value:
                   data:
@@ -1928,15 +2050,18 @@ paths:
               allOf:
                 - $ref: '#/components/schemas/CartsCustomDiscountsObject'
           required: false
-          responses:
-            '200':
-              description: ''
-              headers: { }
-              content:
-                application/json:
-                  schema:
-                    allOf:
-                      - $ref: '#/components/schemas/CartsCustomDiscountsResponse'
+      responses:
+        '200':
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/CartsCustomDiscountsResponse'
         '401':
           description: Unauthorized
           content:
@@ -1989,18 +2114,18 @@ paths:
                     data:
                       $ref: '#/components/schemas/CartsCustomDiscountsObject'
           required: false
-          responses:
-            '200':
-              description: ''
-              headers: { }
-              content:
-                application/json:
-                  schema:
-                    allOf:
-                      - $ref: '#/components/schemas/Response.Data'
-                      - properties:
-                          data:
-                            $ref: '#/components/schemas/CartsCustomDiscountsResponse'
+      responses:
+        '200':
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response.Data'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/CartsCustomDiscountsResponse'
         '401':
           description: Unauthorized
           content:
@@ -2158,10 +2283,10 @@ paths:
         After a successful checkout, a response that contains the order is returned. If the cart is linked to a shipping group, the shipping group is also associated with the order after checkout.
 
         You can checkout using one of the following methods:
-        - Customer ID. You can checkout a cart with an existing customer ID.
-        - Guest Checkout (Checkout with Customer Object). You can checkout a cart with an associated customer name and email.
-        - Checkout with Account. The shopper authenticates with the `Client Credentials` Token.
-        - Checkout with Account Management Authentication Token. The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
+        - **Customer ID**: You can checkout a cart with an existing customer ID.
+        - **Guest Checkout** (Checkout with Customer Object): You can checkout a cart with an associated customer name and email.
+        - **Checkout with Account**: The shopper authenticates with the `Client Credentials` Token.
+        - **Checkout with Account Management Authentication Token**: The shopper authenticates with the `Implicit Token` and the `EP-Account-Management-Authentication-Token`.
 
         :::note
 
@@ -2177,6 +2302,8 @@ paths:
         - Your inventory is modified during checkout and payment of an order. For more information about the changes in the inventory, see the [Inventory](/docs/api/pxm/inventory/inventories-introduction) section.
 
         :::
+
+         You can pass `order_number` and `external_ref` in the checkout endpoint or when [updating an order](/docs/api/carts/update-an-order). The `order_number` is an optional, user-managed field that is used as an alternative to `order_id`. When processing transactions through Authorize.net, the `order_number` is sent instead of the `order_id`, and it will appear in the invoice number section. If no `order_number` is provided, the `order_id` is sent to Authorize.net on payment by default. There are no duplication restrictions on the `order_number` value.
 
         ### Next Steps
 
@@ -2231,6 +2358,8 @@ paths:
                 summary: Checkout with Customer ID
                 value:
                   data:
+                    order_number: 1234
+                    external_ref: e-123456789
                     customer:
                       id: c8c1c511-beef-4812-9b7a-9f92c587217c
                     billing_address:
@@ -2261,6 +2390,8 @@ paths:
                 summary: Guest Checkout (Checkout with Customer Object)
                 value:
                   data:
+                    order_number: 1234
+                    external_ref: e-123456789
                     customer:
                       email: john@moltin.com
                       name: John Doe
@@ -2292,6 +2423,8 @@ paths:
                 summary: Create Checkout with Account
                 value:
                   data:
+                    order_number: 1234
+                    external_ref: e-123456789
                     account:
                       id: 8cee1b9e-3e39-4d5f-bd4a-86cdb985c6ee
                       member_id: 338f84bf-e6c9-4704-9f33-2708addd462b
@@ -2350,7 +2483,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Get All Orders
+      summary: Get all Orders
       description: |
         This endpoint returns all orders with custom flow fields. The pagination offset is set to fetch a maximum of 10,000 orders. If the store has 10,000 orders and you fetch the orders without using filters, an error is returned. Use a filter to view orders when the order is beyond the 10,000 mark.
 
@@ -2388,6 +2521,7 @@ paths:
         | `created_at` | `date` | `eq` / `gt` / `ge`/ `le` / `lt` | `gt(created_at,YYYY-MM-DD)` |
         | `updated_at` | `date` | `eq` / `gt` / `ge`/ `le`/ `lt` | `lt(updated_at,YYYY-MM-DD)` |
         | `external_ref` | `string` | `eq` / `like` | `like(external_ref, 16be*)` |
+        | `order_number` | `string` | `eq` / `like` | `like(order_number, 123*)` |
 
       operationId: getCustomerOrders
       parameters:
@@ -2471,7 +2605,13 @@ paths:
         - Orders
       summary: Update an Order
       description: |
-        You can only update custom data, `shipping`, `shipping_address`, and status on orders. All other settings in the order object are immutable.
+        You can only update custom data, `shipping`, `shipping_address`, and status of orders. All other settings in the order object are immutable.
+
+         This endpoint allows you to:
+
+        - **Update an order number and external reference**: You can update an existing order that does not have an `order_number` and `external_ref`, modify the `order_number` and `external_ref` values, or remove them by passing an empty value in the `order_number` and `external_ref` fields.
+        - **Cancel an order**: You can cancel an order only if it has not been fulfilled.
+        - **Fulfill an order**: You can fulfill a paid order only.
 
         :::caution
 
@@ -2483,6 +2623,7 @@ paths:
 
         - This request is only accessible to client credentials token users with Seller Admin role.
         - Non client credentials token users cannot access this endpoint. See [Permissions](/docs/authentication/Tokens/permissions).
+        - The `order_number` will appear as the invoice number in Authorize.net transactions.
 
         :::
       operationId: updateAnOrder
@@ -2501,6 +2642,19 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/OrdersUpdateRequest'
+            examples :
+              CancelAnOrder :
+                summary : Cancel an Order
+                value :
+                  data :
+                    type : order
+                    status : cancelled
+              FulfillAnOrder :
+                summary : Fulfill an Order by ID. You can fulfill a paid order only.
+                value :
+                  data :
+                    type : order
+                    shipping : fulfilled
         required: false
       responses:
         '200':
@@ -3164,6 +3318,7 @@ components:
       title: Cart Items Object Request
       oneOf:
         - $ref: "#/components/schemas/CartItemObject"
+        - $ref: "#/components/schemas/SubscriptionItemObject"
         - $ref: "#/components/schemas/CartMergeObjectRequest"
         - $ref: "#/components/schemas/CustomItemObject"
         - $ref: "#/components/schemas/ReOrderObjectRequest"
@@ -3214,9 +3369,55 @@ components:
             selected_options:
               description: Specifies selected options.
               type: object
+            component_products:
+              description: Array of component products for the selected options.
+              type: array
         shipping_group_id:
           description: Identifier for a created Cart Shipping Group
           type: string
+    SubscriptionItemObject:
+      title: Subscription Item Object
+      type: object
+      properties:
+        data:
+          allOf:
+            - $ref: '#/components/schemas/SubscriptionItemObjectData'
+            - $ref: '#/components/schemas/CartItemResponse'
+    SubscriptionItemObjectData:
+      title: Subscription Item Object Data
+      type: object
+      required:
+        - id
+        - type
+        - quantity
+        - subscription_configuration
+      properties:
+        type:
+          description: The type of object being returned.
+          type: string
+          enum:
+            - subscription_item
+        quantity:
+          description: The number of items added to the cart.
+          type: number
+          examples:
+            - 1
+        id:
+          type: string
+          format: uuid
+          description: Specifies the ID of the subscription offering you want to add to cart.
+          examples:
+            - 4ca958bc-7d69-4e2d-b5d4-c74bd5a6cde6
+        subscription_configuration:
+          type: object
+          description: Specifies how the subscription offering should be configured.
+          required:
+            - plan
+          properties:
+            plan:
+              type: string
+              format: uuid
+              description: The ID of the plan within the offering to use for the subscription.
     CartMergeObjectRequest:
       title: Cart Merge Object Request
       type: object
@@ -3457,6 +3658,13 @@ components:
           readOnly: true
           examples:
             - 55cda543-f9d7-42a4-b40a-665f2e4ff7c5
+        subscription_offering_id:
+          description: The unique ID of the subscription offering for subscription items.
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 9c13669e-29d7-42ea-bc95-1b32399adb9d
         name:
           description: The name of this item
           type: string
@@ -3909,7 +4117,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/OrdersAddressData'
             - $ref: '#/components/schemas/OrdersCancelData'
-            - $ref: '#/components/schemas/OrdersFulfulledData'
+            - $ref: '#/components/schemas/OrdersFulfilledData'
     OrdersAddressData:
       title: OrdersAddressData
       type: object
@@ -3917,8 +4125,13 @@ components:
         - type
         - shipping_address
       properties:
+        order_number:
+          description: Specifies a user-managed, optional field used as an alternative to the existing order_id. If provided, the order-number will be sent to Authorize.net instead of the order_id, and will appear as the invoice number in Authorize.net transactions.
+          type: string
+          examples:
+            - 1234
         external_ref:
-          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and does not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
           type: string
           examples:
             - external_order_123
@@ -4003,12 +4216,12 @@ components:
           examples:
             - order
         external_ref:
-          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and does not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
           type: string
           examples:
             - external_order_123
-    OrdersFulfulledData:
-      title: OrdersFulfulledData
+    OrdersFulfilledData:
+      title: OrdersFulfilledData
       type: object
       required:
         - type
@@ -4025,7 +4238,7 @@ components:
           examples:
             - order
         external_ref:
-          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and does not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          description: Represents an optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
           type: string
           examples:
             - external_order_123
@@ -4587,6 +4800,13 @@ components:
           readOnly: true
           examples:
             - 4e9c6098-9701-4839-a69c-54d8256d9012
+        subscription_offering_id:
+          description: The unique identifier for the subscription offering for this order item.
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 69a39623-e681-415e-83c0-e1281010c77d
         name:
           description: The name of this order item.
           type: string
@@ -4685,6 +4905,16 @@ components:
           type: string
           examples:
             - order
+        order_number:
+          description: Specifies a user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
+          type: string
+          examples:
+            - 1234
+        external_ref :
+          description : An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          type : string
+          examples:
+            - e-123456789
         id:
           description: Specifies the unique identifier of the order.
           type: string
@@ -4753,6 +4983,12 @@ components:
         data:
           type: object
           properties:
+            order_number:
+              description: A user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
+              type: string
+            external_ref:
+              description: An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+              type: string
             customer:
               type: object
               properties:
@@ -4770,6 +5006,12 @@ components:
         data:
           type: object
           properties:
+            order_number:
+              description: A user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
+              type: string
+            external_ref :
+              description : An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+              type : string
             account:
               type: object
               properties:
@@ -5163,7 +5405,7 @@ tags:
       - You need to configure and enable a payment gateway before you can accept payments for orders.
       - Configure your store to use [Manual Gateway](/docs/api/payments/update-manual-gateway) to process payments if the order total is zero or the payment is through non-supported payment providers.
       - There are a number of actions that happen to your inventory when checking out and paying for an order. For more information, see [Inventory](/docs/api/pxm/inventory/inventories-introduction).
-      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](https://beta.elasticpath.dev/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
+      - We recommend to wait until the payment confirmation process is fully completed before proceeding with any additional updates to the order. Making simultaneous updates to the same entity immediately after payment confirmation can lead to a race condition. To learn more information on handling parallel calls to API objects, see [Parallel Calls to API Objects](/guides/Getting-Started/api-contract#parallel-calls-to-api-objects).
 
       :::
 

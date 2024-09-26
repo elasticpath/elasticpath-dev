@@ -80,7 +80,7 @@ info:
   
    An integration with an `integration_type` of [`aws_sqs`](/docs/api/integrations/create-integration) delivers its events directly into the configured AWS SQS queue. These messages can be processed by any appropriate means, such as a Lambda function.
   
-   For more information about creating Simple Queue Service (SQS) queues, see the [Simple Queue Service (SQS)](https://elasticpath.dev/guides/How-To/Integrations/sqs-queues) and [SQS Events with CloudFormation](https://elasticpath.dev/guides/How-To/Integrations/sqs-queues) sections.
+   For more information about creating Simple Queue Service (SQS) queues, see the [Simple Queue Service (SQS)](https://elasticpath.dev/guides/How-To/Integrations/sqs-queues) and [SQS Events with CloudFormation](https://elasticpath.dev/guides/How-To/Integrations/sqs-queues-cloudformation) sections.
     
    #### Simple Text Orientated Messaging Protocol (STOMP)
   
@@ -409,61 +409,341 @@ info:
    ### Observable Events
     
    You can pass multiple observable keys to the `observes` field of the [integration object](/docs/api/integrations/create-integration), or you can create individual events. You can use an array when you handle multiple webhooks at the same URL.
-    
-   | **Entity/Resource**                                                                                                      | **Action** | **Observable Key** | **Store/Organization** |
-   |:-------------------------------------------------------------------------------------------------------------------------| :--- | :--- | :--- |
-   | [**Address**](/docs/api/addresses/addresses-introduction)                                                        | Created | `address.created` | Store |
-   |                                                                                                                          | Updated | `address.updated` | Store |
-   |                                                                                                                          | Deleted | `address.deleted` | Store |
-   | [**Account**](/docs/api/accounts/account-management-introduction)                | Created | `account.created` | Store |
-   |                                                                                                                          | Updated  | `account.updated` | Store |
-   |                                                                                                                          | Deleted  | `account.deleted` | Store |
-   | [**Account Member**](/docs/api/accounts/account-members)                                   | Created | `account-member.created` | Store |
-   |                                                                                                                          | Updated  | `account-member.updated` | Store |
-   |                                                                                                                          | Deleted  | `account-member.deleted` | Store |
-   | [**Account Membership**](/docs/api/accounts/account-membership)                            | Created | `account-membership.created` | Store |
-   |                                                                                                                          | Updated  | `account-membership.updated` | Store |
-   |                                                                                                                          | Deleted  | `account-membership.deleted` | Store |
-   | [**Carts**](/docs/api/carts/cart-management)                                                                            | Updated | `cart.updated` | Store |
-   |                                                                                                                          | Deleted  | `cart.deleted` | Store |
-   | [**Currency**](/docs/api/pxm/currencies/currencies)                                   | Created | `currency.created` | Store |
-   |                                                                                                                          | Updated | `currency.updated` | Store |
-   |                                                                                                                          | Deleted | `currency.deleted` | Store |
-   | [**Customer**](/docs/customer-management/customer-management-api/customer-management-api-overview)         | Created | `customer.created` | Store |
-   |                                                                                                                          | Updated | `customer.updated` | Store |
-   |                                                                                                                          | Deleted | `customer.deleted` | Store |
-   | [Custom API Entries](/docs/api/commerce-extensions/custom-api-entries) | Created | `customAPIEntryType.created` | Store |
-   | | Updated | `customAPIEntryType.updated` | Store |
-   | | Deleted | `customAPIEntryType.deleted` | Store |
-   | [**File**](/docs/api/pxm/files/files)                                                             | Created | `file.created` | Store |
-   |                                                                                                                          | Deleted | `file.deleted` | Store |
-   | [**Integration (events)**](/docs/api/integrations/create-integration)                                  | Created | `integration.created` | Store, Organization |
-   |                                                                                                                          | Updated | `integration.updated` | Store, Organization |
-   |                                                                                                                          | Deleted | `integration.deleted` | Store, Organization |
-   | [**One-Time Password Token Request**](/docs/authentication/single-sign-on/password-profiles-api/create-one-time-password-token-request) | Created | `one-time-password-token-request.created` | Store |
-   | [**Order Events**](/docs/api/carts/orders)                                           |
-   | `/checkout`                                                                                                              | Created | `order.created` | Store |
-   | `/orders/:id/payments`                                                                                                   | Updated | `order.updated`/`order.paid`. The event `order.paid` is triggered when the payment status is `paid`. The event `order.updated` is triggered when the order is captured, completed, refunded, anonymized, or updated. | Store |
-   | `/orders/:id`                                                                                                            | Fulfilled/Canceled | `order.fulfilled`/`order.cancelled` | Store |
-   | `/orders/:id/payments`                                                                                                   | Authorized | `order.authorized` | Store |
-   | `/orders/:id/transactions/:id/capture`                                                                                   | Paid/Captured | `order.paid`/ `order.updated`. The event `order.paid` is triggered when the order status is completed and captured, and the payment status is `paid`. The event `order.updated` is triggered when the order is captured, completed, refunded, anonymized, or updated. | Store |
-   | `/orders/:id/transactions/:id/refund`                                                                                    | Refunded | `order.refunded` | Store |
-   | [**Payment Gateway**](/docs/api/payments/gateways)                           | Updated | `payment-gateway.updated` | Store |
-   | [**Catalog releases**](/docs/api/pxm/catalog/releases)                                               | Created | `catalog-release.created` | Store, Organization |
-   |                                                                                                                          |  Updated | `catalog-release.updated` | Store, Organization |
-   |                                                                                                                          | Deleted | `catalog-release.deleted` | Store, Organization |
-   | [**Catalog rules**](/docs/api/pxm/catalog/rules)                                                      | Created | `catalog-rule.created` | Store |
-   |                                                                                                                          | Updated | `catalog-rule.updated` | Store |
-   |                                                                                                                          | Deleted | `catalog-rule.deleted` | Store |
-   | [**Settings**](/docs/api/settings/settings)                                           | Created | `settings.created` | Store |
-   |                                                                                                                          | Updated | `settings.updated` | Store |
-   | [**Stock Transaction**](/docs/api/pxm/inventory/get-single-stock-transaction)                                           | Created | `stock-transaction.created` | Store |
-   | [**Transaction**](/docs/api/pxm/inventory/transactions)                                      | Created | `transaction.created` | Store |
-   |                                                                                                                          | Updated | `transaction.updated` | Store |
-   | [**Subscriptions**](/docs/subscriptions/observable-events) | <td colspan="3">You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. See [**Subscriptions**](/docs/subscriptions/observable-events).</td> |
-   | [**User Authentication Info**](/docs/authentication/single-sign-on/user-authentication-info-api/overview) | Created | `user-authentication-info.created` | Store |
-   |                                                                                                                          | Updated  | `user-authentication-info.updated` | Store |
-   |                                                                                                                          | Deleted  | `user-authentication-info.deleted` | Store |
+   
+      <table>
+        <tr>
+            <th>Entity/Resource</th>
+            <th>Action</th>
+            <th>Observable Key</th>
+            <th>Store/Organization</th>
+        </tr>
+        <tr>
+            <td><a href="/docs/api/addresses/addresses-introduction"><strong>Address</strong></a></td>
+            <td>Created</td>
+            <td><code>address.created</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Updated</td>
+            <td><code>address.updated</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Deleted</td>
+            <td><code>address.deleted</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td><a href="/docs/api/accounts/account-management-introduction"><strong>Account</strong></a></td>
+            <td>Created</td>
+            <td><code>account.created</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Updated</td>
+            <td><code>account.updated</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Deleted</td>
+            <td><code>account.deleted</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td><a href="/docs/api/accounts/account-members"><strong>Account Member</strong></a></td>
+            <td>Created</td>
+            <td><code>account-member.created</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Updated</td>
+            <td><code>account-member.updated</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Deleted</td>
+            <td><code>account-member.deleted</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+            <td><a href="/docs/api/accounts/account-membership"><strong>Account Membership</strong></a></td>
+            <td>Created</td>
+            <td><code>account-membership.created</code></td>
+            <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>account-membership.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>account-membership.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/cart-management"><strong>Carts</strong></a></td>
+             <td>Updated</td>
+             <td><code>cart.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>cart.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/pxm/currencies/currencies"><strong>Currency</strong></a></td>
+             <td>Created</td>
+             <td><code>currency.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>currency.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>currency.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/customer-management/customer-management-api/customer-management-api-overview"><strong>Customer</strong></a></td>
+             <td>Created</td>
+             <td><code>customer.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>customer.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>customer.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/commerce-extensions/custom-api-entries">Custom API Entries</a></td>
+             <td>Created</td>
+             <td><code>customAPIEntryType.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>customAPIEntryType.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>customAPIEntryType.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/pxm/files/files"><strong>File</strong></a></td>
+             <td>Created</td>
+             <td><code>file.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>file.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/integrations/create-integration"><strong>Integration (events)</strong></a></td>
+             <td>Created</td>
+             <td><code>integration.created</code></td>
+             <td>Store, Organization</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>integration.updated</code></td>
+             <td>Store, Organization</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>integration.deleted</code></td>
+             <td>Store, Organization</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/authentication/single-sign-on/password-profiles-api/create-one-time-password-token-request"><strong>One-Time Password Token Request</strong></a></td>
+             <td>Created</td>
+             <td><code>one-time-password-token-request.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/orders"><strong>Order Events</strong></a></td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/checkout-api">Checkout</a></td>
+             <td>Created</td>
+             <td><code>order.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/payments">Payments</a></td>
+             <td>Updated</td>
+             <td><code>order.updated</code> / <code>order.paid</code>. The event <code>order.paid</code> is triggered when the payment status is <code>paid</code>. The event <code>order.updated</code> is triggered when the order is captured, completed, refunded, anonymized, or updated.</td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Authorized</td>
+             <td><code>order.authorized</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/orders">Orders</a></td>
+             <td>Fulfilled</td>
+             <td><code>order.fulfilled</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Canceled</td>
+             <td><code>order.cancelled</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/capture-a-transaction">Capture Transaction</a></td>
+             <td>Paid</td>
+             <td><code>order.paid</code>. The event <code>order.paid</code> is triggered when the order status is completed and captured, and the payment status is <code>paid</code>.</td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Captured</td>
+             <td><code>order.updated</code>. The event <code>order.updated</code> is triggered when the order is captured, completed, refunded, anonymized, or updated.</td>
+             <td>Store</td>
+        </tr>
+        <tr>
+            <td><a href="/docs/api/carts/refund-a-transaction">Refund Transaction</a></td>
+             <td>Refunded</td>
+             <td><code>order.refunded</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/payments/gateways"><strong>Payment Gateway</strong></a></td>
+             <td>Updated</td>
+             <td><code>payment-gateway.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/pxm/catalog/releases"><strong>Catalog releases</strong></a></td>
+             <td>Created</td>
+             <td><code>catalog-release.created</code></td>
+             <td>Store, Organization</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>catalog-release.updated</code></td>
+             <td>Store, Organization</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>catalog-release.deleted</code></td>
+             <td>Store, Organization</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/pxm/catalog/rules"><strong>Catalog rules</strong></a></td>
+             <td>Created</td>
+             <td><code>catalog-rule.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>catalog-rule.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>catalog-rule.deleted</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/settings/settings"><strong>Settings</strong></a></td>
+             <td>Created</td>
+             <td><code>settings.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>settings.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/pxm/inventory/get-single-stock-transaction"><strong>Stock Transaction</strong></a></td>
+             <td>Created</td>
+             <td><code>stock-transaction.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/pxm/inventory/transactions"><strong>Transaction</strong></a></td>
+             <td>Created</td>
+             <td><code>transaction.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>transaction.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/api/carts/tax-items"><strong>Tax Items</strong></a></td>
+             <td>Updated</td>
+             <td><code>cart.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/subscriptions/observable-events"><strong>Subscriptions</strong></a></td>
+             <td colspan="3">You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change. See <a href="/docs/subscriptions/observable-events"><strong>Subscriptions</strong></a>.</td>
+        </tr>
+        <tr>
+             <td><a href="/docs/authentication/single-sign-on/user-authentication-info-api/overview"><strong>User Authentication Info</strong></a></td>
+             <td>Created</td>
+             <td><code>user-authentication-info.created</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Updated</td>
+             <td><code>user-authentication-info.updated</code></td>
+             <td>Store</td>
+        </tr>
+        <tr>
+             <td></td>
+             <td>Deleted</td>
+             <td><code>user-authentication-info.deleted</code></td>
+             <td>Store</td>
+        </tr>
+     </table>
+   
     
    :::note
     

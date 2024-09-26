@@ -14,7 +14,7 @@ const Trigger = ({ name }: { name: string }) => {
   return (
     <TabsTrigger
       value={name}
-      className="data-[state='active']:dark:bg-[#1FEC90] data-[state='active']:bg-[#61DEA6] data-[state='active']:shadow-lg dark:data-[state='active']:shadow-[0px_0px_28px_0px_#1FEC90] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-xl py-1 px-6"
+      className="data-[state='active']:dark:bg-[#1FEC90] data-[state='active']:bg-[#61DEA6] data-[state='active']:text-black border-0 bg-transparent !rounded-full transition-all duration-500 text-xl py-1 px-6"
     >
       {name}
     </TabsTrigger>
@@ -22,13 +22,13 @@ const Trigger = ({ name }: { name: string }) => {
 };
 
 function Tab({
-  img,
-  value,
-  icon,
-  tagline,
-  listItems,
-  linkItems,
-}: {
+               img,
+               value,
+               icon,
+               tagline,
+               listItems,
+               linkItems,
+             }: {
   img: string;
   value: string;
   icon: JSX.Element;
@@ -62,6 +62,7 @@ function Tab({
         <div className="flex text-black gap-8 mt-8">
           <a
             href={linkItems[0]}
+            target="_blank"
             className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-3 px-8 hover:ring-green-500 transition-all text-black border-0 text-base font-semibold hover:no-underline"
           >
             Watch Demo
@@ -81,7 +82,7 @@ function Tab({
 export default function CommerceApps() {
   return (
     <section
-      id="CommerceApps"
+      id="CommerceServices"
       className="px-20 py-12 md:py-24 text-center leading-tight tracking-tight"
     >
       <link
@@ -121,12 +122,12 @@ export default function CommerceApps() {
       />
 
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
-          Apps for commerce
+        <h2 className="mb-14 text-4xl md:text-[4rem] font-semibold tracking-tight">
+          Elastic Path Composable Commerce
         </h2>
-        <Tabs defaultValue="Products">
+        <Tabs defaultValue="Merchandise">
           <TabsList className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <Trigger name={"Products"} />
+            <Trigger name={"Merchandise"} />
             <Trigger name={"Payments"} />
             <Trigger name={"Orders"} />
             <Trigger name={"Subscriptions"} />
@@ -137,17 +138,20 @@ export default function CommerceApps() {
           <div className="max-w-7xl mx-auto my-12">
             <Tab
               img="/assets/homepage/products-screenshot.jpg"
-              value="Products"
+              value="Merchandise"
               icon={<ProductsIcon />}
-              tagline="Efficiently manage product catalogs and info across channels with our Product Information Management (PIM) app."
+              tagline="Effortlessly orchestrate your product offerings, craft compelling catalogs, and execute sophisticated, rules-driven promotions."
               listItems={[
-                "Multiple catalogs & flexible pricing engine",
-                "Bundles & promotions",
+                "Unlimited catalogs for unlimited channels",
+                "Implement diverse pricing and promotional strategies",
+                "Complex & configurable bundles",
                 "Up to 10,000 product variations",
+                "Empowers merchandisers",
+                "Accelerates time-to-market",
+                "Improve Customer Experience",
               ]}
               linkItems={[
-                "https://www.elasticpath.com/demo-library",
-                "/docs/api/pxm/products/products",
+                "https://www.elasticpath.com/demo-library?feedStatic33365=filter191470-%3Emerchandisers.89457",
               ]}
             />
 
@@ -205,11 +209,12 @@ export default function CommerceApps() {
               img="/assets/homepage/cx-screenshot.jpg"
               value="Studio"
               icon={<StudioIcon />}
-              tagline="A point & click visual page builder for business users. Implement full storefront websites or just landing pages."
+              tagline="A point & click visual page builder for business users. Implement full websites or shoppable landing pages."
               listItems={[
                 "Leverage our rich out-of-the-box component set or use powerful tooling to craft your own",
                 "Launch sooner with pre-configured integrations",
                 "Showcase your brand with effortless customization",
+                "Shoppable Social Media Landing Pages",
               ]}
               linkItems={[
                 "https://www.elasticpath.com/demo-library",
@@ -223,7 +228,7 @@ export default function CommerceApps() {
               icon={<ComposerIcon />}
               tagline="Your commerce data, wherever you need it"
               listItems={[
-                "Choose from more than 100 instant-on third-party integrations.",
+                "Choose from 130+ instant-on third-party integrations.",
                 "Create your own custom integrations and hook up to more than 3,000 available actions.",
                 "Monitor every component via a single pane of glass.",
               ]}
