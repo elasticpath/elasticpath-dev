@@ -4,8 +4,6 @@ nav_label: Create a Development Store in Shopify
 sidebar_position: 5
 ---
 
-Using Studio with Shopify enhances and extends the e-commerce capabilities of Shopify. You can use the themes and pages that you develop in Studio in your Shopify store.
-
 :::caution
 
 You must have access to the Shopify Partner dashboard.
