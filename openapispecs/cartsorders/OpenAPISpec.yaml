@@ -1743,7 +1743,7 @@ paths:
     put:
       tags:
         - Tax Items
-      summary: Update a TaxItem
+      summary: Update a Tax Item
       description: Use this endpoint to update a tax item.
       operationId: updateATaxItem
       parameters:
@@ -2790,9 +2790,29 @@ paths:
     post:
       tags:
         - Payments
-      summary: Authorize Setup
-      description: Authorize setup
-      operationId: authorizeSetup
+      summary: Payment Setup
+      description: |
+        Depending on the payment gateway, you may have access to different transaction types such as capturing funds immediately or authorizing them for later. For more information, see [Transactions](/docs/api/carts/transactions).
+
+        The following types of payment methods are available depending on the payment gateway:
+
+        - `purchase`: The is the simplest method. The gateway attempts to charge the customer immediately.
+        - `authorize`: This method authorizes a payment so that funds can be captured later, for example, when an item is dispatched or restocked.
+        - `purchase_setup`: This method prepares the system for a purchase by verifying payment details without actually charging the customer. For example, a customer adds items to their cart and proceeds to checkout. Before finalizing the purchase, the system runs `purchase_setup` to confirm all payment details, but no funds are transferred until the customer confirms the order.
+        - `authorize_setup`: This method prepares the system for an authorization-only transaction. This process holds the necessary funds but does not transfer them, ensuring that the customer has sufficient balance for the transaction. It sets up the conditions for a future capture of the authorized funds. For example, a customer places a pre-order for a product that will ship in two weeks. The merchant uses `authorize_setup` to prepare for the payment authorization. This holds the customer's funds to ensure they can cover the purchase but waits to capture the payment until the product ships. This ensures that payment is secured but not collected prematurely.
+
+        :::note
+
+        Split payments can be performed using any methods for any gateway.
+
+        - You can partially pay funds using `purchase` method. The gateway attempts to charge the customer immediately, and the payment status for an order will show `partially_paid`
+        - You can partially pay for an order using `authorize` method where the order will be marked as `partially_authorized`. The transaction must be completed for the order status to be `partially_authorized`.
+        - A `purchase_setup` method allows verification of payment details for partial payments without transferring funds until the customer confirms the full order.
+        - An `authorize_setup` method can be used to hold a partial amount of the total funds, ensuring the customer has enough balance for a future capture.
+        Until a payment is made neither `purchase_setup` nor `authorize_setup` affects the payment statuses, and the order remains unpaid. For more information about order and payment statuses for split payments, see [Split payments](/docs/api/payments/payment-gateways-introduction#split-payments).
+
+        :::
+      operationId: paymentSetup
       parameters:
         - name: orderID
           in: path
@@ -2836,9 +2856,15 @@ paths:
     post:
       tags:
         - Payments
-      summary: Confirm Setup
-      description: Confirm setup
-      operationId: confirmSetup
+      summary: Confirm Payment
+      description: |
+        Confirm Payment serves as a mechanism to synchronize transaction information from the third-party payment provider back to our system. This ensures that Composable Commerce accurately reflects the values from the payment provider.
+
+        ### Handling 3D Secure Validations for Stripe Payments
+
+        For Stripe Payments requiring 3D Secure validation, the transaction response will include the `client_parameters` object, which provides credentials to support validation of these payment requests on the payment provider's side. We recommend using the Stripe's client libraries to manage these 3D Secure validations. Once the validation succeeds, proceed with a confirmation request to sync the validated transaction into Composable Commerce and continue with the payment process.
+
+      operationId: confirmPayment
       parameters:
         - name: orderID
           in: path
