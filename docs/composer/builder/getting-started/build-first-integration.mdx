@@ -18,7 +18,7 @@ The integration you build here retrieves an access token to grant you access to 
 
 ## Prerequisites
 
-You need to authenticate with your Commerce store using the Commerce API keys. See [Application Keys](/docs/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges.
+You will need to create a connection using Elastic Path keys and authorization URL. See [Application Keys](/docs/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. 
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
@@ -30,45 +30,37 @@ You need to authenticate with your Commerce store using the Commerce API keys. S
 
 1. In Commerce Manager, go to **COMPOSER** > **Builder**.
 1. Select **+ Add integration**. The **Configure new integration** page displays.
-1. From **Configure new integration**, select **Blank** > **Start from blank integration**. The **Integration Details** page displays.
-1. From **Integration details**, complete the following:
-
-    1. In **Name**, enter **My First Integration**.
-    1. (Optional) In **Category**, enter a category. If you do not enter a category, your integration is displayed in **Uncategorized**.  
-    1. (Optional) In **Labels**, enter any labels you want to give the integration.
-    1. (Optional) In **Description**, enter a brief description for this integration.
-    1. Select **Next**. 
+1. From **Create new integration**, select **Quickstart** > **Build an integration from the ground up**. The **Details** page is displayed.
+1. From **Create new integration** details page, provide the  **Name**,  enter  a  name  **My  First  Integration**  for  your  integration.
+1. select **Webhook** for the trigger and click **Create trigger**.
     
-## Configure the Integration Trigger
+## Review the Integration Trigger
 
 Most integrations are either scheduled events or webhooks triggered by an Elastic Path [observable event](http://localhost:3000/docs/api/integrations/integrations-introduction#observable-events). For this tutorial, we are using the **Webhook Trigger**.
 
-1. Click **Webhook**. The step is added to the flow.
-1. Click the step to display the drawer details. By default the following settings are set. 
+To see the  details  of  the  webhook  step,  click  the **Trigger** step  tile  to  display  the  drawer  details.  By  default,  the  following  settings  are  set:
 
-	1. In **Inputs**, **Response Type** is set to **Asynchronous**.
-	1. **Response Status Code** is set to **200 OK**.
-	1. **Response Content Type** is set to **application/json**.
+1. **Response Type** is set to **Asynchronous**.
+1. You can optionally set **Response Status Code** to **200 OK**.
+1. You can optionally set **Response Content Type** to **application/json**.
 
 ## Add Your First Step
 
 1. Click **+** under the **Webhook** step to add a new step. 
-1. From **Choose component**, select the **Code** component. The **Code** component displays.
-1. Select the **Code Block** action. The **Code Block** action is added to the flow.
-1. Click the step to display the drawer details.
-1. In **Step name**, enter a name for the step, for example, **Get Client Token**.
-1. Cick **Inputs**.
-1. In **Code** > **edit**, enter the following: 
+1. From **Add a step**, select the **Code** component. The **Code** component displays.
+1. Select the **Code Block** action. Author and run your own code action. The **Code Block** action is added to the flow.
+1. Click the step tile to display the drawer details.
+1. Select the **Details** tab in the details drawer and enter  a  name  for  the  step,  for  example,  **Get  EPCC  Client  Token**.
+1. Click the **Configure** tab.
+1. Click **Edit**, enter the following:
 
     ```json
-        const fetch = require("node-fetch@2.6.1/lib/index.js");
         const params =  new  URLSearchParams();
         module.exports =  async  ({ logger, configVars }, stepResults)  =>  {
 	        
 	        let base_url = "{{paste the url collected in gather step above}}"
 	        let client_id = "{{paste the client id collected in gather step above}}"
 	        let client_secret = "{{paste the client secret collected in gather step above}}"
-        
 	    	params.append('client_id', client_id);
 	        params.append('client_secret', client_secret);
 	        params.append('grant_type',  'client_credentials');
@@ -78,10 +70,13 @@ Most integrations are either scheduled events or webhooks triggered by an Elasti
 	        var data =  await response.json();
 	       
 	        return  { data };
+            };
     ```
 
+1. Click the **Check mark** on the upper right corner of the embedded development dialog.
 1. Click **Save**.
-1. Close the drawer.
+1. To test your code, click **Run** in the lower left to trigger manual execution of your integration.  It should say **Running** until each step completed.
+1. Select the **Get  EPCC  Client  Token** step in the **Steps** panel to see the results of the code in the right **Output** panel. 
 
 ## Create a Branch Based on the Results
 
@@ -127,30 +122,18 @@ Most integrations are either scheduled events or webhooks triggered by an Elasti
 
 ### (Optional) Get External Data
 
-The following steps provide an example of how to get data from an external API using the **HTTP** component. This is useful for use cases where there is no component that has the actions that you need to retrieve the data that you want. The steps below describe retrieving details for a random beer from [Punk API](https://punkapi.com/documentation/v2) and logs the data.
+The following steps will generate a number between 1 and 325, and retrieve the details of that Beer from **Sample APIs** open API, and and log the data.
 
-1. Add a step that uses the **Random Integer** action from the **Math** component.
-1. In **Inputs**, set **Min** to **1** and **Max** to **325**.
-1. Add a step that uses the **GET Request** action from the **HTTP** component.
-1. Configure the step as follows:
-
-    1. In **Inputs**, click **URL**, and select **Template** tab.
-	1. In **Template**, enter **https://api.punkapi.com/v2/beers/**.
-	1. From **Add Template Field**, select the **Reference** tab. The **Reference** pane is displayed.
-    1. Make sure the **Reference Step** is **Random Integer**.
-    1. In **Value Preview**, click **Results**. 
-    1. Make sure that **Reference Search** is **results**.
-	1. In **URL**, make sure that **Template** is `https://api.punkapi.com/v2/beers/Random Integer | results`.
-
-1. Add a step that uses the **Write Log Message** action from the **Log** component.
-1. Configure the step as follows:
-
-    1. In **Inputs**, select **Log Message**. The **Log Message** pane is displayed.
-    1. Select the **Reference** tab. 
-    1. Make sure the **Reference Step** is **GET Request**.
-    1. In **Value Preview**, click **results**. 
-    1. Make sure that **Log Message** is `GET Request | results`.
+1. Click  **+**  under  **Success**  Log message step  to  add  a  step  to  generate a random number between 1 and 325.  
+1. Type **Math** in the search box and select the **Math** component.
+1. Search for **Random** in the actions search box and select  Random Integer.
+1. In the Min input box type **1** and in the Max input box type **325**.
+1. Click the **+** under "Random Integer" and search for **HTTP**.
+1. Select the **HTTP** component and then choose **Get Request**.
+1. Click In the **URL** box, click the **Template** tab and type **https://api.sampleapis.com/beers/stouts/**.
+1. Then to the right of the input box click the **+** symbol to add a template field. Then click the **Reference** tab. The **Reference Step** should be **Random Integer** and then in the **Value Preview** double click on the word **results**. 
+1. Finally, click the **+** below the "Get Request" step and seach for **Log** message again and choose **Write Message** and for the "Log Message" click the **Reference** tab again and select the **results** of the **Get Request** step.
 
 ## Test Your Integration
 
-Click **Save & Run Test**. This opens the **Test Runner** dialog and shows the results of the integration test.
+Click **Save** in the upper right corner and then **Run** in the lower left once save has completed. This will open the **Test  History** dialog and show the results of the integration test. 
