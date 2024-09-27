@@ -17,11 +17,11 @@ The integration you build here retrieves an access token to grant you access to 
 
 ## Prerequisites
 
-###  Gather  Elastic  Path  Commerce  Cloud  data
+### Gather  Elastic  Path  Composable Commerce Data
 
 You will need to create a connection using Elastic Path keys and authorization URL. See [Application Keys](/docs/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. 
 
-| Commerce API Key | Description                            |
+| Option | Description                            |
 |:------------------------------------|:---------------------------------------|
 | **API Base URL**                    | This is the API URL. |
 | **Client ID**                       | Your Store's Client ID. |
@@ -79,6 +79,8 @@ To see the  details  of  the  webhook  step,  click  the **Trigger** step  tile 
 1. To test your code, click **Run** in the lower left to trigger manual execution of your integration.  It should say **Running** until each step completed.
 1. Select the **Get  EPCC  Client  Token** step in the **Steps** panel to see the results of the code in the right **Output** panel. 
 
+This example takes static code and executes a POST to the Commerce API and retrieves the access token and makes that JSON response available to subsequent steps.
+
 ## (Optional) Get External Data
 
 The following steps will generate a number between 1 and 325, and retrieve the details of that Beer from **Sample APIs** open API, and and log the data.
@@ -91,7 +93,7 @@ The following steps will generate a number between 1 and 325, and retrieve the d
 1. Select the **HTTP** component and then choose **Get Request**.
 1. Click In the **URL** box, click the **Template** tab and type **https://api.sampleapis.com/beers/stouts/**.
 1. Then to the right of the input box click the **+** symbol to add a template field. Then click the **Reference** tab. The **Reference Step** should be **Random Integer** and then in the **Value Preview** double click on the word **results**. 
-1. Finally, click the **+** below the "Get Request" step and seach for **Log** message again and choose **Write Message** and for the "Log Message" click the **Reference** tab again and select the **results** of the **Get Request** step.
+1. Finally, click the **+** below the "Get Request" step, seach for **Log** message again, and choose **Write Message** and for the "Log Message" click the **Reference** tab again and select the **results** of the **Get Request** step.
 
 ## Test Your Integration
 
