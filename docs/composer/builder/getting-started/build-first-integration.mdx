@@ -9,8 +9,7 @@ This tutorial walks you through some basic concepts of integration development. 
 - Fetch data from Commerce.
 - Learn how data flows between steps of an integration.
 - Use logical branches to determine what to do with the data.
-- Send the data conditionally to the log.
-- Fetch some external data and perform an action on the data in Commerce.
+- Send the data conditionally to another third-party.
 
 ## Integration Overview
 
@@ -18,13 +17,15 @@ The integration you build here retrieves an access token to grant you access to 
 
 ## Prerequisites
 
+###  Gather  Elastic  Path  Commerce  Cloud  data
+
 You will need to create a connection using Elastic Path keys and authorization URL. See [Application Keys](/docs/authentication/security#application-keys). You can find this information in **SYSTEM** > **Application Keys** in Commerce Manager when logged in as a user with Seller Admin privileges. 
 
 | Commerce API Key | Description                            |
 |:------------------------------------|:---------------------------------------|
-| **API Base URL**                    | Your Commerce API Base URL. |
-| **Client ID**                       | Your Commerce Client ID. |
-| **Client Secret**                   | Your Commerce Client Secret. |
+| **API Base URL**                    | This is the API URL. |
+| **Client ID**                       | Your Store's Client ID. |
+| **Client Secret**                   | Your Store's Client Secret. |
 
 ## Create a New Integration
 
@@ -78,49 +79,7 @@ To see the  details  of  the  webhook  step,  click  the **Trigger** step  tile 
 1. To test your code, click **Run** in the lower left to trigger manual execution of your integration.  It should say **Running** until each step completed.
 1. Select the **Get  EPCC  Client  Token** step in the **Steps** panel to see the results of the code in the right **Output** panel. 
 
-## Create a Branch Based on the Results
-
-1. Click **+** under the **Get EPCC Client Token** step to add a new step. 
-1. From **Choose component**, select the **Branch** component. The **Branch** component displays.
-1. Select the **Branch on Expression** action. The **Branch on Expression** action is added to the flow.
-1. Click the step to display the drawer details.
-1. Click **Inputs**. 
-1. Click **Condition Inputs** > **Branch Name**, enter a name, for example, **Token Exists**.
-1. Click **Field**. The **Field** details are displayed.
-1. Click **Reference**. The **Reference Step** must be **Get EPCC Client Token**.
-1. Click **Reference Search**. **results** is added to the box.
-1. Enter **.access_token** after **results**. The **Reference Search** becomes **results.access_token**.
-1. Click **Operator** and select **exists**.
-1. Click **Save**.
-1. Close the drawer.
-
-### Log Success if the Access Token is Found
-
-1. Click **+** under the **Token Exists** step to add a step.
-1. From **Choose component**, select the **Log** component. The **Log** component displays.
-1. Select the **Write Log Message** action. The **Write Log Message** action is added to the flow.
-1. Click the step to display the drawer details.
-1. In the **Step Name** box type **Success**.
-1. Click **Inputs**.
-1. In **Log Level**, select **info**.
-1. In **Log Message**, enter the message, for example, **Access Token Found!**.
-1. Click **Save**.
-1. Close the drawer.
- 
-### Log an Error if the Access Token is not Found
-
-1. Click **+** under the **Else** step to add a step to handle the secrets not matching.
-1. From **Choose component**, select the **Log** component. The **Log** component displays.
-1. Select the **Write Log Message** action. The **Write Log Message** action is added to the flow.
-1. Click the step to display the drawer details.
-1. In the **Step Name** box type "**Failure**"
-1. Click **Inputs**.
-1. In **Log Level**, select **error**.
-1. In **Log Message**, enter the warning message, for example, **Access Token Not Found!**
-1. Click **Save**.
-1. Close the drawer.
-
-### (Optional) Get External Data
+## (Optional) Get External Data
 
 The following steps will generate a number between 1 and 325, and retrieve the details of that Beer from **Sample APIs** open API, and and log the data.
 
