@@ -8,13 +8,13 @@ sidebar_position: 4
 
 1. Go to **COMMERCE EXTENSIONS > Custom APIs**.
 1. Select **Create New**.
-1. Fill out the following details in the **Basic Details** section:
-    1. In **Name**, enter the the name of the Custom API. It should be between 1 and 255 characters.
-    1. In **Description**, enter the description for the Custom API.
-1. Fill out the following details in the **Advanced Options** section:
-    1. In **API Type**, enter the type of the Custom API. 
-    1. In **Slug**, enter a unique slug identifier for the Custom API.
-    1. (Optional) Under **Settings**, select the checkbox for **Allow UPSERT** so the system can automatically create a new record if it doesn't exist when updating. For more details, see [Upsert Custom API Entries](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#upsert-custom-api-entries). 
+1. In the **Basic Details** section:
+    1. **Name**: Enter the the name of the Custom API in the . It should be between 1 and 255 characters.
+    1. **Description**: Provide a description for the Custom API.
+1. In the **Advanced Options** section:
+    1. **API Type**: Specify the type of the Custom API. 
+    1. **Slug**: Enter a unique slug identifier for the Custom API.
+    1. (Optional) In **Settings**, select the checkbox for **Allow UPSERT** so the system can automatically create a new record if it doesn't exist when updating. For more details, see [Upsert Custom API Entries](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#upsert-custom-api-entries). 
 1. Select **Create Custom API**.
 
 ## Creating Custom Fields
@@ -22,15 +22,25 @@ sidebar_position: 4
 To create a Custom Field for a Custom API, follow these steps:
 
 1. Go to **COMMERCE EXTENSIONS > Custom APIs**.
-1. Click on the target Custom API in the list. 
-1. Select **Create Field** and choose one of the following options:
+1. Select **Create Field** and choose one of these field types:
     - **String**
     - **Integer**
     - **Boolean**
-1. Fill out the following details in the **Basic Details** section:
-    1. In **Name**, enter the name of the field for the Custom API. It should be between 1 and 255 characters.
-    1. In **Description**, enter the description for the field.
-    1. In **Slug**, enter a unique slug identifier for the field.
+    - **Float**
+1. In the **Basic Details** section:
+    1. **Name**: Enter the field name. It should be between 1 and 255 characters.
+    1. **Description**: Provide a description for the field.
+    1. **Slug**: Enter a unique slug identifier for the field.
+1. (Optional) In **Settings**, select the checkbox for **Allow UPSERT** so the system can automatically create a new record if it doesn't exist when updating. For more details, see [Upsert Custom API Entries](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#upsert-custom-api-entries). 
+1. In the **Validation** section:
+    1. Set the value rules from the drop-down lists:
+        - **Can be NULL** or **Cannot be NULL**
+        - **Can be changed** or **Cannot be changed**
+        - For **String** fields, choose among **Is unique and case sensitive**, **Doesnot need to be unique**, or *Is unique and case insensitive**.
+    1. (For **String** fields) Under **Character Limit**, enter **Minimum Length** and **Maximum Length**.
+    1. (For **Integer** and **Float** fields) Under **Input Range**, enter **Minimum Value** and **Maximum Value**.
+    1. (For **String** fields) In the **Regular Expression** field, enter a less than 1024 character RE2 regular expression to restrict the specific characters that can be stored.
+
 1. Select **Create Field**.
 
 ## Creating Custom API Entries
