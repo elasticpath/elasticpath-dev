@@ -1,0 +1,85 @@
+---
+title: Integrating with Google Merchant Center Next
+nav_label: Google Merchant Center Next Integration
+sidebar_position: 10
+---
+
+You can easily integrate Elastic Path Composable Commerce with your [Google Merchant Center Next](https://www.google.com/retail/) account using the **Integrations Hub** in Commerce Manager. Once you have registered your Elastic Path Composable Commmerce-powered storefront with the Google Merchant Center, you can use the integration to upload your products and inventories to your Google Merchant Center account.  This enables your products to be shown in the **Shopping** tab within Google search results, or even within online ads.  When a search result or ad is clicked, it links to your Elastic Path Composable Commerce-powered storefront. 
+
+![Google Merchant Center Integration](/assets/composer/google-merchant-center-integration.png)
+
+The integration will synchronize your product data, and optionally, your inventory data between your Elastic Path Composable Commerce store and your Google Merchant Center account.
+
+Whenever a catalog release is published in Elastic Path Composable Commerce, the integration publishes the changes to Google Merchant Center using the [Merchant API](https://developers.google.com/merchant/api). 
+
+The following default data is synchronized.  You can optionally configure custom additional attributes to be synchronized.
+
+- Product name
+- Product description
+- Price
+- Image
+- Link to your product on your storefront
+- EAN/UPC
+- Online inventory position
+
+:::caution
+
+- The integration does not support bundles.
+
+:::
+
+## Prerequisites
+
+Before configuring the integration, there are some prequisites you need to meet in Google Merchant Center and Elastic Path Composable Commerce.
+
+### Prequisites in Google Merchant Center Next
+
+You need to perform the following steps in Google Merchant Center Next before configuring the integration.  Details on how to configure each of these elements can be found in [Google's Merchant Center Next online help](https://support.google.com/merchants/answer/12159157/).
+
+1. You must set up a Google Merchant account.
+1. In the Google Merchant Center, you must verify ownership of your storefront. 
+1. For products to be valid in Google, Google requires that you supply shipping details and prices, and a returns policy. The Google Merchant Center does not consider your products valid until this is done.
+1. Once your Google Merchant Center Next account is set-up, you need to create an OAuth 2.0 client id to authorize **Integrations Hub** to connect to your Google Merchant Center Next account.  Please consult the [Google Cloud Platform documentation on how to create an OAuth 2.0 Client ID](https://cloud.google.com/application-integration/docs/configure-authentication-profiles#create-oauth). Note that you may need to [create a Project](https://developers.google.com/workspace/guides/create-project#project) and [configure your OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent) before starting this step.  Please consult the following tables for values that will be needed to configure these steps.
+
+    | OAuth Consent Screen Field Name     | OAuth Consent Screen Field Value       |
+    |:------------------------------------|:---------------------------------------|
+    | **Authorized Domains**              | `elasticpathintegrations.com` |
+    | **Your non-sensitive scopes**       | `openid` |
+    | **Your sensitive scopes**           | `Merchant API` |
+
+    | OAuth Client Id Field Name      | OAuth Client Field Value                        |
+    |:--------------------------------|:---------------------------------------|
+    | **Application Type**            | `Web application` |
+    | **Authorized redirect URIs**    | `https://oauth2.us-east-2.elasticpathintegrations.com/callback` for North America implementations or `https://oauth2.eu-west-1.elasticpathintegrations.com/callback` for Europe implementations |
+
+Save the `Client ID` and `Client Secret` that are produced from creation of the `OAuth 2.0 Client ID` as they will be needed in a later step.
+
+### Prerequisites for Commerce
+
+You need to perform the following steps in Commerce before configuring the integration.
+
+## Configuring the Integration
+
+Once you have met the [prequisites](#prerequisites), you are ready to configure the integration in **Integrations Hub**.
+
+1. In Commerce Manager, go to **COMPOSER** > **Integrations Hub**.
+1. Under **Marketing & Communication**, click **Google Merchant Center**. The integration guides you through the steps you need to follow to complete the integration.
+1. Click **Configure**. The **Trigger details** consist of some details about the integration.
+
+## Using the Integration
+
+To change any configuration details in your integration, open your Integration and go to **Summary** > **Reconfigure**.
+
+In addition, from **Summary**, you can view, pause or delete your integration.
+
+If there is an update to the integration, a message is displayed in **Summary**. Click **Update** to update your integration. You are guided through the steps to configure your integration.
+
+## Troubleshooting the Integration
+
+You can debug any issues in **Executions**. Click an execution to see the execution details. The **Logs** shows the output and any errors or warnings.
+
+From **Step Outputs**, you can select a step to see its output. You can retry an individual step.
+
+## Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NVF5P1tnxCM" title="Configuring Google Merchant Center" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
