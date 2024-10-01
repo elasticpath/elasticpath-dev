@@ -11,8 +11,8 @@ Use the Postman collection to run and explore Commerce APIs. The collection incl
 - Ensure that the Postman client is installed.
 - Ensure that you have downloaded the latest Postman collection and environment from the following links:
 
-    - [Collection](https://documentation.elasticpath.com/assets/epcc/postman/collection.json)
-    - [Environment](https://documentation.elasticpath.com/assets/epcc/postman/environment.json)
+    - [Collection](https://elasticpath.dev/postman/collection.json)
+    - [Environment](https://elasticpath.dev/postman/environment.json)
 
 ## Procedure
 
@@ -31,8 +31,8 @@ Use the Postman collection to run and explore Commerce APIs. The collection incl
 
     :::
 
-1. Go to Postman client on your system and import the Commerce Postman [Collection](https://documentation.elasticpath.com/assets/epcc/postman/collection.json).
-1. Import the [Environment](https://documentation.elasticpath.com/assets/epcc/postman/environment.json) file.
+1. Go to Postman client on your system and import the Commerce Postman [Collection](https://elasticpath.dev/postman/collection.json).
+1. Import the [Environment](https://elasticpath.dev/postman/environment.json) file.
 1. Update the values of the following environment variables with the values copied from Commerce Manager.
     
     - `client_id`

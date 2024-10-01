@@ -13,38 +13,39 @@ export default function HeroSection() {
         <div className="px-3 py-1 text-sm ring-1 ring-gray-300 dark:ring-white/50 rounded-3xl shadow-sm dark:shadow-[0px_0px_28px_0px_#0b3168]">
           <span className="mr-2">💡</span>
           <span className="text-black dark:text-white font-semibold mr-4 hidden md:inline">
-            Note from our CTO:
+            Start your free trial!
           </span>{" "}
           <a
             className="text-gray-600 hover:text-gray-600 dark:text-white dark:hover:text-white dark:hover:decoration-green-400 hover:decoration-green-600 hover:decoration-2 hover:decoration-dotted font-medium transition-all"
-            href="https://www.elasticpath.com/blog/modern-commerce-ipaas-dbaas"
+            href="https://useast.cm.elasticpath.com/free-trial"
+            target="_blank"
           >
-            Why an iPaaS brings world-class commerce to life →
+            Enjoy full access to the Elastic Path product family →
           </a>
         </div>
         <h1 className="mb-4 text-center text-[4.5rem] md:text-[5rem] font-bold dark:drop-shadow-lg dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-[#394464] -from-3% via-[#1F8552] via-32% to-[#2BCC7E] to-64%">
           Build modern commerce experiences
         </h1>
         <p className="text-base text-center md:text-[1.75rem] leading-10 font-light max-w-5xl">
-          Launch faster, solve complex problems, and build world-class
-          experiences with our suite of interconnected{" "}
-          <a
-            href="#CommerceApps"
-            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
-          >
-            e-Commerce Apps
-          </a>
-          ,{" "}
+          Launch faster, tackle complex challenges, and create world-class
+          experiences with our powerful {" "}
           <a
             href="#APIs"
-            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
+            className="dark:text-white text-black font-bold decoration-4 underline underline-offset-8 decoration-green-500"
           >
             APIs{" "}
+          </a>
+          , {" "}
+          <a
+            href="#CommerceServices"
+            className="dark:text-white text-black font-bold decoration-4 underline underline-offset-8 decoration-green-500"
+          >
+            e-Commerce Services
           </a>
           , &{" "}
           <a
             href="#Tools"
-            className="dark:text-white text-black font-bold decoration-2 underline decoration-green-500"
+            className="dark:text-white text-black font-bold decoration-4 underline underline-offset-8 decoration-green-500"
           >
             tools for developers
           </a>

@@ -37,7 +37,7 @@ function Tab({
     <BrowserOnly>
       {() => (
         <div className="relative w-full">
-          <div className="dark:bg-white/20 bg-white mx-auto p-6 my-2 rounded-lg shadow-lg hover:shadow-xl dark:ring-0 ring-1 ring-gray-200">
+          <div className="dark:bg-white/20 bg-white mx-auto p-6 my-2 rounded-lg dark:ring-0 ring-1 ring-gray-200">
             <div
               className="dark:text-white text-black flex items-center text-left"
               onClick={toggleOpen}
@@ -85,6 +85,7 @@ function Tab({
                 <div className="flex gap-4 mt-8 justify-center">
                   <a
                     href={linkItems[0]}
+                    target="_blank"
                     className="bg-transparent tracking-tight rounded-full ring-2 ring-gray-300 py-1.5 px-4 hover:ring-green-500 transition-all dark:text-white/90 text-black border-0 text-sm font-semibold hover:no-underline"
                   >
                     Watch a demo
@@ -109,13 +110,13 @@ export default function CommerceAppsMobile() {
   return (
     <section className="px-6 py-6 mx-auto w-full text-center leading-tight tracking-tight">
       <div className="flex flex-col items-center justify-between dark:text-white">
-        <h2 className="mb-8 text-5xl md:text-[4rem] font-semibold tracking-tight dark:drop-shadow-md">
-          Apps for commerce
+        <h2 className="mb-8 text-5xl md:text-[4rem] font-semibold tracking-tight">
+          Elastic Path Composable Commerce
         </h2>
         <div className="flex flex-col my-6 w-full">
           <Tab
             img="/assets/homepage/products-screenshot.jpg"
-            value="Products"
+            value="Merchandise"
             icon={<ProductsIcon className="size-12" />}
             tagline="Efficiently manage product catalogs and info across channels with our Product Information Management (PIM) app."
             listItems={[
