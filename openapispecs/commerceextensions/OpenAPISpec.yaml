@@ -1052,6 +1052,8 @@ paths:
             not exceed 64KB.
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
     get:
       tags:
         - Custom API Entries
@@ -1353,6 +1355,8 @@ paths:
             not exceed 64KB.
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
     delete:
       tags:
         - Custom API Entries
@@ -1378,6 +1382,8 @@ paths:
           $ref: '#/components/responses/PreConditionError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
   /v2/extensions/{custom_api_slug}:
     parameters:
       - $ref: '#/components/parameters/CustomApiSlug'
@@ -1561,6 +1567,8 @@ paths:
             not exceed 64KB.
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
   /v2/extensions/{custom_api_slug}/{custom_api_entry_id}:
     parameters:
       - $ref: '#/components/parameters/CustomApiSlug'
@@ -1773,6 +1781,8 @@ paths:
             not exceed 64KB.
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
     delete:
       tags:
         - Commerce Extension Custom API
@@ -1798,6 +1808,8 @@ paths:
           $ref: '#/components/responses/PreConditionError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
 components:
   securitySchemes:
     bearerAuth:
@@ -1970,6 +1982,26 @@ components:
                       "title": "Internal Server Error",
                       "status": "500",
                       "detail": "there was a problem processing your request"
+                    }
+                  ]
+                }
+    ServiceUnavailable:
+      description: The service is temporarily unavailable. This request can be safely
+        retried.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            service-unavailable:
+              summary: Service Unavailable
+              value: |
+                {
+                  "errors": [
+                    {
+                      "detail": "An unknown error occurred",
+                      "status": "503",
+                      "title": "Service Unavailable"
                     }
                   ]
                 }
