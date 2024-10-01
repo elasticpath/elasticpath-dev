@@ -32,11 +32,14 @@ To create a Custom Field for a Custom API, follow these steps:
     1. **Description**: Provide a description for the field.
     1. **Slug**: Enter a unique slug identifier for the field.
 1. (Optional) In **Settings**, select the checkbox for **Use as the URL of entry record**. This option is shown only when you select **String** field.
+     
+        When this option is enabled, the value of this field will be used as the URL slug for entries created in the Custom API. This field must be a String, unique, and cannot allow null value.
 1. In the **Validation** section:
     1. Set the value rules from the drop-down lists:
         - **Can be NULL** or **Cannot be NULL**.  This option is disabled when you select **Use as the URL of entry record**.
         - **Can be changed** or **Cannot be changed**
-        - For **String** fields, choose among **Is unique and case sensitive**, **Doesnot need to be unique**, or *Is unique and case insensitive**.
+        - For **String** fields, choose among **Is unique and case sensitive**, **Doesnot need to be unique**, or *Is unique and case insensitive**. 
+            The **Doesnot need to be unique** option is disabled when you select **Use as the URL of entry record**.
     1. (For **String** fields) Under **Character Limit**, enter **Minimum Length** and **Maximum Length**.
     1. (For **Integer** and **Float** fields) Under **Input Range**, enter **Minimum Value** and **Maximum Value**.
     1. (For **String** fields) In the **Regular Expression** field, enter a less than 1024 character RE2 regular expression to restrict the specific characters that can be stored.
