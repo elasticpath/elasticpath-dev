@@ -78,7 +78,7 @@ curl -X POST https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID/
 
 ## Errors
 
-The following error is returned when you attempt to create a code with `uses` or `user` parameters:
+For first time shoppers, the following error is returned when you attempt to create a code with `uses` or `user` parameters:
 
 ```json
 {
