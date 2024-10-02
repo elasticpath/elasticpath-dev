@@ -22,37 +22,30 @@ security:
   - bearerAuth: []
 tags:
   - name: Custom APIs
-    description: "\n## Custom APIs vs Non-Core Flows\n\nHere is a comparison of current\
-      \ features of Non-Core Flows and Custom APIs. This will be updated as we release\
-      \ more capabilities.\n\n| Feature                                          \
-      \                                                                          \
-      \     | Non-Core Flows   | Commerce Extensions                             \
-      \           |\n| ----------------                                          \
-      \                                                                      | ----------------\
-      \ | ---------------------------------------------------------- |\n| Build new\
-      \ APIs                                                                     \
-      \                                             | ✅                | ✅       \
-      \                                                   |\n| Access Level      \
-      \                                                                          \
-      \                                    | Implicit         | Client Credentials\
-      \ only                                    |\n| [Filtering](/docs/api/commerce-extensions/get-all-custom-entries#filtering)\
-      \                                                             | ⛔️         \
-      \      | ✅                                                          |\n| [Sorting](/docs/api/commerce-extensions/get-all-custom-entries#sorting)\
-      \                                                               | ⛔️       \
-      \        | ✅                                                          |\n| [Events](/docs/api/commerce-extensions/custom-api-entries#events)\
-      \                                                                | ⛔️      \
-      \         | ✅                                                          |\n|\
-      \ [Conditional Updates](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#conditional-updates)\
-      \ | ⛔️               | ✅                                                   \
-      \       |\n      \nThe [Custom Fields Overview](/docs/api/commerce-extensions/custom-fields)\
-      \ lists the comparison of different types and validation available in Custom\
-      \ APIs vs Non-Core Flows.\n"
+    description: |2
+
+      ## Custom APIs vs Non-Core Flows
+
+      Here is a comparison of current features of Non-Core Flows and Custom APIs. This will be updated as we release
+      more capabilities.
+
+      | Feature                                                                                                                         | Non-Core Flows   | Commerce Extensions                                        |
+      | ----------------                                                                                                                | ---------------- | ---------------------------------------------------------- |
+      | Build new APIs                                                                                                                  | ✅                | ✅                                                          |
+      | Access Level                                                                                                                    | Implicit         | Client Credentials only                                    |
+      | [Filtering](/docs/api/commerce-extensions/get-all-custom-entries#filtering)                                                             | ⛔️               | ✅                                                          |
+      | [Sorting](/docs/api/commerce-extensions/get-all-custom-entries#sorting)                                                               | ⛔️               | ✅                                                          |
+      | [Events](/docs/api/commerce-extensions/custom-api-entries#events)                                                                | ⛔️               | ✅                                                          |
+      | [Conditional Updates](/guides/How-To/commerce-extensions/create-a-multilocation-inventories-resource#conditional-updates) | ⛔️               | ✅                                                          |
+
+      The [Custom Fields Overview](/docs/api/commerce-extensions/custom-fields) lists the comparison of different types
+      and validation available in Custom APIs vs Non-Core Flows.
   - name: Custom Fields
     description: "A Custom Field represents a single field of data (for example a\
-      \ Product Rating). A Custom API is composed of one or more Custom Fields.\n\n\
-      Here is a comparison of different types and validation available in Custom APIs\
-      \ vs Non-Core Flows.\n\n| Feature                           | Non-Core Flows\
-      \   | Commerce Extensions                        |\n| ---------------------------------\
+      \ Product Rating). A Custom API is composed of one\nor more Custom Fields.\n\
+      \nHere is a comparison of different types and validation available in Custom\
+      \ APIs vs Non-Core Flows.\n\n| Feature                           | Non-Core\
+      \ Flows   | Commerce Extensions                        |\n| ---------------------------------\
       \ | ---------------- | ------------------------------------------ |\n| Data\
       \ Type: String                 | ✅                | ✅                      \
       \                    |\n| Data Type: Integer                | ✅            \
@@ -74,104 +67,92 @@ tags:
       \                                          |\n| Validation: Unique Case Insensitivity(String)\
       \        | ⛔                | ✅                                          |\n\
       | Validation: Immutable             | ⛔                | ✅                 \
-      \                         |\n\n## Validation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
-      \ or [updating](/docs/api/commerce-extensions/update-a-custom-field#request)\
-      \ a Custom Field, `validation` can be used to limit the values that may be stored\
+      \                         |\n\n## Validation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\n\
+      or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a\
+      \ Custom Field, `validation` can be\nused to limit the values that may be stored\
       \ in the corresponding Custom API Entry.\n\n:::note\n\nAll validation changes,\
       \ such as those to `allow_null_values` and any type specific rules, apply to\
-      \ new entries only. Existing Custom API Entry records are unaffected until updated.\n\
-      \n:::\n\n### Integer Validation\n- `min_value`: Specifies the minimum whole\
-      \ number that can be stored. If set, it must be less than `max_value`.\n- `max_value`:\
-      \ Specifies the maximum whole number that can be stored. If set, it must be\
-      \ greater than `min_value`.\n\nsample integer validation object:\n\n```json\n\
-      {\n  \"validation\": {\n    \"integer\": {\n      \"min_value\": 0,\n      \"\
-      max_value\": 32\n    }\n  }\n}\n```\nEven if no validation is set, field_type\
-      \ `integer` only supports values between -2^53+1 and 2^53+1. This is because\
-      \ the JSON format doesn't guarantee that values outside this range are portable\
-      \ ([Source](https://datatracker.ietf.org/doc/html/rfc7159#section-6)). \n\n\n\
-      \n### Float Validation\n- `min_value`: Specifies the minimum number that can\
+      \ new entries\nonly. Existing Custom API Entry records are unaffected until\
+      \ updated.\n\n:::\n\n### Integer Validation\n\n- `min_value`: Specifies the\
+      \ minimum whole number that can be stored. If set, it must be less than `max_value`.\n\
+      - `max_value`: Specifies the maximum whole number that can be stored. If set,\
+      \ it must be greater than `min_value`.\n\nsample integer validation object:\n\
+      \n```json\n{\n  \"validation\": {\n    \"integer\": {\n      \"min_value\":\
+      \ 0,\n      \"max_value\": 32\n    }\n  }\n}\n```\n\nEven if no validation is\
+      \ set, field_type `integer` only supports values between -2^53+1 and 2^53+1.\
+      \ This is\nbecause the JSON format doesn't guarantee that values outside this\
+      \ range are\nportable ([Source](https://datatracker.ietf.org/doc/html/rfc7159#section-6)).\n\
+      \n### Float Validation\n\n- `min_value`: Specifies the minimum number that can\
       \ be stored. If set, it must be less than `max_value`.\n- `max_value`: Specifies\
       \ the maximum number that can be stored. If set, it must be greater than `min_value`.\n\
       \nsample float validation object:\n\n```json \n{\n  \"validation\": {\n    \"\
       float\": {\n      \"min_value\": 0.01,\n      \"max_value\": 32.01\n    }\n\
       \  }\n}\n```\n\nThe `float` field_type cannot accurately represent some numbers\
-      \ and so using very small or large numbers might lose precision. We recommend\
+      \ and so using very small or large numbers might\nlose precision. We recommend\
       \ that API clients use either the `integer` field_type if applicable , or the\
-      \ `string` data type if perfect precision or recall is required.\n\n### String\
-      \ Validation\n- `min_length`: Specifies the minimum number of characters that\
-      \ can be stored. If set, it must be greater than 0 and less than `max_length`.\n\
+      \ `string`\ndata type if perfect precision or recall is required.\n\n### String\
+      \ Validation\n\n- `min_length`: Specifies the minimum number of characters that\
+      \ can be stored. If set, it must be greater than 0\n  and less than `max_length`.\n\
       - `max_length`: Specifies the maximum number of characters that can be stored.\
-      \ If set, it must be greater than 0 and `min_length`.\n- `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax)\
-      \ regular expression used to restrict the specific characters that can be stored.\
-      \ It must be less than 1024 characters.\n- `unique`: Specifies whether the field\
-      \ must have unique constraint or not. It must be `yes` or `no`.      \n- `unique_case_insensitivity`:\
-      \ Applies when `unique` is set to `yes`. It controls whether values with different\
-      \ cases (for example, `ABC` and `abc`) should conflict. It must be `true` or\
-      \ `false`.\nsample string validation object:\n\n```json\n{\n  \"validation\"\
-      : {\n    \"string\": {\n      \"min_length\": 0,\n      \"max_length\": 64,\n\
-      \      \"regex\": \"^.+\\\\.(jpg|jpeg|png|gif|pdf)$\",\n      \"unique\": \"\
-      yes\"\n      \"unique_case_insensitivity\": true\n    }\n  }\n}\n```\nEven if\
-      \ no validation is set, field_type `string` only supports values that are up\
-      \ to `65535` characters long.\n\n\n### Null Values\n\nAll Custom Fields can\
-      \ be configured to restrict the storage of `null` values for that field on a\
-      \ Custom API Entry. By default, this is `true`.\n\nsample validation object\
-      \ :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"allow_null_values\"\
-      : false,\n      \"immutable\": false\n    }\n  }\n}\n```\n\n### Immutable\n\n\
-      When [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
-      \ a Custom Field, it can be configured to be `immutable`. When set to true,\
-      \ the value of this field can be specified only during POST requests and cannot\
-      \ be modified during PUT requests. By default, this is `false`.\n\nsample validation\
-      \ object :\n  \n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"\
-      immutable\": false\n    }\n  }\n}\n```\n\n## Presentation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
-      \ or [updating](/docs/api/commerce-extensions/update-a-custom-field#request)\
-      \ a Custom Field, `presentation` can be used to influence the layout of fields\
-      \ within a Custom API in User Interface. It does not order or affect the JSON\
-      \ response, and has no semantics on the backend.\n\n## Reserved Slugs\n\nThe\
-      \ following values cannot be used as a `slug` in a Custom Field.\n\n- slug\n\
-      - type\n- id\n- meta\n- created_at\n- updated_at\n- links\n- relationships\n\
-      - attributes\n- attribute\n- dimension\n- dimensions\n- weight\n- weights\n"
+      \ If set, it must be greater than 0\n  and `min_length`.\n- `regex`: A [RE2](https://github.com/google/re2/wiki/Syntax)\
+      \ regular expression used to restrict the specific\n  characters that can be\
+      \ stored. It must be less than 1024 characters.\n- `unique`: Specifies whether\
+      \ the field must have unique constraint or not. It must be `yes` or `no`.\n\
+      - `unique_case_insensitivity`: Applies when `unique` is set to `yes`. It controls\
+      \ whether values with different\n  cases (for example, `ABC` and `abc`) should\
+      \ conflict. It must be `true` or `false`.\n  sample string validation object:\n\
+      \n```json\n{\n  \"validation\": {\n    \"string\": {\n      \"min_length\":\
+      \ 0,\n      \"max_length\": 64,\n      \"regex\": \"^.+\\\\.(jpg|jpeg|png|gif|pdf)$\"\
+      ,\n      \"unique\": \"yes\"\n      \"unique_case_insensitivity\": true\n  \
+      \  }\n  }\n}\n```\n\nEven if no validation is set, field_type `string` only\
+      \ supports values that are up to `65535` characters long.\n\n### Null Values\n\
+      \nAll Custom Fields can be configured to restrict the storage of `null` values\
+      \ for that field on a Custom API Entry.\nBy default, this is `true`.\n\nsample\
+      \ validation object :\n\n```json\n{\n  \"validation\": {\n    \"boolean\": {\n\
+      \      \"allow_null_values\": false,\n      \"immutable\": false\n    }\n  }\n\
+      }\n```\n\n### Immutable\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\
+      \ a Custom Field, it can be configured\nto be `immutable`. When set to true,\
+      \ the value of this field can be specified only during POST requests and cannot\n\
+      be modified during PUT requests. By default, this is `false`.\n\nsample validation\
+      \ object :\n\n```json\n{\n  \"validation\": {\n    \"boolean\": {\n      \"\
+      immutable\": false\n    }\n  }\n}\n```\n\n## Presentation\n\nWhen [creating](/docs/api/commerce-extensions/create-a-custom-field#request)\n\
+      or [updating](/docs/api/commerce-extensions/update-a-custom-field#request) a\
+      \ Custom Field, `presentation` can be\nused to influence the layout of fields\
+      \ within a Custom API in User Interface. It does not order or affect the JSON\n\
+      response, and has no semantics on the backend.\n\n## Reserved Slugs\n\nThe following\
+      \ values cannot be used as a `slug` in a Custom Field.\n\n- slug\n- type\n-\
+      \ id\n- meta\n- created_at\n- updated_at\n- links\n- relationships\n- attributes\n\
+      - attribute\n- dimension\n- dimensions\n- weight\n- weights\n"
   - name: Custom API Entries
-    description: "A **Custom API Entry** is a specific instance of a resource, such\
-      \ as a single wishlist in a Custom API for wishlists.\n\nCustom API Entries\
-      \ can be accessed in two different ways, via the **settings** endpoint, or the\
-      \ **extension** endpoint:\n\n* Extension Endpoint: `/v2/extensions/{custom_api_slug}`\
-      \ - This is the primary endpoint created for use. Most clients should use this\
-      \ endpoint as it adheres to the semantics of the configuration. See [Commerce\
-      \ Extension Custom API](/docs/api/commerce-extensions/commerce-extension-custom-api)\n\
-      * Settings Endpoint: `/v2/settings/extensions/custom-apis/{custom_api_id}/entries/`\
-      \ - This endpoint should only be used in cases where you want to interact with\
-      \ your Custom APIs in a generic way in an admin capacity. \n\nCurrently, the\
-      \ distinction between these endpoints is minimal. The extension endpoint uses\
-      \ a slug in the URL path, and the settings endpoint uses an ID. For most use\
-      \ cases involving the new Custom API, we recommend using the extension endpoint.\n\
-      \nConceptually, the settings endpoint is analogous to reflection in most programming\
-      \ languages. You use it when you want to operate in a generic way. For example,\
-      \ we used the settings endpoint to build Commerce Manager. Another example is\
-      \ if you need to import and export various types of data from CSV files. Instead\
-      \ of writing multiple scripts for different extension endpoints, you can write\
-      \ one script that operates on the settings endpoint.\n\n## Events\n\nYou can\
-      \ integrate Commerce Extensions with your external systems by observing the\
-      \ appropriate events. For more information, see [Integrations](/docs/api/integrations/integrations-introduction).\n\
-      \nGiven you have a Custom API with `api_type` of `wishlist_ext` and you want\
-      \ to perform additional processing when an action is taken, like when a wishlist\
-      \ is created:\n\n```bash\ncurl -X POST https://useast.api.elasticpath.com/v2/extensions/wishlists\
-      \ \\\n  -H \"Authorization: Bearer XXXX\" \\\n  -H \"Content-Type: application/json\"\
-      \ \\\n  -d $ {\n    \"data\": {\n      \"type\": \"wishlist_ext\",\n      \"\
-      name\": \"My Wishlist\",\n      \"items_count\": 0,\n      \"keep_purchased\"\
-      : false\n    }\n  }\n```\n\nWhen you [create an integration](/docs/api/integrations/create-integration)\
-      \ with `wishlist_ext.created` in `observes` field.\nThen the configured `webhook`\
-      \ or `aws_sqs` will receive the appropriate message.\n\nYou can configure integrations\
-      \ to observe the following events for your Custom API Entries:\n* Created\n\
-      * Updated\n* Deleted\n"
-  - name: Commerce Extension Custom API
     description: |
-      A **Commerce Extension Custom API** is the resulting API that gets created as a result of the Custom API, Custom Field.
+      A **Custom API Entry** is a specific instance of a resource, such as a single wishlist in a Custom API for
+      wishlists.
+
+      Custom API Entries can be accessed in two different ways, via the **settings** endpoint, or the **extension**
+      endpoint:
+
+      * Extension Endpoint: `/v2/extensions/{custom_api_slug}` - This is the primary endpoint created for use. Most
+        clients should use this endpoint as it adheres to the semantics of the configuration.
+        See [Commerce Extension Custom API](/docs/api/commerce-extensions/commerce-extension-custom-api)
+      * Settings Endpoint: `/v2/settings/extensions/custom-apis/{custom_api_id}/entries/` - This endpoint should only be
+        used in cases where you want to interact with your Custom APIs in a generic way in an admin capacity.
+
+      Currently, the distinction between these endpoints is minimal. The extension endpoint uses a slug in the URL path,
+      and the settings endpoint uses an ID. For most use cases involving the new Custom API, we recommend using the
+      extension endpoint.
+
+      Conceptually, the settings endpoint is analogous to reflection in most programming languages. You use it when you
+      want to operate in a generic way. For example, we used the settings endpoint to build Commerce Manager. Another
+      example is if you need to import and export various types of data from CSV files. Instead of writing multiple
+      scripts for different extension endpoints, you can write one script that operates on the settings endpoint.
 
       ## Events
 
-      You can integrate Commerce Extensions with your external systems by observing the appropriate events. For more information, see [Integrations](/docs/api/integrations/integrations-introduction).
+      You can integrate Commerce Extensions with your external systems by observing the appropriate events. For more
+      information, see [Integrations](/docs/api/integrations/integrations-introduction).
 
-      Given you have a Custom API with `api_type` of `wishlist_ext` and you want to perform additional processing when an action is taken, like when a wishlist is created:
+      Given you have a Custom API with `api_type` of `wishlist_ext` and you want to perform additional processing when
+      an action is taken, like when a wishlist is created:
 
       ```bash
       curl -X POST https://useast.api.elasticpath.com/v2/extensions/wishlists \
@@ -187,10 +168,48 @@ tags:
         }
       ```
 
-      When you [create an integration](/docs/api/integrations/create-integration) with `wishlist_ext.created` in `observes` field.
+      When you [create an integration](/docs/api/integrations/create-integration) with `wishlist_ext.created` in
+      `observes` field.
       Then the configured `webhook` or `aws_sqs` will receive the appropriate message.
 
       You can configure integrations to observe the following events for your Custom API Entries:
+
+      * Created
+      * Updated
+      * Deleted
+  - name: Commerce Extension Custom API
+    description: |
+      A **Commerce Extension Custom API** is the resulting API that gets created as a result of the Custom API, Custom
+      Field.
+
+      ## Events
+
+      You can integrate Commerce Extensions with your external systems by observing the appropriate events. For more
+      information, see [Integrations](/docs/api/integrations/integrations-introduction).
+
+      Given you have a Custom API with `api_type` of `wishlist_ext` and you want to perform additional processing when
+      an action is taken, like when a wishlist is created:
+
+      ```bash
+      curl -X POST https://useast.api.elasticpath.com/v2/extensions/wishlists \
+        -H "Authorization: Bearer XXXX" \
+        -H "Content-Type: application/json" \
+        -d $ {
+          "data": {
+            "type": "wishlist_ext",
+            "name": "My Wishlist",
+            "items_count": 0,
+            "keep_purchased": false
+          }
+        }
+      ```
+
+      When you [create an integration](/docs/api/integrations/create-integration) with `wishlist_ext.created` in
+      `observes` field.
+      Then the configured `webhook` or `aws_sqs` will receive the appropriate message.
+
+      You can configure integrations to observe the following events for your Custom API Entries:
+
       * Created
       * Updated
       * Deleted
@@ -271,20 +290,26 @@ paths:
         Get all Custom APIs
 
         ## Filtering
-        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom APIs:
 
-          | Attribute     | Operators                     | Example                                       |
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom
+        APIs:
+
+        | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
-          | `name`        | `eq`,`like`                   | `eq(name,"Wishlist")`                         |
-          | `description` | `eq`,`like`                   | `like(description,*list*)`                   |
-          | `slug`        | `eq`,`like`,`in`              | `like(slug,*lists)`                           |
-          | `api_type`    | `eq`,`like`,`in`              | `like(api_type,wishlist*)`                    |
-          | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,7e067539-6f6c-46e1-8c55-940031b36c6a)` |
-          | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
-          | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
+        | `name`        | `eq`,`like`                   | `eq(name,"Wishlist")`                         |
+        | `description` | `eq`,`like`                   | `like(description,*list*)`                   |
+        | `slug`        | `eq`,`like`,`in`              | `like(slug,*lists)`                           |
+        | `api_type`    | `eq`,`like`,`in`              | `like(api_type,wishlist*)`                    |
+        | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,7e067539-6f6c-46e1-8c55-940031b36c6a)` |
+        | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
+        | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
 
         ## Sorting
-        The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
+
+        The following attributes are available for filtering. When specified, the results are sorted in ascending order
+        based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example,
+        `-updated_at`. The default sort order is `created_at` in descending order.
+
         - `api_type`
         - `created_at`
         - `description`
@@ -626,20 +651,26 @@ paths:
         Get all Custom Fields
 
         ## Filtering
-          The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom Fields:
 
-          | Attribute     | Operators                     | Example                                       |
+        The following operators and attributes are available for [filtering](/guides/Getting-Started/filtering) Custom
+        Fields:
+
+        | Attribute     | Operators                     | Example                                       |
           |---------------|-------------------------------|-----------------------------------------------|
-          | `name`        | `eq`,`like`                   | `eq(name,"Last Name")`                        |
-          | `description` | `eq`,`like`                   | `like(description,*confidential*)`            |
-          | `slug`        | `eq`,`like`,`in`              | `like(slug,*private*)`                        |
-          | `field_type`  | `eq`,`in`                     | `eq(field_type,string)`                       |
-          | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)` |
-          | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
-          | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
+        | `name`        | `eq`,`like`                   | `eq(name,"Last Name")`                        |
+        | `description` | `eq`,`like`                   | `like(description,*confidential*)`            |
+        | `slug`        | `eq`,`like`,`in`              | `like(slug,*private*)`                        |
+        | `field_type`  | `eq`,`in`                     | `eq(field_type,string)`                       |
+        | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)` |
+        | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`     |
+        | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`     |
 
         ## Sorting
-        The following attributes are available for filtering. When specified, the results are sorted in ascending order based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example, `-updated_at`. The default sort order is `created_at` in descending order.
+
+        The following attributes are available for filtering. When specified, the results are sorted in ascending order
+        based on the value of the field. To sort in descending order, prefix the attribute with `-`, for example,
+        `-updated_at`. The default sort order is `created_at` in descending order.
+
         - `created_at`
         - `description`
         - `field_type`
@@ -1044,6 +1075,8 @@ paths:
                     }
         '400':
           $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
         '413':
@@ -1058,28 +1091,28 @@ paths:
       tags:
         - Custom API Entries
       summary: Get all Custom API Entries
-      description: "Get all Custom API Entries\n\n## Filtering\n  The following operators\
+      description: "Get all Custom API Entries\n\n## Filtering\n\nThe following operators\
         \ and attributes are available for [filtering](/guides/Getting-Started/filtering)\
-        \ all Custom API Entries:\n\n  | Attribute     | Operators               \
-        \      | Example                                       |\n  |---------------|-------------------------------|-----------------------------------------------|\n\
-        \  | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)`\
-        \ |\n  | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`\
-        \     |\n  | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`\
+        \ all\nCustom API Entries:\n\n| Attribute     | Operators                \
+        \     | Example                                       |\n  |---------------|-------------------------------|-----------------------------------------------|\n\
+        | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)`\
+        \ |\n| `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`\
+        \     |\n| `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`\
         \     |\n\nThe following operators and attributes may be available for filtering\
-        \ Custom API Entries depending on how the [Custom Fields](/docs/api/commerce-extensions/create-a-custom-field)\
-        \ for that Custom API are configured.\n\n  | Field type | Operators      \
-        \                      | \n  |------------|--------------------------------------|\n\
-        \  | `string`   | `lt`,`le`,`eq`,`gt`,`ge`,`in`,`like` |\n  | `integer`  |\
-        \ `lt`,`le`,`eq`,`gt`,`ge`,`in`        | \n  | `float`    | `lt`,`le`,`gt`,`ge`,`in`\
-        \             |  \n  | `boolean`  | `eq`                                 |\n\
-        \n  Given there is a Custom Field with `\"slug\": \"name\"` and `\"field_type\"\
-        : \"string\"`.\n\n  When you get all Custom API Entries with query parameter:\
-        \ `?filter=like(name,*wish*)`.\n\n  Then you will get all Custom API Entries\
-        \ where `name` contains the string `wish`. \n\n## Sorting\nThe following attributes\
-        \ are available for filtering. When specified, the results are sorted in ascending\
-        \ order based on the value of the field. To sort in descending order, prefix\
-        \ the attribute with `-`, for example, `-updated_at`. The default sort order\
-        \ is `created_at` in descending order.\n- `created_at`\n- `id`\n- `updated_at`\n"
+        \ Custom API Entries depending on how\nthe [Custom Fields](/docs/api/commerce-extensions/create-a-custom-field)\
+        \ for that Custom API are configured.\n\n| Field type | Operators        \
+        \                    | \n  |------------|--------------------------------------|\n\
+        | `string`   | `lt`,`le`,`eq`,`gt`,`ge`,`in`,`like` |\n| `integer`  | `lt`,`le`,`eq`,`gt`,`ge`,`in`\
+        \        | \n| `float`    | `lt`,`le`,`gt`,`ge`,`in`             |  \n| `boolean`\
+        \  | `eq`                                 |\n\nGiven there is a Custom Field\
+        \ with `\"slug\": \"name\"` and `\"field_type\": \"string\"`.\n\nWhen you\
+        \ get all Custom API Entries with query parameter: `?filter=like(name,*wish*)`.\n\
+        \nThen you will get all Custom API Entries where `name` contains the string\
+        \ `wish`.\n\n## Sorting\n\nThe following attributes are available for filtering.\
+        \ When specified, the results are sorted in ascending order\nbased on the\
+        \ value of the field. To sort in descending order, prefix the attribute with\
+        \ `-`, for example,\n`-updated_at`. The default sort order is `created_at`\
+        \ in descending order.\n\n- `created_at`\n- `id`\n- `updated_at`\n"
       operationId: GetAllCustomEntries
       parameters:
         - $ref: '#/components/parameters/PageOffset'
@@ -1141,6 +1174,8 @@ paths:
                       prev: null
         '400':
           $ref: '#/components/responses/BadFilterError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /v2/settings/extensions/custom-apis/{custom_api_id}/entries/{custom_api_entry_id}:
@@ -1391,28 +1426,28 @@ paths:
       tags:
         - Commerce Extension Custom API
       summary: Get all Custom API Entries using the extensions endpoint
-      description: "Get all Custom API Entries\n\n## Filtering\n  The following operators\
+      description: "Get all Custom API Entries\n\n## Filtering\n\nThe following operators\
         \ and attributes are available for [filtering](/guides/Getting-Started/filtering)\
-        \ all Custom API Entries:\n\n  | Attribute     | Operators               \
-        \      | Example                                       |\n  |---------------|-------------------------------|-----------------------------------------------|\n\
-        \  | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)`\
-        \ |\n  | `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`\
-        \     |\n  | `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`\
+        \ all\nCustom API Entries:\n\n| Attribute     | Operators                \
+        \     | Example                                       |\n  |---------------|-------------------------------|-----------------------------------------------|\n\
+        | `id`          | `lt`,`le`,`eq`,`gt`,`ge`,`in` | `eq(id,859aeba1-03c2-4822-bd4c-89afce93d7eb)`\
+        \ |\n| `created_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `ge(created_at,2024-04-29T00:00:00.000Z)`\
+        \     |\n| `updated_at`  | `lt`,`le`,`eq`,`gt`,`ge`      | `le(updated_at,2024-04-29T00:00:00.000Z)`\
         \     |\n\nThe following operators and attributes may be available for filtering\
-        \ Custom API Entries depending on how the [Custom Fields](/docs/api/commerce-extensions/create-a-custom-field)\
-        \ for that Custom API are configured.\n\n  | Field type | Operators      \
-        \                      | \n  |------------|--------------------------------------|\n\
-        \  | `string`   | `lt`,`le`,`eq`,`gt`,`ge`,`in`,`like` |\n  | `integer`  |\
-        \ `lt`,`le`,`eq`,`gt`,`ge`,`in`        | \n  | `float`    | `lt`,`le`,`gt`,`ge`,`in`\
-        \             |  \n  | `boolean`  | `eq`                                 |\n\
-        \n  Given there is a Custom Field with `\"slug\": \"name\"` and `\"field_type\"\
-        : \"string\"`.\n\n  When you get all Custom API Entries with query parameter:\
-        \ `?filter=like(name,*wish*)`.\n\n  Then you will get all Custom API Entries\
-        \ where `name` contains the string `wish`. \n\n## Sorting\nThe following attributes\
-        \ are available for filtering. When specified, the results are sorted in ascending\
-        \ order based on the value of the field. To sort in descending order, prefix\
-        \ the attribute with `-`, for example, `-updated_at`. The default sort order\
-        \ is `created_at` in descending order.\n- `created_at`\n- `id`\n- `updated_at`\n"
+        \ Custom API Entries depending on how\nthe [Custom Fields](/docs/api/commerce-extensions/create-a-custom-field)\
+        \ for that Custom API are configured.\n\n| Field type | Operators        \
+        \                    | \n  |------------|--------------------------------------|\n\
+        | `string`   | `lt`,`le`,`eq`,`gt`,`ge`,`in`,`like` |\n| `integer`  | `lt`,`le`,`eq`,`gt`,`ge`,`in`\
+        \        | \n| `float`    | `lt`,`le`,`gt`,`ge`,`in`             |  \n| `boolean`\
+        \  | `eq`                                 |\n\nGiven there is a Custom Field\
+        \ with `\"slug\": \"name\"` and `\"field_type\": \"string\"`.\n\nWhen you\
+        \ get all Custom API Entries with query parameter: `?filter=like(name,*wish*)`.\n\
+        \nThen you will get all Custom API Entries where `name` contains the string\
+        \ `wish`.\n\n## Sorting\n\nThe following attributes are available for filtering.\
+        \ When specified, the results are sorted in ascending order\nbased on the\
+        \ value of the field. To sort in descending order, prefix the attribute with\
+        \ `-`, for example,\n`-updated_at`. The default sort order is `created_at`\
+        \ in descending order.\n\n- `created_at`\n- `id`\n- `updated_at`\n"
       operationId: GetCustomEntriesSettings
       parameters:
         - $ref: '#/components/parameters/PageOffset'
@@ -1474,6 +1509,8 @@ paths:
                       prev: null
         '400':
           $ref: '#/components/responses/BadFilterError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
     post:
@@ -1559,6 +1596,8 @@ paths:
                     }
         '400':
           $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '409':
           $ref: '#/components/responses/ConflictError'
         '413':
