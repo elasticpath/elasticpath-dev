@@ -14,16 +14,17 @@ sidebar_position: 2
     The **Add a new promotion code** button is disabled for automatic promotions. To manually create a code, ensure the **Coupon-driven** checkbox is selected while [creating the promotion](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder).
 1. In the **Create Single code** tab:
     1. Provide a code in the **Create a code** field.
-    1. Set the audience to **Public** or **Private**.
+    1. Choose your audience: 
+        - **Public**: The code is available to everyone.
+        - **Private**: The code is specific to a particular shopper, so you’ll need to enter their unique identifier.
+    1. Set the code type:
+        - **Regular code**: A standard code that can be used by any shopper.
+        - **First time Shopper code**: A code for shoppers using it for the first time. This option is only available when you set the audience to **Public**.
+    1. Define limitations. Choose either **No limitations** or **Add limitations**. This option is only available when you set the code type to **Regular code**.
 
-        If you select **Private**, enter the unique identifier of a specific shopper.
+        If you select **Add limitations**, specify the **Max code use across all checkouts** to control how many times the code can be used overall. Each time a shopper checkouts, the usage is tracked against this number.
 
-    1. Set the code type to **Regular code** or **First time Shopper code**. This option is only available when you set the audience to **Public**.
-    1. Set limitations to **No limitations** or **Add limitations**. This option is only available when you set the code type to **Regular code**.
-
-        If you select **Add limitations**, enter **Max code use across all checkouts**. This defines the maximum number of times the code can be used in total per checkout.
-
-        The Commerce Manager supports only per checkout method. However, the backened supports both `per_application` and `per_checkout` methods. If you need to limit usage by `per_application`, you can configure this via the backend. See [Creating Promotion codes](https://elasticpath.dev/docs/promotions-builder/promotions-builder-codes/create-promotion-codes).
+        By default, the Commerce Manager uses the per checkout method. However, if you need to limit usage on a `per_application` basis, you can configure this via the backend. See [Creating Promotion codes](https://elasticpath.dev/docs/promotions-builder/promotions-builder-codes/create-promotion-codes).
 1. Select **Save Changes**.
 
 ## Searching for a Promotion Code
