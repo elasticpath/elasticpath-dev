@@ -3,7 +3,7 @@ import EmbedVideo from '../EmbedVideo'; // Import the new EmbedVideo component
 
 const Video = ({ mediaSrc, mediaType, title, className }) => {  return (
   <grid
-    className={`block aspect-video ${className} rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
+    className={`aspect-video ${className} rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
   >
     <div className="aspect-video">
       {mediaType === 'video' ? (
