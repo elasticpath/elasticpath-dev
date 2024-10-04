@@ -1,5 +1,5 @@
 ---
-title: 'Added First time shopper coupon code'
+title: 'Added First time shopper coupon code, Added duplicate promotion in Promotions Builder'
 date: '2024-10-2'
 tags: ['Commerce Manager', 'Promotions Builder']
 hide_blog_post_date: false
