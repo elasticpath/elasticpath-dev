@@ -172,7 +172,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         sitemap: {
-          ignorePatterns: ["/tags/**"],
+          ignorePatterns: ["/tags/**","/docs/partials/**"],
         },
         gtag: {
           trackingID: 'G-NZ3NL8DLLD',
@@ -1640,6 +1640,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
+        ignoreFiles: ["docs/partials"],
         blogRouteBasePath: "changelog",
         docsRouteBasePath: ["docs", "guides"],
         highlightSearchTermsOnTargetPage: false,
