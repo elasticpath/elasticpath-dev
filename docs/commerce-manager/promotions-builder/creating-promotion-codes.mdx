@@ -4,50 +4,28 @@ nav_label: Creating Promotion Codes
 sidebar_position: 2
 ---
 
-## Creating Promotion Codes
+### Creating a Single Code
 
 1. Navigate to **STORE > Promotions Builder**.
 1. Select the promotion for which you want to create a code.
 1. Go to the **Promotion Codes** tab. 
+1. (Optional) On the right-hand side, select **Add a new promotion code**.
 
-    The **Promotion Codes** tab displays the following information:
+    The **Add a new promotion code** button is disabled for automatic promotions. To manually create a code, ensure the **Coupon-driven** checkbox is selected while [creating the promotion](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder).
+1. In the **Create Single code** tab:
+    1. Provide a code in the **Create a code** field.
+    1. Choose your audience: 
+        - **Public**: The code is available to everyone.
+        - **Private**: The code is specific to a particular shopper, so you’ll need to enter their unique identifier.
+    1. Set the code type:
+        - **Regular code**: A standard code that can be used by any shopper.
+        - **First time Shopper code**: A code for shoppers using it for the first time. This option is only available when you set the audience to **Public**.
+    1. Define limitations. Choose either **No limitations** or **Add limitations**. This option is only available when you set the code type to **Regular code**.
 
-    - **Code**
-    - **Maximum uses**
-    - **User**
-    - **Actions**
+        If you select **Add limitations**, specify the **Max code use across all checkouts** to control how many times the code can be used overall. Each time a shopper checkouts, the usage is tracked against this number.
 
-1. On the right-hand side, select **Add a new promotion code**.
-1. Go to one of the following tabs:
-
-    - [**Add a single code**](#creating-a-single-code)
-    - [**Bulk generate codes**](#creating-bulk-codes)
-
-1. Enter the required settings.
-1. Click **Save**.
-1. (Optional) Select the **Delete** icon in the **Actions** column to delete a promotion code.
-
-### Creating a Single Code
-
-1. In the **Add a single code** tab, enter the following details:
-
-    - (Optional) **Prepend Value**: Add a prefix value to the generated code. When a code is generated, the specified prepend value is added as a prefix to the code.
-    - (Optional) **Usage limit type**: Choose the usage limitation type. The options are **Per Checkout** and **Per Application**. The default option is **Per Checkout**.
-    - (Optional) **Maximum uses**: Enter the maximum number of times a code can be used for this promotion. If no value is set, customers can use the code an unlimited number of times. We recommend you set a value greater than or equal to one.
-    - (Optional) **Restrict to user**: Enter the customer ID of users who are allowed to use this code.
-    - **Code**: Define the code for the promotion. You can manually enter the code or click **Generate code**.
-
-1. Click **Save**.
-
-### Creating Bulk Codes
-
-1. In the **Bulk generate codes** tab, enter the following details:
-
-    - (Optional) **Prepend Value**: Add a prefix value to the generated codes. When codes are generated, the specified prepend value is added as a prefix to each code.
-    - **Number of codes to generate**: Specify the number of codes to be generated.
-    - (Optional) **Usage limit type**: Choose the usage limitation type. The options are **Per Checkout** and **Per Application**. The default option is **Per Checkout**.
-    - (Optional) **Maximum uses**: Enter the maximum number of usages of a code for a promotion. If no value is set, customers can use the code an unlimited number of times. We recommend you set a value greater than or equal to one.
-1. Click **Save**.
+        By default, the Commerce Manager uses the per checkout method. However, if you need to limit usage on a `per_application` basis, you can configure this via the backend. See [Creating Promotion codes](https://elasticpath.dev/docs/promotions-builder/promotions-builder-codes/create-promotion-codes).
+1. Select **Save Changes**.
 
 ## Searching for a Promotion Code
 
@@ -57,4 +35,3 @@ You can search for a promotion code across all promotions.
 1. In the **Search coupon code** field, enter the promotion code you are looking for on the **All Promotions** page.
 
     The promotion name associated with the promotion code is displayed.
-
