@@ -1,10 +1,12 @@
 import React from 'react';
 import EmbedVideo from '../EmbedVideo'; // Import the new EmbedVideo component
 
-const Video = ({ mediaSrc, mediaType, title, float, size }) => {  return (
+const Video = ({ mediaSrc, mediaType, title, size, float }) => {
+  const floatClass = float === 'right' ? 'float-right' : '';
 
+  return (
     <div
-      className={`block aspect-video rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
+      className={`block aspect-video ${size} ${floatClass} rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
     >
       <div className="aspect-video">
         {mediaType === 'video' ? (
@@ -19,7 +21,7 @@ const Video = ({ mediaSrc, mediaType, title, float, size }) => {  return (
         )}
       </div>
     </div>
-);
+  );
 };
 
 export default Video;
