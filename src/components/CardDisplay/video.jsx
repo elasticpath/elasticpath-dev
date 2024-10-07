@@ -2,7 +2,7 @@ import React from 'react';
 import EmbedVideo from '../EmbedVideo'; // Import the new EmbedVideo component
 
 const Video = ({ mediaSrc, mediaType, title, float, size }) => {  return (
-  <div className={`w-[${size}] ${float}`}>
+
     <div
       className={`block aspect-video rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
     >
@@ -19,7 +19,6 @@ const Video = ({ mediaSrc, mediaType, title, float, size }) => {  return (
         )}
       </div>
     </div>
-  </div>
 );
 };
 
