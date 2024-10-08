@@ -1,0 +1,27 @@
+---
+title: Banner
+nav_label: Banner
+---
+
+The `<Banner>` tag can be used to create site banners. To create your own banner component, simply create a new component and use the `<Banner>` tag as the outer wrapper for the component. (This should replace the `<Section>` tag as the outermost wrapper.)
+
+### Attributes
+
+The `banner` tag has the following attributes.
+
+| Attribute | Type | Required | Description |
+| --- | --- | --- | --- |
+| className | string | Optional | A hard-coded class name to add to the rendered element. |
+| dataRef | DataLocator | Required | The data-element storing the Section's configuration |
+| location | array\string | Optional | Where the component can appear; `header`, `main`, and `footer` (Default: `['main']`)|
+| properties | array/object | Optional | Define properties that content authors can configure within the page editor. For details see [Custom Properties](/docs/studio/developers/features/properties). |
+
+## Example
+
+An example of the banner tag is shown below.
+
+```jsx
+<Banner dataRef={content.banner}>
+...
+</Banner>
+```
