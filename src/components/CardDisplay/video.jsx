@@ -6,9 +6,10 @@ const Video = ({ mediaSrc, mediaType, title, size, float }) => {
 
   return (
     <div
-      className={`block aspect-video ${size} ${floatClass} rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
+      className={`block aspect-video ${floatClass} rounded-3xl overflow-hidden p-0 m-6 shadow-lg no-underline hover:no-underline dark:bg-gray-900`}
+      style={{width: size}}
     >
-      <div className="aspect-video">
+      <div className={"aspect-video"}>
         {mediaType === 'video' ? (
           <video className="w-full h-full object-cover" controls>
             <source src={mediaSrc} type="video/mp4" />
