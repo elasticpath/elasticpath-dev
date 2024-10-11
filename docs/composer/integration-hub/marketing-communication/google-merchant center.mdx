@@ -525,13 +525,10 @@ The integration between Elastic Path Commerce Cloud and Google Merchant Center N
      - **Product Transformation**: Modify how product details (e.g., name, description, price) are transformed before being sent. Available in the integration cofiguration Template screen.
      - **Inventory Transformation**: Adjust how inventory data is structured and sent, including availability status (in stock/out of stock). Available in the integration cofiguration Template screen.
 
-   Example of JSONata transformation:
-   ```json
-   {
-     "productTitle": "Product Name",
-     "price": "$number(price.amountMicros/1000000)"
-   }
+Standard inventory JSONata transformation:
+```json{ "expression": "{\"channel\": channel, \"contentLanguage\": contentLanguage, \"feedLabel\": feedLabel, \"attributes\": { \"availability\": availability }, \"offerId\": currentStockPosition.id }"}```
 
+Transformation logic is contained inside JSON as value of `"expression"` attribute in stringified form. 
 
 ## Troubleshooting the Integration
 
