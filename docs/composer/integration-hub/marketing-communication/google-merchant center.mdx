@@ -110,12 +110,18 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
     - **Elastic Path Webhook Secret Key**  - The secret API key used to secure outbound Elastic Path webhooks that publish events to this integration.
     - **Product Filtering**  - Select what types of products to send to Google Merchant Center.
 
-    **Product Filtering**:
-    - Parent Products Only - integration sends to Merchant Center standard products and parent products only. It does NOT send child products.
-    - Child Products Only - integration sends to Merchant Center standard products and child products only. It does NOT send parent products.
-    - Both Parent and Child Products - integration sends to Merchant Center all type of products.
+        **Product Filtering options**:
+        - Parent Products Only - integration sends to Merchant Center standard products and parent products only. It does NOT send child products.
+        - Child Products Only - integration sends to Merchant Center standard products and child products only. It does NOT send parent products.
+        - Both Parent and Child Products - integration sends to Merchant Center all type of products.
     
-    - **Product Display Page URL Template**  - A template used to construct URL's to product display pages. You can specify simple string url like https://localhost/p/${id}/${sku} or object like {"standard":"https://localhost/p/${id}/${sku}","parent":"https://localhost/p/${id}/${sku}","child":"https://localhost/p/${parentSku}?variant=${id}"} to define pattern per product type. Parent, standard and child elemets are required. Supported placeholders: ${id}, ${slug}, ${sku}, ${parentId}, ${parentSlug}, ${parentSku}.
+    - **Product Display Page URL Template**  - A template used to construct URL's to product display pages. 
+
+        **Supported url templates**:
+        - Simple string url e.g. https://localhost/p/${id}/${sku}, defines pattern for all product types.
+        - Object e.g. `{"standard":"https://localhost/p/${id}/${sku}","parent":"https://localhost/p/${id}/${sku}","child":"https://localhost/p/${parentSku}?variant=${id}"}`.      
+          Allows to define pattern per product type. 
+            Parent, standard and child elemets are required. Supported placeholders: ${id}, ${slug}, ${sku}, ${parentId}, ${parentSlug}, ${parentSku}.
     
     - **Default Availability Status** - Select the default availability status to send when inventory is not managed in Elastic Path.
     - **Inventory Out of Stock Threshold** - The inventory available threshold for determining if a product is in stock or out of stock.
