@@ -1,0 +1,537 @@
+---
+title: Integrating with Google Merchant Center Next
+nav_label: Google Merchant Center Next Integration
+sidebar_position: 10
+---
+
+You can easily integrate Elastic Path Composable Commerce with your [Google Merchant Center Next](https://www.google.com/retail/) account using the **Integrations Hub** in Commerce Manager. Once you have registered your Elastic Path Composable Commmerce-powered storefront with the Google Merchant Center, you can use the integration to upload your products and inventories to your Google Merchant Center account.  This enables your products to be shown in the **Shopping** tab within Google search results, or even within online ads.  When a search result or ad is clicked, it links to your Elastic Path Composable Commerce-powered storefront. 
+
+![Google Merchant Center Integration](/assets/composer/google-merchant-center-integration.png)
+
+The integration will synchronize your product data, and optionally, your inventory data between your Elastic Path Composable Commerce store and your Google Merchant Center account.
+
+Whenever a catalog release is published in Elastic Path Composable Commerce, the integration publishes the changes to Google Merchant Center using the [Merchant API](https://developers.google.com/merchant/api). 
+
+The following default data is synchronized.  You can optionally configure custom additional attributes to be synchronized.
+
+- Product name
+- Product description
+- Google Category
+- Price
+- Sales Price
+- Image
+- Link to your product on your storefront
+- EAN/UPC
+- MPN
+- Online inventory position
+
+:::caution
+
+- The integration does not support bundles.
+
+:::
+
+Whenever a stock transaction is recorder in Elastic Path Composable Commerce, the integration publishes inventory update to Google Merchant Center using the [Merchant API](https://developers.google.com/merchant/api).  
+
+Integration supports multiple catalogs, multiple languages and multiple currencies.
+
+## Prerequisites
+
+Before configuring the integration, there are some prequisites you need to meet in Google Merchant Center and Elastic Path Composable Commerce.
+
+### Prequisites in Google Merchant Center Next
+
+You need to perform the following steps in Google Merchant Center Next before configuring the integration.  Details on how to configure each of these elements can be found in [Google's Merchant Center Next online help](https://support.google.com/merchants/answer/12159157/).
+
+1. You must set up a Google Merchant account.
+1. In the Google Merchant Center, you must verify ownership of your storefront. 
+1. For products to be valid in Google, Google requires that you supply shipping details and prices, and a returns policy. The Google Merchant Center does not consider your products valid until this is done.
+1. Once your Google Merchant Center Next account is set-up, you need to create an OAuth 2.0 client id to authorize **Integrations Hub** to connect to your Google Merchant Center Next account.  Please consult the [Google Cloud Platform documentation on how to create an OAuth 2.0 Client ID](https://cloud.google.com/application-integration/docs/configure-authentication-profiles#create-oauth). Note that you may need to [create a Project](https://developers.google.com/workspace/guides/create-project#project) and [configure your OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent) before starting this step.  Please consult the following tables for values that will be needed to configure these steps.
+
+    | OAuth Consent Screen Field Name     | OAuth Consent Screen Field Value       |
+    |:------------------------------------|:---------------------------------------|
+    | **Authorized Domains**              | `elasticpathintegrations.com` |
+    | **Your non-sensitive scopes**       | `openid` |
+    | **Your sensitive scopes**           | `Merchant API` |
+
+    | OAuth Client Id Field Name      | OAuth Client Field Value                        |
+    |:--------------------------------|:---------------------------------------|
+    | **Application Type**            | `Web application` |
+    | **Authorized redirect URIs**    | `https://oauth2.us-east-2.elasticpathintegrations.com/callback` for North America implementations or `https://oauth2.eu-west-1.elasticpathintegrations.com/callback` for Europe implementations |
+
+Save the `Client ID` and `Client Secret` that are produced from creation of the `OAuth 2.0 Client ID` as they will be needed in a later step.
+
+### Prerequisites for Commerce
+
+You need to perform the following steps in Commerce before configuring the integration.
+- Configure supported currencies.
+- Configure supported locales.
+- Configure product data together with catalogs.
+- Configure product pricing (products without prices are not synchronized with Google Merchant Center).
+- Generate API key in Commerce Manager.
+
+Integration automatically configures webhooks for catalog and stock transaction events as well as Custom API for catalog/data source mapping and variant mapping entries.
+Integration automatically create flow/custom field for google category.
+
+## Configuring the Integration
+
+Once you have met the [prequisites](#prerequisites), you are ready to configure the integration in **Integrations Hub**.
+
+1. In Commerce Manager, go to **COMPOSER** > **Integrations Hub**.
+1. Under **Marketing & Communication**, click **Google Merchant Center**. The integration guides you through the steps you need to follow to complete the integration.
+1. Click **Configure**. The **Trigger details** consist of some details about the integration.
+1. Click **Next**. The **Configuration** page is displayed.
+1. Enter the following details in **Commerce Connection**:
+    - **Client-ID**  - Your Commerce Client ID.
+    - **Client-Secret** - Your Commerce Client Secret.
+    - **Token URL** - Your Commerce API Token URL.
+
+    **Token URL** for:
+    - EU - `https://useast.api.elasticpath.com/oauth/access_token`
+    - US - `https://useast.api.elasticpath.com/oauth/access_token`
+
+1. Click **Connect**. The authorization is successfully completed.
+1. Enter the following details in **Google Merchant Center Connection**:
+    - **Client-ID**  - Your Google Client ID.
+    - **Client-Secret** - Your Google Client Secret.
+    - **Token URL** - Your Google API Token URL.
+
+    **Token URL**:
+    - https://oauth2.googleapis.com/token
+    - **Authorize URL** - Your Google Authorize URL.
+
+    **Authorize URL**:
+    - https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent
+
+1. Click **Connect**. The authorization is successfully completed.
+1. Click **Next**. The **Configuration** page is displayed.
+    - **Google Merchant Center ID**  - Your Google Merchant ID.
+    - **Merchant API version**  - Version of Merchant API - default v1beta.
+    - **Elastic Path Webhook Secret Key**  - The secret API key used to secure outbound Elastic Path webhooks that publish events to this integration.
+    - **Product Filtering**  - Select what types of products to send to Google Merchant Center.
+
+    **Product Filtering**:
+    - Parent Products Only - integration sends to Merchant Center standard products and parent products only. It does NOT send child products.
+    - Child Products Only - integration sends to Merchant Center standard products and child products only. It does NOT send parent products.
+    - Both Parent and Child Products - integration sends to Merchant Center all type of products.
+    
+    - **Product Display Page URL Template**  - A template used to construct URL's to product display pages. You can specify simple string url like https://localhost/p/${id}/${sku} or object like {"standard":"https://localhost/p/${id}/${sku}","parent":"https://localhost/p/${id}/${sku}","child":"https://localhost/p/${parentSku}?variant=${id}"} to define pattern per product type. Parent, standard and child elemets are required. Supported placeholders: ${id}, ${slug}, ${sku}, ${parentId}, ${parentSlug}, ${parentSku}.
+    
+    - **Default Availability Status** - Select the default availability status to send when inventory is not managed in Elastic Path.
+    - **Inventory Out of Stock Threshold** - The inventory available threshold for determining if a product is in stock or out of stock.
+    - **Default Language** - Select the default language of product content.
+    - **Google API Batch Size** - The number of records to consolidate and send to Google APIs in a single API request (batch).
+    - **Log Level** - The log level used when the integration executes. Used for debugging the integration.
+    - **Jsonl processor batch size** - JSONL processor batch size, max allowed 100. Recommended value 100.
+
+1. Click **Next**. The **Catalog Mapping** page is displayed.
+    - **Send local inventory flag** - Send local inventory to Google Merchant Center. Turning this flag will create separate datasource in Merchant Center for local inventory information (inventory in store locations).
+    - **Product Catalog <> Data Source Mapping** - maping of catalog to Google Merchant Center Data Source (Catalog/Language/Country,Currency). Each mapping entry will created separate online data source in Google Merchant Center. Catalog, language and currency selection options are based on data configured in Elastic Path Commerce Cloud.
+
+1. Click **Next**. The **Templates** page is displayed.
+    - **Product Transform Template Definition** - A JSONata transform object that specifies how product data is transformed from Elastic Path to Google Merchant Center format.
+    - **Inventory Transform Template Definition** - A JSONata transform object that specifies how product inventory data is transformed from Elastic Path to Google Merchant Center format.
+
+    **Transformation Format**: transformation is in form of json where value of expression attribute contains stringified version of JSONata transformation.
+
+## Using the Integration
+
+To change any configuration details in your integration, open your Integration and go to **Summary** > **Reconfigure**.
+
+In addition, from **Summary**, you can view, pause or delete your integration.
+
+If there is an update to the integration, a message is displayed in **Summary**. Click **Update** to update your integration. You are guided through the steps to configure your integration.
+
+### Sending Parent Products, Child Products, or Both
+
+#### Overview
+
+When integrating Elastic Path Commerce Cloud with Google Merchant Center Next, merchants can choose how to manage the synchronization of parent products and child products. This is particularly important for product configurations that involve variations (e.g., different sizes or colors), where the parent product represents the main product, and child products represent the different variants.
+
+The integration provides the flexibility to configure which products are sent to Google Merchant Center Next:
+- **Parent Products Only**
+- **Child Products Only**
+- **Both Parent and Child Products**
+
+#### Parent Products Only
+
+When configuring the integration to send **parent products only**, the integration sends standard products and the main product (the parent) without any variants. 
+
+#### Child Products Only
+
+By configuring the integration to send **child products only**, the integration sends only standard products and the variant-specific products (child products) to Google Merchant Center Next. Each variation of the parent product (such as different sizes or colors) will be treated as an individual product in the feed.
+
+#### Both Parent and Child Products
+
+When configuring the integration to send **both parent and child products**, the integration will send standard products, the parent product and all of its associated variants (child products). In this scenario, both the main product and its variations will be visible in Google Merchant Center Next.
+
+#### Product Filtering Configuration
+
+In the **Integrations Hub** of Elastic Path Commerce Manager, merchants can configure product filtering to specify which types of products (parent, child, or both) will be sent to Google Merchant Center Next. The available options include:
+- **Parent Products Only**: Sends standard products and only the main product listing without variant details.
+- **Child Products Only**: Sends standard products and only the individual variants of the product.
+- **Both Parent and Child Products**: Sends both the main product and all of its variants along with standard products.
+
+These options allow merchants to control the granularity of product information that is sent to Google Merchant Center Next and customize how their products are presented to customers searching through Google.
+
+#### Important Considerations
+
+- **Google Merchant Center Next Limitations**: When sending child products, ensure that each variant aligns with Google Merchant Center Next’s supported variant attributes (such as size, color, etc.). Misalignment can result in data rejections.
+- **Inventory Management**: Inventory updates will need to account for whether you are sending parent, child, or both types of products. Make sure inventory levels are properly tracked for each variant if child products are sent.
+- **Changing Product filtering Configuration** - when changing product filtering configuration in the Google Merchant Center integration in the Integrations Hub, integration DOES not reconcile the data between Elastic Path Commerce Clound and Google Merchant Center. If for example configuration has been changed from "Send Both Parent And Child Products" to "Send Only Parent Products", removal of products previously created in Google Merchant Center needs to be done manually. When using API to send data to Google Merchant Center, merchant may not be able to delete products in Google Merchant Center Next interface, that is why it may be required to remove products using direct API call to Merchant API.
+
+### Sending Google Product Category
+
+#### Overview
+
+When synchronizing product data from Elastic Path Commerce Cloud to Google Merchant Center Next, it is crucial to correctly map product categories to Google’s predefined taxonomy. Google Merchant Center uses specific product categories to organize and display products in relevant search results and shopping ads. This category data helps improve product visibility and ensures that listings are compliant with Google’s standards.
+
+#### Google Product Category Mapping
+
+The **Google Product Category** is a field for products submitted to Google Merchant Center. Each product must be assigned to one category from Google’s product taxonomy. These categories are defined by Google and have unique numeric IDs.
+
+For example:
+- **Apparel & Accessories > Clothing > Outerwear > Jackets** has the ID **1604**.
+- **Electronics > Audio > Headphones** has the ID **1797**.
+
+Merchants must assign products in Elastic Path Commerce Cloud to the corresponding Google Product Category ID to ensure that their products are correctly categorized in Google Merchant Center Next.
+Custom template field is created automatically by the integration during Integration setup, however products need to be assigned template fields and google categories manually by merchants.
+
+## Localization Considerations
+
+### Overview
+
+When integrating Elastic Path Commerce Cloud with Google Merchant Center Next, merchants who operate in multiple regions must carefully manage localization. Localization ensures that products are presented in the appropriate language, currency, and other region-specific formats for each target market. Proper localization helps improve product relevance and visibility for users in different countries, leading to higher engagement and conversion rates.
+
+The integration supports the following key localization aspects:
+- **Multiple Languages**
+- **Multiple Currencies**
+- **Region-specific Product Information**
+
+### Multi-language Support
+
+For merchants targeting multiple countries with different languages, the integration allows for product information to be synchronized in various languages. Google Merchant Center Next requires that each product be assigned a **content language** that corresponds to the region in which the product will be displayed.
+
+#### How Language Support Works
+
+1. **Language Selection in Google Merchant Center Next**:
+   - Google Merchant Center Next supports multiple languages for product content. Each language must be specified as part of the data source configuration.
+   - When products are synchronized from Elastic Path Commerce Cloud, the language of the product content is mapped to the appropriate language in Google Merchant Center Next.
+
+2. **Localized Product Data**:
+   - Merchants must provide localized versions of product attributes such as product name, description for each language. The integration sends this data to Google Merchant Center Next based on the catalog’s locale configuration in Elastic Path Commerce Cloud.
+
+When synchronizing product data, the integration will ensure that the correct content is delivered for each region.
+
+#### Important Considerations
+- **Default values** when data is sent in different language than the default one, in case value is not defined in specific langueage, default language value is sent across to Google Merchant Center.
+
+### Multi-currency Support
+
+For merchants selling products in different currencies, it is essential to configure multi-currency support within Elastic Path Commerce Cloud and Google Merchant Center Next. Each product can only have one price per currency, and this must be accurately reflected for each target market.
+
+#### How Currency Support Works
+
+1. **Currency Configuration**:
+   - Merchants must configure supported currencies in Elastic Path Commerce Cloud. Google Merchant Center only allows one currency per data source, meaning that each data source corresponds to a specific currency for a given region. Integration will automatically create data sources in Google Merchant Center based on configuration in Elastic Path Commerce Cloud.
+   
+2. **Price Synchronization**:
+   - When products are synchronized, the price of the product in the respective currency is sent to Google Merchant Center Next. Merchants must ensure that the correct price is associated with each currency and region combination.
+
+#### Important Considerations
+- **Missing Price information** when price for particular currency is missing for the product. Product information will not be sent to Google Merchant Center. Merchants need to ensure proper pricing information is configured for products in Elastic Path Commerce Cloud
+
+### Region-specific Product Information
+
+In addition to language and currency, other product attributes may vary by region, including:
+- **Shipping information** (e.g., shipping times or costs).
+- **Tax requirements** (these must be configured manually in Google Merchant Center Next).
+- **Regulatory information** (certain regions may have additional compliance requirements for products).
+
+#### Important Considerations
+- **Integration DOES NOT send tax nor shipping information** Ensure that all region-specific details are properly configured in Google Merchant Center to meet the needs of each target market.
+
+### Managing Multiple Data Sources
+
+For merchants operating in multiple countries or regions, the integration supports the creation of **multiple data sources** in Google Merchant Center Next. Each data source can represent a unique combination of country, language, and currency. This ensures that product listings are properly localized for each region.
+
+## Data Mapping
+
+### Catalog to Data Source Mapping Information
+
+The integration between Elastic Path Commerce Cloud and Google Merchant Center supports mapping product catalogs to multiple data sources in Merchant Center. Each data source represents a unique combination of country, currency, and language. This allows for tailored catalog synchronization based on the localization needs of your store.
+
+#### Mapping Structure
+
+A catalog in Elastic Path Commerce Cloud can be mapped to one or more data sources in Google Merchant Center. Each data source is configured based on:
+
+- **Country**
+- **Currency**
+- **Language**
+
+For each catalog, integration defines separate data source for each combination of these attributes, ensuring that product data is displayed correctly in the appropriate language and currency for each region.
+
+#### Example Data Source Mapping
+
+Consider a business operating in both the United States and Canada. The business has two catalogs - one for the U.S. and one for Canada — each serving multiple languages. The following is an example of how integration will map catalogs to data sources:
+
+1. **US Catalog**:
+   - **Target Country**: United States
+   - **Currency**: USD
+   - **Languages**: English, Spanish
+
+   Data sources:
+   - US English Data Source: `US-en-online`
+   - US Spanish Data Source: `US-es-online`
+
+2. **Canada Catalog**:
+   - **Target Country**: Canada
+   - **Currency**: CAD
+   - **Languages**: English, French
+
+   Data sources:
+   - Canada English Data Source: `CA-en-online`
+   - Canada French Data Source: `CA-fr-online`
+
+#### Local Inventory Data Sources
+
+If local inventory is managed, separate data sources are created to handle this information. For the example above, the following local inventory data sources might be created:
+
+- US Local Inventory (English): `US-en-local`
+- US Local Inventory (Spanish): `US-es-local`
+- Canada Local Inventory (English): `CA-en-local`
+- Canada Local Inventory (French): `CA-fr-local`
+
+#### Primary and Supplemental Data Sources
+
+For each catalog, a **primary data source** is created to handle product data, while a **supplemental data source** is used for inventory updates. The supplemental data source accepts updates to product availability (in stock/out of stock), which is sent separately from the main product data. There will be always one supplemental data source per channel created in Elastic Path Commerce Cloud.
+
+Both primary and supplemental data sources are created automatically by the integration during integration configuration and activation.
+Information about catalog to data source mapping in stored in Custom API type called "Catalog to GMC Mapping" entries.
+Each entry has the following fields:
+- channel
+- datasource id - id of the data source object in the Merchant Center
+- datasource key - feed label of the data source
+- datasource name - name of the data source in Google Merchant Center
+- is primary - flag indicating if data source is primary
+
+Datasources are created based on the information located in Elastic Path Commerce Cloud (Custom API entries). 
+
+During configuration/reconfiguration integration detects if new data sources need to be created based on mapping configuration in composer and existing data source objects in Google Merchant Center.
+
+- If new mapping datasource needs to be created (new mapping entry has been added), integration will crated new data source in Merchant Center and insert mapping entry in Custom API (Catalog to GMC Mapping).
+- If Integration tries to create new data source with the same label as the one already existing in Merchant Center, Integration will associated mapping with existing data source and crate proper mapping entry in Custom API (Catalog to GMC Mapping)
+- If mapping has been removed from integration configuration, during reconfigure integration will remove entry from Custom API (Catalog to GMC Mapping) but **WILL NOT** remove data source from Merchant Center.
+
+#### Feed Label Structure
+
+Each data source has a unique **feed label** used for syncing data. The feed label typically follows this format:
+
+`{catalogId}_{channel}_{language}_{country_code}_{currency_code}`
+
+Example:
+e84c3db3_o_en_us_cad - for online channel data source (handles online inventory and product data), e84c3db3_l_en_us_cad  - for local channel data source) handles local inventory and product data
+
+This structure ensures that product and inventory updates are sent to the appropriate data source based on catalog, language, and currency.
+
+#### Important Considerations
+
+- Only one currency is supported per data source.
+- Each catalog may be pushed to multiple data sources depending on the configuration of country, currency, and language in EPCC.
+- Supplemental data sources handle inventory updates and do not require a language or label.
+- When configuring the integration, you will need to select the catalogs and their respective mappings to data sources. These mappings must align with the supported languages and currencies of the target country in Google Merchant Center. At least one catalog to data source mapping is required to send data to Google Merchant Center.
+
+For more information on setting up data sources in Google Merchant Center, refer to the [Google Merchant Center Documentation](https://developers.google.com/merchant/api).
+
+### Variant Mapping
+
+#### Overview
+
+In the integration between Elastic Path Commerce Cloud and Google Merchant Center Next, product variants from Elastic Path Commerce Cloud are mapped to the corresponding attributes in Google Merchant Center. This mapping allows the flexibility to define and synchronize variations of a product, such as different sizes, colors, or materials, ensuring that all variations are accurately represented on Google Merchant Center.
+
+Google Merchant Center Next supports a limited set of attributes for product variations, which include:
+
+- **Size**
+- **Color**
+- **Pattern**
+- **Material**
+- **Age Group**
+- **Gender**
+
+Each of these variant attributes needs to be mapped correctly between Elastic Path Commerce Cloud and Google Merchant Center Next to ensure proper synchronization.
+
+#### How Variant Mapping Works
+
+Variant mapping in the integration allows merchants to define how Elastic Path Commerce Cloud variant types and options correspond to Google Merchant Center Next variant attributes. These mappings ensure that when a product with variants is sent to Google Merchant Center Next, the correct attributes are assigned and displayed for each variant. If the variant mapping is not defined, the product will be sent as a regular, non-variant product.
+
+##### Mapping Structure
+
+Each variant mapping consists of the following fields:
+
+1. **Elastic Path Commerce Cloud Variant Name**: This is the name of the variant as defined in Elastic Path Commerce Cloud (e.g., "Size", "Color").
+2. **Elastic Path Commerce Cloud Variant Option Name**: The specific option for that variant (e.g., "Medium" for Size, "Red" for Color).
+3. **Google Merchant Center Next Variant Attribute Name**: The corresponding attribute name used by Google Merchant Center Next (e.g., "Size", "Color").
+4. **Google Merchant Center Next Variant Attribute Value**: The specific value for that attribute in Google Merchant Center Next (e.g., "M" for Medium, "Red" for Color).
+
+##### Example Mapping
+
+For example, consider the following scenario with a product that has size and gender variants:
+
+| Elastic Path Commerce Cloud Variant Name | Elastic Path Commerce Cloud Variant Option | Google Merchant Center Next Variant Attribute Name | Google Merchant Center Next Variant Attribute Value |
+|------------------------------------------|--------------------------------------------|--------------------------------------------------|----------------------------------------------------|
+| Size                                     | Medium                                     | Size                                             | M                                                  |
+| Size                                     | Large                                      | Size                                             | L                                                  |
+| Gender                                   | Male                                       | Gender                                           | Male                                               |
+| Gender                                   | Female                                     | Gender                                           | Female                                             |
+
+In this case, when the product is sent from Elastic Path Commerce Cloud to Google Merchant Center Next, the correct size and gender variants will be reflected in the product listing.
+
+##### Handling Unmapped Variants
+
+If a product in Elastic Path Commerce Cloud has a variant that does not have a corresponding mapping in Google Merchant Center Next, that product will be sent as a regular product without any variant information. It is the responsibility of the merchant to ensure that all variant mappings are correctly defined and aligned with the attributes supported by Google Merchant Center Next.
+
+Additionally, if a variant in Elastic Path Commerce Cloud does not have a corresponding option in the mapping (i.e., the variant exists but the option is missing), the integration will send the incoming value for that variant type.
+
+#### Preconfigured Standard Variant Mappings
+
+The integration comes with preconfigured standard mappings for the following common variants:
+
+| Elastic Path Commerce Cloud Variant Name | Elastic Path Commerce Cloud Variant Option | Google Merchant Center Next Variant Attribute Name | Google Merchant Center Next Variant Attribute Value |
+|------------------------------------------|--------------------------------------------|--------------------------------------------------|----------------------------------------------------|
+| Age Group                                | Newborn                                    | Age Group                                        | newborn                                             |
+| Age Group                                | Infant                                     | Age Group                                        | infant                                              |
+| Age Group                                | Toddler                                    | Age Group                                        | toddler                                             |
+| Age Group                                | Kids                                       | Age Group                                        | kids                                                |
+| Age Group                                | Adult                                      | Age Group                                        | adult                                               |
+| Color                                    | Red                                        | Color                                            | Red                                                 |
+| Color                                    | Blue                                       | Color                                            | Blue                                                |
+| Gender                                   | Male                                       | Gender                                           | Male                                                |
+| Gender                                   | Female                                     | Gender                                           | Female                                              |
+| Gender                                   | Unisex                                     | Gender                                           | Unisex                                              |
+| Material                                 | Cotton                                     | Material                                         | Cotton                                              |
+| Pattern                                  | Striped                                    | Pattern                                          | Striped                                             |
+| Size                                     | Small                                      | Size                                             | S                                                   |
+| Size                                     | Medium                                     | Size                                             | M                                                   |
+| Size                                     | Large                                      | Size                                             | L                                                   |
+
+These standard mappings can be extended or modified based on the specific requirements of the merchant. New variants can be defined, and custom mappings can be added to handle unique product configurations.
+
+#### Customizing Variant Mappings
+
+Merchants can customize the variant mapping by adding or modifying the mappings through the integration configuration. This allows for flexibility in aligning product variants in Elastic Path Commerce Cloud with the supported attributes in Google Merchant Center Next.
+
+To customize the variant mappings, merchants must access the Custom API (Variant Mapping) and provide the following information:
+
+- The name of the variant in Elastic Path Commerce Cloud.
+- The corresponding Google Merchant Center Next variant attribute.
+- Any specific mapping logic for the variant options.
+
+By defining these mappings, merchants ensure that their product listings in Google Merchant Center Next accurately reflect the full range of product variants available in Elastic Path Commerce Cloud.
+
+#### Important Considerations
+
+- Only the supported Google Merchant Center Next variant attributes can be used. Merchants must ensure that all mappings align with the variants allowed by Google.
+- The integration only sends mapped variants to Google Merchant Center Next. Any unmapped variants will result in the product being treated as a non-variant product.
+- It is the responsibility of the merchant to maintain and update variant mappings to ensure accuracy across all product listings.
+
+For more details on variant support in Google Merchant Center Next, refer to the [Google Merchant Center Documentation](https://support.google.com/merchants/answer/6324507).
+
+## API Rate Limits and Quotas
+
+### Overview
+
+When integrating Elastic Path Commerce Cloud with Google Merchant Center Next, it is essential for merchants to manage the API rate limits imposed by Google Merchant Center Next. The integration itself does not have a built-in mechanism to control or monitor API rate limits. Therefore, **it is the merchant’s responsibility to ensure that the necessary rate limits are available** for the integration to function correctly.
+
+Google Merchant Center Next enforces limits on the number of API calls that can be made per day and per minute, and exceeding these limits can result in errors, failed data synchronization, or temporary access restrictions.
+
+### API Rate Limits in Google Merchant Center
+
+Google Merchant Center Next has API rate limits that define how many requests can be made within a certain period. These limits are typically set by Google based on the type of API (e.g., product insert, inventory updates, etc.) and the number of records being processed. Merchants need to understand these limits and ensure that they are not exceeded.
+
+Examples of rate limits imposed by Google Merchant Center Next:
+- **Daily Quota**: The total number of API requests allowed per day.
+- **Per-Minute Quota**: The number of API requests allowed per minute.
+
+These limits are subject to change based on Google’s policies, so merchants should regularly review their API usage and check Google Merchant Center's quota limits for their account.
+
+You can fetch your API quota usage with the following REST API request:
+`GET https://merchantapi.googleapis.com/quota/v1beta/accounts/{{merchantId}}/quotas`
+
+### Merchant Responsibilities
+
+As the integration does not monitor or enforce API rate limits, **merchants must take responsibility** for ensuring that their Google Merchant Center Next API usage stays within allowable limits. Merchants are responsible for:
+
+1. **Monitoring API Usage**:
+   - Merchants should regularly monitor their API usage to ensure they do not exceed their rate limits.
+   - Google Merchant Center Next provides APIs to check your quota usage, allowing you to track the number of requests being made and how close you are to your limit.
+
+2. **Adjusting Synchronization Frequency**:
+   - If the merchant’s API limits are frequently being exceeded, they may need to adjust the frequency of product updates, inventory synchronization, or other operations that trigger API requests.
+
+3. **Requesting Higher Quotas**:
+   - For businesses with large catalogs or frequent inventory updates, it may be necessary to request higher API quotas from Google to avoid rate limit issues.
+
+Failure to stay within API rate limits can result in:
+- **Temporary throttling**: Google may temporarily reject API requests until the quota resets.
+- **Data synchronization failures**: Products or inventory updates may fail to be sent, resulting in incomplete or out-of-date information in Google Merchant Center Next.
+- **Service disruption**: Exceeding quotas frequently may result in service degradation or limitations imposed by Google.
+
+### Batch Requests in the Integration
+
+To optimize API usage and reduce the number of individual requests made to Google Merchant Center Next, the integration supports **batching** of API requests wherever possible. This means that multiple updates (e.g., product data or inventory updates) are consolidated into a single API request, reducing the overall number of API calls. This doesn't have impact on quota, since even when using batch calls to Google Merchant Center each request entity withing the batch is considered as separate API call.
+
+Integration natively supports throttling when making calls to Elastic Path Commerce Cloud and uses batching where possible when calling Elastic Path API.
+
+## Customization Options
+
+### Overview
+
+The integration between Elastic Path Commerce Cloud and Google Merchant Center Next offers several customization options that allow merchants to tailor the integration to their specific business needs. These options provide flexibility in how data is synchronized, how products are presented, and how product attributes are mapped to Google Merchant Center Next. By leveraging these customization settings, merchants can ensure that their product listings reflect their unique business requirements.
+
+### Key Customization Options
+
+1. **Product Filtering Options**
+   - Merchants can customize which products are synchronized to Google Merchant Center Next based on product type. The available options include:
+     - **Parent Products Only**: Sends only the main (parent) product without variations.
+     - **Child Products Only**: Sends only the variant-specific (child) products.
+     - **Both Parent and Child Products**: Sends both the parent product and its associated variants.
+
+   This option allows merchants to control how products with variants (e.g., sizes, colors) are represented in Google Merchant Center Next.
+
+2. **Variant Mapping**
+   - Merchants can map product variants from Elastic Path Commerce Cloud to Google Merchant Center Next’s supported variant attributes, such as size, color, material, pattern, gender, and age group.
+   - Custom mappings can be created to ensure that specific product variants align with Google’s predefined variant attributes.
+   
+   Example:
+   - Elastic Path Commerce Cloud Variant: **Size**
+   - Google Merchant Center Next Attribute: **Size**
+   - Variant Value: **Medium (M)**
+
+   This allows merchants to present different product variations correctly in Google Merchant Center Next.
+
+3. **Custom Product Attributes**
+   - The integration supports custom product attribute mapping, allowing merchants to send additional or unique attributes from Elastic Path Commerce Cloud to Google Merchant Center Next.
+   - Merchants can define new attributes (e.g., promotional labels, custom tags) and map them to the corresponding Google Merchant Center Next fields via JSONata transformation templates.
+
+   Example:
+   - Custom Attribute: **Promotional Label**
+   - Mapped to: **Google’s custom attribute field**
+
+   This ensures that merchants can tailor their product data to meet specific business or promotional needs.
+
+4. **JSONata Transformation Templates**
+   - The integration provides merchants with the ability to customize data transformation using **JSONata templates**. This allows merchants to modify how product data is formatted and sent to Google Merchant Center Next.
+   - Merchants can customize:
+     - **Product Transformation**: Modify how product details (e.g., name, description, price) are transformed before being sent. Available in the integration cofiguration Template screen.
+     - **Inventory Transformation**: Adjust how inventory data is structured and sent, including availability status (in stock/out of stock). Available in the integration cofiguration Template screen.
+
+Standard inventory JSONata transformation:
+```json{ "expression": "{\"channel\": channel, \"contentLanguage\": contentLanguage, \"feedLabel\": feedLabel, \"attributes\": { \"availability\": availability }, \"offerId\": currentStockPosition.id }"}```
+
+Transformation logic is contained inside JSON as value of `"expression"` attribute in stringified form. 
+
+## Troubleshooting the Integration
+
+You can debug any issues in **Executions**. Click an execution to see the execution details. The **Logs** shows the output and any errors or warnings.
+
+From **Step Outputs**, you can select a step to see its output. You can retry an individual step.
