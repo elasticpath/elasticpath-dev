@@ -139,6 +139,44 @@ In addition, from **Summary**, you can view, pause or delete your integration.
 
 If there is an update to the integration, a message is displayed in **Summary**. Click **Update** to update your integration. You are guided through the steps to configure your integration.
 
+### Sending Parent Products, Child Products, or Both
+
+#### Overview
+
+When integrating Elastic Path Commerce Cloud with Google Merchant Center Next, merchants can choose how to manage the synchronization of parent products and child products. This is particularly important for product configurations that involve variations (e.g., different sizes or colors), where the parent product represents the main product, and child products represent the different variants.
+
+The integration provides the flexibility to configure which products are sent to Google Merchant Center Next:
+- **Parent Products Only**
+- **Child Products Only**
+- **Both Parent and Child Products**
+
+#### Parent Products Only
+
+When configuring the integration to send **parent products only**, the integration sends standard products and the main product (the parent) without any variants. 
+
+#### Child Products Only
+
+By configuring the integration to send **child products only**, the integration sends only standard products and the variant-specific products (child products) to Google Merchant Center Next. Each variation of the parent product (such as different sizes or colors) will be treated as an individual product in the feed.
+
+#### Both Parent and Child Products
+
+When configuring the integration to send **both parent and child products**, the integration will send standard products, the parent product and all of its associated variants (child products). In this scenario, both the main product and its variations will be visible in Google Merchant Center Next.
+
+#### Product Filtering Configuration
+
+In the **Integrations Hub** of Elastic Path Commerce Manager, merchants can configure product filtering to specify which types of products (parent, child, or both) will be sent to Google Merchant Center Next. The available options include:
+- **Parent Products Only**: Sends standard products and only the main product listing without variant details.
+- **Child Products Only**: Sends standard products and only the individual variants of the product.
+- **Both Parent and Child Products**: Sends both the main product and all of its variants along with standard products.
+
+These options allow merchants to control the granularity of product information that is sent to Google Merchant Center Next and customize how their products are presented to customers searching through Google.
+
+#### Important Considerations
+
+- **Google Merchant Center Next Limitations**: When sending child products, ensure that each variant aligns with Google Merchant Center Next’s supported variant attributes (such as size, color, etc.). Misalignment can result in data rejections.
+- **Inventory Management**: Inventory updates will need to account for whether you are sending parent, child, or both types of products. Make sure inventory levels are properly tracked for each variant if child products are sent.
+- **Changing Product filtering Configuration** - when changing product filtering configuration in the Google Merchant Center integration in the Integrations Hub, integration DOES not reconcile the data between Elastic Path Commerce Clound and Google Merchant Center. If for example configuration has been changed from "Send Both Parent And Child Products" to "Send Only Parent Products", removal of products previously created in Google Merchant Center needs to be done manually. When using API to send data to Google Merchant Center, merchant may not be able to delete products in Google Merchant Center Next interface, that is why it may be required to remove products using direct API call to Merchant API.
+
 ## Data Mapping
 
 ### Catalog to Data Source Mapping Information
