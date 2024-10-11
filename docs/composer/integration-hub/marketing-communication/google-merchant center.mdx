@@ -139,6 +139,188 @@ In addition, from **Summary**, you can view, pause or delete your integration.
 
 If there is an update to the integration, a message is displayed in **Summary**. Click **Update** to update your integration. You are guided through the steps to configure your integration.
 
+## Data Mapping
+
+### Catalog to Data Source Mapping Information
+
+The integration between Elastic Path Commerce Cloud and Google Merchant Center supports mapping product catalogs to multiple data sources in Merchant Center. Each data source represents a unique combination of country, currency, and language. This allows for tailored catalog synchronization based on the localization needs of your store.
+
+#### Mapping Structure
+
+A catalog in Elastic Path Commerce Cloud can be mapped to one or more data sources in Google Merchant Center. Each data source is configured based on:
+
+- **Country**
+- **Currency**
+- **Language**
+
+For each catalog, integration defines separate data source for each combination of these attributes, ensuring that product data is displayed correctly in the appropriate language and currency for each region.
+
+#### Example Data Source Mapping
+
+Consider a business operating in both the United States and Canada. The business has two catalogs - one for the U.S. and one for Canada — each serving multiple languages. The following is an example of how integration will map catalogs to data sources:
+
+1. **US Catalog**:
+   - **Target Country**: United States
+   - **Currency**: USD
+   - **Languages**: English, Spanish
+
+   Data sources:
+   - US English Data Source: `US-en-online`
+   - US Spanish Data Source: `US-es-online`
+
+2. **Canada Catalog**:
+   - **Target Country**: Canada
+   - **Currency**: CAD
+   - **Languages**: English, French
+
+   Data sources:
+   - Canada English Data Source: `CA-en-online`
+   - Canada French Data Source: `CA-fr-online`
+
+#### Local Inventory Data Sources
+
+If local inventory is managed, separate data sources are created to handle this information. For the example above, the following local inventory data sources might be created:
+
+- US Local Inventory (English): `US-en-local`
+- US Local Inventory (Spanish): `US-es-local`
+- Canada Local Inventory (English): `CA-en-local`
+- Canada Local Inventory (French): `CA-fr-local`
+
+#### Primary and Supplemental Data Sources
+
+For each catalog, a **primary data source** is created to handle product data, while a **supplemental data source** is used for inventory updates. The supplemental data source accepts updates to product availability (in stock/out of stock), which is sent separately from the main product data.
+
+Both primary and supplemental data sources are created automatically by the integration during integration configuration and activation.
+Information about catalog to data source mapping in stored in Custom API type called "Catalog to GMC Mapping" entries.
+Each entry has the following fields:
+- channel
+- datasource id - id of the data source object in the Merchant Center
+- datasource key - feed label of the data source
+- datasource name - name of the data source in Google Merchant Center
+- is primary - flag indicating if data source is primary
+
+Datasources are created based on the information located in Elastic Path Commerce Cloud (Custom API entries). 
+
+During configuration/reconfiguration integration detects if new data sources need to be created based on mapping configuration in composer and existing data source objects in Google Merchant Center.
+
+- If new mapping datasource needs to be created (new mapping entry has been added), integration will crated new data source in Merchant Center and insert mapping entry in Custom API (Catalog to GMC Mapping).
+- If Integration tries to create new data source with the same label as the one already existing in Merchant Center, Integration will associated mapping with existing data source and crate proper mapping entry in Custom API (Catalog to GMC Mapping)
+- If mapping has been removed from integration configuration, during reconfigure integration will remove entry from Custom API (Catalog to GMC Mapping) but **WILL NOT** remove data source from Merchant Center.
+
+#### Feed Label Structure
+
+Each data source has a unique **feed label** used for syncing data. The feed label typically follows this format:
+
+`{catalogId}_{channel}_{language}_{country_code}_{currency_code}`
+
+Example:
+e84c3db3_o_en_us_cad - for online channel data source (handles online inventory and product data), e84c3db3_l_en_us_cad  - for local channel data source) handles local inventory and product data
+
+This structure ensures that product and inventory updates are sent to the appropriate data source based on catalog, language, and currency.
+
+#### Important Considerations
+
+- Only one currency is supported per data source.
+- Each catalog may be pushed to multiple data sources depending on the configuration of country, currency, and language in EPCC.
+- Supplemental data sources handle inventory updates and do not require a language or label.
+- When configuring the integration, you will need to select the catalogs and their respective mappings to data sources. These mappings must align with the supported languages and currencies of the target country in Google Merchant Center.
+
+For more information on setting up data sources in Google Merchant Center, refer to the [Google Merchant Center Documentation](https://developers.google.com/merchant/api).
+
+### Variant Mapping
+
+#### Overview
+
+In the integration between Elastic Path Commerce Cloud and Google Merchant Center Next, product variants from Elastic Path Commerce Cloud are mapped to the corresponding attributes in Google Merchant Center. This mapping allows the flexibility to define and synchronize variations of a product, such as different sizes, colors, or materials, ensuring that all variations are accurately represented on Google Merchant Center.
+
+Google Merchant Center Next supports a limited set of attributes for product variations, which include:
+
+- **Size**
+- **Color**
+- **Pattern**
+- **Material**
+- **Age Group**
+- **Gender**
+
+Each of these variant attributes needs to be mapped correctly between Elastic Path Commerce Cloud and Google Merchant Center Next to ensure proper synchronization.
+
+#### How Variant Mapping Works
+
+Variant mapping in the integration allows merchants to define how Elastic Path Commerce Cloud variant types and options correspond to Google Merchant Center Next variant attributes. These mappings ensure that when a product with variants is sent to Google Merchant Center Next, the correct attributes are assigned and displayed for each variant. If the variant mapping is not defined, the product will be sent as a regular, non-variant product.
+
+##### Mapping Structure
+
+Each variant mapping consists of the following fields:
+
+1. **Elastic Path Commerce Cloud Variant Name**: This is the name of the variant as defined in Elastic Path Commerce Cloud (e.g., "Size", "Color").
+2. **Elastic Path Commerce Cloud Variant Option Name**: The specific option for that variant (e.g., "Medium" for Size, "Red" for Color).
+3. **Google Merchant Center Next Variant Attribute Name**: The corresponding attribute name used by Google Merchant Center Next (e.g., "Size", "Color").
+4. **Google Merchant Center Next Variant Attribute Value**: The specific value for that attribute in Google Merchant Center Next (e.g., "M" for Medium, "Red" for Color).
+
+##### Example Mapping
+
+For example, consider the following scenario with a product that has size and gender variants:
+
+| Elastic Path Commerce Cloud Variant Name | Elastic Path Commerce Cloud Variant Option | Google Merchant Center Next Variant Attribute Name | Google Merchant Center Next Variant Attribute Value |
+|------------------------------------------|--------------------------------------------|--------------------------------------------------|----------------------------------------------------|
+| Size                                     | Medium                                     | Size                                             | M                                                  |
+| Size                                     | Large                                      | Size                                             | L                                                  |
+| Gender                                   | Male                                       | Gender                                           | Male                                               |
+| Gender                                   | Female                                     | Gender                                           | Female                                             |
+
+In this case, when the product is sent from Elastic Path Commerce Cloud to Google Merchant Center Next, the correct size and gender variants will be reflected in the product listing.
+
+##### Handling Unmapped Variants
+
+If a product in Elastic Path Commerce Cloud has a variant that does not have a corresponding mapping in Google Merchant Center Next, that product will be sent as a regular product without any variant information. It is the responsibility of the merchant to ensure that all variant mappings are correctly defined and aligned with the attributes supported by Google Merchant Center Next.
+
+Additionally, if a variant in Elastic Path Commerce Cloud does not have a corresponding option in the mapping (i.e., the variant exists but the option is missing), the integration will send the incoming value for that variant type.
+
+#### Preconfigured Standard Variant Mappings
+
+The integration comes with preconfigured standard mappings for the following common variants:
+
+| Elastic Path Commerce Cloud Variant Name | Elastic Path Commerce Cloud Variant Option | Google Merchant Center Next Variant Attribute Name | Google Merchant Center Next Variant Attribute Value |
+|------------------------------------------|--------------------------------------------|--------------------------------------------------|----------------------------------------------------|
+| Age Group                                | Newborn                                    | Age Group                                        | newborn                                             |
+| Age Group                                | Infant                                     | Age Group                                        | infant                                              |
+| Age Group                                | Toddler                                    | Age Group                                        | toddler                                             |
+| Age Group                                | Kids                                       | Age Group                                        | kids                                                |
+| Age Group                                | Adult                                      | Age Group                                        | adult                                               |
+| Color                                    | Red                                        | Color                                            | Red                                                 |
+| Color                                    | Blue                                       | Color                                            | Blue                                                |
+| Gender                                   | Male                                       | Gender                                           | Male                                                |
+| Gender                                   | Female                                     | Gender                                           | Female                                              |
+| Gender                                   | Unisex                                     | Gender                                           | Unisex                                              |
+| Material                                 | Cotton                                     | Material                                         | Cotton                                              |
+| Pattern                                  | Striped                                    | Pattern                                          | Striped                                             |
+| Size                                     | Small                                      | Size                                             | S                                                   |
+| Size                                     | Medium                                     | Size                                             | M                                                   |
+| Size                                     | Large                                      | Size                                             | L                                                   |
+
+These standard mappings can be extended or modified based on the specific requirements of the merchant. New variants can be defined, and custom mappings can be added to handle unique product configurations.
+
+#### Customizing Variant Mappings
+
+Merchants can customize the variant mapping by adding or modifying the mappings through the integration configuration. This allows for flexibility in aligning product variants in Elastic Path Commerce Cloud with the supported attributes in Google Merchant Center Next.
+
+To customize the variant mappings, merchants must access the Custom API (Variant Mapping) and provide the following information:
+
+- The name of the variant in Elastic Path Commerce Cloud.
+- The corresponding Google Merchant Center Next variant attribute.
+- Any specific mapping logic for the variant options.
+
+By defining these mappings, merchants ensure that their product listings in Google Merchant Center Next accurately reflect the full range of product variants available in Elastic Path Commerce Cloud.
+
+#### Important Considerations
+
+- Only the supported Google Merchant Center Next variant attributes can be used. Merchants must ensure that all mappings align with the variants allowed by Google.
+- The integration only sends mapped variants to Google Merchant Center Next. Any unmapped variants will result in the product being treated as a non-variant product.
+- It is the responsibility of the merchant to maintain and update variant mappings to ensure accuracy across all product listings.
+
+For more details on variant support in Google Merchant Center Next, refer to the [Google Merchant Center Documentation](https://support.google.com/merchants/answer/6324507).
+
+
 ## Troubleshooting the Integration
 
 You can debug any issues in **Executions**. Click an execution to see the execution details. The **Logs** shows the output and any errors or warnings.
