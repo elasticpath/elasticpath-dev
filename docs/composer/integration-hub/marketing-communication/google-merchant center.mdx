@@ -70,6 +70,9 @@ You need to perform the following steps in Commerce before configuring the integ
 - Configure product pricing (products without prices are not synchronized with Google Merchant Center).
 - Generate API key in Commerce Manager.
 
+Integration automatically configures webhooks for catalog and stock transaction events as well as Custom API for catalog/data source mapping and variant mapping entries.
+Integration automatically create flow/custom field for google category.
+
 ## Configuring the Integration
 
 Once you have met the [prequisites](#prerequisites), you are ready to configure the integration in **Integrations Hub**.
@@ -176,6 +179,81 @@ These options allow merchants to control the granularity of product information 
 - **Google Merchant Center Next Limitations**: When sending child products, ensure that each variant aligns with Google Merchant Center Next’s supported variant attributes (such as size, color, etc.). Misalignment can result in data rejections.
 - **Inventory Management**: Inventory updates will need to account for whether you are sending parent, child, or both types of products. Make sure inventory levels are properly tracked for each variant if child products are sent.
 - **Changing Product filtering Configuration** - when changing product filtering configuration in the Google Merchant Center integration in the Integrations Hub, integration DOES not reconcile the data between Elastic Path Commerce Clound and Google Merchant Center. If for example configuration has been changed from "Send Both Parent And Child Products" to "Send Only Parent Products", removal of products previously created in Google Merchant Center needs to be done manually. When using API to send data to Google Merchant Center, merchant may not be able to delete products in Google Merchant Center Next interface, that is why it may be required to remove products using direct API call to Merchant API.
+
+### Sending Google Product Category
+
+#### Overview
+
+When synchronizing product data from Elastic Path Commerce Cloud to Google Merchant Center Next, it is crucial to correctly map product categories to Google’s predefined taxonomy. Google Merchant Center uses specific product categories to organize and display products in relevant search results and shopping ads. This category data helps improve product visibility and ensures that listings are compliant with Google’s standards.
+
+#### Google Product Category Mapping
+
+The **Google Product Category** is a field for products submitted to Google Merchant Center. Each product must be assigned to one category from Google’s product taxonomy. These categories are defined by Google and have unique numeric IDs.
+
+For example:
+- **Apparel & Accessories > Clothing > Outerwear > Jackets** has the ID **1604**.
+- **Electronics > Audio > Headphones** has the ID **1797**.
+
+Merchants must assign products in Elastic Path Commerce Cloud to the corresponding Google Product Category ID to ensure that their products are correctly categorized in Google Merchant Center Next.
+Custom template field is created automatically by the integration during Integration setup, however products need to be assigned template fields and google categories manually by merchants.
+
+## Localization Considerations
+
+### Overview
+
+When integrating Elastic Path Commerce Cloud with Google Merchant Center Next, merchants who operate in multiple regions must carefully manage localization. Localization ensures that products are presented in the appropriate language, currency, and other region-specific formats for each target market. Proper localization helps improve product relevance and visibility for users in different countries, leading to higher engagement and conversion rates.
+
+The integration supports the following key localization aspects:
+- **Multiple Languages**
+- **Multiple Currencies**
+- **Region-specific Product Information**
+
+### Multi-language Support
+
+For merchants targeting multiple countries with different languages, the integration allows for product information to be synchronized in various languages. Google Merchant Center Next requires that each product be assigned a **content language** that corresponds to the region in which the product will be displayed.
+
+#### How Language Support Works
+
+1. **Language Selection in Google Merchant Center Next**:
+   - Google Merchant Center Next supports multiple languages for product content. Each language must be specified as part of the data source configuration.
+   - When products are synchronized from Elastic Path Commerce Cloud, the language of the product content is mapped to the appropriate language in Google Merchant Center Next.
+
+2. **Localized Product Data**:
+   - Merchants must provide localized versions of product attributes such as product name, description for each language. The integration sends this data to Google Merchant Center Next based on the catalog’s locale configuration in Elastic Path Commerce Cloud.
+
+When synchronizing product data, the integration will ensure that the correct content is delivered for each region.
+
+#### Important Considerations
+- **Default values** when data is sent in different language than the default one, in case value is not defined in specific langueage, default language value is sent across to Google Merchant Center.
+
+### Multi-currency Support
+
+For merchants selling products in different currencies, it is essential to configure multi-currency support within Elastic Path Commerce Cloud and Google Merchant Center Next. Each product can only have one price per currency, and this must be accurately reflected for each target market.
+
+#### How Currency Support Works
+
+1. **Currency Configuration**:
+   - Merchants must configure supported currencies in Elastic Path Commerce Cloud. Google Merchant Center only allows one currency per data source, meaning that each data source corresponds to a specific currency for a given region. Integration will automatically create data sources in Google Merchant Center based on configuration in Elastic Path Commerce Cloud.
+   
+2. **Price Synchronization**:
+   - When products are synchronized, the price of the product in the respective currency is sent to Google Merchant Center Next. Merchants must ensure that the correct price is associated with each currency and region combination.
+
+#### Important Considerations
+- **Missing Price information** when price for particular currency is missing for the product. Product information will not be sent to Google Merchant Center. Merchants need to ensure proper pricing information is configured for products in Elastic Path Commerce Cloud
+
+### Region-specific Product Information
+
+In addition to language and currency, other product attributes may vary by region, including:
+- **Shipping information** (e.g., shipping times or costs).
+- **Tax requirements** (these must be configured manually in Google Merchant Center Next).
+- **Regulatory information** (certain regions may have additional compliance requirements for products).
+
+#### Important Considerations
+- **Integration DOES NOT send tax nor shipping information** Ensure that all region-specific details are properly configured in Google Merchant Center to meet the needs of each target market.
+
+### Managing Multiple Data Sources
+
+For merchants operating in multiple countries or regions, the integration supports the creation of **multiple data sources** in Google Merchant Center Next. Each data source can represent a unique combination of country, language, and currency. This ensures that product listings are properly localized for each region.
 
 ## Data Mapping
 
@@ -357,6 +435,52 @@ By defining these mappings, merchants ensure that their product listings in Goog
 - It is the responsibility of the merchant to maintain and update variant mappings to ensure accuracy across all product listings.
 
 For more details on variant support in Google Merchant Center Next, refer to the [Google Merchant Center Documentation](https://support.google.com/merchants/answer/6324507).
+
+## API Rate Limits and Quotas
+
+### Overview
+
+When integrating Elastic Path Commerce Cloud with Google Merchant Center Next, it is essential for merchants to manage the API rate limits imposed by Google Merchant Center Next. The integration itself does not have a built-in mechanism to control or monitor API rate limits. Therefore, **it is the merchant’s responsibility to ensure that the necessary rate limits are available** for the integration to function correctly.
+
+Google Merchant Center Next enforces limits on the number of API calls that can be made per day and per minute, and exceeding these limits can result in errors, failed data synchronization, or temporary access restrictions.
+
+### API Rate Limits in Google Merchant Center
+
+Google Merchant Center Next has API rate limits that define how many requests can be made within a certain period. These limits are typically set by Google based on the type of API (e.g., product insert, inventory updates, etc.) and the number of records being processed. Merchants need to understand these limits and ensure that they are not exceeded.
+
+Examples of rate limits imposed by Google Merchant Center Next:
+- **Daily Quota**: The total number of API requests allowed per day.
+- **Per-Minute Quota**: The number of API requests allowed per minute.
+
+These limits are subject to change based on Google’s policies, so merchants should regularly review their API usage and check Google Merchant Center's quota limits for their account.
+
+You can fetch your API quota usage with the following REST API request:
+`GET https://merchantapi.googleapis.com/quota/v1beta/accounts/{{merchantId}}/quotas`
+
+### Merchant Responsibilities
+
+As the integration does not monitor or enforce API rate limits, **merchants must take responsibility** for ensuring that their Google Merchant Center Next API usage stays within allowable limits. Merchants are responsible for:
+
+1. **Monitoring API Usage**:
+   - Merchants should regularly monitor their API usage to ensure they do not exceed their rate limits.
+   - Google Merchant Center Next provides APIs to check your quota usage, allowing you to track the number of requests being made and how close you are to your limit.
+
+2. **Adjusting Synchronization Frequency**:
+   - If the merchant’s API limits are frequently being exceeded, they may need to adjust the frequency of product updates, inventory synchronization, or other operations that trigger API requests.
+
+3. **Requesting Higher Quotas**:
+   - For businesses with large catalogs or frequent inventory updates, it may be necessary to request higher API quotas from Google to avoid rate limit issues.
+
+Failure to stay within API rate limits can result in:
+- **Temporary throttling**: Google may temporarily reject API requests until the quota resets.
+- **Data synchronization failures**: Products or inventory updates may fail to be sent, resulting in incomplete or out-of-date information in Google Merchant Center Next.
+- **Service disruption**: Exceeding quotas frequently may result in service degradation or limitations imposed by Google.
+
+### Batch Requests in the Integration
+
+To optimize API usage and reduce the number of individual requests made to Google Merchant Center Next, the integration supports **batching** of API requests wherever possible. This means that multiple updates (e.g., product data or inventory updates) are consolidated into a single API request, reducing the overall number of API calls. This doesn't have impact on quota, since even when using batch calls to Google Merchant Center each request entity withing the batch is considered as separate API call.
+
+Integration natively supports throttling when making calls to Elastic Path Commerce Cloud and uses batching where possible when calling Elastic Path API.
 
 
 ## Troubleshooting the Integration
