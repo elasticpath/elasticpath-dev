@@ -304,7 +304,7 @@ If local inventory is managed, separate data sources are created to handle this 
 
 #### Primary and Supplemental Data Sources
 
-For each catalog, a **primary data source** is created to handle product data, while a **supplemental data source** is used for inventory updates. The supplemental data source accepts updates to product availability (in stock/out of stock), which is sent separately from the main product data.
+For each catalog, a **primary data source** is created to handle product data, while a **supplemental data source** is used for inventory updates. The supplemental data source accepts updates to product availability (in stock/out of stock), which is sent separately from the main product data. There will be always one supplemental data source per channel created in Elastic Path Commerce Cloud.
 
 Both primary and supplemental data sources are created automatically by the integration during integration configuration and activation.
 Information about catalog to data source mapping in stored in Custom API type called "Catalog to GMC Mapping" entries.
@@ -339,7 +339,7 @@ This structure ensures that product and inventory updates are sent to the approp
 - Only one currency is supported per data source.
 - Each catalog may be pushed to multiple data sources depending on the configuration of country, currency, and language in EPCC.
 - Supplemental data sources handle inventory updates and do not require a language or label.
-- When configuring the integration, you will need to select the catalogs and their respective mappings to data sources. These mappings must align with the supported languages and currencies of the target country in Google Merchant Center.
+- When configuring the integration, you will need to select the catalogs and their respective mappings to data sources. These mappings must align with the supported languages and currencies of the target country in Google Merchant Center. At least one catalog to data source mapping is required to send data to Google Merchant Center.
 
 For more information on setting up data sources in Google Merchant Center, refer to the [Google Merchant Center Documentation](https://developers.google.com/merchant/api).
 
@@ -481,6 +481,56 @@ Failure to stay within API rate limits can result in:
 To optimize API usage and reduce the number of individual requests made to Google Merchant Center Next, the integration supports **batching** of API requests wherever possible. This means that multiple updates (e.g., product data or inventory updates) are consolidated into a single API request, reducing the overall number of API calls. This doesn't have impact on quota, since even when using batch calls to Google Merchant Center each request entity withing the batch is considered as separate API call.
 
 Integration natively supports throttling when making calls to Elastic Path Commerce Cloud and uses batching where possible when calling Elastic Path API.
+
+## Customization Options
+
+### Overview
+
+The integration between Elastic Path Commerce Cloud and Google Merchant Center Next offers several customization options that allow merchants to tailor the integration to their specific business needs. These options provide flexibility in how data is synchronized, how products are presented, and how product attributes are mapped to Google Merchant Center Next. By leveraging these customization settings, merchants can ensure that their product listings reflect their unique business requirements.
+
+### Key Customization Options
+
+1. **Product Filtering Options**
+   - Merchants can customize which products are synchronized to Google Merchant Center Next based on product type. The available options include:
+     - **Parent Products Only**: Sends only the main (parent) product without variations.
+     - **Child Products Only**: Sends only the variant-specific (child) products.
+     - **Both Parent and Child Products**: Sends both the parent product and its associated variants.
+
+   This option allows merchants to control how products with variants (e.g., sizes, colors) are represented in Google Merchant Center Next.
+
+2. **Variant Mapping**
+   - Merchants can map product variants from Elastic Path Commerce Cloud to Google Merchant Center Next’s supported variant attributes, such as size, color, material, pattern, gender, and age group.
+   - Custom mappings can be created to ensure that specific product variants align with Google’s predefined variant attributes.
+   
+   Example:
+   - Elastic Path Commerce Cloud Variant: **Size**
+   - Google Merchant Center Next Attribute: **Size**
+   - Variant Value: **Medium (M)**
+
+   This allows merchants to present different product variations correctly in Google Merchant Center Next.
+
+3. **Custom Product Attributes**
+   - The integration supports custom product attribute mapping, allowing merchants to send additional or unique attributes from Elastic Path Commerce Cloud to Google Merchant Center Next.
+   - Merchants can define new attributes (e.g., promotional labels, custom tags) and map them to the corresponding Google Merchant Center Next fields via JSONata transformation templates.
+
+   Example:
+   - Custom Attribute: **Promotional Label**
+   - Mapped to: **Google’s custom attribute field**
+
+   This ensures that merchants can tailor their product data to meet specific business or promotional needs.
+
+4. **JSONata Transformation Templates**
+   - The integration provides merchants with the ability to customize data transformation using **JSONata templates**. This allows merchants to modify how product data is formatted and sent to Google Merchant Center Next.
+   - Merchants can customize:
+     - **Product Transformation**: Modify how product details (e.g., name, description, price) are transformed before being sent. Available in the integration cofiguration Template screen.
+     - **Inventory Transformation**: Adjust how inventory data is structured and sent, including availability status (in stock/out of stock). Available in the integration cofiguration Template screen.
+
+   Example of JSONata transformation:
+   ```json
+   {
+     "productTitle": "Product Name",
+     "price": "$number(price.amountMicros/1000000)"
+   }
 
 
 ## Troubleshooting the Integration
