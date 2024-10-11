@@ -31,6 +31,10 @@ The following default data is synchronized.  You can optionally configure custom
 
 :::
 
+Whenever a stock transaction is recorder in Elastic Path Composable Commerce, the integration publishes inventory update to Google Merchant Center using the [Merchant API](https://developers.google.com/merchant/api).  
+
+Integration supports multiple catalogs, multiple languages and multiple currencies.
+
 ## Prerequisites
 
 Before configuring the integration, there are some prequisites you need to meet in Google Merchant Center and Elastic Path Composable Commerce.
@@ -60,6 +64,11 @@ Save the `Client ID` and `Client Secret` that are produced from creation of the 
 ### Prerequisites for Commerce
 
 You need to perform the following steps in Commerce before configuring the integration.
+- Configure supported currencies.
+- Configure supported locales.
+- Configure product data together with catalogs.
+- Configure product pricing (products without prices are not synchronized with Google Merchant Center).
+- Generate API key in Commerce Manager.
 
 ## Configuring the Integration
 
