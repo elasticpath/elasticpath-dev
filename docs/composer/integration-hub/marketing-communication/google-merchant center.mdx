@@ -16,10 +16,13 @@ The following default data is synchronized.  You can optionally configure custom
 
 - Product name
 - Product description
+- Google Category
 - Price
+- Sales Price
 - Image
 - Link to your product on your storefront
 - EAN/UPC
+- MPN
 - Online inventory position
 
 :::caution
@@ -65,6 +68,59 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
 1. In Commerce Manager, go to **COMPOSER** > **Integrations Hub**.
 1. Under **Marketing & Communication**, click **Google Merchant Center**. The integration guides you through the steps you need to follow to complete the integration.
 1. Click **Configure**. The **Trigger details** consist of some details about the integration.
+1. Click **Next**. The **Configuration** page is displayed.
+1. Enter the following details in **Commerce Connection**:
+    - **Client-ID**  - Your Commerce Client ID.
+    - **Client-Secret** - Your Commerce Client Secret.
+    - **Token URL** - Your Commerce API Token URL.
+
+    **Token URL** for:
+    - EU - `https://useast.api.elasticpath.com/oauth/access_token`
+    - US - `https://useast.api.elasticpath.com/oauth/access_token`
+
+1. Click **Connect**. The authorization is successfully completed.
+1. Enter the following details in **Google Merchant Center Connection**:
+    - **Client-ID**  - Your Google Client ID.
+    - **Client-Secret** - Your Google Client Secret.
+    - **Token URL** - Your Google API Token URL.
+
+    **Token URL**:
+    - https://oauth2.googleapis.com/token
+    - **Authorize URL** - Your Google Authorize URL.
+
+    **Authorize URL**:
+    - https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent
+
+1. Click **Connect**. The authorization is successfully completed.
+1. Click **Next**. The **Configuration** page is displayed.
+    - **Google Merchant Center ID**  - Your Google Merchant ID.
+    - **Merchant API version**  - Version of Merchant API - default v1beta.
+    - **Elastic Path Webhook Secret Key**  - The secret API key used to secure outbound Elastic Path webhooks that publish events to this integration.
+    - **Product Filtering**  - Select what types of products to send to Google Merchant Center.
+
+    **Product Filtering**:
+    - Parent Products Only - integration sends to Merchant Center standard products and parent products only. It does NOT send child products.
+    - Child Products Only - integration sends to Merchant Center standard products and child products only. It does NOT send parent products.
+    - Both Parent and Child Products - integration sends to Merchant Center all type of products.
+    
+    - **Product Display Page URL Template**  - A template used to construct URL's to product display pages. You can specify simple string url like https://localhost/p/${id}/${sku} or object like {"standard":"https://localhost/p/${id}/${sku}","parent":"https://localhost/p/${id}/${sku}","child":"https://localhost/p/${parentSku}?variant=${id}"} to define pattern per product type. Parent, standard and child elemets are required. Supported placeholders: ${id}, ${slug}, ${sku}, ${parentId}, ${parentSlug}, ${parentSku}.
+    
+    - **Default Availability Status** - Select the default availability status to send when inventory is not managed in Elastic Path.
+    - **Inventory Out of Stock Threshold** - The inventory available threshold for determining if a product is in stock or out of stock.
+    - **Default Language** - Select the default language of product content.
+    - **Google API Batch Size** - The number of records to consolidate and send to Google APIs in a single API request (batch).
+    - **Log Level** - The log level used when the integration executes. Used for debugging the integration.
+    - **Jsonl processor batch size** - JSONL processor batch size, max allowed 100. Recommended value 100.
+
+1. Click **Next**. The **Catalog Mapping** page is displayed.
+    - **Send local inventory flag** - Send local inventory to Google Merchant Center. Turning this flag will create separate datasource in Merchant Center for local inventory information (inventory in store locations).
+    - **Product Catalog <> Data Source Mapping** - maping of catalog to Google Merchant Center Data Source (Catalog/Language/Country,Currency). Each mapping entry will created separate online data source in Google Merchant Center. Catalog, language and currency selection options are based on data configured in Elastic Path Commerce Cloud.
+
+1. Click **Next**. The **Templates** page is displayed.
+    - **Product Transform Template Definition** - A JSONata transform object that specifies how product data is transformed from Elastic Path to Google Merchant Center format.
+    - **Inventory Transform Template Definition** - A JSONata transform object that specifies how product inventory data is transformed from Elastic Path to Google Merchant Center format.
+
+    **Transformation Format**: transformation is in form of json where value of expression attribute contains stringified version of JSONata transformation.
 
 ## Using the Integration
 
