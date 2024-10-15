@@ -10,6 +10,7 @@ import LogoCarousel from "../components/composable/LogoCarousel";
 import Products from "../components/composable/Products";
 import Architecture from "../components/composable/Architecture";
 import Uptime from "../components/composable/Uptime";
+import StatsComponent from "../components/composable/StatsComponent";
 
 export default function Homepage() {
   return (
@@ -20,13 +21,13 @@ export default function Homepage() {
     >
       <HeroSection/>
       <LogoCarousel/>
+      <StatsComponent/>
       <HeadlessCommerceCapabilities />
       <TwoColumnRight/>
       <TwoColumnLeft/>
       <DeveloperGrid/>
       <Architecture/>
       <Products/>
-      <Uptime/>
       <HomeFooter />
     </Layout>
   );

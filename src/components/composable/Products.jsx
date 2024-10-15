@@ -2,13 +2,15 @@ import React from 'react';
 
 const Products = () => {
   const capabilities = [
-    { title: 'Cart & Checkout', description: 'Start with the cart', cta: '' },
-    { title: 'Product Merchandising', description: 'Merchandise with power', cta: '' },
-    { title: 'Automated Re-Orders', description: 'The Power of Subscriptions', cta: '' },
-    { title: 'Custom APIs & DBaaS', description: 'Create anything you want', cta: '' },
-    { title: 'Complex Catalogs', description: 'Super Complex', cta: '' },
-    { title: 'Complex Promotions', description: 'Rules and all', cta: '' },
-    { title: 'Pricing Management', description: 'So much pricing to do', cta: '' },
+    { title: 'Cart & Checkout', description: 'Integrate our fast cart and checkout with your e-commerce stack, regardless of platform, payment provider, or catalog complexity. Boost conversions and delight customers without the need for a costly replatform.', cta: '' },
+    { title: 'Product Merchandising', description: 'Curate shopping journeys that truly resonate with your customers. Design captivating product pages, craft compelling narratives and merchandise your products together, however you choose.', cta: '' },
+    { title: 'Automated Re-Orders', description: '"Turn everyday purchases into lasting customer relationships. Use subscriptions and automated reorders to build loyalty and drive recurring revenue with ease. Create \'subscribe and save\' offers, personalized schedules and curated boxes with ease.', cta: '' },
+    { title: 'Membership Subscriptions', description: 'Unlock a new revenue stream and build lasting customer loyalty with our flexible membership platform. Create exclusive tiers offering premium content, special deals, and unique product experiences. Turn one-time buyers into loyal members.', cta: '' },
+    { title: 'Custom APIs & DBaaS', description: 'Design and deploy any API with unmatched flexibility. Skip database management, our hosted service takes care of it. Speed up development and scale effortlessly.', cta: '' },
+    { title: 'Configurable Bundles', description: 'Build fixed or dynamic bundles tailored to customer needs, and offer full support for configurable products and assembly options to deliver exactly what you envision.', cta: ''},
+    { title: 'Complex Catalogs', description: 'Design catalogs that match your complex products perfectly. Organize with unlimited categories for easy navigation and precise searches. Combine with Price Books for a tailored experience.', cta: '' },
+    { title: 'Complex Promotions', description: 'Our rules-based promotion service empowers you to craft precisely targeted offers, from simple discounts to complex tiered rewards and beyond. Drive engagement, boost average order value, and incentivize desired behaviors with unparalleled promotional power.', cta: '' },
+    { title: 'Pricing Management', description: 'Our flexible pricing solution lets you pair any price book with any catalog, enabling limitless possibilities for omnichannel experiences, targeted flash sales, and tiered pricing. Easily manage complex bundle pricing and adjust strategies dynamically to boost revenue and drive conversions.', cta: '' },
     { title: 'Orders & Inventory', description: 'You have the orders, get em shipped', cta: '' },
     { title: 'Account Management', description: 'Get the acount, get the sales', cta: '' },
     { title: 'B2B2C Management', description: 'Organizations on steriods', cta: '' },
