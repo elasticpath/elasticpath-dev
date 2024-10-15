@@ -9,9 +9,9 @@ const TwoColumnRight = () => {
           <p className="text-gray-700">
             Traditional commerce platforms confine merchandisers with rigid product and catalog management, stifling creativity and hindering the ability to craft truly unique shopping experiences.
           </p>
-          <p className="font-bold">
+          <h2>
             Elastic Path breaks the mold.
-          </p>
+          </h2>
           <p>
             We've reimagined commerce at the core, empowering your merchandisers with complete and unfettered flexibility. With Elastic Path, your merchandisers gain the flexibility to build the exact product experiences they envision, driving engagement, conversions, and customer loyalty.
           </p>
