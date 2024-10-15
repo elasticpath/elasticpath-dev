@@ -534,7 +534,44 @@ The integration between Elastic Path Commerce Cloud and Google Merchant Center N
 Standard inventory JSONata transformation:
 ```json{ "expression": "{\"channel\": channel, \"contentLanguage\": contentLanguage, \"feedLabel\": feedLabel, \"attributes\": { \"availability\": availability }, \"offerId\": currentStockPosition.id }"}```
 
+Standard product JSONata transformation:
+```json{"expression":"{ \"method\": delta_type ~> /create-update/ ? \"POST\" : \"DELETE\", \"url\": delta_type = \"create-update\" ? \"/products/\" & parameters.merchantApiVersion & \"/accounts/\" & parameters.merchantId & \"/productInputs:insert?dataSource=accounts/\" & parameters.merchantId & \"/dataSources/\" & parameters.datasourceId : \"/products/\" & parameters.merchantApiVersion & \"/accounts/\" & parameters.merchantId & \"/productInputs/online~\" & parameters.language & \"~\" & $uppercase(parameters.feedLabel) & \"~\" & id & \"?dataSource=accounts/\" & parameters.merchantId & \"/dataSources/\" & parameters.datasourceId, \"body\": delta_type ~> /create-update/ ? { \"channel\": parameters.channel, \"contentLanguage\": parameters.language, \"feedLabel\": parameters.feedLabel, \"offerId\": id, \"attributes\": $merge([ { \"title\": parameters.language != parameters.defaultLanguage ? ($lookup(attributes.locales, parameters.language).name ? $lookup(attributes.locales, parameters.language).name : attributes.name) : attributes.name, \"price\": { \"amountMicros\": $lookup(attributes.price, $uppercase(parameters.currency)).amount * 10000, \"currencyCode\": $uppercase(parameters.currency) }, \"description\": parameters.language != parameters.defaultLanguage ? ($lookup(attributes.locales, parameters.language).description ? $lookup(attributes.locales, parameters.language).description : attributes.description) : attributes.description }, $exists(attributes.extensions.\"products(gmc)\".google_product_category) ? { \"googleProductCategory\": attributes.extensions.\"products(gmc)\".google_product_category } : {}, $exists(attributes.manufacturer_part_num) ? {\"mpn\": attribute.manufacturer_part_num } : {}, $exists(attributes.sales) ? { \"salePrice\": { \"amountMicros\": $lookup(attributes.sales.*.currencies, $uppercase(parameters.currency)).amount * 10000, \"currencyCode\": $uppercase(parameters.currency)} } : {}, ($exists(attributes.upc_ean) and attributes.upc_ean != \"\") ? { \"gtin\": [ attributes.upc_ean ]} : {} ]) } : null }"}```
+
+Product transformation logic transform request to the wrapper format containing three elements:
+- url
+- method
+- body - request sent to Google Merchant Center. It may be null in case product is deleted.
+
 Transformation logic is contained inside JSON as value of `"expression"` attribute in stringified form. 
+
+### Customizing product transformation template
+
+The example of transformation along with request and response can be found in [Jsonata Playground](https://try.jsonata.org/7C6VZHyJp)
+
+Please refer to [Merchant API productInputs](https://developers.google.com/merchant/api/reference/rest/products_v1beta/accounts.productInputs/insert) for details about required attributes.
+
+#### Example
+Let's assume porduct commodity_type should be mapped to custom attributes and productTypes in attribute section.
+
+```json
+    "price": {
+      "CAD": {
+        "amount": 10000,
+        "includes_tax": false,
+        "tiers": null
+      }
+    },
+    "commodity_type": "physical",
+    "base_product": false,
+    "upc_ean": "123456",
+    "manufacturer_part_num": "12345",
+    "extensions": {
+      "products(gmc)": {
+        "google_product_category": "1"
+      }
+    }
+```
+I will modify body section and enrich with additional customAttributes element and include productTypes element under attributes sent to Google Merchant Center. Please refer to this example of [modified transformation](https://try.jsonata.org/lCvqDsGxV).
 
 ## Troubleshooting the Integration
 
