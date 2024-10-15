@@ -1,0 +1,50 @@
+.scrolling-logos-container {
+    overflow: hidden;
+    width: 100%; /* Ensure it spans full width of the page */
+    padding: 20px 0;
+    background-color: #f8f8f8;
+}
+
+.scrolling-logos-track {
+    display: flex;
+    gap: 40px; /* Set space between logos */
+    animation: scroll 30s linear infinite; /* Continuous scrolling */
+}
+
+.logo-item {
+    display: inline-block;
+    justify-content: center; /* Center the track horizontally */
+    align-items: center;
+}
+
+.logo-item img {
+    max-height: 80px; /* Set max height */
+    height: auto;
+    width: auto; /* Ensure aspect ratio is maintained */
+    filter: grayscale(100%); /* Apply grayscale */
+    justify-content: center;
+    align-items: center;
+    transition: filter 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.logo-item img:hover {
+    filter: grayscale(0%); /* Restore original color on hover */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Duplicate the logos to make the scrolling seamless */
+.scrolling-logos-track::after {
+    content: "";
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    transform: translateX(100%); /* Start where the original logos end */
+}
