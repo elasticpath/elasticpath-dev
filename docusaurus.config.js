@@ -1098,7 +1098,7 @@ const config = {
           { to: '/docs/studio/Shopify/Adding-Users-in-Shopify', from: '/docs/cx-studio/Shopify/Adding-Users-in-Shopify'},
           { to: '/docs/api/pxm/inventory/get-product-stock', from: '/docs/pxm/inventories/get-a-product-stock'},
           { to: '/docs/customer-management/customers', from: '/docs/commerce-cloud/customer-management/customers'},
-          { to: '/docs/promotions-builder/promotions-builder-api/promotions-builder-management/get-promotions-builder', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview'},
+          { to: '/docs/promotions-builder/promotions-builder-api/promotions-builder-management/get-promotions', from: '/docs/commerce-cloud/rule-promotions/rule-promotions-api/rule-promotions-api-overview'},
           { to: '/docs/api/promotions/update-a-promotion', from: '/docs/commerce-cloud/promotions/promotion-management/update-promotions'},
           { to: '/docs/commerce-manager/flows/', from: '/docs/commerce-cloud/custom-data/flows'},
           { to: '/docs/studio/Settings/Domain-Management/Removing-your-custom-domain', from: '/docs/cx-studio/Settings/Domain-Management/Removing-your-custom-domain'},
