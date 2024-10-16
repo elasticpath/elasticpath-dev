@@ -7,5 +7,3 @@ hide_blog_post_date: false
 
 **MAJOR** We have introduced a new feature allowing the creation of shipping discount for cart shipping groups. For more information, see [Create a Shipping Discount API](docs/promotions-builder/promotions-builder-api/promotions-builder-management/create-a-shipping-discount.mdx), and [Creating a Shipping Promotion in Commerce Manager](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-shipping-promotion).
 
-
-**MAJOR** Commerce Manager: We have added a new feature allowing you to create shipping discount in Promotions Builder. For more information, see [Creating a Shipping Promotion](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#creating-a-shipping-promotion).
