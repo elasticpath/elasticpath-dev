@@ -1,0 +1,124 @@
+---
+title: Create a Shipping Discount
+nav_label: Create a Shipping Discount
+sidebar_position: 10
+---
+
+## `POST` Create a Shipping Discount
+
+```http
+https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID
+```
+The shipping discount applies to the shipping group base price and does not apply to shipping taxes or additional fees. See [Create a cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group.mdx) for how to set the shipping prices.
+
+## Parameters
+
+### Path parameters
+
+| Name            | Required | Type     | Description                          |
+|:----------------|:---------|:---------|:-------------------------------------|
+| `promotionID` | Required | `string` | The unique identifier of the promotion. |
+
+### Headers
+
+| Name            | Required | Type     | Description                          |
+|:----------------|:---------|:---------|:-------------------------------------|
+| `Authorization` | Required | `string` | The Bearer token required to get access to the API. |
+
+## Body
+
+For descriptions about the fields, refer to [Promotions Builder API overview](/docs/promotions-builder/promotions-builder-api/promotions-builder-api-overview).
+
+## Request Example
+
+In the request below, the discount is only applied to shipping groups with the "regular" `shipping_type`.
+
+```bash
+curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
+     -H "Authorization: Bearer XXXX" \
+     -H "Content-Type: application/json" \
+     -d $ {
+     "data": {
+        "type": "rule_promotion",
+        "name": "Free regular shipping when cart is $100 or more",
+        "description": "Free regular shipping when cart is $100 or more",
+        "enabled": true,
+        "automatic": false,
+        "start": "2024-08-01",
+        "end": "2024-12-31",
+        "rule_set": {
+            "rules": {
+                "strategy": "cart_total",
+                "operator": "gte",
+                "args": [
+                    10000
+                ]
+            },
+            "actions": [
+                {
+                    "strategy": "shipping_discount",
+                    "args": [
+                        "percent",
+                        100
+                    ],
+                    "condition":{
+                        "strategy": "shipping_type",
+                        "operator": "in",
+                        "args": ["regular"]
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+## Response Example
+
+```json
+{
+    "data": {
+        "type": "rule_promotion",
+        "id": "fb22796d-eef6-4a89-af5f-8aab0f149011",
+        "store_id": "85ea6cac-589a-4141-80d0-42b91aae73a7",
+        "name": "Free regular shipping when cart is $100 or more",
+        "description": "Free regular shipping when cart is $100 or more",
+        "enabled": true,
+        "automatic": false,
+        "rule_set": {
+            "rules": {
+                "strategy": "cart_total",
+                "operator": "gte",
+                "args": [
+                    10000
+                ]
+            },
+            "actions": [
+                {
+                    "strategy": "shipping_discount",
+                    "args": [
+                        "percent",
+                        100
+                    ],
+                    "condition": {
+                        "strategy": "shipping_type",
+                        "operator": "in",
+                        "args": [
+                            "regular"
+                        ]
+                    }
+                }
+            ]
+        },
+        "start": "2024-08-01T00:00:00Z",
+        "end": "2024-12-31T00:00:00Z",
+        "stackable": true,
+        "meta": {
+            "timestamps": {
+                "created_at": "2024-08-22T17:33:41.406Z",
+                "updated_at": "2024-08-22T17:33:41.406Z"
+            }
+        }
+    }
+}
+```
