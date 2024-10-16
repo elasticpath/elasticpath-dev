@@ -4,7 +4,7 @@ nav_label: Promotions Builder API Overview
 sidebar_position: 1
 ---
 
-The Promotions Builder is a rules engine designed to help you create various types of promotions based on customizable conditions and actions. Through flexible rules and strategies, the Promotions Builder allows merchants to build complex promotions tailored to specific business needs.
+The Promotions Builder helps users create various types of promotions based on customizable conditions and actions. Through flexible rules and strategies, the Promotions Builder allows merchants to build complex promotions tailored to specific business needs.
 
 ## The Promotions Builder Object
 
@@ -31,9 +31,9 @@ The Promotions Builder is a rules engine designed to help you create various typ
 | `rule_set.rules.children` | `string[array]` | Optional | Specifies an array of rules within a rule set, particularly used when multiple rules are involved in defining a promotion. This structure allows for incorporating several rules within the same `rule_set`, where each rule establishes the criteria necessary for discount eligibility.<p>Additionally, you can include sub conditions within the `rule_set.rules.children`to add additional criteria or conditions that must be met for a particular promotion to be applied. This is helpful for configuring complex promotions that require multiple, layered criteria. For configuring promotions with sub conditions, See [Create a Cart Percent Discount with Sub Conditions](/docs/promotions-builder/promotions-builder-api/cart-level-promotions/create-a-cart-percent-discount-with-subconditions) and [Create an Item Promotion with Sub Condition](/docs/promotions-builder/promotions-builder-api/item-level-promotions/create-an-item-promotion-with-sub-conditions).</p> |
 | `rule_set.rules.operator` | `string` | Required | Specifies the operators used for the rule strategy. The `eq`, `gt`,`lt`,`gte`, and `lte` operators are supported in the following rule strategies:<ul><li>`cart_total`</li><li>`item_price`</li><li>`item_quantity`</li></ul>The `in` and `nin` operators are supported in the following rule strategies:<ul><li>`item_sku`</li><li>`item_category`</li><li>`cart_custom_attribute`</li></ul> |
 | `rule_set.rules.args` | `string` / `number` | Required | Represents the condition value associated with each rule within the rule set. The number of supported arguments varies based on the rule strategy:<ul><li>For `cart_total`, `item_price`, and `item_quantity` strategies, only one argument is supported.</li><li>For `item_sku` and `item_category` strategies, the `args` field supports a minimum of 1 and a maximum of 400 arguments.</li></ul><p> See [Arguments](/docs/promotions-builder/overview#arguments)</p> |
- 
+
 ## The `actions` object
-    
+
 | Name         | Type     | Required    | Description                               |
 |:-----------|:---------|:------------|:----------------------------------------|
 |`rule_set.actions.strategy` | `string` | Required | Defines how the discount is applied. The available options are:<ul><li>`cart_discount`</li><li>`item_discount`</li><li>`shipping_discount`</li></ul>`shipping_discount` applies to shipping groups and can use percentage, fixed discount, or fixed price discounts. See [Create a Shipping Discount](/docs/promotions-builder/promotions-builder-api/promotions-builder-management/create-a-shipping-discount). |
