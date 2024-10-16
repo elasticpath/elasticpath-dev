@@ -439,7 +439,7 @@ const config = {
             specPath: "openapispecs/catalog/catalog_view.yaml",
             outputDir: "docs/api/pxm/catalog",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/catalog_view.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/catalog/catalog_view.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -529,7 +529,7 @@ const config = {
             specPath: "openapispecs/inventory/public_openapi.yaml",
             outputDir: "docs/api/pxm/inventory",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/openapi.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/public_openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -559,7 +559,7 @@ const config = {
             specPath: "openapispecs/pricebooks/pricebooks.yaml",
             outputDir: "docs/api/pxm/pricebooks",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/pricebooks.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/pricebooks/pricebooks.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -569,7 +569,7 @@ const config = {
             specPath: "openapispecs/promotions/OpenAPISpec.yaml",
             outputDir: "docs/api/promotions",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/promotions.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/promotions/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
