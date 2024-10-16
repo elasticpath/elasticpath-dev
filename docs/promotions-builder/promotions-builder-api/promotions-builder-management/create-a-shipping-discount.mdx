@@ -9,7 +9,7 @@ sidebar_position: 10
 ```http
 https://useast.api.elasticpath.com/v2/rule-promotions/:promotionID
 ```
-The shipping discount applies to the shipping base price and does not include shipping taxes or additional fees.
+The shipping discount applies to the shipping group base price and does not apply to shipping taxes or additional fees. See [Create a cart shipping group](/docs/ship-groups/shipping-groups/shipping-groups-api/create-cart-shipping-group.mdx) for how to set the shipping prices.
 
 ## Parameters
 
@@ -31,7 +31,7 @@ For descriptions about the fields, refer to [Promotions Builder API overview](/d
 
 ## Request Example
 
-In the request below, the discount is only applied to shipments with the "regular" `shipping_type`.
+In the request below, the discount is only applied to shipping groups with the "regular" `shipping_type`.
 
 ```bash
 curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
@@ -60,10 +60,10 @@ curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
                     "args": [
                         "percent",
                         100
-                    ], 
+                    ],
                     "condition":{
                         "strategy": "shipping_type",
-                        "operator": "in", 
+                        "operator": "in",
                         "args": ["regular"]
                     }
                 }
