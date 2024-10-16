@@ -17,7 +17,7 @@ const HeroSection = () => {
             API-first. Limitless potential. Easily tailor and scale your commerce solution to meet your exact
             requirements, now and in the future.
           </p>
-          <p className={"text-xl"}>
+          <p className="text-xl text-black">
             Start building today with a free trial
           </p>
           <div className="flex gap-4 mt-4">
@@ -25,7 +25,7 @@ const HeroSection = () => {
             Try Now
           </button>
           <button
-            className="border-2 border-white border-solid text-white text-lg text--bold py-4 px-6 rounded-md bg-transparent hover:bg-green-500 hover:text-white transition duration-300">
+            className="border-2 border-white border-solid text-black text-lg text--bold py-4 px-6 rounded-md bg-transparent hover:bg-green-500 hover:text-white transition duration-300">
             Get In Touch
           </button>
           </div>

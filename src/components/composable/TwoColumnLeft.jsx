@@ -6,7 +6,7 @@ const TwoColumnRight = () => {
       <div className="mx-auto flex flex-col md:flex-row items-center max-w-7xl gap-6 justify-between">
         <div className="md:w-7/12 mt-0">
           <h2 className="font-extrabold text-3xl mb-4">Escape Rigid Commerce and Empower Your Merchandisers</h2>
-          <p className="text-gray-700">
+          <p className="">
             Traditional commerce platforms confine merchandisers with rigid product and catalog management, stifling creativity and hindering the ability to craft truly unique shopping experiences.
           </p>
           <h2>

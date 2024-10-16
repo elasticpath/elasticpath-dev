@@ -6,7 +6,7 @@ const Architecture = () => {
       <div className="mx-auto flex flex-col md:flex-row items-center max-w-7xl gap-6 justify-between">
         <div className="md:w-6/12 mt-0">
           <h2 className="font-extrabold text-3xl mb-4">Composable, API-First, Headless Architecture</h2>
-          <p className="text-gray-700">
+          <p className="">
             Flexible. Secure. Performant. Open.  Our composable architecture gives you the control and confidence to build exceptional experiences.
           </p>
         </div>

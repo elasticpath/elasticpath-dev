@@ -13,7 +13,7 @@ const TwoColumnRight = () => {
         </div>
         <div className="md:w-7/12 mt-0">
           <h2 className="font-extrabold text-3xl mb-4">One Platform, Endless Possibilities</h2>
-          <p className="text-gray-700">
+          <p className="">
             Elastic Path is more than just a commerce platform – it's a comprehensive ecosystem designed to empower your business at every level.  From seamless backend integrations to a flexible core and a truly composable frontend, we provide everything you need to create exceptional omnichannel customer experiences.
           </p>
         </div>
