@@ -31,7 +31,7 @@ For descriptions about the fields, refer to [Promotions Builder API overview](/d
 
 ## Request Example
 
-In the request below, the discount is only applied to shipping groups with the "regular" `shipping_type`.
+In the request below, the discount is only applied to shipping groups with the "fedex_ground" `shipping_type`.
 
 ```bash
 curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
@@ -40,8 +40,8 @@ curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
      -d $ {
      "data": {
         "type": "rule_promotion",
-        "name": "Free regular shipping when cart is $100 or more",
-        "description": "Free regular shipping when cart is $100 or more",
+        "name": "Free Fedex Ground shipping when cart is $100 or more",
+        "description": "Free Fedex Ground shipping when cart is $100 or more",
         "enabled": true,
         "automatic": false,
         "start": "2024-08-01",
@@ -64,7 +64,7 @@ curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
                     "condition":{
                         "strategy": "shipping_type",
                         "operator": "in",
-                        "args": ["regular"]
+                        "args": ["fedex_ground"]
                     }
                 }
             ]
@@ -81,8 +81,8 @@ curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
         "type": "rule_promotion",
         "id": "fb22796d-eef6-4a89-af5f-8aab0f149011",
         "store_id": "85ea6cac-589a-4141-80d0-42b91aae73a7",
-        "name": "Free regular shipping when cart is $100 or more",
-        "description": "Free regular shipping when cart is $100 or more",
+        "name": "Free Fedex Ground shipping when cart is $100 or more",
+        "description": "Free Fedex Ground shipping when cart is $100 or more",
         "enabled": true,
         "automatic": false,
         "rule_set": {
@@ -104,7 +104,7 @@ curl -X PUT https://useast.api.elasticpath.com/v2/rule-promotions:promotionID \
                         "strategy": "shipping_type",
                         "operator": "in",
                         "args": [
-                            "regular"
+                            "fedex_ground"
                         ]
                     }
                 }
