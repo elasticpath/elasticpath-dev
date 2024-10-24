@@ -152,6 +152,7 @@ export default function CommerceApps() {
               ]}
               linkItems={[
                 "https://www.elasticpath.com/demo-library?feedStatic33365=filter191470-%3Emerchandisers.89457",
+                "/docs/commerce-manager/product-experience-manager/Products/overview"
               ]}
             />
 
@@ -250,7 +251,7 @@ export default function CommerceApps() {
               ]}
               linkItems={[
                 "https://www.elasticpath.com/demo-library",
-                "/docs/extensions",
+                "/docs/api/commerce-extensions/commerce-extensions-introduction",
               ]}
             />
           </div>
