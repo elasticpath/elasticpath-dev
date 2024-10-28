@@ -6,33 +6,33 @@ info:
   description: |
 
     With flows, you can:
-     
+    
     - in Commerce, define custom data fields for the resources that you use in your store or organization, such as adding more fields to the `customer` resource. You can also create new resources, such as a wishlist resource to support wishlists in your store. With flows, you can apply Composable Commerce to almost any use case. See [**Flows in Commerce Manager**](#flows-in-commerce).
     - in Product Experience Manager, attach a specific set of attributes for your products. In Product Experience Manager, flows are called templates. See [**Templates in Product Experience Manager**](#templates-in-product-experience-manager).
-     
+    
     You can create flows/templates at both organization and store level.
-     
+    
     :::caution
 
     Custom names and values prefixed with $ are not supported.
-     
+    
     ::: 
-     
+    
     ### Flows in Commerce
-     
+    
     You can define custom data fields for the resources that you use in your store or organization, such as adding more fields to the `customer` resource. You can also create new resources, such as a `wishlist` resource to support wishlists in your store. With flows, you can apply Composable Commerce to almost any use case.
 
     :::caution
-     
+    
     - In an organization, not all resources are available. See [**Extend a resource**](https://elasticpath.dev/guides/Custom%20Data/extend-any-resource) for a list of organization resources that can be extended.
     - If you store any sensitive Personal Identifiable Information (PII) or non-public data on your site, ensure that you do not use this data in flows to avoid potential access to the data. For more information, see [**Permissions**](/docs/authentication/Tokens/permissions).
-     
+    
     :::
-     
+    
     ### Templates in Product Experience Manager
-     
+    
      Templates allow you to attach a specific set of attributes to your products.
-     
+    
      - You can use templates to define characteristics of your product, for example, a product specification. For example, a *Book* template might contain attributes, such as *ISBN*, *Author*, *Number of pages*, *Year Published*, or *Condition (New/Used)*.
      - You can use templates for Search Engine Optimization (SEO). When you assign template attributes such as, *care instructions* or *fabric*, to a shirt and a shopper searches for a specific item, attributes help stores to return the products that match the search criteria. For example, when a shopper searches for a large blue shirt, all shirts that are large and blue are returned in the search result.
 servers:
@@ -72,11 +72,12 @@ tags:
       | `cart_items`                                | Extend the [`cart_item`](/docs/api/carts/cart-items) object. | Organization/Store |
       | `customers`                                 | Extend the [`customer`](/docs/customer-management/customer-management-api/customer-management-api-overview) object. **Note**: Please use Account Management for all new frontend experiences.  | n/a |
       | `oidc-profiles`                             | Extend the [`oidc-profiles`](/docs/authentication/single-sign-on/openid-connect-profiles-api/openid-connect-profiles-api-overview) object. | Store |
-      | `order_items`                               | Extend the [`order_item`](https://elasticpath.dev/docs/commerce-cloud/orders/orders-api/orders-api-overview#the-order-object) object. | Organization/Store |
+      | `order_items`                               | Extend the [`order_item`](/docs/api/carts/get-order-items) object. | Organization/Store |
       | `orders`                                    | Extend the [`order`](/docs/api/carts/orders) object. | Organization/Store |
       | `password-profiles`                         | Extend the [`password-profiles`](/docs/authentication/single-sign-on/password-profiles-api/overview) object. | Store |
       | `products`                                  | Extend the [`product`](/docs/api/pxm/products/products) object. | Store |
-      | `promotions`                                | Extend the [`promotion`](/docs/api/promotions/promotions-standard-introduction). | Store |
+      | `promotions`                                | Extend the [`promotion`](/docs/api/promotions/promotions-standard-introduction) object. | Store |
+      | `rule-promotions`                           | Extend the [`rule-promotion`](docs/promotions-builder/promotions-builder-api/promotions-builder-api-overview) object. | Store |
       | `user-authentication-info`                  | Extend the [`user-authentication-info`](/docs/authentication/single-sign-on/user-authentication-info-api/overview) object. | Store |
       | `user-authentication-oidc-profile-info`     | Extend the [`user-authentication-oidc-profile-info`](/docs/authentication/single-sign-on/user-authentication-openid-connect-profile-api/openid-connect-profile-overview) object. | Store |
       | `user-authentication-password-profile-info` | Extend the [`user-authentication-password-profile-info`](/docs/authentication/single-sign-on/user-authentication-password-profiles-api/password-profile-overview) object. | Store |
@@ -89,7 +90,7 @@ tags:
       :::note
 
       [Custom APIs](/docs/api/commerce-extensions/custom-ap-is#custom-apis-vs-non-core-flows) are the next generation of Non-Core Flows. Flows are not going anywhere, but Custom APIs offer enhanced capabilities. We recommend using Custom APIs for any of your new use cases.
-      
+
       :::
 
       #### Core and non-core flows
@@ -143,20 +144,19 @@ tags:
       - in Commerce, use a field in your flows to represent  single field of data (for example a `Product Rating`) to be applied to an entity
       - in Product Experience Manager, use an attribute in your template to attach a characteristic like `color` to a product.
 
-      A field/attribute represents a single piece of data. All fields/attrbutes have a `field_type` (`string`, `integer`, `boolean`, `date` or `relationship`), a default value, and an optional set of validation rules.
+      A field/attribute represents a single piece of data. All fields/attributes have a `field_type` (`string`, `integer`, `boolean`, `date` or `relationship`), a default value, and an optional set of validation rules.
 
       :::caution
 
       - Custom names and values prefixed with `$` are not supported.
       - There is a hard limit of 100 fields per flow.
+      - You can configure default values for fields. If you choose to do so, you must ensure that your default field values comply with your validation rules.
 
       :::
 
       #### Field/Attribute Validation Rules
 
       When creating a field/attribute, you can add validation to the values that are stored. The validation you use depends on the `field_type` of the field/attribute. Each validation rule is expressed as a validation rule object.
-
-
 
       #### `string` / `enum`
 
@@ -230,6 +230,10 @@ tags:
 
       ##### `relationship` / `one-to-many`
 
+      :::caution
+      This only applies to Commerce. You cannot use relationships in Product Experience Manager templates.
+      :::
+
       Allows multiple relationships to be created.
 
       | Attribute | Type | Description |
@@ -238,6 +242,10 @@ tags:
       | `to` | `string` | The entity type you are making relationships with in singular form (for example, `product`). |
 
       ##### `relationship` / `one-to-one`
+
+      :::caution
+      This only applies to Commerce. You cannot use relationships in Product Experience Manager templates.
+      :::
 
       Allows only a single relationships to be created on an entry.
 
@@ -746,6 +754,7 @@ paths:
                     id: '{{flowFieldID}}'
                     name: Product Rating
                     required: true
+                    enabled: true
                     slug: product-rating
                     type: field
         required: true
@@ -1595,6 +1604,10 @@ components:
               description: A unique identifier of a field/attribute.
               examples:
                 - product-rating
+            enabled:
+              type: boolean
+              examples:
+                - true
             type:
               type: string
               description: Represents the object being returned.
@@ -1781,7 +1794,7 @@ components:
       type: object
       description: |
         Links allow you to move between requests. Single entities use a `self` parameter with a link to that specific resource. Listing pages use the following:
-         
+        
          | Property | Description |
          | --- | --- |
          | `current` | Always the current page |
