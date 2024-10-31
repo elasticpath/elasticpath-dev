@@ -635,9 +635,27 @@ It can take Merchant Center up to 48 hours to fully link a Business Profile (i.e
     - The file must be in JSON Lines format.
     - A [JSON Schema file](/assets/composer/google-merchant-center/external-local-inventory-schema.json) is available to assist with understanding how to properly construct each record in the JSON lines file.  The schema can also be used by JSON schema tooling to validate your records are properly formatted.
     - The API supports the file being gzipped for performance reasons, but it is not required.
+    - An example snippet of a properly formatted JSON lines local inventory file is below.
+
+    ```json
+    {"sku":"sku123abc","storeCode":"store123","price":10.99,"salePrice":8.99,"currency":"USD","salePriceStartDate":"2024-07-01T00:00:00-06:00","salePriceEndDate":"2024-09-01T23:59:59-06:00","quantity":0,"instoreLocation":"Aisle X | Bin Y"}
+    {"sku":"sku123abc","storeCode":"store456","price":10.99,"salePrice":7.99,"currency":"USD","salePriceStartDate":"2024-07-01T00:00:00-06:00","salePriceEndDate":"2024-09-01T23:59:59-06:00","quantity":10,"instoreLocation":"Aisle X | Bin Y"}
+    {"sku":"sku456xyz","storeCode":"store123","price":59.99,"currency":"USD","quantity":10}
+    ```
+
 1. Host the file in an accessible location.  This could be within an AWS S3 bucket, Google Drive, etc.
 1. Configure store code mapping, if necessary, to map the store codes sent in the JSON Lines file to the store codes configured in your Merchant Center account if they do not match.  See the Store Code Mapping section of [Configuring the Integration](#configuring-the-integration).
 1. Call the API and pass it the URL to your local inventory file.  An [Open API specification is available](/assets/composer/google-merchant-center/external-local-inventory-ingress-request-openapi.yml) to understand the proper way to call the API.  The unique URL to the API (e.g. the `{local-inventory-flow-id}`) for your integration instance can be found within the Integration Summary section of the Google Merchant Center integration within Integrations Hub.
+    - Below is an example request payload to the local inventory API.
+
+    ```json
+        {
+            "inventoryFileUrls": [
+                "https://{path}/inventory_yyyy_mm_dd.jsonl.gz"
+            ]
+        }
+    ```
+
 1. Repeat this process as needed to keep local inventory synchronized, bearing in mind your Merchant Center [API quotas and rate limits](#api-rate-limits-and-quotas).
 
 ::: caution
