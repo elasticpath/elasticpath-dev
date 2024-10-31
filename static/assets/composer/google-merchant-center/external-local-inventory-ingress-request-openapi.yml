@@ -1,0 +1,88 @@
+openapi: '3.0.3'
+info:
+  title: Elastic Path Local Inventory Feed
+  description: An asynchronous API to ingest local inventory records from a remote file and publish them to a Google Merchant Center account as a local inventory feed.
+  version: 1.0.0
+  contact:
+    name: Elastic Path Global Services
+    url: 'https://www.elasticpath.com/global-services'
+    email: globalservices@elasticpath.com
+  license:
+    name: MIT
+servers:
+  - url: 'https://hooks.us-east-2.elasticpathintegrations.com'
+    description: (US EAST) Elastic Path Integrations Hub
+  - url: 'https://hooks.eu-west-1.elasticpathintegrations.com'
+    description: (EU WEST) Elastic Path Integrations Hub
+paths:
+  '/trigger/{local-inventory-flow-id}':
+    post:
+      summary: Publish Local Inventory
+      description: The endpoint used to publish local inventory records to a Google Merchant Center account as a local inventory feed.
+      operationId: local-inventory-trigger
+      parameters:
+        - name: local-inventory-flow-id
+          in: path
+          description: 'The flow instance id for the Publish Local Inventory flow.  This can be found in the configuration of the integration, on the Summary tab in the Trigger Details section.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Local Inventory Feed Schema
+              description: The schema to submit a local inventory file
+              properties:
+                inventoryFileUrls:
+                  type: array
+                  title: Array of inventory file URLs
+                  description: An array of URLs pointing to the local inventory files.
+                  minItems: 1
+                  items:
+                    type: string
+            examples:
+              Inventory - Single File:
+                value:
+                  inventoryFileUrls:
+                    - "https://my-file-server.com/inventory_20240729.jsonl.gz"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  executionID:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: string
+                        detail:
+                          type: object
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+          
+components:
+  securitySchemes:
+    API-Key:
+      type: apiKey
+      name: API-Key
+      in: header

@@ -1,0 +1,33 @@
+{
+  "title": "Google Local Inventory",
+  "type": "object",
+  "properties": {
+    "sku": {
+      "type": "string",
+      "description": "The sku of the product associated with this inventory record."
+    },
+    "storeCode": {
+      "type": "string",
+      "description": "The store code of the store associated with this inventory record."
+    },
+    "price": {
+      "type": "number",
+      "description": "The price of the product associated with this inventory record.",
+      "minimum": 0.01
+    },
+    "salePrice": {
+      "type": "number",
+      "description": "The sale price of the product associated with this inventory record.",
+      "minimum": 0.01
+    },
+    "currency": {
+      "type": "string",
+      "description": "The currency of the prices associated with this inventory record."
+    },
+    "salePriceStartDate": { "type": "string", "format": "date-time" },
+    "salePriceEndDate": { "type": "string", "format": "date-time" },
+    "quantity": { "type": "integer", "minimum": 0 },
+    "instoreLocation": { "type": "string" }
+  },
+  "required": ["sku", "storeCode", "price", "quantity"]
+}
