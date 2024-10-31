@@ -4,13 +4,13 @@ nav_label: Google Merchant Center Next Integration
 sidebar_position: 10
 ---
 
-You can easily integrate Elastic Path Composable Commerce with your [Google Merchant Center Next](https://www.google.com/retail/) account using the **Integrations Hub** in Commerce Manager. Once you have registered your Elastic Path Composable Commmerce-powered storefront with the Google Merchant Center, you can use the integration to upload your products and inventories to your Google Merchant Center account.  This enables your products to be shown in the **Shopping** tab within Google search results, or even within online ads.  When a search result or ad is clicked, it links to your Elastic Path Composable Commerce-powered storefront. 
+You can easily integrate Elastic Path Composable Commerce with your [Google Merchant Center Next](https://www.google.com/retail/) account using the **Integrations Hub** in Commerce Manager. Once you have registered your Elastic Path Composable Commmerce-powered storefront with the Google Merchant Center, you can use the integration to upload your products and inventories to your Google Merchant Center account.  This enables your products to be shown in the **Shopping** tab within Google search results, or even within online ads.  When a search result or ad is clicked, it links to your Elastic Path Composable Commerce-powered storefront.
 
-![Google Merchant Center Integration](/assets/composer/google-merchant-center/diagram.png)
+![Google Merchant Center Integration](/assets/composer/google-merchant-center/diagram.jpg)
 
 The integration will synchronize your product data, and optionally, your inventory data between your Elastic Path Composable Commerce store and your Google Merchant Center account.
 
-Whenever a catalog release is published in Elastic Path Composable Commerce, the integration publishes the changes to Google Merchant Center using the [Merchant API](https://developers.google.com/merchant/api). 
+Whenever a catalog release is published in Elastic Path Composable Commerce, the integration publishes the changes to Google Merchant Center using the [Merchant API](https://developers.google.com/merchant/api).
 
 The following default data is synchronized.  You can optionally configure custom additional attributes to be synchronized.
 
@@ -27,7 +27,7 @@ The following default data is synchronized.  You can optionally configure custom
 
 :::caution
 
-- The integration does not support bundles.
+- The integration currently does not support bundles.
 
 :::
 
@@ -46,7 +46,7 @@ Before configuring the integration, there are some prequisites you need to meet 
 You need to perform the following steps in Google Merchant Center Next before configuring the integration.  Details on how to configure each of these elements can be found in [Google's Merchant Center Next online help](https://support.google.com/merchants/answer/12159157/).
 
 1. You must set up a Google Merchant account.
-1. In the Google Merchant Center, you must verify ownership of your storefront. 
+1. In the Google Merchant Center, you must verify ownership of your storefront.
 1. For products to be valid in Google, Google requires that you supply shipping details and prices, and a returns policy. The Google Merchant Center does not consider your products valid until this is done.
 1. Once your Google Merchant Center Next account is set-up, you need to create an OAuth 2.0 client id to authorize **Integrations Hub** to connect to your Google Merchant Center Next account.  Please consult the [Google Cloud Platform documentation on how to create an OAuth 2.0 Client ID](https://cloud.google.com/application-integration/docs/configure-authentication-profiles#create-oauth). Note that you may need to [create a Project](https://developers.google.com/workspace/guides/create-project#project) and [configure your OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent) before starting this step.  Please consult the following tables for values that will be needed to configure these steps.
 
@@ -66,6 +66,7 @@ Save the `Client ID` and `Client Secret` that are produced from creation of the 
 ### Prerequisites for Commerce
 
 The following steps must be performed in Elastic Path Commerce Manager before configuring the integration.
+
 - Configure supported currencies.
 - Configure supported locales.
 - Configure product data together with catalogs.
@@ -87,30 +88,25 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
     - **Client-ID**  - Your Commerce Client ID.
     - **Client-Secret** - Your Commerce Client Secret.
     - **Token URL** - Your Commerce API Token URL.
-
     **Token URL** for:
     - EU - `https://useast.api.elasticpath.com/oauth/access_token`
     - US - `https://useast.api.elasticpath.com/oauth/access_token`
-
 1. Click **Connect**. The authorization is successfully completed.
 1. Enter the following details in **Google Merchant Center Connection**:
     - **Client-ID**  - Your Google Client ID.
     - **Client-Secret** - Your Google Client Secret.
     - **Token URL** - `https://oauth2.googleapis.com/token`
     - **Authorize URL** - `https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent`
-
 1. Click **Connect**. The authorization is successfully completed.
 1. Click **Next**. The **Configuration** page is displayed.
     - **Google Merchant Center ID**  - Your Google Merchant ID.
     - **Merchant API version**  - Version of Merchant API - default v1beta.
     - **Elastic Path Webhook Secret Key**  - The secret API key used to secure outbound Elastic Path webhooks that publish events to this integration.
     - **Product Filtering**  - Select what types of products to send to Google Merchant Center.
-
         **Product Filtering options**:
         - Parent Products Only - integration sends to Merchant Center standard products and parent products only. It does NOT send child products.
         - Child Products Only - integration sends to Merchant Center standard products and child products only. It does NOT send parent products.
         - Both Parent and Child Products - integration sends to Merchant Center all type of products.
-
     - **Google Offer Id Strategy** - Specify the Elastic Path product-level field that will be used as the `offer id` for products in Google Merchant Center.
 
         **Offer Id Strategy options**:
@@ -120,7 +116,7 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
 
         :::caution
 
-        - Changing the selection for **Google Offer Id Strategy** after products have already been synchronized to Merchant Center will result in duplicate products in Merchant Center! When choosing a value of sku or slug, please remember that changing these values for a product in your Elastic Path catalog will result in a new, duplicated products in Merchant Center with the new offer id values.
+        Changing the selection for **Google Offer Id Strategy** after products have already been synchronized to Merchant Center will result in duplicate products in Merchant Center! When choosing a value of sku or slug, please remember that changing these values for a product in your Elastic Path catalog will result in a new, duplicated products in Merchant Center with the new offer id values.
 
         :::
 
@@ -132,20 +128,20 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
         - Object pattern supports the definition of URL template per product type e.g. `{"standard":"https://localhost/p/${id}/${sku}","parent":"https://localhost/p/${id}/${sku}","child":"https://localhost/p/${parentSku}?variant=${id}"}`.
             - Parent, standard and child elemets are required.
             - Supported placeholders: `${id}`, `${slug}`, `${sku}`, `${parentId}`, `${parentSlug}`, `${parentSku}`
-
     - **Default Availability Status** - Select the default availability status to send when inventory is not managed in Elastic Path.
     - **Inventory Out of Stock Threshold** - The inventory available threshold for determining if a product is in stock or out of stock. Products with inventory positions at or below the specified value will be marked as `out of stock` in Merchant Center.
     - **Default Language** - Select the default language of product content.
-    - **Google API Batch Size** - The number of records to consolidate and send to Google APIs in a single API request (batch). __Please leave this as the default value unless you are experiencing performance issues when synchronizing data to Merchant Center.__
-    - **Log Level** - The log level used when the integration executes. Used for debugging the integration. __Please leave this as the default value unless you are experiencing issues that require debugging.__
-    - **Jsonl processor batch size** - JSONL processor batch size, max allowed 100. Recommended value 100. __Please leave this as the default value unless you are experiencing performance issues when synchronizing data to Merchant Center.__
-
+    - **Google API Batch Size** - The number of records to consolidate and send to Google APIs in a single API request (batch). **Please leave this as the default value unless you are experiencing performance issues when synchronizing data to Merchant Center.**
+    - **Log Level** - The log level used when the integration executes. Used for debugging the integration. **Please leave this as the default value unless you are experiencing issues that require debugging.**
+    - **Jsonl processor batch size** - JSONL processor batch size, max allowed 100. Recommended value 100. **Please leave this as the default value unless you are experiencing performance issues when synchronizing data to Merchant Center.**
 1. Click **Next**. The **Catalog Mapping** page is displayed.
-    - **Send local inventory flag** - Enable this flag to create a separate datasource in Merchant Center for local inventory products and information (inventory in store locations). See [Configure Local Inventory](#configure-local-inventory)
-    - **Product Catalog <> Data Source Mapping** - This configuration contains a mapping of Elastic Path catalogs to Google Merchant Center data sources.  Each mapping includes a selected catalog, language, country and currency. Each mapping entry will create a separate online data source in Google Merchant Center. Catalog, language and currency selection options are based on data configured in Elastic Path.
+
+    - **Send local inventory flag** - Enable this flag to create a separate datasource in Merchant Center for local inventory products and information (inventory in store locations). See [Synchronizing Local Inventory](#synchronizing-local-inventory)
+
+    - **Product Catalog <\> Data Source Mapping** - This configuration contains a mapping of Elastic Path catalogs to Google Merchant Center data sources.  Each mapping includes a selected catalog, language, country and currency. Each mapping entry will create a separate online data source in Google Merchant Center. Catalog, language and currency selection options are based on data configured in Elastic Path.
         - Click on the `+ Add to Product Catalog <> Data Source Mapping` button to add a new row for each Elastic Path catalog and Merchant Center data source you wish to synchronize.
 
-1. Click **Next**. The **Configure Store Code Mapping** page is displayed.  This page is used to configure any store code translations that need to occur when sending local inventory to Merchant Center.See [Configure Local Inventory](#configure-local-inventory)
+1. Click **Next**. The **Configure Store Code Mapping** page is displayed.  This page is used to configure any store code translations that need to occur when sending local inventory to Merchant Center.See [Synchronizing Local Inventory](#synchronizing-local-inventory)
     - Click on the `Add Value` button to add rows for each needed translation.
     - In each row, place the external store code value in the left field, and the Merchant Center store code value it maps to in the right field.
 
@@ -166,13 +162,14 @@ If there is an update to the integration, a message is displayed in **Summary**.
 When integrating Elastic Path Composable Commerce with Google Merchant Center Next, merchants can choose how to manage the synchronization of parent products and child products. This is particularly important for product configurations that involve variations (e.g., different sizes or colors), where the parent product represents the main product, and child products represent the different variants.
 
 The integration provides the flexibility to configure which products are sent to Google Merchant Center Next:
+
 - **Parent Products Only**
 - **Child Products Only**
 - **Both Parent and Child Products**
 
 #### Parent Products Only
 
-When configuring the integration to send **parent products only**, the integration sends standard products and the main product (the parent) without any variants. 
+When configuring the integration to send **parent products only**, the integration sends standard products and the main product (the parent) without any variants.
 
 #### Child Products Only
 
@@ -185,6 +182,7 @@ When configuring the integration to send **both parent and child products**, the
 #### Product Filtering Configuration
 
 In the **Integrations Hub** of Elastic Path Commerce Manager, merchants can configure product filtering to specify which types of products (parent, child, or both) will be sent to Google Merchant Center Next. The available options include:
+
 - **Parent Products Only**: Sends standard products and only the main product listing without variant details.
 - **Child Products Only**: Sends standard products and only the individual variants of the product.
 - **Both Parent and Child Products**: Sends both the main product and all of its variants along with standard products.
@@ -195,7 +193,7 @@ These options allow merchants to control the granularity of product information 
 
 - **Google Merchant Center Next Limitations**: When sending child products, ensure that each variant aligns with Google Merchant Center Next’s supported variant attributes (such as size, color, etc.). Misalignment can result in data rejections.
 - **Inventory Management**: Inventory updates will need to account for whether you are sending parent, child, or both types of products. Make sure inventory levels are properly tracked for each variant if child products are sent.
-- **Changing Product filtering Configuration** - when changing product filtering configuration in the Google Merchant Center integration in the Integrations Hub, integration DOES not reconcile the data between Elastic Path Composable Commerce and Google Merchant Center. If for example configuration has been changed from "Send Both Parent And Child Products" to "Send Only Parent Products", removal of products previously created in Google Merchant Center needs to be done manually. When using API to send data to Google Merchant Center, merchant may not be able to delete products in Google Merchant Center Next interface, that is why it may be required to remove products using direct API call to Merchant API.
+- **Changing Product Filtering Configuration** - when changing product filtering configuration in the Google Merchant Center integration in the Integrations Hub, integration DOES not reconcile the data between Elastic Path Composable Commerce and Google Merchant Center. If for example configuration has been changed from "Send Both Parent And Child Products" to "Send Only Parent Products", removal of products previously created in Google Merchant Center needs to be done manually. When using API to send data to Google Merchant Center, merchant may not be able to delete products in Google Merchant Center Next interface, that is why it may be required to remove products using direct API call to Merchant API.
 
 ### Sending Google Product Category
 
@@ -218,6 +216,7 @@ Custom template field is created automatically by the integration during Integra
 When integrating Elastic Path Composable Commerce with Google Merchant Center Next, merchants who operate in multiple regions must carefully manage localization. Localization ensures that products are presented in the appropriate language, currency, and other region-specific formats for each target market. Proper localization helps improve product relevance and visibility for users in different countries, leading to higher engagement and conversion rates.
 
 The integration supports the following key localization aspects:
+
 - **Multiple Languages**
 - **Multiple Currencies**
 - **Region-specific Product Information**
@@ -251,7 +250,7 @@ For merchants selling products in different currencies, it is essential to confi
 
 1. **Currency Configuration**:
    - Merchants must configure supported currencies in Elastic Path Composable Commerce. Google Merchant Center only allows one currency per data source, meaning that each data source corresponds to a specific currency for a given region. Integration will automatically create data sources in Google Merchant Center based on configuration in Elastic Path Composable Commerce.
-   
+
 2. **Price Synchronization**:
    - When products are synchronized, the price of the product in the respective currency is sent to Google Merchant Center Next. Merchants must ensure that the correct price is associated with each currency and region combination.
 
@@ -264,6 +263,7 @@ When a price for a specified currency is missing for the product, the product in
 ### Region-specific Product Information
 
 In addition to language and currency, other product attributes may vary by region, including:
+
 - **Shipping information** (e.g., shipping times or costs).
 - **Tax requirements** (these must be configured manually in Google Merchant Center Next).
 - **Regulatory information** (certain regions may have additional compliance requirements for products).
@@ -623,7 +623,7 @@ Merchants who desire to utlize Google Local Inventory Ads, the integration suppo
 
 The merchant must configure all physical store locations within their Google Merchant Center account prior to loading local inventory.  Physical store locations are configured within a Mercant Center account by linking a Business Profile for each store. Full details on this process can be found in [Google Merhant Center Help](https://support.google.com/merchants/answer/12160023).
 
-::: caution
+:::caution
 
 It can take Merchant Center up to 48 hours to fully link a Business Profile (i.e. a physical store location) to a Merchant Center account.  Even if the store shows as linked in the Merchant Center account, it may not yet be fully linked within Google's backend systems. If you attempt to load local inventory and are seeing errors about invalid store codes and you are certain that your store codes are correct, you may need to wait several hours for the Google systems to properly finish linking your Business Profiles to your Merchant Center account. You can use the [Replay](#troubleshooting) feature to easily resubmit any failed executions.
 
@@ -658,7 +658,7 @@ It can take Merchant Center up to 48 hours to fully link a Business Profile (i.e
 
 1. Repeat this process as needed to keep local inventory synchronized, bearing in mind your Merchant Center [API quotas and rate limits](#api-rate-limits-and-quotas).
 
-::: caution
+:::caution
 
 The Google Merchant Center API for local inventory enforces case-sensitivity on store codes.  Please keep this in mind when configuring your store code mapping.
 
@@ -680,7 +680,7 @@ You can debug issues in the **Executions** viewer within Integrations Hub.
         - Missing or incorrect configurations with your Google Merchant Center account that have been corrected.
         - Google Merchant Center changes that were not successfully applied by Google at the time of execution.
 
-::: caution
+:::caution
 
 All Google Merchant Center changes are asynchronous and can take anywhere from a few minutes to up to 48 hours to fully reflect in your Merchant Center account. This statement is true for changes made in the Google Merchant Center Next console, as well as changes made via the integration. This can occasionally cause errors during flow execution.  See the previous section for instructions on how to **Replay** failed flow exeuctions for a quick way to address these types of issues.
 
