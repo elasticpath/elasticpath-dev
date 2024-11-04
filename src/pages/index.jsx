@@ -17,7 +17,7 @@ export default function Homepage() {
   useLinkedinInsight();
 
   return (
-    <div className="dev-homepage h-full dark:bg-[url('/assets/homepage/blenddark2.webp')] bg-center bg-no-repeat bg-cover bg-white scroll-smooth">
+    <div className="dev-homepage dark:bg-[url('/assets/homepage/dev-site-blend.webp')] bg-cover bg-white scroll-smooth">
       <Layout
         description="Build scalable, API-driven commerce experiences with Elastic Path's headless commerce platform. Unlock seamless integrations and automate operations through our open API, empowering developers to craft innovative shopping experiences."
         wrapperClassName="relative homepage flex flex-col relative"
