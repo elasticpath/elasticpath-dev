@@ -181,9 +181,6 @@ const config = {
         googleTagManager: {
           containerId: 'G-NZ3NL8DLLD',
         },
-        googleTagManager: {
-          containerId: 'G-NZ3NL8DLLD',
-        },
       }),
     ],
   ],
@@ -224,11 +221,13 @@ const config = {
           {
             label: "Guides",
             to: "guides",
+            datautmcampaign: "guides",
           },
           {
             label: "Docs",
             type: "dropdown",
             className: "nav-dropdown",
+            datautmcampaign: "docs",
             items: [
               {
                 type: "html",
@@ -257,7 +256,7 @@ const config = {
           {
             label: "Support",
             to: "https://support.elasticpath.com",
-            dataUtmCampaign: "support",
+            datautmcampaign: "support",
           },
           {
             type: "search",
@@ -268,14 +267,14 @@ const config = {
             href: "https://www.elasticpath.com/get-in-touch",
             position: "right",
             className: "navbar-book-demo",
-            dataUtmCampaign: "get-in-touch",
+            datautmcampaign: "get-in-touch",
           },
           {
             label: "Free Trial",
             href: "https://useast.cm.elasticpath.com/free-trial",
             position: "right",
             className: "dev-portal-signup dev-portal-link",
-            dataUtmCampaign: "free-trial",
+            datautmcampaign: "free-trial",
           },
         ],
       },
