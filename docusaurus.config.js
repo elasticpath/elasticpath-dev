@@ -1329,7 +1329,7 @@ const config = {
           { to: '/docs/studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain', from: '/docs/cx-studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain'},
           { to: '/docs/api/pxm/catalog/get-catalog-by-id', from: '/docs/pxm/catalogs/catalog-configuration/get-all-catalogs'},
           { to: '/docs/api/carts/transactions', from: '/docs/commerce-cloud/payments/transactions/get-all-transactions'},
-          { to: '/docs/api/pxm/catalog/get-by-context-all-nodes', from: '/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes'},
+          { to: '/docs/api/pxm/catalog/get-by-context-all-hierarchies', from: '/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes'},
           { to: '/changelog/Studio-Release-Notes/Release-190-February-14-2024', from: '/docs/cx-studio/Release-Notes/Release-190-February-14-2024'},
           { to: '/changelog/Studio-Release-Notes/Release-190-February-14-2024', from: '/docs/cx-studio/Release-Notes/Release-191-February-27-2024'},
           { to: '/docs/api/pxm/products/build-child-products', from: '/docs/pxm/products/pxm-product-variations/child-products-api/build-child-products'},
@@ -1652,6 +1652,12 @@ const config = {
         // ```
       }),
     ],
+  ],
+  scripts: [
+    {
+      src: '/js/utm-handler.js',
+      async: true,
+    },
   ],
 };
 
