@@ -252,10 +252,12 @@ const config = {
           {
             label: "Changelog",
             to: "/changelog-landing",
+            datautmcampaign: "changelog",
           },
           {
             label: "Support",
             to: "https://support.elasticpath.com",
+            dataUtmCampaign: "support",
           },
           {
             type: "search",
@@ -266,12 +268,14 @@ const config = {
             href: "https://www.elasticpath.com/get-in-touch",
             position: "right",
             className: "navbar-book-demo",
+            dataUtmCampaign: "get-in-touch",
           },
           {
             label: "Free Trial",
             href: "https://useast.cm.elasticpath.com/free-trial",
             position: "right",
             className: "dev-portal-signup dev-portal-link",
+            dataUtmCampaign: "free-trial",
           },
         ],
       },
@@ -313,7 +317,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/elasticpath",
               },
             ],
           },
