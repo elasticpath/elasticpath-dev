@@ -3,21 +3,40 @@ title: Observable Events
 nav_label: Observable Events
 sidebar_position: 100
 ---
-You can integrate Subscriptions with external systems like enterprise resource planning, fulfilment and other systems. For example, when a subscriber updates their address, the Customer Relationship Management system is updated with the change.
 
-Events are actions that occur in Subscriptions, such as a subscriber changing their address or a subscription changing from active to inactive. You can create custom functions that perform additional processing outside of Subscriptions, and create integrations so that when an event occurs in your store, the custom function is run.
+# Observable Events in Subscriptions
 
-Events are processed concurrently. This means that events may not be delivered in the order they are created. For example, if a subscription is updated multiple times, the events may not be delivered in the same sequence they were updated. Events operate on an "at least once" delivery policy. We aim to deliver messages within 30 minutes or less. Ensure that you design your receiving code accordingly.
+## Overview
+Observable events allow you to integrate Subscriptions with external systems like ERP, fulfillment, and CRM platforms. When specific actions occur within Subscriptions (such as address updates or status changes), these events can trigger custom functions to perform additional processing or update external systems.
 
-For more information about integrating Subscriptions, see [**Integration Types**](/docs/api/integrations/integrations-introduction#integration-types).
+## Event Processing Behavior
+- Events are processed concurrently and may not be delivered in chronological order
+- Events follow an "at least once" delivery policy
+- Target delivery time is within 30 minutes
+- Integration code should be designed to handle out-of-order and duplicate events
 
-| Resource | Action | Observable Key | Availability |
-| --- | --- | --- | --- |
-| Product | <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-product.created`</li><li>`subscription-product.updated`</li><li>`subscription-product.deleted`</li></ul> | Store |
-| Plan |  <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-plan.created`</li><li>`subscription-plan.updated`</li><li>`subscription-plan.deleted`</li></ul> | Store |
-| Offering |  <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-offering.created`</li><li>`subscription-offering.updated`</li><li>`subscription-offering.deleted`</li></ul> | Store |
-| Subscription | <ul><li>Created</li><li>Create-failed</li><li>Paused</li><li>Canceled</li><li>Pending-cancel</li><li>Pending-pause</li><li>Resumed</li><li>Closed</li></ul> | <ul><li>`subscription.created`</li><li>`subscription.create-failed`</li><li>`subscription.canceled`</li><li>`subscription.paused`</li><li>`subscription.pending_cancel`</li><li>`subscription.pending_pause`</li><li>`subscription.resumed`</li><li>`subscription.closed`</li></ul> | Store |
-| Job | <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-job.created`</li><li>`subscription-job.updated`</li><li>`subscription-job.deleted`</li></ul> | Store |
-| Invoices | <ul><li>Created</li><li>Deleted</li></ul> | <ul><li>`subscription-invoice.created`</li><li>`subscription-offering.deleted`</li></ul> | Store |
-| Schedule | <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-schedule.created`</li><li>`subscription-schedule.updated`</li><li>`subscription-schedule.deleted`</li></ul> | Store |
-| Subscriber | <ul><li>Created</li><li>Updated</li><li>Deleted</li></ul> | <ul><li>`subscription-subscriber.created`</li><li>`subscription-subscriber.updated`</li><li>`subscription-subscriber.deleted`</li></ul> | Store |
+For detailed information about integration options, see [**Integration Types**](/docs/api/integrations/integrations-introduction#integration-types).
+
+## Available Events
+
+### Subscription Management
+| Resource | Actions | Observable Keys |
+|----------|---------|-----------------|
+| Subscription | • Created<br/>• Create-failed<br/>• Paused<br/>• Canceled<br/>• Pending-cancel<br/>• Pending-pause<br/>• Resumed<br/>• Closed | `subscription.created`<br/>`subscription.create-failed`<br/>`subscription.paused`<br/>`subscription.canceled`<br/>`subscription.pending_cancel`<br/>`subscription.pending_pause`<br/>`subscription.resumed`<br/>`subscription.closed` |
+| Subscriber | • Created<br/>• Updated<br/>• Deleted | `subscription-subscriber.created`<br/>`subscription-subscriber.updated`<br/>`subscription-subscriber.deleted` |
+
+### Product Configuration
+| Resource | Actions | Observable Keys |
+|----------|---------|-----------------|
+| Product | • Created<br/>• Updated<br/>• Deleted | `subscription-product.created`<br/>`subscription-product.updated`<br/>`subscription-product.deleted` |
+| Plan | • Created<br/>• Updated<br/>• Deleted | `subscription-plan.created`<br/>`subscription-plan.updated`<br/>`subscription-plan.deleted` |
+| Offering | • Created<br/>• Updated<br/>• Deleted | `subscription-offering.created`<br/>`subscription-offering.updated`<br/>`subscription-offering.deleted` |
+
+### Operations
+| Resource | Actions | Observable Keys |
+|----------|---------|-----------------|
+| Job | • Created<br/>• Updated<br/>• Deleted | `subscription-job.created`<br/>`subscription-job.updated`<br/>`subscription-job.deleted` |
+| Invoices | • Created<br/>• Deleted | `subscription-invoice.created`<br/>`subscription-invoice.deleted` |
+| Schedule | • Created<br/>• Updated<br/>• Deleted | `subscription-schedule.created`<br/>`subscription-schedule.updated`<br/>`subscription-schedule.deleted` |
+
+> **Note**: All events are available at the Store level.

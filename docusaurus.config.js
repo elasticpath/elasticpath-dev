@@ -252,10 +252,12 @@ const config = {
           {
             label: "Changelog",
             to: "/changelog-landing",
+            datautmcampaign: "changelog",
           },
           {
             label: "Support",
             to: "https://support.elasticpath.com",
+            dataUtmCampaign: "support",
           },
           {
             type: "search",
@@ -266,12 +268,14 @@ const config = {
             href: "https://www.elasticpath.com/get-in-touch",
             position: "right",
             className: "navbar-book-demo",
+            dataUtmCampaign: "get-in-touch",
           },
           {
             label: "Free Trial",
             href: "https://useast.cm.elasticpath.com/free-trial",
             position: "right",
             className: "dev-portal-signup dev-portal-link",
+            dataUtmCampaign: "free-trial",
           },
         ],
       },
@@ -313,7 +317,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/elasticpath",
               },
             ],
           },
@@ -1329,7 +1333,7 @@ const config = {
           { to: '/docs/studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain', from: '/docs/cx-studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain'},
           { to: '/docs/api/pxm/catalog/get-catalog-by-id', from: '/docs/pxm/catalogs/catalog-configuration/get-all-catalogs'},
           { to: '/docs/api/carts/transactions', from: '/docs/commerce-cloud/payments/transactions/get-all-transactions'},
-          { to: '/docs/api/pxm/catalog/get-by-context-all-nodes', from: '/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes'},
+          { to: '/docs/api/pxm/catalog/get-by-context-all-hierarchies', from: '/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes'},
           { to: '/changelog/Studio-Release-Notes/Release-190-February-14-2024', from: '/docs/cx-studio/Release-Notes/Release-190-February-14-2024'},
           { to: '/changelog/Studio-Release-Notes/Release-190-February-14-2024', from: '/docs/cx-studio/Release-Notes/Release-191-February-27-2024'},
           { to: '/docs/api/pxm/products/build-child-products', from: '/docs/pxm/products/pxm-product-variations/child-products-api/build-child-products'},
@@ -1652,6 +1656,12 @@ const config = {
         // ```
       }),
     ],
+  ],
+  scripts: [
+    {
+      src: '/js/utm-handler.js',
+      async: true,
+    },
   ],
 };
 
