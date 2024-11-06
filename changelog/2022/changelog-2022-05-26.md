@@ -21,6 +21,6 @@ tags:
 
 **Minor** Commerce Manager: When viewing an order, you can now click a product name to view the product details. See [Orders](/docs/commerce-manager/orders/orders-cm).
 
-**Minor** Commerce Manager: New **Total Orders** and **Total Value of All Orders** fields and improved layout available in **Analytics**. See [Analytics](/docs/commerce-cloud/analytics/analytics).
+**Minor** Commerce Manager: New **Total Orders** and **Total Value of All Orders** fields and improved layout available in **Analytics**. See [Analytics](/docs/commerce-manager/analytics/).
 
-**Minor** Commerce Manager: The **Rename store** field is now moved to **Settings > Store Settings** page. For more information, see [Renaming a Store](/docs/commerce-cloud/global-project-settings/general-settings).
+**Minor** Commerce Manager: The **Rename store** field is now moved to **Settings > Store Settings** page. For more information, see [Renaming a Store](/docs/commerce-manager/settings/general-settings).
