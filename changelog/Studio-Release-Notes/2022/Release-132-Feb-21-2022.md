@@ -58,7 +58,7 @@ getting to it along with a number of other editor improvements.
 
 * Added intro video for the editor.
 * Added deep-links. Among other things, this allows us to provide one URL that all users can use to access a specific
-  part of their account. For example, <https://app.CX-Studio.com/goto/landing-pages> will now take you to the landing
+  part of their account. For example, `<https://app.CX-Studio.com/goto/landing-pages>` will now take you to the landing
   pages section in *your* account.
 * Adjusted media policy to allow product images to be used any place where media can be used.
 * Updated the Studio UI to account for Shopify plans which use the proxy by default.

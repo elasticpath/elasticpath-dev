@@ -7,7 +7,7 @@ tags:
   - Commerce Manager
   - Product Experience Manager
 ---
-**Major** Added PayPal Express Checkout payment method. For more information, see [PayPal Express Checkout](/docs/commerce-cloud/payments/payment-gateway/configure-paypal-express-checkout) and [PayPal Express Checkout Payments](/docs/api/payments/update-paypal-express-checkout-gateway). You can also use PayPal Express Checkout in Commerce Manager.
+**Major** Added PayPal Express Checkout payment method. For more information, see [PayPal Express Checkout](/docs/api/payments/update-paypal-express-checkout-gateway) and [PayPal Express Checkout Payments](/docs/api/payments/update-paypal-express-checkout-gateway). You can also use PayPal Express Checkout in Commerce Manager.
 
 **Major** Commerce Manager: You can now localize your product names and descriptions. See [Configuring Locales](/docs/api/pxm/products/create-product).
 
