@@ -1360,6 +1360,7 @@ components:
                 - $ref: '#/components/schemas/Data.Promotions.Schema.Requirements'
                 - $ref: '#/components/schemas/Data.Promotions.Schema.Gifts'
     Data.PromotionObject:
+      type: object
       oneOf:
         - $ref: "#/components/schemas/Data.CartFixedDiscountPromotion"
         - $ref: "#/components/schemas/Data.CartPercentDiscountPromotion"
@@ -1380,6 +1381,20 @@ components:
           x_for_amount: "#/components/schemas/Data.XForAmountDiscountPromotion"
           bundle_fixed_discount: "#/components/schemas/Data.FixedBundleDiscountPromotion"
           bundle_gift: "#/components/schemas/Data.FreeGiftPromotion"
+      required: 
+        -  promotion_type
+      properties: 
+        promotion_type:  
+          type: string
+          enum:
+            - fixed_discount
+            - percent_discount
+            - item_fixed_discount
+            - item_percent_discount
+            - x_for_y
+            - x_for_amount
+            - bundle_fixed_discount
+            - bundle_gift
     Data.PromotionsCodesObject:
       title: Data.PromotionsCodesObject
       type: object
