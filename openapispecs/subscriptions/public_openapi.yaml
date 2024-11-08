@@ -1,13 +1,18 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
   title: Subscriptions Introduction
+  version: 1.0.0
+  license:
+    name: Elastic Path License
+    url: https://www.elasticpath.com/legal/license
+  contact:
+    email: support@elasticpath.com
   description: |
     Elastic Path Subscriptions allows you to offer your customers subscriptions and recurring billing for your products and services. Elastic Path Subscriptions gives you the flexibility to pause, update, or reactivate your subscription offerings, change subscription cycles and apply discounts.
 
     You can create subscriptions using the Elastic Path Subscriptions API or Commerce Manager See [Subscriptions](/docs/commerce-manager/subscriptions/overview).
 
-    Scenarios include:
+    Scenarios include: 
 
     - repeat products that your customers purchase on a recurring basis.
     - membership subscriptions where your customers pay a recurring fee to become members of a particular service, program or organization.
@@ -530,6 +535,7 @@ paths:
       tags:
         - Products
       summary: Create a product
+      description: Creates a subscription product.
       operationId: CreateProduct
       requestBody:
         content:
@@ -605,6 +611,7 @@ paths:
       tags:
         - Products
       summary: Get product
+      description: Retrieves the details of a product.
       operationId: GetProduct
       responses:
         '200':
@@ -631,6 +638,12 @@ paths:
       responses:
         '204':
           description: Success. The product details are removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
     put:
@@ -674,6 +687,7 @@ paths:
       tags:
         - Plans
       summary: Create a plan
+      description: Creates a subscription plan.
       operationId: CreatePlan
       requestBody:
         content:
@@ -749,6 +763,7 @@ paths:
       tags:
         - Plans
       summary: Get plan
+      description: Retrieves the details of a plan.
       operationId: GetPlan
       responses:
         '200':
@@ -775,6 +790,14 @@ paths:
       responses:
         '204':
           description: Success. The subscription plan is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
     put:
       tags:
         - Plans
@@ -818,6 +841,7 @@ paths:
       tags:
         - Offerings
       summary: Create an offering
+      description: Creates a subscription offering.
       operationId: CreateOffering
       requestBody:
         content:
@@ -951,6 +975,7 @@ paths:
       tags:
         - Offerings
       summary: Get offering
+      description: Retrieves the details of a subscription offering.
       operationId: GetOffering
       responses:
         '200':
@@ -979,6 +1004,12 @@ paths:
       responses:
         '204':
           description: Success. The subscription offering is removed.
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
     put:
@@ -1030,6 +1061,7 @@ paths:
       tags:
         - Offerings
       summary: List an offering's plans
+      description: Retrieves a list of all plans attached to a subscription offering.
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -1115,6 +1147,7 @@ paths:
           $ref: '#/components/schemas/UUID'
     put:
       summary: Updates a plan in an offering
+      description: Updates the details of a plan in an offering.
       operationId: UpdateOfferingPlan
       tags:
         - Offerings
@@ -1176,6 +1209,7 @@ paths:
       tags:
         - Offerings
       summary: List an offering's products
+      description: Retrieves a list of all products attached to a subscription offering.
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -1412,6 +1446,7 @@ paths:
       tags:
         - Subscriptions
       summary: Create a subscription
+      description: Creates a subscription.
       operationId: CreateSubscription
       requestBody:
         content:
@@ -1504,6 +1539,7 @@ paths:
       tags:
         - Subscriptions
       summary: Get subscription
+      description: Retrieves the details of a subscription.
       operationId: GetSubscription
       responses:
         '200':
@@ -1722,6 +1758,7 @@ paths:
       tags:
         - Subscriptions
       summary: List subscription states
+      description: Retrieves a list of all states for a subscription.
       operationId: ListSubscriptionStates
       responses:
         '200':
@@ -1759,6 +1796,7 @@ paths:
       tags:
         - Subscriptions
       summary: Get subscription state
+      description: Gets a subscription state by ID.
       operationId: GetSubscriptionState
       responses:
         '200':
@@ -1783,6 +1821,7 @@ paths:
       tags:
         - Jobs
       summary: Create a job
+      description: Creates a job.
       operationId: CreateJob
       requestBody:
         content:
@@ -1845,6 +1884,10 @@ paths:
                       $ref: '#/components/schemas/Job'
                   links:
                     $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /subscriptions/jobs/{job_uuid}:
@@ -1859,6 +1902,7 @@ paths:
       tags:
         - Jobs
       summary: Get job
+      description: Retrieves the details of a job.
       operationId: GetJob
       responses:
         '200':
@@ -1880,6 +1924,7 @@ paths:
       tags:
         - Jobs
       summary: Delete job
+      description: Deletes a job.
       operationId: DeleteJob
       responses:
         '204':
@@ -1893,6 +1938,7 @@ paths:
       tags:
         - Imports
       summary: Import a dataset
+      description: Creates an import job.
       operationId: CreateImport
       requestBody:
         content:
@@ -1948,6 +1994,8 @@ paths:
                       $ref: '#/components/schemas/Import'
                   links:
                     $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /subscriptions/imports/{import_uuid}:
@@ -2011,6 +2059,10 @@ paths:
                       $ref: '#/components/schemas/SubscriptionInvoice'
                   links:
                     $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /subscriptions/subscriptions/{subscription_uuid}/invoices/{invoice_uuid}/payments:
@@ -2050,6 +2102,10 @@ paths:
                       $ref: '#/components/schemas/SubscriptionInvoicePayment'
                   links:
                     $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
   /subscriptions/subscriptions/{subscription_uuid}/invoices/{invoice_uuid}/payments/{payment_uuid}:
     parameters:
       - name: subscription_uuid
@@ -2174,6 +2230,7 @@ paths:
       tags:
         - Invoices
       summary: Get invoice
+      description: Retrieves the details of an invoice.
       operationId: GetInvoice
       responses:
         '200':
@@ -2203,6 +2260,7 @@ paths:
       tags:
         - Invoices
       summary: List invoice payments
+      description: Lists all payments for a given invoice.
       parameters:
         - $ref: '#/components/parameters/PageOffset'
         - $ref: '#/components/parameters/PageLimit'
@@ -2221,6 +2279,10 @@ paths:
                       $ref: '#/components/schemas/SubscriptionInvoicePayment'
                   links:
                     $ref: '#/components/schemas/Links'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
   /subscriptions/invoices/{invoice_uuid}/payments/{payment_uuid}:
     parameters:
       - name: invoice_uuid
@@ -2239,6 +2301,7 @@ paths:
       tags:
         - Invoices
       summary: Get invoice payment
+      description: Gets a specific payment for a given invoice.
       operationId: GetInvoicePayment
       responses:
         '200':
@@ -2334,6 +2397,7 @@ paths:
       tags:
         - Schedules
       summary: Create a schedule
+      description: Creates a schedule.
       operationId: CreateSchedule
       requestBody:
         content:
@@ -2371,6 +2435,7 @@ paths:
       tags:
         - Schedules
       summary: Get a schedule
+      description: Retrieves the details of a schedule.
       operationId: GetSchedule
       responses:
         '200':
@@ -2392,6 +2457,7 @@ paths:
       tags:
         - Schedules
       summary: Update a schedule
+      description: Updates the details of a schedule.
       operationId: UpdateSchedule
       requestBody:
         content:
@@ -2427,6 +2493,7 @@ paths:
       tags:
         - Schedules
       summary: Delete schedule
+      description: Deletes a schedule.
       operationId: DeleteSchedule
       responses:
         '204':
@@ -2480,6 +2547,7 @@ paths:
       tags:
         - Subscribers
       summary: Create a subscriber
+      description: Creates a subscriber.
       operationId: CreateSubscriber
       requestBody:
         content:
@@ -2517,6 +2585,7 @@ paths:
       tags:
         - Subscribers
       summary: Get a subscriber
+      description: Retrieves the details of a subscriber.
       operationId: GetSubscriber
       responses:
         '200':
@@ -2538,6 +2607,7 @@ paths:
       tags:
         - Subscribers
       summary: Update a subscriber
+      description: Updates the details of a subscriber.
       operationId: UpdateSubscriber
       requestBody:
         content:
@@ -2573,6 +2643,7 @@ paths:
       tags:
         - Subscribers
       summary: Delete subscriber
+      description: Deletes a subscriber.
       operationId: DeleteSubscriber
       responses:
         '204':
@@ -2680,6 +2751,7 @@ paths:
       tags:
         - Dunning Rules
       summary: Get dunning rule policy
+      description: Retrieves the details of a dunning rule.
       operationId: GetDunningRule
       responses:
         '200':
@@ -2818,6 +2890,7 @@ paths:
       tags:
         - Proration Policies
       summary: Get proration policy
+      description: Retrieves the details of a proration policy.
       operationId: GetProrationPolicy
       responses:
         '200':
@@ -3017,8 +3090,6 @@ components:
     SubscriptionType:
       type: string
       example: subscription
-      enum:
-        - subscription
     SubscriptionProductType:
       type: string
       example: subscription_product
@@ -3173,7 +3244,7 @@ components:
           example: 00000000-0000-0000-0000-000000000000
     RelationshipLinks:
       description: |
-        Links are used to allow you, as an API consumer, to move between requests. Single entities use a self parameter with a link to that specific resource. Sometimes, there aren’t enough entities for a project to fill multiple pages. In this situation, we return some defaults, instead of expecting you to check for these special cases. 
+        Links are used to allow you, as an API consumer, to move between requests. Single entities use a self parameter with a link to that specific resource. Sometimes, there aren't enough entities for a project to fill multiple pages. In this situation, we return some defaults, instead of expecting you to check for these special cases. 
 
          - current - Always the current page.
          - first - Always the first page.
@@ -4548,14 +4619,21 @@ components:
       default: false
       description: When configured to true, no payment gateway is used and a pending payment is created. See [External Payments](/docs/api/subscriptions/invoices#external-payments).
     PaymentAuthority:
-      oneOf:
-        - $ref: '#/components/schemas/PaymentAuthorityStripe'
-        - $ref: '#/components/schemas/PaymentAuthorityAuthorizeNet'
+      type: object
       discriminator:
         propertyName: type
         mapping:
           elastic_path_payments_stripe: '#/components/schemas/PaymentAuthorityStripe'
           authorize_net: '#/components/schemas/PaymentAuthorityAuthorizeNet'
+      oneOf:
+        - $ref: '#/components/schemas/PaymentAuthorityStripe'
+        - $ref: '#/components/schemas/PaymentAuthorityAuthorizeNet'
+      properties:
+        type:
+          type: string
+          enum:
+            - elastic_path_payments_stripe
+            - authorize_net
     PaymentAuthorityAuthorizeNet:
       type: object
       required:
@@ -5206,7 +5284,7 @@ components:
         status:
           type: string
           description: The HTTP response code of the error.
-          example: 500
+          example: '500'
         title:
           type: string
           description: A brief summary of the error.
@@ -5273,8 +5351,6 @@ components:
     SubscriptionSubscriberType:
       type: string
       example: subscription_subscriber
-      enum:
-        - subscription_subscriber
     SubscriberResponseAttributes:
       allOf:
         - $ref: '#/components/schemas/SubscriberAttributes'
