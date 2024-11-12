@@ -124,6 +124,9 @@ info:
   contact:
     name: Elastic Path
     url: https://elasticpath.com
+  license:
+    name: MIT
+    url: 'https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/LICENSE'
   version: 1.0.0
 security:
   - bearerAuth: [ ]
@@ -224,9 +227,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     post:
       tags:
@@ -325,9 +328,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     parameters:
       - $ref: '#/components/parameters/Authorization'
@@ -364,9 +367,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     put:
       tags:
@@ -434,9 +437,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     delete:
       tags:
@@ -462,9 +465,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     parameters:
       - $ref: '#/components/parameters/Authorization'
@@ -496,7 +499,7 @@ paths:
                       data:
                         type: array
                         items:
-                          - $ref: '#/components/schemas/Data.PromotionObject'
+                          $ref: '#/components/schemas/Data.PromotionObject'
                       links:
                         $ref: '#/components/schemas/Response.PageLinks'
                       meta:
@@ -508,9 +511,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     parameters:
       - $ref: '#/components/parameters/Authorization'
@@ -561,9 +564,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     post:
       tags:
@@ -613,9 +616,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
       deprecated: false
     delete:
       tags:
@@ -641,9 +644,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
         '404':
           description: Not Found
           content:
@@ -651,10 +654,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  detail: promotion not found
-                  status: 404
-                  title: Not Found
+                - errors:
+                    - detail: promotion not found
+                      status: 404
+                      title: Not Found
       deprecated: false
     parameters:
       - $ref: '#/components/parameters/Authorization'
@@ -690,9 +693,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  status: 401
-                  title: Unauthorized
+                - errors:
+                    - status: 401
+                      title: Unauthorized
         '404':
           description: Not Found
           content:
@@ -700,10 +703,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response.Error'
               example:
-                errors:
-                  detail: promotion not found
-                  status: 404
-                  title: Not Found
+                - errors:
+                  - detail: promotion not found
+                    status: 404
+                    title: Not Found
       deprecated: false
     parameters:
       - $ref: '#/components/parameters/Authorization'
@@ -791,7 +794,7 @@ paths:
           description: Specifies the filter attributes.
       responses:
         '200':
-          $ref: '#/components/schemas/PromotionJobsListResponse'
+          $ref: '#/components/responses/PromotionJobsListResponse'
       security:
         - bearerAuth: [ ]
     post:
@@ -870,7 +873,7 @@ paths:
                   name: "Export Codes Job"
       responses:
         '201':
-          $ref: '#/components/schemas/PromotionJobCreatedResponse'
+          $ref: '#/components/responses/PromotionJobCreatedResponse'
       security:
         - bearerAuth: [ ]
     parameters:
@@ -896,7 +899,7 @@ paths:
           description: The unique identifier of a job to be canceled.
       responses:
         '200':
-          $ref: '#/components/schemas/PromotionJobCanceledResponse'
+          $ref: '#/components/responses/PromotionJobCanceledResponse'
       security:
         - bearerAuth: [ ]
     parameters:
@@ -922,7 +925,7 @@ paths:
           description: The unique identifier of a job associated with the file.
       responses:
         '200':
-          $ref: '#/components/schemas/PromotionCodeExportedFileResponse'
+          $ref: '#/components/responses/PromotionCodeExportedFileResponse'
       security:
         - bearerAuth: [ ]
     parameters:
@@ -942,6 +945,46 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+  responses:
+    PromotionJobsListResponse:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromotionJob'
+    PromotionJobCreatedResponse:
+      description: Promotion job created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/components/schemas/PromotionJob'
+    PromotionJobCanceledResponse:
+      description: Job canceled successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/components/schemas/PromotionJob'
+    PromotionCodeExportedFileResponse:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              href:
+                type: string
+                description: URL to download the CSV file.
   schemas:
     Data.AttributeObject:
       title: Data.AttributeObject
@@ -1360,6 +1403,7 @@ components:
                 - $ref: '#/components/schemas/Data.Promotions.Schema.Requirements'
                 - $ref: '#/components/schemas/Data.Promotions.Schema.Gifts'
     Data.PromotionObject:
+      type: object
       oneOf:
         - $ref: "#/components/schemas/Data.CartFixedDiscountPromotion"
         - $ref: "#/components/schemas/Data.CartPercentDiscountPromotion"
@@ -1380,6 +1424,20 @@ components:
           x_for_amount: "#/components/schemas/Data.XForAmountDiscountPromotion"
           bundle_fixed_discount: "#/components/schemas/Data.FixedBundleDiscountPromotion"
           bundle_gift: "#/components/schemas/Data.FreeGiftPromotion"
+      required:
+        -  promotion_type
+      properties:
+        promotion_type:
+          type: string
+          enum:
+            - fixed_discount
+            - percent_discount
+            - item_fixed_discount
+            - item_percent_discount
+            - x_for_y
+            - x_for_amount
+            - bundle_fixed_discount
+            - bundle_gift
     Data.PromotionsCodesObject:
       title: Data.PromotionsCodesObject
       type: object
@@ -1579,45 +1637,6 @@ components:
                   description: The last updated date of the job.
                   type: string
                   format: date-time
-    PromotionJobsListResponse:
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                data:
-                  type: array
-                  items:
-                   - $ref: '#/components/schemas/PromotionJob'
-    PromotionJobCreatedResponse:
-      description: Promotion job created
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/components/schemas/PromotionJob'
-    PromotionJobCanceledResponse:
-      description: Job canceled successfully
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/components/schemas/PromotionJob'
-    PromotionCodeExportedFileResponse:
-      description: Successful response
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              href:
-                type: string
-                description: URL to download the CSV file.
 
 tags:
   - name: Promotions Standard
