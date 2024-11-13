@@ -1,9 +1,5 @@
-import { themes as prismThemes } from "prism-react-renderer";
-
-import fs from "fs";
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
-import type * as SearchLocal from "@easyops-cn/docusaurus-search-local";
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
 
 const elasticpath = {
   plain: {
@@ -67,8 +63,6 @@ const elasticpath = {
         "statement",
         "regex",
         "atrule",
-        "language-css",
-        "language-scss",
       ],
       style: {
         color: "#47ebb4",
@@ -120,13 +114,30 @@ const elasticpath = {
   ],
 };
 
+const lightCodeTheme = require("prism-react-renderer/themes/vsLight");
+const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
+
+const fs = require("fs");
 const resourcesHTML = fs.readFileSync("./src/snippets/resources.html", "utf-8");
 const resourceDOCS = fs.readFileSync(
   "./src/snippets/resourceDOCS.html",
   "utf-8",
 );
 
-const config: Config = {
+/** @type {import('@docusaurus/plugin-content-docs').Options} */
+//const defaultSettings = {
+//  breadcrumbs: true,
+//  showLastUpdateTime: true,
+//  sidebarCollapsible: true,
+//  sidebarPath: require.resolve('./sidebars-default.js'),
+//};
+/**
+ * Create a section
+ * @param {import('@docusaurus/plugin-content-docs').Options} options
+ */
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
   title: "Elastic Path Documentation",
   tagline: "API, Commerce Manager, Guides and Documentation 🚀",
   url: "https://elasticpath.dev",
@@ -138,206 +149,204 @@ const config: Config = {
   },
   onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "ignore",
-  onBrokenAnchors: "ignore",
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "elasticpath", // Usually your GitHub org/user name.
-  projectName: "elasticpath-dev", // Usually your repo name.
+  organizationName: "facebook", // Usually your GitHub org/user name.
+  projectName: "docusaurus", // Usually your repo name.
   markdown: {
     mermaid: true,
-  },
-  future: {
-    experimental_faster: {
-      swcJsLoader: false,
-      swcJsMinimizer: true,
-      swcHtmlMinimizer: false,
-      lightningCssMinimizer: true,
-      rspackBundler: false,
-      mdxCrossCompilerCache: true,
-    },
   },
   presets: [
     [
       "classic",
-      {
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
-          sidebarPath: "./sidebars-default.ts",
+          sidebarPath: require.resolve("./sidebars-default.js"),
+          docLayoutComponent: "@theme/DocPage",
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
-          docItemComponent: "@theme/ApiItem",
-          routeBasePath: "docs",
-          path: "docs",
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: require.resolve("./src/css/custom.css"),
         },
         sitemap: {
-          ignorePatterns: ["/tags/**"],
+          ignorePatterns: ["/tags/**","/docs/partials/**"],
         },
         gtag: {
-          trackingID: "G-NZ3NL8DLLD",
-          anonymizeIP: true,
+          trackingID: 'G-NZ3NL8DLLD',
+          anonymizeIP: false,
         },
-      } satisfies Preset.Options,
+        googleTagManager: {
+          containerId: 'G-NZ3NL8DLLD',
+        },
+        googleTagManager: {
+          containerId: 'G-NZ3NL8DLLD',
+        },
+      }),
     ],
   ],
-  themeConfig: {
-    docs: {
-      sidebar: {
-        hideable: true,
-        autoCollapseCategories: true,
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
       },
-    },
-    // announcementBar: {
-    //comment out when not needed, please do not remove
-    //   id: "support_us",
-    //   content:
-    //     "The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.",
-    //   backgroundColor: "#0E1521",
-    //   textColor: "#FFFFFF",
-    //   isCloseable: true,
-    // },
-    colorMode: {
-      defaultMode: "light",
-      disableSwitch: false,
-      respectPrefersColorScheme: true,
-    },
-    navbar: {
-      logo: {
-        href: "/",
-        src: "/logo/light.svg",
-        srcDark: "/logo/dark.svg",
-        alt: "Elastic Path Docs",
-        height: "60px",
-        width: "120px",
+     // announcementBar: {
+        //comment out when not needed, please do not remove
+     //   id: "support_us",
+     //   content:
+     //     "The new OpenAPI specifications are here. Navigate to Docs, then API Documentation to learn more.",
+     //   backgroundColor: "#0E1521",
+     //   textColor: "#FFFFFF",
+     //   isCloseable: true,
+     // },
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
-      hideOnScroll: true,
-      items: [
-        {
-          label: "Guides",
-          to: "guides",
+      navbar: {
+        logo: {
+          href: "/",
+          src: "/logo/light.svg",
+          srcDark: "/logo/dark.svg",
+          alt: "Elastic Path Docs",
+          height: "60px",
+          width: "120px",
         },
-        {
-          label: "Docs",
-          type: "dropdown",
-          className: "nav-dropdown",
-          items: [
-            {
-              type: "html",
-              value: resourceDOCS,
-              className: "nav-dropdown",
-            },
-          ],
-        },
-        {
-          label: "Resources",
-          type: "dropdown",
-          className: "nav-dropdown resources-dropdown",
-          items: [
-            {
-              type: "html",
-              value: resourcesHTML,
-              className: "nav-dropdown",
-            },
-          ],
-        },
-        {
-          label: "Changelog",
-          to: "/changelog-landing",
-        },
-        {
-          label: "Support",
-          to: "https://support.elasticpath.com",
-        },
-        {
-          type: "search",
-          position: "right",
-        },
-        {
-          label: "Get in Touch",
-          href: "https://www.elasticpath.com/get-in-touch",
-          position: "right",
-          className: "navbar-book-demo",
-        },
-        {
-          label: "Free Trial",
-          href: "https://useast.cm.elasticpath.com/free-trial",
-          position: "right",
-          className: "dev-portal-signup dev-portal-link",
-        },
-      ],
-    },
-    footer: {
-      style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/docs/intro",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Elastic Path Software`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: [
-        "dart",
-        "ruby",
-        "groovy",
-        "kotlin",
-        "java",
-        "swift",
-        "objectivec",
-        "javascript",
-        "bash",
-      ],
-      magicComments: [
-        {
-          className: "theme-code-block-highlighted-line",
-          line: "highlight-next-line",
-          block: { start: "highlight-start", end: "highlight-end" },
-        },
-        {
-          className: "code-block-error-line",
-          line: "highlight-next-line-error",
-        },
-      ],
-    },
-  } satisfies Preset.ThemeConfig,
+        hideOnScroll: true,
+        items: [
+          {
+            label: "Guides",
+            to: "guides",
+          },
+          {
+            label: "Docs",
+            type: "dropdown",
+            className: "nav-dropdown",
+            items: [
+              {
+                type: "html",
+                value: resourceDOCS,
+                className: "nav-dropdown",
+              },
+            ],
+          },
+          {
+            label: "Resources",
+            type: "dropdown",
+            className: "nav-dropdown resources-dropdown",
+            items: [
+              {
+                type: "html",
+                value: resourcesHTML,
+                className: "nav-dropdown",
+              },
+            ],
+          },
+          {
+            label: "Changelog",
+            to: "/changelog-landing",
+          },
+          {
+            label: "Support",
+            to: "https://support.elasticpath.com",
+          },
+          {
+            type: "search",
+            position: "right",
+          },
+          {
+            label: "Get in Touch",
+            href: "https://www.elasticpath.com/get-in-touch",
+            position: "right",
+            className: "navbar-book-demo",
+          },
+          {
+            label: "Free Trial",
+            href: "https://useast.cm.elasticpath.com/free-trial",
+            position: "right",
+            className: "dev-portal-signup dev-portal-link",
+          },
+        ],
+      },
+      footer: {
+        style: "dark",
+        links: [
+          {
+            title: "Docs",
+            items: [
+              {
+                label: "Tutorial",
+                to: "/docs/intro",
+              },
+            ],
+          },
+          {
+            title: "Community",
+            items: [
+              {
+                label: "Stack Overflow",
+                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              },
+              {
+                label: "Discord",
+                href: "https://discordapp.com/invite/docusaurus",
+              },
+              {
+                label: "Twitter",
+                href: "https://twitter.com/docusaurus",
+              },
+            ],
+          },
+          {
+            title: "More",
+            items: [
+              {
+                label: "Blog",
+                to: "/blog",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/facebook/docusaurus",
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Elastic Path Software`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+        additionalLanguages: [
+          "dart",
+          "ruby",
+          "groovy",
+          "kotlin",
+          "java",
+          "swift",
+          "objectivec",
+          "javascript",
+          "bash",
+        ],
+        magicComments: [
+          {
+            className: "theme-code-block-highlighted-line",
+            line: "highlight-next-line",
+            block: { start: "highlight-start", end: "highlight-end" },
+          },
+          {
+            className: "code-block-error-line",
+            line: "highlight-next-line-error",
+          },
+        ],
+      },
+    }),
 
   plugins: [
     async function tailwind(context, options) {
@@ -405,32 +414,32 @@ const config: Config = {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
+        },
+        applicationkeys: {
+          specPath: "openapispecs/applicationkeys/OpenAPISpec.yaml",
+          outputDir: "docs/api/application-keys",
+          downloadUrl:
+            "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/applicationkeys/OpenAPISpec.yaml",
+          sidebarOptions: {
+            groupPathsBy: "tag",
+            categoryLinkSource: "tag",
           },
-          applicationkeys: {
-            specPath: "openapispecs/applicationkeys/OpenAPISpec.yaml",
-            outputDir: "docs/api/application-keys",
-            downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/applicationkeys/OpenAPISpec.yaml",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-              categoryLinkSource: "tag",
-            },
+        },
+        merchantrealmmappings: {
+          specPath: "openapispecs/merchantrealmmappings/OpenAPISpec.yaml",
+          outputDir: "docs/api/merchant-realm-mappings",
+          downloadUrl:
+            "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/merchant-realm-mappings/OpenAPISpec.yaml",
+          sidebarOptions: {
+            groupPathsBy: "tag",
+            categoryLinkSource: "tag",
           },
-          merchantrealmmappings: {
-            specPath: "openapispecs/merchantrealmmappings/OpenAPISpec.yaml",
-            outputDir: "docs/api/merchant-realm-mappings",
-            downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/merchant-realm-mappings/OpenAPISpec.yaml",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-              categoryLinkSource: "tag",
-            },
-          },
+        },
           catalog: {
             specPath: "openapispecs/catalog/catalog_view.yaml",
             outputDir: "docs/api/pxm/catalog",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/catalog_view.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/catalog/catalog_view.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -470,7 +479,7 @@ const config: Config = {
             specPath: "openapispecs/personaldata/OpenAPISpec.yaml",
             outputDir: "docs/api/personal-data/",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs//OpenAPISpec.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/personaldata/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -520,7 +529,7 @@ const config: Config = {
             specPath: "openapispecs/inventory/public_openapi.yaml",
             outputDir: "docs/api/pxm/inventory",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/openapi.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/inventory/public_openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -550,7 +559,7 @@ const config: Config = {
             specPath: "openapispecs/pricebooks/pricebooks.yaml",
             outputDir: "docs/api/pxm/pricebooks",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/pricebooks.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/pricebooks/pricebooks.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -560,7 +569,7 @@ const config: Config = {
             specPath: "openapispecs/promotions/OpenAPISpec.yaml",
             outputDir: "docs/api/promotions",
             downloadUrl:
-              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/promotions.yaml",
+              "https://raw.githubusercontent.com/elasticpath/elasticpath-dev/main/openapispecs/promotions/OpenAPISpec.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -595,7 +604,7 @@ const config: Config = {
         id: "guides",
         path: "guides",
         routeBasePath: "guides",
-        sidebarPath: "./sidebar-guides.ts",
+        sidebarPath: require.resolve("./sidebar-guides.js"),
         editUrl: "https://github.com/elasticpath/elasticpath-dev/tree/main/",
         // ... other options
       },
@@ -603,22 +612,20 @@ const config: Config = {
     [
       "@docusaurus/plugin-content-blog",
       {
-        blogTitle: "Elastic Path Commerce Cloud Changelog",
-        blogDescription:
-          "The changelog contains updates and modifications to all Elastic Path Cloud Services",
+        blogTitle: 'Elastic Path Commerce Cloud Changelog',
+        blogDescription: 'The changelog contains updates and modifications to all Elastic Path Cloud Services',
         postsPerPage: 30,
-        onUntruncatedBlogPosts: 'ignore',
         blogSidebarCount: 0,
-        blogSidebarTitle: "Recent Changelogs",
+        blogSidebarTitle: 'Recent Changelogs',
         id: "changelog",
         routeBasePath: "changelog",
         path: "./changelog",
         tagsBasePath: "product",
         showReadingTime: false,
         feedOptions: {
-          type: "all",
+          type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Elastic Path`,
-          description: "Elastic Path Cloud Services Changelog",
+          description: 'Elastic Path Cloud Services Changelog',
           createFeedItems: async (params) => {
             const { blogPosts, defaultCreateFeedItems, ...rest } = params;
             return defaultCreateFeedItems({
@@ -635,6 +642,7 @@ const config: Config = {
       {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
+          { to: '/docs/api/commerce-extensions', from: '/docs/api/commerce-extensions/commerce-extensions-introduction'},
           { to: '/docs/studio/developers/custom-themes/css-variables', from: '/docs/cx-studio/developers/custom-themes/css-variables'},
           { to: '/docs/studio/Insights/Setting-up-an-AB-Test', from: '/docs/cx-studio/Insights/Setting-up-an-AB-Test'},
           { to: '/changelog/Studio-Release-Notes/2022/Release-145-July-17-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-145-July-17-2022'},
@@ -910,6 +918,7 @@ const config: Config = {
           { to: '/guides/How-To/Products/add-custom-data-to-pxm-products', from: '/docs/pxm/products/extending-pxm-products/add-custom-data-to-pxm-products'},
           { to: '/docs/authentication/single-sign-on/customer-authentication-settings/overview', from: '/docs/commerce-cloud/authentication/single-sign-on/customer-authentication-settings/overview'},
           { to: '/docs/api/pxm/currencies/create-a-currency', from: '/docs/pxm/currencies/currencies-api/create-a-currency'},
+          { to: '/guides/Getting-Started/filtering', from: '/docs/commerce-cloud/api-overview/filtering'},
           { to: '/guides/How-To/Integrations/sqs-queues', from: '/docs/commerce-cloud/integrations/sqs-queues'},
           { to: '/changelog/Studio-Release-Notes/Release-188-January-17-2024', from: '/docs/cx-studio/Release-Notes/Release-188-January-17-2024'},
           { to: '/docs/api/pxm/products/variations', from: '/docs/pxm/products/pxm-product-variations/pxm-variations'},
@@ -1320,7 +1329,7 @@ const config: Config = {
           { to: '/docs/studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain', from: '/docs/cx-studio/Settings/Domain-Management/Connecting-your-Namecheap-Domain'},
           { to: '/docs/api/pxm/catalog/get-catalog-by-id', from: '/docs/pxm/catalogs/catalog-configuration/get-all-catalogs'},
           { to: '/docs/api/carts/transactions', from: '/docs/commerce-cloud/payments/transactions/get-all-transactions'},
-          { to: '/docs/api/pxm/catalog/get-by-context-all-hierarchies', from: '/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes'},
+          { to: '/docs/api/pxm/catalog/get-by-context-all-nodes', from: '/docs/pxm/catalogs/shopper-catalog/get-a-hierarchys-nodes'},
           { to: '/changelog/Studio-Release-Notes/Release-190-February-14-2024', from: '/docs/cx-studio/Release-Notes/Release-190-February-14-2024'},
           { to: '/changelog/Studio-Release-Notes/Release-190-February-14-2024', from: '/docs/cx-studio/Release-Notes/Release-191-February-27-2024'},
           { to: '/docs/api/pxm/products/build-child-products', from: '/docs/pxm/products/pxm-product-variations/child-products-api/build-child-products'},
@@ -1623,32 +1632,27 @@ const config: Config = {
     "@docusaurus/theme-mermaid",
     "@docusaurus/theme-live-codeblock",
     [
-      "@easyops-cn/docusaurus-search-local",
-      {
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
         indexDocs: true,
         indexBlog: true,
+        ignoreFiles: ["docs/partials"],
         blogRouteBasePath: "changelog",
         docsRouteBasePath: ["docs", "guides"],
         highlightSearchTermsOnTargetPage: false,
-        searchContextByPaths: ["docs", "guides", "changelog"],
+        searchContextByPaths: ["docs","guides","changelog"],
         useAllContextsWithNoSearchContext: true,
         // For Docs using Chinese, The `language` is recommended to set to:
         // ```
         // language: ["en", "zh"],
         // ```
-      } satisfies SearchLocal.PluginOptions,
+      }),
     ],
-  ],
-  scripts: [
-    {
-      src: '/js/utm-handler.js',
-      async: true,
-    },
   ],
 };
 
 module.exports = config;
-
