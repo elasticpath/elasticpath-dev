@@ -1630,7 +1630,6 @@ const config = {
   themes: [
     "docusaurus-theme-openapi-docs",
     "@docusaurus/theme-mermaid",
-    "@docusaurus/theme-live-codeblock",
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
