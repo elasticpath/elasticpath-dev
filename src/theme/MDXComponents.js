@@ -25,7 +25,6 @@ export default {
   ColorPalette,
   VideoPlayer,
   InfoTooltip,
-  PropsTable,
   ComponentsGrid,
   CardSection,
   Card,
