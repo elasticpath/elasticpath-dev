@@ -144,7 +144,7 @@ Once you have met the [prequisites](#prerequisites), you are ready to configure 
 
     - **Send local inventory flag** - Enable this flag to create a separate datasource in Merchant Center for local inventory products and information (inventory in store locations). See [Synchronizing Local Inventory](#synchronizing-local-inventory)
 
-    - **Product Catalog Data Source Mapping** - This configuration contains a mapping of Elastic Path catalogs to Google Merchant Center data sources.  Each mapping includes a selected catalog, language, country and currency. Each mapping entry will create a separate online data source in Google Merchant Center. Catalog, language and currency selection options are based on data configured in Elastic Path.
+    - **Product Catalog <\> Data Source Mapping** - This configuration contains a mapping of Elastic Path catalogs to Google Merchant Center data sources.  Each mapping includes a selected catalog, language, country and currency. Each mapping entry will create a separate online data source in Google Merchant Center. Catalog, language and currency selection options are based on data configured in Elastic Path.
         - Click on the `+ Add to Product Catalog <> Data Source Mapping` button to add a new row for each Elastic Path catalog and Merchant Center data source you wish to synchronize.
 
 1. Click **Next**. The **Configure Store Code Mapping** page is displayed.  This page is used to configure any store code translations that need to occur when sending local inventory to Merchant Center.See [Synchronizing Local Inventory](#synchronizing-local-inventory)
@@ -574,29 +574,8 @@ The integration between Elastic Path Composable Commerce and Google Merchant Cen
 
     ```json
 
-    {
-      "expression": "{
-        'method': 'POST',
-        'url': '/products/' & parameters.merchantId & '/productInputs',
-        'body': {
-          'channel': parameters.channel,
-          'contentLanguage': parameters.language,
-          'feedLabel': parameters.feedLabel,
-          'offerId': id,
-          'attributes': {
-            'title': attributes.name,
-            'price': {
-              'amountMicros': attributes.price.amount * 10000,
-              'currencyCode': parameters.currency
-            },
-            'description': attributes.description,
-            'googleProductCategory': attributes.extensions.google_product_category,
-            'mpn': attributes.manufacturer_part_num,
-            'gtin': [attributes.upc_ean]
-          }
-        }
-      }"
-    }
+    {"expression":"{ \"method\": delta_type ~> /create-update/ ? \"POST\" : \"DELETE\", \"url\": delta_type = \"create-update\" ? \"/products/\" & parameters.merchantApiVersion & \"/accounts/\" & parameters.merchantId & \"/productInputs:insert?dataSource=accounts/\" & parameters.merchantId & \"/dataSources/\" & parameters.datasourceId : \"/products/\" & parameters.merchantApiVersion & \"/accounts/\" & parameters.merchantId & \"/productInputs/online~\" & parameters.language & \"~\" & $uppercase(parameters.feedLabel) & \"~\" & id & \"?dataSource=accounts/\" & parameters.merchantId & \"/dataSources/\" & parameters.datasourceId, \"body\": delta_type ~> /create-update/ ? { \"channel\": parameters.channel, \"contentLanguage\": parameters.language, \"feedLabel\": parameters.feedLabel, \"offerId\": id, \"attributes\": $merge([ { \"title\": parameters.language != parameters.defaultLanguage ? ($lookup(attributes.locales, parameters.language).name ? $lookup(attributes.locales, parameters.language).name : attributes.name) : attributes.name, \"price\": { \"amountMicros\": $lookup(attributes.price, $uppercase(parameters.currency)).amount * 10000, \"currencyCode\": $uppercase(parameters.currency) }, \"description\": parameters.language != parameters.defaultLanguage ? ($lookup(attributes.locales, parameters.language).description ? $lookup(attributes.locales, parameters.language).description : attributes.description) : attributes.description }, $exists(attributes.extensions.\"products(gmc)\".google_product_category) ? { \"googleProductCategory\": attributes.extensions.\"products(gmc)\".google_product_category } : {}, $exists(attributes.manufacturer_part_num) ? {\"mpn\": attribute.manufacturer_part_num } : {}, $exists(attributes.sales) ? { \"salePrice\": { \"amountMicros\": $lookup(attributes.sales.*.currencies, $uppercase(parameters.currency)).amount * 10000, \"currencyCode\": $uppercase(parameters.currency)} } : {}, ($exists(attributes.upc_ean) and attributes.upc_ean != \"\") ? { \"gtin\": [ attributes.upc_ean ]} : {} ]) } : null }"}
+
     ```
 
     **Customizing product transformation template**
