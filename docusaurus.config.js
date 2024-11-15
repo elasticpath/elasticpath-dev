@@ -1630,8 +1630,10 @@ const config = {
   themes: [
     "docusaurus-theme-openapi-docs",
     "@docusaurus/theme-mermaid",
+    "@docusaurus/theme-live-codeblock",
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       ({
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
