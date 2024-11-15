@@ -60,7 +60,8 @@ present in your URL. In the case that the value indicated is not present, nothin
 That said, you *are* able to assign a default value to the parameter by adding a pipe character after it, and then a
 default string to add in case the parameter is undefined. If done correctly your placeholder should look like the below:
 
-`{{ parameter | [defaultvalue] }}`
+`{{ parameter | [default
+value] }}`
 
 Since we only use the default if the parameter doesn't exist, we do not auto-detect if a URL parameter is empty.
 Therefore `?parameter=` would not trigger the default and would need to be removed from the URL entirely for the default
@@ -83,18 +84,18 @@ values of your custom fields.
 |               |                                                         |
 |---------------|---------------------------------------------------------|
 | **Field**     | **Placeholder**                                         |
-| First Name    | `{{ contact.first_name }}`                               |
-| Last Name     | `{{ contact.last_name }}`                                |
-| Full Name     | `{{ contact.full_name }}`                                |
-| Company Name  | `{{ contact.company }}` **or** `{{ contact.organization }}` |
-| Phone Number  | `{{ contact.phone }}`                                     |
-| Email Address | `{{ contact.email }}`                                     |
-| City          | `{{ contact.city }}`                                      |
-| State         | `{{ contact.state }}`                                     |
-| Country       | `{{ contact.country }}`                                   |
-| Address       | `{{ contact.address }}`                                   |
-| Location      | `{{ contact.location }}`                                  |
-| ID            | `{{ contact.id }}`                                        |
+| First Name    | {{ contact.first\_name }}                               |
+| Last Name     | {{ contact.last\_name }}                                |
+| Full Name     | {{ contact.full\_name }}                                |
+| Company Name  | {{ contact.company }} **or** {{ contact.organization }} |
+| Phone Number  | {{ contact.phone }}                                     |
+| Email Address | {{ contact.email }}                                     |
+| City          | {{ contact.city }}                                      |
+| State         | {{ contact.state }}                                     |
+| Country       | {{ contact.country }}                                   |
+| Address       | {{ contact.address }}                                   |
+| Location      | {{ contact.location }}                                  |
+| ID            | {{ contact.id }}                                        |
 
 To pull in the data collected by any custom fields you'll need to assign that field a specific name within the field's
 settings.
