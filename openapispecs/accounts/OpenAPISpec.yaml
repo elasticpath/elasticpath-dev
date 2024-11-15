@@ -1281,7 +1281,7 @@ components:
           type: boolean
           example: true
         auto_create_account_for_account_members:
-          description: This will automatically create an account for every account member with name and legal name matching with that of the account.
+          description: This will automatically create an account for every account member with name and legal name matching with that of the account, if they do not have an account already.
           type: boolean
           example: true
         account_member_self_management:
@@ -1475,7 +1475,7 @@ components:
     AccountManagementAuthenticationToken:
       properties:
         type:
-          description: Specifices the type of the object. You must use `account_management_authentication_token`.
+          description: Specifies the type of the object. You must use `account_management_authentication_token`.
           type: string
           default: account_management_authentication_token
     OpenIDConnectRequest:
@@ -1560,11 +1560,11 @@ components:
               description: The name.
               type: string
               format: uri
-              example: totallylegit
+              example: "Ron Swanson"
             email:
               description: The email.
               type: string
-              example: totallylegit@gmail.com
+              example: ron@swanson.com
           required:
             - type
             - authentication_mechanism
