@@ -642,7 +642,6 @@ const config = {
       {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
-          { to: '/docs/api/commerce-extensions', from: '/docs/api/commerce-extensions/commerce-extensions-introduction'},
           { to: '/docs/studio/developers/custom-themes/css-variables', from: '/docs/cx-studio/developers/custom-themes/css-variables'},
           { to: '/docs/studio/Insights/Setting-up-an-AB-Test', from: '/docs/cx-studio/Insights/Setting-up-an-AB-Test'},
           { to: '/changelog/Studio-Release-Notes/2022/Release-145-July-17-2022', from: '/docs/cx-studio/Release-Notes/2022/Release-145-July-17-2022'},
