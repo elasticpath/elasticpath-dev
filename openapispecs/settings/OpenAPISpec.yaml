@@ -18,12 +18,12 @@ info:
     |--------------|-----------|--------- |-----|
     | `page_length` | `integer` | 25       | 100 |
     
-    For more information on pagination including a list of which resources support pagination, see [Pagination](/docs/commerce-cloud/api-overview/pagination).
+    For more information on pagination including a list of which resources support pagination, see [Pagination](/guides/Getting-Started/pagination).
     
     ### Calculation Method
     
     This option defines the method used to calculate cart and order totals. Currently there are two methods: `simple` and `line`.
-  
+    
     The `simple` method is our previous method for calculating cart and order totals which focuses on the total value of the cart. This should only be used in the case where Composable Commerce is not used for tax calculations. The `line` method treats each line item individually resulting in more accurate figures after taxes and promotions are applied.
     
     | Name         | Type      | Value |
@@ -64,9 +64,9 @@ info:
     | `country` |`string` | Default  |
     
     ### Readonly Settings
-  
+    
     For internal store configurations, read-only settings are used and updating these settings fails without returning any error.
-  
+    
     :::note
     
     - Refer to the [Performance](/guides/Getting-Started/pagination#performance) section in the Pagination documentation, which outlines patterns for retrieving all documents without using a higher page offset limit.
@@ -354,9 +354,9 @@ components:
                   type: boolean
                   example: false
             snapshot_date:
-                    description: This optional parameter sets a reference date for the cart. If this parameter is set, it allows the cart to act as one that might occur on that specified date. For example, such future carts might acquire future-enabled discounts, allowing users to test and validate future interactions with carts. The snapshot_date must be in the format `2026-02-21T15:07:25Z`. By default, this parameter is left empty.
-                    type: string
-                    example: 2026-02-21T15:07:25Z
+              description: This optional parameter sets a reference date for the cart. If this parameter is set, it allows the cart to act as one that might occur on that specified date. For example, such future carts might acquire future-enabled discounts, allowing users to test and validate future interactions with carts. The snapshot_date must be in the format `2026-02-21T15:07:25Z`. By default, this parameter is left empty.
+              type: string
+              example: 2026-02-21T15:07:25Z
           required:
             - type
     Error:

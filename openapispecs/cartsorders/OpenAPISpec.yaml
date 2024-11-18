@@ -2642,19 +2642,19 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/OrdersUpdateRequest'
-            examples :
-              CancelAnOrder :
-                summary : Cancel an Order
-                value :
-                  data :
-                    type : order
-                    status : cancelled
-              FulfillAnOrder :
-                summary : Fulfill an Order by ID. You can fulfill a paid order only.
-                value :
-                  data :
-                    type : order
-                    shipping : fulfilled
+            examples:
+              CancelAnOrder:
+                summary: Cancel an Order
+                value:
+                  data:
+                    type: order
+                    status: cancelled
+              FulfillAnOrder:
+                summary: Fulfill an Order by ID. You can fulfill a paid order only.
+                value:
+                  data:
+                    type: order
+                    shipping: fulfilled
         required: false
       responses:
         '200':
@@ -4936,9 +4936,9 @@ components:
           type: string
           examples:
             - 1234
-        external_ref :
-          description : An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
-          type : string
+        external_ref:
+          description: An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+          type: string
           examples:
             - e-123456789
         id:
@@ -5035,9 +5035,9 @@ components:
             order_number:
               description: A user-managed, optional field used as an alternative to the existing `order_id`. If provided, the order-number will be sent to Authorize.net instead of the `order_id`, and will appear as the invoice number in Authorize.net transactions.
               type: string
-            external_ref :
-              description : An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
-              type : string
+            external_ref:
+              description: An optional external ID reference for an order. It can contain alphanumeric characters, special characters, and spaces, and is not required to be unique. The maximum allowed length is 64 characters. It can be used to include an external reference from a separate company system.
+              type: string
             account:
               type: object
               properties:
@@ -5067,26 +5067,15 @@ components:
       required:
         - first_name
         - last_name
+        - company_name
         - line_1
-        - region
+        - line_2
+        - city
         - postcode
+        - county
         - country
+        - region
       properties:
-        company_name:
-          description: Company name of the billing recipient.
-          type: string
-          examples:
-            - John Doe Enterprises
-        country:
-          description: Specifies the country of the billing address.
-          type: string
-          examples:
-            - US
-        county:
-          description: Specifies the county of the billing address.
-          type: string
-          examples:
-            - Orange
         first_name:
           description: First name of the billing recipient.
           type: string
@@ -5097,6 +5086,11 @@ components:
           type: string
           examples:
             - Doe
+        company_name:
+          description: Company name of the billing recipient.
+          type: string
+          examples:
+            - John Doe Enterprises
         line_1:
           description: First line of the billing address.
           type: string
@@ -5105,13 +5099,28 @@ components:
         line_2:
           description: Second line of the billing address.
           type: string
+        city:
+          description: City of the billing address.
+          type: string
+          examples:
+            - Los Angeles
         postcode:
           description: Postcode of the billing address.
           type: string
           examples:
             - '92802'
+        county:
+          description: County of the billing address.
+          type: string
+          examples:
+            - Orange
+        country:
+          description: Country of the billing address.
+          type: string
+          examples:
+            - US
         region:
-          description: Specifies state, province, or region of the billing address.
+          description: State, province, or region of the billing address.
           type: string
           examples:
             - CA
@@ -5135,26 +5144,17 @@ components:
       required:
         - first_name
         - last_name
+        - phone_number
+        - company_name
         - line_1
-        - region
+        - line_2
+        - city
         - postcode
+        - county
         - country
+        - region
+        - instructions
       properties:
-        company_name:
-          description: Company of the shipping recipient.
-          type: string
-          examples:
-            - John Doe Enterprises
-        country:
-          description: Specifies the country of the shipping address.
-          type: string
-          examples:
-            - US
-        county:
-          description: Specifies the county of the shipping address.
-          type: string
-          examples:
-            - Orange
         first_name:
           description: First name of the shipping recipient.
           type: string
@@ -5165,6 +5165,16 @@ components:
           type: string
           examples:
             - Doe
+        phone_number:
+          description: Phone number of the shipping recipient.
+          type: string
+          examples:
+            - (235) 765-8749
+        company_name:
+          description: Company of the shipping recipient.
+          type: string
+          examples:
+            - John Doe Enterprises
         line_1:
           description: First line of the shipping address.
           type: string
@@ -5173,16 +5183,38 @@ components:
         line_2:
           description: Second line of the shipping address.
           type: string
+          examples:
+            - Apartment 123
+        city:
+          description: City of the shipping address.
+          type: string
+          examples:
+            - Los Angeles
         postcode:
           description: Post code of the shipping address.
           type: string
           examples:
             - '92802'
+        county:
+          description: County of the shipping address.
+          type: string
+          examples:
+            - Orange
+        country:
+          description: Country of the shipping address.
+          type: string
+          examples:
+            - US
         region:
-          description: Specifies the state, province, or region of the shipping address.
+          description: State, province, or region of the shipping address.
           type: string
           examples:
             - CA
+        instructions:
+          description: Delivery instructions.
+          type: string
+          examples:
+            - Please leave on porch
     Response.Meta.Carts:
       type: object
       properties:
