@@ -262,7 +262,7 @@ const config = {
             position: "right",
           },
           {
-            label: "Get in Touch",
+            label: "Get in Touch Today",
             href: "https://www.elasticpath.com/get-in-touch",
             position: "right",
             className: "navbar-book-demo",
