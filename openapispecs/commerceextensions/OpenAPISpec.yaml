@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Commerce Extensions Introduction
   description: |
-    Commerce Extensions is a Database as a Service (DBaaS) that allows for the creation of Custom APIs that can manage large, private data sets efficiently, offering both simple and complex multidimensional filtering options. The combination of Commerce Extensions with Composer, enables you to deploy custom behaviors and integrations to enable capabilities unique to your business without building that functionality from scratch and then hosting yourself.
+    Commerce Extensions is a Database as a Service (DBaaS) that allows for the creation of Custom APIs and extend the capabilities of Commerce. With Custom APIs, you can efficiently manage large, private data sets while benefiting from both simple and complex multidimensional filtering options. Combining Custom APIs with [Composer](/docs/composer) enables you to deploy custom behaviors and integrations, allowing you to implement capabilities unique to your business without having to build and host that functionality from scratch.
 
     Commerce Extensions is the next generation of Flows. Flows are not going anywhere, but going forward as we add new features, Commerce Extensions will eventually provide all the capabilities and more that Flows does. We recommend using Custom APIs for any of your new use cases.
   contact:
@@ -22,20 +22,30 @@ security:
   - bearerAuth: []
 tags:
   - name: Custom APIs
-    description: "\n## Custom APIs vs Non-Core Flows\n\nHere is a comparison of current\
-      \ features of Non-Core Flows and Custom APIs. This will be updated as we release\
-      \ more capabilities.\n\n| Feature                                          \
+    description: "Custom APIs allow you to extend the capabilities of Commerce. With\
+      \ Custom APIs, you can efficiently manage large, private data sets while benefiting\
+      \ from both simple and complex multidimensional filtering options. Combining\
+      \ Custom APIs with [Composer](/docs/composer) enables you to deploy custom behaviors\
+      \ and integrations, allowing you to implement capabilities unique to your business\
+      \ without having to build and host that functionality from scratch.\n\nA Custom\
+      \ API is composed of one or more [Custom Fields](/docs/api/commerce-extensions/custom-fields)\
+      \ and allows you to create [Entries](/docs/api/commerce-extensions/custom-api-entries).\
+      \ In database terms, a Custom API can be thought of as a table, with fields\
+      \ representing the columns of the table, and entries serving as the database\
+      \ records.\n\n## Custom APIs vs Non-Core Flows\n\nCustom APIs are the next generation\
+      \ of Non-Core Flows. Here is a comparison of current features of Non-Core Flows\
+      \ and Custom APIs. This will be updated as we release more capabilities.\n\n\
+      | Feature                                                                  \
+      \                                                       | Non-Core Flows   |\
+      \ Commerce Extensions                                        |\n| ----------------\
       \                                                                          \
-      \     | Non-Core Flows   | Commerce Extensions                             \
-      \           |\n| ----------------                                          \
-      \                                                                      | ----------------\
-      \ | ---------------------------------------------------------- |\n| Build new\
-      \ APIs                                                                     \
-      \                                             | ✅                | ✅       \
-      \                                                   |\n| Access Level      \
-      \                                                                          \
-      \                                    | Implicit         | Client Credentials\
-      \ only                                    |\n| [Filtering](/docs/api/commerce-extensions/get-all-custom-entries#filtering)\
+      \                                      | ---------------- | ----------------------------------------------------------\
+      \ |\n| Build new APIs                                                      \
+      \                                                            | ✅           \
+      \     | ✅                                                          |\n| Access\
+      \ Level                                                                    \
+      \                                                | Implicit         | Client\
+      \ Credentials only                                    |\n| [Filtering](/docs/api/commerce-extensions/get-all-custom-entries#filtering)\
       \                                                             | ⛔️         \
       \      | ✅                                                          |\n| [Sorting](/docs/api/commerce-extensions/get-all-custom-entries#sorting)\
       \                                                               | ⛔️       \
