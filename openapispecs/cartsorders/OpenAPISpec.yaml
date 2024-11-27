@@ -124,6 +124,23 @@ paths:
         - Preview cart interactions skip inventory checks and events, allowing users to preview future carts without impacting related external systems.
         :::
 
+        ### Custom Attributes
+        You can create custom attributes for the cart object to include additional information, enabling promotions that target specific cart attributes.
+        For example:
+        ```
+        "custom_attributes":{
+          "membership": {
+            "type": "string",
+            "value": "VIP"
+          }
+        }
+        ```
+        See [adding cart custom attributes in promotions builder](/docs/commerce-manager/promotions-builder/creating-a-promotion-in-promotions-builder#adding-cart-custom-attributes)
+
+        Cart custom attributes remain with the corresponding cart for the extent of its lifecycle.  These custom attributes carry over to the resulting order objects on checkout and those on carts are deleted with their carts upon cart deletions.
+        Custom attributes can be updated or removed using a PUT request. To delete specific custom attributes, simply exclude the unwanted attribute objects from the PUT request body.
+
+
         ### Errors
 
         - `400 Bad Request` : This is returned when the submitted request does not adhere to the expected API contract for the endpoint.
